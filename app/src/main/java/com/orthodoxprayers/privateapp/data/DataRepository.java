@@ -814,8 +814,12 @@ public final class DataRepository {
     }
 
     private static Object deepCopyJson(Object value) {
-        if (value instanceof JSONObject) return new JSONObject(value.toString());
-        if (value instanceof JSONArray) return new JSONArray(value.toString());
+        try {
+            if (value instanceof JSONObject) return new JSONObject(value.toString());
+            if (value instanceof JSONArray) return new JSONArray(value.toString());
+        } catch (Exception exception) {
+            Log.w(TAG, "Unable to deep-copy JSON value; using the original value", exception);
+        }
         return value;
     }
 
