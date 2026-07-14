@@ -79,9 +79,9 @@ def main() -> None:
     canonical_bytes = TODAY_JSON.read_bytes()
     if ASSET_JSON.read_bytes() != canonical_bytes or dated_json.read_bytes() != canonical_bytes:
         raise SystemExit("Canonical, dated, and embedded JSON differ")
-    canonical_signature = TODAY_SIG.read_bytes()
-    if ASSET_SIG.read_bytes() != canonical_signature or dated_sig.read_bytes() != canonical_signature:
-        raise SystemExit("Canonical, dated, and embedded signatures differ")
+    # Signatures are verified independently below. Do not compare the encoded
+    # signature bytes: a regenerated detached signature is not the data
+    # contract; the cryptographic verification is the contract.
 
     for payload, signature in pairs:
         verify(payload, signature)
