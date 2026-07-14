@@ -1,0 +1,7 @@
+# Keep checked text deterministic across Linux and Windows so SHA-256 verification is reproducible.
+* text=auto eol=lf
+
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+*.jar binary
+*.png binary

@@ -1,0 +1,4386 @@
+{
+  "schema_version": 1,
+  "language": "en",
+  "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+  "machine_translation_used": false,
+  "permission_basis": {
+    "status": "CONFIRMED_BY_PROJECT_OWNER",
+    "confirmed_at": "2026-07-14",
+    "note_ar": "أكد مالك المشروع امتلاكه موافقات إعادة استخدام المحتوى من الجهات الكنسية المدرجة. تحفظ المستندات الأصلية خارج المستودع العام."
+  },
+  "categories": [
+    {
+      "id": "daily",
+      "title": {
+        "ar": "",
+        "en": "Daily Prayers",
+        "el": ""
+      }
+    },
+    {
+      "id": "basic",
+      "title": {
+        "ar": "",
+        "en": "Basic Prayers",
+        "el": ""
+      }
+    },
+    {
+      "id": "liturgy",
+      "title": {
+        "ar": "",
+        "en": "Services and Liturgy",
+        "el": ""
+      }
+    }
+  ],
+  "services": [
+    {
+      "id": "lord_prayer",
+      "category": "basic",
+      "icon": "✥",
+      "title": {
+        "ar": "",
+        "en": "The Lord’s Prayer",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "The foundational prayer taught by the Lord.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "The complete Arabic text is pinned from the official Orthodox Jordan source and hash-checked before publication.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "40c4c649e41e46c36deebddb81de724ada077dac0d89cf7043e60a867e888ce6",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
+      }
+    },
+    {
+      "id": "creed",
+      "category": "basic",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "The Creed",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "The Nicene-Constantinopolitan Creed.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "The complete Arabic text is pinned from the official Orthodox Jordan source and hash-checked before publication.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father, by whom all things were made.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man. He was crucified for us under Pontius Pilate, suffered and was buried; and He rose on the third day according to the Scriptures. He ascended into heaven and is seated at the right hand of the Father; and He shall come again with glory to judge the living and the dead, whose kingdom shall have no end.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father; who together with the Father and the Son is worshiped and glorified; who spoke through the prophets.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "In one, holy, catholic, and apostolic Church. I acknowledge one baptism for the remission of sins. I look for the resurrection of the dead and the life of the age to come. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 13,
+        "total_fields": 13,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "0de356badf3c847423c7aad1db901699ad0087594043582645058f79904fc43c",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-النوم-الكبرى.docx",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "3f8d0516313afb7dddc663405dcb7adc159d7c0b67e48ca03c4dfed473eb1b89"
+      }
+    },
+    {
+      "id": "trisagion",
+      "category": "basic",
+      "icon": "✥",
+      "title": {
+        "ar": "",
+        "en": "Trisagion Prayers",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A common opening in Orthodox prayers.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "The complete Arabic text is pinned from the official Orthodox Jordan source and hash-checked before publication.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times)",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our transgressions. Holy One, visit and heal our infirmities for Thy name’s sake.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Lord, have mercy. (Three times)",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 15,
+        "total_fields": 15,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "ffd2a0aa2cf267eb2ae37048b9b7591721dfb85b0d3c45eb5eabd5a1998a49c1",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "f94c381ffac94d6efd8273dc218214b7576f9e2e914fbc17642fdffe16df8fc9"
+      }
+    },
+    {
+      "id": "morning_prayer",
+      "category": "daily",
+      "icon": "🌅",
+      "title": {
+        "ar": "",
+        "en": "Morning Prayer",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A concise morning prayer for home and work.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "In the name of the Father, and of the Son, and of the Holy Spirit, one God. Amen.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "O Heavenly King, Comforter, Spirit of Truth, who art everywhere present and fillest all things, Treasury of blessings and Giver of life: come and abide in us, cleanse us from every impurity, and save our souls, O Good One.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "I thank Thee, O Lord, for raising me from sleep and granting me to see the light of this day. Enlighten my heart with Thy commandments and guide me to every good work.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Keep me from every sin and every evil thought, and make my words, works, and efforts be for the glory of Thy holy name.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Lord, have mercy. Lord, have mercy. Lord, have mercy.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 8,
+        "total_fields": 13,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/morning-prayers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "4a3ba75a292b6d8fa0e1fe19ed4dd00772569fbb0dae77811ff6cc0f68222b1f",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "evening_prayer",
+      "category": "daily",
+      "icon": "🕯",
+      "title": {
+        "ar": "",
+        "en": "Evening Prayer",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A concise evening prayer before rest.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "O Lord our God, who hast brought us to the evening hour, receive our praise and forgive all that we have sinned in this day.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Send an angel of peace to guard us this night from every harm, temptation, and fear.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Grant rest to our bodies in peace and wakefulness to our hearts toward Thee, that we may rise and glorify Thee with the Father and the Holy Spirit.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Glory to Thee, our God, glory to Thee.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 7,
+        "total_fields": 11,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/chapel/prayers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "21ca8beab21a6275c1712d50e276d3c7c6afdc9588968184413f6b186d58a3be",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "small_compline",
+      "category": "daily",
+      "icon": "🌙",
+      "title": {
+        "ar": "",
+        "en": "Small Compline",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A short order of prayer before sleep.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Have mercy on me, O God, according to Thy great mercy; according to the multitude of Thy compassions blot out my transgressions.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "I confess before Thee, O Lord, every weakness and sin, and I ask of Thee a clean heart and an upright spirit.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "O Theotokos, hope of those who are not put to shame, be my intercession and help, and keep me under the protection of thy Son.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Into Thy hands, O Lord, I commend my spirit and body; bless me and have mercy on me. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 7,
+        "total_fields": 11,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "4effd9df09b895ddad7986f237a49b0f513f47299fdea969c493773f82c0af8c",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "thanksgiving",
+      "category": "daily",
+      "icon": "🙏",
+      "title": {
+        "ar": "",
+        "en": "Thanksgiving Prayer",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A prayer of thanksgiving at any time.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "I thank Thee, O Lord, for all Thy gifts, visible and invisible, and for Thy mercy that surrounds me every day.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Teach me to receive all things with humility, to serve Thee with joy, and to remember the poor, the sick, and the suffering.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "To Thee be glory, thanksgiving, and worship, Father, Son, and Holy Spirit, now and ever, and unto ages of ages. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 6,
+        "total_fields": 9,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "f1b9b813d9cc18828cd03d490ab384a48324fd603c88ad6f9071c3ca60055721",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "before_food",
+      "category": "daily",
+      "icon": "🍞",
+      "title": {
+        "ar": "",
+        "en": "Prayer Before Meals",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A short prayer before meals.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "The complete Arabic text is pinned from the official Orthodox Jordan source and hash-checked before publication.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/prayers-at-mealtime",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "fba0b75ec0240a9716814016587a55a9d82f4b7f497cc9643816ef2ba9858b5e",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
+      }
+    },
+    {
+      "id": "after_food",
+      "category": "daily",
+      "icon": "🍇",
+      "title": {
+        "ar": "",
+        "en": "Prayer After Meals",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A short thanksgiving after meals.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "The complete Arabic text is pinned from the official Orthodox Jordan source and hash-checked before publication.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "All",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "We thank Thee, O Christ our God, for Thou hast satisfied us with Thy earthly gifts. Deprive us not of Thy heavenly kingdom. Amen.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/prayers-at-mealtime",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "68473103dd881a23e0b2fcf59c111152b09982d29668cea5ebd4614eabff3b71",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "d05e7bd22e339e53e27195fa6c38f431e27cdf083fc66a27fff817e908f1f961"
+      }
+    },
+    {
+      "id": "jesus_prayer",
+      "category": "basic",
+      "icon": "✙",
+      "title": {
+        "ar": "",
+        "en": "The Jesus Prayer",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A short prayer repeated with stillness and repentance.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Lord Jesus Christ, Son of God, have mercy on me, a sinner.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 4,
+        "total_fields": 5,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/chapel/prayers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "9099104cbaaa8ea51cc8586e8b3b780b9dc6559c8aba6abb471221d5b1a6dae6",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "divine_liturgy",
+      "category": "liturgy",
+      "icon": "⛪",
+      "title": {
+        "ar": "",
+        "en": "Full Divine Liturgy",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Preparation and opening",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The Great Litany",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "First Antiphon",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Little Litany",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Second Antiphon",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Third Antiphon and Little Entrance",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Apolytikia and Kontakion",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Trisagion Hymn",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The Epistle",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The Holy Gospel",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Litanies after the Gospel",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Cherubic Hymn and Great Entrance",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Litany of the Offering",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Peace and Creed",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The Holy Anaphora",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Institution and Epiclesis",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Commemorations and Theotokos",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Before Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Holy Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Optional note",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Thanksgiving after Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Dismissal",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 36,
+        "total_fields": 473,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_digital_chant_stand_english",
+        "name": "GOARCH Digital Chant Stand — English",
+        "official": true,
+        "native_language": "en",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "a5f5cbf4e41c9d4ae11fcabc2425bfd11d3b6d5ffb29480e9312eb9ab07ff44e",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "vespers",
+      "category": "liturgy",
+      "icon": "🌆",
+      "title": {
+        "ar": "",
+        "en": "Vespers",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A vespers order with psalm, litanies, and prayers.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Blessed is our God always, now and ever and unto ages of ages.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Amen. Come, let us worship and fall down before Christ our King and God.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Lord, I have cried unto Thee; hearken unto me. Hearken unto me, O Lord.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Let us complete our evening prayer unto the Lord.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Lord, have mercy.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Peace be to all.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "And to thy spirit.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Now lettest Thou Thy servant depart in peace, O Master, according to Thy word, for mine eyes have seen Thy salvation.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "May the blessing and mercy of the Lord come upon you through His grace and love for mankind, always.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 12,
+        "total_fields": 21,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/daily-vespers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "498ae42b8044070472e6bad6bb95f7d3dc4f0f5b9df7fcc4deaab2ab153105b1",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "orthros",
+      "category": "liturgy",
+      "icon": "🌄",
+      "title": {
+        "ar": "",
+        "en": "Orthros / Matins",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A matins order with psalms, Gospel, and litanies.",
+        "el": ""
+      },
+      "source_language": "en",
+      "notice": {
+        "ar": "",
+        "en": "Fixed texts are pinned in this release. Daily propers and readings are inserted in full only after automated official-source verification.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Glory to the Holy Trinity, the one God, who raises us from the night to praise Him.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Glory to Thee who hast shown us the light. Glory to God in the highest, and on earth peace, good will among men.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Again and again in peace let us pray to the Lord.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "Lord, have mercy.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "The resurrectional or festal troparia are inserted here according to the day.",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "For Thou art our God, and unto Thee do we send up glory, Father, Son, and Holy Spirit.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 9,
+        "total_fields": 15,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/daily-orthros",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "fcb3bd27a1f9d7a7e6afe91502fca532765d2d65d89a68491588fe1691e2e0a3",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    }
+  ],
+  "native_content_status": {
+    "filled_fields": 132,
+    "total_fields": 601,
+    "percent": 22.0,
+    "complete": false
+  }
+}

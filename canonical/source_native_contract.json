@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "effective_from": "2026-07-14",
+  "mode": "STRICT_NATIVE_LANGUAGE_FAIL_CLOSED",
+  "owner_permissions": {
+    "status": "CONFIRMED_BY_PROJECT_OWNER",
+    "documents": "kept_outside_public_repository"
+  },
+  "religious_text_rules": {
+    "translation_between_lanes": false,
+    "machine_translation": false,
+    "ai_generation_or_rewriting": false,
+    "automatic_diacritization": false,
+    "display_normalization": "PRESERVE_SOURCE_UNICODE_CODEPOINTS_EXACTLY",
+    "search_normalization": "DERIVED_INDEX_ONLY_NEVER_DISPLAYED",
+    "on_missing_native_text": "PUBLISH_REFERENCE_OR_UNAVAILABLE_ONLY; NEVER_FALL_BACK_TO_ANOTHER_LANGUAGE",
+    "on_changed_locked_text": "BLOCK_UPDATE_AND_KEEP_LAST_SIGNED_GOOD"
+  },
+  "language_lanes": {
+    "ar": {
+      "priority": [
+        "orthodox_jordan",
+        "jerusalem_patriarchate_ar",
+        "antioch_patriarchate_ar"
+      ],
+      "required_script": "Arabic",
+      "preserve_marks": true,
+      "minimum_diacritic_ratio_when_source_is_marked_vocalized": 0.15
+    },
+    "en": {
+      "priority": [
+        "goarch_online_chapel",
+        "jerusalem_patriarchate_en",
+        "goarch_digital_chant_stand_english",
+        "goarch_synekdemos",
+        "oca_official_english"
+      ],
+      "required_script": "Latin",
+      "preserve_marks": true
+    },
+    "el": {
+      "priority": [
+        "church_of_greece_apostoliki_diakonia",
+        "church_of_greece_ecclesia",
+        "jerusalem_patriarchate_el",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "required_script": "Greek",
+      "preserve_marks": true,
+      "polytonic_preferred": true
+    }
+  },
+  "sources": {
+    "orthodox_jordan": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://orthodoxjordan.org/",
+      "capabilities": [
+        "daily_calendar",
+        "daily_reading_references",
+        "prayers",
+        "fasting",
+        "saints",
+        "liturgy"
+      ]
+    },
+    "jerusalem_patriarchate_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://ar.jerusalem-patriarchate.info/",
+      "capabilities": [
+        "calendar",
+        "feasts",
+        "prayers",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ]
+    },
+    "antioch_patriarchate_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://www.antiochpatriarchate.org/",
+      "capabilities": [
+        "calendar",
+        "lectionary",
+        "prayers",
+        "liturgy"
+      ]
+    },
+    "goarch_online_chapel": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.goarch.org/chapel",
+      "capabilities": [
+        "daily_calendar",
+        "daily_reading_references",
+        "daily_reading_text",
+        "fasting",
+        "saints"
+      ]
+    },
+    "jerusalem_patriarchate_en": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://en.jerusalem-patriarchate.info/",
+      "capabilities": [
+        "calendar",
+        "feasts",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ]
+    },
+    "goarch_digital_chant_stand_english": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://digitalchantstand.goarch.org/",
+      "capabilities": [
+        "services",
+        "liturgy",
+        "daily_texts"
+      ]
+    },
+    "goarch_synekdemos": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+      "capabilities": [
+        "prayers"
+      ]
+    },
+    "oca_official_english": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.oca.org/",
+      "capabilities": [
+        "daily_reading_references",
+        "daily_reading_text"
+      ],
+      "role": "same-language_last_fallback_only"
+    },
+    "church_of_greece_apostoliki_diakonia": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://apostoliki-diakonia.gr/",
+      "capabilities": [
+        "scripture_corpus",
+        "calendar",
+        "saints",
+        "prayers"
+      ]
+    },
+    "church_of_greece_ecclesia": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://www.ecclesia.gr/",
+      "capabilities": [
+        "calendar",
+        "prayers",
+        "liturgy"
+      ]
+    },
+    "jerusalem_patriarchate_el": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://jerusalem-patriarchate.info/",
+      "capabilities": [
+        "calendar",
+        "feasts",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ]
+    },
+    "goarch_digital_chant_stand_greek": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://digitalchantstand.goarch.org/",
+      "capabilities": [
+        "services",
+        "liturgy",
+        "daily_texts"
+      ]
+    }
+  },
+  "publication": {
+    "daily_update_time": "00:00 Asia/Amman",
+    "verification_time": "00:15 Asia/Amman",
+    "publish_branch": "verified-data",
+    "signed_data_required": true,
+    "same_language_fallback_only": true,
+    "missing_content_is_not_a_failure": true,
+    "cross_language_content_is_a_failure": true
+  }
+}

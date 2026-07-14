@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "ordered_sources": [
+    {
+      "id": "orthodox_jordan",
+      "priority": 1,
+      "name_ar": "مطرانية الروم الأرثوذكس في الأردن",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "uses": [
+        "daily_lectionary",
+        "scripture_display",
+        "liturgical_texts"
+      ]
+    },
+    {
+      "id": "jerusalem_patriarchate",
+      "priority": 2,
+      "name_ar": "بطريركية الروم الأرثوذكس المقدسية",
+      "official": true,
+      "languages": [
+        "el",
+        "en",
+        "ar"
+      ],
+      "uses": [
+        "jurisdiction",
+        "calendar",
+        "major_feasts",
+        "liturgical_texts_when_available"
+      ]
+    },
+    {
+      "id": "antioch_patriarchate",
+      "priority": 3,
+      "name_ar": "بطريركية أنطاكية وسائر المشرق للروم الأرثوذكس",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "uses": [
+        "daily_lectionary",
+        "typikon",
+        "liturgical_texts"
+      ]
+    },
+    {
+      "id": "official_greek_orthodox",
+      "priority": 4,
+      "name_ar": "مصدر كنسي يوناني أرثوذكسي رسمي",
+      "official": true,
+      "languages": [
+        "el",
+        "en",
+        "ar"
+      ],
+      "uses": [
+        "daily_lectionary",
+        "greek_cross_check",
+        "last_official_fallback"
+      ]
+    },
+    {
+      "id": "orthodox_church_in_america",
+      "priority": 5,
+      "name_ar": "الكنيسة الأرثوذكسية في أميركا",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "uses": [
+        "weekday_lectionary_cross_check",
+        "english_official_fallback"
+      ]
+    }
+  ],
+  "language_text_sources": [
+    {
+      "id": "church_of_greece_apostoliki_diakonia",
+      "name_ar": "خدمة الرسالة الرسولية التابعة لكنيسة اليونان",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "url": "https://apostoliki-diakonia.gr/",
+      "rights": "permission_or_explicit_license_required_before_redistribution"
+    },
+    {
+      "id": "goarch_online_chapel",
+      "name_ar": "المصلى الإلكتروني لأبرشية الروم الأرثوذكس في أميركا",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "url": "https://www.goarch.org/chapel",
+      "rights": "verify_each_text_license_before_redistribution"
+    },
+    {
+      "id": "goarch_digital_chant_stand",
+      "name_ar": "Digital Chant Stand",
+      "official": true,
+      "languages": [
+        "el",
+        "en"
+      ],
+      "url": "https://dcs.goarch.org/",
+      "rights": "copyrighted_use_only_with_permission_or_applicable_license"
+    }
+  ]
+}

@@ -1,0 +1,4386 @@
+{
+  "schema_version": 1,
+  "language": "el",
+  "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+  "machine_translation_used": false,
+  "permission_basis": {
+    "status": "CONFIRMED_BY_PROJECT_OWNER",
+    "confirmed_at": "2026-07-14",
+    "note_ar": "أكد مالك المشروع امتلاكه موافقات إعادة استخدام المحتوى من الجهات الكنسية المدرجة. تحفظ المستندات الأصلية خارج المستودع العام."
+  },
+  "categories": [
+    {
+      "id": "daily",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Καθημερινὲς Προσευχές"
+      }
+    },
+    {
+      "id": "basic",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Βασικὲς Προσευχές"
+      }
+    },
+    {
+      "id": "liturgy",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθίες καὶ Λειτουργία"
+      }
+    }
+  ],
+  "services": [
+    {
+      "id": "lord_prayer",
+      "category": "basic",
+      "icon": "✥",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Πάτερ ἡμῶν"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Βασική κυριακή προσευχή."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἀραβικὸ κείμενο εἶναι καρφιτσωμένο ἀπὸ ἐπίσημη πηγὴ τῆς Ἰορδανίας καὶ ἐλέγχεται μὲ SHA-256."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Πάτερ ἡμῶν, ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς· τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "207541f98260623e25c7df8cc425ec1dfa6b9bf6e5a9e82546186746a326dfc8",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
+      }
+    },
+    {
+      "id": "creed",
+      "category": "basic",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Σύμβολον τῆς Πίστεως"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ Σύμβολον τῆς Πίστεως."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἀραβικὸ κείμενο εἶναι καρφιτσωμένο ἀπὸ ἐπίσημη πηγὴ τῆς Ἰορδανίας καὶ ἐλέγχεται μὲ SHA-256."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Πιστεύω εἰς ἕνα Θεόν, Πατέρα, Παντοκράτορα, ποιητὴν οὐρανοῦ καὶ γῆς, ὁρατῶν τε πάντων καὶ ἀοράτων."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Καὶ εἰς ἕνα Κύριον Ἰησοῦν Χριστόν, τὸν Υἱὸν τοῦ Θεοῦ τὸν μονογενῆ, τὸν ἐκ τοῦ Πατρὸς γεννηθέντα πρὸ πάντων τῶν αἰώνων· Φῶς ἐκ Φωτός, Θεὸν ἀληθινὸν ἐκ Θεοῦ ἀληθινοῦ, γεννηθέντα, οὐ ποιηθέντα, ὁμοούσιον τῷ Πατρί, δι’ οὗ τὰ πάντα ἐγένετο."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸν δι’ ἡμᾶς τοὺς ἀνθρώπους καὶ διὰ τὴν ἡμετέραν σωτηρίαν κατελθόντα ἐκ τῶν οὐρανῶν καὶ σαρκωθέντα ἐκ Πνεύματος Ἁγίου καὶ Μαρίας τῆς Παρθένου καὶ ἐνανθρωπήσαντα. Σταυρωθέντα τε ὑπὲρ ἡμῶν ἐπὶ Ποντίου Πιλάτου καὶ παθόντα καὶ ταφέντα. Καὶ ἀναστάντα τῇ τρίτῃ ἡμέρᾳ κατὰ τὰς Γραφάς. Καὶ ἀνελθόντα εἰς τοὺς οὐρανοὺς καὶ καθεζόμενον ἐκ δεξιῶν τοῦ Πατρός. Καὶ πάλιν ἐρχόμενον μετὰ δόξης κρῖναι ζῶντας καὶ νεκρούς, οὗ τῆς βασιλείας οὐκ ἔσται τέλος."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Καὶ εἰς τὸ Πνεῦμα τὸ Ἅγιον, τὸ Κύριον, τὸ Ζωοποιόν, τὸ ἐκ τοῦ Πατρὸς ἐκπορευόμενον, τὸ σὺν Πατρὶ καὶ Υἱῷ συμπροσκυνούμενον καὶ συνδοξαζόμενον, τὸ λαλῆσαν διὰ τῶν προφητῶν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εἰς μίαν, ἁγίαν, καθολικὴν καὶ ἀποστολικὴν Ἐκκλησίαν. Ὁμολογῶ ἓν βάπτισμα εἰς ἄφεσιν ἁμαρτιῶν. Προσδοκῶ ἀνάστασιν νεκρῶν καὶ ζωὴν τοῦ μέλλοντος αἰῶνος. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 13,
+        "total_fields": 13,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "bd49ed3c2a3bab18601fa76ec5149ca2b6bf320d026397ecdae01e4bcfc28928",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-النوم-الكبرى.docx",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "3f8d0516313afb7dddc663405dcb7adc159d7c0b67e48ca03c4dfed473eb1b89"
+      }
+    },
+    {
+      "id": "trisagion",
+      "category": "basic",
+      "icon": "✥",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Τρισάγιον"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Κοινὴ ἀρχὴ προσευχῶν."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἀραβικὸ κείμενο εἶναι καρφιτσωμένο ἀπὸ ἐπίσημη πηγὴ τῆς Ἰορδανίας καὶ ἐλέγχεται μὲ SHA-256."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἅγιος ὁ Θεός, Ἅγιος ἰσχυρός, Ἅγιος ἀθάνατος, ἐλέησον ἡμᾶς. (Τρίς)"
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Παναγία Τριάς, ἐλέησον ἡμᾶς. Κύριε, ἱλάσθητι ταῖς ἁμαρτίαις ἡμῶν. Δέσποτα, συγχώρησον τὰς ἀνομίας ἡμῖν. Ἅγιε, ἐπίσκεψαι καὶ ἴασαι τὰς ἀσθενείας ἡμῶν ἕνεκεν τοῦ ὀνόματός σου."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε, ἐλέησον. (Τρίς)"
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Πάτερ ἡμῶν, ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς· τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 15,
+        "total_fields": 15,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "d6a978d51e3df2dcdd38b73980b293553be120d14399c2bc19bc86910580f5c7",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "f94c381ffac94d6efd8273dc218214b7576f9e2e914fbc17642fdffe16df8fc9"
+      }
+    },
+    {
+      "id": "morning_prayer",
+      "category": "daily",
+      "icon": "🌅",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Πρωινὴ Προσευχή"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σύντομη πρωινὴ προσευχή."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εἰς τὸ ὄνομα τοῦ Πατρὸς καὶ τοῦ Υἱοῦ καὶ τοῦ Ἁγίου Πνεύματος. Ἀμήν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Βασιλεῦ οὐράνιε, Παράκλητε, τὸ Πνεῦμα τῆς ἀληθείας, ἐλθὲ καὶ σκήνωσον ἐν ἡμῖν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαριστῶ σοι, Κύριε, ὅτι ἤγειράς με ἐκ τοῦ ὕπνου καὶ ἔδειξάς μοι τὸ φῶς τῆς ἡμέρας."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Φύλαξόν με ἀπὸ πάσης ἁμαρτίας καὶ πονηροῦ λογισμοῦ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε ἐλέησον. Κύριε ἐλέησον. Κύριε ἐλέησον."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 8,
+        "total_fields": 13,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "98261b729140d7cea379c1ac042a6950432b3e0943b055202fd45e935220c536",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "evening_prayer",
+      "category": "daily",
+      "icon": "🕯",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἑσπερινὴ Προσευχή"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σύντομη ἑσπερινὴ προσευχή."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε ὁ Θεὸς ἡμῶν, ὁ καταξιώσας ἡμᾶς φθάσαι εἰς τὴν ἑσπέραν, πρόσδεξαι τὴν δοξολογίαν ἡμῶν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἄγγελον εἰρήνης πέμψον ἡμῖν, φύλακα τῶν ψυχῶν καὶ σωμάτων ἡμῶν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δὸς ἡμῖν ὕπνον ἀναπαύσεως καὶ καρδίαν γρηγοροῦσαν πρὸς σέ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δόξα σοι ὁ Θεὸς ἡμῶν, δόξα σοι."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 7,
+        "total_fields": 11,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "d5a90bc60fa831532bf06f175914a5ef6eb35a23c8fd4bb667371503ef87281d",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "small_compline",
+      "category": "daily",
+      "icon": "🌙",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Μικρὸν Ἀπόδειπνον"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σύντομη τάξη προσευχῆς πρὸ τοῦ ὕπνου."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἐλέησόν με ὁ Θεὸς κατὰ τὸ μέγα ἔλεός σου."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἐξομολογοῦμαί σοι, Κύριε, πᾶσαν ἀσθένειαν καὶ ἁμαρτίαν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Θεοτόκε, ἐλπὶς τῶν ἀκαταισχύντων, πρέσβευε ὑπὲρ ἡμῶν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εἰς χεῖράς σου, Κύριε, παρατίθημι τὸ πνεῦμά μου καὶ τὸ σῶμά μου. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 7,
+        "total_fields": 11,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "d130c0ab293a526c31556e208f798b6ff40106b8bbd9a2a6551ea51d5ebc119d",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "thanksgiving",
+      "category": "daily",
+      "icon": "🙏",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαριστήριος Προσευχή"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Προσευχή εὐχαριστίας."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαριστῶ σοι, Κύριε, ὑπὲρ πάντων τῶν δώρων σου."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δίδαξόν με δέχεσθαι πάντα μετὰ ταπεινώσεως καὶ διακονεῖν σε μετὰ χαρᾶς."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Σοὶ δόξα καὶ εὐχαριστία, Πάτερ, Υἱὲ καὶ Ἅγιον Πνεῦμα, νῦν καὶ ἀεί. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 6,
+        "total_fields": 9,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "fe1724823efddb7ef26915ccf9585b070a24c434ed899cf3864a94ae78b1d63f",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "before_food",
+      "category": "daily",
+      "icon": "🍞",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Προσευχὴ πρὸ τοῦ φαγητοῦ"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σύντομη προσευχή πρὸ τοῦ φαγητοῦ."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἀραβικὸ κείμενο εἶναι καρφιτσωμένο ἀπὸ ἐπίσημη πηγὴ τῆς Ἰορδανίας καὶ ἐλέγχεται μὲ SHA-256."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Πάτερ ἡμῶν, ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς· τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "00f646caa20deb06a7a4a15171b55a9abb9ff77b68c63bb7a8c9b400d559e140",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
+      }
+    },
+    {
+      "id": "after_food",
+      "category": "daily",
+      "icon": "🍇",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Προσευχὴ μετὰ τὸ φαγητόν"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σύντομη εὐχαριστία μετὰ τὸ φαγητόν."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἀραβικὸ κείμενο εἶναι καρφιτσωμένο ἀπὸ ἐπίσημη πηγὴ τῆς Ἰορδανίας καὶ ἐλέγχεται μὲ SHA-256."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅλοι"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαριστοῦμέν σοι, Χριστὲ ὁ Θεὸς ἡμῶν, ὅτι ἐχόρτασας ἡμᾶς τῶν ἐπιγείων σου ἀγαθῶν· μὴ στερήσῃς ἡμᾶς καὶ τῆς ἐπουρανίου σου βασιλείας. Ἀμήν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "6952a57f9cc192114ec0d344b9978349f4f888f62f3313b7d27c00787ae30f16",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "d05e7bd22e339e53e27195fa6c38f431e27cdf083fc66a27fff817e908f1f961"
+      }
+    },
+    {
+      "id": "jesus_prayer",
+      "category": "basic",
+      "icon": "✙",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχὴ τοῦ Ἰησοῦ"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σύντομη νοερὰ προσευχή."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε Ἰησοῦ Χριστέ, Υἱὲ τοῦ Θεοῦ, ἐλέησόν με τὸν ἁμαρτωλόν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 4,
+        "total_fields": 5,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "8bab71823ddde87bc528db590e1520c7c5a51472c0c015f34a2428e50246297d",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "divine_liturgy",
+      "category": "liturgy",
+      "icon": "⛪",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Πλήρης Θεία Λειτουργία"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἡ ἔναρξις τῆς Θείας Λειτουργίας"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Μεγάλη Συναπτή"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Πρῶτον Ἀντίφωνον"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Μικρὰ Συναπτή"
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Δεύτερον Ἀντίφωνον"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Τρίτον Ἀντίφωνον καὶ Μικρὰ Εἴσοδος"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀπολυτίκια καὶ Κοντάκιον"
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Τρισάγιον"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ὁ Ἀπόστολος"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ Ἅγιον Εὐαγγέλιον"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Αἰτήσεις μετὰ τὸ Εὐαγγέλιον"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Χερουβικόν καὶ Μεγάλη Εἴσοδος"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Συναπτή τῆς Προσκομιδῆς"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Εἰρήνη καὶ Σύμβολον"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἡ Ἁγία Ἀναφορά"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Καθίδρυσις καὶ Ἐπίκλησις"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Μνημόνευσις καὶ Θεοτόκος"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Πρὸ τῆς Κοινωνίας"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἁγία Κοινωνία"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαριστία μετὰ τὴν Κοινωνίαν"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀπόλυσις"
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 36,
+        "total_fields": 473,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_ecclesia",
+        "name": "Ἐκκλησία τῆς Ἑλλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://www.ecclesia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "40014b5b01eaf46ca8a6a011ca34ee1392d9a2bf11e8241cec0397f9bb70b6a6",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "vespers",
+      "category": "liturgy",
+      "icon": "🌆",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἑσπερινός"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Τάξη Ἑσπερινοῦ."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐλογητὸς ὁ Θεὸς ἡμῶν πάντοτε."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀμήν. Δεῦτε προσκυνήσωμεν καὶ προσπέσωμεν Χριστῷ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε, ἐκέκραξα πρὸς σέ, εἰσάκουσόν μου."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Πληρώσωμεν τὴν ἑσπερινὴν δέησιν ἡμῶν τῷ Κυρίῳ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε ἐλέησον."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εἰρήνη πᾶσι."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Καὶ τῷ πνεύματί σου."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Νῦν ἀπολύεις τὸν δοῦλόν σου, Δέσποτα, κατὰ τὸ ῥῆμά σου ἐν εἰρήνῃ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐλογία Κυρίου καὶ ἔλεος αὐτοῦ ἔλθοι ἐφ’ ὑμᾶς."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 12,
+        "total_fields": 21,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "1693fc0e032da584b071b15f720dc00fc9fc0cc74198b61f5326917a9d34c7c1",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "orthros",
+      "category": "liturgy",
+      "icon": "🌄",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ὄρθρος"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Τάξη Ὄρθρου."
+      },
+      "source_language": "el",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Τὰ σταθερὰ κείμενα εἶναι καρφιτσωμένα στὴν ἔκδοση· τὰ ἡμερήσια κείμενα προστίθενται πλήρη μόνον μετὰ ἀπὸ ἐπαλήθευση ἐπισήμων πηγῶν."
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δόξα τῇ Ἁγίᾳ Τριάδι, τῷ ἑνὶ Θεῷ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δόξα σοι τῷ δείξαντι τὸ φῶς. Δόξα ἐν ὑψίστοις Θεῷ."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἔτι καὶ ἔτι ἐν εἰρήνῃ τοῦ Κυρίου δεηθῶμεν."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Κύριε ἐλέησον."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἐνταῦθα τίθενται τὰ ἀναστάσιμα ἢ ἑόρτια τροπάρια."
+          }
+        },
+        {
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ὅτι σὺ εἶ ὁ Θεὸς ἡμῶν καὶ σοὶ τὴν δόξαν ἀναπέμπομεν."
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 9,
+        "total_fields": 15,
+        "complete": false
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία της Εκκλησίας της Ελλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "19bc88f2c2a7e0d16ad6a1ff4446cd52a6a119400687b434f03075a64df5017f",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    }
+  ],
+  "native_content_status": {
+    "filled_fields": 132,
+    "total_fields": 601,
+    "percent": 22.0,
+    "complete": false
+  }
+}

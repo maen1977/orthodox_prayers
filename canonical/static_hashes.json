@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "purpose_ar": "بصمات النصوص والعقود الدينية الثابتة لمنع تغيير أي حرف أو سياسة مصدر دون تحديث مقصود لخط الأساس ومراجعة التغيير.",
+  "files": {
+    "app/src/main/assets/data/library.json": "2c8f0f7bff7c3694c7dbfb62c22c5d17430f55674325a44667d7ab5c5e2233ef",
+    "data/services/library.json": "2c8f0f7bff7c3694c7dbfb62c22c5d17430f55674325a44667d7ab5c5e2233ef",
+    "data/glossary/orthodox_terms.json": "cd242cef781b37eb3b15a9957755db7309d3349a86adeeb3622ec24e1d5aa9b1",
+    "canonical/source_policy.json": "1a458339c03f6bda259f983e7fd3f1e8d705c0cff8b34622a36ba08b021d22e2",
+    "canonical/jerusalem_fixed_feasts.json": "13de140eacacbcd48b07356de29eab6c74db93b3b465b08465a79aae136fb332",
+    "canonical/fasting_policy.json": "6f9a4c6ad6e3ac6f39e43e2aee173bc49db4235d6257fee1e2903895f5325a50",
+    "canonical/source_native_contract.json": "43ea2b0084d01b689318900df66ff6200f9d0b24f83342d2bda05ff6ba6ed8fa",
+    "canonical/native_language_sources.json": "8ffe79ddb1a09e9e35d09ce63a15989088ce0b1714229eb2f25b39fb54692a05",
+    "canonical/static_prayer_sources.json": "3505e1026871c4df535ba88f92665e7b7c9f8b6014aeb6c09a990adde76f5e81",
+    "data/services/native/library_ar.json": "4c60c6c8df6a53110115ff9bac5edad9af1958033a624d92cecb1136d26b542b",
+    "data/services/native/library_en.json": "35969841d0bceaf0f084617cb411b859a93f2d16e1f1935a0badc92bf40ee346",
+    "data/services/native/library_el.json": "2fad73a0c6806290e1f94a53240404f76bc3a3eb27885792d91065539c4efe15",
+    "data/scripture/native/ar/manifest.json": "db4b618ea9053be7fa164613295bb7d58acc7326812ed5e9a3966121f56ad260",
+    "data/scripture/native/ar/verses.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "data/scripture/native/en/manifest.json": "1f8d4bd3e74ec39014f039c2f1a8df6e926ebb8bb2a440339134734957d5a557",
+    "data/scripture/native/en/verses.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "data/scripture/native/el/manifest.json": "dbe0617f935fd3fe827888eab77ba4e736f1e1aa135975dac4e3129a012984e2",
+    "data/scripture/native/el/verses.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  }
+}

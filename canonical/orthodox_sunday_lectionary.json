@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "cycle": "sundays_after_pentecost",
+  "calendar_compatibility": "paschal_cycle_shared_only; fixed-feast overrides must be resolved first",
+  "status": "pinned_official_greek_orthodox_cycle",
+  "note_ar": "هذا السجل لا يتجاوز عيداً ثابتاً في تقويم القدس. يُستخدم بعد فشل الأردن والقدس وأنطاكية المتوافقة تقويمياً.",
+  "sundays": {
+    "7": {
+      "epistle_reference": "Romans 15:1-7",
+      "gospel_reference": "Matthew 9:27-35",
+      "tone": 6,
+      "source": {
+        "id": "official_greek_orthodox",
+        "priority": 4,
+        "url": "https://www.stspyridon.wv.goarch.org/wp-content/uploads/2022/07/Bulletin-7-31-22-copy-11.pdf",
+        "note": "Official GOARCH parish bulletin confirming the Seventh Sunday of Matthew readings."
+      }
+    }
+  }
+}

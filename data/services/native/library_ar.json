@@ -1,0 +1,4388 @@
+{
+  "schema_version": 1,
+  "language": "ar",
+  "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+  "machine_translation_used": false,
+  "permission_basis": {
+    "status": "CONFIRMED_BY_PROJECT_OWNER",
+    "confirmed_at": "2026-07-14",
+    "note_ar": "أكد مالك المشروع امتلاكه موافقات إعادة استخدام المحتوى من الجهات الكنسية المدرجة. تحفظ المستندات الأصلية خارج المستودع العام."
+  },
+  "categories": [
+    {
+      "id": "daily",
+      "title": {
+        "ar": "الصلوات اليومية",
+        "en": "",
+        "el": ""
+      }
+    },
+    {
+      "id": "basic",
+      "title": {
+        "ar": "صلوات أساسية",
+        "en": "",
+        "el": ""
+      }
+    },
+    {
+      "id": "liturgy",
+      "title": {
+        "ar": "الخدمات والقداس",
+        "en": "",
+        "el": ""
+      }
+    }
+  ],
+  "services": [
+    {
+      "id": "lord_prayer",
+      "category": "basic",
+      "icon": "✥",
+      "title": {
+        "ar": "أبانا الذي في السماوات",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "الصلاة الربانية الأساسية.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النص العربي الكامل مثبت من مصدر مطرانية الأردن الرسمي، وتتحقق البوابة من بصمته قبل النشر.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أَبَانَا الَّذِي فِي السَّمَاوَاتِ، لِيَتَقَدَّسِ اسْمُكَ، لِيَأْتِ مَلَكُوتُكَ، لِتَكُنْ مَشِيئَتُكَ، كَمَا فِي السَّمَاءِ كَذَلِكَ عَلَى الْأَرْضِ. خُبْزَنَا الْجَوْهَرِيَّ أَعْطِنَا الْيَوْمَ، وَاتْرُكْ لَنَا مَا عَلَيْنَا، كَمَا نَتْرُكُ نَحْنُ لِمَنْ لَنَا عَلَيْهِ، وَلَا تُدْخِلْنَا فِي تَجْرِبَةٍ، لَكِنْ نَجِّنَا مِنَ الشِّرِّيرِ. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "7cc09db5dad4c0388910e97d6453d81dcf79f83f6a68fab89c59ce9dc7022888",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
+      }
+    },
+    {
+      "id": "creed",
+      "category": "basic",
+      "icon": "☦",
+      "title": {
+        "ar": "قانون الإيمان",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "قانون الإيمان النيقاوي القسطنطيني.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النص العربي الكامل مثبت من مصدر مطرانية الأردن الرسمي، وتتحقق البوابة من بصمته قبل النشر.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أُؤْمِنُ بِإِلَهٍ وَاحِدٍ، آبٍ ضَابِطِ الْكُلِّ، خَالِقِ السَّمَاءِ وَالْأَرْضِ، كُلِّ مَا يُرَى وَمَا لَا يُرَى.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وَبِرَبٍّ وَاحِدٍ يَسُوعَ الْمَسِيحِ، ابْنِ اللهِ الْوَحِيدِ، الْمَوْلُودِ مِنَ الْآبِ قَبْلَ كُلِّ الدُّهُورِ. نُورٍ مِنْ نُورٍ، إِلَهٍ حَقٍّ مِنْ إِلَهٍ حَقٍّ، مَوْلُودٍ غَيْرِ مَخْلُوقٍ، مُسَاوٍ لِلْآبِ فِي الْجَوْهَرِ، الَّذِي بِهِ كَانَ كُلُّ شَيْءٍ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الَّذِي مِنْ أَجْلِنَا نَحْنُ الْبَشَرَ، وَمِنْ أَجْلِ خَلَاصِنَا، نَزَلَ مِنَ السَّمَاءِ، وَتَجَسَّدَ مِنَ الرُّوحِ الْقُدُسِ وَمِنْ مَرْيَمَ الْعَذْرَاءِ، وَتَأَنَّسَ. وَصُلِبَ عَنَّا عَلَى عَهْدِ بِيلاطُسَ الْبُنْطِيِّ، وَتَأَلَّمَ وَقُبِرَ. وَقَامَ فِي الْيَوْمِ الثَّالِثِ كَمَا فِي الْكُتُبِ. وَصَعِدَ إِلَى السَّمَاوَاتِ، وَجَلَسَ عَنْ يَمِينِ الْآبِ. وَأَيْضًا يَأْتِي بِمَجْدٍ لِيَدِينَ الْأَحْيَاءَ وَالْأَمْوَاتَ، الَّذِي لَا فَنَاءَ لِمُلْكِهِ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وَبِالرُّوحِ الْقُدُسِ، الرَّبِّ الْمُحْيِي، الْمُنْبَثِقِ مِنَ الْآبِ، الَّذِي هُوَ مَعَ الْآبِ وَالِابْنِ مَسْجُودٌ لَهُ وَمُمَجَّدٌ، النَّاطِقِ بِالْأَنْبِيَاءِ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وَبِكَنِيسَةٍ وَاحِدَةٍ مُقَدَّسَةٍ جَامِعَةٍ رَسُولِيَّةٍ. وَأَعْتَرِفُ بِمَعْمُودِيَّةٍ وَاحِدَةٍ لِمَغْفِرَةِ الْخَطَايَا. وَأَتَرَجَّى قِيَامَةَ الْمَوْتَى، وَالْحَيَاةَ فِي الدَّهْرِ الْآتِي. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 13,
+        "total_fields": 13,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "d2434a5e9daa84553504bd32bc339cffba9d189a99898f1e4543b192fe244898",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-النوم-الكبرى.docx",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "3f8d0516313afb7dddc663405dcb7adc159d7c0b67e48ca03c4dfed473eb1b89"
+      }
+    },
+    {
+      "id": "trisagion",
+      "category": "basic",
+      "icon": "✥",
+      "title": {
+        "ar": "صلاة الثلاثة تقديسات",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "بداية شائعة لكثير من الصلوات الأرثوذكسية.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النص العربي الكامل مثبت من مصدر مطرانية الأردن الرسمي، وتتحقق البوابة من بصمته قبل النشر.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قُدُّوسٌ اللهُ، قُدُّوسٌ الْقَوِيُّ، قُدُّوسٌ الَّذِي لَا يَمُوتُ، ارْحَمْنَا. (ثَلَاثَ مَرَّاتٍ)",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الْمَجْدُ لِلْآبِ وَالِابْنِ وَالرُّوحِ الْقُدُسِ، الْآنَ وَكُلَّ أَوَانٍ وَإِلَى دَهْرِ الدَّاهِرِينَ. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أَيُّهَا الثَّالُوثُ الْقُدُّوسُ، ارْحَمْنَا. يَا رَبُّ، اغْفِرْ خَطَايَانَا. يَا سَيِّدُ، تَجَاوَزْ عَنْ سَيِّئَاتِنَا. يَا قُدُّوسُ، اطَّلِعْ وَاشْفِ أَمْرَاضَنَا، مِنْ أَجْلِ اسْمِكَ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يَا رَبُّ ارْحَمْ. (ثَلَاثَ مَرَّاتٍ)",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الْمَجْدُ لِلْآبِ وَالِابْنِ وَالرُّوحِ الْقُدُسِ، الْآنَ وَكُلَّ أَوَانٍ وَإِلَى دَهْرِ الدَّاهِرِينَ. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أَبَانَا الَّذِي فِي السَّمَاوَاتِ، لِيَتَقَدَّسِ اسْمُكَ، لِيَأْتِ مَلَكُوتُكَ، لِتَكُنْ مَشِيئَتُكَ، كَمَا فِي السَّمَاءِ كَذَلِكَ عَلَى الْأَرْضِ. خُبْزَنَا الْجَوْهَرِيَّ أَعْطِنَا الْيَوْمَ، وَاتْرُكْ لَنَا مَا عَلَيْنَا، كَمَا نَتْرُكُ نَحْنُ لِمَنْ لَنَا عَلَيْهِ، وَلَا تُدْخِلْنَا فِي تَجْرِبَةٍ، لَكِنْ نَجِّنَا مِنَ الشِّرِّيرِ. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 15,
+        "total_fields": 15,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "3346b53e879e0a35d25e7de8be1355c5c7e390aefca49a7843337901c5f361d1",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "f94c381ffac94d6efd8273dc218214b7576f9e2e914fbc17642fdffe16df8fc9"
+      }
+    },
+    {
+      "id": "morning_prayer",
+      "category": "daily",
+      "icon": "🌅",
+      "title": {
+        "ar": "صلاة الصباح",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "صلاة صباحية مختصرة للبيت والعمل.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "باسم الآب والابن والروح القدس، الإله الواحد. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الملك السماوي، المعزي، روح الحق، الحاضر في كل مكان والمالئ الكل، كنز الصالحات ورازق الحياة، هلم واسكن فينا وطهرنا من كل دنس وخلص أيها الصالح نفوسنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أشكرك يا رب لأنك أقمتني من نوم الليل، وأعطيتني أن أرى نور هذا اليوم. أنر قلبي بنور وصاياك، واهدني إلى كل عمل صالح.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "احفظني من كل خطيئة، ومن كل فكر رديء، واجعل كلامي وعملي وسعيي لمجد اسمك القدوس.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم. يا رب ارحم. يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 13,
+        "total_fields": 13,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "34238f297330995817ccba889c3fb442773c1f49aaea506917d26f38ed04e6b8",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "evening_prayer",
+      "category": "daily",
+      "icon": "🕯",
+      "title": {
+        "ar": "صلاة المساء",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "صلاة مسائية مختصرة قبل الراحة.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الرب إلهنا، يا من بلغ بنا إلى ساعة المساء، اقبل تسبحتنا واغفر لنا ما أخطأنا به في هذا النهار.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أرسل ملاك سلام يحفظنا في هذه الليلة من كل أذى ومن كل تجربة ومن كل خوف.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لتكن راحة أجسادنا في سلام، ويقظة قلوبنا لك، حتى نقوم فنمجدك مع الآب والروح القدس.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا إلهنا، المجد لك.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 11,
+        "total_fields": 11,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "7ccc5915b8dd671e2c89586efdf5847630340af16bfe3c51e13b1b80b9b22ebb",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "small_compline",
+      "category": "daily",
+      "icon": "🌙",
+      "title": {
+        "ar": "صلاة النوم الصغرى",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "ترتيب مختصر للصلاة قبل النوم.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ارحمني يا الله كعظيم رحمتك، وكمثل كثرة رأفتك امحُ مآثمي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أعترف لك يا رب بكل ضعف وخطيئة، وأطلب منك قلباً نقياً وروحاً مستقيماً.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا والدة الإله، يا رجاء غير الخازين، كوني لي شفاعة ومعونة، واحفظيني تحت ستر ابنك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بين يديك يا رب أستودع روحي وجسدي، فباركني وارحمني. آمين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 11,
+        "total_fields": 11,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "378e0c84e40d7b3b3b23f2b29563ebb4aadb0f0fc0f752d37806af1f9f999ca4",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "thanksgiving",
+      "category": "daily",
+      "icon": "🙏",
+      "title": {
+        "ar": "صلاة الشكر",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "صلاة شكر لله في كل وقت.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أشكرك يا رب من أجل كل عطاياك الظاهرة وغير الظاهرة، ومن أجل رحمتك التي تحيط بي كل يوم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "علمني أن أقبل كل شيء بتواضع، وأن أخدمك بفرح، وأن أذكر الفقراء والمرضى والمتألمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لك المجد والشكر والسجود، أيها الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين. آمين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 9,
+        "total_fields": 9,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "11a1530c5d9aa585977a5bf79178d1c7e414afdc3d424a9e159e2ffa3ac52045",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "before_food",
+      "category": "daily",
+      "icon": "🍞",
+      "title": {
+        "ar": "صلاة قبل الطعام",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "صلاة قصيرة قبل الطعام.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النص العربي الكامل مثبت من مصدر مطرانية الأردن الرسمي، وتتحقق البوابة من بصمته قبل النشر.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أَبَانَا الَّذِي فِي السَّمَاوَاتِ، لِيَتَقَدَّسِ اسْمُكَ، لِيَأْتِ مَلَكُوتُكَ، لِتَكُنْ مَشِيئَتُكَ، كَمَا فِي السَّمَاءِ كَذَلِكَ عَلَى الْأَرْضِ. خُبْزَنَا الْجَوْهَرِيَّ أَعْطِنَا الْيَوْمَ، وَاتْرُكْ لَنَا مَا عَلَيْنَا، كَمَا نَتْرُكُ نَحْنُ لِمَنْ لَنَا عَلَيْهِ، وَلَا تُدْخِلْنَا فِي تَجْرِبَةٍ، لَكِنْ نَجِّنَا مِنَ الشِّرِّيرِ. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "2727806a993491eb9e1d6862ac7ae65c30079281f631e3d31c72b27cc85e0f4b",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
+      },
+      "complete_text": false,
+      "completeness_note_ar": "الصلاة الربانية المثبتة فقط؛ ليست كامل صلوات المائدة المنشورة."
+    },
+    {
+      "id": "after_food",
+      "category": "daily",
+      "icon": "🍇",
+      "title": {
+        "ar": "صلاة بعد الطعام",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "صلاة شكر بعد الطعام.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النص العربي الكامل مثبت من مصدر مطرانية الأردن الرسمي، وتتحقق البوابة من بصمته قبل النشر.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نَشْكُرُكَ أَيُّهَا الْمَسِيحُ إِلَهُنَا لِأَنَّكَ أَشْبَعْتَنَا مِنْ خَيْرَاتِكَ الْأَرْضِيَّةِ، فَلَا تَحْرِمْنَا مِنْ مَلَكُوتِكَ السَّمَاوِيِّ. آمِين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "7478536849d34dcf979bdfe87cd30f7be96aa6d4b177c1c887a45e2af3b61e13",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "registry": "canonical/static_prayer_sources.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
+        "status": "OFFICIAL_ARABIC_EXACT_PINNED",
+        "complete_text": true,
+        "ai_liturgical_translation_used": false,
+        "arabic_sha256": "d05e7bd22e339e53e27195fa6c38f431e27cdf083fc66a27fff817e908f1f961"
+      }
+    },
+    {
+      "id": "jesus_prayer",
+      "category": "basic",
+      "icon": "✙",
+      "title": {
+        "ar": "صلاة يسوع",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "صلاة قصيرة تتكرر بهدوء وتوبة.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب يسوع المسيح، ابن الله، ارحمني أنا الخاطئ.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 5,
+        "total_fields": 5,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "a6c5411dd51bf739ed18f5bc9193975aa2bbd87a3831b65992ce5a740e9a5d25",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "divine_liturgy",
+      "category": "liturgy",
+      "icon": "⛪",
+      "title": {
+        "ar": "القداس الإلهي الكامل",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "القداس الإلهي الكامل مع قراءات اليوم، صلوات الكاهن السرية، وردود الشعب، وصلوات المؤمن الهادئة داخل مواضعها.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات قبل القداس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "تُقرأ هذه الصلوات كتهيئة قبل الدخول في القداس الإلهي. يضيف التحديث اليومي قطع العيد والصوم والقراءات بحسب التقويم الكنسي القديم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "إشارة الصليب",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "باسم الآب والابن والروح القدس، الإله الواحد. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة الروح القدس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الملك السماوي، المعزي، روح الحق، الحاضر في كل مكان والمالئ الكل، كنز الصالحات ورازق الحياة، هلم واسكن فينا، وطهرنا من كل دنس، وخلص أيها الصالح نفوسنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الثلاثة تقديسات",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.\nقدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.\nقدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "المجد والآن",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد للآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الثالوث القدوس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الثالوث القدوس ارحمنا، يا رب اغفر خطايانا، يا سيد تجاوز عن سيئاتنا، يا قدوس اطّلع واشفِ أمراضنا من أجل اسمك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "يا رب ارحم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم. يا رب ارحم. يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الصلاة الربانية",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أبانا الذي في السماوات، ليتقدس اسمك، ليأتِ ملكوتك، لتكن مشيئتك كما في السماء كذلك على الأرض.\nخبزنا الجوهري أعطنا اليوم، واترك لنا ما علينا كما نترك نحن لمن لنا عليه، ولا تدخلنا في تجربة، لكن نجّنا من الشرير.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "قطع اليوم قبل القداس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[طروبارية اليوم]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[القنداق]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إذا كان اليوم عيداً أو صوماً، تُظهر هذه الخدمة قطع اليوم وملاحظة الصوم بحسب بيانات التحديث اليومي.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الاستعداد وبداية القداس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات المؤمن الهادئة قبل بداية القداس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "هذه صلوات شخصية هادئة للمؤمن تساعده على متابعة القداس في قلبه. لا تُقال جهراً ولا تُبدل نصوص الكاهن أو الشماس أو المرتل.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب يسوع المسيح ابن الله، اجعلني أقف في بيتك بخوف ومحبة واتضاع. طهّر أفكاري، واجمع ذهني، وافتح قلبي لكي أتابع هذه الخدمة لا بالشفاه فقط، بل بالإيمان والرجاء والمحبة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، كما قبلت توبة العشار ودموع الخاطئة، اقبلني أنا أيضاً، ولا تدعني أخرج من هذا القداس كما دخلت، بل امنحني نعمة وتجديداً وسلاماً.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يفتح هذا النص كدليل متابعة كامل داخل الكنيسة. بعض الأجزاء المتغيرة مثل الطروباريات والقراءات تُملأ من بيانات اليوم عند تشغيل التحديث اليومي.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مباركة مملكة الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الطلبة السلامية الكبرى",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن أثناء الطلبات السلامية",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "عندما تسمع يا نفسي: بسلام إلى الرب نطلب، اطلبي أنت أيضاً السلام من فوق. يا رب، أعطني سلامك، سلام الكنيسة، سلام البيت، وسلام القلب، واذكر كل مريض وحزين ومتضايق ومحتاج إلى رحمتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بسلام إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل السلام العلوي وخلاص نفوسنا، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل سلام كل العالم، وحسن ثبات كنائس الله المقدسة، واتحاد الجميع، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل هذا البيت المقدس، والذين يدخلون إليه بإيمان وورع وخوف الله، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل أبينا وبطريركنا وسائر الإكليروس والشعب المؤمن، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل هذه المدينة وكل مدينة وقرية والمؤمنين الساكنين فيها، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل اعتدال الأهوية وخصب ثمار الأرض وأزمنة سلامية، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل المسافرين والمرضى والمتألمين والمأسورين وخلاصهم، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اذكرنا أيتها الكلية القداسة الطاهرة الفائقة البركات المجيدة سيدتنا والدة الإله الدائمة البتولية مريم، مع جميع القديسين، لنودع أنفسنا وبعضنا بعضاً وكل حياتنا للمسيح الإله.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لك يا رب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأنه ينبغي لك كل تمجيد وإكرام وسجود، أيها الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الأنتيفونا الأولى",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن أثناء الأنتيفونات",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بشفاعات والدة الإله يا مخلص خلصنا. يا رب، لا أنظر إلى استحقاقي بل إلى مراحمك، واجعل ترديد الشعب تسبيحاً حقيقياً لا عادة بلا انتباه.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة الأنتيفونا الأولى",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الرب إلهنا، خلص شعبك وبارك ميراثك، احفظ كمال كنيستك، قدس الذين يحبون جمال بيتك، مجدهم بقوتك الإلهية، ولا تهملنا نحن المتكلين عليك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "تُقرأ أو تُرتل آيات الأنتيفونا حسب اليوم. في الأعياد تُستبدل بنصوص العيد.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بشفاعات والدة الإله يا مخلّص خلّصنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بشفاعات والدة الإله يا مخلّص خلّصنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الطلبة الصغرى",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيضاً وأيضاً بسلام إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اعضد وخلّص وارحم واحفظنا يا الله بنعمتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إذ نذكر سيدتنا والدة الإله وكل القديسين، لنودع أنفسنا وكل حياتنا للمسيح الإله.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لك يا رب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأن لك العزة ولك الملك والقدرة والمجد، أيها الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الأنتيفونا الثانية",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة الأنتيفونا الثانية",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب إلهنا، خلص شعبك وبارك ميراثك، احفظ كمال كنيستك، أنت الذي منحتنا هذه الصلوات المشتركة والمتفقة، وأعطيتنا أن نرفع إليك مجداً واحداً من أفواه كثيرة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "خلّصنا يا ابن الله، يا من قام من بين الأموات، لنرتل لك: هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "خلّصنا يا ابن الله، يا من قام من بين الأموات، لنرتل لك: هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد للآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا كلمة الله الابن الوحيد، غير المائت، الذي قبلت لأجل خلاصنا أن تتجسد من والدة الإله الدائمة البتولية مريم، وتجعل إنساناً بغير استحالة، وصُلبت أيها المسيح الإله، ووطئت الموت بالموت، وأنت أحد الثالوث القدوس، الممجد مع الآب والروح القدس، خلّصنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الأنتيفونا الثالثة والدخول الصغير",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن أثناء الدخول الصغير",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، عندما يدخل الإنجيل المقدس، ادخل أنت إلى قلبي بنور كلمتك. اجعلني أسجد لك بالروح والحق، ولا تسمح أن تبقى نفسي مغلقة أمام صوتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "أثناء الدخول الصغير",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب بصوت هادئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "هلمّ نسجد ونركع للمسيح. خلّصنا يا ابن الله، يا من قام من بين الأموات، لنرتل لك: هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها السيد الرب إلهنا، يا من رتبت في السماوات طغمات وجنود ملائكة ورؤساء ملائكة لخدمة مجدك، اجعل مع دخولنا دخول ملائكة قديسين يشاركوننا في الخدمة ويمجدون صلاحك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "تُرتل طروبارية القيامة أو طروبارية العيد بحسب اليوم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها السيد الرب إلهنا، يا من رتبت في السماوات طغمات وجنود ملائكة ورؤساء ملائكة لخدمة مجدك، اجعل مع دخولنا دخول ملائكة قديسين مشاركين لنا في الخدمة وتمجيد صلاحك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الحكمة، فلنستقم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "هلمّ نسجد ونركع للمسيح. خلّصنا يا ابن الله، يا من قام من بين الأموات، لنرتل لك: هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "طروباريات اليوم والقنداق",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "هنا تظهر قطع اليوم المتغيرة. عند تشغيل التحديث اليومي يملأ البرنامج طروبارية العيد أو الأحد والقنداق المناسب.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[طروبارية اليوم]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[القنداق]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الثلاثة تقديسات",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة التريصاجيون",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الإله القدوس، المستريح في القديسين، المسبح بصوت مثلث التقديس من الشاروبيم والممجد من السيرافيم، أنت الذي أتيت بكل شيء من العدم إلى الوجود، اقبل منا نحن الخطأة نشيد الثلاثة تقديسات، واغفر لنا كل زلة طوعية وغير طوعية.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأنك قدوس أنت يا إلهنا، ولك نرفع المجد، أيها الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد للآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين. آمين. قدوس الذي لا يموت ارحمنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قدوس الله، قدوس القوي، قدوس الذي لا يموت، ارحمنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الرسالة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن قبل الرسالة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، افتح أذنيّ لأسمع تعليم رسلك القديسين. لا تجعل القراءة تمرّ عليّ ككلام بعيد، بل اجعلها نوراً لطريقي وتوبة لحياتي وثباتاً في الإيمان.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[البروكيمنن]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنصغِ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[فصل من رسالة اليوم]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "السلام لك أيها القارئ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "هللويا، هللويا، هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة قبل الإنجيل",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أشرق في قلوبنا يا سيد محب البشر نور معرفتك الإلهية النقي، وافتح عيون أذهاننا لفهم تعاليم إنجيلك. اغرس فينا خوف وصاياك المغبوطة، لكي ندوس كل الشهوات الجسدية، ونسلك سيرة روحانية مرضية لك في كل شيء.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الإنجيل المقدس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن قبل الإنجيل",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا رب، المجد لك. اجعلني مستحقاً أن أسمع إنجيلك بخوف ووقار. احفظ كلمتك في قلبي، وأعني أن أعمل بها، لا أن أسمعها فقط.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب بصوت هادئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا رب، المجد لك. اجعلنا يا رب حافظين لكلام إنجيلك لا سامعين فقط.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الحكمة، فلنستقم، ولنسمع الإنجيل المقدس. السلام لجميعكم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ولروحك أيضاً.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "فصل شريف من بشارة القديس [اسم الإنجيلي] البشير الطاهر والتلميذ الكريم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا رب، المجد لك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنصغِ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "[فصل الإنجيل المعيّن لهذا اليوم]",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا رب، المجد لك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بعد الإنجيل قد تكون العظة أو تفسير القراءة بحسب ترتيب الكنيسة.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الطلبات بعد الإنجيل",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن بعد الإنجيل",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، لا تدنّي لأنني سمعت كلمتك ولم أحفظها. أعطني أن أحمل إنجيلك في فكري ولساني وأعمالي، واذكر الذين لا يعرفونك والذين ابتعدوا عن كنيستك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنقل جميعنا من كل نفوسنا ومن كل أذهاننا لنقل.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الرب الضابط الكل، إله آبائنا، نطلب إليك فاستجب وارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم. يا رب ارحم. يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ارحمنا يا الله كعظيم رحمتك، نطلب إليك فاستجب وارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم. يا رب ارحم. يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "نشيد الشيروبيكون والدخول الكبير",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "أثناء الدورة الكبرى والدخول الكبير",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات المؤمن أثناء الدورة الكبرى",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أطرح عني الآن كل اهتمام دنيوي، وأسلم لك يا رب همومي وخطاياي وبيتي وأحبائي وكل الذين أوصوني أن أذكرهم. اذكرهم يا رب في ملكوتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، كما تُنقل القرابين إلى مذبحك، اقبل حياتي كلها قرباناً لك: ضعفي وتوبتي ودموعي ورجائي. نقّني واجعلني لك، ولا تدع شيئاً يفصلني عن محبتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "في هذا الموضع تتم الدورة الكبرى بالقرابين. يتابع القارئ النص بهدوء، وتظهر هنا المقاطع التي يقولها الشعب أو يسمعها أثناء الحركة.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب بصوت هادئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنطرح الآن كل اهتمام دنيوي، كأننا مزمعون أن نستقبل ملك الكل، المرفوق بجيوش الملائكة غير المنظورين. هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "في هذا الموضع تتم الدورة الكبرى بالقرابين. يتابع القارئ النص بهدوء، وتظهر هنا المقاطع التي يقولها الشعب أو يسمعها أثناء الحركة.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نحن الممثلين الشاروبيم سرياً، والمرتلين للتسبيح المثلث التقديس للثالوث المحيي، فلنطرح الآن كل اهتمام دنيوي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يتم الدخول الكبير بالقرابين المقدسة. يتوقف القارئ هنا ويتابع بعد عودة الكاهن والشماس إلى الهيكل.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ليذكر الرب الإله في ملكوته أبانا وبطريركنا وجميع الإكليروس والشعب المؤمن، كل حين، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين. كأننا مزمعون أن نستقبل ملك الكل، المرفوق بجيوش الملائكة غير المنظورين. هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "طلبة التقدمة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة التقدمة بعد الدخول الكبير",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الرب الإله الضابط الكل، القدوس، القابل ذبيحة التسبيح من الذين يدعونك بكل قلوبهم، اقبل طلبتنا نحن الخطأة، وقربنا إلى مذبحك المقدس، وأهلنا أن نقدم لك قرابين روحية عن خطايانا وجهالات الشعب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنتمم طلبتنا إلى الرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل القرابين الكريمة المقدمة، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل هذا البيت المقدس والذين يدخلون إليه بإيمان وورع وخوف الله، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لكي ننجو من كل ضيق وغضب وخطر وشدة، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اعضد وخلّص وارحم واحفظنا يا الله بنعمتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "قبلة السلام وقانون الإيمان",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن قبل قانون الإيمان",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ثبّتني يا رب في الإيمان الأرثوذكسي المستقيم. اغفر لي كل شك وفتور وغفلة، واجعلني أعترف بالإيمان لا بفمي فقط، بل بحياتي كلها وبمحبة صادقة لإخوتي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "السلام لجميعكم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ولروحك أيضاً.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنحب بعضنا بعضاً لكي نعترف بعزم واحد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بالآب والابن والروح القدس، الثالوث المساوي في الجوهر وغير المنفصل.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الأبواب، الأبواب، بحكمة لنصغِ.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أؤمن بإله واحد، آب ضابط الكل، خالق السماء والأرض، كل ما يُرى وما لا يُرى.\nوبرب واحد يسوع المسيح، ابن الله الوحيد، المولود من الآب قبل كل الدهور. نور من نور، إله حق من إله حق، مولود غير مخلوق، مساوٍ للآب في الجوهر، الذي به كان كل شيء.\nالذي من أجلنا نحن البشر ومن أجل خلاصنا نزل من السماوات، وتجسد من الروح القدس ومن مريم العذراء، وتأنس.\nوصُلب عنا على عهد بيلاطس البنطي، وتألم وقُبر.\nوقام في اليوم الثالث كما في الكتب.\nوصعد إلى السماوات، وجلس عن يمين الآب.\nوأيضاً يأتي بمجد ليدين الأحياء والأموات، الذي لا فناء لملكه.\nوبالروح القدس، الرب المحيي، المنبثق من الآب، الذي هو مع الآب والابن مسجود له وممجد، الناطق بالأنبياء.\nوبكنيسة واحدة، جامعة، مقدسة، رسولية.\nوأعترف بمعمودية واحدة لمغفرة الخطايا.\nوأترجى قيامة الموتى والحياة في الدهر الآتي. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الأنافورا المقدسة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات المؤمن أثناء الأنافورا",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، أرفع قلبي إليك. اجعل شكري حقيقياً، وعلّمني أن أراك حاضراً في هذا السر العظيم. لك أرتل، لك أبارك، لك أشكر، وإليك أطلب يا إلهي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أذكر يا رب والديّ وإخوتي وأحبائي، الأحياء والراقدين، وكل من في ضيق أو مرض أو وحدة أو خوف. اجعل هذا القداس رحمة لهم ولي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة الشكر في الأنافورا",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مستحق وعادل أن نسبحك ونباركك ونشكرك ونسجد لك في كل موضع من سيادتك، لأنك أنت الإله الذي لا يوصف ولا يُدرك ولا يُرى ولا يُحاط به، أنت الكائن على الدوام، أنت وابنك الوحيد وروحك القدوس.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنقف حسناً، لنقف بخوف، لنصغِ لنقدم القرابين المقدسة بسلام.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "رحمة سلام، ذبيحة تسبيح.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نعمة ربنا يسوع المسيح ومحبة الله الآب وشركة الروح القدس تكون مع جميعكم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ومع روحك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنرفع قلوبنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "هي لنا عند الرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنشكر الرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مستحق وعادل أن نسجد للآب والابن والروح القدس، الثالوث المساوي في الجوهر وغير المنفصل.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مستحق وعادل أن نسبحك ونباركك ونشكرك ونسجد لك في كل موضع من سيادتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "قدوس، قدوس، قدوس، رب الصباؤوت. السماء والأرض مملوءتان من مجدك. أوصنا في الأعالي. مبارك الآتي باسم الرب. أوصنا في الأعالي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "كلمات التأسيس واستدعاء الروح القدس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن عند استدعاء الروح القدس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الروح القدس، روح الحق، حلّ بنعمتك على الكنيسة كلها، وطهّر قلبي أيضاً. اجعلني هيكلاً نقياً لك، وامنحني أن أقترب من أسرار المسيح بخوف وإيمان ومحبة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة استدعاء الروح القدس",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نسألك ونطلب إليك ونتضرع: أرسل روحك القدوس علينا وعلى هذه القرابين الموضوعة، وحولها بروحك القدوس لتكون شركة وغفراناً وحياة أبدية للمتناولين منها باستحقاق.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب بصوت هادئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين. آمين. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "خذوا كلوا، هذا هو جسدي الذي يكسر عنكم لمغفرة الخطايا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اشربوا منه كلكم، هذا هو دمي الذي للعهد الجديد، الذي يهرق عنكم وعن كثيرين لمغفرة الخطايا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "التي لك مما لك، نقدمها لك على كل شيء ومن أجل كل شيء.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لك نرتل، لك نبارك، لك نشكر يا رب، وإليك نطلب يا إلهنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين. آمين. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "التذكارات ووالدة الإله",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن مع تذكار والدة الإله والقديسين",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا والدة الإله الكلية القداسة، اشفعي فيّ أنا الضعيف. ويا جميع القديسين، اطلبوا من الرب أن يثبتني في التوبة، وأن يحفظ الكنيسة والإكليروس والشعب المؤمن.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات التذكارات السرية",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اذكر يا رب كل نفس مسيحية متضايقة ومتألمة ومحتاجة إلى مراحمك ومعونتك، واذكر يا رب كل الذين سبق رقادهم على رجاء القيامة والحياة الأبدية، ونيحهم حيث يشرق نور وجهك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب بصوت هادئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب اذكرنا في ملكوتك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نقرب لك أيضاً هذه العبادة العقلية من أجل الراقدين بالإيمان، ومن أجل الآباء والبطاركة والأنبياء والرسل والكارزين والإنجيليين والشهداء والمعترفين والنساك وكل نفس بارة مكملة بالإيمان.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وبالأخص من أجل الكلية القداسة الطاهرة الفائقة البركات المجيدة سيدتنا والدة الإله الدائمة البتولية مريم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بواجب الاستئهال حقاً نغبّط والدة الإله، الدائمة الطوبى، البريئة من كل العيوب، أم إلهنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اذكر يا رب أولاً أبانا وبطريركنا وسائر الأساقفة الأرثوذكسيين الذين يفصلون كلمة حقك باستقامة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وكل أحد وكل أحد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "قبل المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات المؤمن الهادئة قبل المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، لست مستحقاً أن تدخل تحت سقف نفسي، لكن قل كلمة فتبرأ نفسي. لا تجعل اشتراكي في أسرارك للدينونة، بل لغفران الخطايا، وشفاء النفس والجسد، والحياة الأبدية.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "علّمني يا رب أن أغفر كما أطلب أن تغفر لي. قبل أن أقول أبانا الذي في السماوات، انزع من قلبي كل حقد وخصام، واجعلني ابن سلام ومصالحة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة قبل المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إليك نودع حياتنا ورجاءنا أيها السيد المحب البشر، ونسألك ونتضرع إليك: أهلنا أن نتناول من أسرارك السماوية الرهيبة المقدسة من هذا المذبح الروحي المقدس، لغفران الخطايا، ولمغفرة الزلات، ولشركة الروح القدس، ولميراث ملكوت السماوات، ولدالة نحوك، لا لدينونة ولا لوقوع.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بعد أن ذكرنا جميع القديسين، أيضاً وأيضاً بسلام إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "من أجل القرابين الكريمة المقدسة المقدمة والمقدسة، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لكي يكون إلهنا المحب البشر، القابل إياها على مذبحه المقدس السماوي العقلي، يرسل علينا عوضها النعمة الإلهية وموهبة الروح القدس، إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وأهلنا أيها السيد أن نجسر بدالة ومن دون دينونة أن ندعوك أباً، أنت الإله السماوي، ونقول:",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أبانا الذي في السماوات، ليتقدس اسمك، ليأتِ ملكوتك، لتكن مشيئتك كما في السماء كذلك على الأرض.\nخبزنا الجوهري أعطنا اليوم، واترك لنا ما علينا كما نترك نحن لمن لنا عليه، ولا تدخلنا في تجربة، لكن نجّنا من الشرير.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأن لك الملك والقوة والمجد، أيها الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "السلام لجميعكم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ولروحك أيضاً.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنحنِ رؤوسنا للرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لك يا رب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "المناولة المقدسة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات المؤمن أثناء المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وأنا أنتظر المناولة، احفظني يا رب من التشتت والكلام الباطل. اجعل عينيّ على رحمتك، وقلبي على توبتي، ولساني يباركك في صمت وخشوع.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إذا تقدمتُ إلى كأس الحياة، فأهلني يا رب أن أتقدم بخوف الله وإيمان ومحبة. وإذا لم أتقدم اليوم، فلا تحرمني من نعمتك، بل هيئني بتوبة صادقة إلى اليوم الذي تشاءه.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة المؤمن قبل التناول",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب بصوت هادئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أؤمن يا رب وأعترف أنك أنت بالحقيقة المسيح ابن الله الحي، الذي أتى إلى العالم ليخلص الخطأة الذين أولهم أنا. وأؤمن أيضاً أن هذا هو جسدك الطاهر بعينه، وهذا هو دمك الكريم بعينه. فأتضرع إليك: ارحمني واغفر لي زلاتي، الطوعية وغير الطوعية، التي بالقول والتي بالفعل، التي بعلم والتي بغير علم، وأهلني بغير دينونة أن أتناول من أسرارك الطاهرة لمغفرة الخطايا وللحياة الأبدية. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "القدسات للقديسين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "واحد هو قدوس، واحد هو رب، يسوع المسيح، لمجد الله الآب. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "سبحوا الرب من السماوات، سبحوه في الأعالي. هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "تُرتل آية المناولة المعيّنة لليوم. عند وجود عيد خاص يضع التحديث اليومي آية المناولة المناسبة.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بخوف الله وإيمان ومحبة تقدموا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مبارك الآتي باسم الرب. الله الرب ظهر لنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "وقت مناولة المؤمنين. يستطيع القارئ ترك الشاشة عند هذا الموضع ثم متابعة الشكر بعد المناولة.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الشكر بعد المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلوات المؤمن بعد المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أشكرك يا رب لأنك لم ترفضني، بل أظهرت رحمتك في كنيستك وأسرارك. احفظ النعمة التي منحتني إياها، ولا تسمح أن أبددها بالغفلة أو الخطية.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ثبتني في وصاياك، واحفظ فمي وفكري وحواسي، واجعلني أخرج من الكنيسة حاملاً سلامك إلى بيتي وعملي وكل من ألقاه. لك المجد إلى الأبد. آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "صلاة الشكر السرية بعد المناولة",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن سراً",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نشكرك أيها السيد المحب البشر، محسن نفوسنا، لأنك أهلتنا في هذا اليوم لأسرارك السماوية غير المائتة. قوّم طريقنا، وثبتنا جميعاً في مخافتك، واحفظ حياتنا، وثبت خطواتنا، بصلوات والدة الإله وجميع قديسيك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ليمتلئ فمنا من تسبيحك يا رب، لكي نرتل لمجدك، لأنك أهلتنا أن نشترك بأسرارك المقدسة الإلهية غير المائتة المحيية. احفظنا في قداستك، لكي نتلو النهار كله بعدلك. هللويا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بعد أن تناولنا الأسرار الإلهية المقدسة الطاهرة غير المائتة السماوية المحيية الرهيبة، فلنشكر الرب باستقامة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأنك أنت تقديسنا، ولك نرفع المجد، أيها الآب والابن والروح القدس، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "الختام والصرف",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنخرج بسلام.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "باسم الرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيها الرب المبارك المباركين بك والمقدس المتكلين عليك، خلّص شعبك وبارك ميراثك. احفظ كمال كنيستك، قدس الذين يحبون جمال بيتك، مجّدهم بقوتك الإلهية، ولا تهملنا نحن المتكلين عليك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين. ليكن اسم الرب مباركاً من الآن وإلى الأبد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بركة الرب ورحمته تحلان عليكم بنعمته ومحبته للبشر كل حين، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المسيح إلهنا الحقيقي، بشفاعات والدته الكلية الطهارة، والقديس يوحنا الذهبي الفم، والقديسين المجيدين الجديري المدح الرسل، وسائر القديسين، يرحمنا ويخلصنا بما أنه صالح ومحب للبشر.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 473,
+        "total_fields": 473,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "35735ee5df520c9e139b33bd0ff4d692b355a0e58c80b4ccd097890651c7e977",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "vespers",
+      "category": "liturgy",
+      "icon": "🌆",
+      "title": {
+        "ar": "صلاة الغروب",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "هيكل صلاة الغروب مع مزمور وطلبات وصلوات.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مبارك إلهنا كل حين، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين. هلمّوا لنسجد ونركع للمسيح ملكنا وإلهنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب إليك صرخت فاستجب لي. استجب لي يا رب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنتمم طلبتنا المسائية إلى الرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "السلام للجميع.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ولروحك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الآن تطلق عبدك يا سيد حسب قولك بسلام، لأن عينيّ قد أبصرتا خلاصك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بركة الرب ورحمته فلتأتيا عليكم بنعمته ومحبته للبشر كل حين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 21,
+        "total_fields": 21,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "ca4577d4f242fe09a8041edad7c4fdf8b8f9dfb0bf01b3af4a79a428ff567be8",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "orthros",
+      "category": "liturgy",
+      "icon": "🌄",
+      "title": {
+        "ar": "صلاة السَحَر",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "هيكل صلاة السَحَر مع المزامير والإنجيل والطلبات.",
+        "en": "",
+        "el": ""
+      },
+      "source_language": "ar",
+      "notice": {
+        "ar": "النصوص الثابتة مثبتة داخل الإصدار، أما قطع اليوم والقراءات فتُدرج كاملة فقط بعد التحقق الآلي من المصادر الرسمية حسب الأولوية المعتمدة.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد للثالوث القدوس، الإله الواحد، الذي ينهضنا من الليل لنسبحه.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا مظهر النور. المجد لله في العلى وعلى الأرض السلام وفي الناس المسرة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيضاً وأيضاً بسلام إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "تضاف هنا طروباريات القيامة أو العيد بحسب اليوم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأنك أنت إلهنا وإليك نرفع المجد، أيها الآب والابن والروح القدس.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 15,
+        "total_fields": 15,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "orthodox_jordan",
+        "name": "مطرانية الروم الأرثوذكس في الأردن",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "81064ad969c36c1c79f2fa53fba1b5f33f93bcc5249aa2d2b0a41d0f2d2d4357",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    }
+  ],
+  "native_content_status": {
+    "filled_fields": 601,
+    "total_fields": 601,
+    "percent": 100.0,
+    "complete": true
+  }
+}

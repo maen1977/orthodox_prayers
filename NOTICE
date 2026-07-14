@@ -1,0 +1,10 @@
+Orthodox Prayers — Notices
+
+1. The Apache-2.0 license applies to project-owned software code only.
+2. Religious, liturgical, Scripture, translation, icon, image, and font rights are separate; see CONTENT_RIGHTS.md.
+3. Scripture readings retain the exact source and integrity metadata declared by the canonical pipeline.
+4. Digital signatures and deterministic checks prove file origin, byte integrity, declared source evidence, and pipeline compliance; they do not claim sacramental or ecclesiastical endorsement beyond the cited official sources.
+5. The publication register is canonical/content_review_status.json. Only automatic official-source or pinned exact-text states are publishable.
+6. Any stale, poisoned, conflicting, paraphrased, or freely translated text is blocked; the last signed good copy remains active.
+7. Before public redistribution, the repository owner must verify legal permissions and attribution for every third-party work.
+8. No data-signing private key, Android release key, or other secret may be committed to this repository.

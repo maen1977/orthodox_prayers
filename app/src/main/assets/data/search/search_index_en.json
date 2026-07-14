@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "language": "en",
+  "display_text_policy": "EXACT_SOURCE_TEXT_HASHED; NORMALIZATION_IS_INDEX_ONLY",
+  "documents": [
+    {
+      "id": "service:lord_prayer",
+      "type": "service",
+      "target_id": "lord_prayer",
+      "title": "The Lord’s Prayer",
+      "reference": "",
+      "display_text": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
+      "display_sha256": "1c51e5656be32cc9b13e093ac2837685601c92a4b9174620eea7d9424a534074",
+      "search_text": "the lord’s prayer the foundational prayer taught by the lord. our father, who art in heaven, hallowed be thy name. thy kingdom come. thy will be done on earth as it is in heaven. give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. amen.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "40c4c649e41e46c36deebddb81de724ada077dac0d89cf7043e60a867e888ce6",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:creed",
+      "type": "service",
+      "target_id": "creed",
+      "title": "The Creed",
+      "reference": "",
+      "display_text": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.\nAnd in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father, by whom all things were made.\nWho for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man. He was crucified for us under Pontius Pilate, suffered and was buried; and He rose on the third day according to the Scriptures. He ascended into heaven and is seated at the right hand of the Father; and He shall come again with glory to judge the living and the dead, whose kingdom shall have no end.\nAnd in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father; who together with the Father and the Son is worshiped and glorified; who spoke through the prophets.\nIn one, holy, catholic, and apostolic Church. I acknowledge one baptism for the remission of sins. I look for the resurrection of the dead and the life of the age to come. Amen.",
+      "display_sha256": "f7d0c4e2ac23a9701ce8845f0e88cf46ee9383c4d0a1d9744a3d481fe01c385e",
+      "search_text": "the creed the nicene-constantinopolitan creed. i believe in one god, the father almighty, maker of heaven and earth, and of all things visible and invisible. and in one lord jesus christ, the only-begotten son of god, begotten of the father before all ages; light of light, true god of true god; begotten, not made; of one essence with the father, by whom all things were made. who for us men and for our salvation came down from heaven, and was incarnate of the holy spirit and the virgin mary, and became man. he was crucified for us under pontius pilate, suffered and was buried; and he rose on the third day according to the scriptures. he ascended into heaven and is seated at the right hand of the father; and he shall come again with glory to judge the living and the dead, whose kingdom shall have no end. and in the holy spirit, the lord, the giver of life, who proceeds from the father; who together with the father and the son is worshiped and glorified; who spoke through the prophets. in one, holy, catholic, and apostolic church. i acknowledge one baptism for the remission of sins. i look for the resurrection of the dead and the life of the age to come. amen.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "0de356badf3c847423c7aad1db901699ad0087594043582645058f79904fc43c",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:trisagion",
+      "type": "service",
+      "target_id": "trisagion",
+      "title": "Trisagion Prayers",
+      "reference": "",
+      "display_text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times)\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\nAll-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our transgressions. Holy One, visit and heal our infirmities for Thy name’s sake.\nLord, have mercy. (Three times)\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto ages of ages. Amen.\nOur Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
+      "display_sha256": "0a22ef8fbac27ce3f384db6cfaa10eb8f314f2f9cbe6cc9976c0a341bf69ad23",
+      "search_text": "trisagion prayers a common opening in orthodox prayers. holy god, holy mighty, holy immortal, have mercy on us. (three times) glory to the father, and to the son, and to the holy spirit, now and ever and unto ages of ages. amen. all-holy trinity, have mercy on us. lord, cleanse us from our sins. master, pardon our transgressions. holy one, visit and heal our infirmities for thy name’s sake. lord, have mercy. (three times) glory to the father, and to the son, and to the holy spirit, now and ever and unto ages of ages. amen. our father, who art in heaven, hallowed be thy name. thy kingdom come. thy will be done on earth as it is in heaven. give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. amen.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "ffd2a0aa2cf267eb2ae37048b9b7591721dfb85b0d3c45eb5eabd5a1998a49c1",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:morning_prayer",
+      "type": "service",
+      "target_id": "morning_prayer",
+      "title": "Morning Prayer",
+      "reference": "",
+      "display_text": "In the name of the Father, and of the Son, and of the Holy Spirit, one God. Amen.\nO Heavenly King, Comforter, Spirit of Truth, who art everywhere present and fillest all things, Treasury of blessings and Giver of life: come and abide in us, cleanse us from every impurity, and save our souls, O Good One.\nI thank Thee, O Lord, for raising me from sleep and granting me to see the light of this day. Enlighten my heart with Thy commandments and guide me to every good work.\nKeep me from every sin and every evil thought, and make my words, works, and efforts be for the glory of Thy holy name.\nLord, have mercy. Lord, have mercy. Lord, have mercy.",
+      "display_sha256": "cf9e7b32639d16fc6f17ef425ce2b9e9c98dde7079d0c05c9f92b4693ad343d4",
+      "search_text": "morning prayer a concise morning prayer for home and work. in the name of the father, and of the son, and of the holy spirit, one god. amen. o heavenly king, comforter, spirit of truth, who art everywhere present and fillest all things, treasury of blessings and giver of life: come and abide in us, cleanse us from every impurity, and save our souls, o good one. i thank thee, o lord, for raising me from sleep and granting me to see the light of this day. enlighten my heart with thy commandments and guide me to every good work. keep me from every sin and every evil thought, and make my words, works, and efforts be for the glory of thy holy name. lord, have mercy. lord, have mercy. lord, have mercy.",
+      "source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/morning-prayers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "4a3ba75a292b6d8fa0e1fe19ed4dd00772569fbb0dae77811ff6cc0f68222b1f",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:evening_prayer",
+      "type": "service",
+      "target_id": "evening_prayer",
+      "title": "Evening Prayer",
+      "reference": "",
+      "display_text": "O Lord our God, who hast brought us to the evening hour, receive our praise and forgive all that we have sinned in this day.\nSend an angel of peace to guard us this night from every harm, temptation, and fear.\nGrant rest to our bodies in peace and wakefulness to our hearts toward Thee, that we may rise and glorify Thee with the Father and the Holy Spirit.\nGlory to Thee, our God, glory to Thee.",
+      "display_sha256": "c35dc9f0f04dede64dba2f9cf76dcc8d6b85aed86c67544f1cd7f9bbc7256ec5",
+      "search_text": "evening prayer a concise evening prayer before rest. o lord our god, who hast brought us to the evening hour, receive our praise and forgive all that we have sinned in this day. send an angel of peace to guard us this night from every harm, temptation, and fear. grant rest to our bodies in peace and wakefulness to our hearts toward thee, that we may rise and glorify thee with the father and the holy spirit. glory to thee, our god, glory to thee.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/chapel/prayers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "21ca8beab21a6275c1712d50e276d3c7c6afdc9588968184413f6b186d58a3be",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:small_compline",
+      "type": "service",
+      "target_id": "small_compline",
+      "title": "Small Compline",
+      "reference": "",
+      "display_text": "Have mercy on me, O God, according to Thy great mercy; according to the multitude of Thy compassions blot out my transgressions.\nI confess before Thee, O Lord, every weakness and sin, and I ask of Thee a clean heart and an upright spirit.\nO Theotokos, hope of those who are not put to shame, be my intercession and help, and keep me under the protection of thy Son.\nInto Thy hands, O Lord, I commend my spirit and body; bless me and have mercy on me. Amen.",
+      "display_sha256": "c405f67fab7e5327542f7a7cac06e164936569ad86364189d13a6dda59134a79",
+      "search_text": "small compline a short order of prayer before sleep. have mercy on me, o god, according to thy great mercy; according to the multitude of thy compassions blot out my transgressions. i confess before thee, o lord, every weakness and sin, and i ask of thee a clean heart and an upright spirit. o theotokos, hope of those who are not put to shame, be my intercession and help, and keep me under the protection of thy son. into thy hands, o lord, i commend my spirit and body; bless me and have mercy on me. amen.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "4effd9df09b895ddad7986f237a49b0f513f47299fdea969c493773f82c0af8c",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:thanksgiving",
+      "type": "service",
+      "target_id": "thanksgiving",
+      "title": "Thanksgiving Prayer",
+      "reference": "",
+      "display_text": "I thank Thee, O Lord, for all Thy gifts, visible and invisible, and for Thy mercy that surrounds me every day.\nTeach me to receive all things with humility, to serve Thee with joy, and to remember the poor, the sick, and the suffering.\nTo Thee be glory, thanksgiving, and worship, Father, Son, and Holy Spirit, now and ever, and unto ages of ages. Amen.",
+      "display_sha256": "40b393508180b9d5df2b4b2396973c2a238e86b54efc29b71395b45c087f719f",
+      "search_text": "thanksgiving prayer a prayer of thanksgiving at any time. i thank thee, o lord, for all thy gifts, visible and invisible, and for thy mercy that surrounds me every day. teach me to receive all things with humility, to serve thee with joy, and to remember the poor, the sick, and the suffering. to thee be glory, thanksgiving, and worship, father, son, and holy spirit, now and ever, and unto ages of ages. amen.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos Daily Prayers",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "f1b9b813d9cc18828cd03d490ab384a48324fd603c88ad6f9071c3ca60055721",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:before_food",
+      "type": "service",
+      "target_id": "before_food",
+      "title": "Prayer Before Meals",
+      "reference": "",
+      "display_text": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
+      "display_sha256": "1c51e5656be32cc9b13e093ac2837685601c92a4b9174620eea7d9424a534074",
+      "search_text": "prayer before meals a short prayer before meals. our father, who art in heaven, hallowed be thy name. thy kingdom come. thy will be done on earth as it is in heaven. give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. amen.",
+      "source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/prayers-at-mealtime",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "fba0b75ec0240a9716814016587a55a9d82f4b7f497cc9643816ef2ba9858b5e",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:after_food",
+      "type": "service",
+      "target_id": "after_food",
+      "title": "Prayer After Meals",
+      "reference": "",
+      "display_text": "We thank Thee, O Christ our God, for Thou hast satisfied us with Thy earthly gifts. Deprive us not of Thy heavenly kingdom. Amen.",
+      "display_sha256": "f0ca9baa65eaaf5cdf7e17823360e5cb555f3f0f64b05156f83315021ddac3c7",
+      "search_text": "prayer after meals a short thanksgiving after meals. we thank thee, o christ our god, for thou hast satisfied us with thy earthly gifts. deprive us not of thy heavenly kingdom. amen.",
+      "source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/prayers-at-mealtime",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "68473103dd881a23e0b2fcf59c111152b09982d29668cea5ebd4614eabff3b71",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:jesus_prayer",
+      "type": "service",
+      "target_id": "jesus_prayer",
+      "title": "The Jesus Prayer",
+      "reference": "",
+      "display_text": "Lord Jesus Christ, Son of God, have mercy on me, a sinner.",
+      "display_sha256": "55e9a7c2425d544becbffe4f76ae373e3c00d8101db18dc1aa1e9edf59172569",
+      "search_text": "the jesus prayer a short prayer repeated with stillness and repentance. lord jesus christ, son of god, have mercy on me, a sinner.",
+      "source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/chapel/prayers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "9099104cbaaa8ea51cc8586e8b3b780b9dc6559c8aba6abb471221d5b1a6dae6",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:divine_liturgy",
+      "type": "service",
+      "target_id": "divine_liturgy",
+      "title": "Full Divine Liturgy",
+      "reference": "",
+      "display_text": "Preparation and opening\nThe Great Litany\nFirst Antiphon\nLittle Litany\nSecond Antiphon\nThird Antiphon and Little Entrance\nApolytikia and Kontakion\nTrisagion Hymn\nThe Epistle\nThe Holy Gospel\nLitanies after the Gospel\nCherubic Hymn and Great Entrance\nLitany of the Offering\nPeace and Creed\nThe Holy Anaphora\nInstitution and Epiclesis\nCommemorations and Theotokos\nBefore Communion\nHoly Communion\nThanksgiving after Communion\nDismissal",
+      "display_sha256": "ff73828278fa2d5c9fa8654bdda223ea82bc3379282da7992effd91953f17729",
+      "search_text": "full divine liturgy preparation and opening the great litany first antiphon little litany second antiphon third antiphon and little entrance apolytikia and kontakion trisagion hymn the epistle the holy gospel litanies after the gospel cherubic hymn and great entrance litany of the offering peace and creed the holy anaphora institution and epiclesis commemorations and theotokos before communion holy communion thanksgiving after communion dismissal",
+      "source": {
+        "source_id": "goarch_digital_chant_stand_english",
+        "name": "GOARCH Digital Chant Stand — English",
+        "official": true,
+        "native_language": "en",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "a5f5cbf4e41c9d4ae11fcabc2425bfd11d3b6d5ffb29480e9312eb9ab07ff44e",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:vespers",
+      "type": "service",
+      "target_id": "vespers",
+      "title": "Vespers",
+      "reference": "",
+      "display_text": "Blessed is our God always, now and ever and unto ages of ages.\nAmen. Come, let us worship and fall down before Christ our King and God.\nLord, I have cried unto Thee; hearken unto me. Hearken unto me, O Lord.\nLet us complete our evening prayer unto the Lord.\nLord, have mercy.\nPeace be to all.\nAnd to thy spirit.\nNow lettest Thou Thy servant depart in peace, O Master, according to Thy word, for mine eyes have seen Thy salvation.\nMay the blessing and mercy of the Lord come upon you through His grace and love for mankind, always.",
+      "display_sha256": "73659d70d59256f69b4b78b5d9380e80194f97c5eb7a9d73e9e6c3d0df2634bc",
+      "search_text": "vespers a vespers order with psalm, litanies, and prayers. blessed is our god always, now and ever and unto ages of ages. amen. come, let us worship and fall down before christ our king and god. lord, i have cried unto thee; hearken unto me. hearken unto me, o lord. let us complete our evening prayer unto the lord. lord, have mercy. peace be to all. and to thy spirit. now lettest thou thy servant depart in peace, o master, according to thy word, for mine eyes have seen thy salvation. may the blessing and mercy of the lord come upon you through his grace and love for mankind, always.",
+      "source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/daily-vespers",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "498ae42b8044070472e6bad6bb95f7d3dc4f0f5b9df7fcc4deaab2ab153105b1",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:orthros",
+      "type": "service",
+      "target_id": "orthros",
+      "title": "Orthros / Matins",
+      "reference": "",
+      "display_text": "Glory to the Holy Trinity, the one God, who raises us from the night to praise Him.\nGlory to Thee who hast shown us the light. Glory to God in the highest, and on earth peace, good will among men.\nAgain and again in peace let us pray to the Lord.\nLord, have mercy.\nThe resurrectional or festal troparia are inserted here according to the day.\nFor Thou art our God, and unto Thee do we send up glory, Father, Son, and Holy Spirit.",
+      "display_sha256": "30a0ec6e51c32515294100deec0d3d18444e001751033bd31bede4ceafcb427b",
+      "search_text": "orthros / matins a matins order with psalms, gospel, and litanies. glory to the holy trinity, the one god, who raises us from the night to praise him. glory to thee who hast shown us the light. glory to god in the highest, and on earth peace, good will among men. again and again in peace let us pray to the lord. lord, have mercy. the resurrectional or festal troparia are inserted here according to the day. for thou art our god, and unto thee do we send up glory, father, son, and holy spirit.",
+      "source": {
+        "source_id": "goarch_online_chapel",
+        "name": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/daily-orthros",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "fcb3bd27a1f9d7a7e6afe91502fca532765d2d65d89a68491588fe1691e2e0a3",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    }
+  ],
+  "reader_services": []
+}

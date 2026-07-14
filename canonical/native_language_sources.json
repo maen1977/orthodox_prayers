@@ -1,0 +1,202 @@
+{
+  "schema_version": 2,
+  "permission_basis": {
+    "status": "CONFIRMED_BY_PROJECT_OWNER",
+    "confirmed_at": "2026-07-14",
+    "note_ar": "أكد مالك المشروع امتلاكه موافقات إعادة استخدام المحتوى من الجهات الكنسية المدرجة. تحفظ المستندات الأصلية خارج المستودع العام."
+  },
+  "languages": {
+    "ar": {
+      "policy": "OFFICIAL_ORTHODOX_ARABIC_NATIVE_TEXT_ONLY",
+      "allowed_sources": [
+        "orthodox_jordan",
+        "jerusalem_patriarchate_ar",
+        "antioch_patriarchate_ar"
+      ],
+      "fallback": "SAME_LANGUAGE_ONLY",
+      "translation_between_languages": false,
+      "ai_generation": false
+    },
+    "en": {
+      "policy": "OFFICIAL_ORTHODOX_ENGLISH_NATIVE_TEXT_ONLY",
+      "allowed_sources": [
+        "goarch_online_chapel",
+        "jerusalem_patriarchate_en",
+        "goarch_digital_chant_stand_english",
+        "goarch_synekdemos",
+        "oca_official_english"
+      ],
+      "fallback": "SAME_LANGUAGE_ONLY",
+      "translation_between_languages": false,
+      "ai_generation": false
+    },
+    "el": {
+      "policy": "OFFICIAL_ORTHODOX_GREEK_NATIVE_TEXT_ONLY",
+      "allowed_sources": [
+        "church_of_greece_apostoliki_diakonia",
+        "church_of_greece_ecclesia",
+        "jerusalem_patriarchate_el",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "fallback": "SAME_LANGUAGE_ONLY",
+      "translation_between_languages": false,
+      "ai_generation": false
+    }
+  },
+  "sources": {
+    "orthodox_jordan": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://orthodoxjordan.org/",
+      "capabilities": [
+        "daily_calendar",
+        "daily_reading_references",
+        "prayers",
+        "fasting",
+        "saints",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "name": "مطرانية الروم الأرثوذكس في الأردن"
+    },
+    "jerusalem_patriarchate_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://ar.jerusalem-patriarchate.info/",
+      "capabilities": [
+        "calendar",
+        "feasts",
+        "prayers",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ],
+      "permission_confirmed": true,
+      "name": "بطريركية الروم الأرثوذكس المقدسية — العربية"
+    },
+    "antioch_patriarchate_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://www.antiochpatriarchate.org/",
+      "capabilities": [
+        "calendar",
+        "lectionary",
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "name": "بطريركية أنطاكية وسائر المشرق — العربية"
+    },
+    "goarch_online_chapel": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.goarch.org/chapel",
+      "capabilities": [
+        "daily_calendar",
+        "daily_reading_references",
+        "daily_reading_text",
+        "fasting",
+        "saints"
+      ],
+      "permission_confirmed": true,
+      "name": "Greek Orthodox Archdiocese of America — Online Chapel"
+    },
+    "jerusalem_patriarchate_en": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://en.jerusalem-patriarchate.info/",
+      "capabilities": [
+        "calendar",
+        "feasts",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ],
+      "permission_confirmed": true,
+      "name": "Greek Orthodox Patriarchate of Jerusalem — English"
+    },
+    "goarch_digital_chant_stand_english": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://digitalchantstand.goarch.org/",
+      "capabilities": [
+        "services",
+        "liturgy",
+        "daily_texts"
+      ],
+      "permission_confirmed": true,
+      "name": "GOARCH Digital Chant Stand — English"
+    },
+    "goarch_synekdemos": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+      "capabilities": [
+        "prayers"
+      ],
+      "permission_confirmed": true,
+      "name": "GOARCH Synekdemos"
+    },
+    "oca_official_english": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.oca.org/",
+      "capabilities": [
+        "daily_reading_references",
+        "daily_reading_text"
+      ],
+      "role": "same-language_last_fallback_only",
+      "permission_confirmed": true,
+      "name": "Orthodox Church in America — English"
+    },
+    "church_of_greece_apostoliki_diakonia": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://apostoliki-diakonia.gr/",
+      "capabilities": [
+        "scripture_corpus",
+        "calendar",
+        "saints",
+        "prayers"
+      ],
+      "permission_confirmed": true,
+      "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος"
+    },
+    "church_of_greece_ecclesia": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://www.ecclesia.gr/",
+      "capabilities": [
+        "calendar",
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "name": "Ἐκκλησία τῆς Ἑλλάδος"
+    },
+    "jerusalem_patriarchate_el": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://jerusalem-patriarchate.info/",
+      "capabilities": [
+        "calendar",
+        "feasts",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ],
+      "permission_confirmed": true,
+      "name": "Πατριαρχεῖον Ἱεροσολύμων — Ἑλληνικά"
+    },
+    "goarch_digital_chant_stand_greek": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://digitalchantstand.goarch.org/",
+      "capabilities": [
+        "services",
+        "liturgy",
+        "daily_texts"
+      ],
+      "permission_confirmed": true,
+      "name": "GOARCH Digital Chant Stand — Greek"
+    }
+  },
+  "contract": "canonical/source_native_contract.json"
+}
