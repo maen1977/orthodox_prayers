@@ -1,35 +1,42 @@
-# رفع المشروع إلى GitHub لأول مرة
+# رفع إصلاح GitHub إلى المستودع الحالي
 
-## بواسطة موقع GitHub وGit
+المستودع المستهدف:
 
-1. أنشئ مستودعًا جديدًا فارغًا، ولا تضف README أو License لأنهما موجودان.
-2. افتح Terminal داخل مجلد المشروع.
-3. نفّذ:
-
-```bash
-git init
-git branch -M main
-git add .
-git status
-git commit -m "Orthodox Prayers 3.5.0 strict native-language architecture"
-git remote add origin YOUR_REPOSITORY_URL
-git push -u origin main
+```text
+maen1977/orthodox_prayers
 ```
 
-4. قبل `git commit` افحص `git status` وتأكد من عدم وجود:
-   - `.jks` أو `.keystore` أو `.pem` خاص.
-   - ملفات كلمات مرور أو `.env`.
-   - مجلد `authorized-source-snapshots/`.
-   - وثائق الموافقات الخاصة.
-5. أضف الأسرار حسب `GITHUB_SECRETS_AR.md`.
-6. شغّل Workflow `Update` يدويًا أول مرة.
-7. تأكد من نجاح Workflow `Build` ومن ظهور فرع `verified-data`.
+الطريقة الأسهل موضحة في `GITHUB_DESKTOP_AR.md`.
 
-## فحص أمان قبل الرفع
+## ما الذي تصلحه هذه النسخة؟
+
+- تحذف إعداد Dependabot الذي فتح طلبات تحديث كثيرة.
+- تترك Workflowين فقط: `Build` و`Update`.
+- تمنع `Update` من التشغيل عند كل Push.
+- تشغّل `Update` عند 00:00 و00:15 بتوقيت `Asia/Amman` أو يدويًا فقط.
+- تفصل Unit Tests وLint وبناء APK حتى يظهر اسم الخطوة الفاشلة.
+- توقف CodeQL واختبار المحاكي مؤقتًا لأنهما كانا يضيفان أخطاء لا تساعد على تشخيص بناء APK الأول.
+- ترفع رقم التطبيق إلى 3.5.1 وتغيّر اسم مشروع Gradle الظاهر إلى `OrthodoxPrayers`.
+
+## رسالة Commit
+
+```text
+Fix GitHub Actions and disable Dependabot updates
+```
+
+## بعد الرفع
+
+1. أغلق Pull Requests القديمة الخاصة بـDependabot دون Merge.
+2. أضف Secret `DATA_SIGNING_PRIVATE_KEY_B64`.
+3. شغّل Build وتابع اسم أول خطوة حمراء إن وجدت.
+4. بعد نجاح Build شغّل Update يدويًا بوضع `update`.
+5. تحقق من إنشاء فرع `verified-data`.
+
+## فحص أمان محلي
 
 ```bash
 python scripts/scan_repository_secrets.py
 python scripts/run_quality_gate.py --strict-native-lanes
 ```
 
-إذا ظهر المفتاح الخاص في أي Commit فلا يكفي حذفه من آخر نسخة؛ يجب تدوير المفتاح وتنظيف السجل قبل جعل المستودع عامًا.
+لا ترفع `.pem` خاصًا أو `.jks` أو `.keystore` أو ملف كلمات مرور.

@@ -25,7 +25,7 @@ Do not publish passwords, API keys, Android signing material, data-signing priva
 - Release APKs must pass `apksigner verify`; APK/AAB artifacts include SHA-256 checksums.
 - R8 and resource shrinking are enabled for release builds.
 - GitHub Actions are pinned to full commit SHAs.
-- CodeQL and Dependabot are enabled.
+- GitHub Actions are pinned to full commit SHAs. Dependabot version updates and CodeQL are temporarily disabled while the first stable Android debug build is diagnosed; repository secret scanning remains mandatory.
 
 ## Repository protection
 

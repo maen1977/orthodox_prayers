@@ -1,4 +1,4 @@
-# حالة جاهزية Orthodox Prayers 3.5.0
+# حالة جاهزية Orthodox Prayers 3.5.1
 
 ## جاهز الآن
 
@@ -32,4 +32,4 @@ python scripts/validate_release_readiness.py
 
 ## تحقق البناء
 
-لم يُنفذ بناء Android الكامل محليًا إذا لم تتوفر حزمة Gradle/Android SDK في البيئة. Workflow `Build` ينفذ Unit Tests وLint واختبار المحاكي وبناء APK/AAB بعد الرفع.
+لم يُنفذ بناء Android الكامل محليًا إذا لم تتوفر حزمة Gradle/Android SDK في البيئة. Workflow `Build` ينفذ حاليًا Unit Tests وLint Debug وبناء Debug APK في خطوات منفصلة بعد الرفع. يجب إعادة اختبار المحاكي وCodeQL قبل إعلان Production عندما يصبح البناء الأساسي مستقرًا.

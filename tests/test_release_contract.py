@@ -20,8 +20,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "3.5.0"', build)
-        self.assertIn("versionCode = 35000", build)
+        self.assertIn('versionName = "3.5.1"', build)
+        self.assertIn("versionCode = 35001", build)
         self.assertIn("compileSdk = 35", build)
         self.assertIn("targetSdk = 35", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -315,15 +315,19 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertEqual(expected, {path.name for path in workflows.glob("*.yml")})
 
         build = (workflows / "build.yml").read_text(encoding="utf-8")
-        self.assertIn("testDebugUnitTest lintDebug lintRelease assembleDebugAndroidTest", build)
-        self.assertIn("assembleDebug bundleRelease", build)
+        self.assertIn("name: Android unit tests", build)
+        self.assertIn("testDebugUnitTest --stacktrace", build)
+        self.assertIn("name: Android debug lint", build)
+        self.assertIn("lintDebug --stacktrace", build)
+        self.assertIn("name: Build debug APK", build)
+        self.assertIn("assembleDebug --stacktrace", build)
+        self.assertIn("app/build/outputs/apk/debug/app-debug.apk", build)
         self.assertIn("SHA256SUMS.txt", build)
         self.assertIn("chmod +x ./gradlew", build)
-        self.assertIn("connectedDebugAndroidTest", build)
-        self.assertIn("android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d", build)
-        self.assertIn("github/codeql-action/init@", build)
-        self.assertIn("github/codeql-action/analyze@", build)
-        self.assertNotIn("actions/dependency-review-action@", build)
+        self.assertNotIn("connectedDebugAndroidTest", build)
+        self.assertNotIn("android-emulator-runner@", build)
+        self.assertNotIn("github/codeql-action/", build)
+        self.assertNotIn("assembleDebugAndroidTest", build)
 
         update = (workflows / "update.yml").read_text(encoding="utf-8")
         self.assertIn("DATA_SIGNING_PRIVATE_KEY_B64", update)
@@ -346,6 +350,8 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertNotIn("pull-requests: write", update)
         self.assertNotIn("HEAD:main", update)
         self.assertNotIn("reports/", update)
+        self.assertNotIn("\n  push:\n", update)
+        self.assertFalse((ROOT / ".github/dependabot.yml").exists())
 
         release = build
         for secret in ("ANDROID_KEYSTORE_B64", "ANDROID_KEYSTORE_PASSWORD", "ANDROID_KEY_ALIAS", "ANDROID_KEY_PASSWORD"):

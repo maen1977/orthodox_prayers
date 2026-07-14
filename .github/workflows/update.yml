@@ -13,14 +13,6 @@ on:
         description: "Optional Asia/Amman date (YYYY-MM-DD)"
         required: false
         type: string
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/update.yml"
-      - "canonical/**"
-      - "scripts/**"
-      - "schemas/**"
-      - "requirements-dev.txt"
   schedule:
     - cron: "0 0 * * *"
       timezone: "Asia/Amman"
