@@ -103,21 +103,38 @@ jobs:
       - name: Generate official calendar data
         env:
           ORTHODOX_DATE: ${{ env.ORTHODOX_DATE }}
+        run: python scripts/update_liturgical_data.py
+
+      - name: Resolve and classify official-source availability
+        id: integrity
+        shell: bash
         run: |
-          python scripts/update_liturgical_data.py
+          set +e
           python scripts/orthodox_integrity.py --apply
+          STATUS=$?
+          set -e
+          if [[ "$STATUS" -eq 0 ]]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python scripts/classify_source_unavailable.py --date "$ORTHODOX_DATE" --output "$RUNNER_TEMP/source-unavailable.json"
+          echo "publish=false" >> "$GITHUB_OUTPUT"
+          echo "Official sources were incomplete for $ORTHODOX_DATE; preserving the last signed daily data."
 
       - name: Resolve exact same-language Scripture from imported official corpora
+        if: steps.integrity.outputs.publish == 'true'
         run: |
           python scripts/fill_daily_from_native_corpora.py data/calendar/today.json "data/calendar/$ORTHODOX_DATE.json"
 
       - name: Enforce independent native-language lanes
+        if: steps.integrity.outputs.publish == 'true'
         run: |
           python scripts/enforce_native_daily_lanes.py data/calendar/today.json "data/calendar/$ORTHODOX_DATE.json"
           cp data/calendar/today.json app/src/main/assets/data/today.json
           python scripts/build_search_index.py
 
       - name: Validate exact text and official sources
+        if: steps.integrity.outputs.publish == 'true'
         run: |
           python scripts/validate_native_source_contract.py
           python scripts/validate_daily_native_content.py
@@ -135,12 +152,15 @@ jobs:
           python scripts/validate_scripture_translations.py data/calendar/today.json
 
       - name: Sign exact verified files
+        if: steps.integrity.outputs.publish == 'true'
         run: python scripts/sign_daily_data.py --private-key "$RUNNER_TEMP/data-signing-private-key.pem"
 
       - name: Run complete current-date quality gate
+        if: steps.integrity.outputs.publish == 'true'
         run: python scripts/run_quality_gate.py --require-current --strict-native-lanes
 
       - name: Publish verified-data branch
+        if: steps.integrity.outputs.publish == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -168,6 +188,7 @@ jobs:
           git push --force-with-lease origin "HEAD:refs/heads/$VERIFIED_DATA_BRANCH"
 
       - name: Verify published branch from origin
+        if: steps.integrity.outputs.publish == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -176,6 +197,47 @@ jobs:
           git show "origin/$VERIFIED_DATA_BRANCH:data/calendar/today.json" > "$RUNNER_TEMP/published-today.json"
           git show "origin/$VERIFIED_DATA_BRANCH:data/calendar/today.json.sig" > "$RUNNER_TEMP/published-today.json.sig"
           python scripts/verify_data_signature.py "$RUNNER_TEMP/published-today.json" "$RUNNER_TEMP/published-today.json.sig"
+
+      - name: Sign source-unavailable status
+        if: steps.integrity.outputs.publish == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          openssl dgst -sha256 -sign "$RUNNER_TEMP/data-signing-private-key.pem" \
+            -out "$RUNNER_TEMP/source-unavailable.sig.bin" "$RUNNER_TEMP/source-unavailable.json"
+          base64 -w 0 "$RUNNER_TEMP/source-unavailable.sig.bin" > "$RUNNER_TEMP/source-unavailable.json.sig"
+          printf '\n' >> "$RUNNER_TEMP/source-unavailable.json.sig"
+
+      - name: Publish signed source-unavailable status
+        if: steps.integrity.outputs.publish == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          PUBLISH_DIR="$RUNNER_TEMP/verified-data-status-worktree"
+          git fetch origin "$VERIFIED_DATA_BRANCH" || true
+          if git show-ref --verify --quiet "refs/remotes/origin/$VERIFIED_DATA_BRANCH"; then
+            git worktree add --force --detach "$PUBLISH_DIR" "origin/$VERIFIED_DATA_BRANCH"
+          else
+            git worktree add --force --detach "$PUBLISH_DIR" HEAD
+          fi
+          mkdir -p "$PUBLISH_DIR/data/update-status"
+          cp "$RUNNER_TEMP/source-unavailable.json" "$PUBLISH_DIR/data/update-status/$ORTHODOX_DATE.json"
+          cp "$RUNNER_TEMP/source-unavailable.json.sig" "$PUBLISH_DIR/data/update-status/$ORTHODOX_DATE.json.sig"
+          cd "$PUBLISH_DIR"
+          git checkout -B "$VERIFIED_DATA_BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "data/update-status/$ORTHODOX_DATE.json" "data/update-status/$ORTHODOX_DATE.json.sig"
+          if git diff --cached --quiet; then
+            echo "Source-unavailable status for $ORTHODOX_DATE is already published."
+          else
+            git commit -m "Record unavailable official sources $ORTHODOX_DATE"
+            git push origin "HEAD:refs/heads/$VERIFIED_DATA_BRANCH"
+          fi
+
+      - name: Confirm protected no-update result
+        if: steps.integrity.outputs.publish == 'false'
+        run: echo "No complete official source was available; last signed daily content remains active."
 
       - name: Open or update failure alert
         if: failure()
