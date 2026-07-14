@@ -2,6 +2,7 @@
 
 ## 3.5.1 — إصلاح GitHub Actions وتشخيص بناء Android
 
+- إصلاح تجميع Android في `DataRepository`: حساب SHA-256 للنص باستخدام UTF-8 bytes.
 - إيقاف Dependabot version updates بحذف `.github/dependabot.yml`.
 - إبقاء Workflowين فقط: Build وUpdate.
 - منع Update من العمل عند Push والإبقاء على 00:00 و00:15 بتوقيت عمّان والتشغيل اليدوي.

@@ -459,7 +459,7 @@ public final class DataRepository {
                 if (!text.isEmpty()) {
                     String status = evidence.optString("status", "");
                     if (!"VERIFIED_EXACT_NATIVE_SOURCE".equals(status) && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)) return kind + "_" + language + "_text_unverified";
-                    if (!sha256(text).equalsIgnoreCase(evidence.optString("text_sha256", ""))) return kind + "_" + language + "_hash_invalid";
+                    if (!sha256(text.getBytes(StandardCharsets.UTF_8)).equalsIgnoreCase(evidence.optString("text_sha256", ""))) return kind + "_" + language + "_hash_invalid";
                 }
             }
             if ("epistle".equals(kind)) epistle = true;
