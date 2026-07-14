@@ -148,7 +148,7 @@ def fetch_orthocal_old(day: date, attempts: int = 4) -> dict:
         url,
         headers={
             "Accept": "application/json",
-            "User-Agent": "orthodox-prayers-daily-updater/3.5.1 (+https://github.com/maen1977/orthodox_prayers)",
+            "User-Agent": "orthodox-prayers-daily-updater/4.0.0 (+https://github.com/maen1977/orthodox_prayers)",
         },
     )
     last_error: Exception | None = None

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "update publishes data; verify checks the published branch"
+        description: "update publishes data; verify checks verified-data"
         required: true
         default: update
         type: choice
@@ -22,24 +22,21 @@ on:
 permissions:
   contents: write
   issues: write
-  actions: write
 
 concurrency:
-  group: verified-daily-data-${{ github.event.schedule || github.event.inputs.mode || 'update' }}
+  group: orthodox-daily-data
   cancel-in-progress: false
 
 env:
   VERIFIED_DATA_BRANCH: verified-data
 
 jobs:
-  prepare:
-    name: Resolve update mode
+  daily:
     runs-on: ubuntu-latest
-    outputs:
-      mode: ${{ steps.resolve.outputs.mode }}
-      date: ${{ steps.resolve.outputs.date }}
+    timeout-minutes: 40
     steps:
-      - id: resolve
+      - name: Resolve mode and date
+        id: resolve
         shell: bash
         env:
           INPUT_MODE: ${{ github.event.inputs.mode }}
@@ -47,211 +44,113 @@ jobs:
           SCHEDULE: ${{ github.event.schedule }}
         run: |
           set -euo pipefail
-          if [[ -n "${INPUT_MODE:-}" ]]; then
-            MODE="$INPUT_MODE"
-          elif [[ "${SCHEDULE:-}" == "15 0 * * *" ]]; then
-            MODE="verify"
-          else
-            MODE="update"
-          fi
-          if [[ -n "${INPUT_DATE:-}" ]]; then
-            [[ "$INPUT_DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || { echo "Invalid date input" >&2; exit 1; }
-            TARGET_DATE="$INPUT_DATE"
-          else
-            TARGET_DATE="$(TZ=Asia/Amman date +%F)"
-          fi
+          if [[ -n "${INPUT_MODE:-}" ]]; then MODE="$INPUT_MODE"; elif [[ "${SCHEDULE:-}" == "15 0 * * *" ]]; then MODE=verify; else MODE=update; fi
+          if [[ -n "${INPUT_DATE:-}" ]]; then DATE="$INPUT_DATE"; else DATE="$(TZ=Asia/Amman date +%F)"; fi
+          [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
-          echo "date=$TARGET_DATE" >> "$GITHUB_OUTPUT"
-          echo "Resolved $MODE for $TARGET_DATE (Asia/Amman)"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
-  update:
-    name: 00:00 update, validate, sign, publish
-    needs: prepare
-    if: needs.prepare.outputs.mode == 'update'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    env:
-      ORTHODOX_DATE: ${{ needs.prepare.outputs.date }}
-    steps:
-      - name: Checkout main
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - name: Checkout source
+        if: steps.resolve.outputs.mode == 'update'
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
         with:
           ref: main
           fetch-depth: 0
 
+      - name: Checkout published data
+        if: steps.resolve.outputs.mode == 'verify'
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        with:
+          ref: verified-data
+          fetch-depth: 1
+
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: requirements-dev.txt
 
-      - name: Install validation dependencies
+      - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
 
-      - name: Restore protected data-signing key
+      - name: Restore and match the one signing key
+        if: steps.resolve.outputs.mode == 'update'
         shell: bash
         env:
           DATA_SIGNING_PRIVATE_KEY_B64: ${{ secrets.DATA_SIGNING_PRIVATE_KEY_B64 }}
         run: |
           set -euo pipefail
           test -n "$DATA_SIGNING_PRIVATE_KEY_B64" || { echo "DATA_SIGNING_PRIVATE_KEY_B64 is required" >&2; exit 1; }
-          printf '%s' "$DATA_SIGNING_PRIVATE_KEY_B64" | base64 --decode > "$RUNNER_TEMP/data-signing-private-key.pem"
-          chmod 600 "$RUNNER_TEMP/data-signing-private-key.pem"
-          openssl pkey -in "$RUNNER_TEMP/data-signing-private-key.pem" -check -noout
+          printf '%s' "$DATA_SIGNING_PRIVATE_KEY_B64" | base64 --decode > "$RUNNER_TEMP/data-private.pem"
+          chmod 600 "$RUNNER_TEMP/data-private.pem"
+          openssl pkey -in "$RUNNER_TEMP/data-private.pem" -check -noout
+          openssl pkey -in "$RUNNER_TEMP/data-private.pem" -pubout -out "$RUNNER_TEMP/derived-public.pem"
+          openssl pkey -pubin -in canonical/signing/data_signing_public_key.pub -outform DER -out "$RUNNER_TEMP/committed.der"
+          openssl pkey -pubin -in "$RUNNER_TEMP/derived-public.pem" -outform DER -out "$RUNNER_TEMP/derived.der"
+          cmp -s "$RUNNER_TEMP/committed.der" "$RUNNER_TEMP/derived.der" || {
+            echo "The GitHub secret does not match the public key committed in the app." >&2
+            echo "Replace DATA_SIGNING_PRIVATE_KEY_B64 with the v4 key supplied with this release." >&2
+            exit 1
+          }
 
-      - name: Generate official calendar data
-        env:
-          ORTHODOX_DATE: ${{ env.ORTHODOX_DATE }}
-        run: python scripts/update_liturgical_data.py
+      - name: Generate, validate, and sign today
+        if: steps.resolve.outputs.mode == 'update'
+        run: python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
 
-      - name: Classify official-source completeness
-        id: integrity
-        shell: bash
-        run: |
-          set +e
-          python scripts/orthodox_integrity.py --apply
-          STATUS=$?
-          set -e
-          if [[ "$STATUS" -eq 0 ]]; then
-            echo "mode=full" >> "$GITHUB_OUTPUT"
-            echo "All exact official fields are available; publishing a full verified update."
-          else
-            echo "mode=partial" >> "$GITHUB_OUTPUT"
-            echo "Some exact official fields are unavailable; publishing the verified daily shell and references while leaving only the unavailable fields empty."
-          fi
-
-      - name: Resolve same-language Scripture where available
-        run: |
-          python scripts/fill_daily_from_native_corpora.py data/calendar/today.json "data/calendar/$ORTHODOX_DATE.json"
-
-      - name: Enforce independent native-language lanes
-        run: |
-          python scripts/enforce_native_daily_lanes.py data/calendar/today.json "data/calendar/$ORTHODOX_DATE.json"
-          python scripts/mark_partial_daily.py --date "$ORTHODOX_DATE" --mode "${{ steps.integrity.outputs.mode }}"
-          cp data/calendar/today.json app/src/main/assets/data/today.json
-          python scripts/build_search_index.py
-
-      - name: Validate full exact-text update
-        if: steps.integrity.outputs.mode == 'full'
-        run: |
-          python scripts/validate_native_source_contract.py
-          python scripts/validate_daily_native_content.py
-          python scripts/validate_official_sources.py
-          python scripts/validate_no_placeholder_guidance.py
-          python scripts/validate_json_schema.py
-          python scripts/validate_liturgical_schedule.py data/calendar/today.json
-          python scripts/quality_check.py data/calendar/today.json
-          python scripts/validate_embedded_app_data.py
-          python scripts/verify_static_texts.py
-          python scripts/validate_static_prayer_sources.py
-          python scripts/validate_native_language_packs.py
-          python scripts/validate_content_review.py
-          python scripts/validate_reader_services.py
-          python scripts/validate_scripture_translations.py data/calendar/today.json
-
-      - name: Validate useful partial daily update
-        if: steps.integrity.outputs.mode == 'partial'
-        run: |
-          python scripts/validate_partial_daily.py --expected-date "$ORTHODOX_DATE"
-          python scripts/validate_static_prayer_sources.py
-          python scripts/validate_reader_services.py
-
-      - name: Sign current daily files
-        run: python scripts/sign_daily_data.py --private-key "$RUNNER_TEMP/data-signing-private-key.pem"
-
-      - name: Run complete current-date quality gate
-        if: steps.integrity.outputs.mode == 'full'
-        run: python scripts/run_quality_gate.py --require-current --strict-native-lanes
-
-      - name: Publish verified-data branch
+      - name: Publish verified-data
+        if: steps.resolve.outputs.mode == 'update'
         shell: bash
         run: |
           set -euo pipefail
-          SOURCE_ROOT="$GITHUB_WORKSPACE"
-          PUBLISH_DIR="$RUNNER_TEMP/verified-data-worktree"
+          SOURCE="$GITHUB_WORKSPACE"
+          TARGET="$RUNNER_TEMP/verified-data"
           git fetch origin "$VERIFIED_DATA_BRANCH" || true
           if git show-ref --verify --quiet "refs/remotes/origin/$VERIFIED_DATA_BRANCH"; then
-            git worktree add --force --detach "$PUBLISH_DIR" "origin/$VERIFIED_DATA_BRANCH"
+            git worktree add --force --detach "$TARGET" "origin/$VERIFIED_DATA_BRANCH"
           else
-            git worktree add --force --detach "$PUBLISH_DIR" HEAD
+            git worktree add --force --detach "$TARGET" HEAD
           fi
-          mkdir -p "$PUBLISH_DIR/data" "$PUBLISH_DIR/app/src/main/assets/data"
-          rsync -a --delete "$SOURCE_ROOT/data/" "$PUBLISH_DIR/data/"
-          rsync -a --delete "$SOURCE_ROOT/app/src/main/assets/data/" "$PUBLISH_DIR/app/src/main/assets/data/"
-          cd "$PUBLISH_DIR"
+          mkdir -p "$TARGET/data" "$TARGET/app/src/main/assets/data"
+          rsync -a --delete "$SOURCE/data/" "$TARGET/data/"
+          rsync -a --delete "$SOURCE/app/src/main/assets/data/" "$TARGET/app/src/main/assets/data/"
+          cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
+          mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
+          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/validate_partial_daily.py" "$TARGET/scripts/"
+          cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
+          cd "$TARGET"
           git checkout -B "$VERIFIED_DATA_BRANCH"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data app/src/main/assets/data
-          if git diff --cached --quiet; then
-            echo "Verified data for $ORTHODOX_DATE is already published."
-          else
-            git commit -m "Publish signed daily data $ORTHODOX_DATE (${{ steps.integrity.outputs.mode }})"
-          fi
-          git push --force-with-lease origin "HEAD:refs/heads/$VERIFIED_DATA_BRANCH"
+          git add -A
+          git diff --cached --quiet || git commit -m "Publish daily data ${{ steps.resolve.outputs.date }}"
+          git push --force-with-lease origin "HEAD:$VERIFIED_DATA_BRANCH"
 
-      - name: Verify published branch from origin
+      - name: Verify from origin after publishing
+        if: steps.resolve.outputs.mode == 'update'
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --force origin "$VERIFIED_DATA_BRANCH"
-          test "$(git show "origin/$VERIFIED_DATA_BRANCH:data/calendar/today.json" | python -c 'import json,sys; print(json.load(sys.stdin)["date_iso"])')" = "$ORTHODOX_DATE"
-          git show "origin/$VERIFIED_DATA_BRANCH:data/calendar/today.json" > "$RUNNER_TEMP/published-today.json"
-          git show "origin/$VERIFIED_DATA_BRANCH:data/calendar/today.json.sig" > "$RUNNER_TEMP/published-today.json.sig"
-          python scripts/verify_data_signature.py "$RUNNER_TEMP/published-today.json" "$RUNNER_TEMP/published-today.json.sig"
+          CHECK="$RUNNER_TEMP/published-check"
+          git clone --depth 1 --branch "$VERIFIED_DATA_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" "$CHECK"
+          cd "$CHECK"
+          python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
 
-      - name: Open or update failure alert
+      - name: Verify scheduled publication
+        if: steps.resolve.outputs.mode == 'verify'
+        run: python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+
+      - name: Open failure alert
         if: failure()
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TITLE="Daily Orthodox data update failed"
-          BODY="The 00:00 Asia/Amman update failed for $ORTHODOX_DATE. The verified-data branch was not replaced with unverified content. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          TITLE="Orthodox daily update failed"
+          BODY="Update/verification failed for ${{ steps.resolve.outputs.date }}. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           EXISTING="$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')"
           if [[ -n "$EXISTING" ]]; then gh issue comment "$EXISTING" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi
 
       - name: Remove private key
         if: always()
-        run: rm -f "$RUNNER_TEMP/data-signing-private-key.pem"
-
-  verify:
-    name: 00:15 verify published update
-    needs: prepare
-    if: needs.prepare.outputs.mode == 'verify'
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      ORTHODOX_DATE: ${{ needs.prepare.outputs.date }}
-    steps:
-      - name: Checkout verified-data
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-        with:
-          ref: verified-data
-          fetch-depth: 1
-
-      - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
-        with:
-          python-version: "3.12"
-          cache: pip
-          cache-dependency-path: requirements-dev.txt
-
-      - name: Install validation dependencies
-        run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
-
-      - name: Verify date, signature, schema, and language lanes
-        run: python scripts/verify_published_daily.py --expected-date "$ORTHODOX_DATE"
-
-      - name: Trigger one repair attempt and open alert
-        if: failure()
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run update.yml --ref main -f mode=update -f date="$ORTHODOX_DATE"
-          TITLE="Daily Orthodox data verification failed"
-          BODY="The 00:15 Asia/Amman verification failed for $ORTHODOX_DATE. One protected repair update was triggered. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          EXISTING="$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')"
-          if [[ -n "$EXISTING" ]]; then gh issue comment "$EXISTING" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi
+        run: rm -f "$RUNNER_TEMP/data-private.pem" "$RUNNER_TEMP/derived-public.pem"
