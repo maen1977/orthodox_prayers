@@ -443,36 +443,50 @@ def resurrection_tone(day: date, pascha: date) -> int | None:
 
 
 def reading_block_loc(reading: dict, prefer_empty_ar_when_missing: bool = False) -> dict:
+    """Return a renderable localized reading block without cross-language fallback.
+
+    Exact native text is shown only when its same-language verification and hash
+    are valid. A missing text is represented by a localized interface status,
+    never by translated Scripture and never by a blank reader segment.
+    """
     ref = reading.get("reference", {}) if isinstance(reading.get("reference"), dict) else {}
     body = reading.get("body", {}) if isinstance(reading.get("body"), dict) else {}
+    native = reading.get("native_source_verification") if isinstance(reading.get("native_source_verification"), dict) else {}
+    legacy = reading.get("translation_verification") if isinstance(reading.get("translation_verification"), dict) else {}
+    canonical_ref = str(reading.get("integrity", {}).get("canonical_reference") or "")
+    unavailable = {
+        "ar": "النص الكنسي العربي الأصلي غير متاح حاليًا.",
+        "en": "Official native English text is currently unavailable.",
+        "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή.",
+    }
     out = {"ar": "", "en": "", "el": ""}
-
-    ar_ref = str(ref.get("ar") or "").strip()
-    ar_body = str(body.get("ar") or "").strip()
-    if prefer_empty_ar_when_missing and not ar_body and (body.get("en") or body.get("el")):
-        out["ar"] = ""
-    else:
-        out["ar"] = (ar_ref + "\n" + ar_body).strip() if ar_body else ar_ref
-
-    # A target-language Scripture block is published only when its body exists and
-    # carries independent verification metadata. References alone are not a reading.
-    verification = reading.get("translation_verification") if isinstance(reading.get("translation_verification"), dict) else {}
-    for lang in ("en", "el"):
-        lang_check = verification.get(lang) if isinstance(verification.get(lang), dict) else {}
-        lang_body = str(body.get(lang) or "").strip()
-        canonical_ref = str(reading.get("integrity", {}).get("canonical_reference") or "")
-        verified = (
-            lang_check.get("status") == "VERIFIED_EXACT_TRANSLATION"
-            and bool(lang_body)
-            and lang_check.get("body_sha256") == hashlib.sha256(lang_body.encode("utf-8")).hexdigest()
-            and lang_check.get("ai_translation_used") is False
-            and bool(str(lang_check.get("source") or "").strip())
-            and lang_check.get("canonical_reference") in (None, "", canonical_ref)
-        )
-        if not verified:
-            continue
+    for lang in ("ar", "en", "el"):
         lang_ref = str(ref.get(lang) or "").strip()
-        out[lang] = (lang_ref + "\n" + lang_body).strip() if lang_ref else lang_body
+        lang_body = str(body.get(lang) or "").strip()
+        evidence = native.get(lang) if isinstance(native.get(lang), dict) else {}
+        exact_native = (
+            evidence.get("status") in {"VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS"}
+            and bool(lang_body)
+            and evidence.get("text_sha256") == hashlib.sha256(lang_body.encode("utf-8")).hexdigest()
+            and evidence.get("ai_translation_used") is False
+            and evidence.get("automatic_diacritization_used") is False
+            and evidence.get("canonical_reference") in (None, "", canonical_ref)
+        )
+        # Legacy compatibility for previously verified independent translations.
+        legacy_check = legacy.get(lang) if isinstance(legacy.get(lang), dict) else {}
+        exact_legacy = (
+            lang in {"en", "el"}
+            and legacy_check.get("status") == "VERIFIED_EXACT_TRANSLATION"
+            and bool(lang_body)
+            and legacy_check.get("body_sha256") == hashlib.sha256(lang_body.encode("utf-8")).hexdigest()
+            and legacy_check.get("ai_translation_used") is False
+            and bool(str(legacy_check.get("source") or "").strip())
+            and legacy_check.get("canonical_reference") in (None, "", canonical_ref)
+        )
+        if exact_native or exact_legacy:
+            out[lang] = (lang_ref + "\n" + lang_body).strip() if lang_ref else lang_body
+        else:
+            out[lang] = (lang_ref + "\n" + unavailable[lang]).strip() if lang_ref else unavailable[lang]
     return out
 
 

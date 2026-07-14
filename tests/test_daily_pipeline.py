@@ -160,6 +160,28 @@ class DailyPipelineTests(unittest.TestCase):
         )
         self.assertEqual(result.fasting_code, "wine_oil")
 
+    def test_native_corpus_policy_does_not_treat_repository_root_as_a_cache_file(self):
+        policy = json.loads((ROOT / "canonical/source_policy.json").read_text(encoding="utf-8"))
+        bible, metadata = self.integrity.ensure_canonical_bible(policy, allow_network=False)
+        self.assertEqual({}, bible)
+        self.assertEqual("PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY", metadata["mode"])
+        self.assertEqual({"ar", "en", "el"}, set(metadata["corpus_manifests"]))
+        self.assertFalse(metadata["independent_base_available"])
+
+    def test_missing_native_reading_renders_a_status_instead_of_a_blank_segment(self):
+        reading = {
+            "kind": "epistle",
+            "reference": {"ar": "", "en": "Romans 1:1-3", "el": ""},
+            "body": {"ar": "", "en": "", "el": ""},
+            "integrity": {"canonical_reference": "ROM.1.1-3"},
+        }
+        block = self.update.reading_block_loc(reading)
+        self.assertTrue(block["ar"].strip())
+        self.assertIn("Romans 1:1-3", block["en"])
+        self.assertTrue(block["el"].strip())
+        self.assertNotIn("Romans", block["ar"])
+        self.assertNotIn("Romans", block["el"])
+
     def test_all_date_sensitive_services_are_generated(self):
         target = date(2026, 7, 10)
         def fake_daily_source(day, attempts=4):

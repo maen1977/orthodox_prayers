@@ -404,25 +404,72 @@ def verified_scripture_for_reference(reference: str) -> tuple[str, list[dict[str
 
 
 def ensure_canonical_bible(policy: dict[str, Any], allow_network: bool = True) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Return canonical metadata and optional independent base Bible cache.
+    """Return Scripture-policy metadata without crossing language lanes.
 
-    Exact vocalized eBible text is the publication text. A pinned independent
-    unvocalized cache is used as an additional word-level cross-check when it is
-    already available or can be downloaded; its absence never permits free
-    translation and never weakens exact snapshot/verse/hash validation.
+    The current publication contract uses one independently imported official
+    native corpus per language. Missing corpora are allowed and mean that the
+    corresponding text remains unavailable. The older single Arabic eBible
+    cache is retained only for historical tests and is never a publication
+    authority in this mode.
     """
     cfg = policy["scripture_canonical"]
-    cache = ROOT / str(cfg.get("base_cache_path") or "")
+    mode = str(cfg.get("mode") or "")
+    if mode == "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY":
+        contract_path = ROOT / str(policy.get("native_language_contract") or "canonical/source_native_contract.json")
+        contract = load_json(contract_path) if contract_path.is_file() else {}
+        manifests: dict[str, Any] = {}
+        for language, relative in (cfg.get("corpus_manifests") or {}).items():
+            manifest_path = ROOT / str(relative)
+            entry: dict[str, Any] = {
+                "path": str(relative),
+                "available": False,
+                "status": "NOT_IMPORTED",
+                "sha256": None,
+                "source_id": None,
+            }
+            if manifest_path.is_file():
+                raw = manifest_path.read_bytes()
+                try:
+                    manifest = json.loads(raw.decode("utf-8"))
+                except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+                    raise RuntimeError(f"Invalid native Scripture manifest for {language}: {relative}: {exc}") from exc
+                entry.update({
+                    "available": manifest.get("status") == "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS",
+                    "status": manifest.get("status") or "UNKNOWN",
+                    "sha256": sha256_bytes(raw),
+                    "source_id": manifest.get("source_id"),
+                })
+            manifests[str(language)] = entry
+        return {}, {
+            "mode": mode,
+            "id": "per_language_official_native_corpora",
+            "name_ar": "مكتبات كتاب مقدس رسمية أصلية مستقلة لكل لغة",
+            "status": "NATIVE_CORPUS_POLICY",
+            "pinned_revision": contract.get("effective_from"),
+            "url": None,
+            "file_sha256": None,
+            "independent_base_available": False,
+            "verified_snapshot_hashes": {},
+            "corpus_manifests": manifests,
+            "missing_text_behavior": cfg.get("missing_text_behavior"),
+            "native_text_contract": str(contract_path.relative_to(ROOT)) if contract_path.is_file() else None,
+        }
+
+    # Legacy compatibility for old policy files. A cache path is usable only
+    # when it names a regular file; Path("") resolves to the repository root
+    # and must never be read as bytes.
+    cache_value = str(cfg.get("base_cache_path") or "").strip()
+    cache = ROOT / cache_value if cache_value else None
     pinned_url = cfg.get("base_pinned_url")
     bible: dict[str, Any] = {}
     base_sha: str | None = None
-    if cache and cache.exists():
+    if cache is not None and cache.is_file():
         raw = cache.read_bytes()
         candidate = json.loads(raw.decode("utf-8"))
         if candidate.get("id") == cfg.get("base_id") and isinstance(candidate.get("books"), dict):
             bible = candidate
             base_sha = sha256_bytes(raw)
-    elif allow_network and pinned_url:
+    elif allow_network and pinned_url and cache is not None:
         try:
             body, _ = http_get(pinned_url, attempts=3, timeout=90)
             candidate = json.loads(body.decode("utf-8"))
@@ -432,8 +479,6 @@ def ensure_canonical_bible(policy: dict[str, Any], allow_network: bool = True) -
                 bible = candidate
                 base_sha = sha256_bytes(body)
         except Exception:
-            # The exact eBible source remains authoritative; failure here is
-            # recorded as unavailable cross-check, not replaced with generated text.
             bible = {}
 
     snapshot_hashes = {
@@ -442,6 +487,7 @@ def ensure_canonical_bible(policy: dict[str, Any], allow_network: bool = True) -
     }
     vocalized = cfg["vocalized_source"]
     meta = {
+        "mode": mode or "LEGACY_SINGLE_CORPUS",
         "id": cfg["id"],
         "name_ar": cfg["name_ar"],
         "status": cfg["status"],
@@ -791,6 +837,59 @@ def _lock_unverified_translations(reading: dict[str, Any], canonical_ref: str) -
             }
 
 
+def _native_source_display_language(selected_source: str | None, raw_reference: str) -> str | None:
+    """Return the one display lane proven by the selected reference source."""
+    source = str(selected_source or "")
+    if source in {"orthodox_jordan", "antioch_patriarchate"} and re.search(r"[\u0600-\u06ff]", raw_reference):
+        return "ar"
+    if source in {"official_greek_orthodox", "orthodox_church_in_america"} and re.search(r"[A-Za-z]", raw_reference):
+        return "en"
+    # Jerusalem fixed-feast records and internal canonical registries establish
+    # the canonical passage, but they do not automatically license a displayed
+    # native-language reference in another lane.
+    return None
+
+
+def prepare_native_corpus_readings(
+    readings: list[dict[str, Any]],
+    epistle_reference: str,
+    gospel_reference: str,
+    selected_source: str | None,
+) -> list[dict[str, Any]]:
+    """Keep canonical references while publishing no translated discovery text."""
+    output = copy.deepcopy(readings)
+    mapping = {"epistle": epistle_reference, "gospel": gospel_reference}
+    for reading in output:
+        kind = str(reading.get("kind") or "")
+        if kind not in {"prokeimenon", "epistle", "gospel"}:
+            continue
+        references = {"ar": "", "en": "", "el": ""}
+        canonical_reference = ""
+        raw_reference = str(mapping.get(kind) or "")
+        if kind in mapping:
+            canonical_reference, _ = parse_reference(raw_reference)
+            display_language = _native_source_display_language(selected_source, raw_reference)
+            if display_language:
+                references[display_language] = raw_reference
+        reading["reference"] = references
+        reading["body"] = {"ar": "", "en": "", "el": ""}
+        reading["source"] = {"ar": "", "en": "", "el": ""}
+        reading["translation_locked"] = True
+        reading.pop("translation_verification", None)
+        reading.pop("native_source_verification", None)
+        reading.pop("publication_status", None)
+        reading.pop("discovery_text", None)
+        reading["integrity"] = {
+            "status": "OFFICIAL_REFERENCE_RESOLVED_NATIVE_TEXT_PENDING",
+            "canonical_reference": canonical_reference,
+            "selected_source": selected_source,
+            "display_text_changed": False,
+            "ai_translation_used": False,
+            "automatic_diacritization_used": False,
+        }
+    return output
+
+
 def inject_canonical_readings(
     readings: list[dict[str, Any]],
     bible: dict[str, Any],
@@ -798,6 +897,11 @@ def inject_canonical_readings(
     *,
     allow_network: bool = True,
 ) -> list[dict[str, Any]]:
+    if canonical_meta.get("mode") == "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY":
+        # Native corpora are filled by fill_daily_from_native_corpora.py after
+        # official canonical references have been resolved. Never use the
+        # quarantined legacy Arabic snapshots in this mode.
+        return copy.deepcopy(readings)
     output = copy.deepcopy(readings)
     minimum_ratio = float(canonical_meta["vocalized_source"]["requirements"]["minimum_arabic_diacritic_ratio"])
     snapshots = load_verified_scripture_snapshots()
@@ -911,6 +1015,43 @@ def object_contains_text(value: Any, needle: str) -> bool:
 
 def verify_existing(data: dict[str, Any], bible: dict[str, Any], canonical_meta: dict[str, Any]) -> list[str]:
     errors: list[str] = []
+    if canonical_meta.get("mode") == "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY":
+        if data.get("integrity", {}).get("status") != "VERIFIED_OFFICIAL_SOURCES":
+            errors.append("top-level integrity status is not VERIFIED_OFFICIAL_SOURCES")
+        publication = data.get("publication", {})
+        if publication.get("status") != "AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED":
+            errors.append("publication status is not AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED")
+        if publication.get("fail_closed") is not True:
+            errors.append("publication is not fail-closed")
+        if publication.get("same_language_fallback_only") is not True:
+            errors.append("publication does not require same-language fallback only")
+        if data.get("machine_translation_used") is not False:
+            errors.append("machine translation flag must be false")
+        if data.get("automatic_diacritization_used") is not False:
+            errors.append("automatic diacritization flag must be false")
+        reading_sets: list[tuple[str, list[dict[str, Any]]]] = [("today", data.get("readings", []))]
+        next_readings = data.get("integrity_inputs", {}).get("next_sunday", {}).get("readings")
+        if isinstance(next_readings, list):
+            reading_sets.append(("next_sunday", next_readings))
+        else:
+            errors.append("integrity_inputs.next_sunday.readings is missing")
+        for label, readings in reading_sets:
+            for reading in readings:
+                if reading.get("kind") not in {"epistle", "gospel"}:
+                    continue
+                kind = f"{label}.{reading.get('kind')}"
+                canonical_reference = str(reading.get("integrity", {}).get("canonical_reference") or "")
+                if not canonical_reference:
+                    errors.append(f"{kind} has no canonical reference")
+                    continue
+                if not re.fullmatch(r"[1-3]?[A-Z]+\.\d+\.\d+(?:-(?:\d+\.)?\d+)?", canonical_reference):
+                    errors.append(f"{kind} canonical reference is invalid: {canonical_reference!r}")
+                for language in ("ar", "en", "el"):
+                    if str(reading.get("body", {}).get(language) or "").strip():
+                        errors.append(f"{kind}.{language} contains text before native-corpus verification")
+                if reading.get("translation_locked") is not True:
+                    errors.append(f"{kind} is not translation_locked")
+        return errors
     if data.get("integrity", {}).get("status") != "VERIFIED_OFFICIAL_SOURCES":
         errors.append("top-level integrity status is not VERIFIED_OFFICIAL_SOURCES")
     if data.get("publication", {}).get("status") != "AUTOMATIC_OFFICIAL_SOURCES_VERIFIED":
@@ -1283,13 +1424,28 @@ def main() -> None:
                 errors.extend(f"next Sunday: {error}" for error in next_resolution.errors)
 
         if not errors and next_resolution is not None:
-            set_official_references(data["readings"], today_resolution.fields["epistle_reference"], today_resolution.fields["gospel_reference"])
-            set_official_references(next_raw, next_resolution.fields["epistle_reference"], next_resolution.fields["gospel_reference"])
-            apply_prokeimenon(data["readings"], today_resolution.fields.get("tone"), exact_text=today_resolution.fields.get("prokeimenon_text"), selected_source=today_resolution.selected_source)
-            apply_prokeimenon(next_raw, next_resolution.fields.get("tone"), exact_text=next_resolution.fields.get("prokeimenon_text"), selected_source=next_resolution.selected_source)
+            native_mode = canonical_meta.get("mode") == "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY"
+            if native_mode:
+                today_readings = prepare_native_corpus_readings(
+                    data["readings"],
+                    today_resolution.fields["epistle_reference"],
+                    today_resolution.fields["gospel_reference"],
+                    today_resolution.selected_source,
+                )
+                next_readings = prepare_native_corpus_readings(
+                    next_raw,
+                    next_resolution.fields["epistle_reference"],
+                    next_resolution.fields["gospel_reference"],
+                    next_resolution.selected_source,
+                )
+            else:
+                set_official_references(data["readings"], today_resolution.fields["epistle_reference"], today_resolution.fields["gospel_reference"])
+                set_official_references(next_raw, next_resolution.fields["epistle_reference"], next_resolution.fields["gospel_reference"])
+                apply_prokeimenon(data["readings"], today_resolution.fields.get("tone"), exact_text=today_resolution.fields.get("prokeimenon_text"), selected_source=today_resolution.selected_source)
+                apply_prokeimenon(next_raw, next_resolution.fields.get("tone"), exact_text=next_resolution.fields.get("prokeimenon_text"), selected_source=next_resolution.selected_source)
+                today_readings = inject_canonical_readings(data["readings"], bible, canonical_meta, allow_network=not args.offline)
+                next_readings = inject_canonical_readings(next_raw, bible, canonical_meta, allow_network=not args.offline)
 
-            today_readings = inject_canonical_readings(data["readings"], bible, canonical_meta, allow_network=not args.offline)
-            next_readings = inject_canonical_readings(next_raw, bible, canonical_meta, allow_network=not args.offline)
             data["readings"] = today_readings
             data["integrity_inputs"]["next_sunday"]["readings"] = next_readings
 
@@ -1300,10 +1456,6 @@ def main() -> None:
             for item in data.get("upcoming", []):
                 if not isinstance(item, dict):
                     continue
-                # Upcoming cards are previews, not published liturgical texts. They
-                # never block today's signed update and never display generic
-                # "review the church text" guidance. The next Sunday is the only
-                # future service promoted to exact, fully verified content.
                 item["verification_status"] = "PREVIEW_REFERENCE_ONLY"
                 item["publication_note"] = {
                     "ar": "مرجع معاينة فقط؛ يُعاد التحقق من النص الكامل في يومه قبل النشر.",
@@ -1315,20 +1467,51 @@ def main() -> None:
                     item["verification_status"] = "VERIFIED_NEXT_SUNDAY_REFERENCES"
                     item["source"] = next_resolution.selected_source
 
-            if not errors:
-                rebuild_services(data, today_readings, next_readings)
+            rebuild_services(data, today_readings, next_readings)
+            data["source_evidence"] = [asdict(item) for item in all_evidence]
+            data["translation_status"] = "source_native_only_or_unavailable"
+            data["machine_translation_used"] = False
+            data["automatic_diacritization_used"] = False
+            data["translation_fallback_policy"] = "DISABLED_NO_CROSS_LANGUAGE_FALLBACK"
+            data["content_metadata"]["human_review_required"] = False
+
+            if native_mode:
+                data["schema_version"] = max(9, int(data.get("schema_version") or 0))
+                data["translation_notice"] = {
+                    "ar": "كل لغة تستخدم نصها الكنسي الرسمي الأصلي فقط. لا ترجمة بين اللغات ولا تشكيل آلي؛ وعند غياب النص يبقى غير متاح.",
+                    "en": "Each language uses only its independently imported official native text. No cross-language translation or automatic diacritization; missing text remains unavailable.",
+                    "el": "Κάθε γλώσσα χρησιμοποιεῖ μόνον τὸ ἐπισήμως εἰσαγμένο πρωτότυπο κείμενό της· χωρὶς μετάφραση μεταξὺ γλωσσῶν ἢ αὐτόματο τονισμό."
+                }
+                data["language_content_mode"] = "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES"
+                data["content_metadata"]["review_status"] = "automatic_native_language_policy_enforced"
+                data["publication"] = {
+                    "status": "AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED",
+                    "human_review_required": False,
+                    "fail_closed": True,
+                    "same_language_fallback_only": True,
+                    "religious_text_contract": "canonical/source_native_contract.json",
+                    "source_priority": policy["source_priority"],
+                    "selected_source": today_resolution.selected_source,
+                    "selected_priority": today_resolution.selected_priority,
+                    "fallback_trace": today_resolution.fallback_trace,
+                }
+                data["integrity"] = {
+                    "status": "VERIFIED_OFFICIAL_SOURCES",
+                    "policy": "canonical/source_policy.json",
+                    "ai_scripture_translation_used": False,
+                    "ai_liturgical_translation_used": False,
+                    "native_text_contract": "canonical/source_native_contract.json",
+                    "legacy_arabic_scripture_snapshot": "QUARANTINED_NOT_PUBLICATION_AUTHORITY",
+                }
+            else:
                 data["schema_version"] = 8
                 data["translation_notice"] = {
                     "ar": "نصوص الإنجيل والرسائل والمزامير مأخوذة حرفيًا من كتاب مقدس عربي مثبت ومشكول، وتُقارن كلماتها بالنص الأساسي. لا يستخدم النظام ترجمة ذكاء اصطناعي للنص المقدس أو القطع الليتورجية.",
                     "en": "Exact vocalized Arabic Bible text, word-checked against a pinned base; no AI Scripture or liturgical translation.",
                     "el": "Exact vocalized Arabic Bible text; no AI Scripture or liturgical translation.",
                 }
-                data["translation_status"] = "source_native_only_or_unavailable"
                 data["language_content_mode"] = "THREE_INDEPENDENT_OFFICIAL_NATIVE_SOURCES"
-                data["machine_translation_used"] = False
-                data["translation_fallback_policy"] = "DISABLED_NO_CROSS_LANGUAGE_FALLBACK"
                 data["content_metadata"]["review_status"] = "automatic_official_sources_verified"
-                data["content_metadata"]["human_review_required"] = False
                 data["publication"] = {
                     "status": "AUTOMATIC_OFFICIAL_SOURCES_VERIFIED",
                     "human_review_required": False,
@@ -1338,8 +1521,6 @@ def main() -> None:
                     "selected_priority": today_resolution.selected_priority,
                     "fallback_trace": today_resolution.fallback_trace,
                 }
-                # Deduplicate source evidence while retaining per-date evidence.
-                data["source_evidence"] = [asdict(item) for item in all_evidence]
                 data["integrity"] = {
                     "status": "VERIFIED_OFFICIAL_SOURCES",
                     "policy": "canonical/source_policy.json",
@@ -1349,12 +1530,12 @@ def main() -> None:
                     "ai_scripture_translation_used": False,
                     "ai_liturgical_translation_used": False,
                 }
-                synchronize_outputs(data)
+            synchronize_outputs(data)
 
     if args.verify_existing or (args.apply and not errors):
         errors.extend(verify_existing(data, bible, canonical_meta))
     report = build_report(data, canonical_meta, all_evidence, errors, warnings)
-    report_dir = ROOT / "reports" / "integrity"
+    report_dir = ROOT / ".cache" / "integrity-reports"
     write_json(report_dir / "latest.json", report)
     write_json(report_dir / f"{data['date_iso']}.json", report)
     print(json.dumps({"decision": report["decision"], "date": data["date_iso"], "warnings": len(warnings), "errors": errors}, ensure_ascii=False))
