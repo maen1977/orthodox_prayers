@@ -172,15 +172,31 @@ jobs:
           rsync -a --delete "$SOURCE/data/" "$TARGET/data/"
           rsync -a --delete "$SOURCE/app/src/main/assets/data/" "$TARGET/app/src/main/assets/data/"
           cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
+          cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
           mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
-          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$TARGET/scripts/"
+          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/sign_language_lanes.py" "$TARGET/scripts/"
           cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
+
+          # Sign the exact bytes inside the publication tree. This prevents a stale
+          # lane signature from surviving when JSON changed during generation/copying.
           cd "$TARGET"
+          python scripts/sign_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+          python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+
           git checkout -B "$VERIFIED_DATA_BRANCH"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "Publish daily data ${{ steps.resolve.outputs.date }}"
+
+          # Verify the exact committed Git blobs before anything reaches origin.
+          COMMIT_CHECK="$RUNNER_TEMP/verified-data-commit-check"
+          rm -rf "$COMMIT_CHECK"
+          mkdir -p "$COMMIT_CHECK"
+          git archive HEAD | tar -x -C "$COMMIT_CHECK"
+          cd "$COMMIT_CHECK"
+          python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+          cd "$TARGET"
           git push --force-with-lease origin "HEAD:$VERIFIED_DATA_BRANCH"
 
       - name: Verify from origin after publishing
