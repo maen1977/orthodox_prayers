@@ -4,7 +4,7 @@ import importlib.util
 import json
 import sys
 import unittest
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -168,7 +168,7 @@ class DailyPipelineTests(unittest.TestCase):
         self.assertEqual({"ar", "en", "el"}, set(metadata["corpus_manifests"]))
         self.assertFalse(metadata["independent_base_available"])
 
-    def test_missing_native_reading_renders_a_status_instead_of_a_blank_segment(self):
+    def test_missing_native_reading_keeps_reference_without_inserting_unavailable_copy(self):
         reading = {
             "kind": "epistle",
             "reference": {"ar": "", "en": "Romans 1:1-3", "el": ""},
@@ -176,11 +176,9 @@ class DailyPipelineTests(unittest.TestCase):
             "integrity": {"canonical_reference": "ROM.1.1-3"},
         }
         block = self.update.reading_block_loc(reading)
-        self.assertTrue(block["ar"].strip())
-        self.assertIn("Romans 1:1-3", block["en"])
-        self.assertTrue(block["el"].strip())
-        self.assertNotIn("Romans", block["ar"])
-        self.assertNotIn("Romans", block["el"])
+        self.assertEqual("", block["ar"])
+        self.assertEqual("Romans 1:1-3", block["en"])
+        self.assertEqual("", block["el"])
 
     def test_all_date_sensitive_services_are_generated(self):
         target = date(2026, 7, 10)
@@ -224,7 +222,8 @@ class DailyPipelineTests(unittest.TestCase):
             self.assertLess(len(service_map[service_id]["segments"]), 20)
             rendered = json.dumps(service_map[service_id], ensure_ascii=False)
             self.assertIn("ملحق اليوم الكنسي", rendered)
-            self.assertIn("حالة قطع اليوم", rendered)
+            self.assertNotIn("نص طروبارية اليوم غير متاح", rendered)
+            self.assertNotIn("نص قنداق اليوم غير متاح", rendered)
             self.assertIn(data["feast"]["ar"], rendered)
             self.assertIn(data["fast"]["ar"], rendered)
 
@@ -246,6 +245,29 @@ class DailyPipelineTests(unittest.TestCase):
             self.assertIn("epistle", item["reading_references"])
             self.assertIn("gospel", item["reading_references"])
         self.assertEqual(self.schedule.validate(data), [])
+
+
+    def test_old_calendar_july_second_has_native_propers_in_all_languages(self):
+        target = date(2026, 7, 15)
+        info = self.update.day_info(target)
+        inserts = self.update.feast_inserts(info)
+        self.assertEqual("placing_robe_theotokos_blachernae", inserts["proper_id"])
+        for key in ("troparion", "kontakion"):
+            for language in ("ar", "en", "el"):
+                self.assertTrue(inserts[key][language].strip(), f"{key}.{language} is empty")
+        prokeimenon = self.update.default_prokeimenon(info, target)
+        for language in ("ar", "en", "el"):
+            self.assertTrue(prokeimenon["body"][language].strip())
+            evidence = prokeimenon["native_source_verification"][language]
+            self.assertEqual("VERIFIED_EXACT_NATIVE_SOURCE", evidence["status"])
+
+    def test_weekday_and_sunday_prokeimena_are_not_blank_in_any_language(self):
+        for offset in range(7):
+            target = date(2026, 7, 13) + timedelta(days=offset)
+            info = self.update.day_info(target)
+            prokeimenon = self.update.default_prokeimenon(info, target)
+            for language in ("ar", "en", "el"):
+                self.assertTrue(prokeimenon["body"][language].strip(), f"{target} {language}")
 
     def test_canonical_injection_clears_unverified_target_language_bodies(self):
         reading = {
@@ -319,6 +341,45 @@ class DailyPipelineTests(unittest.TestCase):
         entry = self.update.julian_to_gregorian_date(2026, 11, 21)
         nativity_feast = self.update.day_info(entry)["fasting"]
         self.assertEqual(nativity_feast["code"], "fish_allowed")
+
+    def test_daily_proper_source_domains_are_registered(self):
+        native = load_module("native_text_contract_propers_test", "scripts/native_text_contract.py")
+        contract = native.load_contract()
+        registry = json.loads((ROOT / "canonical/daily_propers.json").read_text(encoding="utf-8"))
+        groups = [registry["weekly_sources"], registry["fixed_feasts"]["07-02"]["sources"]]
+        for group in groups:
+            for language, source in group.items():
+                self.assertTrue(native.source_allowed(language, source["source_id"], contract))
+                self.assertTrue(native.source_url_allowed(source["source_id"], source["url"], contract))
+
+    def test_current_day_services_render_propers_without_legacy_unavailable_copy(self):
+        target = date(2026, 7, 15)
+
+        def fake_daily_source(day, attempts=4):
+            return {
+                "readings": [
+                    {"display": "St. Paul's First Letter to the Corinthians 7:12-24", "text": "discovery only"},
+                    {"display": "Matthew 14:35-15:11", "text": "discovery only"},
+                ]
+            }
+
+        with patch.object(self.update, "fetch_orthocal_old", fake_daily_source):
+            data = self.update.build_day(target)
+
+        current_services = {
+            service["id"]: json.dumps(service, ensure_ascii=False)
+            for service in data["services"]
+            if service["id"] != "next_sunday_full_liturgy"
+        }
+        for service_id in ("morning_prayer", "evening_prayer", "orthros", "vespers"):
+            rendered = current_services[service_id]
+            self.assertIn("يا والدة الإله الدائمة", rendered)
+            self.assertIn("أيتها النقية", rendered)
+            self.assertNotIn("نص طروبارية اليوم غير متاح", rendered)
+            self.assertNotIn("نص قنداق اليوم غير متاح", rendered)
+        liturgy = current_services["divine_liturgy"]
+        self.assertIn("تعظم نفسي الرب", liturgy)
+        self.assertNotIn("النص الكنسي العربي الأصلي غير متاح حاليًا", liturgy)
 
     def test_home_services_remain_generated_but_can_be_hidden(self):
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")

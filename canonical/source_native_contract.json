@@ -23,6 +23,7 @@
       "priority": [
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
+        "antioch_archdiocese_tripoli_ar",
         "antioch_patriarchate_ar",
         "ebible_arabic_van_dyck"
       ],
@@ -35,6 +36,7 @@
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
         "goarch_digital_chant_stand_english",
+        "akroasis_small_menaion_english",
         "goarch_synekdemos",
         "oca_official_english",
         "ebible_world_english_bible"
@@ -47,6 +49,7 @@
         "church_of_greece_apostoliki_diakonia",
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
+        "goarch_online_chapel_greek",
         "goarch_digital_chant_stand_greek",
         "ebible_greek_byzantine_1904"
       ],
@@ -220,6 +223,44 @@
       "title": "1904 Patriarchal Greek New Testament",
       "license": "Public Domain",
       "role": "independent_native_scripture_text_only"
+    },
+    "antioch_archdiocese_tripoli_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://archtripoli.org/",
+      "capabilities": [
+        "calendar",
+        "lectionary",
+        "troparia",
+        "kontakia",
+        "prokeimena",
+        "liturgy"
+      ],
+      "jurisdiction": "Greek Orthodox Archdiocese of Tripoli and Koura (Antiochian Patriarchate)"
+    },
+    "akroasis_small_menaion_english": {
+      "language": "en",
+      "official": false,
+      "orthodox_resource": true,
+      "base_url": "https://akroasis.org/",
+      "capabilities": [
+        "fixed_feast_troparia",
+        "fixed_feast_kontakia"
+      ],
+      "role": "same_language_registered_menaion_source"
+    },
+    "goarch_online_chapel_greek": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://www.goarch.org/chapel",
+      "capabilities": [
+        "daily_calendar",
+        "saints",
+        "troparia",
+        "kontakia",
+        "prokeimena"
+      ],
+      "role": "same_language_official_source"
     }
   },
   "publication": {

@@ -24,6 +24,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -749,6 +750,7 @@ public final class DataRepository {
                     service.optJSONObject("segment_replacements"),
                     service.optJSONObject("inline_replacements")
             );
+            pruneUnresolvedOrEmptySegments(resolvedBaseSegments);
             JSONArray merged = new JSONArray();
             appendSegments(merged, service.optJSONArray("segments"));
             appendSegments(merged, resolvedBaseSegments);
@@ -769,6 +771,59 @@ public final class DataRepository {
             Object value = segments.opt(i);
             applyReplacementsToValue(value, exact, inline);
         }
+    }
+
+    /**
+     * Removes legacy placeholder rows after the signed daily overlay is composed.
+     * An absent optional proper must disappear; it must never render as an empty
+     * reader/chanter row or as an old bracketed marker from the static template.
+     */
+    private static void pruneUnresolvedOrEmptySegments(JSONArray segments) {
+        if (segments == null) return;
+        for (int i = segments.length() - 1; i >= 0; i--) {
+            JSONObject segment = segments.optJSONObject(i);
+            if (segment == null) continue;
+            JSONObject text = segment.optJSONObject("text");
+            if (text == null) continue;
+            boolean hasVisibleText = false;
+            boolean hasUnresolvedMarker = false;
+            boolean onlyLegacyUnavailableCopy = true;
+            for (String language : new String[]{"ar", "en", "el"}) {
+                String value = text.optString(language, "").trim();
+                if (!value.isEmpty()) {
+                    hasVisibleText = true;
+                    if (!isLegacyUnavailableText(value)) onlyLegacyUnavailableCopy = false;
+                }
+                if (value.contains("[") && value.contains("]")) hasUnresolvedMarker = true;
+            }
+            if (!hasVisibleText || hasUnresolvedMarker || onlyLegacyUnavailableCopy) segments.remove(i);
+        }
+
+        // Remove section headings that no longer have content before the next heading.
+        for (int i = segments.length() - 1; i >= 0; i--) {
+            JSONObject segment = segments.optJSONObject(i);
+            if (segment == null || !"section".equals(segment.optString("type"))) continue;
+            boolean hasContent = false;
+            for (int j = i + 1; j < segments.length(); j++) {
+                JSONObject next = segments.optJSONObject(j);
+                if (next == null) continue;
+                if ("section".equals(next.optString("type"))) break;
+                if (next.optJSONObject("text") != null) { hasContent = true; break; }
+            }
+            if (!hasContent) segments.remove(i);
+        }
+    }
+
+    private static boolean isLegacyUnavailableText(String value) {
+        String normalized = value == null ? "" : value.toLowerCase(Locale.ROOT);
+        return normalized.contains("غير متاح")
+                || normalized.contains("لم يتوفر نص")
+                || normalized.contains("لن يعرض التطبيق نص")
+                || normalized.contains("currently unavailable")
+                || normalized.contains("not available")
+                || normalized.contains("will not display guessed")
+                || normalized.contains("δεν είναι διαθέσιμο")
+                || normalized.contains("δὲν εἶναι διαθέσιμο");
     }
 
     private static void applyReplacementsToValue(Object value, JSONObject exact, JSONObject inline) {

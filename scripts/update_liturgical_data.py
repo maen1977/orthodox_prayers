@@ -431,6 +431,59 @@ SUNDAY_PROKEIMENA = {
     int(tone): (entry["verse"], entry["stich"])
     for tone, entry in SUNDAY_PROKEIMENA_REGISTRY["tones"].items()
 }
+DAILY_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "daily_propers.json").read_text(encoding="utf-8"))
+
+
+def _localized(value: object) -> dict:
+    if not isinstance(value, dict):
+        return loc(str(value or ""))
+    return {lang: str(value.get(lang) or "") for lang in ("ar", "en", "el")}
+
+
+def _has_text(value: object) -> bool:
+    return isinstance(value, dict) and any(str(value.get(lang) or "").strip() for lang in ("ar", "en", "el"))
+
+
+def _proper_sources(entry: dict | None = None) -> dict:
+    if isinstance(entry, dict) and isinstance(entry.get("sources"), dict):
+        return entry["sources"]
+    return DAILY_PROPERS_REGISTRY.get("weekly_sources", {})
+
+
+def _native_verification(body: dict, sources: dict, canonical_reference: str = "") -> dict:
+    result = {}
+    for lang in ("ar", "en", "el"):
+        text = str(body.get(lang) or "")
+        source = sources.get(lang) if isinstance(sources.get(lang), dict) else {}
+        if text and source.get("source_id"):
+            result[lang] = {
+                "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+                "source_id": source.get("source_id"),
+                "source_url": source.get("url"),
+                "canonical_reference": canonical_reference,
+                "reference_available": True,
+                "text_available": True,
+                "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                "ai_translation_used": False,
+                "automatic_diacritization_used": False,
+            }
+        else:
+            result[lang] = {
+                "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+                "source_id": None,
+                "canonical_reference": canonical_reference,
+                "reference_available": False,
+                "text_available": False,
+                "ai_translation_used": False,
+                "automatic_diacritization_used": False,
+            }
+    return result
+
+
+def fixed_proper_entry(info: dict) -> dict | None:
+    key = f"{int(info['julian_month']):02d}-{int(info['julian_day']):02d}"
+    entry = DAILY_PROPERS_REGISTRY.get("fixed_feasts", {}).get(key)
+    return copy.deepcopy(entry) if isinstance(entry, dict) else None
 
 
 
@@ -446,19 +499,14 @@ def reading_block_loc(reading: dict, prefer_empty_ar_when_missing: bool = False)
     """Return a renderable localized reading block without cross-language fallback.
 
     Exact native text is shown only when its same-language verification and hash
-    are valid. A missing text is represented by a localized interface status,
-    never by translated Scripture and never by a blank reader segment.
+    are valid. Before the native corpus stage fills a reading, keep only its
+    verified reference; never inject an "unavailable" sentence into the service.
     """
     ref = reading.get("reference", {}) if isinstance(reading.get("reference"), dict) else {}
     body = reading.get("body", {}) if isinstance(reading.get("body"), dict) else {}
     native = reading.get("native_source_verification") if isinstance(reading.get("native_source_verification"), dict) else {}
     legacy = reading.get("translation_verification") if isinstance(reading.get("translation_verification"), dict) else {}
     canonical_ref = str(reading.get("integrity", {}).get("canonical_reference") or "")
-    unavailable = {
-        "ar": "النص الكنسي العربي الأصلي غير متاح حاليًا.",
-        "en": "Official native English text is currently unavailable.",
-        "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή.",
-    }
     out = {"ar": "", "en": "", "el": ""}
     for lang in ("ar", "en", "el"):
         lang_ref = str(ref.get(lang) or "").strip()
@@ -486,32 +534,62 @@ def reading_block_loc(reading: dict, prefer_empty_ar_when_missing: bool = False)
         if exact_native or exact_legacy:
             out[lang] = (lang_ref + "\n" + lang_body).strip() if lang_ref else lang_body
         else:
-            out[lang] = (lang_ref + "\n" + unavailable[lang]).strip() if lang_ref else unavailable[lang]
+            out[lang] = lang_ref
     return out
 
 
-def exact_or_sunday_prokeimenon(day: date, info: dict) -> dict:
-    # Fixed major feasts first.
-    if info["julian_month"] == 6 and info["julian_day"] == 29:
-        return {"icon":"🎵","kind":"prokeimenon","title":loc("البروكيمنن","Prokeimenon"),"reference":loc("إلى كل الأرض خرج صوتهم","Their sound has gone out into all the earth"),"body":loc("إلى كل الأرض خرج صوتهم، وإلى أقاصي المسكونة أقوالهم.")}
-    if info["julian_month"] == 6 and info["julian_day"] == 26:
-        return {"icon":"🎵","kind":"prokeimenon","title":loc("البروكيمنن","Prokeimenon"),"reference":loc("الرب قوتي وتسبحتي","The Lord is my strength and my song"),"body":loc("الرب قوتي وتسبحتي، وقد صار لي خلاصاً.\nأدباً أدبني الرب، وإلى الموت لم يسلمني.")}
-    tone = resurrection_tone(day, info["pascha"])
-    if tone:
-        verse, stich = SUNDAY_PROKEIMENA[tone]
-        return {"icon":"🎵","kind":"prokeimenon","title":loc(f"البروكيمنن — اللحن {tone}", f"Prokeimenon — Tone {tone}"),"reference":loc(f"لحن {tone}", f"Tone {tone}"),"body":loc(f"{verse}\n{stich}")}
-    # A missing weekday prokeimenon is not replaced with guidance. The official-source
-    # gate must supply the exact text or block publication and keep the last signed good data.
+def _prokeimenon_reading(entry: dict, sources: dict, provenance: str) -> dict:
+    body = _localized(entry.get("body"))
+    reference = _localized(entry.get("reference"))
+    title = _localized(entry.get("title"))
+    tone = entry.get("tone")
+    canonical_reference = str(entry.get("canonical_reference") or "")
     return {
         "icon": "🎵",
         "kind": "prokeimenon",
-        "title": loc("البروكيمنن", "Prokeimenon"),
-        "reference": loc("غير منشور قبل التحقق الرسمي", "Not published before official verification"),
-        "body": loc(""),
-        "publication_status": "BLOCKED_MISSING_OFFICIAL_TEXT",
-        "integrity": {"status": "BLOCKED", "reason": "exact_official_prokeimenon_required"},
+        "title": title,
+        "reference": reference,
+        "body": body,
+        "tone": tone,
+        "source": {lang: str((sources.get(lang) or {}).get("url") or "") for lang in ("ar", "en", "el")},
+        "native_source_verification": _native_verification(body, sources, canonical_reference),
+        "translation_locked": True,
+        "integrity": {
+            "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+            "canonical_reference": canonical_reference,
+            "proper_provenance": provenance,
+            "ai_translation_used": False,
+            "automatic_diacritization_used": False,
+        },
     }
 
+
+def exact_or_sunday_prokeimenon(day: date, info: dict) -> dict:
+    feast = fixed_proper_entry(info)
+    if feast and isinstance(feast.get("prokeimenon"), dict):
+        return _prokeimenon_reading(feast["prokeimenon"], _proper_sources(feast), f"fixed_feast:{feast.get('id')}")
+
+    tone = resurrection_tone(day, info["pascha"])
+    if tone:
+        verse, stich = SUNDAY_PROKEIMENA[tone]
+        entry = {
+            "tone": tone,
+            "title": {"ar": f"البروكيمنن — اللحن {tone}", "en": f"Prokeimenon — Tone {tone}", "el": f"Προκείμενον — Ἦχος {tone}"},
+            "reference": {"ar": f"لحن القيامة {tone}", "en": f"Resurrection Tone {tone}", "el": f"Ἀναστάσιμος Ἦχος {tone}"},
+            "body": {lang: f"{verse.get(lang, '')}\n{stich.get(lang, '')}".strip() for lang in ("ar", "en", "el")},
+        }
+        sources = {
+            lang: {
+                "source_id": SUNDAY_PROKEIMENA_REGISTRY.get("source_ids", {}).get(lang),
+                "url": SUNDAY_PROKEIMENA_REGISTRY.get("source_urls", {}).get(lang),
+            } for lang in ("ar", "en", "el")
+        }
+        return _prokeimenon_reading(entry, sources, f"octoechos_tone:{tone}")
+
+    weekday = DAILY_PROPERS_REGISTRY.get("weekday_prokeimena", {}).get(str(day.weekday()))
+    if isinstance(weekday, dict):
+        return _prokeimenon_reading(weekday, _proper_sources(), f"weekday:{day.weekday()}")
+    raise RuntimeError(f"No prokeimenon registry entry for weekday {day.weekday()}")
 
 def default_prokeimenon(info: dict, day: date | None = None) -> dict:
     return exact_or_sunday_prokeimenon(day or date.today(), info)
@@ -633,23 +711,27 @@ def reading_references(readings: list[dict]) -> dict:
     return result
 
 
-def feast_inserts(info: dict) -> dict[str, str]:
-    if info["julian_month"] == 6 and info["julian_day"] == 29:
+def feast_inserts(info: dict) -> dict[str, dict]:
+    entry = fixed_proper_entry(info)
+    if entry:
         return {
-            "troparion": "يا رسولي المسيح المتصدرين، وشفيعي المسكونة، إلى سيد الكل تضرعا أن يمنح المسكونة السلام العظيم، ولنفوسنا الرحمة العظمى.",
-            "kontakion": "يا رب، لقد اتخذت الواعظين الثابتين والكاملين في الرئاسة، بطرس وبولس، أساساً لكنيستك، فبشفاعاتهما ثبّت الإيمان الأرثوذكسي.",
-            "church_troparion": "طروبارية الهيكل أو شفيع الكنيسة تُقال هنا إن وجدت.",
-            "communion": "إلى كل الأرض خرج صوتهم، وإلى أقاصي المسكونة أقوالهم. هللويا.",
-            "evangelist": "متى البشير",
+            "troparion": _localized(entry.get("troparion")),
+            "kontakion": _localized(entry.get("kontakion")),
+            "church_troparion": loc(""),
+            "communion": _localized(entry.get("communion")),
+            "evangelist": loc("الإنجيلي", "Evangelist", "Εὐαγγελιστής"),
+            "proper_id": entry.get("id"),
+            "sources": copy.deepcopy(entry.get("sources") or {}),
         }
     return {
-        "troparion": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-        "kontakion": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-        "church_troparion": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
-        "communion": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
-        "evangelist": "الإنجيلي",
+        "troparion": loc(""),
+        "kontakion": loc(""),
+        "church_troparion": loc(""),
+        "communion": loc(""),
+        "evangelist": loc("الإنجيلي", "Evangelist", "Εὐαγγελιστής"),
+        "proper_id": None,
+        "sources": {},
     }
-
 
 def evangelist_for_reading(reading: dict) -> str:
     ref = str(reading.get("reference", {}).get("ar") or reading.get("reference", {}).get("en") or "")
@@ -747,13 +829,15 @@ def pre_liturgy_segments(info: dict, inserts: dict[str, str]) -> list[dict]:
     for title, speaker, text in PRE_LITURGY_PRAYERS:
         segments.append(liturgy_section(title))
         segments.append(liturgy_text_segment(speaker, text))
-    segments.extend([
-        liturgy_section("قطع اليوم قبل القداس"),
-        liturgy_text_segment("المرتل", inserts["troparion"]),
-        liturgy_text_segment("المرتل", inserts["kontakion"]),
-        liturgy_text_segment("ملاحظة اختيارية", "تُعرض هنا فقط القطع اليومية التي نجحت في التحقق الآلي من مصدر كنسي رسمي."),
-        liturgy_section("بداية القداس الإلهي"),
-    ])
+    proper_segments: list[dict] = []
+    if _has_text(inserts["troparion"]) or _has_text(inserts["kontakion"]):
+        proper_segments.append(liturgy_section("قطع اليوم قبل القداس"))
+        if _has_text(inserts["troparion"]):
+            proper_segments.append({"type": "text", "speaker": loc("المرتل", "Chanter", "Ψάλτης"), "text": copy.deepcopy(inserts["troparion"])})
+        if _has_text(inserts["kontakion"]):
+            proper_segments.append({"type": "text", "speaker": loc("المرتل", "Chanter", "Ψάλτης"), "text": copy.deepcopy(inserts["kontakion"])})
+    segments.extend(proper_segments)
+    segments.append(liturgy_section("بداية القداس الإلهي"))
     return segments
 
 
@@ -769,13 +853,13 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
     inserts = feast_inserts(info)
 
     exact_replacements = {
-        "[طروبارية اليوم]": loc(inserts["troparion"]),
-        "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": loc(inserts["church_troparion"]),
-        "[القنداق]": loc(inserts["kontakion"]),
+        "[طروبارية اليوم]": copy.deepcopy(inserts["troparion"]),
+        "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": copy.deepcopy(inserts["church_troparion"]),
+        "[القنداق]": copy.deepcopy(inserts["kontakion"]),
         "[البروكيمنن]": reading_block_loc(prok, prefer_empty_ar_when_missing=False),
         "[فصل من رسالة اليوم]": reading_block_loc(epistle, prefer_empty_ar_when_missing=True),
         "[فصل الإنجيل المعيّن لهذا اليوم]": reading_block_loc(gospel, prefer_empty_ar_when_missing=True),
-        "[آية المناولة]": loc(inserts["communion"]),
+        "[آية المناولة]": copy.deepcopy(inserts["communion"]),
     }
     inline_replacements = {
         "[اسم الإنجيلي]": loc(evangelist_for_reading(gospel)),
@@ -861,15 +945,13 @@ def daily_context_segments(day: date, info: dict, readings: list[dict], service_
             f"التذكار: {info['feast_ar']}. حالة الصوم: {info['fast_ar']}.",
             "rubric",
         ),
-        liturgy_text_segment(
-            "ملاحظة اختيارية",
-            "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "rubric",
-        ),
-        liturgy_section("حالة قطع اليوم"),
-        liturgy_text_segment("المرتل", inserts["troparion"]),
-        liturgy_text_segment("المرتل", inserts["kontakion"]),
     ]
+    if _has_text(inserts["troparion"]) or _has_text(inserts["kontakion"]):
+        segments.append(liturgy_section("قطع اليوم"))
+        if _has_text(inserts["troparion"]):
+            segments.append({"type": "text", "speaker": loc("المرتل", "Chanter", "Ψάλτης"), "text": copy.deepcopy(inserts["troparion"])})
+        if _has_text(inserts["kontakion"]):
+            segments.append({"type": "text", "speaker": loc("المرتل", "Chanter", "Ψάλτης"), "text": copy.deepcopy(inserts["kontakion"])})
     return segments
 
 
