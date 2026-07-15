@@ -20,14 +20,21 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "4.0.0"', build)
-        self.assertIn("versionCode = 40000", build)
+        self.assertIn('versionName = "4.0.2"', build)
+        self.assertIn("versionCode = 40002", build)
         self.assertIn("compileSdk = 35", build)
         self.assertIn("targetSdk = 35", build)
         self.assertIn("isMinifyEnabled = true", build)
         self.assertIn("isShrinkResources = true", build)
         self.assertIn('System.getenv("ANDROID_KEYSTORE_FILE")', build)
         self.assertIn('signingConfigs.findByName("release")', build)
+
+
+    def test_android_accepts_verified_partial_daily_payloads(self):
+        repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
+        self.assertIn('"PARTIAL_VERIFIED".equals(dailyAvailability)', repository)
+        self.assertIn("int minimumReadings = partialVerified ? 2 : 3", repository)
+        self.assertIn('!"FULL".equals(dailyAvailability) && !partialVerified', repository)
 
     def test_daily_schema_and_provenance(self):
         schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))

@@ -414,8 +414,15 @@ public final class DataRepository {
         if (data.optJSONObject("next_sunday") == null) return "next_sunday_missing";
         JSONArray upcoming = data.optJSONArray("upcoming");
         if (upcoming == null || upcoming.length() != 7) return "upcoming_incomplete";
+        JSONObject publication = data.optJSONObject("publication");
+        if (publication == null || !"AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED".equals(publication.optString("status"))) return "native_policy_not_enforced";
+        String dailyAvailability = publication.optString("daily_availability", "FULL");
+        boolean partialVerified = "PARTIAL_VERIFIED".equals(dailyAvailability);
+        if (!"FULL".equals(dailyAvailability) && !partialVerified) return "daily_availability_invalid";
+
         JSONArray readings = data.optJSONArray("readings");
-        if (readings == null || readings.length() < 3) return "readings_incomplete";
+        int minimumReadings = partialVerified ? 2 : 3;
+        if (readings == null || readings.length() < minimumReadings) return "readings_incomplete";
         JSONArray services = data.optJSONArray("services");
         if (services == null || services.length() < 7) return "services_incomplete";
         String serviceValidation = validateServices(services);
@@ -433,8 +440,6 @@ public final class DataRepository {
                 || languageSources.optJSONObject("ar") == null
                 || languageSources.optJSONObject("el") == null
                 || languageSources.optJSONObject("en") == null) return "native_language_sources_missing";
-        JSONObject publication = data.optJSONObject("publication");
-        if (publication == null || !"AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED".equals(publication.optString("status"))) return "native_policy_not_enforced";
         if (!publication.optBoolean("fail_closed", false)) return "fail_closed_missing";
         if (!publication.optBoolean("same_language_fallback_only", false)) return "same_language_fallback_missing";
         boolean epistle = false;
