@@ -48,7 +48,7 @@ def validate_today(data):
             text=str(body.get(lang) or '')
             evidence=verification[lang]
             if text:
-                if evidence.get('status') not in {'VERIFIED_EXACT_NATIVE_SOURCE','IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS'}: fail(f'{kind}.{lang} non-empty text is unverified')
+                if evidence.get('status') not in {'VERIFIED_EXACT_NATIVE_SOURCE','IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS','IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS'}: fail(f'{kind}.{lang} non-empty text is unverified')
                 if evidence.get('text_sha256')!=sha256_text(text): fail(f'{kind}.{lang} text hash mismatch')
     services=data.get('services')
     if not isinstance(services,list): fail('services must be an array')

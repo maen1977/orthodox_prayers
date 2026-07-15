@@ -107,7 +107,9 @@ public final class VerifiedContentSanitizer {
         JSONObject languageVerification = verification == null ? null : verification.optJSONObject(language);
         if (languageVerification == null) return false;
         String status = languageVerification.optString("status", "");
-        if (!VERIFIED_STATUS.equals(status) && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)) return false;
+        if (!VERIFIED_STATUS.equals(status)
+                && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)
+                && !"IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS".equals(status)) return false;
         String expectedHash = languageVerification.optString("text_sha256", "").trim();
         if (expectedHash.isEmpty() || !expectedHash.equalsIgnoreCase(sha256(text))) return false;
         if (languageVerification.optBoolean("ai_translation_used", true)) return false;

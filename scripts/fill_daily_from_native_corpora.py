@@ -16,6 +16,7 @@ from typing import Any, Iterable
 from native_text_contract import ROOT, LANGUAGES, load_contract, sha256_text, source_allowed, source_url_allowed
 from enforce_native_daily_lanes import date_evidence
 from orthodox_integrity import parse_reference as parse_human_reference
+from public_domain_scripture import load_public_domain_corpus
 
 SCRIPTURE_KINDS = {"epistle", "gospel"}
 REFERENCE_RE = re.compile(r"^(?P<book>[1-3]?[A-Z]+)\.(?P<start_chapter>\d+)\.(?P<start_verse>\d+)(?:-(?:(?P<end_chapter>\d+)\.)?(?P<end_verse>\d+))?$")
@@ -51,6 +52,20 @@ def canonical_reference(reading: dict[str, Any]) -> str:
         for item in old.values():
             if isinstance(item, dict) and item.get("canonical_reference"):
                 return str(item["canonical_reference"])
+    # Partial official-source resolution can leave the canonical integrity field
+    # unset while the calendar-discovery step still has the appointed human
+    # reference. Resolve that reference before the native-lane enforcer clears
+    # display-only discovery fields.
+    references = reading.get("reference")
+    if isinstance(references, dict):
+        for language in ("en", "ar", "el"):
+            raw = str(references.get(language) or "").strip()
+            if not raw:
+                continue
+            try:
+                return parse_human_reference(raw)[0]
+            except Exception:
+                continue
     return ""
 
 
@@ -73,7 +88,14 @@ def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any]
     manifest = json.loads((base / "manifest.json").read_text(encoding="utf-8"))
     verses = json.loads((base / "verses.json").read_text(encoding="utf-8"))
     if manifest.get("status") != "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS" or not verses:
-        return None
+        public_manifest, public_index = load_public_domain_corpus(language)
+        source_id = str(public_manifest.get("source_id") or "")
+        source_url = str(public_manifest.get("source_url") or "")
+        if not source_allowed(language, source_id, contract) or not source_url_allowed(source_id, source_url, contract):
+            raise ValueError(f"{language}: public-domain corpus source is outside the registered language lane")
+        if public_manifest.get("machine_translation_used") is not False or public_manifest.get("automatic_diacritization_used") is not False:
+            raise ValueError(f"{language}: public-domain corpus has forbidden transformation flags")
+        return public_manifest, public_index
     source_id = str(manifest.get("source_id") or "")
     source_url = str(manifest.get("source_url") or "")
     if not source_allowed(language, source_id, contract) or not source_url_allowed(source_id, source_url, contract):
@@ -113,10 +135,15 @@ def passage_verses(index: dict[tuple[str, int, int], dict[str, Any]], parsed: tu
         if previous is not None:
             if current[0] == previous[0] and current[1] != previous[1] + 1:
                 return None
-            if current[0] > previous[0] and current[1] != 1:
-                return None
-            if current[0] > previous[0] + 1:
-                return None
+            if current[0] > previous[0]:
+                if current[0] > previous[0] + 1 or current[1] != 1:
+                    return None
+                previous_chapter_max = max(
+                    (number for (item_book, chapter, number) in index if item_book == book and chapter == previous[0]),
+                    default=0,
+                )
+                if previous[1] != previous_chapter_max:
+                    return None
         previous = current
     return selected
 
@@ -140,14 +167,17 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
     parsed = parse_reference(canonical)
     if parsed is None:
         return 0
+    integrity = reading.setdefault("integrity", {})
+    if not isinstance(integrity, dict):
+        integrity = {}
+        reading["integrity"] = integrity
+    integrity["canonical_reference"] = canonical
     body = reading.setdefault("body", {})
     reference = reading.setdefault("reference", {})
     source = reading.setdefault("source", {})
     verification = reading.setdefault("native_source_verification", {})
     filled = 0
     for language in LANGUAGES:
-        if reference_evidence is not None and language not in reference_evidence:
-            continue
         corpus = corpora.get(language)
         if corpus is None:
             continue
@@ -162,7 +192,7 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
         reference[language] = format_reference(selected, parsed)
         source[language] = str(manifest["source_url"])
         verification[language] = {
-            "status": "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS",
+            "status": str(manifest.get("status") or "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS"),
             "source_id": manifest["source_id"],
             "source_url": manifest["source_url"],
             "canonical_reference": canonical,
@@ -177,6 +207,8 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
             "automatic_diacritization_used": False,
             "daily_reference_source_id": (reference_evidence or {}).get(language, {}).get("source_id"),
             "daily_reference_source_url": (reference_evidence or {}).get(language, {}).get("source_url"),
+            "corpus_archive_sha256": manifest.get("archive_sha256"),
+            "corpus_license": manifest.get("license"),
         }
         filled += 1
     reading["native_source_verification"] = verification

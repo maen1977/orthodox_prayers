@@ -11,7 +11,8 @@
       "allowed_sources": [
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
-        "antioch_patriarchate_ar"
+        "antioch_patriarchate_ar",
+        "ebible_arabic_van_dyck"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -24,7 +25,8 @@
         "jerusalem_patriarchate_en",
         "goarch_digital_chant_stand_english",
         "goarch_synekdemos",
-        "oca_official_english"
+        "oca_official_english",
+        "ebible_world_english_bible"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -36,7 +38,8 @@
         "church_of_greece_apostoliki_diakonia",
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
-        "goarch_digital_chant_stand_greek"
+        "goarch_digital_chant_stand_greek",
+        "ebible_greek_byzantine_1904"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -196,6 +199,48 @@
       ],
       "permission_confirmed": true,
       "name": "GOARCH Digital Chant Stand — Greek"
+    },
+    "ebible_arabic_van_dyck": {
+      "language": "ar",
+      "official": false,
+      "public_domain": true,
+      "base_url": "https://ebible.org/",
+      "capabilities": [
+        "scripture_corpus"
+      ],
+      "title": "الكتاب المقدس باللغة العربية، فان دايك",
+      "license": "Public Domain",
+      "role": "independent_native_scripture_text_only",
+      "permission_confirmed": true,
+      "name": "الكتاب المقدس باللغة العربية، فان دايك"
+    },
+    "ebible_world_english_bible": {
+      "language": "en",
+      "official": false,
+      "public_domain": true,
+      "base_url": "https://ebible.org/",
+      "capabilities": [
+        "scripture_corpus"
+      ],
+      "title": "World English Bible Classic",
+      "license": "Public Domain",
+      "role": "independent_native_scripture_text_only",
+      "permission_confirmed": true,
+      "name": "World English Bible Classic"
+    },
+    "ebible_greek_byzantine_1904": {
+      "language": "el",
+      "official": false,
+      "public_domain": true,
+      "base_url": "https://ebible.org/",
+      "capabilities": [
+        "scripture_corpus"
+      ],
+      "title": "1904 Patriarchal Greek New Testament",
+      "license": "Public Domain",
+      "role": "independent_native_scripture_text_only",
+      "permission_confirmed": true,
+      "name": "1904 Patriarchal Greek New Testament"
     }
   },
   "contract": "canonical/source_native_contract.json"

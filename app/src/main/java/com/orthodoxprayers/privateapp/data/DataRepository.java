@@ -460,7 +460,8 @@ public final class DataRepository {
                 if (evidence.optBoolean("automatic_diacritization_used", true)) return kind + "_" + language + "_diacritization_flag_invalid";
                 String status = evidence.optString("status", "");
                 if (!"VERIFIED_EXACT_NATIVE_SOURCE".equals(status)
-                        && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)) {
+                        && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)
+                        && !"IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS".equals(status)) {
                     return kind + "_" + language + "_text_unverified";
                 }
                 if (!sha256(text.getBytes(StandardCharsets.UTF_8)).equalsIgnoreCase(evidence.optString("text_sha256", ""))) {

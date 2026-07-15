@@ -71,7 +71,7 @@
       "type": "object",
       "required": ["status", "reference_available", "text_available", "ai_translation_used", "automatic_diacritization_used"],
       "properties": {
-        "status": {"enum": ["VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS", "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY", "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE"]},
+        "status": {"enum": ["VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS", "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS", "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY", "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE"]},
         "source_id": {"type": ["string", "null"]},
         "reference_available": {"type": "boolean"},
         "text_available": {"type": "boolean"},

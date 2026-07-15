@@ -465,7 +465,7 @@ def reading_block_loc(reading: dict, prefer_empty_ar_when_missing: bool = False)
         lang_body = str(body.get(lang) or "").strip()
         evidence = native.get(lang) if isinstance(native.get(lang), dict) else {}
         exact_native = (
-            evidence.get("status") in {"VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS"}
+            evidence.get("status") in {"VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS", "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS"}
             and bool(lang_body)
             and evidence.get("text_sha256") == hashlib.sha256(lang_body.encode("utf-8")).hexdigest()
             and evidence.get("ai_translation_used") is False

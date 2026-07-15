@@ -83,7 +83,7 @@ class OfficialSourcePolicyTests(unittest.TestCase):
         self.assertEqual("Romans 15:1-7", resolution.fields["epistle_reference"])
         self.assertEqual("Matthew 9:27-35", resolution.fields["gospel_reference"])
 
-    def test_legacy_translated_scripture_is_removed_until_native_corpora_exist(self):
+    def test_scripture_is_either_exact_native_source_or_safe_unavailable(self):
         for reading in self.today["readings"]:
             if reading["kind"] not in {"epistle", "gospel"}:
                 continue
@@ -97,11 +97,10 @@ class OfficialSourcePolicyTests(unittest.TestCase):
                 self.assertFalse(evidence["automatic_diacritization_used"])
                 text = reading["body"].get(language, "")
                 if text:
-                    self.assertIn(evidence["status"], {"VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS"})
+                    self.assertIn(evidence["status"], {"VERIFIED_EXACT_NATIVE_SOURCE", "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS", "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS"})
                     self.assertTrue(evidence["text_available"])
                 else:
                     self.assertFalse(evidence["text_available"])
-        self.assertTrue(all(not reading.get("body", {}).get("ar") for reading in self.today["readings"] if reading["kind"] in {"epistle", "gospel"}))
 
     def test_publication_is_automatic_fail_closed_without_ai_or_human_daily_reviewer(self):
         publication = self.today["publication"]

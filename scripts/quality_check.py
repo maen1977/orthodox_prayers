@@ -37,7 +37,7 @@ def validate_reading(reading,pointer):
         text=str(bodies.get(lang) or '')
         ref=str(refs.get(lang) or '')
         if text:
-            if evidence.get('status') not in {'VERIFIED_EXACT_NATIVE_SOURCE','IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS'}: fail(f'{pointer}.{lang} text is not exact native-source text')
+            if evidence.get('status') not in {'VERIFIED_EXACT_NATIVE_SOURCE','IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS','IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS'}: fail(f'{pointer}.{lang} text is not exact native-source text')
             if evidence.get('text_sha256')!=sha256_text(text): fail(f'{pointer}.{lang} text hash mismatch')
         if ref and evidence.get('reference_available') is not True: fail(f'{pointer}.{lang} reference lacks provenance')
     combined=text_of_loc(refs)+' '+text_of_loc(bodies)

@@ -23,23 +23,51 @@ public final class ReadingDetailScreen extends BaseScreen {
         String title = reading.optString("icon", "📖") + "  " + localized(reading.optJSONObject("title"), local("قراءة", "Reading", "Ἀνάγνωσμα"));
         UiKit.Page page = page(title, true);
         LinearLayout card = ui.card();
-        TextView reference = centered(localized(reading.optJSONObject("reference"), ""), 19, ui.colors().accentText(), true);
-        card.addView(reference);
+        String referenceText = localized(reading.optJSONObject("reference"), "").trim();
+        if (!referenceText.isEmpty()) {
+            TextView reference = centered(referenceText, 19, ui.colors().accentText(), true);
+            card.addView(reference);
+        }
         LocalizedValue value = data.localizedValue(reading.optJSONObject("body"), "");
-        TextView body = ui.body(value.text, false);
+        String exactText = value.text == null ? "" : value.text.trim();
+        TextView body = ui.body(exactText.isEmpty() ? unavailableMessage() : value.text, false);
         body.setPadding(0, ui.dp(12), 0, ui.dp(8));
         card.addView(body);
-        if (value.translationUnavailable) card.addView(ui.badge(local("النص الأصلي المعتمد بهذه اللغة غير متوفر لهذا المقطع", "Official native text unavailable for this section", "Τὸ ἐπίσημο πρωτότυπο κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ τμήμα"), false));
+        if (value.translationUnavailable || exactText.isEmpty()) card.addView(ui.badge(unavailableBadge(), false));
         JSONObject nativeVerification = reading.optJSONObject("native_source_verification");
         JSONObject languageVerification = nativeVerification == null ? null : nativeVerification.optJSONObject(preferences.effectiveLanguage());
         String nativeStatus = languageVerification == null ? "" : languageVerification.optString("status", "");
         if (reading.optBoolean("translation_locked", false)
-                && ("VERIFIED_EXACT_NATIVE_SOURCE".equals(nativeStatus) || "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(nativeStatus))) {
-            card.addView(ui.badge(local("نص كتابي أصلي من مصدره اللغوي المعتمد، بلا ترجمة أو تشكيل آلي", "Exact native-source Scripture text; no translation or automatic marking", "Ἀκριβὲς βιβλικὸ κείμενο τῆς ἐγκεκριμένης γλωσσικῆς πηγῆς"), true), ui.margins(-1, -2, 0, 8, 0, 0));
+                && ("VERIFIED_EXACT_NATIVE_SOURCE".equals(nativeStatus)
+                        || "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(nativeStatus)
+                        || "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS".equals(nativeStatus))) {
+            card.addView(ui.badge(local("نص كتابي أصلي موثّق من مصدر مستقل، بلا ترجمة أو تشكيل آلي", "Verified native Scripture from an independent source; no translation or automatic marking", "Ἐπαληθευμένο πρωτότυπο βιβλικὸ κείμενο ἀπὸ ἀνεξάρτητη πηγή, χωρὶς μετάφραση ἢ αὐτόματο τονισμό"), true), ui.margins(-1, -2, 0, 8, 0, 0));
         }
         String source = localized(reading.optJSONObject("source"), "");
         if (!source.isEmpty()) card.addView(centered(source, 12, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 8, 0, 0));
         add(page.root, card, 12, 16);
         return page.scroll;
+    }
+
+    private String unavailableMessage() {
+        if ("prokeimenon".equals(reading.optString("kind", ""))) {
+            return local(
+                    "لم يتوفر نص بروكيمنن موثّق لهذا اليوم؛ لن يعرض التطبيق نصًا مخمّنًا.",
+                    "A verified Prokeimenon is not available for this day; the app will not display a guessed text.",
+                    "Δὲν εἶναι διαθέσιμο ἐπαληθευμένο Προκείμενον γιὰ αὐτὴν τὴν ἡμέρα· ἡ ἐφαρμογὴ δὲν θὰ δείξει εἰκαζόμενο κείμενο."
+            );
+        }
+        return local(
+                "تعذّر توفير النص الكتابي الموثّق لهذا المقطع. بقيت آخر بيانات سليمة محفوظة.",
+                "Verified Scripture text is unavailable for this passage. The last valid data remains saved.",
+                "Τὸ ἐπαληθευμένο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα. Διατηροῦνται τὰ τελευταῖα ἔγκυρα δεδομένα."
+        );
+    }
+
+    private String unavailableBadge() {
+        if ("prokeimenon".equals(reading.optString("kind", ""))) {
+            return local("البروكيمنن غير متوفر من مصدر موثّق", "Verified Prokeimenon unavailable", "Μὴ διαθέσιμο ἐπαληθευμένο Προκείμενον");
+        }
+        return local("النص الكتابي الأصلي غير متوفر لهذا المقطع", "Native Scripture text unavailable for this passage", "Τὸ πρωτότυπο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα");
     }
 }

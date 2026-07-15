@@ -26,6 +26,14 @@ def main() -> None:
     mode = "full" if integrity == 0 else "partial"
     run("scripts/fill_daily_from_native_corpora.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
     run("scripts/enforce_native_daily_lanes.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
+    # Services are initially composed before native Scripture is resolved.
+    # Recompose them now so the Divine Liturgy uses the same verified text as
+    # the Readings screen, then re-apply lane metadata to the new overlays.
+    run("scripts/rebuild_daily_services.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
+    run("scripts/enforce_native_daily_lanes.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
+    # Never publish a new day with blank Epistle/Gospel cards. A transient
+    # Scripture-source failure keeps the last signed good day instead.
+    run("scripts/validate_daily_native_content.py", "data/calendar/today.json", "--require-complete")
     run("scripts/mark_partial_daily.py", "--date", args.date, "--mode", mode)
 
     asset = ROOT / "app/src/main/assets/data/today.json"
