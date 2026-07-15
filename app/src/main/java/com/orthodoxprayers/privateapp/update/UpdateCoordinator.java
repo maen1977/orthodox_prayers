@@ -21,7 +21,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Single entry point for foreground and persistent automatic refresh scheduling. */
 public final class UpdateCoordinator {
@@ -39,7 +38,6 @@ public final class UpdateCoordinator {
     private final Context context;
     private final AppPreferences preferences;
     private final DataRepository repository;
-    private final AtomicBoolean startupRemoteCheckPending = new AtomicBoolean(true);
 
     public UpdateCoordinator(Context context, AppPreferences preferences, DataRepository repository) {
         this.context = context.getApplicationContext();
@@ -117,9 +115,9 @@ public final class UpdateCoordinator {
         );
     }
 
-    /** Consume once per app process so every fresh launch performs a lightweight ETag check. */
-    public boolean consumeStartupRemoteCheck() {
-        return startupRemoteCheckPending.getAndSet(false);
+    /** Every return to the foreground performs a lightweight endpoint-scoped ETag check. */
+    public boolean shouldCheckRemoteOnResume() {
+        return !repository.isRefreshing();
     }
 
     public boolean shouldRefresh(boolean dayChanged, boolean resumed) {

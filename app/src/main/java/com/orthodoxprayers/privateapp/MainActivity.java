@@ -384,12 +384,12 @@ public final class MainActivity extends Activity implements ScreenHost {
         boolean dayChanged = observedAmmanDate != null && !observedAmmanDate.equals(currentDate);
         observedAmmanDate = currentDate;
 
-        boolean startupRemoteCheck = resumeEvent && updateCoordinator.consumeStartupRemoteCheck();
+        boolean resumeRemoteCheck = resumeEvent && updateCoordinator.shouldCheckRemoteOnResume();
         if (updateCoordinator.shouldRefresh(dayChanged, resumeEvent)) {
             requestDataRefresh(false, dayChanged || !repository.hasUsableCurrentData());
-        } else if (startupRemoteCheck) {
-            // A fresh app process always performs a lightweight conditional request,
-            // even when the embedded/cached snapshot is already dated today.
+        } else if (resumeRemoteCheck) {
+            // Every foreground open checks the selected language lane using its own ETag.
+            // A 304 response is cheap, while same-day corrections are no longer missed.
             requestDataRefresh(false, false);
         }
     }

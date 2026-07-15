@@ -23,11 +23,6 @@ public final class DailyUpdateWorker extends Worker {
         OrthodoxPrayersApp app = (OrthodoxPrayersApp) applicationContext;
         boolean force = getInputData().getBoolean(UpdateCoordinator.INPUT_FORCE, false);
 
-        if (!force && app.repository().hasUsableCurrentData()) {
-            app.updateCoordinator().scheduleDailyAmmanRefreshes();
-            return Result.success();
-        }
-
         DataRepository.RefreshOutcome outcome = app.repository().refreshBlocking(force);
         if (outcome.result == DataRepository.RefreshResult.UPDATED
                 || outcome.result == DataRepository.RefreshResult.NOT_MODIFIED) {

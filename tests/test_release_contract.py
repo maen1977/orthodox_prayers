@@ -20,8 +20,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "4.1.0"', build)
-        self.assertIn("versionCode = 41000", build)
+        self.assertIn('versionName = "4.1.1"', build)
+        self.assertIn("versionCode = 41001", build)
         self.assertIn("compileSdk = 35", build)
         self.assertIn("targetSdk = 35", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -245,10 +245,25 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_three_independent_signed_language_lanes(self):
         workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
+        repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
+        endpoint_policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DailyDataEndpointPolicy.java").read_text(encoding="utf-8")
+        preferences = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/AppPreferences.java").read_text(encoding="utf-8")
+        settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
         for marker in ("lane_ar", "lane_el", "lane_en", "Update Arabic lane", "Update Greek lane", "Update English lane"):
             self.assertIn(marker, workflow)
+        self.assertIn("rm -rf", workflow)
+        self.assertIn("data/daily/current", workflow)
         for script in ("update_language_lane.py", "verify_language_lanes.py"):
             self.assertTrue((ROOT / "scripts" / script).is_file())
+        self.assertIn('"/data/daily/" + date + "/" + lane + ".json"', endpoint_policy)
+        self.assertIn('"/data/daily/current/" + lane + ".json"', endpoint_policy)
+        self.assertIn("preferences.effectiveLanguage()", repository)
+        self.assertIn("language_lane_mismatch", repository)
+        self.assertIn("language_lane_schema_unsupported", repository)
+        self.assertIn("language_lane_services_missing", repository)
+        self.assertIn("cachedEtag(jsonUrl)", repository)
+        self.assertIn("cache_today_etag_endpoint", preferences)
+        self.assertIn("reloadForSelectedLanguage", settings)
 
     def test_play_store_submission_files_and_privacy_are_present(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
@@ -284,9 +299,9 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("scheduleNextAmmanRefresh", coordinator)
         self.assertIn("MIDNIGHT_MINUTE = 0", coordinator)
         self.assertIn("CONFIRMATION_MINUTE = 15", coordinator)
-        self.assertIn("consumeStartupRemoteCheck", coordinator)
+        self.assertIn("shouldCheckRemoteOnResume", coordinator)
         self.assertIn("putBoolean(INPUT_FORCE, forceFullDownload)", coordinator)
-        self.assertIn("hasUsableCurrentData())", worker)
+        self.assertNotIn("if (!force && app.repository().hasUsableCurrentData())", worker)
         self.assertIn("scheduleDailyAmmanRefreshes", worker)
         self.assertIn("ui.infoBadge", home)
 

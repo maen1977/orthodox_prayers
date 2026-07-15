@@ -34,20 +34,29 @@ public final class AppPreferences {
     public void setKeepScreenOn(boolean value) { values.edit().putBoolean("keep_screen_on", value).apply(); }
 
     public String legacyCachedTodayJson() { return values.getString("cache_today_json", null); }
-    public String cachedEtag() { return values.getString("cache_today_etag", ""); }
+    public String cachedEtag(String endpoint) {
+        String savedEndpoint = values.getString("cache_today_etag_endpoint", "");
+        String requestedEndpoint = endpoint == null ? "" : endpoint.trim();
+        if (!requestedEndpoint.equals(savedEndpoint)) return "";
+        return values.getString("cache_today_etag", "");
+    }
     public long lastSuccessfulUpdate() { return values.getLong("last_successful_update", 0L); }
     public long lastRefreshAttempt() { return values.getLong("last_refresh_attempt", 0L); }
     public boolean lastRefreshSucceeded() { return values.getBoolean("last_refresh_succeeded", false); }
     public String lastRefreshMessage() { return values.getString("last_refresh_message", ""); }
 
-    public void saveRemoteMetadata(String etag, long timestamp) {
+    public void saveRemoteMetadata(String etag, String endpoint, long timestamp) {
         SharedPreferences.Editor editor = values.edit()
                 .putLong("last_successful_update", timestamp)
                 .putLong("last_refresh_attempt", timestamp)
                 .putBoolean("last_refresh_succeeded", true)
                 .putString("last_refresh_message", "updated");
-        if (etag == null || etag.trim().isEmpty()) editor.remove("cache_today_etag");
-        else editor.putString("cache_today_etag", etag);
+        if (etag == null || etag.trim().isEmpty()) {
+            editor.remove("cache_today_etag").remove("cache_today_etag_endpoint");
+        } else {
+            editor.putString("cache_today_etag", etag);
+            editor.putString("cache_today_etag_endpoint", endpoint == null ? "" : endpoint.trim());
+        }
         editor.remove("cache_today_json").remove("cache_today_signature").apply();
     }
 
@@ -61,7 +70,7 @@ public final class AppPreferences {
     }
 
     public void clearRemoteMetadata() {
-        values.edit().remove("cache_today_etag").apply();
+        values.edit().remove("cache_today_etag").remove("cache_today_etag_endpoint").apply();
     }
 
     public void clearLegacyRemoteCache() {

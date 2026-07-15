@@ -98,6 +98,14 @@ jobs:
         if: steps.resolve.outputs.mode == 'update'
         run: python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
 
+      - name: Clear only today's language-lane publication slots
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "data/daily/${{ steps.resolve.outputs.date }}" data/daily/current
+          mkdir -p "data/daily/${{ steps.resolve.outputs.date }}" data/daily/current
+
       - name: Update Arabic lane — Amman, Jerusalem, Antioch
         id: lane_ar
         if: steps.resolve.outputs.mode == 'update'
@@ -127,6 +135,16 @@ jobs:
           [[ "${{ steps.lane_en.outcome }}" == success ]] && ok=$((ok+1))
           test "$ok" -gt 0 || { echo "All three language lanes failed" >&2; exit 1; }
           echo "Publishable language lanes: $ok/3"
+
+      - name: Remove incomplete outputs from failed language lanes
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE="${{ steps.resolve.outputs.date }}"
+          [[ "${{ steps.lane_ar.outcome }}" == success ]] || rm -f "data/daily/$DATE/ar.json" "data/daily/$DATE/ar.json.sig" data/daily/current/ar.json data/daily/current/ar.json.sig
+          [[ "${{ steps.lane_el.outcome }}" == success ]] || rm -f "data/daily/$DATE/el.json" "data/daily/$DATE/el.json.sig" data/daily/current/el.json data/daily/current/el.json.sig
+          [[ "${{ steps.lane_en.outcome }}" == success ]] || rm -f "data/daily/$DATE/en.json" "data/daily/$DATE/en.json.sig" data/daily/current/en.json data/daily/current/en.json.sig
 
       - name: Verify successful language lanes independently
         if: steps.resolve.outputs.mode == 'update'

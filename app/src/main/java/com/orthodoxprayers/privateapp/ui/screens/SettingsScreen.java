@@ -185,9 +185,13 @@ public final class SettingsScreen extends BaseScreen {
                 ? local(" — اللغة المحددة", " — selected language", " — ἐπιλεγμένη γλῶσσα")
                 : ""));
         button.setOnClickListener(v -> {
+            if (language.equals(preferences.effectiveLanguage())) return;
             preferences.setLanguage(language);
             preferences.setShowOriginal(false);
+            preferences.clearRemoteMetadata();
+            data.reloadForSelectedLanguage();
             host.navigate("settings", null);
+            host.refreshData();
         });
         row.addView(button, ui.weight(60));
     }

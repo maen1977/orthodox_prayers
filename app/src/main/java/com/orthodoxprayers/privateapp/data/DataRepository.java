@@ -143,6 +143,11 @@ public final class DataRepository {
         return hasDisplayableData() && validate(value, currentAmmanDate(), true) == null;
     }
 
+    /** Reload the best signed snapshot after the user changes the active language lane. */
+    public synchronized void reloadForSelectedLanguage() {
+        today = loadBestToday();
+    }
+
     public String local(String ar, String en, String el) {
         String language = preferences.effectiveLanguage();
         if ("en".equals(language)) return en;
@@ -298,7 +303,11 @@ public final class DataRepository {
 
         Exception lastError = null;
         int endpointIndex = 0;
-        for (String jsonUrl : DailyDataEndpointPolicy.jsonCandidates(configuredTodayUrl, currentAmmanDate())) {
+        for (String jsonUrl : DailyDataEndpointPolicy.jsonCandidates(
+                configuredTodayUrl,
+                currentAmmanDate(),
+                preferences.effectiveLanguage()
+        )) {
             String signatureUrl = DailyDataEndpointPolicy.signatureUrl(
                     configuredTodayUrl,
                     configuredTodaySignatureUrl,
@@ -341,8 +350,9 @@ public final class DataRepository {
             String token = "r=" + System.currentTimeMillis() + "-" + attempt;
             String requestedUrl = bypassCache ? appendQuery(jsonUrl, token) : jsonUrl;
             connection = open(requestedUrl, MAX_JSON_BYTES, bypassCache);
-            String etag = preferences.cachedEtag();
-            if (!bypassCache && hasUsableCurrentData() && !etag.isEmpty()) {
+            String etag = preferences.cachedEtag(jsonUrl);
+            boolean remoteCacheLoaded = "signed_remote".equals(trustSource) || "signed_cache".equals(trustSource);
+            if (!bypassCache && remoteCacheLoaded && hasUsableCurrentData() && !etag.isEmpty()) {
                 connection.setRequestProperty("If-None-Match", etag);
             }
 
@@ -371,7 +381,7 @@ public final class DataRepository {
             dataStore.saveVerified(jsonBytes, signatureBytes);
             String newEtag = connection.getHeaderField("ETag");
             long now = System.currentTimeMillis();
-            preferences.saveRemoteMetadata(newEtag, now);
+            preferences.saveRemoteMetadata(newEtag, jsonUrl, now);
             synchronized (this) { today = parsed; }
             trustSource = "signed_remote";
             contentHash = sha256(jsonBytes);
@@ -408,6 +418,15 @@ public final class DataRepository {
             return "date_invalid:" + date;
         }
         if (requireExpectedDate && !expectedDate.equals(date)) return "date_not_ready:" + date;
+        String payloadLanguage = data.optString("language", "").trim();
+        if (!payloadLanguage.isEmpty()) {
+            if (!preferences.effectiveLanguage().equals(payloadLanguage)) {
+                return "language_lane_mismatch:" + payloadLanguage;
+            }
+            if (data.optInt("lane_schema_version", 0) < 2) return "language_lane_schema_unsupported";
+            JSONArray laneServices = data.optJSONArray("services");
+            if (laneServices == null || laneServices.length() == 0) return "language_lane_services_missing";
+        }
         // The server performs source-heavy validation. The phone verifies the
         // signature, date, schema and the structure of each available lane,
         // then displays every verified section that is present. A missing
@@ -602,7 +621,7 @@ public final class DataRepository {
         if (message == null || message.trim().isEmpty()) message = error.getClass().getSimpleName();
         if (message.startsWith("date_not_ready")) return message;
         if (message.startsWith("http_") || message.startsWith("signature_http_")) return message;
-        if (message.contains("payload") || message.contains("schema") || message.contains("signature") || message.contains("signed_") || message.contains("missing") || message.contains("incomplete") || message.contains("integrity") || message.contains("content_type") || message.contains("too_large") || message.contains("translation") || message.contains("localized_script") || message.contains("date_in_future") || message.contains("date_invalid")) {
+        if (message.contains("payload") || message.contains("schema") || message.contains("signature") || message.contains("signed_") || message.contains("missing") || message.contains("incomplete") || message.contains("integrity") || message.contains("content_type") || message.contains("too_large") || message.contains("translation") || message.contains("language_lane") || message.contains("localized_script") || message.contains("date_in_future") || message.contains("date_invalid")) {
             return "invalid_" + message;
         }
         return "network_" + error.getClass().getSimpleName();
