@@ -98,32 +98,56 @@ jobs:
         if: steps.resolve.outputs.mode == 'update'
         run: python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
 
-      - name: Publish verified-data
+      - name: Publish verified-data atomically
         if: steps.resolve.outputs.mode == 'update'
         shell: bash
         run: |
           set -euo pipefail
           SOURCE="$GITHUB_WORKSPACE"
           TARGET="$RUNNER_TEMP/verified-data"
+          ARCHIVE_CHECK="$RUNNER_TEMP/verified-data-commit-check"
+
           git fetch origin "$VERIFIED_DATA_BRANCH" || true
           if git show-ref --verify --quiet "refs/remotes/origin/$VERIFIED_DATA_BRANCH"; then
             git worktree add --force --detach "$TARGET" "origin/$VERIFIED_DATA_BRANCH"
           else
             git worktree add --force --detach "$TARGET" HEAD
           fi
-          mkdir -p "$TARGET/data" "$TARGET/app/src/main/assets/data"
-          rsync -a --delete "$SOURCE/data/" "$TARGET/data/"
-          rsync -a --delete "$SOURCE/app/src/main/assets/data/" "$TARGET/app/src/main/assets/data/"
-          cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
-          mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
-          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/validate_partial_daily.py" "$TARGET/scripts/"
-          cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
+
           cd "$TARGET"
           git checkout -B "$VERIFIED_DATA_BRANCH"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Remove every previously published file so stale signatures or scripts
+          # can never survive into the next daily bundle.
+          git rm -r --ignore-unmatch . >/dev/null 2>&1 || true
+          git clean -fdx
+
+          # Copy the byte-preservation attributes before any signed payload is staged.
+          cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
+          cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
+          mkdir -p "$TARGET/data" "$TARGET/app/src/main/assets/data" "$TARGET/scripts" "$TARGET/canonical/signing"
+          rsync -a --delete "$SOURCE/data/" "$TARGET/data/"
+          rsync -a --delete "$SOURCE/app/src/main/assets/data/" "$TARGET/app/src/main/assets/data/"
+          cp "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/validate_partial_daily.py" "$TARGET/scripts/"
+          cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
+
+          # Delete copied signatures and regenerate all three from the exact files
+          # that will be committed to verified-data.
+          find "$TARGET/data/calendar" "$TARGET/app/src/main/assets/data" -type f -name '*.sig' -delete
+          python "$TARGET/scripts/sign_daily_data.py" --private-key "$RUNNER_TEMP/data-private.pem"
+          python "$TARGET/scripts/verify.py" --expected-date "${{ steps.resolve.outputs.date }}"
+
           git add -A
           git diff --cached --quiet || git commit -m "Publish daily data ${{ steps.resolve.outputs.date }}"
+
+          # Verify the exact bytes stored in the Git commit, not merely the working tree.
+          rm -rf "$ARCHIVE_CHECK"
+          mkdir -p "$ARCHIVE_CHECK"
+          git archive HEAD | tar -x -C "$ARCHIVE_CHECK"
+          python "$ARCHIVE_CHECK/scripts/verify.py" --expected-date "${{ steps.resolve.outputs.date }}"
+
           git push --force-with-lease origin "HEAD:$VERIFIED_DATA_BRANCH"
 
       - name: Verify from origin after publishing
