@@ -1,16 +1,14 @@
-# Keep executable scripts and ordinary source text deterministic.
+# Keep checked text deterministic across Linux and Windows so SHA-256 verification is reproducible.
 * text=auto eol=lf
 
 gradlew text eol=lf
 gradlew.bat text eol=crlf
-
-# Signed payloads and detached signatures must be stored byte-for-byte.
-# Git newline normalization after signing would invalidate RSA verification.
-data/calendar/*.json binary
-data/calendar/*.sig binary
-app/src/main/assets/data/*.json binary
-app/src/main/assets/data/*.sig binary
-canonical/signing/*.pub binary
-
 *.jar binary
 *.png binary
+# Detached signatures cover exact bytes. Never normalize signed payloads in Git.
+data/calendar/*.json -text
+data/calendar/*.json.sig -text
+data/daily/*/*.json -text
+data/daily/*/*.json.sig -text
+app/src/main/assets/data/*.json -text
+app/src/main/assets/data/*.json.sig -text
