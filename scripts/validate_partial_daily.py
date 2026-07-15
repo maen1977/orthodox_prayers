@@ -26,7 +26,7 @@ def main():
             text=str(bodies.get(lang,'')).strip()
             if text:
                 ev=evidence.get(lang) or {}
-                if ev.get('status') not in {'VERIFIED_EXACT_NATIVE_SOURCE','IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS'}:
+                if ev.get('status') not in {'VERIFIED_EXACT_NATIVE_SOURCE','IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS','IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS'}:
                     fail(f'unverified published text: {r.get("kind")}/{lang}')
     status=(p.get('publication') or {}).get('daily_availability')
     if status not in {'FULL','PARTIAL_VERIFIED'}: fail('daily availability status missing')
