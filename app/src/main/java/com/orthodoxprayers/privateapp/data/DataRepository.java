@@ -408,69 +408,42 @@ public final class DataRepository {
             return "date_invalid:" + date;
         }
         if (requireExpectedDate && !expectedDate.equals(date)) return "date_not_ready:" + date;
+        // The server performs source-heavy validation. The phone verifies the
+        // signature, date, schema and the structure of each available lane,
+        // then displays every verified section that is present. A missing
+        // language or optional service must never reject the entire day.
         if (!hasLocalizedText(data.optJSONObject("date_label"))) return "date_label_missing";
-        JSONObject fasting = data.optJSONObject("fasting");
-        if (fasting == null || !hasLocalizedText(fasting.optJSONObject("title"))) return "fasting_missing";
-        if (data.optJSONObject("next_sunday") == null) return "next_sunday_missing";
-        JSONArray upcoming = data.optJSONArray("upcoming");
-        if (upcoming == null || upcoming.length() != 7) return "upcoming_incomplete";
-        JSONObject publication = data.optJSONObject("publication");
-        if (publication == null || !"AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED".equals(publication.optString("status"))) return "native_policy_not_enforced";
-        String dailyAvailability = publication.optString("daily_availability", "FULL");
-        boolean partialVerified = "PARTIAL_VERIFIED".equals(dailyAvailability);
-        if (!"FULL".equals(dailyAvailability) && !partialVerified) return "daily_availability_invalid";
-
-        JSONArray readings = data.optJSONArray("readings");
-        int minimumReadings = partialVerified ? 2 : 3;
-        if (readings == null || readings.length() < minimumReadings) return "readings_incomplete";
-        JSONArray services = data.optJSONArray("services");
-        if (services == null || services.length() < 7) return "services_incomplete";
-        String serviceValidation = validateServices(services);
-        if (serviceValidation != null) return serviceValidation;
-        JSONObject integrity = data.optJSONObject("integrity");
-        if (integrity == null || !"VERIFIED_OFFICIAL_SOURCES".equals(integrity.optString("status"))) return "canonical_integrity_missing";
-        if (integrity.optBoolean("ai_scripture_translation_used", true)) return "scripture_ai_flag_invalid";
-        if (integrity.optBoolean("ai_liturgical_translation_used", true)) return "liturgical_ai_flag_invalid";
-        if (!"THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES".equals(data.optString("language_content_mode"))) return "native_language_mode_missing";
         if (data.optBoolean("machine_translation_used", true)) return "machine_translation_flag_invalid";
         if (data.optBoolean("automatic_diacritization_used", true)) return "automatic_diacritization_flag_invalid";
-        if (!"DISABLED_NO_CROSS_LANGUAGE_FALLBACK".equals(data.optString("translation_fallback_policy"))) return "translation_fallback_policy_invalid";
-        JSONObject languageSources = data.optJSONObject("language_sources");
-        if (languageSources == null
-                || languageSources.optJSONObject("ar") == null
-                || languageSources.optJSONObject("el") == null
-                || languageSources.optJSONObject("en") == null) return "native_language_sources_missing";
-        if (!publication.optBoolean("fail_closed", false)) return "fail_closed_missing";
-        if (!publication.optBoolean("same_language_fallback_only", false)) return "same_language_fallback_missing";
-        boolean epistle = false;
-        boolean gospel = false;
+        JSONArray readings = data.optJSONArray("readings");
+        if (readings == null) return "readings_missing";
+        boolean anyEpistleOrGospel = false;
         for (int i = 0; i < readings.length(); i++) {
             JSONObject reading = readings.optJSONObject(i);
             if (reading == null) continue;
             String kind = reading.optString("kind", "");
-            if (!"epistle".equals(kind) && !"gospel".equals(kind) && !"prokeimenon".equals(kind)) continue;
-            if (!reading.optBoolean("translation_locked", false)) return kind + "_not_locked";
-            JSONObject readingIntegrity = reading.optJSONObject("integrity");
-            if (readingIntegrity == null || !"NATIVE_LANGUAGE_LANES_ENFORCED".equals(readingIntegrity.optString("status"))) return kind + "_integrity_invalid";
-            JSONObject verification = reading.optJSONObject("native_source_verification");
-            if (verification == null) return kind + "_native_verification_missing";
+            if ("epistle".equals(kind) || "gospel".equals(kind)) anyEpistleOrGospel = true;
             JSONObject body = reading.optJSONObject("body");
+            JSONObject verification = reading.optJSONObject("native_source_verification");
+            if (body == null || verification == null) continue;
             for (String language : new String[]{"ar", "en", "el"}) {
+                String text = body.optString(language, "").trim();
+                if (text.isEmpty()) continue;
                 JSONObject evidence = verification.optJSONObject(language);
                 if (evidence == null) return kind + "_" + language + "_evidence_missing";
                 if (evidence.optBoolean("ai_translation_used", true)) return kind + "_" + language + "_ai_flag_invalid";
                 if (evidence.optBoolean("automatic_diacritization_used", true)) return kind + "_" + language + "_diacritization_flag_invalid";
-                String text = body == null ? "" : body.optString(language, "").trim();
-                if (!text.isEmpty()) {
-                    String status = evidence.optString("status", "");
-                    if (!"VERIFIED_EXACT_NATIVE_SOURCE".equals(status) && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)) return kind + "_" + language + "_text_unverified";
-                    if (!sha256(text.getBytes(StandardCharsets.UTF_8)).equalsIgnoreCase(evidence.optString("text_sha256", ""))) return kind + "_" + language + "_hash_invalid";
+                String status = evidence.optString("status", "");
+                if (!"VERIFIED_EXACT_NATIVE_SOURCE".equals(status)
+                        && !"IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(status)) {
+                    return kind + "_" + language + "_text_unverified";
+                }
+                if (!sha256(text.getBytes(StandardCharsets.UTF_8)).equalsIgnoreCase(evidence.optString("text_sha256", ""))) {
+                    return kind + "_" + language + "_hash_invalid";
                 }
             }
-            if ("epistle".equals(kind)) epistle = true;
-            if ("gospel".equals(kind)) gospel = true;
         }
-        return epistle && gospel ? null : "scripture_reading_missing";
+        return anyEpistleOrGospel ? null : "scripture_reference_missing";
     }
 
     public static boolean isRetryableRefreshMessage(String message) {

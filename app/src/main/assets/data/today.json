@@ -251,11 +251,7 @@
       }
     ],
     "same_language_fallback_only": true,
-    "religious_text_contract": "canonical/source_native_contract.json",
-    "daily_availability": "PARTIAL_VERIFIED",
-    "date_published": "2026-07-14",
-    "usable_when_partial": true,
-    "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
+    "religious_text_contract": "canonical/source_native_contract.json"
   },
   "source_evidence": [
     {
@@ -3026,14 +3022,5 @@
     "el": "Κάθε γλώσσα προέρχεται από τὸ δικό της πρωτότυπο ἐπίσημο ὀρθόδοξο κείμενο· δὲν χρησιμοποιεῖται μηχανικὴ μετάφραση."
   },
   "automatic_diacritization_used": false,
-  "native_text_contract": "canonical/source_native_contract.json",
-  "daily_update_status": {
-    "mode": "partial",
-    "date": "2026-07-14",
-    "message": {
-      "ar": "بيانات اليوم متاحة؛ قد تبقى بعض النصوص غير المنشورة فارغة حتى ورودها من مصدر رسمي مطابق.",
-      "en": "Today data is available; unavailable exact texts remain empty until a matching official source is available.",
-      "el": "Τὰ σημερινὰ δεδομένα εἶναι διαθέσιμα· τὰ μὴ ἐπαληθευμένα κείμενα παραμένουν κενά."
-    }
-  }
+  "native_text_contract": "canonical/source_native_contract.json"
 }

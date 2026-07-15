@@ -108,5 +108,45 @@
       "url": "https://dcs.goarch.org/",
       "rights": "copyrighted_use_only_with_permission_or_applicable_license"
     }
-  ]
+  ],
+  "calendar_authority": {
+    "id": "jerusalem_patriarchate",
+    "calendar": "julian_old_calendar",
+    "purpose": "determines_daily_date_feasts_fasting_and_lectionary_references"
+  },
+  "language_lanes": {
+    "ar": {
+      "priority": [
+        "orthodox_jordan",
+        "jerusalem_patriarchate_ar",
+        "antioch_patriarchate_ar"
+      ],
+      "content": "Arabic native text only"
+    },
+    "el": {
+      "priority": [
+        "church_of_greece_apostoliki_diakonia",
+        "goarch_online_chapel_greek",
+        "jerusalem_patriarchate_el"
+      ],
+      "reference_only": [
+        "pemptousia",
+        "aghioritiki_estia",
+        "romfea"
+      ],
+      "content": "Greek native text only"
+    },
+    "en": {
+      "priority": [
+        "goarch_online_chapel",
+        "jerusalem_patriarchate_en",
+        "antiochian_orthodox_english"
+      ],
+      "reference_only": [
+        "orthodox_christian_network",
+        "pemptousia_en"
+      ],
+      "content": "English native text only"
+    }
+  }
 }

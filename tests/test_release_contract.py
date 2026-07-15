@@ -20,21 +20,14 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "4.0.2"', build)
-        self.assertIn("versionCode = 40002", build)
+        self.assertIn('versionName = "4.1.0"', build)
+        self.assertIn("versionCode = 41000", build)
         self.assertIn("compileSdk = 35", build)
         self.assertIn("targetSdk = 35", build)
         self.assertIn("isMinifyEnabled = true", build)
         self.assertIn("isShrinkResources = true", build)
         self.assertIn('System.getenv("ANDROID_KEYSTORE_FILE")', build)
         self.assertIn('signingConfigs.findByName("release")', build)
-
-
-    def test_android_accepts_verified_partial_daily_payloads(self):
-        repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        self.assertIn('"PARTIAL_VERIFIED".equals(dailyAvailability)', repository)
-        self.assertIn("int minimumReadings = partialVerified ? 2 : 3", repository)
-        self.assertIn('!"FULL".equals(dailyAvailability) && !partialVerified', repository)
 
     def test_daily_schema_and_provenance(self):
         schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
@@ -205,7 +198,7 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("كل لغة تُقرأ من مكتبتها الكنسية الأصلية المستقلة", settings)
 
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        self.assertIn("THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES", repository)
+        self.assertIn('new String[]{"ar", "en", "el"}', repository)
         self.assertIn("searchIndex()", repository)
         self.assertTrue((ROOT / "docs/privacy/index.html").is_file())
         self.assertTrue((ROOT / "play-store/STORE_LISTING_EN.md").is_file())
@@ -242,27 +235,20 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertTrue(services["divine_liturgy"]["segment_replacements"])
         self.assertTrue(services["next_sunday_full_liturgy"]["segment_replacements"])
 
-    def test_repository_rejects_blank_or_partial_remote_services(self):
+    def test_repository_accepts_valid_partial_daily_payload_without_cross_language_fallback(self):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        for value in (
-            "validateServices(services)",
-            "service_required_missing:",
-            "service_content_invalid:",
-            "service_duplicate:",
-            "isRenderableService(service)",
-            "segments == null || segments.length() == 0",
-        ):
-            self.assertIn(value, repository)
-        for service_id in (
-            "divine_liturgy",
-            "vespers",
-            "orthros",
-            "morning_prayer",
-            "evening_prayer",
-            "small_compline",
-            "next_sunday_full_liturgy",
-        ):
-            self.assertIn('"' + service_id + '"', repository)
+        self.assertIn("readings_missing", repository)
+        self.assertIn("scripture_reference_missing", repository)
+        self.assertIn("text_unverified", repository)
+        self.assertNotIn("validateServices(services)", repository)
+        self.assertIn('new String[]{"ar", "en", "el"}', repository)
+
+    def test_three_independent_signed_language_lanes(self):
+        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
+        for marker in ("lane_ar", "lane_el", "lane_en", "Update Arabic lane", "Update Greek lane", "Update English lane"):
+            self.assertIn(marker, workflow)
+        for script in ("update_language_lane.py", "verify_language_lanes.py"):
+            self.assertTrue((ROOT / "scripts" / script).is_file())
 
     def test_play_store_submission_files_and_privacy_are_present(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
@@ -377,10 +363,10 @@ class ReleaseContractTests(unittest.TestCase):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
         strings = (ROOT / "app/src/main/res/values/strings.xml").read_text(encoding="utf-8")
         self.assertIn("MIN_SCHEMA_VERSION = 9", repository)
-        self.assertIn("VERIFIED_OFFICIAL_SOURCES", repository)
-        self.assertIn("AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED", repository)
         self.assertIn("IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS", repository)
-        self.assertIn("DISABLED_NO_CROSS_LANGUAGE_FALLBACK", repository)
+        self.assertIn("machine_translation_flag_invalid", repository)
+        self.assertIn("automatic_diacritization_flag_invalid", repository)
+        self.assertIn("A missing", repository)
         self.assertIn("DailyDataEndpointPolicy.jsonCandidates", repository)
         self.assertIn("verified-data/data/calendar/today.json", strings)
         endpoint_policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DailyDataEndpointPolicy.java").read_text(encoding="utf-8")
