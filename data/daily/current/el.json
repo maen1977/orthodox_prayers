@@ -164,6 +164,44 @@
   "language_content_mode": "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES",
   "machine_translation_used": false,
   "translation_fallback_policy": "DISABLED_NO_CROSS_LANGUAGE_FALLBACK",
+  "language_sources": {
+    "ar": {
+      "priority": [
+        "orthodox_jordan",
+        "jerusalem_patriarchate_ar",
+        "antioch_patriarchate_ar"
+      ],
+      "same_language_fallback_only": true,
+      "machine_translation_used": false,
+      "automatic_diacritization_used": false,
+      "missing_text_behavior": "UNAVAILABLE"
+    },
+    "en": {
+      "priority": [
+        "goarch_online_chapel",
+        "jerusalem_patriarchate_en",
+        "goarch_digital_chant_stand_english",
+        "goarch_synekdemos",
+        "oca_official_english"
+      ],
+      "same_language_fallback_only": true,
+      "machine_translation_used": false,
+      "automatic_diacritization_used": false,
+      "missing_text_behavior": "UNAVAILABLE"
+    },
+    "el": {
+      "priority": [
+        "church_of_greece_apostoliki_diakonia",
+        "church_of_greece_ecclesia",
+        "jerusalem_patriarchate_el",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "same_language_fallback_only": true,
+      "machine_translation_used": false,
+      "automatic_diacritization_used": false,
+      "missing_text_behavior": "UNAVAILABLE"
+    }
+  },
   "content_metadata": {
     "calendar_system": "old_calendar_julian",
     "jurisdiction": "jerusalem_patriarchate_usage",
@@ -193,6 +231,206 @@
     "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
   },
   "source_evidence": [],
+  "readings": [
+    {
+      "icon": "🎵",
+      "kind": "prokeimenon",
+      "title": {
+        "ar": "البروكيمنن",
+        "en": "Prokeimenon",
+        "el": ""
+      },
+      "reference": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "body": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "publication_status": "BLOCKED_MISSING_OFFICIAL_TEXT",
+      "integrity": {
+        "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
+        "canonical_reference": "",
+        "display_text_changed": false,
+        "legacy_cross_lane_text_removed": true,
+        "ai_translation_used": false,
+        "automatic_diacritization_used": false
+      },
+      "source": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "translation_locked": true,
+      "native_source_verification": {
+        "ar": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        },
+        "en": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        },
+        "el": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        }
+      }
+    },
+    {
+      "icon": "📜",
+      "kind": "epistle",
+      "title": {
+        "ar": "الرسالة",
+        "en": "Epistle",
+        "el": ""
+      },
+      "reference": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "body": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "discovery_text": "12 But to the rest speak I, not the Lord: If any brother hath a wife that believeth not, and she be pleased to dwell with him, let him not put her away.\n13 And the woman which hath an husband that believeth not, and if he be pleased to dwell with her, let her not leave him.\n14 For the unbelieving husband is sanctified by the wife, and the unbelieving wife is sanctified by the husband: else were your children unclean; but now are they holy.\n15 But if the unbelieving depart, let him depart. A brother or a sister is not under bondage in such cases: but God hath called us to peace.\n16 For what knowest thou, O wife, whether thou shalt save thy husband? or how knowest thou, O man, whether thou shalt save thy wife?\n17 But as God hath distributed to every man, as the Lord hath called every one, so let him walk. And so ordain I in all churches.\n18 Is any man called being circumcised? let him not become uncircumcised. Is any called in uncircumcision? let him not be circumcised.\n19 Circumcision is nothing, and uncircumcision is nothing, but the keeping of the commandments of God.\n20 Let every man abide in the same calling wherein he was called.\n21 Art thou called being a servant? care not for it: but if thou mayest be made free, use it rather.\n22 For he that is called in the Lord, being a servant, is the Lord’s freeman: likewise also he that is called, being free, is Christ’s servant.\n23 Ye are bought with a price; be not ye the servants of men.\n24 Brethren, let every man, wherein he is called, therein abide with God.",
+      "source": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "translation_locked": true,
+      "native_source_verification": {
+        "ar": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        },
+        "en": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        },
+        "el": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        }
+      },
+      "integrity": {
+        "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
+        "canonical_reference": "",
+        "display_text_changed": false,
+        "legacy_cross_lane_text_removed": true,
+        "ai_translation_used": false,
+        "automatic_diacritization_used": false
+      }
+    },
+    {
+      "icon": "📖",
+      "kind": "gospel",
+      "title": {
+        "ar": "الإنجيل",
+        "en": "Gospel",
+        "el": ""
+      },
+      "reference": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "body": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "discovery_text": "35 And when the men of that place had knowledge of him, they sent out into all that country round about, and brought unto him all that were diseased;\n36 And besought him that they might only touch the hem of his garment: and as many as touched were made perfectly whole.\n1 Then came to Jesus scribes and Pharisees, which were of Jerusalem, saying,\n2 Why do thy disciples transgress the tradition of the elders? for they wash not their hands when they eat bread.\n3 But he answered and said unto them, Why do ye also transgress the commandment of God by your tradition?\n4 For God commanded, saying, Honour thy father and mother: and, He that curseth father or mother, let him die the death.\n5 But ye say, Whosoever shall say to his father or his mother, It is a gift, by whatsoever thou mightest be profited by me;\n6 And honour not his father or his mother, he shall be free. Thus have ye made the commandment of God of none effect by your tradition.\n7 Ye hypocrites, well did Esaias prophesy of you, saying,\n8 This people draweth nigh unto me with their mouth, and honoureth me with their lips; but their heart is far from me.\n9 But in vain they do worship me, teaching for doctrines the commandments of men.\n10 And he called the multitude, and said unto them, Hear, and understand:\n11 Not that which goeth into the mouth defileth a man; but that which cometh out of the mouth, this defileth a man.",
+      "source": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "translation_locked": true,
+      "native_source_verification": {
+        "ar": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        },
+        "en": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        },
+        "el": {
+          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+          "source_id": null,
+          "canonical_reference": "",
+          "reference_available": false,
+          "text_available": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "reason": "same_language_official_source_not_available"
+        }
+      },
+      "integrity": {
+        "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
+        "canonical_reference": "",
+        "display_text_changed": false,
+        "legacy_cross_lane_text_removed": true,
+        "ai_translation_used": false,
+        "automatic_diacritization_used": false
+      }
+    }
+  ],
   "next_sunday": {
     "date_iso": "2026-07-19",
     "day": {
@@ -566,6 +804,778 @@
     "evening_prayer",
     "small_compline",
     "next_sunday_full_liturgy"
+  ],
+  "services": [
+    {
+      "id": "divine_liturgy",
+      "extends_service_id": "divine_liturgy",
+      "category": "liturgy",
+      "icon": "⛪",
+      "title": {
+        "ar": "خدمة اليوم — القداس الإلهي",
+        "en": "Today — Divine Liturgy",
+        "el": "Σήμερα — Θεία Λειτουργία"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
+        "en": "Verified daily readings and feast texts are composed with the single static Liturgy template.",
+        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας."
+      },
+      "source_language": "ar",
+      "translation_status": "verified_daily_overlay_v2",
+      "template_id": "library:divine_liturgy",
+      "dynamic_date": "2026-07-15",
+      "notice": {
+        "ar": "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
+        "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
+        "el": "Ἡ σταθερὴ Θεία Λειτουργία ἀποθηκεύεται μία φορά. Τὰ ἡμερήσια κείμενα εἰσάγονται μόνον μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "complete_service_claim": true,
+        "exact_remote_byte_match": false,
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segment_replacements": {
+        "[طروبارية اليوم]": {
+          "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "en": "",
+          "el": ""
+        },
+        "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
+          "ar": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
+          "en": "",
+          "el": ""
+        },
+        "[القنداق]": {
+          "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "en": "",
+          "el": ""
+        },
+        "[البروكيمنن]": {
+          "ar": "غير منشور قبل التحقق الرسمي\nالنص الكنسي العربي الأصلي غير متاح حاليًا.",
+          "en": "Not published before official verification\nOfficial native English text is currently unavailable.",
+          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+        },
+        "[فصل من رسالة اليوم]": {
+          "ar": "١ كورنثوس 7:12-24\nالنص الكنسي العربي الأصلي غير متاح حاليًا.",
+          "en": "1 Corinthians 7.12-24\nOfficial native English text is currently unavailable.",
+          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+        },
+        "[فصل الإنجيل المعيّن لهذا اليوم]": {
+          "ar": "متى 14:35-15:11\nالنص الكنسي العربي الأصلي غير متاح حاليًا.",
+          "en": "Matthew 14.35-15.11\nOfficial native English text is currently unavailable.",
+          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+        },
+        "[آية المناولة]": {
+          "ar": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
+          "en": "",
+          "el": ""
+        }
+      },
+      "inline_replacements": {
+        "[اسم الإنجيلي]": {
+          "ar": "متى البشير",
+          "en": "",
+          "el": ""
+        }
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "خدمة اليوم: ملحق اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: صوم الأربعاء أو الجمعة — صوم صارم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
+            "en": "Civil date: 2026-07-15. Verified daily texts are inserted below where available.",
+            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-15. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "ترتيب قراءات اليوم",
+            "en": "Order of today’s readings",
+            "el": "Τάξη τῶν σημερινῶν ἀναγνωσμάτων"
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "البروكيمنن، ثم الرسالة، ثم هلليلويا، ثم الإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
+            "en": "Prokeimenon, Epistle, Alleluia, and Gospel. Any unverified target-language text is hidden automatically.",
+            "el": "Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο. Κάθε μὴ ἐπαληθευμένο κείμενο τῆς ἐπιλεγμένης γλώσσας ἀποκρύπτεται αὐτόματα."
+          },
+          "collapsed_by_default": true
+        }
+      ]
+    },
+    {
+      "id": "vespers",
+      "extends_service_id": "vespers",
+      "category": "liturgy",
+      "icon": "🌆",
+      "title": {
+        "ar": "قطع الغروب الموثقة لليوم",
+        "en": "Vespers — verified daily texts",
+        "el": "Ἑσπερινός — ἐπαληθευμένα κείμενα ἡμέρας"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
+        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
+      },
+      "source_language": "el",
+      "translation_status": "daily_context_overlay",
+      "dynamic_date": "2026-07-15",
+      "notice": {
+        "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
+        "en": "This verified daily overlay is composed with the single static library service at runtime.",
+        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "ملحق اليوم الكنسي",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "حالة قطع اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "orthros",
+      "extends_service_id": "orthros",
+      "category": "liturgy",
+      "icon": "🌄",
+      "title": {
+        "ar": "قطع السَحَر الموثقة لليوم",
+        "en": "Orthros / Matins — verified daily texts",
+        "el": "Ὄρθρος — ἐπαληθευμένα κείμενα ἡμέρας"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
+        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
+      },
+      "source_language": "el",
+      "translation_status": "daily_context_overlay",
+      "dynamic_date": "2026-07-15",
+      "notice": {
+        "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
+        "en": "This verified daily overlay is composed with the single static library service at runtime.",
+        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "ملحق اليوم الكنسي",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "حالة قطع اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "morning_prayer",
+      "extends_service_id": "morning_prayer",
+      "category": "daily",
+      "icon": "🌅",
+      "title": {
+        "ar": "صلاة صباح منزلية مع قطع اليوم",
+        "en": "Morning Prayer — verified daily texts",
+        "el": "Πρωινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
+        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
+      },
+      "source_language": "el",
+      "translation_status": "daily_context_overlay",
+      "dynamic_date": "2026-07-15",
+      "notice": {
+        "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
+        "en": "This verified daily overlay is composed with the single static library service at runtime.",
+        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "ملحق اليوم الكنسي",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "حالة قطع اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "evening_prayer",
+      "extends_service_id": "evening_prayer",
+      "category": "daily",
+      "icon": "🕯",
+      "title": {
+        "ar": "صلاة مساء منزلية مع قطع اليوم",
+        "en": "Evening Prayer — verified daily texts",
+        "el": "Ἑσπερινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
+        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
+      },
+      "source_language": "el",
+      "translation_status": "daily_context_overlay",
+      "dynamic_date": "2026-07-15",
+      "notice": {
+        "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
+        "en": "This verified daily overlay is composed with the single static library service at runtime.",
+        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "ملحق اليوم الكنسي",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "حالة قطع اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "small_compline",
+      "extends_service_id": "small_compline",
+      "category": "daily",
+      "icon": "🌙",
+      "title": {
+        "ar": "صلاة قبل النوم مع قطع اليوم",
+        "en": "Small Compline — verified daily texts",
+        "el": "Μικρὸν Ἀπόδειπνον — ἐπαληθευμένα κείμενα ἡμέρας"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
+        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
+      },
+      "source_language": "el",
+      "translation_status": "daily_context_overlay",
+      "dynamic_date": "2026-07-15",
+      "notice": {
+        "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
+        "en": "This verified daily overlay is composed with the single static library service at runtime.",
+        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "ملحق اليوم الكنسي",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
+            "en": "",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "حالة قطع اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "المرتل",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "next_sunday_full_liturgy",
+      "extends_service_id": "divine_liturgy",
+      "category": "liturgy",
+      "icon": "⛪",
+      "title": {
+        "ar": "الأحد القادم — القداس الإلهي",
+        "en": "Next Sunday — Divine Liturgy",
+        "el": "Ἡ ἐρχόμενη Κυριακή — Θεία Λειτουργία"
+      },
+      "summary": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
+        "en": "Verified daily readings and feast texts are composed with the single static Liturgy template.",
+        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας."
+      },
+      "source_language": "ar",
+      "translation_status": "verified_daily_overlay_v2",
+      "template_id": "library:divine_liturgy",
+      "dynamic_date": "2026-07-19",
+      "notice": {
+        "ar": "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
+        "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
+        "el": "Ἡ σταθερὴ Θεία Λειτουργία ἀποθηκεύεται μία φορά. Τὰ ἡμερήσια κείμενα εἰσάγονται μόνον μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς."
+      },
+      "source_provenance": {
+        "policy": "canonical/source_policy.json",
+        "official_catalog_source": "orthodox_jordan",
+        "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
+        "complete_service_claim": true,
+        "exact_remote_byte_match": false,
+        "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      },
+      "segment_replacements": {
+        "[طروبارية اليوم]": {
+          "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "en": "",
+          "el": ""
+        },
+        "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
+          "ar": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
+          "en": "",
+          "el": ""
+        },
+        "[القنداق]": {
+          "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "en": "",
+          "el": ""
+        },
+        "[البروكيمنن]": {
+          "ar": "لحن 6\nالنص الكنسي العربي الأصلي غير متاح حاليًا.",
+          "en": "Tone 6\nOfficial native English text is currently unavailable.",
+          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+        },
+        "[فصل من رسالة اليوم]": {
+          "ar": "رومية 15:1-7\nالنص الكنسي العربي الأصلي غير متاح حاليًا.",
+          "en": "Romans 15.1-7\nOfficial native English text is currently unavailable.",
+          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+        },
+        "[فصل الإنجيل المعيّن لهذا اليوم]": {
+          "ar": "متى 9:27-35\nالنص الكنسي العربي الأصلي غير متاح حاليًا.",
+          "en": "Matthew 9.27-35\nOfficial native English text is currently unavailable.",
+          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+        },
+        "[آية المناولة]": {
+          "ar": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
+          "en": "",
+          "el": ""
+        }
+      },
+      "inline_replacements": {
+        "[اسم الإنجيلي]": {
+          "ar": "متى البشير",
+          "en": "",
+          "el": ""
+        }
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "الأحد القادم: ملحق اليوم",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "التاريخ المدني: الأحد 19 تموز 2026. التاريخ الكنسي القديم: 6 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: لا صوم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
+            "en": "Civil date: 2026-07-19. Verified daily texts are inserted below where available.",
+            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-19. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
+          },
+          "collapsed_by_default": true
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "ترتيب قراءات اليوم",
+            "en": "Order of today’s readings",
+            "el": "Τάξη τῶν σημερινῶν ἀναγνωσμάτων"
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "ملاحظة اختيارية",
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
+          },
+          "text": {
+            "ar": "البروكيمنن، ثم الرسالة، ثم هلليلويا، ثم الإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
+            "en": "Prokeimenon, Epistle, Alleluia, and Gospel. Any unverified target-language text is hidden automatically.",
+            "el": "Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο. Κάθε μὴ ἐπαληθευμένο κείμενο τῆς ἐπιλεγμένης γλώσσας ἀποκρύπτεται αὐτόματα."
+          },
+          "collapsed_by_default": true
+        }
+      ]
+    }
   ],
   "upcoming": [
     {
@@ -1685,7 +2695,7 @@
       "el": "Τὰ σημερινὰ δεδομένα εἶναι διαθέσιμα· τὰ μὴ ἐπαληθευμένα κείμενα παραμένουν κενά."
     }
   },
-  "lane_schema_version": 1,
+  "lane_schema_version": 2,
   "language": "el",
   "calendar_authority": "jerusalem_patriarchate",
   "calendar": "julian_old_calendar",
@@ -1700,91 +2710,5 @@
     "machine_translation_used": false,
     "automatic_diacritization_used": false,
     "missing_text_behavior": "UNAVAILABLE"
-  },
-  "readings": [
-    {
-      "icon": "🎵",
-      "kind": "prokeimenon",
-      "publication_status": "BLOCKED_MISSING_OFFICIAL_TEXT",
-      "integrity": {
-        "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "",
-        "display_text_changed": false,
-        "legacy_cross_lane_text_removed": true,
-        "ai_translation_used": false,
-        "automatic_diacritization_used": false
-      },
-      "translation_locked": true,
-      "title": "",
-      "reference": "",
-      "body": "",
-      "source": "",
-      "native_source_verification": {
-        "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-        "source_id": null,
-        "canonical_reference": "",
-        "reference_available": false,
-        "text_available": false,
-        "ai_translation_used": false,
-        "automatic_diacritization_used": false,
-        "reason": "same_language_official_source_not_available"
-      }
-    },
-    {
-      "icon": "📜",
-      "kind": "epistle",
-      "discovery_text": "12 But to the rest speak I, not the Lord: If any brother hath a wife that believeth not, and she be pleased to dwell with him, let him not put her away.\n13 And the woman which hath an husband that believeth not, and if he be pleased to dwell with her, let her not leave him.\n14 For the unbelieving husband is sanctified by the wife, and the unbelieving wife is sanctified by the husband: else were your children unclean; but now are they holy.\n15 But if the unbelieving depart, let him depart. A brother or a sister is not under bondage in such cases: but God hath called us to peace.\n16 For what knowest thou, O wife, whether thou shalt save thy husband? or how knowest thou, O man, whether thou shalt save thy wife?\n17 But as God hath distributed to every man, as the Lord hath called every one, so let him walk. And so ordain I in all churches.\n18 Is any man called being circumcised? let him not become uncircumcised. Is any called in uncircumcision? let him not be circumcised.\n19 Circumcision is nothing, and uncircumcision is nothing, but the keeping of the commandments of God.\n20 Let every man abide in the same calling wherein he was called.\n21 Art thou called being a servant? care not for it: but if thou mayest be made free, use it rather.\n22 For he that is called in the Lord, being a servant, is the Lord’s freeman: likewise also he that is called, being free, is Christ’s servant.\n23 Ye are bought with a price; be not ye the servants of men.\n24 Brethren, let every man, wherein he is called, therein abide with God.",
-      "translation_locked": true,
-      "integrity": {
-        "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "",
-        "display_text_changed": false,
-        "legacy_cross_lane_text_removed": true,
-        "ai_translation_used": false,
-        "automatic_diacritization_used": false
-      },
-      "title": "",
-      "reference": "",
-      "body": "",
-      "source": "",
-      "native_source_verification": {
-        "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-        "source_id": null,
-        "canonical_reference": "",
-        "reference_available": false,
-        "text_available": false,
-        "ai_translation_used": false,
-        "automatic_diacritization_used": false,
-        "reason": "same_language_official_source_not_available"
-      }
-    },
-    {
-      "icon": "📖",
-      "kind": "gospel",
-      "discovery_text": "35 And when the men of that place had knowledge of him, they sent out into all that country round about, and brought unto him all that were diseased;\n36 And besought him that they might only touch the hem of his garment: and as many as touched were made perfectly whole.\n1 Then came to Jesus scribes and Pharisees, which were of Jerusalem, saying,\n2 Why do thy disciples transgress the tradition of the elders? for they wash not their hands when they eat bread.\n3 But he answered and said unto them, Why do ye also transgress the commandment of God by your tradition?\n4 For God commanded, saying, Honour thy father and mother: and, He that curseth father or mother, let him die the death.\n5 But ye say, Whosoever shall say to his father or his mother, It is a gift, by whatsoever thou mightest be profited by me;\n6 And honour not his father or his mother, he shall be free. Thus have ye made the commandment of God of none effect by your tradition.\n7 Ye hypocrites, well did Esaias prophesy of you, saying,\n8 This people draweth nigh unto me with their mouth, and honoureth me with their lips; but their heart is far from me.\n9 But in vain they do worship me, teaching for doctrines the commandments of men.\n10 And he called the multitude, and said unto them, Hear, and understand:\n11 Not that which goeth into the mouth defileth a man; but that which cometh out of the mouth, this defileth a man.",
-      "translation_locked": true,
-      "integrity": {
-        "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "",
-        "display_text_changed": false,
-        "legacy_cross_lane_text_removed": true,
-        "ai_translation_used": false,
-        "automatic_diacritization_used": false
-      },
-      "title": "",
-      "reference": "",
-      "body": "",
-      "source": "",
-      "native_source_verification": {
-        "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-        "source_id": null,
-        "canonical_reference": "",
-        "reference_available": false,
-        "text_available": false,
-        "ai_translation_used": false,
-        "automatic_diacritization_used": false,
-        "reason": "same_language_official_source_not_available"
-      }
-    }
-  ]
+  }
 }

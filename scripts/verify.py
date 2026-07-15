@@ -18,9 +18,7 @@ def main() -> None:
         raise SystemExit(f"published date {data.get('date_iso')!r} != {args.expected_date!r}")
     run("scripts/verify_data_signature.py")
     run("scripts/validate_partial_daily.py", "--expected-date", args.expected_date)
-    lane_root = ROOT / "data/daily/current"
-    if lane_root.is_dir():
-        run("scripts/verify_language_lanes.py", "--date", args.expected_date)
+    run("scripts/verify_language_lanes.py", "--date", args.expected_date)
     print(f"PUBLISHED_DAILY_OK date={args.expected_date}")
 
 if __name__ == "__main__":
