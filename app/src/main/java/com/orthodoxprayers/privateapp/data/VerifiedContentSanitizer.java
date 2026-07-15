@@ -29,9 +29,11 @@ public final class VerifiedContentSanitizer {
      */
     public static String firstUnsafeTranslationError(JSONObject root) {
         if (root == null) return "payload_empty";
-        String localizedError = findInvalidLocalizedValue(root, "$", 0);
-        if (!localizedError.isEmpty()) return localizedError;
-
+        // Do not reject an otherwise valid signed day because a display-only
+        // localized field uses the wrong script. DataRepository.localizedValue()
+        // already hides such a field and shows the language-specific unavailable
+        // message. Rejecting the whole signed payload here made harmless metadata
+        // and partial translations block every daily update.
         String readingError = findUnsafeReading(root.optJSONArray("readings"), "readings");
         if (!readingError.isEmpty()) return readingError;
         JSONObject integrityInputs = root.optJSONObject("integrity_inputs");
@@ -56,36 +58,6 @@ public final class VerifiedContentSanitizer {
                 if (!text.isEmpty() && !isVerifiedNativeText(reading, language, text)) {
                     return "unverified_scripture_native_text:" + pointer + "[" + i + "].body." + language;
                 }
-            }
-        }
-        return "";
-    }
-
-    private static String findInvalidLocalizedValue(Object value, String pointer, int depth) {
-        if (value == null || depth > 80) return "";
-        if (value instanceof JSONObject) {
-            JSONObject object = (JSONObject) value;
-            if (object.has("ar") && (object.has("en") || object.has("el"))) {
-                String arabic = object.optString("ar", "").trim();
-                for (String language : new String[]{"en", "el"}) {
-                    String target = object.optString(language, "").trim();
-                    if (!target.isEmpty() && !TranslationCoverage.isValidTargetText(target, arabic, language)) {
-                        return "invalid_localized_script:" + pointer + "." + language;
-                    }
-                }
-                return "";
-            }
-            Iterator<String> keys = object.keys();
-            while (keys.hasNext()) {
-                String key = keys.next();
-                String error = findInvalidLocalizedValue(object.opt(key), pointer + "." + key, depth + 1);
-                if (!error.isEmpty()) return error;
-            }
-        } else if (value instanceof JSONArray) {
-            JSONArray array = (JSONArray) value;
-            for (int i = 0; i < array.length(); i++) {
-                String error = findInvalidLocalizedValue(array.opt(i), pointer + "[" + i + "]", depth + 1);
-                if (!error.isEmpty()) return error;
             }
         }
         return "";
@@ -173,7 +145,7 @@ public final class VerifiedContentSanitizer {
     }
 
     private static void sanitizeObject(JSONObject object, List<LockedBody> lockedBodies) {
-        if (object.has("ar") && (object.has("en") || object.has("el"))) {
+        if (TranslationCoverage.isLocalizedTextObject(object)) {
             String arabic = object.optString("ar", "");
             LockedBody locked = findLockedBody(arabic, lockedBodies);
             if (locked != null) {

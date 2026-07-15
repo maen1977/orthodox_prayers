@@ -107,6 +107,7 @@ public final class SettingsScreen extends BaseScreen {
                 + "\n" + local("تاريخ البيانات المعروضة: ", "Displayed data date: ", "Ἡμερομηνία δεδομένων: ") + dateValue
                 + "\n" + local("آخر محاولة تحديث: ", "Last update attempt: ", "Τελευταία προσπάθεια: ") + lastAttempt
                 + "\n" + local("آخر فحص ناجح: ", "Last successful check: ", "Τελευταῖος ἐπιτυχὴς ἔλεγχος: ") + lastUpdate
+                + "\n" + local("رمز تشخيص التحديث: ", "Update diagnostic code: ", "Κωδικὸς διαγνώσεως: ") + data.refreshDiagnosticCode()
                 + "\n" + local("مصدر النسخة: ", "Trusted copy source: ", "Πηγὴ ἀντιγράφου: ") + trustSourceLabel()
                 + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + shortHash(data.contentHash())
                 + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + safeValue(data.canonicalSourceId())

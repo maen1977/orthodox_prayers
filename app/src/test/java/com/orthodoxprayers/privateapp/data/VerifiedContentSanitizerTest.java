@@ -83,6 +83,50 @@ public final class VerifiedContentSanitizerTest {
         assertEquals("", serviceText.getString("el"));
     }
 
+    @Test
+    public void ignoresLanguageIndexedMetadataObjects() throws Exception {
+        JSONObject languageSources = new JSONObject()
+                .put("ar", new JSONObject().put("priority", new JSONArray().put("orthodox_jordan")))
+                .put("en", new JSONObject().put("priority", new JSONArray().put("goarch_online_chapel")))
+                .put("el", new JSONObject().put("priority", new JSONArray().put("church_of_greece")));
+        JSONObject verification = new JSONObject()
+                .put("ar", new JSONObject().put("status", "UNAVAILABLE"))
+                .put("en", new JSONObject().put("status", "UNAVAILABLE"))
+                .put("el", new JSONObject().put("status", "UNAVAILABLE"));
+        JSONObject root = new JSONObject()
+                .put("language_sources", languageSources)
+                .put("readings", new JSONArray().put(new JSONObject()
+                        .put("kind", "epistle")
+                        .put("translation_locked", true)
+                        .put("body", new JSONObject().put("ar", "").put("en", "").put("el", ""))
+                        .put("native_source_verification", verification)));
+
+        assertEquals("", VerifiedContentSanitizer.firstUnsafeTranslationError(root));
+    }
+
+
+    @Test
+    public void displayOnlyWrongScriptDoesNotRejectTheWholeSignedDay() throws Exception {
+        JSONObject root = new JSONObject()
+                .put("date_label", new JSONObject()
+                        .put("ar", "الأربعاء")
+                        .put("en", "Wednesday")
+                        .put("el", "Wrong English fallback"))
+                .put("language_sources", new JSONObject()
+                        .put("ar", new JSONObject().put("priority", new JSONArray().put("orthodox_jordan")))
+                        .put("en", new JSONObject().put("priority", new JSONArray().put("goarch_online_chapel")))
+                        .put("el", new JSONObject().put("priority", new JSONArray().put("church_of_greece"))))
+                .put("readings", new JSONArray().put(new JSONObject()
+                        .put("kind", "epistle")
+                        .put("translation_locked", true)
+                        .put("body", new JSONObject().put("ar", "").put("en", "").put("el", ""))
+                        .put("native_source_verification", new JSONObject())));
+
+        // The UI rejects the wrong Greek display slot locally; it must not block
+        // the entire cryptographically signed daily payload.
+        assertEquals("", VerifiedContentSanitizer.firstUnsafeTranslationError(root));
+    }
+
     private static String sha256(String value) throws Exception {
         byte[] digest = MessageDigest.getInstance("SHA-256").digest(value.getBytes(StandardCharsets.UTF_8));
         StringBuilder out = new StringBuilder();

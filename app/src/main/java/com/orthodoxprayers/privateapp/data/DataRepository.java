@@ -100,6 +100,12 @@ public final class DataRepository {
     public boolean isRefreshing() { return refreshInProgress; }
     public RefreshState refreshState() { return refreshState; }
     public String refreshMessage() { return refreshMessage; }
+    /** Stable technical code shown in Settings so update failures are diagnosable. */
+    public String refreshDiagnosticCode() {
+        String code = refreshMessage == null ? "" : refreshMessage.trim();
+        if (code.isEmpty()) code = preferences.lastRefreshMessage();
+        return code == null || code.trim().isEmpty() ? "none" : code.trim();
+    }
     public String loadError() { return loadError; }
     public String trustSource() { return trustSource; }
     public String contentHash() { return contentHash; }

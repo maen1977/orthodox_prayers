@@ -31,7 +31,7 @@ public final class TranslationCoverage {
     private static void visit(Object value, String language, Counter counter) {
         if (value instanceof JSONObject) {
             JSONObject object = (JSONObject) value;
-            if (object.has("ar") && (object.has("en") || object.has("el"))) {
+            if (isLocalizedTextObject(object)) {
                 counter.total++;
                 String ar = object.optString("ar", "").trim();
                 String target = object.optString(language, "").trim();
@@ -44,6 +44,25 @@ public final class TranslationCoverage {
             JSONArray array = (JSONArray) value;
             for (int i = 0; i < array.length(); i++) visit(array.opt(i), language, counter);
         }
+    }
+
+
+    /**
+     * Language-indexed metadata also uses ar/en/el keys, but its values are nested
+     * objects rather than text. Only classify a value as localized copy when every
+     * present language slot is a string (or JSON null).
+     */
+    static boolean isLocalizedTextObject(JSONObject object) {
+        if (object == null || !object.has("ar") || (!object.has("en") && !object.has("el"))) {
+            return false;
+        }
+        return isTextSlot(object, "ar") && isTextSlot(object, "en") && isTextSlot(object, "el");
+    }
+
+    private static boolean isTextSlot(JSONObject object, String key) {
+        if (!object.has(key)) return true;
+        Object value = object.opt(key);
+        return value == null || value == JSONObject.NULL || value instanceof String;
     }
 
     /** Reject copied Arabic and wrong-script text instead of treating any Latin/Greek letter as a translation. */

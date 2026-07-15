@@ -1,5 +1,10 @@
 # سجل التغييرات
 
+## 4.1.2
+- Fixed Android rejecting valid signed daily payloads when language-indexed metadata objects used `ar`, `en`, and `el` keys.
+- Localized-text validation now requires string-valued language slots.
+- Added regression coverage for `language_sources` and `native_source_verification`.
+
 ## 3.5.1-r4 — إصلاح مسار التحديث اليومي للمصادر الأصلية
 
 - إصلاح `IsADirectoryError` الذي كان يحوّل مسار cache الفارغ إلى مجلد المستودع ويحاول قراءته كملف.
