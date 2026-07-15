@@ -94,6 +94,68 @@ def _apply_replacements(value: object, exact: dict[str, object], inline: dict[st
             _apply_replacements(child, exact, inline)
 
 
+LEGACY_UNAVAILABLE_MARKERS = (
+    "غير متاح",
+    "لم يتوفر نص",
+    "لن يعرض التطبيق نص",
+    "currently unavailable",
+    "not available",
+    "will not display guessed",
+    "δεν είναι διαθέσιμο",
+    "δὲν εἶναι διαθέσιμο",
+)
+
+
+def _is_legacy_unavailable_text(value: str) -> bool:
+    normalized = (value or "").lower()
+    return any(marker in normalized for marker in LEGACY_UNAVAILABLE_MARKERS)
+
+
+def _prune_unresolved_or_empty_segments(segments: list[object]) -> list[dict]:
+    """Mirror Android's post-composition pruning for optional daily propers.
+
+    Empty exact replacements (for example an ordinary day with no feast
+    troparion or communion verse) must remove the optional template row rather
+    than leave a blank reader/chanter segment that blocks publication.
+    """
+    cleaned: list[dict] = []
+    for raw in segments:
+        if not isinstance(raw, dict):
+            continue
+        segment = copy.deepcopy(raw)
+        if segment.get("type") == "section":
+            cleaned.append(segment)
+            continue
+        text = segment.get("text")
+        if not isinstance(text, dict):
+            cleaned.append(segment)
+            continue
+        values = [str(text.get(lang) or "").strip() for lang in ("ar", "en", "el")]
+        visible = [value for value in values if value]
+        unresolved = any("[" in value and "]" in value for value in visible)
+        legacy_only = bool(visible) and all(_is_legacy_unavailable_text(value) for value in visible)
+        if not visible or unresolved or legacy_only:
+            continue
+        cleaned.append(segment)
+
+    # Remove headings that became empty after their optional row was removed.
+    result: list[dict] = []
+    for index, segment in enumerate(cleaned):
+        if segment.get("type") != "section":
+            result.append(segment)
+            continue
+        has_content = False
+        for next_segment in cleaned[index + 1:]:
+            if next_segment.get("type") == "section":
+                break
+            if isinstance(next_segment.get("text"), dict) and localized_nonempty(next_segment.get("text")):
+                has_content = True
+                break
+        if has_content:
+            result.append(segment)
+    return result
+
+
 def compose_overlay(service: dict, library: dict[str, dict], source: Path) -> dict:
     base_id = str(service.get("extends_service_id") or "").strip()
     if not base_id:
@@ -110,6 +172,7 @@ def compose_overlay(service: dict, library: dict[str, dict], source: Path) -> di
         service.get("segment_replacements") if isinstance(service.get("segment_replacements"), dict) else {},
         service.get("inline_replacements") if isinstance(service.get("inline_replacements"), dict) else {},
     )
+    base_segments = _prune_unresolved_or_empty_segments(base_segments)
     composed["segments"] = copy.deepcopy(service.get("segments", [])) + base_segments
     for key, value in service.items():
         if key not in {"segments", "extends_service_id", "segment_replacements", "inline_replacements"}:
