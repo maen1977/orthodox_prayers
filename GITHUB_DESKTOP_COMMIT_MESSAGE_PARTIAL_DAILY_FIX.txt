@@ -1,7 +1,0 @@
-Summary:
-Publish usable signed daily data when some exact texts are unavailable
-
-Description:
-Publish the current date, fasting status, feast, service overlays, and verified reading references every day.
-Leave only unavailable exact religious text fields empty instead of blocking the entire daily update.
-Keep language lanes isolated, prohibit machine translation, sign the current data, and verify the published branch.

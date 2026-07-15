@@ -1,7 +1,0 @@
-Summary:
-Handle unavailable official sources without failing Update
-
-Description:
-Treat a complete official-source gap as a protected no-update result instead of a workflow failure.
-Preserve the last signed daily data, publish a signed status marker for the requested date, and let the 00:15 verification accept that marker.
-Real integrity, schema, signature, or content errors still fail closed and open an alert.
