@@ -26,6 +26,51 @@ class Completion430Tests(unittest.TestCase):
                 self.assertEqual("IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS", manifest["status"])
                 self.assertEqual(22, len(index))
 
+    def test_required_references_include_next_sunday_passages(self):
+        data = json.loads((ROOT / "data/calendar/candidates/2026-07-16.json").read_text(encoding="utf-8"))
+        references = {canonical for canonical, _ in fill.required_references(data)}
+        self.assertIn("1CO.7.24-35", references)
+        self.assertIn("MAT.15.12-21", references)
+        self.assertIn("ROM.15.1-7", references)
+        self.assertIn("MAT.9.27-35", references)
+
+    def test_missing_next_sunday_passage_loads_complete_registered_corpus(self):
+        contract = fill.load_contract()
+        partial_manifest = {
+            "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+            "source_id": "ebible_world_english_bible",
+            "source_url": "https://ebible.org/find/details.php?id=engwebp",
+            "machine_translation_used": False,
+            "automatic_diacritization_used": False,
+        }
+        partial_index = {
+            ("1CO", 7, 24): {"book_id": "1CO", "book_name": "1 Corinthians", "chapter": 7, "verse": 24, "text": "Existing", "text_sha256": fill.sha256_text("Existing")},
+        }
+        full_manifest = {
+            "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+            "source_id": "ebible_world_english_bible",
+            "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+            "machine_translation_used": False,
+            "automatic_diacritization_used": False,
+        }
+        full_index = {
+            ("ROM", 15, verse): {
+                "book_id": "ROM",
+                "book_name": "Romans",
+                "chapter": 15,
+                "verse": verse,
+                "text": f"Romans verse {verse}",
+                "text_sha256": fill.sha256_text(f"Romans verse {verse}"),
+            }
+            for verse in range(1, 8)
+        }
+        required = [("ROM.15.1-7", fill.parse_reference("ROM.15.1-7"))]
+        with mock.patch.object(fill, "load_public_domain_corpus", return_value=(full_manifest, full_index)) as loader:
+            manifest, index = fill.ensure_corpus_coverage("en", (partial_manifest, partial_index), required, contract)
+        loader.assert_called_once_with("en")
+        self.assertEqual(full_manifest, manifest)
+        self.assertEqual(7, len(fill.passage_verses(index, required[0][1])))
+
     def test_current_candidate_has_exact_epistle_and_gospel_in_three_languages(self):
         data = json.loads((ROOT / "data/calendar/candidates/2026-07-16.json").read_text(encoding="utf-8"))
         self.assertEqual("2026-07-16", data["date_iso"])

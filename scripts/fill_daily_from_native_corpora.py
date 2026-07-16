@@ -118,6 +118,71 @@ def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any]
     return manifest, index
 
 
+def required_references(data: dict[str, Any]) -> list[tuple[str, tuple[str, int, int, int, int]]]:
+    """Return unique canonical Epistle/Gospel references required by this payload."""
+    required: list[tuple[str, tuple[str, int, int, int, int]]] = []
+    seen: set[str] = set()
+    for readings in reading_lists(data):
+        for reading in readings:
+            if not isinstance(reading, dict) or str(reading.get("kind") or "") not in SCRIPTURE_KINDS:
+                continue
+            canonical = canonical_reference(reading)
+            parsed = parse_reference(canonical)
+            if parsed is None or canonical in seen:
+                continue
+            seen.add(canonical)
+            required.append((canonical, parsed))
+    return required
+
+
+def ensure_corpus_coverage(
+    language: str,
+    corpus: tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]] | None,
+    required: list[tuple[str, tuple[str, int, int, int, int]]],
+    contract: dict[str, Any],
+) -> tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]] | None:
+    """Lazily load the complete public-domain corpus when the checked-in slice is insufficient.
+
+    The repository keeps a small verified slice so the known release candidate can be
+    reproduced offline. Daily generation may require different passages (especially
+    next Sunday's readings), so a missing passage must trigger the registered complete
+    native corpus rather than publishing blanks or failing with a misleading language
+    error. The download is cached by public_domain_scripture.py.
+    """
+    if corpus is None or not required:
+        return corpus
+    manifest, index = corpus
+    missing = [canonical for canonical, parsed in required if passage_verses(index, parsed) is None]
+    if not missing:
+        return corpus
+
+    print(
+        f"{language}: checked-in Scripture slice is missing {', '.join(missing)}; "
+        "loading the complete registered public-domain corpus",
+        flush=True,
+    )
+    try:
+        full_manifest, full_index = load_public_domain_corpus(language)
+    except Exception as error:
+        joined = ", ".join(missing)
+        raise RuntimeError(
+            f"{language}: checked-in Scripture slice does not cover {joined}; "
+            f"the complete registered public-domain corpus could not be loaded: {error}"
+        ) from error
+
+    source_id = str(full_manifest.get("source_id") or "")
+    source_url = str(full_manifest.get("source_url") or "")
+    if not source_allowed(language, source_id, contract) or not source_url_allowed(source_id, source_url, contract):
+        raise ValueError(f"{language}: complete public-domain corpus source is outside the registered language lane")
+    if full_manifest.get("machine_translation_used") is not False or full_manifest.get("automatic_diacritization_used") is not False:
+        raise ValueError(f"{language}: complete public-domain corpus has forbidden transformation flags")
+
+    unresolved = [canonical for canonical, parsed in required if passage_verses(full_index, parsed) is None]
+    if unresolved:
+        raise ValueError(f"{language}: complete public-domain corpus is missing required passage(s): {', '.join(unresolved)}")
+    return full_manifest, full_index
+
+
 def passage_verses(index: dict[tuple[str, int, int], dict[str, Any]], parsed: tuple[str, int, int, int, int]) -> list[dict[str, Any]] | None:
     book, start_chapter, start_verse, end_chapter, end_verse = parsed
     selected = [
@@ -221,8 +286,12 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
 
 def process(path: Path) -> int:
     contract = load_contract()
-    corpora = {language: load_corpus(language, contract) for language in LANGUAGES}
     data = json.loads(path.read_text(encoding="utf-8"))
+    required = required_references(data)
+    corpora = {
+        language: ensure_corpus_coverage(language, load_corpus(language, contract), required, contract)
+        for language in LANGUAGES
+    }
     target_date = str(data.get("date_iso") or data.get("date") or "")
     filled = 0
     for readings in reading_lists(data):
