@@ -1,4 +1,4 @@
-# حالة جاهزية Orthodox Prayers 3.5.1
+# حالة جاهزية Orthodox Prayers 4.1.5 — المصدر المنقح
 
 ## جاهز الآن
 
@@ -9,7 +9,7 @@
 - التوقيع والتحقق وLast-known-good مفعلة.
 - اللغات الثلاث مفعلة دون fallback بين اللغات.
 - البحث يستخدم فهرسًا مشتقًا ويعرض النص الأصلي دون تغيير.
-- اختبارات Python: 61/61 ناجحة عند إعداد هذه النسخة.
+- اختبارات Python: 76/76 ناجحة في النسخة المنقحة.
 
 ## غير جاهز بعد لإصدار Production مكتمل
 
@@ -22,7 +22,7 @@
 
 ## بوابة الإنتاج
 
-Workflow `Build` يسمح ببناء Debug للاختبار. أما مهمة الإصدار الموقّع فتنفذ:
+Workflow `Build` يسمح ببناء Debug للاختبار بعد فحص سلامة المسارات اللغوية وGradle Wrapper. أما مهمة الإصدار الموقّع فتنفذ:
 
 ```bash
 python scripts/validate_release_readiness.py
@@ -33,3 +33,10 @@ python scripts/validate_release_readiness.py
 ## تحقق البناء
 
 لم يُنفذ بناء Android الكامل محليًا إذا لم تتوفر حزمة Gradle/Android SDK في البيئة. Workflow `Build` ينفذ حاليًا Unit Tests وLint Debug وبناء Debug APK في خطوات منفصلة بعد الرفع. يجب إعادة اختبار المحاكي وCodeQL قبل إعلان Production عندما يصبح البناء الأساسي مستقرًا.
+
+
+## حماية مفاتيح النشر
+
+- مفتاح توقيع بيانات اليوم يوضع داخل GitHub Environment باسم `production-data-signing`.
+- مفتاح توقيع Android يوضع داخل Environment منفصل باسم `production`.
+- يجب ضبط قواعد الحماية والمراجعين والفروع المسموحة من إعدادات GitHub، ولا تكفي كتابة اسم Environment داخل YAML وحدها.

@@ -311,7 +311,15 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertTrue((ROOT / "gradlew").exists())
         self.assertTrue((ROOT / "gradlew.bat").exists())
         self.assertEqual(
-            "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7",
+            "9cbbb4d68ff7fb5211c4d58f598ac9d8664c05fdcd1e5f59b7f2c3ac1ee00af0",
+            hashlib.sha256((ROOT / "gradlew").read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            "0f3ed8f03b50934cb8c48b15a470d5c20a30a5385825e48b55bcc8ea3d8f8e18",
+            hashlib.sha256((ROOT / "gradlew.bat").read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17",
             hashlib.sha256(wrapper.read_bytes()).hexdigest(),
         )
         self.assertIn("gradle-8.9-bin.zip", properties)
@@ -339,6 +347,7 @@ class ReleaseContractTests(unittest.TestCase):
 
         update = (workflows / "update.yml").read_text(encoding="utf-8")
         self.assertIn("DATA_SIGNING_PRIVATE_KEY_B64", update)
+        self.assertIn("environment: production-data-signing", update)
         self.assertIn("scripts/update.py", update)
         updater = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
         self.assertIn("scripts/rebuild_daily_services.py", updater)
@@ -435,6 +444,9 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("scripts/validate_native_source_contract.py", quality_gate)
         self.assertIn("scripts/validate_content_deduplication.py", quality_gate)
         self.assertIn("scripts/scan_repository_secrets.py", quality_gate)
+        self.assertIn("scripts/verify_gradle_wrapper.py", quality_gate)
+        self.assertIn("scripts/check_native_coverage.py", quality_gate)
+        self.assertIn("--reject-invalid", quality_gate)
 
     def test_code_and_content_rights_are_explicitly_separated(self):
         self.assertTrue((ROOT / "LICENSE").is_file())

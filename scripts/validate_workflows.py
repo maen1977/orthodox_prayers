@@ -84,6 +84,7 @@ def main() -> None:
             "scripts/update.py",
             "scripts/verify.py",
             "DATA_SIGNING_PRIVATE_KEY_B64",
+            "environment: production-data-signing",
             "canonical/signing/data_signing_public_key.pub",
             "cmp -s",
             "The GitHub secret does not match the public key",

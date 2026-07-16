@@ -23,6 +23,8 @@ Settings → Actions → General → Workflow permissions
 أضف Repository Secret باسم:
 
 ```text
+أنشئ GitHub Environment باسم `production-data-signing` وضع داخله السر التالي:
+
 DATA_SIGNING_PRIVATE_KEY_B64
 ```
 

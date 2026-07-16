@@ -32,6 +32,9 @@ env:
 
 jobs:
   daily:
+    # Store DATA_SIGNING_PRIVATE_KEY_B64 in this protected Environment, not as
+    # an unrestricted repository secret. Configure branch/reviewer rules in GitHub.
+    environment: production-data-signing
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
