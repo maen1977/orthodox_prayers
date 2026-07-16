@@ -770,12 +770,11 @@
         "source_id": "orthodox_jordan",
         "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
         "status": "OFFICIAL_ARABIC_EXACT_PINNED",
-        "complete_text": true,
+        "complete_text": false,
         "ai_liturgical_translation_used": false,
-        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba"
-      },
-      "complete_text": false,
-      "completeness_note_ar": "الصلاة الربانية المثبتة فقط؛ ليست كامل صلوات المائدة المنشورة."
+        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba",
+        "completeness_note_ar": "الصلاة الربانية المثبتة فقط؛ ليست كامل صلوات المائدة المنشورة."
+      }
     },
     {
       "id": "after_food",

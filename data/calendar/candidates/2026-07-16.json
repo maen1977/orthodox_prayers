@@ -168,9 +168,7 @@
       "priority": [
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
-        "antioch_archdiocese_tripoli_ar",
-        "antioch_patriarchate_ar",
-        "ebible_arabic_van_dyck"
+        "antioch_patriarchate_ar"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -182,11 +180,8 @@
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
         "goarch_digital_chant_stand_english",
-        "akroasis_small_menaion_english",
         "goarch_synekdemos",
-        "oca_official_english",
-        "metropolis_toronto_liturgy_en",
-        "ebible_world_english_bible"
+        "oca_official_english"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -198,10 +193,7 @@
         "church_of_greece_apostoliki_diakonia",
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
-        "goarch_online_chapel_greek",
-        "goarch_digital_chant_stand_greek",
-        "metropolis_toronto_liturgy_el",
-        "ebible_greek_byzantine_1904"
+        "goarch_digital_chant_stand_greek"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -214,7 +206,7 @@
     "jurisdiction": "jerusalem_patriarchate_usage",
     "source_policy": "canonical/source_policy.json",
     "rights_notice": "CONTENT_RIGHTS.md",
-    "review_status": "automatic_native_language_policy_enforced",
+    "review_status": "automatic_official_sources_pending",
     "human_review_required": false
   },
   "publication": {
@@ -228,16 +220,60 @@
       "official_greek_orthodox",
       "orthodox_church_in_america"
     ],
-    "selected_source": null,
-    "fallback_trace": [],
+    "selected_source": "orthodox_church_in_america",
+    "selected_priority": 5,
+    "fallback_trace": [
+      {
+        "source": "orthodox_jordan",
+        "priority": 1,
+        "status": "offline",
+        "reason": "الفحص المحلي لا يجلب الإنترنت؛ تُختبر قواعد المصدر بواسطة fixtures مستقلة."
+      },
+      {
+        "source": "jerusalem_patriarchate",
+        "priority": 2,
+        "status": "not_applicable",
+        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-01."
+      },
+      {
+        "source": "antioch_patriarchate",
+        "priority": 3,
+        "status": "offline",
+        "reason": "لم يُفحص الدليل السنوي في الوضع غير المتصل."
+      },
+      {
+        "source": "official_greek_orthodox",
+        "priority": 4,
+        "status": "not_applicable",
+        "reason": "اليوم ليس أحدًا صالحًا لسجل آحاد ما بعد العنصرة."
+      },
+      {
+        "source": "orthodox_church_in_america",
+        "priority": 5,
+        "status": "selected"
+      }
+    ],
     "same_language_fallback_only": true,
     "religious_text_contract": "canonical/source_native_contract.json",
-    "daily_availability": "PARTIAL_VERIFIED",
-    "date_published": "2026-07-16",
-    "usable_when_partial": true,
-    "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
+    "signature_required_before_promotion": true,
+    "candidate_state": "COMPLETE_UNSIGNED_CANDIDATE_AWAITING_PROTECTED_SIGNATURE"
   },
-  "source_evidence": [],
+  "source_evidence": [
+    {
+      "id": "orthodox_church_in_america",
+      "priority": 5,
+      "official": true,
+      "url": "https://www.oca.org/readings/daily/2026/07/16",
+      "status": "current",
+      "date_iso": "2026-07-16",
+      "epistle_reference": "1 Corinthians 7:24-35",
+      "gospel_reference": "Matthew 15:12-21",
+      "tone": null,
+      "prokeimenon_text": null,
+      "sha256": "90b34a05c323ae2ed5e0c5b7556fb830faf5a594f136f8df40334e3d42e4032b",
+      "reason": "Official Orthodox lectionary authority for the appointed references; Bible text is supplied independently by registered same-language public-domain corpora."
+    }
+  ],
   "readings": [
     {
       "icon": "🎵",
@@ -318,19 +354,19 @@
       },
       "reference": {
         "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:24-35",
-        "en": "Paul’s First Letter to the Corinthians 7:24-35",
+        "en": "1 Corinthians 7:24-35",
         "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:24-35"
       },
       "body": {
-        "ar": "مَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ. غير المتزوجين والأرامل\nوَأَمَّا ٱلْعَذَارَى، فَلَيْسَ عِنْدِي أَمْرٌ مِنَ ٱلرَّبِّ فِيهِنَّ، وَلَكِنَّنِي أُعْطِي رَأْيًا كَمَنْ رَحِمَهُ ٱلرَّبُّ أَنْ يَكُونَ أَمِينًا.\nفَأَظُنُّ أَنَّ هَذَا حَسَنٌ لِسَبَبِ ٱلضِّيقِ ٱلْحَاضِرِ، أَنَّهُ حَسَنٌ لِلْإِنْسَانِ أَنْ يَكُونَ هَكَذَا:\nأَنْتَ مُرْتَبِطٌ بِٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱلِٱنْفِصَالَ. أَنْتَ مُنْفَصِلٌ عَنِ ٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱمْرَأَةً.\nلَكِنَّكَ وَإِنْ تَزَوَّجْتَ لَمْ تُخْطِئْ. وَإِنْ تَزَوَّجَتِ ٱلْعَذْرَاءُ لَمْ تُخْطِئْ. وَلَكِنَّ مِثْلَ هَؤُلَاءِ يَكُونُ لَهُمْ ضِيقٌ فِي ٱلْجَسَدِ. وَأَمَّا أَنَا فَإِنِّي أُشْفِقُ عَلَيْكُمْ.\nفَأَقُولُ هَذَا أَيُّهَا ٱلْإِخْوَةُ: ٱلْوَقْتُ مُنْذُ ٱلْآنَ مُقَصَّرٌ، لِكَيْ يَكُونَ ٱلَّذِينَ لَهُمْ نِسَاءٌ كَأَنْ لَيْسَ لَهُمْ،\nوَٱلَّذِينَ يَبْكُونَ كَأَنَّهُمْ لَا يَبْكُونَ، وَٱلَّذِينَ يَفْرَحُونَ كَأَنَّهُمْ لَا يَفْرَحُونَ، وَٱلَّذِينَ يَشْتَرُونَ كَأَنَّهُمْ لَا يَمْلِكُونَ،\nوَٱلَّذِينَ يَسْتَعْمِلُونَ هَذَا ٱلْعَالَمَ كَأَنَّهُمْ لَا يَسْتَعْمِلُونَهُ. لِأَنَّ هَيْئَةَ هَذَا ٱلْعَالَمِ تَزُولُ.\nفَأُرِيدُ أَنْ تَكُونُوا بِلَا هَمٍّ. غَيْرُ ٱلْمُتَزَوِّجِ يَهْتَمُّ فِي مَا لِلرَّبِّ كَيْفَ يُرْضِي ٱلرَّبَّ،\nوَأَمَّا ٱلْمُتَزَوِّجُ فَيَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ يُرْضِي ٱمْرَأَتَهُ.\nإِنَّ بَيْنَ ٱلزَّوْجَةِ وَٱلْعَذْرَاءِ فَرْقًا: غَيْرُ ٱلْمُتَزَوِّجَةِ تَهْتَمُّ فِي مَا لِلرَّبِّ لِتَكُونَ مُقَدَّسَةً جَسَدًا وَرُوحًا. وَأَمَّا ٱلْمُتَزَوِّجَةُ فَتَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ تُرْضِي رَجُلَهَا.\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.",
+        "ar": "مَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ.\nوَأَمَّا ٱلْعَذَارَى، فَلَيْسَ عِنْدِي أَمْرٌ مِنَ ٱلرَّبِّ فِيهِنَّ، وَلَكِنَّنِي أُعْطِي رَأْيًا كَمَنْ رَحِمَهُ ٱلرَّبُّ أَنْ يَكُونَ أَمِينًا.\nفَأَظُنُّ أَنَّ هَذَا حَسَنٌ لِسَبَبِ ٱلضِّيقِ ٱلْحَاضِرِ، أَنَّهُ حَسَنٌ لِلْإِنْسَانِ أَنْ يَكُونَ هَكَذَا:\nأَنْتَ مُرْتَبِطٌ بِٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱلِٱنْفِصَالَ. أَنْتَ مُنْفَصِلٌ عَنِ ٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱمْرَأَةً.\nلَكِنَّكَ وَإِنْ تَزَوَّجْتَ لَمْ تُخْطِئْ. وَإِنْ تَزَوَّجَتِ ٱلْعَذْرَاءُ لَمْ تُخْطِئْ. وَلَكِنَّ مِثْلَ هَؤُلَاءِ يَكُونُ لَهُمْ ضِيقٌ فِي ٱلْجَسَدِ. وَأَمَّا أَنَا فَإِنِّي أُشْفِقُ عَلَيْكُمْ.\nفَأَقُولُ هَذَا أَيُّهَا ٱلْإِخْوَةُ: ٱلْوَقْتُ مُنْذُ ٱلْآنَ مُقَصَّرٌ، لِكَيْ يَكُونَ ٱلَّذِينَ لَهُمْ نِسَاءٌ كَأَنْ لَيْسَ لَهُمْ،\nوَٱلَّذِينَ يَبْكُونَ كَأَنَّهُمْ لَا يَبْكُونَ، وَٱلَّذِينَ يَفْرَحُونَ كَأَنَّهُمْ لَا يَفْرَحُونَ، وَٱلَّذِينَ يَشْتَرُونَ كَأَنَّهُمْ لَا يَمْلِكُونَ،\nوَٱلَّذِينَ يَسْتَعْمِلُونَ هَذَا ٱلْعَالَمَ كَأَنَّهُمْ لَا يَسْتَعْمِلُونَهُ. لِأَنَّ هَيْئَةَ هَذَا ٱلْعَالَمِ تَزُولُ.\nفَأُرِيدُ أَنْ تَكُونُوا بِلَا هَمٍّ. غَيْرُ ٱلْمُتَزَوِّجِ يَهْتَمُّ فِي مَا لِلرَّبِّ كَيْفَ يُرْضِي ٱلرَّبَّ،\nوَأَمَّا ٱلْمُتَزَوِّجُ فَيَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ يُرْضِي ٱمْرَأَتَهُ.\nإِنَّ بَيْنَ ٱلزَّوْجَةِ وَٱلْعَذْرَاءِ فَرْقًا: غَيْرُ ٱلْمُتَزَوِّجَةِ تَهْتَمُّ فِي مَا لِلرَّبِّ لِتَكُونَ مُقَدَّسَةً جَسَدًا وَرُوحًا. وَأَمَّا ٱلْمُتَزَوِّجَةُ فَتَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ تُرْضِي رَجُلَهَا.\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.",
         "en": "Brothers, let each man, in whatever condition he was called, stay in that condition with God.\nNow concerning virgins, I have no commandment from the Lord, but I give my judgment as one who has obtained mercy from the Lord to be trustworthy.\nTherefore I think that because of the distress that is on us, it’s good for a man to remain as he is.\nAre you bound to a wife? Don’t seek to be freed. Are you free from a wife? Don’t seek a wife.\nBut if you marry, you have not sinned. If a virgin marries, she has not sinned. Yet such will have oppression in the flesh, and I want to spare you.\nBut I say this, brothers: the time is short. From now on, both those who have wives may be as though they had none;\nand those who weep, as though they didn’t weep; and those who rejoice, as though they didn’t rejoice; and those who buy, as though they didn’t possess;\nand those who use the world, as not using it to the fullest. For the mode of this world passes away.\nBut I desire to have you to be free from cares. He who is unmarried is concerned for the things of the Lord, how he may please the Lord;\nbut he who is married is concerned about the things of the world, how he may please his wife.\nThere is also a difference between a wife and a virgin. The unmarried woman cares about the things of the Lord, that she may be holy both in body and in spirit. But she who is married cares about the things of the world—how she may please her husband.\nThis I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.",
         "el": "ἕκαστος ἐν ᾧ ἐκλήθη, ἀδελφοί, ἐν τούτῳ μενέτω παρὰ τῷ Θεῷ.\nΠερὶ δὲ τῶν παρθένων ἐπιταγὴν Κυρίου οὐκ ἔχω, γνώμην δὲ δίδωμι ὡς ἠλεημένος ὑπὸ Κυρίου πιστὸς εἶναι.\nνομίζω οὖν τοῦτο καλὸν ὑπάρχειν διὰ τὴν ἐνεστῶσαν ἀνάγκην, ὅτι καλὸν ἀνθρώπῳ τὸ οὕτως εἶναι.\nδέδεσαι γυναικί; μὴ ζήτει λύσιν· λέλυσαι ἀπὸ γυναικός; μὴ ζήτει γυναῖκα·\nἐὰν δὲ καὶ γήμῃς, οὐχ ἥμαρτες· καὶ ἐὰν γήμῃ ἡ παρθένος, οὐχ ἥμαρτε· θλῖψιν δὲ τῇ σαρκὶ ἕξουσιν οἱ τοιοῦτοι· ἐγὼ δὲ ὑμῶν φείδομαι.\nτοῦτο δέ φημι, ἀδελφοί, ὁ καιρὸς συνεσταλμένος τὸ λοιπόν ἐστιν, ἵνα καὶ οἱ ἔχοντες γυναῖκας ὡς μὴ ἔχοντες ὦσι,\nκαὶ οἱ κλαίοντες ὡς μὴ κλαίοντες, καὶ οἱ χαίροντες ὡς μὴ χαίροντες, καὶ οἱ ἀγοράζοντες ὡς μὴ κατέχοντες,\nκαὶ οἱ χρώμενοι τῷ κόσμῳ τούτῳ ὡς μὴ καταχρώμενοι· παράγει γὰρ τὸ σχῆμα τοῦ κόσμου τούτου.\nθέλω δὲ ὑμᾶς ἀμερίμνους εἶναι. ὁ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, πῶς ἀρέσει τῷ Κυρίῳ·\nὁ δὲ γαμήσας μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῇ γυναικί.\nμεμέρισται [καὶ] ἡ γυνὴ καὶ ἡ παρθένος. ἡ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, ἵνα ᾖ ἁγία καὶ σώματι καὶ πνεύματι· ἡ δὲ γαμήσασα μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῷ ἀνδρί.\nτοῦτο δὲ πρὸς τὸ ὑμῶν αὐτῶν συμφέρον λέγω, οὐχ ἵνα βρόχον ὑμῖν ἐπιβάλω, ἀλλὰ πρὸς τὸ εὔσχημον καὶ εὐπάρεδρον τῷ Κυρίῳ ἀπερισπάστως."
       },
       "discovery_text": "",
       "source": {
-        "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-        "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-        "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
+        "ar": "https://ebible.org/find/details.php?id=arb-vd",
+        "en": "https://ebible.org/find/details.php?id=engwebp",
+        "el": "https://ebible.org/find/details.php?id=grcbyz"
       },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
@@ -344,14 +380,14 @@
         "ar": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_arabic_van_dyck",
-          "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+          "source_url": "https://ebible.org/find/details.php?id=arb-vd",
           "canonical_reference": "1CO.7.24-35",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "ce5d588d7db34c10f3600229f0988dfb783df6ddda180a4afbf5a29db10fec07",
+          "text_sha256": "935eef096d0281fd59c055c9256dceb44afc2e3b1bc34db7af82d3412bed981f",
           "verse_count": 12,
           "verse_hashes": [
-            "68ae60399d212a3d88a2c39e31000bab7f973a9cb6c3439e062cbaa07e6f6be4",
+            "032aa4f36b02a85348df25b937e0b2660e590c7a6f75a4953ba0645fa4c7e202",
             "82e48d2af8194e6247f3d346f8bb4b998be8a5a8b4740c255001a07e71b4908e",
             "f379c1ca07e88eaab934533f2f373d6dafedb6333e93efb86d1d49c178e98573",
             "b5488c5a52e89f8619e9b0c3a8bd4bc9906be59e09bd7ba54d23074b0c90a618",
@@ -370,13 +406,13 @@
           "automatic_diacritization_used": false,
           "daily_reference_source_id": null,
           "daily_reference_source_url": null,
-          "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
+          "corpus_archive_sha256": null,
           "corpus_license": "Public Domain"
         },
         "en": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
-          "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+          "source_url": "https://ebible.org/find/details.php?id=engwebp",
           "canonical_reference": "1CO.7.24-35",
           "reference_available": true,
           "text_available": true,
@@ -400,15 +436,15 @@
           "machine_translation_used": false,
           "ai_translation_used": false,
           "automatic_diacritization_used": false,
-          "daily_reference_source_id": null,
-          "daily_reference_source_url": null,
-          "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
+          "daily_reference_source_id": "oca_official_english",
+          "daily_reference_source_url": "https://www.oca.org/readings/daily/2026/07/16",
+          "corpus_archive_sha256": null,
           "corpus_license": "Public Domain"
         },
         "el": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_greek_byzantine_1904",
-          "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+          "source_url": "https://ebible.org/find/details.php?id=grcbyz",
           "canonical_reference": "1CO.7.24-35",
           "reference_available": true,
           "text_available": true,
@@ -434,7 +470,7 @@
           "automatic_diacritization_used": false,
           "daily_reference_source_id": null,
           "daily_reference_source_url": null,
-          "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+          "corpus_archive_sha256": null,
           "corpus_license": "Public Domain"
         }
       },
@@ -450,19 +486,19 @@
       },
       "reference": {
         "ar": "إِنْجِيلُ مَتَّى 15:12-21",
-        "en": "The Good News According to Matthew 15:12-21",
-        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 15:12-21"
+        "en": "Matthew 15:12-21",
+        "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 15:12-21"
       },
       "body": {
-        "ar": "حِينَئِذٍ تَقَدَّمَ تَلَامِيذُهُ وَقَالُوا لَهُ: «أَتَعْلَمُ أَنَّ ٱلْفَرِّيسِيِّينَ لَمَّا سَمِعُوا ٱلْقَوْلَ نَفَرُوا؟».\nفَأَجَابَ وَقَالَ: «كُلُّ غَرْسٍ لَمْ يَغْرِسْهُ أَبِي ٱلسَّمَاوِيُّ يُقْلَعُ.\nاُتْرُكُوهُمْ. هُمْ عُمْيَانٌ قَادَةُ عُمْيَانٍ. وَإِنْ كَانَ أَعْمَى يَقُودُ أَعْمَى يَسْقُطَانِ كِلَاهُمَا فِي حُفْرَةٍ».\nفَأَجَابَ بُطْرُسُ وَقَالَ لَهُ: «فَسِّرْ لَنَا هَذَا ٱلْمَثَلَ».\nفَقَالَ يَسُوعُ: «هَلْ أَنْتُمْ أَيْضًا حَتَّى ٱلْآنَ غَيْرُ فَاهِمِينَ؟\nأَلَا تَفْهَمُونَ بَعْدُ أَنَّ كُلَّ مَا يَدْخُلُ ٱلْفَمَ يَمْضِي إِلَى ٱلْجَوْفِ وَيَنْدَفِعُ إِلَى ٱلْمَخْرَجِ؟\nوَأَمَّا مَا يَخْرُجُ مِنَ ٱلْفَمِ فَمِنَ ٱلْقَلْبِ يَصْدُرُ، وَذَاكَ يُنَجِّسُ ٱلْإِنْسَانَ،\nلِأَنْ مِنَ ٱلْقَلْبِ تَخْرُجُ أَفْكَارٌ شِرِّيرَةٌ: قَتْلٌ، زِنىً، فِسْقٌ، سِرْقَةٌ، شَهَادَةُ زُورٍ، تَجْدِيفٌ.\nهَذِهِ هِيَ ٱلَّتِي تُنَجِّسُ ٱلْإِنْسَانَ. وَأَمَّا ٱلْأَ كْلُ بِأَيْدٍ غَيْرِ مَغْسُولَةٍ فَلَا يُنَجِّسُ ٱلْإِنْسَانَ». إيمان المرأة الكنعانية\nثُمَّ خَرَجَ يَسُوعُ مِنْ هُنَاكَ وَٱنْصَرَفَ إِلَى نَوَاحِي صُورَ وَصَيْدَاءَ.",
-        "en": "Then the disciples came and said to him, “Do you know that the Pharisees were offended when they heard this saying?”\nBut he answered, “\\+w Every|strong=\"G3956\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w which|strong=\"G3739\"\\+w* \\+w my|strong=\"G3956\"\\+w* \\+w heavenly|strong=\"G3770\"\\+w* \\+w Father|strong=\"G3962\"\\+w* didn’\\+w t|strong=\"G3588\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w will|strong=\"G3739\"\\+w* \\+w be|strong=\"G3756\"\\+w* \\+w uprooted|strong=\"G1610\"\\+w*.\nLeave \\+w them|strong=\"G1438\"\\+w* \\+w alone|strong=\"G1438\"\\+w*. \\+w They|strong=\"G1161\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guides|strong=\"G3595\"\\+w* \\+w of|strong=\"G1519\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*. \\+w If|strong=\"G1437\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guide|strong=\"G3595\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*, \\+w both|strong=\"G1161\"\\+w* \\+w will|strong=\"G1510\"\\+w* \\+w fall|strong=\"G4098\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w a|strong=\"G1519\"\\+w* pit.”\nPeter answered him, “Explain the parable to us.”\nSo Jesus said, “\\+w Do|strong=\"G3004\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w also|strong=\"G2532\"\\+w* still \\+w not|strong=\"G1510\"\\+w* understand?\nDon’\\+w t|strong=\"G3588\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w understand|strong=\"G3539\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w whatever|strong=\"G3956\"\\+w* \\+w goes|strong=\"G1531\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w passes|strong=\"G5562\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w belly|strong=\"G2836\"\\+w* \\+w and|strong=\"G2532\"\\+w* \\+w then|strong=\"G2532\"\\+w* \\+w out|strong=\"G1544\"\\+w* \\+w of|strong=\"G2532\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w body|strong=\"G1519\"\\+w*?\n\\+w But|strong=\"G1161\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w things|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w proceed|strong=\"G1607\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w*, \\+w and|strong=\"G1161\"\\+w* \\+w they|strong=\"G1161\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w man|strong=\"G2588\"\\+w*.\n\\+w For|strong=\"G1063\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w evil|strong=\"G4190\"\\+w* \\+w thoughts|strong=\"G1261\"\\+w*, \\+w murders|strong=\"G5408\"\\+w*, \\+w adulteries|strong=\"G3430\"\\+w*, \\+w sexual|strong=\"G4202\"\\+w* sins, \\+w thefts|strong=\"G2829\"\\+w*, \\+w false|strong=\"G5577\"\\+w* \\+w testimony|strong=\"G5577\"\\+w*, \\+w and|strong=\"G1831\"\\+w* blasphemies.\n\\+w These|strong=\"G3778\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w things|strong=\"G3778\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*; \\+w but|strong=\"G1161\"\\+w* \\+w to|strong=\"G3756\"\\+w* \\+w eat|strong=\"G2068\"\\+w* \\+w with|strong=\"G5495\"\\+w* unwashed \\+w hands|strong=\"G5495\"\\+w* doesn’\\+w t|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*.”\nJesus went out from there and withdrew into the region of Tyre and Sidon.",
+        "ar": "حِينَئِذٍ تَقَدَّمَ تَلَامِيذُهُ وَقَالُوا لَهُ: «أَتَعْلَمُ أَنَّ ٱلْفَرِّيسِيِّينَ لَمَّا سَمِعُوا ٱلْقَوْلَ نَفَرُوا؟».\nفَأَجَابَ وَقَالَ: «كُلُّ غَرْسٍ لَمْ يَغْرِسْهُ أَبِي ٱلسَّمَاوِيُّ يُقْلَعُ.\nاُتْرُكُوهُمْ. هُمْ عُمْيَانٌ قَادَةُ عُمْيَانٍ. وَإِنْ كَانَ أَعْمَى يَقُودُ أَعْمَى يَسْقُطَانِ كِلَاهُمَا فِي حُفْرَةٍ».\nفَأَجَابَ بُطْرُسُ وَقَالَ لَهُ: «فَسِّرْ لَنَا هَذَا ٱلْمَثَلَ».\nفَقَالَ يَسُوعُ: «هَلْ أَنْتُمْ أَيْضًا حَتَّى ٱلْآنَ غَيْرُ فَاهِمِينَ؟\nأَلَا تَفْهَمُونَ بَعْدُ أَنَّ كُلَّ مَا يَدْخُلُ ٱلْفَمَ يَمْضِي إِلَى ٱلْجَوْفِ وَيَنْدَفِعُ إِلَى ٱلْمَخْرَجِ؟\nوَأَمَّا مَا يَخْرُجُ مِنَ ٱلْفَمِ فَمِنَ ٱلْقَلْبِ يَصْدُرُ، وَذَاكَ يُنَجِّسُ ٱلْإِنْسَانَ،\nلِأَنْ مِنَ ٱلْقَلْبِ تَخْرُجُ أَفْكَارٌ شِرِّيرَةٌ: قَتْلٌ، زِنىً، فِسْقٌ، سِرْقَةٌ، شَهَادَةُ زُورٍ، تَجْدِيفٌ.\nهَذِهِ هِيَ ٱلَّتِي تُنَجِّسُ ٱلْإِنْسَانَ. وَأَمَّا ٱلْأَكْلُ بِأَيْدٍ غَيْرِ مَغْسُولَةٍ فَلَا يُنَجِّسُ ٱلْإِنْسَانَ».\nثُمَّ خَرَجَ يَسُوعُ مِنْ هُنَاكَ وَٱنْصَرَفَ إِلَى نَوَاحِي صُورَ وَصَيْدَاءَ.",
+        "en": "Then the disciples came and said to him, “Do you know that the Pharisees were offended when they heard this saying?”\nBut he answered, “Every plant which my heavenly Father didn’t plant will be uprooted.\nLeave them alone. They are blind guides of the blind. If the blind guide the blind, both will fall into a pit.”\nPeter answered him, “Explain the parable to us.”\nSo Jesus said, “Do you also still not understand?\nDon’t you understand that whatever goes into the mouth passes into the belly and then out of the body?\nBut the things which proceed out of the mouth come out of the heart, and they defile the man.\nFor out of the heart come evil thoughts, murders, adulteries, sexual sins, thefts, false testimony, and blasphemies.\nThese are the things which defile the man; but to eat with unwashed hands doesn’t defile the man.”\nJesus went out from there and withdrew into the region of Tyre and Sidon.",
         "el": "τότε προσελθόντες οἱ μαθηταὶ αὐτοῦ εἶπον αὐτῷ· οἶδας ὅτι οἱ Φαρισαῖοι ἐσκανδαλίσθησαν ἀκούσαντες τὸν λόγον;\nὁ δὲ ἀποκριθεὶς εἶπε· πᾶσα φυτεία ἣν οὐκ ἐφύτευσεν ὁ πατήρ μου ὁ οὐράνιος ἐκριζωθήσεται.\nἄφετε αὐτούς· ὁδηγοί εἰσι τυφλοὶ τυφλῶν· τυφλὸς δὲ τυφλὸν ἐὰν ὁδηγῇ, ἀμφότεροι εἰς βόθυνον πεσοῦνται.\nἀποκριθεὶς δὲ ὁ Πέτρος εἶπεν αὐτῷ· φράσον ἡμῖν τὴν παραβολὴν ταύτην.\nὁ δὲ Ἰησοῦς εἶπεν· ἀκμὴν καὶ ὑμεῖς ἀσύνετοί ἐστε;\nοὔπω νοεῖτε ὅτι πᾶν τὸ εἰσπορευόμενον εἰς τὸ στόμα εἰς τὴν κοιλίαν χωρεῖ καὶ εἰς ἀφεδρῶνα ἐκβάλλεται;\nτὰ δὲ ἐκπορευόμενα ἐκ τοῦ στόματος ἐκ τῆς καρδίας ἐξέρχεται, κἀκεῖνα κοινοῖ τὸν ἄνθρωπον.\nἐκ γὰρ τῆς καρδίας ἐξέρχονται διαλογισμοὶ πονηροί, φόνοι, μοιχεῖαι, πορνεῖαι, κλοπαί, ψευδομαρτυρίαι, βλασφημίαι.\nταῦτά ἐστι τὰ κοινοῦντα τὸν ἄνθρωπον· τὸ δὲ ἀνίπτοις χερσὶ φαγεῖν οὐ κοινοῖ τὸν ἄνθρωπον.\nΚαὶ ἐξελθὼν ἐκεῖθεν ὁ Ἰησοῦς ἀνεχώρησεν εἰς τὰ μέρη Τύρου καὶ Σιδῶνος."
       },
       "discovery_text": "",
       "source": {
-        "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-        "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-        "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
+        "ar": "https://ebible.org/find/details.php?id=arb-vd",
+        "en": "https://ebible.org/find/details.php?id=engwebp",
+        "el": "https://ebible.org/find/details.php?id=grcbyz"
       },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
@@ -476,11 +512,11 @@
         "ar": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_arabic_van_dyck",
-          "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+          "source_url": "https://ebible.org/find/details.php?id=arb-vd",
           "canonical_reference": "MAT.15.12-21",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "c7aba7e8e9e8e296da858a3ddafdb37b5b16f8c65de7c79b5ab9bad47c465e8b",
+          "text_sha256": "12af37bb7d8fc8b2f5ea868640704d9d6df6f41a464e51bc2f8d7ad01919ebbe",
           "verse_count": 10,
           "verse_hashes": [
             "24453a84801cee7626723d3ee0311a3a3758c4a3dd801a15715dfc12f6cb8cc0",
@@ -491,7 +527,7 @@
             "6f9720b5243cc83a975ab7140335deb9bbdff7e80a40cffc9d93e904ff56cd65",
             "e4554cc8ea5e48e7a0e6de118ed637cd2795e3e1c9edbe348b2a97c9d7d0a0fa",
             "578cc4646d7fb7d495d7825819c8628da9ad9b8742fff29224ad45d87fc0aabe",
-            "61018c3a11bc2046a838de2a869e9aa732bbd80ec32da41bf1bc96ead8fd4426",
+            "b1ef0bc6b3d268b1dc904806e32293add3ee43313facb684cf159ff8b96519db",
             "5ca50ebf4db7d81866e0d5ce520027da3172642debc26ec0f4d11b73e9b9ea9c"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
@@ -500,43 +536,43 @@
           "automatic_diacritization_used": false,
           "daily_reference_source_id": null,
           "daily_reference_source_url": null,
-          "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
+          "corpus_archive_sha256": null,
           "corpus_license": "Public Domain"
         },
         "en": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
-          "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+          "source_url": "https://ebible.org/find/details.php?id=engwebp",
           "canonical_reference": "MAT.15.12-21",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "d87eb0b4071dd171a2d873706ce841296879ff3841cc907b3dcfa3cde0808acb",
+          "text_sha256": "38d3b3b042e3264a5e81fb258e059c49fbafbaab10475993fff9c63dcba81e2f",
           "verse_count": 10,
           "verse_hashes": [
             "0266ff0327499c03ebe1e995b8b8f691d575b49d76938e495b7e56097aae8166",
-            "02f9509a54f5e6e86bb9b7453eb8abad897b5375ff1633dead9743be38f297fc",
-            "e57190cac9f111a15511f637506b7d6fc2674268755a2f67e4d35caaed45545f",
+            "7cbf383979105dd7f5842317042313844647ef615977dbb4c88d9a34ae015f26",
+            "e0796d4a8d6a4d490d905cd3acd3c8c4dfbea924c9a29409364f40d0892b7ddb",
             "e6601c6ab90ccc33761daa8abdad9c3e651c2c34c511a81cc0b2f428e10aac43",
-            "802368113700261d266f023cbede74123eb65ffbfc16adad7bf6330198b19e5f",
-            "d295e4ee08d52b27bb91cb446686916f926ef96195e48bb2d5f8cc4e9b8d8ff3",
-            "8db327787b28de0cee224ca2f1410e7798a69f73c698a6cce3241078f91e5178",
-            "a7969f5957242b37c26141882c56adda7c1700b58af213a903f2299ebbce50a9",
-            "bd4599e1443aa071f0575c3ad7e5742af81d4e3ea7108d0b62134efab841c7de",
+            "ce3352103adbdcf18d24f007308c6415fa593e5ed3a9a422b92f97c1a39bb5d3",
+            "da5f452854d66921e3a456d9f5f946d0446f0925581eba882932d3e43bf27cf4",
+            "4cb80d769835b0423fd3a34e77935019789e324bc0c22443bc91c3a2603408e8",
+            "5dbb7b10ef643ce63256a12f25acc7fdf8bb0749eb5c776b9a87ce8972e7297f",
+            "150659ee12ba178792542e52888328692d93448bfe0cb9ca728fae0b98f0396e",
             "6d3c507022b619d72ee6be6bd9e12613a164e4b9a0d9c77123f580c6626b9711"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
           "ai_translation_used": false,
           "automatic_diacritization_used": false,
-          "daily_reference_source_id": null,
-          "daily_reference_source_url": null,
-          "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
+          "daily_reference_source_id": "oca_official_english",
+          "daily_reference_source_url": "https://www.oca.org/readings/daily/2026/07/16",
+          "corpus_archive_sha256": null,
           "corpus_license": "Public Domain"
         },
         "el": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_greek_byzantine_1904",
-          "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+          "source_url": "https://ebible.org/find/details.php?id=grcbyz",
           "canonical_reference": "MAT.15.12-21",
           "reference_available": true,
           "text_available": true,
@@ -560,7 +596,7 @@
           "automatic_diacritization_used": false,
           "daily_reference_source_id": null,
           "daily_reference_source_url": null,
-          "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+          "corpus_archive_sha256": null,
           "corpus_license": "Public Domain"
         }
       },
@@ -801,20 +837,20 @@
             "el": "Ἀπόστολος"
           },
           "reference": {
-            "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ إِلَى أَهْلِ رُومِيَةَ 15:1-7",
-            "en": "Paul’s Letter to the Romans 15:1-7",
-            "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 15:1-7"
+            "ar": "",
+            "en": "Romans 15:1-7",
+            "el": ""
           },
           "body": {
-            "ar": "فَيَجِبُ عَلَيْنَا نَحْنُ ٱلْأَقْوِيَاءَ أَنْ نَحْتَمِلَ أَضْعَافَ ٱلضُّعَفَاءِ، وَلَا نُرْضِيَ أَنْفُسَنَا.\nفَلْيُرْضِ كُلُّ وَاحِدٍ مِنَّا قَرِيبَهُ لِلْخَيْرِ، لِأَجْلِ ٱلْبُنْيَانِ.\nلِأَنَّ ٱلْمَسِيحَ أَيْضًا لَمْ يُرْضِ نَفْسَهُ، بَلْ كَمَا هُوَ مَكْتُوبٌ: «تَعْيِيرَاتُ مُعَيِّرِيكَ وَقَعَتْ عَلَيَّ».\nلِأَنَّ كُلَّ مَا سَبَقَ فَكُتِبَ كُتِبَ لِأَجْلِ تَعْلِيمِنَا، حَتَّى بِٱلصَّبْرِ وَٱلتَّعْزِيَةِ بِمَا فِي ٱلْكُتُبِ يَكُونُ لَنَا رَجَاءٌ.\nوَلْيُعْطِكُمْ إِلَهُ ٱلصَّبْرِ وَٱلتَّعْزِيَةِ أَنْ تَهْتَمُّوا ٱهْتِمَامًا وَاحِدًا فِيمَا بَيْنَكُمْ، بِحَسَبِ ٱلْمَسِيحِ يَسُوعَ،\nلِكَيْ تُمَجِّدُوا ٱللهَ أَبَا رَبِّنَا يَسُوعَ ٱلْمَسِيحِ، بِنَفْسٍ وَاحِدَةٍ وَفَمٍ وَاحِدٍ.\nلِذَلِكَ ٱقْبَلُوا بَعْضُكُمْ بَعْضًا كَمَا أَنَّ ٱلْمَسِيحَ أَيْضًا قَبِلَنَا، لِمَجْدِ ٱللهِ.",
-            "en": "Now we who are strong ought to bear the weaknesses of the weak, and not to please ourselves.\nLet each one of us please his neighbor for that which is good, to be building him up.\nFor even Christ didn’t please himself. But, as it is written, “The reproaches of those who reproached you fell on me.”\nFor whatever things were written before were written for our learning, that through perseverance and through encouragement of the Scriptures we might have hope.\nNow the God of perseverance and of encouragement grant you to be of the same mind with one another according to Christ Jesus,\nthat with one accord you may with one mouth glorify the God and Father of our Lord Jesus Christ.\nTherefore accept one another, even as Christ also accepted you, to the glory of God.",
-            "el": "Ὀφείλομεν δὲ ἡμεῖς οἱ δυνατοὶ τὰ ἀσθενήματα τῶν ἀδυνάτων βαστάζειν, καὶ μὴ ἑαυτοῖς ἀρέσκειν.\nἕκαστος ἡμῶν τῷ πλησίον ἀρεσκέτω εἰς τὸ ἀγαθὸν πρὸς οἰκοδομήν·\nκαὶ γὰρ ὁ Χριστὸς οὐχ ἑαυτῷ ἤρεσεν, ἀλλὰ καθὼς γέγραπται, \\+w οἱ|strong=\"G3588\"\\+w* \\+w ὀνειδισμοὶ|strong=\"G3680\"\\+w* \\+w τῶν|strong=\"G3588\"\\+w* \\+w ὀνειδιζόντων|strong=\"G3679\"\\+w* \\+w σε|strong=\"G4771\"\\+w* \\+w ἐπέπεσον|strong=\"G1968\"\\+w* \\+w ἐπ|strong=\"G1909\"\\+w*᾽ \\+w ἐμέ|strong=\"G1473\"\\+w*.\nὅσα γὰρ προεγράφη, εἰς τὴν ἡμετέραν διδασκαλίαν προεγράφη, ἵνα διὰ τῆς ὑπομονῆς καὶ τῆς παρακλήσεως τῶν γραφῶν τὴν ἐλπίδα ἔχωμεν.\nὁ δὲ Θεὸς τῆς ὑπομονῆς καὶ τῆς παρακλήσεως δῴη ὑμῖν τὸ αὐτὸ φρονεῖν ἐν ἀλλήλοις κατὰ Χριστὸν Ἰησοῦν,\nἵνα ὁμοθυμαδὸν ἐν ἑνὶ στόματι δοξάζητε τὸν Θεὸν καὶ πατέρα τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ.\nδιὸ προσλαμβάνεσθε ἀλλήλους, καθὼς καὶ ὁ Χριστὸς προσελάβετο ὑμᾶς εἰς δόξαν Θεοῦ."
+            "ar": "",
+            "en": "",
+            "el": ""
           },
           "discovery_text": "",
           "source": {
-            "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-            "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-            "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
+            "ar": "",
+            "en": "",
+            "el": ""
           },
           "integrity": {
             "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
@@ -826,85 +862,34 @@
           },
           "native_source_verification": {
             "ar": {
-              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_arabic_van_dyck",
-              "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+              "source_id": null,
               "canonical_reference": "ROM.15.1-7",
-              "reference_available": true,
-              "text_available": true,
-              "text_sha256": "7be863f365cf1dacae353a7567515464c6afbb1e6eaacaf67b3c359f7ca4bd97",
-              "verse_count": 7,
-              "verse_hashes": [
-                "af24a9aa10fa098be460870391ac67aa86186f5f15c6332d9841f20563a9a707",
-                "114c2f1c3949fd0a141da4c5b60b12864c7c773ccf36382fcdc175cf735800f8",
-                "9a61dd9a66bb54d696f6bec8c104feb1a6f362492a080e58d773928cd6f049d7",
-                "8e642aefb0b338b4ae78d669fcac185c3d923fb1443212bbd804af28597f3cb2",
-                "6648684fff08d38a8aa5cc8af02dfcdba6cb90ab83640df8ca4b078e1fecb63d",
-                "05d58a85e91a17e86d8c90b33f889dc0cd911bc29ef9159a3d3300e959ac9329",
-                "32b0f014a82e1dad3ed2c375e52a9e08dfe768e72179a6d7c50d4412a64ccb8d"
-              ],
-              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
-              "machine_translation_used": false,
+              "reference_available": false,
+              "text_available": false,
               "ai_translation_used": false,
               "automatic_diacritization_used": false,
-              "daily_reference_source_id": null,
-              "daily_reference_source_url": null,
-              "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
-              "corpus_license": "Public Domain"
+              "reason": "same_language_official_source_not_available"
             },
             "en": {
-              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_world_english_bible",
-              "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+              "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
+              "source_id": "oca_official_english",
+              "source_url": "https://www.oca.org/readings/daily/2026/07/16",
               "canonical_reference": "ROM.15.1-7",
               "reference_available": true,
-              "text_available": true,
-              "text_sha256": "4b684664543d3118e2a52e3a52026594e373b203a7c3752ba124412dc78881f9",
-              "verse_count": 7,
-              "verse_hashes": [
-                "5c5f86cb1b61989fd1eeb07a319468f87ba3481294ada2c04324b30f17c55405",
-                "af225153d58e92bd886b3af60d955f08df829d6f491f957f5005ffd14a8a6d48",
-                "c445d06929f60a9a592d202dd83305a79e430d0583b373616210a121f4675d1e",
-                "c67465200c8fd2003584ca4babd99c041d480c51942b6aa24638e2a881959155",
-                "cba3da1f4b4d8da55da298974f2f4bea87b15ceca52f9900e90f815fe8bdfe19",
-                "8589253ca4cdcd61bd6752d78be632c48920b3b1f1212b5e973f71d84e3abdf9",
-                "d16f84ca51ba311748de7736b0fd069842c7a1f8b5800017f59044a0e54d5eb3"
-              ],
-              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
-              "machine_translation_used": false,
+              "text_available": false,
               "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "daily_reference_source_id": null,
-              "daily_reference_source_url": null,
-              "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
-              "corpus_license": "Public Domain"
+              "automatic_diacritization_used": false
             },
             "el": {
-              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_greek_byzantine_1904",
-              "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+              "source_id": null,
               "canonical_reference": "ROM.15.1-7",
-              "reference_available": true,
-              "text_available": true,
-              "text_sha256": "61c3fec47a79c8492b0ee95d3c053c2da31e8b546c5f8640adf4b17948a51b6f",
-              "verse_count": 7,
-              "verse_hashes": [
-                "0da42dfd6e90ba584363b4128eda1ae96c8e62372b043a62260ecddd256abb18",
-                "10ff1d9e1de012958a31c0636df051d76fbf9805a024472168c25d8e6a4ecec9",
-                "5614fbf538ad221e454a37c28c04892ba26c4f7ed8b226da8979f79e5973061d",
-                "15f18831ee8c8f17b03eaa4d35bb926d30399541cd3b21e65db42f3d90100e12",
-                "c569738aea3092e704e54271d5eb39c565fdb03f5caffb90b42d62340af78b55",
-                "10e6ddc80c5fea41aede48cadef2de21718d0cfb62ebeff3448c88f8f21ea111",
-                "679042eb203015bf04bdf749b187035ea6af19b01b9c6d57efdaf23b7e0762df"
-              ],
-              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
-              "machine_translation_used": false,
+              "reference_available": false,
+              "text_available": false,
               "ai_translation_used": false,
               "automatic_diacritization_used": false,
-              "daily_reference_source_id": null,
-              "daily_reference_source_url": null,
-              "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
-              "corpus_license": "Public Domain"
+              "reason": "same_language_official_source_not_available"
             }
           },
           "translation_locked": true
@@ -918,20 +903,20 @@
             "el": "Εὐαγγέλιο"
           },
           "reference": {
-            "ar": "إِنْجِيلُ مَتَّى 9:27-35",
-            "en": "The Good News According to Matthew 9:27-35",
-            "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 9:27-35"
+            "ar": "",
+            "en": "Matthew 9:27-35",
+            "el": ""
           },
           "body": {
-            "ar": "وَفِيمَا يَسُوعُ مُجْتَازٌ مِنْ هُنَاكَ، تَبِعَهُ أَعْمَيَانِ يَصْرَخَانِ وَيَقُولَانِ: «ٱرْحَمْنَا يا ٱبْنَ دَاوُدَ!».\nوَلَمَّا جَاءَ إِلَى ٱلْبَيْتِ تَقَدَّمَ إِلَيْهِ ٱلْأَعْمَيَانِ، فَقَالَ لَهُمَا يَسُوعُ: «أَتُؤْمِنَانِ أَنِّي أَقْدِرُ أَنْ أَفْعَلَ هَذَا؟». قَالَا لَهُ: «نَعَمْ، يا سَيِّدُ!».\nحِينَئِذٍ لَمَسَ أَعْيُنَهُمَا قَائِلًا: «بِحَسَبِ إِيمَانِكُمَا لِيَكُنْ لَكُمَا».\nفَٱنْفَتَحَتْ أَعْيُنُهُمَا. فَٱنْتَهَرَهُمَا يَسُوعُ قَائِلًا: «ٱنْظُرَا، لَا يَعْلَمْ أَحَدٌ!».\nوَلَكِنَّهُمَا خَرَجَا وَأَشَاعَاهُ فِي تِلْكَ ٱلْأَرْضِ كُلِّهَا. شفاء أخرس\nوَفِيمَا هُمَا خَارِجَانِ، إِذَا إِنْسَانٌ أَخْرَسُ مَجْنُونٌ قَدَّمُوهُ إِلَيْهِ.\nفَلَمَّا أُخْرِجَ ٱلشَّيْطَانُ تَكَلَّمَ ٱلْأَخْرَسُ، فَتَعَجَّبَ ٱلْجُمُوعُ قَائِلِينَ: «لَمْ يَظْهَرْ قَطُّ مِثْلُ هَذَا فِي إِسْرَائِيلَ!».\nأَمَّا ٱلْفَرِّيسِيُّونَ فَقَالُوا: «بِرَئِيسِ ٱلشَّيَاطِينِ يُخْرِجُ ٱلشَّيَاطِينَ!». الفعلة قليلون\nوَكَانَ يَسُوعُ يَطُوفُ ٱلْمُدُنَ كُلَّهَا وَٱلْقُرَى يُعَلِّمُ فِي مَجَامِعِهَا، وَيَكْرِزُ بِبِشَارَةِ ٱلْمَلَكُوتِ، وَيَشْفِي كُلَّ مَرَضٍ وَكُلَّ ضُعْفٍ فِي ٱلشَّعْبِ.",
-            "en": "As Jesus passed by from there, two blind men followed him, calling out and saying, “Have mercy on us, son of David!”\nWhen he had come into the house, the blind men came to him. Jesus said to them, “\\+w Do|strong=\"G4160\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w believe|strong=\"G4100\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w I|strong=\"G2532\"\\+w* \\+w am|strong=\"G2532\"\\+w* \\+w able|strong=\"G1410\"\\+w* \\+w to|strong=\"G1519\"\\+w* \\+w do|strong=\"G4160\"\\+w* \\+w this|strong=\"G3778\"\\+w*?” They told him, “Yes, Lord.”\nThen he touched their eyes, saying, “\\+w According|strong=\"G2596\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w your|strong=\"G4102\"\\+w* \\+w faith|strong=\"G4102\"\\+w* \\+w be|strong=\"G1096\"\\+w* \\+w it|strong=\"G5119\"\\+w* \\+w done|strong=\"G1096\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w you|strong=\"G5210\"\\+w*.”\nThen their eyes were opened. Jesus strictly commanded them, saying, “\\+w See|strong=\"G3708\"\\+w* \\+w that|strong=\"G3588\"\\+w* \\+w no|strong=\"G3367\"\\+w* \\+w one|strong=\"G3367\"\\+w* \\+w knows|strong=\"G1097\"\\+w* \\+w about|strong=\"G2424\"\\+w* \\+w this|strong=\"G3588\"\\+w*.”\nBut they went out and spread abroad his fame in all that land.\nAs they went out, behold, a mute man who was demon possessed was brought to him.\nWhen the demon was cast out, the mute man spoke. The multitudes marveled, saying, “Nothing like this has ever been seen in Israel!”\nBut the Pharisees said, “By the prince of the demons, he casts out demons.”\nJesus went about all the cities and the villages, teaching in their synagogues and preaching the Good News of the Kingdom, and healing every disease and every sickness among the people.",
-            "el": "Καὶ παράγοντι ἐκεῖθεν τῷ Ἰησοῦ ἠκολούθησαν αὐτῷ δύο τυφλοὶ κράζοντες καὶ λέγοντες· ἐλέησον ἡμᾶς, υἱὲ Δαυΐδ.\nἐλθόντι δὲ εἰς τὴν οἰκίαν προσῆλθον αὐτῷ οἱ τυφλοί, καὶ λέγει αὐτοῖς ὁ Ἰησοῦς· πιστεύετε ὅτι δύναμαι τοῦτο ποιῆσαι; λέγουσιν αὐτῷ· ναί, Κύριε.\nτότε ἥψατο τῶν ὀφθαλμῶν αὐτῶν λέγων· κατὰ τὴν πίστιν ὑμῶν γενηθήτω ὑμῖν.\nκαὶ ἀνεῴχθησαν αὐτῶν οἱ ὀφθαλμοί· καὶ ἐνεβριμήσατο αὐτοῖς ὁ Ἰησοῦς λέγων· ὁρᾶτε μηδεὶς γινωσκέτω.\nοἱ δὲ ἐξελθόντες διεφήμισαν αὐτὸν ἐν ὅλῃ τῇ γῇ ἐκείνῃ.\nΑὐτῶν δὲ ἐξερχομένων ἰδοὺ προσήνεγκαν αὐτῷ ἄνθρωπον κωφὸν δαιμονιζόμενον·\nκαὶ ἐκβληθέντος τοῦ δαιμονίου ἐλάλησεν ὁ κωφός, καὶ ἐθαύμασαν οἱ ὄχλοι λέγοντες ὅτι οὐδέποτε ἐφάνη οὕτως ἐν τῷ Ἰσραήλ.\nοἱ δὲ Φαρισαῖοι ἔλεγον· ἐν τῷ ἄρχοντι τῶν δαιμονίων ἐκβάλλει τὰ δαιμόνια.\nΚαὶ περιῆγεν ὁ Ἰησοῦς τὰς πόλεις πάσας καὶ τὰς κώμας διδάσκων ἐν ταῖς συναγωγαῖς αὐτῶν καὶ κηρύσσων τὸ εὐαγγέλιον τῆς βασιλείας καὶ θεραπεύων πᾶσαν νόσον καὶ πᾶσαν μαλακίαν ἐν τῷ λαῷ."
+            "ar": "",
+            "en": "",
+            "el": ""
           },
           "discovery_text": "",
           "source": {
-            "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-            "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-            "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
+            "ar": "",
+            "en": "",
+            "el": ""
           },
           "integrity": {
             "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
@@ -943,91 +928,34 @@
           },
           "native_source_verification": {
             "ar": {
-              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_arabic_van_dyck",
-              "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+              "source_id": null,
               "canonical_reference": "MAT.9.27-35",
-              "reference_available": true,
-              "text_available": true,
-              "text_sha256": "a20529957dc1cc5cbe8166fdb64474273921502a9ebe60ec8243fa7151073002",
-              "verse_count": 9,
-              "verse_hashes": [
-                "59916ae26008a648a80f89493bdd38312cb8943c7d6292922bea6f4f21c8f304",
-                "4297b9cfc6346c6a147d01e8f5e05ed2744f51e1c465e42f4a5e118bdcfa92c0",
-                "b4cdcbc3887325e45dc28f12cf068ace450470eafa024c6b5c3a92c1d770df8d",
-                "98e78882df7cf98345ec317f0512248614fb7506516eb89377a4ac5475def7ea",
-                "a236a60d3acd2db715388cd9dc392097542c9dd283f3abd265c9adf9e06260cb",
-                "0869ca93709197de7c14360eec606289fe79e9b208a31508408b51b02afe4cb8",
-                "9cb2cd8a4a0631097d184e13937af9ec6943317ec8907c8e5e929fb6d070db1a",
-                "f28ff407b0b86cb6158581dd5e95f9cb54df89ffc4994caed770827149a23db5",
-                "01c675a7d2c6d91a485444df48486de7ac1a7d566defec8387d0c73c666055ed"
-              ],
-              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
-              "machine_translation_used": false,
+              "reference_available": false,
+              "text_available": false,
               "ai_translation_used": false,
               "automatic_diacritization_used": false,
-              "daily_reference_source_id": null,
-              "daily_reference_source_url": null,
-              "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
-              "corpus_license": "Public Domain"
+              "reason": "same_language_official_source_not_available"
             },
             "en": {
-              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_world_english_bible",
-              "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+              "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
+              "source_id": "oca_official_english",
+              "source_url": "https://www.oca.org/readings/daily/2026/07/16",
               "canonical_reference": "MAT.9.27-35",
               "reference_available": true,
-              "text_available": true,
-              "text_sha256": "117ee1c9fc20714c60f2328f3d938621918f52ecd674725cc1d68de0fab3d24d",
-              "verse_count": 9,
-              "verse_hashes": [
-                "d0392a4d1cc856ea469aab74a3140bd81a779f16f7a0b5ecf273bcba054d8374",
-                "e51f8e88f606191f2f8379b3ed4761d7e0f5e4ad1b98d436a4a15225493cb6cc",
-                "1b154e8d1a831278732712165924a67347117878cd364066c5f3590e4ef1b1c7",
-                "40806e17c9531392cb495bb219145eace491e8a714a6a76a045c2aa9d989f2ac",
-                "960ca83f94ce5e304f306e131856702b79668474fbcd166258350a35ab3a5b89",
-                "4ee85f6e9bb294fef018d80c7ca090cb653ee542815ac1cde805b1e2e5e60b67",
-                "4260b558b3de5eec506f26ad58e4bc6feeddf4c7e8957570aeebf0bf4b5fb102",
-                "4e9e7463f8ad9e7ea482bc58065075f7cac354998d1b69429b57e0c847c864cc",
-                "ad6712e4f6c4da42eb6a4ae6caf13456283f1e3a5711e7312b5a673bba8866f4"
-              ],
-              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
-              "machine_translation_used": false,
+              "text_available": false,
               "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "daily_reference_source_id": null,
-              "daily_reference_source_url": null,
-              "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
-              "corpus_license": "Public Domain"
+              "automatic_diacritization_used": false
             },
             "el": {
-              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_greek_byzantine_1904",
-              "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+              "source_id": null,
               "canonical_reference": "MAT.9.27-35",
-              "reference_available": true,
-              "text_available": true,
-              "text_sha256": "1c1c50fa9e02d6c98f286728a9175ea72e60fd888d3f46f98dae4f28d12bb0d9",
-              "verse_count": 9,
-              "verse_hashes": [
-                "03154deaacfa9ba42a1ff3cd5ff21369e1d2b24179e3762f55dd1308ae88773f",
-                "e38141a665b47265b120587f9d97ba8281aa746d54a3e6fb0d67a799d0d4cbe5",
-                "369a5e28325cbe6d78cd335b82d1d494b16c7e1402890c93f01947fff28f1cea",
-                "b33cc6220d1b90ec2a6b1a69ed35429b03086fcb6aa88af18f5b44de62edee36",
-                "9f80344ffe93348120a54facd67f5e0b400cd57b2b852627ec8782f3b1e23f95",
-                "809fd7cf8d09628462b9da1d45d8c874bbc9ad30dbee1d5f43ef3f6b2a948ee6",
-                "9d2fa87240b36e422593df7c52771cb3dacb4af02f5b2d26e507c619ff15786e",
-                "442056c78ed9475c0b51719f9ffdb45d010634efcc77780975f80c51c8a8a2e0",
-                "45ac775548fec78493c64c0685e5c667a283e69031852404dd425ba6d4a2e5ef"
-              ],
-              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
-              "machine_translation_used": false,
+              "reference_available": false,
+              "text_available": false,
               "ai_translation_used": false,
               "automatic_diacritization_used": false,
-              "daily_reference_source_id": null,
-              "daily_reference_source_url": null,
-              "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
-              "corpus_license": "Public Domain"
+              "reason": "same_language_official_source_not_available"
             }
           },
           "translation_locked": true
@@ -1110,14 +1038,14 @@
           "el": "Ψαλμός 18:5, 2\nΕἰς πᾶσαν τὴν γῆν ἐξῆλθεν ὁ φθόγγος αὐτῶν, καὶ εἰς τὰ πέρατα τῆς οἰκουμένης τὰ ῥήματα αὐτῶν.\nΟἱ οὐρανοὶ διηγοῦνται δόξαν Θεοῦ, ποίησιν δὲ χειρῶν αὐτοῦ ἀναγγέλλει τὸ στερέωμα."
         },
         "[فصل من رسالة اليوم]": {
-          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:24-35\nمَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ. غير المتزوجين والأرامل\nوَأَمَّا ٱلْعَذَارَى، فَلَيْسَ عِنْدِي أَمْرٌ مِنَ ٱلرَّبِّ فِيهِنَّ، وَلَكِنَّنِي أُعْطِي رَأْيًا كَمَنْ رَحِمَهُ ٱلرَّبُّ أَنْ يَكُونَ أَمِينًا.\nفَأَظُنُّ أَنَّ هَذَا حَسَنٌ لِسَبَبِ ٱلضِّيقِ ٱلْحَاضِرِ، أَنَّهُ حَسَنٌ لِلْإِنْسَانِ أَنْ يَكُونَ هَكَذَا:\nأَنْتَ مُرْتَبِطٌ بِٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱلِٱنْفِصَالَ. أَنْتَ مُنْفَصِلٌ عَنِ ٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱمْرَأَةً.\nلَكِنَّكَ وَإِنْ تَزَوَّجْتَ لَمْ تُخْطِئْ. وَإِنْ تَزَوَّجَتِ ٱلْعَذْرَاءُ لَمْ تُخْطِئْ. وَلَكِنَّ مِثْلَ هَؤُلَاءِ يَكُونُ لَهُمْ ضِيقٌ فِي ٱلْجَسَدِ. وَأَمَّا أَنَا فَإِنِّي أُشْفِقُ عَلَيْكُمْ.\nفَأَقُولُ هَذَا أَيُّهَا ٱلْإِخْوَةُ: ٱلْوَقْتُ مُنْذُ ٱلْآنَ مُقَصَّرٌ، لِكَيْ يَكُونَ ٱلَّذِينَ لَهُمْ نِسَاءٌ كَأَنْ لَيْسَ لَهُمْ،\nوَٱلَّذِينَ يَبْكُونَ كَأَنَّهُمْ لَا يَبْكُونَ، وَٱلَّذِينَ يَفْرَحُونَ كَأَنَّهُمْ لَا يَفْرَحُونَ، وَٱلَّذِينَ يَشْتَرُونَ كَأَنَّهُمْ لَا يَمْلِكُونَ،\nوَٱلَّذِينَ يَسْتَعْمِلُونَ هَذَا ٱلْعَالَمَ كَأَنَّهُمْ لَا يَسْتَعْمِلُونَهُ. لِأَنَّ هَيْئَةَ هَذَا ٱلْعَالَمِ تَزُولُ.\nفَأُرِيدُ أَنْ تَكُونُوا بِلَا هَمٍّ. غَيْرُ ٱلْمُتَزَوِّجِ يَهْتَمُّ فِي مَا لِلرَّبِّ كَيْفَ يُرْضِي ٱلرَّبَّ،\nوَأَمَّا ٱلْمُتَزَوِّجُ فَيَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ يُرْضِي ٱمْرَأَتَهُ.\nإِنَّ بَيْنَ ٱلزَّوْجَةِ وَٱلْعَذْرَاءِ فَرْقًا: غَيْرُ ٱلْمُتَزَوِّجَةِ تَهْتَمُّ فِي مَا لِلرَّبِّ لِتَكُونَ مُقَدَّسَةً جَسَدًا وَرُوحًا. وَأَمَّا ٱلْمُتَزَوِّجَةُ فَتَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ تُرْضِي رَجُلَهَا.\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.",
-          "en": "Paul’s First Letter to the Corinthians 7:24-35\nBrothers, let each man, in whatever condition he was called, stay in that condition with God.\nNow concerning virgins, I have no commandment from the Lord, but I give my judgment as one who has obtained mercy from the Lord to be trustworthy.\nTherefore I think that because of the distress that is on us, it’s good for a man to remain as he is.\nAre you bound to a wife? Don’t seek to be freed. Are you free from a wife? Don’t seek a wife.\nBut if you marry, you have not sinned. If a virgin marries, she has not sinned. Yet such will have oppression in the flesh, and I want to spare you.\nBut I say this, brothers: the time is short. From now on, both those who have wives may be as though they had none;\nand those who weep, as though they didn’t weep; and those who rejoice, as though they didn’t rejoice; and those who buy, as though they didn’t possess;\nand those who use the world, as not using it to the fullest. For the mode of this world passes away.\nBut I desire to have you to be free from cares. He who is unmarried is concerned for the things of the Lord, how he may please the Lord;\nbut he who is married is concerned about the things of the world, how he may please his wife.\nThere is also a difference between a wife and a virgin. The unmarried woman cares about the things of the Lord, that she may be holy both in body and in spirit. But she who is married cares about the things of the world—how she may please her husband.\nThis I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.",
+          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:24-35\nمَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ.\nوَأَمَّا ٱلْعَذَارَى، فَلَيْسَ عِنْدِي أَمْرٌ مِنَ ٱلرَّبِّ فِيهِنَّ، وَلَكِنَّنِي أُعْطِي رَأْيًا كَمَنْ رَحِمَهُ ٱلرَّبُّ أَنْ يَكُونَ أَمِينًا.\nفَأَظُنُّ أَنَّ هَذَا حَسَنٌ لِسَبَبِ ٱلضِّيقِ ٱلْحَاضِرِ، أَنَّهُ حَسَنٌ لِلْإِنْسَانِ أَنْ يَكُونَ هَكَذَا:\nأَنْتَ مُرْتَبِطٌ بِٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱلِٱنْفِصَالَ. أَنْتَ مُنْفَصِلٌ عَنِ ٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱمْرَأَةً.\nلَكِنَّكَ وَإِنْ تَزَوَّجْتَ لَمْ تُخْطِئْ. وَإِنْ تَزَوَّجَتِ ٱلْعَذْرَاءُ لَمْ تُخْطِئْ. وَلَكِنَّ مِثْلَ هَؤُلَاءِ يَكُونُ لَهُمْ ضِيقٌ فِي ٱلْجَسَدِ. وَأَمَّا أَنَا فَإِنِّي أُشْفِقُ عَلَيْكُمْ.\nفَأَقُولُ هَذَا أَيُّهَا ٱلْإِخْوَةُ: ٱلْوَقْتُ مُنْذُ ٱلْآنَ مُقَصَّرٌ، لِكَيْ يَكُونَ ٱلَّذِينَ لَهُمْ نِسَاءٌ كَأَنْ لَيْسَ لَهُمْ،\nوَٱلَّذِينَ يَبْكُونَ كَأَنَّهُمْ لَا يَبْكُونَ، وَٱلَّذِينَ يَفْرَحُونَ كَأَنَّهُمْ لَا يَفْرَحُونَ، وَٱلَّذِينَ يَشْتَرُونَ كَأَنَّهُمْ لَا يَمْلِكُونَ،\nوَٱلَّذِينَ يَسْتَعْمِلُونَ هَذَا ٱلْعَالَمَ كَأَنَّهُمْ لَا يَسْتَعْمِلُونَهُ. لِأَنَّ هَيْئَةَ هَذَا ٱلْعَالَمِ تَزُولُ.\nفَأُرِيدُ أَنْ تَكُونُوا بِلَا هَمٍّ. غَيْرُ ٱلْمُتَزَوِّجِ يَهْتَمُّ فِي مَا لِلرَّبِّ كَيْفَ يُرْضِي ٱلرَّبَّ،\nوَأَمَّا ٱلْمُتَزَوِّجُ فَيَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ يُرْضِي ٱمْرَأَتَهُ.\nإِنَّ بَيْنَ ٱلزَّوْجَةِ وَٱلْعَذْرَاءِ فَرْقًا: غَيْرُ ٱلْمُتَزَوِّجَةِ تَهْتَمُّ فِي مَا لِلرَّبِّ لِتَكُونَ مُقَدَّسَةً جَسَدًا وَرُوحًا. وَأَمَّا ٱلْمُتَزَوِّجَةُ فَتَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ تُرْضِي رَجُلَهَا.\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.",
+          "en": "1 Corinthians 7:24-35\nBrothers, let each man, in whatever condition he was called, stay in that condition with God.\nNow concerning virgins, I have no commandment from the Lord, but I give my judgment as one who has obtained mercy from the Lord to be trustworthy.\nTherefore I think that because of the distress that is on us, it’s good for a man to remain as he is.\nAre you bound to a wife? Don’t seek to be freed. Are you free from a wife? Don’t seek a wife.\nBut if you marry, you have not sinned. If a virgin marries, she has not sinned. Yet such will have oppression in the flesh, and I want to spare you.\nBut I say this, brothers: the time is short. From now on, both those who have wives may be as though they had none;\nand those who weep, as though they didn’t weep; and those who rejoice, as though they didn’t rejoice; and those who buy, as though they didn’t possess;\nand those who use the world, as not using it to the fullest. For the mode of this world passes away.\nBut I desire to have you to be free from cares. He who is unmarried is concerned for the things of the Lord, how he may please the Lord;\nbut he who is married is concerned about the things of the world, how he may please his wife.\nThere is also a difference between a wife and a virgin. The unmarried woman cares about the things of the Lord, that she may be holy both in body and in spirit. But she who is married cares about the things of the world—how she may please her husband.\nThis I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.",
           "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:24-35\nἕκαστος ἐν ᾧ ἐκλήθη, ἀδελφοί, ἐν τούτῳ μενέτω παρὰ τῷ Θεῷ.\nΠερὶ δὲ τῶν παρθένων ἐπιταγὴν Κυρίου οὐκ ἔχω, γνώμην δὲ δίδωμι ὡς ἠλεημένος ὑπὸ Κυρίου πιστὸς εἶναι.\nνομίζω οὖν τοῦτο καλὸν ὑπάρχειν διὰ τὴν ἐνεστῶσαν ἀνάγκην, ὅτι καλὸν ἀνθρώπῳ τὸ οὕτως εἶναι.\nδέδεσαι γυναικί; μὴ ζήτει λύσιν· λέλυσαι ἀπὸ γυναικός; μὴ ζήτει γυναῖκα·\nἐὰν δὲ καὶ γήμῃς, οὐχ ἥμαρτες· καὶ ἐὰν γήμῃ ἡ παρθένος, οὐχ ἥμαρτε· θλῖψιν δὲ τῇ σαρκὶ ἕξουσιν οἱ τοιοῦτοι· ἐγὼ δὲ ὑμῶν φείδομαι.\nτοῦτο δέ φημι, ἀδελφοί, ὁ καιρὸς συνεσταλμένος τὸ λοιπόν ἐστιν, ἵνα καὶ οἱ ἔχοντες γυναῖκας ὡς μὴ ἔχοντες ὦσι,\nκαὶ οἱ κλαίοντες ὡς μὴ κλαίοντες, καὶ οἱ χαίροντες ὡς μὴ χαίροντες, καὶ οἱ ἀγοράζοντες ὡς μὴ κατέχοντες,\nκαὶ οἱ χρώμενοι τῷ κόσμῳ τούτῳ ὡς μὴ καταχρώμενοι· παράγει γὰρ τὸ σχῆμα τοῦ κόσμου τούτου.\nθέλω δὲ ὑμᾶς ἀμερίμνους εἶναι. ὁ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, πῶς ἀρέσει τῷ Κυρίῳ·\nὁ δὲ γαμήσας μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῇ γυναικί.\nμεμέρισται [καὶ] ἡ γυνὴ καὶ ἡ παρθένος. ἡ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, ἵνα ᾖ ἁγία καὶ σώματι καὶ πνεύματι· ἡ δὲ γαμήσασα μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῷ ἀνδρί.\nτοῦτο δὲ πρὸς τὸ ὑμῶν αὐτῶν συμφέρον λέγω, οὐχ ἵνα βρόχον ὑμῖν ἐπιβάλω, ἀλλὰ πρὸς τὸ εὔσχημον καὶ εὐπάρεδρον τῷ Κυρίῳ ἀπερισπάστως."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
-          "ar": "إِنْجِيلُ مَتَّى 15:12-21\nحِينَئِذٍ تَقَدَّمَ تَلَامِيذُهُ وَقَالُوا لَهُ: «أَتَعْلَمُ أَنَّ ٱلْفَرِّيسِيِّينَ لَمَّا سَمِعُوا ٱلْقَوْلَ نَفَرُوا؟».\nفَأَجَابَ وَقَالَ: «كُلُّ غَرْسٍ لَمْ يَغْرِسْهُ أَبِي ٱلسَّمَاوِيُّ يُقْلَعُ.\nاُتْرُكُوهُمْ. هُمْ عُمْيَانٌ قَادَةُ عُمْيَانٍ. وَإِنْ كَانَ أَعْمَى يَقُودُ أَعْمَى يَسْقُطَانِ كِلَاهُمَا فِي حُفْرَةٍ».\nفَأَجَابَ بُطْرُسُ وَقَالَ لَهُ: «فَسِّرْ لَنَا هَذَا ٱلْمَثَلَ».\nفَقَالَ يَسُوعُ: «هَلْ أَنْتُمْ أَيْضًا حَتَّى ٱلْآنَ غَيْرُ فَاهِمِينَ؟\nأَلَا تَفْهَمُونَ بَعْدُ أَنَّ كُلَّ مَا يَدْخُلُ ٱلْفَمَ يَمْضِي إِلَى ٱلْجَوْفِ وَيَنْدَفِعُ إِلَى ٱلْمَخْرَجِ؟\nوَأَمَّا مَا يَخْرُجُ مِنَ ٱلْفَمِ فَمِنَ ٱلْقَلْبِ يَصْدُرُ، وَذَاكَ يُنَجِّسُ ٱلْإِنْسَانَ،\nلِأَنْ مِنَ ٱلْقَلْبِ تَخْرُجُ أَفْكَارٌ شِرِّيرَةٌ: قَتْلٌ، زِنىً، فِسْقٌ، سِرْقَةٌ، شَهَادَةُ زُورٍ، تَجْدِيفٌ.\nهَذِهِ هِيَ ٱلَّتِي تُنَجِّسُ ٱلْإِنْسَانَ. وَأَمَّا ٱلْأَ كْلُ بِأَيْدٍ غَيْرِ مَغْسُولَةٍ فَلَا يُنَجِّسُ ٱلْإِنْسَانَ». إيمان المرأة الكنعانية\nثُمَّ خَرَجَ يَسُوعُ مِنْ هُنَاكَ وَٱنْصَرَفَ إِلَى نَوَاحِي صُورَ وَصَيْدَاءَ.",
-          "en": "The Good News According to Matthew 15:12-21\nThen the disciples came and said to him, “Do you know that the Pharisees were offended when they heard this saying?”\nBut he answered, “\\+w Every|strong=\"G3956\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w which|strong=\"G3739\"\\+w* \\+w my|strong=\"G3956\"\\+w* \\+w heavenly|strong=\"G3770\"\\+w* \\+w Father|strong=\"G3962\"\\+w* didn’\\+w t|strong=\"G3588\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w will|strong=\"G3739\"\\+w* \\+w be|strong=\"G3756\"\\+w* \\+w uprooted|strong=\"G1610\"\\+w*.\nLeave \\+w them|strong=\"G1438\"\\+w* \\+w alone|strong=\"G1438\"\\+w*. \\+w They|strong=\"G1161\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guides|strong=\"G3595\"\\+w* \\+w of|strong=\"G1519\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*. \\+w If|strong=\"G1437\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guide|strong=\"G3595\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*, \\+w both|strong=\"G1161\"\\+w* \\+w will|strong=\"G1510\"\\+w* \\+w fall|strong=\"G4098\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w a|strong=\"G1519\"\\+w* pit.”\nPeter answered him, “Explain the parable to us.”\nSo Jesus said, “\\+w Do|strong=\"G3004\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w also|strong=\"G2532\"\\+w* still \\+w not|strong=\"G1510\"\\+w* understand?\nDon’\\+w t|strong=\"G3588\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w understand|strong=\"G3539\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w whatever|strong=\"G3956\"\\+w* \\+w goes|strong=\"G1531\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w passes|strong=\"G5562\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w belly|strong=\"G2836\"\\+w* \\+w and|strong=\"G2532\"\\+w* \\+w then|strong=\"G2532\"\\+w* \\+w out|strong=\"G1544\"\\+w* \\+w of|strong=\"G2532\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w body|strong=\"G1519\"\\+w*?\n\\+w But|strong=\"G1161\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w things|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w proceed|strong=\"G1607\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w*, \\+w and|strong=\"G1161\"\\+w* \\+w they|strong=\"G1161\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w man|strong=\"G2588\"\\+w*.\n\\+w For|strong=\"G1063\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w evil|strong=\"G4190\"\\+w* \\+w thoughts|strong=\"G1261\"\\+w*, \\+w murders|strong=\"G5408\"\\+w*, \\+w adulteries|strong=\"G3430\"\\+w*, \\+w sexual|strong=\"G4202\"\\+w* sins, \\+w thefts|strong=\"G2829\"\\+w*, \\+w false|strong=\"G5577\"\\+w* \\+w testimony|strong=\"G5577\"\\+w*, \\+w and|strong=\"G1831\"\\+w* blasphemies.\n\\+w These|strong=\"G3778\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w things|strong=\"G3778\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*; \\+w but|strong=\"G1161\"\\+w* \\+w to|strong=\"G3756\"\\+w* \\+w eat|strong=\"G2068\"\\+w* \\+w with|strong=\"G5495\"\\+w* unwashed \\+w hands|strong=\"G5495\"\\+w* doesn’\\+w t|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*.”\nJesus went out from there and withdrew into the region of Tyre and Sidon.",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 15:12-21\nτότε προσελθόντες οἱ μαθηταὶ αὐτοῦ εἶπον αὐτῷ· οἶδας ὅτι οἱ Φαρισαῖοι ἐσκανδαλίσθησαν ἀκούσαντες τὸν λόγον;\nὁ δὲ ἀποκριθεὶς εἶπε· πᾶσα φυτεία ἣν οὐκ ἐφύτευσεν ὁ πατήρ μου ὁ οὐράνιος ἐκριζωθήσεται.\nἄφετε αὐτούς· ὁδηγοί εἰσι τυφλοὶ τυφλῶν· τυφλὸς δὲ τυφλὸν ἐὰν ὁδηγῇ, ἀμφότεροι εἰς βόθυνον πεσοῦνται.\nἀποκριθεὶς δὲ ὁ Πέτρος εἶπεν αὐτῷ· φράσον ἡμῖν τὴν παραβολὴν ταύτην.\nὁ δὲ Ἰησοῦς εἶπεν· ἀκμὴν καὶ ὑμεῖς ἀσύνετοί ἐστε;\nοὔπω νοεῖτε ὅτι πᾶν τὸ εἰσπορευόμενον εἰς τὸ στόμα εἰς τὴν κοιλίαν χωρεῖ καὶ εἰς ἀφεδρῶνα ἐκβάλλεται;\nτὰ δὲ ἐκπορευόμενα ἐκ τοῦ στόματος ἐκ τῆς καρδίας ἐξέρχεται, κἀκεῖνα κοινοῖ τὸν ἄνθρωπον.\nἐκ γὰρ τῆς καρδίας ἐξέρχονται διαλογισμοὶ πονηροί, φόνοι, μοιχεῖαι, πορνεῖαι, κλοπαί, ψευδομαρτυρίαι, βλασφημίαι.\nταῦτά ἐστι τὰ κοινοῦντα τὸν ἄνθρωπον· τὸ δὲ ἀνίπτοις χερσὶ φαγεῖν οὐ κοινοῖ τὸν ἄνθρωπον.\nΚαὶ ἐξελθὼν ἐκεῖθεν ὁ Ἰησοῦς ἀνεχώρησεν εἰς τὰ μέρη Τύρου καὶ Σιδῶνος."
+          "ar": "إِنْجِيلُ مَتَّى 15:12-21\nحِينَئِذٍ تَقَدَّمَ تَلَامِيذُهُ وَقَالُوا لَهُ: «أَتَعْلَمُ أَنَّ ٱلْفَرِّيسِيِّينَ لَمَّا سَمِعُوا ٱلْقَوْلَ نَفَرُوا؟».\nفَأَجَابَ وَقَالَ: «كُلُّ غَرْسٍ لَمْ يَغْرِسْهُ أَبِي ٱلسَّمَاوِيُّ يُقْلَعُ.\nاُتْرُكُوهُمْ. هُمْ عُمْيَانٌ قَادَةُ عُمْيَانٍ. وَإِنْ كَانَ أَعْمَى يَقُودُ أَعْمَى يَسْقُطَانِ كِلَاهُمَا فِي حُفْرَةٍ».\nفَأَجَابَ بُطْرُسُ وَقَالَ لَهُ: «فَسِّرْ لَنَا هَذَا ٱلْمَثَلَ».\nفَقَالَ يَسُوعُ: «هَلْ أَنْتُمْ أَيْضًا حَتَّى ٱلْآنَ غَيْرُ فَاهِمِينَ؟\nأَلَا تَفْهَمُونَ بَعْدُ أَنَّ كُلَّ مَا يَدْخُلُ ٱلْفَمَ يَمْضِي إِلَى ٱلْجَوْفِ وَيَنْدَفِعُ إِلَى ٱلْمَخْرَجِ؟\nوَأَمَّا مَا يَخْرُجُ مِنَ ٱلْفَمِ فَمِنَ ٱلْقَلْبِ يَصْدُرُ، وَذَاكَ يُنَجِّسُ ٱلْإِنْسَانَ،\nلِأَنْ مِنَ ٱلْقَلْبِ تَخْرُجُ أَفْكَارٌ شِرِّيرَةٌ: قَتْلٌ، زِنىً، فِسْقٌ، سِرْقَةٌ، شَهَادَةُ زُورٍ، تَجْدِيفٌ.\nهَذِهِ هِيَ ٱلَّتِي تُنَجِّسُ ٱلْإِنْسَانَ. وَأَمَّا ٱلْأَكْلُ بِأَيْدٍ غَيْرِ مَغْسُولَةٍ فَلَا يُنَجِّسُ ٱلْإِنْسَانَ».\nثُمَّ خَرَجَ يَسُوعُ مِنْ هُنَاكَ وَٱنْصَرَفَ إِلَى نَوَاحِي صُورَ وَصَيْدَاءَ.",
+          "en": "Matthew 15:12-21\nThen the disciples came and said to him, “Do you know that the Pharisees were offended when they heard this saying?”\nBut he answered, “Every plant which my heavenly Father didn’t plant will be uprooted.\nLeave them alone. They are blind guides of the blind. If the blind guide the blind, both will fall into a pit.”\nPeter answered him, “Explain the parable to us.”\nSo Jesus said, “Do you also still not understand?\nDon’t you understand that whatever goes into the mouth passes into the belly and then out of the body?\nBut the things which proceed out of the mouth come out of the heart, and they defile the man.\nFor out of the heart come evil thoughts, murders, adulteries, sexual sins, thefts, false testimony, and blasphemies.\nThese are the things which defile the man; but to eat with unwashed hands doesn’t defile the man.”\nJesus went out from there and withdrew into the region of Tyre and Sidon.",
+          "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 15:12-21\nτότε προσελθόντες οἱ μαθηταὶ αὐτοῦ εἶπον αὐτῷ· οἶδας ὅτι οἱ Φαρισαῖοι ἐσκανδαλίσθησαν ἀκούσαντες τὸν λόγον;\nὁ δὲ ἀποκριθεὶς εἶπε· πᾶσα φυτεία ἣν οὐκ ἐφύτευσεν ὁ πατήρ μου ὁ οὐράνιος ἐκριζωθήσεται.\nἄφετε αὐτούς· ὁδηγοί εἰσι τυφλοὶ τυφλῶν· τυφλὸς δὲ τυφλὸν ἐὰν ὁδηγῇ, ἀμφότεροι εἰς βόθυνον πεσοῦνται.\nἀποκριθεὶς δὲ ὁ Πέτρος εἶπεν αὐτῷ· φράσον ἡμῖν τὴν παραβολὴν ταύτην.\nὁ δὲ Ἰησοῦς εἶπεν· ἀκμὴν καὶ ὑμεῖς ἀσύνετοί ἐστε;\nοὔπω νοεῖτε ὅτι πᾶν τὸ εἰσπορευόμενον εἰς τὸ στόμα εἰς τὴν κοιλίαν χωρεῖ καὶ εἰς ἀφεδρῶνα ἐκβάλλεται;\nτὰ δὲ ἐκπορευόμενα ἐκ τοῦ στόματος ἐκ τῆς καρδίας ἐξέρχεται, κἀκεῖνα κοινοῖ τὸν ἄνθρωπον.\nἐκ γὰρ τῆς καρδίας ἐξέρχονται διαλογισμοὶ πονηροί, φόνοι, μοιχεῖαι, πορνεῖαι, κλοπαί, ψευδομαρτυρίαι, βλασφημίαι.\nταῦτά ἐστι τὰ κοινοῦντα τὸν ἄνθρωπον· τὸ δὲ ἀνίπτοις χερσὶ φαγεῖν οὐ κοινοῖ τὸν ἄνθρωπον.\nΚαὶ ἐξελθὼν ἐκεῖθεν ὁ Ἰησοῦς ἀνεχώρησεν εἰς τὰ μέρη Τύρου καὶ Σιδῶνος."
         },
         "[آية المناولة]": {
           "ar": "",
@@ -1182,11 +1110,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     },
     {
@@ -1248,11 +1174,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     },
     {
@@ -1314,11 +1238,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     },
     {
@@ -1380,11 +1302,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     },
     {
@@ -1446,11 +1366,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     },
     {
@@ -1512,11 +1430,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     },
     {
@@ -1575,14 +1491,14 @@
           "el": "Ἀναστάσιμος Ἦχος 6\nΣῶσον, Κύριε, τὸν λαόν σου καὶ εὐλόγησον τὴν κληρονομίαν σου.\nΠρὸς σέ, Κύριε, κεκράξομαι· ὁ Θεός μου, μὴ παρασιωπήσῃς ἀπ᾽ ἐμοῦ."
         },
         "[فصل من رسالة اليوم]": {
-          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ إِلَى أَهْلِ رُومِيَةَ 15:1-7\nفَيَجِبُ عَلَيْنَا نَحْنُ ٱلْأَقْوِيَاءَ أَنْ نَحْتَمِلَ أَضْعَافَ ٱلضُّعَفَاءِ، وَلَا نُرْضِيَ أَنْفُسَنَا.\nفَلْيُرْضِ كُلُّ وَاحِدٍ مِنَّا قَرِيبَهُ لِلْخَيْرِ، لِأَجْلِ ٱلْبُنْيَانِ.\nلِأَنَّ ٱلْمَسِيحَ أَيْضًا لَمْ يُرْضِ نَفْسَهُ، بَلْ كَمَا هُوَ مَكْتُوبٌ: «تَعْيِيرَاتُ مُعَيِّرِيكَ وَقَعَتْ عَلَيَّ».\nلِأَنَّ كُلَّ مَا سَبَقَ فَكُتِبَ كُتِبَ لِأَجْلِ تَعْلِيمِنَا، حَتَّى بِٱلصَّبْرِ وَٱلتَّعْزِيَةِ بِمَا فِي ٱلْكُتُبِ يَكُونُ لَنَا رَجَاءٌ.\nوَلْيُعْطِكُمْ إِلَهُ ٱلصَّبْرِ وَٱلتَّعْزِيَةِ أَنْ تَهْتَمُّوا ٱهْتِمَامًا وَاحِدًا فِيمَا بَيْنَكُمْ، بِحَسَبِ ٱلْمَسِيحِ يَسُوعَ،\nلِكَيْ تُمَجِّدُوا ٱللهَ أَبَا رَبِّنَا يَسُوعَ ٱلْمَسِيحِ، بِنَفْسٍ وَاحِدَةٍ وَفَمٍ وَاحِدٍ.\nلِذَلِكَ ٱقْبَلُوا بَعْضُكُمْ بَعْضًا كَمَا أَنَّ ٱلْمَسِيحَ أَيْضًا قَبِلَنَا، لِمَجْدِ ٱللهِ.",
-          "en": "Paul’s Letter to the Romans 15:1-7\nNow we who are strong ought to bear the weaknesses of the weak, and not to please ourselves.\nLet each one of us please his neighbor for that which is good, to be building him up.\nFor even Christ didn’t please himself. But, as it is written, “The reproaches of those who reproached you fell on me.”\nFor whatever things were written before were written for our learning, that through perseverance and through encouragement of the Scriptures we might have hope.\nNow the God of perseverance and of encouragement grant you to be of the same mind with one another according to Christ Jesus,\nthat with one accord you may with one mouth glorify the God and Father of our Lord Jesus Christ.\nTherefore accept one another, even as Christ also accepted you, to the glory of God.",
-          "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 15:1-7\nὈφείλομεν δὲ ἡμεῖς οἱ δυνατοὶ τὰ ἀσθενήματα τῶν ἀδυνάτων βαστάζειν, καὶ μὴ ἑαυτοῖς ἀρέσκειν.\nἕκαστος ἡμῶν τῷ πλησίον ἀρεσκέτω εἰς τὸ ἀγαθὸν πρὸς οἰκοδομήν·\nκαὶ γὰρ ὁ Χριστὸς οὐχ ἑαυτῷ ἤρεσεν, ἀλλὰ καθὼς γέγραπται, \\+w οἱ|strong=\"G3588\"\\+w* \\+w ὀνειδισμοὶ|strong=\"G3680\"\\+w* \\+w τῶν|strong=\"G3588\"\\+w* \\+w ὀνειδιζόντων|strong=\"G3679\"\\+w* \\+w σε|strong=\"G4771\"\\+w* \\+w ἐπέπεσον|strong=\"G1968\"\\+w* \\+w ἐπ|strong=\"G1909\"\\+w*᾽ \\+w ἐμέ|strong=\"G1473\"\\+w*.\nὅσα γὰρ προεγράφη, εἰς τὴν ἡμετέραν διδασκαλίαν προεγράφη, ἵνα διὰ τῆς ὑπομονῆς καὶ τῆς παρακλήσεως τῶν γραφῶν τὴν ἐλπίδα ἔχωμεν.\nὁ δὲ Θεὸς τῆς ὑπομονῆς καὶ τῆς παρακλήσεως δῴη ὑμῖν τὸ αὐτὸ φρονεῖν ἐν ἀλλήλοις κατὰ Χριστὸν Ἰησοῦν,\nἵνα ὁμοθυμαδὸν ἐν ἑνὶ στόματι δοξάζητε τὸν Θεὸν καὶ πατέρα τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ.\nδιὸ προσλαμβάνεσθε ἀλλήλους, καθὼς καὶ ὁ Χριστὸς προσελάβετο ὑμᾶς εἰς δόξαν Θεοῦ."
+          "ar": "",
+          "en": "Romans 15:1-7",
+          "el": ""
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
-          "ar": "إِنْجِيلُ مَتَّى 9:27-35\nوَفِيمَا يَسُوعُ مُجْتَازٌ مِنْ هُنَاكَ، تَبِعَهُ أَعْمَيَانِ يَصْرَخَانِ وَيَقُولَانِ: «ٱرْحَمْنَا يا ٱبْنَ دَاوُدَ!».\nوَلَمَّا جَاءَ إِلَى ٱلْبَيْتِ تَقَدَّمَ إِلَيْهِ ٱلْأَعْمَيَانِ، فَقَالَ لَهُمَا يَسُوعُ: «أَتُؤْمِنَانِ أَنِّي أَقْدِرُ أَنْ أَفْعَلَ هَذَا؟». قَالَا لَهُ: «نَعَمْ، يا سَيِّدُ!».\nحِينَئِذٍ لَمَسَ أَعْيُنَهُمَا قَائِلًا: «بِحَسَبِ إِيمَانِكُمَا لِيَكُنْ لَكُمَا».\nفَٱنْفَتَحَتْ أَعْيُنُهُمَا. فَٱنْتَهَرَهُمَا يَسُوعُ قَائِلًا: «ٱنْظُرَا، لَا يَعْلَمْ أَحَدٌ!».\nوَلَكِنَّهُمَا خَرَجَا وَأَشَاعَاهُ فِي تِلْكَ ٱلْأَرْضِ كُلِّهَا. شفاء أخرس\nوَفِيمَا هُمَا خَارِجَانِ، إِذَا إِنْسَانٌ أَخْرَسُ مَجْنُونٌ قَدَّمُوهُ إِلَيْهِ.\nفَلَمَّا أُخْرِجَ ٱلشَّيْطَانُ تَكَلَّمَ ٱلْأَخْرَسُ، فَتَعَجَّبَ ٱلْجُمُوعُ قَائِلِينَ: «لَمْ يَظْهَرْ قَطُّ مِثْلُ هَذَا فِي إِسْرَائِيلَ!».\nأَمَّا ٱلْفَرِّيسِيُّونَ فَقَالُوا: «بِرَئِيسِ ٱلشَّيَاطِينِ يُخْرِجُ ٱلشَّيَاطِينَ!». الفعلة قليلون\nوَكَانَ يَسُوعُ يَطُوفُ ٱلْمُدُنَ كُلَّهَا وَٱلْقُرَى يُعَلِّمُ فِي مَجَامِعِهَا، وَيَكْرِزُ بِبِشَارَةِ ٱلْمَلَكُوتِ، وَيَشْفِي كُلَّ مَرَضٍ وَكُلَّ ضُعْفٍ فِي ٱلشَّعْبِ.",
-          "en": "The Good News According to Matthew 9:27-35\nAs Jesus passed by from there, two blind men followed him, calling out and saying, “Have mercy on us, son of David!”\nWhen he had come into the house, the blind men came to him. Jesus said to them, “\\+w Do|strong=\"G4160\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w believe|strong=\"G4100\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w I|strong=\"G2532\"\\+w* \\+w am|strong=\"G2532\"\\+w* \\+w able|strong=\"G1410\"\\+w* \\+w to|strong=\"G1519\"\\+w* \\+w do|strong=\"G4160\"\\+w* \\+w this|strong=\"G3778\"\\+w*?” They told him, “Yes, Lord.”\nThen he touched their eyes, saying, “\\+w According|strong=\"G2596\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w your|strong=\"G4102\"\\+w* \\+w faith|strong=\"G4102\"\\+w* \\+w be|strong=\"G1096\"\\+w* \\+w it|strong=\"G5119\"\\+w* \\+w done|strong=\"G1096\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w you|strong=\"G5210\"\\+w*.”\nThen their eyes were opened. Jesus strictly commanded them, saying, “\\+w See|strong=\"G3708\"\\+w* \\+w that|strong=\"G3588\"\\+w* \\+w no|strong=\"G3367\"\\+w* \\+w one|strong=\"G3367\"\\+w* \\+w knows|strong=\"G1097\"\\+w* \\+w about|strong=\"G2424\"\\+w* \\+w this|strong=\"G3588\"\\+w*.”\nBut they went out and spread abroad his fame in all that land.\nAs they went out, behold, a mute man who was demon possessed was brought to him.\nWhen the demon was cast out, the mute man spoke. The multitudes marveled, saying, “Nothing like this has ever been seen in Israel!”\nBut the Pharisees said, “By the prince of the demons, he casts out demons.”\nJesus went about all the cities and the villages, teaching in their synagogues and preaching the Good News of the Kingdom, and healing every disease and every sickness among the people.",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 9:27-35\nΚαὶ παράγοντι ἐκεῖθεν τῷ Ἰησοῦ ἠκολούθησαν αὐτῷ δύο τυφλοὶ κράζοντες καὶ λέγοντες· ἐλέησον ἡμᾶς, υἱὲ Δαυΐδ.\nἐλθόντι δὲ εἰς τὴν οἰκίαν προσῆλθον αὐτῷ οἱ τυφλοί, καὶ λέγει αὐτοῖς ὁ Ἰησοῦς· πιστεύετε ὅτι δύναμαι τοῦτο ποιῆσαι; λέγουσιν αὐτῷ· ναί, Κύριε.\nτότε ἥψατο τῶν ὀφθαλμῶν αὐτῶν λέγων· κατὰ τὴν πίστιν ὑμῶν γενηθήτω ὑμῖν.\nκαὶ ἀνεῴχθησαν αὐτῶν οἱ ὀφθαλμοί· καὶ ἐνεβριμήσατο αὐτοῖς ὁ Ἰησοῦς λέγων· ὁρᾶτε μηδεὶς γινωσκέτω.\nοἱ δὲ ἐξελθόντες διεφήμισαν αὐτὸν ἐν ὅλῃ τῇ γῇ ἐκείνῃ.\nΑὐτῶν δὲ ἐξερχομένων ἰδοὺ προσήνεγκαν αὐτῷ ἄνθρωπον κωφὸν δαιμονιζόμενον·\nκαὶ ἐκβληθέντος τοῦ δαιμονίου ἐλάλησεν ὁ κωφός, καὶ ἐθαύμασαν οἱ ὄχλοι λέγοντες ὅτι οὐδέποτε ἐφάνη οὕτως ἐν τῷ Ἰσραήλ.\nοἱ δὲ Φαρισαῖοι ἔλεγον· ἐν τῷ ἄρχοντι τῶν δαιμονίων ἐκβάλλει τὰ δαιμόνια.\nΚαὶ περιῆγεν ὁ Ἰησοῦς τὰς πόλεις πάσας καὶ τὰς κώμας διδάσκων ἐν ταῖς συναγωγαῖς αὐτῶν καὶ κηρύσσων τὸ εὐαγγέλιον τῆς βασιλείας καὶ θεραπεύων πᾶσαν νόσον καὶ πᾶσαν μαλακίαν ἐν τῷ λαῷ."
+          "ar": "",
+          "en": "Matthew 9:27-35",
+          "el": ""
         },
         "[آية المناولة]": {
           "ar": "",
@@ -1647,11 +1563,9 @@
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-19",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
-        "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
+        "scripture": "VERIFIED_EXACT_VOCALIZED",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "ai_scripture_translation_used": false,
-        "machine_translation_used": false,
-        "automatic_diacritization_used": false
+        "ai_scripture_translation_used": false
       }
     }
   ],
@@ -2760,34 +2674,35 @@
   ],
   "automatic_diacritization_used": false,
   "native_text_contract": "canonical/source_native_contract.json",
+  "lectionary_reference_authority": {
+    "source_id": "oca_official_english",
+    "official": true,
+    "date_iso": "2026-07-16",
+    "epistle_reference": "1 Corinthians 7:24-35",
+    "gospel_reference": "Matthew 15:12-21",
+    "text_reuse": false,
+    "role": "APPOINTED_REFERENCE_ONLY"
+  },
   "integrity": {
+    "status": "VERIFIED_OFFICIAL_SOURCES",
+    "policy": "canonical/source_policy.json",
+    "ai_scripture_translation_used": false,
+    "ai_liturgical_translation_used": false,
     "native_text_contract": "canonical/source_native_contract.json",
-    "legacy_arabic_scripture_snapshot": "QUARANTINED_NOT_PUBLICATION_AUTHORITY"
-  },
-  "daily_update_status": {
-    "mode": "partial",
-    "date": "2026-07-16",
-    "message": {
-      "ar": "بيانات اليوم متاحة؛ قد تبقى بعض النصوص غير المنشورة فارغة حتى ورودها من مصدر رسمي مطابق.",
-      "en": "Today data is available; unavailable exact texts remain empty until a matching official source is available.",
-      "el": "Τὰ σημερινὰ δεδομένα εἶναι διαθέσιμα· τὰ μὴ ἐπαληθευμένα κείμενα παραμένουν κενά."
-    }
-  },
-  "lane_schema_version": 2,
-  "language": "ar",
-  "calendar_authority": "jerusalem_patriarchate",
-  "calendar": "julian_old_calendar",
-  "language_source_policy": {
-    "priority": [
-      "orthodox_jordan",
-      "jerusalem_patriarchate_ar",
-      "antioch_archdiocese_tripoli_ar",
-      "antioch_patriarchate_ar",
-      "ebible_arabic_van_dyck"
-    ],
-    "same_language_fallback_only": true,
-    "machine_translation_used": false,
+    "legacy_arabic_scripture_snapshot": "QUARANTINED_NOT_PUBLICATION_AUTHORITY",
+    "signature_state": "PENDING_PROTECTED_RELEASE_SIGNER",
     "automatic_diacritization_used": false,
-    "missing_text_behavior": "UNAVAILABLE"
+    "candidate_source_status": "VERIFIED_OFFICIAL_REFERENCES_AND_EXACT_NATIVE_CORPORA_UNSIGNED"
+  },
+  "candidate_metadata": {
+    "generated_at": "2026-07-16T15:40:47.270312+00:00",
+    "builder": "scripts/build_release_candidate.py",
+    "protected_promotion_target": "data/calendar/today.json and app/src/main/assets/data/today.json",
+    "must_not_ship_unsigned": true,
+    "languages": [
+      "ar",
+      "en",
+      "el"
+    ]
   }
 }
