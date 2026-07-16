@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify every published independent language lane that is available for a date."""
+"""Validate every available independent language lane for a date."""
 from __future__ import annotations
 
 import argparse
@@ -17,7 +17,10 @@ LANGUAGES = ("ar", "el", "en")
 def verify_signature(payload: Path, signature: Path) -> None:
     if not signature.is_file():
         raise SystemExit(f"missing lane signature: {signature}")
-    raw = base64.b64decode(signature.read_bytes().strip(), validate=True)
+    try:
+        raw = base64.b64decode(signature.read_bytes().strip(), validate=True)
+    except Exception as error:
+        raise SystemExit(f"invalid Base64 lane signature: {signature}: {error}") from error
     with tempfile.TemporaryDirectory() as directory:
         binary_signature = Path(directory) / "signature.bin"
         binary_signature.write_bytes(raw)
@@ -36,13 +39,17 @@ def verify_signature(payload: Path, signature: Path) -> None:
             text=True,
         )
         if result.returncode:
-            raise SystemExit(f"lane signature invalid: {payload}: {result.stderr.strip()}")
+            detail = (result.stdout + result.stderr).strip()
+            raise SystemExit(f"lane signature invalid: {payload}: {detail}")
 
 
-def verify_lane(path: Path, expected_date: str, language: str) -> None:
+def verify_lane(path: Path, expected_date: str, language: str, unsigned: bool) -> None:
     if not path.is_file():
         raise SystemExit(f"missing lane: {path}")
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as error:
+        raise SystemExit(f"invalid lane JSON: {path}: {error}") from error
     if data.get("date_iso") != expected_date or data.get("language") != language:
         raise SystemExit(f"lane metadata invalid: {path}")
     if data.get("schema_version") != 9 or data.get("lane_schema_version") != 2:
@@ -55,13 +62,24 @@ def verify_lane(path: Path, expected_date: str, language: str) -> None:
         raise SystemExit(f"lane services missing: {path}")
     if not isinstance(data.get("readings"), list):
         raise SystemExit(f"lane readings missing: {path}")
-    verify_signature(path, Path(str(path) + ".sig"))
+
+    signature = Path(str(path) + ".sig")
+    if unsigned:
+        if signature.exists():
+            raise SystemExit(f"stale signature exists beside unsigned lane: {signature}")
+    else:
+        verify_signature(path, signature)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", required=True)
     parser.add_argument("--language", choices=LANGUAGES)
+    parser.add_argument(
+        "--unsigned",
+        action="store_true",
+        help="Validate JSON structure and require detached signatures to be absent.",
+    )
     args = parser.parse_args()
 
     if args.language:
@@ -75,12 +93,13 @@ def main() -> None:
     for language in languages:
         dated = ROOT / f"data/daily/{args.date}/{language}.json"
         current = ROOT / f"data/daily/current/{language}.json"
-        verify_lane(dated, args.date, language)
-        verify_lane(current, args.date, language)
+        verify_lane(dated, args.date, language, args.unsigned)
+        verify_lane(current, args.date, language, args.unsigned)
         if dated.read_bytes() != current.read_bytes():
             raise SystemExit(f"dated/current lane mismatch: {language}")
 
-    print("LANGUAGE_LANES_OK " + ",".join(languages))
+    status = "LANGUAGE_LANES_UNSIGNED_OK" if args.unsigned else "LANGUAGE_LANES_OK"
+    print(status + " " + ",".join(languages))
 
 
 if __name__ == "__main__":
