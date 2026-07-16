@@ -1,6 +1,9 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.net.Uri;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -11,10 +14,12 @@ import android.widget.Toast;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
 import com.orthodoxprayers.privateapp.data.TranslationCoverage;
+import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import java.util.Date;
+import java.util.Locale;
 
 public final class SettingsScreen extends BaseScreen {
     public SettingsScreen(ScreenHost host) { super(host); }
@@ -45,6 +50,10 @@ public final class SettingsScreen extends BaseScreen {
         ) + en.percent + "%\n" + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ") + el.percent + "%",
                 13, ui.colors().secondaryText(), false);
         add(page.root, coverage, 0, 8);
+
+        Button languagePacks = ui.button(local("إدارة اللغات النشطة", "Manage active languages", "Διαχείριση ἐνεργῶν γλωσσῶν"), false);
+        languagePacks.setOnClickListener(v -> host.navigate("language_packs", null));
+        add(page.root, languagePacks, 0, 8);
 
         Button original = ui.button(preferences.showOriginal()
                 ? local("إخفاء النص الأصلي", "Hide source text", "Κρύψε πρωτότυπο")
@@ -78,7 +87,52 @@ public final class SettingsScreen extends BaseScreen {
                 ? local("إطفاء خيار إبقاء الشاشة مضاءة", "Disable keep-screen-on", "Ἀπενεργοποίηση ὀθόνης")
                 : local("إبقاء الشاشة مضاءة أثناء الصلاة", "Keep screen on while reading", "Διατήρηση ὀθόνης"), preferences.keepScreenOn());
         keepOn.setOnClickListener(v -> { preferences.setKeepScreenOn(!preferences.keepScreenOn()); host.navigate("settings", null); });
-        add(page.root, keepOn, 0, 10);
+        add(page.root, keepOn, 0, 6);
+
+        LinearLayout spacing = ui.row();
+        Button tighter = ui.button(local("تباعد أقل", "Less spacing", "Μικρότερο διάστιχο"), false);
+        tighter.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() - 0.1f); host.navigate("settings", null); });
+        spacing.addView(tighter, ui.weight(48));
+        Button spacingReset = ui.button(local("التباعد ", "Spacing ", "Διάστιχο ") + String.format(Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
+        spacingReset.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(1.16f); host.navigate("settings", null); });
+        spacing.addView(spacingReset, ui.weight(48));
+        Button wider = ui.button(local("تباعد أكبر", "More spacing", "Μεγαλύτερο διάστιχο"), false);
+        wider.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() + 0.1f); host.navigate("settings", null); });
+        spacing.addView(wider, ui.weight(48));
+        add(page.root, spacing, 0, 5);
+
+        Button fontFamily = ui.button(local("نوع الخط: ", "Font: ", "Γραμματοσειρά: ") + fontFamilyLabel(), false);
+        fontFamily.setOnClickListener(v -> {
+            String current = preferences.fontFamily();
+            preferences.setFontFamily("sans".equals(current) ? "serif" : "serif".equals(current) ? "monospace" : "sans");
+            host.navigate("settings", null);
+        });
+        add(page.root, fontFamily, 0, 6);
+
+        Button autoScroll = ui.button(autoScrollSettingLabel(), preferences.autoScrollSpeed() > 0);
+        autoScroll.setOnClickListener(v -> {
+            int speed = preferences.autoScrollSpeed();
+            preferences.setAutoScrollSpeed(speed >= 4 ? 0 : speed + 1);
+            host.navigate("settings", null);
+        });
+        add(page.root, autoScroll, 0, 10);
+
+        page.root.addView(ui.sectionTitle(local("التقويم والتذكيرات", "Calendar and reminders", "Ἡμερολόγιο καὶ ὑπενθυμίσεις")));
+        Button calendarMode = ui.button("julian".equals(preferences.calendarMode())
+                ? local("عرض التاريخ الغريغوري فقط", "Show Gregorian dates only", "Μόνο Γρηγοριανὲς ἡμερομηνίες")
+                : local("إظهار التاريخ اليولياني بجانب الغريغوري", "Show Julian dates beside Gregorian", "Ἰουλιανὴ δίπλα στὴ Γρηγοριανή"), "julian".equals(preferences.calendarMode()));
+        calendarMode.setOnClickListener(v -> {
+            preferences.setCalendarMode("julian".equals(preferences.calendarMode()) ? "gregorian" : "julian");
+            host.navigate("settings", null);
+        });
+        add(page.root, calendarMode, 0, 6);
+
+        addReminder(page.root, ReminderScheduler.MORNING, local("صلاة الصباح", "Morning prayer", "Πρωινὴ προσευχή"), 6 * 60 + 30);
+        addReminder(page.root, ReminderScheduler.READING, local("قراءات اليوم", "Daily readings", "Ἡμερήσια ἀναγνώσματα"), 8 * 60);
+        addReminder(page.root, ReminderScheduler.EVENING, local("صلاة المساء", "Evening prayer", "Ἑσπερινὴ προσευχή"), 21 * 60);
+        addReminder(page.root, ReminderScheduler.FEAST, local("الأعياد والتذكارات", "Feasts and commemorations", "Ἑορτὲς καὶ μνῆμες"), 7 * 60);
+        addReminder(page.root, ReminderScheduler.FAST, local("حالة الصيام", "Fasting status", "Κατάσταση νηστείας"), 7 * 60 + 15);
+        addReminder(page.root, ReminderScheduler.PERSONAL, local("تذكير شخصي", "Personal reminder", "Προσωπικὴ ὑπενθύμιση"), 18 * 60);
 
         page.root.addView(ui.sectionTitle(local("التحديث والبيانات", "Update and data", "Ἐνημέρωση καὶ ἀσφάλεια")));
         Button refresh = ui.button(
@@ -150,6 +204,57 @@ public final class SettingsScreen extends BaseScreen {
         return page.scroll;
     }
 
+    private void addReminder(LinearLayout root, String kind, String label, int fallbackMinute) {
+        LinearLayout row = ui.row();
+        boolean enabled = preferences.remindersEnabled(kind);
+        Button toggle = ui.button((enabled ? "🔔 " : "🔕 ") + label, enabled);
+        toggle.setOnClickListener(v -> {
+            boolean next = !preferences.remindersEnabled(kind);
+            if (next && Build.VERSION.SDK_INT >= 33
+                    && host.activity().checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                preferences.setPendingReminderKind(kind);
+                host.activity().requestPermissions(
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        ReminderScheduler.NOTIFICATION_PERMISSION_REQUEST
+                );
+                return;
+            }
+            preferences.setRemindersEnabled(kind, next);
+            ReminderScheduler scheduler = new ReminderScheduler(host.activity(), preferences);
+            if (next) scheduler.schedule(kind); else scheduler.cancel(kind);
+            host.navigate("settings", null);
+        });
+        row.addView(toggle, new LinearLayout.LayoutParams(0, -2, 2f));
+
+        int minute = preferences.reminderMinuteOfDay(kind, fallbackMinute);
+        Button time = ui.button(formatMinute(minute), false);
+        time.setOnClickListener(v -> {
+            int nextMinute = (preferences.reminderMinuteOfDay(kind, fallbackMinute) + 30) % 1440;
+            preferences.setReminderMinuteOfDay(kind, nextMinute);
+            if (preferences.remindersEnabled(kind)) new ReminderScheduler(host.activity(), preferences).schedule(kind);
+            host.navigate("settings", null);
+        });
+        row.addView(time, ui.weight(48));
+        add(root, row, 0, 5);
+    }
+
+    private String autoScrollSettingLabel() {
+        int speed = preferences.autoScrollSpeed();
+        return speed == 0
+                ? local("التمرير التلقائي: متوقف", "Auto-scroll: off", "Αὐτόματη κύλιση: κλειστή")
+                : local("سرعة التمرير التلقائي: ", "Auto-scroll speed: ", "Ταχύτητα αὐτόματης κύλισης: ") + speed;
+    }
+
+    private String fontFamilyLabel() {
+        if ("serif".equals(preferences.fontFamily())) return local("كتاب", "Serif", "Serif");
+        if ("monospace".equals(preferences.fontFamily())) return local("ثابت العرض", "Monospace", "Monospace");
+        return local("بسيط", "Sans", "Sans");
+    }
+
+    private static String formatMinute(int minuteOfDay) {
+        return String.format(Locale.US, "%02d:%02d", minuteOfDay / 60, minuteOfDay % 60);
+    }
+
     private String trustSourceLabel() {
         String source = data.trustSource();
         if ("signed_remote".equals(source)) return local("تحديث شبكي موقّع", "Signed network update", "Ὑπογεγραμμένη ἐνημέρωση");
@@ -179,12 +284,13 @@ public final class SettingsScreen extends BaseScreen {
 
     private void addLanguageButton(LinearLayout row, String title, String language) {
         boolean active = language.equals(preferences.effectiveLanguage());
+        boolean available = preferences.offlineLanguageEnabled(language);
         Button button = ui.button(title, active);
-        button.setEnabled(true);
-        button.setAlpha(1f);
+        button.setEnabled(available);
+        button.setAlpha(available ? 1f : 0.5f);
         button.setContentDescription(title + (active
                 ? local(" — اللغة المحددة", " — selected language", " — ἐπιλεγμένη γλῶσσα")
-                : ""));
+                : available ? "" : local(" — غير نشطة", " — inactive", " — ἀνενεργή")));
         button.setOnClickListener(v -> {
             if (language.equals(preferences.effectiveLanguage())) return;
             preferences.setLanguage(language);

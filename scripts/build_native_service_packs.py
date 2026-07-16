@@ -17,6 +17,7 @@ SOURCE = ROOT / "data/services/library.json"
 MANIFEST = ROOT / "canonical/native_service_manifest.json"
 REGISTRY = ROOT / "canonical/native_language_sources.json"
 OUTPUTS = [ROOT / "data/services/native", ROOT / "app/src/main/assets/data/native"]
+OVERRIDE_ROOT = ROOT / "data/services/native_overrides"
 LANGS = ("ar", "el", "en")
 
 
@@ -105,11 +106,17 @@ def main() -> None:
             source_info = sources[source_id]
             if source_info["language"] != lang:
                 raise SystemExit(f"{service_id}.{lang} points to a {source_info['language']} source")
-            service = localized_for_language(raw, lang)
+            override_path = OVERRIDE_ROOT / lang / f"{service_id}.json"
+            if override_path.exists():
+                service = json.loads(override_path.read_text(encoding="utf-8"))
+                if service.get("id") != service_id:
+                    raise SystemExit(f"{override_path}: service id mismatch")
+            else:
+                service = localized_for_language(raw, lang)
             service.pop("translation_status", None)
             service["source_language"] = lang
             service["content_mode"] = "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY"
-            service_total, service_filled = localized_counts(raw, lang)
+            service_total, service_filled = localized_counts(service, lang)
             pack_total += service_total
             pack_filled += service_filled
             service["native_content_status"] = {
@@ -125,7 +132,7 @@ def main() -> None:
                 "url": entry["url"],
                 "permission_confirmed": source_info["permission_confirmed"],
                 "machine_translation_used": False,
-                "content_sha256": text_hash(raw, lang),
+                "content_sha256": text_hash(service, lang),
                 "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT" if service_filled else "AUTHORIZED_SOURCE_REGISTERED_TEXT_PENDING"
             }
             # Old service-wide provenance is retained only as audit history.

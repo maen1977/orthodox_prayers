@@ -69,6 +69,9 @@ python scripts/validate_native_source_contract.py
 
 ```bash
 python scripts/import_native_scripture_corpus.py /secure/greek-scripture.json --replace
+
+# لمصدر عام الملكية ومسجل في العقد
+python scripts/import_native_scripture_corpus.py /secure/greek-scripture.json --replace --corpus-kind public-domain
 ```
 
 الأداة تحفظ كل آية كما هي، وتحسب بصمتها، وترفض المصدر أو الأبجدية غير المطابقة. ملف المصدر الخام ووثائق الإذن يبقيان خارج المستودع العام.
@@ -89,4 +92,31 @@ Workflow `Update` ينفذ بالترتيب:
 python scripts/validate_release_readiness.py
 ```
 
-لن ينجح حتى تكتمل حزم الخدمات، وتُستورد مكتبات الكتاب المقدس، وتتوافر قراءات اليوم الأصلية في اللغات الثلاث.
+ينجح عند اكتمال حزم الخدمات وتوافر نص الرسالة والإنجيل في اللغات الثلاث. لفحص مرشح غير موقع دون تغيير البيانات الموقعة الحالية:
+
+```bash
+python scripts/validate_release_readiness.py --daily-path data/calendar/candidates/2026-07-16.json
+```
+
+## 6. دمج دفعة جزئية مصرّح بها
+
+إذا وصل ملف رسمي يغطي بعض الحقول الناقصة فقط، لا يلزم استبدال الحزمة كاملة. استخدم:
+
+```bash
+python scripts/merge_authorized_native_services.py --input /secure/authorized-en.json
+python scripts/merge_authorized_native_services.py --input /secure/authorized-el.json
+python scripts/build_search_index.py
+python scripts/validate_native_language_packs.py
+python scripts/validate_native_source_contract.py
+```
+
+الأداة ترفض الترجمة بين المسارات، والنص ذي الأبجدية الخاطئة، والمصدر غير المسجل، والملف الذي لا يحمل بيانات إذن واضحة. وهي لا تستبدل نصًا موجودًا إلا عند تمرير خيار الاستبدال المقصود وفق تعليماتها.
+
+## 7. تقارير الحقول الناقصة
+
+```bash
+python scripts/export_missing_native_fields.py --language en --output docs/native_missing_en.json
+python scripts/export_missing_native_fields.py --language el --output docs/native_missing_el.json
+```
+
+التقريران يحددان كل خدمة ومقطع وحقل مطلوب، ويمكن تسليمهما للمراجع أو الجهة المالكة للمصدر دون خلط اللغات أو تخمين النصوص.

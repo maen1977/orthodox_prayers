@@ -26,7 +26,8 @@
         "goarch_digital_chant_stand_english",
         "goarch_synekdemos",
         "oca_official_english",
-        "ebible_world_english_bible"
+        "ebible_world_english_bible",
+        "metropolis_toronto_liturgy_en"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -39,7 +40,8 @@
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
         "goarch_digital_chant_stand_greek",
-        "ebible_greek_byzantine_1904"
+        "ebible_greek_byzantine_1904",
+        "metropolis_toronto_liturgy_el"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -241,6 +243,32 @@
       "role": "independent_native_scripture_text_only",
       "permission_confirmed": true,
       "name": "1904 Patriarchal Greek New Testament"
+    },
+    "metropolis_toronto_liturgy_en": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://goarchdiocese.ca/",
+      "capabilities": [
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER; retain external authorization record before public distribution",
+      "document_title": "The Divine Liturgy of Saint John Chrysostom / Η ΘΕΙΑ ΛΕΙΤΟΥΡΓΙΑ ΤΟΥ ΑΓΙΟΥ ΙΩΑΝΝΟΥ ΤΟΥ ΧΡΥΣΟΣΤΟΜΟΥ",
+      "publication_year": 2017,
+      "name": "Greek Orthodox Metropolis of Toronto (Canada) — English Liturgy"
+    },
+    "metropolis_toronto_liturgy_el": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://goarchdiocese.ca/",
+      "capabilities": [
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER; retain external authorization record before public distribution",
+      "document_title": "The Divine Liturgy of Saint John Chrysostom / Η ΘΕΙΑ ΛΕΙΤΟΥΡΓΙΑ ΤΟΥ ΑΓΙΟΥ ΙΩΑΝΝΟΥ ΤΟΥ ΧΡΥΣΟΣΤΟΜΟΥ",
+      "publication_year": 2017,
+      "name": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy"
     }
   },
   "contract": "canonical/source_native_contract.json"

@@ -2,6 +2,7 @@ package com.orthodoxprayers.privateapp;
 
 import android.app.Activity;
 import android.content.res.ColorStateList;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,11 +19,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orthodoxprayers.privateapp.data.DataRepository;
+import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.AppScreen;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 import com.orthodoxprayers.privateapp.ui.screens.FavoritesScreen;
+import com.orthodoxprayers.privateapp.ui.screens.CalendarScreen;
+import com.orthodoxprayers.privateapp.ui.screens.CalendarDayScreen;
+import com.orthodoxprayers.privateapp.ui.screens.HistoryScreen;
+import com.orthodoxprayers.privateapp.ui.screens.LanguagePacksScreen;
 import com.orthodoxprayers.privateapp.ui.screens.HomeScreen;
 import com.orthodoxprayers.privateapp.ui.screens.PrayerHubScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ReaderScreen;
@@ -116,6 +122,29 @@ public final class MainActivity extends Activity implements ScreenHost {
         stopDayChangeWatcher();
         super.onStop();
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != ReminderScheduler.NOTIFICATION_PERMISSION_REQUEST) return;
+        String kind = preferences.pendingReminderKind();
+        preferences.clearPendingReminderKind();
+        if (kind.isEmpty()) return;
+        boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        preferences.setRemindersEnabled(kind, granted);
+        ReminderScheduler scheduler = new ReminderScheduler(this, preferences);
+        if (granted) scheduler.schedule(kind); else scheduler.cancel(kind);
+        Toast.makeText(
+                this,
+                granted
+                        ? repository.local("تم تفعيل التذكير", "Reminder enabled", "Ἡ ὑπενθύμιση ἐνεργοποιήθηκε")
+                        : repository.local("لم يُفعّل التذكير لأن إذن الإشعارات مرفوض", "The reminder was not enabled because notification permission was denied", "Ἡ ὑπενθύμιση δὲν ἐνεργοποιήθηκε"),
+                Toast.LENGTH_SHORT
+        ).show();
+        ScreenEntry current = backStack.peekLast();
+        if (current != null && "settings".equals(current.screenId)) show(current);
+    }
+
 
     private void configureWindow() {
         getWindow().setStatusBarColor(ThemePalette.NAVY);
@@ -277,6 +306,10 @@ public final class MainActivity extends Activity implements ScreenHost {
             case "upcoming": return new UpcomingScreen(this);
             case "search": return new SearchScreen(this);
             case "favorites": return new FavoritesScreen(this);
+            case "history": return new HistoryScreen(this);
+            case "calendar": return new CalendarScreen(this, entry.argument);
+            case "calendar_day": return new CalendarDayScreen(this, entry.argument);
+            case "language_packs": return new LanguagePacksScreen(this);
             case "settings": return new SettingsScreen(this);
             case "reader": return new ReaderScreen(this, entry.argument);
             case "reading_detail":

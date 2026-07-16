@@ -156,9 +156,27 @@ public final class HomeScreen extends BaseScreen {
 
         LinearLayout second = ui.row();
         addShortcut(second, "⭐", local("المفضلة", "Favorites", "Ἀγαπημένα"), "favorites", null);
-        addShortcut(second, "📅", local("الأيام القادمة", "Upcoming", "Ἐπόμενες"), "upcoming", null);
-        addShortcut(second, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
-        add(root, second, 0, 10);
+        addShortcut(second, "📅", local("التقويم", "Calendar", "Ἡμερολόγιο"), "calendar", null);
+        addShortcut(second, "🕘", local("آخر قراءة", "History", "Ἱστορικό"), "history", null);
+        add(root, second, 0, 0);
+
+        LinearLayout third = ui.row();
+        addShortcut(third, "🗓", local("الأيام القادمة", "Upcoming", "Ἐπόμενες"), "upcoming", null);
+        addShortcut(third, "🌐", local("حزم اللغات", "Language packs", "Πακέτα γλωσσῶν"), "language_packs", null);
+        addShortcut(third, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
+        add(root, third, 0, 10);
+
+        if (!preferences.pinnedServices().isEmpty()) {
+            root.addView(ui.sectionTitle(local("النصوص المثبتة", "Pinned texts", "Καρφιτσωμένα κείμενα")));
+            int shown = 0;
+            for (String id : preferences.pinnedServices()) {
+                JSONObject service = data.findService(id);
+                if (service != null) {
+                    add(root, serviceCard(service), 2, 7);
+                    if (++shown >= 3) break;
+                }
+            }
+        }
     }
 
     private void addShortcut(LinearLayout row, String icon, String title, String screen, String argument) {

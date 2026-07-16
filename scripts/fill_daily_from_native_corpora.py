@@ -87,7 +87,11 @@ def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any]
     base = ROOT / "data" / "scripture" / "native" / language
     manifest = json.loads((base / "manifest.json").read_text(encoding="utf-8"))
     verses = json.loads((base / "verses.json").read_text(encoding="utf-8"))
-    if manifest.get("status") != "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS" or not verses:
+    persisted_statuses = {
+        "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS",
+        "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+    }
+    if manifest.get("status") not in persisted_statuses or not verses:
         public_manifest, public_index = load_public_domain_corpus(language)
         source_id = str(public_manifest.get("source_id") or "")
         source_url = str(public_manifest.get("source_url") or "")

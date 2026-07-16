@@ -4,69 +4,186 @@
   "machine_translation_allowed": false,
   "services": {
     "lord_prayer": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_synekdemos", "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      }
     },
     "creed": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_synekdemos", "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      }
     },
     "trisagion": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_synekdemos", "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      }
     },
     "morning_prayer": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_online_chapel", "url": "https://www.goarch.org/-/morning-prayers"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_online_chapel",
+        "url": "https://www.goarch.org/-/morning-prayers"
+      }
     },
     "evening_prayer": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_synekdemos", "url": "https://www.goarch.org/chapel/prayers"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/chapel/prayers"
+      }
     },
     "small_compline": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_synekdemos", "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      }
     },
     "thanksgiving": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_synekdemos", "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      }
     },
     "before_food": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/صلوات-المائدة/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_online_chapel", "url": "https://www.goarch.org/-/prayers-at-mealtime"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلوات-المائدة/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_online_chapel",
+        "url": "https://www.goarch.org/-/prayers-at-mealtime"
+      }
     },
     "after_food": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/صلوات-المائدة/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_online_chapel", "url": "https://www.goarch.org/-/prayers-at-mealtime"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلوات-المائدة/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_online_chapel",
+        "url": "https://www.goarch.org/-/prayers-at-mealtime"
+      }
     },
     "jesus_prayer": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_online_chapel", "url": "https://www.goarch.org/chapel/prayers"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_online_chapel",
+        "url": "https://www.goarch.org/chapel/prayers"
+      }
     },
     "divine_liturgy": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_ecclesia", "url": "https://www.ecclesia.gr/"},
-      "en": {"source_id": "goarch_digital_chant_stand_english", "url": "https://digitalchantstand.goarch.org/"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "metropolis_toronto_liturgy_el",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf"
+      },
+      "en": {
+        "source_id": "metropolis_toronto_liturgy_en",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf"
+      }
     },
     "vespers": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_online_chapel", "url": "https://www.goarch.org/-/daily-vespers"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_online_chapel",
+        "url": "https://www.goarch.org/-/daily-vespers"
+      }
     },
     "orthros": {
-      "ar": {"source_id": "orthodox_jordan", "url": "https://orthodoxjordan.org/تحميل-الصلوات/"},
-      "el": {"source_id": "church_of_greece_apostoliki_diakonia", "url": "https://apostoliki-diakonia.gr/"},
-      "en": {"source_id": "goarch_online_chapel", "url": "https://www.goarch.org/-/daily-orthros"}
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      },
+      "en": {
+        "source_id": "goarch_online_chapel",
+        "url": "https://www.goarch.org/-/daily-orthros"
+      }
     }
   }
 }

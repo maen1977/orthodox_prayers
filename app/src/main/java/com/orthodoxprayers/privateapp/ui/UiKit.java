@@ -113,15 +113,19 @@ public final class UiKit {
         view.setTextSize(sp * preferences.fontScale());
         view.setTextColor(color);
         view.setIncludeFontPadding(true);
-        if (bold) view.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        Typeface base;
+        if ("serif".equals(preferences.fontFamily())) base = Typeface.SERIF;
+        else if ("monospace".equals(preferences.fontFamily())) base = Typeface.MONOSPACE;
+        else base = Typeface.SANS_SERIF;
+        view.setTypeface(base, bold ? Typeface.BOLD : Typeface.NORMAL);
         applyTextDirection(view, value);
         return view;
     }
 
     public TextView body(String value, boolean rubric) {
         TextView view = text(value, rubric ? 15 : 18, rubric ? palette.secondaryText() : palette.primaryText(), false);
-        if (rubric) view.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
-        view.setLineSpacing(dp(4), 1.16f);
+        if (rubric) view.setTypeface(view.getTypeface(), Typeface.ITALIC);
+        view.setLineSpacing(dp(4), preferences.lineSpacingMultiplier());
         view.setTextIsSelectable(true);
         return view;
     }

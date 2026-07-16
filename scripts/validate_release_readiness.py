@@ -7,6 +7,7 @@ reference; the independent corpus supplies only the exact same-language Bible te
 """
 from __future__ import annotations
 
+import argparse
 import json
 import subprocess
 import sys
@@ -28,6 +29,10 @@ def reading_lists(data: dict[str, Any]) -> Iterable[list[Any]]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--daily-path", type=Path, default=Path("data/calendar/today.json"))
+    args = parser.parse_args()
+    daily_path = args.daily_path if args.daily_path.is_absolute() else ROOT / args.daily_path
     errors: list[str] = []
     result = subprocess.run(
         [sys.executable, "scripts/validate_native_language_packs.py", "--require-complete"],
@@ -39,7 +44,7 @@ def main() -> None:
         errors.append("Native service packs are incomplete:\n" + (result.stdout + result.stderr).strip())
 
     contract = load_contract()
-    today = json.loads((ROOT / "data" / "calendar" / "today.json").read_text(encoding="utf-8"))
+    today = json.loads(daily_path.read_text(encoding="utf-8"))
     kinds = {"epistle": False, "gospel": False}
     complete_languages: set[str] = set()
 
@@ -86,7 +91,7 @@ def main() -> None:
 
     if errors:
         raise SystemExit("Production release is blocked:\n- " + "\n- ".join(dict.fromkeys(errors)))
-    print("Production release readiness validated: complete Arabic, English, and Greek Epistle/Gospel text with exact registered-source evidence")
+    print(f"Production release readiness validated for {daily_path}: complete Arabic, English, and Greek Epistle/Gospel text with exact registered-source evidence")
 
 
 if __name__ == "__main__":

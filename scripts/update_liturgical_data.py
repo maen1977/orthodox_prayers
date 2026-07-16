@@ -69,6 +69,362 @@ def loc(ar: str, en: str | None = None, el: str | None = None) -> dict:
     return {"ar": ar or "", "en": en or "", "el": el or ""}
 
 
+
+EN_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+EN_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+EL_DAYS = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"]
+EL_MONTHS = ["Ιανουαρίου", "Φεβρουαρίου", "Μαρτίου", "Απριλίου", "Μαΐου", "Ιουνίου", "Ιουλίου", "Αυγούστου", "Σεπτεμβρίου", "Οκτωβρίου", "Νοεμβρίου", "Δεκεμβρίου"]
+
+FEAST_TRANSLATIONS = {
+    "تذكار اليوم بحسب التقويم الكنسي القديم": (
+        "Today’s commemoration according to the old church calendar",
+        "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
+    ),
+    "ختان الرب بالجسد وتذكار القديس باسيليوس الكبير": (
+        "Circumcision of the Lord and commemoration of Saint Basil the Great",
+        "Ἡ κατὰ σάρκα Περιτομὴ τοῦ Κυρίου καὶ ἡ μνήμη τοῦ Ἁγίου Βασιλείου τοῦ Μεγάλου",
+    ),
+    "عيد الظهور الإلهي المقدس": ("Holy Theophany", "Τὰ Ἅγια Θεοφάνεια"),
+    "دخول السيد إلى الهيكل": ("Meeting of the Lord in the Temple", "Ἡ Ὑπαπαντὴ τοῦ Κυρίου"),
+    "عيد البشارة المقدسة": ("Annunciation of the Most Holy Theotokos", "Ὁ Εὐαγγελισμὸς τῆς Ὑπεραγίας Θεοτόκου"),
+    "ميلاد القديس يوحنا المعمدان": ("Nativity of Saint John the Baptist", "Τὸ Γενέσιον τοῦ Ἁγίου Ἰωάννου τοῦ Προδρόμου"),
+    "عيد هامتي الرسل القديسين بطرس وبولس": ("Holy Apostles Peter and Paul", "Οἱ Ἅγιοι Πρωτοκορυφαῖοι Ἀπόστολοι Πέτρος καὶ Παῦλος"),
+    "عيد التجلي الإلهي": ("Holy Transfiguration of the Lord", "Ἡ Μεταμόρφωσις τοῦ Κυρίου"),
+    "رقاد السيدة والدة الإله": ("Dormition of the Most Holy Theotokos", "Ἡ Κοίμησις τῆς Ὑπεραγίας Θεοτόκου"),
+    "ميلاد والدة الإله": ("Nativity of the Most Holy Theotokos", "Τὸ Γενέσιον τῆς Ὑπεραγίας Θεοτόκου"),
+    "رفع الصليب الكريم المحيي": ("Exaltation of the Precious and Life-giving Cross", "Ἡ Ὕψωσις τοῦ Τιμίου καὶ Ζωοποιοῦ Σταυροῦ"),
+    "دخول والدة الإله إلى الهيكل": ("Entry of the Most Holy Theotokos into the Temple", "Τὰ Εἰσόδια τῆς Ὑπεραγίας Θεοτόκου"),
+    "عيد ميلاد ربنا وإلهنا ومخلصنا يسوع المسيح بالجسد": ("Nativity according to the flesh of our Lord, God, and Savior Jesus Christ", "Ἡ κατὰ σάρκα Γέννησις τοῦ Κυρίου καὶ Θεοῦ καὶ Σωτῆρος ἡμῶν Ἰησοῦ Χριστοῦ"),
+}
+
+FASTING_FOOD_LOCALIZATION = {
+    "meat": ("Meat", "Κρέας"),
+    "dairy": ("Dairy", "Γαλακτοκομικά"),
+    "eggs": ("Eggs", "Αὐγά"),
+    "fish": ("Fish", "Ψάρι"),
+    "wine": ("Wine", "Οἶνος"),
+    "oil": ("Oil", "Ἔλαιο"),
+}
+
+FASTING_LEVEL_LOCALIZATION = {
+    "fast_free": ("No fast", "Χωρὶς νηστεία"),
+    "dairy_allowed": ("Dairy, eggs, and fish permitted", "Ἐπιτρέπονται γαλακτοκομικά, αὐγὰ καὶ ψάρι"),
+    "fish_allowed": ("Fish, oil, and wine permitted", "Ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος"),
+    "wine_oil": ("Oil and wine permitted", "Ἐπιτρέπονται ἔλαιο καὶ οἶνος"),
+    "strict": ("Strict fast", "Αὐστηρὰ νηστεία"),
+}
+
+# Native UI translations for every automatic Typikon rule emitted by this generator.
+FASTING_RULE_LOCALIZATION = {
+    "publican_pharisee_fast_free_week": ("Fast-free week", "Ἀπολύτως ἄλυτη ἑβδομάδα", "The week from the Sunday of the Publican and the Pharisee through the Sunday of the Prodigal Son is fast-free.", "Ἡ ἑβδομάδα ἀπὸ τὴν Κυριακὴ τοῦ Τελώνου καὶ Φαρισαίου ἕως τὴν Κυριακὴ τοῦ Ἀσώτου εἶναι ἄλυτη."),
+    "bright_week": ("Bright Week", "Διακαινήσιμος Ἑβδομάδα", "Bright Week after Pascha is fast-free.", "Ἡ Διακαινήσιμος Ἑβδομάδα μετὰ τὸ Πάσχα εἶναι ἄλυτη."),
+    "pentecost_fast_free_week": ("Week after Pentecost", "Ἑβδομάδα μετὰ τὴν Πεντηκοστή", "The week after Pentecost is fast-free.", "Ἡ ἑβδομάδα μετὰ τὴν Πεντηκοστὴ εἶναι ἄλυτη."),
+    "nativity_to_theophany_fast_free": ("Nativity season", "Ἡμέρες Χριστουγέννων", "There is no general fast from the Nativity through the day before the Eve of Theophany.", "Δὲν προβλέπεται γενικὴ νηστεία ἀπὸ τὰ Χριστούγεννα ἕως τὴν παραμονὴ τῶν Θεοφανείων."),
+    "major_feast_fast_free": ("Great feast", "Μεγάλη ἑορτή", "A great feast ends the associated fasting period.", "Ἡ μεγάλη ἑορτὴ καταλύει τὴν ἀντίστοιχη περίοδο νηστείας."),
+    "cheesefare_week": ("Cheesefare Week", "Ἑβδομάδα Τυρινῆς", "Meat is omitted; dairy, eggs, fish, oil, and wine are permitted.", "Γίνεται ἀποχὴ ἀπὸ κρέας· ἐπιτρέπονται γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνος."),
+    "great_lent_fish_exception": ("Great Lent", "Μεγάλη Τεσσαρακοστή", "The Annunciation or Palm Sunday permits fish, oil, and wine during Great Lent.", "Ὁ Εὐαγγελισμὸς ἢ ἡ Κυριακὴ τῶν Βαΐων ἐπιτρέπει ψάρι, ἔλαιο καὶ οἶνο μέσα στὴ Μεγάλη Τεσσαρακοστή."),
+    "great_lent_weekend_wine_oil": ("Great Lent", "Μεγάλη Τεσσαρακοστή", "Oil and wine are permitted on Saturdays and Sundays of Great Lent, except Holy Saturday.", "Τὰ Σάββατα καὶ τὶς Κυριακὲς τῆς Μεγάλης Τεσσαρακοστῆς ἐπιτρέπονται ἔλαιο καὶ οἶνος, ἐκτὸς ἀπὸ τὸ Μέγα Σάββατο."),
+    "great_lent_strict": ("Great Lent or Holy Week", "Μεγάλη Τεσσαρακοστὴ ἢ Μεγάλη Ἑβδομάδα", "The day falls within Great Lent or Holy Week.", "Ἡ ἡμέρα βρίσκεται μέσα στὴ Μεγάλη Τεσσαρακοστὴ ἢ τὴ Μεγάλη Ἑβδομάδα."),
+    "single_day_strict_fast": ("One-day fast", "Μονοήμερη νηστεία", "This is a strict one-day fast.", "Πρόκειται γιὰ αὐστηρὴ μονοήμερη νηστεία."),
+    "apostles_fast_fish": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "Fish, oil, and wine are permitted on weekends and on the Nativity of Saint John the Baptist.", "Τὰ Σαββατοκύριακα καὶ στὸ Γενέσιο τοῦ Τιμίου Προδρόμου ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος."),
+    "apostles_fast_tue_thu": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "Oil and wine are permitted on Tuesday and Thursday according to the general rule.", "Τὴν Τρίτη καὶ τὴν Πέμπτη ἐπιτρέπονται ἔλαιο καὶ οἶνος κατὰ τὸν γενικὸ κανόνα."),
+    "apostles_fast_mon_wed_fri": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "The general rule is a strict fast on Monday, Wednesday, and Friday.", "Ὁ γενικὸς κανόνας προβλέπει αὐστηρὰ νηστεία Δευτέρα, Τετάρτη καὶ Παρασκευή."),
+    "dormition_transfiguration_fish": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The Transfiguration permits fish, oil, and wine during the Dormition Fast.", "Ἡ Μεταμόρφωση ἐπιτρέπει ψάρι, ἔλαιο καὶ οἶνο μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
+    "dormition_weekend_wine_oil": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "Oil and wine are permitted on Saturdays and Sundays.", "Τὰ Σάββατα καὶ τὶς Κυριακὲς ἐπιτρέπονται ἔλαιο καὶ οἶνος."),
+    "dormition_strict": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The day falls within the Dormition Fast.", "Ἡ ἡμέρα βρίσκεται μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
+    "nativity_entry_theotokos_fish": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The Entry of the Theotokos permits fish, oil, and wine.", "Στὰ Εἰσόδια τῆς Θεοτόκου ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος."),
+    "nativity_weekend": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The weekend rule of the Nativity Fast applies; fish is omitted during the final days before the Nativity.", "Ἰσχύει ὁ κανόνας τοῦ Σαββατοκύριακου τῆς Νηστείας Χριστουγέννων· στὶς τελευταῖες ἡμέρες δὲν ἐπιτρέπεται ψάρι."),
+    "nativity_tue_thu": ("Nativity Fast", "Νηστεία Χριστουγέννων", "Oil and wine are permitted on Tuesday and Thursday according to the general rule.", "Τὴν Τρίτη καὶ τὴν Πέμπτη ἐπιτρέπονται ἔλαιο καὶ οἶνος κατὰ τὸν γενικὸ κανόνα."),
+    "nativity_mon_wed_fri": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The general rule is a strict fast on Monday, Wednesday, and Friday.", "Ὁ γενικὸς κανόνας προβλέπει αὐστηρὰ νηστεία Δευτέρα, Τετάρτη καὶ Παρασκευή."),
+    "major_feast_weekly_fast_relaxation": ("Great feast", "Μεγάλη ἑορτή", "A great feast on a weekly fast day permits fish, oil, and wine according to the general rule.", "Μεγάλη ἑορτὴ σὲ ἡμέρα νηστείας ἐπιτρέπει ψάρι, ἔλαιο καὶ οἶνο κατὰ τὸν γενικὸ κανόνα."),
+    "weekly_wednesday_friday": ("Wednesday or Friday fast", "Νηστεία Τετάρτης ἢ Παρασκευῆς", "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies.", "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία."),
+    "ordinary_fast_free": ("Ordinary day", "Συνήθης ἡμέρα", "No general fasting season or weekly fast applies today.", "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία."),
+}
+
+BOOK_EL = {
+    "Romans": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ",
+    "Matthew": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ",
+    "Mark": "ΚΑΤΑ ΜΑΡΚΟΝ",
+    "Luke": "ΚΑΤΑ ΛΟΥΚΑΝ",
+    "John": "ΚΑΤΑ ΙΩΑΝΝΗΝ",
+    "Acts": "ΠΡΑΞΕΙΣ ΑΠΟΣΤΟΛΩΝ",
+    "1 Corinthians": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄",
+    "2 Corinthians": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Β΄",
+    "Galatians": "ΠΡΟΣ ΓΑΛΑΤΑΣ",
+    "Ephesians": "ΠΡΟΣ ΕΦΕΣΙΟΥΣ",
+    "Philippians": "ΠΡΟΣ ΦΙΛΙΠΠΗΣΙΟΥΣ",
+    "Colossians": "ΠΡΟΣ ΚΟΛΟΣΣΑΕΙΣ",
+    "1 Thessalonians": "ΠΡΟΣ ΘΕΣΣΑΛΟΝΙΚΕΙΣ Α΄",
+    "2 Thessalonians": "ΠΡΟΣ ΘΕΣΣΑΛΟΝΙΚΕΙΣ Β΄",
+    "1 Timothy": "ΠΡΟΣ ΤΙΜΟΘΕΟΝ Α΄",
+    "2 Timothy": "ΠΡΟΣ ΤΙΜΟΘΕΟΝ Β΄",
+    "Titus": "ΠΡΟΣ ΤΙΤΟΝ",
+    "Philemon": "ΠΡΟΣ ΦΙΛΗΜΟΝΑ",
+    "Hebrews": "ΠΡΟΣ ΕΒΡΑΙΟΥΣ",
+    "James": "ΙΑΚΩΒΟΥ",
+    "1 Peter": "ΠΕΤΡΟΥ Α΄",
+    "2 Peter": "ΠΕΤΡΟΥ Β΄",
+    "1 John": "ΙΩΑΝΝΟΥ Α΄",
+    "2 John": "ΙΩΑΝΝΟΥ Β΄",
+    "3 John": "ΙΩΑΝΝΟΥ Γ΄",
+    "Jude": "ΙΟΥΔΑ",
+    "Revelation": "ΑΠΟΚΑΛΥΨΙΣ ΙΩΑΝΝΟΥ",
+}
+
+
+def en_date_label(day: date, include_year: bool = True) -> str:
+    year = f", {day.year}" if include_year else ""
+    return f"{EN_DAYS[day.weekday()]}, {EN_MONTHS[day.month - 1]} {day.day}{year}"
+
+
+def el_date_label(day: date, include_year: bool = True) -> str:
+    year = f" {day.year}" if include_year else ""
+    return f"{EL_DAYS[day.weekday()]}, {day.day} {EL_MONTHS[day.month - 1]}{year}"
+
+
+def localized_civil_old_date(day: date, include_year: bool = True) -> dict:
+    jy, jm, jd = gregorian_to_julian_date(day)
+    ar = f"{ar_date_label(day)} / {jd} {AR_MONTHS[jm - 1]} {jy} بحسب التقويم الكنسي القديم"
+    en = f"{en_date_label(day, include_year)} / {EN_MONTHS[jm - 1]} {jd}, {jy} (Old Style)"
+    el = f"{el_date_label(day, include_year)} / {jd} {EL_MONTHS[jm - 1]} {jy} (παλαιὸ ἡμερολόγιο)"
+    return loc(ar, en, el)
+
+
+def localized_feast(ar_text: str) -> dict:
+    en, el = FEAST_TRANSLATIONS.get(ar_text, ("Commemoration listed by the old church calendar", "Μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"))
+    return loc(ar_text, en, el)
+
+
+def greek_reference(display: str) -> str:
+    ref = (display or "").replace("(Epistle)", "").replace("(Gospel)", "").strip()
+    for en, el in sorted(BOOK_EL.items(), key=lambda item: -len(item[0])):
+        ref = re.sub(rf"\b{re.escape(en)}\b", el, ref)
+    return ref.replace(".", ":").strip()
+
+
+def localized_evangelist(reading: dict) -> dict:
+    refs = reading.get("reference") if isinstance(reading.get("reference"), dict) else {}
+    combined = " ".join(str(refs.get(lang) or "") for lang in ("ar", "en", "el"))
+    if "متى" in combined or "Matthew" in combined or "ΜΑΤΘ" in combined:
+        return loc("متى البشير", "Matthew the Evangelist", "Ματθαῖος ὁ Εὐαγγελιστής")
+    if "مرقس" in combined or "Mark" in combined or "ΜΑΡΚ" in combined:
+        return loc("مرقس البشير", "Mark the Evangelist", "Μᾶρκος ὁ Εὐαγγελιστής")
+    if "لوقا" in combined or "Luke" in combined or "ΛΟΥΚ" in combined:
+        return loc("لوقا البشير", "Luke the Evangelist", "Λουκᾶς ὁ Εὐαγγελιστής")
+    if "يوحنا" in combined or "John" in combined or "ΙΩΑΝ" in combined:
+        return loc("يوحنا البشير", "John the Evangelist", "Ἰωάννης ὁ Εὐαγγελιστής")
+    return loc("الإنجيلي", "Evangelist", "Εὐαγγελιστής")
+
+
+def _localized_fasting_detail(profile: dict, language: str) -> str:
+    rule = str((profile.get("verification") or {}).get("rule") or "")
+    code = str(profile.get("code") or "")
+    translation = FASTING_RULE_LOCALIZATION.get(rule)
+    reason = translation[2 if language == "en" else 3] if translation else (
+        "The conservative Typikon baseline applies." if language == "en" else "Ἰσχύει ὁ συντηρητικὸς βασικὸς κανόνας τοῦ Τυπικοῦ."
+    )
+    items = profile.get("items") if isinstance(profile.get("items"), list) else []
+    allowed = [FASTING_FOOD_LOCALIZATION.get(str(item.get("key")), (str(item.get("key")), str(item.get("key"))))[0 if language == "en" else 1] for item in items if item.get("allowed")]
+    forbidden = [FASTING_FOOD_LOCALIZATION.get(str(item.get("key")), (str(item.get("key")), str(item.get("key"))))[0 if language == "en" else 1] for item in items if not item.get("allowed")]
+    if code == "fast_free":
+        suffix = " All listed foods are permitted." if language == "en" else " Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
+    elif allowed:
+        suffix = (" Permitted: " + ", ".join(allowed) + ". Avoid: " + ", ".join(forbidden) + ".") if language == "en" else (" Ἐπιτρέπονται: " + ", ".join(allowed) + ". Ἀποχή: " + ", ".join(forbidden) + ".")
+    else:
+        suffix = " Avoid meat, dairy, eggs, fish, oil, and wine." if language == "en" else " Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο."
+    return reason + suffix
+
+
+def complete_fasting_localizations(profile: dict) -> None:
+    if not isinstance(profile, dict):
+        return
+    rule = str((profile.get("verification") or {}).get("rule") or "")
+    code = str(profile.get("code") or "")
+    rule_text = FASTING_RULE_LOCALIZATION.get(rule, ("Fasting day", "Ἡμέρα νηστείας", "The conservative Typikon baseline applies.", "Ἰσχύει ὁ συντηρητικὸς βασικὸς κανόνας τοῦ Τυπικοῦ."))
+    level = FASTING_LEVEL_LOCALIZATION.get(code, ("Fasting rule", "Κανόνας νηστείας"))
+    profile.setdefault("season", {}).update({"en": rule_text[0], "el": rule_text[1]})
+    title_en = level[0] if code == "fast_free" else f"{rule_text[0]} — {level[0]}"
+    title_el = level[1] if code == "fast_free" else f"{rule_text[1]} — {level[1]}"
+    profile.setdefault("title", {}).update({"en": title_en, "el": title_el})
+    profile.setdefault("level", {}).update({"en": level[0], "el": level[1]})
+    profile.setdefault("detail", {}).update({"en": _localized_fasting_detail(profile, "en"), "el": _localized_fasting_detail(profile, "el")})
+    for item in profile.get("items") or []:
+        key = str(item.get("key") or "")
+        en, el = FASTING_FOOD_LOCALIZATION.get(key, (key, key))
+        item.setdefault("label", {}).update({"en": en, "el": el})
+    verification = profile.setdefault("verification", {})
+    verification.setdefault("note", loc(""))
+    verification["note"].update({
+        "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+        "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
+    })
+
+
+def _complete_reading_labels(reading: dict, fill_missing_reference: bool = True) -> None:
+    if not isinstance(reading, dict):
+        return
+    kind = str(reading.get("kind") or "")
+    if kind in {"epistle", "gospel"}:
+        title = reading.setdefault("title", loc(""))
+        if kind == "epistle":
+            title.update({"ar": title.get("ar") or "الرسالة", "en": title.get("en") or "Epistle", "el": title.get("el") or "Ἀπόστολος"})
+        else:
+            title.update({"ar": title.get("ar") or "الإنجيل", "en": title.get("en") or "Gospel", "el": title.get("el") or "Εὐαγγέλιο"})
+        reference = reading.setdefault("reference", loc(""))
+        if fill_missing_reference and not str(reference.get("el") or "").strip() and str(reference.get("en") or "").strip():
+            reference["el"] = greek_reference(str(reference["en"]))
+
+
+def _complete_reference_block(block: dict) -> None:
+    if not isinstance(block, dict):
+        return
+    for kind in ("epistle", "gospel"):
+        entry = block.get(kind)
+        if not isinstance(entry, dict):
+            continue
+        title = entry.setdefault("title", loc(""))
+        if kind == "epistle":
+            title.update({"ar": title.get("ar") or "الرسالة", "en": title.get("en") or "Epistle", "el": title.get("el") or "Ἀπόστολος"})
+        else:
+            title.update({"ar": title.get("ar") or "الإنجيل", "en": title.get("en") or "Gospel", "el": title.get("el") or "Εὐαγγέλιο"})
+        reference = entry.setdefault("reference", loc(""))
+        if not str(reference.get("el") or "").strip() and str(reference.get("en") or "").strip():
+            reference["el"] = greek_reference(str(reference["en"]))
+
+
+def _complete_service_overlay(service: dict, today: dict, next_sunday: dict) -> None:
+    if not isinstance(service, dict):
+        return
+    service_id = str(service.get("id") or "")
+    context = next_sunday if service_id == "next_sunday_full_liturgy" else today
+    dynamic_date = str(service.get("dynamic_date") or context.get("date_iso") or "")
+    try:
+        day = datetime.strptime(dynamic_date, "%Y-%m-%d").date()
+    except ValueError:
+        day = None
+    feast = context.get("feast") if isinstance(context.get("feast"), dict) else loc("")
+    fast = context.get("fast") if isinstance(context.get("fast"), dict) else loc("")
+    refs = context.get("reading_references") if isinstance(context.get("reading_references"), dict) else {}
+    gospel_ref = refs.get("gospel") if isinstance(refs.get("gospel"), dict) else {}
+    gospel_reading = {"reference": gospel_ref.get("reference") if isinstance(gospel_ref.get("reference"), dict) else loc("")}
+    inline = service.get("inline_replacements")
+    if isinstance(inline, dict) and "[اسم الإنجيلي]" in inline:
+        inline["[اسم الإنجيلي]"] = localized_evangelist(gospel_reading)
+    segments = service.get("segments") if isinstance(service.get("segments"), list) else []
+    for segment in segments:
+        if not isinstance(segment, dict):
+            continue
+        title = segment.get("title")
+        if isinstance(title, dict) and str(title.get("ar") or "").strip():
+            ar_title = str(title.get("ar") or "")
+            title_map = {
+                "ملحق اليوم الكنسي": ("Church-day supplement", "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας"),
+                "قطع اليوم": ("Texts of the day", "Κείμενα τῆς ἡμέρας"),
+                "خدمة اليوم: ملحق اليوم": ("Today: daily supplement", "Σήμερα: ἡμερήσιο συμπλήρωμα"),
+                "الأحد القادم: ملحق اليوم": ("Next Sunday: daily supplement", "Ἐρχόμενη Κυριακή: ἡμερήσιο συμπλήρωμα"),
+                "ترتيب قراءات اليوم": ("Order of today’s readings", "Τάξη τῶν σημερινῶν ἀναγνωσμάτων"),
+            }
+            if ar_title in title_map:
+                en, el = title_map[ar_title]
+                title.update({"en": title.get("en") or en, "el": title.get("el") or el})
+        speaker = segment.get("speaker")
+        if isinstance(speaker, dict) and str(speaker.get("ar") or "") == "ملاحظة اختيارية":
+            speaker.update({"en": speaker.get("en") or "Optional note", "el": speaker.get("el") or "Προαιρετικὴ σημείωση"})
+        text = segment.get("text")
+        if isinstance(text, dict) and day and str(text.get("ar") or "").startswith("التاريخ المدني:"):
+            text.update({
+                "en": text.get("en") or f"Civil date: {en_date_label(day)}. Old-calendar date: {localized_civil_old_date(day)['en'].split(' / ', 1)[1]}. Commemoration: {feast.get('en', '')}. Fasting: {fast.get('en', '')}.",
+                "el": text.get("el") or f"Πολιτικὴ ἡμερομηνία: {el_date_label(day)}. Ἡμερομηνία παλαιοῦ ἡμερολογίου: {localized_civil_old_date(day)['el'].split(' / ', 1)[1]}. Μνήμη: {feast.get('el', '')}. Νηστεία: {fast.get('el', '')}.",
+            })
+
+
+def complete_daily_localizations(data: dict) -> dict:
+    """Complete non-scriptural UI metadata in Arabic, English, and Greek.
+
+    This function never translates Scripture or liturgical prayer bodies. It only
+    fills deterministic UI labels, dates, fasting descriptions, and references.
+    """
+    if not isinstance(data, dict):
+        return data
+    try:
+        day = datetime.strptime(str(data.get("date_iso") or ""), "%Y-%m-%d").date()
+    except ValueError:
+        day = None
+    if day:
+        data["date_label"] = localized_civil_old_date(day)
+    data["calendar_label"] = loc(
+        "التقويم الكنسي القديم — بطريركية القدس",
+        "Old church calendar — Jerusalem Patriarchate usage",
+        "Παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο — χρήση Πατριαρχείου Ἱεροσολύμων",
+    )
+    feast = data.get("feast") if isinstance(data.get("feast"), dict) else loc("")
+    if str(feast.get("ar") or ""):
+        data["feast"] = localized_feast(str(feast["ar"]))
+    complete_fasting_localizations(data.get("fasting"))
+    if isinstance(data.get("fasting"), dict):
+        data["fast"] = copy.deepcopy(data["fasting"].get("title") or data.get("fast"))
+        data["fast_detail"] = copy.deepcopy(data["fasting"].get("detail") or data.get("fast_detail"))
+    data["source_note"] = loc(
+        "تُستخدم بيانات الاكتشاف مؤقتاً فقط؛ ولا يصبح الملف قابلاً للنشر إلا بعد بوابة المصادر الرسمية والتوقيع المحمي.",
+        "Discovery data is temporary; a file becomes publishable only after the official-source gate and protected signing.",
+        "Τὰ δεδομένα ἐντοπισμοῦ εἶναι προσωρινά· ἕνα ἀρχεῖο δημοσιεύεται μόνον μετὰ τὸν ἔλεγχο ἐπισήμων πηγῶν καὶ τὴν προστατευμένη ὑπογραφή.",
+    )
+    data["translation_notice"] = loc(
+        "تُعرض النصوص الكتابية والليتورجية من مصادر أصلية مستقلة لكل لغة، من دون ترجمة آلية أو رجوع إلى لغة أخرى.",
+        "Scripture and liturgical texts come from independent native sources for each language, without machine translation or cross-language fallback.",
+        "Τὰ βιβλικὰ καὶ λειτουργικὰ κείμενα προέρχονται ἀπὸ ἀνεξάρτητες πρωτότυπες πηγὲς κάθε γλώσσας, χωρὶς μηχανικὴ μετάφραση ἢ ἐφεδρικὴ χρήση ἄλλης γλώσσας.",
+    )
+    for reading in data.get("readings") or []:
+        _complete_reading_labels(reading)
+    next_payload = data.get("next_sunday") if isinstance(data.get("next_sunday"), dict) else {}
+    if next_payload:
+        try:
+            ns_day = datetime.strptime(str(next_payload.get("date_iso") or ""), "%Y-%m-%d").date()
+        except ValueError:
+            ns_day = None
+        if ns_day:
+            next_payload["day"] = localized_civil_old_date(ns_day)
+        ns_feast = next_payload.get("feast") if isinstance(next_payload.get("feast"), dict) else loc("")
+        if str(ns_feast.get("ar") or ""):
+            next_payload["feast"] = localized_feast(str(ns_feast["ar"]))
+        complete_fasting_localizations(next_payload.get("fasting"))
+        if isinstance(next_payload.get("fasting"), dict):
+            next_payload["fast"] = copy.deepcopy(next_payload["fasting"].get("title") or next_payload.get("fast"))
+        _complete_reference_block(next_payload.get("reading_references"))
+    for item in data.get("upcoming") or []:
+        if not isinstance(item, dict):
+            continue
+        try:
+            future_day = datetime.strptime(str(item.get("date") or ""), "%Y-%m-%d").date()
+        except ValueError:
+            future_day = None
+        if future_day:
+            item["day"] = localized_civil_old_date(future_day, include_year=False)
+        item_feast = item.get("feast") if isinstance(item.get("feast"), dict) else loc("")
+        if str(item_feast.get("ar") or ""):
+            item["feast"] = localized_feast(str(item_feast["ar"]))
+            item["note"] = copy.deepcopy(item["feast"])
+        complete_fasting_localizations(item.get("fasting"))
+        if isinstance(item.get("fasting"), dict):
+            item["status"] = copy.deepcopy(item["fasting"].get("title") or item.get("status"))
+        _complete_reference_block(item.get("reading_references"))
+    integrity_next = ((data.get("integrity_inputs") or {}).get("next_sunday") or {}).get("readings") or []
+    for reading in integrity_next:
+        # Internal publication lanes must keep missing references empty unless a
+        # same-language source explicitly verifies them. User-facing preview
+        # cards are localized separately without claiming source-lane evidence.
+        _complete_reading_labels(reading, fill_missing_reference=False)
+    today_context = {
+        "date_iso": data.get("date_iso"),
+        "feast": data.get("feast"),
+        "fast": data.get("fast"),
+        "reading_references": reading_references(data.get("readings") or []),
+    }
+    for service in data.get("services") or []:
+        _complete_service_overlay(service, today_context, next_payload)
+    return data
+
+
 def gregorian_to_jdn(y: int, m: int, d: int) -> int:
     a = (14 - m) // 12
     y2 = y + 4800 - a
@@ -143,12 +499,22 @@ def fetch_orthocal_old(day: date, attempts: int = 4) -> dict:
     the URL.  The ``julian`` part selects the old-calendar rules; callers must
     not subtract the Gregorian/Julian offset before building the URL.
     """
+    fixture_root = Path(
+        os.getenv("ORTHODOX_ORTHOCAL_FIXTURE_DIR", str(ROOT / "scripts" / "fixtures" / "orthocal"))
+    )
+    fixture_path = fixture_root / f"{day.isoformat()}.json"
+    if fixture_path.is_file():
+        payload = json.loads(fixture_path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict) or not isinstance(payload.get("readings"), list):
+            raise RuntimeError(f"Invalid Orthocal fixture: {fixture_path}")
+        return payload
+
     url = f"https://orthocal.info/api/julian/{day.year}/{day.month}/{day.day}/"
     request = urllib.request.Request(
         url,
         headers={
             "Accept": "application/json",
-            "User-Agent": "orthodox-prayers-daily-updater/4.0.0 (+https://github.com/maen1977/orthodox_prayers)",
+            "User-Agent": "orthodox-prayers-daily-updater/4.3.0 (+https://github.com/maen1977/orthodox_prayers)",
         },
     )
     last_error: Exception | None = None
@@ -1155,7 +1521,7 @@ def build_day(day: date) -> dict:
         ],
         "upcoming": upcoming,
     }
-    return apply_override(day, data)
+    return complete_daily_localizations(apply_override(day, data))
 
 
 def main() -> None:

@@ -3,7 +3,12 @@ package com.orthodoxprayers.privateapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class AppPreferences {
@@ -148,4 +153,128 @@ public final class AppPreferences {
 
     public String lastSearchQuery() { return values.getString("last_search_query", ""); }
     public void setLastSearchQuery(String value) { values.edit().putString("last_search_query", value == null ? "" : value).apply(); }
+    public float lineSpacingMultiplier() { return values.getFloat("line_spacing_multiplier", 1.16f); }
+    public void setLineSpacingMultiplier(float value) {
+        values.edit().putFloat("line_spacing_multiplier", Math.max(1.0f, Math.min(1.65f, value))).apply();
+    }
+
+    public String fontFamily() { return values.getString("font_family", "sans"); }
+    public void setFontFamily(String value) {
+        String safe = "serif".equals(value) || "monospace".equals(value) ? value : "sans";
+        values.edit().putString("font_family", safe).apply();
+    }
+
+    /** 0 disables auto-scroll; 1..4 are progressively faster reader speeds. */
+    public int autoScrollSpeed() { return Math.max(0, Math.min(4, values.getInt("auto_scroll_speed", 0))); }
+    public void setAutoScrollSpeed(int value) { values.edit().putInt("auto_scroll_speed", Math.max(0, Math.min(4, value))).apply(); }
+
+    public String calendarMode() { return values.getString("calendar_mode", "gregorian"); }
+    public void setCalendarMode(String value) {
+        values.edit().putString("calendar_mode", "julian".equals(value) ? "julian" : "gregorian").apply();
+    }
+
+    public boolean remindersEnabled(String kind) { return values.getBoolean("reminder_" + kind + "_enabled", false); }
+    public void setRemindersEnabled(String kind, boolean value) { values.edit().putBoolean("reminder_" + kind + "_enabled", value).apply(); }
+    public int reminderMinuteOfDay(String kind, int fallback) {
+        return Math.max(0, Math.min(1439, values.getInt("reminder_" + kind + "_minute", fallback)));
+    }
+    public void setReminderMinuteOfDay(String kind, int minuteOfDay) {
+        values.edit().putInt("reminder_" + kind + "_minute", Math.max(0, Math.min(1439, minuteOfDay))).apply();
+    }
+    public String pendingReminderKind() { return values.getString("pending_reminder_kind", ""); }
+    public void setPendingReminderKind(String kind) { values.edit().putString("pending_reminder_kind", kind == null ? "" : kind).apply(); }
+    public void clearPendingReminderKind() { values.edit().remove("pending_reminder_kind").apply(); }
+
+    public Set<String> pinnedServices() {
+        Set<String> stored = values.getStringSet("pinned_services", null);
+        return stored == null ? new LinkedHashSet<>() : new LinkedHashSet<>(stored);
+    }
+    public boolean isPinned(String serviceId) { return serviceId != null && pinnedServices().contains(serviceId); }
+    public void togglePinned(String serviceId) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return;
+        Set<String> current = pinnedServices();
+        if (current.contains(serviceId)) current.remove(serviceId); else current.add(serviceId);
+        values.edit().putStringSet("pinned_services", new LinkedHashSet<>(current)).apply();
+    }
+
+    public List<String> recentServices() { return readStringList("recent_services_json"); }
+    public void recordRecentService(String serviceId) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return;
+        List<String> items = recentServices();
+        items.remove(serviceId);
+        items.add(0, serviceId);
+        while (items.size() > 20) items.remove(items.size() - 1);
+        writeStringList("recent_services_json", items);
+    }
+    public void clearRecentServices() { values.edit().remove("recent_services_json").apply(); }
+
+    public List<String> favoriteOrder() {
+        List<String> ordered = readStringList("favorite_order_json");
+        Set<String> current = favorites();
+        ordered.removeIf(id -> !current.contains(id));
+        for (String id : current) if (!ordered.contains(id)) ordered.add(id);
+        return ordered;
+    }
+    public void moveFavorite(String serviceId, int delta) {
+        List<String> ordered = favoriteOrder();
+        int from = ordered.indexOf(serviceId);
+        if (from < 0) return;
+        int to = Math.max(0, Math.min(ordered.size() - 1, from + delta));
+        if (to == from) return;
+        ordered.remove(from);
+        ordered.add(to, serviceId);
+        writeStringList("favorite_order_json", ordered);
+    }
+
+    public String favoriteFolder(String serviceId) {
+        try {
+            return new JSONObject(values.getString("favorite_folders_json", "{}")).optString(serviceId, "default");
+        } catch (Exception ignored) { return "default"; }
+    }
+    public void setFavoriteFolder(String serviceId, String folder) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return;
+        try {
+            JSONObject object = new JSONObject(values.getString("favorite_folders_json", "{}"));
+            object.put(serviceId, folder == null || folder.trim().isEmpty() ? "default" : folder);
+            values.edit().putString("favorite_folders_json", object.toString()).apply();
+        } catch (Exception ignored) {}
+    }
+
+    public Set<String> offlineLanguages() {
+        Set<String> stored = values.getStringSet("offline_languages", null);
+        if (stored == null) {
+            LinkedHashSet<String> defaults = new LinkedHashSet<>();
+            defaults.add("ar"); defaults.add("en"); defaults.add("el");
+            return defaults;
+        }
+        return new LinkedHashSet<>(stored);
+    }
+    public boolean offlineLanguageEnabled(String language) { return offlineLanguages().contains(language); }
+    public void setOfflineLanguageEnabled(String language, boolean enabled) {
+        if (!"ar".equals(language) && !"en".equals(language) && !"el".equals(language)) return;
+        if (!enabled && language.equals(effectiveLanguage())) return;
+        Set<String> current = offlineLanguages();
+        if (enabled) current.add(language); else current.remove(language);
+        if (current.isEmpty()) current.add(effectiveLanguage());
+        values.edit().putStringSet("offline_languages", new LinkedHashSet<>(current)).apply();
+    }
+
+    private List<String> readStringList(String key) {
+        ArrayList<String> result = new ArrayList<>();
+        try {
+            JSONArray array = new JSONArray(values.getString(key, "[]"));
+            for (int i = 0; i < array.length(); i++) {
+                String item = array.optString(i, "").trim();
+                if (!item.isEmpty() && !result.contains(item)) result.add(item);
+            }
+        } catch (Exception ignored) {}
+        return result;
+    }
+
+    private void writeStringList(String key, List<String> items) {
+        JSONArray array = new JSONArray();
+        for (String item : items) if (item != null && !item.trim().isEmpty()) array.put(item);
+        values.edit().putString(key, array.toString()).apply();
+    }
+
 }

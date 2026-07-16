@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "effective_from": "2026-07-14",
+  "effective_from": "2026-07-16",
   "mode": "STRICT_NATIVE_LANGUAGE_FAIL_CLOSED",
   "owner_permissions": {
     "status": "CONFIRMED_BY_PROJECT_OWNER",
@@ -39,6 +39,7 @@
         "akroasis_small_menaion_english",
         "goarch_synekdemos",
         "oca_official_english",
+        "metropolis_toronto_liturgy_en",
         "ebible_world_english_bible"
       ],
       "required_script": "Latin",
@@ -51,6 +52,7 @@
         "jerusalem_patriarchate_el",
         "goarch_online_chapel_greek",
         "goarch_digital_chant_stand_greek",
+        "metropolis_toronto_liturgy_el",
         "ebible_greek_byzantine_1904"
       ],
       "required_script": "Greek",
@@ -198,7 +200,9 @@
       ],
       "title": "الكتاب المقدس باللغة العربية، فان دايك",
       "license": "Public Domain",
-      "role": "independent_native_scripture_text_only"
+      "role": "independent_native_scripture_text_only",
+      "source_details_url": "https://ebible.org/find/details.php?id=arb-vd",
+      "text_base_url": "https://ebible.org/arb-vd/"
     },
     "ebible_world_english_bible": {
       "language": "en",
@@ -208,9 +212,12 @@
       "capabilities": [
         "scripture_corpus"
       ],
-      "title": "World English Bible Classic",
+      "title": "World English Bible",
       "license": "Public Domain",
-      "role": "independent_native_scripture_text_only"
+      "role": "independent_native_scripture_text_only",
+      "edition": "ENGWEBP 2020 stable text edition",
+      "source_details_url": "https://ebible.org/find/details.php?id=engwebp",
+      "text_base_url": "https://ebible.org/engwebp/"
     },
     "ebible_greek_byzantine_1904": {
       "language": "el",
@@ -222,7 +229,9 @@
       ],
       "title": "1904 Patriarchal Greek New Testament",
       "license": "Public Domain",
-      "role": "independent_native_scripture_text_only"
+      "role": "independent_native_scripture_text_only",
+      "source_details_url": "https://ebible.org/find/details.php?id=grcbyz",
+      "text_base_url": "https://ebible.org/grcbyz/"
     },
     "antioch_archdiocese_tripoli_ar": {
       "language": "ar",
@@ -261,6 +270,30 @@
         "prokeimena"
       ],
       "role": "same_language_official_source"
+    },
+    "metropolis_toronto_liturgy_en": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://goarchdiocese.ca/",
+      "capabilities": [
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER; retain external authorization record before public distribution",
+      "title": "Greek Orthodox Metropolis of Toronto bilingual Divine Liturgy (2017)",
+      "role": "authorized_native_liturgy_text"
+    },
+    "metropolis_toronto_liturgy_el": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://goarchdiocese.ca/",
+      "capabilities": [
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER; retain external authorization record before public distribution",
+      "title": "Greek Orthodox Metropolis of Toronto bilingual Divine Liturgy (2017)",
+      "role": "authorized_native_liturgy_text"
     }
   },
   "publication": {

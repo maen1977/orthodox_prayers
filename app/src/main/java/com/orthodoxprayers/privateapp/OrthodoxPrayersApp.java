@@ -6,6 +6,7 @@ import com.orthodoxprayers.privateapp.data.DailyDataStore;
 import com.orthodoxprayers.privateapp.data.DataRepository;
 import com.orthodoxprayers.privateapp.data.DataSignatureVerifier;
 import com.orthodoxprayers.privateapp.update.UpdateCoordinator;
+import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 
 /** Application-scoped dependency container; prevents duplicate repositories and executors. */
 public final class OrthodoxPrayersApp extends Application {
@@ -23,6 +24,7 @@ public final class OrthodoxPrayersApp extends Application {
         updateCoordinator = new UpdateCoordinator(this, preferences, repository);
         updateCoordinator.schedulePeriodicRefresh();
         updateCoordinator.scheduleDailyAmmanRefreshes();
+        new ReminderScheduler(this, preferences).scheduleAll();
     }
 
     public AppPreferences preferences() { return preferences; }

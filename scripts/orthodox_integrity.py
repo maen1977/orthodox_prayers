@@ -985,6 +985,8 @@ def rebuild_services(data: dict[str, Any], today_readings: list[dict[str, Any]],
     for service in services:
         service["integrity"] = {"status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED", "date_iso": service.get("dynamic_date"), "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED", "scripture": "VERIFIED_EXACT_VOCALIZED", "static_service_scope": service.get("source_provenance", {}).get("status", "UNDECLARED"), "ai_scripture_translation_used": False}
     data["services"] = services
+    # Rebuilds must preserve complete Arabic/English/Greek UI metadata.
+    update.complete_daily_localizations(data)
 
 
 def synchronize_outputs(data: dict[str, Any]) -> None:

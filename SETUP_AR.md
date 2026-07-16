@@ -1,4 +1,4 @@
-# إعداد Orthodox Prayers 3.5.1 على GitHub
+# إعداد Orthodox Prayers 4.2.0 على GitHub
 
 ## 1. إنشاء المستودع ورفع المشروع
 
@@ -115,7 +115,7 @@ ANDROID_KEY_PASSWORD
 
 ## 7. بناء الاختبار
 
-Workflow `Build` يعمل عند Push وPull Request ويمكن تشغيله يدويًا. ينفذ بوابة الجودة وUnit Tests وLint Debug وبناء Debug APK في خطوات منفصلة. تم إيقاف CodeQL والمحاكي مؤقتًا إلى أن ينجح بناء Debug بصورة ثابتة. التطبيق يعرض حالة عدم التوفر بدل الترجمة.
+Workflow `Build` يعمل عند Push وPull Request ويمكن تشغيله يدويًا. ينفذ بوابة الجودة وUnit Tests وLint Debug وبناء Debug APK في خطوات منفصلة. التطبيق يعرض حالة عدم التوفر بدل الترجمة، ويتضمن التقويم والتذكيرات وسجل القراءة وأدوات القراءة الجديدة.
 
 فحص محلي:
 
@@ -142,8 +142,8 @@ python scripts/validate_release_readiness.py
 بعد النجاح فقط:
 
 ```bash
-git tag v3.5.1
-git push origin v3.5.1
+git tag v4.2.0
+git push origin v4.2.0
 ```
 
 عندها يبني Workflow `Build` ملفي APK وAAB موقعين، ويتحقق من APK، وينشئ `SHA256SUMS.txt`.

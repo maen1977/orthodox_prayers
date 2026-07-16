@@ -53,7 +53,7 @@ public final class UpdateCoordinator {
     public void schedulePeriodicRefresh() {
         PeriodicWorkRequest request = new PeriodicWorkRequest.Builder(
                 DailyUpdateWorker.class,
-                6,
+                12,
                 TimeUnit.HOURS,
                 1,
                 TimeUnit.HOURS

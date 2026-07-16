@@ -1,0 +1,4213 @@
+{
+  "id": "divine_liturgy",
+  "category": "liturgy",
+  "icon": "⛪",
+  "title": {
+    "ar": "",
+    "el": "",
+    "en": "The Divine Liturgy of Saint John Chrysostom"
+  },
+  "summary": {
+    "ar": "",
+    "el": "",
+    "en": "Complete native English order of the Divine Liturgy of Saint John Chrysostom, including clergy prayers, litanies, responses, readings placeholders, Holy Communion, and dismissal."
+  },
+  "source_language": "en",
+  "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+  "notice": {
+    "ar": "",
+    "el": "",
+    "en": "The fixed service text is stored offline. Variable hymns and appointed readings are supplied by the verified daily-data layer when available."
+  },
+  "segments": [
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Blessed is the Kingdom of the Father, the Son and the Holy Spirit, now and forever and to the ages of ages."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE GREAT LITANY AND THE ANTIPHONS"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "In peace let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For the peace from on high and the salvation of our souls, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For peace in the whole world, for the stability of the holy Churches of God, and for the unity of all, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For our father and Archbishop (Name), the honourable Presbyters, the Deacons in the service of Christ, and all the Clergy and People, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For our country and all those in civil authority and public service, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For favourable weather, an abundance of the fruits of the earth, and temperate seasons, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For travellers by land, sea, and air, for the sick, the suffering, the captives, and for their salvation, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For our deliverance from all affliction, wrath, danger, and distress, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Commemorating our most holy, undefiled, most blessed, and glorious Lady, the Theotokos and Ever-Virgin Mary, with all the Saints, let us commit ourselves and one another and our whole life to Christ our God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, our God, whose power is beyond compare and glory is beyond understanding; whose mercy is boundless, and love for us is ineffable; look upon us and upon this holy house in your compassion. Grant to us and to those who pray with us your abundant mercy."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) For to You belong all glory, honour, and worship, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE FIRST ANTIPHON"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Bless the Lord, O my soul, and all that is within me, bless His Holy Name."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "By the intercessions of the Theotokos, Saviour, save us."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Bless the Lord, O my soul, and forget none of His benefits."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "By the intercessions of the Theotokos, Saviour, save us."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "The Lord has prepared His throne in Heaven, and His Kingdom rules over all."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "By the intercessions of the Theotokos, Saviour, save us."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "In peace let us again pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Commemorating our most holy, undefiled, most blessed, and glorious Lady, the Theotokos and Ever-Virgin Mary, with all the Saints, let us commit ourselves and one another, and our whole life to Christ our God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord our God, save your people and bless your inheritance; protect the fullness of your Church; sanctify those who love the beauty of your house; glorify them in return by your divine power; and do not forsake us who hope in You."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) For yours is the dominion, the Kingdom, the power, and the glory of the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE SECOND ANTIPHON"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Praise the Lord, O my soul; while I live, I will praise the Lord; as long as I live, I will praise my God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Save us, O Son of God, who rose from the dead, to You we sing: Alleluia."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Blessed are those whose helper is the God of Jacob; whose hope is in the Lord their God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Save us, O Son of God, who rose from the dead, to You we sing: Alleluia."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "The Lord will be King forever; your God, O Zion, will reign throughout all the generations."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Save us, O Son of God, who rose from the dead, to You we sing: Alleluia. Glory to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages. Amen. Only-begotten Son and Word of God, although immortal You humbled yourself for our salvation, taking flesh from the Holy Theotokos and Ever- Virgin Mary and, without change, becoming man. Christ, our God, You were crucified and conquered death by death. Being one of the Holy Trinity, glorified together with the Father and the Holy Spirit, save us."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "In peace let us again pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Commemorating our most holy, undefiled, most blessed, and glorious Lady, the Theotokos and Ever-Virgin Mary, with all the Saints, let us commit ourselves and one another, and our whole life to Christ our God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, You have given us grace to offer these common prayers with one heart. You have promised to grant the requests of two or three gathered in your name. Fulfill now the petitions of your servants for our benefit, giving us the knowledge of your truth in this world, and granting us eternal life in the world to come."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) For You are a good and loving God, and to You we give glory, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE THIRD ANTIPHON"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "This is the day which the Lord has made; let us rejoice and be glad in it. And the Apolytikion is sung."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE ENTRANCE"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(While the Apolytikion is sung, the Priest, with the Deacon carrying the Holy Gospel, comes in procession before the Beautiful Gate, and the Bishop or the Priest offers the prayer of the Entrance.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE PRAYER OF THE ENTRANCE"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Master and Lord our God, You have established in Heaven the orders and hosts of Angels and Archangels to minister to your glory. Grant that holy Angels may enter with us that together we may serve and glorify your goodness; for to You belong all glory, honour, and worship, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages. Amen."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest blesses the Entrance saying:) Blessed is the Entrance to your Holy Place, always, now and forever and to the ages of ages. Amen."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Deacon raising the Holy Gospel says with a loud voice:)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Wisdom. Let us be attentive."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Come, let us worship and bow before Christ. Save us, O Son of God who rose from the dead, to You we sing: Alleluia."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop and all the Clergy enter the Sanctuary. The Apolytikia of the day, the Troparion of the Church and the Kontakion are sung.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE TRISAGION HYMN"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Holy God, You dwell among your Saints. You are praised by the Seraphim with the Thrice-Holy Hymn, glorified by the Cherubim, and worshiped by all the Heavenly powers. You have brought all things out of nothing into being. You created man and woman in your image and likeness and adorned them with all the gifts of your grace. You give wisdom and understanding to the supplicant and do not overlook the sinner but have established repentance as the way of salvation. You have enabled us, your lowly and unworthy servants, to stand at this hour before the glory of your Holy Altar and to offer to You due worship and praise. Master, accept the Thrice-Holy Hymn also from the lips of us sinners and visit us in your goodness. Forgive all our voluntary and involuntary transgressions, sanctify our souls and bodies, and grant that we may worship and serve You in holiness all the days of our lives, by the intercessions of the holy Theotokos and of all the Saints who have pleased You throughout the ages."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) For You are holy, our God, and to You we give glory, to the Father and the Son and the Holy Spirit, now and forever"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "and to the ages of ages."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Holy God, Holy Mighty, Holy Immortal, have mercy upon us. (3)"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Glory to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages. Amen. Holy Immortal, have mercy upon us."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Again, fervently."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Priest proceeds towards the Synthronon, saying:) Blessed is He who comes in the name of the Lord. Blessed are You on the throne of glory of your Kingdom, seated upon the Cherubim, always, now and forever and to the ages of ages. Amen."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Holy God, Holy Mighty, Holy Immortal, have mercy upon us."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(When a Bishop is presiding, the order of the Thrice-Holy Hymn is found on p. 44)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE READINGS THE EPISTLE"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us be attentive."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Reader reads the verses from the Psalms.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Wisdom."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Reader"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "The reading is from the Epistle (name) or the Universal Epistle or the Acts of the Apostles."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us be attentive."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Reader reads the designated Apostolic text.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Peace be with you."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Alleluia. Alleluia. Alleluia."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Shine within our hearts, loving Master, the pure light of your divine knowledge and open the eyes of our minds that we may comprehend the message of your Gospel. Instill in us also reverence for your blessed commandments, so that having conquered all sinful desires, we may pursue a spiritual life, thinking and doing all those things that are pleasing to You. For You, Christ our God, are the light of our souls and bodies, and to You we give glory together with your Father who is without beginning, and your All-Holy, good, and life-giving Spirit, now and forever and to the ages of ages. Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE HOLY GOSPEL"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Wisdom. Arise. Let us hear the Holy Gospel."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Peace be with all."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And with your spirit."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "The reading is from the Holy Gospel according to (Name). Let us be attentive."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Glory to You, O Lord, glory to You."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Deacon reads the designated text of the Holy Gospel.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Glory to You, O Lord, glory to You."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE HOMILY"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Following the readings, it is customary for the Bishop or the Priest to proclaim the Gospel.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE SUPPLICATION FOR THE CATECHUMENS"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Catechumens, pray to the Lord. Let us, the faithful pray for the Catechumens."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "That the Lord may have mercy upon them. Instruct them in the word of truth. Reveal to them the Gospel of righteousness. Unite them to His Holy, Catholic and Apostolic Church."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Save them, have mercy upon them, protect and preserve them, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Catechumens, bow your heads to the Lord."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "PRAYER FOR THE CATECHUMENS"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(While the Catechumens bow their heads, the Bishop or the Priest, reads over them the prayer for the Catechumens.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "O Lord, our God, who dwells on high and looks with mercy upon the lowly; who for the salvation of humanity sent forth your onlybegotten Son and God, our Lord Jesus Christ; look with mercy upon your servants, the Catechumens, who bow their heads before You, and in an appropriate time deem them worthy of the washing of regeneration, of the remission of sins, and of the garment of incorruption; unite them to your Holy, Catholic and Apostolic Church, and number them among your chosen flock."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) That they may, with us, also glorify your sublime and magnificent Name, of the Father, the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE DISMISSAL OF THE CATECHUMENS"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "All Catechumens depart. Catechumens depart. All Catechumens depart. Let none of the Catechumens remain."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE LITURGY OF THE FAITHFUL"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Deacon unfolds the Eileton [or Antimension] on the Holy Table and says:)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "All the faithful only, let us again in peace pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Wisdom."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE FIRST PRAYER FOR THE FAITHFUL"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We give thanks to You, O Lord of Hosts. You have accepted us at this time to stand before your Holy Altar and bow down before your bountiful mercy for our sins and for the ignorances of the people. Accept our prayer, O God, make us worthy to bring to You prayers and supplications and sacrifices without blood for all your people; and by the power of your Holy Spirit enable us, whom You have appointed to this your ministry, to call upon You freely and without condemnation, at all times and in all places, with the testimony of a pure conscience, so that hearing us You may be merciful to us in the abundance of your goodness,"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) For to You belong all glory, honour and worship, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "In peace let us again pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Wisdom."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE SECOND PRAYER FOR THE FAITHFUL"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Again, we bow before You and pray to You, O good and loving God: hear our supplication, cleanse our souls and bodies from every defilement of flesh and spirit, and grant that we may stand before your Holy Altar without guilt or condemnation. Grant also, O God, progress in life, faith, and spiritual discernment to the faithful who pray with us. Grant them to partake of your Holy Mysteries without guilt or condemnation, always worshipping You with reverence and love, and to become worthy of your Heavenly Kingdom."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) So that always guarded by your power we may give glory to You, the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE GREAT ENTRANCE"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We who mystically emulate the Cherubim and sing the Thrice-Holy Hymn to the life-creating Trinity, let us set aside all the cares of life that we may receive the King of all ..."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(While the Cherubic Hymn is being sung, the Bishop or the Priest prays in a low voice.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "No one bound by worldly desires and pleasures is worthy to approach, draw near, or minister to You, the King of Glory. To serve You is great and awesome even for the Heavenly powers. But because of your ineffable and immeasurable love for us You became man without alteration or change. You have served as our High Priest, and as Lord of all have entrusted to us the celebration of this liturgical sacrifice without the shedding of blood. For You alone, Lord our God, rule over all things in Heaven and on earth. You are seated on the throne of the Cherubim; You are the Lord of the Seraphim and the King of Israel; You alone are Holy and dwell among your Saints; You alone are good and ready to hear; therefore, I implore You, look upon me, your sinful and unworthy servant, and cleanse my soul and heart from an evil conscience. Enable me by the power of your Holy Spirit, so that, vested with the grace of the priesthood, I may stand before your Holy Table and celebrate the mystery of your Holy and undefiled Body and your precious Blood. To You I come with bowed head and pray: do not turn your face away from me or reject me from among your children, but make me, your sinful and unworthy servant, worthy to offer to You these Gifts. For You, Christ our God, are the Offerer and the Offered, the One who receives and is distributed, and to You we give glory, together with your unoriginate Father and your All-Holy, good and life-creating Spirit, now and forever and to the ages of ages. Amen."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest censes and recites in a low voice:) Having beheld the resurrection of Christ, let us worship the Holy Lord Jesus, the only sinless one. We venerate your Cross, O Christ, and we praise and glorify your Holy Resurrection. You are our God. We know no other than You, and we call upon your Name. Come, all faithful, let us venerate the Holy Resurrection of Christ. For behold, through the Cross, joy has come to all the world. Blessing the Lord always, let us praise His Resurrection. For enduring the Cross for us, He destroyed death by death."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And the 50th Psalm:) Have mercy upon me, O God, according to your great mercy; and according to the multitude of your compassion, blot out my transgression. Wash me thoroughly from my iniquity, and cleanse me from my sin. For I acknowledge my iniquity, and my sin is ever before me. Against You, You only, have I sinned, and done evil in your sight, that You may be found just when You speak, and victorious when You judge. For behold, I was conceived in iniquity, and in sin my mother bore me. For behold, You have loved truth; You have made known to me the secret and hidden things of your wisdom. You shall sprinkle me with hyssop, and I shall be made clean; You shall wash me, and I shall be whiter than snow. Make me to hear joy and gladness, that the afflicted bones may rejoice. Turn your face away from my sins, and blot out all my iniquities. Create in me a clean heart, O God, and renew a steadfast spirit within me. Cast me not away from your presence, and take not your Holy Spirit from me. Restore to me the joy of your salvation, and establish me with your governing Spirit. I shall teach transgressors your ways and the ungodly shall return back to You. Deliver me from bloodguiltiness, O God, the God of my salvation, and my tongue shall joyfully declare your righteousness. Lord, open my lips, and my mouth shall proclaim your praise. For if You had desired sacrifice, I would give it; You do not delight in burnt offerings. A sacrifice to God is a broken spirit; God will not despise a broken and a humble heart. Do good in your good pleasure to Zion; and let the walls of Jerusalem be built. Then You shall be pleased with a sacrifice of righteousness, with oblation and whole burnt offerings. Then they shall offer bulls on your Altar."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Then the Great Entrance takes place.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "May the Lord God remember all of you in His Kingdom, now and forever and to the ages of ages."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(After the Entrance of the Holy Gifts the People sing the end of the Cherubic Hymn.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Invisibly escorted by the angelic hosts. Alleluia. Alleluia. Alleluia."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(After placing the Holy Gifts on the Holy Table, the Deacon or Priest says:)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE PETITIONS"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us complete our prayer to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For the Precious Gifts here presented, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For this holy house and for those who enter it with faith, reverence, and the fear of God, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For our deliverance from all affliction, wrath, danger, and distress, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For a perfect, holy, peaceful, and sinless day, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For an Angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For forgiveness and remission of our sins and transgressions, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For all that is good and beneficial to our souls, and for peace in the world, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For the completion of our lives in peace and repentance, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For a Christian end to our lives, peaceful, without shame and suffering, and for a good account before the awesome judgment seat of Christ, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Commemorating our most holy, undefiled, most blessed, and glorious Lady, the Theotokos and Ever-Virgin Mary, with all the Saints, let us commit ourselves and one another and our whole life to Christ our God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, God Almighty, You alone are holy. You accept a sacrifice of praise from those who call upon You with their whole heart. Receive also the prayer of us sinners and let it reach your Holy Altar. Enable us to bring before You gifts and spiritual sacrifices for our sins and for the ignorances of the people. Make us worthy to find grace in your presence so that our sacrifice may be pleasing to You and that your good and gracious Spirit may abide with us, with these gifts here presented, and with all your people."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) Through the mercies of your Only-begotten Son with Whom You are blessed, together with your All-Holy, good, and life-creating Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Peace be with all."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And with your spirit."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us love one another that with one mind we may confess."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest kisses the Holy Gifts saying:) I will love You, Lord, my strength. The Lord is my firm foundation, my refuge and my deliverer."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Kiss of Peace is exchanged.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Father, Son, and Holy Spirit, Trinity one in essence and undivided."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Guard the doors. Wisdom. Let us be attentive."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE CREED"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Clergy and People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "I believe in one God, Father Almighty, Creator of Heaven and earth, and of all things visible and invisible. And in one Lord, Jesus Christ, the Only-begotten Son of God, begotten of the Father before all ages. Light of Light, True God of True God, begotten, not created, of one essence with the Father, through whom all things were made. For us and for our salvation, He came down from Heaven and was incarnate by the Holy Spirit and the Virgin Mary and became man. He was crucified for us under Pontius Pilate, and He suffered and was buried. On the third day He rose according to the Scriptures. He ascended into Heaven and is seated at the right hand of the Father. He will come again in glory to judge the living and the dead. His Kingdom will have no end. And in the Holy Spirit, the Lord, the Creator of life, who proceeds from the Father, who together with the Father and the Son is worshipped and glorified, who spoke through the Prophets. In One, Holy, Catholic, and Apostolic Church. I acknowledge one baptism for the forgiveness of sins. I expect the resurrection of the dead and the life of the age to come. Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE HOLY ANAPHORA"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us stand well. Let us stand in awe. Let us be attentive, that we may present the Holy Anaphora in peace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Mercy and peace, a sacrifice of praise."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "The Grace of our Lord Jesus Christ, and the Love of God the Father, and the Communion of the Holy Spirit, be with all of you."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And with your spirit."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us lift up our hearts."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We lift them up to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us give thanks to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "It is proper and right."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE PRAYER OF ANAPHORA"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "It is proper and right to sing to You, bless You, praise You, thank You, and worship You in all places of your dominion; for You are God ineffable, beyond comprehension, invisible, beyond understanding, existing forever and always the same, You and your Only-begotten Son and your Holy Spirit. You brought us into being out of nothing, and when we fell, You raised us up again. You did not cease doing everything until You led us to Heaven and granted us your Kingdom to come. For all these things we thank You and your Onlybegotten Son and your Holy Spirit; for all things that we know and do not know, for blessings seen and unseen that have been bestowed upon us. We also thank You for this liturgy which You are pleased to accept from our hands, even though thousands of Archangels and tens of thousands of Angels stand before You, the Cherubim and the Seraphim, with six wings, with many eyes, soaring aloft upon their wings,"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) Singing the victory hymn, proclaiming, crying out, and saying:"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Clergy and People sing together the victory hymn with joyous voice:) Holy, Holy, Holy, Lord Sabaoth, Heaven and earth are filled with your glory. Hosanna to God in the highest. Blessed is He who comes in the Name of the Lord. Hosanna in the highest."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Together with these blessed powers, merciful Master, we also proclaim and say: You are Holy and most Holy, You and your Onlybegotten Son and your Holy Spirit. You are Holy and most Holy, and sublime is your glory. You so loved your world that You gave your Only-begotten Son so that whoever believes in Him should not perish, but have eternal life. He came and fulfilled the divine plan for us. On the night when He was delivered up, or rather when He gave Himself up for the life of the world, He took bread in His holy, undefiled and blameless hands, gave thanks and blessed, sanctified, broke, and gave it to His holy Disciples and Apostles, saying:"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) Take, eat, this is My Body which is broken for you for the forgiveness of sins."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Likewise, after supper, He took the cup saying:"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) Drink of it all of you; this is My Blood of the new Covenant, which is shed for you and for many for the forgiveness of sins."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Remembering, therefore, this command of the Saviour, and all that took place for our sake, the cross, the tomb, the resurrection on the third day, the ascension into Heaven, the enthronement at the right hand of the Father, and the second glorious coming,"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) We offer to You these gifts, from your own gifts, on behalf of all, and for all."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And Clergy and People together sing:) We praise You, we bless You, we give thanks to You, and we pray to You, Lord our God."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Once again we offer to You this rational worship without the shedding of blood, and we ask, pray, and entreat You: send down your Holy Spirit upon us and upon these gifts here presented."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And making the sign of the cross over the Sacred Bread, says:) And make this bread the precious Body of your Christ."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And again making the sign of the cross over the Holy Cup:) And that which is in this cup the precious Blood of your Christ."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And the Bishop or the Priest making the sign of the cross over both, says:) Changing them by your Holy Spirit."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen. Amen. Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "So that they may be to those who partake of them for vigilance of soul, forgiveness of sins, communion of your Holy Spirit, fulfillment of the Kingdom of Heaven, confidence before You, and not in judgment or condemnation. Again, we offer this rational worship for those who repose in the faith, Forefathers, Fathers, Patriarchs, Prophets, Apostles, Preachers, Evangelists, Martyrs, Confessors, Ascetics, and for every righteous spirit made perfect in faith."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(and offering incense says aloud:) Especially for our most holy, pure, blessed, and glorious Lady, the Theotokos and Ever-Virgin Mary."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "It is truly right to bless you, Theotokos, ever-blessed, most pure, and Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, without corruption you gave birth to God the Word. We magnify you, the true Theotokos."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For Saint John the Prophet, Forerunner, and Baptist; for the holy glorious and most honourable Apostles, for Saint (Name) whose memory we commemorate today; and for all your Saints, through whose supplications, O God, bless us. Remember also all who have fallen asleep in the hope of resurrection unto eternal life, (here, the names of the deceased are commemorated) and grant them rest, our God, where the light of your countenance shines. Again, we ask You, Lord, remember all Orthodox Bishops who rightly teach the word of your Truth, all Presbyters, all Deacons in the service of Christ, and every one in Holy Orders. We also offer to You this rational worship for the whole world, for the Holy, Catholic, and Apostolic Church, and for those living in purity and holiness. And for all those in civil authority and public service, permit them, Lord, to serve and govern in peace that through the faithful conduct of their duties we may live peaceful and serene lives in all piety and holiness."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) Above all, remember Lord, our father and Archbishop (Name). Grant that he may serve your holy Churches in peace. Keep him safe, honourable, and healthy for many years, rightly teaching the word of your truth."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Remember also, Lord, those whom each of us calls to mind and all your people."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And all your people."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And the names of the living are commemorated.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Remember, Lord, the city in which we live, every city and country, and the faithful who dwell in them. Remember, Lord, the travellers, the sick, the suffering and the captives, granting them protection and salvation. Remember, Lord, those who do charitable work, who serve in your holy Churches, and who care for the poor. And send your mercy upon us all."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) And grant that with one voice and one heart, we may glorify and praise your most honoured and majestic Name, of the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And the mercy of our great God and Savior Jesus Christ be with all of you."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And with your spirit."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Having remembered all the Saints, let us again in peace pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For the Precious Gifts offered and consecrated, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "That our loving God who has received them at His Holy, Heavenly, and spiritual Altar as an offering of spiritual fragrance, may in return send upon us divine grace and the gift of the Holy Spirit, let us pray."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For our deliverance from all affliction, wrath, danger, and distress, let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For a perfect, holy, peaceful, and sinless day, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For an Angel of peace, a faithful guide, a guardian of our souls and bodies, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For forgiveness and remission of our sins and transgressions, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For all that is good and beneficial to our souls, and for peace in the world, let us ask."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For the completion of our lives in peace and repentance, let us ask the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For a Christian end to our lives, peaceful, without shame and suffering, and for a good account before the awesome judgment seat of Christ, let us ask."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Grant this, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Having prayed for the unity of the faith and for the communion of the Holy Spirit, let us commit ourselves, and one another, and our whole life to Christ our God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We entrust to You, loving Master, our whole life and hope, and we ask, pray and entreat: make us worthy to partake of your Heavenly and awesome Mysteries from this Holy and spiritual Table with a clear conscience; for the remission of sins, forgiveness of transgressions, communion of the Holy Spirit, inheritance of the Kingdom of Heaven, confidence before You, and not in judgment or condemnation."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) And make us worthy, Master, with confidence and without fear of condemnation, to dare call You, the Heavenly God, Father, and to say:"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE LORD’S PRAYER"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Clergy and People together:) Our Father, who art in Heaven, hallowed be Thy Name. Thy Kingdom come; Thy will be done, on earth as it is in Heaven. Give us this day our daily bread, and forgive us our trespasses as we forgive those who trespass against us, and lead us not into temptation, but deliver us from the evil one."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "For yours is the Kingdom and the power and the glory of the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Peace be with all."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "And with your spirit."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us bow our heads to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We give thanks to You, invisible King. By your infinite power You created all things and by your great mercy You brought everything from nothing into being. Master, look down from Heaven upon those who have bowed their heads before You; they have bowed not before flesh and blood but before You, the awesome God. Therefore, Master, guide the course of our life for our benefit according to the need of each of us. Sail with those who sail; travel with those who travel; and heal the sick, Physician of our souls and bodies."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) By the grace, mercy, and love for us of your Only-begotten Son, with whom You are blessed, together with your All-Holy, good, and life-giving Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord Jesus Christ, our God, hear us from your holy dwelling place and from the glorious throne of your Kingdom. You are enthroned on high with the Father and are also invisibly present among us. Come and sanctify us, and let your pure Body and precious Blood be given to us by your mighty hand and through us to all your people."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us be attentive."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest lifting up the Sacred Bread, says:) The Holy Gifts for the holy people of God."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "One is Holy, One is Lord, Jesus Christ, to the glory of God the Father. Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "HOLY COMMUNION"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Praise the Lord from the Heavens; praise Him in the highest. Alleluia (3)"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest breaks the Consecrated Bread saying in a low voice:) The Lamb of God is broken and distributed; broken but not divided. He is forever eaten yet is never consumed, but He sanctifies those who partake of Him."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Then the Bishop or the Priest places a portion of the Consecrated Bread in the Holy Cup saying:) The fullness of the Holy Spirit. Amen."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(He then blesses the warm water saying:) Blessed is the fervour of your Saints, now and forever and to the ages of ages. Amen."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And the Deacon, pouring the water into the Cup crosswise, says:) The warmth of the Holy Spirit. Amen. ******"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Communion Prayers are recited silently by those who will receive Holy Communion.) I believe and confess, Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am the first. I also believe that this is truly your pure Body and that this is truly your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, known and unknown. And make me worthy without condemnation to partake of your Mysteries for the forgiveness of sins and for life eternal. Amen. How shall I, who am unworthy, enter into the splendour of your Saints? If I dare to enter into the bridal chamber, my clothing will accuse me, since it is not a wedding garment; and being bound up, I shall be cast out by the Angels. In your love, Lord, cleanse my soul and save me. Loving Master, Lord Jesus Christ, my God, let not these Holy Gifts be to my condemnation because of my unworthiness, but for the cleansing and sanctification of soul and body and the pledge of the future life and Kingdom. It is good for me to cling to God and to place in Him the hope of my salvation. Receive me today, Son of God, as a partaker of your Mystical Supper. I will not reveal your Mystery to your adversaries. Nor will I give You a kiss as did Judas. But as the thief I confess to You: Lord remember me in your Kingdom. ******"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest proceeds to receive Holy Communion saying:) Behold, I approach Christ, our immortal King and God. The precious and most Holy Body of our Lord, God and Saviour Jesus Christ is given to me (Name) the (Bishop or Priest), for the forgiveness of my sins and eternal life."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(He then partakes of the Consecrated Bread.) The precious and most Holy Blood of our Lord, God and Saviour Jesus Christ is given to me (Name)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Bishop or Priest), for the forgiveness of my sins and eternal life."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(He then partakes of the Holy Cup.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Afterwards he wipes the Holy Cup, kisses it and says:) This has touched my lips, taking away my transgressions and cleansing my sins."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Priest then transfers the remaining portions of the Consecrated Bread into the Holy Cup, saying:) Having beheld the Resurrection of Christ, let us worship the Holy Lord Jesus, the only sinless one. We venerate your Cross, O Christ, and we praise and glorify your Holy Resurrection. You are our God. We know no other than You, and we call upon your Name. Come, all faithful, let us venerate the Holy Resurrection of Christ. For behold, through the Cross joy has come to all the world. Blessing the Lord always, let us praise His Resurrection. For enduring the Cross for us, He destroyed death by death."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And transferring the portions for the living and the dead, says:) Wash away, Lord, by your Holy Blood, the sins of all those commemorated, through the intercessions of the Theotokos and all your Saints. Amen."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And the Bishop or the Priest hands the Holy Cup to the Deacon, who comes out through the Beautiful Gate holding the Holy Cup, and says:) Approach with the fear of God, faith, and love."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The faithful come forth with reverence to receive Holy Communion, while the rest of the Communion Hymn is sung.)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(When administering Holy Communion, the Bishop or the Priest says:) The servant of God"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Name) receives the Body and the Blood of Christ for forgiveness of sins and eternal life."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(After Communion has been given, the Bishop or the Priest, lifting up the Holy Cup, says:)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Save, O God, your people and bless your inheritance."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We have seen the true light; we have received the Heavenly Spirit; we have found the true faith, worshipping the undivided Trinity, for the Trinity has saved us."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(The Bishop or the Priest, having returned the Holy Cup to the Holy Table, censes it saying thrice:) Be exalted, O God, above the Heavens. Let your glory be over all the earth. (3)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And he gives the vessels to the Deacon and says in a low voice:) Blessed is our God,"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And the Deacon turning to the people, says with a loud voice:) always, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let our mouths be filled with your praise, Lord, that we may sing of your glory for You have made us worthy to partake of your Holy Mysteries. Keep us in your holiness that, all the day long, we may meditate upon your righteousness. Alleluia. Alleluia. Alleluia."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THANKSGIVING AFTER THE HOLY COMMUNION"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Having partaken of the divine, holy, pure, immortal, heavenly, life-giving, and awesome Mysteries of Christ standing, let us worthily give thanks to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Glory to You, O Lord, glory to You."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Help us, save us, have mercy upon us, and protect us, O God, by your grace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Having prayed for a perfect, holy, peaceful, and sinless day, let us commit ourselves, and one another, and our whole life to Christ our God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "To You, O Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "We thank You, loving Master, benefactor of our souls, that on this day You have made us worthy once again of your Heavenly and immortal Mysteries. Direct our ways in the right path, establish us firmly in your fear, guard our lives, and make our endeavours safe, through the prayers and supplications of the glorious Theotokos and Ever-Virgin Mary and of all your Saints."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(And raising his voice:) For You are our sanctification and to You we give glory, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "el": "",
+        "en": "THE DISMISSAL"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us go forth in peace."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy (3). Father, give the blessing."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, bless those who praise You and sanctify those who trust in You. Save your people and bless your inheritance. Protect the fullness of your Church. Sanctify those who love the beauty of your house. Glorify them in return by your divine power, and do not forsake us who hope in You. Grant peace to your world, to your Churches, to the Clergy, to those in public service and to all your people. For every good and perfect gift is from above, coming from You, the Father of lights; and to You we give glory, thanksgiving, and worship, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen. Blessed is the name of the Lord, both now and to the ages (3)."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Then the Bishop or the Priest says the following prayer over the Holy Gifts at the Prothesis:)"
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Christ our God, You are the fulfillment of the Law and the Prophets. You have fulfilled all the dispensation of the Father. Fill our hearts with joy and gladness always, now and forever and to the ages of ages. Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Deacon"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Let us pray to the Lord."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, have mercy."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "May the blessing of the Lord and His mercy come upon you through His divine grace and love always, now and forever and to the ages of ages."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Glory to You, O God, our hope, glory to you."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "May Christ our true God who rose from the dead, through the intercessions of His most pure and holy Mother; the power of the precious and life-giving Cross; the protection of the honourable, bodiless powers of Heaven, the supplications of the honourable, glorious Prophet and Forerunner John the Baptist; the holy, glorious and praiseworthy Apostles; the holy, glorious and triumphant Martyrs; our holy and God-bearing Fathers, of (the Saint to whom the church is dedicated); the holy and righteous ancestors of God Joachim and Anna; of Saint (Name) whose memory we commemorate today, and all the Saints, have mercy upon us and save us, as a good and loving and merciful God."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Lord, grant many years to him who blesses and sanctifies us."
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Bishop or Priest"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Through the prayers of our Holy Fathers, Lord Jesus Christ, our God, have mercy upon us and save us."
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "Rubric"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "(Or, if a Bishop is officiating, the Priests say:) Through the prayers of our Holy Master, Lord Jesus Christ, our God, have mercy upon us and save us."
+      },
+      "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "el": "",
+        "en": "People"
+      },
+      "text": {
+        "ar": "",
+        "el": "",
+        "en": "Amen."
+      }
+    }
+  ],
+  "source_document": {
+    "publisher": "Greek Orthodox Metropolis of Toronto (Canada)",
+    "publication_year": 2017,
+    "document_title": "The Divine Liturgy of Saint John Chrysostom / Ἡ Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
+    "document_sha256": "ddec146541ab8f09f8cf45b7aaa94fa11451e07c100751863604659d713d36fa",
+    "page_lane": "alternating native-language pages",
+    "machine_translation_used": false
+  }
+}

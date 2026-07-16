@@ -31,10 +31,10 @@ SOURCES: dict[str, dict[str, str]] = {
     },
     "en": {
         "source_id": "ebible_world_english_bible",
-        "archive_url": "https://ebible.org/Scriptures/eng-web_usfm.zip",
-        "browser_base": "https://ebible.org/eng-web/",
-        "archive_name": "eng-web_usfm.zip",
-        "title": "World English Bible Classic",
+        "archive_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+        "browser_base": "https://ebible.org/engwebp/",
+        "archive_name": "engwebp_usfm.zip",
+        "title": "World English Bible",
         "license": "Public Domain",
     },
     "el": {
@@ -234,7 +234,7 @@ def _download(url: str, attempts: int = 3, timeout: int = 60) -> bytes:
             request = urllib.request.Request(
                 url,
                 headers={
-                    "User-Agent": "OrthodoxPrayersDailyUpdater/4.1.5 (+https://github.com/maen1977/orthodox_prayers)",
+                    "User-Agent": "OrthodoxPrayersDailyUpdater/4.3.0 (+https://github.com/maen1977/orthodox_prayers)",
                     "Accept": "application/zip,application/octet-stream,*/*;q=0.5",
                 },
             )

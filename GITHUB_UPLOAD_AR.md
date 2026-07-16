@@ -1,4 +1,4 @@
-# رفع إصلاح GitHub إلى المستودع الحالي
+# رفع Orthodox Prayers 4.2.0 إلى GitHub
 
 المستودع المستهدف:
 
@@ -6,37 +6,42 @@
 maen1977/orthodox_prayers
 ```
 
-الطريقة الأسهل موضحة في `GITHUB_DESKTOP_AR.md`.
+استخدم ملف المصدر النظيف الناتج من:
 
-## ما الذي تصلحه هذه النسخة؟
+```bash
+python scripts/create_clean_source_archive.py ../OrthodoxPrayers-4.2.0-enhanced-source.zip
+```
 
-- تحذف إعداد Dependabot الذي فتح طلبات تحديث كثيرة.
-- تترك Workflowين فقط: `Build` و`Update`.
-- تمنع `Update` من التشغيل عند كل Push.
-- تشغّل `Update` عند 00:00 و00:15 بتوقيت `Asia/Amman` أو يدويًا فقط.
-- تفصل Unit Tests وLint وبناء APK حتى يظهر اسم الخطوة الفاشلة.
-- توقف CodeQL واختبار المحاكي مؤقتًا لأنهما كانا يضيفان أخطاء لا تساعد على تشخيص بناء APK الأول.
-- ترفع رقم التطبيق إلى 3.5.1 وتغيّر اسم مشروع Gradle الظاهر إلى `OrthodoxPrayers`.
+لا ترفع مجلد `.git` من نسخة قديمة، ولا ملفات الكاش أو المفاتيح الخاصة أو Android Keystore.
 
-## رسالة Commit
+## أهم ما تضيفه النسخة
+
+- التقويم الشهري والتاريخ اليولياني بجانب الغريغوري.
+- تذكيرات الصلاة والقراءات والأعياد والصيام والتذكير الشخصي.
+- سجل القراءة والتثبيت ومجموعات المفضلة وإعادة ترتيبها.
+- إعدادات الخط وتباعد الأسطر والتمرير التلقائي.
+- إدارة اللغات النشطة وتقارير النقص الإنجليزية واليونانية.
+- WorkManager 2.11.2 وفحص احتياطي كل 12 ساعة.
+- أدوات دمج نصوص أصلية مصرّح بها دون ترجمة أو خلط بين اللغات.
+
+## رسالة Commit مقترحة
 
 ```text
-Fix GitHub Actions and disable Dependabot updates
+Release Orthodox Prayers 4.2.0 with calendar, reminders, and reading tools
 ```
 
 ## بعد الرفع
 
-1. أغلق Pull Requests القديمة الخاصة بـDependabot دون Merge.
-2. أضف Secret `DATA_SIGNING_PRIVATE_KEY_B64`.
-3. شغّل Build وتابع اسم أول خطوة حمراء إن وجدت.
-4. بعد نجاح Build شغّل Update يدويًا بوضع `update`.
-5. تحقق من إنشاء فرع `verified-data`.
+1. افتح تبويب Actions وشغّل `Build`.
+2. عند نجاح بوابة المصدر، راقب خطوات Android Unit Tests وLint Debug وDebug APK.
+3. شغّل `Update` يدويًا بوضع `update` لنشر بيانات تاريخ اليوم إلى `verified-data`.
+4. تأكد أن Environment باسم `production-data-signing` يحتوي `DATA_SIGNING_PRIVATE_KEY_B64`.
+5. لا تنشئ إصدار Production ما دامت `validate_release_readiness.py` محجوبة بسبب نقص الإنجليزية واليونانية والنصوص الكتابية.
 
-## فحص أمان محلي
+## فحص محلي
 
 ```bash
-python scripts/scan_repository_secrets.py
+python -m pytest -q
 python scripts/run_quality_gate.py --strict-native-lanes
+python scripts/scan_repository_secrets.py
 ```
-
-لا ترفع `.pem` خاصًا أو `.jks` أو `.keystore` أو ملف كلمات مرور.

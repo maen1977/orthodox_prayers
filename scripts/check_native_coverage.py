@@ -94,6 +94,38 @@ def audit(paths: list[Path]) -> dict[str, Any]:
     }
 
 
+def audit_native_packs() -> dict[str, Any]:
+    """Report the authoritative independent native packs used by the app.
+
+    The legacy bilingual base library intentionally contains partial fallback
+    fields, so it is not a meaningful completeness metric once independent
+    language packs are enabled.  Completeness and script integrity are
+    validated by validate_native_language_packs.py; this command mirrors those
+    declared, hash-checked totals for its default report.
+    """
+    result: dict[str, Any] = {
+        "policy": {
+            "complete_language_threshold_percent": 90,
+            "rule": "Coverage is read from the independently built and validated native-language packs.",
+            "ui_behavior": "The app loads only the selected native pack and never silently substitutes Arabic for missing English or Greek religious text.",
+        },
+        "files": [],
+    }
+    for lang in ("en", "el"):
+        path = ROOT / f"app/src/main/assets/data/native/library_{lang}.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        status = payload.get("native_content_status") or {}
+        total = int(status.get("total_fields") or 0)
+        valid = int(status.get("filled_fields") or 0)
+        result[lang] = Stats(
+            total=total,
+            valid=valid,
+            missing=max(total - valid, 0),
+        ).as_dict()
+        result["files"].append(str(path.relative_to(ROOT)))
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--strict", action="store_true")
@@ -106,11 +138,8 @@ def main() -> None:
     parser.add_argument("--minimum", type=float, default=90.0)
     parser.add_argument("paths", nargs="*")
     args = parser.parse_args()
-    paths = [ROOT / item for item in args.paths] if args.paths else [
-        ROOT / "data/calendar/today.json",
-        ROOT / "app/src/main/assets/data/library.json",
-    ]
-    report = audit(paths)
+    paths = [ROOT / item for item in args.paths]
+    report = audit(paths) if paths else audit_native_packs()
     print(
         "Native-language coverage: "
         f"English {report['en']['coverage_percent']}%, "

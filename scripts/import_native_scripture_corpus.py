@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Import an owner-authorized official native-language Scripture snapshot.
+"""Import an exact native-language Scripture snapshot.
+
+The snapshot may come from an owner-authorized official source or from a
+registered public-domain native corpus. Cross-language translation and text
+rewriting remain forbidden.
 
 Input JSON format:
 {
@@ -35,6 +39,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=Path)
     parser.add_argument("--replace", action="store_true", help="replace a previously imported corpus")
+    parser.add_argument(
+        "--corpus-kind",
+        choices=("official", "public-domain"),
+        default="official",
+        help="provenance class of the registered native corpus",
+    )
     args = parser.parse_args()
     raw = json.loads(args.input.read_text(encoding="utf-8"))
     language = raw.get("language")
@@ -45,8 +55,13 @@ def main() -> None:
     source_url = str(raw.get("source_url") or "")
     if not source_allowed(language, source_id, contract):
         fail(f"{source_id!r} is not registered for the {language} lane")
-    if "scripture_corpus" not in contract["sources"][source_id].get("capabilities", []):
+    source_entry = contract["sources"][source_id]
+    if "scripture_corpus" not in source_entry.get("capabilities", []):
         fail(f"{source_id!r} is not registered as a Scripture-corpus source")
+    if args.corpus_kind == "official" and source_entry.get("official") is not True:
+        fail(f"{source_id!r} is not registered as an official source")
+    if args.corpus_kind == "public-domain" and source_entry.get("public_domain") is not True:
+        fail(f"{source_id!r} is not registered as public domain")
     if not source_url_allowed(source_id, source_url, contract):
         fail("source_url is outside the registered official domain")
     verses = raw.get("verses")
@@ -107,13 +122,22 @@ def main() -> None:
             books.append(item["book_id"])
     payload_hash = hashlib.sha256(canonical_payload(normalized)).hexdigest()
     retrieved_at = str(raw.get("retrieved_at") or datetime.now(timezone.utc).isoformat())
+    status = (
+        "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS"
+        if args.corpus_kind == "official"
+        else "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS"
+    )
     manifest = {
         "schema_version": 1,
         "language": language,
         "contract": "canonical/source_native_contract.json",
-        "status": "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS",
+        "status": status,
+        "corpus_kind": args.corpus_kind,
         "source_id": source_id,
         "source_url": source_url,
+        "source_title": source_entry.get("title"),
+        "license": raw.get("license") or source_entry.get("license"),
+        "distribution_status": "REDISTRIBUTABLE" if args.corpus_kind == "public-domain" else "OWNER_AUTHORIZED",
         "retrieved_at": retrieved_at,
         "imported_at": datetime.now(timezone.utc).isoformat(),
         "verse_count": len(normalized),

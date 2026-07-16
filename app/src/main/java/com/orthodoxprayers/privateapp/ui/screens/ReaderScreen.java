@@ -1,6 +1,8 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
 import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -43,6 +45,21 @@ public final class ReaderScreen extends BaseScreen {
     private boolean ignoreScrollUntilIdle;
     private ReaderControlsPolicy controlsPolicy;
     private int currentScrollState = RecyclerView.SCROLL_STATE_IDLE;
+    private final Handler autoScrollHandler = new Handler(Looper.getMainLooper());
+    private boolean autoScrollActive;
+    private Button autoScrollButton;
+    private final Runnable autoScrollTick = new Runnable() {
+        @Override public void run() {
+            if (!autoScrollActive || recycler == null) return;
+            int speed = Math.max(1, preferences.autoScrollSpeed());
+            recycler.scrollBy(0, ui.dp(speed));
+            if (!recycler.canScrollVertically(1)) {
+                stopAutoScroll(false);
+                return;
+            }
+            autoScrollHandler.postDelayed(this, 45L);
+        }
+    };
 
     public ReaderScreen(ScreenHost host, String serviceId) {
         super(host);
@@ -58,6 +75,7 @@ public final class ReaderScreen extends BaseScreen {
                 "Τὸ ζητούμενο κείμενο δὲν βρέθηκε στὰ δεδομένα."
         ));
 
+        preferences.recordRecentService(serviceId);
         JSONArray segments = service.optJSONArray("segments");
         if (segments == null || segments.length() == 0) {
             return errorView(local(
@@ -117,6 +135,7 @@ public final class ReaderScreen extends BaseScreen {
             @Override
             public void onScrollStateChanged(RecyclerView rv, int newState) {
                 currentScrollState = newState;
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING && autoScrollActive) stopAutoScroll(false);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     ignoreScrollUntilIdle = false;
                     if (controlsPolicy != null) controlsPolicy.resetGesture();
@@ -311,17 +330,24 @@ public final class ReaderScreen extends BaseScreen {
     }
 
     private LinearLayout toolBar() {
-        LinearLayout row = ui.row();
-        row.setPadding(ui.dp(10), ui.dp(3), ui.dp(10), ui.dp(1));
+        LinearLayout box = new LinearLayout(host.activity());
+        box.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout primary = ui.row();
+        primary.setPadding(ui.dp(10), ui.dp(3), ui.dp(10), ui.dp(1));
         Button favorite = ui.smallButton(preferences.isFavorite(serviceId)
                 ? "★ " + local("محفوظة", "Saved", "Ἀγαπημένο")
                 : "☆ " + local("مفضلة", "Favorite", "Ἀγαπημένο"), preferences.isFavorite(serviceId));
         favorite.setOnClickListener(v -> {
             saveReaderPosition();
+            boolean wasFavorite = preferences.isFavorite(serviceId);
             preferences.toggleFavorite(serviceId);
+            if (!wasFavorite && preferences.isFavorite(serviceId)) {
+                preferences.setFavoriteFolder(serviceId, "liturgy".equals(service.optString("category")) ? "liturgy" : "daily");
+            }
             host.navigate("reader", serviceId);
         });
-        row.addView(favorite, ui.weight(46));
+        primary.addView(favorite, ui.weight(46));
 
         Button smaller = ui.smallButton("A−", false);
         smaller.setOnClickListener(v -> {
@@ -329,7 +355,7 @@ public final class ReaderScreen extends BaseScreen {
             preferences.setFontScale(preferences.fontScale() - 0.1f);
             host.navigate("reader", serviceId);
         });
-        row.addView(smaller, ui.weight(46));
+        primary.addView(smaller, ui.weight(46));
 
         Button larger = ui.smallButton("A+", false);
         larger.setOnClickListener(v -> {
@@ -337,7 +363,7 @@ public final class ReaderScreen extends BaseScreen {
             preferences.setFontScale(preferences.fontScale() + 0.1f);
             host.navigate("reader", serviceId);
         });
-        row.addView(larger, ui.weight(46));
+        primary.addView(larger, ui.weight(46));
 
         Button source = ui.smallButton(preferences.showOriginal()
                 ? local("إخفاء الأصل", "Hide source", "Κρύψε")
@@ -347,8 +373,66 @@ public final class ReaderScreen extends BaseScreen {
             preferences.setShowOriginal(!preferences.showOriginal());
             host.navigate("reader", serviceId);
         });
-        row.addView(source, ui.weight(46));
-        return row;
+        primary.addView(source, ui.weight(46));
+        box.addView(primary, new LinearLayout.LayoutParams(-1, -2));
+
+        LinearLayout secondary = ui.row();
+        secondary.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(2));
+        Button pin = ui.smallButton(preferences.isPinned(serviceId)
+                ? local("📌 مثبت", "📌 Pinned", "📌 Καρφιτσωμένο")
+                : local("📍 تثبيت", "📍 Pin", "📍 Καρφίτσωμα"), preferences.isPinned(serviceId));
+        pin.setOnClickListener(v -> {
+            preferences.togglePinned(serviceId);
+            host.navigate("reader", serviceId);
+        });
+        secondary.addView(pin, ui.weight(44));
+
+        autoScrollButton = ui.smallButton(autoScrollLabel(), preferences.autoScrollSpeed() > 0);
+        autoScrollButton.setOnClickListener(v -> cycleAutoScroll());
+        secondary.addView(autoScrollButton, ui.weight(44));
+
+        Button spacing = ui.smallButton(local("تباعد " , "Spacing ", "Διάστιχο ") + String.format(java.util.Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
+        spacing.setOnClickListener(v -> {
+            float next = preferences.lineSpacingMultiplier() >= 1.55f ? 1.0f : preferences.lineSpacingMultiplier() + 0.15f;
+            preferences.setLineSpacingMultiplier(next);
+            saveReaderPosition();
+            host.navigate("reader", serviceId);
+        });
+        secondary.addView(spacing, ui.weight(44));
+        box.addView(secondary, new LinearLayout.LayoutParams(-1, -2));
+        return box;
+    }
+
+    private String autoScrollLabel() {
+        int speed = preferences.autoScrollSpeed();
+        if (speed <= 0) return local("▶ تمرير تلقائي", "▶ Auto-scroll", "▶ Αὐτόματη κύλιση");
+        return (autoScrollActive ? "⏸ " : "▶ ") + local("سرعة ", "Speed ", "Ταχύτητα ") + speed;
+    }
+
+    private void cycleAutoScroll() {
+        int current = preferences.autoScrollSpeed();
+        int next;
+        if (!autoScrollActive && current > 0) next = current;
+        else next = current >= 4 ? 0 : current + 1;
+        preferences.setAutoScrollSpeed(next);
+        if (next == 0) stopAutoScroll(true); else startAutoScroll();
+    }
+
+    private void startAutoScroll() {
+        autoScrollActive = preferences.autoScrollSpeed() > 0;
+        autoScrollHandler.removeCallbacks(autoScrollTick);
+        if (autoScrollActive) autoScrollHandler.postDelayed(autoScrollTick, 350L);
+        if (autoScrollButton != null) {
+            autoScrollButton.setText(autoScrollLabel());
+            autoScrollButton.setAlpha(1f);
+        }
+    }
+
+    private void stopAutoScroll(boolean clearSpeed) {
+        autoScrollActive = false;
+        autoScrollHandler.removeCallbacks(autoScrollTick);
+        if (clearSpeed) preferences.setAutoScrollSpeed(0);
+        if (autoScrollButton != null) autoScrollButton.setText(autoScrollLabel());
     }
 
     private LinearLayout provenanceBox() {
@@ -493,6 +577,7 @@ public final class ReaderScreen extends BaseScreen {
 
     @Override
     public void onHidden() {
+        stopAutoScroll(false);
         saveReaderPosition();
         host.activity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }

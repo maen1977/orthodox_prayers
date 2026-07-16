@@ -80,7 +80,9 @@ jobs:
 
       - name: Generate and validate today without signing key
         if: steps.resolve.outputs.mode == 'update'
-        run: python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --unsigned
+        run: |
+          python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --unsigned
+          python scripts/validate_daily_ui_localizations.py data/calendar/today.json
 
       - name: Clear only today's language-lane publication slots
         if: steps.resolve.outputs.mode == 'update'
