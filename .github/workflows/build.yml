@@ -44,6 +44,19 @@ jobs:
       - name: Run source and religious-content quality gate
         run: python scripts/run_quality_gate.py --strict-native-lanes
 
+      - name: Import latest signed published data for debug APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --force origin verified-data
+          VERIFIED_DIR="$RUNNER_TEMP/verified-data-debug"
+          git worktree add --force --detach "$VERIFIED_DIR" origin/verified-data
+          rsync -a --delete "$VERIFIED_DIR/data/" data/
+          rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
+          PUBLISHED_DATE="$(python -c 'import json; print(json.load(open("data/calendar/today.json", encoding="utf-8"))["date_iso"])')"
+          python scripts/verify.py --expected-date "$PUBLISHED_DATE"
+          git worktree remove --force "$VERIFIED_DIR"
+
       - name: Set up JDK 17
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
         with:

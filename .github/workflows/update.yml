@@ -33,7 +33,8 @@ env:
 jobs:
   daily:
     # Store DATA_SIGNING_PRIVATE_KEY_B64 in this protected Environment, not as
-    # an unrestricted repository secret. Configure branch/reviewer rules in GitHub.
+    # an unrestricted repository secret. The private key is materialized only
+    # after all external-source fetching and unsigned validation have finished.
     environment: production-data-signing
     runs-on: ubuntu-latest
     timeout-minutes: 40
@@ -77,29 +78,9 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
 
-      - name: Restore and match the one signing key
+      - name: Generate and validate today without signing key
         if: steps.resolve.outputs.mode == 'update'
-        shell: bash
-        env:
-          DATA_SIGNING_PRIVATE_KEY_B64: ${{ secrets.DATA_SIGNING_PRIVATE_KEY_B64 }}
-        run: |
-          set -euo pipefail
-          test -n "$DATA_SIGNING_PRIVATE_KEY_B64" || { echo "DATA_SIGNING_PRIVATE_KEY_B64 is required" >&2; exit 1; }
-          printf '%s' "$DATA_SIGNING_PRIVATE_KEY_B64" | base64 --decode > "$RUNNER_TEMP/data-private.pem"
-          chmod 600 "$RUNNER_TEMP/data-private.pem"
-          openssl pkey -in "$RUNNER_TEMP/data-private.pem" -check -noout
-          openssl pkey -in "$RUNNER_TEMP/data-private.pem" -pubout -out "$RUNNER_TEMP/derived-public.pem"
-          openssl pkey -pubin -in canonical/signing/data_signing_public_key.pub -outform DER -out "$RUNNER_TEMP/committed.der"
-          openssl pkey -pubin -in "$RUNNER_TEMP/derived-public.pem" -outform DER -out "$RUNNER_TEMP/derived.der"
-          cmp -s "$RUNNER_TEMP/committed.der" "$RUNNER_TEMP/derived.der" || {
-            echo "The GitHub secret does not match the public key committed in the app." >&2
-            echo "Replace DATA_SIGNING_PRIVATE_KEY_B64 with the v4 key supplied with this release." >&2
-            exit 1
-          }
-
-      - name: Generate, validate, and sign today
-        if: steps.resolve.outputs.mode == 'update'
-        run: python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+        run: python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --unsigned
 
       - name: Clear only today's language-lane publication slots
         if: steps.resolve.outputs.mode == 'update'
@@ -113,19 +94,19 @@ jobs:
         id: lane_ar
         if: steps.resolve.outputs.mode == 'update'
         continue-on-error: true
-        run: python scripts/update_language_lane.py --language ar --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+        run: python scripts/update_language_lane.py --language ar --date "${{ steps.resolve.outputs.date }}" --unsigned
 
       - name: Update Greek lane — official Greek Orthodox sources
         id: lane_el
         if: steps.resolve.outputs.mode == 'update'
         continue-on-error: true
-        run: python scripts/update_language_lane.py --language el --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+        run: python scripts/update_language_lane.py --language el --date "${{ steps.resolve.outputs.date }}" --unsigned
 
       - name: Update English lane — GOARCH, Jerusalem, Antioch
         id: lane_en
         if: steps.resolve.outputs.mode == 'update'
         continue-on-error: true
-        run: python scripts/update_language_lane.py --language en --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+        run: python scripts/update_language_lane.py --language en --date "${{ steps.resolve.outputs.date }}" --unsigned
 
       - name: Require at least one publishable language lane
         if: steps.resolve.outputs.mode == 'update'
@@ -149,50 +130,101 @@ jobs:
           [[ "${{ steps.lane_el.outcome }}" == success ]] || rm -f "data/daily/$DATE/el.json" "data/daily/$DATE/el.json.sig" data/daily/current/el.json data/daily/current/el.json.sig
           [[ "${{ steps.lane_en.outcome }}" == success ]] || rm -f "data/daily/$DATE/en.json" "data/daily/$DATE/en.json.sig" data/daily/current/en.json data/daily/current/en.json.sig
 
-      - name: Verify successful language lanes independently
+      - name: Validate unsigned language lanes independently
         if: steps.resolve.outputs.mode == 'update'
         shell: bash
         run: |
           set -euo pipefail
-          [[ "${{ steps.lane_ar.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language ar
-          [[ "${{ steps.lane_el.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language el
-          [[ "${{ steps.lane_en.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language en
+          [[ "${{ steps.lane_ar.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language ar --unsigned
+          [[ "${{ steps.lane_el.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language el --unsigned
+          [[ "${{ steps.lane_en.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language en --unsigned
 
-      - name: Publish verified-data
+      - name: Prepare publication worktree before restoring key
         if: steps.resolve.outputs.mode == 'update'
         shell: bash
         run: |
           set -euo pipefail
-          SOURCE="$GITHUB_WORKSPACE"
           TARGET="$RUNNER_TEMP/verified-data"
+          rm -rf "$TARGET"
           git fetch origin "$VERIFIED_DATA_BRANCH" || true
           if git show-ref --verify --quiet "refs/remotes/origin/$VERIFIED_DATA_BRANCH"; then
             git worktree add --force --detach "$TARGET" "origin/$VERIFIED_DATA_BRANCH"
           else
             git worktree add --force --detach "$TARGET" HEAD
           fi
+          echo "PUBLICATION_TARGET=$TARGET" >> "$GITHUB_ENV"
+
+      - name: Restore and match the one signing key
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        env:
+          DATA_SIGNING_PRIVATE_KEY_B64: ${{ secrets.DATA_SIGNING_PRIVATE_KEY_B64 }}
+        run: |
+          set -euo pipefail
+          test -n "$DATA_SIGNING_PRIVATE_KEY_B64" || { echo "DATA_SIGNING_PRIVATE_KEY_B64 is required" >&2; exit 1; }
+          printf '%s' "$DATA_SIGNING_PRIVATE_KEY_B64" | base64 --decode > "$RUNNER_TEMP/data-private.pem"
+          chmod 600 "$RUNNER_TEMP/data-private.pem"
+          openssl pkey -in "$RUNNER_TEMP/data-private.pem" -check -noout
+          openssl pkey -in "$RUNNER_TEMP/data-private.pem" -pubout -out "$RUNNER_TEMP/derived-public.pem"
+          openssl pkey -pubin -in canonical/signing/data_signing_public_key.pub -outform DER -out "$RUNNER_TEMP/committed.der"
+          openssl pkey -pubin -in "$RUNNER_TEMP/derived-public.pem" -outform DER -out "$RUNNER_TEMP/derived.der"
+          cmp -s "$RUNNER_TEMP/committed.der" "$RUNNER_TEMP/derived.der" || {
+            echo "The GitHub secret does not match the public key committed in the app." >&2
+            echo "Replace DATA_SIGNING_PRIVATE_KEY_B64 with the v4 key supplied with this release." >&2
+            exit 1
+          }
+
+      - name: Sign and verify generated data
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/sign_daily_data.py --private-key "$RUNNER_TEMP/data-private.pem"
+          python scripts/verify_data_signature.py
+          python scripts/sign_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+          python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}"
+
+      - name: Assemble and sign exact publication tree
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE="$GITHUB_WORKSPACE"
+          TARGET="$PUBLICATION_TARGET"
           mkdir -p "$TARGET/data" "$TARGET/app/src/main/assets/data"
           rsync -a --delete "$SOURCE/data/" "$TARGET/data/"
           rsync -a --delete "$SOURCE/app/src/main/assets/data/" "$TARGET/app/src/main/assets/data/"
           cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
           cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
           mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
-          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/sign_language_lanes.py" "$TARGET/scripts/"
+          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/sign_language_lanes.py" "$TARGET/scripts/"
           cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
 
-          # Sign the exact bytes inside the publication tree. This prevents a stale
-          # lane signature from surviving when JSON changed during generation/copying.
           cd "$TARGET"
+          python scripts/sign_daily_data.py --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/sign_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
 
+      - name: Remove private key before commit or network publication
+        if: ${{ always() && steps.resolve.outputs.mode == 'update' }}
+        shell: bash
+        run: |
+          rm -f "$RUNNER_TEMP/data-private.pem" "$RUNNER_TEMP/derived-public.pem" "$RUNNER_TEMP/committed.der" "$RUNNER_TEMP/derived.der"
+
+      - name: Commit, verify Git blobs, and publish verified-data
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET="$PUBLICATION_TARGET"
+          cd "$TARGET"
+          test ! -e "$RUNNER_TEMP/data-private.pem"
           git checkout -B "$VERIFIED_DATA_BRANCH"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "Publish daily data ${{ steps.resolve.outputs.date }}"
 
-          # Verify the exact committed Git blobs before anything reaches origin.
           COMMIT_CHECK="$RUNNER_TEMP/verified-data-commit-check"
           rm -rf "$COMMIT_CHECK"
           mkdir -p "$COMMIT_CHECK"
@@ -226,7 +258,3 @@ jobs:
           BODY="Update/verification failed for ${{ steps.resolve.outputs.date }}. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           EXISTING="$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')"
           if [[ -n "$EXISTING" ]]; then gh issue comment "$EXISTING" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi
-
-      - name: Remove private key
-        if: always()
-        run: rm -f "$RUNNER_TEMP/data-private.pem" "$RUNNER_TEMP/derived-public.pem"

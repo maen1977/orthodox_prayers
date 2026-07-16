@@ -309,6 +309,7 @@ class ReleaseContractTests(unittest.TestCase):
         wrapper = ROOT / "gradle/wrapper/gradle-wrapper.jar"
         properties = (ROOT / "gradle/wrapper/gradle-wrapper.properties").read_text(encoding="utf-8")
         self.assertTrue((ROOT / "gradlew").exists())
+        self.assertTrue((ROOT / "gradlew").stat().st_mode & 0o111)
         self.assertTrue((ROOT / "gradlew.bat").exists())
         def canonical_text_bytes(path):
             return path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
@@ -342,6 +343,9 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("assembleDebug --stacktrace", build)
         self.assertIn("app/build/outputs/apk/debug/app-debug.apk", build)
         self.assertIn("SHA256SUMS.txt", build)
+        self.assertIn("Import latest signed published data for debug APK", build)
+        self.assertIn("origin/verified-data", build)
+        self.assertIn('python scripts/verify.py --expected-date "$PUBLISHED_DATE"', build)
         self.assertIn("chmod +x ./gradlew", build)
         self.assertNotIn("connectedDebugAndroidTest", build)
         self.assertNotIn("android-emulator-runner@", build)
@@ -352,6 +356,23 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("DATA_SIGNING_PRIVATE_KEY_B64", update)
         self.assertIn("environment: production-data-signing", update)
         self.assertIn("scripts/update.py", update)
+        self.assertIn("--unsigned", update)
+        self.assertIn("Generate and validate today without signing key", update)
+        self.assertIn("Validate unsigned language lanes independently", update)
+        self.assertIn("Prepare publication worktree before restoring key", update)
+        self.assertIn("Remove private key before commit or network publication", update)
+        self.assertNotRegex(update, r"scripts/update\.py[^\n]*--private-key")
+        self.assertNotRegex(update, r"scripts/update_language_lane\.py[^\n]*--private-key")
+        ordered = [
+            update.index("Generate and validate today without signing key"),
+            update.index("Validate unsigned language lanes independently"),
+            update.index("Prepare publication worktree before restoring key"),
+            update.index("Restore and match the one signing key"),
+            update.index("Sign and verify generated data"),
+            update.index("Remove private key before commit or network publication"),
+            update.index("Commit, verify Git blobs, and publish verified-data"),
+        ]
+        self.assertEqual(sorted(ordered), ordered)
         updater = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
         self.assertIn("scripts/rebuild_daily_services.py", updater)
         self.assertIn("--require-complete", updater)
@@ -450,6 +471,12 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("scripts/verify_gradle_wrapper.py", quality_gate)
         self.assertIn("scripts/check_native_coverage.py", quality_gate)
         self.assertIn("--reject-invalid", quality_gate)
+        scripture = (ROOT / "scripts/public_domain_scripture.py").read_text(encoding="utf-8")
+        self.assertIn("MAX_TOTAL_UNCOMPRESSED_BYTES", scripture)
+        self.assertIn("MAX_COMPRESSION_RATIO", scripture)
+        self.assertIn("_safe_scripture_members", scripture)
+        self.assertTrue((ROOT / "tests/test_clean_source_archive.py").is_file())
+        self.assertTrue((ROOT / "tests/test_unsigned_generation.py").is_file())
 
     def test_code_and_content_rights_are_explicitly_separated(self):
         self.assertTrue((ROOT / "LICENSE").is_file())

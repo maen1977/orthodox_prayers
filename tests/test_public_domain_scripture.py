@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import importlib.util
+import io
 import json
 import os
 import sys
@@ -69,6 +70,47 @@ class PublicDomainScriptureTests(unittest.TestCase):
                     "41-MAT.usfm",
                     cls.usfm("MAT", gospel_title, {14: range(35, 37), 15: range(1, 12)}, prefix),
                 )
+
+
+    @staticmethod
+    def archive_bytes(entries: dict[str, str | bytes]) -> bytes:
+        buffer = io.BytesIO()
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            for name, value in entries.items():
+                archive.writestr(name, value)
+        return buffer.getvalue()
+
+    def test_archive_rejects_path_traversal_member(self):
+        payload = self.archive_bytes(
+            {"../41-MAT.usfm": self.usfm("MAT", "Matthew", {1: range(1, 2)}, "Text")}
+        )
+        with self.assertRaisesRegex(ValueError, "unsafe ZIP member path"):
+            self.public.parse_usfm_archive(payload)
+
+    def test_archive_rejects_oversized_uncompressed_member(self):
+        payload = self.archive_bytes(
+            {"41-MAT.usfm": self.usfm("MAT", "Matthew", {1: range(1, 8)}, "Long exact text")}
+        )
+        with mock.patch.object(self.public, "MAX_MEMBER_UNCOMPRESSED_BYTES", 64):
+            with self.assertRaisesRegex(ValueError, "uncompressed safety limit"):
+                self.public.parse_usfm_archive(payload)
+
+    def test_archive_rejects_excessive_compression_ratio(self):
+        payload = self.archive_bytes({"41-MAT.usfm": b"A" * 20_000})
+        with mock.patch.object(self.public, "MAX_COMPRESSION_RATIO", 2):
+            with self.assertRaisesRegex(ValueError, "compression ratio"):
+                self.public.parse_usfm_archive(payload)
+
+    def test_archive_rejects_excessive_member_count(self):
+        payload = self.archive_bytes(
+            {
+                "41-MAT.usfm": self.usfm("MAT", "Matthew", {1: range(1, 2)}, "Text"),
+                "46-1CO.usfm": self.usfm("1CO", "First Corinthians", {1: range(1, 2)}, "Text"),
+            }
+        )
+        with mock.patch.object(self.public, "MAX_ARCHIVE_MEMBERS", 1):
+            with self.assertRaisesRegex(ValueError, "too many files"):
+                self.public.parse_usfm_archive(payload)
 
     def test_usfm_parser_preserves_source_script_and_removes_markup(self):
         raw = "\\id MAT\n\\toc1 إنجيل متّى\n\\c 5\n\\p\n\\v 3 طُوبَى \\w لِلْمَسَاكِينِ|lemma=x\\w* \\f + \\ft هامش\\f*\n"

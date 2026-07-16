@@ -8,19 +8,35 @@ import hashlib
 import os
 import stat
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED_DIRS = {
-    ".git", ".gradle", ".idea", "build", "release", "reports", "__pycache__",
-    ".pytest_cache", ".cache",
+    ".git",
+    ".gradle",
+    ".idea",
+    "build",
+    "release",
+    "reports",
+    "__pycache__",
+    ".pytest_cache",
+    ".cache",
 }
-EXCLUDED_SUFFIXES = {".jks", ".keystore", ".p12", ".pem", ".key", ".pyc", ".pyo"}
+EXCLUDED_SUFFIXES = {".jks", ".keystore", ".p12", ".pfx", ".pem", ".key", ".pyc", ".pyo"}
 EXCLUDED_NAMES = {
-    "FILE_SHA256SUMS.txt", "VERIFICATION_AR.txt", "local.properties",
-    "GITHUB_SECRETS.txt", "اقرأني-أولا-الحزمة-الكاملة.txt",
+    "FILE_SHA256SUMS.txt",
+    "VERIFICATION_AR.txt",
+    "local.properties",
+    "GITHUB_SECRETS.txt",
+    "اقرأني-أولا-الحزمة-الكاملة.txt",
+    ".env",
+    ".env.local",
+    "id_rsa",
+    "id_ed25519",
 }
 EXCLUDED_PREFIXES = ("COMMIT_MESSAGE", "GITHUB_DESKTOP_COMMIT_MESSAGE")
+PUBLIC_SIGNING_KEYS = {"data_signing_public_key.der", "data_signing_public_key.pub"}
+SENSITIVE_FRAGMENTS = ("private_key", "private-key", "privatekey", "keystore_password", "signing_secret")
 
 
 def included(path: Path) -> bool:
@@ -31,16 +47,20 @@ def included(path: Path) -> bool:
         return False
     if path.suffix.lower() in EXCLUDED_SUFFIXES:
         return False
-    lower = path.name.lower()
     if path.name in EXCLUDED_NAMES or path.name.startswith(EXCLUDED_PREFIXES):
         return False
-    return (
-        "private_key" not in lower
-        and "private-key" not in lower
-        and not lower.startswith("local.properties")
-        and "data-signing" not in relative.parts[:-1]
-        or path.name in {"data_signing_public_key.der", "data_signing_public_key.pub"}
-    )
+
+    lower = path.name.lower()
+    if any(fragment in lower for fragment in SENSITIVE_FRAGMENTS):
+        return False
+    if lower.startswith("local.properties") or lower.startswith(".env"):
+        return False
+
+    # The data-signing directory may contain local key-generation output. Only
+    # the committed public keys are safe and required by the Android client.
+    if "data-signing" in relative.parts[:-1]:
+        return path.name in PUBLIC_SIGNING_KEYS
+    return True
 
 
 def zip_timestamp() -> tuple[int, int, int, int, int, int]:
@@ -52,19 +72,40 @@ def zip_timestamp() -> tuple[int, int, int, int, int, int]:
     return (1980, 1, 1, 0, 0, 0)
 
 
+def unsafe_archive_name(name: str) -> bool:
+    normalized = name.replace("\\", "/")
+    path = PurePosixPath(normalized)
+    return not normalized or normalized.startswith("/") or ".." in path.parts or "\x00" in normalized
+
+
 def validate_archive(output: Path) -> None:
     with zipfile.ZipFile(output) as archive:
-        names = archive.namelist()
-        if not names:
+        infos = archive.infolist()
+        if not infos:
             raise SystemExit("Refusing to publish an empty source archive")
-        for name in names:
-            path = Path(name)
-            if path.is_absolute() or ".." in path.parts:
+        names = [info.filename for info in infos]
+        if len(names) != len(set(names)):
+            raise SystemExit("Duplicate paths found in generated source archive")
+
+        for info in infos:
+            name = info.filename
+            path = PurePosixPath(name.replace("\\", "/"))
+            if unsafe_archive_name(name):
                 raise SystemExit(f"Unsafe path in generated archive: {name}")
             if any(part in EXCLUDED_DIRS for part in path.parts):
                 raise SystemExit(f"Excluded directory leaked into generated archive: {name}")
             if Path(name).suffix.lower() in EXCLUDED_SUFFIXES:
                 raise SystemExit(f"Excluded file type leaked into generated archive: {name}")
+            if Path(name).name in EXCLUDED_NAMES or Path(name).name.startswith(EXCLUDED_PREFIXES):
+                raise SystemExit(f"Excluded file leaked into generated archive: {name}")
+            if any(fragment in Path(name).name.lower() for fragment in SENSITIVE_FRAGMENTS):
+                raise SystemExit(f"Sensitive filename leaked into generated archive: {name}")
+
+            mode = (info.external_attr >> 16) & 0xFFFF
+            if stat.S_IFMT(mode) == stat.S_IFLNK:
+                raise SystemExit(f"Symbolic link leaked into generated archive: {name}")
+            if path.name == "gradlew" and not mode & 0o111:
+                raise SystemExit("gradlew is not executable in generated source archive")
 
 
 def main() -> None:
@@ -78,7 +119,8 @@ def main() -> None:
     output = args.output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     files = sorted(
-        path for path in ROOT.rglob("*")
+        path
+        for path in ROOT.rglob("*")
         if path.is_file() and included(path) and path.resolve() != output
     )
     timestamp = zip_timestamp()

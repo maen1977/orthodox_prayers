@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and sign one Android-compatible independent native-language daily lane."""
+"""Build one Android-compatible independent native-language daily lane."""
 from __future__ import annotations
 
 import argparse
@@ -44,9 +44,18 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--language", required=True, choices=sorted(LANGS))
     parser.add_argument("--date", required=True)
-    parser.add_argument("--private-key", required=True, type=Path)
+    signing = parser.add_mutually_exclusive_group(required=True)
+    signing.add_argument("--private-key", type=Path)
+    signing.add_argument(
+        "--unsigned",
+        action="store_true",
+        help="Write validated lane JSON only and remove any stale detached signatures.",
+    )
     parser.add_argument("--source", default="data/calendar/today.json")
     args = parser.parse_args()
+
+    if args.private_key is not None and not args.private_key.is_file():
+        raise SystemExit(f"private key was not found: {args.private_key}")
 
     source = ROOT / args.source
     data = json.loads(source.read_text(encoding="utf-8"))
@@ -75,10 +84,17 @@ def main() -> None:
     current.parent.mkdir(parents=True, exist_ok=True)
     current.write_bytes(dated.read_bytes())
 
-    sign(dated, args.private_key)
-    sign(current, args.private_key)
+    if args.unsigned:
+        Path(str(dated) + ".sig").unlink(missing_ok=True)
+        Path(str(current) + ".sig").unlink(missing_ok=True)
+        status = "LANE_UPDATE_UNSIGNED_OK"
+    else:
+        sign(dated, args.private_key)
+        sign(current, args.private_key)
+        status = "LANE_UPDATE_OK"
+
     print(
-        f"LANE_UPDATE_OK language={language} date={args.date} "
+        f"{status} language={language} date={args.date} "
         f"services={len(lane.get('services', []))} readings={len(lane.get('readings', []))}"
     )
 

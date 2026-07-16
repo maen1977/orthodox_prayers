@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
-"""Single entry point for generating, validating, signing, and preparing daily data."""
+"""Generate and validate daily data, then optionally sign it."""
 from __future__ import annotations
-import argparse, os, shutil, subprocess, sys
+
+import argparse
+import os
+import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
 
 def run(*args: str, check: bool = True) -> int:
     result = subprocess.run([sys.executable, *args], cwd=ROOT)
@@ -12,13 +18,31 @@ def run(*args: str, check: bool = True) -> int:
         raise SystemExit(result.returncode)
     return result.returncode
 
+
+def remove_stale_daily_signatures(date_iso: str) -> None:
+    """Unsigned generation must never leave signatures from an older payload."""
+    for path in (
+        ROOT / "data/calendar/today.json.sig",
+        ROOT / "app/src/main/assets/data/today.json.sig",
+        ROOT / f"data/calendar/{date_iso}.json.sig",
+    ):
+        path.unlink(missing_ok=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", required=True)
-    parser.add_argument("--private-key", required=True, type=Path)
+    signing = parser.add_mutually_exclusive_group(required=True)
+    signing.add_argument("--private-key", type=Path)
+    signing.add_argument(
+        "--unsigned",
+        action="store_true",
+        help="Generate and validate only; remove stale signatures and sign in a later protected step.",
+    )
     args = parser.parse_args()
     os.environ["ORTHODOX_DATE"] = args.date
-    if not args.private_key.is_file():
+
+    if args.private_key is not None and not args.private_key.is_file():
         raise SystemExit("data-signing private key is missing")
 
     run("scripts/update_liturgical_data.py")
@@ -62,9 +86,15 @@ def main() -> None:
         run("scripts/validate_static_prayer_sources.py")
         run("scripts/validate_reader_services.py")
 
+    if args.unsigned:
+        remove_stale_daily_signatures(args.date)
+        print(f"DAILY_UPDATE_UNSIGNED_OK date={args.date} mode={mode}")
+        return
+
     run("scripts/sign_daily_data.py", "--private-key", str(args.private_key))
     run("scripts/verify_data_signature.py")
     print(f"DAILY_UPDATE_OK date={args.date} mode={mode}")
+
 
 if __name__ == "__main__":
     main()

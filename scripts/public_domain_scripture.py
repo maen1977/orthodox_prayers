@@ -15,7 +15,7 @@ import re
 import time
 import urllib.request
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,6 +56,52 @@ VERSE_LINE = re.compile(r"^\\v\s+([^\s]+)\s*(.*)$")
 CHAPTER_LINE = re.compile(r"^\\c\s+(\d+)")
 BOOK_ID_LINE = re.compile(r"^\\id\s+([A-Z0-9]{3})")
 TOC_LINE = re.compile(r"^\\toc1\s+(.+)$")
+
+MAX_ARCHIVE_DOWNLOAD_BYTES = 25 * 1024 * 1024
+MAX_ARCHIVE_MEMBERS = 512
+MAX_MEMBER_UNCOMPRESSED_BYTES = 8 * 1024 * 1024
+MAX_TOTAL_UNCOMPRESSED_BYTES = 64 * 1024 * 1024
+MAX_COMPRESSION_RATIO = 200
+SCRIPTURE_EXTENSIONS = (".usfm", ".sfm", ".txt")
+
+
+def _safe_scripture_members(archive: zipfile.ZipFile) -> list[zipfile.ZipInfo]:
+    """Validate ZIP metadata before any member is decompressed into memory."""
+    files = [info for info in archive.infolist() if not info.is_dir()]
+    if len(files) > MAX_ARCHIVE_MEMBERS:
+        raise ValueError(f"USFM archive contains too many files: {len(files)}")
+
+    scripture: list[zipfile.ZipInfo] = []
+    total_uncompressed = 0
+    for info in files:
+        raw_name = info.filename.replace("\\", "/")
+        path = PurePosixPath(raw_name)
+        if not raw_name or raw_name.startswith("/") or ".." in path.parts or "\x00" in raw_name:
+            raise ValueError(f"unsafe ZIP member path: {info.filename!r}")
+        if info.flag_bits & 0x1:
+            raise ValueError(f"encrypted ZIP member is not supported: {info.filename}")
+        if info.file_size < 0 or info.compress_size < 0:
+            raise ValueError(f"invalid ZIP member size: {info.filename}")
+        if info.file_size > MAX_MEMBER_UNCOMPRESSED_BYTES:
+            raise ValueError(f"ZIP member exceeds uncompressed safety limit: {info.filename}")
+
+        total_uncompressed += info.file_size
+        if total_uncompressed > MAX_TOTAL_UNCOMPRESSED_BYTES:
+            raise ValueError("USFM archive exceeds total uncompressed safety limit")
+
+        if info.file_size:
+            if info.compress_size == 0:
+                raise ValueError(f"ZIP member has an unsafe compression ratio: {info.filename}")
+            ratio = info.file_size / info.compress_size
+            if ratio > MAX_COMPRESSION_RATIO:
+                raise ValueError(f"ZIP member compression ratio is too high: {info.filename}")
+
+        if raw_name.lower().endswith(SCRIPTURE_EXTENSIONS):
+            scripture.append(info)
+
+    if not scripture:
+        raise ValueError("USFM archive contains no Scripture files")
+    return scripture
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -151,11 +197,11 @@ def parse_usfm_archive(payload: bytes) -> tuple[dict[tuple[str, int, int], dict[
     index: dict[tuple[str, int, int], dict[str, Any]] = {}
     titles: dict[str, str] = {}
     with zipfile.ZipFile(io.BytesIO(payload)) as archive:
-        members = [name for name in archive.namelist() if name.lower().endswith((".usfm", ".sfm", ".txt"))]
-        if not members:
-            raise ValueError("USFM archive contains no Scripture files")
+        members = _safe_scripture_members(archive)
         for member in members:
             raw = archive.read(member)
+            if len(raw) != member.file_size:
+                raise ValueError(f"ZIP member size changed while reading: {member.filename}")
             try:
                 text = raw.decode("utf-8-sig")
             except UnicodeDecodeError:
@@ -193,8 +239,8 @@ def _download(url: str, attempts: int = 3, timeout: int = 60) -> bytes:
                 },
             )
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                payload = response.read(25 * 1024 * 1024 + 1)
-                if len(payload) > 25 * 1024 * 1024:
+                payload = response.read(MAX_ARCHIVE_DOWNLOAD_BYTES + 1)
+                if len(payload) > MAX_ARCHIVE_DOWNLOAD_BYTES:
                     raise ValueError("Scripture archive exceeds 25 MiB safety limit")
                 if not payload.startswith(b"PK"):
                     raise ValueError("Scripture source did not return a ZIP archive")

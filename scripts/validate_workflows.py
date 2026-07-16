@@ -45,6 +45,9 @@ def main() -> None:
         build,
         (
             "scripts/run_quality_gate.py --strict-native-lanes",
+            "Import latest signed published data for debug APK",
+            "origin/verified-data",
+            'python scripts/verify.py --expected-date "$PUBLISHED_DATE"',
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
@@ -82,6 +85,14 @@ def main() -> None:
         update,
         (
             "scripts/update.py",
+            "--unsigned",
+            "Generate and validate today without signing key",
+            "Validate unsigned language lanes independently",
+            "Prepare publication worktree before restoring key",
+            "Restore and match the one signing key",
+            "Sign and verify generated data",
+            "Remove private key before commit or network publication",
+            'test ! -e "$RUNNER_TEMP/data-private.pem"',
             "scripts/verify.py",
             "DATA_SIGNING_PRIVATE_KEY_B64",
             "environment: production-data-signing",
@@ -110,12 +121,33 @@ def main() -> None:
         if forbidden in update:
             fail(f"Update workflow contains forbidden behavior: {forbidden.strip()}")
 
+    for pattern in (
+        r"scripts/update\.py[^\n]*--private-key",
+        r"scripts/update_language_lane\.py[^\n]*--private-key",
+    ):
+        if re.search(pattern, update):
+            fail(f"External-source generation must remain unsigned: {pattern}")
+
+    ordered_markers = (
+        "Generate and validate today without signing key",
+        "Validate unsigned language lanes independently",
+        "Prepare publication worktree before restoring key",
+        "Restore and match the one signing key",
+        "Sign and verify generated data",
+        "Remove private key before commit or network publication",
+        "Commit, verify Git blobs, and publish verified-data",
+    )
+    positions = [update.index(marker) for marker in ordered_markers]
+    if positions != sorted(positions):
+        fail("Signing key isolation steps are out of order in Update workflow")
+
     if (ROOT / ".github/dependabot.yml").exists():
         fail("Dependabot version-update configuration must remain disabled")
 
     print(
-        "Workflow validation passed: exactly Build and Update; no Dependabot version updates; "
-        "debug checks are separated; Update runs only manually or at 00:00/00:15 Asia/Amman"
+        "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
+        "external-source generation; debug checks are separated; Update runs only manually "
+        "or at 00:00/00:15 Asia/Amman"
     )
 
 
