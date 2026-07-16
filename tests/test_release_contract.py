@@ -310,13 +310,16 @@ class ReleaseContractTests(unittest.TestCase):
         properties = (ROOT / "gradle/wrapper/gradle-wrapper.properties").read_text(encoding="utf-8")
         self.assertTrue((ROOT / "gradlew").exists())
         self.assertTrue((ROOT / "gradlew.bat").exists())
+        def canonical_text_bytes(path):
+            return path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
         self.assertEqual(
             "9cbbb4d68ff7fb5211c4d58f598ac9d8664c05fdcd1e5f59b7f2c3ac1ee00af0",
-            hashlib.sha256((ROOT / "gradlew").read_bytes()).hexdigest(),
+            hashlib.sha256(canonical_text_bytes(ROOT / "gradlew")).hexdigest(),
         )
         self.assertEqual(
             "0f3ed8f03b50934cb8c48b15a470d5c20a30a5385825e48b55bcc8ea3d8f8e18",
-            hashlib.sha256((ROOT / "gradlew.bat").read_bytes()).hexdigest(),
+            hashlib.sha256(canonical_text_bytes(ROOT / "gradlew.bat")).hexdigest(),
         )
         self.assertEqual(
             "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17",

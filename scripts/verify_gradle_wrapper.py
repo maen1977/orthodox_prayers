@@ -17,6 +17,12 @@ EXPECTED_DISTRIBUTION_SHA256 = "d725d707bfabd4dfdc958c624003b3c80accc03f7037b512
 EXPECTED_DISTRIBUTION = "https\\://services.gradle.org/distributions/gradle-8.9-bin.zip"
 
 
+def canonical_text_bytes(path: Path) -> bytes:
+    """Return deterministic LF bytes regardless of Git checkout line endings."""
+    data = path.read_bytes()
+    return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def main() -> None:
     if not WRAPPER.is_file():
         raise SystemExit("Missing gradle/wrapper/gradle-wrapper.jar")
@@ -36,7 +42,7 @@ def main() -> None:
     ):
         if not path.is_file():
             raise SystemExit(f"Missing {path.relative_to(ROOT)}")
-        actual_script = hashlib.sha256(path.read_bytes()).hexdigest()
+        actual_script = hashlib.sha256(canonical_text_bytes(path)).hexdigest()
         if actual_script != expected:
             raise SystemExit(
                 f"Gradle wrapper script checksum mismatch for {path.name}: "
