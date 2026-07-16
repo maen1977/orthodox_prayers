@@ -10,10 +10,10 @@
     "en": "Greek Orthodox Patriarchate of Jerusalem",
     "el": "Πατριαρχεῖον Ἱεροσολύμων"
   },
-  "date_iso": "2026-07-15",
+  "date_iso": "2026-07-16",
   "date_label": {
-    "ar": "الأربعاء 15 تموز 2026 / 2 تموز 2026 بحسب التقويم الكنسي القديم",
-    "en": "Wednesday, July 15, 2026",
+    "ar": "الخميس 16 تموز 2026 / 3 تموز 2026 بحسب التقويم الكنسي القديم",
+    "en": "Thursday, July 16, 2026",
     "el": ""
   },
   "calendar_label": {
@@ -24,53 +24,52 @@
   "julian_date": {
     "year": 2026,
     "month": 7,
-    "day": 2,
-    "label_ar": "2 تموز 2026 بحسب التقويم الكنسي القديم"
+    "day": 3,
+    "label_ar": "3 تموز 2026 بحسب التقويم الكنسي القديم"
   },
   "fast": {
-    "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+    "ar": "لا صوم",
     "en": "",
     "el": ""
   },
   "fast_detail": {
-    "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
+    "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
     "en": "",
     "el": ""
   },
   "fasting": {
-    "code": "strict",
+    "code": "fast_free",
     "season": {
-      "ar": "صوم الأربعاء أو الجمعة",
+      "ar": "يوم عادي",
       "en": "",
       "el": ""
     },
     "title": {
-      "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+      "ar": "لا صوم",
       "en": "",
       "el": ""
     },
     "level": {
-      "ar": "صوم صارم",
+      "ar": "لا صوم",
       "en": "",
       "el": ""
     },
     "detail": {
-      "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
+      "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
       "en": "",
       "el": ""
     },
-    "is_fast": true,
+    "is_fast": false,
     "allowed": {
-      "meat": false,
-      "dairy": false,
-      "eggs": false,
-      "fish": false,
-      "wine": false,
-      "oil": false
+      "meat": true,
+      "dairy": true,
+      "eggs": true,
+      "fish": true,
+      "wine": true,
+      "oil": true
     },
     "display_icons": [
-      "🍞",
-      "💧"
+      "✅"
     ],
     "items": [
       {
@@ -81,7 +80,7 @@
           "en": "",
           "el": ""
         },
-        "allowed": false
+        "allowed": true
       },
       {
         "key": "dairy",
@@ -91,7 +90,7 @@
           "en": "",
           "el": ""
         },
-        "allowed": false
+        "allowed": true
       },
       {
         "key": "eggs",
@@ -101,7 +100,7 @@
           "en": "",
           "el": ""
         },
-        "allowed": false
+        "allowed": true
       },
       {
         "key": "fish",
@@ -111,7 +110,7 @@
           "en": "",
           "el": ""
         },
-        "allowed": false
+        "allowed": true
       },
       {
         "key": "wine",
@@ -121,7 +120,7 @@
           "en": "",
           "el": ""
         },
-        "allowed": false
+        "allowed": true
       },
       {
         "key": "oil",
@@ -131,13 +130,13 @@
           "en": "",
           "el": ""
         },
-        "allowed": false
+        "allowed": true
       }
     ],
     "verification": {
       "status": "TYPICON_BASELINE",
       "policy": "canonical/fasting_policy.json",
-      "rule": "weekly_wednesday_friday",
+      "rule": "ordinary_fast_free",
       "note": {
         "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
         "en": "",
@@ -169,6 +168,7 @@
       "priority": [
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
+        "antioch_archdiocese_tripoli_ar",
         "antioch_patriarchate_ar",
         "ebible_arabic_van_dyck"
       ],
@@ -182,6 +182,7 @@
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
         "goarch_digital_chant_stand_english",
+        "akroasis_small_menaion_english",
         "goarch_synekdemos",
         "oca_official_english",
         "ebible_world_english_bible"
@@ -196,6 +197,7 @@
         "church_of_greece_apostoliki_diakonia",
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
+        "goarch_online_chapel_greek",
         "goarch_digital_chant_stand_greek",
         "ebible_greek_byzantine_1904"
       ],
@@ -229,7 +231,7 @@
     "same_language_fallback_only": true,
     "religious_text_contract": "canonical/source_native_contract.json",
     "daily_availability": "PARTIAL_VERIFIED",
-    "date_published": "2026-07-15",
+    "date_published": "2026-07-16",
     "usable_when_partial": true,
     "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
   },
@@ -239,21 +241,62 @@
       "icon": "🎵",
       "kind": "prokeimenon",
       "title": {
-        "ar": "البروكيمنن",
-        "en": "Prokeimenon",
-        "el": ""
+        "ar": "البروكيمنن — اللحن الثامن",
+        "en": "Prokeimenon — Tone 8",
+        "el": "Προκείμενον — Ἦχος πλ. δ΄"
       },
       "reference": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "مزمور 18:5، 2",
+        "en": "Psalm 18:5, 2 (LXX)",
+        "el": "Ψαλμός 18:5, 2"
       },
       "body": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "إلى كل الأرض خرج صوتهم وإلى أقاصي المسكونة أقوالهم.\nالسماوات تحدث بمجد الله والفلك يخبر بعمل يديه.",
+        "en": "Their proclamation has gone out into all the earth, and their words to the ends of the universe.\nThe heavens declare the glory of God, and the firmament proclaims the work of His hands.",
+        "el": "Εἰς πᾶσαν τὴν γῆν ἐξῆλθεν ὁ φθόγγος αὐτῶν, καὶ εἰς τὰ πέρατα τῆς οἰκουμένης τὰ ῥήματα αὐτῶν.\nΟἱ οὐρανοὶ διηγοῦνται δόξαν Θεοῦ, ποίησιν δὲ χειρῶν αὐτοῦ ἀναγγέλλει τὸ στερέωμα."
       },
-      "publication_status": "BLOCKED_MISSING_OFFICIAL_TEXT",
+      "tone": 8,
+      "source": {
+        "ar": "https://archtripoli.org/",
+        "en": "https://www.goarch.org/chapel",
+        "el": "https://www.goarch.org/chapel"
+      },
+      "native_source_verification": {
+        "ar": {
+          "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+          "source_id": "antioch_archdiocese_tripoli_ar",
+          "source_url": "https://archtripoli.org/",
+          "canonical_reference": "",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "d615abfec65a598b7c53cc4fe5ebb3821cb56cad3e75539197d4689c2909e028",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+          "source_id": "goarch_online_chapel",
+          "source_url": "https://www.goarch.org/chapel",
+          "canonical_reference": "",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "53032f35a57768538b11ae50ddd52fa5ce5e1ae2527cb134620979188b4ea862",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+          "source_id": "goarch_online_chapel_greek",
+          "source_url": "https://www.goarch.org/chapel",
+          "canonical_reference": "",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "75ce56396fd84080ea67d00a71f32aa5950833b84185db20f42856fe5a335542",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      },
+      "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
         "canonical_reference": "",
@@ -261,44 +304,6 @@
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
         "automatic_diacritization_used": false
-      },
-      "source": {
-        "ar": "",
-        "en": "",
-        "el": ""
-      },
-      "translation_locked": true,
-      "native_source_verification": {
-        "ar": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "",
-          "reference_available": false,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
-        },
-        "en": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "",
-          "reference_available": false,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
-        },
-        "el": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "",
-          "reference_available": false,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
-        }
       }
     },
     {
@@ -310,16 +315,16 @@
         "el": ""
       },
       "reference": {
-        "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:12-24",
-        "en": "Paul’s First Letter to the Corinthians 7:12-24",
-        "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:12-24"
+        "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:24-35",
+        "en": "Paul’s First Letter to the Corinthians 7:24-35",
+        "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:24-35"
       },
       "body": {
-        "ar": "وَأَمَّا ٱلْبَاقُونَ، فَأَقُولُ لَهُمْ أَنَا، لَا ٱلرَّبُّ: إِنْ كَانَ أَخٌ لَهُ ٱمْرَأَةٌ غَيْرُ مُؤْمِنَةٍ، وَهِيَ تَرْتَضِي أَنْ تَسْكُنَ مَعَهُ، فَلَا يَتْرُكْهَا.\nوَٱلْمَرْأَةُ ٱلَّتِي لَهَا رَجُلٌ غَيْرُ مُؤْمِنٍ، وَهُوَ يَرْتَضِي أَنْ يَسْكُنَ مَعَهَا، فَلَا تَتْرُكْهُ.\nلِأَنَّ ٱلرَّجُلَ غَيْرَ ٱلْمُؤْمِنِ مُقَدَّسٌ فِي ٱلْمَرْأَةِ، وَٱلْمَرْأَةَ غَيْرَ ٱلْمُؤْمِنَةِ مُقَدَّسَةٌ فِي ٱلرَّجُلِ. وَإِلَّا فَأَوْلَادُكُمْ نَجِسُونَ، وَأَمَّا ٱلْآنَ فَهُمْ مُقَدَّسُونَ.\nوَلَكِنْ إِنْ فَارَقَ غَيْرُ ٱلْمُؤْمِنِ، فَلْيُفَارِقْ. لَيْسَ ٱلْأَخُ أَوِ ٱلْأُخْتُ مُسْتَعْبَدًا فِي مِثْلِ هَذِهِ ٱلْأَحْوَالِ، وَلَكِنَّ ٱللهَ قَدْ دَعَانَا فِي ٱلسَّلَامِ.\nلِأَنَّهُ كَيْفَ تَعْلَمِينَ أَيَّتُهَا ٱلْمَرْأَةُ، هَلْ تُخَلِّصِينَ ٱلرَّجُلَ؟ أَوْ كَيْفَ تَعْلَمُ أَيُّهَا ٱلرَّجُلُ، هَلْ تُخَلِّصُ ٱلْمَرْأَةَ؟\nغَيْرَ أَنَّهُ كَمَا قَسَمَ ٱللهُ لِكُلِّ وَاحِدٍ، كَمَا دَعَا ٱلرَّبُّ كُلَّ وَاحِدٍ، هَكَذَا لِيَسْلُكْ. وَهَكَذَا أَنَا آمُرُ فِي جَمِيعِ ٱلْكَنَائِسِ.\nدُعِيَ أَحَدٌ وَهُوَ مَخْتُونٌ، فَلَا يَصِرْ أَغْلَفَ. دُعِيَ أَحَدٌ فِي ٱلْغُرْلَةِ، فَلَا يَخْتَتِنْ.\nلَيْسَ ٱلْخِتَانُ شَيْئًا، وَلَيْسَتِ ٱلْغُرْلَةُ شَيْئًا، بَلْ حِفْظُ وَصَايَا ٱللهِ.\nاَلدَّعْوَةُ ٱلَّتِي دُعِيَ فِيهَا كُلُّ وَاحِدٍ فَلْيَلْبَثْ فِيهَا.\nدُعِيتَ وَأَنْتَ عَبْدٌ فَلَا يَهُمَّكَ. بَلْ وَإِنِ ٱسْتَطَعْتَ أَنْ تَصِيرَ حُرًّا فَٱسْتَعْمِلْهَا بِٱلْحَرِيِّ.\nلِأَنَّ مَنْ دُعِيَ فِي ٱلرَّبِّ وَهُوَ عَبْدٌ، فَهُوَ عَتِيقُ ٱلرَّبِّ. كَذَلِكَ أَيْضًا ٱلْحُرُّ ٱلْمَدْعُوُّ هُوَ عَبْدٌ لِلْمَسِيحِ.\nقَدِ ٱشْتُرِيتُمْ بِثَمَنٍ، فَلَا تَصِيرُوا عَبِيدًا لِلنَّاسِ.\nمَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ. غير المتزوجين والأرامل",
-        "en": "But to the rest I—not the Lord—say, if any brother has an unbelieving wife, and she is content to live with him, let him not leave her.\nThe woman who has an unbelieving husband, and he is content to live with her, let her not leave her husband.\nFor the unbelieving husband is sanctified in the wife, and the unbelieving wife is sanctified in the husband. Otherwise your children would be unclean, but now they are holy.\nYet if the unbeliever departs, let there be separation. The brother or the sister is not under bondage in such cases, but God has called us in peace.\nFor how do you know, wife, whether you will save your husband? Or how do you know, husband, whether you will save your wife?\nOnly, as the Lord has distributed to each man, as God has called each, so let him walk. So I command in all the assemblies.\nWas anyone called having been circumcised? Let him not become uncircumcised. Has anyone been called in uncircumcision? Let him not be circumcised.\nCircumcision is nothing, and uncircumcision is nothing, but what matters is keeping God’s commandments.\nLet each man stay in that calling in which he was called.\nWere you called being a bondservant? Don’t let that bother you, but if you get an opportunity to become free, use it.\nFor he who was called in the Lord being a bondservant is the Lord’s free man. Likewise he who was called being free is Christ’s bondservant.\nYou were bought with a price. Don’t become bondservants of men.\nBrothers, let each man, in whatever condition he was called, stay in that condition with God.",
-        "el": "τοῖς δὲ λοιποῖς ἐγὼ λέγω, οὐχ ὁ Κύριος· εἴ τις ἀδελφὸς γυναῖκα ἔχει ἄπιστον, καὶ αὐτὴ συνευδοκεῖ οἰκεῖν μετ᾽ αὐτοῦ, μὴ ἀφιέτω αὐτήν·\nκαὶ γυνὴ εἴ τις ἔχει ἄνδρα ἄπιστον, καὶ αὐτὸς συνευδοκεῖ οἰκεῖν μετ᾽ αὐτῆς, μὴ ἀφιέτω αὐτόν.\nἡγίασται γὰρ ὁ ἀνὴρ ὁ ἄπιστος ἐν τῇ γυναικί, καὶ ἡγίασται ἡ γυνὴ ἡ ἄπιστος ἐν τῷ ἀνδρί· ἐπεὶ ἄρα τὰ τέκνα ὑμῶν ἀκάθαρτά ἐστι, νῦν δὲ ἅγιά ἐστιν.\nεἰ δὲ ὁ ἄπιστος χωρίζεται, χωριζέσθω. οὐ δεδούλωται ὁ ἀδελφὸς ἢ ἡ ἀδελφὴ ἐν τοῖς τοιούτοις. ἐν δὲ εἰρήνῃ κέκληκεν ἡμᾶς ὁ Θεός.\nτί γὰρ οἶδας, γύναι, εἰ τὸν ἄνδρα σώσεις; ἢ τί οἶδας, ἄνερ, εἰ τὴν γυναῖκα σώσεις;\nεἰ μὴ ἑκάστῳ ὡς ἐμέρισεν ὁ Θεός, ἕκαστον ὡς κέκληκεν ὁ Κύριος, οὕτω περιπατείτω. καὶ οὕτως ἐν ταῖς ἐκκλησίαις πάσαις διατάσσομαι.\nπεριτετμημένος τις ἐκλήθη; μὴ ἐπισπάσθω. ἐν ἀκροβυστίᾳ τις ἐκλήθη; μὴ περιτεμνέσθω.\nἡ περιτομὴ οὐδέν ἐστι, καὶ ἡ ἀκροβυστία οὐδέν ἐστιν, ἀλλὰ τήρησις ἐντολῶν Θεοῦ.\nἕκαστος ἐν τῇ κλήσει ᾗ ἐκλήθη, ἐν ταύτῃ μενέτω.\nδοῦλος ἐκλήθης; μή σοι μελέτω· ἀλλ᾽ εἰ καὶ δύνασαι ἐλεύθερος γενέσθαι, μᾶλλον χρῆσαι.\nὁ γὰρ ἐν Κυρίῳ κληθεὶς δοῦλος ἀπελεύθερος Κυρίου ἐστίν· ὁμοίως καὶ ὁ ἐλεύθερος κληθεὶς δοῦλός ἐστι Χριστοῦ.\nτιμῆς ἠγοράσθητε· μὴ γίνεσθε δοῦλοι ἀνθρώπων.\nἕκαστος ἐν ᾧ ἐκλήθη, ἀδελφοί, ἐν τούτῳ μενέτω παρὰ τῷ Θεῷ."
+        "ar": "مَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ. غير المتزوجين والأرامل\nوَأَمَّا ٱلْعَذَارَى، فَلَيْسَ عِنْدِي أَمْرٌ مِنَ ٱلرَّبِّ فِيهِنَّ، وَلَكِنَّنِي أُعْطِي رَأْيًا كَمَنْ رَحِمَهُ ٱلرَّبُّ أَنْ يَكُونَ أَمِينًا.\nفَأَظُنُّ أَنَّ هَذَا حَسَنٌ لِسَبَبِ ٱلضِّيقِ ٱلْحَاضِرِ، أَنَّهُ حَسَنٌ لِلْإِنْسَانِ أَنْ يَكُونَ هَكَذَا:\nأَنْتَ مُرْتَبِطٌ بِٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱلِٱنْفِصَالَ. أَنْتَ مُنْفَصِلٌ عَنِ ٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱمْرَأَةً.\nلَكِنَّكَ وَإِنْ تَزَوَّجْتَ لَمْ تُخْطِئْ. وَإِنْ تَزَوَّجَتِ ٱلْعَذْرَاءُ لَمْ تُخْطِئْ. وَلَكِنَّ مِثْلَ هَؤُلَاءِ يَكُونُ لَهُمْ ضِيقٌ فِي ٱلْجَسَدِ. وَأَمَّا أَنَا فَإِنِّي أُشْفِقُ عَلَيْكُمْ.\nفَأَقُولُ هَذَا أَيُّهَا ٱلْإِخْوَةُ: ٱلْوَقْتُ مُنْذُ ٱلْآنَ مُقَصَّرٌ، لِكَيْ يَكُونَ ٱلَّذِينَ لَهُمْ نِسَاءٌ كَأَنْ لَيْسَ لَهُمْ،\nوَٱلَّذِينَ يَبْكُونَ كَأَنَّهُمْ لَا يَبْكُونَ، وَٱلَّذِينَ يَفْرَحُونَ كَأَنَّهُمْ لَا يَفْرَحُونَ، وَٱلَّذِينَ يَشْتَرُونَ كَأَنَّهُمْ لَا يَمْلِكُونَ،\nوَٱلَّذِينَ يَسْتَعْمِلُونَ هَذَا ٱلْعَالَمَ كَأَنَّهُمْ لَا يَسْتَعْمِلُونَهُ. لِأَنَّ هَيْئَةَ هَذَا ٱلْعَالَمِ تَزُولُ.\nفَأُرِيدُ أَنْ تَكُونُوا بِلَا هَمٍّ. غَيْرُ ٱلْمُتَزَوِّجِ يَهْتَمُّ فِي مَا لِلرَّبِّ كَيْفَ يُرْضِي ٱلرَّبَّ،\nوَأَمَّا ٱلْمُتَزَوِّجُ فَيَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ يُرْضِي ٱمْرَأَتَهُ.\nإِنَّ بَيْنَ ٱلزَّوْجَةِ وَٱلْعَذْرَاءِ فَرْقًا: غَيْرُ ٱلْمُتَزَوِّجَةِ تَهْتَمُّ فِي مَا لِلرَّبِّ لِتَكُونَ مُقَدَّسَةً جَسَدًا وَرُوحًا. وَأَمَّا ٱلْمُتَزَوِّجَةُ فَتَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ تُرْضِي رَجُلَهَا.\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.",
+        "en": "Brothers, let each man, in whatever condition he was called, stay in that condition with God.\nNow concerning virgins, I have no commandment from the Lord, but I give my judgment as one who has obtained mercy from the Lord to be trustworthy.\nTherefore I think that because of the distress that is on us, it’s good for a man to remain as he is.\nAre you bound to a wife? Don’t seek to be freed. Are you free from a wife? Don’t seek a wife.\nBut if you marry, you have not sinned. If a virgin marries, she has not sinned. Yet such will have oppression in the flesh, and I want to spare you.\nBut I say this, brothers: the time is short. From now on, both those who have wives may be as though they had none;\nand those who weep, as though they didn’t weep; and those who rejoice, as though they didn’t rejoice; and those who buy, as though they didn’t possess;\nand those who use the world, as not using it to the fullest. For the mode of this world passes away.\nBut I desire to have you to be free from cares. He who is unmarried is concerned for the things of the Lord, how he may please the Lord;\nbut he who is married is concerned about the things of the world, how he may please his wife.\nThere is also a difference between a wife and a virgin. The unmarried woman cares about the things of the Lord, that she may be holy both in body and in spirit. But she who is married cares about the things of the world—how she may please her husband.\nThis I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.",
+        "el": "ἕκαστος ἐν ᾧ ἐκλήθη, ἀδελφοί, ἐν τούτῳ μενέτω παρὰ τῷ Θεῷ.\nΠερὶ δὲ τῶν παρθένων ἐπιταγὴν Κυρίου οὐκ ἔχω, γνώμην δὲ δίδωμι ὡς ἠλεημένος ὑπὸ Κυρίου πιστὸς εἶναι.\nνομίζω οὖν τοῦτο καλὸν ὑπάρχειν διὰ τὴν ἐνεστῶσαν ἀνάγκην, ὅτι καλὸν ἀνθρώπῳ τὸ οὕτως εἶναι.\nδέδεσαι γυναικί; μὴ ζήτει λύσιν· λέλυσαι ἀπὸ γυναικός; μὴ ζήτει γυναῖκα·\nἐὰν δὲ καὶ γήμῃς, οὐχ ἥμαρτες· καὶ ἐὰν γήμῃ ἡ παρθένος, οὐχ ἥμαρτε· θλῖψιν δὲ τῇ σαρκὶ ἕξουσιν οἱ τοιοῦτοι· ἐγὼ δὲ ὑμῶν φείδομαι.\nτοῦτο δέ φημι, ἀδελφοί, ὁ καιρὸς συνεσταλμένος τὸ λοιπόν ἐστιν, ἵνα καὶ οἱ ἔχοντες γυναῖκας ὡς μὴ ἔχοντες ὦσι,\nκαὶ οἱ κλαίοντες ὡς μὴ κλαίοντες, καὶ οἱ χαίροντες ὡς μὴ χαίροντες, καὶ οἱ ἀγοράζοντες ὡς μὴ κατέχοντες,\nκαὶ οἱ χρώμενοι τῷ κόσμῳ τούτῳ ὡς μὴ καταχρώμενοι· παράγει γὰρ τὸ σχῆμα τοῦ κόσμου τούτου.\nθέλω δὲ ὑμᾶς ἀμερίμνους εἶναι. ὁ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, πῶς ἀρέσει τῷ Κυρίῳ·\nὁ δὲ γαμήσας μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῇ γυναικί.\nμεμέρισται [καὶ] ἡ γυνὴ καὶ ἡ παρθένος. ἡ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, ἵνα ᾖ ἁγία καὶ σώματι καὶ πνεύματι· ἡ δὲ γαμήσασα μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῷ ἀνδρί.\nτοῦτο δὲ πρὸς τὸ ὑμῶν αὐτῶν συμφέρον λέγω, οὐχ ἵνα βρόχον ὑμῖν ἐπιβάλω, ἀλλὰ πρὸς τὸ εὔσχημον καὶ εὐπάρεδρον τῷ Κυρίῳ ἀπερισπάστως."
       },
-      "discovery_text": "12 But to the rest speak I, not the Lord: If any brother hath a wife that believeth not, and she be pleased to dwell with him, let him not put her away.\n13 And the woman which hath an husband that believeth not, and if he be pleased to dwell with her, let her not leave him.\n14 For the unbelieving husband is sanctified by the wife, and the unbelieving wife is sanctified by the husband: else were your children unclean; but now are they holy.\n15 But if the unbelieving depart, let him depart. A brother or a sister is not under bondage in such cases: but God hath called us to peace.\n16 For what knowest thou, O wife, whether thou shalt save thy husband? or how knowest thou, O man, whether thou shalt save thy wife?\n17 But as God hath distributed to every man, as the Lord hath called every one, so let him walk. And so ordain I in all churches.\n18 Is any man called being circumcised? let him not become uncircumcised. Is any called in uncircumcision? let him not be circumcised.\n19 Circumcision is nothing, and uncircumcision is nothing, but the keeping of the commandments of God.\n20 Let every man abide in the same calling wherein he was called.\n21 Art thou called being a servant? care not for it: but if thou mayest be made free, use it rather.\n22 For he that is called in the Lord, being a servant, is the Lord’s freeman: likewise also he that is called, being free, is Christ’s servant.\n23 Ye are bought with a price; be not ye the servants of men.\n24 Brethren, let every man, wherein he is called, therein abide with God.",
+      "discovery_text": "24 Brethren, let every man, wherein he is called, therein abide with God.\n25 Now concerning virgins I have no commandment of the Lord: yet I give my judgment, as one that hath obtained mercy of the Lord to be faithful.\n26 I suppose therefore that this is good for the present distress, I say, that it is good for a man so to be.\n27 Art thou bound unto a wife? seek not to be loosed. Art thou loosed from a wife? seek not a wife.\n28 But and if thou marry, thou hast not sinned; and if a virgin marry, she hath not sinned. Nevertheless such shall have trouble in the flesh: but I spare you.\n29 But this I say, brethren, the time is short: it remaineth, that both they that have wives be as though they had none;\n30 And they that weep, as though they wept not; and they that rejoice, as though they rejoiced not; and they that buy, as though they possessed not;\n31 And they that use this world, as not abusing it: for the fashion of this world passeth away.\n32 But I would have you without carefulness. He that is unmarried careth for the things that belong to the Lord, how he may please the Lord:\n33 But he that is married careth for the things that are of the world, how he may please his wife.\n34 There is difference also between a wife and a virgin. The unmarried woman careth for the things of the Lord, that she may be holy both in body and in spirit: but she that is married careth for the things of the world, how she may please her husband.\n35 And this I speak for your own profit; not that I may cast a snare upon you, but for that which is comely, and that ye may attend upon the Lord without distraction.",
       "source": {
         "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
         "en": "https://ebible.org/Scriptures/eng-web_usfm.zip",
@@ -327,7 +332,7 @@
       },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "1CO.7.12-24",
+        "canonical_reference": "1CO.7.24-35",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -338,25 +343,24 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_arabic_van_dyck",
           "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-          "canonical_reference": "1CO.7.12-24",
+          "canonical_reference": "1CO.7.24-35",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "4fb5ba622ecd6a44430bbd78759edaf073ae2c3c40eb78028ca61ea9b51c8db3",
-          "verse_count": 13,
+          "text_sha256": "ce5d588d7db34c10f3600229f0988dfb783df6ddda180a4afbf5a29db10fec07",
+          "verse_count": 12,
           "verse_hashes": [
-            "9f1b845fe1bfa7a6f58ca86c0862f716e4494f18a2e8ee9205a2b5b91623e1d6",
-            "c2eff9b38040349a7d4eadbd2d336ec044fee3d675a22ee22f9ee216304845ae",
-            "a5b0e48e99e14882950af82772ac3b284edf7b42437b0b84e3ff7762130f7263",
-            "a26aee789f83c309e740ed6cd3e67bab14dec9f014aabd5a7aaddf7fc277e913",
-            "f8d5c9f9ee6c2c222227acebf4ceb91e48f79d6d93bf26c7e89cb55aac2852b5",
-            "45cd49c6c1913a716242c0ce513f58060d51e3ed28a59d36a66bedcd67e6a4c9",
-            "9ab580ce20ec7d744fd3c6305cb0455f3a16baa3879db36a7e5e899ebf54ef11",
-            "86219385ccb9e611f4adb827b60614143be02e6a985c35ce6e8d74027d3342aa",
-            "13f601da34c2471fcff1459d19f776e0fd86a68b9f549fc606dc9c537b9247d2",
-            "fd8b1edcf565dd9d392ef922adb35f63b5069265cfdfe03dbaa9297e8a7648ce",
-            "7459148a56000e1eb79e582f3e728eecd2265d91c1d8cd848468430392981fed",
-            "92deef89d9547c3127a3eb46b3d7130d62cac7bf0da9067b8ae39ecb0d391c29",
-            "68ae60399d212a3d88a2c39e31000bab7f973a9cb6c3439e062cbaa07e6f6be4"
+            "68ae60399d212a3d88a2c39e31000bab7f973a9cb6c3439e062cbaa07e6f6be4",
+            "82e48d2af8194e6247f3d346f8bb4b998be8a5a8b4740c255001a07e71b4908e",
+            "f379c1ca07e88eaab934533f2f373d6dafedb6333e93efb86d1d49c178e98573",
+            "b5488c5a52e89f8619e9b0c3a8bd4bc9906be59e09bd7ba54d23074b0c90a618",
+            "fc29cbe7a998bea6ece7062a38500ef8ef70966a36e1f33298004dc5f6822bd1",
+            "cb05d31d05c5bec61e47e58f5430bf34b60f34afa90262b50d0af97ffa5ea916",
+            "dbac716d5784a31bb56c34c41c87c0684a65be6092e098f9a482ccb7ddeb5abb",
+            "a95935f8a888c2e70699cdaae9b63b35c903a3152fd210e662d994f3ea2d6a32",
+            "6cd2f3dc838dd197853a4f80b7022bbae36a47528f05756e8132af0037766581",
+            "4f4b901a1ae17c857cb57583260ea4d330d3155a4899550be6aafe74b3d5f82b",
+            "cdb5d8423f8c742666027dec01c0cc144bbf17ca8aad5328e54bf2883917c50b",
+            "ef76d37ff5560ff2a07761ec9c90b071e2d930f503c2983ede05f343167b4a46"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -371,25 +375,24 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
           "source_url": "https://ebible.org/Scriptures/eng-web_usfm.zip",
-          "canonical_reference": "1CO.7.12-24",
+          "canonical_reference": "1CO.7.24-35",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "aaaf448ae5708d69741b34372a7c93c0a3a8377b8a91d778600892ea2d2bcea4",
-          "verse_count": 13,
+          "text_sha256": "c69ae05018cebfe4ca561b36cb8447ed209cdbd22566fe9be33e9b5309b14b04",
+          "verse_count": 12,
           "verse_hashes": [
-            "126d54693ad2102c5937b7c74262dd302210a50da4bf96aaf3f3973d007b2986",
-            "7eba4ac4b8ee3e43438965ab13390d3f76d1ec8fd989ab70b1af96a61da663f4",
-            "c310dad935d9831ea2a86bb1d444b8102286f7ee13639007dd436241433a1a50",
-            "c0a5d4e6fd08a018f9e7b362ab31fd1da460c74a94d9f5fffbd54efab7bbc231",
-            "afeb3b2ea0558758ecd9b01ee5d3f4e47fb1701bedaa48279c1b6386f979ab09",
-            "b005c638599e60f4991a463e14bd8e4d5468012e16de49d91a10f803a3bbb9b1",
-            "b7b80b67945cb855815da21eca3e254761f77f8302d6fde2ae991992583aff74",
-            "4a918924d8ebe33949be6d19b312420d94e77850a972e4ac642390d695c64171",
-            "020f8341db10c14c7ec09887cad708d8420b9d486ffed22890567ed610acd13b",
-            "11246798e414af5882510cebcb53e1071b9976e1eb53c84c33e84b46ef220cf6",
-            "76c9fb538fcab23cb1365567e10b22e6fb44c0f8c28d9a25c5244314ede01db3",
-            "9d2316638e01f24ffc49c49d07dafbd7f2373478deee308dcede649a79f3b964",
-            "fe71d057184a5eb4239875dbb2b97432f768708acc57b46f910bb11411dca281"
+            "fe71d057184a5eb4239875dbb2b97432f768708acc57b46f910bb11411dca281",
+            "55691b6144aee925d1c5b4b658c3d127763a16c178cb6d4560689f955e66924a",
+            "6f1896c4ca26c013640dbe8fed223a745f7cefa7f78d63e3f1e8defe83a759f3",
+            "2b3bc9fe76ad6d29da4cb7222d44a0e52e43f8e6dd211cc864e93c2767d05e88",
+            "8be072ccbd658b29eb13a943b2518bc296cb448370d71f4330f3e0493138b745",
+            "d9fd97bf1b0a6fc78acb23094b2702955e4cce9f6993689da77ce605ab3e4874",
+            "5b7e0ad58f1c1cf70bebd52e99210fa4813b5d2fe13e1f17d48677e825c34999",
+            "b6c4db61b5ad54bbd6bb0a08c7b61413e43bd154cb425c8ea4bdde79c77572db",
+            "5eaaec5225283d2b0162cae8a3f4a4e7f63b659da387dc6aeef0df9369fa968c",
+            "0b248c775689d3f26b00716773a6a18e2c6239cbc533b5bff7058d7a8bd297f9",
+            "fcabc1a602244604fed1918f3387b7ad12160826b1b59e61a71d54bc26dd01ab",
+            "9d4ebe5f719df1e74ff9a513cc7f898fb221855ace21d10c23db2d48abb702fb"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -404,25 +407,24 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_greek_byzantine_1904",
           "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-          "canonical_reference": "1CO.7.12-24",
+          "canonical_reference": "1CO.7.24-35",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "66ef0a643b70668be896d449c93ad32dd67f97bbb2848b2ad08c52cf4bff6b34",
-          "verse_count": 13,
+          "text_sha256": "e7a5de69e9b31214d443928ddecae1ad38077a03e4ad2bb136660ef49ecf0d9b",
+          "verse_count": 12,
           "verse_hashes": [
-            "15944f7b3d6917a07b2a282e1471e14423d1b0361e2d91eb57ea1e48d47ece7e",
-            "06a7fb95d1cd6d8ca2e27909045cb98468f214f8532b732d1f98c99154f1c803",
-            "1468037cb0d4759b20d34d1efeb527708336714b6fdb8d951c739b913d55d418",
-            "c84308f7efb37ba77e4157986a7df28be4e8dad6091675d921e955537cc8b98b",
-            "c551664f3b6511968741303d78d6e8bc67fd0e0321bba683d96e9a5412a7ecd0",
-            "7c1f51b0204d021e8584843b554e62089b6d5eb637e9a8d23401b4337126ff82",
-            "b2f1547bd581c22e9707032b1e9e0f5bd9d7564c47ebe91ca53fc42521314dbb",
-            "26ff26a25622869c673f883d226e77bb12790f065244e9d5350b962c0b2b5412",
-            "4fafb5bd91bf0fe71535d5689823a7fe9e9514bb90b1924c98185fb6efe3da67",
-            "2ca21cc01a97aef7d26fd8e7b646d980bf3f386ec70cc16ae182781bf3db2de0",
-            "141b02141e26b1fc0839e88115b16b306240d485c10aca62f642094368a7ef33",
-            "8b2888bad173b38e9a6274a56f3b82eb34ac859407ab8d92841fdf1c627ea9ee",
-            "2c5453170b6decbe9e789d8c7a756919c5d392623f9b9a76af4a7e41db332731"
+            "2c5453170b6decbe9e789d8c7a756919c5d392623f9b9a76af4a7e41db332731",
+            "c23a0dc0be0d7a349ed2338026e3554652a9ea71214e560127e568cf31baa341",
+            "2bf675491471d52cd283daa2e3068e3468ed38198900ba2b4cadca3d79d68c78",
+            "a9a72c2255add753fb31f1a4a1f914c0a5a2142852d4f4f06354e86b6fd4b42a",
+            "7fbf26da90025e8fa5091a8094a911a46fcb727029031ed32c86a8e887e685db",
+            "59779fe6978ec0762f72962dda0413e511f6857b1dca327f5bafa80256f3bbb5",
+            "a81d32ce10562ce021459922de3a29f3380ea20ed722c746b318c6cab487a3ba",
+            "817e36a58185740edecb47a12178316f2b8a3d2ca49a766ced7f4255dd7edaf3",
+            "bf0f6795031e545b195399589918af2cb4f49512c732bafcdcee0820dc9e26aa",
+            "b1e92e20a7766ea7aeb860e41062bc2e76d297a7d2eeaae80c2a1b9934b2c1a8",
+            "87fcaf3ede766f2eb343950cb9ffec40f3f8902deb093e843bd124b310b3ecd4",
+            "b5402f7bcc719567a10365f0832769101421c5f9ee35b40df031efefb4898b43"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -445,16 +447,16 @@
         "el": ""
       },
       "reference": {
-        "ar": "إِنْجِيلُ مَتَّى 14:35-15:11",
-        "en": "The Good News According to Matthew 14:35-15:11",
-        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:35-15:11"
+        "ar": "إِنْجِيلُ مَتَّى 15:12-21",
+        "en": "The Good News According to Matthew 15:12-21",
+        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 15:12-21"
       },
       "body": {
-        "ar": "فَعَرَفَهُ رِجَالُ ذَلِكَ ٱلْمَكَانِ. فَأَرْسَلُوا إِلَى جَمِيعِ تِلْكَ ٱلْكُورَةِ ٱلْمُحِيطَةِ وَأَحْضَرُوا إِلَيْهِ جَمِيعَ ٱلْمَرْضَى،\nوَطَلَبُوا إِلَيْهِ أَنْ يَلْمِسُوا هُدْبَ ثَوْبِهِ فَقَطْ. فَجَمِيعُ ٱلَّذِينَ لَمَسُوهُ نَالُوا ٱلشِّفَاءَ.\nحِينَئِذٍ جَاءَ إِلَى يَسُوعَ كَتَبَةٌ وَفَرِّيسِيُّونَ ٱلَّذِينَ مِنْ أُورُشَلِيمَ قَائِلِينَ:\n«لِمَاذَا يَتَعَدَّى تَلَامِيذُكَ تَقْلِيدَ ٱلشُّيُوخِ، فَإِنَّهُمْ لَا يَغْسِلُونَ أَيْدِيَهُمْ حِينَمَا يَأْكُلُونَ خُبْزًا؟».\nفَأَجَابَ وَقَالَ لَهُمْ: «وَأَنْتُمْ أَيْضًا، لِمَاذَا تَتَعَدَّوْنَ وَصِيَّةَ ٱللهِ بِسَبَبِ تَقْلِيدِكُمْ؟\nفَإِنَّ ٱللهَ أَوْصَى قَائِلًا: أَكْرِمْ أَبَاكَ وَأُمَّكَ، وَمَنْ يَشْتِمْ أَبًا أَوْ أُمًّا فَلْيَمُتْ مَوْتًا.\nوَأَمَّا أَنْتُمْ فَتَقُولُونَ: مَنْ قَالَ لِأَبِيهِ أَوْ أُمِّهِ: قُرْبَانٌ هُوَ ٱلَّذِي تَنْتَفِعُ بِهِ مِنِّي. فَلَا يُكْرِمُ أَبَاهُ أَوْ أُمَّهُ.\nفَقَدْ أَبْطَلْتُمْ وَصِيَّةَ ٱللهِ بِسَبَبِ تَقْلِيدِكُمْ!\nيَا مُرَاؤُونَ! حَسَنًا تَنَبَّأَ عَنْكُمْ إِشَعْيَاءُ قَائِلًا:\nيَقْتَرِبُ إِلَيَّ هَذَا ٱلشَّعْبُ بِفَمِهِ، وَيُكْرِمُنِي بِشَفَتَيْهِ، وَأَمَّا قَلْبُهُ فَمُبْتَعِدٌ عَنِّي بَعِيدًا.\nوَبَاطِلًا يَعْبُدُونَنِي وَهُمْ يُعَلِّمُونَ تَعَالِيمَ هِيَ وَصَايَا ٱلنَّاسِ».\nثُمَّ دَعَا ٱلْجَمْعَ وَقَالَ لَهُمُ: «ٱسْمَعُوا وَٱفْهَمُوا.\nلَيْسَ مَا يَدْخُلُ ٱلْفَمَ يُنَجِّسُ ٱلْإِنْسَانَ، بَلْ مَا يَخْرُجُ مِنَ ٱلْفَمِ هَذَا يُنَجِّسُ ٱلْإِنْسَانَ».",
-        "en": "When the people of that place recognized him, they sent into all that surrounding region and brought to him all who were sick;\nand they begged him that they might just touch the fringe of his garment. As many as touched it were made whole.\nThen Pharisees and scribes came to Jesus from Jerusalem, saying,\n“Why do your disciples disobey the tradition of the elders? For they don’t wash their hands when they eat bread.”\nHe answered them, “\\+w Why|strong=\"G5101\"\\+w* \\+w do|strong=\"G5101\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w also|strong=\"G2532\"\\+w* \\+w disobey|strong=\"G3845\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w commandment|strong=\"G1785\"\\+w* \\+w of|strong=\"G1223\"\\+w* \\+w God|strong=\"G2316\"\\+w* \\+w because|strong=\"G1223\"\\+w* \\+w of|strong=\"G1223\"\\+w* \\+w your|strong=\"G1223\"\\+w* \\+w tradition|strong=\"G3862\"\\+w*?\n\\+w For|strong=\"G1063\"\\+w* \\+w God|strong=\"G2316\"\\+w* \\+w commanded|strong=\"G1781\"\\+w*, ‘\\+w Honor|strong=\"G5091\"\\+w* \\+w your|strong=\"G5091\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w and|strong=\"G2532\"\\+w* \\+w your|strong=\"G5091\"\\+w* \\+w mother|strong=\"G3384\"\\+w*,’ \\+w and|strong=\"G2532\"\\+w*, ‘\\+w He|strong=\"G2532\"\\+w* \\+w who|strong=\"G3588\"\\+w* \\+w speaks|strong=\"G3004\"\\+w* \\+w evil|strong=\"G2551\"\\+w* \\+w of|strong=\"G2316\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w or|strong=\"G2228\"\\+w* \\+w mother|strong=\"G3384\"\\+w*, \\+w let|strong=\"G1063\"\\+w* \\+w him|strong=\"G3588\"\\+w* \\+w be|strong=\"G2532\"\\+w* \\+w put|strong=\"G5053\"\\+w* \\+w to|strong=\"G2532\"\\+w* \\+w death|strong=\"G2288\"\\+w*.’\n\\+w But|strong=\"G1161\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w say|strong=\"G3004\"\\+w*, ‘\\+w Whoever|strong=\"G3739\"\\+w* \\+w may|strong=\"G3004\"\\+w* \\+w tell|strong=\"G3004\"\\+w* \\+w his|strong=\"G3739\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w or|strong=\"G2228\"\\+w* \\+w his|strong=\"G3739\"\\+w* \\+w mother|strong=\"G3384\"\\+w*, “\\+w Whatever|strong=\"G3739\"\\+w* \\+w help|strong=\"G5623\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w might|strong=\"G5210\"\\+w* \\+w otherwise|strong=\"G1161\"\\+w* \\+w have|strong=\"G1473\"\\+w* gotten \\+w from|strong=\"G1537\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w is|strong=\"G3588\"\\+w* \\+w a|strong=\"G1437\"\\+w* \\+w gift|strong=\"G1435\"\\+w* devoted \\+w to|strong=\"G3004\"\\+w* \\+w God|strong=\"G3004\"\\+w*,”\n\\+w he|strong=\"G2532\"\\+w* \\+w shall|strong=\"G2532\"\\+w* \\+w not|strong=\"G3361\"\\+w* \\+w honor|strong=\"G5091\"\\+w* \\+w his|strong=\"G1223\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w or|strong=\"G2532\"\\+w* mother.’ \\+w You|strong=\"G5210\"\\+w* \\+w have|strong=\"G2532\"\\+w* \\+w made|strong=\"G2316\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w commandment|strong=\"G3056\"\\+w* \\+w of|strong=\"G3056\"\\+w* \\+w God|strong=\"G2316\"\\+w* void \\+w because|strong=\"G1223\"\\+w* \\+w of|strong=\"G3056\"\\+w* \\+w your|strong=\"G1223\"\\+w* \\+w tradition|strong=\"G3862\"\\+w*.\n\\+w You|strong=\"G5210\"\\+w* \\+w hypocrites|strong=\"G5273\"\\+w*! \\+w Well|strong=\"G2573\"\\+w* \\+w did|strong=\"G2573\"\\+w* \\+w Isaiah|strong=\"G2268\"\\+w* \\+w prophesy|strong=\"G4395\"\\+w* \\+w of|strong=\"G4012\"\\+w* \\+w you|strong=\"G5210\"\\+w*, \\+w saying|strong=\"G3004\"\\+w*,\n‘\\+w These|strong=\"G3778\"\\+w* \\+w people|strong=\"G2992\"\\+w* draw near \\+w to|strong=\"G1161\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w with|strong=\"G2588\"\\+w* \\+w their|strong=\"G3588\"\\+w* mouth, \\+w and|strong=\"G1161\"\\+w* \\+w honor|strong=\"G5091\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w with|strong=\"G2588\"\\+w* \\+w their|strong=\"G3588\"\\+w* \\+w lips|strong=\"G5491\"\\+w*; \\+w but|strong=\"G1161\"\\+w* \\+w their|strong=\"G3588\"\\+w* \\+w heart|strong=\"G2588\"\\+w* \\+w is|strong=\"G3588\"\\+w* \\+w far|strong=\"G4206\"\\+w* \\+w from|strong=\"G3588\"\\+w* \\+w me|strong=\"G1473\"\\+w*.\n\\+w And|strong=\"G1161\"\\+w* \\+w they|strong=\"G1161\"\\+w* \\+w worship|strong=\"G4576\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w in|strong=\"G1161\"\\+w* \\+w vain|strong=\"G3155\"\\+w*, \\+w teaching|strong=\"G1321\"\\+w* \\+w as|strong=\"G1161\"\\+w* \\+w doctrine|strong=\"G1319\"\\+w* rules \\+w made|strong=\"G1161\"\\+w* \\+w by|strong=\"G1473\"\\+w* men.’”\nHe summoned the multitude, and said to them, “Hear, \\+w and|strong=\"G2532\"\\+w* \\+w understand|strong=\"G4920\"\\+w*.\n\\+w That|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w enters|strong=\"G1525\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* doesn’\\+w t|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w man|strong=\"G3778\"\\+w*; \\+w but|strong=\"G3588\"\\+w* \\+w that|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w proceeds|strong=\"G1607\"\\+w* \\+w out|strong=\"G1537\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w mouth|strong=\"G4750\"\\+w*, \\+w this|strong=\"G3778\"\\+w* \\+w defiles|strong=\"G2840\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w man|strong=\"G3778\"\\+w*.”",
-        "el": "καὶ ἐπιγνόντες αὐτὸν οἱ ἄνδρες τοῦ τόπου ἐκείνου ἀπέστειλαν εἰς ὅλην τὴν περίχωρον ἐκείνην, καὶ προσήνεγκαν αὐτῷ πάντας τοὺς κακῶς ἔχοντας,\nκαὶ παρεκάλουν αὐτὸν ἵνα κἂν μόνον ἅψωνται τοῦ κρασπέδου τοῦ ἱματίου αὐτοῦ· καὶ ὅσοι ἥψαντο διεσώθησαν.\nΤότε προσέρχονται τῷ Ἰησοῦ οἱ ἀπὸ Ἱεροσολύμων γραμματεῖς καὶ Φαρισαῖοι λέγοντες·\nδιατί οἱ μαθηταί σου παραβαίνουσι τὴν παράδοσιν τῶν πρεσβυτέρων; οὐ γὰρ νίπτονται τὰς χεῖρας αὐτῶν ὅταν ἄρτον ἐσθίωσιν.\nὁ δὲ ἀποκριθεὶς εἶπεν αὐτοῖς· διατί καὶ ὑμεῖς παραβαίνετε τὴν ἐντολὴν τοῦ Θεοῦ διὰ τὴν παράδοσιν ὑμῶν;\nὁ γὰρ Θεὸς ἐνετείλατο λέγων· \\+w τίμα|strong=\"G5091\"\\+w* \\+w τὸν|strong=\"G3588\"\\+w* \\+w πατέρα|strong=\"G3962\"\\+w* \\+w καὶ|strong=\"G2532\"\\+w* \\+w τὴν|strong=\"G3588\"\\+w* \\+w μητέρα|strong=\"G3384\"\\+w*· καί· \\+w ὁ|strong=\"G3588\"\\+w* \\+w κακολογῶν|strong=\"G2551\"\\+w* \\+w πατέρα|strong=\"G3962\"\\+w* \\+w ἢ|strong=\"G3588\"\\+w* \\+w μητέρα|strong=\"G3384\"\\+w* \\+w θανάτῳ|strong=\"G2288\"\\+w* \\+w τελευτάτω|strong=\"G5053\"\\+w*.\nὑμεῖς δὲ λέγετε· ὃς ἂν εἴπῃ τῷ πατρὶ ἢ τῇ μητρί, δῶρον ὃ ἐὰν ἐξ ἐμοῦ ὠφεληθῇς, καὶ οὐ μὴ τιμήσῃ τὸν πατέρα αὐτοῦ ἢ τὴν μητέρα αὐτοῦ·\nκαὶ ἠκυρώσατε τὴν ἐντολὴν τοῦ Θεοῦ διὰ τὴν παράδοσιν ὑμῶν.\nὑποκριταί! καλῶς προεφήτευσε περὶ ὑμῶν Ἡσαΐας λέγων·\n\\+w ἐγγίζει|strong=\"G1448\"\\+w* \\+w μοι|strong=\"G1473\"\\+w* \\+w ὁ|strong=\"G3588\"\\+w* \\+w λαὸς|strong=\"G2992\"\\+w* \\+w οὗτος|strong=\"G3778\"\\+w* \\+w τῷ|strong=\"G3588\"\\+w* \\+w στόματι|strong=\"G4750\"\\+w* \\+w αὐτῶν|strong=\"G0846\"\\+w* \\+w καὶ|strong=\"G2532\"\\+w* \\+w τοῖς|strong=\"G3588\"\\+w* χείλεσί \\+w με|strong=\"G1473\"\\+w* \\+w τιμᾷ|strong=\"G5091\"\\+w*, \\+w ἡ|strong=\"G3588\"\\+w* \\+w δὲ|strong=\"G1161\"\\+w* \\+w καρδία|strong=\"G2588\"\\+w* \\+w αὐτῶν|strong=\"G0846\"\\+w* \\+w πόρρω|strong=\"G4206\"\\+w* \\+w ἀπέχει|strong=\"G0568\"\\+w* \\+w ἀπ|strong=\"G0575\"\\+w*᾽ \\+w ἐμοῦ|strong=\"G1473\"\\+w*·\n\\+w μάτην|strong=\"G3155\"\\+w* \\+w δὲ|strong=\"G1161\"\\+w* \\+w σέβονταί|strong=\"G4576\"\\+w* \\+w με|strong=\"G1473\"\\+w*, \\+w διδάσκοντες|strong=\"G1321\"\\+w* \\+w διδασκαλίας|strong=\"G1319\"\\+w* \\+w ἐντάλματα|strong=\"G1778\"\\+w* \\+w ἀνθρώπων|strong=\"G0444\"\\+w*.\nΚαὶ προσκαλεσάμενος τὸν ὄχλον εἶπεν αὐτοῖς· ἀκούετε καὶ συνίετε·\nοὐ τὸ εἰσερχόμενον εἰς τὸ στόμα κοινοῖ τὸν ἄνθρωπον, ἀλλὰ τὸ ἐκπορευόμενον ἐκ τοῦ στόματος τοῦτο κοινοῖ τὸν ἄνθρωπον."
+        "ar": "حِينَئِذٍ تَقَدَّمَ تَلَامِيذُهُ وَقَالُوا لَهُ: «أَتَعْلَمُ أَنَّ ٱلْفَرِّيسِيِّينَ لَمَّا سَمِعُوا ٱلْقَوْلَ نَفَرُوا؟».\nفَأَجَابَ وَقَالَ: «كُلُّ غَرْسٍ لَمْ يَغْرِسْهُ أَبِي ٱلسَّمَاوِيُّ يُقْلَعُ.\nاُتْرُكُوهُمْ. هُمْ عُمْيَانٌ قَادَةُ عُمْيَانٍ. وَإِنْ كَانَ أَعْمَى يَقُودُ أَعْمَى يَسْقُطَانِ كِلَاهُمَا فِي حُفْرَةٍ».\nفَأَجَابَ بُطْرُسُ وَقَالَ لَهُ: «فَسِّرْ لَنَا هَذَا ٱلْمَثَلَ».\nفَقَالَ يَسُوعُ: «هَلْ أَنْتُمْ أَيْضًا حَتَّى ٱلْآنَ غَيْرُ فَاهِمِينَ؟\nأَلَا تَفْهَمُونَ بَعْدُ أَنَّ كُلَّ مَا يَدْخُلُ ٱلْفَمَ يَمْضِي إِلَى ٱلْجَوْفِ وَيَنْدَفِعُ إِلَى ٱلْمَخْرَجِ؟\nوَأَمَّا مَا يَخْرُجُ مِنَ ٱلْفَمِ فَمِنَ ٱلْقَلْبِ يَصْدُرُ، وَذَاكَ يُنَجِّسُ ٱلْإِنْسَانَ،\nلِأَنْ مِنَ ٱلْقَلْبِ تَخْرُجُ أَفْكَارٌ شِرِّيرَةٌ: قَتْلٌ، زِنىً، فِسْقٌ، سِرْقَةٌ، شَهَادَةُ زُورٍ، تَجْدِيفٌ.\nهَذِهِ هِيَ ٱلَّتِي تُنَجِّسُ ٱلْإِنْسَانَ. وَأَمَّا ٱلْأَ كْلُ بِأَيْدٍ غَيْرِ مَغْسُولَةٍ فَلَا يُنَجِّسُ ٱلْإِنْسَانَ». إيمان المرأة الكنعانية\nثُمَّ خَرَجَ يَسُوعُ مِنْ هُنَاكَ وَٱنْصَرَفَ إِلَى نَوَاحِي صُورَ وَصَيْدَاءَ.",
+        "en": "Then the disciples came and said to him, “Do you know that the Pharisees were offended when they heard this saying?”\nBut he answered, “\\+w Every|strong=\"G3956\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w which|strong=\"G3739\"\\+w* \\+w my|strong=\"G3956\"\\+w* \\+w heavenly|strong=\"G3770\"\\+w* \\+w Father|strong=\"G3962\"\\+w* didn’\\+w t|strong=\"G3588\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w will|strong=\"G3739\"\\+w* \\+w be|strong=\"G3756\"\\+w* \\+w uprooted|strong=\"G1610\"\\+w*.\nLeave \\+w them|strong=\"G1438\"\\+w* \\+w alone|strong=\"G1438\"\\+w*. \\+w They|strong=\"G1161\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guides|strong=\"G3595\"\\+w* \\+w of|strong=\"G1519\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*. \\+w If|strong=\"G1437\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guide|strong=\"G3595\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*, \\+w both|strong=\"G1161\"\\+w* \\+w will|strong=\"G1510\"\\+w* \\+w fall|strong=\"G4098\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w a|strong=\"G1519\"\\+w* pit.”\nPeter answered him, “Explain the parable to us.”\nSo Jesus said, “\\+w Do|strong=\"G2532\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w also|strong=\"G2532\"\\+w* still \\+w not|strong=\"G1510\"\\+w* understand?\nDon’\\+w t|strong=\"G3588\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w understand|strong=\"G3539\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w whatever|strong=\"G3956\"\\+w* \\+w goes|strong=\"G1531\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w passes|strong=\"G5562\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w belly|strong=\"G2836\"\\+w* \\+w and|strong=\"G2532\"\\+w* \\+w then|strong=\"G2532\"\\+w* \\+w out|strong=\"G1544\"\\+w* \\+w of|strong=\"G2532\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w body|strong=\"G1519\"\\+w*?\n\\+w But|strong=\"G1161\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w things|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w proceed|strong=\"G1607\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w*, \\+w and|strong=\"G1161\"\\+w* \\+w they|strong=\"G1161\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w man|strong=\"G2588\"\\+w*.\n\\+w For|strong=\"G1063\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w evil|strong=\"G4190\"\\+w* \\+w thoughts|strong=\"G1261\"\\+w*, \\+w murders|strong=\"G5408\"\\+w*, \\+w adulteries|strong=\"G3430\"\\+w*, \\+w sexual|strong=\"G4202\"\\+w* sins, \\+w thefts|strong=\"G2829\"\\+w*, \\+w false|strong=\"G5577\"\\+w* \\+w testimony|strong=\"G5577\"\\+w*, \\+w and|strong=\"G1831\"\\+w* blasphemies.\n\\+w These|strong=\"G3778\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w things|strong=\"G3778\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*; \\+w but|strong=\"G1161\"\\+w* \\+w to|strong=\"G3756\"\\+w* \\+w eat|strong=\"G2068\"\\+w* \\+w with|strong=\"G5495\"\\+w* unwashed \\+w hands|strong=\"G5495\"\\+w* doesn’\\+w t|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*.”\nJesus went out from there and withdrew into the region of Tyre and Sidon.",
+        "el": "τότε προσελθόντες οἱ μαθηταὶ αὐτοῦ εἶπον αὐτῷ· οἶδας ὅτι οἱ Φαρισαῖοι ἐσκανδαλίσθησαν ἀκούσαντες τὸν λόγον;\nὁ δὲ ἀποκριθεὶς εἶπε· πᾶσα φυτεία ἣν οὐκ ἐφύτευσεν ὁ πατήρ μου ὁ οὐράνιος ἐκριζωθήσεται.\nἄφετε αὐτούς· ὁδηγοί εἰσι τυφλοὶ τυφλῶν· τυφλὸς δὲ τυφλὸν ἐὰν ὁδηγῇ, ἀμφότεροι εἰς βόθυνον πεσοῦνται.\nἀποκριθεὶς δὲ ὁ Πέτρος εἶπεν αὐτῷ· φράσον ἡμῖν τὴν παραβολὴν ταύτην.\nὁ δὲ Ἰησοῦς εἶπεν· ἀκμὴν καὶ ὑμεῖς ἀσύνετοί ἐστε;\nοὔπω νοεῖτε ὅτι πᾶν τὸ εἰσπορευόμενον εἰς τὸ στόμα εἰς τὴν κοιλίαν χωρεῖ καὶ εἰς ἀφεδρῶνα ἐκβάλλεται;\nτὰ δὲ ἐκπορευόμενα ἐκ τοῦ στόματος ἐκ τῆς καρδίας ἐξέρχεται, κἀκεῖνα κοινοῖ τὸν ἄνθρωπον.\nἐκ γὰρ τῆς καρδίας ἐξέρχονται διαλογισμοὶ πονηροί, φόνοι, μοιχεῖαι, πορνεῖαι, κλοπαί, ψευδομαρτυρίαι, βλασφημίαι.\nταῦτά ἐστι τὰ κοινοῦντα τὸν ἄνθρωπον· τὸ δὲ ἀνίπτοις χερσὶ φαγεῖν οὐ κοινοῖ τὸν ἄνθρωπον.\nΚαὶ ἐξελθὼν ἐκεῖθεν ὁ Ἰησοῦς ἀνεχώρησεν εἰς τὰ μέρη Τύρου καὶ Σιδῶνος."
       },
-      "discovery_text": "35 And when the men of that place had knowledge of him, they sent out into all that country round about, and brought unto him all that were diseased;\n36 And besought him that they might only touch the hem of his garment: and as many as touched were made perfectly whole.\n1 Then came to Jesus scribes and Pharisees, which were of Jerusalem, saying,\n2 Why do thy disciples transgress the tradition of the elders? for they wash not their hands when they eat bread.\n3 But he answered and said unto them, Why do ye also transgress the commandment of God by your tradition?\n4 For God commanded, saying, Honour thy father and mother: and, He that curseth father or mother, let him die the death.\n5 But ye say, Whosoever shall say to his father or his mother, It is a gift, by whatsoever thou mightest be profited by me;\n6 And honour not his father or his mother, he shall be free. Thus have ye made the commandment of God of none effect by your tradition.\n7 Ye hypocrites, well did Esaias prophesy of you, saying,\n8 This people draweth nigh unto me with their mouth, and honoureth me with their lips; but their heart is far from me.\n9 But in vain they do worship me, teaching for doctrines the commandments of men.\n10 And he called the multitude, and said unto them, Hear, and understand:\n11 Not that which goeth into the mouth defileth a man; but that which cometh out of the mouth, this defileth a man.",
+      "discovery_text": "12 Then came his disciples, and said unto him, Knowest thou that the Pharisees were offended, after they heard this saying?\n13 But he answered and said, Every plant, which my heavenly Father hath not planted, shall be rooted up.\n14 Let them alone: they be blind leaders of the blind. And if the blind lead the blind, both shall fall into the ditch.\n15 Then answered Peter and said unto him, Declare unto us this parable.\n16 And Jesus said, Are ye also yet without understanding?\n17 Do not ye yet understand, that whatsoever entereth in at the mouth goeth into the belly, and is cast out into the draught?\n18 But those things which proceed out of the mouth come forth from the heart; and they defile the man.\n19 For out of the heart proceed evil thoughts, murders, adulteries, fornications, thefts, false witness, blasphemies:\n20 These are the things which defile a man: but to eat with unwashen hands defileth not a man.\n21 Then Jesus went thence, and departed into the coasts of Tyre and Sidon.",
       "source": {
         "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
         "en": "https://ebible.org/Scriptures/eng-web_usfm.zip",
@@ -462,7 +464,7 @@
       },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "MAT.14.35-15.11",
+        "canonical_reference": "MAT.15.12-21",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -473,25 +475,22 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_arabic_van_dyck",
           "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-          "canonical_reference": "MAT.14.35-15.11",
+          "canonical_reference": "MAT.15.12-21",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "192bf64500ee4f0dc19aeb6b680e521d6061514d51559bb7b1966885c3da200f",
-          "verse_count": 13,
+          "text_sha256": "c7aba7e8e9e8e296da858a3ddafdb37b5b16f8c65de7c79b5ab9bad47c465e8b",
+          "verse_count": 10,
           "verse_hashes": [
-            "7e3bda1861aad0a01969f5693493f88d1f1b77535de3d488d10e00219f19ae50",
-            "b4bfee44ce644507d2374922a857adc7b37f71803604e0437fce13309ad3f070",
-            "bb230f60beb78534ea599d8f1ae3349c23d2fdf9979c0278305a3cf2885a5bde",
-            "e3340749f3f25d9ef7f8d249eda3edeca8aaf7a2137e81e9a919f2d8c4f7fff1",
-            "d98f2f13bcfed105eda52b9b140da3882ab6a232060c1cd742ac551701bb32cd",
-            "5bb41744ca6dd81609267794917cecbfd557cc0e69386dad3a3fd33729179059",
-            "934ca0dada3886e10faf64421303ff14f7d7a4ae63814ddb67bd7e12c0140cc9",
-            "6f252e6d7551ee81c7ab7b6fa80ba5c9a2d05037c1f6e4a5a38dd3ad8f8c5193",
-            "53e9586bd5eb4cef117a927338c1e7e4bd4b071ce72792a291d8a3334253f209",
-            "1ea0e8cfae646547a7af0f666b0a9b87bdb0e080ef55ca24daa0182d2fb233f2",
-            "dcef6d03e24b26f774a32f7248102eb012575ba930b1593918280e6f1118d4cf",
-            "a324e9e298572fca5eb71aa61ad0e18d72a51ed4117087ec66566819d535c8ae",
-            "47309e6ce9576694e6f921e3d193acc190b1bb41b0b1d3529a1d5c9d7e4a7586"
+            "24453a84801cee7626723d3ee0311a3a3758c4a3dd801a15715dfc12f6cb8cc0",
+            "d5ef4f3b34f79d0ae151923e7ad527b8852afccdab454a4e4fded92cb8828afe",
+            "077b87fd70d625b2028826f6ff552ccc8f6a373c46a2452552849c03c7c0569c",
+            "19ebff9a22672ca041d4adbb0af5c70deffd7ebd3003ce4edf40476656ec78cb",
+            "0888139e0ebbab7c94b9782aa0e6b4bb2ba6d5f71c3d5cc5ab61ac72ec21d509",
+            "6f9720b5243cc83a975ab7140335deb9bbdff7e80a40cffc9d93e904ff56cd65",
+            "e4554cc8ea5e48e7a0e6de118ed637cd2795e3e1c9edbe348b2a97c9d7d0a0fa",
+            "578cc4646d7fb7d495d7825819c8628da9ad9b8742fff29224ad45d87fc0aabe",
+            "61018c3a11bc2046a838de2a869e9aa732bbd80ec32da41bf1bc96ead8fd4426",
+            "5ca50ebf4db7d81866e0d5ce520027da3172642debc26ec0f4d11b73e9b9ea9c"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -506,25 +505,22 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
           "source_url": "https://ebible.org/Scriptures/eng-web_usfm.zip",
-          "canonical_reference": "MAT.14.35-15.11",
+          "canonical_reference": "MAT.15.12-21",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "913dec88dc4244636d16b99b4b29ba0a805c4f26d8855a73631205579350b2f1",
-          "verse_count": 13,
+          "text_sha256": "aa80f4ffe4dba39812db9afa51d8196abf66e518018043849e615abbe24f9ac7",
+          "verse_count": 10,
           "verse_hashes": [
-            "ebc260cf56a76fd82260e3d55e081f702e7c7f8ae9e2f8a7bf9d13624345dd11",
-            "eb56a70b469817038ea70e5e0879e67f00945a51f09e550d3ac809e14b73ce39",
-            "02d592575557955680bfd67d51f92a643cd81a4f20b8f225dadea052b2ed7d3b",
-            "3544b5e05e90e11f4045684221a581ed28d3f9c390350203054e5b393ef52d1c",
-            "bcf852886f67e9e5f25a2f55d995de159395120aa5678b4c63e53593eebd54e0",
-            "e548b2e8ae60aed4dff04135cfb693e4ce72c3d22b42b65e2b17da675a0bbc54",
-            "7e5dbe27edec181909e62692f17c56fd7c6c40c97f30768bf5ee22b30bd72cc2",
-            "32028ee539618f9df5477192c80f86f1e631e6bcd74907a6a14831aa74c67d4b",
-            "d2a5ed116179bc16ce35e5de52c6b3b2e088178f82a6dae4c93c2d7996c1f590",
-            "57787536d27d1b39cb922430019762bec470d5979063c4bfa462f55ccfea75bc",
-            "4a708191b61d18e2417df7232e4eca25e29790bcee3a27f5908c6a6e98924f4a",
-            "9a787409b53e3f6be6eaa0254fe932d400a223fc1dfd1892d06ecbdedbe394cf",
-            "1aaf899354c410955ed5527b7c1e813cfbe159f3f179f57bffcc733c1d7272a0"
+            "0266ff0327499c03ebe1e995b8b8f691d575b49d76938e495b7e56097aae8166",
+            "02f9509a54f5e6e86bb9b7453eb8abad897b5375ff1633dead9743be38f297fc",
+            "e57190cac9f111a15511f637506b7d6fc2674268755a2f67e4d35caaed45545f",
+            "e6601c6ab90ccc33761daa8abdad9c3e651c2c34c511a81cc0b2f428e10aac43",
+            "7e5c8f7482294ea3fca36aceb4a105fe45c6f5d2d5b70dc391491de10cd5228d",
+            "d295e4ee08d52b27bb91cb446686916f926ef96195e48bb2d5f8cc4e9b8d8ff3",
+            "8db327787b28de0cee224ca2f1410e7798a69f73c698a6cce3241078f91e5178",
+            "a7969f5957242b37c26141882c56adda7c1700b58af213a903f2299ebbce50a9",
+            "bd4599e1443aa071f0575c3ad7e5742af81d4e3ea7108d0b62134efab841c7de",
+            "6d3c507022b619d72ee6be6bd9e12613a164e4b9a0d9c77123f580c6626b9711"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -539,25 +535,22 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_greek_byzantine_1904",
           "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-          "canonical_reference": "MAT.14.35-15.11",
+          "canonical_reference": "MAT.15.12-21",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "0cc9745eb6e6d57d2f28bc182d640e39d56284b8fd583993f6dad6dca4d50db9",
-          "verse_count": 13,
+          "text_sha256": "4ae328ab48958a624917f01d60d8d8b98f32e591bf1b7af22aa30a61e7e4b397",
+          "verse_count": 10,
           "verse_hashes": [
-            "387ebe65b824f4a28788565033064a02b40e86f07ebebfad2042564c93a2c8fc",
-            "5f5325cac033650b91829e75049006ff1358e5ce29addb524a8d582f6a37ff77",
-            "a6ade2283a910451328fa04e183253905586d4b932c52f6820b63cb0b763f663",
-            "587b14ba78230ffda2506441c1d6eea6375761ae162a164294165e086621ee21",
-            "8f4297b18165ad1b5bcb227d5ca1da0794bf4f1a99061918da0f16c7b4fd4231",
-            "a3c06677c4f85972754c06ec42539bc830b8f81fec6486e01993e3f9e57dd214",
-            "e64f73efc5f7666b073ae478509f61c5f443a2ce2e58891c22ab7d79cb24a428",
-            "0e48679094ef81cbf1cd1169ef5e7caf96ff186d1129394d646130a50bcbd33a",
-            "799e0d8d70d0c097db5e5ef1a96daee113f8aaed9ee2d90129cae26de074906e",
-            "fb1ef4cdaba291eaf3510a530dee285cfd1b4dd23ca1143a689c92b8dbf3f4a8",
-            "95f57295216bae57367ff456c7f953e3aedd8e96f20c54680647b71437897edb",
-            "8d9d65d053b4408a0dc363edadb61873e61e306e89a366ed29e220b488b76a3d",
-            "36c127ed79ce3d3ac268979fdba215ca2ba981d263b4ef5801653556600a78ba"
+            "1e6947916535440497428b96e9eb999730835bd086ffe67ba7317265eaca9102",
+            "f9c29229392230e858bb2edb8e892259efab3c25bf867a807603b2d05f7a1183",
+            "e0732507c5db9a3686504ebd7f2dcd540691602965379ce692c2ec0062964864",
+            "c1e9018feb981fa94a7f5dadd32d8c2a987ef0c5c9d7e2068dadee36ecdb3318",
+            "d027e76be6ec4da487c258c1599871828057dd4d42e4f4655ee5e47466181831",
+            "5ee02985c8beb43bd04488113b7396f988d14b27f375a5ace7a8b019c3e99656",
+            "3e8796ffaa98878a04b4283d30b6f7d4110d9f5d47a4662abac60110fff33a8b",
+            "0d66ddd1765df7f7040f4821dc4ce11263545762dadaf6a1d6acac1fc337d05d",
+            "bafd1b54921c7e6a30b95582fd932fbb81f8425fe28f20b00b1876eb4de7895e",
+            "0db30b63d4ff41acf4a521314be38e7fe40cb4bcd2afe3adaca791102523686d"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -734,56 +727,60 @@
           "title": {
             "ar": "البروكيمنن — اللحن 6",
             "en": "Prokeimenon — Tone 6",
-            "el": ""
+            "el": "Προκείμενον — Ἦχος 6"
           },
           "reference": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "لحن القيامة 6",
+            "en": "Resurrection Tone 6",
+            "el": "Ἀναστάσιμος Ἦχος 6"
           },
           "body": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "خَلِّصْ يَا رَبُّ شَعْبَكَ وَبَارِكْ مِيرَاثَكَ.\nإِلَيْكَ يَا رَبُّ أَصْرُخُ، يَا إِلَهِي لَا تَصْمُتْ عَنِّي.",
+            "en": "Save Your people, O Lord, and bless Your inheritance.\nTo You, O Lord, I cry; O my God, be not silent toward me.",
+            "el": "Σῶσον, Κύριε, τὸν λαόν σου καὶ εὐλόγησον τὴν κληρονομίαν σου.\nΠρὸς σέ, Κύριε, κεκράξομαι· ὁ Θεός μου, μὴ παρασιωπήσῃς ἀπ᾽ ἐμοῦ."
           },
+          "tone": 6,
           "source": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "https://sites.google.com/view/tripoliparish/",
+            "en": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
+            "el": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning"
           },
-          "translation_locked": true,
           "native_source_verification": {
             "ar": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
+              "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+              "source_id": "antioch_patriarchate_ar",
+              "source_url": "https://sites.google.com/view/tripoliparish/",
               "canonical_reference": "",
-              "reference_available": false,
-              "text_available": false,
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "858223325802e529c37ffffd5bcf64fe813383982ce301235a6df243d95e3e8d",
               "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
+              "automatic_diacritization_used": false
             },
             "en": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
+              "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+              "source_id": "goarch_digital_chant_stand_english",
+              "source_url": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
               "canonical_reference": "",
-              "reference_available": false,
-              "text_available": false,
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "aa919eb3a662ed51846333bd08c6fcb4c1c295128d57ea3252839e31f85f95e5",
               "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
+              "automatic_diacritization_used": false
             },
             "el": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
+              "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+              "source_id": "goarch_digital_chant_stand_greek",
+              "source_url": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
               "canonical_reference": "",
-              "reference_available": false,
-              "text_available": false,
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "9a079f311d33e0808ba46acf8664b563e608db03e83c9fc299cb4b1f7f879181",
               "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
+              "automatic_diacritization_used": false
             }
           },
+          "translation_locked": true,
           "integrity": {
             "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
             "canonical_reference": "",
@@ -1036,13 +1033,13 @@
       ]
     },
     "upcoming_reference_dates": [
-      "2026-07-16",
       "2026-07-17",
       "2026-07-18",
       "2026-07-19",
       "2026-07-20",
       "2026-07-21",
-      "2026-07-22"
+      "2026-07-22",
+      "2026-07-23"
     ]
   },
   "recommended_services": [
@@ -1066,14 +1063,14 @@
         "el": "Σήμερα — Θεία Λειτουργία"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
         "en": "Verified daily readings and feast texts are composed with the single static Liturgy template.",
         "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας."
       },
       "source_language": "ar",
       "translation_status": "verified_daily_overlay_v2",
       "template_id": "library:divine_liturgy",
-      "dynamic_date": "2026-07-15",
+      "dynamic_date": "2026-07-16",
       "notice": {
         "ar": "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
         "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
@@ -1091,37 +1088,37 @@
       },
       "segment_replacements": {
         "[طروبارية اليوم]": {
-          "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
-          "ar": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[القنداق]": {
-          "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[البروكيمنن]": {
-          "ar": "النص الكنسي العربي الأصلي غير متاح حاليًا.",
-          "en": "Official native English text is currently unavailable.",
-          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+          "ar": "مزمور 18:5، 2\nإلى كل الأرض خرج صوتهم وإلى أقاصي المسكونة أقوالهم.\nالسماوات تحدث بمجد الله والفلك يخبر بعمل يديه.",
+          "en": "Psalm 18:5, 2 (LXX)\nTheir proclamation has gone out into all the earth, and their words to the ends of the universe.\nThe heavens declare the glory of God, and the firmament proclaims the work of His hands.",
+          "el": "Ψαλμός 18:5, 2\nΕἰς πᾶσαν τὴν γῆν ἐξῆλθεν ὁ φθόγγος αὐτῶν, καὶ εἰς τὰ πέρατα τῆς οἰκουμένης τὰ ῥήματα αὐτῶν.\nΟἱ οὐρανοὶ διηγοῦνται δόξαν Θεοῦ, ποίησιν δὲ χειρῶν αὐτοῦ ἀναγγέλλει τὸ στερέωμα."
         },
         "[فصل من رسالة اليوم]": {
-          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:12-24\nوَأَمَّا ٱلْبَاقُونَ، فَأَقُولُ لَهُمْ أَنَا، لَا ٱلرَّبُّ: إِنْ كَانَ أَخٌ لَهُ ٱمْرَأَةٌ غَيْرُ مُؤْمِنَةٍ، وَهِيَ تَرْتَضِي أَنْ تَسْكُنَ مَعَهُ، فَلَا يَتْرُكْهَا.\nوَٱلْمَرْأَةُ ٱلَّتِي لَهَا رَجُلٌ غَيْرُ مُؤْمِنٍ، وَهُوَ يَرْتَضِي أَنْ يَسْكُنَ مَعَهَا، فَلَا تَتْرُكْهُ.\nلِأَنَّ ٱلرَّجُلَ غَيْرَ ٱلْمُؤْمِنِ مُقَدَّسٌ فِي ٱلْمَرْأَةِ، وَٱلْمَرْأَةَ غَيْرَ ٱلْمُؤْمِنَةِ مُقَدَّسَةٌ فِي ٱلرَّجُلِ. وَإِلَّا فَأَوْلَادُكُمْ نَجِسُونَ، وَأَمَّا ٱلْآنَ فَهُمْ مُقَدَّسُونَ.\nوَلَكِنْ إِنْ فَارَقَ غَيْرُ ٱلْمُؤْمِنِ، فَلْيُفَارِقْ. لَيْسَ ٱلْأَخُ أَوِ ٱلْأُخْتُ مُسْتَعْبَدًا فِي مِثْلِ هَذِهِ ٱلْأَحْوَالِ، وَلَكِنَّ ٱللهَ قَدْ دَعَانَا فِي ٱلسَّلَامِ.\nلِأَنَّهُ كَيْفَ تَعْلَمِينَ أَيَّتُهَا ٱلْمَرْأَةُ، هَلْ تُخَلِّصِينَ ٱلرَّجُلَ؟ أَوْ كَيْفَ تَعْلَمُ أَيُّهَا ٱلرَّجُلُ، هَلْ تُخَلِّصُ ٱلْمَرْأَةَ؟\nغَيْرَ أَنَّهُ كَمَا قَسَمَ ٱللهُ لِكُلِّ وَاحِدٍ، كَمَا دَعَا ٱلرَّبُّ كُلَّ وَاحِدٍ، هَكَذَا لِيَسْلُكْ. وَهَكَذَا أَنَا آمُرُ فِي جَمِيعِ ٱلْكَنَائِسِ.\nدُعِيَ أَحَدٌ وَهُوَ مَخْتُونٌ، فَلَا يَصِرْ أَغْلَفَ. دُعِيَ أَحَدٌ فِي ٱلْغُرْلَةِ، فَلَا يَخْتَتِنْ.\nلَيْسَ ٱلْخِتَانُ شَيْئًا، وَلَيْسَتِ ٱلْغُرْلَةُ شَيْئًا، بَلْ حِفْظُ وَصَايَا ٱللهِ.\nاَلدَّعْوَةُ ٱلَّتِي دُعِيَ فِيهَا كُلُّ وَاحِدٍ فَلْيَلْبَثْ فِيهَا.\nدُعِيتَ وَأَنْتَ عَبْدٌ فَلَا يَهُمَّكَ. بَلْ وَإِنِ ٱسْتَطَعْتَ أَنْ تَصِيرَ حُرًّا فَٱسْتَعْمِلْهَا بِٱلْحَرِيِّ.\nلِأَنَّ مَنْ دُعِيَ فِي ٱلرَّبِّ وَهُوَ عَبْدٌ، فَهُوَ عَتِيقُ ٱلرَّبِّ. كَذَلِكَ أَيْضًا ٱلْحُرُّ ٱلْمَدْعُوُّ هُوَ عَبْدٌ لِلْمَسِيحِ.\nقَدِ ٱشْتُرِيتُمْ بِثَمَنٍ، فَلَا تَصِيرُوا عَبِيدًا لِلنَّاسِ.\nمَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ. غير المتزوجين والأرامل",
-          "en": "Paul’s First Letter to the Corinthians 7:12-24\nBut to the rest I—not the Lord—say, if any brother has an unbelieving wife, and she is content to live with him, let him not leave her.\nThe woman who has an unbelieving husband, and he is content to live with her, let her not leave her husband.\nFor the unbelieving husband is sanctified in the wife, and the unbelieving wife is sanctified in the husband. Otherwise your children would be unclean, but now they are holy.\nYet if the unbeliever departs, let there be separation. The brother or the sister is not under bondage in such cases, but God has called us in peace.\nFor how do you know, wife, whether you will save your husband? Or how do you know, husband, whether you will save your wife?\nOnly, as the Lord has distributed to each man, as God has called each, so let him walk. So I command in all the assemblies.\nWas anyone called having been circumcised? Let him not become uncircumcised. Has anyone been called in uncircumcision? Let him not be circumcised.\nCircumcision is nothing, and uncircumcision is nothing, but what matters is keeping God’s commandments.\nLet each man stay in that calling in which he was called.\nWere you called being a bondservant? Don’t let that bother you, but if you get an opportunity to become free, use it.\nFor he who was called in the Lord being a bondservant is the Lord’s free man. Likewise he who was called being free is Christ’s bondservant.\nYou were bought with a price. Don’t become bondservants of men.\nBrothers, let each man, in whatever condition he was called, stay in that condition with God.",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:12-24\nτοῖς δὲ λοιποῖς ἐγὼ λέγω, οὐχ ὁ Κύριος· εἴ τις ἀδελφὸς γυναῖκα ἔχει ἄπιστον, καὶ αὐτὴ συνευδοκεῖ οἰκεῖν μετ᾽ αὐτοῦ, μὴ ἀφιέτω αὐτήν·\nκαὶ γυνὴ εἴ τις ἔχει ἄνδρα ἄπιστον, καὶ αὐτὸς συνευδοκεῖ οἰκεῖν μετ᾽ αὐτῆς, μὴ ἀφιέτω αὐτόν.\nἡγίασται γὰρ ὁ ἀνὴρ ὁ ἄπιστος ἐν τῇ γυναικί, καὶ ἡγίασται ἡ γυνὴ ἡ ἄπιστος ἐν τῷ ἀνδρί· ἐπεὶ ἄρα τὰ τέκνα ὑμῶν ἀκάθαρτά ἐστι, νῦν δὲ ἅγιά ἐστιν.\nεἰ δὲ ὁ ἄπιστος χωρίζεται, χωριζέσθω. οὐ δεδούλωται ὁ ἀδελφὸς ἢ ἡ ἀδελφὴ ἐν τοῖς τοιούτοις. ἐν δὲ εἰρήνῃ κέκληκεν ἡμᾶς ὁ Θεός.\nτί γὰρ οἶδας, γύναι, εἰ τὸν ἄνδρα σώσεις; ἢ τί οἶδας, ἄνερ, εἰ τὴν γυναῖκα σώσεις;\nεἰ μὴ ἑκάστῳ ὡς ἐμέρισεν ὁ Θεός, ἕκαστον ὡς κέκληκεν ὁ Κύριος, οὕτω περιπατείτω. καὶ οὕτως ἐν ταῖς ἐκκλησίαις πάσαις διατάσσομαι.\nπεριτετμημένος τις ἐκλήθη; μὴ ἐπισπάσθω. ἐν ἀκροβυστίᾳ τις ἐκλήθη; μὴ περιτεμνέσθω.\nἡ περιτομὴ οὐδέν ἐστι, καὶ ἡ ἀκροβυστία οὐδέν ἐστιν, ἀλλὰ τήρησις ἐντολῶν Θεοῦ.\nἕκαστος ἐν τῇ κλήσει ᾗ ἐκλήθη, ἐν ταύτῃ μενέτω.\nδοῦλος ἐκλήθης; μή σοι μελέτω· ἀλλ᾽ εἰ καὶ δύνασαι ἐλεύθερος γενέσθαι, μᾶλλον χρῆσαι.\nὁ γὰρ ἐν Κυρίῳ κληθεὶς δοῦλος ἀπελεύθερος Κυρίου ἐστίν· ὁμοίως καὶ ὁ ἐλεύθερος κληθεὶς δοῦλός ἐστι Χριστοῦ.\nτιμῆς ἠγοράσθητε· μὴ γίνεσθε δοῦλοι ἀνθρώπων.\nἕκαστος ἐν ᾧ ἐκλήθη, ἀδελφοί, ἐν τούτῳ μενέτω παρὰ τῷ Θεῷ."
+          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:24-35\nمَا دُعِيَ كُلُّ وَاحِدٍ فِيهِ أَيُّهَا ٱلْإِخْوَةُ فَلْيَلْبَثْ فِي ذَلِكَ مَعَ ٱللهِ. غير المتزوجين والأرامل\nوَأَمَّا ٱلْعَذَارَى، فَلَيْسَ عِنْدِي أَمْرٌ مِنَ ٱلرَّبِّ فِيهِنَّ، وَلَكِنَّنِي أُعْطِي رَأْيًا كَمَنْ رَحِمَهُ ٱلرَّبُّ أَنْ يَكُونَ أَمِينًا.\nفَأَظُنُّ أَنَّ هَذَا حَسَنٌ لِسَبَبِ ٱلضِّيقِ ٱلْحَاضِرِ، أَنَّهُ حَسَنٌ لِلْإِنْسَانِ أَنْ يَكُونَ هَكَذَا:\nأَنْتَ مُرْتَبِطٌ بِٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱلِٱنْفِصَالَ. أَنْتَ مُنْفَصِلٌ عَنِ ٱمْرَأَةٍ! فَلَا تَطْلُبِ ٱمْرَأَةً.\nلَكِنَّكَ وَإِنْ تَزَوَّجْتَ لَمْ تُخْطِئْ. وَإِنْ تَزَوَّجَتِ ٱلْعَذْرَاءُ لَمْ تُخْطِئْ. وَلَكِنَّ مِثْلَ هَؤُلَاءِ يَكُونُ لَهُمْ ضِيقٌ فِي ٱلْجَسَدِ. وَأَمَّا أَنَا فَإِنِّي أُشْفِقُ عَلَيْكُمْ.\nفَأَقُولُ هَذَا أَيُّهَا ٱلْإِخْوَةُ: ٱلْوَقْتُ مُنْذُ ٱلْآنَ مُقَصَّرٌ، لِكَيْ يَكُونَ ٱلَّذِينَ لَهُمْ نِسَاءٌ كَأَنْ لَيْسَ لَهُمْ،\nوَٱلَّذِينَ يَبْكُونَ كَأَنَّهُمْ لَا يَبْكُونَ، وَٱلَّذِينَ يَفْرَحُونَ كَأَنَّهُمْ لَا يَفْرَحُونَ، وَٱلَّذِينَ يَشْتَرُونَ كَأَنَّهُمْ لَا يَمْلِكُونَ،\nوَٱلَّذِينَ يَسْتَعْمِلُونَ هَذَا ٱلْعَالَمَ كَأَنَّهُمْ لَا يَسْتَعْمِلُونَهُ. لِأَنَّ هَيْئَةَ هَذَا ٱلْعَالَمِ تَزُولُ.\nفَأُرِيدُ أَنْ تَكُونُوا بِلَا هَمٍّ. غَيْرُ ٱلْمُتَزَوِّجِ يَهْتَمُّ فِي مَا لِلرَّبِّ كَيْفَ يُرْضِي ٱلرَّبَّ،\nوَأَمَّا ٱلْمُتَزَوِّجُ فَيَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ يُرْضِي ٱمْرَأَتَهُ.\nإِنَّ بَيْنَ ٱلزَّوْجَةِ وَٱلْعَذْرَاءِ فَرْقًا: غَيْرُ ٱلْمُتَزَوِّجَةِ تَهْتَمُّ فِي مَا لِلرَّبِّ لِتَكُونَ مُقَدَّسَةً جَسَدًا وَرُوحًا. وَأَمَّا ٱلْمُتَزَوِّجَةُ فَتَهْتَمُّ فِي مَا لِلْعَالَمِ كَيْفَ تُرْضِي رَجُلَهَا.\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.",
+          "en": "Paul’s First Letter to the Corinthians 7:24-35\nBrothers, let each man, in whatever condition he was called, stay in that condition with God.\nNow concerning virgins, I have no commandment from the Lord, but I give my judgment as one who has obtained mercy from the Lord to be trustworthy.\nTherefore I think that because of the distress that is on us, it’s good for a man to remain as he is.\nAre you bound to a wife? Don’t seek to be freed. Are you free from a wife? Don’t seek a wife.\nBut if you marry, you have not sinned. If a virgin marries, she has not sinned. Yet such will have oppression in the flesh, and I want to spare you.\nBut I say this, brothers: the time is short. From now on, both those who have wives may be as though they had none;\nand those who weep, as though they didn’t weep; and those who rejoice, as though they didn’t rejoice; and those who buy, as though they didn’t possess;\nand those who use the world, as not using it to the fullest. For the mode of this world passes away.\nBut I desire to have you to be free from cares. He who is unmarried is concerned for the things of the Lord, how he may please the Lord;\nbut he who is married is concerned about the things of the world, how he may please his wife.\nThere is also a difference between a wife and a virgin. The unmarried woman cares about the things of the Lord, that she may be holy both in body and in spirit. But she who is married cares about the things of the world—how she may please her husband.\nThis I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.",
+          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:24-35\nἕκαστος ἐν ᾧ ἐκλήθη, ἀδελφοί, ἐν τούτῳ μενέτω παρὰ τῷ Θεῷ.\nΠερὶ δὲ τῶν παρθένων ἐπιταγὴν Κυρίου οὐκ ἔχω, γνώμην δὲ δίδωμι ὡς ἠλεημένος ὑπὸ Κυρίου πιστὸς εἶναι.\nνομίζω οὖν τοῦτο καλὸν ὑπάρχειν διὰ τὴν ἐνεστῶσαν ἀνάγκην, ὅτι καλὸν ἀνθρώπῳ τὸ οὕτως εἶναι.\nδέδεσαι γυναικί; μὴ ζήτει λύσιν· λέλυσαι ἀπὸ γυναικός; μὴ ζήτει γυναῖκα·\nἐὰν δὲ καὶ γήμῃς, οὐχ ἥμαρτες· καὶ ἐὰν γήμῃ ἡ παρθένος, οὐχ ἥμαρτε· θλῖψιν δὲ τῇ σαρκὶ ἕξουσιν οἱ τοιοῦτοι· ἐγὼ δὲ ὑμῶν φείδομαι.\nτοῦτο δέ φημι, ἀδελφοί, ὁ καιρὸς συνεσταλμένος τὸ λοιπόν ἐστιν, ἵνα καὶ οἱ ἔχοντες γυναῖκας ὡς μὴ ἔχοντες ὦσι,\nκαὶ οἱ κλαίοντες ὡς μὴ κλαίοντες, καὶ οἱ χαίροντες ὡς μὴ χαίροντες, καὶ οἱ ἀγοράζοντες ὡς μὴ κατέχοντες,\nκαὶ οἱ χρώμενοι τῷ κόσμῳ τούτῳ ὡς μὴ καταχρώμενοι· παράγει γὰρ τὸ σχῆμα τοῦ κόσμου τούτου.\nθέλω δὲ ὑμᾶς ἀμερίμνους εἶναι. ὁ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, πῶς ἀρέσει τῷ Κυρίῳ·\nὁ δὲ γαμήσας μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῇ γυναικί.\nμεμέρισται [καὶ] ἡ γυνὴ καὶ ἡ παρθένος. ἡ ἄγαμος μεριμνᾷ τὰ τοῦ Κυρίου, ἵνα ᾖ ἁγία καὶ σώματι καὶ πνεύματι· ἡ δὲ γαμήσασα μεριμνᾷ τὰ τοῦ κόσμου, πῶς ἀρέσει τῷ ἀνδρί.\nτοῦτο δὲ πρὸς τὸ ὑμῶν αὐτῶν συμφέρον λέγω, οὐχ ἵνα βρόχον ὑμῖν ἐπιβάλω, ἀλλὰ πρὸς τὸ εὔσχημον καὶ εὐπάρεδρον τῷ Κυρίῳ ἀπερισπάστως."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
-          "ar": "إِنْجِيلُ مَتَّى 14:35-15:11\nفَعَرَفَهُ رِجَالُ ذَلِكَ ٱلْمَكَانِ. فَأَرْسَلُوا إِلَى جَمِيعِ تِلْكَ ٱلْكُورَةِ ٱلْمُحِيطَةِ وَأَحْضَرُوا إِلَيْهِ جَمِيعَ ٱلْمَرْضَى،\nوَطَلَبُوا إِلَيْهِ أَنْ يَلْمِسُوا هُدْبَ ثَوْبِهِ فَقَطْ. فَجَمِيعُ ٱلَّذِينَ لَمَسُوهُ نَالُوا ٱلشِّفَاءَ.\nحِينَئِذٍ جَاءَ إِلَى يَسُوعَ كَتَبَةٌ وَفَرِّيسِيُّونَ ٱلَّذِينَ مِنْ أُورُشَلِيمَ قَائِلِينَ:\n«لِمَاذَا يَتَعَدَّى تَلَامِيذُكَ تَقْلِيدَ ٱلشُّيُوخِ، فَإِنَّهُمْ لَا يَغْسِلُونَ أَيْدِيَهُمْ حِينَمَا يَأْكُلُونَ خُبْزًا؟».\nفَأَجَابَ وَقَالَ لَهُمْ: «وَأَنْتُمْ أَيْضًا، لِمَاذَا تَتَعَدَّوْنَ وَصِيَّةَ ٱللهِ بِسَبَبِ تَقْلِيدِكُمْ؟\nفَإِنَّ ٱللهَ أَوْصَى قَائِلًا: أَكْرِمْ أَبَاكَ وَأُمَّكَ، وَمَنْ يَشْتِمْ أَبًا أَوْ أُمًّا فَلْيَمُتْ مَوْتًا.\nوَأَمَّا أَنْتُمْ فَتَقُولُونَ: مَنْ قَالَ لِأَبِيهِ أَوْ أُمِّهِ: قُرْبَانٌ هُوَ ٱلَّذِي تَنْتَفِعُ بِهِ مِنِّي. فَلَا يُكْرِمُ أَبَاهُ أَوْ أُمَّهُ.\nفَقَدْ أَبْطَلْتُمْ وَصِيَّةَ ٱللهِ بِسَبَبِ تَقْلِيدِكُمْ!\nيَا مُرَاؤُونَ! حَسَنًا تَنَبَّأَ عَنْكُمْ إِشَعْيَاءُ قَائِلًا:\nيَقْتَرِبُ إِلَيَّ هَذَا ٱلشَّعْبُ بِفَمِهِ، وَيُكْرِمُنِي بِشَفَتَيْهِ، وَأَمَّا قَلْبُهُ فَمُبْتَعِدٌ عَنِّي بَعِيدًا.\nوَبَاطِلًا يَعْبُدُونَنِي وَهُمْ يُعَلِّمُونَ تَعَالِيمَ هِيَ وَصَايَا ٱلنَّاسِ».\nثُمَّ دَعَا ٱلْجَمْعَ وَقَالَ لَهُمُ: «ٱسْمَعُوا وَٱفْهَمُوا.\nلَيْسَ مَا يَدْخُلُ ٱلْفَمَ يُنَجِّسُ ٱلْإِنْسَانَ، بَلْ مَا يَخْرُجُ مِنَ ٱلْفَمِ هَذَا يُنَجِّسُ ٱلْإِنْسَانَ».",
-          "en": "The Good News According to Matthew 14:35-15:11\nWhen the people of that place recognized him, they sent into all that surrounding region and brought to him all who were sick;\nand they begged him that they might just touch the fringe of his garment. As many as touched it were made whole.\nThen Pharisees and scribes came to Jesus from Jerusalem, saying,\n“Why do your disciples disobey the tradition of the elders? For they don’t wash their hands when they eat bread.”\nHe answered them, “\\+w Why|strong=\"G5101\"\\+w* \\+w do|strong=\"G5101\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w also|strong=\"G2532\"\\+w* \\+w disobey|strong=\"G3845\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w commandment|strong=\"G1785\"\\+w* \\+w of|strong=\"G1223\"\\+w* \\+w God|strong=\"G2316\"\\+w* \\+w because|strong=\"G1223\"\\+w* \\+w of|strong=\"G1223\"\\+w* \\+w your|strong=\"G1223\"\\+w* \\+w tradition|strong=\"G3862\"\\+w*?\n\\+w For|strong=\"G1063\"\\+w* \\+w God|strong=\"G2316\"\\+w* \\+w commanded|strong=\"G1781\"\\+w*, ‘\\+w Honor|strong=\"G5091\"\\+w* \\+w your|strong=\"G5091\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w and|strong=\"G2532\"\\+w* \\+w your|strong=\"G5091\"\\+w* \\+w mother|strong=\"G3384\"\\+w*,’ \\+w and|strong=\"G2532\"\\+w*, ‘\\+w He|strong=\"G2532\"\\+w* \\+w who|strong=\"G3588\"\\+w* \\+w speaks|strong=\"G3004\"\\+w* \\+w evil|strong=\"G2551\"\\+w* \\+w of|strong=\"G2316\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w or|strong=\"G2228\"\\+w* \\+w mother|strong=\"G3384\"\\+w*, \\+w let|strong=\"G1063\"\\+w* \\+w him|strong=\"G3588\"\\+w* \\+w be|strong=\"G2532\"\\+w* \\+w put|strong=\"G5053\"\\+w* \\+w to|strong=\"G2532\"\\+w* \\+w death|strong=\"G2288\"\\+w*.’\n\\+w But|strong=\"G1161\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w say|strong=\"G3004\"\\+w*, ‘\\+w Whoever|strong=\"G3739\"\\+w* \\+w may|strong=\"G3004\"\\+w* \\+w tell|strong=\"G3004\"\\+w* \\+w his|strong=\"G3739\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w or|strong=\"G2228\"\\+w* \\+w his|strong=\"G3739\"\\+w* \\+w mother|strong=\"G3384\"\\+w*, “\\+w Whatever|strong=\"G3739\"\\+w* \\+w help|strong=\"G5623\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w might|strong=\"G5210\"\\+w* \\+w otherwise|strong=\"G1161\"\\+w* \\+w have|strong=\"G1473\"\\+w* gotten \\+w from|strong=\"G1537\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w is|strong=\"G3588\"\\+w* \\+w a|strong=\"G1437\"\\+w* \\+w gift|strong=\"G1435\"\\+w* devoted \\+w to|strong=\"G3004\"\\+w* \\+w God|strong=\"G3004\"\\+w*,”\n\\+w he|strong=\"G2532\"\\+w* \\+w shall|strong=\"G2532\"\\+w* \\+w not|strong=\"G3361\"\\+w* \\+w honor|strong=\"G5091\"\\+w* \\+w his|strong=\"G1223\"\\+w* \\+w father|strong=\"G3962\"\\+w* \\+w or|strong=\"G2532\"\\+w* mother.’ \\+w You|strong=\"G5210\"\\+w* \\+w have|strong=\"G2532\"\\+w* \\+w made|strong=\"G2316\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w commandment|strong=\"G3056\"\\+w* \\+w of|strong=\"G3056\"\\+w* \\+w God|strong=\"G2316\"\\+w* void \\+w because|strong=\"G1223\"\\+w* \\+w of|strong=\"G3056\"\\+w* \\+w your|strong=\"G1223\"\\+w* \\+w tradition|strong=\"G3862\"\\+w*.\n\\+w You|strong=\"G5210\"\\+w* \\+w hypocrites|strong=\"G5273\"\\+w*! \\+w Well|strong=\"G2573\"\\+w* \\+w did|strong=\"G2573\"\\+w* \\+w Isaiah|strong=\"G2268\"\\+w* \\+w prophesy|strong=\"G4395\"\\+w* \\+w of|strong=\"G4012\"\\+w* \\+w you|strong=\"G5210\"\\+w*, \\+w saying|strong=\"G3004\"\\+w*,\n‘\\+w These|strong=\"G3778\"\\+w* \\+w people|strong=\"G2992\"\\+w* draw near \\+w to|strong=\"G1161\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w with|strong=\"G2588\"\\+w* \\+w their|strong=\"G3588\"\\+w* mouth, \\+w and|strong=\"G1161\"\\+w* \\+w honor|strong=\"G5091\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w with|strong=\"G2588\"\\+w* \\+w their|strong=\"G3588\"\\+w* \\+w lips|strong=\"G5491\"\\+w*; \\+w but|strong=\"G1161\"\\+w* \\+w their|strong=\"G3588\"\\+w* \\+w heart|strong=\"G2588\"\\+w* \\+w is|strong=\"G3588\"\\+w* \\+w far|strong=\"G4206\"\\+w* \\+w from|strong=\"G3588\"\\+w* \\+w me|strong=\"G1473\"\\+w*.\n\\+w And|strong=\"G1161\"\\+w* \\+w they|strong=\"G1161\"\\+w* \\+w worship|strong=\"G4576\"\\+w* \\+w me|strong=\"G1473\"\\+w* \\+w in|strong=\"G1161\"\\+w* \\+w vain|strong=\"G3155\"\\+w*, \\+w teaching|strong=\"G1321\"\\+w* \\+w as|strong=\"G1161\"\\+w* \\+w doctrine|strong=\"G1319\"\\+w* rules \\+w made|strong=\"G1161\"\\+w* \\+w by|strong=\"G1473\"\\+w* men.’”\nHe summoned the multitude, and said to them, “Hear, \\+w and|strong=\"G2532\"\\+w* \\+w understand|strong=\"G4920\"\\+w*.\n\\+w That|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w enters|strong=\"G1525\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* doesn’\\+w t|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w man|strong=\"G3778\"\\+w*; \\+w but|strong=\"G3588\"\\+w* \\+w that|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w proceeds|strong=\"G1607\"\\+w* \\+w out|strong=\"G1537\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w mouth|strong=\"G4750\"\\+w*, \\+w this|strong=\"G3778\"\\+w* \\+w defiles|strong=\"G2840\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w man|strong=\"G3778\"\\+w*.”",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:35-15:11\nκαὶ ἐπιγνόντες αὐτὸν οἱ ἄνδρες τοῦ τόπου ἐκείνου ἀπέστειλαν εἰς ὅλην τὴν περίχωρον ἐκείνην, καὶ προσήνεγκαν αὐτῷ πάντας τοὺς κακῶς ἔχοντας,\nκαὶ παρεκάλουν αὐτὸν ἵνα κἂν μόνον ἅψωνται τοῦ κρασπέδου τοῦ ἱματίου αὐτοῦ· καὶ ὅσοι ἥψαντο διεσώθησαν.\nΤότε προσέρχονται τῷ Ἰησοῦ οἱ ἀπὸ Ἱεροσολύμων γραμματεῖς καὶ Φαρισαῖοι λέγοντες·\nδιατί οἱ μαθηταί σου παραβαίνουσι τὴν παράδοσιν τῶν πρεσβυτέρων; οὐ γὰρ νίπτονται τὰς χεῖρας αὐτῶν ὅταν ἄρτον ἐσθίωσιν.\nὁ δὲ ἀποκριθεὶς εἶπεν αὐτοῖς· διατί καὶ ὑμεῖς παραβαίνετε τὴν ἐντολὴν τοῦ Θεοῦ διὰ τὴν παράδοσιν ὑμῶν;\nὁ γὰρ Θεὸς ἐνετείλατο λέγων· \\+w τίμα|strong=\"G5091\"\\+w* \\+w τὸν|strong=\"G3588\"\\+w* \\+w πατέρα|strong=\"G3962\"\\+w* \\+w καὶ|strong=\"G2532\"\\+w* \\+w τὴν|strong=\"G3588\"\\+w* \\+w μητέρα|strong=\"G3384\"\\+w*· καί· \\+w ὁ|strong=\"G3588\"\\+w* \\+w κακολογῶν|strong=\"G2551\"\\+w* \\+w πατέρα|strong=\"G3962\"\\+w* \\+w ἢ|strong=\"G3588\"\\+w* \\+w μητέρα|strong=\"G3384\"\\+w* \\+w θανάτῳ|strong=\"G2288\"\\+w* \\+w τελευτάτω|strong=\"G5053\"\\+w*.\nὑμεῖς δὲ λέγετε· ὃς ἂν εἴπῃ τῷ πατρὶ ἢ τῇ μητρί, δῶρον ὃ ἐὰν ἐξ ἐμοῦ ὠφεληθῇς, καὶ οὐ μὴ τιμήσῃ τὸν πατέρα αὐτοῦ ἢ τὴν μητέρα αὐτοῦ·\nκαὶ ἠκυρώσατε τὴν ἐντολὴν τοῦ Θεοῦ διὰ τὴν παράδοσιν ὑμῶν.\nὑποκριταί! καλῶς προεφήτευσε περὶ ὑμῶν Ἡσαΐας λέγων·\n\\+w ἐγγίζει|strong=\"G1448\"\\+w* \\+w μοι|strong=\"G1473\"\\+w* \\+w ὁ|strong=\"G3588\"\\+w* \\+w λαὸς|strong=\"G2992\"\\+w* \\+w οὗτος|strong=\"G3778\"\\+w* \\+w τῷ|strong=\"G3588\"\\+w* \\+w στόματι|strong=\"G4750\"\\+w* \\+w αὐτῶν|strong=\"G0846\"\\+w* \\+w καὶ|strong=\"G2532\"\\+w* \\+w τοῖς|strong=\"G3588\"\\+w* χείλεσί \\+w με|strong=\"G1473\"\\+w* \\+w τιμᾷ|strong=\"G5091\"\\+w*, \\+w ἡ|strong=\"G3588\"\\+w* \\+w δὲ|strong=\"G1161\"\\+w* \\+w καρδία|strong=\"G2588\"\\+w* \\+w αὐτῶν|strong=\"G0846\"\\+w* \\+w πόρρω|strong=\"G4206\"\\+w* \\+w ἀπέχει|strong=\"G0568\"\\+w* \\+w ἀπ|strong=\"G0575\"\\+w*᾽ \\+w ἐμοῦ|strong=\"G1473\"\\+w*·\n\\+w μάτην|strong=\"G3155\"\\+w* \\+w δὲ|strong=\"G1161\"\\+w* \\+w σέβονταί|strong=\"G4576\"\\+w* \\+w με|strong=\"G1473\"\\+w*, \\+w διδάσκοντες|strong=\"G1321\"\\+w* \\+w διδασκαλίας|strong=\"G1319\"\\+w* \\+w ἐντάλματα|strong=\"G1778\"\\+w* \\+w ἀνθρώπων|strong=\"G0444\"\\+w*.\nΚαὶ προσκαλεσάμενος τὸν ὄχλον εἶπεν αὐτοῖς· ἀκούετε καὶ συνίετε·\nοὐ τὸ εἰσερχόμενον εἰς τὸ στόμα κοινοῖ τὸν ἄνθρωπον, ἀλλὰ τὸ ἐκπορευόμενον ἐκ τοῦ στόματος τοῦτο κοινοῖ τὸν ἄνθρωπον."
+          "ar": "إِنْجِيلُ مَتَّى 15:12-21\nحِينَئِذٍ تَقَدَّمَ تَلَامِيذُهُ وَقَالُوا لَهُ: «أَتَعْلَمُ أَنَّ ٱلْفَرِّيسِيِّينَ لَمَّا سَمِعُوا ٱلْقَوْلَ نَفَرُوا؟».\nفَأَجَابَ وَقَالَ: «كُلُّ غَرْسٍ لَمْ يَغْرِسْهُ أَبِي ٱلسَّمَاوِيُّ يُقْلَعُ.\nاُتْرُكُوهُمْ. هُمْ عُمْيَانٌ قَادَةُ عُمْيَانٍ. وَإِنْ كَانَ أَعْمَى يَقُودُ أَعْمَى يَسْقُطَانِ كِلَاهُمَا فِي حُفْرَةٍ».\nفَأَجَابَ بُطْرُسُ وَقَالَ لَهُ: «فَسِّرْ لَنَا هَذَا ٱلْمَثَلَ».\nفَقَالَ يَسُوعُ: «هَلْ أَنْتُمْ أَيْضًا حَتَّى ٱلْآنَ غَيْرُ فَاهِمِينَ؟\nأَلَا تَفْهَمُونَ بَعْدُ أَنَّ كُلَّ مَا يَدْخُلُ ٱلْفَمَ يَمْضِي إِلَى ٱلْجَوْفِ وَيَنْدَفِعُ إِلَى ٱلْمَخْرَجِ؟\nوَأَمَّا مَا يَخْرُجُ مِنَ ٱلْفَمِ فَمِنَ ٱلْقَلْبِ يَصْدُرُ، وَذَاكَ يُنَجِّسُ ٱلْإِنْسَانَ،\nلِأَنْ مِنَ ٱلْقَلْبِ تَخْرُجُ أَفْكَارٌ شِرِّيرَةٌ: قَتْلٌ، زِنىً، فِسْقٌ، سِرْقَةٌ، شَهَادَةُ زُورٍ، تَجْدِيفٌ.\nهَذِهِ هِيَ ٱلَّتِي تُنَجِّسُ ٱلْإِنْسَانَ. وَأَمَّا ٱلْأَ كْلُ بِأَيْدٍ غَيْرِ مَغْسُولَةٍ فَلَا يُنَجِّسُ ٱلْإِنْسَانَ». إيمان المرأة الكنعانية\nثُمَّ خَرَجَ يَسُوعُ مِنْ هُنَاكَ وَٱنْصَرَفَ إِلَى نَوَاحِي صُورَ وَصَيْدَاءَ.",
+          "en": "The Good News According to Matthew 15:12-21\nThen the disciples came and said to him, “Do you know that the Pharisees were offended when they heard this saying?”\nBut he answered, “\\+w Every|strong=\"G3956\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w which|strong=\"G3739\"\\+w* \\+w my|strong=\"G3956\"\\+w* \\+w heavenly|strong=\"G3770\"\\+w* \\+w Father|strong=\"G3962\"\\+w* didn’\\+w t|strong=\"G3588\"\\+w* \\+w plant|strong=\"G5451\"\\+w* \\+w will|strong=\"G3739\"\\+w* \\+w be|strong=\"G3756\"\\+w* \\+w uprooted|strong=\"G1610\"\\+w*.\nLeave \\+w them|strong=\"G1438\"\\+w* \\+w alone|strong=\"G1438\"\\+w*. \\+w They|strong=\"G1161\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guides|strong=\"G3595\"\\+w* \\+w of|strong=\"G1519\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*. \\+w If|strong=\"G1437\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w* \\+w guide|strong=\"G3595\"\\+w* \\+w the|strong=\"G1519\"\\+w* \\+w blind|strong=\"G5185\"\\+w*, \\+w both|strong=\"G1161\"\\+w* \\+w will|strong=\"G1510\"\\+w* \\+w fall|strong=\"G4098\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w a|strong=\"G1519\"\\+w* pit.”\nPeter answered him, “Explain the parable to us.”\nSo Jesus said, “\\+w Do|strong=\"G2532\"\\+w* \\+w you|strong=\"G5210\"\\+w* \\+w also|strong=\"G2532\"\\+w* still \\+w not|strong=\"G1510\"\\+w* understand?\nDon’\\+w t|strong=\"G3588\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w understand|strong=\"G3539\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w whatever|strong=\"G3956\"\\+w* \\+w goes|strong=\"G1531\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w passes|strong=\"G5562\"\\+w* \\+w into|strong=\"G1519\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w belly|strong=\"G2836\"\\+w* \\+w and|strong=\"G2532\"\\+w* \\+w then|strong=\"G2532\"\\+w* \\+w out|strong=\"G1544\"\\+w* \\+w of|strong=\"G2532\"\\+w* \\+w the|strong=\"G2532\"\\+w* \\+w body|strong=\"G1519\"\\+w*?\n\\+w But|strong=\"G1161\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w things|strong=\"G3588\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w proceed|strong=\"G1607\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w mouth|strong=\"G4750\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w*, \\+w and|strong=\"G1161\"\\+w* \\+w they|strong=\"G1161\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w man|strong=\"G2588\"\\+w*.\n\\+w For|strong=\"G1063\"\\+w* \\+w out|strong=\"G1831\"\\+w* \\+w of|strong=\"G1537\"\\+w* \\+w the|strong=\"G1537\"\\+w* \\+w heart|strong=\"G2588\"\\+w* \\+w come|strong=\"G1831\"\\+w* \\+w evil|strong=\"G4190\"\\+w* \\+w thoughts|strong=\"G1261\"\\+w*, \\+w murders|strong=\"G5408\"\\+w*, \\+w adulteries|strong=\"G3430\"\\+w*, \\+w sexual|strong=\"G4202\"\\+w* sins, \\+w thefts|strong=\"G2829\"\\+w*, \\+w false|strong=\"G5577\"\\+w* \\+w testimony|strong=\"G5577\"\\+w*, \\+w and|strong=\"G1831\"\\+w* blasphemies.\n\\+w These|strong=\"G3778\"\\+w* \\+w are|strong=\"G1510\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w things|strong=\"G3778\"\\+w* \\+w which|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*; \\+w but|strong=\"G1161\"\\+w* \\+w to|strong=\"G3756\"\\+w* \\+w eat|strong=\"G2068\"\\+w* \\+w with|strong=\"G5495\"\\+w* unwashed \\+w hands|strong=\"G5495\"\\+w* doesn’\\+w t|strong=\"G3588\"\\+w* \\+w defile|strong=\"G2840\"\\+w* \\+w the|strong=\"G1161\"\\+w* \\+w man|strong=\"G3778\"\\+w*.”\nJesus went out from there and withdrew into the region of Tyre and Sidon.",
+          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 15:12-21\nτότε προσελθόντες οἱ μαθηταὶ αὐτοῦ εἶπον αὐτῷ· οἶδας ὅτι οἱ Φαρισαῖοι ἐσκανδαλίσθησαν ἀκούσαντες τὸν λόγον;\nὁ δὲ ἀποκριθεὶς εἶπε· πᾶσα φυτεία ἣν οὐκ ἐφύτευσεν ὁ πατήρ μου ὁ οὐράνιος ἐκριζωθήσεται.\nἄφετε αὐτούς· ὁδηγοί εἰσι τυφλοὶ τυφλῶν· τυφλὸς δὲ τυφλὸν ἐὰν ὁδηγῇ, ἀμφότεροι εἰς βόθυνον πεσοῦνται.\nἀποκριθεὶς δὲ ὁ Πέτρος εἶπεν αὐτῷ· φράσον ἡμῖν τὴν παραβολὴν ταύτην.\nὁ δὲ Ἰησοῦς εἶπεν· ἀκμὴν καὶ ὑμεῖς ἀσύνετοί ἐστε;\nοὔπω νοεῖτε ὅτι πᾶν τὸ εἰσπορευόμενον εἰς τὸ στόμα εἰς τὴν κοιλίαν χωρεῖ καὶ εἰς ἀφεδρῶνα ἐκβάλλεται;\nτὰ δὲ ἐκπορευόμενα ἐκ τοῦ στόματος ἐκ τῆς καρδίας ἐξέρχεται, κἀκεῖνα κοινοῖ τὸν ἄνθρωπον.\nἐκ γὰρ τῆς καρδίας ἐξέρχονται διαλογισμοὶ πονηροί, φόνοι, μοιχεῖαι, πορνεῖαι, κλοπαί, ψευδομαρτυρίαι, βλασφημίαι.\nταῦτά ἐστι τὰ κοινοῦντα τὸν ἄνθρωπον· τὸ δὲ ἀνίπτοις χερσὶ φαγεῖν οὐ κοινοῖ τὸν ἄνθρωπον.\nΚαὶ ἐξελθὼν ἐκεῖθεν ὁ Ἰησοῦς ἀνεχώρησεν εἰς τὰ μέρη Τύρου καὶ Σιδῶνος."
         },
         "[آية المناولة]": {
-          "ar": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
+          "ar": "",
           "en": "",
           "el": ""
         }
@@ -1150,9 +1147,9 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: صوم الأربعاء أو الجمعة — صوم صارم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
-            "en": "Civil date: 2026-07-15. Verified daily texts are inserted below where available.",
-            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-15. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
+            "ar": "التاريخ المدني: الخميس 16 تموز 2026. التاريخ الكنسي القديم: 3 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: لا صوم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
+            "en": "Civil date: 2026-07-16. Verified daily texts are inserted below where available.",
+            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-16. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
           },
           "collapsed_by_default": true
         },
@@ -1181,7 +1178,7 @@
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-15",
+        "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1201,13 +1198,13 @@
         "el": "Ἑσπερινός — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-15",
+      "dynamic_date": "2026-07-16",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1238,64 +1235,16 @@
             "el": ""
           },
           "text": {
-            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "ar": "التاريخ المدني: الخميس 16 تموز 2026. التاريخ الكنسي القديم: 3 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
             "en": "",
             "el": ""
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-15",
+        "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1315,13 +1264,13 @@
         "el": "Ὄρθρος — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-15",
+      "dynamic_date": "2026-07-16",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1352,64 +1301,16 @@
             "el": ""
           },
           "text": {
-            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "ar": "التاريخ المدني: الخميس 16 تموز 2026. التاريخ الكنسي القديم: 3 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
             "en": "",
             "el": ""
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-15",
+        "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1429,13 +1330,13 @@
         "el": "Πρωινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-15",
+      "dynamic_date": "2026-07-16",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1466,64 +1367,16 @@
             "el": ""
           },
           "text": {
-            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "ar": "التاريخ المدني: الخميس 16 تموز 2026. التاريخ الكنسي القديم: 3 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
             "en": "",
             "el": ""
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-15",
+        "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1543,13 +1396,13 @@
         "el": "Ἑσπερινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-15",
+      "dynamic_date": "2026-07-16",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1580,64 +1433,16 @@
             "el": ""
           },
           "text": {
-            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "ar": "التاريخ المدني: الخميس 16 تموز 2026. التاريخ الكنسي القديم: 3 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
             "en": "",
             "el": ""
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-15",
+        "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1657,13 +1462,13 @@
         "el": "Μικρὸν Ἀπόδειπνον — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-15",
+      "dynamic_date": "2026-07-16",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1694,64 +1499,16 @@
             "el": ""
           },
           "text": {
-            "ar": "التاريخ المدني: الأربعاء 15 تموز 2026. التاريخ الكنسي القديم: 2 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "ar": "التاريخ المدني: الخميس 16 تموز 2026. التاريخ الكنسي القديم: 3 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
             "en": "",
             "el": ""
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-15",
+        "date_iso": "2026-07-16",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1796,24 +1553,24 @@
       },
       "segment_replacements": {
         "[طروبارية اليوم]": {
-          "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
-          "ar": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[القنداق]": {
-          "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[البروكيمنن]": {
-          "ar": "النص الكنسي العربي الأصلي غير متاح حاليًا.",
-          "en": "Official native English text is currently unavailable.",
-          "el": "Τὸ ἐπίσημο πρωτότυπο ἑλληνικὸ κείμενο δὲν εἶναι διαθέσιμο αὐτήν τη στιγμή."
+          "ar": "لحن القيامة 6\nخَلِّصْ يَا رَبُّ شَعْبَكَ وَبَارِكْ مِيرَاثَكَ.\nإِلَيْكَ يَا رَبُّ أَصْرُخُ، يَا إِلَهِي لَا تَصْمُتْ عَنِّي.",
+          "en": "Resurrection Tone 6\nSave Your people, O Lord, and bless Your inheritance.\nTo You, O Lord, I cry; O my God, be not silent toward me.",
+          "el": "Ἀναστάσιμος Ἦχος 6\nΣῶσον, Κύριε, τὸν λαόν σου καὶ εὐλόγησον τὴν κληρονομίαν σου.\nΠρὸς σέ, Κύριε, κεκράξομαι· ὁ Θεός μου, μὴ παρασιωπήσῃς ἀπ᾽ ἐμοῦ."
         },
         "[فصل من رسالة اليوم]": {
           "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ إِلَى أَهْلِ رُومِيَةَ 15:1-7\nفَيَجِبُ عَلَيْنَا نَحْنُ ٱلْأَقْوِيَاءَ أَنْ نَحْتَمِلَ أَضْعَافَ ٱلضُّعَفَاءِ، وَلَا نُرْضِيَ أَنْفُسَنَا.\nفَلْيُرْضِ كُلُّ وَاحِدٍ مِنَّا قَرِيبَهُ لِلْخَيْرِ، لِأَجْلِ ٱلْبُنْيَانِ.\nلِأَنَّ ٱلْمَسِيحَ أَيْضًا لَمْ يُرْضِ نَفْسَهُ، بَلْ كَمَا هُوَ مَكْتُوبٌ: «تَعْيِيرَاتُ مُعَيِّرِيكَ وَقَعَتْ عَلَيَّ».\nلِأَنَّ كُلَّ مَا سَبَقَ فَكُتِبَ كُتِبَ لِأَجْلِ تَعْلِيمِنَا، حَتَّى بِٱلصَّبْرِ وَٱلتَّعْزِيَةِ بِمَا فِي ٱلْكُتُبِ يَكُونُ لَنَا رَجَاءٌ.\nوَلْيُعْطِكُمْ إِلَهُ ٱلصَّبْرِ وَٱلتَّعْزِيَةِ أَنْ تَهْتَمُّوا ٱهْتِمَامًا وَاحِدًا فِيمَا بَيْنَكُمْ، بِحَسَبِ ٱلْمَسِيحِ يَسُوعَ،\nلِكَيْ تُمَجِّدُوا ٱللهَ أَبَا رَبِّنَا يَسُوعَ ٱلْمَسِيحِ، بِنَفْسٍ وَاحِدَةٍ وَفَمٍ وَاحِدٍ.\nلِذَلِكَ ٱقْبَلُوا بَعْضُكُمْ بَعْضًا كَمَا أَنَّ ٱلْمَسِيحَ أَيْضًا قَبِلَنَا، لِمَجْدِ ٱللهِ.",
@@ -1826,7 +1583,7 @@
           "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 9:27-35\nΚαὶ παράγοντι ἐκεῖθεν τῷ Ἰησοῦ ἠκολούθησαν αὐτῷ δύο τυφλοὶ κράζοντες καὶ λέγοντες· ἐλέησον ἡμᾶς, υἱὲ Δαυΐδ.\nἐλθόντι δὲ εἰς τὴν οἰκίαν προσῆλθον αὐτῷ οἱ τυφλοί, καὶ λέγει αὐτοῖς ὁ Ἰησοῦς· πιστεύετε ὅτι δύναμαι τοῦτο ποιῆσαι; λέγουσιν αὐτῷ· ναί, Κύριε.\nτότε ἥψατο τῶν ὀφθαλμῶν αὐτῶν λέγων· κατὰ τὴν πίστιν ὑμῶν γενηθήτω ὑμῖν.\nκαὶ ἀνεῴχθησαν αὐτῶν οἱ ὀφθαλμοί· καὶ ἐνεβριμήσατο αὐτοῖς ὁ Ἰησοῦς λέγων· ὁρᾶτε μηδεὶς γινωσκέτω.\nοἱ δὲ ἐξελθόντες διεφήμισαν αὐτὸν ἐν ὅλῃ τῇ γῇ ἐκείνῃ.\nΑὐτῶν δὲ ἐξερχομένων ἰδοὺ προσήνεγκαν αὐτῷ ἄνθρωπον κωφὸν δαιμονιζόμενον·\nκαὶ ἐκβληθέντος τοῦ δαιμονίου ἐλάλησεν ὁ κωφός, καὶ ἐθαύμασαν οἱ ὄχλοι λέγοντες ὅτι οὐδέποτε ἐφάνη οὕτως ἐν τῷ Ἰσραήλ.\nοἱ δὲ Φαρισαῖοι ἔλεγον· ἐν τῷ ἄρχοντι τῶν δαιμονίων ἐκβάλλει τὰ δαιμόνια.\nΚαὶ περιῆγεν ὁ Ἰησοῦς τὰς πόλεις πάσας καὶ τὰς κώμας διδάσκων ἐν ταῖς συναγωγαῖς αὐτῶν καὶ κηρύσσων τὸ εὐαγγέλιον τῆς βασιλείας καὶ θεραπεύων πᾶσαν νόσον καὶ πᾶσαν μαλακίαν ἐν τῷ λαῷ."
         },
         "[آية المناولة]": {
-          "ar": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
+          "ar": "",
           "en": "",
           "el": ""
         }
@@ -1897,163 +1654,6 @@
     }
   ],
   "upcoming": [
-    {
-      "date": "2026-07-16",
-      "day": {
-        "ar": "الخميس 16 تموز / 3 تموز قديم",
-        "en": "Thursday, July 16",
-        "el": ""
-      },
-      "feast": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "status": {
-        "ar": "لا صوم",
-        "en": "",
-        "el": ""
-      },
-      "note": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "fasting": {
-        "code": "fast_free",
-        "season": {
-          "ar": "يوم عادي",
-          "en": "",
-          "el": ""
-        },
-        "title": {
-          "ar": "لا صوم",
-          "en": "",
-          "el": ""
-        },
-        "level": {
-          "ar": "لا صوم",
-          "en": "",
-          "el": ""
-        },
-        "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "",
-          "el": ""
-        },
-        "is_fast": false,
-        "allowed": {
-          "meat": true,
-          "dairy": true,
-          "eggs": true,
-          "fish": true,
-          "wine": true,
-          "oil": true
-        },
-        "display_icons": [
-          "✅"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "اللحوم",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "الألبان",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "البيض",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "السمك",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "النبيذ",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "الزيت",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "ordinary_fast_free",
-          "note": {
-            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "الرسالة",
-            "en": "Epistle",
-            "el": ""
-          },
-          "reference": {
-            "ar": "١ كورنثوس 7:24-35",
-            "en": "1 Corinthians 7.24-35",
-            "el": ""
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "الإنجيل",
-            "en": "Gospel",
-            "el": ""
-          },
-          "reference": {
-            "ar": "متى 15:12-21",
-            "en": "Matthew 15.12-21",
-            "el": ""
-          }
-        }
-      },
-      "is_sunday": false
-    },
     {
       "date": "2026-07-17",
       "day": {
@@ -2997,6 +2597,163 @@
         }
       },
       "is_sunday": false
+    },
+    {
+      "date": "2026-07-23",
+      "day": {
+        "ar": "الخميس 23 تموز / 10 تموز قديم",
+        "en": "Thursday, July 23",
+        "el": ""
+      },
+      "feast": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "",
+        "el": ""
+      },
+      "status": {
+        "ar": "لا صوم",
+        "en": "",
+        "el": ""
+      },
+      "note": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "",
+        "el": ""
+      },
+      "fasting": {
+        "code": "fast_free",
+        "season": {
+          "ar": "يوم عادي",
+          "en": "",
+          "el": ""
+        },
+        "title": {
+          "ar": "لا صوم",
+          "en": "",
+          "el": ""
+        },
+        "level": {
+          "ar": "لا صوم",
+          "en": "",
+          "el": ""
+        },
+        "detail": {
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "en": "",
+          "el": ""
+        },
+        "is_fast": false,
+        "allowed": {
+          "meat": true,
+          "dairy": true,
+          "eggs": true,
+          "fish": true,
+          "wine": true,
+          "oil": true
+        },
+        "display_icons": [
+          "✅"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "اللحوم",
+              "en": "",
+              "el": ""
+            },
+            "allowed": true
+          },
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "الألبان",
+              "en": "",
+              "el": ""
+            },
+            "allowed": true
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "البيض",
+              "en": "",
+              "el": ""
+            },
+            "allowed": true
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "السمك",
+              "en": "",
+              "el": ""
+            },
+            "allowed": true
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "النبيذ",
+              "en": "",
+              "el": ""
+            },
+            "allowed": true
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "الزيت",
+              "en": "",
+              "el": ""
+            },
+            "allowed": true
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "ordinary_fast_free",
+          "note": {
+            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
+            "en": "",
+            "el": ""
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "الرسالة",
+            "en": "Epistle",
+            "el": ""
+          },
+          "reference": {
+            "ar": "١ كورنثوس 10:28-11:7",
+            "en": "1 Corinthians 10.28-11.7",
+            "el": ""
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "الإنجيل",
+            "en": "Gospel",
+            "el": ""
+          },
+          "reference": {
+            "ar": "متى 16:24-28",
+            "en": "Matthew 16.24-28",
+            "el": ""
+          }
+        }
+      },
+      "is_sunday": false
     }
   ],
   "automatic_diacritization_used": false,
@@ -3007,7 +2764,7 @@
   },
   "daily_update_status": {
     "mode": "partial",
-    "date": "2026-07-15",
+    "date": "2026-07-16",
     "message": {
       "ar": "بيانات اليوم متاحة؛ قد تبقى بعض النصوص غير المنشورة فارغة حتى ورودها من مصدر رسمي مطابق.",
       "en": "Today data is available; unavailable exact texts remain empty until a matching official source is available.",
@@ -3015,17 +2772,16 @@
     }
   },
   "lane_schema_version": 2,
-  "language": "en",
+  "language": "ar",
   "calendar_authority": "jerusalem_patriarchate",
   "calendar": "julian_old_calendar",
   "language_source_policy": {
     "priority": [
-      "goarch_online_chapel",
-      "jerusalem_patriarchate_en",
-      "goarch_digital_chant_stand_english",
-      "goarch_synekdemos",
-      "oca_official_english",
-      "ebible_world_english_bible"
+      "orthodox_jordan",
+      "jerusalem_patriarchate_ar",
+      "antioch_archdiocese_tripoli_ar",
+      "antioch_patriarchate_ar",
+      "ebible_arabic_van_dyck"
     ],
     "same_language_fallback_only": true,
     "machine_translation_used": false,
