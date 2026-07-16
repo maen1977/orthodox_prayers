@@ -41,6 +41,9 @@ jobs:
       - name: Install validation dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
 
+      - name: Normalize Gradle wrapper permission
+        run: python scripts/ensure_gradlew_executable.py
+
       - name: Run source and religious-content quality gate
         run: python scripts/run_quality_gate.py --strict-native-lanes
 
@@ -135,6 +138,9 @@ jobs:
           rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
           git worktree remove --force "$VERIFIED_DIR"
           echo "ORTHODOX_DATE=$(TZ=Asia/Amman date +%F)" >> "$GITHUB_ENV"
+
+      - name: Normalize Gradle wrapper permission
+        run: python scripts/ensure_gradlew_executable.py
 
       - name: Run release-strict quality gate
         run: |

@@ -59,6 +59,13 @@ def main() -> None:
 
     require_current = "--require-current" in args
     strict_native_lanes = "--strict-native-lanes" in args
+
+    # Source archives uploaded from Windows or GitHub web may lose POSIX mode
+    # metadata. Normalize gradlew before tests inspect the release contract.
+    permission_command = [sys.executable, "scripts/ensure_gradlew_executable.py"]
+    print("\n>>> " + " ".join(permission_command), flush=True)
+    subprocess.run(permission_command, cwd=ROOT, check=True)
+
     for command in commands(require_current, strict_native_lanes):
         print("\n>>> " + " ".join(command), flush=True)
         subprocess.run(command, cwd=ROOT, check=True)

@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -309,6 +311,13 @@ class ReleaseContractTests(unittest.TestCase):
         wrapper = ROOT / "gradle/wrapper/gradle-wrapper.jar"
         properties = (ROOT / "gradle/wrapper/gradle-wrapper.properties").read_text(encoding="utf-8")
         self.assertTrue((ROOT / "gradlew").exists())
+        subprocess.run(
+            [sys.executable, "scripts/ensure_gradlew_executable.py"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
         self.assertTrue((ROOT / "gradlew").stat().st_mode & 0o111)
         self.assertTrue((ROOT / "gradlew.bat").exists())
         def canonical_text_bytes(path):

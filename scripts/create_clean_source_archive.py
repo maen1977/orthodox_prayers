@@ -130,7 +130,10 @@ def main() -> None:
             relative = Path(args.root_name) / path.relative_to(ROOT)
             info = zipfile.ZipInfo(relative.as_posix(), date_time=timestamp)
             mode = path.stat().st_mode
-            permissions = 0o755 if mode & stat.S_IXUSR else 0o644
+            # Always record gradlew as executable. Windows/GitHub web uploads
+            # cannot reliably preserve its POSIX execute bit in the worktree.
+            is_gradlew = path.relative_to(ROOT).as_posix() == "gradlew"
+            permissions = 0o755 if is_gradlew or mode & stat.S_IXUSR else 0o644
             info.create_system = 3
             info.external_attr = (permissions & 0xFFFF) << 16
             info.compress_type = zipfile.ZIP_DEFLATED

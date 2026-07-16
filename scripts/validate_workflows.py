@@ -44,6 +44,7 @@ def main() -> None:
     require_all(
         build,
         (
+            "scripts/ensure_gradlew_executable.py",
             "scripts/run_quality_gate.py --strict-native-lanes",
             "Import latest signed published data for debug APK",
             "origin/verified-data",
@@ -79,6 +80,18 @@ def main() -> None:
     ):
         if forbidden in build:
             fail(f"Build workflow still contains temporarily disabled behavior: {forbidden}")
+
+    normalizer = "python scripts/ensure_gradlew_executable.py"
+    debug_gate = "python scripts/run_quality_gate.py --strict-native-lanes"
+    release_gate = "python scripts/run_quality_gate.py --require-current --strict-native-lanes"
+    if build.count(normalizer) < 2:
+        fail("Build workflow must normalize gradlew before both quality gates")
+    first_normalizer = build.index(normalizer)
+    first_gate = build.index(debug_gate)
+    second_normalizer = build.index(normalizer, first_normalizer + 1)
+    second_gate = build.index(release_gate)
+    if not (first_normalizer < first_gate < second_normalizer < second_gate):
+        fail("Gradle wrapper normalization must occur before each quality gate")
 
     update = files["update.yml"].read_text(encoding="utf-8")
     require_all(
