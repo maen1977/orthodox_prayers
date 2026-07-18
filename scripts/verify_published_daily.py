@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Health check used by the 00:15 Asia/Amman verification run."""
+"""Manual health check for the published signed daily snapshot."""
 from __future__ import annotations
 import argparse, json, subprocess, sys
 from datetime import datetime

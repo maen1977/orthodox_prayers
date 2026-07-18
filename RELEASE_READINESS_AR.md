@@ -1,4 +1,4 @@
-# حالة جاهزية Orthodox Prayers 4.3.0
+# حالة جاهزية Orthodox Prayers 5.0.1
 
 ## مكتمل داخل المصدر
 

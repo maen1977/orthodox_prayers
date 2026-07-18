@@ -36,7 +36,7 @@ canonical/native_language_sources.json
 
 ## النصوص الكتابية القابلة لإعادة التوزيع
 
-تتضمن النسخة 4.3.0 لقطات أصلية مستقلة لقراءات اليوم من المصادر المسجلة التالية:
+تتضمن النسخة 5.0.0 لقطات أصلية مستقلة لقراءات اليوم من المصادر المسجلة التالية:
 
 - العربية: Arabic Van Dyck Bible — Public Domain.
 - الإنجليزية: World English Bible — Public Domain. يجب عدم تسمية نص معدل باسم World English Bible.

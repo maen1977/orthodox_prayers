@@ -39,43 +39,51 @@ public final class AppPreferences {
     public void setKeepScreenOn(boolean value) { values.edit().putBoolean("keep_screen_on", value).apply(); }
 
     public String legacyCachedTodayJson() { return values.getString("cache_today_json", null); }
+
+    private String laneKey(String base) { return base + "_" + effectiveLanguage(); }
+
     public String cachedEtag(String endpoint) {
-        String savedEndpoint = values.getString("cache_today_etag_endpoint", "");
         String requestedEndpoint = endpoint == null ? "" : endpoint.trim();
+        String endpointKey = laneKey("cache_today_etag_endpoint");
+        String etagKey = laneKey("cache_today_etag");
+        String savedEndpoint = values.getString(endpointKey, "");
         if (!requestedEndpoint.equals(savedEndpoint)) return "";
-        return values.getString("cache_today_etag", "");
+        return values.getString(etagKey, "");
     }
-    public long lastSuccessfulUpdate() { return values.getLong("last_successful_update", 0L); }
-    public long lastRefreshAttempt() { return values.getLong("last_refresh_attempt", 0L); }
-    public boolean lastRefreshSucceeded() { return values.getBoolean("last_refresh_succeeded", false); }
-    public String lastRefreshMessage() { return values.getString("last_refresh_message", ""); }
+    public long lastSuccessfulUpdate() { return values.getLong(laneKey("last_successful_update"), values.getLong("last_successful_update", 0L)); }
+    public long lastRefreshAttempt() { return values.getLong(laneKey("last_refresh_attempt"), values.getLong("last_refresh_attempt", 0L)); }
+    public boolean lastRefreshSucceeded() { return values.getBoolean(laneKey("last_refresh_succeeded"), values.getBoolean("last_refresh_succeeded", false)); }
+    public String lastRefreshMessage() { return values.getString(laneKey("last_refresh_message"), values.getString("last_refresh_message", "")); }
 
     public void saveRemoteMetadata(String etag, String endpoint, long timestamp) {
         SharedPreferences.Editor editor = values.edit()
-                .putLong("last_successful_update", timestamp)
-                .putLong("last_refresh_attempt", timestamp)
-                .putBoolean("last_refresh_succeeded", true)
-                .putString("last_refresh_message", "updated");
+                .putLong(laneKey("last_successful_update"), timestamp)
+                .putLong(laneKey("last_refresh_attempt"), timestamp)
+                .putBoolean(laneKey("last_refresh_succeeded"), true)
+                .putString(laneKey("last_refresh_message"), "updated");
         if (etag == null || etag.trim().isEmpty()) {
-            editor.remove("cache_today_etag").remove("cache_today_etag_endpoint");
+            editor.remove(laneKey("cache_today_etag")).remove(laneKey("cache_today_etag_endpoint"));
         } else {
-            editor.putString("cache_today_etag", etag);
-            editor.putString("cache_today_etag_endpoint", endpoint == null ? "" : endpoint.trim());
+            editor.putString(laneKey("cache_today_etag"), etag);
+            editor.putString(laneKey("cache_today_etag_endpoint"), endpoint == null ? "" : endpoint.trim());
         }
         editor.remove("cache_today_json").remove("cache_today_signature").apply();
     }
 
     public void recordRefreshOutcome(boolean succeeded, String message, long timestamp) {
         SharedPreferences.Editor editor = values.edit()
-                .putLong("last_refresh_attempt", timestamp)
-                .putBoolean("last_refresh_succeeded", succeeded)
-                .putString("last_refresh_message", message == null ? "" : message);
-        if (succeeded) editor.putLong("last_successful_update", timestamp);
+                .putLong(laneKey("last_refresh_attempt"), timestamp)
+                .putBoolean(laneKey("last_refresh_succeeded"), succeeded)
+                .putString(laneKey("last_refresh_message"), message == null ? "" : message);
+        if (succeeded) editor.putLong(laneKey("last_successful_update"), timestamp);
         editor.apply();
     }
 
     public void clearRemoteMetadata() {
-        values.edit().remove("cache_today_etag").remove("cache_today_etag_endpoint").apply();
+        values.edit()
+                .remove(laneKey("cache_today_etag"))
+                .remove(laneKey("cache_today_etag_endpoint"))
+                .apply();
     }
 
     public void clearLegacyRemoteCache() {
@@ -167,6 +175,51 @@ public final class AppPreferences {
     /** 0 disables auto-scroll; 1..4 are progressively faster reader speeds. */
     public int autoScrollSpeed() { return Math.max(0, Math.min(4, values.getInt("auto_scroll_speed", 0))); }
     public void setAutoScrollSpeed(int value) { values.edit().putInt("auto_scroll_speed", Math.max(0, Math.min(4, value))).apply(); }
+
+
+    public int readerBrightnessPercent() { return Math.max(10, Math.min(100, values.getInt("reader_brightness_percent", 100))); }
+    public void setReaderBrightnessPercent(int value) { values.edit().putInt("reader_brightness_percent", Math.max(10, Math.min(100, value))).apply(); }
+
+    public String readerTheme() { return values.getString("reader_theme", "system"); }
+    public void setReaderTheme(String value) {
+        String safe = "sepia".equals(value) || "night".equals(value) ? value : "system";
+        values.edit().putString("reader_theme", safe).apply();
+    }
+
+    public List<String> searchHistory() { return readStringList("search_history_json"); }
+    public void recordSearchQuery(String query) {
+        if (query == null || query.trim().isEmpty()) return;
+        List<String> items = searchHistory();
+        items.remove(query.trim());
+        items.add(0, query.trim());
+        while (items.size() > 10) items.remove(items.size() - 1);
+        writeStringList("search_history_json", items);
+    }
+    public void clearSearchHistory() { values.edit().remove("search_history_json").apply(); }
+
+    public int quietHoursStartMinute() { return Math.max(0, Math.min(1439, values.getInt("quiet_hours_start", 22 * 60))); }
+    public int quietHoursEndMinute() { return Math.max(0, Math.min(1439, values.getInt("quiet_hours_end", 7 * 60))); }
+    public void setQuietHours(int startMinute, int endMinute) {
+        values.edit()
+                .putInt("quiet_hours_start", Math.max(0, Math.min(1439, startMinute)))
+                .putInt("quiet_hours_end", Math.max(0, Math.min(1439, endMinute)))
+                .apply();
+    }
+
+    public String serviceNote(String serviceId) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return "";
+        try { return new JSONObject(values.getString("service_notes_json", "{}")).optString(serviceId, ""); }
+        catch (Exception ignored) { return ""; }
+    }
+    public void setServiceNote(String serviceId, String note) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return;
+        try {
+            JSONObject object = new JSONObject(values.getString("service_notes_json", "{}"));
+            String value = note == null ? "" : note.trim();
+            if (value.isEmpty()) object.remove(serviceId); else object.put(serviceId, value);
+            values.edit().putString("service_notes_json", object.toString()).apply();
+        } catch (Exception ignored) {}
+    }
 
     public String calendarMode() { return values.getString("calendar_mode", "gregorian"); }
     public void setCalendarMode(String value) {

@@ -107,8 +107,9 @@ class OfficialSourcePolicyTests(unittest.TestCase):
         self.assertEqual("AUTOMATIC_NATIVE_LANGUAGE_POLICY_ENFORCED", publication["status"])
         self.assertTrue(publication["fail_closed"])
         self.assertFalse(publication["human_review_required"])
-        self.assertFalse(self.today["integrity"]["ai_scripture_translation_used"])
-        self.assertFalse(self.today["integrity"]["ai_liturgical_translation_used"])
+        self.assertFalse(self.today["machine_translation_used"])
+        self.assertFalse(self.today["automatic_diacritization_used"])
+        self.assertIn(publication["daily_availability"], {"PARTIAL_VERIFIED", "FULL"})
         self.assertFalse(self.today["automatic_diacritization_used"])
         self.assertEqual("DISABLED_NO_CROSS_LANGUAGE_FALLBACK", self.today["translation_fallback_policy"])
 

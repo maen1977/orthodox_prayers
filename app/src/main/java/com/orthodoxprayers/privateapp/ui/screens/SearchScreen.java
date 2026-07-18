@@ -18,6 +18,7 @@ import com.orthodoxprayers.privateapp.ui.UiKit;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public final class SearchScreen extends BaseScreen {
     private static final String TAG = "OrthodoxSearch";
@@ -39,6 +40,10 @@ public final class SearchScreen extends BaseScreen {
         input.setContentDescription(local("حقل البحث في الكتاب المقدس والصلوات والقداس", "Search Scripture, prayers, and liturgy", "Πεδίο ἀναζήτησης Γραφῆς καὶ ἀκολουθιῶν"));
         add(page.root, input, 14, 7);
 
+        LinearLayout recentQueries = new LinearLayout(host.activity());
+        recentQueries.setOrientation(LinearLayout.VERTICAL);
+        page.root.addView(recentQueries, new LinearLayout.LayoutParams(-1, -2));
+
         Button search = ui.button(local("بحث", "Search", "Ἀναζήτηση"), false);
         add(page.root, search, 0, 10);
         LinearLayout results = new LinearLayout(host.activity());
@@ -48,6 +53,7 @@ public final class SearchScreen extends BaseScreen {
         Runnable execute = () -> {
             String query = input.getText().toString().trim();
             preferences.setLastSearchQuery(query);
+            preferences.recordSearchQuery(query);
             hideKeyboard(input);
             results.removeAllViews();
             if (query.isEmpty()) {
@@ -67,6 +73,31 @@ public final class SearchScreen extends BaseScreen {
             add(results, count, 0, 8);
             for (SearchResult match : matches) add(results, resultCard(match), 2, 8);
         };
+        List<String> history = preferences.searchHistory();
+        if (!history.isEmpty()) {
+            TextView recentTitle = ui.sectionTitle(local("عمليات البحث الأخيرة", "Recent searches", "Πρόσφατες ἀναζητήσεις"));
+            recentQueries.addView(recentTitle);
+            LinearLayout row = ui.row();
+            for (int i = 0; i < Math.min(4, history.size()); i++) {
+                String previous = history.get(i);
+                Button item = ui.smallButton(previous, false);
+                item.setMaxLines(1);
+                item.setOnClickListener(v -> {
+                    input.setText(previous);
+                    input.setSelection(previous.length());
+                    execute.run();
+                });
+                row.addView(item, ui.weight(44));
+            }
+            recentQueries.addView(row);
+            Button clear = ui.smallButton(local("مسح سجل البحث", "Clear search history", "Καθαρισμὸς ἱστορικοῦ"), false);
+            clear.setOnClickListener(v -> {
+                preferences.clearSearchHistory();
+                recentQueries.removeAllViews();
+            });
+            recentQueries.addView(clear, ui.margins(-1, -2, 0, 4, 0, 7));
+        }
+
         search.setOnClickListener(v -> execute.run());
         input.setOnEditorActionListener((v, actionId, event) -> { execute.run(); return true; });
         execute.run();

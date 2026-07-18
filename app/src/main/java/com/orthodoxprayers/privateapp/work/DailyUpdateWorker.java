@@ -9,6 +9,7 @@ import androidx.work.WorkerParameters;
 import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.data.DataRepository;
 import com.orthodoxprayers.privateapp.update.UpdateCoordinator;
+import com.orthodoxprayers.privateapp.widget.DailyAgendaWidget;
 
 public final class DailyUpdateWorker extends Worker {
     public DailyUpdateWorker(@NonNull Context context, @NonNull WorkerParameters parameters) {
@@ -26,14 +27,15 @@ public final class DailyUpdateWorker extends Worker {
         DataRepository.RefreshOutcome outcome = app.repository().refreshBlocking(force);
         if (outcome.result == DataRepository.RefreshResult.UPDATED
                 || outcome.result == DataRepository.RefreshResult.NOT_MODIFIED) {
-            app.updateCoordinator().scheduleDailyAmmanRefreshes();
+            app.updateCoordinator().scheduleMidnightRefresh();
+            DailyAgendaWidget.updateAll(applicationContext);
             return Result.success();
         }
 
         boolean retryable = DataRepository.isRetryableRefreshMessage(outcome.message);
         if (retryable && getRunAttemptCount() < 8) return Result.retry();
 
-        app.updateCoordinator().scheduleDailyAmmanRefreshes();
+        app.updateCoordinator().scheduleMidnightRefresh();
         return Result.failure();
     }
 }

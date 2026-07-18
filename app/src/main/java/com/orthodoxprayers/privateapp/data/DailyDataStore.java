@@ -2,6 +2,8 @@ package com.orthodoxprayers.privateapp.data;
 
 import android.content.Context;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,13 +11,26 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
-/** Stores signed daily data in immutable generations selected by atomic reference files. */
+/**
+ * Atomic, language-scoped storage for exact signed daily payload bytes.
+ *
+ * The JSON and detached signature are never rewritten after verification. Each
+ * language gets an independent current/backup pair and up to 30 dated snapshots,
+ * so switching languages cannot delete another language's trusted cache.
+ */
 public final class DailyDataStore {
     private static final String DIRECTORY = "trusted_daily_data";
     private static final String CURRENT_REFERENCE = "current.ref";
     private static final String BACKUP_REFERENCE = "backup.ref";
+    private static final String ARCHIVE_DIRECTORY = "archive";
     private static final int MAX_JSON_BYTES = 2_000_000;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_REFERENCE_BYTES = 128;
@@ -31,20 +46,36 @@ public final class DailyDataStore {
     };
 
     private final File directory;
+    private final File archiveDirectory;
     private final File currentReference;
     private final File backupReference;
     private final FaultInjector faultInjector;
 
     public DailyDataStore(Context context) {
-        this(context.getFilesDir(), NO_FAULTS);
+        this(context, "ar");
     }
 
+    public DailyDataStore(Context context, String language) {
+        File files = context.getApplicationContext().getFilesDir();
+        String lane = DataContract.normalizeLanguage(language);
+        File scoped = new File(new File(files, DIRECTORY), lane);
+        migrateLegacyStoreIfNeeded(new File(files, DIRECTORY), scoped);
+        directory = scoped;
+        archiveDirectory = new File(directory, ARCHIVE_DIRECTORY);
+        currentReference = new File(directory, CURRENT_REFERENCE);
+        backupReference = new File(directory, BACKUP_REFERENCE);
+        faultInjector = NO_FAULTS;
+    }
+
+    /** Test constructor retaining the historical single-directory layout. */
     DailyDataStore(File filesDirectory) {
         this(filesDirectory, NO_FAULTS);
     }
 
+    /** Test constructor retaining the historical single-directory layout. */
     DailyDataStore(File filesDirectory, FaultInjector faultInjector) {
         directory = new File(filesDirectory, DIRECTORY);
+        archiveDirectory = new File(directory, ARCHIVE_DIRECTORY);
         currentReference = new File(directory, CURRENT_REFERENCE);
         backupReference = new File(directory, BACKUP_REFERENCE);
         this.faultInjector = faultInjector == null ? NO_FAULTS : faultInjector;
@@ -58,15 +89,27 @@ public final class DailyDataStore {
         return readReferenced(backupReference);
     }
 
+    public synchronized StoredPayload readDate(String dateIso) throws Exception {
+        if (!isSafeDate(dateIso)) return null;
+        return readReferenced(new File(archiveDirectory, dateIso + ".ref"));
+    }
+
+    public synchronized List<String> availableDates() {
+        if (!archiveDirectory.isDirectory()) return Collections.emptyList();
+        File[] refs = archiveDirectory.listFiles((dir, name) -> name.matches("\\d{4}-\\d{2}-\\d{2}\\.ref"));
+        if (refs == null || refs.length == 0) return Collections.emptyList();
+        ArrayList<String> dates = new ArrayList<>();
+        for (File ref : refs) dates.add(ref.getName().substring(0, 10));
+        dates.sort(Collections.reverseOrder());
+        return dates;
+    }
+
     /**
      * Commit order is deliberate:
      * 1. fully sync the immutable generation;
      * 2. point backup.ref to the last known-good current generation;
-     * 3. atomically switch current.ref as the final throwing operation.
-     *
-     * If anything fails before step 3, the old current reference remains valid and the
-     * previous backup reference is restored. No reference is ever left pointing at a
-     * generation that this method deletes.
+     * 3. atomically switch current.ref as the final throwing operation;
+     * 4. best-effort index the generation by date and prune old snapshots.
      */
     public synchronized void saveVerified(byte[] json, byte[] signature) throws Exception {
         validatePayload(json, signature);
@@ -90,10 +133,11 @@ public final class DailyDataStore {
                 faultInjector.afterBackupCommitted();
             }
 
-            // Final throwing commit step. Everything after this is best-effort cleanup only.
             writeReferenceAtomically(currentReference, newGeneration);
             currentCommitted = true;
-            cleanupGenerations(newGeneration, previousCurrent != null ? previousCurrent : previousBackup);
+            indexDatedSnapshot(json, newGeneration);
+            pruneArchiveReferences();
+            cleanupUnreferencedGenerations();
         } catch (Exception error) {
             if (!currentCommitted) {
                 Exception rollbackError = restoreReference(backupReference, previousBackup);
@@ -108,9 +152,32 @@ public final class DailyDataStore {
         String generation = readReferenceQuietly(currentReference);
         currentReference.delete();
         deleteQuietly(new File(directory, CURRENT_REFERENCE + ".tmp"));
-        if (generation != null && !generation.equals(readReferenceQuietly(backupReference))) {
+        if (generation != null && !allReferencedGenerations().contains(generation)) {
             deleteRecursively(new File(directory, generation));
         }
+    }
+
+    private void indexDatedSnapshot(byte[] json, String generation) {
+        try {
+            JSONObject payload = new JSONObject(new String(json, StandardCharsets.UTF_8));
+            String date = payload.optString("date_iso", payload.optString("date", "")).trim();
+            if (!isSafeDate(date)) return;
+            if (!archiveDirectory.isDirectory() && !archiveDirectory.mkdirs() && !archiveDirectory.isDirectory()) return;
+            writeReferenceAtomically(new File(archiveDirectory, date + ".ref"), generation);
+        } catch (Exception ignored) {
+            // Test payloads and legacy imports may not be JSON. Current/backup remain valid.
+        }
+    }
+
+    private void pruneArchiveReferences() {
+        File[] refs = archiveDirectory.listFiles((dir, name) -> name.matches("\\d{4}-\\d{2}-\\d{2}\\.ref"));
+        if (refs == null || refs.length <= DataContract.MAX_RETAINED_DAYS_PER_LANGUAGE) return;
+        Arrays.sort(refs, (a, b) -> b.getName().compareTo(a.getName()));
+        for (int i = DataContract.MAX_RETAINED_DAYS_PER_LANGUAGE; i < refs.length; i++) {
+            deleteQuietly(refs[i]);
+            deleteQuietly(new File(archiveDirectory, refs[i].getName() + ".tmp"));
+        }
+        syncDirectory(archiveDirectory);
     }
 
     private StoredPayload readReferenced(File reference) throws Exception {
@@ -147,8 +214,8 @@ public final class DailyDataStore {
         try {
             if (previousGeneration == null) {
                 deleteQuietly(target);
-                deleteQuietly(new File(directory, target.getName() + ".tmp"));
-                syncDirectory(directory);
+                deleteQuietly(new File(target.getParentFile(), target.getName() + ".tmp"));
+                syncDirectory(target.getParentFile());
             } else {
                 writeReferenceAtomically(target, previousGeneration);
             }
@@ -159,19 +226,37 @@ public final class DailyDataStore {
     }
 
     private void writeReferenceAtomically(File target, String generation) throws Exception {
-        File temporary = new File(directory, target.getName() + ".tmp");
+        File parent = target.getParentFile();
+        if (!parent.isDirectory() && !parent.mkdirs() && !parent.isDirectory()) {
+            throw new IllegalStateException("reference_directory_unavailable");
+        }
+        File temporary = new File(parent, target.getName() + ".tmp");
         writeSynced(temporary, (generation + "\n").getBytes(StandardCharsets.UTF_8));
         moveReplacing(temporary, target);
-        syncDirectory(directory);
+        syncDirectory(parent);
     }
 
-    private void cleanupGenerations(String current, String backup) {
+    private Set<String> allReferencedGenerations() {
+        HashSet<String> result = new HashSet<>();
+        addReference(result, currentReference);
+        addReference(result, backupReference);
+        File[] refs = archiveDirectory.listFiles((dir, name) -> name.endsWith(".ref"));
+        if (refs != null) for (File ref : refs) addReference(result, ref);
+        return result;
+    }
+
+    private void addReference(Set<String> output, File ref) {
+        String value = readReferenceQuietly(ref);
+        if (value != null) output.add(value);
+    }
+
+    private void cleanupUnreferencedGenerations() {
+        Set<String> referenced = allReferencedGenerations();
         File[] files = directory.listFiles();
         if (files == null) return;
         for (File file : files) {
             if (!file.isDirectory() || !file.getName().startsWith("generation-")) continue;
-            if (file.getName().equals(current) || file.getName().equals(backup)) continue;
-            deleteRecursively(file);
+            if (!referenced.contains(file.getName())) deleteRecursively(file);
         }
     }
 
@@ -195,10 +280,11 @@ public final class DailyDataStore {
     }
 
     private static void syncDirectory(File target) {
+        if (target == null) return;
         try (FileInputStream ignored = new FileInputStream(target)) {
             ignored.getFD().sync();
         } catch (Exception ignored) {
-            // Directory fsync is not supported by every Android filesystem; file fsync still applies.
+            // Directory fsync is not supported by every Android filesystem.
         }
     }
 
@@ -224,6 +310,34 @@ public final class DailyDataStore {
             if (offset != data.length) throw new IllegalStateException("stored_file_truncated");
         }
         return data;
+    }
+
+    private static boolean isSafeDate(String value) {
+        return value != null && value.matches("\\d{4}-\\d{2}-\\d{2}");
+    }
+
+    private static void migrateLegacyStoreIfNeeded(File legacyRoot, File scoped) {
+        if (scoped.exists() || !new File(legacyRoot, CURRENT_REFERENCE).isFile()) return;
+        try {
+            copyRecursively(legacyRoot, scoped, true);
+        } catch (Exception ignored) {
+            // Legacy data is only a convenience; embedded signed data remains available.
+        }
+    }
+
+    private static void copyRecursively(File source, File target, boolean skipLanguageDirectories) throws Exception {
+        if (source.isDirectory()) {
+            if (!target.isDirectory() && !target.mkdirs() && !target.isDirectory()) return;
+            File[] children = source.listFiles();
+            if (children == null) return;
+            for (File child : children) {
+                if (skipLanguageDirectories && child.isDirectory()
+                        && ("ar".equals(child.getName()) || "en".equals(child.getName()) || "el".equals(child.getName()))) continue;
+                copyRecursively(child, new File(target, child.getName()), false);
+            }
+        } else if (source.isFile()) {
+            Files.copy(source.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
     }
 
     private static void deleteQuietly(File file) {

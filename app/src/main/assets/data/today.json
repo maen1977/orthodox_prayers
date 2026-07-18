@@ -3,73 +3,74 @@
   "app_title": {
     "ar": "الأجندة الكنسية",
     "en": "Church Agenda",
-    "el": "Ἐκκλησιαστικὴ Ἀτζέντα"
+    "el": "Εκκλησιαστική Ατζέντα"
   },
   "patriarchate": {
     "ar": "بطريركية الروم الأرثوذكس المقدسية",
     "en": "Greek Orthodox Patriarchate of Jerusalem",
     "el": "Πατριαρχεῖον Ἱεροσολύμων"
   },
-  "date_iso": "2026-07-14",
+  "date_iso": "2026-07-17",
   "date_label": {
-    "ar": "الثلاثاء 14 تموز 2026 / 1 تموز 2026 بحسب التقويم الكنسي القديم",
-    "en": "Tuesday, July 14, 2026",
-    "el": ""
+    "ar": "الجمعة 17 تموز 2026 / 4 تموز 2026 بحسب التقويم الكنسي القديم",
+    "en": "Friday, July 17, 2026 / July 4, 2026 (Old Style)",
+    "el": "Παρασκευή, 17 Ιουλίου 2026 / 4 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
   },
   "calendar_label": {
-    "ar": "التقويم الكنسي القديم — استعمال بطريركية القدس",
-    "en": "Old church calendar — Jerusalem usage",
-    "el": ""
+    "ar": "التقويم الكنسي القديم — بطريركية القدس",
+    "en": "Old church calendar — Jerusalem Patriarchate usage",
+    "el": "Παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο — χρήση Πατριαρχείου Ἱεροσολύμων"
   },
   "julian_date": {
     "year": 2026,
     "month": 7,
-    "day": 1,
-    "label_ar": "1 تموز 2026 بحسب التقويم الكنسي القديم"
+    "day": 4,
+    "label_ar": "4 تموز 2026 بحسب التقويم الكنسي القديم"
   },
   "fast": {
-    "ar": "لا صوم",
-    "en": "",
-    "el": ""
+    "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+    "en": "Wednesday or Friday fast — Strict fast",
+    "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία"
   },
   "fast_detail": {
-    "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-    "en": "",
-    "el": ""
+    "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
+    "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine.",
+    "el": "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία. Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο."
   },
   "fasting": {
-    "code": "fast_free",
+    "code": "strict",
     "season": {
-      "ar": "يوم عادي",
-      "en": "",
-      "el": ""
+      "ar": "صوم الأربعاء أو الجمعة",
+      "en": "Wednesday or Friday fast",
+      "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς"
     },
     "title": {
-      "ar": "لا صوم",
-      "en": "",
-      "el": ""
+      "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+      "en": "Wednesday or Friday fast — Strict fast",
+      "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία"
     },
     "level": {
-      "ar": "لا صوم",
-      "en": "",
-      "el": ""
+      "ar": "صوم صارم",
+      "en": "Strict fast",
+      "el": "Αὐστηρὰ νηστεία"
     },
     "detail": {
-      "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-      "en": "",
-      "el": ""
+      "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
+      "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine.",
+      "el": "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία. Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο."
     },
-    "is_fast": false,
+    "is_fast": true,
     "allowed": {
-      "meat": true,
-      "dairy": true,
-      "eggs": true,
-      "fish": true,
-      "wine": true,
-      "oil": true
+      "meat": false,
+      "dairy": false,
+      "eggs": false,
+      "fish": false,
+      "wine": false,
+      "oil": false
     },
     "display_icons": [
-      "✅"
+      "🍞",
+      "💧"
     ],
     "items": [
       {
@@ -77,95 +78,100 @@
         "icon": "🥩",
         "label": {
           "ar": "اللحوم",
-          "en": "",
-          "el": ""
+          "en": "Meat",
+          "el": "Κρέας"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "dairy",
         "icon": "🥛",
         "label": {
           "ar": "الألبان",
-          "en": "",
-          "el": ""
+          "en": "Dairy",
+          "el": "Γαλακτοκομικά"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "eggs",
         "icon": "🥚",
         "label": {
           "ar": "البيض",
-          "en": "",
-          "el": ""
+          "en": "Eggs",
+          "el": "Αὐγά"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "fish",
         "icon": "🐟",
         "label": {
           "ar": "السمك",
-          "en": "",
-          "el": ""
+          "en": "Fish",
+          "el": "Ψάρι"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "wine",
         "icon": "🍷",
         "label": {
           "ar": "النبيذ",
-          "en": "",
-          "el": ""
+          "en": "Wine",
+          "el": "Οἶνος"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "oil",
         "icon": "🫒",
         "label": {
           "ar": "الزيت",
-          "en": "",
-          "el": ""
+          "en": "Oil",
+          "el": "Ἔλαιο"
         },
-        "allowed": true
+        "allowed": false
       }
     ],
     "verification": {
       "status": "TYPICON_BASELINE",
       "policy": "canonical/fasting_policy.json",
-      "rule": "ordinary_fast_free",
+      "rule": "weekly_wednesday_friday",
       "note": {
         "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-        "en": "",
-        "el": ""
+        "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+        "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
       }
     }
   },
   "feast": {
     "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-    "en": "",
-    "el": ""
+    "en": "Today’s commemoration according to the old church calendar",
+    "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
   },
   "source_note": {
-    "ar": "مراجع اليوم مثبتة من مصدر أرثوذكسي رسمي ومتقاطعة مع تقويم يولياني؛ نص الآيات العربية من نسخة فان دايك المشكولة العامة الملكية. اللغات غير الموثقة لا تُملأ بنص منسوخ أو ترجمة آلية.",
-    "en": "Today’s references are pinned from an official Orthodox source and cross-checked against the Julian calendar. Unverified target-language text remains unavailable.",
-    "el": "Οἱ σημερινὲς παραπομπὲς ἔχουν ἐπαληθευθεῖ ἀπὸ ἐπίσημη ὀρθόδοξη πηγή. Μὴ ἐπαληθευμένα κείμενα παραμένουν μὴ διαθέσιμα."
+    "ar": "تُستخدم بيانات الاكتشاف مؤقتاً فقط؛ ولا يصبح الملف قابلاً للنشر إلا بعد بوابة المصادر الرسمية والتوقيع المحمي.",
+    "en": "Discovery data is temporary; a file becomes publishable only after the official-source gate and protected signing.",
+    "el": "Τὰ δεδομένα ἐντοπισμοῦ εἶναι προσωρινά· ἕνα ἀρχεῖο δημοσιεύεται μόνον μετὰ τὸν ἔλεγχο ἐπισήμων πηγῶν καὶ τὴν προστατευμένη ὑπογραφή."
   },
   "translation_notice": {
-    "ar": "لا تُستخدم ترجمة آلية للنص الكتابي أو الليتورجي، ولا يُنسب نص إلى مصدر رسمي من دون دليل وترخيص مناسب.",
-    "en": "No machine translation is used for Scripture or liturgical text, and no text is attributed to an official source without evidence and appropriate rights.",
-    "el": "Δὲν χρησιμοποιεῖται μηχανικὴ μετάφραση γιὰ βιβλικὰ ἢ λειτουργικὰ κείμενα."
+    "ar": "تُعرض النصوص الكتابية والليتورجية من مصادر أصلية مستقلة لكل لغة، من دون ترجمة آلية أو رجوع إلى لغة أخرى.",
+    "en": "Scripture and liturgical texts come from independent native sources for each language, without machine translation or cross-language fallback.",
+    "el": "Τὰ βιβλικὰ καὶ λειτουργικὰ κείμενα προέρχονται ἀπὸ ἀνεξάρτητες πρωτότυπες πηγὲς κάθε γλώσσας, χωρὶς μηχανικὴ μετάφραση ἢ ἐφεδρικὴ χρήση ἄλλης γλώσσας."
   },
   "translation_status": "source_native_only_or_unavailable",
+  "language_content_mode": "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES",
+  "machine_translation_used": false,
+  "translation_fallback_policy": "DISABLED_NO_CROSS_LANGUAGE_FALLBACK",
   "language_sources": {
     "ar": {
       "priority": [
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
-        "antioch_patriarchate_ar"
+        "antioch_archdiocese_tripoli_ar",
+        "antioch_patriarchate_ar",
+        "ebible_arabic_van_dyck"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -177,8 +183,11 @@
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
         "goarch_digital_chant_stand_english",
+        "akroasis_small_menaion_english",
         "goarch_synekdemos",
-        "oca_official_english"
+        "oca_official_english",
+        "metropolis_toronto_liturgy_en",
+        "ebible_world_english_bible"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -190,7 +199,10 @@
         "church_of_greece_apostoliki_diakonia",
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
-        "goarch_digital_chant_stand_greek"
+        "goarch_online_chapel_greek",
+        "goarch_digital_chant_stand_greek",
+        "metropolis_toronto_liturgy_el",
+        "ebible_greek_byzantine_1904"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -217,217 +229,77 @@
       "official_greek_orthodox",
       "orthodox_church_in_america"
     ],
-    "selected_source": "orthodox_church_in_america",
-    "selected_priority": 5,
-    "fallback_trace": [
-      {
-        "source": "orthodox_jordan",
-        "priority": 1,
-        "status": "offline",
-        "reason": "الفحص المحلي لا يجلب الإنترنت؛ تُختبر قواعد المصدر بواسطة fixtures مستقلة."
-      },
-      {
-        "source": "jerusalem_patriarchate",
-        "priority": 2,
-        "status": "not_applicable",
-        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-01."
-      },
-      {
-        "source": "antioch_patriarchate",
-        "priority": 3,
-        "status": "offline",
-        "reason": "لم يُفحص الدليل السنوي في الوضع غير المتصل."
-      },
-      {
-        "source": "official_greek_orthodox",
-        "priority": 4,
-        "status": "not_applicable",
-        "reason": "اليوم ليس أحدًا صالحًا لسجل آحاد ما بعد العنصرة."
-      },
-      {
-        "source": "orthodox_church_in_america",
-        "priority": 5,
-        "status": "selected"
-      }
-    ],
+    "selected_source": null,
+    "fallback_trace": [],
     "same_language_fallback_only": true,
-    "religious_text_contract": "canonical/source_native_contract.json"
+    "religious_text_contract": "canonical/source_native_contract.json",
+    "daily_availability": "PARTIAL_VERIFIED",
+    "date_published": "2026-07-17",
+    "usable_when_partial": true,
+    "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
   },
-  "source_evidence": [
-    {
-      "id": "orthodox_jordan",
-      "priority": 1,
-      "official": true,
-      "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-      "status": "offline",
-      "date_iso": "2026-07-14",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "الفحص المحلي لا يجلب الإنترنت؛ تُختبر قواعد المصدر بواسطة fixtures مستقلة."
-    },
-    {
-      "id": "jerusalem_patriarchate",
-      "priority": 2,
-      "official": true,
-      "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
-      "status": "not_applicable",
-      "date_iso": "2026-07-14",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-01."
-    },
-    {
-      "id": "antioch_patriarchate",
-      "priority": 3,
-      "official": true,
-      "url": "canonical/antioch_yearbook_sources.json",
-      "status": "offline",
-      "date_iso": "2026-07-14",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "لم يُفحص الدليل السنوي في الوضع غير المتصل."
-    },
-    {
-      "id": "official_greek_orthodox",
-      "priority": 4,
-      "official": true,
-      "url": "https://www.goarch.org/chapel/calendar?month=7&year=2026",
-      "status": "not_applicable",
-      "date_iso": "2026-07-14",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "اليوم ليس أحدًا صالحًا لسجل آحاد ما بعد العنصرة."
-    },
-    {
-      "id": "orthodox_church_in_america",
-      "priority": 5,
-      "official": true,
-      "url": "https://www.oca.org/readings/daily/2026/07/14",
-      "status": "current",
-      "date_iso": "2026-07-14",
-      "epistle_reference": "1 Corinthians 6:20-7:12",
-      "gospel_reference": "Matthew 14:1-13",
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": "8ca2fc6d62aa8c572ecc5d2ac042155270e1be2f961a3f051175826743ab92b3",
-      "reason": "مرجعا اليوم مثبتان من رزنامة كنسية أرثوذكسية رسمية ومتطابقان مع اكتشاف التقويم اليولياني القديم."
-    },
-    {
-      "id": "orthodox_jordan",
-      "priority": 1,
-      "official": true,
-      "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-      "status": "offline",
-      "date_iso": "2026-07-19",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "الفحص المحلي لا يجلب الإنترنت؛ تُختبر قواعد المصدر بواسطة fixtures مستقلة."
-    },
-    {
-      "id": "jerusalem_patriarchate",
-      "priority": 2,
-      "official": true,
-      "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
-      "status": "not_applicable",
-      "date_iso": "2026-07-19",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-06."
-    },
-    {
-      "id": "antioch_patriarchate",
-      "priority": 3,
-      "official": true,
-      "url": "canonical/antioch_yearbook_sources.json",
-      "status": "offline",
-      "date_iso": "2026-07-19",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "لم يُفحص الدليل السنوي في الوضع غير المتصل."
-    },
-    {
-      "id": "official_greek_orthodox",
-      "priority": 4,
-      "official": true,
-      "url": "https://www.stspyridon.wv.goarch.org/wp-content/uploads/2022/07/Bulletin-7-31-22-copy-11.pdf",
-      "status": "current",
-      "date_iso": "2026-07-19",
-      "epistle_reference": "Romans 15:1-7",
-      "gospel_reference": "Matthew 9:27-35",
-      "tone": 6,
-      "prokeimenon_text": null,
-      "sha256": "44103b307e6897c65055a344c3d107dbc6d9f3eb8a0ba71fa7330975d34c1cd8",
-      "reason": "سجل أرثوذكسي مثبت للأحد رقم 7 بعد العنصرة، بعد فحص عدم وجود عيد ثابت في تقويم القدس."
-    },
-    {
-      "id": "orthodox_church_in_america",
-      "priority": 5,
-      "official": true,
-      "url": "https://www.oca.org/readings/daily/2026/07/19",
-      "status": "unavailable",
-      "date_iso": "2026-07-19",
-      "epistle_reference": null,
-      "gospel_reference": null,
-      "tone": null,
-      "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "لا يوجد سجل يومي رسمي مثبت لهذا التاريخ."
-    }
-  ],
-  "integrity": {
-    "status": "VERIFIED_OFFICIAL_SOURCES",
-    "policy": "canonical/source_policy.json",
-    "ai_scripture_translation_used": false,
-    "ai_liturgical_translation_used": false,
-    "native_text_contract": "canonical/source_native_contract.json",
-    "legacy_arabic_scripture_snapshot": "QUARANTINED_NOT_PUBLICATION_AUTHORITY"
-  },
+  "source_evidence": [],
   "readings": [
     {
       "icon": "🎵",
       "kind": "prokeimenon",
       "title": {
-        "ar": "البروكيمنن",
-        "en": "Prokeimenon",
-        "el": "Προκείμενον"
+        "ar": "البروكيمنن — اللحن السابع",
+        "en": "Prokeimenon — Tone 7",
+        "el": "Προκείμενον — Ἦχος βαρύς"
       },
       "reference": {
-        "ar": "",
-        "en": "Unavailable until an exact official liturgical source is verified",
-        "el": ""
+        "ar": "مزمور 98:5، 1",
+        "en": "Psalm 98:5, 1 (LXX)",
+        "el": "Ψαλμός 98:5, 1"
       },
       "body": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "ارفعوا الرب إلهنا واسجدوا عند موطئ قدميه فإنه قدوس.\nالرب قد ملك، فترتعد الشعوب.",
+        "en": "Exalt the Lord our God, and worship at His footstool, for He is holy.\nThe Lord reigns; let the peoples tremble.",
+        "el": "Ὑψοῦτε Κύριον τὸν Θεὸν ἡμῶν καὶ προσκυνεῖτε τῷ ὑποποδίῳ τῶν ποδῶν αὐτοῦ, ὅτι ἅγιός ἐστι.\nὉ Κύριος ἐβασίλευσεν, ὀργιζέσθωσαν λαοί."
+      },
+      "tone": 7,
+      "source": {
+        "ar": "https://archtripoli.org/",
+        "en": "https://www.goarch.org/chapel",
+        "el": "https://www.goarch.org/chapel"
+      },
+      "native_source_verification": {
+        "ar": {
+          "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+          "source_id": "antioch_archdiocese_tripoli_ar",
+          "source_url": "https://archtripoli.org/",
+          "canonical_reference": "",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "227578d2bc427a0b2d3af9da7e66e69ad785f7b5d16eb1152253e0c0c71caa96",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+          "source_id": "goarch_online_chapel",
+          "source_url": "https://www.goarch.org/chapel",
+          "canonical_reference": "",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "a70f6ae195a1ef048064379b634100bd215df0bc35d98017cbf645de27b39e91",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+          "source_id": "goarch_online_chapel_greek",
+          "source_url": "https://www.goarch.org/chapel",
+          "canonical_reference": "",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "a1faf285566e0383b60f0001b7bd1afbfc6c5f66ed4efc790067c7b9e6444913",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
       },
       "translation_locked": true,
-      "source": {
-        "ar": "",
-        "en": "",
-        "el": ""
-      },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
         "canonical_reference": "",
@@ -435,38 +307,6 @@
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
         "automatic_diacritization_used": false
-      },
-      "native_source_verification": {
-        "ar": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "",
-          "reference_available": false,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
-        },
-        "en": {
-          "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
-          "source_id": "oca_official_english",
-          "source_url": "https://www.oca.org/readings/daily/2026/07/14",
-          "canonical_reference": "",
-          "reference_available": true,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false
-        },
-        "el": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "",
-          "reference_available": false,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
-        }
       }
     },
     {
@@ -478,24 +318,24 @@
         "el": "Ἀπόστολος"
       },
       "reference": {
-        "ar": "",
-        "en": "1 Corinthians 6:20-7:12",
-        "el": ""
+        "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:35-8:7",
+        "en": "Paul’s First Letter to the Corinthians 7:35-8:7",
+        "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:35-8:7"
       },
       "body": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "هَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.\nوَلَكِنْ إِنْ كَانَ أَحَدٌ يَظُنُّ أَنَّهُ يَعْمَلُ بِدُونِ لِيَاقَةٍ نَحْوَ عَذْرَائِهِ إِذَا تَجَاوَزَتِ ٱلْوَقْتَ، وَهَكَذَا لَزِمَ أَنْ يَصِيرَ، فَلْيَفْعَلْ مَا يُرِيدُ. إِنَّهُ لَا يُخْطِئُ. فَلْيَتَزَوَّجَا.\nوَأَمَّا مَنْ أَقَامَ رَاسِخًا فِي قَلْبِهِ، وَلَيْسَ لَهُ ٱضْطِرَارٌ، بَلْ لَهُ سُلْطَانٌ عَلَى إِرَادَتِهِ، وَقَدْ عَزَمَ عَلَى هَذَا فِي قَلْبِهِ أَنْ يَحْفَظَ عَذْرَاءَهُ، فَحَسَنًا يَفْعَلُ.\nإِذًا، مَنْ زَوَّجَ فَحَسَنًا يَفْعَلُ، وَمَنْ لَا يُزَوِّجُ يَفْعَلُ أَحْسَنَ.\nٱلْمَرْأَةُ مُرْتَبِطَةٌ بِٱلنَّامُوسِ مَا دَامَ رَجُلُهَا حَيًّا. وَلَكِنْ إِنْ مَاتَ رَجُلُهَا، فَهِيَ حُرَّةٌ لِكَيْ تَتَزَوَّجَ بِمَنْ تُرِيدُ، فِي ٱلرَّبِّ فَقَطْ.\nوَلَكِنَّهَا أَكْثَرُ غِبْطَةً إِنْ لَبِثَتْ هَكَذَا، بِحَسَبِ رَأْيِي. وَأَظُنُّ أَنِّي أَنَا أَيْضًا عِنْدِي رُوحُ ٱللهِ.\nوَأَمَّا مِنْ جِهَةِ مَا ذُبِحَ لِلْأَوْثَانِ: فَنَعْلَمُ أَنَّ لِجَمِيعِنَا عِلْمًا. ٱلْعِلْمُ يَنْفُخُ، وَلَكِنَّ ٱلْمَحَبَّةَ تَبْنِي.\nفَإِنْ كَانَ أَحَدٌ يَظُنُّ أَنَّهُ يَعْرِفُ شَيْئًا، فَإِنَّهُ لَمْ يَعْرِفْ شَيْئًا بَعْدُ كَمَا يَجِبُ أَنْ يَعْرِفَ!\nوَلَكِنْ إِنْ كَانَ أَحَدٌ يُحِبُّ ٱللهَ، فَهَذَا مَعْرُوفٌ عِنْدَهُ.\nفَمِنْ جِهَةِ أَكْلِ مَا ذُبِحَ لِلْأَوْثَانِ: نَعْلَمُ أَنْ لَيْسَ وَثَنٌ فِي ٱلْعَالَمِ، وَأَنْ لَيْسَ إِلَهٌ آخَرُ إِلَّا وَاحِدًا.\nلِأَنَّهُ وَإِنْ وُجِدَ مَا يُسَمَّى آلِهَةً، سِوَاءٌ كَانَ فِي ٱلسَّمَاءِ أَوْ عَلَى ٱلْأَرْضِ، كَمَا يُوجَدُ آلِهَةٌ كَثِيرُونَ وَأَرْبَابٌ كَثِيرُونَ.\nلَكِنْ لَنَا إِلَهٌ وَاحِدٌ: ٱلْآبُ ٱلَّذِي مِنْهُ جَمِيعُ ٱلْأَشْيَاءِ، وَنَحْنُ لَهُ. وَرَبٌّ وَاحِدٌ: يَسُوعُ ٱلْمَسِيحُ، ٱلَّذِي بِهِ جَمِيعُ ٱلْأَشْيَاءِ، وَنَحْنُ بِهِ.\nوَلَكِنْ لَيْسَ ٱلْعِلْمُ فِي ٱلْجَمِيعِ. بَلْ أُنَاسٌ بِٱلضَّمِيرِ نَحْوَ ٱلْوَثَنِ إِلَى ٱلْآنَ يَأْكُلُونَ كَأَنَّهُ مِمَّا ذُبِحَ لِوَثَنٍ، فَضَمِيرُهُمْ إِذْ هُوَ ضَعِيفٌ يَتَنَجَّسُ.",
+        "en": "This I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.\nBut if any man thinks that he is behaving inappropriately toward his virgin, if she is past the flower of her age, and if need so requires, let him do what he desires. He doesn’t sin. Let them marry.\nBut he who stands steadfast in his heart, having no urgency, but has power over his own will, and has determined in his own heart to keep his own virgin, does well.\nSo then both he who gives his own virgin in marriage does well, and he who doesn’t give her in marriage does better.\nA wife is bound by law for as long as her husband lives; but if the husband is dead, she is free to be married to whomever she desires, only in the Lord.\nBut she is happier if she stays as she is, in my judgment, and I think that I also have God’s Spirit.\nNow concerning things sacrificed to idols: We know that we all have knowledge. Knowledge puffs up, but love builds up.\nBut if anyone thinks that he knows anything, he doesn’t yet know as he ought to know.\nBut anyone who loves God is known by him.\nTherefore concerning the eating of things sacrificed to idols, we know that no idol is anything in the world, and that there is no other God but one.\nFor though there are things that are called “gods”, whether in the heavens or on earth—as there are many “gods” and many “lords”—\nyet to us there is one God, the Father, of whom are all things, and we for him; and one Lord, Jesus Christ, through whom are all things, and we live through him.\nHowever, that knowledge isn’t in all men. But some, with consciousness of an idol until now, eat as of a thing sacrificed to an idol, and their conscience, being weak, is defiled.",
+        "el": "τοῦτο δὲ πρὸς τὸ ὑμῶν αὐτῶν συμφέρον λέγω, οὐχ ἵνα βρόχον ὑμῖν ἐπιβάλω, ἀλλὰ πρὸς τὸ εὔσχημον καὶ εὐπάρεδρον τῷ Κυρίῳ ἀπερισπάστως.\nΕἰ δέ τις ἀσχημονεῖν ἐπὶ τὴν παρθένον αὐτοῦ νομίζει, ἐὰν ᾖ ὑπέρακμος, καὶ οὕτως ὀφείλει γίνεσθαι, ὃ θέλει ποιείτω· οὐχ ἁμαρτάνει· γαμείτωσαν.\nὃς δὲ ἕστηκεν ἑδραῖος ἐν τῇ καρδίᾳ, μὴ ἔχων ἀνάγκην, ἐξουσίαν δὲ ἔχει περὶ τοῦ ἰδίου θελήματος, καὶ τοῦτο κέκρικεν ἐν τῇ καρδίᾳ αὐτοῦ, τοῦ τηρεῖν τὴν ἑαυτοῦ παρθένον, καλῶς ποιεῖ.\nὥστε καὶ ὁ ἐκγαμίζων καλῶς ποιεῖ, ὁ δὲ μὴ ἐκγαμίζων κρεῖσσον ποιεῖ.\nΓυνὴ δέδεται νόμῳ ἐφ᾽ ὅσον χρόνον ζῇ ὁ ἀνὴρ αὐτῆς· ἐὰν δὲ κοιμηθῇ ὁ ἀνὴρ αὐτῆς, ἐλευθέρα ἐστὶν ᾧ θέλει γαμηθῆναι, μόνον ἐν Κυρίῳ.\nμακαριωτέρα δέ ἐστιν ἐὰν οὕτω μείνῃ, κατὰ τὴν ἐμὴν γνώμην· δοκῶ δὲ κἀγὼ Πνεῦμα Θεοῦ ἔχειν.\nΠερὶ δὲ τῶν εἰδωλοθύτων, οἴδαμεν ὅτι πάντες γνῶσιν ἔχομεν.\nἡ γνῶσις φυσιοῖ, ἡ δὲ ἀγάπη οἰκοδομεῖ. εἰ δέ τις δοκεῖ εἰδέναι τι, οὐδέπω οὐδὲν ἔγνωκε καθὼς δεῖ γνῶναι·\nεἰ δέ τις ἀγαπᾷ τὸν Θεόν, οὗτος ἔγνωσται ὑπ᾽ αὐτοῦ.\nΠερὶ τῆς βρώσεως οὖν τῶν εἰδωλοθύτων οἴδαμεν ὅτι οὐδὲν εἴδωλον ἐν κόσμῳ, καὶ ὅτι οὐδεὶς Θεὸς ἕτερος εἰ μὴ εἷς.\nκαὶ γὰρ εἴπερ εἰσὶ λεγόμενοι θεοὶ εἴτε ἐν οὐρανῷ εἴτε ἐπὶ τῆς γῆς, ὥσπερ εἰσὶ θεοὶ πολλοὶ καὶ κύριοι πολλοί,\nἀλλ᾽ ἡμῖν εἷς Θεὸς ὁ πατήρ, ἐξ οὗ τὰ πάντα καὶ ἡμεῖς εἰς αὐτόν, καὶ εἷς Κύριος Ἰησοῦς Χριστός, δι᾽ οὗ τὰ πάντα καὶ ἡμεῖς δι᾽ αὐτοῦ.\nἈλλ᾽ οὐκ ἐν πᾶσιν ἡ γνῶσις· τινὲς δὲ τῇ συνειδήσει τοῦ εἰδώλου ἕως ἄρτι ὡς εἰδωλόθυτον ἐσθίουσι, καὶ ἡ συνείδησις αὐτῶν ἀσθενὴς οὖσα μολύνεται."
       },
-      "translation_locked": true,
+      "discovery_text": "",
       "source": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+        "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+        "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
       },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "1CO.6.20-7.12",
+        "canonical_reference": "1CO.7.35-8.7",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -503,36 +343,106 @@
       },
       "native_source_verification": {
         "ar": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "1CO.6.20-7.12",
-          "reference_available": false,
-          "text_available": false,
+          "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+          "source_id": "ebible_arabic_van_dyck",
+          "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+          "canonical_reference": "1CO.7.35-8.7",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "4ef63f40ca0ea075fc35eb4928c7b2aa5d05225c7ebea65a0c9dda91418fff0e",
+          "verse_count": 13,
+          "verse_hashes": [
+            "ef76d37ff5560ff2a07761ec9c90b071e2d930f503c2983ede05f343167b4a46",
+            "fb6fcb88bfbe47f0e7796b04b7a918750979cc525656ea5b0a1c4529d587748b",
+            "b5451c3d0265869ad4b242eb8cb54498ebde5dbbf7c8bb1e5132c6383ea028d5",
+            "31521e7b41a5842048a00d2311ba72bd4af2bcb5a907c5de78274fb67120903c",
+            "94b2086beb4688cfe185cf1163fcd82dafe0bdfe1f78421dadccebfa8ebb10c8",
+            "a689639f572d507efaab1090224e0e59f2ec3ca8c2e870597f5e2f81aed05ff9",
+            "cbd8301d32b1ce1943eae91be6f443e70dc2489dbf25bb8b31bdc8565d7a5e9b",
+            "b931fdb8971c6d9290005aaf6c0c2c240a71b0a90eae5deb6513e809c37c7284",
+            "994143d1782364e8e08eb8b67caa20096345b215bb70edae02ff9ed7337d26f4",
+            "e4709e7190d793f384d1d510cbdc8a47c5fbea54fec8fd7bf28e63d47a2e535f",
+            "16a3f70985d79bb9d32b11ac152052c9db3ce6ee4d98cde9b2a9e6725413b6cb",
+            "dd7148751da82377d5b15b726abf76d1ae83972171d9c4011f704524988ce3ef",
+            "8dde5e403fe3a4ceeeb16ae970d5a3b8928b68d16468b82c6f1a4e4c17dbece7"
+          ],
+          "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+          "machine_translation_used": false,
           "ai_translation_used": false,
           "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
+          "daily_reference_source_id": null,
+          "daily_reference_source_url": null,
+          "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
+          "corpus_license": "Public Domain"
         },
         "en": {
-          "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
-          "source_id": "oca_official_english",
-          "source_url": "https://www.oca.org/readings/daily/2026/07/14",
-          "canonical_reference": "1CO.6.20-7.12",
+          "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+          "source_id": "ebible_world_english_bible",
+          "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+          "canonical_reference": "1CO.7.35-8.7",
           "reference_available": true,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false
-        },
-        "el": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "1CO.6.20-7.12",
-          "reference_available": false,
-          "text_available": false,
+          "text_available": true,
+          "text_sha256": "60c95b0e1e15ed28e05af1344cdf574dec71b64924f0d17f1344539a2a988f87",
+          "verse_count": 13,
+          "verse_hashes": [
+            "9d4ebe5f719df1e74ff9a513cc7f898fb221855ace21d10c23db2d48abb702fb",
+            "e9b4bb232921b95764ceebc1a2a0a99524e56512781e6d5ecb395a91436b24f2",
+            "2bd4abcdf304b7bcdfd87a9e7817d7742d80e43847e1759580643f1b6d5fe7cd",
+            "2666615ff0dba17e3a0fb727e4e6c1238fa7518b53f1338f107eb929b9376344",
+            "6f530695a5babbf09965ce233143d528a7fa183fca07c268e682d55881ee2611",
+            "99256f5e7b4ed3b2b946cf163ddd6c7fd7e4e95575cf80678ea641f8cf011244",
+            "814041701e44f92a94795205c3a3a6917133f16fa97bddbf6ff936d80c3e6b3d",
+            "df834181deb8dd65691cad33c76278394d83df3eb831148d4d8f3fad8d5f919a",
+            "bc4b5d4ce6f40a5b1eb9e61f36b39b0ac0f88fa424c3418fb89e1b5cdd3b7d7e",
+            "5d9bb9d2b7a3b62ca87bc1dc40b517f8894341fd48011fd1b349e67ff7ca87f7",
+            "91117e818f7e6f687e4df3d64ad1932824c24f2163612da6f145b5e1bb197b57",
+            "7bc8982e5c835cd908cffb2af5ea32374106d3988f90e405f28b7791b2251886",
+            "f5c7cc4196352ae08a9c5ab9ad06f1d18c8cc32361a6a3803ca38e181c1b72f2"
+          ],
+          "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+          "machine_translation_used": false,
           "ai_translation_used": false,
           "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
+          "daily_reference_source_id": null,
+          "daily_reference_source_url": null,
+          "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
+          "corpus_license": "Public Domain"
+        },
+        "el": {
+          "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+          "source_id": "ebible_greek_byzantine_1904",
+          "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+          "canonical_reference": "1CO.7.35-8.7",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "8de92ca76fb776fbabbb06e9b5dd6f29b62c2cf66c594bf533dc2cc6eb780fb9",
+          "verse_count": 13,
+          "verse_hashes": [
+            "b5402f7bcc719567a10365f0832769101421c5f9ee35b40df031efefb4898b43",
+            "045d7521db14dbd64cd1beec7e658409eee61f1fa912f6bced9d4ef1a9a1acdc",
+            "a0b2ab3fa200ca787a8e1d0d01c52e8a4acd45922a08e27d74bd32ae4e59e299",
+            "de052a43e76d08b222b0e48bd0bcc5e8d5f9eca95db6b7001bed5918a09104f0",
+            "6e906802060f90a62235b00a3ac2a123881795fa20b98a4e76316cf133e66d07",
+            "8e19603586da514f93a6cb759a0c3d7a8fa87d8c1b41ea4ebe62611f0859962d",
+            "fa008b7a51815ffebef154627ad8610897cef3d8424e318cfeefc85bccd6a202",
+            "125e6836492b25943f6ba0464a07b2062318cd894eb33995a83bd39931e2609e",
+            "7ef3b727d09433be879418cab4b65b3c6fffe31787672cbaaf4587eef4904566",
+            "a8a4645ff28d006331c0977a763fade578df5c2de3e91f110f5eb18de982b253",
+            "cd0abb34c6ef79a206065260b78173e7da69355a079d58b5e3b1c1ba66fc7983",
+            "1c4315cea5d8717dea96a438a5052f60ca3c85918a65f009942187dabc308d01",
+            "e84d3d2f6b437e99b0889aa9e84de6636b4991f05add329b05b9a0cb333a8959"
+          ],
+          "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+          "machine_translation_used": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "daily_reference_source_id": null,
+          "daily_reference_source_url": null,
+          "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+          "corpus_license": "Public Domain"
         }
-      }
+      },
+      "translation_locked": true
     },
     {
       "icon": "📖",
@@ -543,24 +453,24 @@
         "el": "Εὐαγγέλιο"
       },
       "reference": {
-        "ar": "",
-        "en": "Matthew 14:1-13",
-        "el": ""
+        "ar": "إِنْجِيلُ مَتَّى 15:29-31",
+        "en": "The Good News According to Matthew 15:29-31",
+        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 15:29-31"
       },
       "body": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "ثُمَّ ٱنْتَقَلَ يَسُوعُ مِنْ هُنَاكَ وَجَاءَ إِلَى جَانِبِ بَحْرِ ٱلْجَلِيلِ، وَصَعِدَ إِلَى ٱلْجَبَلِ وَجَلَسَ هُنَاكَ.\nفَجَاءَ إِلَيْهِ جُمُوعٌ كَثِيرَةٌ، مَعَهُمْ عُرْجٌ وَعُمْيٌ وَخُرْسٌ وَشُلٌّ وَآخَرُونَ كَثِيرُونَ، وَطَرَحُوهُمْ عِنْدَ قَدَمَيْ يَسُوعَ. فَشَفَاهُمْ\nحَتَّى تَعَجَّبَ ٱلْجُمُوعُ إِذْ رَأَوْا ٱلْخُرْسَ يَتَكَلَّمُونَ، وَٱلشُّلَّ يَصِحُّونَ، وَٱلْعُرْجَ يَمْشُونَ، وَٱلْعُمْيَ يُبْصِرُونَ. وَمَجَّدُوا إِلَهَ إِسْرَائِيلَ.",
+        "en": "Jesus departed from there and came near to the sea of Galilee; and he went up on the mountain and sat there.\nGreat multitudes came to him, having with them the lame, blind, mute, maimed, and many others, and they put them down at his feet. He healed them,\nso that the multitude wondered when they saw the mute speaking, the injured healed, the lame walking, and the blind seeing—and they glorified the God of Israel.",
+        "el": "Καὶ μεταβὰς ἐκεῖθεν ὁ Ἰησοῦς ἦλθε παρὰ τὴν θάλασσαν τῆς Γαλιλαίας, καὶ ἀναβὰς εἰς τὸ ὄρος ἐκάθητο ἐκεῖ.\nκαὶ προσῆλθον αὐτῷ ὄχλοι πολλοὶ ἔχοντες μεθ᾽ ἑαυτῶν χωλούς, τυφλούς, κωφούς, κυλλοὺς καὶ ἑτέρους πολλούς, καὶ ἔρριψαν αὐτοὺς παρὰ τοὺς πόδας τοῦ Ἰησοῦ, καὶ ἐθεράπευσεν αὐτούς,\nὥστε τοὺς ὄχλους θαυμάσαι βλέποντας κωφοὺς [ἀκούοντας, ἀλάλους] λαλοῦντας, κυλλοὺς ὑγιεῖς, χωλοὺς περιπατοῦντας καὶ τυφλοὺς βλέποντας· καὶ ἐδόξασαν τὸν Θεὸν Ἰσραήλ."
       },
-      "translation_locked": true,
+      "discovery_text": "",
       "source": {
-        "ar": "",
-        "en": "",
-        "el": ""
+        "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+        "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+        "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
       },
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "MAT.14.1-13",
+        "canonical_reference": "MAT.15.29-31",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -568,76 +478,116 @@
       },
       "native_source_verification": {
         "ar": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "MAT.14.1-13",
-          "reference_available": false,
-          "text_available": false,
+          "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+          "source_id": "ebible_arabic_van_dyck",
+          "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+          "canonical_reference": "MAT.15.29-31",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "c29a7f7935a5d4e21ed4c831458595cdd5c5f3e95f4b8768f283cbf721d0ec78",
+          "verse_count": 3,
+          "verse_hashes": [
+            "42779767e573404bcafdef354b86af385589cc152129419abaa0256fbbe9fefd",
+            "014452fe80e865602cee09e378cf8a7d22206469ec56e044a7e7781298d088d9",
+            "b73a878353d2195e53bad70ccbf551a8d6492555da5ca80c479a69840bafc3b8"
+          ],
+          "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+          "machine_translation_used": false,
           "ai_translation_used": false,
           "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
+          "daily_reference_source_id": null,
+          "daily_reference_source_url": null,
+          "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
+          "corpus_license": "Public Domain"
         },
         "en": {
-          "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
-          "source_id": "oca_official_english",
-          "source_url": "https://www.oca.org/readings/daily/2026/07/14",
-          "canonical_reference": "MAT.14.1-13",
+          "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+          "source_id": "ebible_world_english_bible",
+          "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+          "canonical_reference": "MAT.15.29-31",
           "reference_available": true,
-          "text_available": false,
-          "ai_translation_used": false,
-          "automatic_diacritization_used": false
-        },
-        "el": {
-          "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-          "source_id": null,
-          "canonical_reference": "MAT.14.1-13",
-          "reference_available": false,
-          "text_available": false,
+          "text_available": true,
+          "text_sha256": "c202252d83fcf00256de3c269ce19a24b93a0aed42b50670ab7942f11a023f15",
+          "verse_count": 3,
+          "verse_hashes": [
+            "9b8cc53b1682355c82de9eab6011e521f61162587c41e150ea7db946488201bd",
+            "f9dd5768ea1fadbc32a763560572fab7c4923065fc204c7da6aa17b22a194eae",
+            "f057580610f3d02a337c7dc12a663eac5e58c156140f6873551d4efe2503d3f1"
+          ],
+          "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+          "machine_translation_used": false,
           "ai_translation_used": false,
           "automatic_diacritization_used": false,
-          "reason": "same_language_official_source_not_available"
+          "daily_reference_source_id": null,
+          "daily_reference_source_url": null,
+          "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
+          "corpus_license": "Public Domain"
+        },
+        "el": {
+          "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+          "source_id": "ebible_greek_byzantine_1904",
+          "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+          "canonical_reference": "MAT.15.29-31",
+          "reference_available": true,
+          "text_available": true,
+          "text_sha256": "9d9a2c2872344be8ffa0a04cef6208b1a85294e2b53cb7bd204a3828e3158282",
+          "verse_count": 3,
+          "verse_hashes": [
+            "ee276686a1b617e64a933d2831bf524c055eccd5f5d9584be05ceb33f5f24808",
+            "23fb198d8faadbf84aa30b6be1e414b9fcbf2c8c1ec930a957c392483e6c21bc",
+            "42525744062f8406ea373f8df1f2d5df9b9cbb0529475312127b4166487cca5c"
+          ],
+          "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+          "machine_translation_used": false,
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false,
+          "daily_reference_source_id": null,
+          "daily_reference_source_url": null,
+          "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+          "corpus_license": "Public Domain"
         }
-      }
+      },
+      "translation_locked": true
     }
   ],
   "next_sunday": {
     "date_iso": "2026-07-19",
     "day": {
-      "ar": "الأحد 19 تموز / 6 تموز قديم",
-      "en": "Sunday, July 19, 2026",
-      "el": ""
+      "ar": "الأحد 19 تموز 2026 / 6 تموز 2026 بحسب التقويم الكنسي القديم",
+      "en": "Sunday, July 19, 2026 / July 6, 2026 (Old Style)",
+      "el": "Κυριακή, 19 Ιουλίου 2026 / 6 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
     },
     "feast": {
       "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-      "en": "",
-      "el": ""
+      "en": "Today’s commemoration according to the old church calendar",
+      "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
     },
     "fast": {
       "ar": "لا صوم",
-      "en": "",
-      "el": ""
+      "en": "No fast",
+      "el": "Χωρὶς νηστεία"
     },
     "fasting": {
       "code": "fast_free",
       "season": {
         "ar": "يوم عادي",
-        "en": "",
-        "el": ""
+        "en": "Ordinary day",
+        "el": "Συνήθης ἡμέρα"
       },
       "title": {
         "ar": "لا صوم",
-        "en": "",
-        "el": ""
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
       },
       "level": {
         "ar": "لا صوم",
-        "en": "",
-        "el": ""
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
       },
       "detail": {
         "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-        "en": "",
-        "el": ""
+        "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+        "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
       },
       "is_fast": false,
       "allowed": {
@@ -657,8 +607,8 @@
           "icon": "🥩",
           "label": {
             "ar": "اللحوم",
-            "en": "",
-            "el": ""
+            "en": "Meat",
+            "el": "Κρέας"
           },
           "allowed": true
         },
@@ -667,8 +617,8 @@
           "icon": "🥛",
           "label": {
             "ar": "الألبان",
-            "en": "",
-            "el": ""
+            "en": "Dairy",
+            "el": "Γαλακτοκομικά"
           },
           "allowed": true
         },
@@ -677,8 +627,8 @@
           "icon": "🥚",
           "label": {
             "ar": "البيض",
-            "en": "",
-            "el": ""
+            "en": "Eggs",
+            "el": "Αὐγά"
           },
           "allowed": true
         },
@@ -687,8 +637,8 @@
           "icon": "🐟",
           "label": {
             "ar": "السمك",
-            "en": "",
-            "el": ""
+            "en": "Fish",
+            "el": "Ψάρι"
           },
           "allowed": true
         },
@@ -697,8 +647,8 @@
           "icon": "🍷",
           "label": {
             "ar": "النبيذ",
-            "en": "",
-            "el": ""
+            "en": "Wine",
+            "el": "Οἶνος"
           },
           "allowed": true
         },
@@ -707,8 +657,8 @@
           "icon": "🫒",
           "label": {
             "ar": "الزيت",
-            "en": "",
-            "el": ""
+            "en": "Oil",
+            "el": "Ἔλαιο"
           },
           "allowed": true
         }
@@ -719,8 +669,8 @@
         "rule": "ordinary_fast_free",
         "note": {
           "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-          "en": "",
-          "el": ""
+          "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+          "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
         }
       }
     },
@@ -734,13 +684,7 @@
         "reference": {
           "ar": "رومية 15:1-7",
           "en": "Romans 15:1-7",
-          "el": ""
-        },
-        "canonical_reference": "ROM.15.1-7",
-        "publication_note": {
-          "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-          "en": "Reference preview only; the full text is re-verified on its publication date.",
-          "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+          "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 15:1-7"
         }
       },
       "gospel": {
@@ -752,13 +696,7 @@
         "reference": {
           "ar": "متى 9:27-35",
           "en": "Matthew 9:27-35",
-          "el": ""
-        },
-        "canonical_reference": "MAT.9.27-35",
-        "publication_note": {
-          "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-          "en": "Reference preview only; the full text is re-verified on its publication date.",
-          "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+          "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 9:27-35"
         }
       }
     },
@@ -777,21 +715,57 @@
             "el": "Προκείμενον — Ἦχος 6"
           },
           "reference": {
-            "ar": "",
-            "en": "Tone 6",
-            "el": ""
+            "ar": "لحن القيامة 6",
+            "en": "Resurrection Tone 6",
+            "el": "Ἀναστάσιμος Ἦχος 6"
           },
           "body": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "خَلِّصْ يَا رَبُّ شَعْبَكَ وَبَارِكْ مِيرَاثَكَ.\nإِلَيْكَ يَا رَبُّ أَصْرُخُ، يَا إِلَهِي لَا تَصْمُتْ عَنِّي.",
+            "en": "Save Your people, O Lord, and bless Your inheritance.\nTo You, O Lord, I cry; O my God, be not silent toward me.",
+            "el": "Σῶσον, Κύριε, τὸν λαόν σου καὶ εὐλόγησον τὴν κληρονομίαν σου.\nΠρὸς σέ, Κύριε, κεκράξομαι· ὁ Θεός μου, μὴ παρασιωπήσῃς ἀπ᾽ ἐμοῦ."
+          },
+          "tone": 6,
+          "source": {
+            "ar": "https://sites.google.com/view/tripoliparish/",
+            "en": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
+            "el": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning"
+          },
+          "native_source_verification": {
+            "ar": {
+              "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+              "source_id": "antioch_patriarchate_ar",
+              "source_url": "https://sites.google.com/view/tripoliparish/",
+              "canonical_reference": "",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "858223325802e529c37ffffd5bcf64fe813383982ce301235a6df243d95e3e8d",
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false
+            },
+            "en": {
+              "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+              "source_id": "goarch_digital_chant_stand_english",
+              "source_url": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
+              "canonical_reference": "",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "aa919eb3a662ed51846333bd08c6fcb4c1c295128d57ea3252839e31f85f95e5",
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false
+            },
+            "el": {
+              "status": "VERIFIED_EXACT_NATIVE_SOURCE",
+              "source_id": "goarch_digital_chant_stand_greek",
+              "source_url": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
+              "canonical_reference": "",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "9a079f311d33e0808ba46acf8664b563e608db03e83c9fc299cb4b1f7f879181",
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false
+            }
           },
           "translation_locked": true,
-          "source": {
-            "ar": "",
-            "en": "",
-            "el": ""
-          },
           "integrity": {
             "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
             "canonical_reference": "",
@@ -799,38 +773,6 @@
             "legacy_cross_lane_text_removed": true,
             "ai_translation_used": false,
             "automatic_diacritization_used": false
-          },
-          "native_source_verification": {
-            "ar": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
-              "canonical_reference": "",
-              "reference_available": false,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
-            },
-            "en": {
-              "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
-              "source_id": "oca_official_english",
-              "source_url": "https://www.oca.org/readings/daily/2026/07/14",
-              "canonical_reference": "",
-              "reference_available": true,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false
-            },
-            "el": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
-              "canonical_reference": "",
-              "reference_available": false,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
-            }
           }
         },
         {
@@ -842,20 +784,20 @@
             "el": "Ἀπόστολος"
           },
           "reference": {
-            "ar": "",
-            "en": "Romans 15:1-7",
-            "el": ""
+            "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ إِلَى أَهْلِ رُومِيَةَ 15:1-7",
+            "en": "Paul’s Letter to the Romans 15:1-7",
+            "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 15:1-7"
           },
           "body": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "فَيَجِبُ عَلَيْنَا نَحْنُ ٱلْأَقْوِيَاءَ أَنْ نَحْتَمِلَ أَضْعَافَ ٱلضُّعَفَاءِ، وَلَا نُرْضِيَ أَنْفُسَنَا.\nفَلْيُرْضِ كُلُّ وَاحِدٍ مِنَّا قَرِيبَهُ لِلْخَيْرِ، لِأَجْلِ ٱلْبُنْيَانِ.\nلِأَنَّ ٱلْمَسِيحَ أَيْضًا لَمْ يُرْضِ نَفْسَهُ، بَلْ كَمَا هُوَ مَكْتُوبٌ: «تَعْيِيرَاتُ مُعَيِّرِيكَ وَقَعَتْ عَلَيَّ».\nلِأَنَّ كُلَّ مَا سَبَقَ فَكُتِبَ كُتِبَ لِأَجْلِ تَعْلِيمِنَا، حَتَّى بِٱلصَّبْرِ وَٱلتَّعْزِيَةِ بِمَا فِي ٱلْكُتُبِ يَكُونُ لَنَا رَجَاءٌ.\nوَلْيُعْطِكُمْ إِلَهُ ٱلصَّبْرِ وَٱلتَّعْزِيَةِ أَنْ تَهْتَمُّوا ٱهْتِمَامًا وَاحِدًا فِيمَا بَيْنَكُمْ، بِحَسَبِ ٱلْمَسِيحِ يَسُوعَ،\nلِكَيْ تُمَجِّدُوا ٱللهَ أَبَا رَبِّنَا يَسُوعَ ٱلْمَسِيحِ، بِنَفْسٍ وَاحِدَةٍ وَفَمٍ وَاحِدٍ.\nلِذَلِكَ ٱقْبَلُوا بَعْضُكُمْ بَعْضًا كَمَا أَنَّ ٱلْمَسِيحَ أَيْضًا قَبِلَنَا، لِمَجْدِ ٱللهِ.",
+            "en": "Now we who are strong ought to bear the weaknesses of the weak, and not to please ourselves.\nLet each one of us please his neighbor for that which is good, to be building him up.\nFor even Christ didn’t please himself. But, as it is written, “The reproaches of those who reproached you fell on me.”\nFor whatever things were written before were written for our learning, that through perseverance and through encouragement of the Scriptures we might have hope.\nNow the God of perseverance and of encouragement grant you to be of the same mind with one another according to Christ Jesus,\nthat with one accord you may with one mouth glorify the God and Father of our Lord Jesus Christ.\nTherefore accept one another, even as Christ also accepted you, to the glory of God.",
+            "el": "Ὀφείλομεν δὲ ἡμεῖς οἱ δυνατοὶ τὰ ἀσθενήματα τῶν ἀδυνάτων βαστάζειν, καὶ μὴ ἑαυτοῖς ἀρέσκειν.\nἕκαστος ἡμῶν τῷ πλησίον ἀρεσκέτω εἰς τὸ ἀγαθὸν πρὸς οἰκοδομήν·\nκαὶ γὰρ ὁ Χριστὸς οὐχ ἑαυτῷ ἤρεσεν, ἀλλὰ καθὼς γέγραπται, \\+w οἱ|strong=\"G3588\"\\+w* \\+w ὀνειδισμοὶ|strong=\"G3680\"\\+w* \\+w τῶν|strong=\"G3588\"\\+w* \\+w ὀνειδιζόντων|strong=\"G3679\"\\+w* \\+w σε|strong=\"G4771\"\\+w* \\+w ἐπέπεσον|strong=\"G1968\"\\+w* \\+w ἐπ|strong=\"G1909\"\\+w*᾽ \\+w ἐμέ|strong=\"G1473\"\\+w*.\nὅσα γὰρ προεγράφη, εἰς τὴν ἡμετέραν διδασκαλίαν προεγράφη, ἵνα διὰ τῆς ὑπομονῆς καὶ τῆς παρακλήσεως τῶν γραφῶν τὴν ἐλπίδα ἔχωμεν.\nὁ δὲ Θεὸς τῆς ὑπομονῆς καὶ τῆς παρακλήσεως δῴη ὑμῖν τὸ αὐτὸ φρονεῖν ἐν ἀλλήλοις κατὰ Χριστὸν Ἰησοῦν,\nἵνα ὁμοθυμαδὸν ἐν ἑνὶ στόματι δοξάζητε τὸν Θεὸν καὶ πατέρα τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ.\nδιὸ προσλαμβάνεσθε ἀλλήλους, καθὼς καὶ ὁ Χριστὸς προσελάβετο ὑμᾶς εἰς δόξαν Θεοῦ."
           },
-          "translation_locked": true,
+          "discovery_text": "",
           "source": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+            "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+            "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
           },
           "integrity": {
             "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
@@ -867,36 +809,88 @@
           },
           "native_source_verification": {
             "ar": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
-              "canonical_reference": "ROM.15.1-7",
-              "reference_available": false,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
-            },
-            "en": {
-              "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
-              "source_id": "oca_official_english",
-              "source_url": "https://www.oca.org/readings/daily/2026/07/14",
+              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+              "source_id": "ebible_arabic_van_dyck",
+              "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
               "canonical_reference": "ROM.15.1-7",
               "reference_available": true,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false
-            },
-            "el": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
-              "canonical_reference": "ROM.15.1-7",
-              "reference_available": false,
-              "text_available": false,
+              "text_available": true,
+              "text_sha256": "7be863f365cf1dacae353a7567515464c6afbb1e6eaacaf67b3c359f7ca4bd97",
+              "verse_count": 7,
+              "verse_hashes": [
+                "af24a9aa10fa098be460870391ac67aa86186f5f15c6332d9841f20563a9a707",
+                "114c2f1c3949fd0a141da4c5b60b12864c7c773ccf36382fcdc175cf735800f8",
+                "9a61dd9a66bb54d696f6bec8c104feb1a6f362492a080e58d773928cd6f049d7",
+                "8e642aefb0b338b4ae78d669fcac185c3d923fb1443212bbd804af28597f3cb2",
+                "6648684fff08d38a8aa5cc8af02dfcdba6cb90ab83640df8ca4b078e1fecb63d",
+                "05d58a85e91a17e86d8c90b33f889dc0cd911bc29ef9159a3d3300e959ac9329",
+                "32b0f014a82e1dad3ed2c375e52a9e08dfe768e72179a6d7c50d4412a64ccb8d"
+              ],
+              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+              "machine_translation_used": false,
               "ai_translation_used": false,
               "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
+              "daily_reference_source_id": null,
+              "daily_reference_source_url": null,
+              "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
+              "corpus_license": "Public Domain"
+            },
+            "en": {
+              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+              "source_id": "ebible_world_english_bible",
+              "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+              "canonical_reference": "ROM.15.1-7",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "4b684664543d3118e2a52e3a52026594e373b203a7c3752ba124412dc78881f9",
+              "verse_count": 7,
+              "verse_hashes": [
+                "5c5f86cb1b61989fd1eeb07a319468f87ba3481294ada2c04324b30f17c55405",
+                "af225153d58e92bd886b3af60d955f08df829d6f491f957f5005ffd14a8a6d48",
+                "c445d06929f60a9a592d202dd83305a79e430d0583b373616210a121f4675d1e",
+                "c67465200c8fd2003584ca4babd99c041d480c51942b6aa24638e2a881959155",
+                "cba3da1f4b4d8da55da298974f2f4bea87b15ceca52f9900e90f815fe8bdfe19",
+                "8589253ca4cdcd61bd6752d78be632c48920b3b1f1212b5e973f71d84e3abdf9",
+                "d16f84ca51ba311748de7736b0fd069842c7a1f8b5800017f59044a0e54d5eb3"
+              ],
+              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+              "machine_translation_used": false,
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false,
+              "daily_reference_source_id": null,
+              "daily_reference_source_url": null,
+              "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
+              "corpus_license": "Public Domain"
+            },
+            "el": {
+              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+              "source_id": "ebible_greek_byzantine_1904",
+              "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+              "canonical_reference": "ROM.15.1-7",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "61c3fec47a79c8492b0ee95d3c053c2da31e8b546c5f8640adf4b17948a51b6f",
+              "verse_count": 7,
+              "verse_hashes": [
+                "0da42dfd6e90ba584363b4128eda1ae96c8e62372b043a62260ecddd256abb18",
+                "10ff1d9e1de012958a31c0636df051d76fbf9805a024472168c25d8e6a4ecec9",
+                "5614fbf538ad221e454a37c28c04892ba26c4f7ed8b226da8979f79e5973061d",
+                "15f18831ee8c8f17b03eaa4d35bb926d30399541cd3b21e65db42f3d90100e12",
+                "c569738aea3092e704e54271d5eb39c565fdb03f5caffb90b42d62340af78b55",
+                "10e6ddc80c5fea41aede48cadef2de21718d0cfb62ebeff3448c88f8f21ea111",
+                "679042eb203015bf04bdf749b187035ea6af19b01b9c6d57efdaf23b7e0762df"
+              ],
+              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+              "machine_translation_used": false,
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false,
+              "daily_reference_source_id": null,
+              "daily_reference_source_url": null,
+              "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+              "corpus_license": "Public Domain"
             }
-          }
+          },
+          "translation_locked": true
         },
         {
           "icon": "📖",
@@ -907,20 +901,20 @@
             "el": "Εὐαγγέλιο"
           },
           "reference": {
-            "ar": "",
-            "en": "Matthew 9:27-35",
-            "el": ""
+            "ar": "إِنْجِيلُ مَتَّى 9:27-35",
+            "en": "The Good News According to Matthew 9:27-35",
+            "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 9:27-35"
           },
           "body": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "وَفِيمَا يَسُوعُ مُجْتَازٌ مِنْ هُنَاكَ، تَبِعَهُ أَعْمَيَانِ يَصْرَخَانِ وَيَقُولَانِ: «ٱرْحَمْنَا يا ٱبْنَ دَاوُدَ!».\nوَلَمَّا جَاءَ إِلَى ٱلْبَيْتِ تَقَدَّمَ إِلَيْهِ ٱلْأَعْمَيَانِ، فَقَالَ لَهُمَا يَسُوعُ: «أَتُؤْمِنَانِ أَنِّي أَقْدِرُ أَنْ أَفْعَلَ هَذَا؟». قَالَا لَهُ: «نَعَمْ، يا سَيِّدُ!».\nحِينَئِذٍ لَمَسَ أَعْيُنَهُمَا قَائِلًا: «بِحَسَبِ إِيمَانِكُمَا لِيَكُنْ لَكُمَا».\nفَٱنْفَتَحَتْ أَعْيُنُهُمَا. فَٱنْتَهَرَهُمَا يَسُوعُ قَائِلًا: «ٱنْظُرَا، لَا يَعْلَمْ أَحَدٌ!».\nوَلَكِنَّهُمَا خَرَجَا وَأَشَاعَاهُ فِي تِلْكَ ٱلْأَرْضِ كُلِّهَا. شفاء أخرس\nوَفِيمَا هُمَا خَارِجَانِ، إِذَا إِنْسَانٌ أَخْرَسُ مَجْنُونٌ قَدَّمُوهُ إِلَيْهِ.\nفَلَمَّا أُخْرِجَ ٱلشَّيْطَانُ تَكَلَّمَ ٱلْأَخْرَسُ، فَتَعَجَّبَ ٱلْجُمُوعُ قَائِلِينَ: «لَمْ يَظْهَرْ قَطُّ مِثْلُ هَذَا فِي إِسْرَائِيلَ!».\nأَمَّا ٱلْفَرِّيسِيُّونَ فَقَالُوا: «بِرَئِيسِ ٱلشَّيَاطِينِ يُخْرِجُ ٱلشَّيَاطِينَ!». الفعلة قليلون\nوَكَانَ يَسُوعُ يَطُوفُ ٱلْمُدُنَ كُلَّهَا وَٱلْقُرَى يُعَلِّمُ فِي مَجَامِعِهَا، وَيَكْرِزُ بِبِشَارَةِ ٱلْمَلَكُوتِ، وَيَشْفِي كُلَّ مَرَضٍ وَكُلَّ ضُعْفٍ فِي ٱلشَّعْبِ.",
+            "en": "As Jesus passed by from there, two blind men followed him, calling out and saying, “Have mercy on us, son of David!”\nWhen he had come into the house, the blind men came to him. Jesus said to them, “\\+w Do|strong=\"G4160\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w believe|strong=\"G4100\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w I|strong=\"G2532\"\\+w* \\+w am|strong=\"G2532\"\\+w* \\+w able|strong=\"G1410\"\\+w* \\+w to|strong=\"G1519\"\\+w* \\+w do|strong=\"G4160\"\\+w* \\+w this|strong=\"G3778\"\\+w*?” They told him, “Yes, Lord.”\nThen he touched their eyes, saying, “\\+w According|strong=\"G2596\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w your|strong=\"G4102\"\\+w* \\+w faith|strong=\"G4102\"\\+w* \\+w be|strong=\"G1096\"\\+w* \\+w it|strong=\"G5119\"\\+w* \\+w done|strong=\"G1096\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w you|strong=\"G5210\"\\+w*.”\nThen their eyes were opened. Jesus strictly commanded them, saying, “\\+w See|strong=\"G3708\"\\+w* \\+w that|strong=\"G3588\"\\+w* \\+w no|strong=\"G3367\"\\+w* \\+w one|strong=\"G3367\"\\+w* \\+w knows|strong=\"G1097\"\\+w* \\+w about|strong=\"G2424\"\\+w* \\+w this|strong=\"G3588\"\\+w*.”\nBut they went out and spread abroad his fame in all that land.\nAs they went out, behold, a mute man who was demon possessed was brought to him.\nWhen the demon was cast out, the mute man spoke. The multitudes marveled, saying, “Nothing like this has ever been seen in Israel!”\nBut the Pharisees said, “By the prince of the demons, he casts out demons.”\nJesus went about all the cities and the villages, teaching in their synagogues and preaching the Good News of the Kingdom, and healing every disease and every sickness among the people.",
+            "el": "Καὶ παράγοντι ἐκεῖθεν τῷ Ἰησοῦ ἠκολούθησαν αὐτῷ δύο τυφλοὶ κράζοντες καὶ λέγοντες· ἐλέησον ἡμᾶς, υἱὲ Δαυΐδ.\nἐλθόντι δὲ εἰς τὴν οἰκίαν προσῆλθον αὐτῷ οἱ τυφλοί, καὶ λέγει αὐτοῖς ὁ Ἰησοῦς· πιστεύετε ὅτι δύναμαι τοῦτο ποιῆσαι; λέγουσιν αὐτῷ· ναί, Κύριε.\nτότε ἥψατο τῶν ὀφθαλμῶν αὐτῶν λέγων· κατὰ τὴν πίστιν ὑμῶν γενηθήτω ὑμῖν.\nκαὶ ἀνεῴχθησαν αὐτῶν οἱ ὀφθαλμοί· καὶ ἐνεβριμήσατο αὐτοῖς ὁ Ἰησοῦς λέγων· ὁρᾶτε μηδεὶς γινωσκέτω.\nοἱ δὲ ἐξελθόντες διεφήμισαν αὐτὸν ἐν ὅλῃ τῇ γῇ ἐκείνῃ.\nΑὐτῶν δὲ ἐξερχομένων ἰδοὺ προσήνεγκαν αὐτῷ ἄνθρωπον κωφὸν δαιμονιζόμενον·\nκαὶ ἐκβληθέντος τοῦ δαιμονίου ἐλάλησεν ὁ κωφός, καὶ ἐθαύμασαν οἱ ὄχλοι λέγοντες ὅτι οὐδέποτε ἐφάνη οὕτως ἐν τῷ Ἰσραήλ.\nοἱ δὲ Φαρισαῖοι ἔλεγον· ἐν τῷ ἄρχοντι τῶν δαιμονίων ἐκβάλλει τὰ δαιμόνια.\nΚαὶ περιῆγεν ὁ Ἰησοῦς τὰς πόλεις πάσας καὶ τὰς κώμας διδάσκων ἐν ταῖς συναγωγαῖς αὐτῶν καὶ κηρύσσων τὸ εὐαγγέλιον τῆς βασιλείας καὶ θεραπεύων πᾶσαν νόσον καὶ πᾶσαν μαλακίαν ἐν τῷ λαῷ."
           },
-          "translation_locked": true,
+          "discovery_text": "",
           "source": {
-            "ar": "",
-            "en": "",
-            "el": ""
+            "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
+            "en": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+            "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip"
           },
           "integrity": {
             "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
@@ -932,47 +926,105 @@
           },
           "native_source_verification": {
             "ar": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
-              "canonical_reference": "MAT.9.27-35",
-              "reference_available": false,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
-            },
-            "en": {
-              "status": "VERIFIED_EXACT_NATIVE_REFERENCE_ONLY",
-              "source_id": "oca_official_english",
-              "source_url": "https://www.oca.org/readings/daily/2026/07/14",
+              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+              "source_id": "ebible_arabic_van_dyck",
+              "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
               "canonical_reference": "MAT.9.27-35",
               "reference_available": true,
-              "text_available": false,
-              "ai_translation_used": false,
-              "automatic_diacritization_used": false
-            },
-            "el": {
-              "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
-              "source_id": null,
-              "canonical_reference": "MAT.9.27-35",
-              "reference_available": false,
-              "text_available": false,
+              "text_available": true,
+              "text_sha256": "a20529957dc1cc5cbe8166fdb64474273921502a9ebe60ec8243fa7151073002",
+              "verse_count": 9,
+              "verse_hashes": [
+                "59916ae26008a648a80f89493bdd38312cb8943c7d6292922bea6f4f21c8f304",
+                "4297b9cfc6346c6a147d01e8f5e05ed2744f51e1c465e42f4a5e118bdcfa92c0",
+                "b4cdcbc3887325e45dc28f12cf068ace450470eafa024c6b5c3a92c1d770df8d",
+                "98e78882df7cf98345ec317f0512248614fb7506516eb89377a4ac5475def7ea",
+                "a236a60d3acd2db715388cd9dc392097542c9dd283f3abd265c9adf9e06260cb",
+                "0869ca93709197de7c14360eec606289fe79e9b208a31508408b51b02afe4cb8",
+                "9cb2cd8a4a0631097d184e13937af9ec6943317ec8907c8e5e929fb6d070db1a",
+                "f28ff407b0b86cb6158581dd5e95f9cb54df89ffc4994caed770827149a23db5",
+                "01c675a7d2c6d91a485444df48486de7ac1a7d566defec8387d0c73c666055ed"
+              ],
+              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+              "machine_translation_used": false,
               "ai_translation_used": false,
               "automatic_diacritization_used": false,
-              "reason": "same_language_official_source_not_available"
+              "daily_reference_source_id": null,
+              "daily_reference_source_url": null,
+              "corpus_archive_sha256": "2263a7d5b1713bbf1d1a9c8f4c52e797121412d41ec44091c26a3065f14e75c8",
+              "corpus_license": "Public Domain"
+            },
+            "en": {
+              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+              "source_id": "ebible_world_english_bible",
+              "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+              "canonical_reference": "MAT.9.27-35",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "117ee1c9fc20714c60f2328f3d938621918f52ecd674725cc1d68de0fab3d24d",
+              "verse_count": 9,
+              "verse_hashes": [
+                "d0392a4d1cc856ea469aab74a3140bd81a779f16f7a0b5ecf273bcba054d8374",
+                "e51f8e88f606191f2f8379b3ed4761d7e0f5e4ad1b98d436a4a15225493cb6cc",
+                "1b154e8d1a831278732712165924a67347117878cd364066c5f3590e4ef1b1c7",
+                "40806e17c9531392cb495bb219145eace491e8a714a6a76a045c2aa9d989f2ac",
+                "960ca83f94ce5e304f306e131856702b79668474fbcd166258350a35ab3a5b89",
+                "4ee85f6e9bb294fef018d80c7ca090cb653ee542815ac1cde805b1e2e5e60b67",
+                "4260b558b3de5eec506f26ad58e4bc6feeddf4c7e8957570aeebf0bf4b5fb102",
+                "4e9e7463f8ad9e7ea482bc58065075f7cac354998d1b69429b57e0c847c864cc",
+                "ad6712e4f6c4da42eb6a4ae6caf13456283f1e3a5711e7312b5a673bba8866f4"
+              ],
+              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+              "machine_translation_used": false,
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false,
+              "daily_reference_source_id": null,
+              "daily_reference_source_url": null,
+              "corpus_archive_sha256": "4253589697dc6b5e92695655f2f28792d50e7be7b9c8e212af4f4bd18e866c3b",
+              "corpus_license": "Public Domain"
+            },
+            "el": {
+              "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+              "source_id": "ebible_greek_byzantine_1904",
+              "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+              "canonical_reference": "MAT.9.27-35",
+              "reference_available": true,
+              "text_available": true,
+              "text_sha256": "1c1c50fa9e02d6c98f286728a9175ea72e60fd888d3f46f98dae4f28d12bb0d9",
+              "verse_count": 9,
+              "verse_hashes": [
+                "03154deaacfa9ba42a1ff3cd5ff21369e1d2b24179e3762f55dd1308ae88773f",
+                "e38141a665b47265b120587f9d97ba8281aa746d54a3e6fb0d67a799d0d4cbe5",
+                "369a5e28325cbe6d78cd335b82d1d494b16c7e1402890c93f01947fff28f1cea",
+                "b33cc6220d1b90ec2a6b1a69ed35429b03086fcb6aa88af18f5b44de62edee36",
+                "9f80344ffe93348120a54facd67f5e0b400cd57b2b852627ec8782f3b1e23f95",
+                "809fd7cf8d09628462b9da1d45d8c874bbc9ad30dbee1d5f43ef3f6b2a948ee6",
+                "9d2fa87240b36e422593df7c52771cb3dacb4af02f5b2d26e507c619ff15786e",
+                "442056c78ed9475c0b51719f9ffdb45d010634efcc77780975f80c51c8a8a2e0",
+                "45ac775548fec78493c64c0685e5c667a283e69031852404dd425ba6d4a2e5ef"
+              ],
+              "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
+              "machine_translation_used": false,
+              "ai_translation_used": false,
+              "automatic_diacritization_used": false,
+              "daily_reference_source_id": null,
+              "daily_reference_source_url": null,
+              "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+              "corpus_license": "Public Domain"
             }
-          }
+          },
+          "translation_locked": true
         }
       ]
     },
     "upcoming_reference_dates": [
-      "2026-07-15",
-      "2026-07-16",
-      "2026-07-17",
       "2026-07-18",
       "2026-07-19",
       "2026-07-20",
-      "2026-07-21"
+      "2026-07-21",
+      "2026-07-22",
+      "2026-07-23",
+      "2026-07-24"
     ]
   },
   "recommended_services": [
@@ -996,14 +1048,14 @@
         "el": "Σήμερα — Θεία Λειτουργία"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
         "en": "Verified daily readings and feast texts are composed with the single static Liturgy template.",
         "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας."
       },
       "source_language": "ar",
       "translation_status": "verified_daily_overlay_v2",
       "template_id": "library:divine_liturgy",
-      "dynamic_date": "2026-07-14",
+      "dynamic_date": "2026-07-17",
       "notice": {
         "ar": "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
         "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
@@ -1021,37 +1073,37 @@
       },
       "segment_replacements": {
         "[طروبارية اليوم]": {
-          "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
-          "ar": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[القنداق]": {
-          "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[البروكيمنن]": {
-          "ar": "غير منشور حتى التحقق من نص كنسي رسمي مطابق لليوم",
-          "en": "",
-          "el": ""
+          "ar": "مزمور 98:5، 1\nارفعوا الرب إلهنا واسجدوا عند موطئ قدميه فإنه قدوس.\nالرب قد ملك، فترتعد الشعوب.",
+          "en": "Psalm 98:5, 1 (LXX)\nExalt the Lord our God, and worship at His footstool, for He is holy.\nThe Lord reigns; let the peoples tremble.",
+          "el": "Ψαλμός 98:5, 1\nὙψοῦτε Κύριον τὸν Θεὸν ἡμῶν καὶ προσκυνεῖτε τῷ ὑποποδίῳ τῶν ποδῶν αὐτοῦ, ὅτι ἅγιός ἐστι.\nὉ Κύριος ἐβασίλευσεν, ὀργιζέσθωσαν λαοί."
         },
         "[فصل من رسالة اليوم]": {
-          "ar": "كورنثوس الأولى 6:20-7:12\n6:20 لِأَنَّكُمْ قَدِ ٱشْتُرِيتُمْ بِثَمَنٍ. فَمَجِّدُوا ٱللهَ فِي أَجْسَادِكُمْ وَفِي أَرْوَاحِكُمُ ٱلَّتِي هِيَ لِلهِ.\n7:1 وَأَمَّا مِنْ جِهَةِ ٱلْأُمُورِ ٱلَّتِي كَتَبْتُمْ لِي عَنْهَا: فَحَسَنٌ لِلرَّجُلِ أَنْ لَا يَمَسَّ ٱمْرَأَةً.\n7:2 وَلَكِنْ لِسَبَبِ ٱلزِّنَا، لِيَكُنْ لِكُلِّ وَاحِدٍ ٱمْرَأَتُهُ، وَلْيَكُنْ لِكُلِّ وَاحِدَةٍ رَجُلُهَا.\n7:3 لِيُوفِ ٱلرَّجُلُ ٱلْمَرْأَةَ حَقَّهَا ٱلْوَاجِبَ، وَكَذَلِكَ ٱلْمَرْأَةُ أَيْضًا ٱلرَّجُلَ.\n7:4 لَيْسَ لِلْمَرْأَةِ تَسَلُّطٌ عَلَى جَسَدِهَا، بَلْ لِلرَّجُلِ. وَكَذَلِكَ ٱلرَّجُلُ أَيْضًا لَيْسَ لَهُ تَسَلُّطٌ عَلَى جَسَدِهِ، بَلْ لِلْمَرْأَةِ.\n7:5 لَا يَسْلُبْ أَحَدُكُمُ ٱلْآخَرَ، إِلَّا أَنْ يَكُونَ عَلَى مُوافَقَةٍ، إِلَى حِينٍ، لِكَيْ تَتَفَرَّغُوا لِلصَّوْمِ وَٱلصَّلَاةِ، ثُمَّ تَجْتَمِعُوا أَيْضًا مَعًا لِكَيْ لَا يُجَرِّبَكُمُ ٱلشَّيْطَانُ لِسَبَبِ عَدَمِ نَزَاهَتِكُمْ.\n7:6 وَلَكِنْ أَقُولُ هَذَا عَلَى سَبِيلِ ٱلْإِذْنِ لَا عَلَى سَبِيلِ ٱلْأَمْرِ.\n7:7 لِأَنِّي أُرِيدُ أَنْ يَكُونَ جَمِيعُ ٱلنَّاسِ كَمَا أَنَا. لَكِنَّ كُلَّ وَاحِدٍ لَهُ مَوْهِبَتُهُ ٱلْخَاصَّةُ مِنَ ٱللهِ. ٱلْوَاحِدُ هَكَذَا وَٱلْآخَرُ هَكَذَا.\n7:8 وَلَكِنْ أَقُولُ لِغَيْرِ ٱلْمُتَزَوِّجِينَ وَلِلْأَرَامِلِ، إِنَّهُ حَسَنٌ لَهُمْ إِذَا لَبِثُوا كَمَا أَنَا.\n7:9 وَلَكِنْ إِنْ لَمْ يَضْبُطُوا أَنْفُسَهُمْ، فَلْيَتَزَوَّجُوا. لِأَنَّ ٱلتَّزَوُّجَ أَصْلَحُ مِنَ ٱلتَّحَرُّقِ.\n7:10 وَأَمَّا ٱلْمُتَزَوِّجُونَ، فَأُوصِيهِمْ، لَا أَنَا بَلِ ٱلرَّبُّ، أَنْ لَا تُفَارِقَ ٱلْمَرْأَةُ رَجُلَهَا،\n7:11 وَإِنْ فَارَقَتْهُ، فَلْتَلْبَثْ غَيْرَ مُتَزَوِّجَةٍ، أَوْ لِتُصَالِحْ رَجُلَهَا. وَلَا يَتْرُكِ ٱلرَّجُلُ ٱمْرَأَتَهُ.\n7:12 وَأَمَّا ٱلْبَاقُونَ، فَأَقُولُ لَهُمْ أَنَا، لَا ٱلرَّبُّ: إِنْ كَانَ أَخٌ لَهُ ٱمْرَأَةٌ غَيْرُ مُؤْمِنَةٍ، وَهِيَ تَرْتَضِي أَنْ تَسْكُنَ مَعَهُ، فَلَا يَتْرُكْهَا.",
-          "en": "",
-          "el": ""
+          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 7:35-8:7\nهَذَا أَقُولُهُ لِخَيْرِكُمْ، لَيْسَ لِكَيْ أُلْقِيَ عَلَيْكُمْ وَهَقًا، بَلْ لِأَجْلِ ٱللِّيَاقَةِ وَٱلْمُثَابَرَةِ لِلرَّبِّ مِنْ دُونِ ٱرْتِبَاكٍ.\nوَلَكِنْ إِنْ كَانَ أَحَدٌ يَظُنُّ أَنَّهُ يَعْمَلُ بِدُونِ لِيَاقَةٍ نَحْوَ عَذْرَائِهِ إِذَا تَجَاوَزَتِ ٱلْوَقْتَ، وَهَكَذَا لَزِمَ أَنْ يَصِيرَ، فَلْيَفْعَلْ مَا يُرِيدُ. إِنَّهُ لَا يُخْطِئُ. فَلْيَتَزَوَّجَا.\nوَأَمَّا مَنْ أَقَامَ رَاسِخًا فِي قَلْبِهِ، وَلَيْسَ لَهُ ٱضْطِرَارٌ، بَلْ لَهُ سُلْطَانٌ عَلَى إِرَادَتِهِ، وَقَدْ عَزَمَ عَلَى هَذَا فِي قَلْبِهِ أَنْ يَحْفَظَ عَذْرَاءَهُ، فَحَسَنًا يَفْعَلُ.\nإِذًا، مَنْ زَوَّجَ فَحَسَنًا يَفْعَلُ، وَمَنْ لَا يُزَوِّجُ يَفْعَلُ أَحْسَنَ.\nٱلْمَرْأَةُ مُرْتَبِطَةٌ بِٱلنَّامُوسِ مَا دَامَ رَجُلُهَا حَيًّا. وَلَكِنْ إِنْ مَاتَ رَجُلُهَا، فَهِيَ حُرَّةٌ لِكَيْ تَتَزَوَّجَ بِمَنْ تُرِيدُ، فِي ٱلرَّبِّ فَقَطْ.\nوَلَكِنَّهَا أَكْثَرُ غِبْطَةً إِنْ لَبِثَتْ هَكَذَا، بِحَسَبِ رَأْيِي. وَأَظُنُّ أَنِّي أَنَا أَيْضًا عِنْدِي رُوحُ ٱللهِ.\nوَأَمَّا مِنْ جِهَةِ مَا ذُبِحَ لِلْأَوْثَانِ: فَنَعْلَمُ أَنَّ لِجَمِيعِنَا عِلْمًا. ٱلْعِلْمُ يَنْفُخُ، وَلَكِنَّ ٱلْمَحَبَّةَ تَبْنِي.\nفَإِنْ كَانَ أَحَدٌ يَظُنُّ أَنَّهُ يَعْرِفُ شَيْئًا، فَإِنَّهُ لَمْ يَعْرِفْ شَيْئًا بَعْدُ كَمَا يَجِبُ أَنْ يَعْرِفَ!\nوَلَكِنْ إِنْ كَانَ أَحَدٌ يُحِبُّ ٱللهَ، فَهَذَا مَعْرُوفٌ عِنْدَهُ.\nفَمِنْ جِهَةِ أَكْلِ مَا ذُبِحَ لِلْأَوْثَانِ: نَعْلَمُ أَنْ لَيْسَ وَثَنٌ فِي ٱلْعَالَمِ، وَأَنْ لَيْسَ إِلَهٌ آخَرُ إِلَّا وَاحِدًا.\nلِأَنَّهُ وَإِنْ وُجِدَ مَا يُسَمَّى آلِهَةً، سِوَاءٌ كَانَ فِي ٱلسَّمَاءِ أَوْ عَلَى ٱلْأَرْضِ، كَمَا يُوجَدُ آلِهَةٌ كَثِيرُونَ وَأَرْبَابٌ كَثِيرُونَ.\nلَكِنْ لَنَا إِلَهٌ وَاحِدٌ: ٱلْآبُ ٱلَّذِي مِنْهُ جَمِيعُ ٱلْأَشْيَاءِ، وَنَحْنُ لَهُ. وَرَبٌّ وَاحِدٌ: يَسُوعُ ٱلْمَسِيحُ، ٱلَّذِي بِهِ جَمِيعُ ٱلْأَشْيَاءِ، وَنَحْنُ بِهِ.\nوَلَكِنْ لَيْسَ ٱلْعِلْمُ فِي ٱلْجَمِيعِ. بَلْ أُنَاسٌ بِٱلضَّمِيرِ نَحْوَ ٱلْوَثَنِ إِلَى ٱلْآنَ يَأْكُلُونَ كَأَنَّهُ مِمَّا ذُبِحَ لِوَثَنٍ، فَضَمِيرُهُمْ إِذْ هُوَ ضَعِيفٌ يَتَنَجَّسُ.",
+          "en": "Paul’s First Letter to the Corinthians 7:35-8:7\nThis I say for your own benefit, not that I may ensnare you, but for that which is appropriate, and that you may attend to the Lord without distraction.\nBut if any man thinks that he is behaving inappropriately toward his virgin, if she is past the flower of her age, and if need so requires, let him do what he desires. He doesn’t sin. Let them marry.\nBut he who stands steadfast in his heart, having no urgency, but has power over his own will, and has determined in his own heart to keep his own virgin, does well.\nSo then both he who gives his own virgin in marriage does well, and he who doesn’t give her in marriage does better.\nA wife is bound by law for as long as her husband lives; but if the husband is dead, she is free to be married to whomever she desires, only in the Lord.\nBut she is happier if she stays as she is, in my judgment, and I think that I also have God’s Spirit.\nNow concerning things sacrificed to idols: We know that we all have knowledge. Knowledge puffs up, but love builds up.\nBut if anyone thinks that he knows anything, he doesn’t yet know as he ought to know.\nBut anyone who loves God is known by him.\nTherefore concerning the eating of things sacrificed to idols, we know that no idol is anything in the world, and that there is no other God but one.\nFor though there are things that are called “gods”, whether in the heavens or on earth—as there are many “gods” and many “lords”—\nyet to us there is one God, the Father, of whom are all things, and we for him; and one Lord, Jesus Christ, through whom are all things, and we live through him.\nHowever, that knowledge isn’t in all men. But some, with consciousness of an idol until now, eat as of a thing sacrificed to an idol, and their conscience, being weak, is defiled.",
+          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 7:35-8:7\nτοῦτο δὲ πρὸς τὸ ὑμῶν αὐτῶν συμφέρον λέγω, οὐχ ἵνα βρόχον ὑμῖν ἐπιβάλω, ἀλλὰ πρὸς τὸ εὔσχημον καὶ εὐπάρεδρον τῷ Κυρίῳ ἀπερισπάστως.\nΕἰ δέ τις ἀσχημονεῖν ἐπὶ τὴν παρθένον αὐτοῦ νομίζει, ἐὰν ᾖ ὑπέρακμος, καὶ οὕτως ὀφείλει γίνεσθαι, ὃ θέλει ποιείτω· οὐχ ἁμαρτάνει· γαμείτωσαν.\nὃς δὲ ἕστηκεν ἑδραῖος ἐν τῇ καρδίᾳ, μὴ ἔχων ἀνάγκην, ἐξουσίαν δὲ ἔχει περὶ τοῦ ἰδίου θελήματος, καὶ τοῦτο κέκρικεν ἐν τῇ καρδίᾳ αὐτοῦ, τοῦ τηρεῖν τὴν ἑαυτοῦ παρθένον, καλῶς ποιεῖ.\nὥστε καὶ ὁ ἐκγαμίζων καλῶς ποιεῖ, ὁ δὲ μὴ ἐκγαμίζων κρεῖσσον ποιεῖ.\nΓυνὴ δέδεται νόμῳ ἐφ᾽ ὅσον χρόνον ζῇ ὁ ἀνὴρ αὐτῆς· ἐὰν δὲ κοιμηθῇ ὁ ἀνὴρ αὐτῆς, ἐλευθέρα ἐστὶν ᾧ θέλει γαμηθῆναι, μόνον ἐν Κυρίῳ.\nμακαριωτέρα δέ ἐστιν ἐὰν οὕτω μείνῃ, κατὰ τὴν ἐμὴν γνώμην· δοκῶ δὲ κἀγὼ Πνεῦμα Θεοῦ ἔχειν.\nΠερὶ δὲ τῶν εἰδωλοθύτων, οἴδαμεν ὅτι πάντες γνῶσιν ἔχομεν.\nἡ γνῶσις φυσιοῖ, ἡ δὲ ἀγάπη οἰκοδομεῖ. εἰ δέ τις δοκεῖ εἰδέναι τι, οὐδέπω οὐδὲν ἔγνωκε καθὼς δεῖ γνῶναι·\nεἰ δέ τις ἀγαπᾷ τὸν Θεόν, οὗτος ἔγνωσται ὑπ᾽ αὐτοῦ.\nΠερὶ τῆς βρώσεως οὖν τῶν εἰδωλοθύτων οἴδαμεν ὅτι οὐδὲν εἴδωλον ἐν κόσμῳ, καὶ ὅτι οὐδεὶς Θεὸς ἕτερος εἰ μὴ εἷς.\nκαὶ γὰρ εἴπερ εἰσὶ λεγόμενοι θεοὶ εἴτε ἐν οὐρανῷ εἴτε ἐπὶ τῆς γῆς, ὥσπερ εἰσὶ θεοὶ πολλοὶ καὶ κύριοι πολλοί,\nἀλλ᾽ ἡμῖν εἷς Θεὸς ὁ πατήρ, ἐξ οὗ τὰ πάντα καὶ ἡμεῖς εἰς αὐτόν, καὶ εἷς Κύριος Ἰησοῦς Χριστός, δι᾽ οὗ τὰ πάντα καὶ ἡμεῖς δι᾽ αὐτοῦ.\nἈλλ᾽ οὐκ ἐν πᾶσιν ἡ γνῶσις· τινὲς δὲ τῇ συνειδήσει τοῦ εἰδώλου ἕως ἄρτι ὡς εἰδωλόθυτον ἐσθίουσι, καὶ ἡ συνείδησις αὐτῶν ἀσθενὴς οὖσα μολύνεται."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
-          "ar": "متى 14:1-13\n14:1 فِي ذَلِكَ ٱلْوَقْتِ سَمِعَ هِيرُودُسُ رَئِيسُ ٱلرُّبْعِ خَبَرَ يَسُوعَ،\n14:2 فَقَالَ لِغِلْمَانِهِ: «هَذَا هُوَ يُوحَنَّا ٱلْمَعْمَدَانُ قَدْ قَامَ مِنَ ٱلْأَمْوَاتِ! وَلِذَلِكَ تُعْمَلُ بِهِ ٱلْقُوَّاتُ».\n14:3 فَإِنَّ هِيرُودُسَ كَانَ قَدْ أَمْسَكَ يُوحَنَّا وَأَوْثَقَهُ وَطَرَحَهُ فِي سِجْنٍ مِنْ أَجْلِ هِيرُودِيَّا ٱمْرَأَةِ فِيلُبُّسَ أَخِيهِ،\n14:4 لِأَنَّ يُوحَنَّا كَانَ يَقُولُ لَهُ: «لَا يَحِلُّ أَنْ تَكُونَ لَكَ».\n14:5 وَلَمَّا أَرَادَ أَنْ يَقْتُلَهُ خَافَ مِنَ ٱلشَّعْبِ، لِأَنَّهُ كَانَ عِنْدَهُمْ مِثْلَ نَبِيٍّ.\n14:6 ثُمَّ لَمَّا صَارَ مَوْلِدُ هِيرُودُسَ، رَقَصَتِ ٱبْنَةُ هِيرُودِيَّا فِي ٱلْوَسْطِ فَسَرَّتْ هِيرُودُسَ.\n14:7 مِنْ ثَمَّ وَعَدَ بِقَسَمٍ أَنَّهُ مَهْمَا طَلَبَتْ يُعْطِيهَا.\n14:8 فَهِيَ إِذْ كَانَتْ قَدْ تَلَقَّنَتْ مِنْ أُمِّهَا قَالَتْ: «أَعْطِنِي هَهُنَا عَلَى طَبَقٍ رَأْسَ يُوحَنَّا ٱلْمَعْمَدَانِ».\n14:9 فَٱغْتَمَّ ٱلْمَلِكُ. وَلَكِنْ مِنْ أَجْلِ ٱلْأَقْسَامِ وَٱلْمُتَّكِئِينَ مَعَهُ أَمَرَ أَنْ يُعْطَى.\n14:10 فَأَرْسَلَ وَقَطَعَ رَأْسَ يُوحَنَّا فِي ٱلسِّجْنِ.\n14:11 فَأُحْضِرَ رَأْسُهُ عَلَى طَبَقٍ وَدُفِعَ إِلَى ٱلصَّبِيَّةِ، فَجَاءَتْ بِهِ إِلَى أُمِّهَا.\n14:12 فَتَقَدَّمَ تَلَامِيذُهُ وَرَفَعُوا ٱلْجَسَدَ وَدَفَنُوهُ. ثُمَّ أَتَوْا وَأَخْبَرُوا يَسُوعَ.\n14:13 فَلَمَّا سَمِعَ يَسُوعُ ٱنْصَرَفَ مِنْ هُنَاكَ فِي سَفِينَةٍ إِلَى مَوْضِعٍ خَلَاءٍ مُنْفَرِدًا. فَسَمِعَ ٱلْجُمُوعُ وَتَبِعُوهُ مُشَاةً مِنَ ٱلْمُدُنِ.",
-          "en": "",
-          "el": ""
+          "ar": "إِنْجِيلُ مَتَّى 15:29-31\nثُمَّ ٱنْتَقَلَ يَسُوعُ مِنْ هُنَاكَ وَجَاءَ إِلَى جَانِبِ بَحْرِ ٱلْجَلِيلِ، وَصَعِدَ إِلَى ٱلْجَبَلِ وَجَلَسَ هُنَاكَ.\nفَجَاءَ إِلَيْهِ جُمُوعٌ كَثِيرَةٌ، مَعَهُمْ عُرْجٌ وَعُمْيٌ وَخُرْسٌ وَشُلٌّ وَآخَرُونَ كَثِيرُونَ، وَطَرَحُوهُمْ عِنْدَ قَدَمَيْ يَسُوعَ. فَشَفَاهُمْ\nحَتَّى تَعَجَّبَ ٱلْجُمُوعُ إِذْ رَأَوْا ٱلْخُرْسَ يَتَكَلَّمُونَ، وَٱلشُّلَّ يَصِحُّونَ، وَٱلْعُرْجَ يَمْشُونَ، وَٱلْعُمْيَ يُبْصِرُونَ. وَمَجَّدُوا إِلَهَ إِسْرَائِيلَ.",
+          "en": "The Good News According to Matthew 15:29-31\nJesus departed from there and came near to the sea of Galilee; and he went up on the mountain and sat there.\nGreat multitudes came to him, having with them the lame, blind, mute, maimed, and many others, and they put them down at his feet. He healed them,\nso that the multitude wondered when they saw the mute speaking, the injured healed, the lame walking, and the blind seeing—and they glorified the God of Israel.",
+          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 15:29-31\nΚαὶ μεταβὰς ἐκεῖθεν ὁ Ἰησοῦς ἦλθε παρὰ τὴν θάλασσαν τῆς Γαλιλαίας, καὶ ἀναβὰς εἰς τὸ ὄρος ἐκάθητο ἐκεῖ.\nκαὶ προσῆλθον αὐτῷ ὄχλοι πολλοὶ ἔχοντες μεθ᾽ ἑαυτῶν χωλούς, τυφλούς, κωφούς, κυλλοὺς καὶ ἑτέρους πολλούς, καὶ ἔρριψαν αὐτοὺς παρὰ τοὺς πόδας τοῦ Ἰησοῦ, καὶ ἐθεράπευσεν αὐτούς,\nὥστε τοὺς ὄχλους θαυμάσαι βλέποντας κωφοὺς [ἀκούοντας, ἀλάλους] λαλοῦντας, κυλλοὺς ὑγιεῖς, χωλοὺς περιπατοῦντας καὶ τυφλοὺς βλέποντας· καὶ ἐδόξασαν τὸν Θεὸν Ἰσραήλ."
         },
         "[آية المناولة]": {
-          "ar": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
+          "ar": "",
           "en": "",
           "el": ""
         }
@@ -1059,8 +1111,8 @@
       "inline_replacements": {
         "[اسم الإنجيلي]": {
           "ar": "متى البشير",
-          "en": "",
-          "el": ""
+          "en": "Matthew the Evangelist",
+          "el": "Ματθαῖος ὁ Εὐαγγελιστής"
         }
       },
       "segments": [
@@ -1068,8 +1120,8 @@
           "type": "section",
           "title": {
             "ar": "خدمة اليوم: ملحق اليوم",
-            "en": "",
-            "el": ""
+            "en": "Today: daily supplement",
+            "el": "Σήμερα: ἡμερήσιο συμπλήρωμα"
           }
         },
         {
@@ -1080,9 +1132,9 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الثلاثاء 14 تموز 2026. التاريخ الكنسي القديم: 1 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: لا صوم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
-            "en": "Civil date: 2026-07-14. Verified daily texts are inserted below where available.",
-            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-14. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
+            "ar": "التاريخ المدني: الجمعة 17 تموز 2026. التاريخ الكنسي القديم: 4 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: صوم الأربعاء أو الجمعة — صوم صارم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
+            "en": "Civil date: 2026-07-17. Verified daily texts are inserted below where available.",
+            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-17. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
           },
           "collapsed_by_default": true
         },
@@ -1111,8 +1163,8 @@
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-14",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "date_iso": "2026-07-17",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1131,13 +1183,13 @@
         "el": "Ἑσπερινός — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-14",
+      "dynamic_date": "2026-07-17",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1156,77 +1208,29 @@
           "type": "section",
           "title": {
             "ar": "ملحق اليوم الكنسي",
-            "en": "",
-            "el": ""
+            "en": "Church-day supplement",
+            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الثلاثاء 14 تموز 2026. التاريخ الكنسي القديم: 1 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "",
-            "el": ""
+            "ar": "التاريخ المدني: الجمعة 17 تموز 2026. التاريخ الكنسي القديم: 4 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "Civil date: Friday, July 17, 2026. Old-calendar date: July 4, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Παρασκευή, 17 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 4 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία."
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-14",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "date_iso": "2026-07-17",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1245,13 +1249,13 @@
         "el": "Ὄρθρος — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-14",
+      "dynamic_date": "2026-07-17",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1270,77 +1274,29 @@
           "type": "section",
           "title": {
             "ar": "ملحق اليوم الكنسي",
-            "en": "",
-            "el": ""
+            "en": "Church-day supplement",
+            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الثلاثاء 14 تموز 2026. التاريخ الكنسي القديم: 1 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "",
-            "el": ""
+            "ar": "التاريخ المدني: الجمعة 17 تموز 2026. التاريخ الكنسي القديم: 4 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "Civil date: Friday, July 17, 2026. Old-calendar date: July 4, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Παρασκευή, 17 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 4 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία."
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-14",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "date_iso": "2026-07-17",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1359,13 +1315,13 @@
         "el": "Πρωινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-14",
+      "dynamic_date": "2026-07-17",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1384,77 +1340,29 @@
           "type": "section",
           "title": {
             "ar": "ملحق اليوم الكنسي",
-            "en": "",
-            "el": ""
+            "en": "Church-day supplement",
+            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الثلاثاء 14 تموز 2026. التاريخ الكنسي القديم: 1 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "",
-            "el": ""
+            "ar": "التاريخ المدني: الجمعة 17 تموز 2026. التاريخ الكنسي القديم: 4 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "Civil date: Friday, July 17, 2026. Old-calendar date: July 4, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Παρασκευή, 17 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 4 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία."
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-14",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "date_iso": "2026-07-17",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1473,13 +1381,13 @@
         "el": "Ἑσπερινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-14",
+      "dynamic_date": "2026-07-17",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1498,77 +1406,29 @@
           "type": "section",
           "title": {
             "ar": "ملحق اليوم الكنسي",
-            "en": "",
-            "el": ""
+            "en": "Church-day supplement",
+            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الثلاثاء 14 تموز 2026. التاريخ الكنسي القديم: 1 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "",
-            "el": ""
+            "ar": "التاريخ المدني: الجمعة 17 تموز 2026. التاريخ الكنسي القديم: 4 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "Civil date: Friday, July 17, 2026. Old-calendar date: July 4, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Παρασκευή, 17 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 4 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία."
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-14",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "date_iso": "2026-07-17",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1587,13 +1447,13 @@
         "el": "Μικρὸν Ἀπόδειπνον — ἐπαληθευμένα κείμενα ἡμέρας"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم — يعرض النصوص المتوفرة فعلًا والتي اجتازت التحقق، من دون الادعاء بأنها خدمة ليتورجية كاملة.",
         "en": "Shows only the available texts that passed verification; it does not claim to be a complete office.",
         "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία."
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-14",
+      "dynamic_date": "2026-07-17",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1612,77 +1472,29 @@
           "type": "section",
           "title": {
             "ar": "ملحق اليوم الكنسي",
-            "en": "",
-            "el": ""
+            "en": "Church-day supplement",
+            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
+            "en": "Optional note",
+            "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الثلاثاء 14 تموز 2026. التاريخ الكنسي القديم: 1 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "",
-            "el": ""
+            "ar": "التاريخ المدني: الجمعة 17 تموز 2026. التاريخ الكنسي القديم: 4 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: صوم الأربعاء أو الجمعة — صوم صارم.",
+            "en": "Civil date: Friday, July 17, 2026. Old-calendar date: July 4, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Παρασκευή, 17 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 4 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία."
           },
           "collapsed_by_default": true
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "يعرض هذا القسم القطع اليومية الكاملة التي اجتازت التحقق الرسمي؛ ولا يُنشر نص ناقص أو تخميني.",
-            "en": "",
-            "el": ""
-          },
-          "collapsed_by_default": true
-        },
-        {
-          "type": "section",
-          "title": {
-            "ar": "حالة قطع اليوم",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
-        },
-        {
-          "type": "text",
-          "speaker": {
-            "ar": "المرتل",
-            "en": "",
-            "el": ""
-          },
-          "text": {
-            "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
-            "en": "",
-            "el": ""
-          }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-14",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "date_iso": "2026-07-17",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1726,37 +1538,37 @@
       },
       "segment_replacements": {
         "[طروبارية اليوم]": {
-          "ar": "نص طروبارية اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
-          "ar": "نص طروبارية الهيكل أو شفيعه محلي ولا يُنشر دون مصدر الكنيسة المالكة للنص.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[القنداق]": {
-          "ar": "نص قنداق اليوم غير متاح حتى التحقق من مصدر كنسي رسمي مطابق للتقويم المعتمد.",
+          "ar": "",
           "en": "",
           "el": ""
         },
         "[البروكيمنن]": {
-          "ar": "اللحن 6\nخَلِّصْ يَا رَبُّ شَعْبَكَ وَبَارِكْ مِيرَاثَكَ.\nإِلَيْكَ يَا رَبُّ أَصْرُخُ، يَا إِلَهِي لَا تَصْمُتْ عَنِّي.",
-          "en": "",
-          "el": ""
+          "ar": "لحن القيامة 6\nخَلِّصْ يَا رَبُّ شَعْبَكَ وَبَارِكْ مِيرَاثَكَ.\nإِلَيْكَ يَا رَبُّ أَصْرُخُ، يَا إِلَهِي لَا تَصْمُتْ عَنِّي.",
+          "en": "Resurrection Tone 6\nSave Your people, O Lord, and bless Your inheritance.\nTo You, O Lord, I cry; O my God, be not silent toward me.",
+          "el": "Ἀναστάσιμος Ἦχος 6\nΣῶσον, Κύριε, τὸν λαόν σου καὶ εὐλόγησον τὴν κληρονομίαν σου.\nΠρὸς σέ, Κύριε, κεκράξομαι· ὁ Θεός μου, μὴ παρασιωπήσῃς ἀπ᾽ ἐμοῦ."
         },
         "[فصل من رسالة اليوم]": {
-          "ar": "رومية 15:1-7\n15:1 فَيَجِبُ عَلَيْنَا نَحْنُ ٱلْأَقْوِيَاءَ أَنْ نَحْتَمِلَ أَضْعَافَ ٱلضُّعَفَاءِ، وَلَا نُرْضِيَ أَنْفُسَنَا.\n15:2 فَلْيُرْضِ كُلُّ وَاحِدٍ مِنَّا قَرِيبَهُ لِلْخَيْرِ، لِأَجْلِ ٱلْبُنْيَانِ.\n15:3 لِأَنَّ ٱلْمَسِيحَ أَيْضًا لَمْ يُرْضِ نَفْسَهُ، بَلْ كَمَا هُوَ مَكْتُوبٌ: «تَعْيِيرَاتُ مُعَيِّرِيكَ وَقَعَتْ عَلَيَّ».\n15:4 لِأَنَّ كُلَّ مَا سَبَقَ فَكُتِبَ كُتِبَ لِأَجْلِ تَعْلِيمِنَا، حَتَّى بِٱلصَّبْرِ وَٱلتَّعْزِيَةِ بِمَا فِي ٱلْكُتُبِ يَكُونُ لَنَا رَجَاءٌ.\n15:5 وَلْيُعْطِكُمْ إِلَهُ ٱلصَّبْرِ وَٱلتَّعْزِيَةِ أَنْ تَهْتَمُّوا ٱهْتِمَامًا وَاحِدًا فِيمَا بَيْنَكُمْ، بِحَسَبِ ٱلْمَسِيحِ يَسُوعَ،\n15:6 لِكَيْ تُمَجِّدُوا ٱللهَ أَبَا رَبِّنَا يَسُوعَ ٱلْمَسِيحِ، بِنَفْسٍ وَاحِدَةٍ وَفَمٍ وَاحِدٍ.\n15:7 لِذَلِكَ ٱقْبَلُوا بَعْضُكُمْ بَعْضًا كَمَا أَنَّ ٱلْمَسِيحَ أَيْضًا قَبِلَنَا، لِمَجْدِ ٱللهِ.",
-          "en": "",
-          "el": ""
+          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ إِلَى أَهْلِ رُومِيَةَ 15:1-7\nفَيَجِبُ عَلَيْنَا نَحْنُ ٱلْأَقْوِيَاءَ أَنْ نَحْتَمِلَ أَضْعَافَ ٱلضُّعَفَاءِ، وَلَا نُرْضِيَ أَنْفُسَنَا.\nفَلْيُرْضِ كُلُّ وَاحِدٍ مِنَّا قَرِيبَهُ لِلْخَيْرِ، لِأَجْلِ ٱلْبُنْيَانِ.\nلِأَنَّ ٱلْمَسِيحَ أَيْضًا لَمْ يُرْضِ نَفْسَهُ، بَلْ كَمَا هُوَ مَكْتُوبٌ: «تَعْيِيرَاتُ مُعَيِّرِيكَ وَقَعَتْ عَلَيَّ».\nلِأَنَّ كُلَّ مَا سَبَقَ فَكُتِبَ كُتِبَ لِأَجْلِ تَعْلِيمِنَا، حَتَّى بِٱلصَّبْرِ وَٱلتَّعْزِيَةِ بِمَا فِي ٱلْكُتُبِ يَكُونُ لَنَا رَجَاءٌ.\nوَلْيُعْطِكُمْ إِلَهُ ٱلصَّبْرِ وَٱلتَّعْزِيَةِ أَنْ تَهْتَمُّوا ٱهْتِمَامًا وَاحِدًا فِيمَا بَيْنَكُمْ، بِحَسَبِ ٱلْمَسِيحِ يَسُوعَ،\nلِكَيْ تُمَجِّدُوا ٱللهَ أَبَا رَبِّنَا يَسُوعَ ٱلْمَسِيحِ، بِنَفْسٍ وَاحِدَةٍ وَفَمٍ وَاحِدٍ.\nلِذَلِكَ ٱقْبَلُوا بَعْضُكُمْ بَعْضًا كَمَا أَنَّ ٱلْمَسِيحَ أَيْضًا قَبِلَنَا، لِمَجْدِ ٱللهِ.",
+          "en": "Paul’s Letter to the Romans 15:1-7\nNow we who are strong ought to bear the weaknesses of the weak, and not to please ourselves.\nLet each one of us please his neighbor for that which is good, to be building him up.\nFor even Christ didn’t please himself. But, as it is written, “The reproaches of those who reproached you fell on me.”\nFor whatever things were written before were written for our learning, that through perseverance and through encouragement of the Scriptures we might have hope.\nNow the God of perseverance and of encouragement grant you to be of the same mind with one another according to Christ Jesus,\nthat with one accord you may with one mouth glorify the God and Father of our Lord Jesus Christ.\nTherefore accept one another, even as Christ also accepted you, to the glory of God.",
+          "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 15:1-7\nὈφείλομεν δὲ ἡμεῖς οἱ δυνατοὶ τὰ ἀσθενήματα τῶν ἀδυνάτων βαστάζειν, καὶ μὴ ἑαυτοῖς ἀρέσκειν.\nἕκαστος ἡμῶν τῷ πλησίον ἀρεσκέτω εἰς τὸ ἀγαθὸν πρὸς οἰκοδομήν·\nκαὶ γὰρ ὁ Χριστὸς οὐχ ἑαυτῷ ἤρεσεν, ἀλλὰ καθὼς γέγραπται, \\+w οἱ|strong=\"G3588\"\\+w* \\+w ὀνειδισμοὶ|strong=\"G3680\"\\+w* \\+w τῶν|strong=\"G3588\"\\+w* \\+w ὀνειδιζόντων|strong=\"G3679\"\\+w* \\+w σε|strong=\"G4771\"\\+w* \\+w ἐπέπεσον|strong=\"G1968\"\\+w* \\+w ἐπ|strong=\"G1909\"\\+w*᾽ \\+w ἐμέ|strong=\"G1473\"\\+w*.\nὅσα γὰρ προεγράφη, εἰς τὴν ἡμετέραν διδασκαλίαν προεγράφη, ἵνα διὰ τῆς ὑπομονῆς καὶ τῆς παρακλήσεως τῶν γραφῶν τὴν ἐλπίδα ἔχωμεν.\nὁ δὲ Θεὸς τῆς ὑπομονῆς καὶ τῆς παρακλήσεως δῴη ὑμῖν τὸ αὐτὸ φρονεῖν ἐν ἀλλήλοις κατὰ Χριστὸν Ἰησοῦν,\nἵνα ὁμοθυμαδὸν ἐν ἑνὶ στόματι δοξάζητε τὸν Θεὸν καὶ πατέρα τοῦ Κυρίου ἡμῶν Ἰησοῦ Χριστοῦ.\nδιὸ προσλαμβάνεσθε ἀλλήλους, καθὼς καὶ ὁ Χριστὸς προσελάβετο ὑμᾶς εἰς δόξαν Θεοῦ."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
-          "ar": "متى 9:27-35\n9:27 وَفِيمَا يَسُوعُ مُجْتَازٌ مِنْ هُنَاكَ، تَبِعَهُ أَعْمَيَانِ يَصْرَخَانِ وَيَقُولَانِ: «ٱرْحَمْنَا يا ٱبْنَ دَاوُدَ!».\n9:28 وَلَمَّا جَاءَ إِلَى ٱلْبَيْتِ تَقَدَّمَ إِلَيْهِ ٱلْأَعْمَيَانِ، فَقَالَ لَهُمَا يَسُوعُ: «أَتُؤْمِنَانِ أَنِّي أَقْدِرُ أَنْ أَفْعَلَ هَذَا؟». قَالَا لَهُ: «نَعَمْ، يا سَيِّدُ!».\n9:29 حِينَئِذٍ لَمَسَ أَعْيُنَهُمَا قَائِلًا: «بِحَسَبِ إِيمَانِكُمَا لِيَكُنْ لَكُمَا».\n9:30 فَٱنْفَتَحَتْ أَعْيُنُهُمَا. فَٱنْتَهَرَهُمَا يَسُوعُ قَائِلًا: «ٱنْظُرَا، لَا يَعْلَمْ أَحَدٌ!».\n9:31 وَلَكِنَّهُمَا خَرَجَا وَأَشَاعَاهُ فِي تِلْكَ ٱلْأَرْضِ كُلِّهَا.\n9:32 وَفِيمَا هُمَا خَارِجَانِ، إِذَا إِنْسَانٌ أَخْرَسُ مَجْنُونٌ قَدَّمُوهُ إِلَيْهِ.\n9:33 فَلَمَّا أُخْرِجَ ٱلشَّيْطَانُ تَكَلَّمَ ٱلْأَخْرَسُ، فَتَعَجَّبَ ٱلْجُمُوعُ قَائِلِينَ: «لَمْ يَظْهَرْ قَطُّ مِثْلُ هَذَا فِي إِسْرَائِيلَ!».\n9:34 أَمَّا ٱلْفَرِّيسِيُّونَ فَقَالُوا: «بِرَئِيسِ ٱلشَّيَاطِينِ يُخْرِجُ ٱلشَّيَاطِينَ!».\n9:35 وَكَانَ يَسُوعُ يَطُوفُ ٱلْمُدُنَ كُلَّهَا وَٱلْقُرَى يُعَلِّمُ فِي مَجَامِعِهَا، وَيَكْرِزُ بِبِشَارَةِ ٱلْمَلَكُوتِ، وَيَشْفِي كُلَّ مَرَضٍ وَكُلَّ ضُعْفٍ فِي ٱلشَّعْبِ.",
-          "en": "",
-          "el": ""
+          "ar": "إِنْجِيلُ مَتَّى 9:27-35\nوَفِيمَا يَسُوعُ مُجْتَازٌ مِنْ هُنَاكَ، تَبِعَهُ أَعْمَيَانِ يَصْرَخَانِ وَيَقُولَانِ: «ٱرْحَمْنَا يا ٱبْنَ دَاوُدَ!».\nوَلَمَّا جَاءَ إِلَى ٱلْبَيْتِ تَقَدَّمَ إِلَيْهِ ٱلْأَعْمَيَانِ، فَقَالَ لَهُمَا يَسُوعُ: «أَتُؤْمِنَانِ أَنِّي أَقْدِرُ أَنْ أَفْعَلَ هَذَا؟». قَالَا لَهُ: «نَعَمْ، يا سَيِّدُ!».\nحِينَئِذٍ لَمَسَ أَعْيُنَهُمَا قَائِلًا: «بِحَسَبِ إِيمَانِكُمَا لِيَكُنْ لَكُمَا».\nفَٱنْفَتَحَتْ أَعْيُنُهُمَا. فَٱنْتَهَرَهُمَا يَسُوعُ قَائِلًا: «ٱنْظُرَا، لَا يَعْلَمْ أَحَدٌ!».\nوَلَكِنَّهُمَا خَرَجَا وَأَشَاعَاهُ فِي تِلْكَ ٱلْأَرْضِ كُلِّهَا. شفاء أخرس\nوَفِيمَا هُمَا خَارِجَانِ، إِذَا إِنْسَانٌ أَخْرَسُ مَجْنُونٌ قَدَّمُوهُ إِلَيْهِ.\nفَلَمَّا أُخْرِجَ ٱلشَّيْطَانُ تَكَلَّمَ ٱلْأَخْرَسُ، فَتَعَجَّبَ ٱلْجُمُوعُ قَائِلِينَ: «لَمْ يَظْهَرْ قَطُّ مِثْلُ هَذَا فِي إِسْرَائِيلَ!».\nأَمَّا ٱلْفَرِّيسِيُّونَ فَقَالُوا: «بِرَئِيسِ ٱلشَّيَاطِينِ يُخْرِجُ ٱلشَّيَاطِينَ!». الفعلة قليلون\nوَكَانَ يَسُوعُ يَطُوفُ ٱلْمُدُنَ كُلَّهَا وَٱلْقُرَى يُعَلِّمُ فِي مَجَامِعِهَا، وَيَكْرِزُ بِبِشَارَةِ ٱلْمَلَكُوتِ، وَيَشْفِي كُلَّ مَرَضٍ وَكُلَّ ضُعْفٍ فِي ٱلشَّعْبِ.",
+          "en": "The Good News According to Matthew 9:27-35\nAs Jesus passed by from there, two blind men followed him, calling out and saying, “Have mercy on us, son of David!”\nWhen he had come into the house, the blind men came to him. Jesus said to them, “\\+w Do|strong=\"G4160\"\\+w* \\+w you|strong=\"G3754\"\\+w* \\+w believe|strong=\"G4100\"\\+w* \\+w that|strong=\"G3754\"\\+w* \\+w I|strong=\"G2532\"\\+w* \\+w am|strong=\"G2532\"\\+w* \\+w able|strong=\"G1410\"\\+w* \\+w to|strong=\"G1519\"\\+w* \\+w do|strong=\"G4160\"\\+w* \\+w this|strong=\"G3778\"\\+w*?” They told him, “Yes, Lord.”\nThen he touched their eyes, saying, “\\+w According|strong=\"G2596\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w your|strong=\"G4102\"\\+w* \\+w faith|strong=\"G4102\"\\+w* \\+w be|strong=\"G1096\"\\+w* \\+w it|strong=\"G5119\"\\+w* \\+w done|strong=\"G1096\"\\+w* \\+w to|strong=\"G2596\"\\+w* \\+w you|strong=\"G5210\"\\+w*.”\nThen their eyes were opened. Jesus strictly commanded them, saying, “\\+w See|strong=\"G3708\"\\+w* \\+w that|strong=\"G3588\"\\+w* \\+w no|strong=\"G3367\"\\+w* \\+w one|strong=\"G3367\"\\+w* \\+w knows|strong=\"G1097\"\\+w* \\+w about|strong=\"G2424\"\\+w* \\+w this|strong=\"G3588\"\\+w*.”\nBut they went out and spread abroad his fame in all that land.\nAs they went out, behold, a mute man who was demon possessed was brought to him.\nWhen the demon was cast out, the mute man spoke. The multitudes marveled, saying, “Nothing like this has ever been seen in Israel!”\nBut the Pharisees said, “By the prince of the demons, he casts out demons.”\nJesus went about all the cities and the villages, teaching in their synagogues and preaching the Good News of the Kingdom, and healing every disease and every sickness among the people.",
+          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 9:27-35\nΚαὶ παράγοντι ἐκεῖθεν τῷ Ἰησοῦ ἠκολούθησαν αὐτῷ δύο τυφλοὶ κράζοντες καὶ λέγοντες· ἐλέησον ἡμᾶς, υἱὲ Δαυΐδ.\nἐλθόντι δὲ εἰς τὴν οἰκίαν προσῆλθον αὐτῷ οἱ τυφλοί, καὶ λέγει αὐτοῖς ὁ Ἰησοῦς· πιστεύετε ὅτι δύναμαι τοῦτο ποιῆσαι; λέγουσιν αὐτῷ· ναί, Κύριε.\nτότε ἥψατο τῶν ὀφθαλμῶν αὐτῶν λέγων· κατὰ τὴν πίστιν ὑμῶν γενηθήτω ὑμῖν.\nκαὶ ἀνεῴχθησαν αὐτῶν οἱ ὀφθαλμοί· καὶ ἐνεβριμήσατο αὐτοῖς ὁ Ἰησοῦς λέγων· ὁρᾶτε μηδεὶς γινωσκέτω.\nοἱ δὲ ἐξελθόντες διεφήμισαν αὐτὸν ἐν ὅλῃ τῇ γῇ ἐκείνῃ.\nΑὐτῶν δὲ ἐξερχομένων ἰδοὺ προσήνεγκαν αὐτῷ ἄνθρωπον κωφὸν δαιμονιζόμενον·\nκαὶ ἐκβληθέντος τοῦ δαιμονίου ἐλάλησεν ὁ κωφός, καὶ ἐθαύμασαν οἱ ὄχλοι λέγοντες ὅτι οὐδέποτε ἐφάνη οὕτως ἐν τῷ Ἰσραήλ.\nοἱ δὲ Φαρισαῖοι ἔλεγον· ἐν τῷ ἄρχοντι τῶν δαιμονίων ἐκβάλλει τὰ δαιμόνια.\nΚαὶ περιῆγεν ὁ Ἰησοῦς τὰς πόλεις πάσας καὶ τὰς κώμας διδάσκων ἐν ταῖς συναγωγαῖς αὐτῶν καὶ κηρύσσων τὸ εὐαγγέλιον τῆς βασιλείας καὶ θεραπεύων πᾶσαν νόσον καὶ πᾶσαν μαλακίαν ἐν τῷ λαῷ."
         },
         "[آية المناولة]": {
-          "ar": "آية المناولة غير متاحة حتى التحقق من مصدر كنسي رسمي مطابق لليوم.",
+          "ar": "",
           "en": "",
           "el": ""
         }
@@ -1764,8 +1576,8 @@
       "inline_replacements": {
         "[اسم الإنجيلي]": {
           "ar": "متى البشير",
-          "en": "",
-          "el": ""
+          "en": "Matthew the Evangelist",
+          "el": "Ματθαῖος ὁ Εὐαγγελιστής"
         }
       },
       "segments": [
@@ -1773,8 +1585,8 @@
           "type": "section",
           "title": {
             "ar": "الأحد القادم: ملحق اليوم",
-            "en": "",
-            "el": ""
+            "en": "Next Sunday: daily supplement",
+            "el": "Ἐρχόμενη Κυριακή: ἡμερήσιο συμπλήρωμα"
           }
         },
         {
@@ -1817,7 +1629,7 @@
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
         "date_iso": "2026-07-19",
-        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED_OR_FAIL_CLOSED_UNAVAILABLE",
+        "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "ai_scripture_translation_used": false,
@@ -1828,557 +1640,48 @@
   ],
   "upcoming": [
     {
-      "date": "2026-07-15",
-      "day": {
-        "ar": "الأربعاء 15 تموز / 2 تموز قديم",
-        "en": "Wednesday, July 15, 2026",
-        "el": ""
-      },
-      "feast": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "status": {
-        "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
-        "en": "",
-        "el": ""
-      },
-      "note": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "fasting": {
-        "code": "strict",
-        "season": {
-          "ar": "صوم الأربعاء أو الجمعة",
-          "en": "",
-          "el": ""
-        },
-        "title": {
-          "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
-          "en": "",
-          "el": ""
-        },
-        "level": {
-          "ar": "صوم صارم",
-          "en": "",
-          "el": ""
-        },
-        "detail": {
-          "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
-          "en": "",
-          "el": ""
-        },
-        "is_fast": true,
-        "allowed": {
-          "meat": false,
-          "dairy": false,
-          "eggs": false,
-          "fish": false,
-          "wine": false,
-          "oil": false
-        },
-        "display_icons": [
-          "🍞",
-          "💧"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "اللحوم",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "الألبان",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "البيض",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "السمك",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "النبيذ",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "الزيت",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "weekly_wednesday_friday",
-          "note": {
-            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "الرسالة",
-            "en": "Epistle",
-            "el": "Ἀπόστολος"
-          },
-          "reference": {
-            "ar": "كورنثوس الأولى 7:12-24",
-            "en": "1 Corinthians 7:12-24",
-            "el": ""
-          },
-          "canonical_reference": "1CO.7.12-24",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "الإنجيل",
-            "en": "Gospel",
-            "el": "Εὐαγγέλιο"
-          },
-          "reference": {
-            "ar": "متى 14:35-15:11",
-            "en": "Matthew 14:35-15:11",
-            "el": ""
-          },
-          "canonical_reference": "MAT.14.35-15.11",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
-          }
-        }
-      },
-      "is_sunday": false
-    },
-    {
-      "date": "2026-07-16",
-      "day": {
-        "ar": "الخميس 16 تموز / 3 تموز قديم",
-        "en": "Thursday, July 16, 2026",
-        "el": ""
-      },
-      "feast": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "status": {
-        "ar": "لا صوم",
-        "en": "",
-        "el": ""
-      },
-      "note": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "fasting": {
-        "code": "fast_free",
-        "season": {
-          "ar": "يوم عادي",
-          "en": "",
-          "el": ""
-        },
-        "title": {
-          "ar": "لا صوم",
-          "en": "",
-          "el": ""
-        },
-        "level": {
-          "ar": "لا صوم",
-          "en": "",
-          "el": ""
-        },
-        "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "",
-          "el": ""
-        },
-        "is_fast": false,
-        "allowed": {
-          "meat": true,
-          "dairy": true,
-          "eggs": true,
-          "fish": true,
-          "wine": true,
-          "oil": true
-        },
-        "display_icons": [
-          "✅"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "اللحوم",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "الألبان",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "البيض",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "السمك",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "النبيذ",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "الزيت",
-              "en": "",
-              "el": ""
-            },
-            "allowed": true
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "ordinary_fast_free",
-          "note": {
-            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "الرسالة",
-            "en": "Epistle",
-            "el": "Ἀπόστολος"
-          },
-          "reference": {
-            "ar": "كورنثوس الأولى 7:24-35",
-            "en": "1 Corinthians 7:24-35",
-            "el": ""
-          },
-          "canonical_reference": "1CO.7.24-35",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "الإنجيل",
-            "en": "Gospel",
-            "el": "Εὐαγγέλιο"
-          },
-          "reference": {
-            "ar": "متى 15:12-21",
-            "en": "Matthew 15:12-21",
-            "el": ""
-          },
-          "canonical_reference": "MAT.15.12-21",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
-          }
-        }
-      },
-      "is_sunday": false
-    },
-    {
-      "date": "2026-07-17",
-      "day": {
-        "ar": "الجمعة 17 تموز / 4 تموز قديم",
-        "en": "Friday, July 17, 2026",
-        "el": ""
-      },
-      "feast": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "status": {
-        "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
-        "en": "",
-        "el": ""
-      },
-      "note": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
-      },
-      "fasting": {
-        "code": "strict",
-        "season": {
-          "ar": "صوم الأربعاء أو الجمعة",
-          "en": "",
-          "el": ""
-        },
-        "title": {
-          "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
-          "en": "",
-          "el": ""
-        },
-        "level": {
-          "ar": "صوم صارم",
-          "en": "",
-          "el": ""
-        },
-        "detail": {
-          "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
-          "en": "",
-          "el": ""
-        },
-        "is_fast": true,
-        "allowed": {
-          "meat": false,
-          "dairy": false,
-          "eggs": false,
-          "fish": false,
-          "wine": false,
-          "oil": false
-        },
-        "display_icons": [
-          "🍞",
-          "💧"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "اللحوم",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "الألبان",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "البيض",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "السمك",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "النبيذ",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "الزيت",
-              "en": "",
-              "el": ""
-            },
-            "allowed": false
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "weekly_wednesday_friday",
-          "note": {
-            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "الرسالة",
-            "en": "Epistle",
-            "el": "Ἀπόστολος"
-          },
-          "reference": {
-            "ar": "كورنثوس الأولى 7:35-8:7",
-            "en": "1 Corinthians 7:35-8:7",
-            "el": ""
-          },
-          "canonical_reference": "1CO.7.35-8.7",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "الإنجيل",
-            "en": "Gospel",
-            "el": "Εὐαγγέλιο"
-          },
-          "reference": {
-            "ar": "متى 15:29-31",
-            "en": "Matthew 15:29-31",
-            "el": ""
-          },
-          "canonical_reference": "MAT.15.29-31",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
-          }
-        }
-      },
-      "is_sunday": false
-    },
-    {
       "date": "2026-07-18",
       "day": {
-        "ar": "السبت 18 تموز / 5 تموز قديم",
-        "en": "Saturday, July 18, 2026",
-        "el": ""
+        "ar": "السبت 18 تموز 2026 / 5 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Saturday, July 18 / July 5, 2026 (Old Style)",
+        "el": "Σάββατο, 18 Ιουλίου / 5 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
       },
       "feast": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "status": {
         "ar": "لا صوم",
-        "en": "",
-        "el": ""
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
       },
       "note": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "يوم عادي",
-          "en": "",
-          "el": ""
+          "en": "Ordinary day",
+          "el": "Συνήθης ἡμέρα"
         },
         "title": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "level": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "detail": {
           "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "",
-          "el": ""
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
         "is_fast": false,
         "allowed": {
@@ -2398,8 +1701,8 @@
             "icon": "🥩",
             "label": {
               "ar": "اللحوم",
-              "en": "",
-              "el": ""
+              "en": "Meat",
+              "el": "Κρέας"
             },
             "allowed": true
           },
@@ -2408,8 +1711,8 @@
             "icon": "🥛",
             "label": {
               "ar": "الألبان",
-              "en": "",
-              "el": ""
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
             },
             "allowed": true
           },
@@ -2418,8 +1721,8 @@
             "icon": "🥚",
             "label": {
               "ar": "البيض",
-              "en": "",
-              "el": ""
+              "en": "Eggs",
+              "el": "Αὐγά"
             },
             "allowed": true
           },
@@ -2428,8 +1731,8 @@
             "icon": "🐟",
             "label": {
               "ar": "السمك",
-              "en": "",
-              "el": ""
+              "en": "Fish",
+              "el": "Ψάρι"
             },
             "allowed": true
           },
@@ -2438,8 +1741,8 @@
             "icon": "🍷",
             "label": {
               "ar": "النبيذ",
-              "en": "",
-              "el": ""
+              "en": "Wine",
+              "el": "Οἶνος"
             },
             "allowed": true
           },
@@ -2448,8 +1751,8 @@
             "icon": "🫒",
             "label": {
               "ar": "الزيت",
-              "en": "",
-              "el": ""
+              "en": "Oil",
+              "el": "Ἔλαιο"
             },
             "allowed": true
           }
@@ -2460,8 +1763,8 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
           }
         }
       },
@@ -2475,13 +1778,7 @@
           "reference": {
             "ar": "رومية 12:1-3",
             "en": "Romans 12:1-3",
-            "el": ""
-          },
-          "canonical_reference": "ROM.12.1-3",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 12:1-3"
           }
         },
         "gospel": {
@@ -2493,13 +1790,7 @@
           "reference": {
             "ar": "متى 10:37-11:1",
             "en": "Matthew 10:37-11:1",
-            "el": ""
-          },
-          "canonical_reference": "MAT.10.37-11.1",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 10:37-11:1"
           }
         }
       },
@@ -2508,46 +1799,46 @@
     {
       "date": "2026-07-19",
       "day": {
-        "ar": "الأحد 19 تموز / 6 تموز قديم",
-        "en": "Sunday, July 19, 2026",
-        "el": ""
+        "ar": "الأحد 19 تموز 2026 / 6 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Sunday, July 19 / July 6, 2026 (Old Style)",
+        "el": "Κυριακή, 19 Ιουλίου / 6 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
       },
       "feast": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "status": {
         "ar": "لا صوم",
-        "en": "",
-        "el": ""
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
       },
       "note": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "يوم عادي",
-          "en": "",
-          "el": ""
+          "en": "Ordinary day",
+          "el": "Συνήθης ἡμέρα"
         },
         "title": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "level": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "detail": {
           "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "",
-          "el": ""
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
         "is_fast": false,
         "allowed": {
@@ -2567,8 +1858,8 @@
             "icon": "🥩",
             "label": {
               "ar": "اللحوم",
-              "en": "",
-              "el": ""
+              "en": "Meat",
+              "el": "Κρέας"
             },
             "allowed": true
           },
@@ -2577,8 +1868,8 @@
             "icon": "🥛",
             "label": {
               "ar": "الألبان",
-              "en": "",
-              "el": ""
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
             },
             "allowed": true
           },
@@ -2587,8 +1878,8 @@
             "icon": "🥚",
             "label": {
               "ar": "البيض",
-              "en": "",
-              "el": ""
+              "en": "Eggs",
+              "el": "Αὐγά"
             },
             "allowed": true
           },
@@ -2597,8 +1888,8 @@
             "icon": "🐟",
             "label": {
               "ar": "السمك",
-              "en": "",
-              "el": ""
+              "en": "Fish",
+              "el": "Ψάρι"
             },
             "allowed": true
           },
@@ -2607,8 +1898,8 @@
             "icon": "🍷",
             "label": {
               "ar": "النبيذ",
-              "en": "",
-              "el": ""
+              "en": "Wine",
+              "el": "Οἶνος"
             },
             "allowed": true
           },
@@ -2617,8 +1908,8 @@
             "icon": "🫒",
             "label": {
               "ar": "الزيت",
-              "en": "",
-              "el": ""
+              "en": "Oil",
+              "el": "Ἔλαιο"
             },
             "allowed": true
           }
@@ -2629,8 +1920,8 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
           }
         }
       },
@@ -2644,13 +1935,7 @@
           "reference": {
             "ar": "رومية 15:1-7",
             "en": "Romans 15:1-7",
-            "el": ""
-          },
-          "canonical_reference": "ROM.15.1-7",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 15:1-7"
           }
         },
         "gospel": {
@@ -2662,13 +1947,7 @@
           "reference": {
             "ar": "متى 9:27-35",
             "en": "Matthew 9:27-35",
-            "el": ""
-          },
-          "canonical_reference": "MAT.9.27-35",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 9:27-35"
           }
         }
       },
@@ -2677,46 +1956,46 @@
     {
       "date": "2026-07-20",
       "day": {
-        "ar": "الإثنين 20 تموز / 7 تموز قديم",
-        "en": "Monday, July 20, 2026",
-        "el": ""
+        "ar": "الإثنين 20 تموز 2026 / 7 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Monday, July 20 / July 7, 2026 (Old Style)",
+        "el": "Δευτέρα, 20 Ιουλίου / 7 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
       },
       "feast": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "status": {
         "ar": "لا صوم",
-        "en": "",
-        "el": ""
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
       },
       "note": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "يوم عادي",
-          "en": "",
-          "el": ""
+          "en": "Ordinary day",
+          "el": "Συνήθης ἡμέρα"
         },
         "title": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "level": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "detail": {
           "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "",
-          "el": ""
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
         "is_fast": false,
         "allowed": {
@@ -2736,8 +2015,8 @@
             "icon": "🥩",
             "label": {
               "ar": "اللحوم",
-              "en": "",
-              "el": ""
+              "en": "Meat",
+              "el": "Κρέας"
             },
             "allowed": true
           },
@@ -2746,8 +2025,8 @@
             "icon": "🥛",
             "label": {
               "ar": "الألبان",
-              "en": "",
-              "el": ""
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
             },
             "allowed": true
           },
@@ -2756,8 +2035,8 @@
             "icon": "🥚",
             "label": {
               "ar": "البيض",
-              "en": "",
-              "el": ""
+              "en": "Eggs",
+              "el": "Αὐγά"
             },
             "allowed": true
           },
@@ -2766,8 +2045,8 @@
             "icon": "🐟",
             "label": {
               "ar": "السمك",
-              "en": "",
-              "el": ""
+              "en": "Fish",
+              "el": "Ψάρι"
             },
             "allowed": true
           },
@@ -2776,8 +2055,8 @@
             "icon": "🍷",
             "label": {
               "ar": "النبيذ",
-              "en": "",
-              "el": ""
+              "en": "Wine",
+              "el": "Οἶνος"
             },
             "allowed": true
           },
@@ -2786,8 +2065,8 @@
             "icon": "🫒",
             "label": {
               "ar": "الزيت",
-              "en": "",
-              "el": ""
+              "en": "Oil",
+              "el": "Ἔλαιο"
             },
             "allowed": true
           }
@@ -2798,8 +2077,8 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
           }
         }
       },
@@ -2811,15 +2090,9 @@
             "el": "Ἀπόστολος"
           },
           "reference": {
-            "ar": "كورنثوس الأولى 9:13-18",
+            "ar": "١ كورنثوس 9:13-18",
             "en": "1 Corinthians 9:13-18",
-            "el": ""
-          },
-          "canonical_reference": "1CO.9.13-18",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 9:13-18"
           }
         },
         "gospel": {
@@ -2831,13 +2104,7 @@
           "reference": {
             "ar": "متى 16:1-6",
             "en": "Matthew 16:1-6",
-            "el": ""
-          },
-          "canonical_reference": "MAT.16.1-6",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 16:1-6"
           }
         }
       },
@@ -2846,46 +2113,46 @@
     {
       "date": "2026-07-21",
       "day": {
-        "ar": "الثلاثاء 21 تموز / 8 تموز قديم",
-        "en": "Tuesday, July 21, 2026",
-        "el": ""
+        "ar": "الثلاثاء 21 تموز 2026 / 8 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Tuesday, July 21 / July 8, 2026 (Old Style)",
+        "el": "Τρίτη, 21 Ιουλίου / 8 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
       },
       "feast": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "status": {
         "ar": "لا صوم",
-        "en": "",
-        "el": ""
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
       },
       "note": {
         "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "",
-        "el": ""
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "يوم عادي",
-          "en": "",
-          "el": ""
+          "en": "Ordinary day",
+          "el": "Συνήθης ἡμέρα"
         },
         "title": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "level": {
           "ar": "لا صوم",
-          "en": "",
-          "el": ""
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
         },
         "detail": {
           "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "",
-          "el": ""
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
         "is_fast": false,
         "allowed": {
@@ -2905,8 +2172,8 @@
             "icon": "🥩",
             "label": {
               "ar": "اللحوم",
-              "en": "",
-              "el": ""
+              "en": "Meat",
+              "el": "Κρέας"
             },
             "allowed": true
           },
@@ -2915,8 +2182,8 @@
             "icon": "🥛",
             "label": {
               "ar": "الألبان",
-              "en": "",
-              "el": ""
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
             },
             "allowed": true
           },
@@ -2925,8 +2192,8 @@
             "icon": "🥚",
             "label": {
               "ar": "البيض",
-              "en": "",
-              "el": ""
+              "en": "Eggs",
+              "el": "Αὐγά"
             },
             "allowed": true
           },
@@ -2935,8 +2202,8 @@
             "icon": "🐟",
             "label": {
               "ar": "السمك",
-              "en": "",
-              "el": ""
+              "en": "Fish",
+              "el": "Ψάρι"
             },
             "allowed": true
           },
@@ -2945,8 +2212,8 @@
             "icon": "🍷",
             "label": {
               "ar": "النبيذ",
-              "en": "",
-              "el": ""
+              "en": "Wine",
+              "el": "Οἶνος"
             },
             "allowed": true
           },
@@ -2955,8 +2222,8 @@
             "icon": "🫒",
             "label": {
               "ar": "الزيت",
-              "en": "",
-              "el": ""
+              "en": "Oil",
+              "el": "Ἔλαιο"
             },
             "allowed": true
           }
@@ -2967,8 +2234,8 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "",
-            "el": ""
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
           }
         }
       },
@@ -2980,15 +2247,9 @@
             "el": "Ἀπόστολος"
           },
           "reference": {
-            "ar": "كورنثوس الأولى 10:5-12",
+            "ar": "١ كورنثوس 10:5-12",
             "en": "1 Corinthians 10:5-12",
-            "el": ""
-          },
-          "canonical_reference": "1CO.10.5-12",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 10:5-12"
           }
         },
         "gospel": {
@@ -3000,27 +2261,499 @@
           "reference": {
             "ar": "متى 16:6-12",
             "en": "Matthew 16:6-12",
-            "el": ""
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 16:6-12"
+          }
+        }
+      },
+      "is_sunday": false
+    },
+    {
+      "date": "2026-07-22",
+      "day": {
+        "ar": "الأربعاء 22 تموز 2026 / 9 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Wednesday, July 22 / July 9, 2026 (Old Style)",
+        "el": "Τετάρτη, 22 Ιουλίου / 9 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
+      },
+      "feast": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "status": {
+        "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+        "en": "Wednesday or Friday fast — Strict fast",
+        "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία"
+      },
+      "note": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "fasting": {
+        "code": "strict",
+        "season": {
+          "ar": "صوم الأربعاء أو الجمعة",
+          "en": "Wednesday or Friday fast",
+          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς"
+        },
+        "title": {
+          "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+          "en": "Wednesday or Friday fast — Strict fast",
+          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία"
+        },
+        "level": {
+          "ar": "صوم صارم",
+          "en": "Strict fast",
+          "el": "Αὐστηρὰ νηστεία"
+        },
+        "detail": {
+          "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
+          "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine.",
+          "el": "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία. Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο."
+        },
+        "is_fast": true,
+        "allowed": {
+          "meat": false,
+          "dairy": false,
+          "eggs": false,
+          "fish": false,
+          "wine": false,
+          "oil": false
+        },
+        "display_icons": [
+          "🍞",
+          "💧"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "اللحوم",
+              "en": "Meat",
+              "el": "Κρέας"
+            },
+            "allowed": false
           },
-          "canonical_reference": "MAT.16.6-12",
-          "publication_note": {
-            "ar": "مرجع تمهيدي فقط؛ يُعاد التحقق من النص الكامل في تاريخ نشره.",
-            "en": "Reference preview only; the full text is re-verified on its publication date.",
-            "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα δημοσίευσης."
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "الألبان",
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
+            },
+            "allowed": false
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "البيض",
+              "en": "Eggs",
+              "el": "Αὐγά"
+            },
+            "allowed": false
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "السمك",
+              "en": "Fish",
+              "el": "Ψάρι"
+            },
+            "allowed": false
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "النبيذ",
+              "en": "Wine",
+              "el": "Οἶνος"
+            },
+            "allowed": false
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "الزيت",
+              "en": "Oil",
+              "el": "Ἔλαιο"
+            },
+            "allowed": false
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "weekly_wednesday_friday",
+          "note": {
+            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "الرسالة",
+            "en": "Epistle",
+            "el": "Ἀπόστολος"
+          },
+          "reference": {
+            "ar": "١ كورنثوس 10:12-22",
+            "en": "1 Corinthians 10:12-22",
+            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 10:12-22"
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "الإنجيل",
+            "en": "Gospel",
+            "el": "Εὐαγγέλιο"
+          },
+          "reference": {
+            "ar": "متى 16:20-24",
+            "en": "Matthew 16:20-24",
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 16:20-24"
+          }
+        }
+      },
+      "is_sunday": false
+    },
+    {
+      "date": "2026-07-23",
+      "day": {
+        "ar": "الخميس 23 تموز 2026 / 10 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Thursday, July 23 / July 10, 2026 (Old Style)",
+        "el": "Πέμπτη, 23 Ιουλίου / 10 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
+      },
+      "feast": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "status": {
+        "ar": "لا صوم",
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
+      },
+      "note": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "fasting": {
+        "code": "fast_free",
+        "season": {
+          "ar": "يوم عادي",
+          "en": "Ordinary day",
+          "el": "Συνήθης ἡμέρα"
+        },
+        "title": {
+          "ar": "لا صوم",
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
+        },
+        "level": {
+          "ar": "لا صوم",
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
+        },
+        "detail": {
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
+        },
+        "is_fast": false,
+        "allowed": {
+          "meat": true,
+          "dairy": true,
+          "eggs": true,
+          "fish": true,
+          "wine": true,
+          "oil": true
+        },
+        "display_icons": [
+          "✅"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "اللحوم",
+              "en": "Meat",
+              "el": "Κρέας"
+            },
+            "allowed": true
+          },
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "الألبان",
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
+            },
+            "allowed": true
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "البيض",
+              "en": "Eggs",
+              "el": "Αὐγά"
+            },
+            "allowed": true
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "السمك",
+              "en": "Fish",
+              "el": "Ψάρι"
+            },
+            "allowed": true
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "النبيذ",
+              "en": "Wine",
+              "el": "Οἶνος"
+            },
+            "allowed": true
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "الزيت",
+              "en": "Oil",
+              "el": "Ἔλαιο"
+            },
+            "allowed": true
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "ordinary_fast_free",
+          "note": {
+            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "الرسالة",
+            "en": "Epistle",
+            "el": "Ἀπόστολος"
+          },
+          "reference": {
+            "ar": "١ كورنثوس 10:28-11:7",
+            "en": "1 Corinthians 10:28-11:7",
+            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 10:28-11:7"
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "الإنجيل",
+            "en": "Gospel",
+            "el": "Εὐαγγέλιο"
+          },
+          "reference": {
+            "ar": "متى 16:24-28",
+            "en": "Matthew 16:24-28",
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 16:24-28"
+          }
+        }
+      },
+      "is_sunday": false
+    },
+    {
+      "date": "2026-07-24",
+      "day": {
+        "ar": "الجمعة 24 تموز 2026 / 11 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Friday, July 24 / July 11, 2026 (Old Style)",
+        "el": "Παρασκευή, 24 Ιουλίου / 11 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
+      },
+      "feast": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "status": {
+        "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+        "en": "Wednesday or Friday fast — Strict fast",
+        "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία"
+      },
+      "note": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "fasting": {
+        "code": "strict",
+        "season": {
+          "ar": "صوم الأربعاء أو الجمعة",
+          "en": "Wednesday or Friday fast",
+          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς"
+        },
+        "title": {
+          "ar": "صوم الأربعاء أو الجمعة — صوم صارم",
+          "en": "Wednesday or Friday fast — Strict fast",
+          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία"
+        },
+        "level": {
+          "ar": "صوم صارم",
+          "en": "Strict fast",
+          "el": "Αὐστηρὰ νηστεία"
+        },
+        "detail": {
+          "ar": "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي. صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ.",
+          "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine.",
+          "el": "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία. Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο."
+        },
+        "is_fast": true,
+        "allowed": {
+          "meat": false,
+          "dairy": false,
+          "eggs": false,
+          "fish": false,
+          "wine": false,
+          "oil": false
+        },
+        "display_icons": [
+          "🍞",
+          "💧"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "اللحوم",
+              "en": "Meat",
+              "el": "Κρέας"
+            },
+            "allowed": false
+          },
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "الألبان",
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
+            },
+            "allowed": false
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "البيض",
+              "en": "Eggs",
+              "el": "Αὐγά"
+            },
+            "allowed": false
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "السمك",
+              "en": "Fish",
+              "el": "Ψάρι"
+            },
+            "allowed": false
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "النبيذ",
+              "en": "Wine",
+              "el": "Οἶνος"
+            },
+            "allowed": false
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "الزيت",
+              "en": "Oil",
+              "el": "Ἔλαιο"
+            },
+            "allowed": false
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "weekly_wednesday_friday",
+          "note": {
+            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "الرسالة",
+            "en": "Epistle",
+            "el": "Ἀπόστολος"
+          },
+          "reference": {
+            "ar": "١ كورنثوس 11:8-22",
+            "en": "1 Corinthians 11.8-22",
+            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 11:8-22"
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "الإنجيل",
+            "en": "Gospel",
+            "el": "Εὐαγγέλιο"
+          },
+          "reference": {
+            "ar": "متى 17:10-18",
+            "en": "Matthew 17.10-18",
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 17:10-18"
           }
         }
       },
       "is_sunday": false
     }
   ],
-  "language_content_mode": "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES",
-  "machine_translation_used": false,
-  "translation_fallback_policy": "DISABLED_NO_CROSS_LANGUAGE_FALLBACK",
-  "native_text_notice": {
-    "ar": "كل لغة في التطبيق تأتي من نصها الكنسي الأرثوذكسي الرسمي الأصلي؛ لا تُنشأ النصوص العربية أو اليونانية أو الإنجليزية بترجمة آلية.",
-    "en": "Each language is supplied from its own original official Orthodox source text; no Arabic, Greek, or English text is machine-translated.",
-    "el": "Κάθε γλώσσα προέρχεται από τὸ δικό της πρωτότυπο ἐπίσημο ὀρθόδοξο κείμενο· δὲν χρησιμοποιεῖται μηχανικὴ μετάφραση."
-  },
   "automatic_diacritization_used": false,
-  "native_text_contract": "canonical/source_native_contract.json"
+  "native_text_contract": "canonical/source_native_contract.json",
+  "integrity": {
+    "native_text_contract": "canonical/source_native_contract.json",
+    "legacy_arabic_scripture_snapshot": "QUARANTINED_NOT_PUBLICATION_AUTHORITY"
+  },
+  "daily_update_status": {
+    "mode": "partial",
+    "date": "2026-07-17",
+    "message": {
+      "ar": "بيانات اليوم متاحة؛ قد تبقى بعض النصوص غير المنشورة فارغة حتى ورودها من مصدر رسمي مطابق.",
+      "en": "Today data is available; unavailable exact texts remain empty until a matching official source is available.",
+      "el": "Τὰ σημερινὰ δεδομένα εἶναι διαθέσιμα· τὰ μὴ ἐπαληθευμένα κείμενα παραμένουν κενά."
+    }
+  }
 }

@@ -13,8 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
+import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
+import com.orthodoxprayers.privateapp.update.UpdateCoordinator;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
@@ -117,7 +119,47 @@ public final class SettingsScreen extends BaseScreen {
         });
         add(page.root, autoScroll, 0, 10);
 
+        LinearLayout readerAppearance = ui.row();
+        Button readerTheme = ui.button(local("ثيم القارئ: ", "Reader theme: ", "Θέμα ἀναγνώστη: ") + readerThemeLabel(), false);
+        readerTheme.setOnClickListener(v -> {
+            String current = preferences.readerTheme();
+            preferences.setReaderTheme("system".equals(current) ? "sepia" : "sepia".equals(current) ? "night" : "system");
+            host.navigate("settings", null);
+        });
+        readerAppearance.addView(readerTheme, new LinearLayout.LayoutParams(0, -2, 2f));
+        Button brightness = ui.button("☀ " + preferences.readerBrightnessPercent() + "%", false);
+        brightness.setOnClickListener(v -> {
+            int current = preferences.readerBrightnessPercent();
+            preferences.setReaderBrightnessPercent(current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100);
+            host.navigate("settings", null);
+        });
+        readerAppearance.addView(brightness, ui.weight(48));
+        add(page.root, readerAppearance, 0, 10);
+
         page.root.addView(ui.sectionTitle(local("التقويم والتذكيرات", "Calendar and reminders", "Ἡμερολόγιο καὶ ὑπενθυμίσεις")));
+        LinearLayout quietHours = ui.row();
+        Button quietStart = ui.button(local("بدء الهدوء ", "Quiet starts ", "Ἔναρξη ἡσυχίας ") + formatMinute(preferences.quietHoursStartMinute()), false);
+        quietStart.setOnClickListener(v -> {
+            preferences.setQuietHours((preferences.quietHoursStartMinute() + 30) % 1440, preferences.quietHoursEndMinute());
+            new ReminderScheduler(host.activity(), preferences).scheduleAll();
+            host.navigate("settings", null);
+        });
+        quietHours.addView(quietStart, ui.weight(60));
+        Button quietEnd = ui.button(local("نهاية الهدوء ", "Quiet ends ", "Λήξη ἡσυχίας ") + formatMinute(preferences.quietHoursEndMinute()), false);
+        quietEnd.setOnClickListener(v -> {
+            preferences.setQuietHours(preferences.quietHoursStartMinute(), (preferences.quietHoursEndMinute() + 30) % 1440);
+            new ReminderScheduler(host.activity(), preferences).scheduleAll();
+            host.navigate("settings", null);
+        });
+        quietHours.addView(quietEnd, ui.weight(60));
+        add(page.root, quietHours, 0, 6);
+        TextView quietNotice = centered(local(
+                "لن يصدر التطبيق إشعارات خلال ساعات الهدوء المحددة.",
+                "The app will not notify during the selected quiet hours.",
+                "Ἡ ἐφαρμογὴ δὲν στέλνει εἰδοποιήσεις στὶς ὧρες ἡσυχίας."
+        ), 12, ui.colors().secondaryText(), false);
+        add(page.root, quietNotice, 0, 8);
+
         Button calendarMode = ui.button("julian".equals(preferences.calendarMode())
                 ? local("عرض التاريخ الغريغوري فقط", "Show Gregorian dates only", "Μόνο Γρηγοριανὲς ἡμερομηνίες")
                 : local("إظهار التاريخ اليولياني بجانب الغريغوري", "Show Julian dates beside Gregorian", "Ἰουλιανὴ δίπλα στὴ Γρηγοριανή"), "julian".equals(preferences.calendarMode()));
@@ -145,6 +187,41 @@ public final class SettingsScreen extends BaseScreen {
         refresh.setOnClickListener(v -> host.refreshData());
         add(page.root, refresh, 0, 7);
 
+        boolean exactMidnight = UpdateCoordinator.isExactMidnightEnabled(host.activity());
+        Button midnightAccuracy = ui.button(exactMidnight
+                ? local("تحديث منتصف الليل الدقيق: مفعّل", "Exact midnight update: enabled", "Ἀκριβὴς ἐνημέρωση μεσονυκτίου: ἐνεργή")
+                : local("تفعيل التحديث الدقيق عند 00:00", "Enable exact 00:00 update", "Ἐνεργοποίηση ἀκριβοῦς ἐνημερώσεως 00:00"), exactMidnight);
+        midnightAccuracy.setOnClickListener(v -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    && !UpdateCoordinator.isExactMidnightEnabled(host.activity())) {
+                try {
+                    host.activity().startActivity(UpdateCoordinator.exactAlarmSettingsIntent(host.activity()));
+                } catch (Exception error) {
+                    Toast.makeText(host.activity(), local(
+                            "تعذر فتح إذن المنبهات الدقيقة؛ سيبقى التحديث الاحتياطي عند منتصف الليل فعالًا.",
+                            "Exact-alarm settings could not be opened; the midnight fallback remains active.",
+                            "Δὲν ἄνοιξαν οἱ ρυθμίσεις· παραμένει ἡ ἐφεδρικὴ ἐνημέρωση μεσονυκτίου."
+                    ), Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+            OrthodoxPrayersApp app = (OrthodoxPrayersApp) host.activity().getApplication();
+            app.updateCoordinator().scheduleMidnightRefresh();
+            Toast.makeText(host.activity(), local(
+                    "تم تثبيت موعد التحديث اليومي عند 00:00 بتوقيت عمّان.",
+                    "The daily update is scheduled for 00:00 Amman time.",
+                    "Ἡ καθημερινὴ ἐνημέρωση ὁρίστηκε στὶς 00:00 ὥρα Ἀμμάν."
+            ), Toast.LENGTH_SHORT).show();
+        });
+        add(page.root, midnightAccuracy, 0, 7);
+
+        TextView midnightNotice = centered(local(
+                "التطبيق يوقظ مهمة التحديث عند الساعة 12:00 منتصف الليل بتوقيت عمّان. إذا كان إذن المنبه الدقيق غير متاح، يستخدم النظام جدولة احتياطية لأقرب وقت يسمح به الجهاز، ويعيد المحاولة تلقائيًا عند عودة الإنترنت.",
+                "The app starts its update task at 12:00 midnight Amman time. If exact-alarm access is unavailable, Android uses the closest permitted fallback and retries automatically when internet returns.",
+                "Ἡ ἐνημέρωση ξεκινᾷ στὶς 00:00 ὥρα Ἀμμάν. Ἂν δὲν ἐπιτρέπεται ἀκριβὴς συναγερμός, χρησιμοποιεῖται ἡ πλησιέστερη ἐπιτρεπτὴ ἐφεδρικὴ ἐκτέλεση."
+        ), 12, ui.colors().secondaryText(), false);
+        add(page.root, midnightNotice, 0, 8);
+
         String lastUpdate = formatTimestamp(preferences.lastSuccessfulUpdate(),
                 local("لم ينجح تحديث شبكي بعد", "No successful network update yet", "Χωρὶς ἐπιτυχῆ ἐνημέρωση"));
         String lastAttempt = formatTimestamp(preferences.lastRefreshAttempt(),
@@ -166,7 +243,7 @@ public final class SettingsScreen extends BaseScreen {
                 + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + shortHash(data.contentHash())
                 + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + safeValue(data.canonicalSourceId())
                 + "\n" + local("المصدر الرسمي المختار لليوم: ", "Selected official source: ", "Ἐπιλεγμένη ἐπίσημη πηγή: ") + officialSourceLabel(data.selectedOfficialSource())
-                + "\n" + local("التحديث التلقائي: فحص عند فتح التطبيق، ثم عند 00:00 و00:15 بتوقيت عمّان، مع فحص احتياطي دوري", "Automatic update: on app open, at 00:00 and 00:15 Amman time, plus a periodic safety check", "Αὐτόματη ἐνημέρωση στὸ ἄνοιγμα, στὶς 00:00 καὶ 00:15 ὥρα Ἀμμάν")
+                + "\n" + local("التحديث التلقائي: عند 00:00 منتصف الليل بتوقيت عمّان، مع فحص احتياطي عند فتح التطبيق", "Automatic update: at 00:00 midnight Amman time, with a safety check when the app opens", "Αὐτόματη ἐνημέρωση στὶς 00:00 ὥρα Ἀμμάν, μὲ ἐφεδρικὸ ἔλεγχο στὸ ἄνοιγμα")
                 + "\n" + local("التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي", "Verification: HTTPS + independent digital signature + schema + Scripture integrity", "Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα"),
                 13, ui.colors().secondaryText(), false);
         add(page.root, status, 0, 8);
@@ -243,6 +320,13 @@ public final class SettingsScreen extends BaseScreen {
         return speed == 0
                 ? local("التمرير التلقائي: متوقف", "Auto-scroll: off", "Αὐτόματη κύλιση: κλειστή")
                 : local("سرعة التمرير التلقائي: ", "Auto-scroll speed: ", "Ταχύτητα αὐτόματης κύλισης: ") + speed;
+    }
+
+    private String readerThemeLabel() {
+        String theme = preferences.readerTheme();
+        if ("sepia".equals(theme)) return local("ورقي", "Sepia", "Σέπια");
+        if ("night".equals(theme)) return local("ليلي", "Night", "Νύχτα");
+        return local("النظام", "System", "Σύστημα");
     }
 
     private String fontFamilyLabel() {

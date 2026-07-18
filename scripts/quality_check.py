@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 from native_text_contract import ROOT, LANGUAGES, sha256_text
+from release_state import top_level_errors
 TZ=ZoneInfo('Asia/Amman')
 BAD_MARKERS=['موضع قراءة','تُحدّث يومياً','Updated daily','must be fetched','Daily reading text was not returned','[فصل','[البروكيمنن]','[طروبارية','[القنداق]','[آية المناولة]','...']
 
@@ -56,7 +57,8 @@ def main():
     for key in required:
         if key not in data: fail(f'missing {key}')
     if data.get('schema_version')!=9: fail('schema_version must be 9')
-    if (data.get('integrity') or {}).get('status')!='VERIFIED_OFFICIAL_SOURCES': fail('top-level source integrity invalid')
+    release_errors=top_level_errors(data)
+    if release_errors: fail('top-level release policy invalid: '+' | '.join(release_errors))
     if data.get('language_content_mode')!='THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES': fail('strict independent language mode missing')
     if data.get('machine_translation_used') is not False or data.get('automatic_diacritization_used') is not False: fail('forbidden transformation flag')
     if data.get('translation_fallback_policy')!='DISABLED_NO_CROSS_LANGUAGE_FALLBACK': fail('cross-language fallback is enabled')

@@ -99,7 +99,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     }
 
     private void bindNote(LinearLayout container, JSONObject segment, int position) {
-        LinearLayout card = ui.card();
+        LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 14);
         String label = data.localized(segment.optJSONObject("speaker"), data.local("ملاحظة اختيارية", "Optional note", "Προαιρετικὴ σημείωση"));
         boolean defaultCollapsed = segment.optBoolean("collapsed_by_default", true);
         boolean expanded = defaultCollapsed ? expandedNotes.contains(position) : !collapsedNotes.contains(position);
@@ -121,6 +121,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         if (expanded) {
             LocalizedValue value = data.localizedValue(segment.optJSONObject("text"), "");
             TextView body = ui.body(value.text, true);
+            body.setTextColor(readerPrimaryText());
             card.addView(body, ui.margins(-1, -2, 0, 6, 0, 0));
             if (value.translationUnavailable) {
                 card.addView(ui.badge(data.local(
@@ -134,7 +135,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     }
 
     private void bindText(LinearLayout container, JSONObject segment, boolean rubric) {
-        LinearLayout card = ui.card();
+        LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 14);
         String speaker = data.localized(segment.optJSONObject("speaker"), "");
         if (!speaker.isEmpty()) {
             TextView speakerView = ui.text(speaker, 14, ThemePalette.GOLD, true);
@@ -142,6 +143,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         }
         LocalizedValue value = data.localizedValue(segment.optJSONObject("text"), "");
         TextView body = ui.body(value.text, rubric);
+        body.setTextColor(readerPrimaryText());
         card.addView(body, ui.margins(-1, -2, 0, speaker.isEmpty() ? 0 : 3, 0, 0));
 
         if (value.translationUnavailable) {
@@ -157,7 +159,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
             String original = originalText(textObject);
             if (!original.isEmpty() && !original.equals(value.text)) {
                 TextView originalView = ui.text("— " + data.local("النص الأصلي", "Source text", "Πρωτότυπο") + " —\n" + original,
-                        15, ui.colors().secondaryText(), false);
+                        15, readerSecondaryText(), false);
                 originalView.setLineSpacing(ui.dp(3), 1.12f);
                 originalView.setTextIsSelectable(true);
                 card.addView(originalView, ui.margins(-1, -2, 0, 8, 0, 0));
@@ -180,6 +182,17 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
 
     public List<Integer> sectionPositions() { return new ArrayList<>(sectionPositions); }
 
+    public String shareTextAt(int position) {
+        if (position < 0 || position >= segments.size()) return "";
+        JSONObject segment = segments.get(position);
+        String speaker = data.localized(segment.optJSONObject("speaker"), "").trim();
+        String text = data.localized(segment.optJSONObject("text"), data.localized(segment.optJSONObject("title"), "")).trim();
+        if (text.isEmpty()) return "";
+        return speaker.isEmpty() ? text : speaker + "
+" + text;
+    }
+
+
     public int findPosition(String... needles) {
         for (int i = 0; i < segments.size(); i++) {
             JSONObject segment = segments.get(i);
@@ -194,6 +207,37 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     private static String allLanguages(JSONObject object) {
         if (object == null) return "";
         return object.optString("ar", "") + " " + object.optString("en", "") + " " + object.optString("el", "");
+    }
+
+    private int readerBackground() {
+        String theme = preferences.readerTheme();
+        if ("sepia".equals(theme)) return Color.rgb(244, 236, 214);
+        if ("night".equals(theme)) return Color.rgb(9, 17, 29);
+        return ui.colors().background();
+    }
+
+    private int readerCardColor() {
+        String theme = preferences.readerTheme();
+        if ("sepia".equals(theme)) return Color.rgb(255, 249, 232);
+        if ("night".equals(theme)) return Color.rgb(21, 33, 51);
+        return ui.colors().card();
+    }
+
+    private int readerBorderColor() {
+        if ("night".equals(preferences.readerTheme())) return Color.rgb(66, 84, 111);
+        return ThemePalette.GOLD;
+    }
+
+    private int readerPrimaryText() {
+        if ("night".equals(preferences.readerTheme())) return Color.rgb(238, 242, 249);
+        if ("sepia".equals(preferences.readerTheme())) return Color.rgb(65, 48, 31);
+        return ui.colors().primaryText();
+    }
+
+    private int readerSecondaryText() {
+        if ("night".equals(preferences.readerTheme())) return Color.rgb(184, 196, 214);
+        if ("sepia".equals(preferences.readerTheme())) return Color.rgb(105, 82, 54);
+        return ui.colors().secondaryText();
     }
 
     static final class Holder extends RecyclerView.ViewHolder {

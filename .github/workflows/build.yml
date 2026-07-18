@@ -200,6 +200,15 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew --no-daemon clean testDebugUnitTest lintRelease assembleRelease bundleRelease --stacktrace
 
+      - name: Generate dependency report, SBOM, and clean source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release
+          ./gradlew --no-daemon app:dependencies --configuration releaseRuntimeClasspath > release/RELEASE_DEPENDENCIES.txt
+          python scripts/generate_sbom.py --gradle-report release/RELEASE_DEPENDENCIES.txt --output release/OrthodoxPrayers-$RELEASE_VERSION-sbom.cdx.json
+          python scripts/create_clean_source_archive.py --prefix OrthodoxPrayers-$RELEASE_VERSION-source --output release/OrthodoxPrayers-$RELEASE_VERSION-source.zip
+
       - name: Verify and collect release files
         shell: bash
         run: |
@@ -210,7 +219,7 @@ jobs:
           APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)"
           test -x "$APKSIGNER"
           "$APKSIGNER" verify --verbose --print-certs "release/OrthodoxPrayers-$RELEASE_VERSION.apk"
-          (cd release && sha256sum "OrthodoxPrayers-$RELEASE_VERSION.apk" "OrthodoxPrayers-$RELEASE_VERSION.aab" > SHA256SUMS.txt)
+          (cd release && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -printf '%f\0' | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
 
       - name: Upload signed release artifacts
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0

@@ -1,4 +1,4 @@
-# Third-party content notices — Orthodox Prayers 4.3.0
+# Third-party content notices — Orthodox Prayers 5.0.0
 
 ## Arabic Van Dyck Bible
 

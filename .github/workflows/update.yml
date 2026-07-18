@@ -16,8 +16,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
       timezone: "Asia/Amman"
-    - cron: "15 0 * * *"
-      timezone: "Asia/Amman"
 
 permissions:
   contents: write
@@ -45,10 +43,9 @@ jobs:
         env:
           INPUT_MODE: ${{ github.event.inputs.mode }}
           INPUT_DATE: ${{ github.event.inputs.date }}
-          SCHEDULE: ${{ github.event.schedule }}
         run: |
           set -euo pipefail
-          if [[ -n "${INPUT_MODE:-}" ]]; then MODE="$INPUT_MODE"; elif [[ "${SCHEDULE:-}" == "15 0 * * *" ]]; then MODE=verify; else MODE=update; fi
+          if [[ -n "${INPUT_MODE:-}" ]]; then MODE="$INPUT_MODE"; else MODE=update; fi
           if [[ -n "${INPUT_DATE:-}" ]]; then DATE="$INPUT_DATE"; else DATE="$(TZ=Asia/Amman date +%F)"; fi
           [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"

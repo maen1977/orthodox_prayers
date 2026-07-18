@@ -15,14 +15,14 @@ val releaseSigningAvailable = listOf(
 
 android {
     namespace = "com.orthodoxprayers.privateapp"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.orthodoxprayers.privateapp"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 43000
-        versionName = "4.3.0"
+        targetSdk = 36
+        versionCode = 50001
+        versionName = "5.0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -115,7 +115,6 @@ def main() -> None:
             "VERIFIED_DATA_BRANCH: verified-data",
             'timezone: "Asia/Amman"',
             'cron: "0 0 * * *"',
-            'cron: "15 0 * * *"',
             "Verify from origin after publishing",
             "scripts/sign_language_lanes.py",
             "verified-data-commit-check",
@@ -124,6 +123,9 @@ def main() -> None:
         ),
         "Update workflow",
     )
+    if 'cron: "15 0 * * *"' in update:
+        fail("Update workflow must run only at 00:00 Asia/Amman, not at 00:15")
+
     for forbidden in (
         "\n  push:\n",
         "git push origin main",
@@ -160,7 +162,7 @@ def main() -> None:
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
         "external-source generation; debug checks are separated; Update runs only manually "
-        "or at 00:00/00:15 Asia/Amman"
+        "or at 00:00 Asia/Amman"
     )
 
 

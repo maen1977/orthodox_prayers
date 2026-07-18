@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
+import java.time.LocalTime;
+
 import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
@@ -23,7 +25,6 @@ import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 
 
 public final class PrayerReminderWorker extends Worker {
-    private static final String CHANNEL_ID = "prayer_reminders";
 
     public PrayerReminderWorker(@NonNull Context context, @NonNull WorkerParameters parameters) {
         super(context, parameters);
@@ -39,7 +40,8 @@ public final class PrayerReminderWorker extends Worker {
         String kind = getInputData().getString(ReminderScheduler.INPUT_KIND);
         if (kind == null || !preferences.remindersEnabled(kind)) return Result.success();
 
-        if (Build.VERSION.SDK_INT < 33 || context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+        if (!isWithinQuietHours(preferences)
+                && (Build.VERSION.SDK_INT < 33 || context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED)) {
             showNotification(context, app, preferences, kind);
         }
         new ReminderScheduler(context, preferences).schedule(kind);
@@ -48,10 +50,11 @@ public final class PrayerReminderWorker extends Worker {
 
     private static void showNotification(Context context, OrthodoxPrayersApp app, AppPreferences preferences, String kind) {
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        String channelId = channelId(kind);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
-                    CHANNEL_ID,
-                    local(preferences, "تذكيرات الصلاة", "Prayer reminders", "Ὑπενθυμίσεις προσευχῆς"),
+                    channelId,
+                    channelName(preferences, kind),
                     NotificationManager.IMPORTANCE_DEFAULT
             );
             channel.setDescription(local(preferences, "تذكيرات اختيارية للصلاة وقراءات اليوم", "Optional prayer and daily-reading reminders", "Προαιρετικὲς ὑπενθυμίσεις"));
@@ -60,6 +63,9 @@ public final class PrayerReminderWorker extends Worker {
 
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.putExtra(MainActivity.EXTRA_SCREEN, targetScreen(kind));
+        String targetArgument = targetArgument(kind);
+        if (targetArgument != null) intent.putExtra(MainActivity.EXTRA_ARGUMENT, targetArgument);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 context,
                 kind.hashCode(),
@@ -92,7 +98,7 @@ public final class PrayerReminderWorker extends Worker {
             body = local(preferences, "ابدأ يومك بالصلاة.", "Begin your day with prayer.", "Ἄρχισε τὴν ἡμέρα μὲ προσευχή.");
         }
 
-        Notification.Builder notification = new Notification.Builder(context, CHANNEL_ID)
+        Notification.Builder notification = new Notification.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_nav_prayers)
                 .setContentTitle(title)
                 .setContentText(body)
@@ -100,6 +106,42 @@ public final class PrayerReminderWorker extends Worker {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
         manager.notify(Math.abs(kind.hashCode()), notification.build());
+    }
+
+    private static boolean isWithinQuietHours(AppPreferences preferences) {
+        int start = preferences.quietHoursStartMinute();
+        int end = preferences.quietHoursEndMinute();
+        if (start == end) return false;
+        LocalTime now = LocalTime.now();
+        int minute = now.getHour() * 60 + now.getMinute();
+        if (start < end) return minute >= start && minute < end;
+        return minute >= start || minute < end;
+    }
+
+    private static String channelId(String kind) {
+        return "prayer_reminders_" + (kind == null ? "general" : kind.replaceAll("[^a-z0-9_]", ""));
+    }
+
+    private static String channelName(AppPreferences preferences, String kind) {
+        if (ReminderScheduler.MORNING.equals(kind)) return local(preferences, "صلاة الصباح", "Morning prayer", "Πρωινὴ προσευχή");
+        if (ReminderScheduler.EVENING.equals(kind)) return local(preferences, "صلاة المساء", "Evening prayer", "Ἑσπερινὴ προσευχή");
+        if (ReminderScheduler.READING.equals(kind)) return local(preferences, "قراءات اليوم", "Daily readings", "Ἡμερήσια ἀναγνώσματα");
+        if (ReminderScheduler.FEAST.equals(kind)) return local(preferences, "الأعياد والتذكارات", "Feasts and commemorations", "Ἑορτὲς καὶ μνῆμες");
+        if (ReminderScheduler.FAST.equals(kind)) return local(preferences, "حالة الصيام", "Fasting status", "Κατάσταση νηστείας");
+        return local(preferences, "تذكيرات شخصية", "Personal reminders", "Προσωπικὲς ὑπενθυμίσεις");
+    }
+
+    private static String targetScreen(String kind) {
+        if (ReminderScheduler.MORNING.equals(kind) || ReminderScheduler.EVENING.equals(kind)) return "reader";
+        if (ReminderScheduler.READING.equals(kind)) return "readings";
+        if (ReminderScheduler.PERSONAL.equals(kind)) return "prayers";
+        return "home";
+    }
+
+    private static String targetArgument(String kind) {
+        if (ReminderScheduler.MORNING.equals(kind)) return "morning_prayer";
+        if (ReminderScheduler.EVENING.equals(kind)) return "evening_prayer";
+        return null;
     }
 
     private static String local(AppPreferences preferences, String ar, String en, String el) {

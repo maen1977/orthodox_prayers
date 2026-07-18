@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,6 +53,8 @@ import java.util.Deque;
 public final class MainActivity extends Activity implements ScreenHost {
     private static final String TAG = "OrthodoxNavigation";
     private static final String STATE_STACK = "screen_stack";
+    public static final String EXTRA_SCREEN = "com.orthodoxprayers.privateapp.extra.SCREEN";
+    public static final String EXTRA_ARGUMENT = "com.orthodoxprayers.privateapp.extra.ARGUMENT";
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
     private static final long MIN_DAY_WATCH_DELAY_MS = 1_000L;
 
@@ -95,6 +98,7 @@ public final class MainActivity extends Activity implements ScreenHost {
             restoreStack(savedInstanceState.getString(STATE_STACK, ""));
         }
         if (backStack.isEmpty()) backStack.addLast(new ScreenEntry("home", null, null));
+        applyLaunchIntent(getIntent(), false);
         show(backStack.peekLast());
         observedAmmanDate = repository.currentAmmanDate();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -106,6 +110,26 @@ public final class MainActivity extends Activity implements ScreenHost {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        applyLaunchIntent(intent, true);
+    }
+
+    private void applyLaunchIntent(Intent intent, boolean render) {
+        if (intent == null) return;
+        String screen = intent.getStringExtra(EXTRA_SCREEN);
+        if (screen == null || screen.trim().isEmpty()) return;
+        String argument = intent.getStringExtra(EXTRA_ARGUMENT);
+        backStack.clear();
+        backStack.addLast(new ScreenEntry("home", null, null));
+        if (!"home".equals(screen)) backStack.addLast(new ScreenEntry(screen, argument, null));
+        intent.removeExtra(EXTRA_SCREEN);
+        intent.removeExtra(EXTRA_ARGUMENT);
+        if (render) show(backStack.peekLast());
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         startDayChangeWatcher();
@@ -114,6 +138,7 @@ public final class MainActivity extends Activity implements ScreenHost {
     @Override
     protected void onResume() {
         super.onResume();
+        updateCoordinator.scheduleMidnightRefresh();
         evaluateForegroundRefresh(true);
     }
 

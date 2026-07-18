@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 from native_text_contract import ROOT, LANGUAGES, sha256_text
+from release_state import top_level_errors
 CANONICAL_TODAY=ROOT/'data/calendar/today.json'
 ASSET_TODAY=ROOT/'app/src/main/assets/data/today.json'
 ASSET_LIBRARY=ROOT/'app/src/main/assets/data/library.json'
@@ -30,9 +31,8 @@ def validate_today(data):
     if data.get('translation_fallback_policy')!='DISABLED_NO_CROSS_LANGUAGE_FALLBACK': fail('cross-language fallback is not disabled')
     if not localized_ar(data.get('date_label')) or not localized_ar(data.get('fast')): fail('Arabic UI date/fast label missing')
     if not isinstance(data.get('upcoming'),list) or len(data['upcoming'])!=7: fail('today.json must contain seven upcoming days')
-    integrity=data.get('integrity') or {}
-    if integrity.get('status')!='VERIFIED_OFFICIAL_SOURCES': fail('top-level source integrity is not verified')
-    if integrity.get('ai_scripture_translation_used') is not False or integrity.get('ai_liturgical_translation_used') is not False: fail('AI flags are invalid')
+    release_errors=top_level_errors(data)
+    if release_errors: fail('top-level release policy is invalid: '+' | '.join(release_errors))
     readings=data.get('readings')
     if not isinstance(readings,list): fail('readings must be an array')
     by_kind={item.get('kind'):item for item in readings if isinstance(item,dict)}

@@ -19,8 +19,14 @@ def main() -> None:
     if publication.get("religious_text_contract") != "canonical/source_native_contract.json":
         errors.append("Today data does not identify the native source contract")
     evidence = data.get("source_evidence")
-    if not isinstance(evidence, list) or not evidence:
-        errors.append("Today data has no source_evidence")
+    if not isinstance(evidence, list):
+        errors.append("Today source_evidence must be a list")
+    selected_source = publication.get("selected_source")
+    availability = publication.get("daily_availability")
+    if selected_source and not evidence:
+        errors.append("Today selected an official calendar source without source_evidence")
+    if not selected_source and availability not in {"PARTIAL_VERIFIED", "FULL"}:
+        errors.append("Today has neither selected source evidence nor an allowed fail-closed availability state")
     lanes = data.get("language_sources") or {}
     for lang in ("ar", "en", "el"):
         lane = lanes.get(lang) or {}
@@ -28,7 +34,7 @@ def main() -> None:
             errors.append(f"{lang} lane is not fail-closed to same-language sources")
     if errors:
         raise SystemExit("\n".join(errors))
-    print("Official calendar evidence and independent native-language publication policy validated")
+    print("Official calendar evidence/fail-closed state and independent native-language publication policy validated")
 
 if __name__ == "__main__":
     main()

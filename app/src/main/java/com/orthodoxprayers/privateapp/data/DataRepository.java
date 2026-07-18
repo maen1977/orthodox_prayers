@@ -35,14 +35,14 @@ public final class DataRepository {
     public interface RefreshCallback { void onComplete(RefreshResult result, String message); }
 
     private static final String TAG = "OrthodoxData";
-    private static final int MIN_SCHEMA_VERSION = 9;
     private static final int MAX_JSON_BYTES = 2_000_000;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_DOWNLOAD_ATTEMPTS = 2;
 
     private final Context context;
     private final AppPreferences preferences;
-    private final DailyDataStore dataStore;
+    private DailyDataStore dataStore;
+    private final boolean languageScopedStore;
     private final DataSignatureVerifier signatureVerifier;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -67,14 +67,22 @@ public final class DataRepository {
     private String loadedEmbeddedHash = "";
 
     public DataRepository(Context context, AppPreferences preferences) {
-        this(context, preferences, new DailyDataStore(context), new DataSignatureVerifier(context));
+        this(context, preferences,
+                new DailyDataStore(context, preferences.effectiveLanguage()),
+                new DataSignatureVerifier(context), true);
     }
 
     public DataRepository(Context context, AppPreferences preferences, DailyDataStore dataStore, DataSignatureVerifier signatureVerifier) {
+        this(context, preferences, dataStore, signatureVerifier, false);
+    }
+
+    private DataRepository(Context context, AppPreferences preferences, DailyDataStore dataStore,
+                           DataSignatureVerifier signatureVerifier, boolean languageScopedStore) {
         this.context = context.getApplicationContext();
         this.preferences = preferences;
         this.dataStore = dataStore;
         this.signatureVerifier = signatureVerifier;
+        this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
         fallbackLibrary = loadJsonAsset("data/library.json");
         arabicLibrary = loadJsonAsset("data/native/library_ar.json");
@@ -133,7 +141,7 @@ public final class DataRepository {
     public boolean hasDisplayableData() {
         JSONObject value = today();
         if (value == null || value.length() == 0) return false;
-        if (value.optInt("schema_version", 0) != MIN_SCHEMA_VERSION) return false;
+        if (!DataContract.supportsSchema(value.optInt("schema_version", 0))) return false;
         if (dataDate().trim().isEmpty()) return false;
         JSONObject dateLabel = value.optJSONObject("date_label");
         JSONObject fast = value.optJSONObject("fast");
@@ -152,7 +160,17 @@ public final class DataRepository {
 
     /** Reload the best signed snapshot after the user changes the active language lane. */
     public synchronized void reloadForSelectedLanguage() {
+        if (languageScopedStore) {
+            dataStore = new DailyDataStore(context, preferences.effectiveLanguage());
+        }
+        loadedStoredSource = "";
+        loadedStoredHash = "";
+        loadError = "";
         today = loadBestToday();
+    }
+
+    public java.util.List<String> availableCachedDates() {
+        return dataStore.availableDates();
     }
 
     public String local(String ar, String en, String el) {
@@ -414,7 +432,7 @@ public final class DataRepository {
 
     public String validate(JSONObject data, String expectedDate, boolean requireExpectedDate) {
         if (data == null || data.length() == 0) return "payload_empty";
-        if (data.optInt("schema_version", 0) != MIN_SCHEMA_VERSION) return "schema_unsupported";
+        if (!DataContract.supportsSchema(data.optInt("schema_version", 0))) return "schema_unsupported";
         String date = data.optString("date_iso", data.optString("date", ""));
         if (date.trim().isEmpty()) return "date_missing";
         try {
@@ -430,10 +448,15 @@ public final class DataRepository {
             if (!preferences.effectiveLanguage().equals(payloadLanguage)) {
                 return "language_lane_mismatch:" + payloadLanguage;
             }
-            if (data.optInt("lane_schema_version", 0) < 2) return "language_lane_schema_unsupported";
+            if (data.optInt("lane_schema_version", 0) < DataContract.MIN_LANGUAGE_LANE_SCHEMA_VERSION) return "language_lane_schema_unsupported";
             JSONArray laneServices = data.optJSONArray("services");
             if (laneServices == null || laneServices.length() == 0) return "language_lane_services_missing";
         }
+        JSONArray services = data.optJSONArray("services");
+        if (services == null || services.length() == 0) return "services_missing";
+        String servicesError = validateServices(services);
+        if (servicesError != null) return servicesError;
+
         // The server performs source-heavy validation. The phone verifies the
         // signature, date, schema and the structure of each available lane,
         // then displays every verified section that is present. A missing
@@ -579,9 +602,9 @@ public final class DataRepository {
     }
 
     private static HttpURLConnection open(String value, int maxBytes, boolean noCache) throws Exception {
-        URL url = new URL(value);
-        if (!"https".equalsIgnoreCase(url.getProtocol())) throw new IllegalStateException("https_required");
+        URL url = NetworkEndpointSecurity.requireAllowedHttps(value);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setInstanceFollowRedirects(false);
         connection.setConnectTimeout(10_000);
         connection.setReadTimeout(20_000);
         connection.setRequestMethod("GET");

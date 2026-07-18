@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify that the committed Gradle wrapper exactly matches Gradle 8.9."""
+"""Verify the pinned Gradle launcher and Gradle 8.13 distribution contract."""
 from __future__ import annotations
 
 import hashlib
@@ -13,8 +13,8 @@ PROPERTIES = ROOT / "gradle/wrapper/gradle-wrapper.properties"
 EXPECTED_WRAPPER_SHA256 = "498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17"
 EXPECTED_POSIX_SCRIPT_SHA256 = "9cbbb4d68ff7fb5211c4d58f598ac9d8664c05fdcd1e5f59b7f2c3ac1ee00af0"
 EXPECTED_WINDOWS_SCRIPT_SHA256 = "0f3ed8f03b50934cb8c48b15a470d5c20a30a5385825e48b55bcc8ea3d8f8e18"
-EXPECTED_DISTRIBUTION_SHA256 = "d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab"
-EXPECTED_DISTRIBUTION = "https\\://services.gradle.org/distributions/gradle-8.9-bin.zip"
+EXPECTED_DISTRIBUTION_SHA256 = "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78"
+EXPECTED_DISTRIBUTION = "https\\://services.gradle.org/distributions/gradle-8.13-bin.zip"
 
 
 def canonical_text_bytes(path: Path) -> bytes:
@@ -60,8 +60,8 @@ def main() -> None:
         raise SystemExit("Gradle wrapper properties mismatch:\n- " + "\n- ".join(missing))
 
     print(
-        "Gradle wrapper verified: Gradle 8.9 JAR, POSIX/Windows scripts, and "
-        "binary distribution checksums match the pinned contract"
+        "Gradle wrapper verified: pinned launcher JAR/scripts and the Gradle 8.13 "
+        "binary distribution checksum match the committed contract"
     )
 
 

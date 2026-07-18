@@ -1,5 +1,8 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.os.Handler;
 import android.os.Looper;
@@ -7,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +52,7 @@ public final class ReaderScreen extends BaseScreen {
     private final Handler autoScrollHandler = new Handler(Looper.getMainLooper());
     private boolean autoScrollActive;
     private Button autoScrollButton;
+    private TextView readerProgress;
     private final Runnable autoScrollTick = new Runnable() {
         @Override public void run() {
             if (!autoScrollActive || recycler == null) return;
@@ -94,13 +99,15 @@ public final class ReaderScreen extends BaseScreen {
         );
         adapter = new ReaderAdapter(ui, data, preferences, segments, service.optString("source_language", "ar"));
 
+        applyReaderWindowPreferences();
+
         if (preferences.keepScreenOn()) {
             host.activity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
 
         LinearLayout root = new LinearLayout(host.activity());
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setBackgroundColor(ui.colors().background());
+        root.setBackgroundColor(readerBackground());
         root.setLayoutDirection(preferences.isRtl() ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
 
         controlsPanel = buildControlsPanel();
@@ -117,7 +124,7 @@ public final class ReaderScreen extends BaseScreen {
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
         recycler.setItemAnimator(null);
-        recycler.setBackgroundColor(ui.colors().background());
+        recycler.setBackgroundColor(readerBackground());
         recycler.setClipToPadding(false);
         recycler.setPadding(0, ui.dp(4), 0, ui.dp(20));
         recycler.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
@@ -130,6 +137,7 @@ public final class ReaderScreen extends BaseScreen {
             @Override
             public void onScrolled(RecyclerView rv, int dx, int dy) {
                 handleReaderScroll(dy);
+                updateReaderProgress();
             }
 
             @Override
@@ -146,7 +154,7 @@ public final class ReaderScreen extends BaseScreen {
         root.addView(recycler, new LinearLayout.LayoutParams(-1, 0, 1f));
 
         applyControlsVisibility(false);
-        root.post(this::restoreReaderPosition);
+        root.post(() -> { restoreReaderPosition(); updateReaderProgress(); });
         return root;
     }
 
@@ -400,7 +408,122 @@ public final class ReaderScreen extends BaseScreen {
         });
         secondary.addView(spacing, ui.weight(44));
         box.addView(secondary, new LinearLayout.LayoutParams(-1, -2));
+
+        LinearLayout readerTools = ui.row();
+        readerTools.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(3));
+        Button brightness = ui.smallButton("☀ " + preferences.readerBrightnessPercent() + "%", false);
+        brightness.setOnClickListener(v -> cycleBrightness());
+        readerTools.addView(brightness, ui.weight(44));
+
+        Button theme = ui.smallButton(readerThemeLabel(), false);
+        theme.setOnClickListener(v -> cycleReaderTheme());
+        readerTools.addView(theme, ui.weight(44));
+
+        Button note = ui.smallButton(preferences.serviceNote(serviceId).isEmpty()
+                ? local("✎ ملاحظة", "✎ Note", "✎ Σημείωση")
+                : local("✎ تعديل الملاحظة", "✎ Edit note", "✎ Ἐπεξεργασία"), false);
+        note.setOnClickListener(v -> showNoteDialog());
+        readerTools.addView(note, ui.weight(44));
+
+        Button share = ui.smallButton(local("↗ مشاركة", "↗ Share", "↗ Κοινοποίηση"), false);
+        share.setOnClickListener(v -> shareCurrentSegment());
+        readerTools.addView(share, ui.weight(44));
+        box.addView(readerTools, new LinearLayout.LayoutParams(-1, -2));
+
+        readerProgress = ui.infoBadge(local("تقدم القراءة: 0%", "Reading progress: 0%", "Πρόοδος: 0%"));
+        readerProgress.setGravity(Gravity.CENTER);
+        box.addView(readerProgress, ui.margins(-1, -2, 10, 0, 10, 3));
         return box;
+    }
+
+    private void cycleBrightness() {
+        int current = preferences.readerBrightnessPercent();
+        int next = current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100;
+        preferences.setReaderBrightnessPercent(next);
+        applyReaderWindowPreferences();
+        host.navigate("reader", serviceId);
+    }
+
+    private String readerThemeLabel() {
+        String theme = preferences.readerTheme();
+        if ("sepia".equals(theme)) return local("ورقي", "Sepia", "Σέπια");
+        if ("night".equals(theme)) return local("ليلي", "Night", "Νύχτα");
+        return local("ثيم النظام", "System theme", "Θέμα συστήματος");
+    }
+
+    private void cycleReaderTheme() {
+        String current = preferences.readerTheme();
+        preferences.setReaderTheme("system".equals(current) ? "sepia" : "sepia".equals(current) ? "night" : "system");
+        saveReaderPosition();
+        host.navigate("reader", serviceId);
+    }
+
+    private void showNoteDialog() {
+        EditText input = new EditText(host.activity());
+        input.setText(preferences.serviceNote(serviceId));
+        input.setMinLines(4);
+        input.setGravity(Gravity.TOP | (preferences.isRtl() ? Gravity.RIGHT : Gravity.LEFT));
+        input.setHint(local("اكتب ملاحظة شخصية تحفظ على هذا الجهاز فقط", "Write a private note stored only on this device", "Γράψε προσωπικὴ σημείωση"));
+        int padding = ui.dp(18);
+        LinearLayout wrapper = new LinearLayout(host.activity());
+        wrapper.setPadding(padding, ui.dp(8), padding, 0);
+        wrapper.addView(input, new LinearLayout.LayoutParams(-1, -2));
+        new AlertDialog.Builder(host.activity())
+                .setTitle(local("ملاحظة شخصية", "Private note", "Προσωπικὴ σημείωση"))
+                .setView(wrapper)
+                .setPositiveButton(local("حفظ", "Save", "Ἀποθήκευση"), (dialog, which) -> {
+                    preferences.setServiceNote(serviceId, input.getText().toString());
+                    Toast.makeText(host.activity(), local("تم حفظ الملاحظة محليًا", "Note saved locally", "Ἡ σημείωση ἀποθηκεύτηκε"), Toast.LENGTH_SHORT).show();
+                    host.navigate("reader", serviceId);
+                })
+                .setNeutralButton(local("حذف", "Delete", "Διαγραφή"), (dialog, which) -> {
+                    preferences.setServiceNote(serviceId, "");
+                    host.navigate("reader", serviceId);
+                })
+                .setNegativeButton(local("إلغاء", "Cancel", "Ἀκύρωση"), null)
+                .show();
+    }
+
+    private void shareCurrentSegment() {
+        if (adapter == null || layoutManager == null) return;
+        int position = Math.max(0, layoutManager.findFirstVisibleItemPosition());
+        String excerpt = adapter.shareTextAt(position);
+        if (excerpt.isEmpty()) {
+            Toast.makeText(host.activity(), local("لا يوجد مقطع قابل للمشاركة هنا", "No shareable passage is visible", "Δὲν ὑπάρχει κείμενο γιὰ κοινοποίηση"), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String title = localized(service.optJSONObject("title"), local("نص كنسي", "Orthodox text", "Ὀρθόδοξο κείμενο"));
+        String source = data.selectedOfficialSource();
+        String footer = "
+
+— " + title + "
+" + local("تاريخ البيانات: ", "Data date: ", "Ἡμερομηνία: ") + data.dataDate();
+        if (source != null && !source.trim().isEmpty()) footer += "
+" + local("المصدر الموثق: ", "Verified source: ", "Ἐπαληθευμένη πηγή: ") + source;
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, title);
+        intent.putExtra(Intent.EXTRA_TEXT, excerpt + footer);
+        host.activity().startActivity(Intent.createChooser(intent, local("مشاركة النص", "Share text", "Κοινοποίηση κειμένου")));
+    }
+
+    private void updateReaderProgress() {
+        if (readerProgress == null || layoutManager == null || adapter == null || adapter.getItemCount() == 0) return;
+        int last = layoutManager.findLastVisibleItemPosition();
+        int percent = Math.max(0, Math.min(100, Math.round(((last + 1) * 100f) / adapter.getItemCount())));
+        readerProgress.setText(local("تقدم القراءة: ", "Reading progress: ", "Πρόοδος: ") + percent + "%");
+    }
+
+    private int readerBackground() {
+        if ("sepia".equals(preferences.readerTheme())) return Color.rgb(244, 236, 214);
+        if ("night".equals(preferences.readerTheme())) return Color.rgb(9, 17, 29);
+        return ui.colors().background();
+    }
+
+    private void applyReaderWindowPreferences() {
+        WindowManager.LayoutParams attributes = host.activity().getWindow().getAttributes();
+        attributes.screenBrightness = preferences.readerBrightnessPercent() / 100f;
+        host.activity().getWindow().setAttributes(attributes);
     }
 
     private String autoScrollLabel() {
@@ -580,5 +703,8 @@ public final class ReaderScreen extends BaseScreen {
         stopAutoScroll(false);
         saveReaderPosition();
         host.activity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        WindowManager.LayoutParams attributes = host.activity().getWindow().getAttributes();
+        attributes.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE;
+        host.activity().getWindow().setAttributes(attributes);
     }
 }
