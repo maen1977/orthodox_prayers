@@ -188,8 +188,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         String speaker = data.localized(segment.optJSONObject("speaker"), "").trim();
         String text = data.localized(segment.optJSONObject("text"), data.localized(segment.optJSONObject("title"), "")).trim();
         if (text.isEmpty()) return "";
-        return speaker.isEmpty() ? text : speaker + "
-" + text;
+        return speaker.isEmpty() ? text : speaker + "\n" + text;
     }
 
 

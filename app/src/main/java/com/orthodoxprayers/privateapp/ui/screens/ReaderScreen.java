@@ -494,12 +494,11 @@ public final class ReaderScreen extends BaseScreen {
         }
         String title = localized(service.optJSONObject("title"), local("نص كنسي", "Orthodox text", "Ὀρθόδοξο κείμενο"));
         String source = data.selectedOfficialSource();
-        String footer = "
-
-— " + title + "
-" + local("تاريخ البيانات: ", "Data date: ", "Ἡμερομηνία: ") + data.dataDate();
-        if (source != null && !source.trim().isEmpty()) footer += "
-" + local("المصدر الموثق: ", "Verified source: ", "Ἐπαληθευμένη πηγή: ") + source;
+        String footer = "\n\n— " + title + "\n"
+                + local("تاريخ البيانات: ", "Data date: ", "Ἡμερομηνία: ") + data.dataDate();
+        if (source != null && !source.trim().isEmpty()) {
+            footer += "\n" + local("المصدر الموثق: ", "Verified source: ", "Ἐπαληθευμένη πηγή: ") + source;
+        }
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, title);
