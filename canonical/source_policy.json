@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "mode": "strict_fail_closed",
   "calendar": "julian_old_calendar",
   "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — Jordan priority",
@@ -10,7 +10,9 @@
     "never_mix_liturgical_traditions_silently": true,
     "never_generate_scripture_or_liturgical_text_with_ai": true,
     "never_translate_between_language_lanes": true,
-    "never_automatically_diacritize": true
+    "never_automatically_diacritize": true,
+    "local_jurisdiction_lock": "REQUIRED_FOR_DAILY_READINGS",
+    "stale_daily_readings_behavior": "BLOCK_NOT_DISPLAY"
   },
   "source_priority": [
     "orthodox_jordan",
@@ -24,7 +26,11 @@
     "lower_priority_used_only_when_higher_invalid_or_unavailable": true,
     "record_every_fallback_reason": true,
     "orthocal_role": "discovery_only_never_publication_authority",
-    "fail_on_official_conflict": true
+    "fail_on_official_conflict": true,
+    "local_primary_authority": "orthodox_jordan",
+    "local_contract": "canonical/jordan_liturgical_contract.json",
+    "pinned_local_calendar_may_resolve_live_page_failure": true,
+    "never_label_stale_readings_as_today": true
   },
   "scripture_canonical": {
     "mode": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY",
@@ -64,7 +70,10 @@
       "liturgical": "DISABLED; EXACT_OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
       "non_orthodox_source_may_define_liturgical_order": false,
       "cross_language_fallback": false
-    }
+    },
+    "complete_divine_liturgy_claim_requires_machine_gate": true,
+    "unresolved_placeholder_behavior": "BLOCK_PUBLICATION",
+    "daily_scripture_must_match_local_contract": true
   },
   "sources": {
     "orthodox_jordan": {

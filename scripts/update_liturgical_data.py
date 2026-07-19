@@ -514,7 +514,7 @@ def fetch_orthocal_old(day: date, attempts: int = 4) -> dict:
         url,
         headers={
             "Accept": "application/json",
-            "User-Agent": "orthodox-prayers-daily-updater/5.0.1 (+https://github.com/maen1977/orthodox_prayers)",
+            "User-Agent": "orthodox-prayers-daily-updater/5.0.2 (+https://github.com/maen1977/orthodox_prayers)",
         },
     )
     last_error: Exception | None = None
@@ -1275,6 +1275,14 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "translation_status": "verified_daily_overlay_v2",
         "template_id": "library:divine_liturgy",
         "dynamic_date": f"{day:%Y-%m-%d}",
+        "daily_reading_contract": {
+            "authority": "orthodox_jordan",
+            "contract": "canonical/jordan_liturgical_contract.json",
+            "date_iso": f"{day:%Y-%m-%d}",
+            "epistle_canonical": str(epistle.get("integrity", {}).get("canonical_reference") or ""),
+            "gospel_canonical": str(gospel.get("integrity", {}).get("canonical_reference") or ""),
+            "fail_closed": True,
+        },
         "notice": loc(
             "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
             "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
@@ -1387,10 +1395,25 @@ def apply_override(day: date, data: dict) -> dict:
     return data
 
 
+def discovery_readings(day: date, info: dict) -> list[dict]:
+    """Use Orthocal for discovery only; network failure must not stop generation.
+
+    Official Jordan/Jerusalem resolution later replaces these discovery slots.
+    A missing discovery API therefore yields blocked placeholders, never guessed
+    publication references.
+    """
+    if os.getenv("ORTHODOX_DISABLE_DISCOVERY_NETWORK") == "1":
+        return readings_from_orthocal(None, info, day)
+    try:
+        return readings_from_orthocal(fetch_orthocal_old(day), info, day)
+    except Exception as exc:
+        print(f"DISCOVERY_SOURCE_UNAVAILABLE date={day.isoformat()} source=orthocal error={exc}")
+        return readings_from_orthocal(None, info, day)
+
+
 def build_day(day: date) -> dict:
     info = day_info(day)
-    src = fetch_orthocal_old(day)
-    readings = readings_from_orthocal(src, info, day)
+    readings = discovery_readings(day, info)
 
     # Generate the next seven civil days every run. Each compact card carries
     # its own fasting profile and reading references, so the app never reuses
@@ -1400,7 +1423,7 @@ def build_day(day: date) -> dict:
     for i in range(1, 8):
         d = day + timedelta(days=i)
         inf = day_info(d)
-        future_readings = readings_from_orthocal(fetch_orthocal_old(d), inf, d)
+        future_readings = discovery_readings(d, inf)
         upcoming_full_readings[d.isoformat()] = future_readings
         refs = reading_references(future_readings)
         upcoming.append({
@@ -1418,7 +1441,7 @@ def build_day(day: date) -> dict:
     ns_info = day_info(ns)
     ns_readings = upcoming_full_readings.get(ns.isoformat())
     if ns_readings is None:
-        ns_readings = readings_from_orthocal(fetch_orthocal_old(ns), ns_info, ns)
+        ns_readings = discovery_readings(ns, ns_info)
     ns_refs = reading_references(ns_readings)
 
     today_service = build_liturgy_service("divine_liturgy", day, info, readings, "خدمة اليوم")
@@ -1542,8 +1565,9 @@ def main() -> None:
     for generated_service in SERVICES_DIR.glob("*.json"):
         if generated_service.name != "library.json":
             generated_service.unlink()
-    ASSET_TODAY.parent.mkdir(parents=True, exist_ok=True)
-    ASSET_TODAY.write_text(out, encoding="utf-8")
+    # Deliberately do not write the Android embedded asset here. This generator
+    # produces an untrusted candidate. scripts/update.py copies it into the app
+    # only after the strict Jordan/date/readings/Liturgy gate has passed.
     active_ids = [service.get("id") for service in data.get("services", []) if service.get("id")]
     manifest = {
         "schema_version": 5,

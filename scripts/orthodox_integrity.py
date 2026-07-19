@@ -1151,6 +1151,68 @@ def _official_evidence_from_result(result: SourceResult, priority: int, official
     )
 
 
+
+
+def _pinned_jordan_calendar_evidence(target: date, policy: dict[str, Any]) -> OfficialEvidence | None:
+    """Resolve a date from the pinned official Jordan calendar contract.
+
+    The Jordan daily webpage is sometimes stale or contains placeholder content.
+    A pinned record is accepted only when it chains an official Jordan day
+    classification to the already-pinned Orthodox Sunday-cycle references.
+    It never creates or translates Scripture text.
+    """
+    contract_path = ROOT / str(policy.get("reference_policy", {}).get(
+        "local_contract", "canonical/jordan_liturgical_contract.json"
+    ))
+    if not contract_path.is_file():
+        return None
+    registry = load_json(contract_path)
+    entry = registry.get("records", {}).get(target.isoformat())
+    if not isinstance(entry, dict):
+        return None
+    epistle = str(entry.get("epistle_reference") or "").strip()
+    gospel = str(entry.get("gospel_reference") or "").strip()
+    if not epistle or not gospel:
+        return OfficialEvidence(
+            "orthodox_jordan", 1, True, str(contract_path.relative_to(ROOT)),
+            "partial", target.isoformat(), reason="سجل الأردن المثبت لا يحتوي مرجعي الرسالة والإنجيل كاملين."
+        )
+    try:
+        ep_canonical, _ = parse_reference(epistle)
+        go_canonical, _ = parse_reference(gospel)
+    except Exception as exc:
+        return OfficialEvidence(
+            "orthodox_jordan", 1, True, str(contract_path.relative_to(ROOT)),
+            "invalid", target.isoformat(), reason=f"مرجع غير صالح في عقد الأردن: {exc}"
+        )
+    if ep_canonical != entry.get("epistle_canonical") or go_canonical != entry.get("gospel_canonical"):
+        return OfficialEvidence(
+            "orthodox_jordan", 1, True, str(contract_path.relative_to(ROOT)),
+            "conflict", target.isoformat(), reason="البصمة القانونية للمرجع لا تطابق عقد الأردن المثبت."
+        )
+    chain = entry.get("authority_chain")
+    if not isinstance(chain, list) or not any(
+        isinstance(item, dict) and item.get("id") == "orthodox_jordan_2026_calendar" for item in chain
+    ):
+        return OfficialEvidence(
+            "orthodox_jordan", 1, True, str(contract_path.relative_to(ROOT)),
+            "invalid", target.isoformat(), reason="عقد الأردن لا يحتوي سلسلة إثبات محلية رسمية."
+        )
+    source = next(
+        (item for item in chain if isinstance(item, dict) and item.get("id") == "orthodox_jordan_2026_calendar"),
+        {},
+    )
+    return OfficialEvidence(
+        "orthodox_jordan", 1, True, str(source.get("url") or contract_path.relative_to(ROOT)),
+        "current", target.isoformat(), epistle, gospel,
+        sha256=sha256_text(json.dumps(entry, ensure_ascii=False, sort_keys=True)),
+        reason=(
+            f"قفل الأردن المثبت: {entry.get('day_label_ar', target.isoformat())}; "
+            "تصنيف اليوم من التقويم الأردني الرسمي والمرجعان من دورة الأحد الأرثوذكسية المثبتة."
+        ),
+    )
+
+
 def _fixed_feast_evidence(target: date, policy: dict[str, Any]) -> OfficialEvidence:
     update = load_update_module()
     info = update.day_info(target)
@@ -1270,13 +1332,48 @@ def _calendar_compatible_antioch(target: date, raw: OfficialEvidence, fixed: Off
 
 def resolve_official_date(target: date, policy: dict[str, Any], *, allow_network: bool) -> tuple[Any, list[OfficialEvidence]]:
     jordan_cfg = policy["sources"]["orthodox_jordan"]
+    pinned_jordan = _pinned_jordan_calendar_evidence(target, policy)
+    live_jordan: OfficialEvidence | None = None
     if allow_network:
         jordan_result = fetch_orthodox_jordan(target, jordan_cfg)
-        jordan = _official_evidence_from_result(jordan_result, 1)
+        live_jordan = _official_evidence_from_result(jordan_result, 1)
+
+    # A current, parseable live Jordan page wins. When that page is stale,
+    # poisoned, unavailable, or undated, a date-specific pinned Jordan calendar
+    # record may replace it. Without either proof the local lane remains blocked
+    # and the resolver may use lower sources only for dates not covered by a
+    # mandatory local record.
+    if live_jordan is not None and live_jordan.publishable_for(("epistle_reference", "gospel_reference")):
+        if pinned_jordan is not None:
+            try:
+                live_pair = (parse_reference(live_jordan.epistle_reference or "")[0], parse_reference(live_jordan.gospel_reference or "")[0])
+                pinned_pair = (parse_reference(pinned_jordan.epistle_reference or "")[0], parse_reference(pinned_jordan.gospel_reference or "")[0])
+            except Exception as exc:
+                jordan = OfficialEvidence(
+                    "orthodox_jordan", 1, True, live_jordan.url, "conflict", target.isoformat(),
+                    reason=f"تعذر مقارنة صفحة الأردن الحية بعقد الأردن المثبت: {exc}"
+                )
+            else:
+                if live_pair != pinned_pair:
+                    jordan = OfficialEvidence(
+                        "orthodox_jordan", 1, True, live_jordan.url, "conflict", target.isoformat(),
+                        reason=f"تعارض صفحة الأردن الحية مع عقد اليوم المثبت: live={live_pair}, pinned={pinned_pair}."
+                    )
+                else:
+                    jordan = live_jordan
+                    jordan.reason = (jordan.reason or "") + " طابقت صفحة الأردن الحية عقد اليوم الأردني المثبت."
+        else:
+            jordan = live_jordan
+    elif pinned_jordan is not None:
+        jordan = pinned_jordan
+        if live_jordan is not None:
+            jordan.reason = (jordan.reason or "") + f" تعذر الاعتماد على الصفحة الحية: {live_jordan.status}; {live_jordan.reason or 'لا سبب إضافي'}."
+    elif live_jordan is not None:
+        jordan = live_jordan
     else:
         jordan = OfficialEvidence(
             "orthodox_jordan", 1, True, jordan_cfg["url"], "offline", target.isoformat(),
-            reason="الفحص المحلي لا يجلب الإنترنت؛ تُختبر قواعد المصدر بواسطة fixtures مستقلة."
+            reason="لا يوجد اتصال ولا سجل أردني مثبت لهذا التاريخ."
         )
 
     jerusalem = _fixed_feast_evidence(target, policy)
@@ -1496,6 +1593,8 @@ def main() -> None:
                     "selected_source": today_resolution.selected_source,
                     "selected_priority": today_resolution.selected_priority,
                     "fallback_trace": today_resolution.fallback_trace,
+                    "jurisdiction_contract": "canonical/jordan_liturgical_contract.json",
+                    "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
                 }
                 data["integrity"] = {
                     "status": "VERIFIED_OFFICIAL_SOURCES",
@@ -1522,6 +1621,8 @@ def main() -> None:
                     "selected_source": today_resolution.selected_source,
                     "selected_priority": today_resolution.selected_priority,
                     "fallback_trace": today_resolution.fallback_trace,
+                    "jurisdiction_contract": "canonical/jordan_liturgical_contract.json",
+                    "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
                 }
                 data["integrity"] = {
                     "status": "VERIFIED_OFFICIAL_SOURCES",

@@ -60,6 +60,19 @@ def main() -> None:
     run("scripts/validate_daily_native_content.py", "data/calendar/today.json", "--require-complete")
     run("scripts/mark_partial_daily.py", "--date", args.date, "--mode", mode)
 
+    # This is the final fail-closed local-jurisdiction gate. It is deliberately
+    # executed before the generated payload is copied into the Android assets
+    # or signed, so manual/non-workflow update paths cannot bypass Jordan's
+    # date, Epistle, Gospel, and Divine Liturgy contract.
+    run(
+        "scripts/validate_jordan_liturgical_contract.py",
+        "data/calendar/today.json",
+        "--expected-date",
+        args.date,
+        "--require-jordan-authority",
+        "--require-complete-liturgy",
+    )
+
     asset = ROOT / "app/src/main/assets/data/today.json"
     asset.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "data/calendar/today.json", asset)

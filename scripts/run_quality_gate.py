@@ -42,6 +42,7 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
             [sys.executable, "scripts/validate_content_deduplication.py"],
             [sys.executable, "scripts/validate_content_review.py"],
             [sys.executable, "scripts/validate_official_sources.py"],
+            [sys.executable, "scripts/validate_jordan_liturgical_contract.py"],
             [sys.executable, "scripts/validate_no_placeholder_guidance.py"],
             [sys.executable, "scripts/validate_liturgical_schedule.py", "data/calendar/today.json"],
             quality,

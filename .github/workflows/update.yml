@@ -80,6 +80,7 @@ jobs:
         run: |
           python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --unsigned
           python scripts/validate_daily_ui_localizations.py data/calendar/today.json
+          python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
 
       - name: Clear only today's language-lane publication slots
         if: steps.resolve.outputs.mode == 'update'
@@ -196,13 +197,15 @@ jobs:
           cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
           cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
           mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
-          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/sign_language_lanes.py" "$TARGET/scripts/"
+          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/validate_jordan_liturgical_contract.py" "$SOURCE/scripts/orthodox_integrity.py" "$SOURCE/scripts/official_sources.py" "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/sign_language_lanes.py" "$TARGET/scripts/"
           cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
+          cp "$SOURCE/canonical/jordan_liturgical_contract.json" "$TARGET/canonical/"
 
           cd "$TARGET"
           python scripts/sign_daily_data.py --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/sign_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+          python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
 
       - name: Remove private key before commit or network publication
         if: ${{ always() && steps.resolve.outputs.mode == 'update' }}

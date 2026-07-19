@@ -514,7 +514,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     }
 
     private JSONObject findCurrentReading(JSONObject previous) {
-        JSONArray readings = repository.today().optJSONArray("readings");
+        JSONArray readings = repository.currentReadings();
         if (readings == null) return null;
         String kind = previous.optString("kind", "");
         JSONObject previousIntegrity = previous.optJSONObject("integrity");

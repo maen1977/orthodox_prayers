@@ -231,8 +231,19 @@ public final class DataRepository {
         return index == null ? null : index.optJSONArray("documents");
     }
 
+    public JSONArray currentReadings() {
+        if (!isTodayCurrent()) return new JSONArray();
+        JSONArray readings = today().optJSONArray("readings");
+        return readings == null ? new JSONArray() : readings;
+    }
+
     public JSONObject findService(String id) {
-        JSONObject dynamic = findServiceInArray(today().optJSONArray("services"), id);
+        // Never compose a service for today with a stale signed overlay. The
+        // static service remains available, but yesterday's Epistle/Gospel are
+        // not allowed to appear under today's date.
+        JSONObject dynamic = isTodayCurrent()
+                ? findServiceInArray(today().optJSONArray("services"), id)
+                : null;
         JSONObject selected = dynamic != null ? dynamic : findServiceInArray(library().optJSONArray("services"), id);
         if (selected == null) {
             JSONObject index = searchIndex();
@@ -243,14 +254,14 @@ public final class DataRepository {
 
     public ArrayList<JSONObject> servicesByCategory(String category) {
         LinkedHashMap<String, JSONObject> unique = new LinkedHashMap<>();
-        collectByCategory(today().optJSONArray("services"), category, unique);
+        if (isTodayCurrent()) collectByCategory(today().optJSONArray("services"), category, unique);
         collectByCategory(library().optJSONArray("services"), category, unique);
         return new ArrayList<>(unique.values());
     }
 
     public ArrayList<JSONObject> allServices() {
         LinkedHashMap<String, JSONObject> unique = new LinkedHashMap<>();
-        collectAll(today().optJSONArray("services"), unique);
+        if (isTodayCurrent()) collectAll(today().optJSONArray("services"), unique);
         collectAll(library().optJSONArray("services"), unique);
         JSONObject index = searchIndex();
         if (index != null) collectAll(index.optJSONArray("reader_services"), unique);

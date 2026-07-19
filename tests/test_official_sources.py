@@ -79,7 +79,7 @@ class OfficialSourcePolicyTests(unittest.TestCase):
     def test_next_sunday_uses_verified_orthodox_cycle_only_after_fixed_feast_check(self):
         resolution, _ = self.integrity.resolve_official_date(date(2026, 7, 19), self.policy, allow_network=False)
         self.assertEqual("PUBLISH", resolution.decision)
-        self.assertEqual("official_greek_orthodox", resolution.selected_source)
+        self.assertEqual("orthodox_jordan", resolution.selected_source)
         self.assertEqual("Romans 15:1-7", resolution.fields["epistle_reference"])
         self.assertEqual("Matthew 9:27-35", resolution.fields["gospel_reference"])
 

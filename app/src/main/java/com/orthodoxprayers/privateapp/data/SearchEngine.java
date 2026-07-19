@@ -21,7 +21,11 @@ public final class SearchEngine {
         ArrayList<SearchResult> empty = new ArrayList<>();
         if (needle.isEmpty()) return empty;
         Map<String, SearchResult> bestById = new LinkedHashMap<>();
-        scan(repository.today().optJSONArray("services"), repository, needle, bestById);
+        // Never surface services from a signed payload for a different date as
+        // today's liturgical content. Static library search remains available.
+        if (repository.isTodayCurrent()) {
+            scan(repository.today().optJSONArray("services"), repository, needle, bestById);
+        }
         scan(repository.library().optJSONArray("services"), repository, needle, bestById);
         scanIndex(repository.searchDocuments(), repository, needle, bestById);
         ArrayList<SearchResult> results = new ArrayList<>(bestById.values());

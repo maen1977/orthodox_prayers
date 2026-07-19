@@ -18,9 +18,24 @@ public final class ReadingsScreen extends BaseScreen {
     @Override
     public View createView() {
         UiKit.Page page = page(local("قراءات اليوم", "Today's Readings", "Ἀναγνώσματα Ἡμέρας"), true);
+        if (!data.isTodayCurrent()) {
+            TextView blocked = centered(
+                    local(
+                            "حُجبت قراءات النسخة القديمة لأنها لا تخص تاريخ اليوم في الأردن. اضغط تحديث؛ لن يعرض التطبيق رسالة أو إنجيلاً قديمين باسم اليوم.",
+                            "Stale readings are blocked because they do not belong to today's Jordan date. Refresh to obtain the verified local readings.",
+                            "Τὰ παλαιὰ ἀναγνώσματα ἀποκρύπτονται, διότι δὲν ἀνήκουν στὴ σημερινὴ ἡμερομηνία τῆς Ἰορδανίας."
+                    ),
+                    15, ui.colors().primaryText(), true
+            );
+            add(page.root, blocked, 18, 10);
+            Button refresh = ui.button(local("تحديث قراءات الأردن الآن", "Refresh Jordan readings now", "Ἐνημέρωση ἀναγνωσμάτων Ἰορδανίας"), true);
+            refresh.setOnClickListener(v -> host.refreshData());
+            add(page.root, refresh, 2, 12);
+            return page.scroll;
+        }
         TextView source = centered(localized(data.today().optJSONObject("source_note"), ""), 13, ui.colors().secondaryText(), false);
         add(page.root, source, 12, 8);
-        JSONArray readings = data.today().optJSONArray("readings");
+        JSONArray readings = data.currentReadings();
         if (readings != null) {
             for (int i = 0; i < readings.length(); i++) {
                 JSONObject reading = readings.optJSONObject(i);

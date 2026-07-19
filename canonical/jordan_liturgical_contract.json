@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "jurisdiction": "Greek Orthodox Archdiocese of Jordan — Jerusalem Patriarchate old calendar",
+  "mode": "FAIL_CLOSED_LOCAL_AUTHORITY_LOCK",
+  "human_daily_review_required": false,
+  "ai_may_generate_liturgical_or_scripture_text": false,
+  "rule_ar": "لا تُنشر قراءات اليوم إلا بعد مطابقة التاريخ الكنسي الأردني والمرجعين القانونيين. عند غياب الإثبات تُحجب القراءات ولا تُعرض بيانات يوم سابق باسم اليوم.",
+  "records": {
+    "2026-07-19": {
+      "civil_date": "2026-07-19",
+      "julian_date": "2026-07-06",
+      "day_classification": "seventh_sunday_of_matthew",
+      "day_label_ar": "الأحد السابع من متى",
+      "epistle_reference": "Romans 15:1-7",
+      "epistle_canonical": "ROM.15.1-7",
+      "gospel_reference": "Matthew 9:27-35",
+      "gospel_canonical": "MAT.9.27-35",
+      "authority_chain": [
+        {
+          "id": "orthodox_jordan_2026_calendar",
+          "role": "official_jordan_day_classification",
+          "url": "https://orthodoxjo.tv/wp-content/uploads/2025/12/Artboard-7.jpg",
+          "evidence": "The official Jordan July 2026 church calendar identifies 19 July as the Seventh Sunday of Matthew."
+        },
+        {
+          "id": "official_greek_orthodox_sunday_cycle",
+          "role": "canonical_reading_pair_for_day_classification",
+          "registry": "canonical/orthodox_sunday_lectionary.json",
+          "cycle_number": 7
+        }
+      ],
+      "required_daily_markers": [
+        "[البروكيمنن]",
+        "[فصل من رسالة اليوم]",
+        "[فصل الإنجيل المعيّن لهذا اليوم]"
+      ]
+    },
+    "2026-07-26": {
+      "civil_date": "2026-07-26",
+      "julian_date": "2026-07-13",
+      "day_classification": "sunday_of_the_holy_fathers_fourth_ecumenical_council",
+      "day_label_ar": "أحد الآباء القديسين للمجمع المسكوني الرابع",
+      "epistle_reference": "Titus 3:8-15",
+      "epistle_canonical": "TIT.3.8-15",
+      "gospel_reference": "Matthew 5:14-19",
+      "gospel_canonical": "MAT.5.14-19",
+      "authority_chain": [
+        {
+          "id": "orthodox_jordan_2026_calendar",
+          "role": "official_jordan_day_classification",
+          "url": "https://orthodoxjo.tv/wp-content/uploads/2025/12/Artboard-7.jpg",
+          "evidence": "The official Jordan July 2026 church calendar identifies 26 July as the Sunday of the Holy Fathers."
+        },
+        {
+          "id": "jerusalem_old_calendar_fixed_sunday",
+          "role": "canonical_reading_pair_for_day_classification",
+          "registry": "canonical/jerusalem_fixed_feast_lectionary.json"
+        }
+      ],
+      "required_daily_markers": [
+        "[البروكيمنن]",
+        "[فصل من رسالة اليوم]",
+        "[فصل الإنجيل المعيّن لهذا اليوم]"
+      ]
+    }
+  }
+}
