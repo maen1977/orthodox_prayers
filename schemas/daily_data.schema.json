@@ -80,7 +80,8 @@
     },
     "integrity": {
       "type": "object",
-      "oneOf": [
+      "$comment": "The verified-source and native-text integrity envelopes may coexist after release-candidate generation; anyOf is intentional because oneOf rejects a valid combined envelope.",
+      "anyOf": [
         {
           "required": [
             "status",

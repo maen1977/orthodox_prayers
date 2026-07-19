@@ -1,3 +1,9 @@
+# 5.0.4 R8
+
+- Fixed JSON Schema integrity-envelope overlap: valid release candidates may satisfy both verified-source and native-text envelopes.
+- Added regression coverage for legacy-only, native-only, combined, and empty integrity objects.
+- Version code 50004.
+
 # 5.0.1 R5 — إصلاح استيراد Activity بعد ترقية Predictive Back
 
 - إعادة `import android.app.Activity;` إلى `MainActivity.java` لأن عقد `ScreenHost.activity()` ما زال يعيد النوع `Activity`.

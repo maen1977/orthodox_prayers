@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.3"', build)
-        self.assertIn("versionCode = 50003", build)
+        self.assertIn('versionName = "5.0.4"', build)
+        self.assertIn("versionCode = 50004", build)
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -41,6 +41,29 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertFalse(metadata["human_review_required"])
         self.assertEqual("automatic_native_language_policy_enforced", metadata["review_status"])
         self.assertEqual("CONTENT_RIGHTS.md", metadata["rights_notice"])
+
+    def test_integrity_schema_accepts_compatible_overlapping_envelopes(self):
+        schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
+        integrity_schema = schema["properties"]["integrity"]
+        validator = Draft202012Validator(integrity_schema)
+
+        native_only = {
+            "native_text_contract": "canonical/source_native_contract.json",
+            "legacy_arabic_scripture_snapshot": "QUARANTINED_NOT_PUBLICATION_AUTHORITY",
+        }
+        verified_only = {
+            "status": "VERIFIED_OFFICIAL_SOURCES",
+            "ai_scripture_translation_used": False,
+            "ai_liturgical_translation_used": False,
+        }
+        combined = {**native_only, **verified_only}
+
+        self.assertEqual([], list(validator.iter_errors(native_only)))
+        self.assertEqual([], list(validator.iter_errors(verified_only)))
+        self.assertEqual([], list(validator.iter_errors(combined)))
+        self.assertNotEqual([], list(validator.iter_errors({})))
+        self.assertIn("anyOf", integrity_schema)
+        self.assertNotIn("oneOf", integrity_schema)
 
     def test_canonical_asset_and_signatures_are_identical(self):
         self.assertEqual(self.today_path.read_bytes(), self.asset_path.read_bytes())
