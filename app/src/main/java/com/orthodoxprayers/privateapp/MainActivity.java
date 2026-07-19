@@ -1,5 +1,6 @@
 package com.orthodoxprayers.privateapp;
 
+import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.content.pm.PackageManager;
 import android.graphics.Color;

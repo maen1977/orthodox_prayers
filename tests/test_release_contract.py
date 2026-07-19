@@ -108,6 +108,7 @@ class ReleaseContractTests(unittest.TestCase):
         source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
         self.assertIn("extends ComponentActivity", source)
+        self.assertIn("import android.app.Activity;", source)
         self.assertIn("getOnBackPressedDispatcher().addCallback", source)
         self.assertIn("new OnBackPressedCallback(true)", source)
         self.assertIn("handleOnBackPressed", source)

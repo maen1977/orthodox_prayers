@@ -1,3 +1,10 @@
+# 5.0.1 R5 — إصلاح استيراد Activity بعد ترقية Predictive Back
+
+- إعادة `import android.app.Activity;` إلى `MainActivity.java` لأن عقد `ScreenHost.activity()` ما زال يعيد النوع `Activity`.
+- الإبقاء على `ComponentActivity` و`OnBackPressedDispatcher` دون الرجوع إلى `onBackPressed()` القديم.
+- توسيع اختبار عقد Predictive Back ليتحقق من وجود استيراد `Activity` المطلوب.
+- نجاح 95 اختبارًا آليًا، وفحوص المحتوى والتوقيعات واللغات وجدولة منتصف الليل.
+
 # 5.0.1 R4 — إصلاح Predictive Back وAndroid Lint
 
 - استبدال `Activity.onBackPressed()` بـ AndroidX `OnBackPressedDispatcher`.
