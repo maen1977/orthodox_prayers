@@ -1,3 +1,12 @@
+# 5.0.1 R4 — إصلاح Predictive Back وAndroid Lint
+
+- استبدال `Activity.onBackPressed()` بـ AndroidX `OnBackPressedDispatcher`.
+- تحويل `MainActivity` إلى `ComponentActivity` وربط `OnBackPressedCallback` مع مكدس التنقل الداخلي.
+- إزالة التسجيل اليدوي المكرر عبر `OnBackInvokedDispatcher`.
+- إضافة اعتماد `androidx.activity:activity:1.10.1`.
+- إضافة اختبار عقد إصدار يمنع رجوع `onBackPressed()` القديم.
+- نجاح 95 اختبارًا آليًا وفحوص Workflow وGradle Wrapper والأسرار والتوقيعات واللغات.
+
 # 5.0.1 R3 — إصلاح تجميع Java للقارئ
 
 - إصلاح محارف السطر الجديد في مشاركة المقطع وتذييل المصدر داخل `ReaderAdapter.java` و`ReaderScreen.java`.

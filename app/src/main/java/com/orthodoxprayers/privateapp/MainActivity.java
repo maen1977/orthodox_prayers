@@ -1,6 +1,5 @@
 package com.orthodoxprayers.privateapp;
 
-import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -18,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
 
 import com.orthodoxprayers.privateapp.data.DataRepository;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
@@ -50,7 +52,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public final class MainActivity extends Activity implements ScreenHost {
+public final class MainActivity extends ComponentActivity implements ScreenHost {
     private static final String TAG = "OrthodoxNavigation";
     private static final String STATE_STACK = "screen_stack";
     public static final String EXTRA_SCREEN = "com.orthodoxprayers.privateapp.extra.SCREEN";
@@ -101,12 +103,12 @@ public final class MainActivity extends Activity implements ScreenHost {
         applyLaunchIntent(getIntent(), false);
         show(backStack.peekLast());
         observedAmmanDate = repository.currentAmmanDate();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
-                    android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
-                    this::goBack
-            );
-        }
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                goBack();
+            }
+        });
     }
 
     @Override
@@ -277,8 +279,6 @@ public final class MainActivity extends Activity implements ScreenHost {
         }
     }
 
-    @Override
-    public void onBackPressed() { goBack(); }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

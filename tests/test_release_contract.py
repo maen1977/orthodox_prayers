@@ -104,6 +104,17 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("ExistingWorkPolicy.KEEP", coordinator)
         self.assertNotIn("enqueueUniquePeriodicWork", coordinator)
 
+    def test_predictive_back_uses_androidx_dispatcher(self):
+        source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
+        build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
+        self.assertIn("extends ComponentActivity", source)
+        self.assertIn("getOnBackPressedDispatcher().addCallback", source)
+        self.assertIn("new OnBackPressedCallback(true)", source)
+        self.assertIn("handleOnBackPressed", source)
+        self.assertNotIn("public void onBackPressed()", source)
+        self.assertNotIn("getOnBackInvokedDispatcher()", source)
+        self.assertIn('androidx.activity:activity:1.10.1', build)
+
     def test_fixed_bottom_navigation_and_system_insets_remain(self):
         source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
         self.assertIn("shell.addView(contentHost, new LinearLayout.LayoutParams(-1, 0, 1f))", source)

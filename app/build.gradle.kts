@@ -70,6 +70,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.activity:activity:1.10.1")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.work:work-runtime:2.11.2")
     testImplementation("junit:junit:4.13.2")
