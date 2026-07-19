@@ -1,5 +1,5 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "mode": "strict_fail_closed",
   "calendar": "julian_old_calendar",
   "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — Jordan priority",
@@ -30,7 +30,14 @@
     "local_primary_authority": "orthodox_jordan",
     "local_contract": "canonical/jordan_liturgical_contract.json",
     "pinned_local_calendar_may_resolve_live_page_failure": true,
-    "never_label_stale_readings_as_today": true
+    "never_label_stale_readings_as_today": true,
+    "jordan_old_calendar_compatible_reference_sources": [
+      "orthodox_jordan",
+      "jerusalem_patriarchate",
+      "official_greek_orthodox",
+      "orthodox_church_in_america"
+    ],
+    "ordinary_weekday_rule": "Jordan old-calendar date/feast lock + official Byzantine regular-cycle reference authority"
   },
   "scripture_canonical": {
     "mode": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_ONLY",
@@ -101,7 +108,9 @@
     "official_greek_orthodox": {
       "priority": 4,
       "url_template": "https://www.goarch.org/chapel/calendar?month={month}&year={year}",
-      "role": "official_greek_orthodox_last_fallback_for_lectionary_and_cross_check"
+      "role": "official_greek_orthodox_last_fallback_for_lectionary_and_cross_check",
+      "regular_cycle_url_template": "https://digitalchantstand.goarch.org/goa/dcs/h/s/{year}/{month:02d}/{day:02d}/h91/en/index.html",
+      "regular_cycle_role": "official_byzantine_regular_cycle_machine_gate"
     },
     "orthocal_old": {
       "url_template": "https://orthocal.info/api/julian/{year}/{month}/{day}/",

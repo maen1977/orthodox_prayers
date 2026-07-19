@@ -41,6 +41,30 @@ class JordanLiturgicalContractTests(unittest.TestCase):
         jordan = next(item for item in evidence if item.id == "orthodox_jordan")
         self.assertEqual("current", jordan.status)
 
+    def test_dcs_regular_cycle_parser_for_2026_07_20(self):
+        sample = """
+        2026 On Monday July 20
+        The Readings from the Regular Cycle
+        The Epistle
+        Monday of the 8th Week
+        1 Cor. 9:13 – 18
+        The Gospel
+        Monday of the 8th Week of Matthew
+        Matt. 16:1 – 6
+        """
+        self.assertEqual("1 Corinthians 9:13-18", self.integrity._dcs_reference_after_heading(sample, "The Epistle"))
+        self.assertEqual("Matthew 16:1-6", self.integrity._dcs_reference_after_heading(sample, "The Gospel"))
+
+    def test_2026_07_20_offline_uses_pinned_three_source_cross_check(self):
+        resolution, evidence = self.integrity.resolve_official_date(date(2026, 7, 20), self.policy, allow_network=False)
+        self.assertEqual("PUBLISH", resolution.decision)
+        self.assertEqual("orthodox_church_in_america", resolution.selected_source)
+        self.assertEqual("1 Corinthians 9:13-18", resolution.fields["epistle_reference"])
+        self.assertEqual("Matthew 16:1-6", resolution.fields["gospel_reference"])
+        pinned = next(item for item in evidence if item.id == "orthodox_church_in_america")
+        self.assertEqual("current", pinned.status)
+
+
     def test_validator_rejects_wrong_jordan_readings(self):
         payload = copy.deepcopy(self.today)
         payload["date_iso"] = "2026-07-19"
@@ -61,7 +85,8 @@ class JordanLiturgicalContractTests(unittest.TestCase):
                 "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
             },
             "source_evidence": [{
-                "id": "orthodox_jordan", "status": "current", "date_iso": "2026-07-19"
+                "id": "orthodox_jordan", "status": "current", "date_iso": "2026-07-19",
+                "epistle_reference": "Romans 15:1-7", "gospel_reference": "Matthew 9:27-35"
             }],
             "readings": [
                 {"kind": "epistle", "integrity": {"canonical_reference": "ROM.15.1-7"}, "body": {"en": ep_body}},
@@ -89,6 +114,41 @@ class JordanLiturgicalContractTests(unittest.TestCase):
         errors = self.validator.validate_payload(
             payload, expected_date="2026-07-19", require_record=True,
             require_authority=True, require_complete_liturgy=True
+        )
+        self.assertEqual([], errors)
+
+    def test_non_record_day_accepts_current_jordan_compatible_official_source(self):
+        payload = {
+            "date_iso": "2026-07-20",
+            "publication": {
+                "selected_source": "official_greek_orthodox",
+                "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
+                "authority_mode": "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE",
+            },
+            "source_evidence": [{
+                "id": "official_greek_orthodox", "status": "current", "date_iso": "2026-07-20",
+                "epistle_reference": "1 Corinthians 9:13-18", "gospel_reference": "Matthew 16:1-6",
+            }],
+            "readings": [
+                {"kind": "epistle", "integrity": {"canonical_reference": "1CO.9.13-18"}, "body": {"en": "verified epistle"}},
+                {"kind": "gospel", "integrity": {"canonical_reference": "MAT.16.1-6"}, "body": {"en": "verified gospel"}},
+            ],
+            "services": [{
+                "id": "divine_liturgy", "dynamic_date": "2026-07-20",
+                "daily_reading_contract": {
+                    "authority": "orthodox_jordan", "date_iso": "2026-07-20",
+                    "epistle_canonical": "1CO.9.13-18", "gospel_canonical": "MAT.16.1-6",
+                },
+                "segment_replacements": {
+                    "[فصل من رسالة اليوم]": {"en": "verified epistle"},
+                    "[فصل الإنجيل المعيّن لهذا اليوم]": {"en": "verified gospel"},
+                },
+                "inline_replacements": {},
+            }],
+        }
+        errors = self.validator.validate_payload(
+            payload, expected_date="2026-07-20", require_record=False,
+            require_authority=True, require_complete_liturgy=False,
         )
         self.assertEqual([], errors)
 

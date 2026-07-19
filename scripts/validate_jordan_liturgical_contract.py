@@ -20,6 +20,13 @@ MARKERS = {
     "epistle": "[فصل من رسالة اليوم]",
     "gospel": "[فصل الإنجيل المعيّن لهذا اليوم]",
 }
+APPROVED_REFERENCE_AUTHORITIES = {
+    "orthodox_jordan",
+    "jerusalem_patriarchate",
+    "official_greek_orthodox",
+    "orthodox_church_in_america",
+}
+
 INCOMPLETE_TOKENS = (
     "[طروبارية اليوم]", "[القنداق]", "[اسم الإنجيلي]",
     "[فصل من رسالة اليوم]", "[فصل الإنجيل المعيّن لهذا اليوم]",
@@ -70,35 +77,41 @@ def validate_payload(payload: dict[str, Any], *, expected_date: str | None, requ
     date_iso = str(payload.get("date_iso") or "")
     if expected_date and date_iso != expected_date:
         errors.append(f"date mismatch: expected {expected_date}, got {date_iso or '<missing>'}")
+
     records = load(CONTRACT).get("records", {})
     record = records.get(date_iso)
     publication = payload.get("publication") if isinstance(payload.get("publication"), dict) else {}
+    selected = str(publication.get("selected_source") or "")
+    evidence = payload.get("source_evidence") if isinstance(payload.get("source_evidence"), list) else []
+
+    # Historical checked-in snapshots that predate the jurisdiction contract are
+    # still structurally valid for repository regression tests. The strict lock
+    # is mandatory only for a pinned date or an explicit publication/release gate.
+    if not isinstance(record, dict) and not (require_record or require_authority or require_complete_liturgy):
+        return errors
+
+    if publication.get("jurisdiction_lock") != "ORTHODOX_JORDAN_FAIL_CLOSED":
+        errors.append("publication is missing ORTHODOX_JORDAN_FAIL_CLOSED lock")
+    if publication.get("authority_mode") not in {None, "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE"}:
+        errors.append("publication authority_mode is unsupported")
+
     if require_authority:
-        selected = publication.get("selected_source")
-        evidence = payload.get("source_evidence") if isinstance(payload.get("source_evidence"), list) else []
-        jordan_current = any(
+        current_selected = any(
             isinstance(item, dict)
-            and item.get("id") == "orthodox_jordan"
+            and item.get("id") == selected
             and item.get("status") == "current"
             and item.get("date_iso") == date_iso
+            and str(item.get("epistle_reference") or "").strip()
+            and str(item.get("gospel_reference") or "").strip()
             for item in evidence
         )
-        if selected != "orthodox_jordan" or not jordan_current:
-            errors.append("current Jordan authority evidence is required; lower-priority fallback cannot publish daily readings")
-    if not isinstance(record, dict):
-        if require_record:
-            errors.append(f"no pinned Jordan liturgical record for {date_iso}")
-        if require_complete_liturgy:
-            try:
-                liturgy = service(payload, "divine_liturgy")
-                replacements = liturgy.get("segment_replacements") if isinstance(liturgy.get("segment_replacements"), dict) else {}
-                for marker in MARKERS.values():
-                    value = replacements.get(marker)
-                    if not isinstance(value, dict) or not any(str(value.get(lang) or "").strip() for lang in ("ar", "en", "el")):
-                        errors.append(f"required daily Liturgy marker is empty: {marker}")
-            except ValueError as exc:
-                errors.append(str(exc))
-        return errors
+        if selected not in APPROVED_REFERENCE_AUTHORITIES or not current_selected:
+            errors.append("current Jordan-compatible official reference evidence is required for the selected source")
+        if isinstance(record, dict) and selected != "orthodox_jordan":
+            errors.append("a pinned Jordan date must publish through orthodox_jordan authority")
+
+    if not isinstance(record, dict) and require_record:
+        errors.append(f"no pinned Jordan liturgical record for {date_iso}")
 
     try:
         readings = reading_map(payload)
@@ -108,42 +121,46 @@ def validate_payload(payload: dict[str, Any], *, expected_date: str | None, requ
         errors.append("payload must contain exactly one epistle and one gospel")
         return errors
 
-    expected = {
-        "epistle": str(record.get("epistle_canonical") or ""),
-        "gospel": str(record.get("gospel_canonical") or ""),
-    }
+    actual: dict[str, str] = {}
     for kind in ("epistle", "gospel"):
         try:
-            actual = canonical(readings[kind])
+            actual[kind] = canonical(readings[kind])
         except ValueError as exc:
-            errors.append(str(exc)); continue
-        if actual != expected[kind]:
-            errors.append(f"Jordan {kind} mismatch for {date_iso}: expected {expected[kind]}, got {actual}")
+            errors.append(str(exc))
+            continue
         bodies = readings[kind].get("body") if isinstance(readings[kind].get("body"), dict) else {}
         if not any(str(bodies.get(lang) or "").strip() for lang in ("ar", "en", "el")):
             errors.append(f"{kind} has no verified native text in any language lane")
 
-    if publication.get("selected_source") != "orthodox_jordan":
-        errors.append("publication.selected_source must be orthodox_jordan for a pinned Jordan date")
-    if publication.get("jurisdiction_lock") != "ORTHODOX_JORDAN_FAIL_CLOSED":
-        errors.append("publication is missing ORTHODOX_JORDAN_FAIL_CLOSED lock")
+    if isinstance(record, dict):
+        expected = {
+            "epistle": str(record.get("epistle_canonical") or ""),
+            "gospel": str(record.get("gospel_canonical") or ""),
+        }
+        for kind in ("epistle", "gospel"):
+            if actual.get(kind) and actual[kind] != expected[kind]:
+                errors.append(f"Jordan {kind} mismatch for {date_iso}: expected {expected[kind]}, got {actual[kind]}")
+    else:
+        expected = actual
 
     try:
         liturgy = service(payload, "divine_liturgy")
     except ValueError as exc:
-        errors.append(str(exc)); return errors
+        errors.append(str(exc))
+        return errors
     if liturgy.get("dynamic_date") != date_iso:
         errors.append("Divine Liturgy overlay date does not match payload date")
     daily_contract = liturgy.get("daily_reading_contract") if isinstance(liturgy.get("daily_reading_contract"), dict) else {}
     if daily_contract.get("authority") != "orthodox_jordan" or daily_contract.get("date_iso") != date_iso:
         errors.append("Divine Liturgy is missing its Jordan daily-reading contract")
     for kind in ("epistle", "gospel"):
-        if daily_contract.get(f"{kind}_canonical") != expected[kind]:
+        if actual.get(kind) and daily_contract.get(f"{kind}_canonical") != actual[kind]:
             errors.append(f"Divine Liturgy {kind} canonical metadata mismatch")
         replacements = liturgy.get("segment_replacements") if isinstance(liturgy.get("segment_replacements"), dict) else {}
         rendered = replacements.get(MARKERS[kind])
         if not isinstance(rendered, dict):
-            errors.append(f"Divine Liturgy missing {kind} replacement"); continue
+            errors.append(f"Divine Liturgy missing {kind} replacement")
+            continue
         bodies = readings[kind].get("body") if isinstance(readings[kind].get("body"), dict) else {}
         for lang in ("ar", "en", "el"):
             body = str(bodies.get(lang) or "").strip()
@@ -157,7 +174,7 @@ def validate_payload(payload: dict[str, Any], *, expected_date: str | None, requ
         if not isinstance(base_service, dict):
             errors.append("static Divine Liturgy template is missing")
         else:
-            rendered = json.dumps(base_service, ensure_ascii=False)
+            rendered_base = json.dumps(base_service, ensure_ascii=False)
             replacements = liturgy.get("segment_replacements") if isinstance(liturgy.get("segment_replacements"), dict) else {}
             inline = liturgy.get("inline_replacements") if isinstance(liturgy.get("inline_replacements"), dict) else {}
             for marker, localized in {**replacements, **inline}.items():
@@ -165,11 +182,12 @@ def validate_payload(payload: dict[str, Any], *, expected_date: str | None, requ
                     replacement = next((str(localized.get(lang) or "") for lang in ("ar", "en", "el") if str(localized.get(lang) or "").strip()), "")
                 else:
                     replacement = str(localized or "")
-                rendered = rendered.replace(marker, replacement)
+                rendered_base = rendered_base.replace(marker, replacement)
             for token in INCOMPLETE_TOKENS:
-                if token in rendered:
+                if token in rendered_base:
                     errors.append(f"complete Divine Liturgy claim blocked by unresolved token: {token}")
-            for marker in record.get("required_daily_markers") or []:
+            required_markers = record.get("required_daily_markers") if isinstance(record, dict) else MARKERS.values()
+            for marker in required_markers or []:
                 value = replacements.get(marker)
                 if not isinstance(value, dict) or not any(str(value.get(lang) or "").strip() for lang in ("ar", "en", "el")):
                     errors.append(f"required daily Liturgy marker is empty: {marker}")

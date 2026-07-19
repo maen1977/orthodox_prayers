@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "calendar": "julian_old_calendar",
-  "purpose": "Pinned official weekday lectionary cross-checks; discovery APIs alone never authorize publication.",
+  "purpose": "Pinned official weekday lectionary cross-checks for Jordan old-calendar operation; live official regular-cycle evidence is preferred, and discovery APIs alone never authorize publication.",
   "dates": {
     "2026-07-14": {
       "source_id": "orthodox_church_in_america",
@@ -11,6 +11,31 @@
       "epistle_reference": "1 Corinthians 6:20-7:12",
       "gospel_reference": "Matthew 14:1-13",
       "note_ar": "مرجعا اليوم مثبتان من رزنامة كنسية أرثوذكسية رسمية ومتطابقان مع اكتشاف التقويم اليولياني القديم. نص الآيات العربي يؤخذ مستقلاً من النسخة العامة الملكية المثبتة في canonical/scripture."
+    },
+    "2026-07-20": {
+      "source_id": "official_greek_orthodox_consensus",
+      "official": true,
+      "calendar_compatibility": "JORDAN_JERUSALEM_OLD_CALENDAR_REGULAR_CYCLE",
+      "jordan_calendar_url": "https://orthodoxjo.tv/wp-content/uploads/2025/12/Artboard-7.jpg",
+      "goarch_dcs_url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/20/h91/en/index.html",
+      "oca_url": "https://www.oca.org/readings/daily/2026/07/20",
+      "epistle_reference": "1 Corinthians 9:13-18",
+      "gospel_reference": "Matthew 16:1-6",
+      "authority_chain": [
+        {
+          "id": "orthodox_jordan_2026_calendar",
+          "role": "civil_to_old_calendar_and_fixed_feast_compatibility"
+        },
+        {
+          "id": "goarch_digital_chant_stand",
+          "role": "official_byzantine_regular_cycle"
+        },
+        {
+          "id": "orthodox_church_in_america",
+          "role": "independent_official_orthodox_cross_check"
+        }
+      ],
+      "note_ar": "20 تموز 2026 يوافق 7 تموز قديم في رزنامة الأردن. زوج الدورة العادية مثبت من المنصة الرقمية الرسمية للروم الأرثوذكس ومطابق لقراءات OCA الرسمية؛ لا يُستخدم عيد 20 تموز في التقويم الجديد لتجاوز تقويم الأردن القديم."
     }
   }
 }

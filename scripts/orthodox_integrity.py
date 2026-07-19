@@ -724,6 +724,73 @@ def parse_goarch_fasting_code(block: str) -> str | None:
     return None
 
 
+DCS_BOOK_EXPANSIONS = {
+    "1 Cor.": "1 Corinthians", "2 Cor.": "2 Corinthians",
+    "Rom.": "Romans", "Gal.": "Galatians", "Eph.": "Ephesians",
+    "Phil.": "Philippians", "Col.": "Colossians",
+    "1 Thess.": "1 Thessalonians", "2 Thess.": "2 Thessalonians",
+    "1 Tim.": "1 Timothy", "2 Tim.": "2 Timothy", "Tit.": "Titus",
+    "Heb.": "Hebrews", "Jas.": "James", "1 Pet.": "1 Peter",
+    "2 Pet.": "2 Peter", "1 Jn.": "1 John", "2 Jn.": "2 John",
+    "3 Jn.": "3 John", "Matt.": "Matthew", "Mk.": "Mark",
+    "Lk.": "Luke", "Jn.": "John",
+}
+
+
+def _normalize_dcs_reference(value: str) -> str:
+    value = normalize_text(value).replace("–", "-").replace("—", "-")
+    value = re.sub(r"\s*[-]\s*", "-", value)
+    value = re.sub(r"\s*:\s*", ":", value)
+    for short, full in sorted(DCS_BOOK_EXPANSIONS.items(), key=lambda item: len(item[0]), reverse=True):
+        if value.startswith(short):
+            value = full + value[len(short):]
+            break
+    return re.sub(r"\s+", " ", value).strip(" .")
+
+
+def _dcs_reference_after_heading(text: str, heading: str) -> str | None:
+    lines = [normalize_text(line).strip() for line in text.splitlines() if normalize_text(line).strip()]
+    for index, line in enumerate(lines):
+        if line.casefold() != heading.casefold():
+            continue
+        for candidate in lines[index + 1:index + 9]:
+            if re.search(r"\d+\s*:\s*\d+", candidate) and len(candidate) < 140:
+                normalized = _normalize_dcs_reference(candidate)
+                try:
+                    parse_reference(normalized)
+                except Exception:
+                    continue
+                return normalized
+    return None
+
+
+def fetch_goarch_regular_cycle(target: date, cfg: dict[str, Any]) -> SourceResult:
+    """Fetch only the Byzantine regular-cycle readings from official DCS.
+
+    This endpoint labels the regular cycle explicitly, avoiding new-calendar
+    fixed-feast readings that must not override Jordan/Jerusalem old-calendar use.
+    """
+    template = cfg.get("regular_cycle_url_template")
+    if not template:
+        return SourceResult("official_greek_orthodox", cfg.get("role", "official"), cfg.get("url_template", ""), "unavailable", target.isoformat(), note="regular-cycle URL is not configured")
+    url = template.format(year=target.year, month=target.month, day=target.day)
+    try:
+        raw, _ = http_get(url)
+        text = html_to_text(raw)
+        if "The Readings from the Regular Cycle" not in text:
+            return SourceResult("official_greek_orthodox", cfg.get("regular_cycle_role", cfg.get("role", "official")), url, "unusable", target.isoformat(), note="صفحة DCS لا تحتوي عنوان قراءات الدورة العادية.")
+        date_tokens = (str(target.year), target.strftime("%B"), str(target.day))
+        if not all(token.casefold() in text.casefold() for token in date_tokens):
+            return SourceResult("official_greek_orthodox", cfg.get("regular_cycle_role", cfg.get("role", "official")), url, "stale", note="تعذر إثبات تاريخ صفحة DCS للدورة العادية.")
+        epistle = _dcs_reference_after_heading(text, "The Epistle")
+        gospel = _dcs_reference_after_heading(text, "The Gospel")
+        if not epistle or not gospel:
+            return SourceResult("official_greek_orthodox", cfg.get("regular_cycle_role", cfg.get("role", "official")), url, "partial", target.isoformat(), epistle, gospel, "تعذر استخراج زوج الدورة العادية كاملًا من DCS.")
+        return SourceResult("official_greek_orthodox", cfg.get("regular_cycle_role", cfg.get("role", "official")), url, "current", target.isoformat(), epistle, gospel, note=f"sha256={sha256_bytes(raw)}")
+    except Exception as exc:
+        return SourceResult("official_greek_orthodox", cfg.get("regular_cycle_role", cfg.get("role", "official")), url, "unavailable", target.isoformat(), note=str(exc))
+
+
 def fetch_goarch(target: date, cfg: dict[str, Any]) -> SourceResult:
     url = cfg["url_template"].format(month=target.month, year=target.year)
     try:
@@ -1291,8 +1358,17 @@ def _pinned_weekday_lectionary_evidence(target: date, policy: dict[str, Any]) ->
             "orthodox_church_in_america", 5, True, url, "unavailable", target.isoformat(),
             reason="لا يوجد سجل يومي رسمي مثبت لهذا التاريخ."
         )
+    chain = entry.get("authority_chain")
+    if isinstance(chain, list):
+        ids = {str(item.get("id")) for item in chain if isinstance(item, dict)}
+        required = {"orthodox_jordan_2026_calendar", "goarch_digital_chant_stand", "orthodox_church_in_america"}
+        if not required.issubset(ids):
+            return OfficialEvidence(
+                "orthodox_church_in_america", 5, True, str(entry.get("url") or url), "invalid", target.isoformat(),
+                reason="سجل اليوم المثبت لا يحتوي سلسلة التحقق الثلاثية المطلوبة."
+            )
     return OfficialEvidence(
-        "orthodox_church_in_america", 5, True, str(entry.get("url") or url), "current", target.isoformat(),
+        "orthodox_church_in_america", 5, True, str(entry.get("goarch_dcs_url") or entry.get("url") or url), "current", target.isoformat(),
         entry.get("epistle_reference"), entry.get("gospel_reference"),
         sha256=sha256_text(json.dumps(entry, ensure_ascii=False, sort_keys=True)),
         reason=str(entry.get("note_ar") or "سجل يومي رسمي مثبت مع مطابقة مستقلة للتقويم القديم."),
@@ -1333,8 +1409,12 @@ def _calendar_compatible_antioch(target: date, raw: OfficialEvidence, fixed: Off
 def resolve_official_date(target: date, policy: dict[str, Any], *, allow_network: bool) -> tuple[Any, list[OfficialEvidence]]:
     jordan_cfg = policy["sources"]["orthodox_jordan"]
     pinned_jordan = _pinned_jordan_calendar_evidence(target, policy)
+    pinned_weekday = _pinned_weekday_lectionary_evidence(target, policy)
+    trusted_pinned_date = (
+        pinned_jordan is not None and pinned_jordan.status == "current"
+    ) or pinned_weekday.status == "current"
     live_jordan: OfficialEvidence | None = None
-    if allow_network:
+    if allow_network and not trusted_pinned_date:
         jordan_result = fetch_orthodox_jordan(target, jordan_cfg)
         live_jordan = _official_evidence_from_result(jordan_result, 1)
 
@@ -1379,7 +1459,7 @@ def resolve_official_date(target: date, policy: dict[str, Any], *, allow_network
     jerusalem = _fixed_feast_evidence(target, policy)
     greek_cycle = _official_sunday_cycle_evidence(target, policy)
 
-    if allow_network:
+    if allow_network and not trusted_pinned_date:
         antioch_raw = fetch_antioch_guide(target, policy["sources"]["antioch_patriarchate"], allow_network=True)
         antioch = _calendar_compatible_antioch(target, antioch_raw, jerusalem, greek_cycle)
     else:
@@ -1389,10 +1469,49 @@ def resolve_official_date(target: date, policy: dict[str, Any], *, allow_network
             reason="لم يُفحص الدليل السنوي في الوضع غير المتصل."
         )
 
-    # The live GOARCH page is useful evidence, but its civil fixed-feast calendar
-    # must not override Jerusalem usage. A pinned shared Sunday cycle is safer.
-    greek = greek_cycle
-    oca = _pinned_weekday_lectionary_evidence(target, policy)
+    # Use the official DCS *regular-cycle* endpoint for ordinary weekdays.
+    # It explicitly separates the movable Byzantine cycle from civil-date fixed
+    # feasts, so a new-calendar feast can never override Jordan/Jerusalem usage.
+    if allow_network and not trusted_pinned_date:
+        regular_result = fetch_goarch_regular_cycle(target, policy["sources"]["official_greek_orthodox"])
+        regular_cycle = _official_evidence_from_result(regular_result, 4, "official_greek_orthodox")
+    else:
+        regular_cycle = OfficialEvidence(
+            "official_greek_orthodox", 4, True,
+            str(policy["sources"]["official_greek_orthodox"].get("regular_cycle_url_template") or ""),
+            "offline", target.isoformat(), reason="لم تُفحص منصة DCS الرسمية في الوضع غير المتصل."
+        )
+
+    # On Sundays the pinned Sunday-cycle record is authoritative and the live
+    # DCS pair is an independent consistency check. A disagreement blocks.
+    if target.weekday() == 6 and greek_cycle.status == "current":
+        if regular_cycle.status == "current":
+            try:
+                pinned_pair = (parse_reference(greek_cycle.epistle_reference or "")[0], parse_reference(greek_cycle.gospel_reference or "")[0])
+                live_pair = (parse_reference(regular_cycle.epistle_reference or "")[0], parse_reference(regular_cycle.gospel_reference or "")[0])
+            except Exception as exc:
+                greek = OfficialEvidence("official_greek_orthodox", 4, True, regular_cycle.url, "conflict", target.isoformat(), reason=f"تعذر فحص توافق دورة الأحد مع DCS: {exc}")
+            else:
+                if pinned_pair != live_pair:
+                    greek = OfficialEvidence("official_greek_orthodox", 4, True, regular_cycle.url, "conflict", target.isoformat(), reason=f"تعارض دورة الأحد المثبتة مع DCS: pinned={pinned_pair}, live={live_pair}")
+                else:
+                    greek = greek_cycle
+                    greek.url = regular_cycle.url
+                    greek.sha256 = regular_cycle.sha256
+                    greek.reason = (greek.reason or "") + " وطابقت منصة DCS الرسمية."
+        else:
+            greek = greek_cycle
+    elif jerusalem.status == "current":
+        # Fixed Jerusalem feast remains priority 2. Keep DCS only as comparison
+        # evidence and never let it override the old-calendar feast.
+        greek = regular_cycle
+        if greek.status == "current":
+            greek.status = "comparison_only"
+            greek.reason = "قراءة الدورة العادية متاحة للمقارنة، لكن عيد القدس الثابت هو المرجع الأعلى لهذا اليوم."
+    else:
+        greek = regular_cycle
+
+    oca = pinned_weekday
     evidence = [jordan, jerusalem, antioch, greek, oca]
     return strict_resolve(evidence), evidence
 
@@ -1595,6 +1714,7 @@ def main() -> None:
                     "fallback_trace": today_resolution.fallback_trace,
                     "jurisdiction_contract": "canonical/jordan_liturgical_contract.json",
                     "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
+                    "authority_mode": "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE",
                 }
                 data["integrity"] = {
                     "status": "VERIFIED_OFFICIAL_SOURCES",
@@ -1623,6 +1743,7 @@ def main() -> None:
                     "fallback_trace": today_resolution.fallback_trace,
                     "jurisdiction_contract": "canonical/jordan_liturgical_contract.json",
                     "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
+                    "authority_mode": "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE",
                 }
                 data["integrity"] = {
                     "status": "VERIFIED_OFFICIAL_SOURCES",
