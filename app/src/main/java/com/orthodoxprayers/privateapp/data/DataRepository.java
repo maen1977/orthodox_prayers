@@ -56,6 +56,7 @@ public final class DataRepository {
     private JSONObject arabicSearchIndex;
     private JSONObject greekSearchIndex;
     private JSONObject englishSearchIndex;
+    private JSONObject sourceRegistry;
     private volatile boolean refreshInProgress;
     private volatile RefreshState refreshState = RefreshState.IDLE;
     private volatile String refreshMessage = "";
@@ -91,6 +92,7 @@ public final class DataRepository {
         arabicSearchIndex = loadJsonAsset("data/search/search_index_ar.json");
         greekSearchIndex = loadJsonAsset("data/search/search_index_el.json");
         englishSearchIndex = loadJsonAsset("data/search/search_index_en.json");
+        sourceRegistry = loadJsonAsset("data/source_registry.json");
         today = loadBestToday();
     }
 
@@ -127,6 +129,33 @@ public final class DataRepository {
     public String selectedOfficialSource() {
         JSONObject publication = today().optJSONObject("publication");
         return publication == null ? "" : publication.optString("selected_source", "");
+    }
+
+    public JSONObject sourceRegistry() { return sourceRegistry == null ? new JSONObject() : sourceRegistry; }
+
+    public JSONArray registeredSources() {
+        JSONArray sources = sourceRegistry().optJSONArray("sources");
+        return sources == null ? new JSONArray() : sources;
+    }
+
+    public JSONObject sourceById(String sourceId) {
+        if (sourceId == null || sourceId.trim().isEmpty()) return null;
+        JSONArray sources = registeredSources();
+        for (int i = 0; i < sources.length(); i++) {
+            JSONObject source = sources.optJSONObject(i);
+            if (source != null && sourceId.equals(source.optString("id"))) return source;
+        }
+        return null;
+    }
+
+    public String sourceName(String sourceId) {
+        JSONObject source = sourceById(sourceId);
+        return source == null ? sourceId : localized(source.optJSONObject("name"), sourceId);
+    }
+
+    public String sourceUrl(String sourceId) {
+        JSONObject source = sourceById(sourceId);
+        return source == null ? "" : source.optString("url", "").trim();
     }
 
 

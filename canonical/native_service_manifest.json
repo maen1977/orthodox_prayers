@@ -184,6 +184,34 @@
         "source_id": "goarch_online_chapel",
         "url": "https://www.goarch.org/-/daily-orthros"
       }
+    },
+    "pre_communion_prayers": {
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      }
+    },
+    "thanksgiving_after_communion": {
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+      },
+      "el": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "url": "https://apostoliki-diakonia.gr/"
+      }
     }
   }
 }

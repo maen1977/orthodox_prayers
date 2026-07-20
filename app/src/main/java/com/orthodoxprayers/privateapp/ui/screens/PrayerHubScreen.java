@@ -23,6 +23,7 @@ public final class PrayerHubScreen extends BaseScreen {
         add(page.root, hint, 12, 6);
         addCategory(page, "daily", local("الصلوات اليومية", "Daily prayers", "Καθημερινὲς προσευχές"));
         addCategory(page, "basic", local("صلوات أساسية", "Basic prayers", "Βασικὲς προσευχές"));
+        addCategory(page, "communion", local("صلوات المناولة المقدسة", "Holy Communion prayers", "Εὐχαὶ Θείας Μεταλήψεως"));
         return page.scroll;
     }
 

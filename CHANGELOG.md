@@ -1,3 +1,13 @@
+# 5.0.12 R16 — Liturgy, Communion prayers, and source transparency
+
+- Added a user-visible registry of the active Orthodox, Scripture, and liturgical sources.
+- Added source links to Settings, prayer readers, and Scripture detail screens.
+- Separated personal Communion preparation from date-dependent Orthros and Liturgy propers.
+- Added dedicated pre- and post-Communion service entries with truthful completeness states.
+- Removed unregistered quiet-prayer prose from the Divine Liturgy template.
+- Removed the unproven “Full Divine Liturgy” claim and added a machine-checked completeness gate.
+- Added R16 source/Communion validators and regression tests.
+
 # 5.0.11 R15 — HomeScreen Java compile fix
 
 - Added the missing `ThemePalette` import used by the next-Sunday card.

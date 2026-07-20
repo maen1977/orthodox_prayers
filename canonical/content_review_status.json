@@ -66,6 +66,14 @@
     "next_sunday_full_liturgy": {
       "status": "automatic_verified_dynamic_with_pinned_static",
       "evidence": "data/calendar/today.json#services/next_sunday_full_liturgy/integrity"
+    },
+    "pre_communion_prayers": {
+      "status": "automatic_pinned_exact_text_verified",
+      "evidence": "scripts/validate_public_source_registry.py"
+    },
+    "thanksgiving_after_communion": {
+      "status": "automatic_pinned_exact_text_verified",
+      "evidence": "scripts/validate_public_source_registry.py"
     }
   }
 }

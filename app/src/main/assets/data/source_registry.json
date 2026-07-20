@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "generated_from": [
+    "canonical/native_language_sources.json",
+    "canonical/native_service_manifest.json",
+    "canonical/official_source_registry.json",
+    "canonical/static_prayer_sources.json",
+    "data/scripture/native/*/manifest.json"
+  ],
+  "policy": {
+    "ar": "هذه الصفحة تعرض المصادر المسجلة فعليًا في عقود التطبيق. وجود المصدر لا يعني أن كل محتواه منسوخ داخل التطبيق؛ المحتوى يُنشر فقط وفق الترخيص وحالة التحقق.",
+    "en": "This page lists sources actually registered in the app contracts. A listed source does not mean all of its content is copied into the app; publication remains license- and verification-gated.",
+    "el": "Ἡ σελίδα παραθέτει τὶς πηγὲς ποὺ εἶναι πράγματι καταχωρισμένες στὰ συμβόλαια τῆς ἐφαρμογῆς."
+  },
+  "sources": [
+    {
+      "id": "antioch_archdiocese_tripoli_ar",
+      "name": {
+        "ar": "أبرشية طرابلس والكورة وتوابعهما للروم الأرثوذكس",
+        "en": "Greek Orthodox Archdiocese of Tripoli, Koura and Dependencies",
+        "el": "Greek Orthodox Archdiocese of Tripoli, Koura and Dependencies"
+      },
+      "url": "https://archtripoli.org/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "prokeimenon"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prokeimenon.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "antioch_patriarchate_ar",
+      "name": {
+        "ar": "بطريركية أنطاكية وسائر المشرق — العربية",
+        "en": "بطريركية أنطاكية وسائر المشرق — العربية",
+        "el": "بطريركية أنطاكية وسائر المشرق — العربية"
+      },
+      "url": "https://www.antiochpatriarchate.org/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "calendar",
+        "lectionary",
+        "prayers",
+        "liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: calendar, lectionary, prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "church_of_greece_apostoliki_diakonia",
+      "name": {
+        "ar": "خدمة الرسالة الرسولية التابعة لكنيسة اليونان",
+        "en": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "el": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος"
+      },
+      "url": "https://apostoliki-diakonia.gr/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "scripture_corpus",
+        "calendar",
+        "saints",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "النصوص اليونانية الكنسية والكتابية الأصلية المتاحة.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "goarch_online_chapel",
+      "name": {
+        "ar": "المصلّى الإلكتروني لأبرشية الروم الأرثوذكس في أميركا",
+        "en": "Greek Orthodox Archdiocese of America — Online Chapel",
+        "el": "Greek Orthodox Archdiocese of America — Online Chapel"
+      },
+      "url": "https://www.goarch.org/chapel",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "daily_calendar",
+        "daily_reading_references",
+        "daily_reading_text",
+        "fasting",
+        "saints"
+      ],
+      "used_for": {
+        "ar": "مراجع القراءات والأعياد والنصوص الإنجليزية الرسمية المتاحة.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "goarch_synekdemos",
+      "name": {
+        "ar": "كتاب الصلوات اليومية Synekdemos",
+        "en": "GOARCH Synekdemos",
+        "el": "GOARCH Synekdemos"
+      },
+      "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "jerusalem_patriarchate_en",
+      "name": {
+        "ar": "بطريركية الروم الأرثوذكس المقدسية — الإنجليزية",
+        "en": "Greek Orthodox Patriarchate of Jerusalem — English",
+        "el": "Greek Orthodox Patriarchate of Jerusalem — English"
+      },
+      "url": "https://en.jerusalem-patriarchate.info/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "calendar",
+        "feasts",
+        "liturgy",
+        "scripture_when_explicitly_published"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: calendar, feasts, liturgy, scripture_when_explicitly_published.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "metropolis_toronto_liturgy_el",
+      "name": {
+        "ar": "مطرانية تورونتو للروم الأرثوذكس — اليونانية",
+        "en": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy",
+        "el": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy"
+      },
+      "url": "https://goarchdiocese.ca/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "metropolis_toronto_liturgy_en",
+      "name": {
+        "ar": "مطرانية تورونتو للروم الأرثوذكس — الإنجليزية",
+        "en": "Greek Orthodox Metropolis of Toronto (Canada) — English Liturgy",
+        "el": "Greek Orthodox Metropolis of Toronto (Canada) — English Liturgy"
+      },
+      "url": "https://goarchdiocese.ca/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "oca_official_english",
+      "name": {
+        "ar": "الكنيسة الأرثوذكسية في أميركا — الإنجليزية",
+        "en": "Orthodox Church in America — English",
+        "el": "Orthodox Church in America — English"
+      },
+      "url": "https://www.oca.org/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "daily_reading_references",
+        "daily_reading_text"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: daily_reading_references, daily_reading_text.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "orthodox_jordan",
+      "name": {
+        "ar": "مطرانية الروم الأرثوذكس في الأردن",
+        "en": "مطرانية الروم الأرثوذكس في الأردن",
+        "el": "مطرانية الروم الأرثوذكس في الأردن"
+      },
+      "url": "https://orthodoxjordan.org/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "daily_calendar",
+        "daily_reading_references",
+        "prayers",
+        "fasting",
+        "saints",
+        "liturgy"
+      ],
+      "used_for": {
+        "ar": "التقويم الأردني القديم، الصوم، أسماء الصلوات العربية، وصلوات المناولة والمراجع المحلية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20"
+    },
+    {
+      "id": "ebible_arabic_van_dyck",
+      "name": {
+        "ar": "الكتاب المقدس العربي — فان دايك",
+        "en": "الكتاب المقدس باللغة العربية، فان دايك",
+        "el": "الكتاب المقدس باللغة العربية، فان دايك"
+      },
+      "url": "https://ebible.org/find/details.php?id=arb-vd",
+      "official": false,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "scripture_corpus"
+      ],
+      "used_for": {
+        "ar": "نص الرسالة والإنجيل بالعربية من مجموعة عامة الملكية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Public Domain",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20",
+      "distribution_status": "REDISTRIBUTABLE",
+      "content_sha256": "6db0bdf57f13ac19f511c95d777bd46c1cfe2eb4e0fc7bd1b43f4b4e7c9aecbc",
+      "source_snapshot_sha256": "c393da8bd8bfd485f6906702e559b868fcfb83e4c94b76d63b96adb84837cd62",
+      "source_title": "الكتاب المقدس باللغة العربية، فان دايك"
+    },
+    {
+      "id": "ebible_greek_byzantine_1904",
+      "name": {
+        "ar": "العهد الجديد البطريركي اليوناني 1904",
+        "en": "1904 Patriarchal Greek New Testament",
+        "el": "1904 Patriarchal Greek New Testament"
+      },
+      "url": "https://ebible.org/find/details.php?id=grcbyz",
+      "official": false,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "scripture_corpus"
+      ],
+      "used_for": {
+        "ar": "نص الرسالة والإنجيل باليونانية من مجموعة عامة الملكية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Public Domain",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20",
+      "distribution_status": "REDISTRIBUTABLE",
+      "content_sha256": "e5d4e5e44ed76c9597d52c04c4ed555b292d79c171c43c72cf3e7fb0f7b951c9",
+      "source_snapshot_sha256": "0a2af3439977eece7eed0ef6f31fd684065a4580b2d95d8936dbfab62b24ffad",
+      "source_title": "1904 Patriarchal Greek New Testament"
+    },
+    {
+      "id": "ebible_world_english_bible",
+      "name": {
+        "ar": "الكتاب المقدس الإنجليزي العالمي",
+        "en": "World English Bible Classic",
+        "el": "World English Bible Classic"
+      },
+      "url": "https://ebible.org/find/details.php?id=engwebp",
+      "official": false,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "scripture_corpus"
+      ],
+      "used_for": {
+        "ar": "نص الرسالة والإنجيل بالإنجليزية من مجموعة عامة الملكية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο."
+      },
+      "rights": "Public Domain",
+      "permission_confirmed": true,
+      "last_verified": "2026-07-20",
+      "distribution_status": "REDISTRIBUTABLE",
+      "content_sha256": "b6464a2477a3cf7bba3633b5400ca9bbdefd50cc130169e2dbe878cd9ff4c653",
+      "source_snapshot_sha256": "53feb24694bdd43fab1077bfcefd8571da43e20b84e289393ef9b0c54ce34202",
+      "source_title": "World English Bible"
+    }
+  ]
+}

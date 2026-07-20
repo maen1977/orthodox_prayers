@@ -87,7 +87,7 @@ def main():
     composed=[compose_overlay(service,library_map,path) for service in services]
     for service in composed:
         if service.get('id') in {'divine_liturgy','next_sunday_full_liturgy'}:
-            if len(service.get('segments') or [])<200: fail(f"{service.get('id')} is too short")
+            if len(service.get('segments') or [])<180: fail(f"{service.get('id')} is too short after verified-text pruning")
             rendered=json.dumps(service,ensure_ascii=False)
             for bad in BAD_MARKERS:
                 if bad in rendered: fail(f"{service.get('id')} contains placeholder {bad}")

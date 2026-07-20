@@ -88,7 +88,8 @@ class ReaderServicePruningTests(unittest.TestCase):
         )
         library = {item["id"]: item for item in library_payload["services"]}
         composed = MODULE.compose_overlay(overlay, library, ROOT / "data/calendar/today.json")
-        self.assertGreater(len(composed["segments"]), 200)
+        self.assertGreater(len(composed["segments"]), 180)
+        self.assertFalse(any(segment.get("type") == "quiet_prayer" for segment in composed["segments"]))
         for index, segment in enumerate(composed["segments"]):
             key = "title" if segment.get("type") == "section" else "text"
             self.assertTrue(

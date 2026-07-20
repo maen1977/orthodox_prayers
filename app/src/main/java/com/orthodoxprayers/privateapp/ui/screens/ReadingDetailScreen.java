@@ -1,6 +1,8 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,6 +47,28 @@ public final class ReadingDetailScreen extends BaseScreen {
         }
         String source = localized(reading.optJSONObject("source"), "");
         if (!source.isEmpty()) card.addView(centered(source, 12, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 8, 0, 0));
+
+        JSONObject verification = reading.optJSONObject("native_source_verification");
+        JSONObject lane = verification == null ? null : verification.optJSONObject(preferences.effectiveLanguage());
+        String sourceId = lane == null ? "" : lane.optString("source_id", "").trim();
+        String sourceUrl = lane == null ? "" : lane.optString("source_url", "").trim();
+        if (!sourceId.isEmpty()) {
+            card.addView(ui.text(local("المصدر المسجل: ", "Registered source: ", "Καταχωρισμένη πηγή: ") + data.sourceName(sourceId),
+                    12, ui.colors().primaryText(), true), ui.margins(-1, -2, 0, 6, 0, 0));
+        }
+        if (sourceUrl.isEmpty() && !sourceId.isEmpty()) sourceUrl = data.sourceUrl(sourceId);
+        if (!sourceUrl.isEmpty()) {
+            final String url = sourceUrl;
+            Button open = ui.smallButton(local("فتح مصدر القراءة", "Open reading source", "Ἄνοιγμα πηγῆς ἀναγνώσματος"), false);
+            open.setOnClickListener(v -> {
+                try { host.activity().startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))); }
+                catch (Exception ignored) { }
+            });
+            card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
+        }
+        Button allSources = ui.smallButton(local("جميع المصادر والمراجع", "All sources and references", "Ὅλες οἱ πηγές"), false);
+        allSources.setOnClickListener(v -> host.navigate("sources", null));
+        card.addView(allSources, ui.margins(-1, -2, 0, 5, 0, 0));
         add(page.root, card, 12, 16);
         return page.scroll;
     }

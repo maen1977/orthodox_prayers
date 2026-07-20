@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R15"
+PIPELINE_PATCH_LEVEL = "R16"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -23,12 +23,14 @@ def verify_pipeline_patch() -> None:
     fasting_validator_path = ROOT / "scripts/validate_fasting_guidance.py"
     home_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
     settings_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java"
+    sources_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SourcesScreen.java"
     required = {
         str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
         str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
-        str(settings_path.relative_to(ROOT)): "R14_SETTINGS_CLEANUP",
+        str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
+        str(sources_path.relative_to(ROOT)): "المصادر والمراجع",
     }
     actual = {
         str(integrity_path.relative_to(ROOT)): integrity_text,
@@ -36,6 +38,7 @@ def verify_pipeline_patch() -> None:
         str(fasting_validator_path.relative_to(ROOT)): fasting_validator_path.read_text(encoding="utf-8") if fasting_validator_path.is_file() else "",
         str(home_path.relative_to(ROOT)): home_path.read_text(encoding="utf-8") if home_path.is_file() else "",
         str(settings_path.relative_to(ROOT)): settings_path.read_text(encoding="utf-8") if settings_path.is_file() else "",
+        str(sources_path.relative_to(ROOT)): sources_path.read_text(encoding="utf-8") if sources_path.is_file() else "",
     }
     missing = [name for name, marker in required.items() if marker not in actual[name]]
     if missing:
@@ -77,6 +80,8 @@ def main() -> None:
     args = parser.parse_args()
     verify_pipeline_patch()
     os.environ["ORTHODOX_DATE"] = args.date
+    run("scripts/build_public_source_registry.py")
+    run("scripts/validate_public_source_registry.py")
 
     if args.private_key is not None and not args.private_key.is_file():
         raise SystemExit("data-signing private key is missing")
@@ -127,6 +132,7 @@ def main() -> None:
             ("scripts/validate_embedded_app_data.py",),
             ("scripts/validate_static_prayer_sources.py",),
             ("scripts/validate_native_language_packs.py",),
+            ("scripts/validate_public_source_registry.py",),
             ("scripts/validate_reader_services.py",),
             ("scripts/validate_daily_ui_localizations.py", "data/calendar/today.json"),
             ("scripts/validate_scripture_translations.py", "data/calendar/today.json"),
@@ -136,6 +142,7 @@ def main() -> None:
         run("scripts/validate_partial_daily.py", "--expected-date", args.date)
         run("scripts/validate_static_prayer_sources.py")
         run("scripts/validate_reader_services.py")
+        run("scripts/validate_public_source_registry.py")
 
     if args.unsigned:
         remove_stale_daily_signatures(args.date)

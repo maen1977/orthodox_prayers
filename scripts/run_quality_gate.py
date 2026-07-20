@@ -23,6 +23,8 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "scripts/validate_static_prayer_sources.py"],
         [sys.executable, "scripts/validate_native_language_packs.py"],
         [sys.executable, "scripts/validate_native_source_contract.py"],
+        [sys.executable, "scripts/build_public_source_registry.py"],
+        [sys.executable, "scripts/validate_public_source_registry.py"],
     ]
     if strict_native_lanes:
         # Strict lane integrity rejects copied Arabic and wrong-script content.

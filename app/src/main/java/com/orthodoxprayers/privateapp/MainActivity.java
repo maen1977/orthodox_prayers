@@ -41,6 +41,7 @@ import com.orthodoxprayers.privateapp.ui.screens.ReadingsScreen;
 import com.orthodoxprayers.privateapp.ui.screens.SearchScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ServiceListScreen;
 import com.orthodoxprayers.privateapp.ui.screens.SettingsScreen;
+import com.orthodoxprayers.privateapp.ui.screens.SourcesScreen;
 import com.orthodoxprayers.privateapp.ui.screens.UpcomingScreen;
 import com.orthodoxprayers.privateapp.update.UpdateCoordinator;
 
@@ -337,6 +338,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "calendar_day": return new CalendarDayScreen(this, entry.argument);
             case "language_packs": return new LanguagePacksScreen(this);
             case "settings": return new SettingsScreen(this);
+            case "sources": return new SourcesScreen(this);
             case "reader": return new ReaderScreen(this, entry.argument);
             case "reading_detail":
                 try { return new ReadingDetailScreen(this, entry.payload == null ? null : new JSONObject(entry.payload)); }

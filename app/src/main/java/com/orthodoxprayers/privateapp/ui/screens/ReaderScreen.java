@@ -196,6 +196,9 @@ public final class ReaderScreen extends BaseScreen {
             panel.addView(liturgyNavigationPanel, new LinearLayout.LayoutParams(-1, -2));
         }
 
+        LinearLayout related = relatedServicesBox();
+        if (related != null) panel.addView(related, ui.margins(-1, -2, 10, 2, 10, 4));
+
         provenancePanel = provenanceBox();
         provenancePanel.setVisibility(View.GONE);
         panel.addView(provenancePanel, ui.margins(-1, -2, 14, 4, 14, 5));
@@ -610,6 +613,58 @@ public final class ReaderScreen extends BaseScreen {
                     "Verified text in this language is not available yet — use Show source",
                     "Τὸ ἐπαληθευμένο κείμενο δὲν εἶναι διαθέσιμο — δεῖξε τὸ πρωτότυπο"
             ), false), ui.margins(-1, -2, 0, 5, 0, 0));
+        }
+
+        JSONObject nativeSource = service.optJSONObject("native_source");
+        JSONObject audit = service.optJSONObject("legacy_provenance_audit");
+        JSONObject effective = provenance != null ? provenance : audit;
+        String sourceId = nativeSource == null ? "" : nativeSource.optString("source_id", "").trim();
+        if (sourceId.isEmpty() && effective != null) {
+            sourceId = effective.optString("source_id", effective.optString("official_catalog_source", "")).trim();
+        }
+        String sourceUrl = nativeSource == null ? "" : nativeSource.optString("url", "").trim();
+        if (sourceUrl.isEmpty() && effective != null) {
+            sourceUrl = effective.optString("official_url", effective.optString("official_catalog_url", "")).trim();
+        }
+        if (sourceUrl.isEmpty() && !sourceId.isEmpty()) sourceUrl = data.sourceUrl(sourceId);
+        if (!sourceId.isEmpty()) {
+            String sourceName = data.sourceName(sourceId);
+            box.addView(ui.text(local("المصدر المسجل: ", "Registered source: ", "Καταχωρισμένη πηγή: ") + sourceName,
+                    13, ui.colors().primaryText(), true), ui.margins(-1, -2, 0, 8, 0, 0));
+        }
+        if (!sourceUrl.isEmpty()) {
+            final String url = sourceUrl;
+            Button openSource = ui.smallButton(local("فتح المصدر الرسمي", "Open official source", "Ἄνοιγμα ἐπίσημης πηγῆς"), false);
+            openSource.setOnClickListener(v -> {
+                try {
+                    host.activity().startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)));
+                } catch (Exception error) {
+                    Toast.makeText(host.activity(), local("تعذر فتح رابط المصدر.", "The source link could not be opened.", "Δὲν ἄνοιξε ὁ σύνδεσμος."), Toast.LENGTH_LONG).show();
+                }
+            });
+            box.addView(openSource, ui.margins(-1, -2, 0, 8, 0, 0));
+        }
+        Button allSources = ui.smallButton(local("جميع المصادر والمراجع", "All sources and references", "Ὅλες οἱ πηγές"), false);
+        allSources.setOnClickListener(v -> host.navigate("sources", null));
+        box.addView(allSources, ui.margins(-1, -2, 0, 5, 0, 0));
+        return box;
+    }
+
+    private LinearLayout relatedServicesBox() {
+        JSONArray related = service.optJSONArray("related_services");
+        if (related == null || related.length() == 0) return null;
+        LinearLayout box = ui.card();
+        box.addView(ui.text(local("صلوات مرتبطة بهذه الخدمة", "Prayers related to this service", "Σχετικὲς προσευχές"),
+                13, ui.colors().primaryText(), true));
+        for (int i = 0; i < related.length(); i++) {
+            JSONObject item = related.optJSONObject(i);
+            if (item == null) continue;
+            String target = item.optString("service_id", "").trim();
+            if (target.isEmpty()) continue;
+            String label = localized(item.optJSONObject("label"), target);
+            Button button = ui.smallButton(label, false);
+            button.setOnClickListener(v -> host.navigate("reader", target));
+            box.addView(button, ui.margins(-1, -2, 0, 5, 0, 0));
         }
         return box;
     }

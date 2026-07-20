@@ -201,8 +201,8 @@ def main() -> None:
 
     for service_id in ("divine_liturgy", "next_sunday_full_liturgy"):
         count = len(composed[service_id]["segments"])
-        if count < 200:
-            raise SystemExit(f"{service_id}: expected complete reader content, found only {count} segments")
+        if count < 180:
+            raise SystemExit(f"{service_id}: expected substantial pinned reader content, found only {count} segments")
         if len(embedded_composed[service_id]["segments"]) != count:
             raise SystemExit(f"{service_id}: embedded segment count mismatch")
 
@@ -210,7 +210,7 @@ def main() -> None:
     overlays = sum(1 for item in canonical.values() if item.get("extends_service_id"))
     print(
         f"Reader service validation passed: {len(canonical)} daily services, "
-        f"{overlays} library overlays, {total} composed segments, complete liturgies renderable"
+        f"{overlays} library overlays, {total} composed segments, substantial Liturgy readers renderable without unregistered quiet prayers"
     )
 
 

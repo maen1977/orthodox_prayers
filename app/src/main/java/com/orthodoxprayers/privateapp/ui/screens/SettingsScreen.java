@@ -245,6 +245,19 @@ public final class SettingsScreen extends BaseScreen {
                 + "\n" + local("التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي", "Verification: HTTPS + independent digital signature + schema + Scripture integrity", "Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα"),
                 13, ui.colors().secondaryText(), false);
         add(page.root, status, 0, 8);
+
+        page.root.addView(ui.sectionTitle(local("المصادر والمراجع", "Sources and references", "Πηγὲς καὶ παραπομπές")));
+        int registeredSourceCount = data.registeredSources().length();
+        TextView sourceRegistryNotice = ui.infoBadge(local(
+                "يعرض التطبيق " + registeredSourceCount + " مصدرًا مسجلًا للمحتوى والتقويم والقراءات، مع نوع الاستخدام والرابط وحالة الحقوق وآخر تحقق.",
+                "The app lists " + registeredSourceCount + " registered content, calendar, and Scripture sources with use, link, rights, and verification details.",
+                "Ἡ ἐφαρμογὴ παραθέτει " + registeredSourceCount + " καταχωρισμένες πηγές μὲ χρήση, σύνδεσμο καὶ κατάσταση δικαιωμάτων."
+        ));
+        add(page.root, sourceRegistryNotice, 0, 7);
+        Button sources = ui.button(local("عرض جميع المصادر", "View all sources", "Προβολὴ ὅλων τῶν πηγῶν"), false);
+        sources.setOnClickListener(v -> host.navigate("sources", null));
+        add(page.root, sources, 0, 10);
+
         String sourceNote = data.sourceNote();
         if (!sourceNote.isEmpty()) {
             TextView source = centered(local("عن مصدر المحتوى: ", "About the content source: ", "Περὶ πηγῆς: ") + sourceNote,

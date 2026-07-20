@@ -48,15 +48,15 @@ def main() -> None:
     document = {
         "bomFormat": "CycloneDX",
         "specVersion": "1.5",
-        "serialNumber": "urn:uuid:6d1b3f2a-e3dc-5000-9000-0a7d0d0a5006",
+        "serialNumber": "urn:uuid:6d1b3f2a-e3dc-5000-9000-0a7d0d0a5012",
         "version": 1,
         "metadata": {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "component": {
                 "type": "application",
                 "name": "Orthodox Prayers",
-                "version": "5.0.11",
-                "purl": "pkg:android/com.orthodoxprayers.privateapp@5.0.11",
+                "version": "5.0.12",
+                "purl": "pkg:android/com.orthodoxprayers.privateapp@5.0.12",
             },
         },
         "components": components(report),
