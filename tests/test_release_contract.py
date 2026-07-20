@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.7"', build)
-        self.assertIn("versionCode = 50007", build)
+        self.assertIn('versionName = "5.0.8"', build)
+        self.assertIn("versionCode = 50008", build)
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -41,12 +41,38 @@ class ReleaseContractTests(unittest.TestCase):
         schedule = (ROOT / "scripts/update_liturgical_data.py").read_text(encoding="utf-8")
         self.assertIn("require_complete: bool | None = None", schedule)
         self.assertIn("require_complete = source is None", schedule)
-        self.assertIn('PIPELINE_PATCH_LEVEL = "R11"', update)
+        self.assertIn('PIPELINE_PATCH_LEVEL = "R12"', update)
         self.assertIn("verify_pipeline_patch()", update)
         self.assertLess(
             update.index('run("scripts/fill_daily_from_native_corpora.py"'),
             update.index('run("scripts/rebuild_daily_services.py"'),
         )
+
+
+    def test_native_corpus_preparation_preserves_localized_prokeimenon(self):
+        scripts = ROOT / "scripts"
+        if str(scripts) not in sys.path:
+            sys.path.insert(0, str(scripts))
+        import orthodox_integrity as integrity
+        import update_liturgical_data as update_liturgical
+
+        info = update_liturgical.day_info(update_liturgical.date(2026, 7, 20))
+        prokeimenon = update_liturgical.default_prokeimenon(info, update_liturgical.date(2026, 7, 20))
+        original = json.loads(json.dumps(prokeimenon, ensure_ascii=False))
+        readings = [
+            prokeimenon,
+            {"kind": "epistle", "reference": {"ar": "قديم", "en": "old", "el": "παλαιό"}},
+            {"kind": "gospel", "reference": {"ar": "قديم", "en": "old", "el": "παλαιό"}},
+        ]
+        prepared = integrity.prepare_native_corpus_readings(
+            readings, "1 Corinthians 9:13-18", "Matthew 16:1-6", "official_greek_orthodox"
+        )
+        self.assertEqual(original, prepared[0])
+        for language in ("ar", "en", "el"):
+            self.assertTrue(prepared[0]["reference"][language].strip())
+            self.assertTrue(prepared[0]["body"][language].strip())
+        self.assertEqual("1CO.9.13-18", prepared[1]["integrity"]["canonical_reference"])
+        self.assertEqual("MAT.16.1-6", prepared[2]["integrity"]["canonical_reference"])
 
     def test_daily_schema_and_provenance(self):
         schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))

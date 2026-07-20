@@ -928,7 +928,13 @@ def prepare_native_corpus_readings(
     mapping = {"epistle": epistle_reference, "gospel": gospel_reference}
     for reading in output:
         kind = str(reading.get("kind") or "")
-        if kind not in {"prokeimenon", "epistle", "gospel"}:
+        # The prokeimenon is already an exact same-language liturgical proper
+        # from canonical/daily_propers.json or the pinned Octoechos registry.
+        # Native Scripture corpora refill only Epistle and Gospel, so clearing
+        # the prokeimenon here would permanently erase its localized reference.
+        if kind == "prokeimenon":
+            continue
+        if kind not in {"epistle", "gospel"}:
             continue
         references = {"ar": "", "en": "", "el": ""}
         canonical_reference = ""

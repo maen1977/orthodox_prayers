@@ -1,3 +1,10 @@
+# 5.0.8 R12
+
+- Preserve the exact localized prokeimenon during native Scripture corpus preparation.
+- Limit native-corpus reset to Epistle and Gospel only.
+- Run daily UI localization validation inside the update pipeline before success is reported.
+- Add R12 patch verification and regression coverage for 2026-07-20.
+
 ## 5.0.7 — R11 robust two-phase patch deployment
 
 - جعل مزامنة الأحد القادم تكتشف المرحلة المبكرة تلقائيًا عند وجود `source`، حتى لو بقي مستدعٍ أقدم لا يمرر `require_complete=False`.

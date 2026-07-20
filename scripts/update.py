@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R11"
+PIPELINE_PATCH_LEVEL = "R12"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -21,7 +21,7 @@ def verify_pipeline_patch() -> None:
     integrity_text = integrity_path.read_text(encoding="utf-8")
     schedule_text = schedule_path.read_text(encoding="utf-8")
     required = {
-        str(integrity_path.relative_to(ROOT)): "require_complete=False",
+        str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
         str(schedule_path.relative_to(ROOT)): "require_complete: bool | None = None",
     }
     actual = {
@@ -118,6 +118,7 @@ def main() -> None:
             ("scripts/validate_static_prayer_sources.py",),
             ("scripts/validate_native_language_packs.py",),
             ("scripts/validate_reader_services.py",),
+            ("scripts/validate_daily_ui_localizations.py", "data/calendar/today.json"),
             ("scripts/validate_scripture_translations.py", "data/calendar/today.json"),
         ):
             run(*command)
