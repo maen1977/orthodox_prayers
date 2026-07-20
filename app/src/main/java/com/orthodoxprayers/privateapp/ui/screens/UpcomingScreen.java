@@ -46,7 +46,9 @@ public final class UpcomingScreen extends BaseScreen {
         TextView heading = ui.text("📅  " + day, 16, ui.colors().primaryText(), true);
         card.addView(heading);
         card.addView(ui.text(localized(item.optJSONObject("status"), ""), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
-        addFastingGuide(card, item.optJSONObject("fasting"), false);
+        JSONObject fasting = item.optJSONObject("fasting");
+        addCompactFastingItems(card, fasting);
+        addFastingGuide(card, fasting, false);
         String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
         if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
         JSONObject refs = item.optJSONObject("reading_references");

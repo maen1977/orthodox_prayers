@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R13"
+PIPELINE_PATCH_LEVEL = "R14"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -21,15 +21,21 @@ def verify_pipeline_patch() -> None:
     integrity_text = integrity_path.read_text(encoding="utf-8")
     schedule_text = schedule_path.read_text(encoding="utf-8")
     fasting_validator_path = ROOT / "scripts/validate_fasting_guidance.py"
+    home_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
+    settings_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java"
     required = {
         str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
+        str(home_path.relative_to(ROOT)): "R14_HOME_COMPACT",
+        str(settings_path.relative_to(ROOT)): "R14_SETTINGS_CLEANUP",
     }
     actual = {
         str(integrity_path.relative_to(ROOT)): integrity_text,
         str(schedule_path.relative_to(ROOT)): schedule_text,
         str(fasting_validator_path.relative_to(ROOT)): fasting_validator_path.read_text(encoding="utf-8") if fasting_validator_path.is_file() else "",
+        str(home_path.relative_to(ROOT)): home_path.read_text(encoding="utf-8") if home_path.is_file() else "",
+        str(settings_path.relative_to(ROOT)): settings_path.read_text(encoding="utf-8") if settings_path.is_file() else "",
     }
     missing = [name for name, marker in required.items() if marker not in actual[name]]
     if missing:

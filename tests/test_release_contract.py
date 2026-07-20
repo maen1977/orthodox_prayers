@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.9"', build)
-        self.assertIn("versionCode = 50009", build)
+        self.assertIn('versionName = "5.0.10"', build)
+        self.assertIn("versionCode = 50010", build)
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -41,7 +41,7 @@ class ReleaseContractTests(unittest.TestCase):
         schedule = (ROOT / "scripts/update_liturgical_data.py").read_text(encoding="utf-8")
         self.assertIn("require_complete: bool | None = None", schedule)
         self.assertIn("require_complete = source is None", schedule)
-        self.assertIn('PIPELINE_PATCH_LEVEL = "R13"', update)
+        self.assertIn('PIPELINE_PATCH_LEVEL = "R14"', update)
         self.assertIn("verify_pipeline_patch()", update)
         self.assertLess(
             update.index('run("scripts/fill_daily_from_native_corpora.py"'),
@@ -278,8 +278,11 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("00962788272988", settings)
         self.assertIn('local("عن البرنامج", "About the app", "Περὶ τῆς ἐφαρμογῆς")', settings)
         self.assertIn("freeNotice.setTextIsSelectable(true)", settings)
-        self.assertIn('openExternal("tel:00962788272988")', settings)
-        self.assertIn("https://maen1977.github.io/orthodox_prayers/privacy/", settings)
+        self.assertNotIn("الاتصال بالرقم", settings)
+        self.assertNotIn("Call phone number", settings)
+        self.assertNotIn("سياسة الخصوصية", settings)
+        self.assertNotIn("Privacy policy", settings)
+        self.assertNotIn("maen1977.github.io/orthodox_prayers/privacy", settings)
         self.assertIn("كل لغة تُقرأ من مكتبتها الكنسية الأصلية المستقلة", settings)
 
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")

@@ -1,10 +1,8 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.net.Uri;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
@@ -253,6 +251,7 @@ public final class SettingsScreen extends BaseScreen {
                     13, ui.colors().secondaryText(), false);
             add(page.root, source, 0, 8);
         }
+        // R14_SETTINGS_CLEANUP: keep the free-app notice but hide call/privacy actions.
         page.root.addView(ui.sectionTitle(local("عن البرنامج", "About the app", "Περὶ τῆς ἐφαρμογῆς")));
         LinearLayout aboutCard = ui.card();
         TextView freeNotice = centered(local(
@@ -262,16 +261,6 @@ public final class SettingsScreen extends BaseScreen {
         ), 15, ui.colors().primaryText(), true);
         freeNotice.setTextIsSelectable(true);
         aboutCard.addView(freeNotice);
-
-        Button call = ui.button(local("الاتصال بالرقم", "Call phone number", "Κλήση τηλεφώνου"), false);
-        call.setOnClickListener(v -> openExternal("tel:00962788272988"));
-        aboutCard.addView(call, ui.margins(-1, -2, 0, 10, 0, 0));
-
-        Button privacyPolicy = ui.button(local("سياسة الخصوصية", "Privacy policy", "Πολιτικὴ ἀπορρήτου"), false);
-        privacyPolicy.setOnClickListener(v -> openExternal(
-                "https://maen1977.github.io/orthodox_prayers/privacy/"
-        ));
-        aboutCard.addView(privacyPolicy, ui.margins(-1, -2, 0, 7, 0, 0));
         add(page.root, aboutCard, 0, 10);
 
         TextView privacy = centered(local("لا إعلانات، لا تسجيل دخول، ولا تتبع. لا توجد مفاتيح خاصة داخل التطبيق.",
@@ -393,16 +382,5 @@ public final class SettingsScreen extends BaseScreen {
                 + DateFormat.getTimeFormat(host.activity()).format(new Date(timestamp));
     }
 
-    private void openExternal(String value) {
-        try {
-            host.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(value)));
-        } catch (Exception error) {
-            Toast.makeText(host.activity(), local(
-                    "تعذر فتح الرابط على هذا الجهاز",
-                    "The link could not be opened on this device",
-                    "Ὁ σύνδεσμος δὲν μπορεῖ νὰ ἀνοίξει"
-            ), Toast.LENGTH_SHORT).show();
-        }
-    }
 
 }

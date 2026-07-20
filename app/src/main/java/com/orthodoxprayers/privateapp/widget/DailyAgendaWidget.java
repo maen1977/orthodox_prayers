@@ -34,7 +34,7 @@ public final class DailyAgendaWidget extends AppWidgetProvider {
             String date = app.repository().dataDate();
             String feast = app.repository().localized(app.repository().today().optJSONObject("feast"), "—");
             String fast = app.repository().localized(app.repository().today().optJSONObject("fast"), "—");
-            views.setTextViewText(R.id.widget_title, app.repository().local("☦  الأجندة الكنسية", "☦  Orthodox Agenda", "☦  Ὀρθόδοξη Ἀτζέντα"));
+            views.setTextViewText(R.id.widget_title, app.repository().local("☦  الصلوات الكنسية", "☦  Church Prayers", "☦  Ἐκκλησιαστικὲς Προσευχές"));
             views.setTextViewText(R.id.widget_date, date.isEmpty() ? "—" : date);
             views.setTextViewText(R.id.widget_feast, feast.isEmpty() ? "—" : feast);
             views.setTextViewText(R.id.widget_fast, fast.isEmpty() ? "—" : fast);

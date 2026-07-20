@@ -87,14 +87,15 @@ class FastingGuidanceTests(unittest.TestCase):
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
         day = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
         self.assertIn("addFastingGuide", base)
-        self.assertIn("تفاصيل صوم اليوم", home)
-        self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), false)', upcoming)
+        self.assertNotIn("تفاصيل صوم اليوم", home)
+        self.assertIn("addCompactFastingItems(card, fasting)", home)
+        self.assertIn('addFastingGuide(card, fasting, false)', upcoming)
         self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), true)', day)
 
-    def test_r13_patch_verifier_is_present(self):
-        verifier = (ROOT / "scripts/verify_r13_patch.py").read_text(encoding="utf-8")
-        self.assertIn("PATCH_R13_OK", verifier)
-        self.assertIn('versionName = \"5.0.9\"', verifier)
+    def test_r14_patch_verifier_is_present(self):
+        verifier = (ROOT / "scripts/verify_r14_patch.py").read_text(encoding="utf-8")
+        self.assertIn("PATCH_R14_OK", verifier)
+        self.assertIn('versionName = "5.0.10"', verifier)
 
     def test_generated_payload_marks_fasting_guidance_contract(self):
         old = self.update.os.environ.get("ORTHODOX_DISABLE_DISCOVERY_NETWORK")

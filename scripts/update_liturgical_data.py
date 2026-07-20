@@ -1679,7 +1679,7 @@ def build_day(day: date) -> dict:
 
     data = {
         "schema_version": 8,
-        "app_title": loc("الأجندة الكنسية", "Church Agenda", "Εκκλησιαστική Ατζέντα"),
+        "app_title": loc("الصلوات الكنسية", "Church Prayers", "Ἐκκλησιαστικὲς Προσευχές"),
         "patriarchate": loc("بطريركية الروم الأرثوذكس المقدسية", "Greek Orthodox Patriarchate of Jerusalem", "Πατριαρχεῖον Ἱεροσολύμων"),
         "date_iso": f"{day:%Y-%m-%d}",
         "date_label": loc(f"{ar_date_label(day)} / {info['julian_label_ar']}", day.strftime("%A, %B %d, %Y")),

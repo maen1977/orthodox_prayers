@@ -1,3 +1,13 @@
+# 5.0.10 R14
+
+- Rename the visible application title from Church Agenda to Church Prayers in Arabic, English, and Greek.
+- Simplify Home by removing the duplicate commemoration line, the blue three-column status card, and the large today-fasting details card while preserving their data and internal components.
+- Hide Search, Favorites, Calendar, and Language Packs from Home quick access without deleting their screens or navigation routes.
+- Keep Readings, Prayers, History, Upcoming Days, Settings, the full Divine Liturgy, seven-day details, and Next Sunday on Home.
+- Add explicit symbol-first food rules on fasting-day cards: ✓ permitted and ✕ forbidden for meat/poultry, dairy, eggs, fish, wine, and oil.
+- Remove the call and privacy-policy actions from Settings while keeping the free-app provider notice and the privacy file in the project.
+- Add R14 root-patch verification, UI regression tests, and a documented review of the Orthodox Jordan daily-prayer index.
+
 # 5.0.9 R13
 
 - Add novice-friendly fasting guidance for today and the next seven days.

@@ -1,27 +1,25 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.orthodoxprayers.privateapp.data.DataRepository;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
-import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class HomeScreen extends BaseScreen {
+    // R14_HOME_COMPACT: duplicate home cards hidden; internal routes remain available.
     public HomeScreen(ScreenHost host) { super(host); }
 
     @Override
     public View createView() {
         UiKit.Page page = page(
-                localized(data.library().optJSONObject("app_name"), local("الأجندة الكنسية", "Church Agenda", "Εκκλησιαστική Ατζέντα")),
+                localized(data.library().optJSONObject("app_name"), local("الصلوات الكنسية", "Church Prayers", "Ἐκκλησιαστικὲς Προσευχές")),
                 false
         );
         addUpdateBanner(page.root);
@@ -31,8 +29,6 @@ public final class HomeScreen extends BaseScreen {
             return page.scroll;
         }
         addDateCard(page.root);
-        addStatusCard(page.root);
-        addTodayFastingGuide(page.root);
         addQuickAccess(page.root);
         addUpcoming(page.root);
         addNextSunday(page.root);
@@ -88,10 +84,6 @@ public final class HomeScreen extends BaseScreen {
         TextView fast = centered(fastingValue, 18, ui.colors().accentText(), true);
         card.addView(fast, ui.margins(-1, -2, 0, 8, 0, 0));
 
-        String feastValue = localized(today.optJSONObject("feast"), local("لا يوجد تذكار مدخل", "No commemoration is entered", "Χωρὶς καταχωρημένη μνήμη"));
-        TextView feast = centered("☦  " + feastValue, 14, ui.colors().secondaryText(), false);
-        card.addView(feast, ui.margins(-1, -2, 0, 6, 0, 0));
-
         if (!data.isTodayCurrent()) {
             String staleText = local(
                     "تظهر آخر نسخة موثوقة بتاريخ " + data.dataDate() + "، ويجري طلب بيانات اليوم تلقائيًا.",
@@ -103,55 +95,12 @@ public final class HomeScreen extends BaseScreen {
         add(root, card, 12, 10);
     }
 
-    private void addStatusCard(LinearLayout root) {
-        JSONObject today = data.today();
-        LinearLayout card = ui.card(ThemePalette.NAVY, ThemePalette.GOLD, 14);
-        LinearLayout row = ui.row();
-        addStatus(row, "🕯", local("الصيام", "Fasting", "Νηστεία"), fastingValue(today));
-        addStatus(
-                row,
-                "☦",
-                local("التذكار", "Commemoration", "Μνήμη"),
-                localized(today.optJSONObject("feast"), local("غير متوفر", "Unavailable", "Μὴ διαθέσιμο"))
-        );
-        addStatus(row, "⛪", local("خدمة اليوم", "Today’s service", "Ἀκολουθία"), local("القداس الإلهي", "Divine Liturgy", "Θεία Λειτουργία"));
-        card.addView(row);
-        add(root, card, 0, 12);
-    }
-
-    private void addTodayFastingGuide(LinearLayout root) {
-        JSONObject fasting = data.today().optJSONObject("fasting");
-        if (fasting == null) return;
-        root.addView(ui.sectionTitle(local("تفاصيل صوم اليوم", "Today’s fasting details", "Λεπτομέρειες σημερινῆς νηστείας")));
-        LinearLayout card = ui.card();
-        card.addView(ui.text(localized(fasting.optJSONObject("title"), fastingValue(data.today())), 17, ui.colors().accentText(), true));
-        String reason = localized(fasting.optJSONObject("detail"), "");
-        if (!reason.isEmpty()) card.addView(ui.text(reason, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 5, 0, 4));
-        addFastingGuide(card, fasting, true);
-        add(root, card, 2, 12);
-    }
-
     private String fastingValue(JSONObject today) {
         String value = localized(today.optJSONObject("fast"), "");
         if (!value.isEmpty()) return value;
         JSONObject fasting = today.optJSONObject("fasting");
         if (fasting != null) value = localized(fasting.optJSONObject("title"), "");
         return value.isEmpty() ? local("غير متوفر", "Unavailable", "Μὴ διαθέσιμο") : value;
-    }
-
-    private void addStatus(LinearLayout row, String icon, String title, String value) {
-        LinearLayout item = new LinearLayout(host.activity());
-        item.setOrientation(LinearLayout.VERTICAL);
-        item.setGravity(Gravity.CENTER);
-        item.setPadding(ui.dp(4), ui.dp(5), ui.dp(4), ui.dp(5));
-        TextView iconView = centered(icon, 22, ThemePalette.GOLD, false);
-        item.addView(iconView);
-        item.addView(centered(title, 12, android.graphics.Color.WHITE, true));
-        TextView detail = centered(value, 13, ThemePalette.GOLD, true);
-        detail.setMaxLines(3);
-        item.addView(detail);
-        item.setContentDescription(title + ". " + value);
-        row.addView(item, new LinearLayout.LayoutParams(0, -2, 1f));
     }
 
     private void addQuickAccess(LinearLayout root) {
@@ -164,20 +113,13 @@ public final class HomeScreen extends BaseScreen {
         LinearLayout first = ui.row();
         addShortcut(first, "📖", local("القراءات", "Readings", "Ἀναγνώσματα"), "readings", null);
         addShortcut(first, "🙏", local("الصلوات", "Prayers", "Προσευχές"), "prayers", null);
-        addShortcut(first, "🔎", local("بحث", "Search", "Ἀναζήτηση"), "search", null);
+        addShortcut(first, "🕘", local("آخر قراءة", "History", "Ἱστορικό"), "history", null);
         add(root, first, 0, 0);
 
         LinearLayout second = ui.row();
-        addShortcut(second, "⭐", local("المفضلة", "Favorites", "Ἀγαπημένα"), "favorites", null);
-        addShortcut(second, "📅", local("التقويم", "Calendar", "Ἡμερολόγιο"), "calendar", null);
-        addShortcut(second, "🕘", local("آخر قراءة", "History", "Ἱστορικό"), "history", null);
-        add(root, second, 0, 0);
-
-        LinearLayout third = ui.row();
-        addShortcut(third, "🗓", local("الأيام القادمة", "Upcoming", "Ἐπόμενες"), "upcoming", null);
-        addShortcut(third, "🌐", local("حزم اللغات", "Language packs", "Πακέτα γλωσσῶν"), "language_packs", null);
-        addShortcut(third, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
-        add(root, third, 0, 10);
+        addShortcut(second, "🗓", local("الأيام القادمة", "Upcoming", "Ἐπόμενες"), "upcoming", null);
+        addShortcut(second, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
+        add(root, second, 0, 10);
 
         if (!preferences.pinnedServices().isEmpty()) {
             root.addView(ui.sectionTitle(local("النصوص المثبتة", "Pinned texts", "Καρφιτσωμένα κείμενα")));
@@ -226,17 +168,11 @@ public final class HomeScreen extends BaseScreen {
         status.setMaxLines(3);
         card.addView(status, ui.margins(-1, -2, 0, 6, 0, 0));
         JSONObject fasting = item.optJSONObject("fasting");
-        JSONObject guidance = fasting == null ? null : fasting.optJSONObject("guidance");
-        String permitted = guidance == null ? "" : localized(guidance.optJSONObject("allowed_summary"), "");
-        if (!permitted.isEmpty()) {
-            TextView allowed = centered(permitted, 10, ui.colors().secondaryText(), false);
-            allowed.setMaxLines(3);
-            card.addView(allowed, ui.margins(-1, -2, 0, 3, 0, 2));
-        }
+        String foodRules = addCompactFastingItems(card, fasting);
         TextView feast = centered(localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")), 11, ui.colors().secondaryText(), false);
         feast.setMaxLines(3);
         card.addView(feast);
-        card.setContentDescription(day.getText() + ". " + status.getText() + ". " + permitted + ". " + feast.getText());
+        card.setContentDescription(day.getText() + ". " + status.getText() + (foodRules.isEmpty() ? "" : ". " + foodRules) + ". " + feast.getText());
         return card;
     }
 
