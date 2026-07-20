@@ -1,0 +1,56 @@
+{
+  "id": "pre_communion_prayers",
+  "category": "communion",
+  "icon": "🕯️",
+  "title": {
+    "ar": "",
+    "en": "",
+    "el": "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως"
+  },
+  "summary": {
+    "ar": "",
+    "en": "",
+    "el": "Τὸ πλήρες ἐγκεκριμένο ἑλληνικὸ κείμενο δὲν ἔχει ἀκόμη ἐνσωματωθεῖ."
+  },
+  "source_language": "el",
+  "translation_status": "native_sources_only",
+  "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+  "notice": {
+    "ar": "",
+    "en": "",
+    "el": "Προσωπικὴ προετοιμασία γιὰ τὴ Θεία Μετάληψη, ὄχι ὁ Ὄρθρος οὔτε τὰ μεταβλητὰ τῆς Κυριακῆς."
+  },
+  "segments": [
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως"
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "en": "",
+        "el": "Κατάσταση κειμένου"
+      },
+      "text": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἑλληνικὸ κείμενο παραμένει μὴ διαθέσιμο ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή."
+      },
+      "collapsed_by_default": true
+    }
+  ],
+  "source_provenance": {
+    "policy": "canonical/source_policy.json",
+    "source_id": "orthodox_jordan",
+    "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+    "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
+    "complete_text": false,
+    "verified_on": "2026-07-20",
+    "ai_liturgical_translation_used": false
+  }
+}

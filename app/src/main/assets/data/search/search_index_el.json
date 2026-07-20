@@ -214,6 +214,48 @@
       }
     },
     {
+      "id": "service:pre_communion_prayers",
+      "type": "service",
+      "target_id": "pre_communion_prayers",
+      "title": "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως",
+      "reference": "",
+      "display_text": "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως\nΤὸ πλήρες ἑλληνικὸ κείμενο παραμένει μὴ διαθέσιμο ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή.",
+      "display_sha256": "73deff6ed129286fd665fec261924cf57b5a7a7e54746e6307cf5e713aa744ba",
+      "search_text": "ευχαι προ τησ θειασ μεταληψεωσ το πληρεσ εγκεκριμενο ελληνικο κειμενο δεν εχει ακομη ενσωματωθει. ευχαι προ τησ θειασ μεταληψεωσ το πληρεσ ελληνικο κειμενο παραμενει μη διαθεσιμο εωσ εγκεκριμενη και επαληθευμενη εισαγωγη.",
+      "source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "d20e94fa8e6022173aa66d853420f18271e52fc8a735cbb754b532927093e81f",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:thanksgiving_after_communion",
+      "type": "service",
+      "target_id": "thanksgiving_after_communion",
+      "title": "Εὐχαὶ μετὰ τὴν Θείαν Μετάληψιν",
+      "reference": "",
+      "display_text": "Εὐχαὶ μετὰ τὴν Θείαν Μετάληψιν\nΤὸ πλήρες κείμενο δημοσιεύεται στὴν ἐπίσημη πηγή. Ἡ τοπικὴ πλήρης ἀντιγραφή παραμένει κλειδωμένη ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή.",
+      "display_sha256": "25e0022a98bcdb9a43534bcaa90875d7a5a9bf38c63ebf267ed98f8db7a959d6",
+      "search_text": "ευχαι μετα την θειαν μεταληψιν επαληθευμενη παραπομπη στην προσευχη τησ ιορδανικησ πηγησ· το πληρεσ κειμενο δεν ενσωματωνεται πριν απο εγκεκριμενη εισαγωγη. ευχαι μετα την θειαν μεταληψιν το πληρεσ κειμενο δημοσιευεται στην επισημη πηγη. η τοπικη πληρησ αντιγραφη παραμενει κλειδωμενη εωσ εγκεκριμενη και επαληθευμενη εισαγωγη.",
+      "source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "8e6ef2286289291c2f1577111009327d55e2fd62c18322a0f6e3c97b8853153d",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
       "id": "service:divine_liturgy",
       "type": "service",
       "target_id": "divine_liturgy",

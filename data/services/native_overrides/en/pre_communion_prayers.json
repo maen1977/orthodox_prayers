@@ -1,0 +1,56 @@
+{
+  "id": "pre_communion_prayers",
+  "category": "communion",
+  "icon": "🕯️",
+  "title": {
+    "ar": "",
+    "en": "Prayers before Holy Communion",
+    "el": ""
+  },
+  "summary": {
+    "ar": "",
+    "en": "The authorized native English full text is not packaged yet. Use the registered official source; the app will not translate the Arabic text.",
+    "el": ""
+  },
+  "source_language": "en",
+  "translation_status": "native_sources_only",
+  "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+  "notice": {
+    "ar": "",
+    "en": "This is personal preparation for Communion, not Orthros or the variable Sunday propers.",
+    "el": ""
+  },
+  "segments": [
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "Prayers before Holy Communion",
+        "el": ""
+      }
+    },
+    {
+      "type": "note",
+      "speaker": {
+        "ar": "",
+        "en": "Text status",
+        "el": ""
+      },
+      "text": {
+        "ar": "",
+        "en": "The complete native English prayer remains unavailable until an authorized source edition is imported and hash-verified.",
+        "el": ""
+      },
+      "collapsed_by_default": true
+    }
+  ],
+  "source_provenance": {
+    "policy": "canonical/source_policy.json",
+    "source_id": "orthodox_jordan",
+    "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+    "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
+    "complete_text": false,
+    "verified_on": "2026-07-20",
+    "ai_liturgical_translation_used": false
+  }
+}

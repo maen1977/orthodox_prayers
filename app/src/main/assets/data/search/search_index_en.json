@@ -214,6 +214,48 @@
       }
     },
     {
+      "id": "service:pre_communion_prayers",
+      "type": "service",
+      "target_id": "pre_communion_prayers",
+      "title": "Prayers before Holy Communion",
+      "reference": "",
+      "display_text": "Prayers before Holy Communion\nThe complete native English prayer remains unavailable until an authorized source edition is imported and hash-verified.",
+      "display_sha256": "7bd62b39d2290267fbacc219ddf9782b1a36df245dae0d9a45aedc4baf78ca45",
+      "search_text": "prayers before holy communion the authorized native english full text is not packaged yet. use the registered official source; the app will not translate the arabic text. prayers before holy communion the complete native english prayer remains unavailable until an authorized source edition is imported and hash-verified.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "63c497e5bc1b1e8d6d64cbf1b8cc6ac13243995028e510e55e74f5e135e3a305",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
+      "id": "service:thanksgiving_after_communion",
+      "type": "service",
+      "target_id": "thanksgiving_after_communion",
+      "title": "Thanksgiving after Holy Communion",
+      "reference": "",
+      "display_text": "Thanksgiving after Holy Communion\nThe complete prayer is published at the official source linked from this page. A full local copy is blocked until an authorized, hash-verified edition is imported.",
+      "display_sha256": "5fcada942adfc9afc354e563bac41b18a27019ba1730cdcef267ead84d4f6b1f",
+      "search_text": "thanksgiving after holy communion a verified entry to the prayer published by the jordan source. the complete text is not embedded until an authorized edition is imported and hash-verified. thanksgiving after holy communion the complete prayer is published at the official source linked from this page. a full local copy is blocked until an authorized, hash-verified edition is imported.",
+      "source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "247fac90c92a5c9b6330cd597ffb98825b9030f5c7cf44c33a7cdc48b6c06708",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      }
+    },
+    {
       "id": "service:divine_liturgy",
       "type": "service",
       "target_id": "divine_liturgy",

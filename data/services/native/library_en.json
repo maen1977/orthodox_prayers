@@ -26,6 +26,14 @@
       }
     },
     {
+      "id": "communion",
+      "title": {
+        "ar": "",
+        "en": "Holy Communion Prayers",
+        "el": ""
+      }
+    },
+    {
       "id": "liturgy",
       "title": {
         "ar": "",
@@ -895,6 +903,150 @@
         "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
         "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "pre_communion_prayers",
+      "category": "communion",
+      "icon": "🕯️",
+      "title": {
+        "ar": "",
+        "en": "Prayers before Holy Communion",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "The authorized native English full text is not packaged yet. Use the registered official source; the app will not translate the Arabic text.",
+        "el": ""
+      },
+      "source_language": "en",
+      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "notice": {
+        "ar": "",
+        "en": "This is personal preparation for Communion, not Orthros or the variable Sunday propers.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Prayers before Holy Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Text status",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "The complete native English prayer remains unavailable until an authorized source edition is imported and hash-verified.",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 6,
+        "total_fields": 6,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "63c497e5bc1b1e8d6d64cbf1b8cc6ac13243995028e510e55e74f5e135e3a305",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+        "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
+        "complete_text": false,
+        "verified_on": "2026-07-20",
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "thanksgiving_after_communion",
+      "category": "communion",
+      "icon": "🙏",
+      "title": {
+        "ar": "",
+        "en": "Thanksgiving after Holy Communion",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A verified entry to the prayer published by the Jordan source. The complete text is not embedded until an authorized edition is imported and hash-verified.",
+        "el": ""
+      },
+      "source_language": "en",
+      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "notice": {
+        "ar": "",
+        "en": "The personal thanksgiving prayers follow the Liturgy and dismissal; they are distinct from the liturgical thanksgiving petitions within the Liturgy.",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Thanksgiving after Holy Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "Text status",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "The complete prayer is published at the official source linked from this page. A full local copy is blocked until an authorized, hash-verified edition is imported.",
+            "el": ""
+          },
+          "collapsed_by_default": true
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 6,
+        "total_fields": 6,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "goarch_synekdemos",
+        "name": "GOARCH Synekdemos",
+        "official": true,
+        "native_language": "en",
+        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "247fac90c92a5c9b6330cd597ffb98825b9030f5c7cf44c33a7cdc48b6c06708",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
+        "status": "OFFICIAL_SOURCE_LINKED_TEXT_IMPORT_PENDING",
+        "complete_text": false,
+        "verified_on": "2026-07-20",
         "ai_liturgical_translation_used": false
       }
     },
@@ -5405,8 +5557,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 758,
-    "total_fields": 758,
+    "filled_fields": 770,
+    "total_fields": 770,
     "percent": 100.0,
     "complete": true
   }

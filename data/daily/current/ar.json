@@ -1331,7 +1331,8 @@
         "official_catalog_source": "orthodox_jordan",
         "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
         "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "complete_service_claim": true,
+        "complete_service_claim": false,
+        "completeness_status": "NOT_PROVEN_AGAINST_SINGLE_AUTHORIZED_COMPLETE_EDITION",
         "exact_remote_byte_match": false,
         "dynamic_texts_fail_closed": true,
         "ai_liturgical_translation_used": false
@@ -1804,7 +1805,8 @@
         "official_catalog_source": "orthodox_jordan",
         "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
         "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-        "complete_service_claim": true,
+        "complete_service_claim": false,
+        "completeness_status": "NOT_PROVEN_AGAINST_SINGLE_AUTHORIZED_COMPLETE_EDITION",
         "exact_remote_byte_match": false,
         "dynamic_texts_fail_closed": true,
         "ai_liturgical_translation_used": false

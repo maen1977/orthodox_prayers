@@ -26,6 +26,14 @@
       }
     },
     {
+      "id": "communion",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαὶ Θείας Μεταλήψεως"
+      }
+    },
+    {
       "id": "liturgy",
       "title": {
         "ar": "",
@@ -895,6 +903,150 @@
         "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
         "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
         "dynamic_texts_fail_closed": true,
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "pre_communion_prayers",
+      "category": "communion",
+      "icon": "🕯️",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Τὸ πλήρες ἐγκεκριμένο ἑλληνικὸ κείμενο δὲν ἔχει ἀκόμη ἐνσωματωθεῖ."
+      },
+      "source_language": "el",
+      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Προσωπικὴ προετοιμασία γιὰ τὴ Θεία Μετάληψη, ὄχι ὁ Ὄρθρος οὔτε τὰ μεταβλητὰ τῆς Κυριακῆς."
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως"
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Κατάσταση κειμένου"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες ἑλληνικὸ κείμενο παραμένει μὴ διαθέσιμο ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή."
+          },
+          "collapsed_by_default": true
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 6,
+        "total_fields": 6,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "d20e94fa8e6022173aa66d853420f18271e52fc8a735cbb754b532927093e81f",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+        "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
+        "complete_text": false,
+        "verified_on": "2026-07-20",
+        "ai_liturgical_translation_used": false
+      }
+    },
+    {
+      "id": "thanksgiving_after_communion",
+      "category": "communion",
+      "icon": "🙏",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαὶ μετὰ τὴν Θείαν Μετάληψιν"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Ἐπαληθευμένη παραπομπὴ στὴν προσευχὴ τῆς ἰορδανικῆς πηγῆς· τὸ πλήρες κείμενο δὲν ἐνσωματώνεται πρὶν ἀπὸ ἐγκεκριμένη εἰσαγωγή."
+      },
+      "source_language": "el",
+      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "notice": {
+        "ar": "",
+        "en": "",
+        "el": "Οἱ προσωπικὲς εὐχαριστήριες εὐχὲς ἀκολουθοῦν μετὰ τὴν ἀπόλυση καὶ διακρίνονται ἀπὸ τὶς λειτουργικὲς δεήσεις."
+      },
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαὶ μετὰ τὴν Θείαν Μετάληψιν"
+          }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Κατάσταση κειμένου"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο δημοσιεύεται στὴν ἐπίσημη πηγή. Ἡ τοπικὴ πλήρης ἀντιγραφή παραμένει κλειδωμένη ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή."
+          },
+          "collapsed_by_default": true
+        }
+      ],
+      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "native_content_status": {
+        "filled_fields": 6,
+        "total_fields": 6,
+        "complete": true
+      },
+      "native_source": {
+        "source_id": "church_of_greece_apostoliki_diakonia",
+        "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "official": true,
+        "native_language": "el",
+        "url": "https://apostoliki-diakonia.gr/",
+        "permission_confirmed": true,
+        "machine_translation_used": false,
+        "content_sha256": "8e6ef2286289291c2f1577111009327d55e2fd62c18322a0f6e3c97b8853153d",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "legacy_provenance_audit": {
+        "policy": "canonical/source_policy.json",
+        "source_id": "orthodox_jordan",
+        "official_url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
+        "status": "OFFICIAL_SOURCE_LINKED_TEXT_IMPORT_PENDING",
+        "complete_text": false,
+        "verified_on": "2026-07-20",
         "ai_liturgical_translation_used": false
       }
     },
@@ -5349,8 +5501,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 750,
-    "total_fields": 750,
+    "filled_fields": 762,
+    "total_fields": 762,
     "percent": 100.0,
     "complete": true
   }
