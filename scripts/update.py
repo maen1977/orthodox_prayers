@@ -12,6 +12,32 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+PIPELINE_PATCH_LEVEL = "R11"
+
+def verify_pipeline_patch() -> None:
+    """Fail clearly when patch files were copied into a nested folder or mixed."""
+    integrity_path = ROOT / "scripts/orthodox_integrity.py"
+    schedule_path = ROOT / "scripts/update_liturgical_data.py"
+    integrity_text = integrity_path.read_text(encoding="utf-8")
+    schedule_text = schedule_path.read_text(encoding="utf-8")
+    required = {
+        str(integrity_path.relative_to(ROOT)): "require_complete=False",
+        str(schedule_path.relative_to(ROOT)): "require_complete: bool | None = None",
+    }
+    actual = {
+        str(integrity_path.relative_to(ROOT)): integrity_text,
+        str(schedule_path.relative_to(ROOT)): schedule_text,
+    }
+    missing = [name for name, marker in required.items() if marker not in actual[name]]
+    if missing:
+        joined = ", ".join(missing)
+        raise SystemExit(
+            f"PIPELINE_PATCH_MISMATCH expected={PIPELINE_PATCH_LEVEL} missing={joined}; "
+            "extract the changes ZIP directly into the repository root and overwrite existing files"
+        )
+    print(f"PIPELINE_PATCH_OK level={PIPELINE_PATCH_LEVEL}", flush=True)
+
+
 def run(*args: str, check: bool = True) -> int:
     result = subprocess.run([sys.executable, *args], cwd=ROOT)
     if check and result.returncode:
@@ -40,6 +66,7 @@ def main() -> None:
         help="Generate and validate only; remove stale signatures and sign in a later protected step.",
     )
     args = parser.parse_args()
+    verify_pipeline_patch()
     os.environ["ORTHODOX_DATE"] = args.date
 
     if args.private_key is not None and not args.private_key.is_file():

@@ -345,6 +345,115 @@ class DailyPipelineTests(unittest.TestCase):
         self.assertEqual(refs["epistle"]["reference"]["ar"], "تيطس 3:8-15")
         self.assertEqual(refs["gospel"]["reference"]["ar"], "متى 5:14-19")
 
+    def test_next_sunday_sync_allows_pre_corpus_pending_references(self):
+        pending = [
+            {
+                "kind": "epistle",
+                "title": self.update.loc("الرسالة", "Epistle", "Ἀπόστολος"),
+                "reference": self.update.loc("", "", ""),
+                "integrity": {"canonical_reference": "TIT.3.8-15"},
+            },
+            {
+                "kind": "gospel",
+                "title": self.update.loc("الإنجيل", "Gospel", "Εὐαγγέλιο"),
+                "reference": self.update.loc("", "", ""),
+                "integrity": {"canonical_reference": "MAT.5.14-19"},
+            },
+        ]
+        existing_refs = {
+            "epistle": {"reference": self.update.loc("معاينة", "Preview", "Προεπισκόπηση")},
+            "gospel": {"reference": self.update.loc("معاينة", "Preview", "Προεπισκόπηση")},
+        }
+        data = {
+            "integrity_inputs": {
+                "next_sunday": {
+                    "date_iso": "2026-07-26",
+                    "readings": pending,
+                }
+            },
+            "next_sunday": {
+                "date_iso": "2026-07-26",
+                "reading_references": existing_refs,
+            },
+            "upcoming": [
+                {"date": "2026-07-26", "reading_references": existing_refs}
+            ],
+        }
+
+        refs = self.update.synchronize_next_sunday_schedule(
+            data, pending, source="orthodox_jordan", require_complete=False
+        )
+
+        self.assertEqual({}, refs)
+        self.assertEqual(
+            data["next_sunday"]["verification_status"],
+            "PENDING_NATIVE_CORPUS_REFERENCE",
+        )
+        self.assertEqual(
+            data["upcoming"][0]["verification_status"],
+            "PENDING_NATIVE_CORPUS_REFERENCE",
+        )
+        self.assertEqual(
+            data["next_sunday"]["reading_references"], existing_refs
+        )
+
+
+    def test_next_sunday_sync_auto_detects_pre_corpus_for_older_caller(self):
+        pending = [
+            {
+                "kind": "epistle",
+                "title": self.update.loc("الرسالة", "Epistle", "Ἀπόστολος"),
+                "reference": self.update.loc("", "", ""),
+                "integrity": {"canonical_reference": "TIT.3.8-15"},
+            },
+            {
+                "kind": "gospel",
+                "title": self.update.loc("الإنجيل", "Gospel", "Εὐαγγέλιο"),
+                "reference": self.update.loc("", "", ""),
+                "integrity": {"canonical_reference": "MAT.5.14-19"},
+            },
+        ]
+        data = {
+            "integrity_inputs": {
+                "next_sunday": {"date_iso": "2026-07-26", "readings": pending}
+            },
+            "next_sunday": {"date_iso": "2026-07-26"},
+            "upcoming": [{"date": "2026-07-26"}],
+        }
+
+        # R9-style caller: supplies a source but omits require_complete=False.
+        refs = self.update.synchronize_next_sunday_schedule(
+            data, pending, source="orthodox_jordan"
+        )
+
+        self.assertEqual({}, refs)
+        self.assertEqual(
+            "PENDING_NATIVE_CORPUS_REFERENCE",
+            data["next_sunday"]["verification_status"],
+        )
+
+    def test_next_sunday_sync_auto_detects_strict_post_corpus_call(self):
+        pending = [
+            {
+                "kind": "epistle",
+                "reference": self.update.loc("", "", ""),
+            },
+            {
+                "kind": "gospel",
+                "reference": self.update.loc("", "", ""),
+            },
+        ]
+        data = {
+            "integrity_inputs": {
+                "next_sunday": {"date_iso": "2026-07-26", "readings": pending}
+            },
+            "next_sunday": {"date_iso": "2026-07-26"},
+            "upcoming": [{"date": "2026-07-26"}],
+        }
+
+        with self.assertRaisesRegex(ValueError, r"next Sunday epistle, gospel reference is missing"):
+            self.update.synchronize_next_sunday_schedule(data, pending)
+
     def test_next_sunday_is_strictly_future(self):
         self.assertEqual(
             self.update.next_sunday(date(2026, 7, 12)),

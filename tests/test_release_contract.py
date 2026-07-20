@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.5"', build)
-        self.assertIn("versionCode = 50005", build)
+        self.assertIn('versionName = "5.0.7"', build)
+        self.assertIn("versionCode = 50007", build)
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -35,6 +35,14 @@ class ReleaseContractTests(unittest.TestCase):
         rebuild = (ROOT / "scripts/rebuild_daily_services.py").read_text(encoding="utf-8")
         update = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
         self.assertIn("synchronize_next_sunday_schedule(data, next_readings)", rebuild)
+        integrity = (ROOT / "scripts/orthodox_integrity.py").read_text(encoding="utf-8")
+        self.assertIn("require_complete=False", integrity)
+        self.assertNotIn("require_complete=False", rebuild)
+        schedule = (ROOT / "scripts/update_liturgical_data.py").read_text(encoding="utf-8")
+        self.assertIn("require_complete: bool | None = None", schedule)
+        self.assertIn("require_complete = source is None", schedule)
+        self.assertIn('PIPELINE_PATCH_LEVEL = "R11"', update)
+        self.assertIn("verify_pipeline_patch()", update)
         self.assertLess(
             update.index('run("scripts/fill_daily_from_native_corpora.py"'),
             update.index('run("scripts/rebuild_daily_services.py"'),

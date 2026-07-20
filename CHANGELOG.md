@@ -1,3 +1,17 @@
+## 5.0.7 — R11 robust two-phase patch deployment
+
+- جعل مزامنة الأحد القادم تكتشف المرحلة المبكرة تلقائيًا عند وجود `source`، حتى لو بقي مستدعٍ أقدم لا يمرر `require_complete=False`.
+- إبقاء الاستدعاء النهائي بعد الـCorpus صارمًا تلقائيًا عند غياب `source`.
+- إضافة فحص `PIPELINE_PATCH_OK level=R11` في بداية `scripts/update.py` لمنع تشغيل ملفات مختلطة أو Patch مفكوك داخل مجلد فرعي.
+- تجهيز حزمة تعديلات بلا مجلد غلاف حتى تستبدل الملفات مباشرة عند فكها في جذر المستودع.
+
+# 5.0.6 R10
+
+- Fixed the two-phase next-Sunday pipeline: canonical references may remain pending before native corpus resolution, while the final post-corpus synchronization remains strict and fail-closed.
+- Prevented the early integrity pass from aborting before the Jordan publication lock and official evidence are written.
+- Added a regression test for the exact 2026-07-20 update ordering failure.
+- Version code 50006.
+
 # 5.0.5 R9
 
 - Re-synchronized `next_sunday` and its seven-day upcoming card after exact native Scripture filling.

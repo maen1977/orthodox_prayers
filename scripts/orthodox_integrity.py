@@ -1681,6 +1681,7 @@ def main() -> None:
                 data,
                 next_readings,
                 source=next_resolution.selected_source,
+                require_complete=False,
             )
 
             rebuild_services(data, today_readings, next_readings)
