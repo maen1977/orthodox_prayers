@@ -1,3 +1,11 @@
+# 5.0.9 R13
+
+- Add novice-friendly fasting guidance for today and the next seven days.
+- Show permitted and restricted food categories, reason, duration status, spiritual note, and health note in Arabic, English, and Greek.
+- Add a documented total-abstinence model that rejects invented clock times.
+- Add a fail-closed fasting guidance validator and Android UI rendering on Home, Upcoming, and Calendar Day screens.
+- Preserve compatibility with the immutable previously signed schema-9 daily payload while requiring the extension on newly generated data.
+
 # 5.0.8 R12
 
 - Preserve the exact localized prokeimenon during native Scripture corpus preparation.

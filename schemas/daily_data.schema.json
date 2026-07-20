@@ -44,7 +44,67 @@
         "is_fast",
         "allowed",
         "verification"
-      ]
+      ],
+      "properties": {
+        "code": {
+          "enum": [
+            "fast_free",
+            "dairy_allowed",
+            "fish_allowed",
+            "wine_oil",
+            "strict"
+          ]
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "detail": {
+          "$ref": "#/$defs/localized"
+        },
+        "is_fast": {
+          "type": "boolean"
+        },
+        "allowed": {
+          "type": "object",
+          "required": [
+            "meat",
+            "dairy",
+            "eggs",
+            "fish",
+            "wine",
+            "oil"
+          ],
+          "properties": {
+            "meat": {
+              "type": "boolean"
+            },
+            "dairy": {
+              "type": "boolean"
+            },
+            "eggs": {
+              "type": "boolean"
+            },
+            "fish": {
+              "type": "boolean"
+            },
+            "wine": {
+              "type": "boolean"
+            },
+            "oil": {
+              "type": "boolean"
+            }
+          }
+        },
+        "guidance": {
+          "$ref": "#/$defs/fastingGuidance"
+        },
+        "abstinence": {
+          "$ref": "#/$defs/abstinence"
+        },
+        "verification": {
+          "type": "object"
+        }
+      }
     },
     "feast": {
       "$ref": "#/$defs/localized"
@@ -185,6 +245,9 @@
     },
     "source_evidence": {
       "type": "array"
+    },
+    "fasting_guidance_version": {
+      "const": 1
     }
   },
   "$defs": {
@@ -379,6 +442,99 @@
         "segments": {
           "type": "array",
           "minItems": 1
+        }
+      }
+    },
+    "fastingGuidance": {
+      "type": "object",
+      "required": [
+        "allowed_summary",
+        "forbidden_summary",
+        "duration",
+        "beginner_explanation",
+        "spiritual_note",
+        "health_note"
+      ],
+      "properties": {
+        "allowed_summary": {
+          "$ref": "#/$defs/localized"
+        },
+        "forbidden_summary": {
+          "$ref": "#/$defs/localized"
+        },
+        "duration": {
+          "$ref": "#/$defs/localized"
+        },
+        "beginner_explanation": {
+          "$ref": "#/$defs/localized"
+        },
+        "spiritual_note": {
+          "$ref": "#/$defs/localized"
+        },
+        "health_note": {
+          "$ref": "#/$defs/localized"
+        }
+      }
+    },
+    "abstinence": {
+      "type": "object",
+      "required": [
+        "applies",
+        "kind",
+        "start_time",
+        "end_time",
+        "end_condition",
+        "detail",
+        "verification"
+      ],
+      "properties": {
+        "applies": {
+          "type": "boolean"
+        },
+        "kind": {
+          "enum": [
+            "not_indicated",
+            "documented_interval",
+            "until_communion",
+            "until_service_end"
+          ]
+        },
+        "start_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "end_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "end_condition": {
+          "$ref": "#/$defs/localized"
+        },
+        "detail": {
+          "$ref": "#/$defs/localized"
+        },
+        "verification": {
+          "type": "object",
+          "required": [
+            "status",
+            "source"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "NOT_INDICATED",
+                "DOCUMENTED_OVERRIDE"
+              ]
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
         }
       }
     }

@@ -42,6 +42,14 @@ def validate_fasting(profile: Any, pointer: str, errors: list[str]) -> None:
         for index, item in enumerate(items):
             if isinstance(item, dict):
                 require_localized(item.get("label"), f"{pointer}.items[{index}].label", errors)
+    guidance = profile.get("guidance") if isinstance(profile.get("guidance"), dict) else None
+    if guidance is not None:
+        for key in ("allowed_summary", "forbidden_summary", "duration", "beginner_explanation", "spiritual_note", "health_note"):
+            require_localized(guidance.get(key), f"{pointer}.guidance.{key}", errors)
+    abstinence = profile.get("abstinence") if isinstance(profile.get("abstinence"), dict) else None
+    if abstinence is not None:
+        require_localized(abstinence.get("end_condition"), f"{pointer}.abstinence.end_condition", errors)
+        require_localized(abstinence.get("detail"), f"{pointer}.abstinence.detail", errors)
     verification = profile.get("verification") if isinstance(profile.get("verification"), dict) else {}
     require_localized(verification.get("note"), f"{pointer}.verification.note", errors)
 

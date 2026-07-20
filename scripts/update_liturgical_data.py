@@ -98,7 +98,7 @@ FEAST_TRANSLATIONS = {
 }
 
 FASTING_FOOD_LOCALIZATION = {
-    "meat": ("Meat", "Κρέας"),
+    "meat": ("Meat and poultry", "Κρέας καὶ πουλερικά"),
     "dairy": ("Dairy", "Γαλακτοκομικά"),
     "eggs": ("Eggs", "Αὐγά"),
     "fish": ("Fish", "Ψάρι"),
@@ -235,6 +235,121 @@ def _localized_fasting_detail(profile: dict, language: str) -> str:
     return reason + suffix
 
 
+def _localized_food_names(profile: dict, allowed_value: bool, language: str) -> list[str]:
+    index = 0 if language == "en" else 1
+    result: list[str] = []
+    for item in profile.get("items") or []:
+        if bool(item.get("allowed")) is not allowed_value:
+            continue
+        key = str(item.get("key") or "")
+        result.append(FASTING_FOOD_LOCALIZATION.get(key, (key, key))[index])
+    return result
+
+
+def _join_foods(values: list[str], language: str) -> str:
+    if not values:
+        return "None" if language == "en" else "Κανένα"
+    if language == "en":
+        if len(values) == 1:
+            return values[0]
+        return ", ".join(values[:-1]) + ", and " + values[-1]
+    return ", ".join(values)
+
+
+def _complete_fasting_guidance(profile: dict) -> None:
+    """Attach novice-friendly food and duration guidance without inventing hours.
+
+    A documented daily override may replace ``abstinence`` with exact times or
+    an explicit end condition. Automatic Typikon profiles never guess a clock
+    interval and therefore use NOT_INDICATED.
+    """
+    if not isinstance(profile, dict):
+        return
+    is_fast = bool(profile.get("is_fast"))
+    allowed_ar = [str(item.get("label", {}).get("ar") or "") for item in profile.get("items") or [] if item.get("allowed")]
+    forbidden_ar = [str(item.get("label", {}).get("ar") or "") for item in profile.get("items") or [] if not item.get("allowed")]
+    allowed_en = _localized_food_names(profile, True, "en")
+    forbidden_en = _localized_food_names(profile, False, "en")
+    allowed_el = _localized_food_names(profile, True, "el")
+    forbidden_el = _localized_food_names(profile, False, "el")
+
+    if is_fast:
+        allowed_summary = loc(
+            "المسموح: " + ("، ".join(allowed_ar) if allowed_ar else "أطعمة نباتية لا تحتوي الأصناف الممنوعة"),
+            "Permitted: " + (_join_foods(allowed_en, "en") if allowed_en else "plant foods that do not contain the restricted categories"),
+            "Ἐπιτρέπονται: " + (_join_foods(allowed_el, "el") if allowed_el else "φυτικὲς τροφὲς χωρὶς τὶς ἀπαγορευμένες κατηγορίες"),
+        )
+        forbidden_summary = loc(
+            "غير المسموح: " + ("، ".join(forbidden_ar) if forbidden_ar else "لا توجد أصناف ممنوعة"),
+            "Not permitted: " + (_join_foods(forbidden_en, "en") if forbidden_en else "none of the listed categories"),
+            "Δὲν ἐπιτρέπονται: " + (_join_foods(forbidden_el, "el") if forbidden_el else "καμία ἀπὸ τὶς καταγεγραμμένες κατηγορίες"),
+        )
+        duration = loc(
+            "هذا حكم صوم غذائي لليوم الكنسي المعروض. لم يثبت المصدر ساعات بداية ونهاية منفصلة، لذلك لا يخمّن التطبيق وقتًا.",
+            "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time.",
+            "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα.",
+        )
+    else:
+        allowed_summary = loc(
+            "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "Permitted: all listed food categories under the general rule",
+            "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
+        )
+        forbidden_summary = loc(
+            "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "Not permitted: no category is restricted by a general fast today",
+            "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
+        )
+        duration = loc(
+            "لا توجد مدة صوم عامة لهذا اليوم.",
+            "No general fasting duration applies today.",
+            "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
+        )
+
+    guidance = profile.setdefault("guidance", {})
+    guidance["allowed_summary"] = allowed_summary
+    guidance["forbidden_summary"] = forbidden_summary
+    guidance["duration"] = duration
+    guidance["beginner_explanation"] = loc(
+        "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+        "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+        "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
+    )
+    guidance["spiritual_note"] = loc(
+        "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+        "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+        "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
+    )
+    guidance["health_note"] = loc(
+        "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+        "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+        "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
+    )
+
+    abstinence = profile.get("abstinence")
+    if not isinstance(abstinence, dict):
+        abstinence = {}
+        profile["abstinence"] = abstinence
+    if "applies" not in abstinence:
+        abstinence["applies"] = False
+    abstinence.setdefault("kind", "not_indicated")
+    abstinence.setdefault("start_time", None)
+    abstinence.setdefault("end_time", None)
+    abstinence.setdefault("end_condition", loc(
+        "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+        "The source does not document a separate total-abstinence interval for this day.",
+        "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
+    ))
+    abstinence.setdefault("detail", loc(
+        "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+        "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+        "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
+    ))
+    verification = abstinence.setdefault("verification", {})
+    verification.setdefault("status", "NOT_INDICATED")
+    verification.setdefault("source", "canonical/fasting_policy.json")
+
+
 def complete_fasting_localizations(profile: dict) -> None:
     if not isinstance(profile, dict):
         return
@@ -258,6 +373,7 @@ def complete_fasting_localizations(profile: dict) -> None:
         "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
         "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
     })
+    _complete_fasting_guidance(profile)
 
 
 def _complete_reading_labels(reading: dict, fill_missing_reference: bool = True) -> None:
@@ -346,6 +462,7 @@ def complete_daily_localizations(data: dict) -> dict:
     """
     if not isinstance(data, dict):
         return data
+    data["fasting_guidance_version"] = 1
     try:
         day = datetime.strptime(str(data.get("date_iso") or ""), "%Y-%m-%d").date()
     except ValueError:
@@ -566,7 +683,7 @@ def fixed_old_feast(j_month: int, j_day: int) -> str | None:
 
 
 FASTING_FOODS = {
-    "meat": {"icon": "🥩", "ar": "اللحوم"},
+    "meat": {"icon": "🥩", "ar": "اللحوم والدواجن"},
     "dairy": {"icon": "🥛", "ar": "الألبان"},
     "eggs": {"icon": "🥚", "ar": "البيض"},
     "fish": {"icon": "🐟", "ar": "السمك"},
@@ -604,7 +721,7 @@ def _fasting_profile(level: str, season_ar: str, reason_ar: str, source_rule: st
         detail = f"{reason_ar} صوم صارم بحسب القاعدة العامة: دون لحوم أو ألبان أو بيض أو سمك أو زيت أو نبيذ."
     if forbidden_names and allowed_names:
         detail += f" يُمتنع عن: { '، '.join(forbidden_names) }."
-    return {
+    profile = {
         "code": level,
         "season": loc(season_ar),
         "title": loc(title_ar),
@@ -629,6 +746,8 @@ def _fasting_profile(level: str, season_ar: str, reason_ar: str, source_rule: st
             "note": loc("قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة."),
         },
     }
+    complete_fasting_localizations(profile)
+    return profile
 
 
 def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: date, apostles_end: date) -> dict:
@@ -1471,6 +1590,21 @@ def apply_override(day: date, data: dict) -> dict:
         verification = fasting.setdefault("verification", {})
         verification["status"] = "DOCUMENTED_OVERRIDE"
         verification["override_file"] = str(path.relative_to(ROOT)).replace("\\", "/")
+        abstinence = fasting.get("abstinence") if isinstance(fasting.get("abstinence"), dict) else None
+        if abstinence is not None and abstinence.get("applies") is True:
+            kind = str(abstinence.get("kind") or "")
+            evidence = abstinence.get("verification") if isinstance(abstinence.get("verification"), dict) else {}
+            source = str(evidence.get("source") or "").strip()
+            if kind not in {"documented_interval", "until_communion", "until_service_end"}:
+                raise RuntimeError(f"{path.relative_to(ROOT)}: applied abstinence requires a documented kind")
+            if str(evidence.get("status") or "") != "DOCUMENTED_OVERRIDE" or not source:
+                raise RuntimeError(f"{path.relative_to(ROOT)}: abstinence requires DOCUMENTED_OVERRIDE evidence and a source")
+            if kind == "documented_interval":
+                clock = re.compile(r"^(?:[01]\d|2[0-3]):[0-5]\d$")
+                start = str(abstinence.get("start_time") or "")
+                end = str(abstinence.get("end_time") or "")
+                if not clock.fullmatch(start) or not clock.fullmatch(end):
+                    raise RuntimeError(f"{path.relative_to(ROOT)}: documented_interval requires HH:MM start_time and end_time")
         data["fast"] = copy.deepcopy(fasting.get("title") or data.get("fast"))
         data["fast_detail"] = copy.deepcopy(fasting.get("detail") or data.get("fast_detail"))
     return data

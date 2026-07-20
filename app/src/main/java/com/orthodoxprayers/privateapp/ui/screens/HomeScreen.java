@@ -32,6 +32,7 @@ public final class HomeScreen extends BaseScreen {
         }
         addDateCard(page.root);
         addStatusCard(page.root);
+        addTodayFastingGuide(page.root);
         addQuickAccess(page.root);
         addUpcoming(page.root);
         addNextSunday(page.root);
@@ -116,6 +117,18 @@ public final class HomeScreen extends BaseScreen {
         addStatus(row, "⛪", local("خدمة اليوم", "Today’s service", "Ἀκολουθία"), local("القداس الإلهي", "Divine Liturgy", "Θεία Λειτουργία"));
         card.addView(row);
         add(root, card, 0, 12);
+    }
+
+    private void addTodayFastingGuide(LinearLayout root) {
+        JSONObject fasting = data.today().optJSONObject("fasting");
+        if (fasting == null) return;
+        root.addView(ui.sectionTitle(local("تفاصيل صوم اليوم", "Today’s fasting details", "Λεπτομέρειες σημερινῆς νηστείας")));
+        LinearLayout card = ui.card();
+        card.addView(ui.text(localized(fasting.optJSONObject("title"), fastingValue(data.today())), 17, ui.colors().accentText(), true));
+        String reason = localized(fasting.optJSONObject("detail"), "");
+        if (!reason.isEmpty()) card.addView(ui.text(reason, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 5, 0, 4));
+        addFastingGuide(card, fasting, true);
+        add(root, card, 2, 12);
     }
 
     private String fastingValue(JSONObject today) {
@@ -212,10 +225,18 @@ public final class HomeScreen extends BaseScreen {
         TextView status = centered(localized(item.optJSONObject("status"), ""), 12, ui.colors().accentText(), true);
         status.setMaxLines(3);
         card.addView(status, ui.margins(-1, -2, 0, 6, 0, 0));
+        JSONObject fasting = item.optJSONObject("fasting");
+        JSONObject guidance = fasting == null ? null : fasting.optJSONObject("guidance");
+        String permitted = guidance == null ? "" : localized(guidance.optJSONObject("allowed_summary"), "");
+        if (!permitted.isEmpty()) {
+            TextView allowed = centered(permitted, 10, ui.colors().secondaryText(), false);
+            allowed.setMaxLines(3);
+            card.addView(allowed, ui.margins(-1, -2, 0, 3, 0, 2));
+        }
         TextView feast = centered(localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")), 11, ui.colors().secondaryText(), false);
         feast.setMaxLines(3);
         card.addView(feast);
-        card.setContentDescription(day.getText() + ". " + status.getText() + ". " + feast.getText());
+        card.setContentDescription(day.getText() + ". " + status.getText() + ". " + permitted + ". " + feast.getText());
         return card;
     }
 

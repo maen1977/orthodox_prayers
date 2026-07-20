@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.8"', build)
-        self.assertIn("versionCode = 50008", build)
+        self.assertIn('versionName = "5.0.9"', build)
+        self.assertIn("versionCode = 50009", build)
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)
@@ -41,7 +41,7 @@ class ReleaseContractTests(unittest.TestCase):
         schedule = (ROOT / "scripts/update_liturgical_data.py").read_text(encoding="utf-8")
         self.assertIn("require_complete: bool | None = None", schedule)
         self.assertIn("require_complete = source is None", schedule)
-        self.assertIn('PIPELINE_PATCH_LEVEL = "R12"', update)
+        self.assertIn('PIPELINE_PATCH_LEVEL = "R13"', update)
         self.assertIn("verify_pipeline_patch()", update)
         self.assertLess(
             update.index('run("scripts/fill_daily_from_native_corpora.py"'),

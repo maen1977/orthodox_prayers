@@ -1,48 +1,118 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — old calendar baseline",
   "status": "automatic_typikon_baseline",
-  "note_ar": "هذه قواعد آلية محافظة مستندة إلى التقليد الأرثوذكسي العام والتقويم القديم. التدبير الرعوي المحلي أو رتبة عيد خاصة قد يغيّران التطبيق العملي، لذلك يدعم النظام ملفات override اليومية ولا يخمّن استثناءً غير موثق.",
+  "note_ar": "قواعد صوم آلية محافظة بحسب التقويم القديم، مع شرح مبسط للمسموح والممنوع. لا يضع التطبيق ساعات صوم انقطاعي إلا من override يومي موثق بمصدر صريح.",
   "sources": [
+    {
+      "id": "orthodox_jordan_daily_symbols",
+      "url": "https://orthodoxjordan.org/",
+      "use": "مصطلحات الاستعمال الأردني: صوم، صوم انقطاعي، يسمح بالسمك، يسمح بالبياض، ويسمح بالزيت والخمر"
+    },
     {
       "id": "oca_typikon_fasting",
       "url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
-      "use": "قواعد صوم الرسل والميلاد والصوم الكبير والأيام الخالية من الصوم"
+      "use": "قواعد الصوم العامة وفترات الصوم والأيام الخالية منه والسماحات"
     },
     {
       "id": "goarch_fasting_legend",
       "url": "https://www.goarch.org/chapel/calendar",
-      "use": "تصنيفات العرض: صوم صارم، زيت ونبيذ، سمك، ألبان، لا صوم"
+      "use": "تصنيفات العرض الصريحة للممنوع والمسموح: صارم، زيت ونبيذ، سمك، بياض، ولا صوم"
     },
     {
       "id": "goarch_when_you_fast",
       "url": "https://www.goarch.org/-/when-you-fast",
-      "use": "فسحات السمك في البشارة وأحد الشعانين والزيت والنبيذ في سبوت وآحاد الصوم"
+      "use": "المعنى الروحي للصوم والتنبيه إلى التدرج والحالة الصحية"
     }
   ],
   "levels": {
     "fast_free": {
       "title_ar": "لا صوم",
-      "allowed": ["meat", "dairy", "eggs", "fish", "wine", "oil"]
+      "allowed": [
+        "meat",
+        "dairy",
+        "eggs",
+        "fish",
+        "wine",
+        "oil"
+      ]
     },
     "dairy_allowed": {
       "title_ar": "أسبوع مرفع الجبن",
-      "allowed": ["dairy", "eggs", "fish", "wine", "oil"]
+      "allowed": [
+        "dairy",
+        "eggs",
+        "fish",
+        "wine",
+        "oil"
+      ]
     },
     "fish_allowed": {
       "title_ar": "صوم — السمك والزيت والنبيذ مسموحة",
-      "allowed": ["fish", "wine", "oil"]
+      "allowed": [
+        "fish",
+        "wine",
+        "oil"
+      ]
     },
     "wine_oil": {
       "title_ar": "صوم — الزيت والنبيذ مسموحان",
-      "allowed": ["wine", "oil"]
+      "allowed": [
+        "wine",
+        "oil"
+      ]
     },
     "strict": {
       "title_ar": "صوم صارم",
       "allowed": []
     }
   },
-  "single_day_strict_old_calendar": ["01-05", "08-29", "09-14"],
-  "single_day_fish_old_calendar": ["03-25", "08-06", "11-21"],
-  "override_directory": "scripts/overrides"
+  "single_day_strict_old_calendar": [
+    "01-05",
+    "08-29",
+    "09-14"
+  ],
+  "single_day_fish_old_calendar": [
+    "03-25",
+    "08-06",
+    "11-21"
+  ],
+  "override_directory": "scripts/overrides",
+  "display_contract": {
+    "required_fields": [
+      "allowed_summary",
+      "forbidden_summary",
+      "duration",
+      "beginner_explanation",
+      "spiritual_note",
+      "health_note"
+    ],
+    "food_categories": [
+      "meat",
+      "dairy",
+      "eggs",
+      "fish",
+      "wine",
+      "oil"
+    ],
+    "never_color_only": true,
+    "no_unverified_clock_times": true
+  },
+  "abstinence_policy": {
+    "default_status": "NOT_INDICATED",
+    "allowed_kinds": [
+      "not_indicated",
+      "documented_interval",
+      "until_communion",
+      "until_service_end"
+    ],
+    "documented_override_required": true,
+    "required_when_applies": [
+      "detail",
+      "end_condition",
+      "verification.source"
+    ],
+    "clock_times_required_only_for": "documented_interval",
+    "note_ar": "الصوم الانقطاعي يعني امتناعًا كليًا عن الطعام والشراب لفترة محددة. لا تُنشر ساعة بداية أو نهاية إلا إذا وردت حرفيًا في مصدر موثق لليوم نفسه."
+  }
 }

@@ -26,6 +26,7 @@ public final class CalendarDayScreen extends BaseScreen {
         card.addView(centered("📅  " + date, 21, ui.colors().primaryText(), true));
         addField(card, local("التذكار", "Commemoration", "Μνήμη"), localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")));
         addField(card, local("الصيام", "Fasting", "Νηστεία"), localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), "")));
+        addFastingGuide(card, item.optJSONObject("fasting"), true);
         JSONObject refs = item.optJSONObject("reading_references");
         if (refs != null) {
             addReference(card, refs.optJSONObject("epistle"), local("الرسالة", "Epistle", "Ἀπόστολος"));

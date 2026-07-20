@@ -45,6 +45,41 @@ public abstract class BaseScreen implements AppScreen {
     protected String local(String ar, String en, String el) { return data.local(ar, en, el); }
     protected String localized(JSONObject object, String fallback) { return data.localized(object, fallback); }
 
+    protected void addFastingGuide(LinearLayout card, JSONObject fasting, boolean includeNotes) {
+        if (fasting == null || fasting.length() == 0) return;
+        JSONObject guidance = fasting.optJSONObject("guidance");
+        if (guidance == null) return;
+
+        addGuideLine(card, "✅", localized(guidance.optJSONObject("allowed_summary"), ""), true);
+        addGuideLine(card, "⛔", localized(guidance.optJSONObject("forbidden_summary"), ""), true);
+        addGuideLine(card, "🕒", localized(guidance.optJSONObject("duration"), ""), false);
+
+        JSONObject abstinence = fasting.optJSONObject("abstinence");
+        if (abstinence != null && (abstinence.optBoolean("applies", false) || includeNotes)) {
+            String abstinenceText = localized(abstinence.optJSONObject("end_condition"), "");
+            String start = abstinence.optString("start_time", "").trim();
+            String end = abstinence.optString("end_time", "").trim();
+            if (!start.isEmpty() || !end.isEmpty()) {
+                String interval = local("من " + start + " إلى " + end, "From " + start + " to " + end, "Ἀπὸ " + start + " ἕως " + end);
+                abstinenceText = interval + (abstinenceText.isEmpty() ? "" : "\n" + abstinenceText);
+            }
+            String label = local("الصوم الانقطاعي", "Total abstinence", "Πλήρης ἀποχή");
+            if (!abstinenceText.isEmpty()) addGuideLine(card, "⏳", label + ": " + abstinenceText, false);
+        }
+
+        if (includeNotes) {
+            addGuideLine(card, "ℹ", localized(guidance.optJSONObject("beginner_explanation"), ""), false);
+            addGuideLine(card, "🙏", localized(guidance.optJSONObject("spiritual_note"), ""), false);
+            addGuideLine(card, "⚕", localized(guidance.optJSONObject("health_note"), ""), false);
+        }
+    }
+
+    private void addGuideLine(LinearLayout card, String icon, String value, boolean bold) {
+        if (value == null || value.trim().isEmpty()) return;
+        TextView text = ui.text(icon + "  " + value, 13, bold ? ui.colors().primaryText() : ui.colors().secondaryText(), bold);
+        card.addView(text, ui.margins(-1, -2, 0, 5, 0, 0));
+    }
+
     protected LinearLayout serviceCard(JSONObject service) {
         LinearLayout card = ui.card();
         card.setClickable(true);

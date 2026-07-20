@@ -27,6 +27,16 @@ public final class UpcomingScreen extends BaseScreen {
                 if (item != null) add(page.root, dayCard(item), 2, 7);
             }
         }
+        JSONObject todayFasting = data.today().optJSONObject("fasting");
+        JSONObject guidance = todayFasting == null ? null : todayFasting.optJSONObject("guidance");
+        if (guidance != null) {
+            LinearLayout reminder = ui.card();
+            String spiritual = localized(guidance.optJSONObject("spiritual_note"), "");
+            String health = localized(guidance.optJSONObject("health_note"), "");
+            if (!spiritual.isEmpty()) reminder.addView(ui.text("🙏  " + spiritual, 13, ui.colors().secondaryText(), false));
+            if (!health.isEmpty()) reminder.addView(ui.text("⚕  " + health, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 6, 0, 0));
+            add(page.root, reminder, 8, 16);
+        }
         return page.scroll;
     }
 
@@ -36,6 +46,7 @@ public final class UpcomingScreen extends BaseScreen {
         TextView heading = ui.text("📅  " + day, 16, ui.colors().primaryText(), true);
         card.addView(heading);
         card.addView(ui.text(localized(item.optJSONObject("status"), ""), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
+        addFastingGuide(card, item.optJSONObject("fasting"), false);
         String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
         if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
         JSONObject refs = item.optJSONObject("reading_references");

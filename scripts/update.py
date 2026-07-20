@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R12"
+PIPELINE_PATCH_LEVEL = "R13"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -20,13 +20,16 @@ def verify_pipeline_patch() -> None:
     schedule_path = ROOT / "scripts/update_liturgical_data.py"
     integrity_text = integrity_path.read_text(encoding="utf-8")
     schedule_text = schedule_path.read_text(encoding="utf-8")
+    fasting_validator_path = ROOT / "scripts/validate_fasting_guidance.py"
     required = {
         str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
-        str(schedule_path.relative_to(ROOT)): "require_complete: bool | None = None",
+        str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
+        str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
     }
     actual = {
         str(integrity_path.relative_to(ROOT)): integrity_text,
         str(schedule_path.relative_to(ROOT)): schedule_text,
+        str(fasting_validator_path.relative_to(ROOT)): fasting_validator_path.read_text(encoding="utf-8") if fasting_validator_path.is_file() else "",
     }
     missing = [name for name, marker in required.items() if marker not in actual[name]]
     if missing:
@@ -113,6 +116,7 @@ def main() -> None:
             ("scripts/validate_no_placeholder_guidance.py",),
             ("scripts/validate_json_schema.py",),
             ("scripts/validate_liturgical_schedule.py", "data/calendar/today.json"),
+            ("scripts/validate_fasting_guidance.py", "data/calendar/today.json"),
             ("scripts/quality_check.py", "data/calendar/today.json"),
             ("scripts/validate_embedded_app_data.py",),
             ("scripts/validate_static_prayer_sources.py",),

@@ -42,6 +42,38 @@ def validate_fasting(profile: Any, pointer: str, errors: list[str]) -> None:
     icons = profile.get("display_icons")
     if not isinstance(icons, list) or not icons or any(not str(icon).strip() for icon in icons):
         errors.append(f"{pointer}.display_icons: at least one non-empty icon is required")
+    guidance = profile.get("guidance")
+    if isinstance(guidance, dict):
+        for key in ("allowed_summary", "forbidden_summary", "duration", "beginner_explanation", "spiritual_note", "health_note"):
+            value = guidance.get(key)
+            if not isinstance(value, dict) or any(not str(value.get(lang) or "").strip() for lang in ("ar", "en", "el")):
+                errors.append(f"{pointer}.guidance.{key}: complete ar/en/el text is required")
+    abstinence = profile.get("abstinence")
+    if isinstance(abstinence, dict):
+        applies = abstinence.get("applies")
+        kind = str(abstinence.get("kind") or "")
+        if not isinstance(applies, bool):
+            errors.append(f"{pointer}.abstinence.applies: boolean required")
+        if kind not in {"not_indicated", "documented_interval", "until_communion", "until_service_end"}:
+            errors.append(f"{pointer}.abstinence.kind: unsupported value {kind!r}")
+        for key in ("end_condition", "detail"):
+            value = abstinence.get(key)
+            if not isinstance(value, dict) or any(not str(value.get(lang) or "").strip() for lang in ("ar", "en", "el")):
+                errors.append(f"{pointer}.abstinence.{key}: complete ar/en/el text is required")
+        evidence = abstinence.get("verification") if isinstance(abstinence.get("verification"), dict) else {}
+        status = str(evidence.get("status") or "")
+        source = str(evidence.get("source") or "").strip()
+        if status not in {"NOT_INDICATED", "DOCUMENTED_OVERRIDE"} or not source:
+            errors.append(f"{pointer}.abstinence.verification: status and source are required")
+        start = abstinence.get("start_time")
+        end = abstinence.get("end_time")
+        if applies:
+            if kind == "not_indicated" or status != "DOCUMENTED_OVERRIDE":
+                errors.append(f"{pointer}.abstinence: an applied interval must be a documented override")
+            if kind == "documented_interval" and (not isinstance(start, str) or not start.strip() or not isinstance(end, str) or not end.strip()):
+                errors.append(f"{pointer}.abstinence: documented_interval requires start_time and end_time")
+        elif start is not None or end is not None:
+            errors.append(f"{pointer}.abstinence: unapplied abstinence must not contain clock times")
     verification = profile.get("verification")
     if not isinstance(verification, dict) or verification.get("status") not in {"TYPICON_BASELINE", "DOCUMENTED_OVERRIDE"}:
         errors.append(f"{pointer}.verification.status: invalid or missing")
