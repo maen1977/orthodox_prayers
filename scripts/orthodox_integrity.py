@@ -1668,9 +1668,6 @@ def main() -> None:
             data["integrity_inputs"]["next_sunday"]["readings"] = next_readings
 
             update = load_update_module()
-            next_refs = update.reading_references(next_readings)
-            data["next_sunday"]["reading_references"] = copy.deepcopy(next_refs)
-            next_date = data["next_sunday"].get("date_iso")
             for item in data.get("upcoming", []):
                 if not isinstance(item, dict):
                     continue
@@ -1680,10 +1677,11 @@ def main() -> None:
                     "en": "Reference preview only; full text is re-verified on its publication date.",
                     "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως."
                 }
-                if item.get("date") == next_date:
-                    item["reading_references"] = copy.deepcopy(next_refs)
-                    item["verification_status"] = "VERIFIED_NEXT_SUNDAY_REFERENCES"
-                    item["source"] = next_resolution.selected_source
+            update.synchronize_next_sunday_schedule(
+                data,
+                next_readings,
+                source=next_resolution.selected_source,
+            )
 
             rebuild_services(data, today_readings, next_readings)
             data["source_evidence"] = [asdict(item) for item in all_evidence]

@@ -13,6 +13,7 @@ from pathlib import Path
 
 from native_text_contract import ROOT
 from orthodox_integrity import rebuild_services
+from update_liturgical_data import synchronize_next_sunday_schedule
 
 
 def process(path: Path) -> None:
@@ -25,6 +26,7 @@ def process(path: Path) -> None:
     if not isinstance(next_readings, list):
         raise ValueError(f"{path}: missing integrity_inputs.next_sunday.readings")
     rebuild_services(data, today_readings, next_readings)
+    synchronize_next_sunday_schedule(data, next_readings)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 

@@ -303,6 +303,48 @@ class DailyPipelineTests(unittest.TestCase):
             "UNAVAILABLE_UNTIL_INDEPENDENT_VERIFICATION",
         )
 
+    def test_next_sunday_schedule_is_resynchronized_after_native_fill(self):
+        next_readings = [
+            {
+                "kind": "epistle",
+                "title": self.update.loc("الرسالة", "Epistle", "Ἀπόστολος"),
+                "reference": self.update.loc("تيطس 3:8-15", "Titus 3:8-15", "ΠΡΟΣ ΤΙΤΟΝ 3:8-15"),
+            },
+            {
+                "kind": "gospel",
+                "title": self.update.loc("الإنجيل", "Gospel", "Εὐαγγέλιο"),
+                "reference": self.update.loc("متى 5:14-19", "Matthew 5:14-19", "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 5:14-19"),
+            },
+        ]
+        data = {
+            "integrity_inputs": {
+                "next_sunday": {
+                    "date_iso": "2026-07-26",
+                    "readings": next_readings,
+                }
+            },
+            "next_sunday": {
+                "date_iso": "2026-07-26",
+                "reading_references": {},
+            },
+            "upcoming": [
+                {"date": f"2026-07-{day:02d}", "reading_references": {}}
+                for day in range(21, 28)
+            ],
+        }
+
+        refs = self.update.synchronize_next_sunday_schedule(
+            data, next_readings, source="orthodox_jordan_cycle"
+        )
+
+        self.assertEqual(data["next_sunday"]["reading_references"], refs)
+        sunday_card = next(item for item in data["upcoming"] if item["date"] == "2026-07-26")
+        self.assertEqual(sunday_card["reading_references"], refs)
+        self.assertEqual(sunday_card["verification_status"], "VERIFIED_NEXT_SUNDAY_REFERENCES")
+        self.assertEqual(sunday_card["source"], "orthodox_jordan_cycle")
+        self.assertEqual(refs["epistle"]["reference"]["ar"], "تيطس 3:8-15")
+        self.assertEqual(refs["gospel"]["reference"]["ar"], "متى 5:14-19")
+
     def test_next_sunday_is_strictly_future(self):
         self.assertEqual(
             self.update.next_sunday(date(2026, 7, 12)),

@@ -1077,6 +1077,48 @@ def reading_references(readings: list[dict]) -> dict:
     return result
 
 
+def synchronize_next_sunday_schedule(data: dict, next_readings: list[dict] | None = None, source: str | None = None) -> dict:
+    """Keep next-Sunday cards synchronized with the verified reading payload.
+
+    Native Scripture is resolved after the initial seven-day schedule is built.
+    This final synchronization prevents a complete next-Sunday Epistle/Gospel
+    from remaining hidden behind stale or empty preview references.
+    """
+    integrity_next = (data.get("integrity_inputs") or {}).get("next_sunday") or {}
+    readings = next_readings if isinstance(next_readings, list) else integrity_next.get("readings")
+    if not isinstance(readings, list):
+        raise ValueError("missing integrity_inputs.next_sunday.readings")
+
+    refs = reading_references(readings)
+    for kind in ("epistle", "gospel"):
+        block = refs.get(kind) if isinstance(refs, dict) else None
+        reference = block.get("reference") if isinstance(block, dict) else None
+        has_reference = isinstance(reference, dict) and any(str(reference.get(lang) or "").strip() for lang in ("ar", "en", "el"))
+        if not has_reference:
+            raise ValueError(f"next Sunday {kind} reference is missing after native-corpus resolution")
+
+    sunday = data.get("next_sunday")
+    if not isinstance(sunday, dict):
+        raise ValueError("missing next_sunday object")
+    sunday["reading_references"] = copy.deepcopy(refs)
+    next_date = str(sunday.get("date_iso") or integrity_next.get("date_iso") or "")
+    if not next_date:
+        raise ValueError("missing next_sunday.date_iso")
+
+    matched = False
+    for item in data.get("upcoming") or []:
+        if not isinstance(item, dict) or str(item.get("date") or "") != next_date:
+            continue
+        item["reading_references"] = copy.deepcopy(refs)
+        item["verification_status"] = "VERIFIED_NEXT_SUNDAY_REFERENCES"
+        if source:
+            item["source"] = source
+        matched = True
+    if not matched:
+        raise ValueError("next Sunday is missing from the seven-day upcoming list")
+    return refs
+
+
 def feast_inserts(info: dict) -> dict[str, dict]:
     entry = fixed_proper_entry(info)
     if entry:

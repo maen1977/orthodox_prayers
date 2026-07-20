@@ -1,3 +1,11 @@
+# 5.0.5 R9
+
+- Re-synchronized `next_sunday` and its seven-day upcoming card after exact native Scripture filling.
+- Prevented complete next-Sunday readings from retaining empty preview references.
+- Added fail-closed checks for missing Epistle/Gospel references after corpus resolution.
+- Added a regression test for 2026-07-20 → 2026-07-26 schedule synchronization.
+- Version code 50005.
+
 # 5.0.4 R8
 
 - Fixed JSON Schema integrity-envelope overlap: valid release candidates may satisfy both verified-source and native-text envelopes.

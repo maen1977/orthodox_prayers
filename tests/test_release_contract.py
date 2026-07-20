@@ -22,14 +22,23 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.4"', build)
-        self.assertIn("versionCode = 50004", build)
+        self.assertIn('versionName = "5.0.5"', build)
+        self.assertIn("versionCode = 50005", build)
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)
         self.assertIn("isShrinkResources = true", build)
         self.assertIn('System.getenv("ANDROID_KEYSTORE_FILE")', build)
         self.assertIn('signingConfigs.findByName("release")', build)
+
+    def test_next_sunday_schedule_sync_runs_after_native_fill(self):
+        rebuild = (ROOT / "scripts/rebuild_daily_services.py").read_text(encoding="utf-8")
+        update = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
+        self.assertIn("synchronize_next_sunday_schedule(data, next_readings)", rebuild)
+        self.assertLess(
+            update.index('run("scripts/fill_daily_from_native_corpora.py"'),
+            update.index('run("scripts/rebuild_daily_services.py"'),
+        )
 
     def test_daily_schema_and_provenance(self):
         schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
