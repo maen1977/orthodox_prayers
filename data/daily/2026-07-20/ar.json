@@ -33,7 +33,7 @@
     "el": "Χωρὶς νηστεία"
   },
   "fast_detail": {
-    "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+    "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
     "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
     "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
   },
@@ -55,7 +55,7 @@
       "el": "Χωρὶς νηστεία"
     },
     "detail": {
-      "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+      "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
       "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
       "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
     },
@@ -76,9 +76,9 @@
         "key": "meat",
         "icon": "🥩",
         "label": {
-          "ar": "اللحوم",
-          "en": "Meat",
-          "el": "Κρέας"
+          "ar": "اللحوم والدواجن",
+          "en": "Meat and poultry",
+          "el": "Κρέας καὶ πουλερικά"
         },
         "allowed": true
       },
@@ -141,6 +141,58 @@
         "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
         "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
         "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+      }
+    },
+    "guidance": {
+      "allowed_summary": {
+        "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+        "en": "Permitted: all listed food categories under the general rule",
+        "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+      },
+      "forbidden_summary": {
+        "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+        "en": "Not permitted: no category is restricted by a general fast today",
+        "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+      },
+      "duration": {
+        "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+        "en": "No general fasting duration applies today.",
+        "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+      },
+      "beginner_explanation": {
+        "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+        "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+        "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+      },
+      "spiritual_note": {
+        "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+        "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+        "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+      },
+      "health_note": {
+        "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+        "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+        "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+      }
+    },
+    "abstinence": {
+      "applies": false,
+      "kind": "not_indicated",
+      "start_time": null,
+      "end_time": null,
+      "end_condition": {
+        "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+        "en": "The source does not document a separate total-abstinence interval for this day.",
+        "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+      },
+      "detail": {
+        "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+        "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+        "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+      },
+      "verification": {
+        "status": "NOT_INDICATED",
+        "source": "canonical/fasting_policy.json"
       }
     }
   },
@@ -745,7 +797,7 @@
         "el": "Χωρὶς νηστεία"
       },
       "detail": {
-        "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+        "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
         "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
         "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
       },
@@ -766,9 +818,9 @@
           "key": "meat",
           "icon": "🥩",
           "label": {
-            "ar": "اللحوم",
-            "en": "Meat",
-            "el": "Κρέας"
+            "ar": "اللحوم والدواجن",
+            "en": "Meat and poultry",
+            "el": "Κρέας καὶ πουλερικά"
           },
           "allowed": true
         },
@@ -831,6 +883,58 @@
           "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
           "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
           "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+        }
+      },
+      "guidance": {
+        "allowed_summary": {
+          "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+          "en": "Permitted: all listed food categories under the general rule",
+          "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+        },
+        "forbidden_summary": {
+          "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+          "en": "Not permitted: no category is restricted by a general fast today",
+          "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+        },
+        "duration": {
+          "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+          "en": "No general fasting duration applies today.",
+          "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+        },
+        "beginner_explanation": {
+          "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+          "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+          "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+        },
+        "spiritual_note": {
+          "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+          "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+          "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+        },
+        "health_note": {
+          "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+          "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+          "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+        }
+      },
+      "abstinence": {
+        "applies": false,
+        "kind": "not_indicated",
+        "start_time": null,
+        "end_time": null,
+        "end_condition": {
+          "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+          "en": "The source does not document a separate total-abstinence interval for this day.",
+          "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+        },
+        "detail": {
+          "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+          "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+          "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+        },
+        "verification": {
+          "status": "NOT_INDICATED",
+          "source": "canonical/fasting_policy.json"
         }
       }
     },
@@ -1848,7 +1952,7 @@
           "el": "Χωρὶς νηστεία"
         },
         "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
           "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
           "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
@@ -1869,9 +1973,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": true
           },
@@ -1934,6 +2038,58 @@
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "en": "Permitted: all listed food categories under the general rule",
+            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "en": "Not permitted: no category is restricted by a general fast today",
+            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+          },
+          "duration": {
+            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+            "en": "No general fasting duration applies today.",
+            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
           }
         }
       },
@@ -2033,9 +2189,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": false
           },
@@ -2098,6 +2254,58 @@
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: أطعمة نباتية لا تحتوي الأصناف الممنوعة",
+            "en": "Permitted: plant foods that do not contain the restricted categories",
+            "el": "Ἐπιτρέπονται: φυτικὲς τροφὲς χωρὶς τὶς ἀπαγορευμένες κατηγορίες"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت",
+            "en": "Not permitted: Meat and poultry, Dairy, Eggs, Fish, Wine, and Oil",
+            "el": "Δὲν ἐπιτρέπονται: Κρέας καὶ πουλερικά, Γαλακτοκομικά, Αὐγά, Ψάρι, Οἶνος, Ἔλαιο"
+          },
+          "duration": {
+            "ar": "هذا حكم صوم غذائي لليوم الكنسي المعروض. لم يثبت المصدر ساعات بداية ونهاية منفصلة، لذلك لا يخمّن التطبيق وقتًا.",
+            "en": "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time.",
+            "el": "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
           }
         }
       },
@@ -2175,7 +2383,7 @@
           "el": "Χωρὶς νηστεία"
         },
         "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
           "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
           "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
@@ -2196,9 +2404,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": true
           },
@@ -2261,6 +2469,58 @@
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "en": "Permitted: all listed food categories under the general rule",
+            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "en": "Not permitted: no category is restricted by a general fast today",
+            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+          },
+          "duration": {
+            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+            "en": "No general fasting duration applies today.",
+            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
           }
         }
       },
@@ -2360,9 +2620,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": false
           },
@@ -2425,6 +2685,58 @@
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: أطعمة نباتية لا تحتوي الأصناف الممنوعة",
+            "en": "Permitted: plant foods that do not contain the restricted categories",
+            "el": "Ἐπιτρέπονται: φυτικὲς τροφὲς χωρὶς τὶς ἀπαγορευμένες κατηγορίες"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت",
+            "en": "Not permitted: Meat and poultry, Dairy, Eggs, Fish, Wine, and Oil",
+            "el": "Δὲν ἐπιτρέπονται: Κρέας καὶ πουλερικά, Γαλακτοκομικά, Αὐγά, Ψάρι, Οἶνος, Ἔλαιο"
+          },
+          "duration": {
+            "ar": "هذا حكم صوم غذائي لليوم الكنسي المعروض. لم يثبت المصدر ساعات بداية ونهاية منفصلة، لذلك لا يخمّن التطبيق وقتًا.",
+            "en": "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time.",
+            "el": "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
           }
         }
       },
@@ -2502,7 +2814,7 @@
           "el": "Χωρὶς νηστεία"
         },
         "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
           "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
           "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
@@ -2523,9 +2835,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": true
           },
@@ -2588,6 +2900,58 @@
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "en": "Permitted: all listed food categories under the general rule",
+            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "en": "Not permitted: no category is restricted by a general fast today",
+            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+          },
+          "duration": {
+            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+            "en": "No general fasting duration applies today.",
+            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
           }
         }
       },
@@ -2665,7 +3029,7 @@
           "el": "Χωρὶς νηστεία"
         },
         "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
           "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
           "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
@@ -2686,9 +3050,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": true
           },
@@ -2751,6 +3115,58 @@
             "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "en": "Permitted: all listed food categories under the general rule",
+            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "en": "Not permitted: no category is restricted by a general fast today",
+            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+          },
+          "duration": {
+            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+            "en": "No general fasting duration applies today.",
+            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
           }
         }
       },
@@ -2828,7 +3244,7 @@
           "el": "Χωρὶς νηστεία"
         },
         "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
           "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
           "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
         },
@@ -2849,9 +3265,9 @@
             "key": "meat",
             "icon": "🥩",
             "label": {
-              "ar": "اللحوم",
-              "en": "Meat",
-              "el": "Κρέας"
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
             },
             "allowed": true
           },
@@ -2915,6 +3331,58 @@
             "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
             "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
           }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "en": "Permitted: all listed food categories under the general rule",
+            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "en": "Not permitted: no category is restricted by a general fast today",
+            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+          },
+          "duration": {
+            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+            "en": "No general fasting duration applies today.",
+            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
+          }
         }
       },
       "reading_references": {
@@ -2952,6 +3420,7 @@
       }
     }
   ],
+  "fasting_guidance_version": 1,
   "automatic_diacritization_used": false,
   "integrity": {
     "status": "VERIFIED_OFFICIAL_SOURCES",
