@@ -55,8 +55,8 @@ def main() -> None:
             "component": {
                 "type": "application",
                 "name": "Orthodox Prayers",
-                "version": "5.0.10",
-                "purl": "pkg:android/com.orthodoxprayers.privateapp@5.0.10",
+                "version": "5.0.11",
+                "purl": "pkg:android/com.orthodoxprayers.privateapp@5.0.11",
             },
         },
         "components": components(report),

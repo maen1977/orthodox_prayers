@@ -92,10 +92,10 @@ class FastingGuidanceTests(unittest.TestCase):
         self.assertIn('addFastingGuide(card, fasting, false)', upcoming)
         self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), true)', day)
 
-    def test_r14_patch_verifier_is_present(self):
-        verifier = (ROOT / "scripts/verify_r14_patch.py").read_text(encoding="utf-8")
-        self.assertIn("PATCH_R14_OK", verifier)
-        self.assertIn('versionName = "5.0.10"', verifier)
+    def test_r15_patch_verifier_is_present(self):
+        verifier = (ROOT / "scripts/verify_r15_patch.py").read_text(encoding="utf-8")
+        self.assertIn("PATCH_R15_OK", verifier)
+        self.assertIn('versionName = "5.0.11"', verifier)
 
     def test_generated_payload_marks_fasting_guidance_contract(self):
         old = self.update.os.environ.get("ORTHODOX_DISABLE_DISCOVERY_NETWORK")

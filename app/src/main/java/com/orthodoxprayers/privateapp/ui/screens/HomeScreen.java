@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
+import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONArray;
@@ -14,6 +15,7 @@ import org.json.JSONObject;
 
 public final class HomeScreen extends BaseScreen {
     // R14_HOME_COMPACT: duplicate home cards hidden; internal routes remain available.
+    // R15_THEME_PALETTE_IMPORT: Sunday card colors use the shared palette with an explicit Java import.
     public HomeScreen(ScreenHost host) { super(host); }
 
     @Override

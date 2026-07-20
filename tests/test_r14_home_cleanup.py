@@ -70,10 +70,10 @@ class R14HomeCleanupTests(unittest.TestCase):
             "before_food", "after_food", "lord_prayer", "creed", "trisagion",
         }.issubset(service_ids))
 
-    def test_r14_patch_verifier(self):
-        verifier = (ROOT / "scripts/verify_r14_patch.py").read_text(encoding="utf-8")
-        self.assertIn("PATCH_R14_OK", verifier)
-        self.assertIn('versionName = "5.0.10"', verifier)
+    def test_r15_patch_verifier(self):
+        verifier = (ROOT / "scripts/verify_r15_patch.py").read_text(encoding="utf-8")
+        self.assertIn("PATCH_R15_OK", verifier)
+        self.assertIn('versionName = "5.0.11"', verifier)
 
 
 if __name__ == "__main__":

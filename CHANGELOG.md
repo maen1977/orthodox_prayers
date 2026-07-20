@@ -1,3 +1,9 @@
+# 5.0.11 R15 — HomeScreen Java compile fix
+
+- Added the missing `ThemePalette` import used by the next-Sunday card.
+- Added a regression contract and root-level patch verifier.
+- No liturgical, lectionary, fasting, or user-interface behavior was changed.
+
 # 5.0.10 R14
 
 - Rename the visible application title from Church Agenda to Church Prayers in Arabic, English, and Greek.

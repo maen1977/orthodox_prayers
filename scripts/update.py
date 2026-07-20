@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R14"
+PIPELINE_PATCH_LEVEL = "R15"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -27,7 +27,7 @@ def verify_pipeline_patch() -> None:
         str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
-        str(home_path.relative_to(ROOT)): "R14_HOME_COMPACT",
+        str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
         str(settings_path.relative_to(ROOT)): "R14_SETTINGS_CLEANUP",
     }
     actual = {
