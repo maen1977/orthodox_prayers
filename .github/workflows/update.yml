@@ -206,6 +206,9 @@ jobs:
           mkdir -p "$TARGET/data" "$TARGET/app/src/main/assets/data"
           rsync -a --delete "$SOURCE/data/" "$TARGET/data/"
           rsync -a --delete "$SOURCE/app/src/main/assets/data/" "$TARGET/app/src/main/assets/data/"
+          # Defense in depth: clean the assembled publication tree itself before
+          # signing and strict verification, even if the source cleanup changes.
+          python "$SOURCE/scripts/clean_legacy_calendar_snapshots.py" --root "$TARGET"
           cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
           cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
           mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"

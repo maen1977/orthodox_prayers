@@ -493,7 +493,11 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("SHA256SUMS.txt", build)
         self.assertIn("Import latest signed published data for debug APK", build)
         self.assertIn("origin/verified-data", build)
-        self.assertIn('python scripts/verify.py --expected-date "$PUBLISHED_DATE"', build)
+        self.assertIn('python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest', build)
+        self.assertGreaterEqual(
+            build.count('python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"'),
+            2,
+        )
         self.assertIn("chmod +x ./gradlew", build)
         self.assertNotIn("connectedDebugAndroidTest", build)
         self.assertNotIn("android-emulator-runner@", build)
@@ -539,6 +543,7 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("scripts/sign_update_manifest.py", update)
         self.assertIn("scripts/verify_update_manifest.py", update)
         self.assertIn("scripts/validate_publication_consistency.py", update)
+        self.assertIn('python "$SOURCE/scripts/clean_legacy_calendar_snapshots.py" --root "$TARGET"', update)
         self.assertIn("Open failure alert", update)
         self.assertNotIn("gh pr create", update)
         self.assertNotIn("pull-requests: write", update)
@@ -563,6 +568,15 @@ class ReleaseContractTests(unittest.TestCase):
         for path in workflows.glob("*.yml"):
             for use in re.findall(r"uses:\s*([^\s#]+)", path.read_text(encoding="utf-8")):
                 self.assertRegex(use, r"^[^@]+@[0-9a-f]{40}$", f"Action must be pinned by full SHA in {path.name}: {use}")
+
+    def test_published_verifier_legacy_manifest_escape_hatch_is_debug_only(self):
+        verifier = (ROOT / "scripts/verify.py").read_text(encoding="utf-8")
+        build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
+        update = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
+        self.assertIn("--allow-missing-manifest", verifier)
+        self.assertIn("not manifest.exists() and not manifest_signature.exists()", verifier)
+        self.assertEqual(1, build.count("--allow-missing-manifest"))
+        self.assertNotIn("--allow-missing-manifest", update)
 
     def test_application_requires_official_source_publication_and_vocalized_scripture(self):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")

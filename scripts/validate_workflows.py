@@ -48,7 +48,7 @@ def main() -> None:
             "scripts/run_quality_gate.py --strict-native-lanes",
             "Import latest signed published data for debug APK",
             "origin/verified-data",
-            'python scripts/verify.py --expected-date "$PUBLISHED_DATE"',
+            'python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest',
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
@@ -86,6 +86,9 @@ def main() -> None:
     release_gate = "python scripts/run_quality_gate.py --require-current --strict-native-lanes"
     if build.count(normalizer) < 2:
         fail("Build workflow must normalize gradlew before both quality gates")
+    published_data_migration = 'python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"'
+    if build.count(published_data_migration) < 2:
+        fail("Build workflow must migrate legacy verified-data aliases in both debug and release imports")
     first_normalizer = build.index(normalizer)
     first_gate = build.index(debug_gate)
     second_normalizer = build.index(normalizer, first_normalizer + 1)

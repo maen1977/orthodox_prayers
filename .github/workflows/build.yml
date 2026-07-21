@@ -54,10 +54,15 @@ jobs:
           git fetch --force origin verified-data
           VERIFIED_DIR="$RUNNER_TEMP/verified-data-debug"
           git worktree add --force --detach "$VERIFIED_DIR" origin/verified-data
+          # verified-data from releases before R18.2 may still contain obsolete
+          # top-level calendar aliases. Remove them only in this detached import
+          # worktree before strict verification; the Update workflow will delete
+          # them permanently from the published branch on its next successful run.
+          python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"
           rsync -a --delete "$VERIFIED_DIR/data/" data/
           rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
           PUBLISHED_DATE="$(python -c 'import json; print(json.load(open("data/calendar/today.json", encoding="utf-8"))["date_iso"])')"
-          python scripts/verify.py --expected-date "$PUBLISHED_DATE"
+          python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest
           git worktree remove --force "$VERIFIED_DIR"
 
       - name: Set up JDK 17
@@ -134,6 +139,7 @@ jobs:
           git fetch --force origin verified-data
           VERIFIED_DIR="$RUNNER_TEMP/verified-data"
           git worktree add --force --detach "$VERIFIED_DIR" origin/verified-data
+          python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"
           rsync -a --delete "$VERIFIED_DIR/data/" data/
           rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
           git worktree remove --force "$VERIFIED_DIR"

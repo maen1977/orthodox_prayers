@@ -1,3 +1,11 @@
+## 5.0.14 R18.2 — legacy verified-data import migration
+
+- Clean obsolete top-level calendar aliases inside detached `verified-data` worktrees before Debug and Release imports.
+- Keep strict publication verification unchanged while allowing Debug CI to import a legacy branch that has neither update manifest nor manifest signature.
+- Reject partial, unsigned, or invalid manifests even when the Debug compatibility flag is enabled.
+- Clean the assembled Update publication tree again before signing as defense in depth.
+- Add workflow and verifier regression contracts for the exact GitHub Actions failure.
+
 ## 5.0.14 R18.1 — publication alias hotfix
 
 - Run `clean_legacy_calendar_snapshots.py` after successful daily validation and before unsigned/signed publication.

@@ -9,7 +9,9 @@ REQUIRED = {
     "canonical/source_connectors.json": ('"local_authority_source_id": "orthodox_jordan"', '"goarch_digital_chant_stand"'),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/SearchEngine.java": ("scanChurches", "officialServiceLinks", "editDistanceAtMostOne"),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java": ("Church directory", "officialServiceLinks"),
-    ".github/workflows/update.yml": ("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "validate_source_intelligence.py"),
+    ".github/workflows/update.yml": ("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "validate_source_intelligence.py", "clean_legacy_calendar_snapshots.py\" --root \"$TARGET"),
+    ".github/workflows/build.yml": ("clean_legacy_calendar_snapshots.py --root \"$VERIFIED_DIR\"", "--allow-missing-manifest"),
+    "scripts/verify.py": ("--allow-missing-manifest", "LEGACY_UPDATE_MANIFEST_ABSENT"),
 }
 missing = []
 for relative, markers in REQUIRED.items():
@@ -20,4 +22,4 @@ for relative, markers in REQUIRED.items():
             missing.append(f"{relative}: {marker}")
 if missing:
     raise SystemExit("PATCH_R18_NOT_APPLIED\n" + "\n".join(missing))
-print("PATCH_R18_OK version=5.0.14 level=R18")
+print("PATCH_R18_OK version=5.0.14 level=R18.2")
