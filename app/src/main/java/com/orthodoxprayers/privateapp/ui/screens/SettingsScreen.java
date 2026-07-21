@@ -235,9 +235,9 @@ public final class SettingsScreen extends BaseScreen {
         }
         JSONObject liturgyCoverage = data.serviceCoverage("divine_liturgy");
         if (liturgyCoverage != null) {
-            TextView coverage = ui.infoBadge(local("اكتمال القطع اليومية المتغيرة للقداس: ", "Verified variable Liturgy coverage: ", "Κάλυψη μεταβλητῶν κειμένων: ")
+            TextView liturgyCoverageBadge = ui.infoBadge(local("اكتمال القطع اليومية المتغيرة للقداس: ", "Verified variable Liturgy coverage: ", "Κάλυψη μεταβλητῶν κειμένων: ")
                     + liturgyCoverage.optInt("coverage_percent", 0) + "%");
-            add(page.root, coverage, 0, 7);
+            add(page.root, liturgyCoverageBadge, 0, 7);
         }
         Button sources = ui.button(local("عرض جميع المصادر", "View all sources", "Προβολὴ ὅλων τῶν πηγῶν"), false);
         sources.setOnClickListener(v -> host.navigate("sources", null));

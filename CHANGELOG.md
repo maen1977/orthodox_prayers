@@ -1,3 +1,9 @@
+## 5.0.14 R18.3 — SettingsScreen Java compile hotfix
+
+- Rename the Liturgy service-coverage badge local variable to avoid colliding with the earlier language-coverage `TextView` in `SettingsScreen.createView()`.
+- Add a regression contract for the exact duplicate-local-variable compilation failure reported by GitHub Actions.
+- Keep application behavior and signed daily data unchanged; this is a source-only Java compile correction.
+
 ## 5.0.14 R18.2 — legacy verified-data import migration
 
 - Clean obsolete top-level calendar aliases inside detached `verified-data` worktrees before Debug and Release imports.
