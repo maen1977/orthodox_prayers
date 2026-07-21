@@ -19,7 +19,7 @@ public final class OrthodoxPrayersApp extends Application {
         preferences = new AppPreferences(this);
         repository = new DataRepository(this, preferences);
         updateCoordinator = new UpdateCoordinator(this, preferences, repository);
-        updateCoordinator.scheduleMidnightRefresh();
+        updateCoordinator.scheduleDailyRefresh();
         new ReminderScheduler(this, preferences).scheduleAll();
         DailyAgendaWidget.updateAll(this);
     }

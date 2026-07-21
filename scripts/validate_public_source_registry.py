@@ -16,6 +16,9 @@ REQUIRED_SOURCES = {
     "ebible_arabic_van_dyck",
     "ebible_world_english_bible",
     "ebible_greek_byzantine_1904",
+    "jerusalem_patriarchate_en",
+    "antioch_patriarchate_ar",
+    "oca_official_english",
 }
 
 
@@ -36,7 +39,7 @@ def main() -> None:
         raise SystemExit("asset and data source registries differ")
     registry = load(ASSET)
     sources = registry.get("sources", [])
-    if registry.get("schema_version") != 1 or len(sources) < 10:
+    if registry.get("schema_version") != 2 or len(sources) < 14:
         raise SystemExit("public source registry is incomplete")
     by_id = {}
     for index, source in enumerate(sources):
@@ -53,6 +56,10 @@ def main() -> None:
             raise SystemExit(f"{sid}: user-facing usage explanation is incomplete")
         if not str(source.get("rights") or "").strip():
             raise SystemExit(f"{sid}: rights/license state is missing")
+        if source.get("official") and not isinstance(source.get("authority_tier"), int):
+            raise SystemExit(f"{sid}: official source authority tier is missing")
+        if not isinstance(source.get("connector_ids"), list) or not isinstance(source.get("health"), list):
+            raise SystemExit(f"{sid}: connector/health metadata is missing")
     missing = REQUIRED_SOURCES - set(by_id)
     if missing:
         raise SystemExit("public source registry is missing required entries: " + ", ".join(sorted(missing)))

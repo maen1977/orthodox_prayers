@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R16"
+PIPELINE_PATCH_LEVEL = "R18"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -24,6 +24,9 @@ def verify_pipeline_patch() -> None:
     home_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
     settings_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java"
     sources_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SourcesScreen.java"
+    coordinator_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java"
+    repository_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java"
+    workflow_path = ROOT / ".github/workflows/update.yml"
     required = {
         str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
@@ -31,6 +34,11 @@ def verify_pipeline_patch() -> None:
         str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
         str(sources_path.relative_to(ROOT)): "المصادر والمراجع",
+        str(coordinator_path.relative_to(ROOT)): "DAILY_REFRESH_MINUTE = 5",
+        str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
+        str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
+        "canonical/source_connectors.json": "local_authority_source_id",
+        "scripts/source_connectors.py": "source_consensus",
     }
     actual = {
         str(integrity_path.relative_to(ROOT)): integrity_text,
@@ -39,6 +47,11 @@ def verify_pipeline_patch() -> None:
         str(home_path.relative_to(ROOT)): home_path.read_text(encoding="utf-8") if home_path.is_file() else "",
         str(settings_path.relative_to(ROOT)): settings_path.read_text(encoding="utf-8") if settings_path.is_file() else "",
         str(sources_path.relative_to(ROOT)): sources_path.read_text(encoding="utf-8") if sources_path.is_file() else "",
+        str(coordinator_path.relative_to(ROOT)): coordinator_path.read_text(encoding="utf-8") if coordinator_path.is_file() else "",
+        str(repository_path.relative_to(ROOT)): repository_path.read_text(encoding="utf-8") if repository_path.is_file() else "",
+        str(workflow_path.relative_to(ROOT)): workflow_path.read_text(encoding="utf-8") if workflow_path.is_file() else "",
+        "canonical/source_connectors.json": (ROOT / "canonical/source_connectors.json").read_text(encoding="utf-8"),
+        "scripts/source_connectors.py": (ROOT / "scripts/source_connectors.py").read_text(encoding="utf-8"),
     }
     missing = [name for name, marker in required.items() if marker not in actual[name]]
     if missing:
@@ -80,6 +93,10 @@ def main() -> None:
     args = parser.parse_args()
     verify_pipeline_patch()
     os.environ["ORTHODOX_DATE"] = args.date
+    live_sources = os.getenv("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "").strip() == "1"
+    source_mode = [] if live_sources else ["--offline"]
+    run("scripts/collect_source_health.py", "--date", args.date, *source_mode)
+    run("scripts/build_church_directory.py", "--date", args.date, *source_mode)
     run("scripts/build_public_source_registry.py")
     run("scripts/validate_public_source_registry.py")
 
@@ -87,6 +104,7 @@ def main() -> None:
         raise SystemExit("data-signing private key is missing")
 
     run("scripts/update_liturgical_data.py")
+    run("scripts/attach_source_intelligence.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
     integrity = run("scripts/orthodox_integrity.py", "--apply", check=False)
     mode = "full" if integrity == 0 else "partial"
     run("scripts/fill_daily_from_native_corpora.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
@@ -96,6 +114,8 @@ def main() -> None:
     # the Readings screen, then re-apply lane metadata to the new overlays.
     run("scripts/rebuild_daily_services.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
     run("scripts/enforce_native_daily_lanes.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
+    # Recalculate service completeness after the final native-language overlays are composed.
+    run("scripts/attach_source_intelligence.py", "data/calendar/today.json", f"data/calendar/{args.date}.json")
     # Never publish a new day with blank Epistle/Gospel cards. A transient
     # Scripture-source failure keeps the last signed good day instead.
     run("scripts/validate_daily_native_content.py", "data/calendar/today.json", "--require-complete")
@@ -133,6 +153,7 @@ def main() -> None:
             ("scripts/validate_static_prayer_sources.py",),
             ("scripts/validate_native_language_packs.py",),
             ("scripts/validate_public_source_registry.py",),
+            ("scripts/validate_source_intelligence.py", "data/calendar/today.json", "--expected-date", args.date),
             ("scripts/validate_reader_services.py",),
             ("scripts/validate_daily_ui_localizations.py", "data/calendar/today.json"),
             ("scripts/validate_scripture_translations.py", "data/calendar/today.json"),
@@ -143,6 +164,7 @@ def main() -> None:
         run("scripts/validate_static_prayer_sources.py")
         run("scripts/validate_reader_services.py")
         run("scripts/validate_public_source_registry.py")
+        run("scripts/validate_source_intelligence.py", "data/calendar/today.json", "--expected-date", args.date)
 
     if args.unsigned:
         remove_stale_daily_signatures(args.date)

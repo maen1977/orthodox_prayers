@@ -6,12 +6,12 @@ import android.content.Intent;
 
 import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 
-/** Restores the 00:00 schedule after reboot, app upgrade, or clock/time-zone changes. */
+/** Restores the 00:05 Amman WorkManager schedule after reboot, upgrade, or clock changes. */
 public final class ScheduleRestoreReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Context applicationContext = context.getApplicationContext();
         if (!(applicationContext instanceof OrthodoxPrayersApp)) return;
-        ((OrthodoxPrayersApp) applicationContext).updateCoordinator().scheduleMidnightRefresh();
+        ((OrthodoxPrayersApp) applicationContext).updateCoordinator().scheduleDailyRefresh();
     }
 }

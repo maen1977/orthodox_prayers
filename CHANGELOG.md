@@ -1,3 +1,22 @@
+# 5.0.14 R18 — Orthodox source intelligence and smart discovery
+
+- Added nine audited official-source connectors with Jordan/Jerusalem authority tiers.
+- Added daily source-health snapshots, reading-reference consensus, poison detection, strict HTTPS allowlists, bounded downloads, and fail-closed local-authority conflict checks.
+- Added an official Jordan church directory, live links, and discovered dated service links.
+- Added unified smart search across prayers, readings, sources, churches, live resources, and official service links, including Arabic normalization and one-edit typo tolerance.
+- Added truthful Divine Liturgy variable coverage and a packaged fallback coverage report.
+- Added R18 workflow validation before signing, in the publication worktree, in the committed archive, and after origin publication.
+- Preserved the signed R17 embedded daily payload; R18 metadata becomes part of the next protected signed daily publication.
+
+# 5.0.13 R17 — Reliable signed daily updates
+
+- Replaced exact-alarm permission with a network-aware WorkManager refresh at 00:05 Amman time.
+- Throttled same-day correction checks to once every 30 minutes instead of every app resume.
+- Added a signed update manifest with date, monotonic revision, minimum app version, size, and SHA-256 per language lane.
+- Added rollback protection so an older same-day manifest revision cannot replace a newer accepted revision.
+- Added publication-consistency gates that require the today alias, dated fallback, embedded asset, and every published lane to agree byte-for-byte and by date.
+- Added manifest generation, signing, origin verification, Android parsing tests, and R17 regression contracts.
+
 # 5.0.12 R16 — Liturgy, Communion prayers, and source transparency
 
 - Added a user-visible registry of the active Orthodox, Scripture, and liturgical sources.

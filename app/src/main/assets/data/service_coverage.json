@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "claim_policy": "complete only when every required variable has verified native-language text",
+  "services": [
+    {
+      "service_id": "divine_liturgy",
+      "required_variable_count": 6,
+      "verified_variable_count": 3,
+      "coverage_percent": 50,
+      "missing_variables": [
+        "[طروبارية اليوم]",
+        "[القنداق]",
+        "[آية المناولة]"
+      ],
+      "complete": false
+    },
+    {
+      "service_id": "vespers",
+      "required_variable_count": 0,
+      "verified_variable_count": 0,
+      "coverage_percent": 100,
+      "missing_variables": [],
+      "complete": false
+    },
+    {
+      "service_id": "orthros",
+      "required_variable_count": 0,
+      "verified_variable_count": 0,
+      "coverage_percent": 100,
+      "missing_variables": [],
+      "complete": false
+    },
+    {
+      "service_id": "morning_prayer",
+      "required_variable_count": 0,
+      "verified_variable_count": 0,
+      "coverage_percent": 100,
+      "missing_variables": [],
+      "complete": false
+    },
+    {
+      "service_id": "evening_prayer",
+      "required_variable_count": 0,
+      "verified_variable_count": 0,
+      "coverage_percent": 100,
+      "missing_variables": [],
+      "complete": false
+    },
+    {
+      "service_id": "small_compline",
+      "required_variable_count": 0,
+      "verified_variable_count": 0,
+      "coverage_percent": 100,
+      "missing_variables": [],
+      "complete": false
+    },
+    {
+      "service_id": "next_sunday_full_liturgy",
+      "required_variable_count": 0,
+      "verified_variable_count": 0,
+      "coverage_percent": 100,
+      "missing_variables": [],
+      "complete": false
+    }
+  ]
+}

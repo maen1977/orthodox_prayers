@@ -19,6 +19,8 @@ def main() -> None:
     run("scripts/verify_data_signature.py")
     run("scripts/validate_partial_daily.py", "--expected-date", args.expected_date)
     run("scripts/verify_language_lanes.py", "--date", args.expected_date)
+    run("scripts/validate_publication_consistency.py", "--expected-date", args.expected_date)
+    run("scripts/verify_update_manifest.py", "--expected-date", args.expected_date)
     print(f"PUBLISHED_DAILY_OK date={args.expected_date}")
 
 if __name__ == "__main__":

@@ -33,4 +33,12 @@ public final class RefreshPolicyTest {
         assertTrue(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.MINUTES.toMillis(30), NOW, false, true));
         assertFalse(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.HOURS.toMillis(2), NOW, false, false));
     }
+
+    @Test
+    public void sameDayCorrectionChecksAreThrottledForThirtyMinutes() {
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(true, 0L, NOW));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, 0L, NOW));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(false, NOW - TimeUnit.MINUTES.toMillis(29), NOW));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, NOW - TimeUnit.MINUTES.toMillis(30), NOW));
+    }
 }

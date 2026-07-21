@@ -36,6 +36,7 @@ public final class DataRepository {
 
     private static final String TAG = "OrthodoxData";
     private static final int MAX_JSON_BYTES = 2_000_000;
+    private static final int MAX_MANIFEST_BYTES = 64_000;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_DOWNLOAD_ATTEMPTS = 2;
 
@@ -57,6 +58,9 @@ public final class DataRepository {
     private JSONObject greekSearchIndex;
     private JSONObject englishSearchIndex;
     private JSONObject sourceRegistry;
+    private JSONObject fallbackChurchDirectory;
+    private JSONObject fallbackSourceHealth;
+    private JSONObject fallbackServiceCoverage;
     private volatile boolean refreshInProgress;
     private volatile RefreshState refreshState = RefreshState.IDLE;
     private volatile String refreshMessage = "";
@@ -93,6 +97,9 @@ public final class DataRepository {
         greekSearchIndex = loadJsonAsset("data/search/search_index_el.json");
         englishSearchIndex = loadJsonAsset("data/search/search_index_en.json");
         sourceRegistry = loadJsonAsset("data/source_registry.json");
+        fallbackChurchDirectory = loadJsonAsset("data/churches.json");
+        fallbackSourceHealth = loadJsonAsset("data/source_health.json");
+        fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         today = loadBestToday();
     }
 
@@ -132,6 +139,92 @@ public final class DataRepository {
     }
 
     public JSONObject sourceRegistry() { return sourceRegistry == null ? new JSONObject() : sourceRegistry; }
+
+    public JSONObject sourceHealth() {
+        JSONObject live = today().optJSONObject("source_health");
+        return live != null ? live : (fallbackSourceHealth == null ? new JSONObject() : fallbackSourceHealth);
+    }
+
+    public JSONObject sourceHealthById(String sourceId) {
+        if (sourceId == null || sourceId.trim().isEmpty()) return null;
+        JSONArray observations = sourceHealth().optJSONArray("observations");
+        if (observations == null) return null;
+        JSONObject best = null;
+        String normalizedId = sourceId;
+        if ("jerusalem_patriarchate_en".equals(sourceId) || "jerusalem_patriarchate_ar".equals(sourceId) || "jerusalem_patriarchate_el".equals(sourceId))
+            normalizedId = "jerusalem_patriarchate";
+        for (int i = 0; i < observations.length(); i++) {
+            JSONObject item = observations.optJSONObject(i);
+            if (item == null || !(sourceId.equals(item.optString("source_id")) || normalizedId.equals(item.optString("source_id")))) continue;
+            if (best == null || item.optDouble("confidence", 0.0) > best.optDouble("confidence", 0.0)) best = item;
+        }
+        return best;
+    }
+
+    public JSONObject churchDirectory() {
+        JSONObject live = today().optJSONObject("church_directory");
+        return live != null ? live : (fallbackChurchDirectory == null ? new JSONObject() : fallbackChurchDirectory);
+    }
+
+    public JSONArray registeredChurches() {
+        JSONArray churches = churchDirectory().optJSONArray("churches");
+        return churches == null ? new JSONArray() : churches;
+    }
+
+    public JSONArray officialLiveResources() {
+        JSONArray resources = churchDirectory().optJSONArray("live_resources");
+        return resources == null ? new JSONArray() : resources;
+    }
+
+    /** Official dated service links discovered by monitored connectors; no full text is copied. */
+    public JSONArray officialServiceLinks() {
+        JSONArray result = new JSONArray();
+        JSONArray observations = sourceHealth().optJSONArray("observations");
+        if (observations == null) return result;
+        for (int i = 0; i < observations.length(); i++) {
+            JSONObject observation = observations.optJSONObject(i);
+            JSONArray links = observation == null ? null : observation.optJSONArray("service_links");
+            if (links == null) continue;
+            for (int j = 0; j < links.length(); j++) {
+                JSONObject source = links.optJSONObject(j);
+                if (source == null || !source.optString("url", "").startsWith("https://")) continue;
+                JSONObject copy = new JSONObject();
+                try {
+                    String label = source.optString("title", "Official service");
+                    copy.put("id", observation.optString("connector_id", "service") + ":" + j);
+                    copy.put("title", new JSONObject().put("ar", label).put("en", label).put("el", label));
+                    copy.put("url", source.optString("url"));
+                    copy.put("status", source.optString("status", "candidate"));
+                    result.put(copy);
+                } catch (Exception ignored) { }
+            }
+        }
+        return result;
+    }
+
+    /** Metadata may safely fall back to the official proper name; religious text never does. */
+    public String metadataLocalized(JSONObject value, String fallback) {
+        if (value == null) return fallback == null ? "" : fallback;
+        String language = preferences.effectiveLanguage();
+        String selected = value.optString(language, "").trim();
+        if (!selected.isEmpty()) return selected;
+        String arabic = value.optString("ar", "").trim();
+        if (!arabic.isEmpty()) return arabic;
+        String english = value.optString("en", "").trim();
+        return english.isEmpty() ? (fallback == null ? "" : fallback) : english;
+    }
+
+    public JSONObject serviceCoverage(String serviceId) {
+        JSONObject coverage = today().optJSONObject("service_coverage");
+        if (coverage == null) coverage = fallbackServiceCoverage;
+        JSONArray services = coverage == null ? null : coverage.optJSONArray("services");
+        if (services == null) return null;
+        for (int i = 0; i < services.length(); i++) {
+            JSONObject item = services.optJSONObject(i);
+            if (item != null && serviceId.equals(item.optString("service_id"))) return item;
+        }
+        return null;
+    }
 
     public JSONArray registeredSources() {
         JSONArray sources = sourceRegistry().optJSONArray("sources");
@@ -362,11 +455,81 @@ public final class DataRepository {
     private RefreshOutcome performRefresh(boolean forceFullDownload) {
         String configuredTodayUrl = context.getString(R.string.data_source_url).trim();
         String configuredTodaySignatureUrl = context.getString(R.string.data_signature_url).trim();
+        String configuredManifestUrl = context.getString(R.string.update_manifest_url).trim();
+        String configuredManifestSignatureUrl = context.getString(R.string.update_manifest_signature_url).trim();
         if (configuredTodayUrl.isEmpty()) {
             return new RefreshOutcome(RefreshResult.FAILED, "data_url_missing");
         }
 
-        Exception lastError = null;
+        UpdateManifest.Selection manifestSelection = null;
+        Exception manifestError = null;
+        if (!configuredManifestUrl.isEmpty() && !configuredManifestSignatureUrl.isEmpty()) {
+            try {
+                manifestSelection = downloadManifestSelection(
+                        configuredManifestUrl,
+                        configuredManifestSignatureUrl
+                );
+            } catch (Exception error) {
+                manifestError = error;
+                Log.w(TAG, "Signed update manifest was unavailable; using signed endpoint fallbacks", error);
+                String message = error.getMessage() == null ? "" : error.getMessage();
+                if (message.startsWith("app_update_required")
+                        || message.startsWith("manifest_revision_rollback")) {
+                    return new RefreshOutcome(RefreshResult.FAILED, message);
+                }
+                String expectedDate = currentAmmanDate();
+                if (preferences.acceptedManifestRevisionForDate(expectedDate) > 0L) {
+                    return new RefreshOutcome(
+                            RefreshResult.FAILED,
+                            "manifest_unavailable_after_acceptance"
+                    );
+                }
+            }
+        }
+
+        if (manifestSelection != null) {
+            String expectedDate = currentAmmanDate();
+            long acceptedRevision = preferences.acceptedManifestRevisionForDate(expectedDate);
+            if (manifestSelection.revision < acceptedRevision) {
+                return new RefreshOutcome(
+                        RefreshResult.FAILED,
+                        "manifest_revision_rollback:" + manifestSelection.revision + ":" + acceptedRevision
+                );
+            }
+            if (hasUsableCurrentData()
+                    && manifestSelection.sha256.equalsIgnoreCase(contentHash)) {
+                preferences.saveAcceptedManifest(expectedDate, manifestSelection.revision);
+                return new RefreshOutcome(RefreshResult.NOT_MODIFIED, "manifest_not_modified");
+            }
+
+            Exception lastManifestPayloadError = null;
+            for (int attempt = 0; attempt < MAX_DOWNLOAD_ATTEMPTS; attempt++) {
+                try {
+                    return downloadAndValidate(
+                            manifestSelection.dataUrl,
+                            manifestSelection.signatureUrl,
+                            forceFullDownload || attempt > 0,
+                            attempt,
+                            manifestSelection.sha256,
+                            manifestSelection.sizeBytes,
+                            manifestSelection.revision
+                    );
+                } catch (Exception error) {
+                    lastManifestPayloadError = error;
+                    Log.w(TAG, "Manifest-selected daily payload attempt " + (attempt + 1) + " failed", error);
+                    if (attempt + 1 < MAX_DOWNLOAD_ATTEMPTS) {
+                        try { Thread.sleep(350L); }
+                        catch (InterruptedException interrupted) {
+                            Thread.currentThread().interrupt();
+                            return new RefreshOutcome(RefreshResult.FAILED, "network_interrupted");
+                        }
+                    }
+                }
+            }
+            return new RefreshOutcome(RefreshResult.FAILED, classifyError(lastManifestPayloadError));
+        }
+
+        Exception lastError = manifestError;
         int endpointIndex = 0;
         for (String jsonUrl : DailyDataEndpointPolicy.jsonCandidates(
                 configuredTodayUrl,
@@ -381,7 +544,9 @@ public final class DataRepository {
             for (int attempt = 0; attempt < MAX_DOWNLOAD_ATTEMPTS; attempt++) {
                 boolean bypassCache = forceFullDownload || endpointIndex > 0 || attempt > 0;
                 try {
-                    return downloadAndValidate(jsonUrl, signatureUrl, bypassCache, attempt);
+                    return downloadAndValidate(
+                            jsonUrl, signatureUrl, bypassCache, attempt, "", 0, 0L
+                    );
                 } catch (Exception error) {
                     lastError = error;
                     Log.w(
@@ -404,11 +569,53 @@ public final class DataRepository {
         return new RefreshOutcome(RefreshResult.FAILED, classifyError(lastError));
     }
 
+    private UpdateManifest.Selection downloadManifestSelection(
+            String manifestUrl,
+            String manifestSignatureUrl
+    ) throws Exception {
+        String token = "m=" + System.currentTimeMillis();
+        HttpURLConnection connection = null;
+        try {
+            connection = open(appendQuery(manifestUrl, token), MAX_MANIFEST_BYTES, true);
+            int code = connection.getResponseCode();
+            if (code != HttpURLConnection.HTTP_OK) {
+                throw new IllegalStateException("manifest_http_" + code);
+            }
+            validateContentType(connection);
+            byte[] manifestBytes = readLimited(connection.getInputStream(), MAX_MANIFEST_BYTES);
+            byte[] signatureBytes = downloadSignature(manifestSignatureUrl, true, token);
+            signatureVerifier.verify(manifestBytes, signatureBytes);
+            UpdateManifest.Selection selection = UpdateManifest.parse(
+                    manifestBytes,
+                    manifestUrl,
+                    currentAmmanDate(),
+                    preferences.effectiveLanguage()
+            );
+            if (selection.minimumAppVersionCode > BuildConfig.VERSION_CODE) {
+                throw new IllegalStateException(
+                        "app_update_required:" + selection.minimumAppVersionCode
+                );
+            }
+            long acceptedRevision = preferences.acceptedManifestRevisionForDate(currentAmmanDate());
+            if (selection.revision < acceptedRevision) {
+                throw new IllegalStateException(
+                        "manifest_revision_rollback:" + selection.revision + ":" + acceptedRevision
+                );
+            }
+            return selection;
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
+    }
+
     private RefreshOutcome downloadAndValidate(
             String jsonUrl,
             String signatureUrl,
             boolean bypassCache,
-            int attempt
+            int attempt,
+            String expectedSha256,
+            int expectedSizeBytes,
+            long manifestRevision
     ) throws Exception {
         HttpURLConnection connection = null;
         try {
@@ -423,12 +630,25 @@ public final class DataRepository {
 
             int code = connection.getResponseCode();
             if (code == HttpURLConnection.HTTP_NOT_MODIFIED) {
-                if (hasUsableCurrentData()) return new RefreshOutcome(RefreshResult.NOT_MODIFIED, "not_modified");
+                if (hasUsableCurrentData()) {
+                    if (manifestRevision > 0L) {
+                        preferences.saveAcceptedManifest(currentAmmanDate(), manifestRevision);
+                    }
+                    return new RefreshOutcome(RefreshResult.NOT_MODIFIED, "not_modified");
+                }
                 throw new IllegalStateException("not_modified_without_usable_cache");
             }
             if (code != HttpURLConnection.HTTP_OK) throw new IllegalStateException("http_" + code);
             validateContentType(connection);
             byte[] jsonBytes = readLimited(connection.getInputStream(), MAX_JSON_BYTES);
+            if (expectedSizeBytes > 0 && jsonBytes.length != expectedSizeBytes) {
+                throw new IllegalStateException("manifest_payload_size_mismatch");
+            }
+            String downloadedHash = sha256(jsonBytes);
+            if (expectedSha256 != null && !expectedSha256.isEmpty()
+                    && !expectedSha256.equalsIgnoreCase(downloadedHash)) {
+                throw new IllegalStateException("manifest_payload_hash_mismatch");
+            }
             if (signatureUrl == null || signatureUrl.trim().isEmpty()) {
                 throw new IllegalStateException("signature_url_missing");
             }
@@ -447,11 +667,17 @@ public final class DataRepository {
             String newEtag = connection.getHeaderField("ETag");
             long now = System.currentTimeMillis();
             preferences.saveRemoteMetadata(newEtag, jsonUrl, now);
+            if (manifestRevision > 0L) {
+                preferences.saveAcceptedManifest(currentAmmanDate(), manifestRevision);
+            }
             synchronized (this) { today = parsed; }
             trustSource = "signed_remote";
-            contentHash = sha256(jsonBytes);
+            contentHash = downloadedHash;
             loadError = "";
-            return new RefreshOutcome(RefreshResult.UPDATED, "updated_signed");
+            return new RefreshOutcome(
+                    RefreshResult.UPDATED,
+                    manifestRevision > 0L ? "updated_via_manifest" : "updated_signed"
+            );
         } finally {
             if (connection != null) connection.disconnect();
         }
@@ -541,7 +767,8 @@ public final class DataRepository {
         return value.startsWith("network_")
                 || value.startsWith("http_")
                 || value.startsWith("date_not_ready")
-                || value.startsWith("signature_http_");
+                || value.startsWith("signature_http_")
+                || value.startsWith("manifest_unavailable_after_acceptance");
     }
 
     public String userFacingRefreshStatus() {
@@ -551,9 +778,12 @@ public final class DataRepository {
             if (hasUsableCurrentData()) return local("بيانات اليوم جاهزة", "Today’s data is ready", "Τὰ σημερινὰ δεδομένα εἶναι ἕτοιμα");
             return local("بانتظار تحديث بيانات اليوم", "Waiting for today’s data update", "Ἀναμονὴ σημερινῶν δεδομένων");
         }
-        if ("updated".equals(code) || "updated_signed".equals(code)) return local("تم تحديث بيانات اليوم والتحقق من توقيعها", "Today’s data was updated and its signature verified", "Τὰ δεδομένα ἐνημερώθηκαν καὶ ἐπαληθεύθηκαν");
-        if ("not_modified".equals(code)) return local("بيانات اليوم محدثة بالفعل", "Today’s data is already current", "Τὰ δεδομένα εἶναι ἤδη ἐνημερωμένα");
+        if ("updated".equals(code) || "updated_signed".equals(code) || "updated_via_manifest".equals(code)) return local("تم تحديث بيانات اليوم والتحقق من توقيعها", "Today’s data was updated and its signature verified", "Τὰ δεδομένα ἐνημερώθηκαν καὶ ἐπαληθεύθηκαν");
+        if ("not_modified".equals(code) || "manifest_not_modified".equals(code)) return local("بيانات اليوم محدثة بالفعل", "Today’s data is already current", "Τὰ δεδομένα εἶναι ἤδη ἐνημερωμένα");
         if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local("التحديث جارٍ الآن", "An update is already in progress", "Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη");
+        if (code.startsWith("app_update_required")) return local("يلزم تحديث إصدار التطبيق لقراءة بيانات اليوم الجديدة", "The app must be updated to read today’s new data", "Απαιτεῖται νεότερη ἔκδοση τῆς ἐφαρμογῆς");
+        if (code.startsWith("manifest_revision_rollback")) return local("رُفض إصدار بيانات أقدم حفاظًا على سلامة التحديث", "An older data revision was rejected for update safety", "Ἀπορρίφθηκε παλαιότερη ἀναθεώρηση δεδομένων");
+        if (code.startsWith("manifest_unavailable_after_acceptance")) return local("تعذر التحقق من بيان التحديث الآمن؛ ستبقى آخر نسخة موثوقة ظاهرة", "The secure update manifest could not be verified; the last trusted copy remains in use", "Τὸ ἀσφαλὲς δηλωτικὸ ἐνημέρωσης δὲν ἐπαληθεύθηκε");
         if (code.startsWith("date_not_ready")) return local("لم تُنشر بيانات تاريخ اليوم على الخادم بعد؛ تظهر آخر نسخة سليمة", "Today’s server data is not published yet; the last valid copy is shown", "Τὰ σημερινὰ δεδομένα δὲν δημοσιεύθηκαν ἀκόμη");
         if (code.startsWith("http_")) return local("تعذر الوصول إلى خادم التحديث", "The update server could not be reached", "Ὁ διακομιστὴς ἐνημέρωσης δὲν εἶναι διαθέσιμος");
         if (code.startsWith("network_")) return local("لا يوجد اتصال صالح بالإنترنت الآن", "No usable internet connection is available", "Δὲν ὑπάρχει διαθέσιμη σύνδεση");
@@ -649,7 +879,7 @@ public final class DataRepository {
         connection.setReadTimeout(20_000);
         connection.setRequestMethod("GET");
         connection.setUseCaches(!noCache);
-        connection.setRequestProperty("Accept", maxBytes == MAX_JSON_BYTES ? "application/json, text/plain;q=0.9" : "text/plain, application/octet-stream;q=0.8");
+        connection.setRequestProperty("Accept", maxBytes == MAX_SIGNATURE_BYTES ? "text/plain, application/octet-stream;q=0.8" : "application/json, text/plain;q=0.9");
         connection.setRequestProperty("Accept-Encoding", "identity");
         connection.setRequestProperty("User-Agent", "OrthodoxPrayers-Android/" + BuildConfig.VERSION_NAME);
         if (noCache) {

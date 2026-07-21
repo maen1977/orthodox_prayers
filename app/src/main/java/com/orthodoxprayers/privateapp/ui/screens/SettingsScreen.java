@@ -8,15 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
-import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
-import com.orthodoxprayers.privateapp.update.UpdateCoordinator;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
+
+import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.Locale;
@@ -185,40 +184,12 @@ public final class SettingsScreen extends BaseScreen {
         refresh.setOnClickListener(v -> host.refreshData());
         add(page.root, refresh, 0, 7);
 
-        boolean exactMidnight = UpdateCoordinator.isExactMidnightEnabled(host.activity());
-        Button midnightAccuracy = ui.button(exactMidnight
-                ? local("تحديث منتصف الليل الدقيق: مفعّل", "Exact midnight update: enabled", "Ἀκριβὴς ἐνημέρωση μεσονυκτίου: ἐνεργή")
-                : local("تفعيل التحديث الدقيق عند 00:00", "Enable exact 00:00 update", "Ἐνεργοποίηση ἀκριβοῦς ἐνημερώσεως 00:00"), exactMidnight);
-        midnightAccuracy.setOnClickListener(v -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-                    && !UpdateCoordinator.isExactMidnightEnabled(host.activity())) {
-                try {
-                    host.activity().startActivity(UpdateCoordinator.exactAlarmSettingsIntent(host.activity()));
-                } catch (Exception error) {
-                    Toast.makeText(host.activity(), local(
-                            "تعذر فتح إذن المنبهات الدقيقة؛ سيبقى التحديث الاحتياطي عند منتصف الليل فعالًا.",
-                            "Exact-alarm settings could not be opened; the midnight fallback remains active.",
-                            "Δὲν ἄνοιξαν οἱ ρυθμίσεις· παραμένει ἡ ἐφεδρικὴ ἐνημέρωση μεσονυκτίου."
-                    ), Toast.LENGTH_LONG).show();
-                }
-                return;
-            }
-            OrthodoxPrayersApp app = (OrthodoxPrayersApp) host.activity().getApplication();
-            app.updateCoordinator().scheduleMidnightRefresh();
-            Toast.makeText(host.activity(), local(
-                    "تم تثبيت موعد التحديث اليومي عند 00:00 بتوقيت عمّان.",
-                    "The daily update is scheduled for 00:00 Amman time.",
-                    "Ἡ καθημερινὴ ἐνημέρωση ὁρίστηκε στὶς 00:00 ὥρα Ἀμμάν."
-            ), Toast.LENGTH_SHORT).show();
-        });
-        add(page.root, midnightAccuracy, 0, 7);
-
-        TextView midnightNotice = centered(local(
-                "التطبيق يوقظ مهمة التحديث عند الساعة 12:00 منتصف الليل بتوقيت عمّان. إذا كان إذن المنبه الدقيق غير متاح، يستخدم النظام جدولة احتياطية لأقرب وقت يسمح به الجهاز، ويعيد المحاولة تلقائيًا عند عودة الإنترنت.",
-                "The app starts its update task at 12:00 midnight Amman time. If exact-alarm access is unavailable, Android uses the closest permitted fallback and retries automatically when internet returns.",
-                "Ἡ ἐνημέρωση ξεκινᾷ στὶς 00:00 ὥρα Ἀμμάν. Ἂν δὲν ἐπιτρέπεται ἀκριβὴς συναγερμός, χρησιμοποιεῖται ἡ πλησιέστερη ἐπιτρεπτὴ ἐφεδρικὴ ἐκτέλεση."
-        ), 12, ui.colors().secondaryText(), false);
-        add(page.root, midnightNotice, 0, 8);
+        TextView automaticUpdateNotice = ui.infoBadge(local(
+                "يُجدول التطبيق تحديثًا موثوقًا عند 00:05 بعد منتصف الليل بتوقيت عمّان، وينتظر اتصال الإنترنت تلقائيًا دون طلب إذن المنبهات الدقيقة. كما يعيد فحص تصحيحات اليوم نفسه كل 30 دقيقة عند استخدام التطبيق.",
+                "The app schedules a verified refresh at 00:05 Amman time, waits automatically for connectivity without exact-alarm permission, and checks for same-day corrections at most every 30 minutes while the app is used.",
+                "Ἡ ἐφαρμογὴ προγραμματίζει ἐπαληθευμένη ἐνημέρωση στὶς 00:05 ὥρα Ἀμμάν, περιμένει αὐτόματα σύνδεση χωρὶς ἄδεια ἀκριβοῦς συναγερμοῦ καὶ ἐλέγχει διορθώσεις τῆς ἴδιας ἡμέρας ἀνά 30 λεπτά."
+        ));
+        add(page.root, automaticUpdateNotice, 0, 8);
 
         String lastUpdate = formatTimestamp(preferences.lastSuccessfulUpdate(),
                 local("لم ينجح تحديث شبكي بعد", "No successful network update yet", "Χωρὶς ἐπιτυχῆ ἐνημέρωση"));
@@ -237,11 +208,12 @@ public final class SettingsScreen extends BaseScreen {
                 + "\n" + local("آخر محاولة تحديث: ", "Last update attempt: ", "Τελευταία προσπάθεια: ") + lastAttempt
                 + "\n" + local("آخر فحص ناجح: ", "Last successful check: ", "Τελευταῖος ἐπιτυχὴς ἔλεγχος: ") + lastUpdate
                 + "\n" + local("رمز تشخيص التحديث: ", "Update diagnostic code: ", "Κωδικὸς διαγνώσεως: ") + data.refreshDiagnosticCode()
+                + "\n" + local("مراجعة بيان التحديث: ", "Update manifest revision: ", "Ἀναθεώρηση δηλώσεως ἐνημερώσεως: ") + preferences.acceptedManifestRevisionForDate(data.dataDate())
                 + "\n" + local("مصدر النسخة: ", "Trusted copy source: ", "Πηγὴ ἀντιγράφου: ") + trustSourceLabel()
                 + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + shortHash(data.contentHash())
                 + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + safeValue(data.canonicalSourceId())
                 + "\n" + local("المصدر الرسمي المختار لليوم: ", "Selected official source: ", "Ἐπιλεγμένη ἐπίσημη πηγή: ") + officialSourceLabel(data.selectedOfficialSource())
-                + "\n" + local("التحديث التلقائي: عند 00:00 منتصف الليل بتوقيت عمّان، مع فحص احتياطي عند فتح التطبيق", "Automatic update: at 00:00 midnight Amman time, with a safety check when the app opens", "Αὐτόματη ἐνημέρωση στὶς 00:00 ὥρα Ἀμμάν, μὲ ἐφεδρικὸ ἔλεγχο στὸ ἄνοιγμα")
+                + "\n" + local("التحديث التلقائي: 00:05 بتوقيت عمّان، مع انتظار الشبكة وفحص تصحيحات اليوم كل 30 دقيقة", "Automatic update: 00:05 Amman time, waiting for network and checking same-day corrections every 30 minutes", "Αὐτόματη ἐνημέρωση: 00:05 ὥρα Ἀμμάν, μὲ ἀναμονὴ δικτύου καὶ ἔλεγχο διορθώσεων ἀνά 30 λεπτά")
                 + "\n" + local("التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي", "Verification: HTTPS + independent digital signature + schema + Scripture integrity", "Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα"),
                 13, ui.colors().secondaryText(), false);
         add(page.root, status, 0, 8);
@@ -254,9 +226,25 @@ public final class SettingsScreen extends BaseScreen {
                 "Ἡ ἐφαρμογὴ παραθέτει " + registeredSourceCount + " καταχωρισμένες πηγές μὲ χρήση, σύνδεσμο καὶ κατάσταση δικαιωμάτων."
         ));
         add(page.root, sourceRegistryNotice, 0, 7);
+        JSONObject healthSummary = data.sourceHealth().optJSONObject("summary");
+        if (healthSummary != null) {
+            TextView health = ui.badge(local("رصد المصادر: ", "Source monitor: ", "Ἔλεγχος πηγῶν: ")
+                    + healthSummary.optInt("usable_connector_count", 0) + "/" + healthSummary.optInt("connector_count", 0),
+                    healthSummary.optInt("usable_connector_count", 0) > 0);
+            add(page.root, health, 0, 6);
+        }
+        JSONObject liturgyCoverage = data.serviceCoverage("divine_liturgy");
+        if (liturgyCoverage != null) {
+            TextView coverage = ui.infoBadge(local("اكتمال القطع اليومية المتغيرة للقداس: ", "Verified variable Liturgy coverage: ", "Κάλυψη μεταβλητῶν κειμένων: ")
+                    + liturgyCoverage.optInt("coverage_percent", 0) + "%");
+            add(page.root, coverage, 0, 7);
+        }
         Button sources = ui.button(local("عرض جميع المصادر", "View all sources", "Προβολὴ ὅλων τῶν πηγῶν"), false);
         sources.setOnClickListener(v -> host.navigate("sources", null));
         add(page.root, sources, 0, 10);
+        Button churches = ui.button(local("دليل الكنائس والبث المباشر", "Church directory and live services", "Κατάλογος ναῶν καὶ ζωντανὲς μεταδόσεις"), false);
+        churches.setOnClickListener(v -> host.navigate("churches", null));
+        add(page.root, churches, 0, 10);
 
         String sourceNote = data.sourceNote();
         if (!sourceNote.isEmpty()) {

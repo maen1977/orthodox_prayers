@@ -27,7 +27,7 @@ public final class DailyUpdateWorker extends Worker {
         DataRepository.RefreshOutcome outcome = app.repository().refreshBlocking(force);
         if (outcome.result == DataRepository.RefreshResult.UPDATED
                 || outcome.result == DataRepository.RefreshResult.NOT_MODIFIED) {
-            app.updateCoordinator().scheduleMidnightRefresh();
+            app.updateCoordinator().scheduleDailyRefresh();
             DailyAgendaWidget.updateAll(applicationContext);
             return Result.success();
         }
@@ -35,7 +35,7 @@ public final class DailyUpdateWorker extends Worker {
         boolean retryable = DataRepository.isRetryableRefreshMessage(outcome.message);
         if (retryable && getRunAttemptCount() < 8) return Result.retry();
 
-        app.updateCoordinator().scheduleMidnightRefresh();
+        app.updateCoordinator().scheduleDailyRefresh();
         return Result.failure();
     }
 }

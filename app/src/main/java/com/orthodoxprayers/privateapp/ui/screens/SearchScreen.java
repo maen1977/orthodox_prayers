@@ -1,6 +1,8 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orthodoxprayers.privateapp.data.SearchEngine;
 import com.orthodoxprayers.privateapp.model.SearchResult;
@@ -116,8 +119,21 @@ public final class SearchScreen extends BaseScreen {
         TextView snippet = ui.text(result.snippet, 14, ui.colors().secondaryText(), false);
         snippet.setMaxLines(7);
         card.addView(snippet);
-        Button open = ui.smallButton(local("فتح النتيجة", "Open result", "Ἄνοιγμα"), false);
-        open.setOnClickListener(v -> host.navigate("reader", service.optString("id")));
+        String externalUrl = service.optString("external_url", "").trim();
+        Button open = ui.smallButton(externalUrl.isEmpty()
+                ? local("فتح النتيجة", "Open result", "Ἄνοιγμα")
+                : local("فتح الرابط الرسمي", "Open official link", "Ἄνοιγμα ἐπισήμου συνδέσμου"), false);
+        open.setOnClickListener(v -> {
+            if (externalUrl.isEmpty()) {
+                host.navigate("reader", service.optString("id"));
+                return;
+            }
+            try {
+                host.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(externalUrl)));
+            } catch (Exception error) {
+                Toast.makeText(host.activity(), local("تعذر فتح الرابط الرسمي.", "Could not open the official link.", "Δὲν ἄνοιξε ὁ ἐπίσημος σύνδεσμος."), Toast.LENGTH_SHORT).show();
+            }
+        });
         card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
         card.setContentDescription(title + ". " + result.snippet);
         return card;

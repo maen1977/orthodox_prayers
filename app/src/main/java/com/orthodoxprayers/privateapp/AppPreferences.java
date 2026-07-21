@@ -54,6 +54,22 @@ public final class AppPreferences {
     public long lastRefreshAttempt() { return values.getLong(laneKey("last_refresh_attempt"), values.getLong("last_refresh_attempt", 0L)); }
     public boolean lastRefreshSucceeded() { return values.getBoolean(laneKey("last_refresh_succeeded"), values.getBoolean("last_refresh_succeeded", false)); }
     public String lastRefreshMessage() { return values.getString(laneKey("last_refresh_message"), values.getString("last_refresh_message", "")); }
+    public String acceptedManifestDate() { return values.getString(laneKey("accepted_manifest_date"), ""); }
+    public long acceptedManifestRevision() { return values.getLong(laneKey("accepted_manifest_revision"), 0L); }
+
+    public void saveAcceptedManifest(String dateIso, long revision) {
+        String date = dateIso == null ? "" : dateIso.trim();
+        if (date.isEmpty() || revision < 1L) return;
+        values.edit()
+                .putString(laneKey("accepted_manifest_date"), date)
+                .putLong(laneKey("accepted_manifest_revision"), revision)
+                .apply();
+    }
+
+    public long acceptedManifestRevisionForDate(String dateIso) {
+        String date = dateIso == null ? "" : dateIso.trim();
+        return date.equals(acceptedManifestDate()) ? acceptedManifestRevision() : 0L;
+    }
 
     public void saveRemoteMetadata(String etag, String endpoint, long timestamp) {
         SharedPreferences.Editor editor = values.edit()

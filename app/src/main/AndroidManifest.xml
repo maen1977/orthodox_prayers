@@ -3,7 +3,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <application
         android:name=".OrthodoxPrayersApp"
         android:allowBackup="false"
@@ -25,8 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Kept as a non-exported compatibility target for alarms queued by older releases. -->
         <receiver
             android:name=".update.MidnightUpdateReceiver"
+            android:enabled="true"
             android:exported="false" />
         <receiver
             android:name=".update.ScheduleRestoreReceiver"

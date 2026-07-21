@@ -23,6 +23,15 @@ public final class SourcesScreen extends BaseScreen {
         String policy = localized(data.sourceRegistry().optJSONObject("policy"), "");
         if (!policy.isEmpty()) add(page.root, ui.infoBadge(policy), 10, 10);
 
+        JSONObject healthSummary = data.sourceHealth().optJSONObject("summary");
+        if (healthSummary != null) {
+            String monitor = local("موصلات الرصد: ", "Monitored connectors: ", "Παρακολουθούμενες συνδέσεις: ")
+                    + healthSummary.optInt("connector_count", 0)
+                    + local("، القابلة للاستخدام: ", ", usable: ", ", διαθέσιμες: ")
+                    + healthSummary.optInt("usable_connector_count", 0);
+            add(page.root, ui.badge(monitor, healthSummary.optInt("usable_connector_count", 0) > 0), 0, 9);
+        }
+
         JSONArray sources = data.registeredSources();
         for (int i = 0; i < sources.length(); i++) {
             JSONObject source = sources.optJSONObject(i);
@@ -50,10 +59,24 @@ public final class SourcesScreen extends BaseScreen {
         if (!use.isEmpty()) card.addView(ui.text(use, 13, ui.colors().secondaryText(), false),
                 ui.margins(-1, -2, 0, 5, 0, 0));
 
+        JSONObject health = data.sourceHealthById(id);
+        if (health != null) {
+            String healthText = local("حالة الرصد: ", "Monitor status: ", "Κατάσταση ἐλέγχου: ")
+                    + health.optString("status", "unknown")
+                    + local(" — الثقة: ", " — confidence: ", " — βεβαιότητα: ")
+                    + Math.round(health.optDouble("confidence", 0.0) * 100) + "%";
+            card.addView(ui.badge(healthText, "current".equals(health.optString("status")) || "available".equals(health.optString("status"))),
+                    ui.margins(-1, -2, 0, 5, 0, 4));
+        }
+
         String languages = join(source.optJSONArray("languages"));
         String rights = source.optString("rights", "").trim();
         String verified = source.optString("last_verified", "").trim();
         String details = local("المعرّف: ", "ID: ", "ID: ") + id;
+        int tier = source.optInt("authority_tier", 0);
+        if (tier > 0) details += "\n" + local("درجة السلطة: ", "Authority tier: ", "Βαθμίδα ἀρχῆς: ") + tier;
+        int connectorCount = source.optInt("connector_count", 0);
+        if (connectorCount > 0) details += "\n" + local("الموصلات النشطة: ", "Active connectors: ", "Ἐνεργὲς συνδέσεις: ") + connectorCount;
         if (!languages.isEmpty()) details += "\n" + local("اللغات: ", "Languages: ", "Γλῶσσες: ") + languages;
         if (!verified.isEmpty()) details += "\n" + local("آخر تحقق مسجل: ", "Last recorded verification: ", "Τελευταῖος ἔλεγχος: ") + verified;
         if (!rights.isEmpty()) details += "\n" + local("الحقوق/الترخيص: ", "Rights/license: ", "Δικαιώματα: ") + rights;

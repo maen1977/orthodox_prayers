@@ -27,6 +27,7 @@ concurrency:
 
 env:
   VERIFIED_DATA_BRANCH: verified-data
+  ORTHODOX_ENABLE_LIVE_SOURCE_FETCH: "1"
 
 jobs:
   daily:
@@ -48,8 +49,10 @@ jobs:
           if [[ -n "${INPUT_MODE:-}" ]]; then MODE="$INPUT_MODE"; else MODE=update; fi
           if [[ -n "${INPUT_DATE:-}" ]]; then DATE="$INPUT_DATE"; else DATE="$(TZ=Asia/Amman date +%F)"; fi
           [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
+          REVISION=$((GITHUB_RUN_NUMBER * 100 + GITHUB_RUN_ATTEMPT))
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "revision=$REVISION" >> "$GITHUB_OUTPUT"
 
       - name: Checkout source
         if: steps.resolve.outputs.mode == 'update'
@@ -81,6 +84,7 @@ jobs:
           python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --unsigned
           python scripts/validate_daily_ui_localizations.py data/calendar/today.json
           python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
+          python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
 
       - name: Clear only today's language-lane publication slots
         if: steps.resolve.outputs.mode == 'update'
@@ -139,6 +143,10 @@ jobs:
           [[ "${{ steps.lane_el.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language el --unsigned
           [[ "${{ steps.lane_en.outcome }}" != success ]] || python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --language en --unsigned
 
+      - name: Require one consistent unsigned publication date
+        if: steps.resolve.outputs.mode == 'update'
+        run: python scripts/validate_publication_consistency.py --expected-date "${{ steps.resolve.outputs.date }}" --unsigned
+
       - name: Prepare publication worktree before restoring key
         if: steps.resolve.outputs.mode == 'update'
         shell: bash
@@ -183,6 +191,10 @@ jobs:
           python scripts/verify_data_signature.py
           python scripts/sign_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/verify_language_lanes.py --date "${{ steps.resolve.outputs.date }}"
+          python scripts/validate_publication_consistency.py --expected-date "${{ steps.resolve.outputs.date }}"
+          python scripts/build_update_manifest.py --date "${{ steps.resolve.outputs.date }}" --revision "${{ steps.resolve.outputs.revision }}"
+          python scripts/sign_update_manifest.py --private-key "$RUNNER_TEMP/data-private.pem"
+          python scripts/verify_update_manifest.py --expected-date "${{ steps.resolve.outputs.date }}"
 
       - name: Assemble and sign exact publication tree
         if: steps.resolve.outputs.mode == 'update'
@@ -197,15 +209,19 @@ jobs:
           cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
           cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
           mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
-          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/validate_jordan_liturgical_contract.py" "$SOURCE/scripts/orthodox_integrity.py" "$SOURCE/scripts/official_sources.py" "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/sign_language_lanes.py" "$TARGET/scripts/"
+          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/verify_update_manifest.py" "$SOURCE/scripts/validate_publication_consistency.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/validate_jordan_liturgical_contract.py" "$SOURCE/scripts/orthodox_integrity.py" "$SOURCE/scripts/official_sources.py" "$SOURCE/scripts/source_connectors.py" "$SOURCE/scripts/attach_source_intelligence.py" "$SOURCE/scripts/validate_source_intelligence.py" "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/sign_language_lanes.py" "$SOURCE/scripts/build_update_manifest.py" "$SOURCE/scripts/sign_update_manifest.py" "$TARGET/scripts/"
           cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
-          cp "$SOURCE/canonical/jordan_liturgical_contract.json" "$TARGET/canonical/"
+          cp "$SOURCE/canonical/jordan_liturgical_contract.json" "$SOURCE/canonical/update_contract.json" "$SOURCE/canonical/source_connectors.json" "$TARGET/canonical/"
 
           cd "$TARGET"
           python scripts/sign_daily_data.py --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/sign_language_lanes.py --date "${{ steps.resolve.outputs.date }}" --private-key "$RUNNER_TEMP/data-private.pem"
+          python scripts/validate_publication_consistency.py --expected-date "${{ steps.resolve.outputs.date }}"
+          python scripts/build_update_manifest.py --date "${{ steps.resolve.outputs.date }}" --revision "${{ steps.resolve.outputs.revision }}"
+          python scripts/sign_update_manifest.py --private-key "$RUNNER_TEMP/data-private.pem"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
           python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
+          python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
 
       - name: Remove private key before commit or network publication
         if: ${{ always() && steps.resolve.outputs.mode == 'update' }}
@@ -233,6 +249,7 @@ jobs:
           git archive HEAD | tar -x -C "$COMMIT_CHECK"
           cd "$COMMIT_CHECK"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+          python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
           cd "$TARGET"
           git push --force-with-lease origin "HEAD:$VERIFIED_DATA_BRANCH"
 
@@ -245,10 +262,14 @@ jobs:
           git clone --depth 1 --branch "$VERIFIED_DATA_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" "$CHECK"
           cd "$CHECK"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+          python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
 
       - name: Verify scheduled publication
         if: steps.resolve.outputs.mode == 'verify'
-        run: python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+        shell: bash
+        run: |
+          python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
+          python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
 
       - name: Open failure alert
         if: failure()

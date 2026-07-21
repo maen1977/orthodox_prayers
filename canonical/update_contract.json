@@ -1,0 +1,5 @@
+{
+  "manifest_schema_version": 1,
+  "minimum_app_version_code": 50013,
+  "policy": "Bump the minimum only when the signed daily-data or manifest reader becomes incompatible with older app versions."
+}

@@ -30,6 +30,7 @@ import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 import com.orthodoxprayers.privateapp.ui.screens.FavoritesScreen;
 import com.orthodoxprayers.privateapp.ui.screens.CalendarScreen;
+import com.orthodoxprayers.privateapp.ui.screens.ChurchesScreen;
 import com.orthodoxprayers.privateapp.ui.screens.CalendarDayScreen;
 import com.orthodoxprayers.privateapp.ui.screens.HistoryScreen;
 import com.orthodoxprayers.privateapp.ui.screens.LanguagePacksScreen;
@@ -142,7 +143,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     @Override
     protected void onResume() {
         super.onResume();
-        updateCoordinator.scheduleMidnightRefresh();
+        updateCoordinator.scheduleDailyRefresh();
         evaluateForegroundRefresh(true);
     }
 
@@ -339,6 +340,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "language_packs": return new LanguagePacksScreen(this);
             case "settings": return new SettingsScreen(this);
             case "sources": return new SourcesScreen(this);
+            case "churches": return new ChurchesScreen(this);
             case "reader": return new ReaderScreen(this, entry.argument);
             case "reading_detail":
                 try { return new ReadingDetailScreen(this, entry.payload == null ? null : new JSONObject(entry.payload)); }
@@ -449,8 +451,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         if (updateCoordinator.shouldRefresh(dayChanged, resumeEvent)) {
             requestDataRefresh(false, dayChanged || !repository.hasUsableCurrentData());
         } else if (resumeRemoteCheck) {
-            // Every foreground open checks the selected language lane using its own ETag.
-            // A 304 response is cheap, while same-day corrections are no longer missed.
+            // Check the selected language lane periodically using its ETag.
+            // This still catches same-day corrections without a network call on every resume.
             requestDataRefresh(false, false);
         }
     }
