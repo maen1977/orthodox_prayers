@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-PIPELINE_PATCH_LEVEL = "R18"
+PIPELINE_PATCH_LEVEL = "R18.4"
 
 def verify_pipeline_patch() -> None:
     """Fail clearly when patch files were copied into a nested folder or mixed."""
@@ -28,7 +28,7 @@ def verify_pipeline_patch() -> None:
     repository_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java"
     workflow_path = ROOT / ".github/workflows/update.yml"
     required = {
-        str(integrity_path.relative_to(ROOT)): "if kind == \"prokeimenon\":",
+        str(integrity_path.relative_to(ROOT)): '"Mt.": "Matthew"',
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
         str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
@@ -38,7 +38,7 @@ def verify_pipeline_patch() -> None:
         str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
         str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
         "canonical/source_connectors.json": "local_authority_source_id",
-        "scripts/source_connectors.py": "source_consensus",
+        "scripts/source_connectors.py": "dcs_reference_after_heading",
     }
     actual = {
         str(integrity_path.relative_to(ROOT)): integrity_text,

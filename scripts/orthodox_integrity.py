@@ -732,7 +732,7 @@ DCS_BOOK_EXPANSIONS = {
     "1 Tim.": "1 Timothy", "2 Tim.": "2 Timothy", "Tit.": "Titus",
     "Heb.": "Hebrews", "Jas.": "James", "1 Pet.": "1 Peter",
     "2 Pet.": "2 Peter", "1 Jn.": "1 John", "2 Jn.": "2 John",
-    "3 Jn.": "3 John", "Matt.": "Matthew", "Mk.": "Mark",
+    "3 Jn.": "3 John", "Matt.": "Matthew", "Mt.": "Matthew", "Mk.": "Mark",
     "Lk.": "Luke", "Jn.": "John",
 }
 
@@ -1354,6 +1354,64 @@ def _official_sunday_cycle_evidence(target: date, policy: dict[str, Any]) -> Off
 
 
 
+def _monitored_dcs_regular_cycle_evidence(target: date, policy: dict[str, Any]) -> OfficialEvidence | None:
+    """Reuse the freshly collected official DCS observation when it is complete.
+
+    ``update.py`` runs ``collect_source_health.py`` before this integrity gate.
+    Reusing that bounded, allowlisted HTTPS observation avoids a second fetch
+    becoming a single point of failure. The observation is accepted only when
+    its target and detected dates match, both references parse, and the dated
+    ``/h91/`` service link carries the fetched content SHA-256.
+    """
+    snapshot_path = ROOT / "data" / "sources" / "health" / "current.json"
+    if not snapshot_path.is_file():
+        return None
+    try:
+        snapshot = load_json(snapshot_path)
+    except Exception:
+        return None
+    date_iso = target.isoformat()
+    if snapshot.get("date_iso") != date_iso:
+        return None
+    observations = snapshot.get("observations")
+    if not isinstance(observations, list):
+        return None
+    observation = next((
+        item for item in observations
+        if isinstance(item, dict) and item.get("connector_id") == "goarch_digital_chant_stand"
+    ), None)
+    if not isinstance(observation, dict):
+        return None
+    if not observation.get("official") or observation.get("status") != "current":
+        return None
+    if observation.get("target_date") != date_iso or observation.get("detected_date") != date_iso:
+        return None
+    epistle = str(observation.get("epistle_reference") or "").strip()
+    gospel = str(observation.get("gospel_reference") or "").strip()
+    if not epistle or not gospel:
+        return None
+    try:
+        parse_reference(epistle)
+        parse_reference(gospel)
+    except Exception:
+        return None
+    h91 = next((
+        link for link in observation.get("service_links") or []
+        if isinstance(link, dict)
+        and "/h91/" in str(link.get("url") or "")
+        and link.get("status") == "available"
+        and re.fullmatch(r"[0-9a-f]{64}", str(link.get("content_sha256") or ""))
+    ), None)
+    if not isinstance(h91, dict):
+        return None
+    cfg = policy["sources"]["official_greek_orthodox"]
+    return OfficialEvidence(
+        "official_greek_orthodox", 4, True, str(h91["url"]), "current", date_iso,
+        epistle, gospel, sha256=str(h91["content_sha256"]),
+        reason="أعيد استخدام رصد DCS الرسمي المؤرخ والمحدود الذي جمعه مركز صحة المصادر في التشغيل نفسه.",
+    )
+
+
 def _pinned_weekday_lectionary_evidence(target: date, policy: dict[str, Any]) -> OfficialEvidence:
     cfg = policy["sources"]["orthodox_church_in_america"]
     registry = load_json(ROOT / str(cfg["registry"]))
@@ -1479,8 +1537,10 @@ def resolve_official_date(target: date, policy: dict[str, Any], *, allow_network
     # It explicitly separates the movable Byzantine cycle from civil-date fixed
     # feasts, so a new-calendar feast can never override Jordan/Jerusalem usage.
     if allow_network and not trusted_pinned_date:
-        regular_result = fetch_goarch_regular_cycle(target, policy["sources"]["official_greek_orthodox"])
-        regular_cycle = _official_evidence_from_result(regular_result, 4, "official_greek_orthodox")
+        regular_cycle = _monitored_dcs_regular_cycle_evidence(target, policy)
+        if regular_cycle is None:
+            regular_result = fetch_goarch_regular_cycle(target, policy["sources"]["official_greek_orthodox"])
+            regular_cycle = _official_evidence_from_result(regular_result, 4, "official_greek_orthodox")
     else:
         regular_cycle = OfficialEvidence(
             "official_greek_orthodox", 4, True,

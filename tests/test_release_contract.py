@@ -43,7 +43,7 @@ class ReleaseContractTests(unittest.TestCase):
         schedule = (ROOT / "scripts/update_liturgical_data.py").read_text(encoding="utf-8")
         self.assertIn("require_complete: bool | None = None", schedule)
         self.assertIn("require_complete = source is None", schedule)
-        self.assertIn('PIPELINE_PATCH_LEVEL = "R18"', update)
+        self.assertIn('PIPELINE_PATCH_LEVEL = "R18.4"', update)
         self.assertIn("verify_pipeline_patch()", update)
         self.assertLess(
             update.index('run("scripts/fill_daily_from_native_corpora.py"'),

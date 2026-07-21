@@ -421,6 +421,50 @@ def parse_oca_daily_readings(definition: ConnectorDefinition, target: date, url:
     return observation
 
 
+DCS_REFERENCE_BOOKS = {
+    "1 Cor.": "1 Corinthians", "2 Cor.": "2 Corinthians",
+    "Rom.": "Romans", "Gal.": "Galatians", "Eph.": "Ephesians",
+    "Phil.": "Philippians", "Col.": "Colossians",
+    "1 Thess.": "1 Thessalonians", "2 Thess.": "2 Thessalonians",
+    "1 Tim.": "1 Timothy", "2 Tim.": "2 Timothy", "Tit.": "Titus",
+    "Heb.": "Hebrews", "Jas.": "James", "1 Pet.": "1 Peter",
+    "2 Pet.": "2 Peter", "1 Jn.": "1 John", "2 Jn.": "2 John",
+    "3 Jn.": "3 John", "Matt.": "Matthew", "Mt.": "Matthew",
+    "Mk.": "Mark", "Lk.": "Luke", "Jn.": "John",
+}
+
+
+def normalize_dcs_reference(value: str) -> str | None:
+    value = compact_text(value).replace("–", "-").replace("—", "-")
+    value = re.sub(r"\s*-\s*", "-", value)
+    value = re.sub(r"\s*:\s*", ":", value)
+    for short, full in sorted(DCS_REFERENCE_BOOKS.items(), key=lambda item: len(item[0]), reverse=True):
+        if value.startswith(short):
+            value = full + value[len(short):]
+            break
+    value = re.sub(r"\s+", " ", value).strip(" .")
+    pattern = (
+        r"(?:[123] )?[A-Za-z]+(?: [A-Za-z]+)* "
+        r"\d{1,3}:\d{1,3}(?:-(?:\d{1,3}:)?\d{1,3})?"
+        r"(?:;\s*\d{1,3}:\d{1,3}(?:-(?:\d{1,3}:)?\d{1,3})?)*"
+    )
+    return value if re.fullmatch(pattern, value) else None
+
+
+def dcs_reference_after_heading(text: str, heading: str) -> str | None:
+    lines = [compact_text(line) for line in text.splitlines() if compact_text(line)]
+    for index, line in enumerate(lines):
+        if line.casefold() != heading.casefold():
+            continue
+        for candidate in lines[index + 1:index + 9]:
+            if not re.search(r"\d+\s*:\s*\d+", candidate):
+                continue
+            normalized = normalize_dcs_reference(candidate)
+            if normalized:
+                return normalized
+    return None
+
+
 def parse_dcs_probe(definition: ConnectorDefinition, target: date, url: str, status: int, raw: bytes) -> ConnectorObservation:
     observation = parse_availability(definition, target, url, status, raw)
     labels = ("Divine Liturgy", "Matins / Orthros", "Vespers")
@@ -503,6 +547,14 @@ def probe_service_links(observation: ConnectorObservation, definition: Connector
                 link["status"] = "available"
                 link["url"] = final_url
                 link["content_sha256"] = hashlib.sha256(raw).hexdigest()
+                if "/h91/" in final_url:
+                    parsed = parse_html(raw, final_url)
+                    epistle = dcs_reference_after_heading(parsed.text, "The Epistle")
+                    gospel = dcs_reference_after_heading(parsed.text, "The Gospel")
+                    if epistle and gospel:
+                        observation.epistle_reference = epistle
+                        observation.gospel_reference = gospel
+                        observation.warnings.append("DCS regular-cycle references extracted; full Scripture text is not imported")
                 available += 1
             else:
                 link["status"] = "unusable"

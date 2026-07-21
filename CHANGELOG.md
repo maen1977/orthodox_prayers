@@ -1,3 +1,11 @@
+## 5.0.14 R18.4 — DCS Matthew-reference parser hotfix
+
+- Accept the official Digital Chant Stand `Mt.` abbreviation in addition to `Matt.` so the Gospel reference remains publishable.
+- Extract the regular-cycle Epistle and Gospel pair into the source-health snapshot from the verified `/h91/` service page.
+- Reuse that same-day hashed health observation in the Jordan contract gate, avoiding a fragile second fetch while rejecting stale or unhashed observations.
+- Preserve cross-chapter DCS references such as `1 Cor. 10:28-33; 11:1-8`.
+- Keep the Jordan fail-closed authority gate unchanged and add regression coverage for the exact 2026-07-21 failure.
+
 ## 5.0.14 R18.3 — SettingsScreen Java compile hotfix
 
 - Rename the Liturgy service-coverage badge local variable to avoid colliding with the earlier language-coverage `TextView` in `SettingsScreen.createView()`.

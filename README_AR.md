@@ -32,6 +32,8 @@
 
 ## ميزات 5.0.14
 
+> إصلاح R18.4: دعم اختصار `Mt.` الحقيقي في Digital Chant Stand وربط مراجع الدورة العادية بسجل صحة المصادر دون تخفيف قفل الأردن.
+
 ### مركز المصادر R18
 
 - موصلات مستقلة للمصادر الرسمية الأردنية والمقدسية والأنطاكية واليونانية والإنجليزية.
@@ -90,7 +92,7 @@ python scripts/verify_gradle_wrapper.py
 إنشاء ZIP نظيف قابل للرفع، دون `.git` أو الكاش أو مفاتيح خاصة:
 
 ```bash
-python scripts/create_clean_source_archive.py ../OrthodoxPrayers-5.0.14-R18-source.zip
+python scripts/create_clean_source_archive.py ../OrthodoxPrayers-5.0.14-R18.4-source.zip
 ```
 
 ## حدود النسخة الحالية
