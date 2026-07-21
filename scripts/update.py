@@ -166,6 +166,12 @@ def main() -> None:
         run("scripts/validate_public_source_registry.py")
         run("scripts/validate_source_intelligence.py", "data/calendar/today.json", "--expected-date", args.date)
 
+    # data/calendar is a publication alias directory, not a historical archive.
+    # Keep only today.json and the current dated fallback so rsync --delete also
+    # removes stale aliases from verified-data before the consistency gate runs.
+    # Historical language-lane payloads remain under data/daily/YYYY-MM-DD/.
+    run("scripts/clean_legacy_calendar_snapshots.py")
+
     if args.unsigned:
         remove_stale_daily_signatures(args.date)
         print(f"DAILY_UPDATE_UNSIGNED_OK date={args.date} mode={mode}")

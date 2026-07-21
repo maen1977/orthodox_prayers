@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
     "app/build.gradle.kts": ('versionName = "5.0.14"', "versionCode = 50014"),
-    "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R18"', "collect_source_health.py", "attach_source_intelligence.py"),
+    "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R18"', "collect_source_health.py", "attach_source_intelligence.py", "clean_legacy_calendar_snapshots.py"),
     "canonical/source_connectors.json": ('"local_authority_source_id": "orthodox_jordan"', '"goarch_digital_chant_stand"'),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/SearchEngine.java": ("scanChurches", "officialServiceLinks", "editDistanceAtMostOne"),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java": ("Church directory", "officialServiceLinks"),

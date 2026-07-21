@@ -1,3 +1,10 @@
+## 5.0.14 R18.1 — publication alias hotfix
+
+- Run `clean_legacy_calendar_snapshots.py` after successful daily validation and before unsigned/signed publication.
+- Prevent stale top-level dated aliases such as `data/calendar/2026-07-17.json` from breaking the strict verified-data consistency gate.
+- Preserve historical language-lane payloads under `data/daily/YYYY-MM-DD/`; only the top-level current-day alias directory is pruned.
+- Add a regression test reproducing the GitHub Actions failure and proving cleanup restores a valid signed publication tree.
+
 # 5.0.14 R18 — Orthodox source intelligence and smart discovery
 
 - Added nine audited official-source connectors with Jordan/Jerusalem authority tiers.
