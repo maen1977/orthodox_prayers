@@ -22,7 +22,7 @@ public final class ReadingDetailScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        String title = reading.optString("icon", "📖") + "  " + localized(reading.optJSONObject("title"), local("قراءة", "Reading", "Ἀνάγνωσμα"));
+        String title = localized(reading.optJSONObject("title"), local("قراءة", "Reading", "Ἀνάγνωσμα"));
         UiKit.Page page = page(title, true);
         LinearLayout card = ui.card();
         String referenceText = localized(reading.optJSONObject("reference"), "").trim();

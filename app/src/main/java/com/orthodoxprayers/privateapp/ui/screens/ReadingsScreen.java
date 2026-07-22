@@ -47,7 +47,7 @@ public final class ReadingsScreen extends BaseScreen {
 
     private LinearLayout readingCard(JSONObject reading) {
         LinearLayout card = ui.card();
-        String title = reading.optString("icon", "📖") + "  " + localized(reading.optJSONObject("title"), local("قراءة", "Reading", "Ἀνάγνωσμα"));
+        String title = localized(reading.optJSONObject("title"), local("قراءة", "Reading", "Ἀνάγνωσμα"));
         TextView heading = ui.text(title, 20, ui.colors().primaryText(), true);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) heading.setAccessibilityHeading(true);
         card.addView(heading);

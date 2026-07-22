@@ -11,13 +11,17 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.orthodoxprayers.privateapp.R;
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 import com.orthodoxprayers.privateapp.ui.ReaderAdapter;
 import com.orthodoxprayers.privateapp.ui.ReaderControlsPolicy;
@@ -52,7 +56,9 @@ public final class ReaderScreen extends BaseScreen {
     private final Handler autoScrollHandler = new Handler(Looper.getMainLooper());
     private boolean autoScrollActive;
     private Button autoScrollButton;
-    private TextView readerProgress;
+    private ProgressBar readerProgressBar;
+    private TextView readerProgressLabel;
+    private LinearLayout relatedServicesPanel;
     private final Runnable autoScrollTick = new Runnable() {
         @Override public void run() {
             if (!autoScrollActive || recycler == null) return;
@@ -168,66 +174,60 @@ public final class ReaderScreen extends BaseScreen {
         panel.addView(compactHeader(), new LinearLayout.LayoutParams(-1, -2));
         panel.addView(toolBar(), new LinearLayout.LayoutParams(-1, -2));
 
-        LinearLayout secondaryActions = ui.row();
-        secondaryActions.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(2));
-
-        if (isLiturgy()) {
-            liturgyNavigationToggle = ui.smallButton(local(
-                    "أقسام القداس",
-                    "Liturgy sections",
-                    "Ἐνότητες Λειτουργίας"
-            ), false);
-            liturgyNavigationToggle.setOnClickListener(v -> toggleLiturgyNavigation());
-            secondaryActions.addView(liturgyNavigationToggle, ui.weight(44));
-        }
-
-        provenanceToggle = ui.smallButton(local(
-                "معلومات المصدر",
-                "Source information",
-                "Πληροφορίες πηγῆς"
-        ), false);
-        provenanceToggle.setOnClickListener(v -> toggleProvenance());
-        secondaryActions.addView(provenanceToggle, ui.weight(44));
-        panel.addView(secondaryActions, new LinearLayout.LayoutParams(-1, -2));
-
         if (isLiturgy()) {
             liturgyNavigationPanel = jumpBar();
             liturgyNavigationPanel.setVisibility(View.GONE);
             panel.addView(liturgyNavigationPanel, new LinearLayout.LayoutParams(-1, -2));
         }
 
-        LinearLayout related = relatedServicesBox();
-        if (related != null) panel.addView(related, ui.margins(-1, -2, 10, 2, 10, 4));
+        relatedServicesPanel = relatedServicesBox();
+        if (relatedServicesPanel != null) {
+            relatedServicesPanel.setVisibility(View.GONE);
+            panel.addView(relatedServicesPanel, ui.margins(-1, -2, 12, 4, 12, 5));
+        }
 
         provenancePanel = provenanceBox();
         provenancePanel.setVisibility(View.GONE);
-        panel.addView(provenancePanel, ui.margins(-1, -2, 14, 4, 14, 5));
+        panel.addView(provenancePanel, ui.margins(-1, -2, 12, 4, 12, 5));
         return panel;
     }
 
     private LinearLayout compactHeader() {
         LinearLayout header = ui.row();
-        header.setPadding(ui.dp(10), ui.dp(7), ui.dp(10), ui.dp(5));
+        header.setPadding(ui.dp(8), ui.dp(6), ui.dp(8), ui.dp(6));
+        header.setMinimumHeight(ui.dp(62));
         header.setBackground(ui.gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
 
-        Button back = ui.smallButton((preferences.isRtl() ? "→ " : "← ") + local("رجوع", "Back", "Πίσω"), false);
+        ImageButton back = ui.iconButton(R.drawable.ic_arrow_back,
+                local("رجوع", "Back", "Πίσω"), false);
+        back.setRotation(preferences.isRtl() ? 180f : 0f);
         back.setOnClickListener(v -> host.goBack());
-        LinearLayout.LayoutParams backParams = new LinearLayout.LayoutParams(ui.dp(92), ui.dp(44));
-        backParams.setMargins(ui.dp(3), ui.dp(2), ui.dp(3), ui.dp(2));
-        header.addView(back, backParams);
+        header.addView(back, new LinearLayout.LayoutParams(ui.dp(48), ui.dp(48)));
 
-        String title = service.optString("icon", "☦") + "  "
-                + localized(service.optJSONObject("title"), local("النص", "Text", "Κείμενο"));
-        TextView titleView = ui.text(title, 18, ThemePalette.GOLD, true);
+        String title = localized(service.optJSONObject("title"), local("النص", "Text", "Κείμενο"));
+        TextView titleView = ui.text(title, 18, Color.WHITE, true);
         titleView.setGravity(Gravity.CENTER);
         titleView.setMaxLines(2);
         titleView.setEllipsize(TextUtils.TruncateAt.END);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-            titleView.setAccessibilityHeading(true);
-        }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) titleView.setAccessibilityHeading(true);
         LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(0, -2, 1f);
-        titleParams.setMargins(ui.dp(5), ui.dp(2), ui.dp(5), ui.dp(2));
+        titleParams.setMargins(ui.dp(6), ui.dp(2), ui.dp(6), ui.dp(2));
         header.addView(titleView, titleParams);
+
+        boolean saved = preferences.isFavorite(serviceId);
+        ImageButton favorite = ui.iconButton(R.drawable.ic_favorite,
+                saved ? local("إزالة من المفضلة", "Remove from favorites", "Ἀφαίρεση ἀπὸ ἀγαπημένα")
+                        : local("إضافة إلى المفضلة", "Add to favorites", "Προσθήκη στὰ ἀγαπημένα"), saved);
+        favorite.setOnClickListener(v -> {
+            saveReaderPosition();
+            boolean wasFavorite = preferences.isFavorite(serviceId);
+            preferences.toggleFavorite(serviceId);
+            if (!wasFavorite && preferences.isFavorite(serviceId)) {
+                preferences.setFavoriteFolder(serviceId, "liturgy".equals(service.optString("category")) ? "liturgy" : "daily");
+            }
+            host.navigate("reader", serviceId);
+        });
+        header.addView(favorite, new LinearLayout.LayoutParams(ui.dp(48), ui.dp(48)));
         return header;
     }
 
@@ -308,14 +308,14 @@ public final class ReaderScreen extends BaseScreen {
         if (controlsHandle == null) return;
         String label = controlsExpanded
                 ? local(
-                        "⌃ إخفاء العنوان والأدوات لتوسيع مساحة القراءة",
-                        "⌃ Hide title and controls to expand reading space",
-                        "⌃ Κρύψε τίτλο καὶ ἐργαλεῖα"
+                        "إخفاء أدوات القراءة",
+                        "Hide reading tools",
+                        "Κρύψε τὰ ἐργαλεῖα"
                 )
                 : local(
-                        "⌄ إظهار عنوان وأدوات القراءة",
-                        "⌄ Show title and reading controls",
-                        "⌄ Ἐμφάνιση τίτλου καὶ ἐργαλείων"
+                        "إظهار أدوات القراءة",
+                        "Show reading tools",
+                        "Ἐμφάνιση ἐργαλείων"
                 );
         controlsHandle.setText(label);
         controlsHandle.setContentDescription(label);
@@ -343,100 +343,126 @@ public final class ReaderScreen extends BaseScreen {
     private LinearLayout toolBar() {
         LinearLayout box = new LinearLayout(host.activity());
         box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(ui.dp(10), ui.dp(5), ui.dp(10), ui.dp(5));
 
         LinearLayout primary = ui.row();
-        primary.setPadding(ui.dp(10), ui.dp(3), ui.dp(10), ui.dp(1));
-        Button favorite = ui.smallButton(preferences.isFavorite(serviceId)
-                ? "★ " + local("محفوظة", "Saved", "Ἀγαπημένο")
-                : "☆ " + local("مفضلة", "Favorite", "Ἀγαπημένο"), preferences.isFavorite(serviceId));
-        favorite.setOnClickListener(v -> {
-            saveReaderPosition();
-            boolean wasFavorite = preferences.isFavorite(serviceId);
-            preferences.toggleFavorite(serviceId);
-            if (!wasFavorite && preferences.isFavorite(serviceId)) {
-                preferences.setFavoriteFolder(serviceId, "liturgy".equals(service.optString("category")) ? "liturgy" : "daily");
-            }
-            host.navigate("reader", serviceId);
-        });
-        primary.addView(favorite, ui.weight(46));
-
         Button smaller = ui.smallButton("A−", false);
+        smaller.setContentDescription(local("تصغير الخط", "Decrease text size", "Μείωση γραμματοσειρᾶς"));
         smaller.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setFontScale(preferences.fontScale() - 0.1f);
             host.navigate("reader", serviceId);
         });
-        primary.addView(smaller, ui.weight(46));
+        primary.addView(smaller, ui.weight(44));
 
         Button larger = ui.smallButton("A+", false);
+        larger.setContentDescription(local("تكبير الخط", "Increase text size", "Αὔξηση γραμματοσειρᾶς"));
         larger.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setFontScale(preferences.fontScale() + 0.1f);
             host.navigate("reader", serviceId);
         });
-        primary.addView(larger, ui.weight(46));
+        primary.addView(larger, ui.weight(44));
 
         Button source = ui.smallButton(preferences.showOriginal()
-                ? local("إخفاء الأصل", "Hide source", "Κρύψε")
+                ? local("إخفاء الأصل", "Hide source", "Κρύψε πρωτότυπο")
                 : local("إظهار الأصل", "Show source", "Πρωτότυπο"), preferences.showOriginal());
         source.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setShowOriginal(!preferences.showOriginal());
             host.navigate("reader", serviceId);
         });
-        primary.addView(source, ui.weight(46));
+        primary.addView(source, ui.weight(56));
+
+        Button tools = ui.smallButton(local("الأدوات", "Tools", "Ἐργαλεῖα"), false);
+        android.graphics.drawable.Drawable more = host.activity().getDrawable(R.drawable.ic_more);
+        if (more != null) {
+            more.setTint(ui.colors().accentText());
+            int size = ui.dp(21);
+            more.setBounds(0, 0, size, size);
+            tools.setCompoundDrawablesRelative(more, null, null, null);
+            tools.setCompoundDrawablePadding(ui.dp(5));
+        }
+        tools.setOnClickListener(this::showReaderToolsMenu);
+        primary.addView(tools, ui.weight(56));
         box.addView(primary, new LinearLayout.LayoutParams(-1, -2));
 
-        LinearLayout secondary = ui.row();
-        secondary.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(2));
-        Button pin = ui.smallButton(preferences.isPinned(serviceId)
-                ? local("📌 مثبت", "📌 Pinned", "📌 Καρφιτσωμένο")
-                : local("📍 تثبيت", "📍 Pin", "📍 Καρφίτσωμα"), preferences.isPinned(serviceId));
-        pin.setOnClickListener(v -> {
-            preferences.togglePinned(serviceId);
-            host.navigate("reader", serviceId);
-        });
-        secondary.addView(pin, ui.weight(44));
-
-        autoScrollButton = ui.smallButton(autoScrollLabel(), preferences.autoScrollSpeed() > 0);
-        autoScrollButton.setOnClickListener(v -> cycleAutoScroll());
-        secondary.addView(autoScrollButton, ui.weight(44));
-
-        Button spacing = ui.smallButton(local("تباعد " , "Spacing ", "Διάστιχο ") + String.format(java.util.Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
-        spacing.setOnClickListener(v -> {
-            float next = preferences.lineSpacingMultiplier() >= 1.55f ? 1.0f : preferences.lineSpacingMultiplier() + 0.15f;
-            preferences.setLineSpacingMultiplier(next);
-            saveReaderPosition();
-            host.navigate("reader", serviceId);
-        });
-        secondary.addView(spacing, ui.weight(44));
-        box.addView(secondary, new LinearLayout.LayoutParams(-1, -2));
-
-        LinearLayout readerTools = ui.row();
-        readerTools.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(3));
-        Button brightness = ui.smallButton("☀ " + preferences.readerBrightnessPercent() + "%", false);
-        brightness.setOnClickListener(v -> cycleBrightness());
-        readerTools.addView(brightness, ui.weight(44));
-
-        Button theme = ui.smallButton(readerThemeLabel(), false);
-        theme.setOnClickListener(v -> cycleReaderTheme());
-        readerTools.addView(theme, ui.weight(44));
-
-        Button note = ui.smallButton(preferences.serviceNote(serviceId).isEmpty()
-                ? local("✎ ملاحظة", "✎ Note", "✎ Σημείωση")
-                : local("✎ تعديل الملاحظة", "✎ Edit note", "✎ Ἐπεξεργασία"), false);
-        note.setOnClickListener(v -> showNoteDialog());
-        readerTools.addView(note, ui.weight(44));
-
-        Button share = ui.smallButton(local("↗ مشاركة", "↗ Share", "↗ Κοινοποίηση"), false);
-        share.setOnClickListener(v -> shareCurrentSegment());
-        readerTools.addView(share, ui.weight(44));
-        box.addView(readerTools, new LinearLayout.LayoutParams(-1, -2));
-
-        readerProgress = ui.infoBadge(local("تقدم القراءة: 0%", "Reading progress: 0%", "Πρόοδος: 0%"));
-        readerProgress.setGravity(Gravity.CENTER);
-        box.addView(readerProgress, ui.margins(-1, -2, 10, 0, 10, 3));
+        LinearLayout progressRow = ui.row();
+        progressRow.setPadding(ui.dp(4), ui.dp(3), ui.dp(4), 0);
+        readerProgressBar = new ProgressBar(host.activity(), null, android.R.attr.progressBarStyleHorizontal);
+        readerProgressBar.setMax(100);
+        readerProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(ThemePalette.GOLD));
+        readerProgressBar.setProgressBackgroundTintList(android.content.res.ColorStateList.valueOf(ui.colors().divider()));
+        LinearLayout.LayoutParams progressParams = new LinearLayout.LayoutParams(0, ui.dp(5), 1f);
+        progressParams.setMargins(0, 0, ui.dp(10), 0);
+        progressRow.addView(readerProgressBar, progressParams);
+        readerProgressLabel = ui.text("0%", 12, ui.colors().secondaryText(), true);
+        readerProgressLabel.setGravity(Gravity.CENTER);
+        progressRow.addView(readerProgressLabel, new LinearLayout.LayoutParams(ui.dp(48), -2));
+        box.addView(progressRow, new LinearLayout.LayoutParams(-1, -2));
         return box;
+    }
+
+    private void showReaderToolsMenu(View anchor) {
+        PopupMenu popup = new PopupMenu(host.activity(), anchor);
+        popup.getMenu().add(0, 1, 0, preferences.isPinned(serviceId)
+                ? local("إلغاء التثبيت", "Unpin", "Ἀφαίρεση καρφιτσώματος")
+                : local("تثبيت في الرئيسية", "Pin to home", "Καρφίτσωμα στὴν ἀρχική"));
+        popup.getMenu().add(0, 2, 1, autoScrollLabel());
+        popup.getMenu().add(0, 3, 2, local("تباعد الأسطر: ", "Line spacing: ", "Διάστιχο: ")
+                + String.format(java.util.Locale.US, "%.2f", preferences.lineSpacingMultiplier()));
+        popup.getMenu().add(0, 4, 3, local("سطوع القارئ: ", "Reader brightness: ", "Φωτεινότητα: ") + preferences.readerBrightnessPercent() + "%");
+        popup.getMenu().add(0, 5, 4, local("ثيم القارئ: ", "Reader theme: ", "Θέμα: ") + readerThemeLabel());
+        popup.getMenu().add(0, 6, 5, preferences.serviceNote(serviceId).isEmpty()
+                ? local("إضافة ملاحظة شخصية", "Add private note", "Προσθήκη σημειώσεως")
+                : local("تعديل الملاحظة الشخصية", "Edit private note", "Ἐπεξεργασία σημειώσεως"));
+        popup.getMenu().add(0, 7, 6, local("مشاركة المقطع الظاهر", "Share visible passage", "Κοινοποίηση κειμένου"));
+        if (isLiturgy()) popup.getMenu().add(0, 8, 7, local("أقسام القداس", "Liturgy sections", "Ἐνότητες Λειτουργίας"));
+        popup.getMenu().add(0, 9, 8, local("معلومات المصدر", "Source information", "Πληροφορίες πηγῆς"));
+        if (relatedServicesPanel != null) popup.getMenu().add(0, 10, 9, local("صلوات مرتبطة", "Related prayers", "Σχετικὲς προσευχές"));
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case 1:
+                    preferences.togglePinned(serviceId);
+                    Toast.makeText(host.activity(), preferences.isPinned(serviceId)
+                            ? local("تم تثبيت النص في الرئيسية", "Pinned to the home screen", "Καρφιτσώθηκε")
+                            : local("تم إلغاء تثبيت النص", "Text unpinned", "Ἀφαιρέθηκε"), Toast.LENGTH_SHORT).show();
+                    return true;
+                case 2:
+                    cycleAutoScroll();
+                    return true;
+                case 3:
+                    preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() >= 1.55f ? 1.0f : preferences.lineSpacingMultiplier() + 0.15f);
+                    saveReaderPosition();
+                    host.navigate("reader", serviceId);
+                    return true;
+                case 4:
+                    cycleBrightness();
+                    return true;
+                case 5:
+                    cycleReaderTheme();
+                    return true;
+                case 6:
+                    showNoteDialog();
+                    return true;
+                case 7:
+                    shareCurrentSegment();
+                    return true;
+                case 8:
+                    toggleLiturgyNavigation();
+                    return true;
+                case 9:
+                    toggleProvenance();
+                    return true;
+                case 10:
+                    boolean show = relatedServicesPanel.getVisibility() != View.VISIBLE;
+                    relatedServicesPanel.setVisibility(show ? View.VISIBLE : View.GONE);
+                    return true;
+                default:
+                    return false;
+            }
+        });
+        popup.show();
     }
 
     private void cycleBrightness() {
@@ -510,10 +536,12 @@ public final class ReaderScreen extends BaseScreen {
     }
 
     private void updateReaderProgress() {
-        if (readerProgress == null || layoutManager == null || adapter == null || adapter.getItemCount() == 0) return;
+        if (readerProgressBar == null || readerProgressLabel == null || layoutManager == null || adapter == null || adapter.getItemCount() == 0) return;
         int last = layoutManager.findLastVisibleItemPosition();
         int percent = Math.max(0, Math.min(100, Math.round(((last + 1) * 100f) / adapter.getItemCount())));
-        readerProgress.setText(local("تقدم القراءة: ", "Reading progress: ", "Πρόοδος: ") + percent + "%");
+        readerProgressBar.setProgress(percent);
+        readerProgressLabel.setText(percent + "%");
+        readerProgressLabel.setContentDescription(local("تقدم القراءة ", "Reading progress ", "Πρόοδος ") + percent + "%");
     }
 
     private int readerBackground() {
@@ -530,8 +558,8 @@ public final class ReaderScreen extends BaseScreen {
 
     private String autoScrollLabel() {
         int speed = preferences.autoScrollSpeed();
-        if (speed <= 0) return local("▶ تمرير تلقائي", "▶ Auto-scroll", "▶ Αὐτόματη κύλιση");
-        return (autoScrollActive ? "⏸ " : "▶ ") + local("سرعة ", "Speed ", "Ταχύτητα ") + speed;
+        if (speed <= 0) return local("التمرير التلقائي", "Auto-scroll", "Αὐτόματη κύλιση");
+        return local("سرعة التمرير ", "Scroll speed ", "Ταχύτητα κύλισης ") + speed;
     }
 
     private void cycleAutoScroll() {

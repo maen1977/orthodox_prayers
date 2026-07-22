@@ -51,9 +51,9 @@ public abstract class BaseScreen implements AppScreen {
         JSONObject guidance = fasting.optJSONObject("guidance");
         if (guidance == null) return;
 
-        addGuideLine(card, "✅", localized(guidance.optJSONObject("allowed_summary"), ""), true);
-        addGuideLine(card, "⛔", localized(guidance.optJSONObject("forbidden_summary"), ""), true);
-        addGuideLine(card, "🕒", localized(guidance.optJSONObject("duration"), ""), false);
+        addGuideLine(card, local("المسموح", "Allowed", "Ἐπιτρέπεται"), localized(guidance.optJSONObject("allowed_summary"), ""), true);
+        addGuideLine(card, local("الممنوع", "Not allowed", "Ἀπαγορεύεται"), localized(guidance.optJSONObject("forbidden_summary"), ""), true);
+        addGuideLine(card, local("المدة", "Duration", "Διάρκεια"), localized(guidance.optJSONObject("duration"), ""), false);
 
         JSONObject abstinence = fasting.optJSONObject("abstinence");
         if (abstinence != null && (abstinence.optBoolean("applies", false) || includeNotes)) {
@@ -65,20 +65,20 @@ public abstract class BaseScreen implements AppScreen {
                 abstinenceText = interval + (abstinenceText.isEmpty() ? "" : "\n" + abstinenceText);
             }
             String label = local("الصوم الانقطاعي", "Total abstinence", "Πλήρης ἀποχή");
-            if (!abstinenceText.isEmpty()) addGuideLine(card, "⏳", label + ": " + abstinenceText, false);
+            if (!abstinenceText.isEmpty()) addGuideLine(card, label, abstinenceText, false);
         }
 
         if (includeNotes) {
-            addGuideLine(card, "ℹ", localized(guidance.optJSONObject("beginner_explanation"), ""), false);
-            addGuideLine(card, "🙏", localized(guidance.optJSONObject("spiritual_note"), ""), false);
-            addGuideLine(card, "⚕", localized(guidance.optJSONObject("health_note"), ""), false);
+            addGuideLine(card, local("توضيح", "Guidance", "Ὁδηγία"), localized(guidance.optJSONObject("beginner_explanation"), ""), false);
+            addGuideLine(card, local("إرشاد روحي", "Spiritual guidance", "Πνευματικὴ ὁδηγία"), localized(guidance.optJSONObject("spiritual_note"), ""), false);
+            addGuideLine(card, local("تنبيه صحي", "Health note", "Σημείωση ὑγείας"), localized(guidance.optJSONObject("health_note"), ""), false);
         }
     }
 
-    private void addGuideLine(LinearLayout card, String icon, String value, boolean bold) {
+    private void addGuideLine(LinearLayout card, String label, String value, boolean bold) {
         if (value == null || value.trim().isEmpty()) return;
-        TextView text = ui.text(icon + "  " + value, 13, bold ? ui.colors().primaryText() : ui.colors().secondaryText(), bold);
-        card.addView(text, ui.margins(-1, -2, 0, 5, 0, 0));
+        TextView text = ui.text(label + ": " + value, 13, bold ? ui.colors().primaryText() : ui.colors().secondaryText(), bold);
+        card.addView(text, ui.margins(-1, -2, 0, 6, 0, 0));
     }
 
 
@@ -130,9 +130,10 @@ public abstract class BaseScreen implements AppScreen {
         LinearLayout card = ui.card();
         card.setClickable(true);
         card.setFocusable(true);
+        card.setBackground(ui.ripple(ui.colors().card(), ui.colors().border(), 18, ui.colors().ripple()));
         String title = localized(service.optJSONObject("title"), local("صلاة", "Prayer", "Προσευχή"));
         String summary = localized(service.optJSONObject("summary"), "");
-        TextView heading = ui.text(service.optString("icon", "☦") + "  " + title, 18, ui.colors().primaryText(), true);
+        TextView heading = ui.text(title, 18, ui.colors().primaryText(), true);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) heading.setAccessibilityHeading(true);
         card.addView(heading);
         if (!summary.isEmpty()) {

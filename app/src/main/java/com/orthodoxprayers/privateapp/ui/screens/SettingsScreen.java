@@ -1,18 +1,25 @@
 package com.orthodoxprayers.privateapp.ui.screens;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.text.format.DateFormat;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
 import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
+import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONObject;
@@ -26,290 +33,348 @@ public final class SettingsScreen extends BaseScreen {
     @Override
     public View createView() {
         UiKit.Page page = page(local("الإعدادات", "Settings", "Ρυθμίσεις"), true);
-        page.root.addView(ui.sectionTitle(local("لغة التطبيق والنصوص", "App and text language", "Γλῶσσα ἐφαρμογῆς καὶ κειμένων")));
-        TranslationCoverage.Result en = data.translationCoverage("en");
-        TranslationCoverage.Result el = data.translationCoverage("el");
-        LinearLayout languages = ui.row();
-        addLanguageButton(languages, "العربية", "ar");
-        addLanguageButton(languages, "English", "en");
-        addLanguageButton(languages, "Ελληνικά", "el");
-        add(page.root, languages, 0, 5);
-
-        TextView languagePolicy = ui.infoBadge(local(
-                "الواجهة مفعلة بالكامل باللغات الثلاث. كل لغة تُقرأ من مكتبتها الكنسية الأصلية المستقلة؛ ولا يترجم التطبيق نصًا من لغة إلى أخرى. عند غياب النص الأصلي المعتمد يظهر تنبيه واضح بدل نص مترجم.",
-                "The interface is fully enabled in all three languages. Each language is read from its own independent official Orthodox source library; the app does not translate text from another language. Missing native text is clearly marked unavailable.",
-                "Ἡ διεπαφὴ λειτουργεῖ καὶ στὶς τρεῖς γλῶσσες. Κάθε γλῶσσα φορτώνεται ἀπὸ χωριστὴ ἐπίσημη ὀρθόδοξη πηγή· ἡ ἐφαρμογὴ δὲν μεταφράζει κείμενα ἀπὸ ἄλλη γλῶσσα."
-        ));
-        add(page.root, languagePolicy, 0, 8);
-
-        TextView coverage = centered(local(
-                "اكتمال مكتبات النصوص الأصلية حاليًا — الإنجليزية: ",
-                "Current native official-text coverage — English: ",
-                "Κάλυψη πρωτότυπων ἐπίσημων κειμένων — Ἀγγλικά: "
-        ) + en.percent + "%\n" + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ") + el.percent + "%",
-                13, ui.colors().secondaryText(), false);
-        add(page.root, coverage, 0, 8);
-
-        Button languagePacks = ui.button(local("إدارة اللغات النشطة", "Manage active languages", "Διαχείριση ἐνεργῶν γλωσσῶν"), false);
-        languagePacks.setOnClickListener(v -> host.navigate("language_packs", null));
-        add(page.root, languagePacks, 0, 8);
-
-        Button original = ui.button(preferences.showOriginal()
-                ? local("إخفاء النص الأصلي", "Hide source text", "Κρύψε πρωτότυπο")
-                : local("إظهار النص الأصلي", "Show source text", "Δεῖξε πρωτότυπο"), preferences.showOriginal());
-        original.setOnClickListener(v -> {
-            preferences.setShowOriginal(!preferences.showOriginal());
-            host.navigate("settings", null);
-        });
-        add(page.root, original, 0, 10);
-
-        page.root.addView(ui.sectionTitle(local("القراءة", "Reading", "Ἀνάγνωση")));
-        LinearLayout font = ui.row();
-        Button smaller = ui.button("A−", false);
-        smaller.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() - 0.1f); host.navigate("settings", null); });
-        font.addView(smaller, ui.weight(48));
-        Button reset = ui.button(local("عادي", "Default", "Κανονικό"), false);
-        reset.setOnClickListener(v -> { preferences.setFontScale(1.0f); host.navigate("settings", null); });
-        font.addView(reset, ui.weight(48));
-        Button larger = ui.button("A+", false);
-        larger.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() + 0.1f); host.navigate("settings", null); });
-        font.addView(larger, ui.weight(48));
-        add(page.root, font, 0, 5);
-
-        Button dark = ui.button(preferences.darkMode()
-                ? local("استخدام الوضع الفاتح", "Use light mode", "Φωτεινὸ θέμα")
-                : local("استخدام الوضع الليلي", "Use dark mode", "Σκοτεινὸ θέμα"), preferences.darkMode());
-        dark.setOnClickListener(v -> { preferences.setDarkMode(!preferences.darkMode()); host.navigate("settings", null); });
-        add(page.root, dark, 0, 6);
-
-        Button keepOn = ui.button(preferences.keepScreenOn()
-                ? local("إطفاء خيار إبقاء الشاشة مضاءة", "Disable keep-screen-on", "Ἀπενεργοποίηση ὀθόνης")
-                : local("إبقاء الشاشة مضاءة أثناء الصلاة", "Keep screen on while reading", "Διατήρηση ὀθόνης"), preferences.keepScreenOn());
-        keepOn.setOnClickListener(v -> { preferences.setKeepScreenOn(!preferences.keepScreenOn()); host.navigate("settings", null); });
-        add(page.root, keepOn, 0, 6);
-
-        LinearLayout spacing = ui.row();
-        Button tighter = ui.button(local("تباعد أقل", "Less spacing", "Μικρότερο διάστιχο"), false);
-        tighter.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() - 0.1f); host.navigate("settings", null); });
-        spacing.addView(tighter, ui.weight(48));
-        Button spacingReset = ui.button(local("التباعد ", "Spacing ", "Διάστιχο ") + String.format(Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
-        spacingReset.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(1.16f); host.navigate("settings", null); });
-        spacing.addView(spacingReset, ui.weight(48));
-        Button wider = ui.button(local("تباعد أكبر", "More spacing", "Μεγαλύτερο διάστιχο"), false);
-        wider.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() + 0.1f); host.navigate("settings", null); });
-        spacing.addView(wider, ui.weight(48));
-        add(page.root, spacing, 0, 5);
-
-        Button fontFamily = ui.button(local("نوع الخط: ", "Font: ", "Γραμματοσειρά: ") + fontFamilyLabel(), false);
-        fontFamily.setOnClickListener(v -> {
-            String current = preferences.fontFamily();
-            preferences.setFontFamily("sans".equals(current) ? "serif" : "serif".equals(current) ? "monospace" : "sans");
-            host.navigate("settings", null);
-        });
-        add(page.root, fontFamily, 0, 6);
-
-        Button autoScroll = ui.button(autoScrollSettingLabel(), preferences.autoScrollSpeed() > 0);
-        autoScroll.setOnClickListener(v -> {
-            int speed = preferences.autoScrollSpeed();
-            preferences.setAutoScrollSpeed(speed >= 4 ? 0 : speed + 1);
-            host.navigate("settings", null);
-        });
-        add(page.root, autoScroll, 0, 10);
-
-        LinearLayout readerAppearance = ui.row();
-        Button readerTheme = ui.button(local("ثيم القارئ: ", "Reader theme: ", "Θέμα ἀναγνώστη: ") + readerThemeLabel(), false);
-        readerTheme.setOnClickListener(v -> {
-            String current = preferences.readerTheme();
-            preferences.setReaderTheme("system".equals(current) ? "sepia" : "sepia".equals(current) ? "night" : "system");
-            host.navigate("settings", null);
-        });
-        readerAppearance.addView(readerTheme, new LinearLayout.LayoutParams(0, -2, 2f));
-        Button brightness = ui.button("☀ " + preferences.readerBrightnessPercent() + "%", false);
-        brightness.setOnClickListener(v -> {
-            int current = preferences.readerBrightnessPercent();
-            preferences.setReaderBrightnessPercent(current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100);
-            host.navigate("settings", null);
-        });
-        readerAppearance.addView(brightness, ui.weight(48));
-        add(page.root, readerAppearance, 0, 10);
-
-        page.root.addView(ui.sectionTitle(local("التقويم والتذكيرات", "Calendar and reminders", "Ἡμερολόγιο καὶ ὑπενθυμίσεις")));
-        LinearLayout quietHours = ui.row();
-        Button quietStart = ui.button(local("بدء الهدوء ", "Quiet starts ", "Ἔναρξη ἡσυχίας ") + formatMinute(preferences.quietHoursStartMinute()), false);
-        quietStart.setOnClickListener(v -> {
-            preferences.setQuietHours((preferences.quietHoursStartMinute() + 30) % 1440, preferences.quietHoursEndMinute());
-            new ReminderScheduler(host.activity(), preferences).scheduleAll();
-            host.navigate("settings", null);
-        });
-        quietHours.addView(quietStart, ui.weight(60));
-        Button quietEnd = ui.button(local("نهاية الهدوء ", "Quiet ends ", "Λήξη ἡσυχίας ") + formatMinute(preferences.quietHoursEndMinute()), false);
-        quietEnd.setOnClickListener(v -> {
-            preferences.setQuietHours(preferences.quietHoursStartMinute(), (preferences.quietHoursEndMinute() + 30) % 1440);
-            new ReminderScheduler(host.activity(), preferences).scheduleAll();
-            host.navigate("settings", null);
-        });
-        quietHours.addView(quietEnd, ui.weight(60));
-        add(page.root, quietHours, 0, 6);
-        TextView quietNotice = centered(local(
-                "لن يصدر التطبيق إشعارات خلال ساعات الهدوء المحددة.",
-                "The app will not notify during the selected quiet hours.",
-                "Ἡ ἐφαρμογὴ δὲν στέλνει εἰδοποιήσεις στὶς ὧρες ἡσυχίας."
-        ), 12, ui.colors().secondaryText(), false);
-        add(page.root, quietNotice, 0, 8);
-
-        Button calendarMode = ui.button("julian".equals(preferences.calendarMode())
-                ? local("عرض التاريخ الغريغوري فقط", "Show Gregorian dates only", "Μόνο Γρηγοριανὲς ἡμερομηνίες")
-                : local("إظهار التاريخ اليولياني بجانب الغريغوري", "Show Julian dates beside Gregorian", "Ἰουλιανὴ δίπλα στὴ Γρηγοριανή"), "julian".equals(preferences.calendarMode()));
-        calendarMode.setOnClickListener(v -> {
-            preferences.setCalendarMode("julian".equals(preferences.calendarMode()) ? "gregorian" : "julian");
-            host.navigate("settings", null);
-        });
-        add(page.root, calendarMode, 0, 6);
-
-        addReminder(page.root, ReminderScheduler.MORNING, local("صلاة الصباح", "Morning prayer", "Πρωινὴ προσευχή"), 6 * 60 + 30);
-        addReminder(page.root, ReminderScheduler.READING, local("قراءات اليوم", "Daily readings", "Ἡμερήσια ἀναγνώσματα"), 8 * 60);
-        addReminder(page.root, ReminderScheduler.EVENING, local("صلاة المساء", "Evening prayer", "Ἑσπερινὴ προσευχή"), 21 * 60);
-        addReminder(page.root, ReminderScheduler.FEAST, local("الأعياد والتذكارات", "Feasts and commemorations", "Ἑορτὲς καὶ μνῆμες"), 7 * 60);
-        addReminder(page.root, ReminderScheduler.FAST, local("حالة الصيام", "Fasting status", "Κατάσταση νηστείας"), 7 * 60 + 15);
-        addReminder(page.root, ReminderScheduler.PERSONAL, local("تذكير شخصي", "Personal reminder", "Προσωπικὴ ὑπενθύμιση"), 18 * 60);
-
-        page.root.addView(ui.sectionTitle(local("التحديث والبيانات", "Update and data", "Ἐνημέρωση καὶ ἀσφάλεια")));
-        Button refresh = ui.button(
-                data.isRefreshing()
-                        ? local("التحديث جارٍ الآن…", "Update in progress…", "Ἡ ἐνημέρωση ἐκτελεῖται…")
-                        : local("تحديث بيانات اليوم الآن", "Refresh today’s data now", "Ἐνημέρωση σημερινῶν δεδομένων"),
-                data.isRefreshing()
-        );
-        refresh.setEnabled(!data.isRefreshing());
-        refresh.setOnClickListener(v -> host.refreshData());
-        add(page.root, refresh, 0, 7);
-
-        TextView automaticUpdateNotice = ui.infoBadge(local(
-                "يُجدول التطبيق تحديثًا موثوقًا عند 00:05 بعد منتصف الليل بتوقيت عمّان، وينتظر اتصال الإنترنت تلقائيًا دون طلب إذن المنبهات الدقيقة. كما يعيد فحص تصحيحات اليوم نفسه كل 30 دقيقة عند استخدام التطبيق.",
-                "The app schedules a verified refresh at 00:05 Amman time, waits automatically for connectivity without exact-alarm permission, and checks for same-day corrections at most every 30 minutes while the app is used.",
-                "Ἡ ἐφαρμογὴ προγραμματίζει ἐπαληθευμένη ἐνημέρωση στὶς 00:05 ὥρα Ἀμμάν, περιμένει αὐτόματα σύνδεση χωρὶς ἄδεια ἀκριβοῦς συναγερμοῦ καὶ ἐλέγχει διορθώσεις τῆς ἴδιας ἡμέρας ἀνά 30 λεπτά."
-        ));
-        add(page.root, automaticUpdateNotice, 0, 8);
-
-        String lastUpdate = formatTimestamp(preferences.lastSuccessfulUpdate(),
-                local("لم ينجح تحديث شبكي بعد", "No successful network update yet", "Χωρὶς ἐπιτυχῆ ἐνημέρωση"));
-        String lastAttempt = formatTimestamp(preferences.lastRefreshAttempt(),
-                local("لم تُجرَ محاولة بعد", "No attempt has been made yet", "Χωρὶς προσπάθεια"));
-        String dateValue = data.dataDate().isEmpty()
-                ? local("غير متوفر", "Unavailable", "Μὴ διαθέσιμο")
-                : data.dataDate();
-        TextView updateState = data.isRefreshing()
-                ? ui.infoBadge(data.userFacingRefreshStatus())
-                : ui.badge(data.userFacingRefreshStatus(), preferences.lastRefreshSucceeded() && data.isTodayCurrent());
-        add(page.root, updateState, 0, 8);
-
-        TextView status = centered(local("إصدار التطبيق: ", "App version: ", "Ἔκδοση: ") + BuildConfig.VERSION_NAME
-                + "\n" + local("تاريخ البيانات المعروضة: ", "Displayed data date: ", "Ἡμερομηνία δεδομένων: ") + dateValue
-                + "\n" + local("آخر محاولة تحديث: ", "Last update attempt: ", "Τελευταία προσπάθεια: ") + lastAttempt
-                + "\n" + local("آخر فحص ناجح: ", "Last successful check: ", "Τελευταῖος ἐπιτυχὴς ἔλεγχος: ") + lastUpdate
-                + "\n" + local("رمز تشخيص التحديث: ", "Update diagnostic code: ", "Κωδικὸς διαγνώσεως: ") + data.refreshDiagnosticCode()
-                + "\n" + local("مراجعة بيان التحديث: ", "Update manifest revision: ", "Ἀναθεώρηση δηλώσεως ἐνημερώσεως: ") + preferences.acceptedManifestRevisionForDate(data.dataDate())
-                + "\n" + local("مصدر النسخة: ", "Trusted copy source: ", "Πηγὴ ἀντιγράφου: ") + trustSourceLabel()
-                + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + shortHash(data.contentHash())
-                + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + safeValue(data.canonicalSourceId())
-                + "\n" + local("المصدر الرسمي المختار لليوم: ", "Selected official source: ", "Ἐπιλεγμένη ἐπίσημη πηγή: ") + officialSourceLabel(data.selectedOfficialSource())
-                + "\n" + local("التحديث التلقائي: 00:05 بتوقيت عمّان، مع انتظار الشبكة وفحص تصحيحات اليوم كل 30 دقيقة", "Automatic update: 00:05 Amman time, waiting for network and checking same-day corrections every 30 minutes", "Αὐτόματη ἐνημέρωση: 00:05 ὥρα Ἀμμάν, μὲ ἀναμονὴ δικτύου καὶ ἔλεγχο διορθώσεων ἀνά 30 λεπτά")
-                + "\n" + local("التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي", "Verification: HTTPS + independent digital signature + schema + Scripture integrity", "Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα"),
-                13, ui.colors().secondaryText(), false);
-        add(page.root, status, 0, 8);
-
-        page.root.addView(ui.sectionTitle(local("المصادر والمراجع", "Sources and references", "Πηγὲς καὶ παραπομπές")));
-        int registeredSourceCount = data.registeredSources().length();
-        TextView sourceRegistryNotice = ui.infoBadge(local(
-                "يعرض التطبيق " + registeredSourceCount + " مصدرًا مسجلًا للمحتوى والتقويم والقراءات، مع نوع الاستخدام والرابط وحالة الحقوق وآخر تحقق.",
-                "The app lists " + registeredSourceCount + " registered content, calendar, and Scripture sources with use, link, rights, and verification details.",
-                "Ἡ ἐφαρμογὴ παραθέτει " + registeredSourceCount + " καταχωρισμένες πηγές μὲ χρήση, σύνδεσμο καὶ κατάσταση δικαιωμάτων."
-        ));
-        add(page.root, sourceRegistryNotice, 0, 7);
-        JSONObject healthSummary = data.sourceHealth().optJSONObject("summary");
-        if (healthSummary != null) {
-            TextView health = ui.badge(local("رصد المصادر: ", "Source monitor: ", "Ἔλεγχος πηγῶν: ")
-                    + healthSummary.optInt("usable_connector_count", 0) + "/" + healthSummary.optInt("connector_count", 0),
-                    healthSummary.optInt("usable_connector_count", 0) > 0);
-            add(page.root, health, 0, 6);
-        }
+        addLanguageAndAppearance(page.root);
+        addReadingSettings(page.root);
+        addCalendarAndReminders(page.root);
+        addDataAndSources(page.root);
         JSONObject liturgyCoverage = data.serviceCoverage("divine_liturgy");
         if (liturgyCoverage != null) {
             TextView liturgyCoverageBadge = ui.infoBadge(local("اكتمال القطع اليومية المتغيرة للقداس: ", "Verified variable Liturgy coverage: ", "Κάλυψη μεταβλητῶν κειμένων: ")
                     + liturgyCoverage.optInt("coverage_percent", 0) + "%");
             add(page.root, liturgyCoverageBadge, 0, 7);
         }
-        Button sources = ui.button(local("عرض جميع المصادر", "View all sources", "Προβολὴ ὅλων τῶν πηγῶν"), false);
-        sources.setOnClickListener(v -> host.navigate("sources", null));
-        add(page.root, sources, 0, 10);
-        Button churches = ui.button(local("دليل الكنائس والبث المباشر", "Church directory and live services", "Κατάλογος ναῶν καὶ ζωντανὲς μεταδόσεις"), false);
-        churches.setOnClickListener(v -> host.navigate("churches", null));
-        add(page.root, churches, 0, 10);
+        addAbout(page.root);
+        return page.scroll;
+    }
 
-        String sourceNote = data.sourceNote();
-        if (!sourceNote.isEmpty()) {
-            TextView source = centered(local("عن مصدر المحتوى: ", "About the content source: ", "Περὶ πηγῆς: ") + sourceNote,
-                    13, ui.colors().secondaryText(), false);
-            add(page.root, source, 0, 8);
-        }
-        // R14_SETTINGS_CLEANUP: keep the free-app notice but hide call/privacy actions.
-        page.root.addView(ui.sectionTitle(local("عن البرنامج", "About the app", "Περὶ τῆς ἐφαρμογῆς")));
-        LinearLayout aboutCard = ui.card();
+    private void addLanguageAndAppearance(LinearLayout root) {
+        root.addView(ui.sectionTitle(local("اللغة والمظهر", "Language and appearance", "Γλῶσσα καὶ ἐμφάνιση")));
+        LinearLayout card = ui.elevatedCard();
+
+        TextView languageTitle = ui.text(local("لغة التطبيق والنصوص", "App and text language", "Γλῶσσα ἐφαρμογῆς"), 15, ui.colors().primaryText(), true);
+        card.addView(languageTitle);
+        LinearLayout languages = ui.row();
+        addLanguageButton(languages, "العربية", "ar");
+        addLanguageButton(languages, "English", "en");
+        addLanguageButton(languages, "Ελληνικά", "el");
+        card.addView(languages, ui.margins(-1, -2, 0, 8, 0, 4));
+
+        TranslationCoverage.Result en = data.translationCoverage("en");
+        TranslationCoverage.Result el = data.translationCoverage("el");
+        TextView coverage = ui.text(local("اكتمال النصوص الأصلية — الإنجليزية: ", "Native-text coverage — English: ", "Κάλυψη πρωτότυπων κειμένων — Ἀγγλικά: ")
+                + en.percent + "%  •  " + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ") + el.percent + "%",
+                12, ui.colors().secondaryText(), false);
+        coverage.setGravity(Gravity.CENTER);
+        card.addView(coverage, ui.margins(-1, -2, 0, 2, 0, 8));
+        TextView languagePolicy = ui.infoBadge(local(
+                "كل لغة تُقرأ من مكتبتها الكنسية الأصلية المستقلة، ولا يستبدل التطبيق النص الأصلي بترجمة آلية.",
+                "Each language is read from its own independent official Orthodox library; the app does not replace native text with machine translation.",
+                "Κάθε γλῶσσα διαβάζεται ἀπὸ τὴ δική της ἀνεξάρτητη ἐπίσημη ὀρθόδοξη βιβλιοθήκη."
+        ));
+        card.addView(languagePolicy, ui.margins(-1, -2, 0, 2, 0, 8));
+
+        Button languagePacks = ui.smallButton(local("إدارة اللغات المتاحة دون إنترنت", "Manage offline languages", "Διαχείριση γλωσσῶν ἐκτὸς σύνδεσης"), false);
+        languagePacks.setOnClickListener(v -> host.navigate("language_packs", null));
+        card.addView(languagePacks, ui.margins(-1, -2, 0, 3, 0, 8));
+        card.addView(ui.divider(), new LinearLayout.LayoutParams(-1, ui.dp(1)));
+
+        addToggle(card,
+                local("الوضع الداكن", "Dark mode", "Σκοτεινὸ θέμα"),
+                local("واجهة مريحة للقراءة في الإضاءة المنخفضة", "A comfortable interface in low light", "Ἄνετη ἀνάγνωση σὲ χαμηλὸ φωτισμό"),
+                preferences.darkMode(),
+                (button, checked) -> {
+                    preferences.setDarkMode(checked);
+                    host.navigate("settings", null);
+                });
+        addToggle(card,
+                local("إظهار النص الأصلي", "Show source text", "Προβολὴ πρωτοτύπου"),
+                local("يعرض النص بلغته الأصلية عند توفره", "Display the original-language text when available", "Προβολὴ τοῦ πρωτοτύπου ὅταν διατίθεται"),
+                preferences.showOriginal(),
+                (button, checked) -> {
+                    preferences.setShowOriginal(checked);
+                    host.navigate("settings", null);
+                });
+        add(root, card, 0, 10);
+    }
+
+    private void addReadingSettings(LinearLayout root) {
+        root.addView(ui.sectionTitle(local("تجربة القراءة", "Reading experience", "Ἐμπειρία ἀναγνώσεως")));
+        LinearLayout card = ui.elevatedCard();
+
+        card.addView(ui.text(local("حجم النص", "Text size", "Μέγεθος κειμένου"), 15, ui.colors().primaryText(), true));
+        LinearLayout font = ui.row();
+        Button smaller = ui.button("A−", false);
+        smaller.setContentDescription(local("تصغير الخط", "Decrease text size", "Μείωση γραμματοσειρᾶς"));
+        smaller.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() - 0.1f); host.navigate("settings", null); });
+        font.addView(smaller, ui.weight(48));
+        Button reset = ui.button(local("افتراضي", "Default", "Προεπιλογή"), false);
+        reset.setOnClickListener(v -> { preferences.setFontScale(1.0f); host.navigate("settings", null); });
+        font.addView(reset, ui.weight(48));
+        Button larger = ui.button("A+", false);
+        larger.setContentDescription(local("تكبير الخط", "Increase text size", "Αὔξηση γραμματοσειρᾶς"));
+        larger.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() + 0.1f); host.navigate("settings", null); });
+        font.addView(larger, ui.weight(48));
+        card.addView(font, ui.margins(-1, -2, 0, 7, 0, 5));
+
+        LinearLayout typography = ui.row();
+        Button fontFamily = ui.button(local("نوع الخط: ", "Font: ", "Γραμματοσειρά: ") + fontFamilyLabel(), false);
+        fontFamily.setOnClickListener(v -> {
+            preferences.setFontFamily("serif".equals(preferences.fontFamily()) ? "sans" : "serif");
+            host.navigate("settings", null);
+        });
+        typography.addView(fontFamily, new LinearLayout.LayoutParams(0, -2, 1.25f));
+        Button spacing = ui.button(local("تباعد: ", "Spacing: ", "Διάστιχο: ") + String.format(Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
+        spacing.setOnClickListener(v -> {
+            float next = preferences.lineSpacingMultiplier() >= 1.55f ? 1.0f : preferences.lineSpacingMultiplier() + 0.15f;
+            preferences.setLineSpacingMultiplier(next);
+            host.navigate("settings", null);
+        });
+        typography.addView(spacing, ui.weight(48));
+        card.addView(typography, ui.margins(-1, -2, 4, 0, 4, 7));
+        card.addView(ui.divider(), new LinearLayout.LayoutParams(-1, ui.dp(1)));
+
+        addToggle(card,
+                local("إبقاء الشاشة مضاءة", "Keep screen on", "Διατήρηση ὀθόνης"),
+                local("يمنع انطفاء الشاشة أثناء قراءة الصلاة", "Prevents the screen from sleeping while reading", "Ἡ ὀθόνη παραμένει ἀναμμένη"),
+                preferences.keepScreenOn(),
+                (button, checked) -> {
+                    preferences.setKeepScreenOn(checked);
+                    host.navigate("settings", null);
+                });
+
+        LinearLayout readerTools = ui.row();
+        Button autoScroll = ui.button(autoScrollSettingLabel(), preferences.autoScrollSpeed() > 0);
+        autoScroll.setOnClickListener(v -> {
+            int speed = preferences.autoScrollSpeed();
+            preferences.setAutoScrollSpeed(speed >= 4 ? 0 : speed + 1);
+            host.navigate("settings", null);
+        });
+        readerTools.addView(autoScroll, new LinearLayout.LayoutParams(0, -2, 1.2f));
+        Button readerTheme = ui.button(local("القارئ: ", "Reader: ", "Ἀναγνώστης: ") + readerThemeLabel(), false);
+        readerTheme.setOnClickListener(v -> {
+            String current = preferences.readerTheme();
+            preferences.setReaderTheme("system".equals(current) ? "sepia" : "sepia".equals(current) ? "night" : "system");
+            host.navigate("settings", null);
+        });
+        readerTools.addView(readerTheme, ui.weight(48));
+        card.addView(readerTools, ui.margins(-1, -2, 4, 4, 4, 5));
+
+        Button brightness = ui.smallButton(local("سطوع القارئ: ", "Reader brightness: ", "Φωτεινότητα: ") + preferences.readerBrightnessPercent() + "%", false);
+        brightness.setOnClickListener(v -> {
+            int current = preferences.readerBrightnessPercent();
+            preferences.setReaderBrightnessPercent(current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100);
+            host.navigate("settings", null);
+        });
+        card.addView(brightness, ui.margins(-1, -2, 0, 2, 0, 0));
+        add(root, card, 0, 10);
+    }
+
+    private void addCalendarAndReminders(LinearLayout root) {
+        root.addView(ui.sectionTitle(local("التقويم والتذكيرات", "Calendar and reminders", "Ἡμερολόγιο καὶ ὑπενθυμίσεις")));
+        LinearLayout card = ui.elevatedCard();
+
+        addToggle(card,
+                local("إظهار التاريخ اليولياني", "Show Julian date", "Προβολὴ Ἰουλιανῆς ἡμερομηνίας"),
+                local("يظهر بجانب التاريخ الغريغوري", "Displayed beside the Gregorian date", "Δίπλα στὴ Γρηγοριανὴ ἡμερομηνία"),
+                "julian".equals(preferences.calendarMode()),
+                (button, checked) -> {
+                    preferences.setCalendarMode(checked ? "julian" : "gregorian");
+                    host.navigate("settings", null);
+                });
+
+        card.addView(ui.divider(), ui.margins(-1, ui.dp(1), 0, 5, 0, 8));
+        card.addView(ui.text(local("ساعات الهدوء", "Quiet hours", "Ὧρες ἡσυχίας"), 15, ui.colors().primaryText(), true));
+        LinearLayout quietHours = ui.row();
+        Button quietStart = ui.button(local("من ", "From ", "Ἀπὸ ") + formatMinute(preferences.quietHoursStartMinute()), false);
+        quietStart.setOnClickListener(v -> {
+            preferences.setQuietHours((preferences.quietHoursStartMinute() + 30) % 1440, preferences.quietHoursEndMinute());
+            new ReminderScheduler(host.activity(), preferences).scheduleAll();
+            host.navigate("settings", null);
+        });
+        quietHours.addView(quietStart, ui.weight(48));
+        Button quietEnd = ui.button(local("إلى ", "To ", "Ἕως ") + formatMinute(preferences.quietHoursEndMinute()), false);
+        quietEnd.setOnClickListener(v -> {
+            preferences.setQuietHours(preferences.quietHoursStartMinute(), (preferences.quietHoursEndMinute() + 30) % 1440);
+            new ReminderScheduler(host.activity(), preferences).scheduleAll();
+            host.navigate("settings", null);
+        });
+        quietHours.addView(quietEnd, ui.weight(48));
+        card.addView(quietHours, ui.margins(-1, -2, 0, 5, 0, 8));
+
+        card.addView(ui.text(local("التذكيرات", "Reminders", "Ὑπενθυμίσεις"), 15, ui.colors().primaryText(), true));
+        addReminder(card, ReminderScheduler.MORNING, local("صلاة الصباح", "Morning prayer", "Πρωινὴ προσευχή"), 6 * 60 + 30);
+        addReminder(card, ReminderScheduler.READING, local("قراءات اليوم", "Daily readings", "Ἡμερήσια ἀναγνώσματα"), 8 * 60);
+        addReminder(card, ReminderScheduler.EVENING, local("صلاة المساء", "Evening prayer", "Ἑσπερινὴ προσευχή"), 21 * 60);
+        addReminder(card, ReminderScheduler.FEAST, local("الأعياد والتذكارات", "Feasts and commemorations", "Ἑορτὲς καὶ μνῆμες"), 7 * 60);
+        addReminder(card, ReminderScheduler.FAST, local("حالة الصيام", "Fasting status", "Κατάσταση νηστείας"), 7 * 60 + 15);
+        addReminder(card, ReminderScheduler.PERSONAL, local("تذكير شخصي", "Personal reminder", "Προσωπικὴ ὑπενθύμιση"), 18 * 60);
+        add(root, card, 0, 10);
+    }
+
+    private void addDataAndSources(LinearLayout root) {
+        root.addView(ui.sectionTitle(local("البيانات والمصادر", "Data and sources", "Δεδομένα καὶ πηγές")));
+        LinearLayout card = ui.elevatedCard();
+        Button refresh = ui.button(data.isRefreshing()
+                ? local("التحديث جارٍ الآن…", "Update in progress…", "Ἡ ἐνημέρωση ἐκτελεῖται…")
+                : local("تحديث بيانات اليوم", "Refresh today’s data", "Ἐνημέρωση σημερινῶν δεδομένων"), true);
+        refresh.setEnabled(!data.isRefreshing());
+        refresh.setAlpha(data.isRefreshing() ? 0.65f : 1f);
+        refresh.setOnClickListener(v -> host.refreshData());
+        card.addView(refresh);
+
+        TextView updateState = data.isRefreshing()
+                ? ui.infoBadge(data.userFacingRefreshStatus())
+                : ui.badge(data.userFacingRefreshStatus(), preferences.lastRefreshSucceeded() && data.isTodayCurrent());
+        card.addView(updateState, ui.margins(-1, -2, 0, 8, 0, 8));
+
+        String lastUpdate = formatTimestamp(preferences.lastSuccessfulUpdate(), local("لا يوجد تحديث شبكي ناجح بعد", "No successful network update yet", "Χωρὶς ἐπιτυχῆ ἐνημέρωση"));
+        TextView summary = ui.text(local("إصدار التطبيق: ", "App version: ", "Ἔκδοση: ") + BuildConfig.VERSION_NAME
+                + "\n" + local("تاريخ البيانات: ", "Data date: ", "Ἡμερομηνία δεδομένων: ") + safeValue(data.dataDate())
+                + "\n" + local("آخر فحص ناجح: ", "Last successful check: ", "Τελευταῖος ἔλεγχος: ") + lastUpdate,
+                13, ui.colors().secondaryText(), false);
+        summary.setTextIsSelectable(true);
+        card.addView(summary, ui.margins(-1, -2, 0, 4, 0, 8));
+
+        Button technical = ui.smallButton(local("التفاصيل التقنية والتحقق", "Technical and verification details", "Τεχνικὲς λεπτομέρειες"), false);
+        technical.setOnClickListener(v -> showTechnicalDetails());
+        card.addView(technical, ui.margins(-1, -2, 0, 2, 0, 6));
+
+        LinearLayout links = ui.row();
+        Button sources = ui.button(local("المصادر", "Sources", "Πηγές"), false);
+        sources.setOnClickListener(v -> host.navigate("sources", null));
+        links.addView(sources, ui.weight(48));
+        Button churches = ui.button(local("الكنائس والبث", "Churches and live", "Ναοὶ καὶ ζωντανά"), false);
+        churches.setOnClickListener(v -> host.navigate("churches", null));
+        links.addView(churches, ui.weight(48));
+        card.addView(links);
+        add(root, card, 0, 10);
+    }
+
+    private void addAbout(LinearLayout root) {
+        root.addView(ui.sectionTitle(local("عن البرنامج", "About the app", "Περὶ τῆς ἐφαρμογῆς")));
+        LinearLayout card = ui.elevatedCard();
         TextView freeNotice = centered(local(
                 "هذا البرنامج مجاني، ومقدم من معن حنونة للستلايت.\nرقم الهاتف: 00962788272988",
                 "This application is free and is presented by Maen Hanouna Satellite.\nPhone: 00962788272988",
                 "Ἡ ἐφαρμογὴ παρέχεται δωρεὰν ἀπὸ τὸ Maen Hanouna Satellite.\nΤηλέφωνο: 00962788272988"
         ), 15, ui.colors().primaryText(), true);
         freeNotice.setTextIsSelectable(true);
-        aboutCard.addView(freeNotice);
-        add(page.root, aboutCard, 0, 10);
+        card.addView(freeNotice);
+        card.addView(ui.divider(), ui.margins(-1, ui.dp(1), 0, 12, 0, 12));
+        TextView privacy = centered(local(
+                "لا إعلانات، لا تسجيل دخول، ولا تتبع. الملاحظات والمفضلة تحفظ على جهازك.",
+                "No ads, login, or tracking. Notes and favorites stay on your device.",
+                "Χωρὶς διαφημίσεις, σύνδεση ἢ παρακολούθηση."
+        ), 13, ui.colors().secondaryText(), false);
+        card.addView(privacy);
+        add(root, card, 0, 22);
+    }
 
-        TextView privacy = centered(local("لا إعلانات، لا تسجيل دخول، ولا تتبع. لا توجد مفاتيح خاصة داخل التطبيق.",
-                "No ads, login, or tracking. No private keys are stored in the app.",
-                "Χωρὶς διαφημίσεις, σύνδεση ἢ παρακολούθηση."), 13, ui.colors().secondaryText(), false);
-        add(page.root, privacy, 0, 16);
-        return page.scroll;
+    private void addToggle(LinearLayout root, String title, String summary, boolean checked,
+                           CompoundButton.OnCheckedChangeListener listener) {
+        LinearLayout row = ui.row();
+        row.setPadding(0, ui.dp(10), 0, ui.dp(10));
+        LinearLayout text = new LinearLayout(host.activity());
+        text.setOrientation(LinearLayout.VERTICAL);
+        text.addView(ui.text(title, 15, ui.colors().primaryText(), true));
+        if (summary != null && !summary.isEmpty()) {
+            text.addView(ui.text(summary, 12, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 4, 0, 0));
+        }
+        row.addView(text, new LinearLayout.LayoutParams(0, -2, 1f));
+        Switch toggle = new Switch(host.activity());
+        toggle.setChecked(checked);
+        toggle.setContentDescription(title);
+        toggle.setThumbTintList(new ColorStateList(
+                new int[][]{new int[]{android.R.attr.state_checked}, new int[]{}},
+                new int[]{ThemePalette.GOLD, ui.colors().secondaryText()}
+        ));
+        toggle.setTrackTintList(new ColorStateList(
+                new int[][]{new int[]{android.R.attr.state_checked}, new int[]{}},
+                new int[]{ThemePalette.NAVY_2, ui.colors().divider()}
+        ));
+        toggle.setOnCheckedChangeListener(listener);
+        row.addView(toggle, new LinearLayout.LayoutParams(-2, -2));
+        root.addView(row, new LinearLayout.LayoutParams(-1, -2));
     }
 
     private void addReminder(LinearLayout root, String kind, String label, int fallbackMinute) {
         LinearLayout row = ui.row();
+        row.setPadding(0, ui.dp(5), 0, ui.dp(5));
         boolean enabled = preferences.remindersEnabled(kind);
-        Button toggle = ui.button((enabled ? "🔔 " : "🔕 ") + label, enabled);
-        toggle.setOnClickListener(v -> {
-            boolean next = !preferences.remindersEnabled(kind);
-            if (next && Build.VERSION.SDK_INT >= 33
-                    && host.activity().checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                preferences.setPendingReminderKind(kind);
-                host.activity().requestPermissions(
-                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
-                        ReminderScheduler.NOTIFICATION_PERMISSION_REQUEST
-                );
-                return;
-            }
-            preferences.setRemindersEnabled(kind, next);
-            ReminderScheduler scheduler = new ReminderScheduler(host.activity(), preferences);
-            if (next) scheduler.schedule(kind); else scheduler.cancel(kind);
-            host.navigate("settings", null);
-        });
-        row.addView(toggle, new LinearLayout.LayoutParams(0, -2, 2f));
 
-        int minute = preferences.reminderMinuteOfDay(kind, fallbackMinute);
-        Button time = ui.button(formatMinute(minute), false);
+        LinearLayout text = new LinearLayout(host.activity());
+        text.setOrientation(LinearLayout.VERTICAL);
+        text.addView(ui.text(label, 14, ui.colors().primaryText(), true));
+        text.addView(ui.text(formatMinute(preferences.reminderMinuteOfDay(kind, fallbackMinute)), 12, ui.colors().secondaryText(), false));
+        row.addView(text, new LinearLayout.LayoutParams(0, -2, 1f));
+
+        Button time = ui.smallButton(local("تغيير الوقت", "Change time", "Ἀλλαγὴ ὥρας"), false);
         time.setOnClickListener(v -> {
             int nextMinute = (preferences.reminderMinuteOfDay(kind, fallbackMinute) + 30) % 1440;
             preferences.setReminderMinuteOfDay(kind, nextMinute);
             if (preferences.remindersEnabled(kind)) new ReminderScheduler(host.activity(), preferences).schedule(kind);
             host.navigate("settings", null);
         });
-        row.addView(time, ui.weight(48));
-        add(root, row, 0, 5);
+        row.addView(time, new LinearLayout.LayoutParams(ui.dp(112), -2));
+
+        Switch toggle = new Switch(host.activity());
+        toggle.setChecked(enabled);
+        toggle.setContentDescription(label);
+        toggle.setOnCheckedChangeListener((button, checked) -> {
+            if (checked && Build.VERSION.SDK_INT >= 33
+                    && host.activity().checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                button.setChecked(false);
+                preferences.setPendingReminderKind(kind);
+                host.activity().requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, ReminderScheduler.NOTIFICATION_PERMISSION_REQUEST);
+                return;
+            }
+            preferences.setRemindersEnabled(kind, checked);
+            ReminderScheduler scheduler = new ReminderScheduler(host.activity(), preferences);
+            if (checked) scheduler.schedule(kind); else scheduler.cancel(kind);
+        });
+        row.addView(toggle, ui.margins(-2, -2, 8, 0, 0, 0));
+        root.addView(row, new LinearLayout.LayoutParams(-1, -2));
+    }
+
+    private void showTechnicalDetails() {
+        TextView text = ui.text(technicalDetails(), 13, ui.colors().primaryText(), false);
+        text.setTextIsSelectable(true);
+        text.setPadding(ui.dp(18), ui.dp(12), ui.dp(18), ui.dp(18));
+        ScrollView scroll = new ScrollView(host.activity());
+        scroll.addView(text, new ScrollView.LayoutParams(-1, -2));
+        new AlertDialog.Builder(host.activity())
+                .setTitle(local("تفاصيل البيانات والتحقق", "Data and verification details", "Λεπτομέρειες δεδομένων"))
+                .setView(scroll)
+                .setPositiveButton(local("إغلاق", "Close", "Κλείσιμο"), null)
+                .show();
+    }
+
+    private String technicalDetails() {
+        String lastAttempt = formatTimestamp(preferences.lastRefreshAttempt(), local("لم تُجرَ محاولة بعد", "No attempt yet", "Χωρὶς προσπάθεια"));
+        String lastUpdate = formatTimestamp(preferences.lastSuccessfulUpdate(), local("لا يوجد تحديث ناجح بعد", "No successful update yet", "Χωρὶς ἐπιτυχῆ ἐνημέρωση"));
+        return local("إصدار التطبيق: ", "App version: ", "Ἔκδοση: ") + BuildConfig.VERSION_NAME
+                + "\n" + local("تاريخ البيانات المعروضة: ", "Displayed data date: ", "Ἡμερομηνία δεδομένων: ") + safeValue(data.dataDate())
+                + "\n" + local("آخر محاولة تحديث: ", "Last update attempt: ", "Τελευταία προσπάθεια: ") + lastAttempt
+                + "\n" + local("آخر فحص ناجح: ", "Last successful check: ", "Τελευταῖος ἐπιτυχὴς ἔλεγχος: ") + lastUpdate
+                + "\n" + local("رمز التشخيص: ", "Diagnostic code: ", "Κωδικὸς διαγνώσεως: ") + data.refreshDiagnosticCode()
+                + "\n" + local("مراجعة بيان التحديث: ", "Manifest revision: ", "Ἀναθεώρηση: ") + preferences.acceptedManifestRevisionForDate(data.dataDate())
+                + "\n" + local("مصدر النسخة الموثوقة: ", "Trusted copy source: ", "Πηγὴ ἀντιγράφου: ") + trustSourceLabel()
+                + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + shortHash(data.contentHash())
+                + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + safeValue(data.canonicalSourceId())
+                + "\n" + local("المصدر الرسمي لليوم: ", "Official source for today: ", "Ἐπίσημη πηγή: ") + officialSourceLabel(data.selectedOfficialSource())
+                + "\n" + local("التحديث التلقائي: 00:05 بتوقيت عمّان، مع فحص تصحيحات اليوم كل 30 دقيقة أثناء الاستخدام.",
+                "Automatic update: 00:05 Amman time, with same-day correction checks every 30 minutes while the app is used.",
+                "Αὐτόματη ἐνημέρωση: 00:05 ὥρα Ἀμμάν, μὲ ἔλεγχο διορθώσεων κάθε 30 minutes.")
+                + "\n\n" + local("التحقق المستخدم: اتصال HTTPS، توقيع رقمي مستقل، فحص مخطط البيانات، وفحص سلامة النصوص.",
+                "Verification uses HTTPS, an independent digital signature, schema validation, and Scripture integrity checks.",
+                "Ἔλεγχος μὲ HTTPS, ψηφιακὴ ὑπογραφή καὶ ἀκεραιότητα κειμένων.");
     }
 
     private String autoScrollSettingLabel() {
         int speed = preferences.autoScrollSpeed();
         return speed == 0
                 ? local("التمرير التلقائي: متوقف", "Auto-scroll: off", "Αὐτόματη κύλιση: κλειστή")
-                : local("سرعة التمرير التلقائي: ", "Auto-scroll speed: ", "Ταχύτητα αὐτόματης κύλισης: ") + speed;
+                : local("التمرير التلقائي: سرعة ", "Auto-scroll: speed ", "Αὐτόματη κύλιση: ") + speed;
     }
 
     private String readerThemeLabel() {
@@ -320,9 +385,7 @@ public final class SettingsScreen extends BaseScreen {
     }
 
     private String fontFamilyLabel() {
-        if ("serif".equals(preferences.fontFamily())) return local("كتاب", "Serif", "Serif");
-        if ("monospace".equals(preferences.fontFamily())) return local("ثابت العرض", "Monospace", "Monospace");
-        return local("بسيط", "Sans", "Sans");
+        return "serif".equals(preferences.fontFamily()) ? local("كتابي", "Serif", "Serif") : local("حديث", "Modern sans", "Sans");
     }
 
     private static String formatMinute(int minuteOfDay) {
@@ -382,6 +445,4 @@ public final class SettingsScreen extends BaseScreen {
         return DateFormat.getMediumDateFormat(host.activity()).format(new Date(timestamp)) + " "
                 + DateFormat.getTimeFormat(host.activity()).format(new Date(timestamp));
     }
-
-
 }
