@@ -289,8 +289,8 @@
       {
         "source": "orthodox_jordan",
         "priority": 1,
-        "status": "unavailable",
-        "reason": "Cannot fetch https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/: <urlopen error [Errno 101] Network is unreachable>"
+        "status": "poisoned",
+        "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
       },
       {
         "source": "jerusalem_patriarchate",
@@ -324,14 +324,14 @@
       "priority": 1,
       "official": true,
       "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-      "status": "unavailable",
-      "date_iso": null,
-      "epistle_reference": null,
-      "gospel_reference": null,
+      "status": "poisoned",
+      "date_iso": "2026-01-07",
+      "epistle_reference": "رسالة غلاطية 4: 4–7",
+      "gospel_reference": "متى 2 : 1 – 12",
       "tone": null,
       "prokeimenon_text": null,
       "sha256": null,
-      "reason": "Cannot fetch https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/: <urlopen error [Errno 101] Network is unreachable>"
+      "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
     },
     {
       "id": "jerusalem_patriarchate",
@@ -3444,11 +3444,12 @@
     },
     "summary": {
       "connector_count": 9,
-      "usable_connector_count": 5,
+      "usable_connector_count": 7,
       "official_current_count": 2,
       "status_counts": {
-        "network_error": 3,
-        "available": 3,
+        "undated": 1,
+        "available": 4,
+        "parser_error": 1,
         "http_error": 1,
         "current": 2
       },
@@ -3485,20 +3486,23 @@
         "calendar_profile": "jerusalem_old_calendar",
         "target_date": "2026-07-22",
         "url": "https://orthodoxjordan.org/",
-        "status": "network_error",
-        "checked_at_utc": "2026-07-21T22:05:52Z",
-        "http_status": null,
-        "content_sha256": null,
-        "content_bytes": null,
+        "status": "undated",
+        "checked_at_utc": "2026-07-22T09:27:54Z",
+        "http_status": 200,
+        "content_sha256": "676bc61006e80d815c430b9e31169f03bfa49f62e7cdfc234e23a639bcebc285",
+        "content_bytes": 498837,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
-        "commemorations": [],
+        "commemorations": [
+          "اية اليوم:",
+          "انجيل اليوم"
+        ],
         "service_links": [],
         "church_count": null,
-        "confidence": 0.0,
+        "confidence": 0.45,
         "rights_mode": "reference_and_authorized_native_import_only",
-        "reason": "[Errno 101] Network is unreachable",
+        "reason": "content was found but the requested civil date was not proven",
         "warnings": []
       },
       {
@@ -3510,20 +3514,20 @@
         "calendar_profile": "not_applicable",
         "target_date": "2026-07-22",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-        "status": "network_error",
-        "checked_at_utc": "2026-07-21T22:06:17Z",
-        "http_status": null,
-        "content_sha256": null,
-        "content_bytes": null,
+        "status": "available",
+        "checked_at_utc": "2026-07-22T09:28:00Z",
+        "http_status": 200,
+        "content_sha256": "d7f8dba44f8c0799f7724c05a277ae3553844b084b128831b3c5532b68a62b3a",
+        "content_bytes": 887573,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
         "commemorations": [],
         "service_links": [],
-        "church_count": null,
-        "confidence": 0.0,
+        "church_count": 41,
+        "confidence": 0.9,
         "rights_mode": "metadata_and_official_links_only",
-        "reason": "[Errno 101] Network is unreachable",
+        "reason": null,
         "warnings": []
       },
       {
@@ -3534,9 +3538,9 @@
         "publication_role": "official_live_link",
         "calendar_profile": "not_applicable",
         "target_date": "2026-07-22",
-        "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
-        "status": "network_error",
-        "checked_at_utc": "2026-07-21T22:06:37Z",
+        "url": "https://orthodoxjo.tv/video/orthodox-station/",
+        "status": "parser_error",
+        "checked_at_utc": "2026-07-22T09:28:00Z",
         "http_status": null,
         "content_sha256": null,
         "content_bytes": null,
@@ -3548,7 +3552,7 @@
         "church_count": null,
         "confidence": 0.0,
         "rights_mode": "official_link_only",
-        "reason": "[Errno 101] Network is unreachable",
+        "reason": "ValueError: Blocked non-allowlisted source URL: https://orthodoxjo.tv/video/orthodox-station/",
         "warnings": []
       },
       {
@@ -3561,7 +3565,7 @@
         "target_date": "2026-07-22",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-21T22:06:37Z",
+        "checked_at_utc": "2026-07-22T09:28:00Z",
         "http_status": 200,
         "content_sha256": "956665746c7cbcae819bcf04678d7c6710a189421fbeca2ba7bed2c0b35945fa",
         "content_bytes": 173690,
@@ -3586,7 +3590,7 @@
         "target_date": "2026-07-22",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-21T22:06:38Z",
+        "checked_at_utc": "2026-07-22T09:28:01Z",
         "http_status": 200,
         "content_sha256": "e39cddd272f92d81e39d1948f5838e4cd6ae241e47b56af02ce44e0090d1d7b2",
         "content_bytes": 6817,
@@ -3611,7 +3615,7 @@
         "target_date": "2026-07-22",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-21T22:06:38Z",
+        "checked_at_utc": "2026-07-22T09:28:01Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -3636,7 +3640,7 @@
         "target_date": "2026-07-22",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-21T22:06:38Z",
+        "checked_at_utc": "2026-07-22T09:28:02Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
@@ -3683,9 +3687,9 @@
         "target_date": "2026-07-22",
         "url": "https://www.oca.org/readings/daily/2026/07/22",
         "status": "current",
-        "checked_at_utc": "2026-07-21T22:06:39Z",
+        "checked_at_utc": "2026-07-22T09:28:03Z",
         "http_status": 200,
-        "content_sha256": "ea08a1913a22896bc20db99cab891082f0033fd4a3f90074b2bebeda2be9867f",
+        "content_sha256": "ac3a9f3f120130b10deffc24457c51393d745ba501f64d73f0576ae1ab99ebe1",
         "content_bytes": 14576,
         "detected_date": "2026-07-22",
         "epistle_reference": "1 Corinthians 10:12-22",
@@ -3710,9 +3714,9 @@
         "target_date": "2026-07-22",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-21T22:06:42Z",
+        "checked_at_utc": "2026-07-22T09:28:06Z",
         "http_status": 200,
-        "content_sha256": "8375d5169beca55ed7528c7990d2324b6905952ef2f4baf57a88a98ee2debb82",
+        "content_sha256": "acd57cff689878225f6490a9bf0f83fca603b41ad612e5fc1a19d945db031f47",
         "content_bytes": 115321,
         "detected_date": null,
         "epistle_reference": null,
@@ -3732,80 +3736,707 @@
     "date_iso": "2026-07-22",
     "authority": "orthodox_jordan",
     "directory_url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-    "status": "seed_fallback",
-    "reason": "URLError: <urlopen error [Errno 101] Network is unreachable>",
-    "count": 5,
+    "status": "live_official_directory",
+    "reason": "parsed from the official Orthodox Jordan directory",
+    "count": 41,
     "rights_mode": "official names and links only; schedules remain live-page data",
     "churches": [
       {
-        "id": "annunciation_cathedral_abdali",
+        "id": "اختر-اقرب-كنيسه-لك-تعرف-علي-مجموعاتها-العامله-الرزنامه-الخاصه-بها-واحدث-اخبارها",
         "name": {
-          "ar": "كاتدرائية البشارة للروم الأرثوذكس — العبدلي",
-          "en": "Annunciation Greek Orthodox Cathedral — Abdali",
-          "el": "Καθεδρικὸς Εὐαγγελισμοῦ — Ἀμπντάλι"
+          "ar": "اختر اقرب كنيسة لك، تعرف على مجموعاتها العاملة، الرزنامة الخاصة بها، وأحدث أخبارها",
+          "en": "",
+          "el": ""
         },
         "city": {
-          "ar": "عمّان",
-          "en": "Amman",
-          "el": "Ἀμμάν"
+          "ar": "",
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D8%A7%D8%AA%D8%AF%D8%B1%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%B4%D8%A7%D8%B1%D8%A9-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%A7%D9%84/"
+        "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "ascension_khalda",
+        "id": "دير-السيده-العذراء-ينبوع-الحياه-دبين-جرش",
         "name": {
-          "ar": "كنيسة الصعود الإلهي للروم الأرثوذكس — خلدا",
-          "en": "Holy Ascension Greek Orthodox Church — Khalda",
-          "el": "Ναὸς Θείας Ἀναλήψεως — Χάλντα"
+          "ar": "دير السيدة العذراء ينبوع الحياة دبين- جرش",
+          "en": "",
+          "el": ""
         },
         "city": {
-          "ar": "عمّان",
-          "en": "Amman",
-          "el": "Ἀμμάν"
+          "ar": "جرش",
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D8%B5%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D8%A7%D9%84%D9%87%D9%8A-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%AE/"
+        "url": "https://orthodoxjordan.org/%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d8%b3%d9%8a%d8%af%d8%a9-%d8%a7%d9%84%d8%b9%d8%b0%d8%b1%d8%a7%d8%a1-%d9%8a%d9%86%d8%a8%d9%88%d8%b9-%d8%a7%d9%84%d8%ad%d9%8a%d8%a7%d8%a9-%d8%af%d8%a8%d9%8a%d9%86/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "saviour_downtown",
+        "id": "دير-الظهور-الالهي-البطريركي-المغطس",
         "name": {
-          "ar": "كنيسة المخلّص للروم الأرثوذكس — وسط البلد",
-          "en": "Saviour Greek Orthodox Church — Downtown Amman",
-          "el": "Ναὸς Μεταμορφώσεως — κέντρο Ἀμμάν"
+          "ar": "دير الظهور الإلهي البطريركي المغطس",
+          "en": "",
+          "el": ""
         },
         "city": {
-          "ar": "عمّان",
-          "en": "Amman",
-          "el": "Ἀμμάν"
+          "ar": "",
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%85%D8%AE%D9%84%D8%B5-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D9%88%D8%B3%D8%B7-%D8%A7%D9%84%D8%A8%D9%84/"
+        "url": "https://orthodoxjordan.org/%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d8%b8%d9%87%d9%88%d8%b1-%d8%a7%d9%84%d8%a7%d9%84%d9%87%d9%8a-%d8%a7%d9%84%d8%a8%d8%b7%d8%b1%d9%8a%d8%b1%d9%83%d9%8a-%d8%a7%d9%84%d9%85%d8%ba%d8%b7%d8%b3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "st_george_anjara",
+        "id": "كاتدراييه-البشاره-العبدلي-عمان",
         "name": {
-          "ar": "كنيسة القديس جاورجيوس للروم الأرثوذكس — عنجرة",
-          "en": "Saint George Greek Orthodox Church — Anjara",
-          "el": "Ναὸς Ἁγίου Γεωργίου — Ἄντζαρα"
+          "ar": "كاتدرائية البشارة العبدلي - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d8%a7%d8%aa%d8%af%d8%b1%d8%a7%d8%a6%d9%8a%d8%a9-%d8%a7%d9%84%d8%a8%d8%b4%d8%a7%d8%b1%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%a7%d9%84/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كاتدراييه-دخول-السيد-الي-الهيكل-الصويفيه-عمان",
+        "name": {
+          "ar": "كاتدرائية دخول السيد الى الهيكل الصويفية - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d8%a7%d8%aa%d8%af%d8%b1%d8%a7%d8%a6%d9%8a%d8%a9-%d8%af%d8%ae%d9%88%d9%84-%d8%a7%d9%84%d8%b3%d9%8a%d8%af-%d8%a7%d9%84%d9%89-%d8%a7%d9%84%d9%87%d9%8a%d9%83%d9%84-%d8%a7%d9%84%d8%b5%d9%88%d9%8a/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-الاقمار-الثلاث-دبين-جرش",
+        "name": {
+          "ar": "كنيسة الأقمار الثلاث دبين-جرش",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "جرش",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D8%A3%D9%82%D9%85%D8%A7%D8%B1-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB-%D8%AF%D8%A8%D9%8A%D9%86-%D8%AC%D8%B1%D8%B4/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-التجلي-الاثريه-ساره-السلط-البلقاء",
+        "name": {
+          "ar": "كنيسة التجلي الأثرية (سارة) السلط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d8%aa%d8%ac%d9%84%d9%8a-%d8%a7%d9%84%d8%a7%d8%ab%d8%b1%d9%8a%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-الروح-القدس-عجلون",
+        "name": {
+          "ar": "كنيسة الروح القدس عجلون",
+          "en": "",
+          "el": ""
         },
         "city": {
           "ar": "عجلون",
-          "en": "Ajloun",
-          "el": "Ἀτζλοῦν"
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%B3-%D8%AC%D8%A7%D9%88%D8%B1%D8%AC%D9%8A%D9%88%D8%B3-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-5/"
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d8%b1%d9%88%d8%ad-%d8%a7%d9%84%d9%82%d8%af%d8%b3-%d8%b9%d8%ac%d9%84%d9%88%d9%86/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "dormition_mafraq",
+        "id": "كنيسه-الصعود-الالهي-خلدا-عمان",
         "name": {
-          "ar": "كنيسة رقاد والدة الإله للروم الأرثوذكس — المفرق",
-          "en": "Dormition Greek Orthodox Church — Mafraq",
-          "el": "Ναὸς Κοιμήσεως Θεοτόκου — Μάφρακ"
+          "ar": "كنيسة الصعود الإلهي خلدا - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d8%b5%d8%b9%d9%88%d8%af-%d8%a7%d9%84%d8%a7%d9%84%d9%87%d9%8a-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%ae/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-ادر-الكرك",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس أدر - الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-7/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الاثريه-السلط-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الأثرية السلط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d8%a7%d9%84%d8%a7%d8%ab%d8%b1%d9%8a%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الاثريه-الفحيص-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الأثرية الفحيص - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d8%a7%d9%84%d8%a7%d8%ab%d8%b1%d9%8a%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الحصن-اربد",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الحصن - اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الحمود-الكرك",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الحمود - الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-8/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الربه-الكرك",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الربة - الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-9/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-جبل-الهاشمي-عمان",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس جبل الهاشمي - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-جرش",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس جرش",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "جرش",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-6/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-شطنا-اربد",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس شطنا - اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-4/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-صافوط-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس صافوط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-عنجره-عجلون",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس عنجرة - عجلون",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عجلون",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-5/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-نيقولاوس-الصريح-اربد",
+        "name": {
+          "ar": "كنيسة القديس نيقولاوس الصريح - اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%8a%d9%82%d9%88%d9%84%d8%a7%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-نيقولاوس-ماركا-عمان",
+        "name": {
+          "ar": "كنيسة القديس نيقولاوس ماركا - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%8a%d9%82%d9%88%d9%84%d8%a7%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-يعقوب-اخو-الرب-الفحيص-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس يعقوب أخو الرب الفحيص - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%8a%d8%b9%d9%82%d9%88%d8%a8-%d8%a7%d8%ae%d9%88-%d8%a7%d9%84%d8%b1%d8%a8-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديسين-قسطنطين-وهيلانه-مرج-الحمام-عمان",
+        "name": {
+          "ar": "كنيسة القديسين قسطنطين وهيلانه مرج الحمام - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3%d9%8a%d9%86-%d9%82%d8%b3%d8%b7%d9%86%d8%b7%d9%8a%d9%86-%d9%88%d9%87%d9%8a%d9%84%d8%a7%d9%86%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-المخلص-وسط-البلد-عمان",
+        "name": {
+          "ar": "كنيسة المخلص وسط البلد - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%85%d8%ae%d9%84%d8%b5-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d9%88%d8%b3%d8%b7-%d8%a7%d9%84%d8%a8%d9%84/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-النبي-ايليا-والقديسه-برباره-ابو-نصير-عمان",
+        "name": {
+          "ar": "كنيسة النبي إيليا والقديسة بربارة ابو نصير - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%86%d8%a8%d9%8a-%d8%a7%d9%8a%d9%84%d9%8a%d8%a7-%d9%88%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3%d8%a9-%d8%a8%d8%b1%d8%a8%d8%a7%d8%b1%d8%a9-%d9%84%d9%84%d8%b1/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-النبي-ايليا-الوهادنه-عجلون",
+        "name": {
+          "ar": "كنيسة النبي ايليا الوهادنة - عجلون",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عجلون",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%86%d8%a8%d9%8a-%d8%a7%d9%8a%d9%84%d9%8a%d8%a7-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%a7%d9%84%d9%88/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الخارطه-البلد-مادبا",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس (الخارطة) البلد - مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-4/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-اربد",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-6/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الزرقاء",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس الزرقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الزرقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الفحيص-البلقاء",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس الفحيص - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الكرك",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-5/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-عجلون",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس عجلون",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عجلون",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-نكتاريوس-الصويفيه-عمان",
+        "name": {
+          "ar": "كنيسة دير القديس نكتاريوس الصويفية - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%83%d8%aa%d8%a7%d8%b1%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-نيقولاوس-العقبه",
+        "name": {
+          "ar": "كنيسة دير القديس نيقولاوس العقبة",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "العقبة",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%8a%d9%82%d9%88%d9%84%d8%a7%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-رقاد-السيده-العذارء-السلط-البلقاء",
+        "name": {
+          "ar": "كنيسة دير رقاد السيدة العذارء السلط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%b1%d9%82%d8%a7%d8%af-%d8%a7%d9%84%d8%b3%d9%8a%d8%af%d8%a9-%d8%a7%d9%84%d8%b9%d8%b0%d8%b1%d8%a7%d8%a1-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-رقاد-والده-الاله-ارميمين-البلقاء",
+        "name": {
+          "ar": "كنيسة رقاد والدة الإله ارميمين - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%b1%d9%82%d8%a7%d8%af-%d9%88%d8%a7%d9%84%d8%af%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%87-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-رقاد-والده-الاله-المفرق",
+        "name": {
+          "ar": "كنيسة رقاد والدة الإله المفرق",
+          "en": "",
+          "el": ""
         },
         "city": {
           "ar": "المفرق",
-          "en": "Mafraq",
-          "el": "Μάφρακ"
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%B1%D9%82%D8%A7%D8%AF-%D9%88%D8%A7%D9%84%D8%AF%D8%A9-%D8%A7%D9%84%D8%A7%D9%84%D9%87-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-2/"
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%b1%d9%82%d8%a7%d8%af-%d9%88%d8%a7%d9%84%d8%af%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%87-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-رقاد-والده-الاله-حنينا-مادبا",
+        "name": {
+          "ar": "كنيسة رقاد والدة الإله حنينا - مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%b1%d9%82%d8%a7%d8%af-%d9%88%d8%a7%d9%84%d8%af%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%87-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-مار-الياس-للروم-الارثوذكس-ادر",
+        "name": {
+          "ar": "كنيسة مار إلياس للروم الأرثوذكس - أدر",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "أدر",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d9%85%d8%a7%d8%b1-%d8%a5%d9%84%d9%8a%d8%a7%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a3%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%a3%d8%af%d8%b1/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-ميلاد-السيده-العذارء-جبل-التاج-عمان",
+        "name": {
+          "ar": "كنيسة ميلاد السيدة العذارء جبل التاج - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d9%85%d9%8a%d9%84%d8%a7%d8%af-%d8%a7%d9%84%d8%b3%d9%8a%d8%af%d8%a9-%d8%a7%d9%84%d8%b9%d8%b0%d8%b1%d8%a7-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       }
     ],
     "live_resources": [
@@ -3816,7 +4447,7 @@
           "en": "Orthodox Jordan live broadcast",
           "el": "Ζωντανὴ μετάδοση Ἰορδανίας"
         },
-        "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
+        "url": "https://orthodoxjo.tv/video/orthodox-station/"
       },
       {
         "id": "orthodox_jordan_calendar",
