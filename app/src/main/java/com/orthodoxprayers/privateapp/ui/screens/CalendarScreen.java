@@ -127,7 +127,7 @@ public final class CalendarScreen extends BaseScreen {
             card.setClickable(true);
             card.setFocusable(true);
             card.setOnClickListener(v -> host.navigate("calendar_day", entry.getKey()));
-            card.addView(ui.text(entry.getKey(), 16, ui.colors().primaryText(), true));
+            card.addView(ui.text("📅  " + entry.getKey(), 16, ui.colors().primaryText(), true));
             String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
             String status = localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), ""));
             if (!status.isEmpty()) card.addView(ui.text(status, 13, ui.colors().accentText(), true));

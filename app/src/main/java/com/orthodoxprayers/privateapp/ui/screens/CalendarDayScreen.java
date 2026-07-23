@@ -23,7 +23,7 @@ public final class CalendarDayScreen extends BaseScreen {
             return page.scroll;
         }
         LinearLayout card = ui.card();
-        card.addView(centered(date, 21, ui.colors().primaryText(), true));
+        card.addView(centered("📅  " + date, 21, ui.colors().primaryText(), true));
         addField(card, local("التذكار", "Commemoration", "Μνήμη"), localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")));
         addField(card, local("الصيام", "Fasting", "Νηστεία"), localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), "")));
         addFastingGuide(card, item.optJSONObject("fasting"), true);

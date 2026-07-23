@@ -1,3 +1,15 @@
+## 5.0.15 R19 — Language accuracy and user-experience refinement
+
+- Correct native-pack completeness so Arabic, English, and Greek are each measured from their own independent bundled library, regardless of the currently selected UI language.
+- Add Arabic to the visible three-language coverage summary and preserve the existing no-cross-language-fallback policy.
+- Format app-owned timestamps in the selected in-app language instead of inheriting an unrelated device locale.
+- Correct the remaining Greek font-family labels and isolate technical identifiers so they do not reorder surrounding Arabic text.
+- Replace repeated 30-minute tapping with a proper time picker for reminders and quiet hours.
+- Keep everyday update status concise and move hashes, source IDs, and diagnostic codes behind an optional technical-details control.
+- Add a confirmed reset for reading appearance and behavior while preserving favorites, notes, history, and reminder schedules.
+- Make the public source registry deterministic and stop assigning an unverified date merely because a source record was rebuilt.
+- Align the canonical publication contract with the real single 00:00 workflow, which verifies the published branch in the same run rather than claiming a removed 00:15 schedule.
+
 ## 5.0.14 R18.4 — DCS Matthew-reference parser hotfix
 
 - Accept the official Digital Chant Stand `Mt.` abbreviation in addition to `Matt.` so the Gospel reference remains publishable.

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -176,7 +175,9 @@ def source_record(
         },
         "rights": rights,
         "permission_confirmed": bool(record.get("permission_confirmed")),
-        "last_verified": latest[:10] or date.today().isoformat(),
+        # Do not invent a verification date merely because the registry was rebuilt.
+        # Sources without a monitored observation remain undated in the user-facing list.
+        "last_verified": latest[:10],
         "authority_tier": authority_tier,
         "connector_count": len(connectors),
         "connector_ids": [item.get("id") for item in connectors],

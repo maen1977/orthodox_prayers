@@ -113,7 +113,7 @@ def main() -> None:
             {
                 "id": "orthodox_jordan_live",
                 "title": {"ar": "البث المباشر الأرثوذكسي الأردني", "en": "Orthodox Jordan live broadcast", "el": "Ζωντανὴ μετάδοση Ἰορδανίας"},
-                "url": "https://orthodoxjo.tv/video/orthodox-station/"
+                "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
             },
             {
                 "id": "orthodox_jordan_calendar",

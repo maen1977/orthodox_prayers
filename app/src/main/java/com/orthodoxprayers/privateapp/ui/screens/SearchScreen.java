@@ -111,7 +111,7 @@ public final class SearchScreen extends BaseScreen {
         JSONObject service = result.service;
         LinearLayout card = ui.card();
         String title = localized(service.optJSONObject("title"), "");
-        card.addView(ui.text(title, 18, ui.colors().primaryText(), true));
+        card.addView(ui.text(service.optString("icon", "☦") + "  " + title, 18, ui.colors().primaryText(), true));
         if (!result.matchedSection.isEmpty()) {
             TextView matched = ui.badge(local("المطابقة: ", "Matched in: ", "Βρέθηκε στὸ: ") + result.matchedSection, true);
             card.addView(matched, ui.margins(-1, -2, 0, 5, 0, 5));

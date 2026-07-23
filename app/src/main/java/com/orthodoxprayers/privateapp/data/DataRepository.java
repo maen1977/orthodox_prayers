@@ -105,7 +105,10 @@ public final class DataRepository {
 
     public synchronized JSONObject today() { return today; }
     public JSONObject library() {
-        String language = preferences.effectiveLanguage();
+        return libraryForLanguage(preferences.effectiveLanguage());
+    }
+
+    private JSONObject libraryForLanguage(String language) {
         JSONObject selected;
         if ("en".equals(language)) selected = englishLibrary;
         else if ("el".equals(language)) selected = greekLibrary;
@@ -390,15 +393,14 @@ public final class DataRepository {
         return new ArrayList<>(unique.values());
     }
 
+    /** Coverage of the requested native pack, independent of the language currently open in the UI. */
+    public TranslationCoverage.Result nativeContentCoverage(String language) {
+        return TranslationCoverage.measure(libraryForLanguage(language), language);
+    }
+
+    /** Backwards-compatible name retained for older screens and tests. */
     public TranslationCoverage.Result translationCoverage(String language) {
-        JSONObject aggregate = new JSONObject();
-        try {
-            aggregate.put("today", today());
-            aggregate.put("library", library());
-        } catch (Exception error) {
-            Log.w(TAG, "Could not aggregate translation coverage", error);
-        }
-        return TranslationCoverage.measure(aggregate, language);
+        return nativeContentCoverage(language);
     }
 
     public void refreshAsync(RefreshCallback callback) { refreshAsync(false, callback); }

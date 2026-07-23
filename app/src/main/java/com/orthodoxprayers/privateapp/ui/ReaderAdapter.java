@@ -88,10 +88,10 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     }
 
     private void bindSection(LinearLayout container, JSONObject segment) {
-        LinearLayout card = ui.card(readerSectionColor(), readerBorderColor(), 16);
+        LinearLayout card = ui.card(ThemePalette.NAVY, ThemePalette.GOLD, 14);
         String title = data.localized(segment.optJSONObject("title"), data.localized(segment.optJSONObject("text"), ""));
-        TextView heading = ui.text(title, 18, readerSectionText(), true);
-        heading.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+        TextView heading = ui.text("✥  " + title + "  ✥", 19, ThemePalette.GOLD, true);
+        heading.setGravity(Gravity.CENTER);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) heading.setAccessibilityHeading(true);
         card.addView(heading);
         card.setContentDescription(title);
@@ -99,7 +99,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     }
 
     private void bindNote(LinearLayout container, JSONObject segment, int position) {
-        LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 16);
+        LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 14);
         String label = data.localized(segment.optJSONObject("speaker"), data.local("ملاحظة اختيارية", "Optional note", "Προαιρετικὴ σημείωση"));
         boolean defaultCollapsed = segment.optBoolean("collapsed_by_default", true);
         boolean expanded = defaultCollapsed ? expandedNotes.contains(position) : !collapsedNotes.contains(position);
@@ -135,7 +135,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     }
 
     private void bindText(LinearLayout container, JSONObject segment, boolean rubric) {
-        LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 16);
+        LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 14);
         String speaker = data.localized(segment.optJSONObject("speaker"), "");
         if (!speaker.isEmpty()) {
             TextView speakerView = ui.text(speaker, 14, ThemePalette.GOLD, true);
@@ -223,21 +223,8 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
     }
 
     private int readerBorderColor() {
-        if ("night".equals(preferences.readerTheme())) return Color.rgb(48, 63, 82);
-        if ("sepia".equals(preferences.readerTheme())) return Color.rgb(221, 208, 181);
-        return ui.colors().border();
-    }
-
-    private int readerSectionColor() {
-        if ("night".equals(preferences.readerTheme())) return Color.rgb(28, 43, 63);
-        if ("sepia".equals(preferences.readerTheme())) return Color.rgb(236, 224, 196);
-        return ui.colors().cardAlt();
-    }
-
-    private int readerSectionText() {
-        if ("night".equals(preferences.readerTheme())) return Color.rgb(229, 190, 106);
-        if ("sepia".equals(preferences.readerTheme())) return Color.rgb(92, 63, 28);
-        return ui.colors().accentText();
+        if ("night".equals(preferences.readerTheme())) return Color.rgb(66, 84, 111);
+        return ThemePalette.GOLD;
     }
 
     private int readerPrimaryText() {

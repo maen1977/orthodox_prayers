@@ -202,6 +202,24 @@ public final class AppPreferences {
         values.edit().putString("reader_theme", safe).apply();
     }
 
+    public boolean advancedDiagnosticsExpanded() { return values.getBoolean("advanced_diagnostics_expanded", false); }
+    public void setAdvancedDiagnosticsExpanded(boolean value) {
+        values.edit().putBoolean("advanced_diagnostics_expanded", value).apply();
+    }
+
+    public void resetReaderPreferences() {
+        values.edit()
+                .remove("font_scale")
+                .remove("line_spacing_multiplier")
+                .remove("font_family")
+                .remove("auto_scroll_speed")
+                .remove("reader_brightness_percent")
+                .remove("reader_theme")
+                .remove("keep_screen_on")
+                .remove("show_original")
+                .apply();
+    }
+
     public List<String> searchHistory() { return readStringList("search_history_json"); }
     public void recordSearchQuery(String query) {
         if (query == null || query.trim().isEmpty()) return;

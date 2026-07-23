@@ -4,7 +4,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.14"', "versionCode = 50014"),
+    "app/build.gradle.kts": ('versionName = "5.0.15"', "versionCode = 50015"),
     "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R18.4"', "collect_source_health.py", "attach_source_intelligence.py", "clean_legacy_calendar_snapshots.py"),
     "scripts/orthodox_integrity.py": ('"Mt.": "Matthew"', "_monitored_dcs_regular_cycle_evidence"),
     "scripts/source_connectors.py": ("dcs_reference_after_heading", "DCS regular-cycle references extracted"),
@@ -27,4 +27,4 @@ for relative, markers in REQUIRED.items():
             missing.append(f"{relative}: {marker}")
 if missing:
     raise SystemExit("PATCH_R18_NOT_APPLIED\n" + "\n".join(missing))
-print("PATCH_R18_OK version=5.0.14 level=R18.4")
+print("PATCH_R18_OK version=5.0.15 level=R18.4 refinement=R19")

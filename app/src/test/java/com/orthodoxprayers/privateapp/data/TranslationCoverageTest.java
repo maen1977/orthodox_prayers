@@ -35,7 +35,20 @@ public final class TranslationCoverageTest {
 
     @Test
     public void acceptsTextWrittenInTheRequestedScript() {
+        assertTrue(TranslationCoverage.isValidTargetText("نص عربي أصلي موثوق", "نص عربي أصلي موثوق", "ar"));
         assertTrue(TranslationCoverage.isValidTargetText("Verified English text", "نص عربي", "en"));
         assertTrue(TranslationCoverage.isValidTargetText("Ἐπαληθευμένο ἑλληνικὸ κείμενο", "نص عربي", "el"));
+    }
+
+    @Test
+    public void measuresArabicNativeFieldsWithoutTreatingThemAsCopiedTranslations() throws Exception {
+        JSONObject root = new JSONObject()
+                .put("title", new JSONObject().put("ar", "عنوان عربي").put("en", "").put("el", ""));
+
+        TranslationCoverage.Result result = TranslationCoverage.measure(root, "ar");
+
+        assertEquals(1, result.total);
+        assertEquals(1, result.translated);
+        assertEquals(100, result.percent);
     }
 }

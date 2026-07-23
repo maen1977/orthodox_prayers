@@ -33,8 +33,8 @@ public final class UpcomingScreen extends BaseScreen {
             LinearLayout reminder = ui.card();
             String spiritual = localized(guidance.optJSONObject("spiritual_note"), "");
             String health = localized(guidance.optJSONObject("health_note"), "");
-            if (!spiritual.isEmpty()) reminder.addView(ui.text(local("إرشاد روحي: ", "Spiritual guidance: ", "Πνευματικὴ ὁδηγία: ") + spiritual, 13, ui.colors().secondaryText(), false));
-            if (!health.isEmpty()) reminder.addView(ui.text(local("تنبيه صحي: ", "Health note: ", "Σημείωση ὑγείας: ") + health, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 6, 0, 0));
+            if (!spiritual.isEmpty()) reminder.addView(ui.text("🙏  " + spiritual, 13, ui.colors().secondaryText(), false));
+            if (!health.isEmpty()) reminder.addView(ui.text("⚕  " + health, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 6, 0, 0));
             add(page.root, reminder, 8, 16);
         }
         return page.scroll;
@@ -43,7 +43,7 @@ public final class UpcomingScreen extends BaseScreen {
     private LinearLayout dayCard(JSONObject item) {
         LinearLayout card = ui.card();
         String day = localized(item.optJSONObject("day"), item.optString("date", ""));
-        TextView heading = ui.text(day, 16, ui.colors().primaryText(), true);
+        TextView heading = ui.text("📅  " + day, 16, ui.colors().primaryText(), true);
         card.addView(heading);
         card.addView(ui.text(localized(item.optJSONObject("status"), ""), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
         JSONObject fasting = item.optJSONObject("fasting");
@@ -52,8 +52,8 @@ public final class UpcomingScreen extends BaseScreen {
         String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
         if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
         JSONObject refs = item.optJSONObject("reading_references");
-        addReference(card, refs, "epistle", local("الرسالة: ", "Epistle: ", "Ἀπόστολος: "));
-        addReference(card, refs, "gospel", local("الإنجيل: ", "Gospel: ", "Εὐαγγέλιον: "));
+        addReference(card, refs, "epistle", "📜 " + local("الرسالة: ", "Epistle: ", "Ἀπόστολος: "));
+        addReference(card, refs, "gospel", "📖 " + local("الإنجيل: ", "Gospel: ", "Εὐαγγέλιον: "));
         card.setContentDescription(day + ". " + feast);
         return card;
     }

@@ -1,26 +1,17 @@
 package com.orthodoxprayers.privateapp.ui;
 
 import android.app.Activity;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.RippleDrawable;
 import android.os.Build;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Space;
 import android.widget.TextView;
 
 import com.orthodoxprayers.privateapp.AppPreferences;
-import com.orthodoxprayers.privateapp.R;
 
 public final class UiKit {
     public static final class Page {
@@ -47,78 +38,51 @@ public final class UiKit {
         ScrollView scroll = new ScrollView(activity);
         scroll.setFillViewport(true);
         scroll.setBackgroundColor(palette.background());
-        scroll.setClipToPadding(false);
         LinearLayout root = new LinearLayout(activity);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setLayoutDirection(preferences.isRtl() ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
-        root.setPadding(dp(16), 0, dp(16), dp(28));
+        root.setPadding(dp(14), 0, dp(14), dp(18));
         scroll.addView(root, new ScrollView.LayoutParams(-1, -2));
         return new Page(scroll, root);
     }
 
-    /** Compact app bar used by every standard screen. */
     public LinearLayout header(String title, boolean showBack, Runnable backAction) {
-        LinearLayout box = row();
-        box.setGravity(Gravity.CENTER_VERTICAL);
-        box.setMinimumHeight(dp(64));
-        box.setPadding(dp(8), dp(6), dp(8), dp(6));
+        LinearLayout box = new LinearLayout(activity);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setGravity(Gravity.CENTER);
+        box.setPadding(dp(16), dp(14), dp(16), dp(16));
         box.setBackground(gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
-        box.setElevation(dp(3));
-
         if (showBack) {
-            ImageButton back = iconButton(R.drawable.ic_arrow_back, local("رجوع", "Back", "Πίσω"), false);
-            back.setRotation(preferences.isRtl() ? 180f : 0f);
+            Button back = smallButton((preferences.isRtl() ? "→ " : "← ") + local("رجوع", "Back", "Πίσω"), false);
+            back.setContentDescription(local("العودة إلى الشاشة السابقة", "Return to the previous screen", "Επιστροφή"));
             back.setOnClickListener(v -> backAction.run());
-            box.addView(back, new LinearLayout.LayoutParams(dp(48), dp(48)));
-        } else {
-            box.addView(new Space(activity), new LinearLayout.LayoutParams(dp(48), dp(48)));
+            box.addView(back, margins(-1, -2, 0, 0, 0, 8));
         }
-
-        TextView heading = text(title, 20, Color.WHITE, true);
-        heading.setGravity(Gravity.CENTER);
-        heading.setMaxLines(2);
-        heading.setEllipsize(TextUtils.TruncateAt.END);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) heading.setAccessibilityHeading(true);
-        LinearLayout.LayoutParams headingParams = new LinearLayout.LayoutParams(0, -2, 1f);
-        headingParams.setMargins(dp(8), 0, dp(8), 0);
-        box.addView(heading, headingParams);
-
-        ImageView cross = new ImageView(activity);
-        cross.setImageResource(R.drawable.orthodox_cross_icon);
-        cross.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        TextView cross = text("☦", 34, ThemePalette.GOLD, true);
+        cross.setGravity(Gravity.CENTER);
         cross.setContentDescription(local("الصليب الأرثوذكسي", "Orthodox cross", "Ὀρθόδοξος σταυρός"));
-        box.addView(cross, new LinearLayout.LayoutParams(dp(40), dp(40)));
+        box.addView(cross);
+        TextView heading = text(title, 24, ThemePalette.GOLD, true);
+        heading.setGravity(Gravity.CENTER);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) heading.setAccessibilityHeading(true);
+        box.addView(heading);
         return box;
     }
 
     public TextView sectionTitle(String title) {
-        TextView view = text(title, 18, palette.accentText(), true);
-        view.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-        view.setPadding(dp(2), dp(22), dp(2), dp(9));
+        TextView view = text("✥  " + title + "  ✥", 20, palette.primaryText(), true);
+        view.setGravity(Gravity.CENTER);
+        view.setPadding(0, dp(14), 0, dp(7));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) view.setAccessibilityHeading(true);
         return view;
     }
 
-    public View divider() {
-        View view = new View(activity);
-        view.setBackgroundColor(palette.divider());
-        return view;
-    }
-
-    public LinearLayout card() { return card(palette.card(), palette.border(), 18); }
-
-    public LinearLayout elevatedCard() {
-        LinearLayout value = card(palette.card(), Color.TRANSPARENT, 20);
-        value.setElevation(dp(2));
-        return value;
-    }
-
+    public LinearLayout card() { return card(palette.card(), palette.border(), 14); }
     public LinearLayout card(int color, int stroke, int radius) {
         LinearLayout value = new LinearLayout(activity);
         value.setOrientation(LinearLayout.VERTICAL);
         value.setBackground(round(color, stroke, radius));
-        value.setPadding(dp(16), dp(14), dp(16), dp(14));
-        value.setClipToOutline(true);
+        value.setPadding(dp(12), dp(11), dp(12), dp(11));
         return value;
     }
 
@@ -128,56 +92,18 @@ public final class UiKit {
         button.setAllCaps(false);
         button.setTextSize(14 * preferences.fontScale());
         button.setGravity(Gravity.CENTER);
-        button.setMinHeight(dp(52));
-        button.setMinimumHeight(dp(52));
-        button.setPadding(dp(14), dp(8), dp(14), dp(8));
-        button.setTextColor(active ? Color.WHITE : palette.primaryText());
-        int fill = active ? ThemePalette.NAVY : palette.cardAlt();
-        int stroke = active ? ThemePalette.NAVY : palette.buttonBorder();
-        button.setBackground(ripple(fill, stroke, 16, active ? 0x33FFFFFF : palette.ripple()));
-        button.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
-        button.setStateListAnimator(null);
-        if (active) button.setElevation(dp(2));
+        button.setMinHeight(dp(48));
+        button.setMinimumHeight(dp(48));
+        button.setTextColor(active ? android.graphics.Color.WHITE : palette.primaryText());
+        button.setBackground(round(active ? ThemePalette.NAVY : palette.card(), ThemePalette.GOLD, 14));
         applyTextDirection(button, label);
-        button.setContentDescription(label == null ? "" : label.replace('\n', ' '));
+        button.setContentDescription(label.replace('\n', ' '));
         return button;
     }
 
     public Button smallButton(String label, boolean active) {
         Button button = button(label, active);
         button.setTextSize(13 * preferences.fontScale());
-        button.setMinHeight(dp(44));
-        button.setMinimumHeight(dp(44));
-        button.setPadding(dp(10), dp(6), dp(10), dp(6));
-        return button;
-    }
-
-    public Button shortcutButton(String label, int iconResource, boolean active) {
-        Button button = button(label, active);
-        Drawable icon = activity.getDrawable(iconResource);
-        if (icon != null) {
-            icon.setTint(active ? Color.WHITE : palette.accentText());
-            int size = dp(27);
-            icon.setBounds(0, 0, size, size);
-            button.setCompoundDrawables(null, icon, null, null);
-            button.setCompoundDrawablePadding(dp(8));
-        }
-        button.setMinHeight(dp(92));
-        button.setMinimumHeight(dp(92));
-        button.setTextSize(13 * preferences.fontScale());
-        return button;
-    }
-
-    public ImageButton iconButton(int iconResource, String description, boolean active) {
-        ImageButton button = new ImageButton(activity);
-        button.setImageResource(iconResource);
-        button.setImageTintList(ColorStateList.valueOf(active ? ThemePalette.GOLD : Color.WHITE));
-        button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        button.setPadding(dp(12), dp(12), dp(12), dp(12));
-        button.setBackground(ripple(Color.TRANSPARENT, Color.TRANSPARENT, 24, 0x33FFFFFF));
-        button.setContentDescription(description);
-        button.setFocusable(true);
-        button.setClickable(true);
         return button;
     }
 
@@ -186,10 +112,11 @@ public final class UiKit {
         view.setText(value == null ? "" : value);
         view.setTextSize(sp * preferences.fontScale());
         view.setTextColor(color);
-        view.setIncludeFontPadding(false);
+        view.setIncludeFontPadding(true);
         Typeface base;
-        if ("serif".equals(preferences.fontFamily())) base = Typeface.create("serif", Typeface.NORMAL);
-        else base = Typeface.create("sans-serif", Typeface.NORMAL);
+        if ("serif".equals(preferences.fontFamily())) base = Typeface.SERIF;
+        else if ("monospace".equals(preferences.fontFamily())) base = Typeface.MONOSPACE;
+        else base = Typeface.SANS_SERIF;
         view.setTypeface(base, bold ? Typeface.BOLD : Typeface.NORMAL);
         applyTextDirection(view, value);
         return view;
@@ -198,7 +125,7 @@ public final class UiKit {
     public TextView body(String value, boolean rubric) {
         TextView view = text(value, rubric ? 15 : 18, rubric ? palette.secondaryText() : palette.primaryText(), false);
         if (rubric) view.setTypeface(view.getTypeface(), Typeface.ITALIC);
-        view.setLineSpacing(dp(5), preferences.lineSpacingMultiplier());
+        view.setLineSpacing(dp(4), preferences.lineSpacingMultiplier());
         view.setTextIsSelectable(true);
         return view;
     }
@@ -206,16 +133,16 @@ public final class UiKit {
     public TextView badge(String value, boolean positive) {
         TextView badge = text(value, 12, positive ? palette.success() : palette.warning(), true);
         badge.setGravity(Gravity.CENTER);
-        badge.setPadding(dp(10), dp(7), dp(10), dp(7));
-        badge.setBackground(round(palette.cardAlt(), positive ? palette.successMuted() : palette.warningMuted(), 12));
+        badge.setPadding(dp(8), dp(5), dp(8), dp(5));
+        badge.setBackground(round(palette.cardAlt(), positive ? palette.success() : palette.warning(), 12));
         return badge;
     }
 
     public TextView infoBadge(String value) {
         TextView badge = text(value, 12, palette.accentText(), true);
         badge.setGravity(Gravity.CENTER);
-        badge.setPadding(dp(10), dp(7), dp(10), dp(7));
-        badge.setBackground(round(palette.cardAlt(), palette.buttonBorder(), 12));
+        badge.setPadding(dp(8), dp(5), dp(8), dp(5));
+        badge.setBackground(round(palette.cardAlt(), ThemePalette.NAVY_2, 12));
         return badge;
     }
 
@@ -244,21 +171,15 @@ public final class UiKit {
         GradientDrawable drawable = new GradientDrawable();
         drawable.setColor(color);
         drawable.setCornerRadius(dp(radiusDp));
-        if (stroke != Color.TRANSPARENT && stroke != 0) drawable.setStroke(dp(1), stroke);
+        drawable.setStroke(dp(1), stroke);
         return drawable;
     }
 
     public GradientDrawable gradient(int start, int end, int stroke, int radiusDp) {
         GradientDrawable drawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{start, end});
         drawable.setCornerRadius(dp(radiusDp));
-        if (stroke != Color.TRANSPARENT && stroke != 0) drawable.setStroke(dp(1), stroke);
+        if (stroke != 0) drawable.setStroke(dp(1), stroke);
         return drawable;
-    }
-
-    public Drawable ripple(int fill, int stroke, int radiusDp, int rippleColor) {
-        GradientDrawable content = round(fill, stroke, radiusDp);
-        GradientDrawable mask = round(Color.WHITE, Color.TRANSPARENT, radiusDp);
-        return new RippleDrawable(ColorStateList.valueOf(rippleColor), content, mask);
     }
 
     public int dp(int value) { return (int) (value * activity.getResources().getDisplayMetrics().density + 0.5f); }

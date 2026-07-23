@@ -27,7 +27,7 @@ public final class LanguagePacksScreen extends BaseScreen {
     }
 
     private void addPack(LinearLayout root, String language, String title) {
-        TranslationCoverage.Result coverage = data.translationCoverage(language);
+        TranslationCoverage.Result coverage = data.nativeContentCoverage(language);
         LinearLayout card = ui.card();
         TextView heading = ui.text(title + " — " + coverage.percent + "%", 18, ui.colors().primaryText(), true);
         card.addView(heading);

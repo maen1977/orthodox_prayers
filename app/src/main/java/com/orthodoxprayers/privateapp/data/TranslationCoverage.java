@@ -69,6 +69,9 @@ public final class TranslationCoverage {
     public static boolean isValidTargetText(String target, String arabic, String language) {
         if (target == null || target.trim().isEmpty()) return false;
         String value = target.trim();
+        if ("ar".equals(language)) {
+            return UiKit.containsArabic(value) && ScriptCounts.of(value).greek == 0;
+        }
         if (arabic != null && !arabic.trim().isEmpty() && value.equals(arabic.trim())) return false;
         if (UiKit.containsArabic(value)) return false;
 

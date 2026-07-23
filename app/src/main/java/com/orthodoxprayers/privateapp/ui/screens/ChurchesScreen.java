@@ -40,7 +40,7 @@ public final class ChurchesScreen extends BaseScreen {
                 JSONObject resource = resources.optJSONObject(i);
                 if (resource == null) continue;
                 String title = localized(resource.optJSONObject("title"), resource.optString("id"));
-                Button open = ui.button(title, false);
+                Button open = ui.button("▶  " + title, false);
                 String url = resource.optString("url", "");
                 open.setOnClickListener(v -> openUrl(url));
                 add(page.root, open, 0, 6);
