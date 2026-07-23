@@ -2,6 +2,7 @@
 
 - Fail at the start of the quality gate when R19 files were extracted only partially or into a nested directory.
 - Ship a deterministic root-overlay patch containing `app/build.gradle.kts` at the exact repository-relative path.
+- Allow a complete clean-source archive to use a wrapper-free root layout for direct repository overwrite.
 - Add regression coverage proving that the patch has no wrapper directory and carries version 5.0.15 / code 50015.
 - Keep application behavior and signed religious content unchanged.
 

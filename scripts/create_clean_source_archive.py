@@ -30,6 +30,11 @@ def main() -> None:
     parser.add_argument("output_positional", nargs="?", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--prefix", default="orthodox_prayers")
+    parser.add_argument(
+        "--root-layout",
+        action="store_true",
+        help="store repository-relative paths without a wrapper directory",
+    )
     args = parser.parse_args()
     selected = args.output or args.output_positional
     if selected is None:
@@ -41,7 +46,8 @@ def main() -> None:
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for path in files:
             relative = path.relative_to(ROOT).as_posix()
-            info = zipfile.ZipInfo(f"{args.prefix}/{relative}", date_time=(2026, 7, 17, 0, 0, 0))
+            archive_name = relative if args.root_layout else f"{args.prefix.strip('/')}/{relative}"
+            info = zipfile.ZipInfo(archive_name, date_time=(2026, 7, 17, 0, 0, 0))
             mode = 0o755 if path.name == "gradlew" or os.access(path, os.X_OK) else 0o644
             info.external_attr = (stat.S_IFREG | mode) << 16
             info.compress_type = zipfile.ZIP_DEFLATED

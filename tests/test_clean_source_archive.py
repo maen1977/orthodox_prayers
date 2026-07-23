@@ -58,6 +58,25 @@ class CleanSourceArchiveTests(unittest.TestCase):
         finally:
             gradlew.chmod(original_mode)
 
+    def test_root_layout_overwrites_repository_paths_without_wrapper(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "full-root.zip"
+            subprocess.run(
+                [sys.executable, str(SCRIPT), str(output), "--root-layout"],
+                cwd=ROOT,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            with zipfile.ZipFile(output) as archive:
+                names = archive.namelist()
+                self.assertIn("app/build.gradle.kts", names)
+                self.assertIn("scripts/verify_r19_patch.py", names)
+                self.assertNotIn("orthodox_prayers/app/build.gradle.kts", names)
+                build = archive.read("app/build.gradle.kts").decode("utf-8")
+                self.assertIn('versionName = "5.0.15"', build)
+                self.assertIn("versionCode = 50015", build)
+
 
 if __name__ == "__main__":
     unittest.main()

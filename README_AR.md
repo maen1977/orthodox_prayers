@@ -67,7 +67,7 @@
 
 ## الحالة الحالية
 
-- اختبارات المصدر: 162 اختبارًا ناجحًا، إضافة إلى اختبارات Android الوحدوية في GitHub Actions.
+- اختبارات المصدر: 163 اختبارًا ناجحًا، إضافة إلى اختبارات Android الوحدوية في GitHub Actions.
 - حزمة الخدمات العربية: 533/533 حقلًا — 100%.
 - حزمة الخدمات الإنجليزية: 770/770 حقلًا — 100%.
 - حزمة الخدمات اليونانية: 762/762 حقلًا — 100%.
@@ -103,6 +103,12 @@ python scripts/verify_gradle_wrapper.py
 
 ```bash
 python scripts/create_clean_source_archive.py ../OrthodoxPrayers-5.0.15-R19-source.zip
+```
+
+ولإنشاء مشروع كامل يُفك مباشرة فوق جذر مستودع موجود دون إنشاء مجلد متداخل:
+
+```bash
+python scripts/create_clean_source_archive.py ../OrthodoxPrayers-5.0.15-R19.1-FULL-ROOT.zip --root-layout
 ```
 
 لإنشاء تحديث R19.1 يُفك مباشرة في جذر مستودع موجود، دون مجلد غلاف:
