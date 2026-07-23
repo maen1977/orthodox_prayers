@@ -21,8 +21,8 @@ android {
         applicationId = "com.orthodoxprayers.privateapp"
         minSdk = 26
         targetSdk = 36
-        versionCode = 50014
-        versionName = "5.0.14"
+        versionCode = 50015
+        versionName = "5.0.15"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
