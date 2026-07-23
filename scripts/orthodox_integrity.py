@@ -262,6 +262,40 @@ def parse_reference(reference: str) -> tuple[str, list[VerseSpan]]:
     return ";".join(canonical_parts), spans
 
 
+CANONICAL_REFERENCE_PART_RE = re.compile(
+    r"^(?P<book>[1-3]?[A-Z]+)\.(?P<start_chapter>\d+)\.(?P<start_verse>\d+)"
+    r"(?:-(?:(?P<end_chapter>\d+)\.)?(?P<end_verse>\d+))?$"
+)
+
+
+def canonical_reference_is_valid(reference: str) -> bool:
+    """Accept ordered semicolon-separated spans from one appointed Bible book."""
+    raw_parts = [part.strip() for part in str(reference or "").split(";")]
+    if not raw_parts or any(not part for part in raw_parts):
+        return False
+    appointed_book = ""
+    previous_end: tuple[int, int] | None = None
+    for part in raw_parts:
+        match = CANONICAL_REFERENCE_PART_RE.fullmatch(part)
+        if not match:
+            return False
+        book = match.group("book")
+        start = (int(match.group("start_chapter")), int(match.group("start_verse")))
+        end = (
+            int(match.group("end_chapter") or start[0]),
+            int(match.group("end_verse") or start[1]),
+        )
+        if end < start:
+            return False
+        if appointed_book and book != appointed_book:
+            return False
+        if previous_end is not None and start <= previous_end:
+            return False
+        appointed_book = book
+        previous_end = end
+    return True
+
+
 def reference_display_ar(spans: list[VerseSpan]) -> str:
     groups: list[str] = []
     for span in spans:
@@ -1119,7 +1153,7 @@ def verify_existing(data: dict[str, Any], bible: dict[str, Any], canonical_meta:
                 if not canonical_reference:
                     errors.append(f"{kind} has no canonical reference")
                     continue
-                if not re.fullmatch(r"[1-3]?[A-Z]+\.\d+\.\d+(?:-(?:\d+\.)?\d+)?", canonical_reference):
+                if not canonical_reference_is_valid(canonical_reference):
                     errors.append(f"{kind} canonical reference is invalid: {canonical_reference!r}")
                 for language in ("ar", "en", "el"):
                     if str(reading.get("body", {}).get(language) or "").strip():
