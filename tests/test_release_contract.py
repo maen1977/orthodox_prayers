@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.14"', build)
-        self.assertIn("versionCode = 50014", build)
+        self.assertIn('versionName = "5.0.15"', build)
+        self.assertIn("versionCode = 50015", build)
         contract = json.loads((ROOT / "canonical/update_contract.json").read_text(encoding="utf-8"))
         self.assertEqual(50013, contract["minimum_app_version_code"])
         self.assertIn("compileSdk = 36", build)

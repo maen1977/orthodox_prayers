@@ -15,6 +15,7 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         quality.append("--allow-stale")
 
     checks: list[list[str]] = [
+        [sys.executable, "scripts/verify_r19_patch.py"],
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
         [sys.executable, "scripts/validate_workflows.py"],
         [sys.executable, "scripts/verify_gradle_wrapper.py"],

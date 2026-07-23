@@ -234,7 +234,7 @@ def _download(url: str, attempts: int = 3, timeout: int = 60) -> bytes:
             request = urllib.request.Request(
                 url,
                 headers={
-                    "User-Agent": "OrthodoxPrayersDailyUpdater/5.0.14 (+https://github.com/maen1977/orthodox_prayers)",
+                    "User-Agent": "OrthodoxPrayersDailyUpdater/5.0.15 (+https://github.com/maen1977/orthodox_prayers)",
                     "Accept": "application/zip,application/octet-stream,*/*;q=0.5",
                 },
             )

@@ -1,3 +1,10 @@
+## 5.0.15 R19.1 — Root patch deployment guard
+
+- Fail at the start of the quality gate when R19 files were extracted only partially or into a nested directory.
+- Ship a deterministic root-overlay patch containing `app/build.gradle.kts` at the exact repository-relative path.
+- Add regression coverage proving that the patch has no wrapper directory and carries version 5.0.15 / code 50015.
+- Keep application behavior and signed religious content unchanged.
+
 ## 5.0.15 R19 — Language accuracy and user-experience refinement
 
 - Correct native-pack completeness so Arabic, English, and Greek are each measured from their own independent bundled library, regardless of the currently selected UI language.
