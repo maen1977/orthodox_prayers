@@ -1,3 +1,10 @@
+## 5.0.15 R19.2 — Compound Scripture reference hotfix
+
+- Accept ordered semicolon-separated canonical spans from the same Bible book.
+- Fill every appointed span from each exact same-language corpus without including omitted verses.
+- Preserve fail-closed all-or-nothing publication and exact per-verse hashes for compound readings.
+- Cover the exact 2026-07-23 DCS reference `1CO.10.28-33;1CO.11.1-8`.
+
 ## 5.0.15 R19.1 — Root patch deployment guard
 
 - Fail at the start of the quality gate when R19 files were extracted only partially or into a nested directory.

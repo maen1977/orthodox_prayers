@@ -33,6 +33,14 @@ REQUIRED = {
     "scripts/build_public_source_registry.py": (
         '"last_verified": latest[:10]',
     ),
+    "scripts/orthodox_integrity.py": (
+        "canonical_reference_is_valid",
+        "CANONICAL_REFERENCE_PART_RE",
+    ),
+    "scripts/fill_daily_from_native_corpora.py": (
+        "parse_reference_parts",
+        "CanonicalSpans",
+    ),
     "canonical/source_native_contract.json": (
         '"verification_mode": "same_workflow_after_publish"',
     ),
@@ -64,7 +72,7 @@ def main() -> None:
             "Extract OrthodoxPrayers-5.0.15-R19.1-root-patch.zip directly into "
             "the repository root and overwrite existing files."
         )
-    print("PATCH_R19_OK version=5.0.15 level=R19.1")
+    print("PATCH_R19_OK version=5.0.15 level=R19.2")
 
 
 if __name__ == "__main__":

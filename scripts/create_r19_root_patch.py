@@ -36,7 +36,9 @@ PATCH_FILES = (
     "play-store/assets/app-icon-512.png",
     "scripts/build_public_source_registry.py",
     "scripts/create_r19_root_patch.py",
+    "scripts/fill_daily_from_native_corpora.py",
     "scripts/generate_sbom.py",
+    "scripts/orthodox_integrity.py",
     "scripts/public_domain_scripture.py",
     "scripts/run_quality_gate.py",
     "scripts/source_connectors.py",
@@ -44,6 +46,8 @@ PATCH_FILES = (
     "scripts/verify_r19_patch.py",
     "tests/test_r19_1_patch_application.py",
     "tests/test_r19_refinement.py",
+    "tests/test_native_language_contract.py",
+    "tests/test_r18_4_dcs_mt_abbreviation_hotfix.py",
     "tests/test_release_contract.py",
 )
 

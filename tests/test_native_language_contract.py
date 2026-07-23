@@ -33,6 +33,55 @@ class NativeLanguageContractTests(unittest.TestCase):
         self.assertEqual(("MAT", 14, 1, 14, 13), self.fill.parse_reference("MAT.14.1-13"))
         self.assertIsNone(self.fill.parse_reference("Matthew 14:1-13"))
 
+    def test_compound_reference_fills_every_appointed_span_without_gap_invention(self):
+        canonical = "1CO.10.28-33;1CO.11.1-8"
+        spans = (
+            ("1CO", 10, 28, 10, 33),
+            ("1CO", 11, 1, 11, 8),
+        )
+        self.assertEqual(spans, self.fill.parse_reference_parts(canonical))
+        self.assertIsNone(self.fill.parse_reference(canonical))
+
+        verses = {}
+        expected = []
+        for chapter, start, end in ((10, 28, 33), (11, 1, 8)):
+            for verse in range(start, end + 1):
+                text = f"Exact source verse {chapter}:{verse}"
+                expected.append(text)
+                verses[("1CO", chapter, verse)] = {
+                    "book_id": "1CO",
+                    "book_name": "1 Corinthians",
+                    "chapter": chapter,
+                    "verse": verse,
+                    "text": text,
+                    "text_sha256": self.contract.sha256_text(text),
+                }
+        manifest = {
+            "source_id": "ebible_world_english_bible",
+            "source_url": "https://ebible.org/engwebp/",
+        }
+        reading = {
+            "kind": "epistle",
+            "integrity": {"canonical_reference": canonical},
+            "body": {"ar": "", "en": "", "el": ""},
+            "reference": {"ar": "", "en": "", "el": ""},
+            "source": {"ar": "", "en": "", "el": ""},
+        }
+        count = self.fill.fill_reading(
+            reading,
+            {"ar": None, "en": (manifest, verses), "el": None},
+        )
+        self.assertEqual(1, count)
+        self.assertEqual("\n".join(expected), reading["body"]["en"])
+        self.assertEqual(
+            "1 Corinthians 10:28-33; 11:1-8",
+            reading["reference"]["en"],
+        )
+        self.assertEqual(
+            14,
+            reading["native_source_verification"]["en"]["verse_count"],
+        )
+
     def test_exact_native_passage_is_filled_without_text_mutation(self):
         arabic_1 = "طُوبَى لِلْمَسَاكِينِ بِالرُّوحِ"
         arabic_2 = "لِأَنَّ لَهُمْ مَلَكُوتَ السَّمَاوَاتِ"

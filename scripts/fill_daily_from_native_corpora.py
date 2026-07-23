@@ -11,7 +11,7 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, TypeAlias
 
 from native_text_contract import ROOT, LANGUAGES, load_contract, sha256_text, source_allowed, source_url_allowed
 from enforce_native_daily_lanes import date_evidence
@@ -20,6 +20,8 @@ from public_domain_scripture import load_public_domain_corpus
 
 SCRIPTURE_KINDS = {"epistle", "gospel"}
 REFERENCE_RE = re.compile(r"^(?P<book>[1-3]?[A-Z]+)\.(?P<start_chapter>\d+)\.(?P<start_verse>\d+)(?:-(?:(?P<end_chapter>\d+)\.)?(?P<end_verse>\d+))?$")
+ReferenceSpan: TypeAlias = tuple[str, int, int, int, int]
+CanonicalSpans: TypeAlias = tuple[ReferenceSpan, ...]
 
 
 def reading_lists(data: dict[str, Any]) -> Iterable[list[Any]]:
@@ -69,18 +71,42 @@ def canonical_reference(reading: dict[str, Any]) -> str:
     return ""
 
 
-def parse_reference(value: str) -> tuple[str, int, int, int, int] | None:
-    match = REFERENCE_RE.fullmatch((value or "").strip().upper())
-    if not match:
+def parse_reference_parts(value: str) -> CanonicalSpans | None:
+    """Parse one or more appointed spans without filling verses between them."""
+    raw_parts = [part.strip().upper() for part in (value or "").split(";")]
+    if not raw_parts or any(not part for part in raw_parts):
         return None
-    book = match.group("book")
-    start_chapter = int(match.group("start_chapter"))
-    start_verse = int(match.group("start_verse"))
-    end_chapter = int(match.group("end_chapter") or start_chapter)
-    end_verse = int(match.group("end_verse") or start_verse)
-    if (end_chapter, end_verse) < (start_chapter, start_verse):
-        return None
-    return book, start_chapter, start_verse, end_chapter, end_verse
+
+    spans: list[ReferenceSpan] = []
+    appointed_book = ""
+    previous_end: tuple[int, int] | None = None
+    for part in raw_parts:
+        match = REFERENCE_RE.fullmatch(part)
+        if not match:
+            return None
+        book = match.group("book")
+        start_chapter = int(match.group("start_chapter"))
+        start_verse = int(match.group("start_verse"))
+        end_chapter = int(match.group("end_chapter") or start_chapter)
+        end_verse = int(match.group("end_verse") or start_verse)
+        start = (start_chapter, start_verse)
+        end = (end_chapter, end_verse)
+        if end < start:
+            return None
+        if appointed_book and book != appointed_book:
+            return None
+        if previous_end is not None and start <= previous_end:
+            return None
+        appointed_book = book
+        previous_end = end
+        spans.append((book, start_chapter, start_verse, end_chapter, end_verse))
+    return tuple(spans)
+
+
+def parse_reference(value: str) -> ReferenceSpan | None:
+    """Backward-compatible parser for one continuous canonical span."""
+    spans = parse_reference_parts(value)
+    return spans[0] if spans is not None and len(spans) == 1 else None
 
 
 def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]] | None:
@@ -118,16 +144,16 @@ def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any]
     return manifest, index
 
 
-def required_references(data: dict[str, Any]) -> list[tuple[str, tuple[str, int, int, int, int]]]:
+def required_references(data: dict[str, Any]) -> list[tuple[str, CanonicalSpans]]:
     """Return unique canonical Epistle/Gospel references required by this payload."""
-    required: list[tuple[str, tuple[str, int, int, int, int]]] = []
+    required: list[tuple[str, CanonicalSpans]] = []
     seen: set[str] = set()
     for readings in reading_lists(data):
         for reading in readings:
             if not isinstance(reading, dict) or str(reading.get("kind") or "") not in SCRIPTURE_KINDS:
                 continue
             canonical = canonical_reference(reading)
-            parsed = parse_reference(canonical)
+            parsed = parse_reference_parts(canonical)
             if parsed is None or canonical in seen:
                 continue
             seen.add(canonical)
@@ -138,7 +164,7 @@ def required_references(data: dict[str, Any]) -> list[tuple[str, tuple[str, int,
 def ensure_corpus_coverage(
     language: str,
     corpus: tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]] | None,
-    required: list[tuple[str, tuple[str, int, int, int, int]]],
+    required: list[tuple[str, CanonicalSpans]],
     contract: dict[str, Any],
 ) -> tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]] | None:
     """Lazily load the complete public-domain corpus when the checked-in slice is insufficient.
@@ -183,7 +209,10 @@ def ensure_corpus_coverage(
     return full_manifest, full_index
 
 
-def passage_verses(index: dict[tuple[str, int, int], dict[str, Any]], parsed: tuple[str, int, int, int, int]) -> list[dict[str, Any]] | None:
+def _span_verses(
+    index: dict[tuple[str, int, int], dict[str, Any]],
+    parsed: ReferenceSpan,
+) -> list[dict[str, Any]] | None:
     book, start_chapter, start_verse, end_chapter, end_verse = parsed
     selected = [
         verse for (item_book, chapter, number), verse in index.items()
@@ -217,23 +246,54 @@ def passage_verses(index: dict[tuple[str, int, int], dict[str, Any]], parsed: tu
     return selected
 
 
-def format_reference(verses: list[dict[str, Any]], parsed: tuple[str, int, int, int, int]) -> str:
-    _, start_chapter, start_verse, end_chapter, end_verse = parsed
-    book_name = str(verses[0].get("book_name") or verses[0].get("book_id") or "")
-    if (start_chapter, start_verse) == (end_chapter, end_verse):
-        span = f"{start_chapter}:{start_verse}"
-    elif start_chapter == end_chapter:
-        span = f"{start_chapter}:{start_verse}-{end_verse}"
+def passage_verses(
+    index: dict[tuple[str, int, int], dict[str, Any]],
+    parsed: ReferenceSpan | CanonicalSpans,
+) -> list[dict[str, Any]] | None:
+    """Resolve every appointed span independently and preserve its exact order."""
+    if len(parsed) == 5 and isinstance(parsed[0], str):
+        spans: CanonicalSpans = (parsed,)  # type: ignore[assignment]
     else:
-        span = f"{start_chapter}:{start_verse}-{end_chapter}:{end_verse}"
-    return f"{book_name} {span}".strip()
+        spans = parsed  # type: ignore[assignment]
+
+    combined: list[dict[str, Any]] = []
+    seen: set[tuple[str, int, int]] = set()
+    for span in spans:
+        selected = _span_verses(index, span)
+        if selected is None:
+            return None
+        for verse in selected:
+            key = (
+                str(verse.get("book_id") or "").upper(),
+                int(verse.get("chapter") or 0),
+                int(verse.get("verse") or 0),
+            )
+            if key in seen:
+                return None
+            seen.add(key)
+            combined.append(verse)
+    return combined or None
+
+
+def _format_span(parsed: ReferenceSpan) -> str:
+    _, start_chapter, start_verse, end_chapter, end_verse = parsed
+    if (start_chapter, start_verse) == (end_chapter, end_verse):
+        return f"{start_chapter}:{start_verse}"
+    elif start_chapter == end_chapter:
+        return f"{start_chapter}:{start_verse}-{end_verse}"
+    return f"{start_chapter}:{start_verse}-{end_chapter}:{end_verse}"
+
+
+def format_reference(verses: list[dict[str, Any]], parsed: CanonicalSpans) -> str:
+    book_name = str(verses[0].get("book_name") or verses[0].get("book_id") or "")
+    return f"{book_name} {'; '.join(_format_span(span) for span in parsed)}".strip()
 
 
 def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]] | None], reference_evidence: dict[str, dict[str, Any]] | None = None) -> int:
     if str(reading.get("kind") or "") not in SCRIPTURE_KINDS:
         return 0
     canonical = canonical_reference(reading)
-    parsed = parse_reference(canonical)
+    parsed = parse_reference_parts(canonical)
     if parsed is None:
         return 0
     integrity = reading.setdefault("integrity", {})

@@ -111,6 +111,23 @@ class DcsMtAbbreviationHotfixTests(unittest.TestCase):
             self.connectors.dcs_reference_after_heading(sample, "The Epistle"),
         )
 
+    def test_compound_canonical_validation_is_ordered_and_single_book(self):
+        self.assertTrue(
+            self.integrity.canonical_reference_is_valid(
+                "1CO.10.28-33;1CO.11.1-8"
+            )
+        )
+        self.assertFalse(
+            self.integrity.canonical_reference_is_valid(
+                "1CO.10.28-33;MAT.11.1-8"
+            )
+        )
+        self.assertFalse(
+            self.integrity.canonical_reference_is_valid(
+                "1CO.11.1-8;1CO.10.28-33"
+            )
+        )
+
     def test_source_health_extracts_same_dcs_references(self):
         text = self.connectors.parse_html(
             self.actual_dcs_sample(),
