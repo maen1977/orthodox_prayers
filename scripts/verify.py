@@ -23,6 +23,11 @@ def main() -> None:
         action="store_true",
         help="Permit a legacy branch with neither manifest payload nor signature. Invalid or partial manifests still fail.",
     )
+    parser.add_argument(
+        "--allow-legacy-multilingual-lanes",
+        action="store_true",
+        help="Migration-only for a previously signed R19 branch; Update remains strict.",
+    )
     args = parser.parse_args()
 
     payload = ROOT / "data/calendar/today.json"
@@ -32,7 +37,10 @@ def main() -> None:
 
     run("scripts/verify_data_signature.py")
     run("scripts/validate_partial_daily.py", "--expected-date", args.expected_date)
-    run("scripts/verify_language_lanes.py", "--date", args.expected_date)
+    lane_args = ["scripts/verify_language_lanes.py", "--date", args.expected_date]
+    if args.allow_legacy_multilingual_lanes:
+        lane_args.append("--allow-legacy-multilingual")
+    run(*lane_args)
     run("scripts/validate_publication_consistency.py", "--expected-date", args.expected_date)
 
     manifest = ROOT / "data/update-manifest.json"

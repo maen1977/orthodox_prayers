@@ -25,7 +25,7 @@ from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "canonical" / "source_connectors.json"
-USER_AGENT = "OrthodoxPrayersSourceMonitor/5.0.15 (+https://github.com/maen1977/orthodox_prayers)"
+USER_AGENT = "OrthodoxPrayersSourceMonitor/5.0.16 (+https://github.com/maen1977/orthodox_prayers)"
 POISON_MARKERS = ("lorem ipsum", "لوريم إيبسوم", "لوريم ايبسوم", "�")
 ALLOWED_HOST_SUFFIXES = (
     "orthodoxjordan.org",
