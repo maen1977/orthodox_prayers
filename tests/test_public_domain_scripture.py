@@ -29,6 +29,16 @@ def load_module(name: str, relative: str):
 
 
 class PublicDomainScriptureTests(unittest.TestCase):
+    def test_clean_usfm_text_removes_extended_word_markers(self):
+        raw = (
+            'καὶ \\+w ἐγένετο|lemma="γίνομαι" strong="G1096"\\+w* '
+            'καὶ \\w φῶς|lemma="φῶς"\\w*'
+        )
+        self.assertEqual(
+            self.public.clean_usfm_text(raw),
+            "καὶ ἐγένετο καὶ φῶς",
+        )
+
     @classmethod
     def setUpClass(cls):
         cls.public = load_module("public_domain_scripture_test", "scripts/public_domain_scripture.py")

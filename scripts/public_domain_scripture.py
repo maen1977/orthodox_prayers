@@ -48,7 +48,11 @@ SOURCES: dict[str, dict[str, str]] = {
 }
 
 NOTE_BLOCK = re.compile(r"\\(?P<kind>f|fe|x|fig)\b.*?\\(?P=kind)\*", re.DOTALL)
-WORD_MARKER = re.compile(r"\\w\s+([^|\\]+?)(?:\|[^\\]*?)?\\w\*")
+# USFM 3 permits nested character styles by prefixing the marker with ``+``.
+# The public-domain English and Patriarchal Greek corpora both use ``\+w``.
+# Treat it exactly like the ordinary ``\w`` marker: keep the displayed source
+# word and discard only lexical attributes.
+WORD_MARKER = re.compile(r"\\\+?w\s+([^|\\]+?)(?:\|[^\\]*?)?\\\+?w\*")
 MILESTONE = re.compile(r"\\[A-Za-z0-9_-]+-(?:s|e)\b.*?\\\*")
 CHAR_MARKER = re.compile(r"\\[A-Za-z0-9_-]+\*?")
 MULTISPACE = re.compile(r"[ \t\u00a0]+")
@@ -234,7 +238,7 @@ def _download(url: str, attempts: int = 3, timeout: int = 60) -> bytes:
             request = urllib.request.Request(
                 url,
                 headers={
-                    "User-Agent": "OrthodoxPrayersDailyUpdater/5.0.15 (+https://github.com/maen1977/orthodox_prayers)",
+                    "User-Agent": "OrthodoxPrayersDailyUpdater/5.0.16 (+https://github.com/maen1977/orthodox_prayers)",
                     "Accept": "application/zip,application/octet-stream,*/*;q=0.5",
                 },
             )

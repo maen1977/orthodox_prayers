@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.15"', "versionCode = 50015"),
+    "app/build.gradle.kts": ('versionName = "5.0.16"', "versionCode = 50016"),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java": (
         "libraryForLanguage(language)",
         "nativeContentCoverage",
@@ -24,9 +24,9 @@ REQUIRED = {
         "isolateTechnical",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": (
-        'data.nativeContentCoverage("ar")',
-        'data.nativeContentCoverage("en")',
-        'data.nativeContentCoverage("el")',
+        'data.religiousCompleteServiceCount("ar")',
+        'data.religiousCompleteServiceCount("en")',
+        'data.religiousCompleteServiceCount("el")',
         "new TimePicker",
         "LocalePolicy.formatTimestamp",
     ),
@@ -46,7 +46,7 @@ REQUIRED = {
     ),
     "tests/test_r19_refinement.py": (
         "class R19RefinementTests",
-        'versionName = "5.0.15"',
+        'versionName = "5.0.16"',
     ),
 }
 
@@ -72,7 +72,7 @@ def main() -> None:
             "Extract OrthodoxPrayers-5.0.15-R19.1-root-patch.zip directly into "
             "the repository root and overwrite existing files."
         )
-    print("PATCH_R19_OK version=5.0.15 level=R19.2")
+    print("PATCH_R19_OK version=5.0.16 level=R19.2+R20")
 
 
 if __name__ == "__main__":

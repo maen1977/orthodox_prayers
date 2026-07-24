@@ -62,7 +62,7 @@ jobs:
           rsync -a --delete "$VERIFIED_DIR/data/" data/
           rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
           PUBLISHED_DATE="$(python -c 'import json; print(json.load(open("data/calendar/today.json", encoding="utf-8"))["date_iso"])')"
-          python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest
+          python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-legacy-multilingual-lanes
           git worktree remove --force "$VERIFIED_DIR"
 
       - name: Set up JDK 17

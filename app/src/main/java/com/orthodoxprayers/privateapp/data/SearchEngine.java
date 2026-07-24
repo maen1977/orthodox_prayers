@@ -155,7 +155,14 @@ public final class SearchEngine {
         for (int i = 0; i < resources.length(); i++) {
             JSONObject resource = resources.optJSONObject(i);
             if (resource == null) continue;
-            String title = repository.localized(resource.optJSONObject("title"), resource.optString("id"));
+            String title = repository.metadataLocalized(
+                    resource.optJSONObject("title"),
+                    repository.local(
+                            "رابط كنسي رسمي",
+                            "Official church link",
+                            "Ἐπίσημος ἐκκλησιαστικὸς σύνδεσμος"
+                    )
+            );
             int score = textScore(title + " بث مباشر قداس live stream broadcast calendar رزنامة", plan);
             if (score <= 0) continue;
             JSONObject service = pseudoService("resource:" + resource.optString("id", String.valueOf(i)), "▶", title,

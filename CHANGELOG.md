@@ -430,3 +430,12 @@
 - إضافة `install_authorized_native_pack.py` و`validate_native_language_packs.py` و`validate_daily_native_content.py`.
 - تحديث عند تشغيل التطبيق، وجدول 00:00 و00:15 بتوقيت عمّان، ومحاولة احتياطية كل ست ساعات.
 - جعل بوابة Release تتطلب `--require-native-complete`.
+## 5.0.16 R20 — Religious integrity and true language isolation
+
+- Strip ordinary and extended USFM word metadata without changing source words.
+- Insert verified daily Prokeimenon, Epistle, and Gospel through stable semantic slots in Arabic, English, and Greek.
+- Publish each signed daily lane with only its own localized text and source evidence.
+- Remove cross-language metadata fallback from the church directory.
+- Replace field-population percentages with a 15-service ecclesiastical completeness manifest.
+- Block production releases until every required service is imported from an authorized complete native edition.
+- Correct the Greek Cherubic Hymn character typo and remove misleading “complete” labels.

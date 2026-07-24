@@ -42,6 +42,21 @@ def main() -> None:
     )
     if result.returncode != 0:
         errors.append("Native service packs are incomplete:\n" + (result.stdout + result.stderr).strip())
+    religious = subprocess.run(
+        [
+            sys.executable,
+            "scripts/validate_religious_completeness.py",
+            "--require-production-complete",
+        ],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    if religious.returncode != 0:
+        errors.append(
+            "Required Orthodox services are not religiously complete:\n"
+            + (religious.stdout + religious.stderr).strip()
+        )
 
     contract = load_contract()
     today = json.loads(daily_path.read_text(encoding="utf-8"))

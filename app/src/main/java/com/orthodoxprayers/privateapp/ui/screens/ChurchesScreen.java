@@ -26,11 +26,10 @@ public final class ChurchesScreen extends BaseScreen {
         UiKit.Page page = page(local("الكنائس والبث", "Churches and live services", "Ναοὶ καὶ ζωντανὲς μεταδόσεις"), true);
         JSONObject directory = data.churchDirectory();
         int count = data.registeredChurches().length();
-        String status = directory.optString("status", "unknown");
         add(page.root, ui.infoBadge(local(
-                "دليل رسمي من مطرانية الأردن. عدد الروابط الحالية: " + count + ". حالة الجمع: " + status + ". افتح صفحة الكنيسة للتأكد من مواعيد القداس الحالية.",
-                "Official Orthodox Jordan directory. Current links: " + count + ". Collection status: " + status + ". Open the parish page to confirm current service times.",
-                "Ἐπίσημος κατάλογος Ἰορδανίας. Σύνδεσμοι: " + count + ". Κατάσταση: " + status + ". Ἐλέγξτε τὸ τρέχον πρόγραμμα στὴν ἐπίσημη σελίδα."
+                "دليل رسمي من مطرانية الأردن. عدد الروابط الحالية: " + count + ". افتح صفحة الكنيسة للتأكد من مواعيد القداس الحالية.",
+                "Official Orthodox Jordan directory. Current links: " + count + ". Open the parish page to confirm current service times.",
+                "Ἐπίσημος κατάλογος Ἰορδανίας. Σύνδεσμοι: " + count + ". Ἐλέγξτε τὸ τρέχον πρόγραμμα στὴν ἐπίσημη σελίδα."
         )), 10, 9);
 
         JSONArray resources = mergeResources(data.officialLiveResources(), data.officialServiceLinks());
@@ -39,7 +38,10 @@ public final class ChurchesScreen extends BaseScreen {
             for (int i = 0; i < resources.length(); i++) {
                 JSONObject resource = resources.optJSONObject(i);
                 if (resource == null) continue;
-                String title = localized(resource.optJSONObject("title"), resource.optString("id"));
+                String title = data.metadataLocalized(
+                        resource.optJSONObject("title"),
+                        local("رابط كنسي رسمي", "Official church link", "Ἐπίσημος ἐκκλησιαστικὸς σύνδεσμος")
+                );
                 Button open = ui.button("▶  " + title, false);
                 String url = resource.optString("url", "");
                 open.setOnClickListener(v -> openUrl(url));
@@ -87,7 +89,14 @@ public final class ChurchesScreen extends BaseScreen {
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
             if (church == null) continue;
-            String name = data.metadataLocalized(church.optJSONObject("name"), "");
+            String name = data.metadataLocalized(
+                    church.optJSONObject("name"),
+                    local(
+                            "اسم الرعية الرسمي غير متوفر بالعربية",
+                            "Official parish name unavailable in English",
+                            "Ἡ ἐπίσημη ὀνομασία τῆς ἐνορίας δὲν διατίθεται στὰ ἑλληνικά"
+                    )
+            );
             String city = data.metadataLocalized(church.optJSONObject("city"), "");
             String searchable = SearchEngine.normalize(name + " " + city);
             if (!query.isEmpty() && !searchable.contains(query)) continue;

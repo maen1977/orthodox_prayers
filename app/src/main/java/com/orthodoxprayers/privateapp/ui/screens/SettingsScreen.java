@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
-import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.LocalePolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
@@ -29,9 +28,7 @@ public final class SettingsScreen extends BaseScreen {
     public View createView() {
         UiKit.Page page = page(local("الإعدادات", "Settings", "Ρυθμίσεις"), true);
         page.root.addView(ui.sectionTitle(local("لغة التطبيق والنصوص", "App and text language", "Γλῶσσα ἐφαρμογῆς καὶ κειμένων")));
-        TranslationCoverage.Result ar = data.nativeContentCoverage("ar");
-        TranslationCoverage.Result en = data.nativeContentCoverage("en");
-        TranslationCoverage.Result el = data.nativeContentCoverage("el");
+        int requiredServices = data.religiousRequiredServiceCount();
         LinearLayout languages = ui.row();
         addLanguageButton(languages, "العربية", "ar");
         addLanguageButton(languages, "English", "en");
@@ -46,12 +43,19 @@ public final class SettingsScreen extends BaseScreen {
         add(page.root, languagePolicy, 0, 8);
 
         TextView coverage = centered(local(
-                "اكتمال حزم النصوص الأصلية — العربية: ",
-                "Native source-pack completeness — Arabic: ",
-                "Πληρότητα πακέτων πρωτότυπου κειμένου — Ἀραβικά: "
-        ) + ar.percent + "%\n"
-                + local("الإنجليزية: ", "English: ", "Ἀγγλικά: ") + en.percent + "%\n"
-                + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ") + el.percent + "%",
+                "الاكتمال الكنسي المثبت — العربية: ",
+                "Verified ecclesiastical completeness — Arabic: ",
+                "Ἐπαληθευμένη ἐκκλησιαστικὴ πληρότητα — Ἀραβικά: "
+        ) + data.religiousCompleteServiceCount("ar") + "/" + requiredServices + "\n"
+                + local("الإنجليزية: ", "English: ", "Ἀγγλικά: ")
+                + data.religiousCompleteServiceCount("en") + "/" + requiredServices + "\n"
+                + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ")
+                + data.religiousCompleteServiceCount("el") + "/" + requiredServices + "\n"
+                + local(
+                        "لا تعني سلامة الحقول اكتمال الخدمة الكنسية.",
+                        "Populated technical fields do not prove a complete service.",
+                        "Τὰ συμπληρωμένα τεχνικὰ πεδία δὲν ἀποδεικνύουν πλήρη ἀκολουθία."
+                ),
                 13, ui.colors().secondaryText(), false);
         add(page.root, coverage, 0, 8);
 

@@ -20,6 +20,90 @@ OUTPUTS = [ROOT / "data/services/native", ROOT / "app/src/main/assets/data/nativ
 OVERRIDE_ROOT = ROOT / "data/services/native_overrides"
 LANGS = ("ar", "el", "en")
 
+NATIVE_SOURCE_NOTICES = {
+    "ar": "النص المعروض في هذه الحزمة مأخوذ من مصدر عربي أصلي مسجل، وليس ناتجًا عن ترجمة آلية.",
+    "en": "The text displayed in this pack comes from a registered native English source and is not machine-translated.",
+    "el": "Τὸ κείμενο αὐτοῦ τοῦ πακέτου προέρχεται ἀπὸ καταχωρισμένη πρωτότυπη ἑλληνικὴ πηγὴ καὶ δὲν εἶναι μηχανικὴ μετάφραση.",
+}
+
+
+DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
+    "ar": {
+        "[طروبارية اليوم]": ("daily_troparion", "replace", "المرتل"),
+        "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": ("church_troparion", "replace", "المرتل"),
+        "[القنداق]": ("daily_kontakion", "replace", "المرتل"),
+        "[البروكيمنن]": ("prokeimenon", "replace", "القارئ"),
+        "[فصل من رسالة اليوم]": ("epistle", "replace", "القارئ"),
+        "[فصل الإنجيل المعيّن لهذا اليوم]": ("gospel", "replace", "الكاهن"),
+        "[آية المناولة]": ("communion_hymn", "replace", "المرتل"),
+    },
+    "en": {
+        "(The Bishop and all the Clergy enter the Sanctuary. The Apolytikia of the day, the Troparion of the Church and the Kontakion are sung.)":
+            ("daily_hymns", "after", "Chanter"),
+        "(The Reader reads the verses from the Psalms.)": ("prokeimenon", "after", "Reader"),
+        "(The Reader reads the designated Apostolic text.)": ("epistle", "after", "Reader"),
+        "(The Deacon reads the designated text of the Holy Gospel.)": ("gospel", "after", "Deacon"),
+    },
+    "el": {
+        "(Ὁ Ἀρχιερεύς μεθ’ ὅλου τοῦ Ἱερατείου εἰσέρχονται εἰς τό ἅγιον Βῆμα. Ψάλλονται δέ, τὰ ἀπολυτίκια τῆς ἡμέρας, τό τροπάριον τοῦ ναοῦ καί τό κοντάκιον).":
+            ("daily_hymns", "after", "Ψάλτης"),
+        "(Ὁ Ἀναγνώστης τό Προκείμενον τοῦ Ἀποστόλου).": ("prokeimenon", "after", "Ἀναγνώστης"),
+        "(Ὁ Ἀναγνώστης ἀναγινώσκει τὴν τεταγμένην Ἀποστολικὴν περικοπήν).":
+            ("epistle", "after", "Ἀναγνώστης"),
+        "Δόξα σοι, Κύριε, Δόξα σοι. Ὁ Διάκονος ἀναγινώσκει τὴν τεταγμένην περικοπὴν τοῦ ἁγίου Εὐαγγελίου.":
+            ("gospel", "after", "Διάκονος"),
+    },
+}
+
+GOSPEL_NAME_MARKERS = {
+    "ar": "[اسم الإنجيلي]",
+    "en": "(Name)",
+    "el": "(Ὂνομα)",
+}
+
+
+def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
+    """Attach stable semantic slots to the reviewed native Liturgy.
+
+    Daily data used to target Arabic placeholder strings. Native English and
+    Greek editions have no Arabic placeholders, so their verified readings
+    could never appear inside the service. These annotations are metadata only:
+    they do not alter a single source word.
+    """
+    if service.get("id") != "divine_liturgy":
+        return
+    anchors = DYNAMIC_SLOT_ANCHORS[lang]
+    found: set[str] = set()
+    inline_found = False
+    for segment in service.get("segments") or []:
+        if not isinstance(segment, dict):
+            continue
+        localized = segment.get("text")
+        text = str(localized.get(lang) or "") if isinstance(localized, dict) else ""
+        match = anchors.get(text)
+        if match:
+            slot, mode, speaker = match
+            segment["dynamic_slot"] = slot
+            segment["dynamic_slot_mode"] = mode
+            segment["dynamic_slot_speaker"] = {
+                key: speaker if key == lang else "" for key in LANGS
+            }
+            found.add(slot)
+        marker = GOSPEL_NAME_MARKERS[lang]
+        if marker in text:
+            segment["dynamic_inline_slot"] = "gospel_evangelist_name"
+            segment["dynamic_inline_marker"] = marker
+            inline_found = True
+
+    required = {"daily_hymns", "prokeimenon", "epistle", "gospel"} if lang != "ar" else {
+        "daily_troparion", "church_troparion", "daily_kontakion",
+        "prokeimenon", "epistle", "gospel",
+    }
+    missing = sorted(required - found)
+    if missing or not inline_found:
+        detail = ", ".join(missing) if missing else "gospel_evangelist_name"
+        raise SystemExit(f"divine_liturgy.{lang}: dynamic slot anchor missing: {detail}")
+
 
 def localized_for_language(value: Any, lang: str) -> Any:
     if isinstance(value, list):
@@ -113,6 +197,12 @@ def main() -> None:
                     raise SystemExit(f"{override_path}: service id mismatch")
             else:
                 service = localized_for_language(raw, lang)
+                if "notice" in service:
+                    service["notice"] = {
+                        key: NATIVE_SOURCE_NOTICES[lang] if key == lang else ""
+                        for key in LANGS
+                    }
+            annotate_dynamic_slots(service, lang)
             service.pop("translation_status", None)
             service["source_language"] = lang
             service["content_mode"] = "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY"

@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
@@ -27,9 +26,14 @@ public final class LanguagePacksScreen extends BaseScreen {
     }
 
     private void addPack(LinearLayout root, String language, String title) {
-        TranslationCoverage.Result coverage = data.nativeContentCoverage(language);
         LinearLayout card = ui.card();
-        TextView heading = ui.text(title + " — " + coverage.percent + "%", 18, ui.colors().primaryText(), true);
+        TextView heading = ui.text(
+                title + " — " + data.religiousCompleteServiceCount(language)
+                        + "/" + data.religiousRequiredServiceCount(),
+                18,
+                ui.colors().primaryText(),
+                true
+        );
         card.addView(heading);
         boolean enabled = preferences.offlineLanguageEnabled(language);
         boolean selected = language.equals(preferences.effectiveLanguage());

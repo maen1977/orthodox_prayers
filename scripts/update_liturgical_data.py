@@ -1430,6 +1430,34 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
     inline_replacements = {
         "[اسم الإنجيلي]": loc(evangelist_for_reading(gospel)),
     }
+    daily_hymns = {
+        language: "\n\n".join(
+            str(block.get(language) or "").strip()
+            for block in (
+                inserts["troparion"],
+                inserts["church_troparion"],
+                inserts["kontakion"],
+            )
+            if str(block.get(language) or "").strip()
+        )
+        for language in ("ar", "en", "el")
+    }
+    # Stable semantic slots are language-neutral. The legacy Arabic-marker maps
+    # remain for older installed clients, while R20 clients use these slots in
+    # each independent native service edition.
+    slot_replacements = {
+        "daily_hymns": daily_hymns,
+        "daily_troparion": copy.deepcopy(inserts["troparion"]),
+        "church_troparion": copy.deepcopy(inserts["church_troparion"]),
+        "daily_kontakion": copy.deepcopy(inserts["kontakion"]),
+        "prokeimenon": reading_block_loc(prok, prefer_empty_ar_when_missing=False),
+        "epistle": reading_block_loc(epistle, prefer_empty_ar_when_missing=True),
+        "gospel": reading_block_loc(gospel, prefer_empty_ar_when_missing=True),
+        "communion_hymn": copy.deepcopy(inserts["communion"]),
+    }
+    slot_inline_replacements = {
+        "gospel_evangelist_name": loc(evangelist_for_reading(gospel)),
+    }
 
     is_upcoming = service_id == "next_sunday_full_liturgy"
     title = loc(
@@ -1501,6 +1529,8 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         },
         "segment_replacements": exact_replacements,
         "inline_replacements": inline_replacements,
+        "slot_replacements": slot_replacements,
+        "slot_inline_replacements": slot_inline_replacements,
         "segments": segments,
     }
 

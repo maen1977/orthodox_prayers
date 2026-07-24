@@ -12,18 +12,19 @@ class R19RefinementTests(unittest.TestCase):
     def test_release_version_and_native_pack_coverage_are_current(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.15"', build)
-        self.assertIn("versionCode = 50015", build)
+        self.assertIn('versionName = "5.0.16"', build)
+        self.assertIn("versionCode = 50016", build)
         self.assertIn("libraryForLanguage(language)", repository)
         self.assertIn("nativeContentCoverage", repository)
         self.assertNotIn('aggregate.put("library", library())', repository)
 
-    def test_settings_measure_all_three_independent_packs(self):
+    def test_settings_report_religious_completeness_not_field_population(self):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
         for language in ("ar", "en", "el"):
-            self.assertIn(f'data.nativeContentCoverage("{language}")', settings)
-        self.assertIn("اكتمال حزم النصوص الأصلية", settings)
-        self.assertIn("Native source-pack completeness", settings)
+            self.assertIn(f'data.religiousCompleteServiceCount("{language}")', settings)
+        self.assertIn("الاكتمال الكنسي المثبت", settings)
+        self.assertIn("Verified ecclesiastical completeness", settings)
+        self.assertNotIn("Native source-pack completeness", settings)
 
     def test_settings_keep_diagnostics_optional_and_use_real_time_picker(self):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
@@ -46,10 +47,11 @@ class R19RefinementTests(unittest.TestCase):
     def test_current_documentation_matches_signed_snapshot_and_pack_counts(self):
         readme = (ROOT / "README_AR.md").read_text(encoding="utf-8")
         readiness = (ROOT / "RELEASE_READINESS_AR.md").read_text(encoding="utf-8")
-        self.assertIn("533/533", readme)
-        self.assertIn("770/770", readme)
-        self.assertIn("762/762", readme)
-        self.assertIn("17 يوليو 2026", readiness)
+        self.assertIn("539/539", readme)
+        self.assertIn("774/774", readme)
+        self.assertIn("766/766", readme)
+        self.assertIn("0/15", readiness)
+        self.assertIn("غير جاهز لإصدار Production", readiness)
 
     def test_source_registry_build_is_reproducible_and_does_not_fabricate_verification_dates(self):
         builder = (ROOT / "scripts/build_public_source_registry.py").read_text(encoding="utf-8")

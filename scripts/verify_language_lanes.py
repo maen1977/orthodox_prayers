@@ -14,6 +14,39 @@ PUBLIC_KEY = ROOT / "canonical/signing/data_signing_public_key.pub"
 LANGUAGES = ("ar", "el", "en")
 
 
+def isolation_error(value: object, language: str, pointer: str = "") -> str:
+    """Return the first foreign language slot retained in a signed lane."""
+    if isinstance(value, list):
+        for index, child in enumerate(value):
+            error = isolation_error(child, language, f"{pointer}[{index}]")
+            if error:
+                return error
+        return ""
+    if not isinstance(value, dict):
+        return ""
+
+    present = set(value).intersection(LANGUAGES)
+    if present:
+        scalar_slots = all(
+            value.get(key) is None or isinstance(value.get(key), (str, int, float, bool))
+            for key in present
+        )
+        if scalar_slots:
+            for other in LANGUAGES:
+                if other != language and str(value.get(other) or "").strip():
+                    return f"{pointer}.{other}: foreign localized text"
+        else:
+            for other in LANGUAGES:
+                if other != language and other in value:
+                    return f"{pointer}.{other}: foreign language evidence"
+
+    for key, child in value.items():
+        error = isolation_error(child, language, f"{pointer}.{key}" if pointer else key)
+        if error:
+            return error
+    return ""
+
+
 def verify_signature(payload: Path, signature: Path) -> None:
     if not signature.is_file():
         raise SystemExit(f"missing lane signature: {signature}")
@@ -43,7 +76,13 @@ def verify_signature(payload: Path, signature: Path) -> None:
             raise SystemExit(f"lane signature invalid: {payload}: {detail}")
 
 
-def verify_lane(path: Path, expected_date: str, language: str, unsigned: bool) -> None:
+def verify_lane(
+    path: Path,
+    expected_date: str,
+    language: str,
+    unsigned: bool,
+    allow_legacy_multilingual: bool = False,
+) -> None:
     if not path.is_file():
         raise SystemExit(f"missing lane: {path}")
     try:
@@ -62,6 +101,11 @@ def verify_lane(path: Path, expected_date: str, language: str, unsigned: bool) -
         raise SystemExit(f"lane services missing: {path}")
     if not isinstance(data.get("readings"), list):
         raise SystemExit(f"lane readings missing: {path}")
+    leak = isolation_error(data, language)
+    if leak and not allow_legacy_multilingual:
+        raise SystemExit(f"language lane is not isolated: {path}: {leak}")
+    if leak:
+        print(f"LEGACY_MULTILINGUAL_LANE_ACCEPTED path={path} detail={leak}")
 
     signature = Path(str(path) + ".sig")
     if unsigned:
@@ -75,6 +119,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", required=True)
     parser.add_argument("--language", choices=LANGUAGES)
+    parser.add_argument(
+        "--allow-legacy-multilingual",
+        action="store_true",
+        help="Migration-only: accept already-signed R19 envelopes until Update republishes isolated R20 lanes.",
+    )
     parser.add_argument(
         "--unsigned",
         action="store_true",
@@ -93,8 +142,20 @@ def main() -> None:
     for language in languages:
         dated = ROOT / f"data/daily/{args.date}/{language}.json"
         current = ROOT / f"data/daily/current/{language}.json"
-        verify_lane(dated, args.date, language, args.unsigned)
-        verify_lane(current, args.date, language, args.unsigned)
+        verify_lane(
+            dated,
+            args.date,
+            language,
+            args.unsigned,
+            args.allow_legacy_multilingual,
+        )
+        verify_lane(
+            current,
+            args.date,
+            language,
+            args.unsigned,
+            args.allow_legacy_multilingual,
+        )
         if dated.read_bytes() != current.read_bytes():
             raise SystemExit(f"dated/current lane mismatch: {language}")
 

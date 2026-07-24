@@ -15,6 +15,7 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         quality.append("--allow-stale")
 
     checks: list[list[str]] = [
+        [sys.executable, "scripts/verify_r20_release.py"],
         [sys.executable, "scripts/verify_r19_patch.py"],
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"],
         [sys.executable, "scripts/validate_workflows.py"],
@@ -23,6 +24,7 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "scripts/verify_static_texts.py"],
         [sys.executable, "scripts/validate_static_prayer_sources.py"],
         [sys.executable, "scripts/validate_native_language_packs.py"],
+        [sys.executable, "scripts/validate_religious_completeness.py"],
         [sys.executable, "scripts/validate_native_source_contract.py"],
         [sys.executable, "scripts/build_public_source_registry.py"],
         [sys.executable, "scripts/validate_public_source_registry.py"],

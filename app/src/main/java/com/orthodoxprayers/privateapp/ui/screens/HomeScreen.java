@@ -107,7 +107,11 @@ public final class HomeScreen extends BaseScreen {
 
     private void addQuickAccess(LinearLayout root) {
         root.addView(ui.sectionTitle(local("الوصول السريع", "Quick access", "Γρήγορη πρόσβαση")));
-        Button liturgy = ui.button("⛪\n" + local("القداس الإلهي الكامل", "Full Divine Liturgy", "Πλήρης Θεία Λειτουργία"), true);
+        Button liturgy = ui.button("⛪\n" + local(
+                "قداس القديس يوحنا الذهبي الفم",
+                "Liturgy of St John Chrysostom",
+                "Θεία Λειτουργία Ἁγίου Ἰωάννου Χρυσοστόμου"
+        ), true);
         liturgy.setTextSize(17 * preferences.fontScale());
         liturgy.setOnClickListener(v -> host.navigate("reader", "divine_liturgy"));
         add(root, liturgy, 2, 8);

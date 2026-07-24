@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import base64
-import copy
 import json
 import subprocess
 import tempfile
@@ -28,16 +27,39 @@ def sign(path: Path, key: Path) -> Path:
 
 
 def keep_only_language(value: Any, language: str) -> Any:
-    """Copy the complete verified schema into a separately signed language lane.
+    """Return a structurally complete payload containing one language only.
 
-    The Android client itself enforces the selected language and never displays another
-    lane as a translation. Keeping the other verified fields in the envelope preserves
-    structural fallbacks such as fasting metadata while each endpoint, ETag and signature
-    remains independent.
+    A lane is not independent merely because it has its own URL and signature.
+    Localized strings from the other two languages and their per-language source
+    evidence must also be absent from its signed envelope.
     """
     if language not in LANGS:
         raise ValueError(f"unsupported language: {language}")
-    return copy.deepcopy(value)
+    if isinstance(value, list):
+        return [keep_only_language(item, language) for item in value]
+    if not isinstance(value, dict):
+        return value
+
+    language_keys = LANGS.intersection(value)
+    if language_keys:
+        slots = [value.get(key) for key in language_keys]
+        is_localized_text = all(
+            slot is None or isinstance(slot, (str, int, float, bool))
+            for slot in slots
+        )
+        result = {
+            key: keep_only_language(child, language)
+            for key, child in value.items()
+            if key not in LANGS
+        }
+        if is_localized_text:
+            for candidate in sorted(LANGS):
+                result[candidate] = value.get(candidate, "") if candidate == language else ""
+        elif language in value:
+            result[language] = keep_only_language(value[language], language)
+        return result
+
+    return {key: keep_only_language(child, language) for key, child in value.items()}
 
 
 def main() -> None:

@@ -61,6 +61,7 @@ public final class DataRepository {
     private JSONObject fallbackChurchDirectory;
     private JSONObject fallbackSourceHealth;
     private JSONObject fallbackServiceCoverage;
+    private JSONObject religiousCompleteness;
     private volatile boolean refreshInProgress;
     private volatile RefreshState refreshState = RefreshState.IDLE;
     private volatile String refreshMessage = "";
@@ -100,6 +101,7 @@ public final class DataRepository {
         fallbackChurchDirectory = loadJsonAsset("data/churches.json");
         fallbackSourceHealth = loadJsonAsset("data/source_health.json");
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
+        religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
         today = loadBestToday();
     }
 
@@ -205,16 +207,21 @@ public final class DataRepository {
         return result;
     }
 
-    /** Metadata may safely fall back to the official proper name; religious text never does. */
+    /** Metadata is isolated too: never substitute an Arabic/English name in another UI lane. */
     public String metadataLocalized(JSONObject value, String fallback) {
         if (value == null) return fallback == null ? "" : fallback;
         String language = preferences.effectiveLanguage();
         String selected = value.optString(language, "").trim();
-        if (!selected.isEmpty()) return selected;
         String arabic = value.optString("ar", "").trim();
-        if (!arabic.isEmpty()) return arabic;
-        String english = value.optString("en", "").trim();
-        return english.isEmpty() ? (fallback == null ? "" : fallback) : english;
+        if (!selected.isEmpty() && TranslationCoverage.isValidTargetText(selected, arabic, language)) {
+            return selected;
+        }
+        String safeFallback = fallback == null ? "" : fallback.trim();
+        if (!safeFallback.isEmpty()
+                && TranslationCoverage.isValidTargetText(safeFallback, arabic, language)) {
+            return safeFallback;
+        }
+        return "";
     }
 
     public JSONObject serviceCoverage(String serviceId) {
@@ -309,18 +316,26 @@ public final class DataRepository {
         String language = preferences.effectiveLanguage();
         if (object == null) return new LocalizedValue(fallback, false);
 
-        String arabic = object.optString("ar", "").trim();
-        String requested = object.optString(language, "").trim();
+        String arabic = DisplayTextSanitizer.sanitize(object.optString("ar", "").trim());
+        String requested = DisplayTextSanitizer.sanitize(object.optString(language, "").trim());
         if ("ar".equals(language)) {
-            if (!requested.isEmpty()) return new LocalizedValue(requested, false);
-            return new LocalizedValue(fallback, false);
+            if (TranslationCoverage.isValidTargetText(requested, arabic, language)) {
+                return new LocalizedValue(requested, false);
+            }
+            String safeFallback = DisplayTextSanitizer.sanitize(
+                    fallback == null ? "" : fallback.trim()
+            );
+            if (TranslationCoverage.isValidTargetText(safeFallback, arabic, language)) {
+                return new LocalizedValue(safeFallback, false);
+            }
+            return new LocalizedValue(unavailableTranslationText(language), true);
         }
 
         if (TranslationCoverage.isValidTargetText(requested, arabic, language)) {
             return new LocalizedValue(requested, false);
         }
 
-        String safeFallback = fallback == null ? "" : fallback.trim();
+        String safeFallback = DisplayTextSanitizer.sanitize(fallback == null ? "" : fallback.trim());
         if (!safeFallback.isEmpty() && TranslationCoverage.isValidTargetText(safeFallback, arabic, language)) {
             return new LocalizedValue(safeFallback, false);
         }
@@ -396,6 +411,25 @@ public final class DataRepository {
     /** Coverage of the requested native pack, independent of the language currently open in the UI. */
     public TranslationCoverage.Result nativeContentCoverage(String language) {
         return TranslationCoverage.measure(libraryForLanguage(language), language);
+    }
+
+    public int religiousCompleteServiceCount(String language) {
+        JSONObject languages = religiousCompleteness == null
+                ? null : religiousCompleteness.optJSONObject("languages");
+        JSONObject statuses = languages == null ? null : languages.optJSONObject(language);
+        if (statuses == null) return 0;
+        int complete = 0;
+        Iterator<String> keys = statuses.keys();
+        while (keys.hasNext()) {
+            if ("complete_exact_native_edition".equals(statuses.optString(keys.next()))) complete++;
+        }
+        return complete;
+    }
+
+    public int religiousRequiredServiceCount() {
+        JSONArray required = religiousCompleteness == null
+                ? null : religiousCompleteness.optJSONArray("required_services");
+        return required == null ? 0 : required.length();
     }
 
     /** Backwards-compatible name retained for older screens and tests. */
@@ -1040,6 +1074,20 @@ public final class DataRepository {
             }
 
             JSONArray resolvedBaseSegments = new JSONArray(base.optJSONArray("segments").toString());
+            JSONObject effectiveSlots = service.optJSONObject("slot_replacements");
+            if (effectiveSlots == null) {
+                effectiveSlots = legacyDynamicSlots(service.optJSONObject("segment_replacements"));
+            }
+            JSONObject effectiveInlineSlots = service.optJSONObject("slot_inline_replacements");
+            if (effectiveInlineSlots == null) {
+                effectiveInlineSlots = legacyDynamicInlineSlots(service.optJSONObject("inline_replacements"));
+            }
+            resolvedBaseSegments = applyDynamicSlotReplacements(
+                    resolvedBaseSegments,
+                    effectiveSlots,
+                    effectiveInlineSlots,
+                    preferences.effectiveLanguage()
+            );
             applySegmentReplacements(
                     resolvedBaseSegments,
                     service.optJSONObject("segment_replacements"),
@@ -1052,6 +1100,8 @@ public final class DataRepository {
             resolved.put("segments", merged);
             resolved.remove("segment_replacements");
             resolved.remove("inline_replacements");
+            resolved.remove("slot_replacements");
+            resolved.remove("slot_inline_replacements");
             resolved.put("composed_from", baseId);
             return resolved;
         } catch (Exception error) {
@@ -1066,6 +1116,117 @@ public final class DataRepository {
             Object value = segments.opt(i);
             applyReplacementsToValue(value, exact, inline);
         }
+    }
+
+    private static JSONArray applyDynamicSlotReplacements(
+            JSONArray segments,
+            JSONObject replacements,
+            JSONObject inlineReplacements,
+            String language
+    ) throws Exception {
+        if (segments == null) return new JSONArray();
+        JSONArray output = new JSONArray();
+        for (int i = 0; i < segments.length(); i++) {
+            JSONObject segment = segments.optJSONObject(i);
+            if (segment == null) continue;
+            JSONObject copy = new JSONObject(segment.toString());
+            String inlineSlot = copy.optString("dynamic_inline_slot", "");
+            String inlineMarker = copy.optString("dynamic_inline_marker", "");
+            if (!inlineSlot.isEmpty() && !inlineMarker.isEmpty() && inlineReplacements != null) {
+                JSONObject replacement = inlineReplacements.optJSONObject(inlineSlot);
+                JSONObject text = copy.optJSONObject("text");
+                String current = text == null ? "" : text.optString(language, "");
+                String selected = replacement == null ? "" : replacement.optString(language, "").trim();
+                if (!current.isEmpty() && !selected.isEmpty()) {
+                    text.put(language, current.replace(inlineMarker, selected));
+                }
+            }
+
+            String slot = copy.optString("dynamic_slot", "");
+            JSONObject replacement = replacements == null ? null : replacements.optJSONObject(slot);
+            String selected = replacement == null ? "" : replacement.optString(language, "").trim();
+            String mode = copy.optString("dynamic_slot_mode", "replace");
+            if ("replace".equals(mode)) {
+                if (!slot.isEmpty()) copy.put("text", isolatedLocalizedText(selected, language));
+                output.put(copy);
+            } else {
+                output.put(copy);
+                if (!slot.isEmpty() && !selected.isEmpty()) {
+                    JSONObject inserted = new JSONObject();
+                    inserted.put("type", "text");
+                    inserted.put("speaker", deepCopyJson(copy.optJSONObject("dynamic_slot_speaker")));
+                    inserted.put("text", isolatedLocalizedText(selected, language));
+                    inserted.put("resolved_dynamic_slot", slot);
+                    output.put(inserted);
+                }
+            }
+        }
+        return output;
+    }
+
+    /**
+     * R19 signed snapshots used Arabic template markers. Convert their already
+     * verified localized values into R20 semantic slots in memory, so installed
+     * clients gain English/Greek Liturgy insertion without rewriting signed bytes.
+     */
+    private static JSONObject legacyDynamicSlots(JSONObject legacy) throws Exception {
+        JSONObject slots = new JSONObject();
+        if (legacy == null) return slots;
+        copyLegacySlot(legacy, slots, "[طروبارية اليوم]", "daily_troparion");
+        copyLegacySlot(
+                legacy,
+                slots,
+                "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]",
+                "church_troparion"
+        );
+        copyLegacySlot(legacy, slots, "[القنداق]", "daily_kontakion");
+        copyLegacySlot(legacy, slots, "[البروكيمنن]", "prokeimenon");
+        copyLegacySlot(legacy, slots, "[فصل من رسالة اليوم]", "epistle");
+        copyLegacySlot(legacy, slots, "[فصل الإنجيل المعيّن لهذا اليوم]", "gospel");
+        copyLegacySlot(legacy, slots, "[آية المناولة]", "communion_hymn");
+
+        JSONObject hymns = new JSONObject();
+        for (String language : new String[]{"ar", "en", "el"}) {
+            StringBuilder combined = new StringBuilder();
+            for (String slot : new String[]{"daily_troparion", "church_troparion", "daily_kontakion"}) {
+                JSONObject value = slots.optJSONObject(slot);
+                String text = value == null ? "" : value.optString(language, "").trim();
+                if (text.isEmpty()) continue;
+                if (combined.length() > 0) combined.append("\n\n");
+                combined.append(text);
+            }
+            hymns.put(language, combined.toString());
+        }
+        slots.put("daily_hymns", hymns);
+        return slots;
+    }
+
+    private static void copyLegacySlot(
+            JSONObject legacy,
+            JSONObject slots,
+            String marker,
+            String slot
+    ) throws Exception {
+        JSONObject value = legacy.optJSONObject(marker);
+        if (value != null) slots.put(slot, new JSONObject(value.toString()));
+    }
+
+    private static JSONObject legacyDynamicInlineSlots(JSONObject legacy) throws Exception {
+        JSONObject slots = new JSONObject();
+        if (legacy == null) return slots;
+        JSONObject evangelist = legacy.optJSONObject("[اسم الإنجيلي]");
+        if (evangelist != null) {
+            slots.put("gospel_evangelist_name", new JSONObject(evangelist.toString()));
+        }
+        return slots;
+    }
+
+    private static JSONObject isolatedLocalizedText(String selected, String language) throws Exception {
+        JSONObject value = new JSONObject();
+        for (String candidate : new String[]{"ar", "en", "el"}) {
+            value.put(candidate, candidate.equals(language) ? selected : "");
+        }
+        return value;
     }
 
     /**
@@ -1089,7 +1250,7 @@ public final class DataRepository {
                     hasVisibleText = true;
                     if (!isLegacyUnavailableText(value)) onlyLegacyUnavailableCopy = false;
                 }
-                if (value.contains("[") && value.contains("]")) hasUnresolvedMarker = true;
+                if (isLegacyPlaceholderMarker(value)) hasUnresolvedMarker = true;
             }
             if (!hasVisibleText || hasUnresolvedMarker || onlyLegacyUnavailableCopy) segments.remove(i);
         }
@@ -1107,6 +1268,17 @@ public final class DataRepository {
             }
             if (!hasContent) segments.remove(i);
         }
+    }
+
+    private static boolean isLegacyPlaceholderMarker(String value) {
+        String normalized = value == null ? "" : value.trim();
+        return normalized.equals("[طروبارية اليوم]")
+                || normalized.equals("[طروبارية صاحب الكنيسة أو القديس إن وُجدت]")
+                || normalized.equals("[القنداق]")
+                || normalized.equals("[البروكيمنن]")
+                || normalized.equals("[فصل من رسالة اليوم]")
+                || normalized.equals("[فصل الإنجيل المعيّن لهذا اليوم]")
+                || normalized.equals("[آية المناولة]");
     }
 
     private static boolean isLegacyUnavailableText(String value) {
