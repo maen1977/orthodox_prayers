@@ -53,6 +53,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.concurrent.TimeUnit;
 
 public final class MainActivity extends ComponentActivity implements ScreenHost {
     private static final String TAG = "OrthodoxNavigation";
@@ -61,6 +62,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     public static final String EXTRA_ARGUMENT = "com.orthodoxprayers.privateapp.extra.ARGUMENT";
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
     private static final long MIN_DAY_WATCH_DELAY_MS = 1_000L;
+    private static final long AUTOMATIC_OPEN_BUSY_RETRY_DELAY_MS = 1_000L;
+    private static final long AUTOMATIC_OPEN_RETRY_DELAY_MS = TimeUnit.MINUTES.toMillis(15);
 
     private AppPreferences preferences;
     private DataRepository repository;
@@ -73,13 +76,35 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     private AppScreen visibleScreen;
     private String observedAmmanDate;
     private final Handler dayChangeHandler = new Handler(Looper.getMainLooper());
+    private final Handler automaticUpdateHandler = new Handler(Looper.getMainLooper());
     private boolean dayChangeWatcherRunning;
+    private boolean automaticOpenRefreshPending;
     private final Runnable dayChangeCheck = new Runnable() {
         @Override
         public void run() {
             if (!dayChangeWatcherRunning) return;
             evaluateForegroundRefresh(false);
             scheduleNextAmmanDayCheck();
+        }
+    };
+    private final Runnable automaticOpenRefreshCheck = new Runnable() {
+        @Override
+        public void run() {
+            if (!automaticOpenRefreshPending || !dayChangeWatcherRunning) return;
+            if (!updateCoordinator.shouldCheckRemoteOnAppOpen()) {
+                automaticUpdateHandler.postDelayed(
+                        this,
+                        AUTOMATIC_OPEN_BUSY_RETRY_DELAY_MS
+                );
+                return;
+            }
+            automaticOpenRefreshPending = false;
+            observedAmmanDate = repository.currentAmmanDate();
+            requestDataRefresh(
+                    false,
+                    !repository.hasUsableCurrentData(),
+                    true
+            );
         }
     };
     private int bottomNavBaseHeight;
@@ -137,17 +162,25 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     protected void onStart() {
         super.onStart();
         startDayChangeWatcher();
+        automaticOpenRefreshPending = true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         updateCoordinator.scheduleDailyRefresh();
-        evaluateForegroundRefresh(true);
+        if (automaticOpenRefreshPending) {
+            automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
+            automaticUpdateHandler.post(automaticOpenRefreshCheck);
+        } else {
+            evaluateForegroundRefresh(true);
+        }
     }
 
     @Override
     protected void onStop() {
+        automaticOpenRefreshPending = false;
+        automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
         stopDayChangeWatcher();
         super.onStop();
     }
@@ -292,6 +325,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     @Override
     protected void onDestroy() {
+        automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
         stopDayChangeWatcher();
         if (visibleScreen != null) visibleScreen.onHidden();
         super.onDestroy();
@@ -409,7 +443,23 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     }
 
     private void requestDataRefresh(boolean manual, boolean forceFullDownload) {
+        requestDataRefresh(manual, forceFullDownload, false);
+    }
+
+    private void requestDataRefresh(
+            boolean manual,
+            boolean forceFullDownload,
+            boolean automaticAppOpen
+    ) {
         if (repository.isRefreshing()) {
+            if (automaticAppOpen && dayChangeWatcherRunning) {
+                automaticOpenRefreshPending = true;
+                automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
+                automaticUpdateHandler.postDelayed(
+                        automaticOpenRefreshCheck,
+                        AUTOMATIC_OPEN_BUSY_RETRY_DELAY_MS
+                );
+            }
             if (manual) {
                 Toast.makeText(this, repository.local("التحديث جارٍ الآن", "An update is already in progress", "Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη"), Toast.LENGTH_SHORT).show();
             }
@@ -420,12 +470,32 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             Toast.makeText(this, repository.local("جاري تنزيل بيانات اليوم وفحصها…", "Downloading and validating today’s data…", "Ἔλεγχος σημερινῶν δεδομένων…"), Toast.LENGTH_SHORT).show();
         }
         updateCoordinator.refreshForeground(forceFullDownload, (result, message) -> {
+            boolean retryableOpenFailure = automaticAppOpen
+                    && result == DataRepository.RefreshResult.FAILED
+                    && DataRepository.isRetryableRefreshMessage(message);
+            if (retryableOpenFailure) {
+                // Keep retrying safely in the background if the user closes the app
+                // before GitHub finishes publishing today's signed data.
+                updateCoordinator.enqueueImmediateBackgroundRefresh(false);
+            }
+
             if (isFinishing() || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && isDestroyed())) return;
+
+            if (retryableOpenFailure && dayChangeWatcherRunning) {
+                automaticOpenRefreshPending = true;
+                automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
+                automaticUpdateHandler.postDelayed(
+                        automaticOpenRefreshCheck,
+                        AUTOMATIC_OPEN_RETRY_DELAY_MS
+                );
+            }
 
             // Every data-backed screen must reflect a newly accepted snapshot. Reader
             // screens persist their RecyclerView position in onHidden(); ScrollViews are
             // restored explicitly below.
-            if (result == DataRepository.RefreshResult.UPDATED || manual) {
+            if (result == DataRepository.RefreshResult.UPDATED
+                    || manual
+                    || (automaticAppOpen && result != DataRepository.RefreshResult.FAILED)) {
                 refreshVisibleScreenPreservingScroll();
             }
 

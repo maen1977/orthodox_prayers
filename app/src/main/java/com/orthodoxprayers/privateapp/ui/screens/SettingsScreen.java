@@ -192,9 +192,9 @@ public final class SettingsScreen extends BaseScreen {
         add(page.root, refresh, 0, 7);
 
         TextView automaticUpdateNotice = ui.infoBadge(local(
-                "يُجري التطبيق فحصين موثوقين يوميًا: 01:00 صباحًا لجلب بيانات اليوم، و06:00 صباحًا لإضافة ما تنشره المواقع لاحقًا. ينتظر اتصال الإنترنت تلقائيًا ولا يحتاج إلى إذن منبّه دقيق.",
-                "The app performs two verified checks each day: 01:00 for the initial daily data and 06:00 for later official additions. It waits for connectivity and needs no exact-alarm permission.",
-                "Ἡ ἐφαρμογὴ ἐλέγχει δύο φορὲς καθημερινά: στὶς 01:00 γιὰ τὰ πρῶτα δεδομένα καὶ στὶς 06:00 γιὰ νεότερες ἐπίσημες προσθήκες, χωρὶς ἄδεια ἀκριβοῦς συναγερμοῦ."
+                "يُجري التطبيق فحصين موثوقين يوميًا: 01:00 صباحًا لجلب بيانات اليوم، و06:00 صباحًا لإضافة ما تنشره المواقع لاحقًا. كما يفحص التحديث تلقائيًا عند كل فتح للبرنامج، ويعيد المحاولة عند تأخر الخادم.",
+                "The app performs two verified checks each day: 01:00 for the initial daily data and 06:00 for later official additions. It also checks automatically whenever the app opens and retries if the server is late.",
+                "Ἡ ἐφαρμογὴ ἐλέγχει καθημερινὰ στὶς 01:00 καὶ στὶς 06:00. Ἐλέγχει ἐπίσης αὐτόματα κάθε φορὰ ποὺ ἀνοίγει καὶ ἐπαναλαμβάνει ἂν καθυστερεῖ ὁ διακομιστής."
         ));
         add(page.root, automaticUpdateNotice, 0, 8);
 
@@ -234,7 +234,7 @@ public final class SettingsScreen extends BaseScreen {
                     + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + LocalePolicy.isolateTechnical(shortHash(data.contentHash()))
                     + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + LocalePolicy.isolateTechnical(safeValue(data.canonicalSourceId()))
                     + "\n" + local("المصدر الرسمي المختار لليوم: ", "Selected official source: ", "Ἐπιλεγμένη ἐπίσημη πηγή: ") + officialSourceLabel(data.selectedOfficialSource())
-                    + "\n" + local("التحديث التلقائي: 01:00 و06:00 بتوقيت عمّان، مع استدراك الفحص الفائت عند فتح التطبيق", "Automatic update: 01:00 and 06:00 Amman time, with missed-window catch-up when the app opens", "Αὐτόματη ἐνημέρωση: 01:00 καὶ 06:00 ὥρα Ἀμμάν, μὲ ἀναπλήρωση χαμένου ἐλέγχου")
+                    + "\n" + local("التحديث التلقائي: 01:00 و06:00 بتوقيت عمّان، وفحص عند كل فتح مع إعادة المحاولة كل 15 دقيقة عند التأخر", "Automatic update: 01:00 and 06:00 Amman time, plus an app-open check with a 15-minute retry when delayed", "Αὐτόματη ἐνημέρωση: 01:00 καὶ 06:00 ὥρα Ἀμμάν, ἔλεγχος στὸ ἄνοιγμα καὶ ἐπανάληψη ἀνὰ 15 λεπτά")
                     + "\n" + local("التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي", "Verification: HTTPS + independent digital signature + schema + Scripture integrity", "Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα"),
                     13, ui.colors().secondaryText(), false);
             status.setTextIsSelectable(true);

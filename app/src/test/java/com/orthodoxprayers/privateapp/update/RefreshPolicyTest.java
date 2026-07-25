@@ -18,6 +18,12 @@ public final class RefreshPolicyTest {
     }
 
     @Test
+    public void appOpenAlwaysChecksUnlessAnotherRefreshIsRunning() {
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnAppOpen(false));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnAppOpen(true));
+    }
+
+    @Test
     public void refreshesOnDayChangeOrFirstStaleCheckOfTheDay() {
         assertTrue(RefreshPolicy.shouldRefresh(false, true, true, NOW, NOW, true, false));
         assertTrue(RefreshPolicy.shouldRefresh(false, false, false, NOW - 1L, NOW, false, true));
@@ -30,9 +36,9 @@ public final class RefreshPolicyTest {
     }
 
     @Test
-    public void repeatedStaleChecksAreThrottledForThirtyMinutes() {
-        assertFalse(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.MINUTES.toMillis(29), NOW, false, true));
-        assertTrue(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.MINUTES.toMillis(30), NOW, false, true));
+    public void repeatedStaleChecksAreThrottledForFifteenMinutes() {
+        assertFalse(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.MINUTES.toMillis(14), NOW, false, true));
+        assertTrue(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.MINUTES.toMillis(15), NOW, false, true));
         assertFalse(RefreshPolicy.shouldRefresh(false, false, true, NOW - TimeUnit.HOURS.toMillis(2), NOW, false, false));
     }
 

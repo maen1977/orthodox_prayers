@@ -24,10 +24,14 @@ import java.util.concurrent.TimeUnit;
 public final class UpdateCoordinator {
     public static final String INPUT_FORCE = "force_full_download";
 
-    private static final String INITIAL_SCHEDULE_WORK =
+    private static final String LEGACY_INITIAL_SCHEDULE_WORK =
             "orthodox-trusted-amman-01-refresh";
-    private static final String SUPPLEMENTAL_SCHEDULE_WORK =
+    private static final String LEGACY_SUPPLEMENTAL_SCHEDULE_WORK =
             "orthodox-trusted-amman-06-refresh";
+    private static final String INITIAL_SCHEDULE_WORK =
+            "orthodox-trusted-amman-01-refresh-v2";
+    private static final String SUPPLEMENTAL_SCHEDULE_WORK =
+            "orthodox-trusted-amman-06-refresh-v2";
     private static final String MIDNIGHT_EXECUTION_WORK =
             "orthodox-trusted-amman-midnight-execution";
     private static final String IMMEDIATE_WORK = "orthodox-trusted-daily-data-now";
@@ -54,13 +58,20 @@ public final class UpdateCoordinator {
      * returns. The worker re-establishes both one-time schedules after each completed run.
      */
     public void scheduleDailyRefresh() {
-        scheduleRefreshWindow(INITIAL_SCHEDULE_WORK, FIRST_REFRESH_HOUR);
-        scheduleRefreshWindow(SUPPLEMENTAL_SCHEDULE_WORK, SECOND_REFRESH_HOUR);
+        WorkManager workManager = WorkManager.getInstance(context);
+        // Upgrade migration: remove the old stable names. Dated names below keep an
+        // already-running 01:00 retry alive when the app opens after that window.
+        workManager.cancelUniqueWork(LEGACY_INITIAL_SCHEDULE_WORK);
+        workManager.cancelUniqueWork(LEGACY_SUPPLEMENTAL_SCHEDULE_WORK);
+        scheduleRefreshWindow(workManager, INITIAL_SCHEDULE_WORK, FIRST_REFRESH_HOUR);
+        scheduleRefreshWindow(workManager, SUPPLEMENTAL_SCHEDULE_WORK, SECOND_REFRESH_HOUR);
     }
 
-    private void scheduleRefreshWindow(String workName, int hour) {
+    private void scheduleRefreshWindow(WorkManager workManager, String workName, int hour) {
         long triggerAtMillis = nextAmmanRefreshEpochMillis(hour, REFRESH_MINUTE);
         long delay = Math.max(1_000L, triggerAtMillis - System.currentTimeMillis());
+        String datedWorkName = workName + "-"
+                + Instant.ofEpochMilli(triggerAtMillis).atZone(AMMAN_ZONE).toLocalDate();
         Data input = new Data.Builder().putBoolean(INPUT_FORCE, true).build();
         OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(DailyUpdateWorker.class)
                 .setInputData(input)
@@ -68,9 +79,9 @@ public final class UpdateCoordinator {
                 .setConstraints(connectedConstraints())
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 15, TimeUnit.MINUTES)
                 .build();
-        WorkManager.getInstance(context).enqueueUniqueWork(
-                workName,
-                ExistingWorkPolicy.REPLACE,
+        workManager.enqueueUniqueWork(
+                datedWorkName,
+                ExistingWorkPolicy.KEEP,
                 request
         );
     }
@@ -132,6 +143,11 @@ public final class UpdateCoordinator {
                 preferences.lastRefreshAttempt(),
                 System.currentTimeMillis()
         );
+    }
+
+    /** Every new foreground app session performs one lightweight signed-manifest check. */
+    public boolean shouldCheckRemoteOnAppOpen() {
+        return RefreshPolicy.shouldCheckRemoteOnAppOpen(repository.isRefreshing());
     }
 
     public boolean shouldRefresh(boolean dayChanged, boolean resumed) {

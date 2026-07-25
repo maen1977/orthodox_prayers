@@ -8,10 +8,15 @@ import java.util.concurrent.TimeUnit;
 
 /** Pure decision logic for daily refresh behavior and safe network throttling. */
 public final class RefreshPolicy {
-    static final long STALE_RETRY_INTERVAL_MS = TimeUnit.MINUTES.toMillis(30);
+    static final long STALE_RETRY_INTERVAL_MS = TimeUnit.MINUTES.toMillis(15);
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
 
     private RefreshPolicy() {}
+
+    /** A fresh foreground session always checks the small signed manifest first. */
+    public static boolean shouldCheckRemoteOnAppOpen(boolean refreshing) {
+        return !refreshing;
+    }
 
     public static boolean shouldRefresh(
             boolean refreshing,

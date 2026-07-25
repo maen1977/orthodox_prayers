@@ -1,5 +1,9 @@
 ## Follow-along Liturgy scope and dual daily updates
 
+- Check the signed update manifest automatically whenever the app enters a new
+  foreground session, not only after a missed 01:00 or 06:00 window.
+- Preserve an in-flight scheduled retry when the app opens after a publication
+  window, and retry delayed publication every 15 minutes in foreground/background.
 - Fix Android unit-test compilation by explicitly handling checked `JSONException`
   calls in `DailySnapshotRegressionGuardTest`.
 - Make the believer-facing Home screen open one continuous full Liturgy directly.
