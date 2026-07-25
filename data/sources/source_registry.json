@@ -14,14 +14,14 @@
     "en": "This page lists active sources and connectors with authority tier and health. Listing a source never means all content is copied; religious text remains license-, verification-, and native-language-gated.",
     "el": "Ἡ σελίδα παραθέτει ἐνεργὲς πηγὲς καὶ συνδέσεις μὲ βαθμίδα ἀρχῆς καὶ κατάσταση ἐλέγχου."
   },
-  "health_date": "2026-07-25",
+  "health_date": "2026-07-26",
   "health_summary": {
     "connector_count": 9,
-    "usable_connector_count": 5,
+    "usable_connector_count": 8,
     "official_current_count": 2,
     "status_counts": {
-      "network_error": 3,
-      "available": 3,
+      "undated": 1,
+      "available": 5,
       "http_error": 1,
       "current": 2
     },
@@ -30,14 +30,14 @@
       "fields": {
         "epistle_reference": {
           "status": "single_source",
-          "normalized": "galatians 4:22-31",
+          "normalized": "1 corinthians 1:10-17",
           "sources": [
-            "oca_daily_readings"
+            "goarch_digital_chant_stand"
           ]
         },
         "gospel_reference": {
           "status": "single_source",
-          "normalized": "luke 8:16-21",
+          "normalized": "john 20:11-18",
           "sources": [
             "oca_daily_readings"
           ]
@@ -48,15 +48,15 @@
           "field": "epistle_reference",
           "variants": [
             {
-              "normalized": "galatians 4:22-31",
+              "normalized": "1 corinthians 1:10-17",
               "sources": [
-                "oca_daily_readings"
+                "goarch_digital_chant_stand"
               ]
             },
             {
-              "normalized": "romans 13:1-10",
+              "normalized": "solomon 5:15-6:3",
               "sources": [
-                "goarch_digital_chant_stand"
+                "oca_daily_readings"
               ]
             }
           ]
@@ -65,13 +65,13 @@
           "field": "gospel_reference",
           "variants": [
             {
-              "normalized": "luke 8:16-21",
+              "normalized": "john 20:11-18",
               "sources": [
                 "oca_daily_readings"
               ]
             },
             {
-              "normalized": "matthew 12:30-37",
+              "normalized": "matthew 14:14-22",
               "sources": [
                 "goarch_digital_chant_stand"
               ]
@@ -130,7 +130,8 @@
         "official_live_link"
       ],
       "health_statuses": [
-        "network_error"
+        "available",
+        "undated"
       ],
       "health": [
         {
@@ -140,22 +141,25 @@
           "authority_tier": 1,
           "publication_role": "local_primary_authority",
           "calendar_profile": "jerusalem_old_calendar",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://orthodoxjordan.org/",
-          "status": "network_error",
-          "checked_at_utc": "2026-07-25T20:58:23Z",
-          "http_status": null,
-          "content_sha256": null,
-          "content_bytes": null,
+          "status": "undated",
+          "checked_at_utc": "2026-07-25T22:22:18Z",
+          "http_status": 200,
+          "content_sha256": "eca7bc340534407c13999ec159f8fe4b885fafb3df8e005a35d5bff72e4c5530",
+          "content_bytes": 498885,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
-          "commemorations": [],
+          "commemorations": [
+            "اية اليوم:",
+            "انجيل اليوم"
+          ],
           "service_links": [],
           "church_count": null,
-          "confidence": 0.0,
+          "confidence": 0.45,
           "rights_mode": "reference_and_authorized_native_import_only",
-          "reason": "[Errno 101] Network is unreachable",
+          "reason": "content was found but the requested civil date was not proven",
           "warnings": []
         },
         {
@@ -165,22 +169,22 @@
           "authority_tier": 1,
           "publication_role": "official_directory",
           "calendar_profile": "not_applicable",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-          "status": "network_error",
-          "checked_at_utc": "2026-07-25T20:58:48Z",
-          "http_status": null,
-          "content_sha256": null,
-          "content_bytes": null,
+          "status": "available",
+          "checked_at_utc": "2026-07-25T22:22:19Z",
+          "http_status": 200,
+          "content_sha256": "a4e6ad0b505b3cb12270e8218d2a05d975b144453bf819d2c63b6cda0b2217db",
+          "content_bytes": 887573,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
           "commemorations": [],
           "service_links": [],
-          "church_count": null,
-          "confidence": 0.0,
+          "church_count": 41,
+          "confidence": 0.9,
           "rights_mode": "metadata_and_official_links_only",
-          "reason": "[Errno 101] Network is unreachable",
+          "reason": null,
           "warnings": []
         },
         {
@@ -190,22 +194,22 @@
           "authority_tier": 1,
           "publication_role": "official_live_link",
           "calendar_profile": "not_applicable",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
-          "status": "network_error",
-          "checked_at_utc": "2026-07-25T20:59:08Z",
-          "http_status": null,
-          "content_sha256": null,
-          "content_bytes": null,
+          "status": "available",
+          "checked_at_utc": "2026-07-25T22:22:20Z",
+          "http_status": 200,
+          "content_sha256": "7e48301865fa0dabae3b17cc181db62f612461635e44fc4ecbfb6b7465733f13",
+          "content_bytes": 377529,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
           "commemorations": [],
           "service_links": [],
           "church_count": null,
-          "confidence": 0.0,
+          "confidence": 0.55,
           "rights_mode": "official_link_only",
-          "reason": "[Errno 101] Network is unreachable",
+          "reason": null,
           "warnings": []
         }
       ]
@@ -258,10 +262,10 @@
           "authority_tier": 2,
           "publication_role": "jurisdiction_and_feast_authority",
           "calendar_profile": "jerusalem_old_calendar",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
           "status": "available",
-          "checked_at_utc": "2026-07-25T20:59:08Z",
+          "checked_at_utc": "2026-07-25T22:22:20Z",
           "http_status": 200,
           "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
           "content_bytes": 107,
@@ -326,10 +330,10 @@
           "authority_tier": 3,
           "publication_role": "arabic_cross_check",
           "calendar_profile": "antioch_local_calendar",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://www.antiochpatriarchate.org/",
           "status": "available",
-          "checked_at_utc": "2026-07-25T20:59:08Z",
+          "checked_at_utc": "2026-07-25T22:22:21Z",
           "http_status": 200,
           "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
           "content_bytes": 6664,
@@ -394,14 +398,14 @@
           "authority_tier": 4,
           "publication_role": "greek_language_cross_check",
           "calendar_profile": "church_of_greece_new_calendar",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://apostoliki-diakonia.gr/fk/",
           "status": "available",
-          "checked_at_utc": "2026-07-25T20:59:13Z",
+          "checked_at_utc": "2026-07-25T22:22:25Z",
           "http_status": 200,
           "content_sha256": "d951a53487e1597d92e89199d666b01a7615a0bf24f8c1bd8b28d1fa50b4f12a",
           "content_bytes": 115656,
-          "detected_date": null,
+          "detected_date": "2026-07-26",
           "epistle_reference": null,
           "gospel_reference": null,
           "commemorations": [],
@@ -463,35 +467,35 @@
           "authority_tier": 4,
           "publication_role": "service_structure_and_link_discovery",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
           "status": "current",
-          "checked_at_utc": "2026-07-25T20:59:09Z",
+          "checked_at_utc": "2026-07-25T22:22:21Z",
           "http_status": 200,
           "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
           "content_bytes": 2422,
-          "detected_date": "2026-07-25",
-          "epistle_reference": "Romans 13:1-10",
-          "gospel_reference": "Matthew 12:30-37",
+          "detected_date": "2026-07-26",
+          "epistle_reference": "1 Corinthians 1:10-17",
+          "gospel_reference": "Matthew 14:14-22",
           "commemorations": [],
           "service_links": [
             {
               "title": "Divine Liturgy",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/25/h91/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/26/h91/en/index.html",
               "status": "available",
-              "content_sha256": "1ef7275708f831311de61653775c05eb8316f31a578d11f3acc1f66249ddaa5c"
+              "content_sha256": "e02e2db3b2293aa8c8e9c74f71963940be33fa95dc11e894f751d186639e6e82"
             },
             {
               "title": "Matins / Orthros",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/25/ma/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/26/ma/en/index.html",
               "status": "available",
-              "content_sha256": "a1dba31970a6adaf71e48fdb48bfddff6d546b98e234e1a42b9ce41abdd03de6"
+              "content_sha256": "f9c9bf4771ef455223d7f7f37ff0c401e0435164ab692bc52ac217c6e418342d"
             },
             {
               "title": "Vespers",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/25/li/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/26/li/en/index.html",
               "status": "available",
-              "content_sha256": "935c7725da1a10969c37bd904acec86b7e34f0760d9af684f51c986c19f76134"
+              "content_sha256": "a079ca12c576c486de85ecd97d08bf312633cb1f2e68506bb2869a69f60ca0e5"
             }
           ],
           "church_count": null,
@@ -553,10 +557,10 @@
           "authority_tier": 4,
           "publication_role": "regular_cycle_cross_check",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-07-25",
+          "target_date": "2026-07-26",
           "url": "https://www.goarch.org/chapel/",
           "status": "http_error",
-          "checked_at_utc": "2026-07-25T20:59:09Z",
+          "checked_at_utc": "2026-07-25T22:22:21Z",
           "http_status": 403,
           "content_sha256": null,
           "content_bytes": null,
@@ -739,16 +743,16 @@
           "authority_tier": 5,
           "publication_role": "last_official_reference_fallback",
           "calendar_profile": "oca_calendar",
-          "target_date": "2026-07-25",
-          "url": "https://www.oca.org/readings/daily/2026/07/25",
+          "target_date": "2026-07-26",
+          "url": "https://www.oca.org/readings/daily/2026/07/26",
           "status": "current",
-          "checked_at_utc": "2026-07-25T20:59:10Z",
+          "checked_at_utc": "2026-07-25T22:22:22Z",
           "http_status": 200,
-          "content_sha256": "85a94cc1846c746999e88585f16c0b62c282a3d76b9345bf9d6ea35c79b62a89",
-          "content_bytes": 14795,
-          "detected_date": "2026-07-25",
-          "epistle_reference": "Galatians 4:22-31",
-          "gospel_reference": "Luke 8:16-21",
+          "content_sha256": "7ad1d2cfa133db3a8f0a1e2ce8e40f980ee240d705e2914c1eae05afdbf6eb6f",
+          "content_bytes": 15158,
+          "detected_date": "2026-07-26",
+          "epistle_reference": "Solomon 5:15-6:3",
+          "gospel_reference": "John 20:11-18",
           "commemorations": [],
           "service_links": [],
           "church_count": null,
