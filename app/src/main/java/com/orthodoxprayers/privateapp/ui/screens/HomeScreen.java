@@ -32,8 +32,6 @@ public final class HomeScreen extends BaseScreen {
         }
         addDateCard(page.root);
         addQuickAccess(page.root);
-        addUpcoming(page.root);
-        addNextSunday(page.root);
         return page.scroll;
     }
 
@@ -108,22 +106,21 @@ public final class HomeScreen extends BaseScreen {
     private void addQuickAccess(LinearLayout root) {
         root.addView(ui.sectionTitle(local("الوصول السريع", "Quick access", "Γρήγορη πρόσβαση")));
         Button liturgy = ui.button("⛪\n" + local(
-                "قداس القديس يوحنا الذهبي الفم",
-                "Liturgy of St John Chrysostom",
-                "Θεία Λειτουργία Ἁγίου Ἰωάννου Χρυσοστόμου"
+                "قداس اليوم الكامل — من الاستعداد إلى الختام",
+                "Full Liturgy Today — preparation to dismissal",
+                "Πλήρης σημερινὴ Θεία Λειτουργία — ἀπὸ τὴν προετοιμασία ἕως τὴν ἀπόλυση"
         ), true);
         liturgy.setTextSize(17 * preferences.fontScale());
         liturgy.setOnClickListener(v -> host.navigate("reader", "divine_liturgy"));
         add(root, liturgy, 2, 8);
 
         LinearLayout first = ui.row();
-        addShortcut(first, "📖", local("القراءات", "Readings", "Ἀναγνώσματα"), "readings", null);
-        addShortcut(first, "🙏", local("الصلوات", "Prayers", "Προσευχές"), "prayers", null);
-        addShortcut(first, "🕘", local("آخر قراءة", "History", "Ἱστορικό"), "history", null);
+        addShortcut(first, "📖", local("القراءات اليومية", "Daily readings", "Ἡμερήσια ἀναγνώσματα"), "readings", null);
+        addShortcut(first, "🙏", local("الصلوات اليومية", "Daily prayers", "Καθημερινὲς προσευχές"), "prayers", null);
         add(root, first, 0, 0);
 
         LinearLayout second = ui.row();
-        addShortcut(second, "🗓", local("الأيام القادمة", "Upcoming", "Ἐπόμενες"), "upcoming", null);
+        addShortcut(second, "▶", local("البث المباشر", "Live services", "Ζωντανὰ"), "churches", null);
         addShortcut(second, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
         add(root, second, 0, 10);
 

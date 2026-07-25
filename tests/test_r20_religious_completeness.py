@@ -65,7 +65,7 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
         home = (
             ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
         ).read_text(encoding="utf-8")
-        self.assertIn("religiousCompleteServiceCount", settings)
+        self.assertNotIn("religiousCompleteServiceCount", settings)
         self.assertNotIn("Native source-pack completeness", settings)
         self.assertNotIn("Full Divine Liturgy", home)
         repository = (

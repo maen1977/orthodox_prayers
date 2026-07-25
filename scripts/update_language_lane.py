@@ -97,6 +97,9 @@ def main() -> None:
             "language_source_policy": (data.get("language_sources") or {}).get(language, {}),
         }
     )
+    for service in lane.get("services") or []:
+        if isinstance(service, dict):
+            service["source_language"] = language
 
     dated = ROOT / f"data/daily/{args.date}/{language}.json"
     dated.parent.mkdir(parents=True, exist_ok=True)

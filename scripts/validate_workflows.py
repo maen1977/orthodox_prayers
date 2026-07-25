@@ -105,6 +105,8 @@ def main() -> None:
             "Generate and validate today without signing key",
             "Validate unsigned language lanes independently",
             "Prepare publication worktree before restoring key",
+            "Preserve complete same-day language lanes",
+            "scripts/preserve_same_day_language_lanes.py",
             "Restore and match the one signing key",
             "Sign and verify generated data",
             "Remove private key before commit or network publication",
@@ -117,7 +119,8 @@ def main() -> None:
             "The GitHub secret does not match the public key",
             "VERIFIED_DATA_BRANCH: verified-data",
             'timezone: "Asia/Amman"',
-            'cron: "0 0 * * *"',
+            'cron: "0 1 * * *"',
+            'cron: "0 6 * * *"',
             "Verify from origin after publishing",
             "scripts/sign_language_lanes.py",
             "scripts/build_update_manifest.py",
@@ -132,8 +135,8 @@ def main() -> None:
         ),
         "Update workflow",
     )
-    if 'cron: "15 0 * * *"' in update:
-        fail("Update workflow must run only at 00:00 Asia/Amman, not at 00:15")
+    if update.count('timezone: "Asia/Amman"') != 2:
+        fail("Both scheduled update windows must use the Asia/Amman timezone")
 
     for forbidden in (
         "\n  push:\n",
@@ -156,6 +159,7 @@ def main() -> None:
         "Generate and validate today without signing key",
         "Validate unsigned language lanes independently",
         "Prepare publication worktree before restoring key",
+        "Preserve complete same-day language lanes",
         "Restore and match the one signing key",
         "Sign and verify generated data",
         "Remove private key before commit or network publication",
@@ -171,7 +175,7 @@ def main() -> None:
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
         "external-source generation; debug checks are separated; Update runs only manually "
-        "or at 00:00 Asia/Amman"
+        "or at 01:00 and 06:00 Asia/Amman"
     )
 
 

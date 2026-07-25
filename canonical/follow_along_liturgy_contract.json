@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "profile": "JERUSALEM_GREEK_ORTHODOX_FOLLOW_ALONG",
+  "audience": "ORDINARY_CHURCH_ATTENDEE",
+  "product_scope": {
+    "primary_entry": "divine_liturgy",
+    "one_continuous_reader": true,
+    "daily_prayers": true,
+    "daily_readings": true,
+    "live_service_shortcut": true,
+    "download_full_religious_book_libraries": false,
+    "daily_lane_max_bytes": 2097152
+  },
+  "content_model": {
+    "fixed_template": "library:divine_liturgy",
+    "store_fixed_template_once": true,
+    "daily_overlay_only": true,
+    "daily_overlay_max_segments": 10,
+    "pre_communion_service": "pre_communion_prayers",
+    "post_communion_service": "thanksgiving_after_communion",
+    "compose_only_available_native_text": true
+  },
+  "required_sequence": [
+    "communion_preparation_when_available",
+    "matins_gospel_before_liturgy_when_officially_available",
+    "liturgy_opening",
+    "small_entrance",
+    "daily_hymns",
+    "prokeimenon",
+    "epistle",
+    "gospel",
+    "great_entrance",
+    "anaphora",
+    "holy_communion",
+    "thanksgiving",
+    "dismissal"
+  ],
+  "dynamic_slots": {
+    "required": [
+      "matins_gospel",
+      "prokeimenon",
+      "epistle",
+      "gospel"
+    ],
+    "occasion_dependent": [
+      "daily_hymns",
+      "daily_troparion",
+      "church_troparion",
+      "daily_kontakion",
+      "communion_hymn"
+    ],
+    "missing_behavior": "HIDE_SLOT_KEEP_FIXED_LITURGY",
+    "never_guess_or_translate": true
+  },
+  "speaker_model": {
+    "show_speaker": true,
+    "show_priest_silent_text_when_source_marks_it": true,
+    "show_faithful_silent_text_when_source_marks_it": true,
+    "rubrics_collapsible": true
+  },
+  "language_lanes": {
+    "ar": {
+      "static_sources": [
+        "orthodox_jordan"
+      ],
+      "daily_sources": [
+        "orthodox_jordan",
+        "jerusalem_patriarchate_ar"
+      ]
+    },
+    "en": {
+      "static_sources": [
+        "metropolis_toronto_liturgy_en"
+      ],
+      "daily_sources": [
+        "jerusalem_patriarchate_en",
+        "goarch_online_chapel",
+        "goarch_digital_chant_stand_english"
+      ]
+    },
+    "el": {
+      "static_sources": [
+        "metropolis_toronto_liturgy_el"
+      ],
+      "daily_sources": [
+        "jerusalem_patriarchate_el",
+        "church_of_greece_apostoliki_diakonia",
+        "church_of_greece_ecclesia",
+        "goarch_online_chapel_greek",
+        "goarch_digital_chant_stand_greek"
+      ]
+    }
+  },
+  "religious_text_rules": {
+    "translation_between_lanes": false,
+    "machine_translation": false,
+    "ai_generation_or_rewriting": false,
+    "automatic_diacritization": false,
+    "cross_language_fallback": false,
+    "preserve_native_source_text": true
+  },
+  "update_policy": {
+    "timezone": "Asia/Amman",
+    "windows": [
+      "01:00",
+      "06:00"
+    ],
+    "second_window_role": "SUPPLEMENT_LATE_OFFICIAL_PUBLICATIONS",
+    "same_day_revision_must_not_remove_accepted_native_text": true,
+    "stale_daily_readings_are_hidden": true,
+    "signature_required": true,
+    "exact_alarm_permission_required": false
+  }
+}

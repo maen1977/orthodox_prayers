@@ -18,12 +18,12 @@ class R19RefinementTests(unittest.TestCase):
         self.assertIn("nativeContentCoverage", repository)
         self.assertNotIn('aggregate.put("library", library())', repository)
 
-    def test_settings_report_religious_completeness_not_field_population(self):
+    def test_settings_hide_internal_book_completeness_from_ordinary_users(self):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
-        for language in ("ar", "en", "el"):
-            self.assertIn(f'data.religiousCompleteServiceCount("{language}")', settings)
-        self.assertIn("الاكتمال الكنسي المثبت", settings)
-        self.assertIn("Verified ecclesiastical completeness", settings)
+        self.assertNotIn("religiousCompleteServiceCount", settings)
+        self.assertNotIn("religiousRequiredServiceCount", settings)
+        self.assertNotIn("الاكتمال الكنسي المثبت", settings)
+        self.assertNotIn("Verified ecclesiastical completeness", settings)
         self.assertNotIn("Native source-pack completeness", settings)
 
     def test_settings_keep_diagnostics_optional_and_use_real_time_picker(self):
@@ -44,14 +44,16 @@ class R19RefinementTests(unittest.TestCase):
         self.assertIn('local("ثابت العرض", "Monospace", "Σταθεροῦ πλάτους")', settings)
         self.assertIn("isolateTechnical", locale_policy)
 
-    def test_current_documentation_matches_signed_snapshot_and_pack_counts(self):
+    def test_current_documentation_matches_the_follow_along_product_scope(self):
         readme = (ROOT / "README_AR.md").read_text(encoding="utf-8")
         readiness = (ROOT / "RELEASE_READINESS_AR.md").read_text(encoding="utf-8")
-        self.assertIn("539/539", readme)
-        self.assertIn("774/774", readme)
-        self.assertIn("766/766", readme)
-        self.assertIn("0/15", readiness)
-        self.assertIn("غير جاهز لإصدار Production", readiness)
+        self.assertIn("قداس اليوم الكامل", readme)
+        self.assertIn("canonical/follow_along_liturgy_contract.json", readme)
+        self.assertIn("01:00", readme)
+        self.assertIn("06:00", readme)
+        self.assertIn("لا توجد ترجمة بين القنوات", readme)
+        self.assertIn("نطاق الإصدار الفعلي", readiness)
+        self.assertIn("ليست شرطًا لهذا المنتج", readiness)
 
     def test_source_registry_build_is_reproducible_and_does_not_fabricate_verification_dates(self):
         builder = (ROOT / "scripts/build_public_source_registry.py").read_text(encoding="utf-8")
@@ -61,7 +63,8 @@ class R19RefinementTests(unittest.TestCase):
     def test_publication_contract_matches_the_single_scheduled_workflow(self):
         contract = json.loads((ROOT / "canonical/source_native_contract.json").read_text(encoding="utf-8"))
         publication = contract["publication"]
-        self.assertEqual("00:00 Asia/Amman", publication["daily_update_time"])
+        self.assertEqual("01:00 and 06:00 Asia/Amman", publication["daily_update_time"])
+        self.assertEqual(["01:00", "06:00"], publication["daily_update_windows"])
         self.assertEqual("same_workflow_after_publish", publication["verification_mode"])
         self.assertNotIn("verification_time", publication)
 

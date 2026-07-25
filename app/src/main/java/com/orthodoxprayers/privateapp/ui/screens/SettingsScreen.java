@@ -28,7 +28,6 @@ public final class SettingsScreen extends BaseScreen {
     public View createView() {
         UiKit.Page page = page(local("الإعدادات", "Settings", "Ρυθμίσεις"), true);
         page.root.addView(ui.sectionTitle(local("لغة التطبيق والنصوص", "App and text language", "Γλῶσσα ἐφαρμογῆς καὶ κειμένων")));
-        int requiredServices = data.religiousRequiredServiceCount();
         LinearLayout languages = ui.row();
         addLanguageButton(languages, "العربية", "ar");
         addLanguageButton(languages, "English", "en");
@@ -36,28 +35,11 @@ public final class SettingsScreen extends BaseScreen {
         add(page.root, languages, 0, 5);
 
         TextView languagePolicy = ui.infoBadge(local(
-                "الواجهة مفعلة بالكامل باللغات الثلاث. كل لغة تُقرأ من مكتبتها الكنسية الأصلية المستقلة؛ ولا يترجم التطبيق نصًا من لغة إلى أخرى. عند غياب النص الأصلي المعتمد يظهر تنبيه واضح بدل نص مترجم.",
-                "The interface is fully enabled in all three languages. Each language is read from its own independent official Orthodox source library; the app does not translate text from another language. Missing native text is clearly marked unavailable.",
-                "Ἡ διεπαφὴ λειτουργεῖ καὶ στὶς τρεῖς γλῶσσες. Κάθε γλῶσσα φορτώνεται ἀπὸ χωριστὴ ἐπίσημη ὀρθόδοξη πηγή· ἡ ἐφαρμογὴ δὲν μεταφράζει κείμενα ἀπὸ ἄλλη γλῶσσα."
+                "العربية والإنجليزية واليونانية ثلاث قنوات أصلية مستقلة. لا يترجم التطبيق نصًا من لغة إلى أخرى، ولا ينسخ لغة مكان لغة. عند غياب النص المعتمد تبقى القطعة غير متوفرة بوضوح.",
+                "Arabic, English, and Greek are three independent native lanes. The app never translates or copies one language into another. Missing approved text remains clearly unavailable.",
+                "Τὰ Ἀραβικά, τὰ Ἀγγλικὰ καὶ τὰ Ἑλληνικὰ εἶναι τρεῖς χωριστὲς γλωσσικὲς ροές. Ἡ ἐφαρμογὴ δὲν μεταφράζει οὔτε ἀντιγράφει κείμενο ἀπὸ ἄλλη γλῶσσα."
         ));
         add(page.root, languagePolicy, 0, 8);
-
-        TextView coverage = centered(local(
-                "الاكتمال الكنسي المثبت — العربية: ",
-                "Verified ecclesiastical completeness — Arabic: ",
-                "Ἐπαληθευμένη ἐκκλησιαστικὴ πληρότητα — Ἀραβικά: "
-        ) + data.religiousCompleteServiceCount("ar") + "/" + requiredServices + "\n"
-                + local("الإنجليزية: ", "English: ", "Ἀγγλικά: ")
-                + data.religiousCompleteServiceCount("en") + "/" + requiredServices + "\n"
-                + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ")
-                + data.religiousCompleteServiceCount("el") + "/" + requiredServices + "\n"
-                + local(
-                        "لا تعني سلامة الحقول اكتمال الخدمة الكنسية.",
-                        "Populated technical fields do not prove a complete service.",
-                        "Τὰ συμπληρωμένα τεχνικὰ πεδία δὲν ἀποδεικνύουν πλήρη ἀκολουθία."
-                ),
-                13, ui.colors().secondaryText(), false);
-        add(page.root, coverage, 0, 8);
 
         Button languagePacks = ui.button(local("إدارة اللغات النشطة", "Manage active languages", "Διαχείριση ἐνεργῶν γλωσσῶν"), false);
         languagePacks.setOnClickListener(v -> host.navigate("language_packs", null));
@@ -210,9 +192,9 @@ public final class SettingsScreen extends BaseScreen {
         add(page.root, refresh, 0, 7);
 
         TextView automaticUpdateNotice = ui.infoBadge(local(
-                "يُجدول التطبيق تحديثًا موثوقًا عند 00:05 بعد منتصف الليل بتوقيت عمّان، وينتظر اتصال الإنترنت تلقائيًا دون طلب إذن المنبهات الدقيقة. كما يعيد فحص تصحيحات اليوم نفسه كل 30 دقيقة عند استخدام التطبيق.",
-                "The app schedules a verified refresh at 00:05 Amman time, waits automatically for connectivity without exact-alarm permission, and checks for same-day corrections at most every 30 minutes while the app is used.",
-                "Ἡ ἐφαρμογὴ προγραμματίζει ἐπαληθευμένη ἐνημέρωση στὶς 00:05 ὥρα Ἀμμάν, περιμένει αὐτόματα σύνδεση χωρὶς ἄδεια ἀκριβοῦς συναγερμοῦ καὶ ἐλέγχει διορθώσεις τῆς ἴδιας ἡμέρας ἀνά 30 λεπτά."
+                "يُجري التطبيق فحصين موثوقين يوميًا: 01:00 صباحًا لجلب بيانات اليوم، و06:00 صباحًا لإضافة ما تنشره المواقع لاحقًا. ينتظر اتصال الإنترنت تلقائيًا ولا يحتاج إلى إذن منبّه دقيق.",
+                "The app performs two verified checks each day: 01:00 for the initial daily data and 06:00 for later official additions. It waits for connectivity and needs no exact-alarm permission.",
+                "Ἡ ἐφαρμογὴ ἐλέγχει δύο φορὲς καθημερινά: στὶς 01:00 γιὰ τὰ πρῶτα δεδομένα καὶ στὶς 06:00 γιὰ νεότερες ἐπίσημες προσθήκες, χωρὶς ἄδεια ἀκριβοῦς συναγερμοῦ."
         ));
         add(page.root, automaticUpdateNotice, 0, 8);
 
@@ -252,47 +234,48 @@ public final class SettingsScreen extends BaseScreen {
                     + "\n" + local("بصمة المحتوى: ", "Content fingerprint: ", "Ἀποτύπωμα: ") + LocalePolicy.isolateTechnical(shortHash(data.contentHash()))
                     + "\n" + local("مرجع النص الكتابي: ", "Scripture source ID: ", "Πηγὴ Γραφῆς: ") + LocalePolicy.isolateTechnical(safeValue(data.canonicalSourceId()))
                     + "\n" + local("المصدر الرسمي المختار لليوم: ", "Selected official source: ", "Ἐπιλεγμένη ἐπίσημη πηγή: ") + officialSourceLabel(data.selectedOfficialSource())
-                    + "\n" + local("التحديث التلقائي: 00:05 بتوقيت عمّان، مع انتظار الشبكة وفحص تصحيحات اليوم كل 30 دقيقة", "Automatic update: 00:05 Amman time, waiting for network and checking same-day corrections every 30 minutes", "Αὐτόματη ἐνημέρωση: 00:05 ὥρα Ἀμμάν, μὲ ἀναμονὴ δικτύου καὶ ἔλεγχο διορθώσεων ἀνά 30 λεπτά")
+                    + "\n" + local("التحديث التلقائي: 01:00 و06:00 بتوقيت عمّان، مع استدراك الفحص الفائت عند فتح التطبيق", "Automatic update: 01:00 and 06:00 Amman time, with missed-window catch-up when the app opens", "Αὐτόματη ἐνημέρωση: 01:00 καὶ 06:00 ὥρα Ἀμμάν, μὲ ἀναπλήρωση χαμένου ἐλέγχου")
                     + "\n" + local("التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي", "Verification: HTTPS + independent digital signature + schema + Scripture integrity", "Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα"),
                     13, ui.colors().secondaryText(), false);
             status.setTextIsSelectable(true);
             add(page.root, status, 0, 8);
+            page.root.addView(ui.sectionTitle(local("المصادر والمراجع", "Sources and references", "Πηγὲς καὶ παραπομπές")));
+            int registeredSourceCount = data.registeredSources().length();
+            TextView sourceRegistryNotice = ui.infoBadge(local(
+                    "يعرض التطبيق " + registeredSourceCount + " مصدرًا مسجلًا مع حالة التحقق والحقوق.",
+                    "The app lists " + registeredSourceCount + " registered sources with verification and rights status.",
+                    "Ἡ ἐφαρμογὴ παραθέτει " + registeredSourceCount + " καταχωρισμένες πηγές."
+            ));
+            add(page.root, sourceRegistryNotice, 0, 7);
+            JSONObject healthSummary = data.sourceHealth().optJSONObject("summary");
+            if (healthSummary != null) {
+                TextView health = ui.badge(local("رصد المصادر: ", "Source monitor: ", "Ἔλεγχος πηγῶν: ")
+                                + healthSummary.optInt("usable_connector_count", 0) + "/" + healthSummary.optInt("connector_count", 0),
+                        healthSummary.optInt("usable_connector_count", 0) > 0);
+                add(page.root, health, 0, 6);
+            }
+            JSONObject liturgyCoverage = data.serviceCoverage("divine_liturgy");
+            if (liturgyCoverage != null) {
+                TextView liturgyCoverageBadge = ui.infoBadge(local("اكتمال القطع اليومية المتغيرة للقداس: ", "Verified variable Liturgy coverage: ", "Κάλυψη μεταβλητῶν κειμένων: ")
+                        + liturgyCoverage.optInt("coverage_percent", 0) + "%");
+                add(page.root, liturgyCoverageBadge, 0, 7);
+            }
+            Button sources = ui.button(local("عرض جميع المصادر", "View all sources", "Προβολὴ ὅλων τῶν πηγῶν"), false);
+            sources.setOnClickListener(v -> host.navigate("sources", null));
+            add(page.root, sources, 0, 10);
+
+            String sourceNote = data.sourceNote();
+            if (!sourceNote.isEmpty()) {
+                TextView source = centered(local("عن مصدر المحتوى: ", "About the content source: ", "Περὶ πηγῆς: ") + sourceNote,
+                        13, ui.colors().secondaryText(), false);
+                add(page.root, source, 0, 8);
+            }
         }
 
-        page.root.addView(ui.sectionTitle(local("المصادر والمراجع", "Sources and references", "Πηγὲς καὶ παραπομπές")));
-        int registeredSourceCount = data.registeredSources().length();
-        TextView sourceRegistryNotice = ui.infoBadge(local(
-                "يعرض التطبيق " + registeredSourceCount + " مصدرًا مسجلًا للمحتوى والتقويم والقراءات، مع نوع الاستخدام والرابط وحالة الحقوق وآخر تحقق.",
-                "The app lists " + registeredSourceCount + " registered content, calendar, and Scripture sources with use, link, rights, and verification details.",
-                "Ἡ ἐφαρμογὴ παραθέτει " + registeredSourceCount + " καταχωρισμένες πηγές μὲ χρήση, σύνδεσμο καὶ κατάσταση δικαιωμάτων."
-        ));
-        add(page.root, sourceRegistryNotice, 0, 7);
-        JSONObject healthSummary = data.sourceHealth().optJSONObject("summary");
-        if (healthSummary != null) {
-            TextView health = ui.badge(local("رصد المصادر: ", "Source monitor: ", "Ἔλεγχος πηγῶν: ")
-                    + healthSummary.optInt("usable_connector_count", 0) + "/" + healthSummary.optInt("connector_count", 0),
-                    healthSummary.optInt("usable_connector_count", 0) > 0);
-            add(page.root, health, 0, 6);
-        }
-        JSONObject liturgyCoverage = data.serviceCoverage("divine_liturgy");
-        if (liturgyCoverage != null) {
-            TextView liturgyCoverageBadge = ui.infoBadge(local("اكتمال القطع اليومية المتغيرة للقداس: ", "Verified variable Liturgy coverage: ", "Κάλυψη μεταβλητῶν κειμένων: ")
-                    + liturgyCoverage.optInt("coverage_percent", 0) + "%");
-            add(page.root, liturgyCoverageBadge, 0, 7);
-        }
-        Button sources = ui.button(local("عرض جميع المصادر", "View all sources", "Προβολὴ ὅλων τῶν πηγῶν"), false);
-        sources.setOnClickListener(v -> host.navigate("sources", null));
-        add(page.root, sources, 0, 10);
+        page.root.addView(ui.sectionTitle(local("البث المباشر", "Live services", "Ζωντανὲς μεταδόσεις")));
         Button churches = ui.button(local("دليل الكنائس والبث المباشر", "Church directory and live services", "Κατάλογος ναῶν καὶ ζωντανὲς μεταδόσεις"), false);
         churches.setOnClickListener(v -> host.navigate("churches", null));
         add(page.root, churches, 0, 10);
-
-        String sourceNote = data.sourceNote();
-        if (!sourceNote.isEmpty()) {
-            TextView source = centered(local("عن مصدر المحتوى: ", "About the content source: ", "Περὶ πηγῆς: ") + sourceNote,
-                    13, ui.colors().secondaryText(), false);
-            add(page.root, source, 0, 8);
-        }
         // R14_SETTINGS_CLEANUP: keep the free-app notice but hide call/privacy actions.
         page.root.addView(ui.sectionTitle(local("عن البرنامج", "About the app", "Περὶ τῆς ἐφαρμογῆς")));
         LinearLayout aboutCard = ui.card();

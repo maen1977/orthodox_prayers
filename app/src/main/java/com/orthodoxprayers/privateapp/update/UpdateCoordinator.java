@@ -24,14 +24,17 @@ import java.util.concurrent.TimeUnit;
 public final class UpdateCoordinator {
     public static final String INPUT_FORCE = "force_full_download";
 
-    private static final String DAILY_SCHEDULE_WORK =
-            "orthodox-trusted-amman-daily-refresh";
+    private static final String INITIAL_SCHEDULE_WORK =
+            "orthodox-trusted-amman-01-refresh";
+    private static final String SUPPLEMENTAL_SCHEDULE_WORK =
+            "orthodox-trusted-amman-06-refresh";
     private static final String MIDNIGHT_EXECUTION_WORK =
             "orthodox-trusted-amman-midnight-execution";
     private static final String IMMEDIATE_WORK = "orthodox-trusted-daily-data-now";
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
-    private static final int DAILY_REFRESH_HOUR = 0;
-    private static final int DAILY_REFRESH_MINUTE = 5;
+    static final int FIRST_REFRESH_HOUR = 1;
+    static final int SECOND_REFRESH_HOUR = 6;
+    private static final int REFRESH_MINUTE = 0;
 
     private final Context context;
     private final AppPreferences preferences;
@@ -44,15 +47,19 @@ public final class UpdateCoordinator {
     }
 
     /**
-     * Schedules one persistent, network-aware refresh shortly after the Amman date changes.
+     * Schedules the two trusted publication windows requested for Amman: 01:00 and 06:00.
      *
      * Content refresh does not require second-level precision, so WorkManager is used instead
-     * of exact alarms. The five-minute publication grace period avoids racing the server at
-     * 00:00 while still refreshing before normal morning use. Network constraints keep the
-     * request pending until connectivity returns, and the worker schedules the following day.
+     * of exact alarms. Network constraints keep either request pending until connectivity
+     * returns. The worker re-establishes both one-time schedules after each completed run.
      */
     public void scheduleDailyRefresh() {
-        long triggerAtMillis = nextAmmanRefreshEpochMillis();
+        scheduleRefreshWindow(INITIAL_SCHEDULE_WORK, FIRST_REFRESH_HOUR);
+        scheduleRefreshWindow(SUPPLEMENTAL_SCHEDULE_WORK, SECOND_REFRESH_HOUR);
+    }
+
+    private void scheduleRefreshWindow(String workName, int hour) {
+        long triggerAtMillis = nextAmmanRefreshEpochMillis(hour, REFRESH_MINUTE);
         long delay = Math.max(1_000L, triggerAtMillis - System.currentTimeMillis());
         Data input = new Data.Builder().putBoolean(INPUT_FORCE, true).build();
         OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(DailyUpdateWorker.class)
@@ -62,7 +69,7 @@ public final class UpdateCoordinator {
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 15, TimeUnit.MINUTES)
                 .build();
         WorkManager.getInstance(context).enqueueUniqueWork(
-                DAILY_SCHEDULE_WORK,
+                workName,
                 ExistingWorkPolicy.REPLACE,
                 request
         );
@@ -118,7 +125,7 @@ public final class UpdateCoordinator {
         );
     }
 
-    /** Same-day correction checks are throttled instead of running on every foreground return. */
+    /** App-open catch-up is limited to a missed 01:00 or 06:00 Amman window. */
     public boolean shouldCheckRemoteOnResume() {
         return RefreshPolicy.shouldCheckRemoteOnResume(
                 repository.isRefreshing(),
@@ -149,15 +156,23 @@ public final class UpdateCoordinator {
     }
 
     public static long nextAmmanRefreshEpochMillis() {
+        return nextAmmanRefreshEpochMillis(FIRST_REFRESH_HOUR, REFRESH_MINUTE);
+    }
+
+    public static long nextAmmanSupplementalRefreshEpochMillis() {
+        return nextAmmanRefreshEpochMillis(SECOND_REFRESH_HOUR, REFRESH_MINUTE);
+    }
+
+    static long nextAmmanRefreshEpochMillis(int hour, int minute) {
         ZonedDateTime now = ZonedDateTime.now(AMMAN_ZONE);
         ZonedDateTime candidate = now.toLocalDate()
-                .atTime(DAILY_REFRESH_HOUR, DAILY_REFRESH_MINUTE)
+                .atTime(hour, minute)
                 .atZone(AMMAN_ZONE);
         if (!candidate.isAfter(now)) candidate = candidate.plusDays(1);
         return candidate.toInstant().toEpochMilli();
     }
 
-    /** Backwards-compatible method name; now returns the 00:05 Amman refresh instant. */
+    /** Backwards-compatible method name; now returns the next 01:00 Amman refresh instant. */
     public static long nextAmmanMidnightEpochMillis() {
         return nextAmmanRefreshEpochMillis();
     }

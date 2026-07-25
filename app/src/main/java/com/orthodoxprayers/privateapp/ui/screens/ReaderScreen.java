@@ -675,6 +675,8 @@ public final class ReaderScreen extends BaseScreen {
         box.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(4));
 
         LinearLayout jumps = ui.row();
+        addJump(jumps, local("إنجيل السَحَر", "Matins Gospel", "Ἑωθινὸν Εὐαγγέλιον"),
+                adapter.findPosition("إنجيل السَحَر", "MATINS GOSPEL", "ΕΩΘΙΝΟΝ ΕΥΑΓΓΕΛΙΟΝ"));
         addJump(jumps, local("البروكيمنن", "Prokeimenon", "Προκείμενον"),
                 adapter.findPosition("البروكيمنن", "Prokeimenon", "Προκείμενον"));
         addJump(jumps, local("الرسالة", "Epistle", "Ἀπόστολος"),
@@ -682,6 +684,17 @@ public final class ReaderScreen extends BaseScreen {
         addJump(jumps, local("الإنجيل", "Gospel", "Εὐαγγέλιον"),
                 adapter.findPosition("الإنجيل", "Gospel", "Εὐαγγέλιον"));
         box.addView(jumps);
+
+        LinearLayout milestones = ui.row();
+        addJump(milestones, local("الدخول الصغير", "Small Entrance", "Μικρὰ Εἴσοδος"),
+                adapter.findPosition("الدخول الصغير", "THE ENTRANCE", "ΜΙΚΡΑ ΕΙΣΟΔΟΣ"));
+        addJump(milestones, local("الدورة الكبرى", "Great Entrance", "Μεγάλη Εἴσοδος"),
+                adapter.findPosition("الدورة الكبرى", "THE GREAT ENTRANCE", "ΜΕΓΑΛΗ ΕΙΣΟΔΟΣ"));
+        addJump(milestones, local("المناولة", "Communion", "Θεία Μετάληψις"),
+                adapter.findPosition("المناولة", "HOLY COMMUNION", "ΘΕΙΑ ΜΕΤΑΛΗΨΙΣ"));
+        addJump(milestones, local("الختام", "Dismissal", "Ἀπόλυσις"),
+                adapter.findPosition("الختام والصرف", "THE DISMISSAL", "ΑΠΟΛΥΣΙΣ"));
+        box.addView(milestones);
 
         LinearLayout sectionNav = ui.row();
         Button previous = ui.smallButton(local("القسم السابق", "Previous section", "Προηγούμενη ἐνότητα"), false);

@@ -14,7 +14,9 @@ on:
         required: false
         type: string
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 1 * * *"
+      timezone: "Asia/Amman"
+    - cron: "0 6 * * *"
       timezone: "Asia/Amman"
 
 permissions:
@@ -94,7 +96,7 @@ jobs:
           rm -rf "data/daily/${{ steps.resolve.outputs.date }}" data/daily/current
           mkdir -p "data/daily/${{ steps.resolve.outputs.date }}" data/daily/current
 
-      - name: Update Arabic lane — Amman, Jerusalem, Antioch
+      - name: Update Arabic lane — Amman and Jerusalem
         id: lane_ar
         if: steps.resolve.outputs.mode == 'update'
         continue-on-error: true
@@ -106,7 +108,7 @@ jobs:
         continue-on-error: true
         run: python scripts/update_language_lane.py --language el --date "${{ steps.resolve.outputs.date }}" --unsigned
 
-      - name: Update English lane — GOARCH, Jerusalem, Antioch
+      - name: Update English lane — Jerusalem and official Greek Orthodox sources
         id: lane_en
         if: steps.resolve.outputs.mode == 'update'
         continue-on-error: true
@@ -161,6 +163,26 @@ jobs:
             git worktree add --force --detach "$TARGET" HEAD
           fi
           echo "PUBLICATION_TARGET=$TARGET" >> "$GITHUB_ENV"
+
+      - name: Preserve complete same-day language lanes
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/preserve_same_day_language_lanes.py \
+            --candidate-root "$GITHUB_WORKSPACE/data" \
+            --published-root "$PUBLICATION_TARGET/data" \
+            --date "${{ steps.resolve.outputs.date }}"
+          for LANG in ar el en; do
+            test ! -f "data/daily/current/$LANG.json" || \
+              python scripts/verify_language_lanes.py \
+                --date "${{ steps.resolve.outputs.date }}" \
+                --language "$LANG" \
+                --unsigned
+          done
+          python scripts/validate_publication_consistency.py \
+            --expected-date "${{ steps.resolve.outputs.date }}" \
+            --unsigned
 
       - name: Restore and match the one signing key
         if: steps.resolve.outputs.mode == 'update'

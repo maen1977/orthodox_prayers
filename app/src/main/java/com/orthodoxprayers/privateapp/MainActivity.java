@@ -40,7 +40,6 @@ import com.orthodoxprayers.privateapp.ui.screens.ReaderScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ReadingDetailScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ReadingsScreen;
 import com.orthodoxprayers.privateapp.ui.screens.SearchScreen;
-import com.orthodoxprayers.privateapp.ui.screens.ServiceListScreen;
 import com.orthodoxprayers.privateapp.ui.screens.SettingsScreen;
 import com.orthodoxprayers.privateapp.ui.screens.SourcesScreen;
 import com.orthodoxprayers.privateapp.ui.screens.UpcomingScreen;
@@ -329,7 +328,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         switch (entry.screenId) {
             case "home": return new HomeScreen(this);
             case "prayers": return new PrayerHubScreen(this);
-            case "liturgy": return new ServiceListScreen(this, "liturgy", repository.local("الخدمات والقداس", "Services and Liturgy", "Ἀκολουθίες καὶ Λειτουργία"));
+            case "liturgy": return new ReaderScreen(this, "divine_liturgy");
             case "readings": return new ReadingsScreen(this);
             case "upcoming": return new UpcomingScreen(this);
             case "search": return new SearchScreen(this);
@@ -451,8 +450,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         if (updateCoordinator.shouldRefresh(dayChanged, resumeEvent)) {
             requestDataRefresh(false, dayChanged || !repository.hasUsableCurrentData());
         } else if (resumeRemoteCheck) {
-            // Check the selected language lane periodically using its ETag.
-            // This still catches same-day corrections without a network call on every resume.
+            // Catch up once after either the 01:00 or 06:00 Amman publication
+            // window. The signed manifest and ETag keep this check lightweight.
             requestDataRefresh(false, false);
         }
     }

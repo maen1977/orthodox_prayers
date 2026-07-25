@@ -1183,9 +1183,9 @@ def get_reading(readings: list[dict], kind: str) -> dict | None:
 
 
 def reading_references(readings: list[dict]) -> dict:
-    """Compact epistle/Gospel references for upcoming-day cards."""
+    """Compact available references for upcoming-day cards."""
     result: dict[str, dict] = {}
-    for kind in ("epistle", "gospel"):
+    for kind in ("matins_gospel", "epistle", "gospel"):
         reading = get_reading(readings, kind)
         if not reading:
             continue
@@ -1415,6 +1415,7 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
     """
     epistle = get_reading(readings, "epistle") or {}
     gospel = get_reading(readings, "gospel") or {}
+    matins_gospel = get_reading(readings, "matins_gospel") or {}
     prok = get_reading(readings, "prokeimenon") or {}
     inserts = feast_inserts(info)
 
@@ -1446,6 +1447,10 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
     # remain for older installed clients, while R20 clients use these slots in
     # each independent native service edition.
     slot_replacements = {
+        "matins_gospel": reading_block_loc(
+            matins_gospel,
+            prefer_empty_ar_when_missing=True,
+        ),
         "daily_hymns": daily_hymns,
         "daily_troparion": copy.deepcopy(inserts["troparion"]),
         "church_troparion": copy.deepcopy(inserts["church_troparion"]),
@@ -1486,9 +1491,9 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "type": "note",
             "speaker": loc("ملاحظة اختيارية", "Optional note", "Προαιρετικὴ σημείωση"),
             "text": loc(
-                "البروكيمنن، ثم الرسالة، ثم هلليلويا، ثم الإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
-                "Prokeimenon, Epistle, Alleluia, and Gospel. Any unverified target-language text is hidden automatically.",
-                "Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο. Κάθε μὴ ἐπαληθευμένο κείμενο τῆς ἐπιλεγμένης γλώσσας ἀποκρύπτεται αὐτόματα.",
+                "إنجيل السَحَر عند توفره رسميًا، ثم البروكيمنن والرسالة وهلليلويا والإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
+                "The official Matins Gospel when available, then Prokeimenon, Epistle, Alleluia, and Gospel. Unverified target-language text is hidden.",
+                "Τὸ ἐπίσημο Ἑωθινὸν Εὐαγγέλιον, ὅταν διατίθεται, καὶ ἔπειτα Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο.",
             ),
         },
     ])
@@ -1509,6 +1514,9 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "date_iso": f"{day:%Y-%m-%d}",
             "epistle_canonical": str(epistle.get("integrity", {}).get("canonical_reference") or ""),
             "gospel_canonical": str(gospel.get("integrity", {}).get("canonical_reference") or ""),
+            "matins_gospel_canonical": str(
+                matins_gospel.get("integrity", {}).get("canonical_reference") or ""
+            ),
             "fail_closed": True,
         },
         "notice": loc(
@@ -1616,6 +1624,20 @@ def apply_override(day: date, data: dict) -> dict:
         )
     # Shallow update for top-level keys; arrays/objects intentionally replace.
     data.update(override)
+    if "readings" in override and "services" not in override:
+        info = day_info(day)
+        rebuilt = build_liturgy_service(
+            "divine_liturgy",
+            day,
+            info,
+            data.get("readings") or [],
+            "خدمة اليوم",
+        )
+        services = data.get("services") if isinstance(data.get("services"), list) else []
+        data["services"] = [
+            rebuilt if isinstance(service, dict) and service.get("id") == "divine_liturgy" else service
+            for service in services
+        ]
     fasting = data.get("fasting")
     if isinstance(fasting, dict) and "fasting" in override:
         verification = fasting.setdefault("verification", {})
@@ -1720,7 +1742,11 @@ def build_day(day: date) -> dict:
         "fast_detail": loc(info["fast_detail_ar"]),
         "fasting": copy.deepcopy(info["fasting"]),
         "feast": loc(info["feast_ar"]),
-        "source_note": loc("تُستخدم بيانات الاكتشاف مؤقتاً فقط؛ ولا يصبح الملف قابلاً للنشر إلا بعد بوابة الأردن ثم القدس ثم أنطاكية ثم المصدر اليوناني الرسمي ثم الكنيسة الأرثوذكسية في أمريكا عند الحاجة."),
+        "source_note": loc(
+            "تُستخدم بيانات الاكتشاف لتحديد اليوم فقط؛ ولا تُنشر النصوص إلا من مسارات عربية وإنجليزية ويونانية أرثوذكسية معتمدة ومستقلة.",
+            "Discovery identifies the day only; text is published solely from approved independent Arabic, English, and Greek Orthodox source lanes.",
+            "Ἡ ἀνακάλυψη προσδιορίζει μόνον τὴν ἡμέρα· τὰ κείμενα δημοσιεύονται μόνο ἀπὸ ἐγκεκριμένες ανεξάρτητες ὀρθόδοξες πηγές.",
+        ),
         "translation_notice": loc("نصوص الكتاب المقدس من طبعة عربية مثبتة ومشكولة؛ ولا تُستخدم ترجمة آلية حرة للنص المقدس أو للقطع الليتورجية."),
         "translation_status": "source_native_only_or_unavailable",
         "language_content_mode": "THREE_INDEPENDENT_OFFICIAL_NATIVE_SOURCES",
@@ -1729,18 +1755,18 @@ def build_day(day: date) -> dict:
         "language_sources": {
             "ar": {
                 "policy": "native_official_source_only",
-                "primary": ["orthodox_jordan", "jerusalem_patriarchate", "antioch_patriarchate"],
+                "primary": ["orthodox_jordan", "jerusalem_patriarchate_ar"],
                 "translation_allowed": False,
             },
             "el": {
                 "policy": "native_official_source_only",
-                "primary": ["church_of_greece_apostoliki_diakonia"],
-                "fallback": ["goarch_digital_chant_stand"],
+                "primary": ["jerusalem_patriarchate_el", "church_of_greece_apostoliki_diakonia", "church_of_greece_ecclesia"],
+                "fallback": ["goarch_digital_chant_stand_greek"],
                 "translation_allowed": False,
             },
             "en": {
                 "policy": "native_official_source_only",
-                "primary": ["goarch_online_chapel", "goarch_digital_chant_stand"],
+                "primary": ["jerusalem_patriarchate_en", "goarch_online_chapel", "goarch_digital_chant_stand_english"],
                 "translation_allowed": False,
             },
         },
@@ -1756,7 +1782,11 @@ def build_day(day: date) -> dict:
             "status": "BLOCKED_PENDING_OFFICIAL_SOURCE_GATE",
             "human_review_required": False,
             "fail_closed": True,
-            "source_priority": ["orthodox_jordan", "jerusalem_patriarchate", "antioch_patriarchate", "official_greek_orthodox", "orthodox_church_in_america"],
+            "source_priority": [
+                "orthodox_jordan",
+                "jerusalem_patriarchate",
+                "official_greek_orthodox",
+            ],
             "selected_source": None,
             "fallback_trace": [],
         },
@@ -1772,12 +1802,9 @@ def build_day(day: date) -> dict:
         },
         "recommended_services": [
             "divine_liturgy",
-            "vespers",
-            "orthros",
             "morning_prayer",
             "evening_prayer",
             "small_compline",
-            "next_sunday_full_liturgy",
         ],
         "services": [
             today_service,

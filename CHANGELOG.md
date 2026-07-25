@@ -1,3 +1,14 @@
+## Follow-along Liturgy scope and dual daily updates
+
+- Make the believer-facing Home screen open one continuous full Liturgy directly.
+- Compose available native Communion preparation with the fixed Liturgy without duplicating source text.
+- Add an official-only Matins Gospel daily slot that stays hidden when its native source text is unavailable.
+- Highlight source-marked silent prayers for the priest and faithful and add jumps for both Entrances, readings, Communion, and dismissal.
+- Schedule signed refreshes at 01:00 and 06:00 Asia/Amman, with missed-window catch-up on app open.
+- Prevent a later same-day revision from deleting already accepted readings or Liturgy propers, both in publication and on device.
+- Keep Arabic, English, and Greek text lanes independent with no translation or cross-language fallback.
+- Remove OCR separator artifacts from the imported English and Greek Communion text.
+
 ## 5.0.15 R19.2 — Compound Scripture reference hotfix
 
 - Accept ordered semicolon-separated canonical spans from the same Bible book.

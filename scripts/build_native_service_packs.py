@@ -29,6 +29,7 @@ NATIVE_SOURCE_NOTICES = {
 
 DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
     "ar": {
+        "[إنجيل السَحَر المعيّن لهذا اليوم]": ("matins_gospel", "replace", "القارئ"),
         "[طروبارية اليوم]": ("daily_troparion", "replace", "المرتل"),
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": ("church_troparion", "replace", "المرتل"),
         "[القنداق]": ("daily_kontakion", "replace", "المرتل"),
@@ -38,6 +39,7 @@ DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
         "[آية المناولة]": ("communion_hymn", "replace", "المرتل"),
     },
     "en": {
+        "[Matins Gospel appointed for today]": ("matins_gospel", "replace", "Reader"),
         "(The Bishop and all the Clergy enter the Sanctuary. The Apolytikia of the day, the Troparion of the Church and the Kontakion are sung.)":
             ("daily_hymns", "after", "Chanter"),
         "(The Reader reads the verses from the Psalms.)": ("prokeimenon", "after", "Reader"),
@@ -45,6 +47,7 @@ DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
         "(The Deacon reads the designated text of the Holy Gospel.)": ("gospel", "after", "Deacon"),
     },
     "el": {
+        "[Τὸ Ἑωθινὸν Εὐαγγέλιον τῆς ἡμέρας]": ("matins_gospel", "replace", "Ἀναγνώστης"),
         "(Ὁ Ἀρχιερεύς μεθ’ ὅλου τοῦ Ἱερατείου εἰσέρχονται εἰς τό ἅγιον Βῆμα. Ψάλλονται δέ, τὰ ἀπολυτίκια τῆς ἡμέρας, τό τροπάριον τοῦ ναοῦ καί τό κοντάκιον).":
             ("daily_hymns", "after", "Ψάλτης"),
         "(Ὁ Ἀναγνώστης τό Προκείμενον τοῦ Ἀποστόλου).": ("prokeimenon", "after", "Ἀναγνώστης"),
@@ -52,6 +55,24 @@ DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
             ("epistle", "after", "Ἀναγνώστης"),
         "Δόξα σοι, Κύριε, Δόξα σοι. Ὁ Διάκονος ἀναγινώσκει τὴν τεταγμένην περικοπὴν τοῦ ἁγίου Εὐαγγελίου.":
             ("gospel", "after", "Διάκονος"),
+    },
+}
+
+MATINS_GOSPEL_FRONT_MATTER = {
+    "ar": {
+        "title": "إنجيل السَحَر قبل القداس",
+        "speaker": "القارئ",
+        "marker": "[إنجيل السَحَر المعيّن لهذا اليوم]",
+    },
+    "en": {
+        "title": "MATINS GOSPEL BEFORE THE LITURGY",
+        "speaker": "Reader",
+        "marker": "[Matins Gospel appointed for today]",
+    },
+    "el": {
+        "title": "ΤΟ ΕΩΘΙΝΟΝ ΕΥΑΓΓΕΛΙΟΝ ΠΡΟ ΤΗΣ ΘΕΙΑΣ ΛΕΙΤΟΥΡΓΙΑΣ",
+        "speaker": "Ἀναγνώστης",
+        "marker": "[Τὸ Ἑωθινὸν Εὐαγγέλιον τῆς ἡμέρας]",
     },
 }
 
@@ -72,6 +93,25 @@ def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
     """
     if service.get("id") != "divine_liturgy":
         return
+    front = MATINS_GOSPEL_FRONT_MATTER[lang]
+    segments = service.setdefault("segments", [])
+    if not any(
+        isinstance(segment, dict) and segment.get("dynamic_slot") == "matins_gospel"
+        for segment in segments
+    ):
+        segments[0:0] = [
+            {
+                "type": "section",
+                "follow_along_phase": "matins_gospel",
+                "title": {key: front["title"] if key == lang else "" for key in LANGS},
+            },
+            {
+                "type": "text",
+                "follow_along_phase": "matins_gospel",
+                "speaker": {key: front["speaker"] if key == lang else "" for key in LANGS},
+                "text": {key: front["marker"] if key == lang else "" for key in LANGS},
+            },
+        ]
     anchors = DYNAMIC_SLOT_ANCHORS[lang]
     found: set[str] = set()
     inline_found = False
@@ -95,7 +135,8 @@ def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
             segment["dynamic_inline_marker"] = marker
             inline_found = True
 
-    required = {"daily_hymns", "prokeimenon", "epistle", "gospel"} if lang != "ar" else {
+    required = {"matins_gospel", "daily_hymns", "prokeimenon", "epistle", "gospel"} if lang != "ar" else {
+        "matins_gospel",
         "daily_troparion", "church_troparion", "daily_kontakion",
         "prokeimenon", "epistle", "gospel",
     }
@@ -103,6 +144,45 @@ def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
     if missing or not inline_found:
         detail = ", ".join(missing) if missing else "gospel_evangelist_name"
         raise SystemExit(f"divine_liturgy.{lang}: dynamic slot anchor missing: {detail}")
+
+
+def annotate_delivery(service: dict[str, Any], lang: str) -> None:
+    """Mark only silence explicitly stated by the native source text."""
+    if service.get("id") != "divine_liturgy":
+        return
+    for segment in service.get("segments") or []:
+        if not isinstance(segment, dict):
+            continue
+        speaker_obj = segment.get("speaker")
+        text_obj = segment.get("text")
+        speaker = str(speaker_obj.get(lang) or "") if isinstance(speaker_obj, dict) else ""
+        text = str(text_obj.get(lang) or "") if isinstance(text_obj, dict) else ""
+        combined = f"{speaker}\n{text}".casefold()
+        silent = (
+            ("سراً" in combined or "بصوت هادئ" in combined)
+            if lang == "ar"
+            else (
+                "silently" in combined or "in a low voice" in combined
+                if lang == "en"
+                else (
+                    "χαμηλοφώνως".casefold() in combined
+                    or "κατ’ἰδίαν".casefold() in combined
+                )
+            )
+        )
+        if not silent:
+            continue
+        faithful = (
+            ("الشعب" in speaker)
+            if lang == "ar"
+            else (
+                "those who will receive holy communion" in combined
+                if lang == "en"
+                else "ὃσους θα μεταλάβουν".casefold() in combined
+            )
+        )
+        segment["delivery"] = "silent"
+        segment["delivery_actor"] = "faithful" if faithful else "priest"
 
 
 def localized_for_language(value: Any, lang: str) -> Any:
@@ -203,6 +283,7 @@ def main() -> None:
                         for key in LANGS
                     }
             annotate_dynamic_slots(service, lang)
+            annotate_delivery(service, lang)
             service.pop("translation_status", None)
             service["source_language"] = lang
             service["content_mode"] = "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY"

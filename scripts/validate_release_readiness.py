@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Block a production release until daily Scripture is complete and verifiable.
+"""Block a production release until the focused daily app is complete and verifiable.
 
-A release may use an imported official corpus or a registered public-domain native
-corpus. The official Orthodox calendar remains the authority for the appointed
-reference; the independent corpus supplies only the exact same-language Bible text.
+The release target is the compact follow-along Liturgy, daily prayers, and exact
+same-language Scripture—not a complete library of every Orthodox service book.
 """
 from __future__ import annotations
 
@@ -42,20 +41,16 @@ def main() -> None:
     )
     if result.returncode != 0:
         errors.append("Native service packs are incomplete:\n" + (result.stdout + result.stderr).strip())
-    religious = subprocess.run(
-        [
-            sys.executable,
-            "scripts/validate_religious_completeness.py",
-            "--require-production-complete",
-        ],
+    focused = subprocess.run(
+        [sys.executable, "scripts/validate_follow_along_liturgy.py"],
         cwd=ROOT,
         text=True,
         capture_output=True,
     )
-    if religious.returncode != 0:
+    if focused.returncode != 0:
         errors.append(
-            "Required Orthodox services are not religiously complete:\n"
-            + (religious.stdout + religious.stderr).strip()
+            "The focused follow-along Liturgy profile is incomplete:\n"
+            + (focused.stdout + focused.stderr).strip()
         )
 
     contract = load_contract()

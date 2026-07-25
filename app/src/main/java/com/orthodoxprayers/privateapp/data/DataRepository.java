@@ -389,7 +389,8 @@ public final class DataRepository {
             JSONObject index = searchIndex();
             selected = index == null ? null : findServiceInArray(index.optJSONArray("reader_services"), id);
         }
-        return resolveService(selected);
+        JSONObject resolved = resolveService(selected);
+        return isFollowAlongLiturgy(resolved) ? composeFollowAlongLiturgy(resolved) : resolved;
     }
 
     public ArrayList<JSONObject> servicesByCategory(String category) {
@@ -698,6 +699,12 @@ public final class DataRepository {
             if (!translationError.isEmpty()) throw new IllegalStateException(translationError);
             // Defense in depth: strict payloads should be unchanged by this sanitizer.
             VerifiedContentSanitizer.sanitize(parsed);
+            String regression = DailySnapshotRegressionGuard.firstRegression(
+                    today,
+                    parsed,
+                    preferences.effectiveLanguage()
+            );
+            if (!regression.isEmpty()) throw new IllegalStateException(regression);
 
             dataStore.saveVerified(jsonBytes, signatureBytes);
             String newEtag = connection.getHeaderField("ETag");
@@ -1060,7 +1067,25 @@ public final class DataRepository {
     private JSONObject resolveService(JSONObject service) {
         if (service == null) return null;
         String baseId = service.optString("extends_service_id", "").trim();
-        if (baseId.isEmpty()) return service;
+        if (baseId.isEmpty()) {
+            try {
+                JSONObject resolved = new JSONObject(service.toString());
+                JSONArray segments = service.optJSONArray("segments");
+                if (segments == null) return resolved;
+                JSONArray resolvedSegments = applyDynamicSlotReplacements(
+                        new JSONArray(segments.toString()),
+                        null,
+                        null,
+                        preferences.effectiveLanguage()
+                );
+                pruneUnresolvedOrEmptySegments(resolvedSegments);
+                resolved.put("segments", resolvedSegments);
+                return resolved;
+            } catch (Exception error) {
+                Log.w(TAG, "Could not resolve static dynamic slots " + service.optString("id"), error);
+                return service;
+            }
+        }
 
         JSONObject base = findServiceInArray(library().optJSONArray("services"), baseId);
         if (base == null) return service;
@@ -1110,6 +1135,83 @@ public final class DataRepository {
         }
     }
 
+    private static boolean isFollowAlongLiturgy(JSONObject service) {
+        if (service == null) return false;
+        return "divine_liturgy".equals(service.optString("id", ""))
+                || "divine_liturgy".equals(service.optString("composed_from", ""));
+    }
+
+    /**
+     * Builds one continuous reader without duplicating any religious text in assets.
+     *
+     * The optional Communion preparation and thanksgiving services are inserted only
+     * when the selected native-language pack actually contains prayer text. A status
+     * note from another language is never used as a substitute.
+     */
+    private JSONObject composeFollowAlongLiturgy(JSONObject liturgy) {
+        if (liturgy == null || liturgy.optBoolean("follow_along_composed", false)) return liturgy;
+        try {
+            JSONObject result = new JSONObject(liturgy.toString());
+            JSONArray merged = new JSONArray();
+            String language = preferences.effectiveLanguage();
+
+            JSONObject preparation = findServiceInArray(
+                    library().optJSONArray("services"),
+                    "pre_communion_prayers"
+            );
+            if (hasNativePrayerText(preparation, language)) {
+                merged.put(followAlongSection(
+                        "الاستعداد قبل القداس والمناولة",
+                        "Preparation before the Liturgy and Holy Communion",
+                        "Προετοιμασία πρὸ τῆς Θείας Λειτουργίας καὶ Μεταλήψεως"
+                ));
+                appendSegments(merged, preparation.optJSONArray("segments"));
+            }
+
+            appendSegments(merged, liturgy.optJSONArray("segments"));
+
+            JSONObject thanksgiving = findServiceInArray(
+                    library().optJSONArray("services"),
+                    "thanksgiving_after_communion"
+            );
+            if (hasNativePrayerText(thanksgiving, language)) {
+                merged.put(followAlongSection(
+                        "صلوات الشكر بعد المناولة",
+                        "Thanksgiving prayers after Holy Communion",
+                        "Εὐχαριστήριες εὐχὲς μετὰ τὴν Θείαν Μετάληψιν"
+                ));
+                appendSegments(merged, thanksgiving.optJSONArray("segments"));
+            }
+
+            result.put("segments", merged);
+            result.put("follow_along_composed", true);
+            result.put("follow_along_mode", "ONE_CONTINUOUS_NATIVE_LANGUAGE_SERVICE");
+            return result;
+        } catch (Exception error) {
+            Log.w(TAG, "Could not compose follow-along Liturgy", error);
+            return liturgy;
+        }
+    }
+
+    private static boolean hasNativePrayerText(JSONObject service, String language) {
+        JSONArray segments = service == null ? null : service.optJSONArray("segments");
+        if (segments == null) return false;
+        for (int i = 0; i < segments.length(); i++) {
+            JSONObject segment = segments.optJSONObject(i);
+            if (segment == null || !"text".equals(segment.optString("type", "text"))) continue;
+            JSONObject text = segment.optJSONObject("text");
+            if (text != null && !text.optString(language, "").trim().isEmpty()) return true;
+        }
+        return false;
+    }
+
+    private static JSONObject followAlongSection(String ar, String en, String el) throws Exception {
+        return new JSONObject()
+                .put("type", "section")
+                .put("follow_along_phase", true)
+                .put("title", new JSONObject().put("ar", ar).put("en", en).put("el", el));
+    }
+
     private static void applySegmentReplacements(JSONArray segments, JSONObject exact, JSONObject inline) {
         if (segments == null) return;
         for (int i = 0; i < segments.length(); i++) {
@@ -1132,11 +1234,13 @@ public final class DataRepository {
             JSONObject copy = new JSONObject(segment.toString());
             String inlineSlot = copy.optString("dynamic_inline_slot", "");
             String inlineMarker = copy.optString("dynamic_inline_marker", "");
-            if (!inlineSlot.isEmpty() && !inlineMarker.isEmpty() && inlineReplacements != null) {
-                JSONObject replacement = inlineReplacements.optJSONObject(inlineSlot);
+            if (!inlineSlot.isEmpty() && !inlineMarker.isEmpty()) {
+                JSONObject replacement = inlineReplacements == null
+                        ? null : inlineReplacements.optJSONObject(inlineSlot);
                 JSONObject text = copy.optJSONObject("text");
                 String current = text == null ? "" : text.optString(language, "");
                 String selected = replacement == null ? "" : replacement.optString(language, "").trim();
+                if (selected.isEmpty()) selected = defaultInlineSlotValue(inlineSlot, language);
                 if (!current.isEmpty() && !selected.isEmpty()) {
                     text.put(language, current.replace(inlineMarker, selected));
                 }
@@ -1162,6 +1266,13 @@ public final class DataRepository {
             }
         }
         return output;
+    }
+
+    private static String defaultInlineSlotValue(String slot, String language) {
+        if (!"gospel_evangelist_name".equals(slot)) return "";
+        if ("en".equals(language)) return "Evangelist";
+        if ("el".equals(language)) return "Εὐαγγελιστής";
+        return "الإنجيلي";
     }
 
     /**

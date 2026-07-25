@@ -7,11 +7,13 @@ REQUIRED = {
     "app/build.gradle.kts": ('versionName = "5.0.13"', "versionCode = 50013"),
     "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R17"', "validate_publication_consistency.py"),
     "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java": (
-        "DAILY_REFRESH_MINUTE = 5",
+        "FIRST_REFRESH_HOUR = 1",
+        "SECOND_REFRESH_HOUR = 6",
         "scheduleDailyRefresh",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/update/RefreshPolicy.java": (
-        "SAME_DAY_RECHECK_INTERVAL_MS",
+        "firstWindow",
+        "secondWindow",
         "shouldCheckRemoteOnResume",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java": (

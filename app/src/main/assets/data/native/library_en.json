@@ -1073,6 +1073,36 @@
       },
       "segments": [
         {
+          "type": "section",
+          "follow_along_phase": "matins_gospel",
+          "title": {
+            "ar": "",
+            "el": "",
+            "en": "MATINS GOSPEL BEFORE THE LITURGY"
+          }
+        },
+        {
+          "type": "text",
+          "follow_along_phase": "matins_gospel",
+          "speaker": {
+            "ar": "",
+            "el": "",
+            "en": "Reader"
+          },
+          "text": {
+            "ar": "",
+            "el": "",
+            "en": "[Matins Gospel appointed for today]"
+          },
+          "dynamic_slot": "matins_gospel",
+          "dynamic_slot_mode": "replace",
+          "dynamic_slot_speaker": {
+            "ar": "",
+            "el": "",
+            "en": "Reader"
+          }
+        },
+        {
           "type": "text",
           "speaker": {
             "ar": "",
@@ -2883,7 +2913,9 @@
             "el": "",
             "en": "(While the Cherubic Hymn is being sung, the Bishop or the Priest prays in a low voice.)"
           },
-          "collapsed_by_default": true
+          "collapsed_by_default": true,
+          "delivery": "silent",
+          "delivery_actor": "priest"
         },
         {
           "type": "text",
@@ -2910,7 +2942,9 @@
             "el": "",
             "en": "(The Bishop or the Priest censes and recites in a low voice:) Having beheld the resurrection of Christ, let us worship the Holy Lord Jesus, the only sinless one. We venerate your Cross, O Christ, and we praise and glorify your Holy Resurrection. You are our God. We know no other than You, and we call upon your Name. Come, all faithful, let us venerate the Holy Resurrection of Christ. For behold, through the Cross, joy has come to all the world. Blessing the Lord always, let us praise His Resurrection. For enduring the Cross for us, He destroyed death by death."
           },
-          "collapsed_by_default": true
+          "collapsed_by_default": true,
+          "delivery": "silent",
+          "delivery_actor": "priest"
         },
         {
           "type": "note",
@@ -4599,7 +4633,9 @@
             "el": "",
             "en": "(The Bishop or the Priest breaks the Consecrated Bread saying in a low voice:) The Lamb of God is broken and distributed; broken but not divided. He is forever eaten yet is never consumed, but He sanctifies those who partake of Him."
           },
-          "collapsed_by_default": true
+          "collapsed_by_default": true,
+          "delivery": "silent",
+          "delivery_actor": "priest"
         },
         {
           "type": "note",
@@ -4639,7 +4675,7 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "(And the Deacon, pouring the water into the Cup crosswise, says:) The warmth of the Holy Spirit. Amen. ******"
+            "en": "(And the Deacon, pouring the water into the Cup crosswise, says:) The warmth of the Holy Spirit. Amen."
           },
           "collapsed_by_default": true
         },
@@ -4653,9 +4689,11 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "(The Communion Prayers are recited silently by those who will receive Holy Communion.) I believe and confess, Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am the first. I also believe that this is truly your pure Body and that this is truly your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, known and unknown. And make me worthy without condemnation to partake of your Mysteries for the forgiveness of sins and for life eternal. Amen. How shall I, who am unworthy, enter into the splendour of your Saints? If I dare to enter into the bridal chamber, my clothing will accuse me, since it is not a wedding garment; and being bound up, I shall be cast out by the Angels. In your love, Lord, cleanse my soul and save me. Loving Master, Lord Jesus Christ, my God, let not these Holy Gifts be to my condemnation because of my unworthiness, but for the cleansing and sanctification of soul and body and the pledge of the future life and Kingdom. It is good for me to cling to God and to place in Him the hope of my salvation. Receive me today, Son of God, as a partaker of your Mystical Supper. I will not reveal your Mystery to your adversaries. Nor will I give You a kiss as did Judas. But as the thief I confess to You: Lord remember me in your Kingdom. ******"
+            "en": "(The Communion Prayers are recited silently by those who will receive Holy Communion.) I believe and confess, Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am the first. I also believe that this is truly your pure Body and that this is truly your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, known and unknown. And make me worthy without condemnation to partake of your Mysteries for the forgiveness of sins and for life eternal. Amen. How shall I, who am unworthy, enter into the splendour of your Saints? If I dare to enter into the bridal chamber, my clothing will accuse me, since it is not a wedding garment; and being bound up, I shall be cast out by the Angels. In your love, Lord, cleanse my soul and save me. Loving Master, Lord Jesus Christ, my God, let not these Holy Gifts be to my condemnation because of my unworthiness, but for the cleansing and sanctification of soul and body and the pledge of the future life and Kingdom. It is good for me to cling to God and to place in Him the hope of my salvation. Receive me today, Son of God, as a partaker of your Mystical Supper. I will not reveal your Mystery to your adversaries. Nor will I give You a kiss as did Judas. But as the thief I confess to You: Lord remember me in your Kingdom."
           },
-          "collapsed_by_default": true
+          "collapsed_by_default": true,
+          "delivery": "silent",
+          "delivery_actor": "faithful"
         },
         {
           "type": "note",
@@ -4883,7 +4921,9 @@
             "el": "",
             "en": "(And he gives the vessels to the Deacon and says in a low voice:) Blessed is our God,"
           },
-          "collapsed_by_default": true
+          "collapsed_by_default": true,
+          "delivery": "silent",
+          "delivery_actor": "priest"
         },
         {
           "type": "note",
@@ -5307,8 +5347,8 @@
         "machine_translation_used": false
       },
       "native_content_status": {
-        "filled_fields": 634,
-        "total_fields": 634,
+        "filled_fields": 638,
+        "total_fields": 638,
         "complete": true
       },
       "native_source": {
@@ -5319,7 +5359,7 @@
         "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "5dfcfab856de2c0231ce05b4c45e46588b81b760fde95183a666db6a1d09a71c",
+        "content_sha256": "9dcbb3780467c014a79b049c7712c99e983f858d81024e8a854703b021faa46d",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -5601,8 +5641,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 774,
-    "total_fields": 774,
+    "filled_fields": 778,
+    "total_fields": 778,
     "percent": 100.0,
     "complete": true
   }

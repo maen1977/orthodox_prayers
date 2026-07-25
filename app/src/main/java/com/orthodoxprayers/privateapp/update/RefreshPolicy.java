@@ -1,11 +1,15 @@
 package com.orthodoxprayers.privateapp.update;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
 
 /** Pure decision logic for daily refresh behavior and safe network throttling. */
 public final class RefreshPolicy {
     static final long STALE_RETRY_INTERVAL_MS = TimeUnit.MINUTES.toMillis(30);
-    static final long SAME_DAY_RECHECK_INTERVAL_MS = TimeUnit.MINUTES.toMillis(30);
+    private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
 
     private RefreshPolicy() {}
 
@@ -36,7 +40,24 @@ public final class RefreshPolicy {
     ) {
         if (refreshing) return false;
         if (lastAttempt <= 0L) return true;
-        long age = Math.max(0L, now - lastAttempt);
-        return age >= SAME_DAY_RECHECK_INTERVAL_MS;
+        if (lastAttempt > now) return false;
+
+        ZonedDateTime ammanNow = Instant.ofEpochMilli(now).atZone(AMMAN_ZONE);
+        LocalDate today = ammanNow.toLocalDate();
+        ZonedDateTime firstWindow = today
+                .atTime(UpdateCoordinator.FIRST_REFRESH_HOUR, 0)
+                .atZone(AMMAN_ZONE);
+        ZonedDateTime secondWindow = today
+                .atTime(UpdateCoordinator.SECOND_REFRESH_HOUR, 0)
+                .atZone(AMMAN_ZONE);
+        Instant attemptedAt = Instant.ofEpochMilli(lastAttempt);
+
+        if (!ammanNow.isBefore(secondWindow)) {
+            return attemptedAt.isBefore(secondWindow.toInstant());
+        }
+        if (!ammanNow.isBefore(firstWindow)) {
+            return attemptedAt.isBefore(firstWindow.toInstant());
+        }
+        return false;
     }
 }

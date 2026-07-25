@@ -19,9 +19,13 @@ class R17UpdateReliabilityTests(unittest.TestCase):
         self.assertNotIn("SCHEDULE_EXACT_ALARM", manifest)
         self.assertIn(".update.MidnightUpdateReceiver", manifest)
         self.assertNotIn("AlarmManager", coordinator)
-        self.assertIn("DAILY_REFRESH_MINUTE = 5", coordinator)
+        self.assertIn("FIRST_REFRESH_HOUR = 1", coordinator)
+        self.assertIn("SECOND_REFRESH_HOUR = 6", coordinator)
+        self.assertIn("INITIAL_SCHEDULE_WORK", coordinator)
+        self.assertIn("SUPPLEMENTAL_SCHEDULE_WORK", coordinator)
         self.assertIn("NetworkType.CONNECTED", coordinator)
-        self.assertIn("SAME_DAY_RECHECK_INTERVAL_MS", policy)
+        self.assertIn("firstWindow", policy)
+        self.assertIn("secondWindow", policy)
 
     def test_signed_manifest_scripts_round_trip_with_a_test_key(self):
         date_iso = json.loads((ROOT / "data/calendar/today.json").read_text(encoding="utf-8"))["date_iso"]

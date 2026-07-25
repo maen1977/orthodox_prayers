@@ -40,7 +40,13 @@ class R14HomeCleanupTests(unittest.TestCase):
             self.assertNotIn(hidden, home)
         for route in ('case "search"', 'case "favorites"', 'case "calendar"', 'case "language_packs"'):
             self.assertIn(route, main)
-        for retained in ("القراءات", "الصلوات", "آخر قراءة", "الأيام القادمة", "الإعدادات"):
+        for retained in (
+            "قداس اليوم الكامل",
+            "القراءات اليومية",
+            "الصلوات اليومية",
+            "البث المباشر",
+            "الإعدادات",
+        ):
             self.assertIn(retained, home)
 
     def test_fasting_days_show_explicit_food_symbols(self):

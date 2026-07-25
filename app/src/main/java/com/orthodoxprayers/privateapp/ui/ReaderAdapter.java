@@ -118,6 +118,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
             notifyItemChanged(position);
         });
         card.addView(toggle);
+        addDeliveryBadge(card, segment);
         if (expanded) {
             LocalizedValue value = data.localizedValue(segment.optJSONObject("text"), "");
             TextView body = ui.body(value.text, true);
@@ -141,6 +142,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
             TextView speakerView = ui.text(speaker, 14, ThemePalette.GOLD, true);
             card.addView(speakerView);
         }
+        addDeliveryBadge(card, segment);
         LocalizedValue value = data.localizedValue(segment.optJSONObject("text"), "");
         TextView body = ui.body(value.text, rubric);
         body.setTextColor(readerPrimaryText());
@@ -167,6 +169,25 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         }
         card.setContentDescription((speaker.isEmpty() ? "" : speaker + ". ") + value.text);
         container.addView(card, new LinearLayout.LayoutParams(-1, -2));
+    }
+
+    private void addDeliveryBadge(LinearLayout card, JSONObject segment) {
+        if (!"silent".equals(segment.optString("delivery", ""))) return;
+        boolean faithful = "faithful".equals(segment.optString("delivery_actor", ""));
+        String label = faithful
+                ? data.local(
+                        "المؤمن — يقولها سراً",
+                        "Faithful — said silently",
+                        "Πιστός — κατ’ ἰδίαν"
+                )
+                : data.local(
+                        "الكاهن — يقولها سراً",
+                        "Priest — said quietly",
+                        "Ἱερεύς — χαμηλοφώνως"
+                );
+        TextView badge = ui.infoBadge(label);
+        badge.setContentDescription(label);
+        card.addView(badge, ui.margins(-1, -2, 0, 3, 0, 4));
     }
 
     private String originalText(JSONObject object) {
