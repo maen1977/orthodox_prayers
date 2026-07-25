@@ -1,5 +1,7 @@
 ## Follow-along Liturgy scope and dual daily updates
 
+- Fix Android unit-test compilation by explicitly handling checked `JSONException`
+  calls in `DailySnapshotRegressionGuardTest`.
 - Make the believer-facing Home screen open one continuous full Liturgy directly.
 - Compose available native Communion preparation with the fixed Liturgy without duplicating source text.
 - Add an official-only Matins Gospel daily slot that stays hidden when its native source text is unavailable.

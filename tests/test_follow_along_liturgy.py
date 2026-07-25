@@ -38,6 +38,22 @@ class FollowAlongLiturgyTests(unittest.TestCase):
             contract["religious_text_rules"]["cross_language_fallback"]
         )
 
+    def test_android_regression_guard_test_handles_checked_json_exceptions(self):
+        source = (
+            ROOT
+            / "app/src/test/java/com/orthodoxprayers/privateapp/data/"
+            "DailySnapshotRegressionGuardTest.java"
+        ).read_text(encoding="utf-8")
+        self.assertIn("import org.json.JSONException;", source)
+        for method in (
+            "acceptsASecondWindowThatAddsMatinsGospel() throws JSONException",
+            "rejectsASecondWindowThatDropsAcceptedReadingText() throws JSONException",
+            "doesNotCompareDifferentDates() throws JSONException",
+            "day(JSONObject... readings) throws JSONException",
+            "localized(String value) throws JSONException",
+        ):
+            self.assertIn(method, source)
+
 
 if __name__ == "__main__":
     unittest.main()
