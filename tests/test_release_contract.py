@@ -203,8 +203,7 @@ class ReleaseContractTests(unittest.TestCase):
     def test_reader_uses_stable_sibling_layout_and_preserves_exact_position(self):
         reader = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReaderScreen.java").read_text(encoding="utf-8")
         preferences = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/AppPreferences.java").read_text(encoding="utf-8")
-        policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/ReaderControlsPolicy.java").read_text(encoding="utf-8")
-        policy_test = (ROOT / "app/src/test/java/com/orthodoxprayers/privateapp/ui/ReaderControlsPolicyTest.java").read_text(encoding="utf-8")
+        app = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/OrthodoxPrayersApp.java").read_text(encoding="utf-8")
 
         self.assertIn("LinearLayout root = new LinearLayout", reader)
         self.assertIn("root.addView(controlsPanel", reader)
@@ -221,11 +220,16 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("migrateReaderLayoutState(READER_LAYOUT_VERSION)", reader)
         self.assertIn("reader_offset_", preferences)
         self.assertIn("reader_layout_version", preferences)
-        self.assertIn("AUTO_COLLAPSE_DISTANCE_DP", reader)
-        self.assertIn("AUTO_EXPAND_DISTANCE_DP", reader)
-        self.assertIn("enum Action", policy)
-        self.assertIn("collapsesOnlyAfterEnoughUserScroll", policy_test)
-        self.assertIn("expandsOnlyAfterDeliberateReverseScroll", policy_test)
+        self.assertIn("عرض أدوات القراءة", reader)
+        self.assertIn("إخفاء أدوات القراءة", reader)
+        self.assertIn("reloadReader()", reader)
+        self.assertIn("if (!reloadingReader) preferences.setReaderControlsExpanded(false)", reader)
+        self.assertIn("preferences.setReaderControlsExpanded(false)", app)
+        self.assertIn('getBoolean("reader_controls_expanded", false)', preferences)
+        self.assertNotIn("AUTO_COLLAPSE_DISTANCE_DP", reader)
+        self.assertNotIn("AUTO_EXPAND_DISTANCE_DP", reader)
+        self.assertNotIn("handleReaderScroll", reader)
+        self.assertNotIn("ReaderControlsPolicy", reader)
 
     def test_reader_ui_smoke_test_covers_blank_viewport_and_controls_toggle(self):
         smoke = (ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java").read_text(encoding="utf-8")
@@ -234,7 +238,7 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("Reader reserves too much blank top padding", smoke)
         self.assertIn('assertReader(scenario, "divine_liturgy", 200)', smoke)
         self.assertIn('assertReader(scenario, "next_sunday_full_liturgy", 200)', smoke)
-        self.assertIn("Collapsing controls should not reduce the reading area", smoke)
+        self.assertIn("Hiding controls should restore the reading area", smoke)
         self.assertIn('testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"', build)
         self.assertIn("androidTestImplementation", build)
 

@@ -1,6 +1,12 @@
 package com.orthodoxprayers.privateapp.ui;
 
-/** Pure scroll-state policy used by ReaderScreen and covered by unit tests. */
+/**
+ * Legacy compatibility helper retained for source overlays.
+ *
+ * <p>{@code ReaderScreen} intentionally does not use this policy anymore:
+ * reader controls are changed only by the explicit show/hide handle.</p>
+ */
+@Deprecated
 public final class ReaderControlsPolicy {
     public enum Action { NONE, COLLAPSE, EXPAND }
 

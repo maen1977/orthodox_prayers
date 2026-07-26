@@ -1,5 +1,14 @@
 ## Follow-along Liturgy scope and dual daily updates
 
+- Restore the important Home shortcuts for readings, prayers, calendar and fasting,
+  seven-day outlook, churches and live services, search, favorites, history,
+  languages, and settings.
+- Restore a compact seven-day fasting/no-fast table on Home, with each row opening
+  its matching calendar day.
+- Open every reader with its controls hidden and let the believer show or hide them
+  only through the explicit control handle; ordinary scrolling never changes them.
+- Preserve the exact reading position when controls are shown, hidden, or rebuilt
+  after a reading-setting change.
 - Check the signed update manifest automatically whenever the app enters a new
   foreground session, not only after a missed 01:00 or 06:00 window.
 - Preserve an in-flight scheduled retry when the app opens after a publication

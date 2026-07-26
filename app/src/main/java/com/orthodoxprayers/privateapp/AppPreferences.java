@@ -160,7 +160,7 @@ public final class AppPreferences {
     }
 
 
-    public boolean readerControlsExpanded() { return values.getBoolean("reader_controls_expanded", true); }
+    public boolean readerControlsExpanded() { return values.getBoolean("reader_controls_expanded", false); }
     public void setReaderControlsExpanded(boolean value) { values.edit().putBoolean("reader_controls_expanded", value).apply(); }
 
     public void migrateReaderLayoutState(int targetVersion) {

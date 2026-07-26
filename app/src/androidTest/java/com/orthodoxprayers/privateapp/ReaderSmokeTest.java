@@ -39,28 +39,30 @@ public final class ReaderSmokeTest {
     }
 
     @Test
-    public void collapsingAndRestoringControlsNeverHidesReaderContent() {
+    public void manualShowAndHideControlsNeverHidesReaderContent() {
         try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
             scenario.onActivity(activity -> activity.navigate("reader", "next_sunday_full_liturgy"));
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
 
-            final int[] initialHeight = new int[1];
+            final int[] collapsedHeight = new int[1];
             scenario.onActivity(activity -> {
                 RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
                 assertReaderIsVisible(reader, 200);
-                initialHeight[0] = reader.getHeight();
-                TextView toggle = findTextContaining(activity.getWindow().getDecorView(), "إخفاء العنوان");
+                collapsedHeight[0] = reader.getHeight();
+                TextView toggle = findTextContaining(activity.getWindow().getDecorView(), "عرض أدوات القراءة");
                 assertNotNull("Reader controls toggle was not found", toggle);
                 toggle.performClick();
             });
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
 
+            final int[] expandedHeight = new int[1];
             scenario.onActivity(activity -> {
                 RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
                 assertReaderIsVisible(reader, 200);
-                assertTrue("Collapsing controls should not reduce the reading area", reader.getHeight() >= initialHeight[0]);
-                TextView toggle = findTextContaining(activity.getWindow().getDecorView(), "إظهار عنوان");
-                assertNotNull("Collapsed controls handle was not found", toggle);
+                expandedHeight[0] = reader.getHeight();
+                assertTrue("Showing controls should use only the available reading area", reader.getHeight() <= collapsedHeight[0]);
+                TextView toggle = findTextContaining(activity.getWindow().getDecorView(), "إخفاء أدوات القراءة");
+                assertNotNull("Expanded controls handle was not found", toggle);
                 toggle.performClick();
             });
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
@@ -68,6 +70,7 @@ public final class ReaderSmokeTest {
             scenario.onActivity(activity -> {
                 RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
                 assertReaderIsVisible(reader, 200);
+                assertTrue("Hiding controls should restore the reading area", reader.getHeight() >= expandedHeight[0]);
             });
         }
     }

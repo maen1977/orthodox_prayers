@@ -28,34 +28,35 @@ class R14HomeCleanupTests(unittest.TestCase):
         self.assertIn("عرض تفاصيل الأيام السبعة", home)
         self.assertIn("الأحد القادم", home)
 
-    def test_home_shortcuts_are_trimmed_but_routes_remain(self):
+    def test_important_home_shortcuts_are_visible_and_routes_remain(self):
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
-        for hidden in (
-            'local("بحث", "Search"',
-            'local("المفضلة", "Favorites"',
-            'local("التقويم", "Calendar"',
-            'local("حزم اللغات", "Language packs"',
-        ):
-            self.assertNotIn(hidden, home)
         for route in ('case "search"', 'case "favorites"', 'case "calendar"', 'case "language_packs"'):
             self.assertIn(route, main)
         for retained in (
             "قداس اليوم الكامل",
             "القراءات اليومية",
             "الصلوات اليومية",
-            "البث المباشر",
+            "التقويم والصيام",
+            "الأيام السبعة القادمة",
+            "الكنائس والبث المباشر",
+            "البحث",
+            "المفضلة",
+            "آخر قراءة",
+            "اللغات",
             "الإعدادات",
         ):
             self.assertIn(retained, home)
 
-    def test_fasting_days_show_explicit_food_symbols(self):
+    def test_home_shows_a_light_seven_day_fasting_table(self):
         base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
         self.assertIn("✓ مسموح   ✕ ممنوع", base)
         self.assertIn('!fasting.optBoolean("is_fast", false)', base)
-        self.assertIn("addCompactFastingItems(card, fasting)", home)
+        self.assertIn("جدول الصيام للأيام السبعة", home)
+        self.assertIn('host.navigate("calendar_day", date)', home)
+        self.assertIn('"calendar", null', home)
         self.assertIn("addCompactFastingItems(card, fasting)", upcoming)
 
     def test_settings_hide_call_and_privacy_actions_only(self):

@@ -88,7 +88,8 @@ class FastingGuidanceTests(unittest.TestCase):
         day = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
         self.assertIn("addFastingGuide", base)
         self.assertNotIn("تفاصيل صوم اليوم", home)
-        self.assertIn("addCompactFastingItems(card, fasting)", home)
+        self.assertIn("جدول الصيام للأيام السبعة", home)
+        self.assertIn('fasting.optJSONObject("title")', home)
         self.assertIn('addFastingGuide(card, fasting, false)', upcoming)
         self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), true)', day)
 

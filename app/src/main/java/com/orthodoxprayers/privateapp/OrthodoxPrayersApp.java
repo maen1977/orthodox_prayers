@@ -17,6 +17,8 @@ public final class OrthodoxPrayersApp extends Application {
     public void onCreate() {
         super.onCreate();
         preferences = new AppPreferences(this);
+        // A fresh app session always opens the reader at maximum reading space.
+        preferences.setReaderControlsExpanded(false);
         repository = new DataRepository(this, preferences);
         updateCoordinator = new UpdateCoordinator(this, preferences, repository);
         updateCoordinator.scheduleDailyRefresh();

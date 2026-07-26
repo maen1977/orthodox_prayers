@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 import com.orthodoxprayers.privateapp.ui.ReaderAdapter;
-import com.orthodoxprayers.privateapp.ui.ReaderControlsPolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.ThemePalette;
 
@@ -31,8 +30,6 @@ import java.util.List;
 
 public final class ReaderScreen extends BaseScreen {
     private static final int READER_LAYOUT_VERSION = 2;
-    private static final int AUTO_COLLAPSE_DISTANCE_DP = 64;
-    private static final int AUTO_EXPAND_DISTANCE_DP = 84;
 
     private final String serviceId;
     private RecyclerView recycler;
@@ -46,9 +43,7 @@ public final class ReaderScreen extends BaseScreen {
     private Button provenanceToggle;
     private Button liturgyNavigationToggle;
     private boolean controlsExpanded;
-    private boolean ignoreScrollUntilIdle;
-    private ReaderControlsPolicy controlsPolicy;
-    private int currentScrollState = RecyclerView.SCROLL_STATE_IDLE;
+    private boolean reloadingReader;
     private final Handler autoScrollHandler = new Handler(Looper.getMainLooper());
     private boolean autoScrollActive;
     private Button autoScrollButton;
@@ -92,11 +87,6 @@ public final class ReaderScreen extends BaseScreen {
 
         preferences.migrateReaderLayoutState(READER_LAYOUT_VERSION);
         controlsExpanded = preferences.readerControlsExpanded();
-        controlsPolicy = new ReaderControlsPolicy(
-                ui.dp(AUTO_COLLAPSE_DISTANCE_DP),
-                ui.dp(AUTO_EXPAND_DISTANCE_DP),
-                controlsExpanded
-        );
         adapter = new ReaderAdapter(ui, data, preferences, segments, service.optString("source_language", "ar"));
 
         applyReaderWindowPreferences();
@@ -136,17 +126,13 @@ public final class ReaderScreen extends BaseScreen {
         recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView rv, int dx, int dy) {
-                handleReaderScroll(dy);
                 updateReaderProgress();
             }
 
             @Override
             public void onScrollStateChanged(RecyclerView rv, int newState) {
-                currentScrollState = newState;
                 if (newState == RecyclerView.SCROLL_STATE_DRAGGING && autoScrollActive) stopAutoScroll(false);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    ignoreScrollUntilIdle = false;
-                    if (controlsPolicy != null) controlsPolicy.resetGesture();
                     saveReaderPosition();
                 }
             }
@@ -259,23 +245,7 @@ public final class ReaderScreen extends BaseScreen {
         if (count <= 0) return;
         int position = Math.max(0, Math.min(preferences.readerPosition(serviceId), count - 1));
         int offset = preferences.readerOffset(serviceId);
-        ignoreScrollUntilIdle = true;
         layoutManager.scrollToPositionWithOffset(position, offset);
-        recycler.post(() -> ignoreScrollUntilIdle = false);
-    }
-
-    private void handleReaderScroll(int dy) {
-        if (dy == 0 || ignoreScrollUntilIdle || controlsPolicy == null) return;
-        ReaderControlsPolicy.Action action = controlsPolicy.onScroll(
-                dy,
-                currentScrollState == RecyclerView.SCROLL_STATE_DRAGGING,
-                recycler != null && recycler.canScrollVertically(-1)
-        );
-        if (action == ReaderControlsPolicy.Action.COLLAPSE) {
-            setControlsExpanded(false, false);
-        } else if (action == ReaderControlsPolicy.Action.EXPAND) {
-            setControlsExpanded(true, false);
-        }
     }
 
     private void setControlsExpanded(boolean expanded, boolean userInitiated) {
@@ -283,8 +253,6 @@ public final class ReaderScreen extends BaseScreen {
         saveReaderPosition();
         controlsExpanded = expanded;
         preferences.setReaderControlsExpanded(expanded);
-        if (controlsPolicy != null) controlsPolicy.setExpanded(expanded);
-        ignoreScrollUntilIdle = true;
         applyControlsVisibility(userInitiated);
         if (recycler != null) {
             recycler.post(() -> {
@@ -308,14 +276,14 @@ public final class ReaderScreen extends BaseScreen {
         if (controlsHandle == null) return;
         String label = controlsExpanded
                 ? local(
-                        "⌃ إخفاء العنوان والأدوات لتوسيع مساحة القراءة",
-                        "⌃ Hide title and controls to expand reading space",
-                        "⌃ Κρύψε τίτλο καὶ ἐργαλεῖα"
+                        "⌃ إخفاء أدوات القراءة",
+                        "⌃ Hide reading controls",
+                        "⌃ Κρύψε τὰ ἐργαλεῖα ἀναγνώσεως"
                 )
                 : local(
-                        "⌄ إظهار عنوان وأدوات القراءة",
-                        "⌄ Show title and reading controls",
-                        "⌄ Ἐμφάνιση τίτλου καὶ ἐργαλείων"
+                        "⌄ عرض أدوات القراءة",
+                        "⌄ Show reading controls",
+                        "⌄ Ἐμφάνισε τὰ ἐργαλεῖα ἀναγνώσεως"
                 );
         controlsHandle.setText(label);
         controlsHandle.setContentDescription(label);
@@ -356,7 +324,7 @@ public final class ReaderScreen extends BaseScreen {
             if (!wasFavorite && preferences.isFavorite(serviceId)) {
                 preferences.setFavoriteFolder(serviceId, "liturgy".equals(service.optString("category")) ? "liturgy" : "daily");
             }
-            host.navigate("reader", serviceId);
+            reloadReader();
         });
         primary.addView(favorite, ui.weight(46));
 
@@ -364,7 +332,7 @@ public final class ReaderScreen extends BaseScreen {
         smaller.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setFontScale(preferences.fontScale() - 0.1f);
-            host.navigate("reader", serviceId);
+            reloadReader();
         });
         primary.addView(smaller, ui.weight(46));
 
@@ -372,7 +340,7 @@ public final class ReaderScreen extends BaseScreen {
         larger.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setFontScale(preferences.fontScale() + 0.1f);
-            host.navigate("reader", serviceId);
+            reloadReader();
         });
         primary.addView(larger, ui.weight(46));
 
@@ -382,7 +350,7 @@ public final class ReaderScreen extends BaseScreen {
         source.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setShowOriginal(!preferences.showOriginal());
-            host.navigate("reader", serviceId);
+            reloadReader();
         });
         primary.addView(source, ui.weight(46));
         box.addView(primary, new LinearLayout.LayoutParams(-1, -2));
@@ -394,7 +362,7 @@ public final class ReaderScreen extends BaseScreen {
                 : local("📍 تثبيت", "📍 Pin", "📍 Καρφίτσωμα"), preferences.isPinned(serviceId));
         pin.setOnClickListener(v -> {
             preferences.togglePinned(serviceId);
-            host.navigate("reader", serviceId);
+            reloadReader();
         });
         secondary.addView(pin, ui.weight(44));
 
@@ -407,7 +375,7 @@ public final class ReaderScreen extends BaseScreen {
             float next = preferences.lineSpacingMultiplier() >= 1.55f ? 1.0f : preferences.lineSpacingMultiplier() + 0.15f;
             preferences.setLineSpacingMultiplier(next);
             saveReaderPosition();
-            host.navigate("reader", serviceId);
+            reloadReader();
         });
         secondary.addView(spacing, ui.weight(44));
         box.addView(secondary, new LinearLayout.LayoutParams(-1, -2));
@@ -444,7 +412,7 @@ public final class ReaderScreen extends BaseScreen {
         int next = current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100;
         preferences.setReaderBrightnessPercent(next);
         applyReaderWindowPreferences();
-        host.navigate("reader", serviceId);
+        reloadReader();
     }
 
     private String readerThemeLabel() {
@@ -458,7 +426,7 @@ public final class ReaderScreen extends BaseScreen {
         String current = preferences.readerTheme();
         preferences.setReaderTheme("system".equals(current) ? "sepia" : "sepia".equals(current) ? "night" : "system");
         saveReaderPosition();
-        host.navigate("reader", serviceId);
+        reloadReader();
     }
 
     private void showNoteDialog() {
@@ -477,11 +445,11 @@ public final class ReaderScreen extends BaseScreen {
                 .setPositiveButton(local("حفظ", "Save", "Ἀποθήκευση"), (dialog, which) -> {
                     preferences.setServiceNote(serviceId, input.getText().toString());
                     Toast.makeText(host.activity(), local("تم حفظ الملاحظة محليًا", "Note saved locally", "Ἡ σημείωση ἀποθηκεύτηκε"), Toast.LENGTH_SHORT).show();
-                    host.navigate("reader", serviceId);
+                    reloadReader();
                 })
                 .setNeutralButton(local("حذف", "Delete", "Διαγραφή"), (dialog, which) -> {
                     preferences.setServiceNote(serviceId, "");
-                    host.navigate("reader", serviceId);
+                    reloadReader();
                 })
                 .setNegativeButton(local("إلغاء", "Cancel", "Ἀκύρωση"), null)
                 .show();
@@ -747,18 +715,18 @@ public final class ReaderScreen extends BaseScreen {
             ), Toast.LENGTH_SHORT).show();
             return;
         }
-        if (controlsExpanded) {
-            setControlsExpanded(false, false);
-            recycler.post(() -> performSectionJump(position));
-        } else {
-            performSectionJump(position);
-        }
+        performSectionJump(position);
     }
 
     private void performSectionJump(int position) {
         if (layoutManager == null || recycler == null) return;
         layoutManager.scrollToPositionWithOffset(position, 0);
         recycler.post(this::saveReaderPosition);
+    }
+
+    private void reloadReader() {
+        reloadingReader = true;
+        host.navigate("reader", serviceId);
     }
 
     private boolean isLiturgy() {
@@ -769,6 +737,7 @@ public final class ReaderScreen extends BaseScreen {
     public void onHidden() {
         stopAutoScroll(false);
         saveReaderPosition();
+        if (!reloadingReader) preferences.setReaderControlsExpanded(false);
         host.activity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         WindowManager.LayoutParams attributes = host.activity().getWindow().getAttributes();
         attributes.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE;

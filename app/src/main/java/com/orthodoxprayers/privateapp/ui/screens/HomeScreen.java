@@ -2,7 +2,6 @@ package com.orthodoxprayers.privateapp.ui.screens;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,6 +31,7 @@ public final class HomeScreen extends BaseScreen {
         }
         addDateCard(page.root);
         addQuickAccess(page.root);
+        addUpcoming(page.root);
         return page.scroll;
     }
 
@@ -120,9 +120,24 @@ public final class HomeScreen extends BaseScreen {
         add(root, first, 0, 0);
 
         LinearLayout second = ui.row();
-        addShortcut(second, "▶", local("البث المباشر", "Live services", "Ζωντανὰ"), "churches", null);
-        addShortcut(second, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
-        add(root, second, 0, 10);
+        addShortcut(second, "📅", local("التقويم والصيام", "Calendar and fasting", "Ἡμερολόγιο καὶ νηστεία"), "calendar", null);
+        addShortcut(second, "🗓", local("الأيام السبعة القادمة", "Next seven days", "Ἑπόμενες ἑπτὰ ἡμέρες"), "upcoming", null);
+        add(root, second, 0, 0);
+
+        LinearLayout third = ui.row();
+        addShortcut(third, "▶", local("الكنائس والبث المباشر", "Churches and live services", "Ναοὶ καὶ ζωντανὲς μεταδόσεις"), "churches", null);
+        addShortcut(third, "🔎", local("البحث", "Search", "Ἀναζήτηση"), "search", null);
+        add(root, third, 0, 0);
+
+        LinearLayout fourth = ui.row();
+        addShortcut(fourth, "⭐", local("المفضلة", "Favorites", "Ἀγαπημένα"), "favorites", null);
+        addShortcut(fourth, "🕘", local("آخر قراءة", "Reading history", "Ἱστορικὸ ἀναγνώσεως"), "history", null);
+        add(root, fourth, 0, 0);
+
+        LinearLayout fifth = ui.row();
+        addShortcut(fifth, "🌐", local("اللغات", "Languages", "Γλῶσσες"), "language_packs", null);
+        addShortcut(fifth, "⚙", local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", null);
+        add(root, fifth, 0, 10);
 
         if (!preferences.pinnedServices().isEmpty()) {
             root.addView(ui.sectionTitle(local("النصوص المثبتة", "Pinned texts", "Καρφιτσωμένα κείμενα")));
@@ -146,37 +161,79 @@ public final class HomeScreen extends BaseScreen {
     private void addUpcoming(LinearLayout root) {
         JSONArray upcoming = data.today().optJSONArray("upcoming");
         if (upcoming == null || upcoming.length() == 0) return;
-        root.addView(ui.sectionTitle(local("الأيام القادمة", "Upcoming days", "Ἐπόμενες ἡμέρες")));
-        HorizontalScrollView scroller = new HorizontalScrollView(host.activity());
-        scroller.setHorizontalScrollBarEnabled(false);
-        LinearLayout strip = ui.row();
-        scroller.addView(strip, new HorizontalScrollView.LayoutParams(-2, -2));
-        for (int i = 0; i < upcoming.length(); i++) {
+
+        root.addView(ui.sectionTitle(local(
+                "جدول الصيام للأيام السبعة",
+                "Seven-day fasting table",
+                "Πίνακας νηστείας ἑπτὰ ἡμερῶν"
+        )));
+        LinearLayout table = ui.card();
+
+        LinearLayout header = ui.row();
+        header.setPadding(ui.dp(8), ui.dp(4), ui.dp(8), ui.dp(6));
+        TextView dayHeader = ui.text(
+                local("اليوم والمناسبة", "Day and commemoration", "Ἡμέρα καὶ μνήμη"),
+                13,
+                ui.colors().primaryText(),
+                true
+        );
+        TextView fastingHeader = ui.text(
+                local("الصيام", "Fasting", "Νηστεία"),
+                13,
+                ui.colors().accentText(),
+                true
+        );
+        fastingHeader.setGravity(android.view.Gravity.CENTER);
+        header.addView(dayHeader, new LinearLayout.LayoutParams(0, -2, 2f));
+        header.addView(fastingHeader, new LinearLayout.LayoutParams(0, -2, 1f));
+        table.addView(header);
+
+        int dayCount = Math.min(7, upcoming.length());
+        for (int i = 0; i < dayCount; i++) {
             JSONObject item = upcoming.optJSONObject(i);
-            if (item != null) strip.addView(upcomingCard(item), ui.margins(ui.dp(165), -2, 4, 2, 4, 2));
+            if (item == null) continue;
+            String date = item.optString("date", "");
+            String day = localized(item.optJSONObject("day"), date);
+            String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
+            String status = localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), ""));
+            JSONObject fasting = item.optJSONObject("fasting");
+            if (status.isEmpty() && fasting != null) {
+                status = localized(fasting.optJSONObject("title"), "");
+            }
+            if (status.isEmpty()) {
+                status = local("غير متوفر", "Unavailable", "Μὴ διαθέσιμο");
+            }
+
+            LinearLayout row = ui.row();
+            row.setPadding(ui.dp(8), ui.dp(7), ui.dp(8), ui.dp(7));
+            row.setClickable(!date.isEmpty());
+            row.setFocusable(!date.isEmpty());
+            String dayAndFeast = "📅  " + day + (feast.isEmpty() ? "" : "\n" + feast);
+            TextView dayView = ui.text(dayAndFeast, 13, ui.colors().secondaryText(), false);
+            dayView.setMaxLines(3);
+            TextView statusView = ui.text(status, 13, ui.colors().accentText(), true);
+            statusView.setGravity(android.view.Gravity.CENTER);
+            statusView.setMaxLines(3);
+            row.addView(dayView, new LinearLayout.LayoutParams(0, -2, 2f));
+            row.addView(statusView, new LinearLayout.LayoutParams(0, -2, 1f));
+            row.setContentDescription(day + ". " + status + (feast.isEmpty() ? "" : ". " + feast));
+            if (!date.isEmpty()) {
+                row.setOnClickListener(v -> host.navigate("calendar_day", date));
+            }
+            table.addView(row);
+
+            if (i + 1 < dayCount) {
+                View divider = new View(host.activity());
+                divider.setBackgroundColor(ui.colors().secondaryText());
+                divider.setAlpha(0.16f);
+                table.addView(divider, new LinearLayout.LayoutParams(-1, ui.dp(1)));
+            }
         }
-        add(root, scroller, 0, 4);
+        add(root, table, 0, 6);
+
         Button details = ui.smallButton(local("عرض تفاصيل الأيام السبعة", "Show seven-day details", "Λεπτομέρειες 7 ἡμερῶν"), false);
         details.setOnClickListener(v -> host.navigate("upcoming", null));
-        add(root, details, 0, 10);
-    }
-
-    private LinearLayout upcomingCard(JSONObject item) {
-        LinearLayout card = ui.card();
-        card.setPadding(ui.dp(9), ui.dp(8), ui.dp(9), ui.dp(8));
-        TextView day = centered(localized(item.optJSONObject("day"), item.optString("date", "")), 13, ui.colors().primaryText(), true);
-        day.setMaxLines(2);
-        card.addView(day);
-        TextView status = centered(localized(item.optJSONObject("status"), ""), 12, ui.colors().accentText(), true);
-        status.setMaxLines(3);
-        card.addView(status, ui.margins(-1, -2, 0, 6, 0, 0));
-        JSONObject fasting = item.optJSONObject("fasting");
-        String foodRules = addCompactFastingItems(card, fasting);
-        TextView feast = centered(localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")), 11, ui.colors().secondaryText(), false);
-        feast.setMaxLines(3);
-        card.addView(feast);
-        card.setContentDescription(day.getText() + ". " + status.getText() + (foodRules.isEmpty() ? "" : ". " + foodRules) + ". " + feast.getText());
-        return card;
+        add(root, details, 0, 12);
     }
 
     private void addNextSunday(LinearLayout root) {
