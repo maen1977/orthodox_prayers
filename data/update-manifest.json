@@ -1,13 +1,13 @@
 {
   "manifest_schema_version": 1,
   "date_iso": "2026-07-26",
-  "revision": 6501,
-  "published_at_utc": "2026-07-26T05:51:35Z",
+  "revision": 6601,
+  "published_at_utc": "2026-07-26T13:22:01Z",
   "minimum_app_version_code": 50013,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "9b714b38b723eb8a07d43d7c1fbbb73979345c906051efd0c00a20a7466113cb",
+    "sha256": "da12df776aae373418d56396191de46118ef081df449b0d20354bbd9de6a0f9d",
     "size_bytes": 284908
   },
   "languages": {
