@@ -9,15 +9,15 @@
   },
   "summary": {
     "ar": "",
-    "en": "The authorized native English full text is not packaged yet. Use the registered official source; the app will not translate the Arabic text.",
+    "en": "The complete four-prayer Communion preparation selection printed in the registered native English Liturgy edition.",
     "el": ""
   },
   "source_language": "en",
   "translation_status": "native_sources_only",
-  "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+  "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
   "notice": {
     "ar": "",
-    "en": "This is personal preparation for Communion, not Orthros or the variable Sunday propers.",
+    "en": "Personal preparation for Communion; it does not replace Orthros or the variable Sunday propers.",
     "el": ""
   },
   "segments": [
@@ -33,24 +33,38 @@
       "type": "note",
       "speaker": {
         "ar": "",
-        "en": "Text status",
+        "en": "Rubric",
         "el": ""
       },
       "text": {
         "ar": "",
-        "en": "The complete native English prayer remains unavailable until an authorized source edition is imported and hash-verified.",
+        "en": "The Communion prayers are recited silently by those who will receive Holy Communion.",
         "el": ""
       },
       "collapsed_by_default": true
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "en": "The faithful, silently",
+        "el": ""
+      },
+      "text": {
+        "ar": "",
+        "en": "(The Communion Prayers are recited silently by those who will receive Holy Communion.) I believe and confess, Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am the first. I also believe that this is truly your pure Body and that this is truly your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, known and unknown. And make me worthy without condemnation to partake of your Mysteries for the forgiveness of sins and for life eternal. Amen. How shall I, who am unworthy, enter into the splendour of your Saints? If I dare to enter into the bridal chamber, my clothing will accuse me, since it is not a wedding garment; and being bound up, I shall be cast out by the Angels. In your love, Lord, cleanse my soul and save me. Loving Master, Lord Jesus Christ, my God, let not these Holy Gifts be to my condemnation because of my unworthiness, but for the cleansing and sanctification of soul and body and the pledge of the future life and Kingdom. It is good for me to cling to God and to place in Him the hope of my salvation. Receive me today, Son of God, as a partaker of your Mystical Supper. I will not reveal your Mystery to your adversaries. Nor will I give You a kiss as did Judas. But as the thief I confess to You: Lord remember me in your Kingdom.",
+        "el": ""
+      }
     }
   ],
   "source_provenance": {
     "policy": "canonical/source_policy.json",
-    "source_id": "orthodox_jordan",
-    "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
-    "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
-    "complete_text": false,
-    "verified_on": "2026-07-20",
-    "ai_liturgical_translation_used": false
+    "source_id": "metropolis_toronto_liturgy_en",
+    "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+    "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+    "complete_text": true,
+    "verified_on": "2026-07-26",
+    "ai_liturgical_translation_used": false,
+    "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
   }
 }

@@ -215,6 +215,36 @@
   "language_content_mode": "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES",
   "machine_translation_used": false,
   "translation_fallback_policy": "DISABLED_NO_CROSS_LANGUAGE_FALLBACK",
+  "liturgy_service_selection": {
+    "service_type": "chrysostom",
+    "rule_id": "ordinary_chrysostom_baseline",
+    "authority": "canonical/liturgy_service_rules.json",
+    "source_url": "",
+    "pascha_offset": 106,
+    "label": {
+      "ar": "قداس القديس يوحنا الذهبي الفم",
+      "en": "Divine Liturgy of Saint John Chrysostom",
+      "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+    },
+    "service_id": "divine_liturgy",
+    "native_editions": {
+      "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+      "en": "IMPORTED_NATIVE_AUTHORIZED",
+      "el": "IMPORTED_NATIVE_AUTHORIZED"
+    },
+    "availability_note": {
+      "ar": "",
+      "en": "",
+      "el": ""
+    },
+    "source_ids": [],
+    "import_contract": "",
+    "displayable": true,
+    "wrong_liturgy_fallback_allowed": false
+  },
+  "liturgy_service_rules": "canonical/liturgy_service_rules.json",
+  "liturgy_service_editions": "canonical/liturgy_service_editions.json",
+  "wrong_liturgy_fallback_allowed": false,
   "language_sources": {
     "ar": {
       "priority": [
@@ -288,8 +318,8 @@
       {
         "source": "orthodox_jordan",
         "priority": 1,
-        "status": "unavailable",
-        "reason": "Cannot fetch https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/: <urlopen error [Errno 101] Network is unreachable>"
+        "status": "poisoned",
+        "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
       },
       {
         "source": "jerusalem_patriarchate",
@@ -323,14 +353,14 @@
       "priority": 1,
       "official": true,
       "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-      "status": "unavailable",
-      "date_iso": null,
-      "epistle_reference": null,
-      "gospel_reference": null,
+      "status": "poisoned",
+      "date_iso": "2026-01-07",
+      "epistle_reference": "رسالة غلاطية 4: 4–7",
+      "gospel_reference": "متى 2 : 1 – 12",
       "tone": null,
       "prokeimenon_text": null,
       "sha256": null,
-      "reason": "Cannot fetch https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/: <urlopen error [Errno 101] Network is unreachable>"
+      "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
     },
     {
       "id": "jerusalem_patriarchate",
@@ -393,14 +423,14 @@
       "priority": 1,
       "official": true,
       "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-      "status": "unavailable",
-      "date_iso": null,
-      "epistle_reference": null,
-      "gospel_reference": null,
+      "status": "poisoned",
+      "date_iso": "2026-01-07",
+      "epistle_reference": "رسالة غلاطية 4: 4–7",
+      "gospel_reference": "متى 2 : 1 – 12",
       "tone": null,
       "prokeimenon_text": null,
       "sha256": null,
-      "reason": "Cannot fetch https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/: <urlopen error [Errno 101] Network is unreachable>"
+      "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
     },
     {
       "id": "jerusalem_patriarchate",
@@ -985,7 +1015,34 @@
         }
       }
     },
-    "service_id": "next_sunday_full_liturgy"
+    "service_id": "next_sunday_full_liturgy",
+    "liturgy_service_selection": {
+      "service_type": "chrysostom",
+      "rule_id": "ordinary_chrysostom_baseline",
+      "authority": "canonical/liturgy_service_rules.json",
+      "source_url": "",
+      "pascha_offset": 112,
+      "label": {
+        "ar": "قداس القديس يوحنا الذهبي الفم",
+        "en": "Divine Liturgy of Saint John Chrysostom",
+        "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+      },
+      "service_id": "divine_liturgy",
+      "native_editions": {
+        "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+        "en": "IMPORTED_NATIVE_AUTHORIZED",
+        "el": "IMPORTED_NATIVE_AUTHORIZED"
+      },
+      "availability_note": {
+        "ar": "",
+        "en": "",
+        "el": ""
+      },
+      "source_ids": [],
+      "import_contract": "",
+      "displayable": true,
+      "wrong_liturgy_fallback_allowed": false
+    }
   },
   "integrity_inputs": {
     "next_sunday": {
@@ -1341,32 +1398,97 @@
       "category": "liturgy",
       "icon": "⛪",
       "title": {
-        "ar": "خدمة اليوم — القداس الإلهي",
-        "en": "Today — Divine Liturgy",
-        "el": "Σήμερα — Θεία Λειτουργία"
+        "ar": "خدمة اليوم — قداس القديس يوحنا الذهبي الفم",
+        "en": "Today — Divine Liturgy of Saint John Chrysostom",
+        "el": "Σήμερα — Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
-        "en": "Verified daily readings and feast texts are composed with the single static Liturgy template.",
-        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας."
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق النص الثابت للخدمة المعيّنة دون استبدال طقس بآخر.",
+        "en": "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite.",
+        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ ὁρισμένο πλήρες πρωτότυπο κείμενο, χωρὶς ἀντικατάσταση ἄλλου τύπου Λειτουργίας."
       },
       "source_language": "ar",
-      "translation_status": "verified_daily_overlay_v2",
+      "translation_status": "verified_daily_overlay_v3_appointed_rite",
       "template_id": "library:divine_liturgy",
       "dynamic_date": "2026-07-27",
+      "selected_liturgy_type": "chrysostom",
+      "selected_liturgy": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 106,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
+      "liturgy_service_contract": {
+        "rules": "canonical/liturgy_service_rules.json",
+        "editions": "canonical/liturgy_service_editions.json",
+        "selected_liturgy_type": "chrysostom",
+        "selected_service_id": "divine_liturgy",
+        "selection_rule_id": "ordinary_chrysostom_baseline",
+        "selection_authority": "canonical/liturgy_service_rules.json",
+        "selection_source_url": "",
+        "pascha_offset": 106,
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false,
+        "fail_closed": true
+      },
+      "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_TEMPLATE_SELECTED",
+      "wrong_liturgy_fallback_allowed": false,
       "daily_reading_contract": {
         "authority": "orthodox_jordan",
         "contract": "canonical/jordan_liturgical_contract.json",
         "date_iso": "2026-07-27",
+        "selected_liturgy_type": "chrysostom",
+        "selected_liturgy_rule_id": "ordinary_chrysostom_baseline",
         "epistle_canonical": "1CO.11.31-34;1CO.12.1-6",
         "gospel_canonical": "MAT.18.1-11",
         "matins_gospel_canonical": "",
+        "resurrection_tone": null,
+        "eothinon": null,
+        "proper_id": null,
+        "variable_parts_registry": "canonical/liturgy_variable_parts.json",
+        "variable_part_ids": [
+          "weekday_dismissal"
+        ],
+        "variable_parts_fail_closed": true,
         "fail_closed": true
       },
       "notice": {
-        "ar": "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
-        "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
-        "el": "Ἡ σταθερὴ Θεία Λειτουργία ἀποθηκεύεται μία φορά. Τὰ ἡμερήσια κείμενα εἰσάγονται μόνον μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς."
+        "ar": "يُحفظ النص الثابت للخدمة المعيّنة مرة واحدة في المكتبة، ولا تُحقن القطع اليومية إلا بعد التحقق من المصدر والتوقيع.",
+        "en": "The appointed static service is stored once; daily pieces are injected only after source and signature validation.",
+        "el": "Τὸ σταθερὸ κείμενο τῆς ὁρισμένης ἀκολουθίας ἀποθηκεύεται μία φορά· τὰ ἡμερήσια κείμενα εἰσάγονται μόνο μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1468,6 +1590,46 @@
           "ar": "",
           "en": "",
           "el": ""
+        },
+        "first_antiphon": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "second_antiphon": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "third_antiphon": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "entrance_hymn": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "trisagion_hymn": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "alleluia_verses": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "theotokos_hymn": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "dismissal": {
+          "ar": "المسيح إلهنا الحقيقي، بشفاعات والدته الكلية الطهارة، وبقوة الصليب الكريم المحيي، وطلبات القديسين المجيدين الجديري المدح الرسل، والقديس يوحنا الذهبي الفم رئيس أساقفة القسطنطينية، وسائر القديسين، يرحمنا ويخلصنا بما أنه صالح ومحب للبشر.",
+          "en": "May Christ our true God, through the intercessions of His most pure and holy Mother; the power of the precious and life-giving Cross; the supplications of the holy, glorious and praiseworthy Apostles; of our father among the saints John Chrysostom, Archbishop of Constantinople; and of all the saints, have mercy on us and save us, for He is good and loves mankind.",
+          "el": "Χριστὸς ὁ ἀληθινὸς Θεὸς ἡμῶν, ταῖς πρεσβείαις τῆς Παναχράντου καὶ Παναμώμου Ἁγίας Αὐτοῦ Μητρός· δυνάμει τοῦ τιμίου καὶ ζωοποιοῦ Σταυροῦ· ἱκεσίαις τῶν ἁγίων ἐνδόξων καὶ πανευφήμων Ἀποστόλων· τοῦ ἐν ἁγίοις πατρὸς ἡμῶν Ἰωάννου τοῦ Χρυσοστόμου, Ἀρχιεπισκόπου Κωνσταντινουπόλεως· καὶ πάντων τῶν Ἁγίων, ἐλεήσαι καὶ σώσαι ἡμᾶς, ὡς ἀγαθὸς καὶ φιλάνθρωπος."
         }
       },
       "slot_inline_replacements": {
@@ -1481,46 +1643,31 @@
         {
           "type": "section",
           "title": {
-            "ar": "خدمة اليوم: ملحق اليوم",
-            "en": "Today: daily supplement",
-            "el": "Σήμερα: ἡμερήσιο συμπλήρωμα"
+            "ar": "خدمة اليوم: خدمة اليوم",
+            "en": "Today’s service",
+            "el": "Ἡ σημερινὴ ἀκολουθία"
           }
         },
         {
-          "type": "note",
+          "type": "text",
           "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "Optional note",
-            "el": "Προαιρετικὴ σημείωση"
+            "ar": "اليوم الكنسي",
+            "en": "Church day",
+            "el": "Ἐκκλησιαστικὴ ἡμέρα"
           },
           "text": {
-            "ar": "التاريخ المدني: الإثنين 27 تموز 2026. التاريخ الكنسي القديم: 14 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: لا صوم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
-            "en": "Civil date: 2026-07-27. Verified daily texts are inserted below where available.",
-            "el": "Πολιτικὴ ἡμερομηνία: 2026-07-27. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
-          },
-          "collapsed_by_default": true
+            "ar": "الإثنين 27 تموز 2026 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. نوع الخدمة: قداس القديس يوحنا الذهبي الفم.",
+            "en": "2026-07-27 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom.",
+            "el": "2026-07-27 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Ἀκολουθία: Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου."
+          }
         },
         {
           "type": "section",
           "title": {
-            "ar": "ترتيب قراءات اليوم",
-            "en": "Order of today’s readings",
-            "el": "Τάξη τῶν σημερινῶν ἀναγνωσμάτων"
+            "ar": "قراءات وقطع اليوم",
+            "en": "Readings and hymns of the day",
+            "el": "Ἀναγνώσματα καὶ ὕμνοι τῆς ἡμέρας"
           }
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "Optional note",
-            "el": "Προαιρετικὴ σημείωση"
-          },
-          "text": {
-            "ar": "إنجيل السَحَر عند توفره رسميًا، ثم البروكيمنن والرسالة وهلليلويا والإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
-            "en": "The official Matins Gospel when available, then Prokeimenon, Epistle, Alleluia, and Gospel. Unverified target-language text is hidden.",
-            "el": "Τὸ ἐπίσημο Ἑωθινὸν Εὐαγγέλιον, ὅταν διατίθεται, καὶ ἔπειτα Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο."
-          },
-          "collapsed_by_default": true
         }
       ],
       "integrity": {
@@ -1870,32 +2017,95 @@
       "category": "liturgy",
       "icon": "⛪",
       "title": {
-        "ar": "الأحد القادم — القداس الإلهي",
-        "en": "Next Sunday — Divine Liturgy",
-        "el": "Ἡ ἐρχόμενη Κυριακή — Θεία Λειτουργία"
+        "ar": "الأحد القادم — قداس القديس يوحنا الذهبي الفم",
+        "en": "Next Sunday — Divine Liturgy of Saint John Chrysostom",
+        "el": "Ἡ ἐρχόμενη Κυριακή — Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
       },
       "summary": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
-        "en": "Verified daily readings and feast texts are composed with the single static Liturgy template.",
-        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας."
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم — تُركّب قراءات اليوم والقطع المتحققة فوق النص الثابت للخدمة المعيّنة دون استبدال طقس بآخر.",
+        "en": "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite.",
+        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ ὁρισμένο πλήρες πρωτότυπο κείμενο, χωρὶς ἀντικατάσταση ἄλλου τύπου Λειτουργίας."
       },
       "source_language": "ar",
-      "translation_status": "verified_daily_overlay_v2",
+      "translation_status": "verified_daily_overlay_v3_appointed_rite",
       "template_id": "library:divine_liturgy",
       "dynamic_date": "2026-08-02",
+      "selected_liturgy_type": "chrysostom",
+      "selected_liturgy": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 112,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
+      "liturgy_service_contract": {
+        "rules": "canonical/liturgy_service_rules.json",
+        "editions": "canonical/liturgy_service_editions.json",
+        "selected_liturgy_type": "chrysostom",
+        "selected_service_id": "divine_liturgy",
+        "selection_rule_id": "ordinary_chrysostom_baseline",
+        "selection_authority": "canonical/liturgy_service_rules.json",
+        "selection_source_url": "",
+        "pascha_offset": 112,
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false,
+        "fail_closed": true
+      },
+      "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_TEMPLATE_SELECTED",
+      "wrong_liturgy_fallback_allowed": false,
       "daily_reading_contract": {
         "authority": "orthodox_jordan",
         "contract": "canonical/jordan_liturgical_contract.json",
         "date_iso": "2026-08-02",
+        "selected_liturgy_type": "chrysostom",
+        "selected_liturgy_rule_id": "ordinary_chrysostom_baseline",
         "epistle_canonical": "1CO.3.9-17",
         "gospel_canonical": "MAT.14.22-34",
         "matins_gospel_canonical": "",
+        "resurrection_tone": 8,
+        "eothinon": null,
+        "proper_id": "octoechos:tone:8",
+        "variable_parts_registry": "canonical/liturgy_variable_parts.json",
+        "variable_part_ids": [],
+        "variable_parts_fail_closed": true,
         "fail_closed": true
       },
       "notice": {
-        "ar": "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
-        "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
-        "el": "Ἡ σταθερὴ Θεία Λειτουργία ἀποθηκεύεται μία φορά. Τὰ ἡμερήσια κείμενα εἰσάγονται μόνον μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς."
+        "ar": "يُحفظ النص الثابت للخدمة المعيّنة مرة واحدة في المكتبة، ولا تُحقن القطع اليومية إلا بعد التحقق من المصدر والتوقيع.",
+        "en": "The appointed static service is stored once; daily pieces are injected only after source and signature validation.",
+        "el": "Τὸ σταθερὸ κείμενο τῆς ὁρισμένης ἀκολουθίας ἀποθηκεύεται μία φορά· τὰ ἡμερήσια κείμενα εἰσάγονται μόνο μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1910,9 +2120,9 @@
       },
       "segment_replacements": {
         "[طروبارية اليوم]": {
-          "ar": "",
-          "en": "",
-          "el": ""
+          "ar": "انحدرت من العلو يا متحنن، وقبلت الدفن ذا الثلاثة الأيام لكي تعتقنا من الآلام. فيا حياتنا وقيامتنا، يا رب المجد لك.",
+          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You.",
+          "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι."
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
           "ar": "",
@@ -1940,9 +2150,9 @@
           "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34\nΚαὶ εὐθέως ἠνάγκασεν ὁ Ἰησοῦς τοὺς μαθητὰς αὐτοῦ ἐμβῆναι εἰς τὸ πλοῖον καὶ προάγειν αὐτὸν εἰς τὸ πέραν, ἕως οὗ ἀπολύσῃ τοὺς ὄχλους.\nκαὶ ἀπολύσας τοὺς ὄχλους ἀνέβη εἰς τὸ ὄρος κατ᾽ ἰδίαν προσεύξασθαι. ὀψίας δὲ γενομένης μόνος ἦν ἐκεῖ.\nτὸ δὲ πλοῖον ἤδη μέσον τῆς θαλάσσης ἦν, βασανιζόμενον ὑπὸ τῶν κυμάτων· ἦν γὰρ ἐναντίος ὁ ἄνεμος.\nτετάρτῃ δὲ φυλακῇ τῆς νυκτὸς ἀπῆλθε πρὸς αὐτοὺς ὁ Ἰησοῦς περιπατῶν ἐπὶ τῆς θαλάσσης.\nκαὶ ἰδόντες αὐτὸν οἱ μαθηταὶ ἐπὶ τὴν θάλασσαν περιπατοῦντα ἐταράχθησαν λέγοντες ὅτι φάντασμά ἐστι, καὶ ἀπὸ τοῦ φόβου ἔκραξαν.\nεὐθέως δὲ ἐλάλησεν αὐτοῖς ὁ Ἰησοῦς λέγων· θαρσεῖτε, ἐγώ εἰμι· μὴ φοβεῖσθε.\nἀποκριθεὶς δὲ αὐτῷ ὁ Πέτρος εἶπε· Κύριε, εἰ σὺ εἶ, κέλευσόν με πρός σε ἐλθεῖν ἐπὶ τὰ ὕδατα.\nὁ δὲ εἶπεν, ἐλθέ. καὶ καταβὰς ἀπὸ τοῦ πλοίου ὁ Πέτρος περιεπάτησεν ἐπὶ τὰ ὕδατα ἐλθεῖν πρὸς τὸν Ἰησοῦν.\nβλέπων δὲ τὸν ἄνεμον ἰσχυρὸν ἐφοβήθη, καὶ ἀρξάμενος καταποντίζεσθαι ἔκραξε λέγων· Κύριε, σῶσόν με.\nεὐθέως δὲ ὁ Ἰησοῦς ἐκτείνας τὴν χεῖρα ἐπελάβετο αὐτοῦ καὶ λέγει αὐτῷ· ὀλιγόπιστε! εἰς τί ἐδίστασας;\nκαὶ ἐμβάντων αὐτῶν εἰς τὸ πλοῖον ἐκόπασεν ὁ ἄνεμος·\nοἱ δὲ ἐν τῷ πλοίῳ ἐλθόντες προσεκύνησαν αὐτῷ λέγοντες· ἀληθῶς Θεοῦ υἱὸς εἶ.\nΚαὶ διαπεράσαντες ἦλθον εἰς τὴν γῆν Γεννησαρέτ."
         },
         "[آية المناولة]": {
-          "ar": "",
-          "en": "",
-          "el": ""
+          "ar": "سبحوا الرب من السماوات، سبحوه في الأعالي. هلليلويا.",
+          "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia.",
+          "el": "Αἰνεῖτε τὸν Κύριον ἐκ τῶν οὐρανῶν· αἰνεῖτε αὐτὸν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα."
         }
       },
       "inline_replacements": {
@@ -1959,14 +2169,14 @@
           "el": ""
         },
         "daily_hymns": {
-          "ar": "",
-          "en": "",
-          "el": ""
+          "ar": "انحدرت من العلو يا متحنن، وقبلت الدفن ذا الثلاثة الأيام لكي تعتقنا من الآلام. فيا حياتنا وقيامتنا، يا رب المجد لك.",
+          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You.",
+          "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι."
         },
         "daily_troparion": {
-          "ar": "",
-          "en": "",
-          "el": ""
+          "ar": "انحدرت من العلو يا متحنن، وقبلت الدفن ذا الثلاثة الأيام لكي تعتقنا من الآلام. فيا حياتنا وقيامتنا، يا رب المجد لك.",
+          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You.",
+          "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι."
         },
         "church_troparion": {
           "ar": "",
@@ -1994,6 +2204,46 @@
           "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34\nΚαὶ εὐθέως ἠνάγκασεν ὁ Ἰησοῦς τοὺς μαθητὰς αὐτοῦ ἐμβῆναι εἰς τὸ πλοῖον καὶ προάγειν αὐτὸν εἰς τὸ πέραν, ἕως οὗ ἀπολύσῃ τοὺς ὄχλους.\nκαὶ ἀπολύσας τοὺς ὄχλους ἀνέβη εἰς τὸ ὄρος κατ᾽ ἰδίαν προσεύξασθαι. ὀψίας δὲ γενομένης μόνος ἦν ἐκεῖ.\nτὸ δὲ πλοῖον ἤδη μέσον τῆς θαλάσσης ἦν, βασανιζόμενον ὑπὸ τῶν κυμάτων· ἦν γὰρ ἐναντίος ὁ ἄνεμος.\nτετάρτῃ δὲ φυλακῇ τῆς νυκτὸς ἀπῆλθε πρὸς αὐτοὺς ὁ Ἰησοῦς περιπατῶν ἐπὶ τῆς θαλάσσης.\nκαὶ ἰδόντες αὐτὸν οἱ μαθηταὶ ἐπὶ τὴν θάλασσαν περιπατοῦντα ἐταράχθησαν λέγοντες ὅτι φάντασμά ἐστι, καὶ ἀπὸ τοῦ φόβου ἔκραξαν.\nεὐθέως δὲ ἐλάλησεν αὐτοῖς ὁ Ἰησοῦς λέγων· θαρσεῖτε, ἐγώ εἰμι· μὴ φοβεῖσθε.\nἀποκριθεὶς δὲ αὐτῷ ὁ Πέτρος εἶπε· Κύριε, εἰ σὺ εἶ, κέλευσόν με πρός σε ἐλθεῖν ἐπὶ τὰ ὕδατα.\nὁ δὲ εἶπεν, ἐλθέ. καὶ καταβὰς ἀπὸ τοῦ πλοίου ὁ Πέτρος περιεπάτησεν ἐπὶ τὰ ὕδατα ἐλθεῖν πρὸς τὸν Ἰησοῦν.\nβλέπων δὲ τὸν ἄνεμον ἰσχυρὸν ἐφοβήθη, καὶ ἀρξάμενος καταποντίζεσθαι ἔκραξε λέγων· Κύριε, σῶσόν με.\nεὐθέως δὲ ὁ Ἰησοῦς ἐκτείνας τὴν χεῖρα ἐπελάβετο αὐτοῦ καὶ λέγει αὐτῷ· ὀλιγόπιστε! εἰς τί ἐδίστασας;\nκαὶ ἐμβάντων αὐτῶν εἰς τὸ πλοῖον ἐκόπασεν ὁ ἄνεμος·\nοἱ δὲ ἐν τῷ πλοίῳ ἐλθόντες προσεκύνησαν αὐτῷ λέγοντες· ἀληθῶς Θεοῦ υἱὸς εἶ.\nΚαὶ διαπεράσαντες ἦλθον εἰς τὴν γῆν Γεννησαρέτ."
         },
         "communion_hymn": {
+          "ar": "سبحوا الرب من السماوات، سبحوه في الأعالي. هلليلويا.",
+          "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia.",
+          "el": "Αἰνεῖτε τὸν Κύριον ἐκ τῶν οὐρανῶν· αἰνεῖτε αὐτὸν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα."
+        },
+        "first_antiphon": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "second_antiphon": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "third_antiphon": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "entrance_hymn": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "trisagion_hymn": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "alleluia_verses": {
+          "ar": "هلموا نبتهج بالرب ونهتف لله مخلصنا.\nلنبادر إلى وجهه بالاعتراف، وبالمزامير نهتف له.",
+          "en": "Come, let us rejoice in the Lord; let us shout with joy to God our Savior.\nLet us come before His presence with thanksgiving and shout joyfully to Him with psalms.",
+          "el": "Δεῦτε ἀγαλλιασώμεθα τῷ Κυρίῳ, ἀλαλάξωμεν τῷ Θεῷ τῷ σωτῆρι ἡμῶν.\nΠροφθάσωμεν τὸ πρόσωπον αὐτοῦ ἐν ἐξομολογήσει, καὶ ἐν ψαλμοῖς ἀλαλάξωμεν αὐτῷ."
+        },
+        "theotokos_hymn": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "dismissal": {
           "ar": "",
           "en": "",
           "el": ""
@@ -2010,46 +2260,31 @@
         {
           "type": "section",
           "title": {
-            "ar": "الأحد القادم: ملحق اليوم",
-            "en": "Next Sunday: daily supplement",
-            "el": "Ἐρχόμενη Κυριακή: ἡμερήσιο συμπλήρωμα"
+            "ar": "الأحد القادم: خدمة اليوم",
+            "en": "Next Sunday’s service",
+            "el": "Ἡ ἀκολουθία τῆς ἐρχόμενης Κυριακῆς"
           }
         },
         {
-          "type": "note",
+          "type": "text",
           "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "Optional note",
-            "el": "Προαιρετικὴ σημείωση"
+            "ar": "اليوم الكنسي",
+            "en": "Church day",
+            "el": "Ἐκκλησιαστικὴ ἡμέρα"
           },
           "text": {
-            "ar": "التاريخ المدني: الأحد 2 آب 2026. التاريخ الكنسي القديم: 20 تموز 2026 بحسب التقويم الكنسي القديم. حالة اليوم: لا صوم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم.",
-            "en": "Civil date: 2026-08-02. Verified daily texts are inserted below where available.",
-            "el": "Πολιτικὴ ἡμερομηνία: 2026-08-02. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται."
-          },
-          "collapsed_by_default": true
+            "ar": "الأحد 2 آب 2026 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. نوع الخدمة: قداس القديس يوحنا الذهبي الفم.",
+            "en": "2026-08-02 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom.",
+            "el": "2026-08-02 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Ἀκολουθία: Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου."
+          }
         },
         {
           "type": "section",
           "title": {
-            "ar": "ترتيب قراءات اليوم",
-            "en": "Order of today’s readings",
-            "el": "Τάξη τῶν σημερινῶν ἀναγνωσμάτων"
+            "ar": "قراءات وقطع اليوم",
+            "en": "Readings and hymns of the day",
+            "el": "Ἀναγνώσματα καὶ ὕμνοι τῆς ἡμέρας"
           }
-        },
-        {
-          "type": "note",
-          "speaker": {
-            "ar": "ملاحظة اختيارية",
-            "en": "Optional note",
-            "el": "Προαιρετικὴ σημείωση"
-          },
-          "text": {
-            "ar": "إنجيل السَحَر عند توفره رسميًا، ثم البروكيمنن والرسالة وهلليلويا والإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
-            "en": "The official Matins Gospel when available, then Prokeimenon, Epistle, Alleluia, and Gospel. Unverified target-language text is hidden.",
-            "el": "Τὸ ἐπίσημο Ἑωθινὸν Εὐαγγέλιον, ὅταν διατίθεται, καὶ ἔπειτα Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο."
-          },
-          "collapsed_by_default": true
         }
       ],
       "integrity": {
@@ -2272,6 +2507,33 @@
           }
         }
       },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 107,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -2488,6 +2750,33 @@
           }
         }
       },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 108,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -2702,6 +2991,33 @@
             "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 20:17-28"
           }
         }
+      },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 109,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
       },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
@@ -2919,6 +3235,33 @@
           }
         }
       },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 110,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -3134,6 +3477,33 @@
           }
         }
       },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 111,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -3348,6 +3718,33 @@
             "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34"
           }
         }
+      },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 112,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
       },
       "is_sunday": true,
       "verification_status": "VERIFIED_NEXT_SUNDAY_REFERENCES",
@@ -3565,6 +3962,33 @@
           }
         }
       },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 113,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -3589,11 +4013,11 @@
     },
     "summary": {
       "connector_count": 9,
-      "usable_connector_count": 5,
+      "usable_connector_count": 8,
       "official_current_count": 2,
       "status_counts": {
-        "network_error": 3,
-        "available": 3,
+        "undated": 1,
+        "available": 5,
         "http_error": 1,
         "current": 2
       },
@@ -3663,20 +4087,23 @@
         "calendar_profile": "jerusalem_old_calendar",
         "target_date": "2026-07-27",
         "url": "https://orthodoxjordan.org/",
-        "status": "network_error",
-        "checked_at_utc": "2026-07-27T06:18:04Z",
-        "http_status": null,
-        "content_sha256": null,
-        "content_bytes": null,
+        "status": "undated",
+        "checked_at_utc": "2026-07-27T18:06:09Z",
+        "http_status": 200,
+        "content_sha256": "eca7bc340534407c13999ec159f8fe4b885fafb3df8e005a35d5bff72e4c5530",
+        "content_bytes": 498885,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
-        "commemorations": [],
+        "commemorations": [
+          "اية اليوم:",
+          "انجيل اليوم"
+        ],
         "service_links": [],
         "church_count": null,
-        "confidence": 0.0,
+        "confidence": 0.45,
         "rights_mode": "reference_and_authorized_native_import_only",
-        "reason": "[Errno 101] Network is unreachable",
+        "reason": "content was found but the requested civil date was not proven",
         "warnings": []
       },
       {
@@ -3688,20 +4115,20 @@
         "calendar_profile": "not_applicable",
         "target_date": "2026-07-27",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-        "status": "network_error",
-        "checked_at_utc": "2026-07-27T06:18:29Z",
-        "http_status": null,
-        "content_sha256": null,
-        "content_bytes": null,
+        "status": "available",
+        "checked_at_utc": "2026-07-27T18:06:11Z",
+        "http_status": 200,
+        "content_sha256": "a4e6ad0b505b3cb12270e8218d2a05d975b144453bf819d2c63b6cda0b2217db",
+        "content_bytes": 887573,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
         "commemorations": [],
         "service_links": [],
-        "church_count": null,
-        "confidence": 0.0,
+        "church_count": 41,
+        "confidence": 0.9,
         "rights_mode": "metadata_and_official_links_only",
-        "reason": "[Errno 101] Network is unreachable",
+        "reason": null,
         "warnings": []
       },
       {
@@ -3713,20 +4140,20 @@
         "calendar_profile": "not_applicable",
         "target_date": "2026-07-27",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
-        "status": "network_error",
-        "checked_at_utc": "2026-07-27T06:18:49Z",
-        "http_status": null,
-        "content_sha256": null,
-        "content_bytes": null,
+        "status": "available",
+        "checked_at_utc": "2026-07-27T18:06:12Z",
+        "http_status": 200,
+        "content_sha256": "7e48301865fa0dabae3b17cc181db62f612461635e44fc4ecbfb6b7465733f13",
+        "content_bytes": 377529,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
         "commemorations": [],
         "service_links": [],
         "church_count": null,
-        "confidence": 0.0,
+        "confidence": 0.55,
         "rights_mode": "official_link_only",
-        "reason": "[Errno 101] Network is unreachable",
+        "reason": null,
         "warnings": []
       },
       {
@@ -3739,10 +4166,10 @@
         "target_date": "2026-07-27",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T06:18:49Z",
+        "checked_at_utc": "2026-07-27T18:06:13Z",
         "http_status": 200,
-        "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
-        "content_bytes": 107,
+        "content_sha256": "b7ffb1ec185476284f9571a539304ea92acf2991a159bce4fefa63d85d57ef0b",
+        "content_bytes": 173537,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
@@ -3764,7 +4191,7 @@
         "target_date": "2026-07-27",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T06:18:49Z",
+        "checked_at_utc": "2026-07-27T18:06:13Z",
         "http_status": 200,
         "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
         "content_bytes": 6664,
@@ -3789,7 +4216,7 @@
         "target_date": "2026-07-27",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-27T06:18:50Z",
+        "checked_at_utc": "2026-07-27T18:06:13Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -3814,7 +4241,7 @@
         "target_date": "2026-07-27",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-27T06:18:50Z",
+        "checked_at_utc": "2026-07-27T18:06:13Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
@@ -3861,9 +4288,9 @@
         "target_date": "2026-07-27",
         "url": "https://www.oca.org/readings/daily/2026/07/27",
         "status": "current",
-        "checked_at_utc": "2026-07-27T06:18:53Z",
+        "checked_at_utc": "2026-07-27T18:06:15Z",
         "http_status": 200,
-        "content_sha256": "f14b2dffbd18fdcdbc13748973ed0a8d535b9aa02030ab84930b098071211696",
+        "content_sha256": "21850707524546869f76ce37bd492ae4c1287f70b1b57aed7e75ff426e37bfda",
         "content_bytes": 14741,
         "detected_date": "2026-07-27",
         "epistle_reference": "2 Timothy 2:1-10",
@@ -3888,9 +4315,9 @@
         "target_date": "2026-07-27",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T06:18:57Z",
+        "checked_at_utc": "2026-07-27T18:06:19Z",
         "http_status": 200,
-        "content_sha256": "f3e553623438a924102363f22b17bf4cbb8114f40d8ff12657bf575958d3b6cc",
+        "content_sha256": "8c74811158fe4ebb2e473539767f7170591e62b04a181231a54fc9baf79fc3ef",
         "content_bytes": 115656,
         "detected_date": null,
         "epistle_reference": null,
@@ -3910,80 +4337,707 @@
     "date_iso": "2026-07-27",
     "authority": "orthodox_jordan",
     "directory_url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-    "status": "seed_fallback",
-    "reason": "URLError: <urlopen error [Errno 101] Network is unreachable>",
-    "count": 5,
+    "status": "live_official_directory",
+    "reason": "parsed from the official Orthodox Jordan directory",
+    "count": 41,
     "rights_mode": "official names and links only; schedules remain live-page data",
     "churches": [
       {
-        "id": "annunciation_cathedral_abdali",
+        "id": "اختر-اقرب-كنيسه-لك-تعرف-علي-مجموعاتها-العامله-الرزنامه-الخاصه-بها-واحدث-اخبارها",
         "name": {
-          "ar": "كاتدرائية البشارة للروم الأرثوذكس — العبدلي",
-          "en": "Annunciation Greek Orthodox Cathedral — Abdali",
-          "el": "Καθεδρικὸς Εὐαγγελισμοῦ — Ἀμπντάλι"
+          "ar": "اختر اقرب كنيسة لك، تعرف على مجموعاتها العاملة، الرزنامة الخاصة بها، وأحدث أخبارها",
+          "en": "",
+          "el": ""
         },
         "city": {
-          "ar": "عمّان",
-          "en": "Amman",
-          "el": "Ἀμμάν"
+          "ar": "",
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D8%A7%D8%AA%D8%AF%D8%B1%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%B4%D8%A7%D8%B1%D8%A9-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%A7%D9%84/"
+        "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "ascension_khalda",
+        "id": "دير-السيده-العذراء-ينبوع-الحياه-دبين-جرش",
         "name": {
-          "ar": "كنيسة الصعود الإلهي للروم الأرثوذكس — خلدا",
-          "en": "Holy Ascension Greek Orthodox Church — Khalda",
-          "el": "Ναὸς Θείας Ἀναλήψεως — Χάλντα"
+          "ar": "دير السيدة العذراء ينبوع الحياة دبين- جرش",
+          "en": "",
+          "el": ""
         },
         "city": {
-          "ar": "عمّان",
-          "en": "Amman",
-          "el": "Ἀμμάν"
+          "ar": "جرش",
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D8%B5%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D8%A7%D9%84%D9%87%D9%8A-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%AE/"
+        "url": "https://orthodoxjordan.org/%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d8%b3%d9%8a%d8%af%d8%a9-%d8%a7%d9%84%d8%b9%d8%b0%d8%b1%d8%a7%d8%a1-%d9%8a%d9%86%d8%a8%d9%88%d8%b9-%d8%a7%d9%84%d8%ad%d9%8a%d8%a7%d8%a9-%d8%af%d8%a8%d9%8a%d9%86/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "saviour_downtown",
+        "id": "دير-الظهور-الالهي-البطريركي-المغطس",
         "name": {
-          "ar": "كنيسة المخلّص للروم الأرثوذكس — وسط البلد",
-          "en": "Saviour Greek Orthodox Church — Downtown Amman",
-          "el": "Ναὸς Μεταμορφώσεως — κέντρο Ἀμμάν"
+          "ar": "دير الظهور الإلهي البطريركي المغطس",
+          "en": "",
+          "el": ""
         },
         "city": {
-          "ar": "عمّان",
-          "en": "Amman",
-          "el": "Ἀμμάν"
+          "ar": "",
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%85%D8%AE%D9%84%D8%B5-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D9%88%D8%B3%D8%B7-%D8%A7%D9%84%D8%A8%D9%84/"
+        "url": "https://orthodoxjordan.org/%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d8%b8%d9%87%d9%88%d8%b1-%d8%a7%d9%84%d8%a7%d9%84%d9%87%d9%8a-%d8%a7%d9%84%d8%a8%d8%b7%d8%b1%d9%8a%d8%b1%d9%83%d9%8a-%d8%a7%d9%84%d9%85%d8%ba%d8%b7%d8%b3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "st_george_anjara",
+        "id": "كاتدراييه-البشاره-العبدلي-عمان",
         "name": {
-          "ar": "كنيسة القديس جاورجيوس للروم الأرثوذكس — عنجرة",
-          "en": "Saint George Greek Orthodox Church — Anjara",
-          "el": "Ναὸς Ἁγίου Γεωργίου — Ἄντζαρα"
+          "ar": "كاتدرائية البشارة العبدلي - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d8%a7%d8%aa%d8%af%d8%b1%d8%a7%d8%a6%d9%8a%d8%a9-%d8%a7%d9%84%d8%a8%d8%b4%d8%a7%d8%b1%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%a7%d9%84/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كاتدراييه-دخول-السيد-الي-الهيكل-الصويفيه-عمان",
+        "name": {
+          "ar": "كاتدرائية دخول السيد الى الهيكل الصويفية - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d8%a7%d8%aa%d8%af%d8%b1%d8%a7%d8%a6%d9%8a%d8%a9-%d8%af%d8%ae%d9%88%d9%84-%d8%a7%d9%84%d8%b3%d9%8a%d8%af-%d8%a7%d9%84%d9%89-%d8%a7%d9%84%d9%87%d9%8a%d9%83%d9%84-%d8%a7%d9%84%d8%b5%d9%88%d9%8a/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-الاقمار-الثلاث-دبين-جرش",
+        "name": {
+          "ar": "كنيسة الأقمار الثلاث دبين-جرش",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "جرش",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D8%A3%D9%82%D9%85%D8%A7%D8%B1-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB-%D8%AF%D8%A8%D9%8A%D9%86-%D8%AC%D8%B1%D8%B4/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-التجلي-الاثريه-ساره-السلط-البلقاء",
+        "name": {
+          "ar": "كنيسة التجلي الأثرية (سارة) السلط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d8%aa%d8%ac%d9%84%d9%8a-%d8%a7%d9%84%d8%a7%d8%ab%d8%b1%d9%8a%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-الروح-القدس-عجلون",
+        "name": {
+          "ar": "كنيسة الروح القدس عجلون",
+          "en": "",
+          "el": ""
         },
         "city": {
           "ar": "عجلون",
-          "en": "Ajloun",
-          "el": "Ἀτζλοῦν"
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%B3-%D8%AC%D8%A7%D9%88%D8%B1%D8%AC%D9%8A%D9%88%D8%B3-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-5/"
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d8%b1%d9%88%d8%ad-%d8%a7%d9%84%d9%82%d8%af%d8%b3-%d8%b9%d8%ac%d9%84%d9%88%d9%86/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       },
       {
-        "id": "dormition_mafraq",
+        "id": "كنيسه-الصعود-الالهي-خلدا-عمان",
         "name": {
-          "ar": "كنيسة رقاد والدة الإله للروم الأرثوذكس — المفرق",
-          "en": "Dormition Greek Orthodox Church — Mafraq",
-          "el": "Ναὸς Κοιμήσεως Θεοτόκου — Μάφρακ"
+          "ar": "كنيسة الصعود الإلهي خلدا - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d8%b5%d8%b9%d9%88%d8%af-%d8%a7%d9%84%d8%a7%d9%84%d9%87%d9%8a-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%ae/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-ادر-الكرك",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس أدر - الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-7/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الاثريه-السلط-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الأثرية السلط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d8%a7%d9%84%d8%a7%d8%ab%d8%b1%d9%8a%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الاثريه-الفحيص-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الأثرية الفحيص - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d8%a7%d9%84%d8%a7%d8%ab%d8%b1%d9%8a%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الحصن-اربد",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الحصن - اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الحمود-الكرك",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الحمود - الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-8/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-الربه-الكرك",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس الربة - الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-9/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-جبل-الهاشمي-عمان",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس جبل الهاشمي - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-جرش",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس جرش",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "جرش",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-6/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-شطنا-اربد",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس شطنا - اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-4/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-صافوط-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس صافوط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-جاورجيوس-عنجره-عجلون",
+        "name": {
+          "ar": "كنيسة القديس جاورجيوس عنجرة - عجلون",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عجلون",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-5/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-نيقولاوس-الصريح-اربد",
+        "name": {
+          "ar": "كنيسة القديس نيقولاوس الصريح - اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%8a%d9%82%d9%88%d9%84%d8%a7%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-نيقولاوس-ماركا-عمان",
+        "name": {
+          "ar": "كنيسة القديس نيقولاوس ماركا - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%8a%d9%82%d9%88%d9%84%d8%a7%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديس-يعقوب-اخو-الرب-الفحيص-البلقاء",
+        "name": {
+          "ar": "كنيسة القديس يعقوب أخو الرب الفحيص - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%8a%d8%b9%d9%82%d9%88%d8%a8-%d8%a7%d8%ae%d9%88-%d8%a7%d9%84%d8%b1%d8%a8-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-القديسين-قسطنطين-وهيلانه-مرج-الحمام-عمان",
+        "name": {
+          "ar": "كنيسة القديسين قسطنطين وهيلانه مرج الحمام - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3%d9%8a%d9%86-%d9%82%d8%b3%d8%b7%d9%86%d8%b7%d9%8a%d9%86-%d9%88%d9%87%d9%8a%d9%84%d8%a7%d9%86%d8%a9-%d9%84%d9%84%d8%b1%d9%88%d9%85/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-المخلص-وسط-البلد-عمان",
+        "name": {
+          "ar": "كنيسة المخلص وسط البلد - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%85%d8%ae%d9%84%d8%b5-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d9%88%d8%b3%d8%b7-%d8%a7%d9%84%d8%a8%d9%84/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-النبي-ايليا-والقديسه-برباره-ابو-نصير-عمان",
+        "name": {
+          "ar": "كنيسة النبي إيليا والقديسة بربارة ابو نصير - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%86%d8%a8%d9%8a-%d8%a7%d9%8a%d9%84%d9%8a%d8%a7-%d9%88%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3%d8%a9-%d8%a8%d8%b1%d8%a8%d8%a7%d8%b1%d8%a9-%d9%84%d9%84%d8%b1/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-النبي-ايليا-الوهادنه-عجلون",
+        "name": {
+          "ar": "كنيسة النبي ايليا الوهادنة - عجلون",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عجلون",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%a7%d9%84%d9%86%d8%a8%d9%8a-%d8%a7%d9%8a%d9%84%d9%8a%d8%a7-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%a7%d9%84%d9%88/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الخارطه-البلد-مادبا",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس (الخارطة) البلد - مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-4/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-اربد",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس اربد",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "اربد",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-6/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الزرقاء",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس الزرقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الزرقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الفحيص-البلقاء",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس الفحيص - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-الكرك",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس الكرك",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "الكرك",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-5/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-جاورجيوس-عجلون",
+        "name": {
+          "ar": "كنيسة دير القديس جاورجيوس عجلون",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عجلون",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d8%ac%d8%a7%d9%88%d8%b1%d8%ac%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab-3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-نكتاريوس-الصويفيه-عمان",
+        "name": {
+          "ar": "كنيسة دير القديس نكتاريوس الصويفية - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%83%d8%aa%d8%a7%d8%b1%d9%8a%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-القديس-نيقولاوس-العقبه",
+        "name": {
+          "ar": "كنيسة دير القديس نيقولاوس العقبة",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "العقبة",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%a7%d9%84%d9%82%d8%af%d9%8a%d8%b3-%d9%86%d9%8a%d9%82%d9%88%d9%84%d8%a7%d9%88%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-دير-رقاد-السيده-العذارء-السلط-البلقاء",
+        "name": {
+          "ar": "كنيسة دير رقاد السيدة العذارء السلط - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%af%d9%8a%d8%b1-%d8%b1%d9%82%d8%a7%d8%af-%d8%a7%d9%84%d8%b3%d9%8a%d8%af%d8%a9-%d8%a7%d9%84%d8%b9%d8%b0%d8%b1%d8%a7%d8%a1-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-رقاد-والده-الاله-ارميمين-البلقاء",
+        "name": {
+          "ar": "كنيسة رقاد والدة الإله ارميمين - البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "البلقاء",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%b1%d9%82%d8%a7%d8%af-%d9%88%d8%a7%d9%84%d8%af%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%87-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-رقاد-والده-الاله-المفرق",
+        "name": {
+          "ar": "كنيسة رقاد والدة الإله المفرق",
+          "en": "",
+          "el": ""
         },
         "city": {
           "ar": "المفرق",
-          "en": "Mafraq",
-          "el": "Μάφρακ"
+          "en": "",
+          "el": ""
         },
-        "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%B1%D9%82%D8%A7%D8%AF-%D9%88%D8%A7%D9%84%D8%AF%D8%A9-%D8%A7%D9%84%D8%A7%D9%84%D9%87-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-2/"
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%b1%d9%82%d8%a7%d8%af-%d9%88%d8%a7%d9%84%d8%af%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%87-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-2/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-رقاد-والده-الاله-حنينا-مادبا",
+        "name": {
+          "ar": "كنيسة رقاد والدة الإله حنينا - مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "مأدبا",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d8%b1%d9%82%d8%a7%d8%af-%d9%88%d8%a7%d9%84%d8%af%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%87-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab%d9%88%d8%b0%d9%83-3/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-مار-الياس-للروم-الارثوذكس-ادر",
+        "name": {
+          "ar": "كنيسة مار إلياس للروم الأرثوذكس - أدر",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "أدر",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d9%85%d8%a7%d8%b1-%d8%a5%d9%84%d9%8a%d8%a7%d8%b3-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a3%d8%b1%d8%ab%d9%88%d8%b0%d9%83%d8%b3-%d8%a3%d8%af%d8%b1/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
+      },
+      {
+        "id": "كنيسه-ميلاد-السيده-العذارء-جبل-التاج-عمان",
+        "name": {
+          "ar": "كنيسة ميلاد السيدة العذارء جبل التاج - عمان",
+          "en": "",
+          "el": ""
+        },
+        "city": {
+          "ar": "عمان",
+          "en": "",
+          "el": ""
+        },
+        "url": "https://orthodoxjordan.org/%d9%83%d9%86%d9%8a%d8%b3%d8%a9-%d9%85%d9%8a%d9%84%d8%a7%d8%af-%d8%a7%d9%84%d8%b3%d9%8a%d8%af%d8%a9-%d8%a7%d9%84%d8%b9%d8%b0%d8%b1%d8%a7-%d9%84%d9%84%d8%b1%d9%88%d9%85-%d8%a7%d9%84%d8%a7%d8%b1%d8%ab/",
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "schedule_status": "OPEN_OFFICIAL_PAGE_FOR_CURRENT_SCHEDULE"
       }
     ],
     "live_resources": [

@@ -10,11 +10,11 @@
     "el": "",
     "en": "Greek Orthodox Patriarchate of Jerusalem"
   },
-  "date_iso": "2026-07-27",
+  "date_iso": "2026-07-26",
   "date_label": {
     "ar": "",
     "el": "",
-    "en": "Monday, July 27, 2026 / July 14, 2026 (Old Style)"
+    "en": "Sunday, July 26, 2026 / July 13, 2026 (Old Style)"
   },
   "calendar_label": {
     "ar": "",
@@ -24,8 +24,8 @@
   "julian_date": {
     "year": 2026,
     "month": 7,
-    "day": 14,
-    "label_ar": "14 تموز 2026 بحسب التقويم الكنسي القديم"
+    "day": 13,
+    "label_ar": "13 تموز 2026 بحسب التقويم الكنسي القديم"
   },
   "fast": {
     "ar": "",
@@ -215,36 +215,6 @@
   "language_content_mode": "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES",
   "machine_translation_used": false,
   "translation_fallback_policy": "DISABLED_NO_CROSS_LANGUAGE_FALLBACK",
-  "liturgy_service_selection": {
-    "service_type": "chrysostom",
-    "rule_id": "ordinary_chrysostom_baseline",
-    "authority": "canonical/liturgy_service_rules.json",
-    "source_url": "",
-    "pascha_offset": 106,
-    "label": {
-      "ar": "",
-      "el": "",
-      "en": "Divine Liturgy of Saint John Chrysostom"
-    },
-    "service_id": "divine_liturgy",
-    "native_editions": {
-      "ar": "",
-      "el": "",
-      "en": "IMPORTED_NATIVE_AUTHORIZED"
-    },
-    "availability_note": {
-      "ar": "",
-      "el": "",
-      "en": ""
-    },
-    "source_ids": [],
-    "import_contract": "",
-    "displayable": true,
-    "wrong_liturgy_fallback_allowed": false
-  },
-  "liturgy_service_rules": "canonical/liturgy_service_rules.json",
-  "liturgy_service_editions": "canonical/liturgy_service_editions.json",
-  "wrong_liturgy_fallback_allowed": false,
   "language_sources": {
     "en": {
       "priority": [
@@ -284,30 +254,12 @@
       "official_greek_orthodox",
       "orthodox_church_in_america"
     ],
-    "selected_source": "official_greek_orthodox",
-    "selected_priority": 4,
+    "selected_source": "orthodox_jordan",
+    "selected_priority": 1,
     "fallback_trace": [
       {
         "source": "orthodox_jordan",
         "priority": 1,
-        "status": "poisoned",
-        "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
-      },
-      {
-        "source": "jerusalem_patriarchate",
-        "priority": 2,
-        "status": "not_applicable",
-        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-14."
-      },
-      {
-        "source": "antioch_patriarchate",
-        "priority": 3,
-        "status": "calendar_incompatible",
-        "reason": "لا يمكن إثبات توافق التاريخ المدني الأنطاكي مع اليوم اليولياني لتقويم القدس آليًا."
-      },
-      {
-        "source": "official_greek_orthodox",
-        "priority": 4,
         "status": "selected"
       }
     ],
@@ -315,7 +267,7 @@
     "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
     "authority_mode": "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE",
     "daily_availability": "FULL",
-    "date_published": "2026-07-27",
+    "date_published": "2026-07-26",
     "usable_when_partial": true,
     "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
   },
@@ -324,15 +276,15 @@
       "id": "orthodox_jordan",
       "priority": 1,
       "official": true,
-      "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-      "status": "poisoned",
-      "date_iso": "2026-01-07",
-      "epistle_reference": "رسالة غلاطية 4: 4–7",
-      "gospel_reference": "متى 2 : 1 – 12",
+      "url": "https://orthodoxjo.tv/wp-content/uploads/2025/12/Artboard-7.jpg",
+      "status": "current",
+      "date_iso": "2026-07-26",
+      "epistle_reference": "Titus 3:8-15",
+      "gospel_reference": "Matthew 5:14-19",
       "tone": null,
       "prokeimenon_text": null,
-      "sha256": null,
-      "reason": "مصدر orthodox_jordan يحتوي نصًا تجريبيًا/محجوزًا: lorem ipsum"
+      "sha256": "b8a3df8d2bfc27bfad69e6dc9e8db98c0d2a57de6e6f355010d81961603e191f",
+      "reason": "قفل الأردن المثبت: أحد الآباء القديسين للمجمع المسكوني الرابع; تصنيف اليوم من التقويم الأردني الرسمي والمرجعان من دورة الأحد الأرثوذكسية المثبتة."
     },
     {
       "id": "jerusalem_patriarchate",
@@ -340,49 +292,49 @@
       "official": true,
       "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
       "status": "not_applicable",
-      "date_iso": "2026-07-27",
+      "date_iso": "2026-07-26",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
       "prokeimenon_text": null,
       "sha256": null,
-      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-14."
+      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-13."
     },
     {
       "id": "antioch_patriarchate",
       "priority": 3,
       "official": true,
-      "url": "https://www.antiochpatriarchate.org/images/pages/dalil-2026-full2025-11-23-07-04-09.pdf",
-      "status": "calendar_incompatible",
-      "date_iso": "2026-07-27",
+      "url": "canonical/antioch_yearbook_sources.json",
+      "status": "offline",
+      "date_iso": "2026-07-26",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
       "prokeimenon_text": null,
-      "sha256": "adfd646158025f1503af26e3aac5bf1430f863e22336355b590d3bb338824c07",
-      "reason": "لا يمكن إثبات توافق التاريخ المدني الأنطاكي مع اليوم اليولياني لتقويم القدس آليًا."
+      "sha256": null,
+      "reason": "لم يُفحص الدليل السنوي في الوضع غير المتصل."
     },
     {
       "id": "official_greek_orthodox",
       "priority": 4,
       "official": true,
-      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/h91/en/index.html",
-      "status": "current",
-      "date_iso": "2026-07-27",
-      "epistle_reference": "1 Corinthians 11:31-34; 12:1-6",
-      "gospel_reference": "Matthew 18:1-11",
+      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/{year}/{month:02d}/{day:02d}/h91/en/index.html",
+      "status": "offline",
+      "date_iso": "2026-07-26",
+      "epistle_reference": null,
+      "gospel_reference": null,
       "tone": null,
       "prokeimenon_text": null,
-      "sha256": "0cdf6343a2cbe202e66351fabbcced8a2c0b372ce2f4bd8afebe74170f2cc619",
-      "reason": "أعيد استخدام رصد DCS الرسمي المؤرخ والمحدود الذي جمعه مركز صحة المصادر في التشغيل نفسه."
+      "sha256": null,
+      "reason": "لم تُفحص منصة DCS الرسمية في الوضع غير المتصل."
     },
     {
       "id": "orthodox_church_in_america",
       "priority": 5,
       "official": true,
-      "url": "https://www.oca.org/readings/daily/2026/07/27",
+      "url": "https://www.oca.org/readings/daily/2026/07/26",
       "status": "unavailable",
-      "date_iso": "2026-07-27",
+      "date_iso": "2026-07-26",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
@@ -468,33 +420,33 @@
       "title": {
         "ar": "",
         "el": "",
-        "en": "Prokeimenon — Tone 4"
+        "en": "Prokeimenon — Tone 7"
       },
       "reference": {
         "ar": "",
         "el": "",
-        "en": "Psalm 103:4, 1 (LXX)"
+        "en": "Resurrection Tone 7"
       },
       "body": {
         "ar": "",
         "el": "",
-        "en": "He makes His angels spirits, and His ministers a flame of fire.\nBless the Lord, O my soul! O Lord my God, You are very great!"
+        "en": "The Lord shall give strength to His people; the Lord shall bless His people with peace.\nBring to the Lord, O sons of God; bring to the Lord glory and honor."
       },
-      "tone": 4,
+      "tone": 7,
       "source": {
         "ar": "",
         "el": "",
-        "en": "https://www.goarch.org/chapel"
+        "en": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning"
       },
       "native_source_verification": {
         "en": {
           "status": "VERIFIED_EXACT_NATIVE_SOURCE",
-          "source_id": "goarch_online_chapel",
-          "source_url": "https://www.goarch.org/chapel",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
           "canonical_reference": "",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "306360e53b7aab72df7be1a302c3d1e8e649c9e54a40c796aa76b337e1bfdca9",
+          "text_sha256": "fde08c5d861fbf3ff5d65b90ad8c8045c1300d8e729f80369846e2ca2cd74ea8",
           "ai_translation_used": false,
           "automatic_diacritization_used": false
         }
@@ -520,12 +472,12 @@
       "reference": {
         "ar": "",
         "el": "",
-        "en": "Paul’s First Letter to the Corinthians 11:31-34; 12:1-6"
+        "en": "Paul’s Letter to Titus 3:8-15"
       },
       "body": {
         "ar": "",
         "el": "",
-        "en": "For if we discerned ourselves, we wouldn’t be judged.\nBut when we are judged, we are disciplined by the Lord, that we may not be condemned with the world.\nTherefore, my brothers, when you come together to eat, wait for one another.\nBut if anyone is hungry, let him eat at home, lest your coming together be for judgment. The rest I will set in order whenever I come.\nNow concerning spiritual things, brothers, I don’t want you to be ignorant.\nYou know that when you were heathen, you were led away to those mute idols, however you might be led.\nTherefore I make known to you that no man speaking by God’s Spirit says, “Jesus is accursed.” No one can say, “Jesus is Lord,” but by the Holy Spirit.\nNow there are various kinds of gifts, but the same Spirit.\nThere are various kinds of service, and the same Lord.\nThere are various kinds of workings, but the same God who works all things in all."
+        "en": "This saying is faithful, and concerning these things I desire that you insist confidently, so that those who have believed God may be careful to maintain good works. These things are good and profitable to men;\nbut shun foolish questionings, genealogies, strife, and disputes about the law; for they are unprofitable and vain.\nAvoid a factious man after a first and second warning,\nknowing that such a one is perverted and sinful, being self-condemned.\nWhen I send Artemas to you, or Tychicus, be diligent to come to me to Nicopolis, for I have determined to winter there.\nSend Zenas the lawyer and Apollos on their journey speedily, that nothing may be lacking for them.\nLet our people also learn to maintain good works to meet necessary needs, that they may not be unfruitful.\nAll who are with me greet you. Greet those who love us in faith. Grace be with you all. Amen."
       },
       "source": {
         "ar": "",
@@ -535,7 +487,7 @@
       "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "1CO.11.31-34;1CO.12.1-6",
+        "canonical_reference": "TIT.3.8-15",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -546,22 +498,20 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
           "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-          "canonical_reference": "1CO.11.31-34;1CO.12.1-6",
+          "canonical_reference": "TIT.3.8-15",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "5d0deb968d0e21c9aaca074c75c83529075de701c1d131c0ba9090abe68c2f3e",
-          "verse_count": 10,
+          "text_sha256": "f49e3324df7f31ce524a888faabce468c4a3a61b9f20f2d6d7f2a88b385f0896",
+          "verse_count": 8,
           "verse_hashes": [
-            "b8b120da7173b21957b14baab528ed068e3b3906e45ecdbcbc9a8b577be71420",
-            "05a485110dbc212d9d755a686730e8006b31c64f9c09e08b80275bc0d16769d1",
-            "9bb1b28c63a33e2f89f54b822712542a32bca3eab7098139c0546abe3757fe8f",
-            "d5db169f48e25a0390217924b109c0bbd3c2be9c0b9e9d625dc51bb65056447f",
-            "5476816ef7e0cafc077b0a4f43979fa083e7a625c5c90928891f7ddfa04fa083",
-            "6519016f2edcb1d911dc4b4fcce431211d2df2078796ae18e84a129be94637b2",
-            "99946f342940dc5497db893b69e6773ee138ca776495136484042144fe426799",
-            "b7cc0cab1199033ae251d9442117f2ae2852ef1f621433357856c923364146c0",
-            "07e653638a7526800c2ed04075b1ad60801814fdb53c017fffa7d61fd4dce3c7",
-            "613e9cc16e23c57f98222d5770daf5aceb5542438e0e3084dbc7cc62dee38cb5"
+            "f55e38b76c29446417740e1baf1872366aad4090dd597b2e374c392d250f603e",
+            "c29b8f502d6a19a949715987377ac0e0bcd36ffe637166ce42f680a1789054da",
+            "43b1706020dc72be97e8d5fa8b0e7b9a333ccf669ae56f46d59a79a0bdc77aa7",
+            "b787355cff13f1ac1e4c5bf996481a7fec924145ca9364ab62a0d04dec63c063",
+            "11f2d324d3b27ed43a5385d010c158b47c1b35fd108204ac848946fc5599b839",
+            "9c3fdbfe1868fc5b5ee8ed3ad589591d5106dfeaea10d2fce85d692e4540e9b5",
+            "d9aa10ce7cbd5fb49e144a1e6b1a6849dff6fffc01eeab537145deeef0ed8c9d",
+            "fcec867c6166138c677b7e0944f8c6b01958614216a49633f92fcfd4c8c4766d"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -585,12 +535,12 @@
       "reference": {
         "ar": "",
         "el": "",
-        "en": "The Good News According to Matthew 18:1-11"
+        "en": "The Good News According to Matthew 5:14-19"
       },
       "body": {
         "ar": "",
         "el": "",
-        "en": "In that hour the disciples came to Jesus, saying, “Who then is greatest in the Kingdom of Heaven?”\nJesus called a little child to himself, and set him in the middle of them\nand said, “Most certainly I tell you, unless you turn and become as little children, you will in no way enter into the Kingdom of Heaven.\nWhoever therefore humbles himself as this little child is the greatest in the Kingdom of Heaven.\nWhoever receives one such little child in my name receives me,\nbut whoever causes one of these little ones who believe in me to stumble, it would be better for him if a huge millstone were hung around his neck and that he were sunk in the depths of the sea.\n“Woe to the world because of occasions of stumbling! For it must be that the occasions come, but woe to that person through whom the occasion comes!\nIf your hand or your foot causes you to stumble, cut it off and cast it from you. It is better for you to enter into life maimed or crippled, rather than having two hands or two feet to be cast into the eternal fire.\nIf your eye causes you to stumble, pluck it out and cast it from you. It is better for you to enter into life with one eye, rather than having two eyes to be cast into the Gehenna of fire.\nSee that you don’t despise one of these little ones, for I tell you that in heaven their angels always see the face of my Father who is in heaven.\nFor the Son of Man came to save that which was lost."
+        "en": "“You are the light of the world. A city located on a hill can’t be hidden.\nNeither do you light a lamp and put it under a measuring basket, but on a stand; and it shines to all who are in the house.\nEven so, let your light shine before men, that they may see your good works and glorify your Father who is in heaven.\n“Don’t think that I came to destroy the law or the prophets. I didn’t come to destroy, but to fulfill.\nFor most certainly, I tell you, until heaven and earth pass away, not even one smallest letter or one tiny pen stroke shall in any way pass away from the law, until all things are accomplished.\nTherefore, whoever shall break one of these least commandments and teach others to do so, shall be called least in the Kingdom of Heaven; but whoever shall do and teach them shall be called great in the Kingdom of Heaven."
       },
       "source": {
         "ar": "",
@@ -600,7 +550,7 @@
       "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "MAT.18.1-11",
+        "canonical_reference": "MAT.5.14-19",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -611,23 +561,18 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
           "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-          "canonical_reference": "MAT.18.1-11",
+          "canonical_reference": "MAT.5.14-19",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "e1f4fe9a13d242faf62c31d97b242c6c5979d568bc8183ecef309d7ad34c7f90",
-          "verse_count": 11,
+          "text_sha256": "d02ddb1d22f5e10bcea9efc80982f763ea74c71788ec0ab2bcb8397f239c8958",
+          "verse_count": 6,
           "verse_hashes": [
-            "9ee9ec28638263233f9ad923473eb84eadb6a380901b7d34a378b8ea513368a5",
-            "ac832a495bc3ed400275eb9ab4a7ad550af2f0b5e750c82382cf6bd983bcfdf6",
-            "10dfbe67fea622fe5420aa3673eb9be6a5cb2382b432cdacd46d5c7d6a19ef63",
-            "7d7c8dc5f3fddb737857d1ed26c606dd8daa0ba5dabddda7bf772677e5cf25bd",
-            "12fa1f867d7ab8284f1a636d671ada4127a01b87641d6d32e11a3102af93f502",
-            "07dce949507dad25e3b208841c99aa62c44ad537a6e578472ac1180b54f59c17",
-            "ad33cd6146ce65e3a6e32c49832652f8f504dab9d0b1b7b9f6f9fad201a5f5f7",
-            "10ccda8a4949f9367592b1cbb64978b2e4fd64a1607af3ad371c8a685eb24c87",
-            "7b94bb75f1244e110e4812fa5515208ad12e62eff1765a575a9d828fa6b18b30",
-            "309928af3e6be0ea330fe5ff9d1b85e4c3af7dfc2e0ac1177ba9d5c4c454dbee",
-            "02b0fd7e55c4e805a4dbfae57ab92ae2bab93787c9abf6d17634226c54850f7e"
+            "c90a138f61d2fe160d9257632627c85658814163096f805b8eecebf7d35ab4d3",
+            "9b58e89dc86541a568cf33bc2db175672146d266a247c2b7db3413178cc53169",
+            "6f4a17bd2f0857b9338e89ae328a8d019a75b0a66db3ac7ab4864da116ceb313",
+            "08bda42c280ad5e8785007376eea3fecd8638d8afa7e987b33950ec40c29a0a3",
+            "837626aa3df37e56e91acb822d0f20c3df7d36e4ef651b2d08ed80c514805aa0",
+            "a40060050f86170c82a5181dbcd0092d9c304e26dfee1b4b2dc80f1fc9d0508e"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -843,34 +788,7 @@
         }
       }
     },
-    "service_id": "next_sunday_full_liturgy",
-    "liturgy_service_selection": {
-      "service_type": "chrysostom",
-      "rule_id": "ordinary_chrysostom_baseline",
-      "authority": "canonical/liturgy_service_rules.json",
-      "source_url": "",
-      "pascha_offset": 112,
-      "label": {
-        "ar": "",
-        "el": "",
-        "en": "Divine Liturgy of Saint John Chrysostom"
-      },
-      "service_id": "divine_liturgy",
-      "native_editions": {
-        "ar": "",
-        "el": "",
-        "en": "IMPORTED_NATIVE_AUTHORIZED"
-      },
-      "availability_note": {
-        "ar": "",
-        "el": "",
-        "en": ""
-      },
-      "source_ids": [],
-      "import_contract": "",
-      "displayable": true,
-      "wrong_liturgy_fallback_allowed": false
-    }
+    "service_id": "next_sunday_full_liturgy"
   },
   "integrity_inputs": {
     "next_sunday": {
@@ -1058,13 +976,13 @@
       ]
     },
     "upcoming_reference_dates": [
+      "2026-07-27",
       "2026-07-28",
       "2026-07-29",
       "2026-07-30",
       "2026-07-31",
       "2026-08-01",
-      "2026-08-02",
-      "2026-08-03"
+      "2026-08-02"
     ]
   },
   "recommended_services": [
@@ -1082,95 +1000,30 @@
       "title": {
         "ar": "",
         "el": "",
-        "en": "Today — Divine Liturgy of Saint John Chrysostom"
+        "en": "Today — Divine Liturgy"
       },
       "summary": {
         "ar": "",
         "el": "",
-        "en": "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite."
+        "en": "Verified daily readings and feast texts are composed with the single static Liturgy template."
       },
       "source_language": "en",
-      "translation_status": "verified_daily_overlay_v3_appointed_rite",
+      "translation_status": "verified_daily_overlay_v2",
       "template_id": "library:divine_liturgy",
-      "dynamic_date": "2026-07-27",
-      "selected_liturgy_type": "chrysostom",
-      "selected_liturgy": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 106,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
-      "liturgy_service_contract": {
-        "rules": "canonical/liturgy_service_rules.json",
-        "editions": "canonical/liturgy_service_editions.json",
-        "selected_liturgy_type": "chrysostom",
-        "selected_service_id": "divine_liturgy",
-        "selection_rule_id": "ordinary_chrysostom_baseline",
-        "selection_authority": "canonical/liturgy_service_rules.json",
-        "selection_source_url": "",
-        "pascha_offset": 106,
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false,
-        "fail_closed": true
-      },
-      "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_TEMPLATE_SELECTED",
-      "wrong_liturgy_fallback_allowed": false,
+      "dynamic_date": "2026-07-26",
       "daily_reading_contract": {
         "authority": "orthodox_jordan",
         "contract": "canonical/jordan_liturgical_contract.json",
-        "date_iso": "2026-07-27",
-        "selected_liturgy_type": "chrysostom",
-        "selected_liturgy_rule_id": "ordinary_chrysostom_baseline",
-        "epistle_canonical": "1CO.11.31-34;1CO.12.1-6",
-        "gospel_canonical": "MAT.18.1-11",
+        "date_iso": "2026-07-26",
+        "epistle_canonical": "TIT.3.8-15",
+        "gospel_canonical": "MAT.5.14-19",
         "matins_gospel_canonical": "",
-        "resurrection_tone": null,
-        "eothinon": null,
-        "proper_id": null,
-        "variable_parts_registry": "canonical/liturgy_variable_parts.json",
-        "variable_part_ids": [
-          "weekday_dismissal"
-        ],
-        "variable_parts_fail_closed": true,
         "fail_closed": true
       },
       "notice": {
         "ar": "",
         "el": "",
-        "en": "The appointed static service is stored once; daily pieces are injected only after source and signature validation."
+        "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1202,17 +1055,17 @@
         "[البروكيمنن]": {
           "ar": "",
           "el": "",
-          "en": "Psalm 103:4, 1 (LXX)\nHe makes His angels spirits, and His ministers a flame of fire.\nBless the Lord, O my soul! O Lord my God, You are very great!"
+          "en": "Resurrection Tone 7\nThe Lord shall give strength to His people; the Lord shall bless His people with peace.\nBring to the Lord, O sons of God; bring to the Lord glory and honor."
         },
         "[فصل من رسالة اليوم]": {
           "ar": "",
           "el": "",
-          "en": "Paul’s First Letter to the Corinthians 11:31-34; 12:1-6\nFor if we discerned ourselves, we wouldn’t be judged.\nBut when we are judged, we are disciplined by the Lord, that we may not be condemned with the world.\nTherefore, my brothers, when you come together to eat, wait for one another.\nBut if anyone is hungry, let him eat at home, lest your coming together be for judgment. The rest I will set in order whenever I come.\nNow concerning spiritual things, brothers, I don’t want you to be ignorant.\nYou know that when you were heathen, you were led away to those mute idols, however you might be led.\nTherefore I make known to you that no man speaking by God’s Spirit says, “Jesus is accursed.” No one can say, “Jesus is Lord,” but by the Holy Spirit.\nNow there are various kinds of gifts, but the same Spirit.\nThere are various kinds of service, and the same Lord.\nThere are various kinds of workings, but the same God who works all things in all."
+          "en": "Paul’s Letter to Titus 3:8-15\nThis saying is faithful, and concerning these things I desire that you insist confidently, so that those who have believed God may be careful to maintain good works. These things are good and profitable to men;\nbut shun foolish questionings, genealogies, strife, and disputes about the law; for they are unprofitable and vain.\nAvoid a factious man after a first and second warning,\nknowing that such a one is perverted and sinful, being self-condemned.\nWhen I send Artemas to you, or Tychicus, be diligent to come to me to Nicopolis, for I have determined to winter there.\nSend Zenas the lawyer and Apollos on their journey speedily, that nothing may be lacking for them.\nLet our people also learn to maintain good works to meet necessary needs, that they may not be unfruitful.\nAll who are with me greet you. Greet those who love us in faith. Grace be with you all. Amen."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
           "ar": "",
           "el": "",
-          "en": "The Good News According to Matthew 18:1-11\nIn that hour the disciples came to Jesus, saying, “Who then is greatest in the Kingdom of Heaven?”\nJesus called a little child to himself, and set him in the middle of them\nand said, “Most certainly I tell you, unless you turn and become as little children, you will in no way enter into the Kingdom of Heaven.\nWhoever therefore humbles himself as this little child is the greatest in the Kingdom of Heaven.\nWhoever receives one such little child in my name receives me,\nbut whoever causes one of these little ones who believe in me to stumble, it would be better for him if a huge millstone were hung around his neck and that he were sunk in the depths of the sea.\n“Woe to the world because of occasions of stumbling! For it must be that the occasions come, but woe to that person through whom the occasion comes!\nIf your hand or your foot causes you to stumble, cut it off and cast it from you. It is better for you to enter into life maimed or crippled, rather than having two hands or two feet to be cast into the eternal fire.\nIf your eye causes you to stumble, pluck it out and cast it from you. It is better for you to enter into life with one eye, rather than having two eyes to be cast into the Gehenna of fire.\nSee that you don’t despise one of these little ones, for I tell you that in heaven their angels always see the face of my Father who is in heaven.\nFor the Son of Man came to save that which was lost."
+          "en": "The Good News According to Matthew 5:14-19\n“You are the light of the world. A city located on a hill can’t be hidden.\nNeither do you light a lamp and put it under a measuring basket, but on a stand; and it shines to all who are in the house.\nEven so, let your light shine before men, that they may see your good works and glorify your Father who is in heaven.\n“Don’t think that I came to destroy the law or the prophets. I didn’t come to destroy, but to fulfill.\nFor most certainly, I tell you, until heaven and earth pass away, not even one smallest letter or one tiny pen stroke shall in any way pass away from the law, until all things are accomplished.\nTherefore, whoever shall break one of these least commandments and teach others to do so, shall be called least in the Kingdom of Heaven; but whoever shall do and teach them shall be called great in the Kingdom of Heaven."
         },
         "[آية المناولة]": {
           "ar": "",
@@ -1256,62 +1109,22 @@
         "prokeimenon": {
           "ar": "",
           "el": "",
-          "en": "Psalm 103:4, 1 (LXX)\nHe makes His angels spirits, and His ministers a flame of fire.\nBless the Lord, O my soul! O Lord my God, You are very great!"
+          "en": "Resurrection Tone 7\nThe Lord shall give strength to His people; the Lord shall bless His people with peace.\nBring to the Lord, O sons of God; bring to the Lord glory and honor."
         },
         "epistle": {
           "ar": "",
           "el": "",
-          "en": "Paul’s First Letter to the Corinthians 11:31-34; 12:1-6\nFor if we discerned ourselves, we wouldn’t be judged.\nBut when we are judged, we are disciplined by the Lord, that we may not be condemned with the world.\nTherefore, my brothers, when you come together to eat, wait for one another.\nBut if anyone is hungry, let him eat at home, lest your coming together be for judgment. The rest I will set in order whenever I come.\nNow concerning spiritual things, brothers, I don’t want you to be ignorant.\nYou know that when you were heathen, you were led away to those mute idols, however you might be led.\nTherefore I make known to you that no man speaking by God’s Spirit says, “Jesus is accursed.” No one can say, “Jesus is Lord,” but by the Holy Spirit.\nNow there are various kinds of gifts, but the same Spirit.\nThere are various kinds of service, and the same Lord.\nThere are various kinds of workings, but the same God who works all things in all."
+          "en": "Paul’s Letter to Titus 3:8-15\nThis saying is faithful, and concerning these things I desire that you insist confidently, so that those who have believed God may be careful to maintain good works. These things are good and profitable to men;\nbut shun foolish questionings, genealogies, strife, and disputes about the law; for they are unprofitable and vain.\nAvoid a factious man after a first and second warning,\nknowing that such a one is perverted and sinful, being self-condemned.\nWhen I send Artemas to you, or Tychicus, be diligent to come to me to Nicopolis, for I have determined to winter there.\nSend Zenas the lawyer and Apollos on their journey speedily, that nothing may be lacking for them.\nLet our people also learn to maintain good works to meet necessary needs, that they may not be unfruitful.\nAll who are with me greet you. Greet those who love us in faith. Grace be with you all. Amen."
         },
         "gospel": {
           "ar": "",
           "el": "",
-          "en": "The Good News According to Matthew 18:1-11\nIn that hour the disciples came to Jesus, saying, “Who then is greatest in the Kingdom of Heaven?”\nJesus called a little child to himself, and set him in the middle of them\nand said, “Most certainly I tell you, unless you turn and become as little children, you will in no way enter into the Kingdom of Heaven.\nWhoever therefore humbles himself as this little child is the greatest in the Kingdom of Heaven.\nWhoever receives one such little child in my name receives me,\nbut whoever causes one of these little ones who believe in me to stumble, it would be better for him if a huge millstone were hung around his neck and that he were sunk in the depths of the sea.\n“Woe to the world because of occasions of stumbling! For it must be that the occasions come, but woe to that person through whom the occasion comes!\nIf your hand or your foot causes you to stumble, cut it off and cast it from you. It is better for you to enter into life maimed or crippled, rather than having two hands or two feet to be cast into the eternal fire.\nIf your eye causes you to stumble, pluck it out and cast it from you. It is better for you to enter into life with one eye, rather than having two eyes to be cast into the Gehenna of fire.\nSee that you don’t despise one of these little ones, for I tell you that in heaven their angels always see the face of my Father who is in heaven.\nFor the Son of Man came to save that which was lost."
+          "en": "The Good News According to Matthew 5:14-19\n“You are the light of the world. A city located on a hill can’t be hidden.\nNeither do you light a lamp and put it under a measuring basket, but on a stand; and it shines to all who are in the house.\nEven so, let your light shine before men, that they may see your good works and glorify your Father who is in heaven.\n“Don’t think that I came to destroy the law or the prophets. I didn’t come to destroy, but to fulfill.\nFor most certainly, I tell you, until heaven and earth pass away, not even one smallest letter or one tiny pen stroke shall in any way pass away from the law, until all things are accomplished.\nTherefore, whoever shall break one of these least commandments and teach others to do so, shall be called least in the Kingdom of Heaven; but whoever shall do and teach them shall be called great in the Kingdom of Heaven."
         },
         "communion_hymn": {
           "ar": "",
           "el": "",
           "en": ""
-        },
-        "first_antiphon": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "second_antiphon": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "third_antiphon": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "entrance_hymn": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "trisagion_hymn": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "alleluia_verses": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "theotokos_hymn": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "dismissal": {
-          "ar": "",
-          "el": "",
-          "en": "May Christ our true God, through the intercessions of His most pure and holy Mother; the power of the precious and life-giving Cross; the supplications of the holy, glorious and praiseworthy Apostles; of our father among the saints John Chrysostom, Archbishop of Constantinople; and of all the saints, have mercy on us and save us, for He is good and loves mankind."
         }
       },
       "slot_inline_replacements": {
@@ -1327,34 +1140,49 @@
           "title": {
             "ar": "",
             "el": "",
-            "en": "Today’s service"
+            "en": "Today: daily supplement"
           }
         },
         {
-          "type": "text",
+          "type": "note",
           "speaker": {
             "ar": "",
             "el": "",
-            "en": "Church day"
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
             "el": "",
-            "en": "2026-07-27 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom."
-          }
+            "en": "Civil date: 2026-07-26. Verified daily texts are inserted below where available."
+          },
+          "collapsed_by_default": true
         },
         {
           "type": "section",
           "title": {
             "ar": "",
             "el": "",
-            "en": "Readings and hymns of the day"
+            "en": "Order of today’s readings"
           }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "el": "",
+            "en": "Optional note"
+          },
+          "text": {
+            "ar": "",
+            "el": "",
+            "en": "The official Matins Gospel when available, then Prokeimenon, Epistle, Alleluia, and Gospel. Unverified target-language text is hidden."
+          },
+          "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-26",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1380,7 +1208,7 @@
       },
       "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-26",
       "notice": {
         "ar": "",
         "el": "",
@@ -1413,14 +1241,14 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
+            "en": "Civil date: Sunday, July 26, 2026. Old-calendar date: July 13, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-26",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1446,7 +1274,7 @@
       },
       "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-26",
       "notice": {
         "ar": "",
         "el": "",
@@ -1479,14 +1307,14 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
+            "en": "Civil date: Sunday, July 26, 2026. Old-calendar date: July 13, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-26",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1512,7 +1340,7 @@
       },
       "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-26",
       "notice": {
         "ar": "",
         "el": "",
@@ -1545,14 +1373,14 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
+            "en": "Civil date: Sunday, July 26, 2026. Old-calendar date: July 13, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-26",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1578,7 +1406,7 @@
       },
       "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-26",
       "notice": {
         "ar": "",
         "el": "",
@@ -1611,14 +1439,14 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
+            "en": "Civil date: Sunday, July 26, 2026. Old-calendar date: July 13, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-26",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1644,7 +1472,7 @@
       },
       "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-26",
       "notice": {
         "ar": "",
         "el": "",
@@ -1677,14 +1505,14 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
+            "en": "Civil date: Sunday, July 26, 2026. Old-calendar date: July 13, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-26",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1701,93 +1529,30 @@
       "title": {
         "ar": "",
         "el": "",
-        "en": "Next Sunday — Divine Liturgy of Saint John Chrysostom"
+        "en": "Next Sunday — Divine Liturgy"
       },
       "summary": {
         "ar": "",
         "el": "",
-        "en": "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite."
+        "en": "Verified daily readings and feast texts are composed with the single static Liturgy template."
       },
       "source_language": "en",
-      "translation_status": "verified_daily_overlay_v3_appointed_rite",
+      "translation_status": "verified_daily_overlay_v2",
       "template_id": "library:divine_liturgy",
       "dynamic_date": "2026-08-02",
-      "selected_liturgy_type": "chrysostom",
-      "selected_liturgy": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 112,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
-      "liturgy_service_contract": {
-        "rules": "canonical/liturgy_service_rules.json",
-        "editions": "canonical/liturgy_service_editions.json",
-        "selected_liturgy_type": "chrysostom",
-        "selected_service_id": "divine_liturgy",
-        "selection_rule_id": "ordinary_chrysostom_baseline",
-        "selection_authority": "canonical/liturgy_service_rules.json",
-        "selection_source_url": "",
-        "pascha_offset": 112,
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false,
-        "fail_closed": true
-      },
-      "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_TEMPLATE_SELECTED",
-      "wrong_liturgy_fallback_allowed": false,
       "daily_reading_contract": {
         "authority": "orthodox_jordan",
         "contract": "canonical/jordan_liturgical_contract.json",
         "date_iso": "2026-08-02",
-        "selected_liturgy_type": "chrysostom",
-        "selected_liturgy_rule_id": "ordinary_chrysostom_baseline",
         "epistle_canonical": "1CO.3.9-17",
         "gospel_canonical": "MAT.14.22-34",
         "matins_gospel_canonical": "",
-        "resurrection_tone": 8,
-        "eothinon": null,
-        "proper_id": "octoechos:tone:8",
-        "variable_parts_registry": "canonical/liturgy_variable_parts.json",
-        "variable_part_ids": [],
-        "variable_parts_fail_closed": true,
         "fail_closed": true
       },
       "notice": {
         "ar": "",
         "el": "",
-        "en": "The appointed static service is stored once; daily pieces are injected only after source and signature validation."
+        "en": "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1804,7 +1569,7 @@
         "[طروبارية اليوم]": {
           "ar": "",
           "el": "",
-          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You."
+          "en": ""
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
           "ar": "",
@@ -1834,7 +1599,7 @@
         "[آية المناولة]": {
           "ar": "",
           "el": "",
-          "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia."
+          "en": ""
         }
       },
       "inline_replacements": {
@@ -1853,12 +1618,12 @@
         "daily_hymns": {
           "ar": "",
           "el": "",
-          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You."
+          "en": ""
         },
         "daily_troparion": {
           "ar": "",
           "el": "",
-          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You."
+          "en": ""
         },
         "church_troparion": {
           "ar": "",
@@ -1888,46 +1653,6 @@
         "communion_hymn": {
           "ar": "",
           "el": "",
-          "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia."
-        },
-        "first_antiphon": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "second_antiphon": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "third_antiphon": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "entrance_hymn": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "trisagion_hymn": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "alleluia_verses": {
-          "ar": "",
-          "el": "",
-          "en": "Come, let us rejoice in the Lord; let us shout with joy to God our Savior.\nLet us come before His presence with thanksgiving and shout joyfully to Him with psalms."
-        },
-        "theotokos_hymn": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "dismissal": {
-          "ar": "",
-          "el": "",
           "en": ""
         }
       },
@@ -1944,29 +1669,44 @@
           "title": {
             "ar": "",
             "el": "",
-            "en": "Next Sunday’s service"
+            "en": "Next Sunday: daily supplement"
           }
         },
         {
-          "type": "text",
+          "type": "note",
           "speaker": {
             "ar": "",
             "el": "",
-            "en": "Church day"
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
             "el": "",
-            "en": "2026-08-02 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom."
-          }
+            "en": "Civil date: 2026-08-02. Verified daily texts are inserted below where available."
+          },
+          "collapsed_by_default": true
         },
         {
           "type": "section",
           "title": {
             "ar": "",
             "el": "",
-            "en": "Readings and hymns of the day"
+            "en": "Order of today’s readings"
           }
+        },
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "",
+            "el": "",
+            "en": "Optional note"
+          },
+          "text": {
+            "ar": "",
+            "el": "",
+            "en": "The official Matins Gospel when available, then Prokeimenon, Epistle, Alleluia, and Gospel. Unverified target-language text is hidden."
+          },
+          "collapsed_by_default": true
         }
       ],
       "integrity": {
@@ -1982,6 +1722,221 @@
     }
   ],
   "upcoming": [
+    {
+      "date": "2026-07-27",
+      "day": {
+        "ar": "",
+        "el": "",
+        "en": "Monday, July 27 / July 14, 2026 (Old Style)"
+      },
+      "feast": {
+        "ar": "",
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
+      },
+      "status": {
+        "ar": "",
+        "el": "",
+        "en": "No fast"
+      },
+      "note": {
+        "ar": "",
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
+      },
+      "fasting": {
+        "code": "fast_free",
+        "season": {
+          "ar": "",
+          "el": "",
+          "en": "Ordinary day"
+        },
+        "title": {
+          "ar": "",
+          "el": "",
+          "en": "No fast"
+        },
+        "level": {
+          "ar": "",
+          "el": "",
+          "en": "No fast"
+        },
+        "detail": {
+          "ar": "",
+          "el": "",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
+        },
+        "is_fast": false,
+        "allowed": {
+          "meat": true,
+          "dairy": true,
+          "eggs": true,
+          "fish": true,
+          "wine": true,
+          "oil": true
+        },
+        "display_icons": [
+          "✅"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Meat and poultry"
+            },
+            "allowed": true
+          },
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Dairy"
+            },
+            "allowed": true
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Eggs"
+            },
+            "allowed": true
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Fish"
+            },
+            "allowed": true
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Wine"
+            },
+            "allowed": true
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Oil"
+            },
+            "allowed": true
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "ordinary_fast_free",
+          "note": {
+            "ar": "",
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "",
+            "el": "",
+            "en": "Permitted: all listed food categories under the general rule"
+          },
+          "forbidden_summary": {
+            "ar": "",
+            "el": "",
+            "en": "Not permitted: no category is restricted by a general fast today"
+          },
+          "duration": {
+            "ar": "",
+            "el": "",
+            "en": "No general fasting duration applies today."
+          },
+          "beginner_explanation": {
+            "ar": "",
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
+          },
+          "spiritual_note": {
+            "ar": "",
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
+          },
+          "health_note": {
+            "ar": "",
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "",
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
+          },
+          "detail": {
+            "ar": "",
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "",
+            "el": "",
+            "en": "Epistle"
+          },
+          "reference": {
+            "ar": "",
+            "el": "",
+            "en": "1 Corinthians 11.31-12.6"
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "",
+            "el": "",
+            "en": "Gospel"
+          },
+          "reference": {
+            "ar": "",
+            "el": "",
+            "en": "Matthew 18.1-11"
+          }
+        }
+      },
+      "is_sunday": false,
+      "verification_status": "PREVIEW_REFERENCE_ONLY",
+      "publication_note": {
+        "ar": "",
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
+      }
+    },
     {
       "date": "2026-07-28",
       "day": {
@@ -2188,33 +2143,6 @@
             "en": "Matthew 18.18-22, 19.1-2, 13-15"
           }
         }
-      },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 107,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
       },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
@@ -2432,33 +2360,6 @@
           }
         }
       },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 108,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -2673,33 +2574,6 @@
             "en": "Matthew 20.17-28"
           }
         }
-      },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 109,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
       },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
@@ -2917,33 +2791,6 @@
           }
         }
       },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 110,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
@@ -3158,33 +3005,6 @@
             "en": "Matthew 15.32-39"
           }
         }
-      },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 111,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
       },
       "is_sunday": false,
       "verification_status": "PREVIEW_REFERENCE_ONLY",
@@ -3401,33 +3221,6 @@
           }
         }
       },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 112,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
       "is_sunday": true,
       "verification_status": "VERIFIED_NEXT_SUNDAY_REFERENCES",
       "publication_note": {
@@ -3436,254 +3229,12 @@
         "en": "Reference preview only; full text is re-verified on its publication date."
       },
       "source": "official_greek_orthodox"
-    },
-    {
-      "date": "2026-08-03",
-      "day": {
-        "ar": "",
-        "el": "",
-        "en": "Monday, August 3 / July 21, 2026 (Old Style)"
-      },
-      "feast": {
-        "ar": "",
-        "el": "",
-        "en": "Today’s commemoration according to the old church calendar"
-      },
-      "status": {
-        "ar": "",
-        "el": "",
-        "en": "No fast"
-      },
-      "note": {
-        "ar": "",
-        "el": "",
-        "en": "Today’s commemoration according to the old church calendar"
-      },
-      "fasting": {
-        "code": "fast_free",
-        "season": {
-          "ar": "",
-          "el": "",
-          "en": "Ordinary day"
-        },
-        "title": {
-          "ar": "",
-          "el": "",
-          "en": "No fast"
-        },
-        "level": {
-          "ar": "",
-          "el": "",
-          "en": "No fast"
-        },
-        "detail": {
-          "ar": "",
-          "el": "",
-          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
-        },
-        "is_fast": false,
-        "allowed": {
-          "meat": true,
-          "dairy": true,
-          "eggs": true,
-          "fish": true,
-          "wine": true,
-          "oil": true
-        },
-        "display_icons": [
-          "✅"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "",
-              "el": "",
-              "en": "Meat and poultry"
-            },
-            "allowed": true
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "",
-              "el": "",
-              "en": "Dairy"
-            },
-            "allowed": true
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "",
-              "el": "",
-              "en": "Eggs"
-            },
-            "allowed": true
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "",
-              "el": "",
-              "en": "Fish"
-            },
-            "allowed": true
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "",
-              "el": "",
-              "en": "Wine"
-            },
-            "allowed": true
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "",
-              "el": "",
-              "en": "Oil"
-            },
-            "allowed": true
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "ordinary_fast_free",
-          "note": {
-            "ar": "",
-            "el": "",
-            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
-          }
-        },
-        "guidance": {
-          "allowed_summary": {
-            "ar": "",
-            "el": "",
-            "en": "Permitted: all listed food categories under the general rule"
-          },
-          "forbidden_summary": {
-            "ar": "",
-            "el": "",
-            "en": "Not permitted: no category is restricted by a general fast today"
-          },
-          "duration": {
-            "ar": "",
-            "el": "",
-            "en": "No general fasting duration applies today."
-          },
-          "beginner_explanation": {
-            "ar": "",
-            "el": "",
-            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
-          },
-          "spiritual_note": {
-            "ar": "",
-            "el": "",
-            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
-          },
-          "health_note": {
-            "ar": "",
-            "el": "",
-            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
-          }
-        },
-        "abstinence": {
-          "applies": false,
-          "kind": "not_indicated",
-          "start_time": null,
-          "end_time": null,
-          "end_condition": {
-            "ar": "",
-            "el": "",
-            "en": "The source does not document a separate total-abstinence interval for this day."
-          },
-          "detail": {
-            "ar": "",
-            "el": "",
-            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
-          },
-          "verification": {
-            "status": "NOT_INDICATED",
-            "source": "canonical/fasting_policy.json"
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "",
-            "el": "",
-            "en": "Epistle"
-          },
-          "reference": {
-            "ar": "",
-            "el": "",
-            "en": "1 Corinthians 15.12-19"
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "",
-            "el": "",
-            "en": "Gospel"
-          },
-          "reference": {
-            "ar": "",
-            "el": "",
-            "en": "Matthew 21.18-22"
-          }
-        }
-      },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 113,
-        "label": {
-          "ar": "",
-          "el": "",
-          "en": "Divine Liturgy of Saint John Chrysostom"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "",
-          "en": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
-      "is_sunday": false,
-      "verification_status": "PREVIEW_REFERENCE_ONLY",
-      "publication_note": {
-        "ar": "",
-        "el": "",
-        "en": "Reference preview only; full text is re-verified on its publication date."
-      }
     }
   ],
   "fasting_guidance_version": 1,
   "source_health": {
     "schema_version": 1,
-    "date_iso": "2026-07-27",
+    "date_iso": "2026-07-26",
     "policy": {
       "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — Jordan priority",
       "network_mode": "best_effort_observation_with_fail_closed_publication",
@@ -3708,14 +3259,14 @@
         "fields": {
           "epistle_reference": {
             "status": "single_source",
-            "normalized": "1 corinthians 11:31-34 12:1-6",
+            "normalized": "1 corinthians 1:10-17",
             "sources": [
               "goarch_digital_chant_stand"
             ]
           },
           "gospel_reference": {
             "status": "single_source",
-            "normalized": "john 15:17-16:2",
+            "normalized": "john 20:11-18",
             "sources": [
               "oca_daily_readings"
             ]
@@ -3726,13 +3277,13 @@
             "field": "epistle_reference",
             "variants": [
               {
-                "normalized": "1 corinthians 11:31-34 12:1-6",
+                "normalized": "1 corinthians 1:10-17",
                 "sources": [
                   "goarch_digital_chant_stand"
                 ]
               },
               {
-                "normalized": "2 timothy 2:1-10",
+                "normalized": "solomon 5:15-6:3",
                 "sources": [
                   "oca_daily_readings"
                 ]
@@ -3743,13 +3294,13 @@
             "field": "gospel_reference",
             "variants": [
               {
-                "normalized": "john 15:17-16:2",
+                "normalized": "john 20:11-18",
                 "sources": [
                   "oca_daily_readings"
                 ]
               },
               {
-                "normalized": "matthew 18:1-11",
+                "normalized": "matthew 14:14-22",
                 "sources": [
                   "goarch_digital_chant_stand"
                 ]
@@ -3767,10 +3318,10 @@
         "authority_tier": 1,
         "publication_role": "local_primary_authority",
         "calendar_profile": "jerusalem_old_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://orthodoxjordan.org/",
         "status": "undated",
-        "checked_at_utc": "2026-07-27T18:06:09Z",
+        "checked_at_utc": "2026-07-26T05:51:10Z",
         "http_status": 200,
         "content_sha256": "eca7bc340534407c13999ec159f8fe4b885fafb3df8e005a35d5bff72e4c5530",
         "content_bytes": 498885,
@@ -3795,10 +3346,10 @@
         "authority_tier": 1,
         "publication_role": "official_directory",
         "calendar_profile": "not_applicable",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:11Z",
+        "checked_at_utc": "2026-07-26T05:51:11Z",
         "http_status": 200,
         "content_sha256": "a4e6ad0b505b3cb12270e8218d2a05d975b144453bf819d2c63b6cda0b2217db",
         "content_bytes": 887573,
@@ -3820,10 +3371,10 @@
         "authority_tier": 1,
         "publication_role": "official_live_link",
         "calendar_profile": "not_applicable",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:12Z",
+        "checked_at_utc": "2026-07-26T05:51:12Z",
         "http_status": 200,
         "content_sha256": "7e48301865fa0dabae3b17cc181db62f612461635e44fc4ecbfb6b7465733f13",
         "content_bytes": 377529,
@@ -3845,12 +3396,12 @@
         "authority_tier": 2,
         "publication_role": "jurisdiction_and_feast_authority",
         "calendar_profile": "jerusalem_old_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-26T05:51:12Z",
         "http_status": 200,
-        "content_sha256": "b7ffb1ec185476284f9571a539304ea92acf2991a159bce4fefa63d85d57ef0b",
+        "content_sha256": "4673499348e0c9e8e355e4c0e83c4ad3a0b839f66e3578bc3eb4bc34b99d7202",
         "content_bytes": 173537,
         "detected_date": null,
         "epistle_reference": null,
@@ -3870,10 +3421,10 @@
         "authority_tier": 3,
         "publication_role": "arabic_cross_check",
         "calendar_profile": "antioch_local_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-26T05:51:13Z",
         "http_status": 200,
         "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
         "content_bytes": 6664,
@@ -3895,10 +3446,10 @@
         "authority_tier": 4,
         "publication_role": "regular_cycle_cross_check",
         "calendar_profile": "ecumenical_patriarchate_new_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-26T05:51:13Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -3920,35 +3471,35 @@
         "authority_tier": 4,
         "publication_role": "service_structure_and_link_discovery",
         "calendar_profile": "ecumenical_patriarchate_new_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-26T05:51:13Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
-        "detected_date": "2026-07-27",
-        "epistle_reference": "1 Corinthians 11:31-34; 12:1-6",
-        "gospel_reference": "Matthew 18:1-11",
+        "detected_date": "2026-07-26",
+        "epistle_reference": "1 Corinthians 1:10-17",
+        "gospel_reference": "Matthew 14:14-22",
         "commemorations": [],
         "service_links": [
           {
             "title": "Divine Liturgy",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/h91/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/26/h91/en/index.html",
             "status": "available",
-            "content_sha256": "0cdf6343a2cbe202e66351fabbcced8a2c0b372ce2f4bd8afebe74170f2cc619"
+            "content_sha256": "e02e2db3b2293aa8c8e9c74f71963940be33fa95dc11e894f751d186639e6e82"
           },
           {
             "title": "Matins / Orthros",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/ma/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/26/ma/en/index.html",
             "status": "available",
-            "content_sha256": "323a267183c5bb5fa96a759653c9cffe7e70d03e0c1c85a4ab9ca08ce7f0e2fa"
+            "content_sha256": "f9c9bf4771ef455223d7f7f37ff0c401e0435164ab692bc52ac217c6e418342d"
           },
           {
             "title": "Vespers",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/li/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/26/li/en/index.html",
             "status": "available",
-            "content_sha256": "d3ac85628b92b1803a29c792aa27ff2bb0ee0b61d76d86318d3d6ddfdd5cacdf"
+            "content_sha256": "a079ca12c576c486de85ecd97d08bf312633cb1f2e68506bb2869a69f60ca0e5"
           }
         ],
         "church_count": null,
@@ -3967,16 +3518,16 @@
         "authority_tier": 5,
         "publication_role": "last_official_reference_fallback",
         "calendar_profile": "oca_calendar",
-        "target_date": "2026-07-27",
-        "url": "https://www.oca.org/readings/daily/2026/07/27",
+        "target_date": "2026-07-26",
+        "url": "https://www.oca.org/readings/daily/2026/07/26",
         "status": "current",
-        "checked_at_utc": "2026-07-27T18:06:15Z",
+        "checked_at_utc": "2026-07-26T05:51:14Z",
         "http_status": 200,
-        "content_sha256": "21850707524546869f76ce37bd492ae4c1287f70b1b57aed7e75ff426e37bfda",
-        "content_bytes": 14741,
-        "detected_date": "2026-07-27",
-        "epistle_reference": "2 Timothy 2:1-10",
-        "gospel_reference": "John 15:17-16:2",
+        "content_sha256": "3c4d3afbe5699fce87e4d666cf1849b2dd0459d4fff4418f0b7759d79dcaf8b3",
+        "content_bytes": 15158,
+        "detected_date": "2026-07-26",
+        "epistle_reference": "Solomon 5:15-6:3",
+        "gospel_reference": "John 20:11-18",
         "commemorations": [],
         "service_links": [],
         "church_count": null,
@@ -3994,14 +3545,14 @@
         "authority_tier": 4,
         "publication_role": "greek_language_cross_check",
         "calendar_profile": "church_of_greece_new_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-26",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:19Z",
+        "checked_at_utc": "2026-07-26T05:51:17Z",
         "http_status": 200,
-        "content_sha256": "8c74811158fe4ebb2e473539767f7170591e62b04a181231a54fc9baf79fc3ef",
+        "content_sha256": "2d65fdbe4e20aec844e1231acb19fe2785f3e606dafb1356a1b440f6bfb3bbf5",
         "content_bytes": 115656,
-        "detected_date": null,
+        "detected_date": "2026-07-26",
         "epistle_reference": null,
         "gospel_reference": null,
         "commemorations": [],
@@ -4016,7 +3567,7 @@
   },
   "church_directory": {
     "schema_version": 1,
-    "date_iso": "2026-07-27",
+    "date_iso": "2026-07-26",
     "authority": "orthodox_jordan",
     "directory_url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
     "status": "live_official_directory",
@@ -4822,7 +4373,7 @@
   "native_text_contract": "canonical/source_native_contract.json",
   "daily_update_status": {
     "mode": "full",
-    "date": "2026-07-27",
+    "date": "2026-07-26",
     "message": {
       "ar": "",
       "el": "",
