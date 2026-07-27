@@ -1,0 +1,24 @@
+{
+  "phase": "R21_PHASE13",
+  "pipeline_status": "ACTIVE_PHASE13_ALL_SAINTS_AND_SECOND_SUNDAY_ADDED_FAIL_CLOSED",
+  "complete_release_allowed": false,
+  "interpretations_removed": true,
+  "interpretation_token_files": [],
+  "year_audit_present": true,
+  "year_audit_days": 365,
+  "year_audit_complete_days": 9,
+  "year_audit_incomplete_days": 356,
+  "target_dates_complete": {
+    "2026-06-07": true,
+    "2026-06-14": true
+  },
+  "blockers": [
+    "phase12:phase11:phase10:phase8:native_service_not_displayable:basil",
+    "phase12:phase11:phase10:phase8:native_service_not_displayable:presanctified",
+    "phase12:phase11:phase10:phase8:annual_variable_parts_unproven_complete",
+    "phase12:phase11:phase10:phase8:phase8_candidate_not_signed_with_official_key",
+    "phase12:phase11:phase10:phase8:android_apk_build_evidence_missing",
+    "phase13_annual_daily_coverage_incomplete"
+  ],
+  "fail_closed": true
+}

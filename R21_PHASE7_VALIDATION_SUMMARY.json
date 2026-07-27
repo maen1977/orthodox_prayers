@@ -1,0 +1,47 @@
+{
+  "phase": "R21_PHASE7",
+  "version": "5.0.16",
+  "status": "IMPLEMENTED_FAIL_CLOSED_NATIVE_IMPORT_PIPELINE",
+  "unit_tests": {
+    "passed": 228,
+    "failed": 0
+  },
+  "phase7_tests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "quality_gate": {
+    "passed": true,
+    "strict_native_lanes": true
+  },
+  "protected_static_files": 27,
+  "native_pack_fields": {
+    "ar": "656/656",
+    "en": "785/785",
+    "el": "777/777"
+  },
+  "arabic_presanctified_source": {
+    "acquired": true,
+    "pages": 152,
+    "sha256": "ace55aed85ca4ac9437bae5e7d3ebe2baab1a7cf4480c481602a64425077907e",
+    "unicode_replacement_characters": 8482,
+    "accepted_for_publication": false,
+    "reason": "legacy embedded font encoding corrupts extracted Unicode text"
+  },
+  "basil": {
+    "displayable": false,
+    "reason": "complete approved native Arabic source missing; English/Greek controlled capture pending"
+  },
+  "presanctified": {
+    "displayable": false,
+    "reason": "Arabic exact Unicode import blocked; English/Greek controlled capture pending"
+  },
+  "wrong_rite_fallback_allowed": false,
+  "gradle": {
+    "completed": false,
+    "reason": "UnknownHostException services.gradle.org while downloading Gradle 8.13"
+  },
+  "apk_created": false,
+  "signed_release_data_changed": false,
+  "candidate_publishable": false
+}

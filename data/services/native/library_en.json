@@ -917,14 +917,14 @@
       },
       "summary": {
         "ar": "",
-        "en": "The authorized native English full text is not packaged yet. Use the registered official source; the app will not translate the Arabic text.",
+        "en": "The complete four-prayer Communion preparation selection printed in the registered native English Liturgy edition.",
         "el": ""
       },
       "source_language": "en",
-      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
       "notice": {
         "ar": "",
-        "en": "This is personal preparation for Communion, not Orthros or the variable Sunday propers.",
+        "en": "Personal preparation for Communion; it does not replace Orthros or the variable Sunday propers.",
         "el": ""
       },
       "segments": [
@@ -940,42 +940,56 @@
           "type": "note",
           "speaker": {
             "ar": "",
-            "en": "Text status",
+            "en": "Rubric",
             "el": ""
           },
           "text": {
             "ar": "",
-            "en": "The complete native English prayer remains unavailable until an authorized source edition is imported and hash-verified.",
+            "en": "The Communion prayers are recited silently by those who will receive Holy Communion.",
             "el": ""
           },
           "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "The faithful, silently",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "(The Communion Prayers are recited silently by those who will receive Holy Communion.) I believe and confess, Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am the first. I also believe that this is truly your pure Body and that this is truly your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, known and unknown. And make me worthy without condemnation to partake of your Mysteries for the forgiveness of sins and for life eternal. Amen. How shall I, who am unworthy, enter into the splendour of your Saints? If I dare to enter into the bridal chamber, my clothing will accuse me, since it is not a wedding garment; and being bound up, I shall be cast out by the Angels. In your love, Lord, cleanse my soul and save me. Loving Master, Lord Jesus Christ, my God, let not these Holy Gifts be to my condemnation because of my unworthiness, but for the cleansing and sanctification of soul and body and the pledge of the future life and Kingdom. It is good for me to cling to God and to place in Him the hope of my salvation. Receive me today, Son of God, as a partaker of your Mystical Supper. I will not reveal your Mystery to your adversaries. Nor will I give You a kiss as did Judas. But as the thief I confess to You: Lord remember me in your Kingdom.",
+            "el": ""
+          }
         }
       ],
       "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
       "native_content_status": {
-        "filled_fields": 6,
-        "total_fields": 6,
+        "filled_fields": 8,
+        "total_fields": 8,
         "complete": true
       },
       "native_source": {
-        "source_id": "goarch_synekdemos",
-        "name": "GOARCH Synekdemos",
+        "source_id": "metropolis_toronto_liturgy_en",
+        "name": "Greek Orthodox Metropolis of Toronto (Canada) — English Liturgy",
         "official": true,
         "native_language": "en",
-        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "63c497e5bc1b1e8d6d64cbf1b8cc6ac13243995028e510e55e74f5e135e3a305",
+        "content_sha256": "96ff73eae05711932807517e67e62cab90bc2e4558efb648b439493b6aa51214",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       },
       "legacy_provenance_audit": {
         "policy": "canonical/source_policy.json",
-        "source_id": "orthodox_jordan",
-        "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
-        "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
-        "complete_text": false,
-        "verified_on": "2026-07-20",
-        "ai_liturgical_translation_used": false
+        "source_id": "metropolis_toronto_liturgy_en",
+        "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+        "complete_text": true,
+        "verified_on": "2026-07-26",
+        "ai_liturgical_translation_used": false,
+        "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
       }
     },
     {
@@ -989,15 +1003,15 @@
       },
       "summary": {
         "ar": "",
-        "en": "A verified entry to the prayer published by the Jordan source. The complete text is not embedded until an authorized edition is imported and hash-verified.",
+        "en": "The complete post-Communion thanksgiving prayer printed in the registered native English Liturgy edition.",
         "el": ""
       },
       "source_language": "en",
-      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
       "notice": {
         "ar": "",
-        "el": "",
-        "en": "The text displayed in this pack comes from a registered native English source and is not machine-translated."
+        "en": "Personal thanksgiving after Communion; it remains distinct from the liturgical thanksgiving litany.",
+        "el": ""
       },
       "segments": [
         {
@@ -1009,45 +1023,74 @@
           }
         },
         {
-          "type": "note",
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Thanksgiving prayer",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
           "speaker": {
             "ar": "",
-            "en": "Text status",
+            "en": "The faithful, silently",
             "el": ""
           },
           "text": {
             "ar": "",
-            "en": "The complete prayer is published at the official source linked from this page. A full local copy is blocked until an authorized, hash-verified edition is imported.",
+            "en": "We thank You, loving Master, benefactor of our souls, that on this day You have made us worthy once again of your Heavenly and immortal Mysteries. Direct our ways in the right path, establish us firmly in your fear, guard our lives, and make our endeavours safe, through the prayers and supplications of the glorious Theotokos and Ever-Virgin Mary and of all your Saints.",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Doxology",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "The faithful, silently",
             "el": ""
           },
-          "collapsed_by_default": true
+          "text": {
+            "ar": "",
+            "en": "(And raising his voice:) For You are our sanctification and to You we give glory, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages.",
+            "el": ""
+          }
         }
       ],
       "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
       "native_content_status": {
-        "filled_fields": 6,
-        "total_fields": 6,
+        "filled_fields": 10,
+        "total_fields": 10,
         "complete": true
       },
       "native_source": {
-        "source_id": "goarch_synekdemos",
-        "name": "GOARCH Synekdemos",
+        "source_id": "metropolis_toronto_liturgy_en",
+        "name": "Greek Orthodox Metropolis of Toronto (Canada) — English Liturgy",
         "official": true,
         "native_language": "en",
-        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "3fc80d45cc11d8b38af42dfbbb41f0ef530e9c8f1617728d8cbb07cbbe75cdf5",
+        "content_sha256": "1e829b40d136db20f2749e463bafd0f30a249aa0ac9ec993952ba03658577e6b",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       },
       "legacy_provenance_audit": {
         "policy": "canonical/source_policy.json",
-        "source_id": "orthodox_jordan",
-        "official_url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
-        "status": "OFFICIAL_SOURCE_LINKED_TEXT_IMPORT_PENDING",
-        "complete_text": false,
-        "verified_on": "2026-07-20",
-        "ai_liturgical_translation_used": false
+        "source_id": "metropolis_toronto_liturgy_en",
+        "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+        "complete_text": true,
+        "verified_on": "2026-07-26",
+        "ai_liturgical_translation_used": false,
+        "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
       }
     },
     {
@@ -1483,7 +1526,11 @@
             "ar": "",
             "el": "",
             "en": "Bless the Lord, O my soul, and all that is within me, bless His Holy Name."
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "text",
@@ -1496,7 +1543,11 @@
             "ar": "",
             "el": "",
             "en": "By the intercessions of the Theotokos, Saviour, save us."
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1509,7 +1560,11 @@
             "ar": "",
             "el": "",
             "en": "Bless the Lord, O my soul, and forget none of His benefits."
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1522,7 +1577,11 @@
             "ar": "",
             "el": "",
             "en": "By the intercessions of the Theotokos, Saviour, save us."
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1535,7 +1594,11 @@
             "ar": "",
             "el": "",
             "en": "The Lord has prepared His throne in Heaven, and His Kingdom rules over all."
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1548,7 +1611,11 @@
             "ar": "",
             "el": "",
             "en": "By the intercessions of the Theotokos, Saviour, save us."
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1687,7 +1754,11 @@
             "ar": "",
             "el": "",
             "en": "Praise the Lord, O my soul; while I live, I will praise the Lord; as long as I live, I will praise my God."
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "text",
@@ -1700,7 +1771,11 @@
             "ar": "",
             "el": "",
             "en": "Save us, O Son of God, who rose from the dead, to You we sing: Alleluia."
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1713,7 +1788,11 @@
             "ar": "",
             "el": "",
             "en": "Blessed are those whose helper is the God of Jacob; whose hope is in the Lord their God."
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1726,7 +1805,11 @@
             "ar": "",
             "el": "",
             "en": "Save us, O Son of God, who rose from the dead, to You we sing: Alleluia."
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1739,7 +1822,11 @@
             "ar": "",
             "el": "",
             "en": "The Lord will be King forever; your God, O Zion, will reign throughout all the generations."
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1752,7 +1839,11 @@
             "ar": "",
             "el": "",
             "en": "Save us, O Son of God, who rose from the dead, to You we sing: Alleluia. Glory to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages. Amen. Only-begotten Son and Word of God, although immortal You humbled yourself for our salvation, taking flesh from the Holy Theotokos and Ever- Virgin Mary and, without change, becoming man. Christ, our God, You were crucified and conquered death by death. Being one of the Holy Trinity, glorified together with the Father and the Holy Spirit, save us."
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1891,7 +1982,11 @@
             "ar": "",
             "el": "",
             "en": "This is the day which the Lord has made; let us rejoice and be glad in it. And the Apolytikion is sung."
-          }
+          },
+          "dynamic_slot": "third_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:third_antiphon",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "section",
@@ -1988,7 +2083,11 @@
             "ar": "",
             "el": "",
             "en": "Come, let us worship and bow before Christ. Save us, O Son of God who rose from the dead, to You we sing: Alleluia."
-          }
+          },
+          "dynamic_slot": "entrance_hymn",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:entrance_hymn",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "note",
@@ -2056,7 +2155,11 @@
             "ar": "",
             "el": "",
             "en": "Holy God, You dwell among your Saints. You are praised by the Seraphim with the Thrice-Holy Hymn, glorified by the Cherubim, and worshiped by all the Heavenly powers. You have brought all things out of nothing into being. You created man and woman in your image and likeness and adorned them with all the gifts of your grace. You give wisdom and understanding to the supplicant and do not overlook the sinner but have established repentance as the way of salvation. You have enabled us, your lowly and unworthy servants, to stand at this hour before the glory of your Holy Altar and to offer to You due worship and praise. Master, accept the Thrice-Holy Hymn also from the lips of us sinners and visit us in your goodness. Forgive all our voluntary and involuntary transgressions, sanctify our souls and bodies, and grant that we may worship and serve You in holiness all the days of our lives, by the intercessions of the holy Theotokos and of all the Saints who have pleased You throughout the ages."
-          }
+          },
+          "dynamic_slot": "trisagion_hymn",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:trisagion_hymn",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "note",
@@ -2304,7 +2407,9 @@
             "ar": "",
             "el": "",
             "en": "Alleluia. Alleluia. Alleluia."
-          }
+          },
+          "dynamic_slot": "alleluia_verses",
+          "dynamic_slot_mode": "replace_if_present"
         },
         {
           "type": "text",
@@ -3929,7 +4034,9 @@
             "ar": "",
             "el": "",
             "en": "It is truly right to bless you, Theotokos, ever-blessed, most pure, and Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, without corruption you gave birth to God the Word. We magnify you, the true Theotokos."
-          }
+          },
+          "dynamic_slot": "theotokos_hymn",
+          "dynamic_slot_mode": "replace_if_present"
         },
         {
           "type": "text",
@@ -4619,6 +4726,13 @@
             "ar": "",
             "el": "",
             "en": "Praise the Lord from the Heavens; praise Him in the highest. Alleluia (3)"
+          },
+          "dynamic_slot": "communion_hymn",
+          "dynamic_slot_mode": "replace_if_present",
+          "dynamic_slot_speaker": {
+            "ar": "",
+            "el": "",
+            "en": "Chanter"
           }
         },
         {
@@ -5269,7 +5383,9 @@
             "en": "May Christ our true God who rose from the dead, through the intercessions of His most pure and holy Mother; the power of the precious and life-giving Cross; the protection of the honourable, bodiless powers of Heaven, the supplications of the honourable, glorious Prophet and Forerunner John the Baptist; the holy, glorious and praiseworthy Apostles; the holy, glorious and triumphant Martyrs; our holy and God-bearing Fathers, of (the Saint to whom the church is dedicated); the holy and righteous ancestors of God Joachim and Anna; of Saint (Name) whose memory we commemorate today, and all the Saints, have mercy upon us and save us, as a good and loving and merciful God."
           },
           "dynamic_inline_slot": "gospel_evangelist_name",
-          "dynamic_inline_marker": "(Name)"
+          "dynamic_inline_marker": "(Name)",
+          "dynamic_slot": "dismissal",
+          "dynamic_slot_mode": "replace_if_present"
         },
         {
           "type": "text",
@@ -5347,8 +5463,8 @@
         "machine_translation_used": false
       },
       "native_content_status": {
-        "filled_fields": 638,
-        "total_fields": 638,
+        "filled_fields": 639,
+        "total_fields": 639,
         "complete": true
       },
       "native_source": {
@@ -5359,7 +5475,7 @@
         "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "9dcbb3780467c014a79b049c7712c99e983f858d81024e8a854703b021faa46d",
+        "content_sha256": "e706bca63f620be50f1dc24fc246775e6a933377cc57463bb8300526f6125303",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -5641,8 +5757,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 778,
-    "total_fields": 778,
+    "filled_fields": 785,
+    "total_fields": 785,
     "percent": 100.0,
     "complete": true
   }

@@ -1,0 +1,85 @@
+{
+  "id": "thanksgiving_after_communion",
+  "category": "communion",
+  "icon": "🙏",
+  "title": {
+    "ar": "",
+    "en": "Thanksgiving after Holy Communion",
+    "el": ""
+  },
+  "summary": {
+    "ar": "",
+    "en": "The complete post-Communion thanksgiving prayer printed in the registered native English Liturgy edition.",
+    "el": ""
+  },
+  "source_language": "en",
+  "translation_status": "native_sources_only",
+  "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
+  "notice": {
+    "ar": "",
+    "en": "Personal thanksgiving after Communion; it remains distinct from the liturgical thanksgiving litany.",
+    "el": ""
+  },
+  "segments": [
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "Thanksgiving after Holy Communion",
+        "el": ""
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "Thanksgiving prayer",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "en": "The faithful, silently",
+        "el": ""
+      },
+      "text": {
+        "ar": "",
+        "en": "We thank You, loving Master, benefactor of our souls, that on this day You have made us worthy once again of your Heavenly and immortal Mysteries. Direct our ways in the right path, establish us firmly in your fear, guard our lives, and make our endeavours safe, through the prayers and supplications of the glorious Theotokos and Ever-Virgin Mary and of all your Saints.",
+        "el": ""
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "Doxology",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "en": "The faithful, silently",
+        "el": ""
+      },
+      "text": {
+        "ar": "",
+        "en": "(And raising his voice:) For You are our sanctification and to You we give glory, to the Father and the Son and the Holy Spirit, now and forever and to the ages of ages.",
+        "el": ""
+      }
+    }
+  ],
+  "source_provenance": {
+    "policy": "canonical/source_policy.json",
+    "source_id": "metropolis_toronto_liturgy_en",
+    "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+    "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+    "complete_text": true,
+    "verified_on": "2026-07-26",
+    "ai_liturgical_translation_used": false,
+    "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
+  }
+}

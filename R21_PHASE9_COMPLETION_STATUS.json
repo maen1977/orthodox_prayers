@@ -1,0 +1,24 @@
+{
+  "phase": "R21_PHASE9",
+  "pipeline_status": "ACTIVE_PHASE9_DAILY_COVERAGE_AND_PATRISTIC_GATE_FAIL_CLOSED",
+  "complete_release_allowed": false,
+  "phase8_complete_release_allowed": false,
+  "year_audit_present": true,
+  "year_audit_days": 365,
+  "year_audit_complete_days": 2,
+  "year_audit_incomplete_days": 363,
+  "annual_daily_coverage_complete": false,
+  "patristic_registered_entries": 1,
+  "patristic_displayable_entries": 0,
+  "patristic_commentary_complete": false,
+  "blockers": [
+    "phase8:native_service_not_displayable:basil",
+    "phase8:native_service_not_displayable:presanctified",
+    "phase8:annual_variable_parts_unproven_complete",
+    "phase8:phase8_candidate_not_signed_with_official_key",
+    "phase8:android_apk_build_evidence_missing",
+    "phase9_annual_daily_coverage_incomplete",
+    "phase9_patristic_commentary_incomplete"
+  ],
+  "fail_closed": true
+}

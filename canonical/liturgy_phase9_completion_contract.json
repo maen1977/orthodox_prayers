@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_PHASE9_DAILY_COVERAGE_GATE_FAIL_CLOSED_NO_INTERPRETATIONS",
+  "purpose": "Audit every civil day and prevent annual completeness from being inferred from a small set of feasts. Interpretations are outside scope.",
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "year_audit": {
+    "tool": "scripts/build_liturgy_year_audit.py",
+    "required_year": 2026,
+    "expected_days": 365,
+    "network_fetch_allowed": false,
+    "day_level_evidence_required": true,
+    "missing_day_behavior": "REPORT_BLOCKER_NO_GUESS"
+  },
+  "release_gates": {
+    "phase8_gates_still_required": true,
+    "year_audit_complete": false,
+    "signed_daily_data": false,
+    "android_build_and_device_test": false
+  },
+  "completion_claim": {
+    "current_value": false,
+    "fail_closed": true
+  },
+  "scope_exclusion": {
+    "interpretations": true,
+    "commentary": true,
+    "reason": "Removed by product owner before phase 10"
+  }
+}

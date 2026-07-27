@@ -1120,7 +1120,11 @@ public final class DataRepository {
             );
             pruneUnresolvedOrEmptySegments(resolvedBaseSegments);
             JSONArray merged = new JSONArray();
-            appendSegments(merged, service.optJSONArray("segments"));
+            if ("divine_liturgy".equals(baseId)) {
+                appendDailyLiturgyOverlay(merged, service.optJSONArray("segments"));
+            } else {
+                appendSegments(merged, service.optJSONArray("segments"));
+            }
             appendSegments(merged, resolvedBaseSegments);
             resolved.put("segments", merged);
             resolved.remove("segment_replacements");
@@ -1132,6 +1136,32 @@ public final class DataRepository {
         } catch (Exception error) {
             Log.w(TAG, "Could not compose daily service overlay " + service.optString("id"), error);
             return service;
+        }
+    }
+
+    private static void appendDailyLiturgyOverlay(JSONArray target, JSONArray source) throws Exception {
+        if (source == null) return;
+        for (int i = 0; i < source.length(); i++) {
+            JSONObject segment = source.optJSONObject(i);
+            if (segment == null) continue;
+            JSONObject copy = new JSONObject(segment.toString());
+            if ("note".equals(copy.optString("type", ""))) {
+                JSONObject text = copy.optJSONObject("text");
+                String ar = text == null ? "" : text.optString("ar", "").trim();
+                String en = text == null ? "" : text.optString("en", "").trim();
+                String el = text == null ? "" : text.optString("el", "").trim();
+                boolean dayFacts = ar.startsWith("التاريخ المدني:")
+                        || en.startsWith("Civil date:")
+                        || el.startsWith("Πολιτικὴ ἡμερομηνία:");
+                if (!dayFacts) continue;
+                copy.put("type", "text");
+                copy.remove("collapsed_by_default");
+                copy.put("speaker", new JSONObject()
+                        .put("ar", "اليوم الكنسي")
+                        .put("en", "Church day")
+                        .put("el", "Ἐκκλησιαστικὴ ἡμέρα"));
+            }
+            target.put(copy);
         }
     }
 
@@ -1159,13 +1189,20 @@ public final class DataRepository {
                     library().optJSONArray("services"),
                     "pre_communion_prayers"
             );
+            merged.put(followAlongSection(
+                    "الاستعداد الشخصي قبل القداس والمناولة",
+                    "Personal preparation before the Liturgy and Holy Communion",
+                    "Προσωπικὴ προετοιμασία πρὸ τῆς Θείας Λειτουργίας καὶ Μεταλήψεως"
+            ));
             if (hasNativePrayerText(preparation, language)) {
-                merged.put(followAlongSection(
-                        "الاستعداد قبل القداس والمناولة",
-                        "Preparation before the Liturgy and Holy Communion",
-                        "Προετοιμασία πρὸ τῆς Θείας Λειτουργίας καὶ Μεταλήψεως"
-                ));
                 appendSegments(merged, preparation.optJSONArray("segments"));
+            } else {
+                // Never show a status/pending paragraph in the prayer reader. When a
+                // complete native Communion office is not yet registered, use only
+                // short source-backed prayers that already exist in the same language.
+                appendNativePrayerService(merged, "trisagion", language);
+                appendNativePrayerService(merged, "jesus_prayer", language);
+                appendNativePrayerService(merged, "lord_prayer", language);
             }
 
             appendSegments(merged, liturgy.optJSONArray("segments"));
@@ -1193,12 +1230,21 @@ public final class DataRepository {
         }
     }
 
+    private void appendNativePrayerService(JSONArray target, String serviceId, String language) {
+        JSONObject service = findServiceInArray(library().optJSONArray("services"), serviceId);
+        if (hasNativePrayerText(service, language)) appendSegments(target, service.optJSONArray("segments"));
+    }
+
     private static boolean hasNativePrayerText(JSONObject service, String language) {
         JSONArray segments = service == null ? null : service.optJSONArray("segments");
         if (segments == null) return false;
         for (int i = 0; i < segments.length(); i++) {
             JSONObject segment = segments.optJSONObject(i);
             if (segment == null || !"text".equals(segment.optString("type", "text"))) continue;
+            // A note that only reports missing/pending content is not a prayer and
+            // must never make an otherwise empty service appear complete.
+            if (segment.optBoolean("collapsed_by_default", false)
+                    || "note".equals(segment.optString("type", ""))) continue;
             JSONObject text = segment.optJSONObject("text");
             if (text != null && !text.optString(language, "").trim().isEmpty()) return true;
         }
@@ -1250,8 +1296,32 @@ public final class DataRepository {
             JSONObject replacement = replacements == null ? null : replacements.optJSONObject(slot);
             String selected = replacement == null ? "" : replacement.optString(language, "").trim();
             String mode = copy.optString("dynamic_slot_mode", "replace");
-            if ("replace".equals(mode)) {
+            if ("replace_group_if_present".equals(mode)) {
+                // Seasonal antiphons and the Trisagion are groups, not one-line
+                // placeholders. Keep every word of the ordinary native edition
+                // when no verified variant exists. When a verified replacement
+                // is present, suppress the entire ordinary group and emit the
+                // replacement only at the segment explicitly marked as its
+                // liturgically correct position.
+                if (selected.isEmpty()) {
+                    output.put(copy);
+                } else if (copy.optBoolean("dynamic_slot_group_emit", false)) {
+                    copy.put("text", isolatedLocalizedText(selected, language));
+                    copy.put("resolved_dynamic_slot", slot);
+                    copy.put("resolved_dynamic_slot_group",
+                            copy.optString("dynamic_slot_group", slot));
+                    output.put(copy);
+                }
+            } else if ("replace".equals(mode)) {
                 if (!slot.isEmpty()) copy.put("text", isolatedLocalizedText(selected, language));
+                output.put(copy);
+            } else if ("replace_if_present".equals(mode)) {
+                // Keep the ordinary fixed text (for example the Sunday Communion
+                // hymn) unless the signed daily layer supplies a feast-specific one.
+                if (!slot.isEmpty() && !selected.isEmpty()) {
+                    copy.put("text", isolatedLocalizedText(selected, language));
+                    copy.put("resolved_dynamic_slot", slot);
+                }
                 output.put(copy);
             } else {
                 output.put(copy);

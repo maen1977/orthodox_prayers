@@ -1,0 +1,79 @@
+{
+  "phase": "R21_PHASE5",
+  "status": "SOURCE_TREE_QUALITY_GATE_PASSED_ANDROID_BUILD_NOT_RUN_TO_COMPLETION",
+  "implemented": {
+    "new_fixed_major_feasts": 6,
+    "new_paschal_cycle_propers": 3,
+    "languages": [
+      "ar",
+      "en",
+      "el"
+    ],
+    "priority_resolver": "per_slot_highest_priority_equal_priority_conflict_error",
+    "completion_claim": "unproven_complete"
+  },
+  "tests": {
+    "unittest_total": 208,
+    "unittest_failed": 0,
+    "phase5_tests": 10,
+    "quality_gate_passed": true,
+    "protected_static_files": 21,
+    "native_pack_fields": {
+      "ar": "656/656",
+      "en": "785/785",
+      "el": "777/777"
+    }
+  },
+  "signed_release_data": {
+    "data_calendar_today_unchanged": true,
+    "data_calendar_signature_unchanged": true,
+    "embedded_today_unchanged": true,
+    "embedded_signature_unchanged": true
+  },
+  "candidate": {
+    "date_iso": "2026-07-26",
+    "signed": false,
+    "must_not_ship": true,
+    "generation": "phase4 validated daily candidate preserved; phase5 resolver re-evaluated offline"
+  },
+  "android_build": {
+    "command": "./gradlew :app:testDebugUnitTest --no-daemon",
+    "completed": false,
+    "apk_created": false,
+    "reason": "Gradle 8.13 download failed: java.net.UnknownHostException services.gradle.org"
+  },
+  "files": {
+    "daily_propers": {
+      "path": "canonical/daily_propers.json",
+      "sha256": "d310c1b39ad2a77b6ba55118db3d2d06dcbcfb66bb618d599c5873b0cb864678"
+    },
+    "paschal_cycle": {
+      "path": "canonical/paschal_cycle_propers.json",
+      "sha256": "35263af1247628ac7b781bc19ee1b6467fad95a41ed4e8447d68c1e93fb5e459"
+    },
+    "variable_parts": {
+      "path": "canonical/liturgy_variable_parts.json",
+      "sha256": "d635ef5c73071a7f559a0fd0484bb9a29b255b48b5e2eccf32b71b17399f6ca9"
+    },
+    "annual_coverage": {
+      "path": "canonical/liturgy_annual_coverage.json",
+      "sha256": "e801c3c1053fabdfc3128a47cf0c548d095ae4edbfdb97167336d93d5d080559"
+    },
+    "updater": {
+      "path": "scripts/update_liturgical_data.py",
+      "sha256": "c2eebdfeaab6d2469e4efba5c65c7c5f242d0315dabd6754aa8eb6de8441bc6a"
+    },
+    "tests": {
+      "path": "tests/test_r21_phase5_annual_propers.py",
+      "sha256": "489ab9d8ad4b725b0c259a515f5bde3e7881e0b9809112509cb720b51fceeeee"
+    },
+    "candidate": {
+      "path": "R21_PHASE5_CANDIDATE_2026-07-26.json",
+      "sha256": "63786045ea1e921a6ff1571d41492682fe02f6fb81aea8f996c835205916eb44"
+    },
+    "examples": {
+      "path": "R21_PHASE5_VARIANT_EXAMPLES.json",
+      "sha256": "6ff2730105d0e25c0e2fd74772272e6c6dc9352f17825444b9e5087098c25a0e"
+    }
+  }
+}

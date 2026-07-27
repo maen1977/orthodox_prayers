@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_id": "orthodox_jordan",
+  "service_type": "presanctified",
+  "language": "ar",
+  "document_title": "ترتيب خدمة الساعات والقداس السابق تقديسه لأيام الجمع من الصوم الأربعيني",
+  "edition_note": "Jerusalem/Jordan Arabic service book; fifth edition, 2018.",
+  "official_url": "https://orthodoxjordan.org/wp-content/uploads/2024/05/%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.pdf",
+  "preferred_editable_source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%8A%D8%AC%D9%8A%D8%B3%D9%85%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.docx",
+  "local_source_in_repository": false,
+  "source_file_sha256": "ace55aed85ca4ac9437bae5e7d3ebe2baab1a7cf4480c481602a64425077907e",
+  "source_file_size_bytes": 5113942,
+  "pdf_pages": 152,
+  "pdf_creator": "Adobe InDesign CS5 (7.0.3)",
+  "pdf_tagged": false,
+  "text_extraction_probe": {
+    "tool": "pdftotext -layout",
+    "characters": 422627,
+    "letters": 103431,
+    "arabic_letter_ratio": 0.99999,
+    "unicode_replacement_characters": 8482,
+    "acceptable_for_liturgical_publication": false,
+    "failure_code": "LEGACY_EMBEDDED_FONT_TO_UNICODE_MAP_CORRUPTS_THOUSANDS_OF_GLYPHS",
+    "normalization_or_guessing_forbidden": true
+  },
+  "acquisition_status": "SOURCE_ACQUIRED_EXTRACTION_BLOCKED_LEGACY_FONT_ENCODING",
+  "next_safe_input": "Acquire the official DOCX or a verified Unicode transcription and compare every paragraph against the PDF pages.",
+  "machine_translation_used": false,
+  "ocr_used_for_publication": false
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-07-26",
+  "machine_translation_used": false,
+  "services": {
+    "pre_communion_prayers": {
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+        "scope": "complete_office",
+        "segment_count": 66
+      },
+      "en": {
+        "source_id": "metropolis_toronto_liturgy_en",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "scope": "complete_selection_in_registered_edition"
+      },
+      "el": {
+        "source_id": "metropolis_toronto_liturgy_el",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "scope": "complete_selection_in_registered_edition"
+      }
+    },
+    "thanksgiving_after_communion": {
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
+        "scope": "complete_office_with_liturgy_specific_branches",
+        "segment_count": 29
+      },
+      "en": {
+        "source_id": "metropolis_toronto_liturgy_en",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "scope": "complete_selection_in_registered_edition"
+      },
+      "el": {
+        "source_id": "metropolis_toronto_liturgy_el",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "scope": "complete_selection_in_registered_edition"
+      }
+    }
+  }
+}

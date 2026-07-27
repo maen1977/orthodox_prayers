@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_PHASE13_ALL_SAINTS_AND_SECOND_SUNDAY_ADDED_FAIL_CLOSED",
+  "purpose": "Extend verified old-calendar Jerusalem-lane Sunday coverage with All Saints and the second Sunday after Pentecost, preserve the removal of interpretations, and keep all other incomplete days fail-closed.",
+  "languages": ["ar", "en", "el"],
+  "scope": {
+    "interpretations": false,
+    "commentary": false,
+    "calendar_lane": "JERUSALEM_OLD_CALENDAR",
+    "post_gospel": "LITURGICAL_RESPONSE_AND_HOMILY_POSITION_ONLY",
+    "same_language_scripture_only": true
+  },
+  "year_audit": {
+    "tool": "scripts/build_liturgy_year_audit.py",
+    "required_year": 2026,
+    "output": "R21_PHASE13_YEAR_AUDIT_2026.json",
+    "expected_days": 365,
+    "network_fetch_allowed": false,
+    "minimum_complete_days": 9
+  },
+  "dated_coverage_added": ["2026-06-07", "2026-06-14"],
+  "dated_coverage_preserved": ["2026-06-21", "2026-06-28", "2026-07-05", "2026-07-12", "2026-07-19", "2026-07-26"],
+  "release_gates": {
+    "phase12_gates_still_required": true,
+    "annual_daily_coverage_complete": false,
+    "signed_daily_data": false,
+    "android_build_and_device_test": false
+  },
+  "completion_claim": {"current_value": false, "fail_closed": true}
+}

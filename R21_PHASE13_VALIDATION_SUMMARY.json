@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE13",
+  "generated_at_utc": "2026-07-27T12:06:31.931419+00:00",
+  "project_version": "5.0.16",
+  "test_results": {
+    "all_tests_passed": true,
+    "total_tests": 285,
+    "phase13_tests": 13,
+    "failures": 0,
+    "combined_quality_gate": "TIMED_OUT_AT_SIGNATURE_STAGE_AFTER_PRIOR_CHECKS; SIGNATURE_AND_ALL_REMAINING_CHECKS_RERUN_INDIVIDUALLY_AND_PASSED",
+    "remaining_checks_passed": true
+  },
+  "native_language_packs": {
+    "ar": "656/656",
+    "en": "785/785",
+    "el": "777/777"
+  },
+  "protected_static_files": 37,
+  "year_audit": {
+    "year": 2026,
+    "audited_days": 365,
+    "complete_days": 9,
+    "incomplete_days": 356,
+    "annual_complete": false,
+    "network_fetch_used": false
+  },
+  "dated_services_added": [
+    "2026-06-07",
+    "2026-06-14"
+  ],
+  "all_saints_special_propers": true,
+  "interpretations_removed": true,
+  "signed_published_data_unchanged": true,
+  "candidate_signed_with_official_key": false,
+  "android": {
+    "schema_version": 1,
+    "phase": "R21_PHASE13",
+    "generated_at_utc": "2026-07-27T12:06:31.931419+00:00",
+    "gradle_distribution": "gradle-8.13-bin.zip",
+    "local_distribution_found": false,
+    "android_sdk_verified": false,
+    "apk_built": false,
+    "device_smoke_test": false,
+    "attempted_command": "./gradlew :app:assembleDebug --no-daemon --stacktrace",
+    "blocker": "java.net.UnknownHostException: services.gradle.org; Gradle 8.13 distribution unavailable locally",
+    "status": "BLOCKED_MISSING_LOCAL_GRADLE_AND_DEVICE_EVIDENCE",
+    "fail_closed": true,
+    "interpretations_included": false
+  },
+  "complete_release_allowed": false,
+  "blockers": [
+    "phase12:phase11:phase10:phase8:native_service_not_displayable:basil",
+    "phase12:phase11:phase10:phase8:native_service_not_displayable:presanctified",
+    "phase12:phase11:phase10:phase8:annual_variable_parts_unproven_complete",
+    "phase12:phase11:phase10:phase8:phase8_candidate_not_signed_with_official_key",
+    "phase12:phase11:phase10:phase8:android_apk_build_evidence_missing",
+    "phase13_annual_daily_coverage_incomplete"
+  ],
+  "fail_closed": true
+}

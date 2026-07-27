@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
+import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.LocalePolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
@@ -28,6 +29,8 @@ public final class SettingsScreen extends BaseScreen {
     public View createView() {
         UiKit.Page page = page(local("الإعدادات", "Settings", "Ρυθμίσεις"), true);
         page.root.addView(ui.sectionTitle(local("لغة التطبيق والنصوص", "App and text language", "Γλῶσσα ἐφαρμογῆς καὶ κειμένων")));
+        TranslationCoverage.Result en = data.translationCoverage("en");
+        TranslationCoverage.Result el = data.translationCoverage("el");
         LinearLayout languages = ui.row();
         addLanguageButton(languages, "العربية", "ar");
         addLanguageButton(languages, "English", "en");
@@ -40,6 +43,14 @@ public final class SettingsScreen extends BaseScreen {
                 "Τὰ Ἀραβικά, τὰ Ἀγγλικὰ καὶ τὰ Ἑλληνικὰ εἶναι τρεῖς χωριστὲς γλωσσικὲς ροές. Ἡ ἐφαρμογὴ δὲν μεταφράζει οὔτε ἀντιγράφει κείμενο ἀπὸ ἄλλη γλῶσσα."
         ));
         add(page.root, languagePolicy, 0, 8);
+
+        TextView coverage = centered(local(
+                "اكتمال مكتبات النصوص الأصلية حاليًا — الإنجليزية: ",
+                "Current native official-text coverage — English: ",
+                "Κάλυψη πρωτότυπων ἐπίσημων κειμένων — Ἀγγλικά: "
+        ) + en.percent + "%\n" + local("اليونانية: ", "Greek: ", "Ἑλληνικά: ") + el.percent + "%",
+                13, ui.colors().secondaryText(), false);
+        add(page.root, coverage, 0, 8);
 
         Button languagePacks = ui.button(local("إدارة اللغات النشطة", "Manage active languages", "Διαχείριση ἐνεργῶν γλωσσῶν"), false);
         languagePacks.setOnClickListener(v -> host.navigate("language_packs", null));

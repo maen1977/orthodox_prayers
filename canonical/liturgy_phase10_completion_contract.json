@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_PHASE10_COMMENTARY_REMOVED_AND_DATED_COVERAGE_EXPANSION_FAIL_CLOSED",
+  "purpose": "Remove interpretations from the product and expand audited dated Liturgy coverage without guessing missing days.",
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "scope": {
+    "interpretations": false,
+    "commentary": false,
+    "post_gospel": "LITURGICAL_RESPONSE_AND_HOMILY_POSITION_ONLY"
+  },
+  "year_audit": {
+    "tool": "scripts/build_liturgy_year_audit.py",
+    "required_year": 2026,
+    "output": "R21_PHASE10_YEAR_AUDIT_2026.json",
+    "expected_days": 365,
+    "network_fetch_allowed": false
+  },
+  "dated_coverage_added": [
+    "2026-07-19"
+  ],
+  "release_gates": {
+    "phase8_gates_still_required": true,
+    "annual_daily_coverage_complete": false,
+    "signed_daily_data": false,
+    "android_build_and_device_test": false
+  },
+  "completion_claim": {
+    "current_value": false,
+    "fail_closed": true
+  }
+}

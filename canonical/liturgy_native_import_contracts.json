@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_PHASE8_PARAGRAPH_REVIEW_AND_THREE_LANGUAGE_PROMOTION_PIPELINE",
+  "purpose": "Acquire, inspect, review, and promote independent native editions of the Basil and Presanctified Liturgies without translation or wrong-rite fallback.",
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "global_rules": {
+    "all_published_languages_required": true,
+    "machine_translation_allowed": false,
+    "ai_rewriting_or_correction_allowed": false,
+    "automatic_ocr_publication_allowed": false,
+    "exact_source_text_required": true,
+    "ecclesiastical_human_review_required": true,
+    "wrong_liturgy_fallback_allowed": false,
+    "candidate_is_never_displayable": true,
+    "promotion_requires_static_hash_review": true
+  },
+  "services": {
+    "basil": {
+      "service_id": "divine_liturgy_basil",
+      "minimum_characters": {
+        "ar": 18000,
+        "en": 18000,
+        "el": 18000
+      },
+      "minimum_segments": {
+        "ar": 90,
+        "en": 90,
+        "el": 90
+      },
+      "lanes": {
+        "ar": {
+          "source_id": "orthodox_jordan",
+          "status": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
+          "official_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+          "accepted_formats": [
+            "docx",
+            "html",
+            "txt",
+            "pdf_with_verified_unicode_text_layer"
+          ],
+          "anchors": [
+            "قداس القديس باسيليوس الكبير",
+            "قدوس قدوس قدوس",
+            "خذوا كلوا"
+          ]
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "status": "OFFICIAL_HTML_REGISTERED_SOURCE_CAPTURE_PENDING",
+          "official_url": "https://digitalchantstand.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/en/index.html",
+          "accepted_formats": [
+            "html",
+            "txt",
+            "docx",
+            "pdf_with_verified_unicode_text_layer"
+          ],
+          "anchors": [
+            "Divine Liturgy of Saint Basil the Great",
+            "Holy, holy, holy",
+            "Take, eat"
+          ]
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "status": "OFFICIAL_GREEK_SOURCE_REGISTERED_CAPTURE_PENDING",
+          "official_url": "https://dcs.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/gr-en/index.html",
+          "accepted_formats": [
+            "html",
+            "txt",
+            "docx",
+            "pdf_with_verified_unicode_text_layer"
+          ],
+          "anchors": [
+            "Θεία Λειτουργία",
+            "Ἅγιος, Ἅγιος, Ἅγιος",
+            "Λάβετε, φάγετε"
+          ]
+        }
+      }
+    },
+    "presanctified": {
+      "service_id": "presanctified_liturgy",
+      "minimum_characters": {
+        "ar": 22000,
+        "en": 18000,
+        "el": 18000
+      },
+      "minimum_segments": {
+        "ar": 110,
+        "en": 90,
+        "el": 90
+      },
+      "lanes": {
+        "ar": {
+          "source_id": "orthodox_jordan",
+          "status": "OFFICIAL_PDF_ACQUIRED_EXTRACTION_BLOCKED_LEGACY_FONT_ENCODING",
+          "official_url": "https://orthodoxjordan.org/wp-content/uploads/2024/05/%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.pdf",
+          "preferred_editable_source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%8A%D8%AC%D9%8A%D8%B3%D9%85%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.docx",
+          "source_evidence": "canonical/source_evidence/presanctified_ar_2018.json",
+          "accepted_formats": [
+            "docx",
+            "html",
+            "txt",
+            "pdf_with_verified_unicode_text_layer"
+          ],
+          "anchors": [
+            "القداس السابق تقديسه",
+            "لتستقم صلاتي",
+            "الآن القوات السماوية",
+            "ذوقوا وانظروا"
+          ]
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "status": "OFFICIAL_PDF_REGISTERED_SOURCE_CAPTURE_PENDING",
+          "official_url": "https://digitalchantstand.goarch.org/goa/dcs/p/s/2026/03/09/pl1/en/se.m03.d10.pl1.pdf",
+          "accepted_formats": [
+            "pdf_with_verified_unicode_text_layer",
+            "html",
+            "txt",
+            "docx"
+          ],
+          "anchors": [
+            "Liturgy of the Presanctified Gifts",
+            "Let my prayer arise",
+            "Now the powers of heaven",
+            "Taste and see"
+          ]
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "status": "OFFICIAL_GREEK_SOURCE_REGISTERED_CAPTURE_PENDING",
+          "official_url": "https://digitalchantstand.goarch.org/",
+          "accepted_formats": [
+            "pdf_with_verified_unicode_text_layer",
+            "html",
+            "txt",
+            "docx"
+          ],
+          "anchors": [
+            "Λειτουργία τῶν Προηγιασμένων",
+            "Κατευθυνθήτω ἡ προσευχή μου",
+            "Νῦν αἱ δυνάμεις",
+            "Γεύσασθε καὶ ἴδετε"
+          ]
+        }
+      }
+    }
+  },
+  "candidate_schema": {
+    "status": "CANDIDATE_REQUIRES_ECCLESIASTICAL_REVIEW",
+    "required_review_fields": [
+      "status=APPROVED",
+      "reviewer",
+      "reviewed_at",
+      "source_page_verification=true",
+      "candidate_sha256"
+    ],
+    "candidate_root": "data/services/candidates",
+    "promotion_script": "scripts/promote_native_liturgy_service.py"
+  },
+  "phase8_review_packet": {
+    "builder": "scripts/build_native_liturgy_review_packet.py",
+    "applier": "scripts/apply_native_liturgy_review_packet.py",
+    "every_segment_requires_explicit_approval": true,
+    "review_packet_never_promotes": true,
+    "candidate_text_must_not_ship": true,
+    "dcs_bilingual_splitter": "scripts/import_dcs_bilingual_source.py"
+  }
+}

@@ -918,14 +918,14 @@
       "summary": {
         "ar": "",
         "en": "",
-        "el": "Τὸ πλήρες ἐγκεκριμένο ἑλληνικὸ κείμενο δὲν ἔχει ἀκόμη ἐνσωματωθεῖ."
+        "el": "Ἡ πλήρης τετραμερὴς προσευχὴ προετοιμασίας, ὅπως δημοσιεύεται στὴν καταχωρισμένη ἑλληνικὴ λειτουργικὴ ἔκδοση."
       },
       "source_language": "el",
-      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
       "notice": {
         "ar": "",
         "en": "",
-        "el": "Προσωπικὴ προετοιμασία γιὰ τὴ Θεία Μετάληψη, ὄχι ὁ Ὄρθρος οὔτε τὰ μεταβλητὰ τῆς Κυριακῆς."
+        "el": "Προσωπικὴ προετοιμασία γιὰ τὴ Θεία Μετάληψη· δὲν ἀντικαθιστᾷ τὸν Ὄρθρο οὔτε τὰ μεταβλητὰ τῆς Κυριακῆς."
       },
       "segments": [
         {
@@ -941,41 +941,55 @@
           "speaker": {
             "ar": "",
             "en": "",
-            "el": "Κατάσταση κειμένου"
+            "el": "Τυπικόν"
           },
           "text": {
             "ar": "",
             "en": "",
-            "el": "Τὸ πλήρες ἑλληνικὸ κείμενο παραμένει μὴ διαθέσιμο ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή."
+            "el": "Αἱ προσευχαὶ τῆς Θείας Μεταλήψεως λέγονται κατ’ ἰδίαν ἀπὸ ὅσους θὰ μεταλάβουν."
           },
           "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Οἱ πιστοί, κατ’ ἰδίαν"
+          },
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "(Αἱ προσευχαί τῆς Θείας Μεταλήψεως λέγονται κατ’ἰδίαν ἀπό ὃσους θα μεταλάβουν.) Πιστεύω, Κύριε, καὶ ὁμολογῶ ὅτι σὺ εἶ ἀληθῶς ὁ Χριστός, ὁ Υἱὸς τοῦ Θεοῦ τοῦ ζῶντος, ὁ ἐλθὼν εἰς τὸν κόσμον ἁμαρτωλοὺς σῶσαι, ὦν πρῶτὸς εἰμι ἐγώ. Ἔτι πιστεύω ὅτι τοῦτο αὐτό ἐστι τὸ ἄχραντον Σῶμά Σου καὶ τοῦτο αὐτό ἐστι τὸ τίμιον Αἷμά Σου. Δέομαι οὖν Σου· ἐλέησόν με καὶ συγχώρησὸν μοι τὰ παραπτώματά μου, τὰ ἑκούσια καὶ τὰ ἀκούσια, τὰ ἐν λόγῳ, τὰ ἐν ἔργῳ, τὰ ἐν γνώσει καὶ ἀγνοίᾳ· καὶ ἀξίωσόν με ἀκατακρίτως μετασχεῖν τῶν ἀχράντων σου μυστηρίων, εἰς ἄφεσιν ἁμαρτιῶν καὶ εἰς ζωὴν αἰώνιον. Ἀμήν. Ἐν ταῖς λαμπρότησι τῶν ἁγίων Σου, πῶς εἰσελεύσομαι ὁ ἀνάξιος; Ἐὰν γὰρ τολμήσω συνεισελθεῖν εἰς τὸν νυμφῶνα, ὁ χιτών με ἐλέγχει ὅτι οὐκ ἔστι τοῦ γάμου, καὶ δέσμιος ἐκβαλοῦμαι ὑπὸ τῶν ἀγγέλων. Καθάρισον, Κύριε, τὸν ρύπον τῆς ψυχῆς μου καὶ σῶσόν με, ὡς φιλάνθρωπος. Δέσποτα φιλάνθρωπε, Κύριε Ἰησοῦ Χριστέ, ὁ Θεός μου, μὴ εἰς κρῖμὰ μοι γένοιτο τὰ Ἅγια ταῦτα διὰ τὸ ἀνάξιον εἶναί με, ἀλλ᾿ εἰς κάθαρσιν καὶ ἁγιασμὸν ψυχῆς τε καὶ σώματος, καὶ εἰς ἀρραβῶνα τῆς μελλούσης ζωῆς καὶ βασιλείας. Ἐμοὶ δὲ τῷ προσκολλᾶσθαι τῷ Θεῷ ἀγαθόν ἐστι· τίθεσθαι ἐν τῷ Κυρίῳ τὴν ἐλπίδα τῆς σωτηρίας μου. Τοῦ Δείπνου Σου τοῦ μυστικοῦ σήμερον, Υἱὲ Θεοῦ, κοινωνόν με παράλαβε· οὐ μὴ γὰρ τοῖς ἐχθροῖς Σου τὸ μυστήριον εἴπω· οὐ φίλημά Σοι δώσω, καθάπερ ὁ Ἰούδας· ἀλλ᾿ ὡς ὁ λῃστὴς ὁμολογῶ Σοι· Μνήσθητί μου, Κύριε, ἐν τῇ βασιλείᾳ σου."
+          }
         }
       ],
       "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
       "native_content_status": {
-        "filled_fields": 6,
-        "total_fields": 6,
+        "filled_fields": 8,
+        "total_fields": 8,
         "complete": true
       },
       "native_source": {
-        "source_id": "church_of_greece_apostoliki_diakonia",
-        "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "source_id": "metropolis_toronto_liturgy_el",
+        "name": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy",
         "official": true,
         "native_language": "el",
-        "url": "https://apostoliki-diakonia.gr/",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "d20e94fa8e6022173aa66d853420f18271e52fc8a735cbb754b532927093e81f",
+        "content_sha256": "c33856270664f39c53c187e77e958f9955796b93c8d0c6f7e0451206fa1eccc5",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       },
       "legacy_provenance_audit": {
         "policy": "canonical/source_policy.json",
-        "source_id": "orthodox_jordan",
-        "official_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
-        "status": "OFFICIAL_SOURCE_LINKED_PARTIAL_TEXT",
-        "complete_text": false,
-        "verified_on": "2026-07-20",
-        "ai_liturgical_translation_used": false
+        "source_id": "metropolis_toronto_liturgy_el",
+        "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+        "complete_text": true,
+        "verified_on": "2026-07-26",
+        "ai_liturgical_translation_used": false,
+        "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
       }
     },
     {
@@ -985,19 +999,19 @@
       "title": {
         "ar": "",
         "en": "",
-        "el": "Εὐχαὶ μετὰ τὴν Θείαν Μετάληψιν"
+        "el": "Εὐχαριστία μετὰ τὴν Θείαν Μετάληψιν"
       },
       "summary": {
         "ar": "",
         "en": "",
-        "el": "Ἐπαληθευμένη παραπομπὴ στὴν προσευχὴ τῆς ἰορδανικῆς πηγῆς· τὸ πλήρες κείμενο δὲν ἐνσωματώνεται πρὶν ἀπὸ ἐγκεκριμένη εἰσαγωγή."
+        "el": "Ἡ πλήρης εὐχαριστήρια εὐχὴ, ὅπως δημοσιεύεται στὴν καταχωρισμένη ἑλληνικὴ λειτουργικὴ ἔκδοση."
       },
       "source_language": "el",
-      "completion_status": "SOURCE_LINKED_FULL_TEXT_IMPORT_PENDING",
+      "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
       "notice": {
         "ar": "",
-        "el": "Τὸ κείμενο αὐτοῦ τοῦ πακέτου προέρχεται ἀπὸ καταχωρισμένη πρωτότυπη ἑλληνικὴ πηγὴ καὶ δὲν εἶναι μηχανικὴ μετάφραση.",
-        "en": ""
+        "en": "",
+        "el": "Προσωπικὴ εὐχαριστία μετὰ τὴ Μετάληψη· διακρίνεται ἀπὸ τὴ λειτουργικὴ δέηση εὐχαριστίας."
       },
       "segments": [
         {
@@ -1005,49 +1019,78 @@
           "title": {
             "ar": "",
             "en": "",
-            "el": "Εὐχαὶ μετὰ τὴν Θείαν Μετάληψιν"
+            "el": "Εὐχαριστία μετὰ τὴν Θείαν Μετάληψιν"
           }
         },
         {
-          "type": "note",
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαριστήρια εὐχή"
+          }
+        },
+        {
+          "type": "text",
           "speaker": {
             "ar": "",
             "en": "",
-            "el": "Κατάσταση κειμένου"
+            "el": "Οἱ πιστοί, κατ’ ἰδίαν"
           },
           "text": {
             "ar": "",
             "en": "",
-            "el": "Τὸ πλήρες κείμενο δημοσιεύεται στὴν ἐπίσημη πηγή. Ἡ τοπικὴ πλήρης ἀντιγραφή παραμένει κλειδωμένη ἕως ἐγκεκριμένη καὶ ἐπαληθευμένη εἰσαγωγή."
+            "el": "Εὐχαριστοῦμέν Σοι, Δέσποτα φιλάνθρωπε, εὐεργέτα τῶν ψυχῶν ἡμῶν, ὅτι καὶ τῇ παρούσῃ ἡμέρᾳ κατηξίωσας ἡμᾶς τῶν ἐπουρανίων Σου καὶ ἀθανάτων μυστηρίων. Ὀρθοτόμησον ἡμῶν τὴν ὁδόν· στήριξον πάντας ἡμᾶς ἐν τῷ φόβῳ Σου· φρούρησον ἡμῶν τήν ζωήν· ἀσφάλισαι ἡμῶν τὰ διαβήματα, εὐχαῖς καὶ ἱκεσίαις τῆς ἐνδόξου Θεοτόκου καὶ ἀειπαρθένου Μαρίας καὶ πάντων τῶν ἁγίων σου."
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἐκφώνησις"
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "",
+            "el": "Οἱ πιστοί, κατ’ ἰδίαν"
           },
-          "collapsed_by_default": true
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "(Καί ἐκφωνεῖ·) Ὅτι σὺ εἶ ὁ ἁγιασμὸς ἡμῶν καὶ σοὶ τὴν δόξαν ἀναπέμπομεν, τῷ Πατρὶ καὶ τῷ Υἱῷ καὶ τῷ ἁγίῳ Πνεύματι, νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων."
+          }
         }
       ],
       "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
       "native_content_status": {
-        "filled_fields": 6,
-        "total_fields": 6,
+        "filled_fields": 10,
+        "total_fields": 10,
         "complete": true
       },
       "native_source": {
-        "source_id": "church_of_greece_apostoliki_diakonia",
-        "name": "Αποστολική Διακονία τῆς Ἐκκλησίας τῆς Ἑλλάδος",
+        "source_id": "metropolis_toronto_liturgy_el",
+        "name": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy",
         "official": true,
         "native_language": "el",
-        "url": "https://apostoliki-diakonia.gr/",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "d759721b093eae7fb39be1b1685146a70f6b054a951fb764e0aa557af3e5eb9c",
+        "content_sha256": "9735b55f294dc6bb1da2f71074b239c418442ab600700873cca1c0794f42c939",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       },
       "legacy_provenance_audit": {
         "policy": "canonical/source_policy.json",
-        "source_id": "orthodox_jordan",
-        "official_url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
-        "status": "OFFICIAL_SOURCE_LINKED_TEXT_IMPORT_PENDING",
-        "complete_text": false,
-        "verified_on": "2026-07-20",
-        "ai_liturgical_translation_used": false
+        "source_id": "metropolis_toronto_liturgy_el",
+        "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+        "complete_text": true,
+        "verified_on": "2026-07-26",
+        "ai_liturgical_translation_used": false,
+        "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
       }
     },
     {
@@ -1483,7 +1526,11 @@
             "ar": "",
             "el": "Εὐλόγει ἡ ψυχή μου, τὸν Κύριον, καὶ πάντα τὰ ἐντός μου τὸ ὄνομα τὸ ἅγιον Αὐτοῦ1.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "text",
@@ -1496,7 +1543,11 @@
             "ar": "",
             "el": "Ταῖς πρεσβείαις τῆς Θεοτόκου Σῶτερ σῶσον ἡμᾶς.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1509,7 +1560,11 @@
             "ar": "",
             "el": "Εὐλόγει ἡ ψυχή μου, τὸν Κύριον, καὶ μὴ ἐπιλανθάνου πάσας τὰς ἀνταποδόσεις Αὐτοῦ.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1522,7 +1577,11 @@
             "ar": "",
             "el": "Ταῖς πρεσβείαις τῆς Θεοτόκου Σῶτερ σῶσον ἡμᾶς.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1535,7 +1594,11 @@
             "ar": "",
             "el": "Κύριος ἐν τῷ οὐρανῷ ἡτοίμασε τὸν θρόνον Αὐτοῦ, καὶ ἡ βασιλεία Αὐτοῦ πάντων δεσπόζει.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1548,7 +1611,11 @@
             "ar": "",
             "el": "Ταῖς πρεσβείαις τῆς Θεοτόκου Σῶτερ σῶσον ἡμᾶς.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "first_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:first_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1687,7 +1754,11 @@
             "ar": "",
             "el": "Αἴνει ἡ ψυχή μου τὸν Κύριον· αἰνέσω Κύριον ἐν τῇ ζωῇ μου· ψαλῶ τῷ Θεῷ μου ἕως ὑπάρχω.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "text",
@@ -1700,7 +1771,11 @@
             "ar": "",
             "el": "Σῶσον, ἡμᾶς Υἱὲ Θεοῦ, ὁ ἀναστὰς ἐκ νεκρῶν, ψάλλοντάς Σοι· Ἀλληλούϊα.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1713,7 +1788,11 @@
             "ar": "",
             "el": "Μακάριος, οὗ ὁ Θεὸς Ἰακὼβ βοηθὸς αὐτοῦ, ἡ ἐλπὶς αὐτοῦ ἐπὶ Κύριον τὸν Θεὸν αὐτοῦ.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1726,7 +1805,11 @@
             "ar": "",
             "el": "Σῶσον, ἡμᾶς Υἱὲ Θεοῦ, ὁ ἀναστὰς ἐκ νεκρῶν, ψάλλοντάς Σοι· Ἀλληλούϊα.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1739,7 +1822,11 @@
             "ar": "",
             "el": "Βασιλεύσει Κύριος εἰς τὸν αἰῶνα, ὁ Θεός σου, Σιών, εἰς γενεὰν καὶ γενεάν.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1752,7 +1839,11 @@
             "ar": "",
             "el": "Σῶσον, ἡμᾶς, Υἱὲ Θεοῦ, ὁ ἀναστὰς ἐκ νεκρῶν, ψάλλοντάς Σοι· Ἀλληλούϊα. Δόξα Πατρὶ καὶ Υἱῷ καὶ ἁγίῳ Πνεύματι. Καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν. Ὁ Μονογενὴς Υἱὸς καὶ Λόγος τοῦ Θεοῦ ἀθάνατος ὑπάρχων, καὶ καταδεξάμενος διὰ τὴν ἡμετέραν σωτηρίαν, σαρκωθῆναι ἐκ τῆς ἁγίας Θεοτόκου καὶ ἀειπαρθένου Μαρίας, ἀτρέπτως ἐνανθρωπήσας σταυρωθείς τε, Χριστὲ ὁ Θεός, θανάτῳ θάνατον πατήσας, εἷς ὢν τῆς Ἁγίας Τριάδος, συνδοξαζόμενος τῷ Πατρὶ καὶ τῷ ἁγίῳ Πνεύματι, σῶσον ἡμᾶς.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "second_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:second_antiphon",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -1891,7 +1982,11 @@
             "ar": "",
             "el": "Αὕτη ἡ ἡμέρα ἣν ἐποίησεν ὁ Κύριος, ἀγαλλιασώμεθα καὶ εὐφρανθῶμεν ἐν αὐτῇ. Καί ψάλλεται τὸ Ἀπολυτίκιον.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "third_antiphon",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:third_antiphon",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "section",
@@ -1988,7 +2083,11 @@
             "ar": "",
             "el": "Δεῦτε προσκυνήσωμεν, καὶ προσπέσωμεν Χριστῷ· σῶσον, ἡμᾶς, Υἱὲ Θεοῦ, ὁ ἀναστὰς ἐκ νεκρῶν 1, ψάλλοντάς Σοί· Ἀλληλούϊα.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "entrance_hymn",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:entrance_hymn",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "note",
@@ -2109,7 +2208,11 @@
             "ar": "",
             "el": "Ἅγιος ὁ Θεός, ἅγιος Ἰσχυρός, ἅγιος Ἀθάνατος· ἐλέησον ἡμᾶς. (3)",
             "en": ""
-          }
+          },
+          "dynamic_slot": "trisagion_hymn",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:trisagion_hymn",
+          "dynamic_slot_group_emit": true
         },
         {
           "type": "text",
@@ -2122,7 +2225,11 @@
             "ar": "",
             "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ ἁγίῳ Πνεύματι. Καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν. Ἅγιος Ἀθάνατος, ἐλέησον ἡμᾶς.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "trisagion_hymn",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:trisagion_hymn",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "text",
@@ -2135,7 +2242,11 @@
             "ar": "",
             "el": "Δύναμις.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "trisagion_hymn",
+          "dynamic_slot_mode": "replace_group_if_present",
+          "dynamic_slot_group": "liturgy:trisagion_hymn",
+          "dynamic_slot_group_emit": false
         },
         {
           "type": "note",
@@ -2306,7 +2417,9 @@
             "ar": "",
             "el": "Ἀλληλούια, Ἀλληλούια, Ἀλληλούια.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "alleluia_verses",
+          "dynamic_slot_mode": "replace_if_present"
         },
         {
           "type": "text",
@@ -3903,7 +4016,9 @@
             "ar": "",
             "el": "Ἄξιόν ἐστιν ὡς ἀληθῶς, μακαρίζειν σε τὴν Θεοτόκον, τὴν ἀειμακάριστον καὶ παναμώμητον καὶ Μητέρα τοῦ Θεοῦ ἡμῶν. Τὴν Τιμιωτέραν τῶν Χερουβεὶμ καὶ ἐνδοξοτέραν ἀσυγκρίτως τῶν Σεραφείμ, τὴν ἀδιαφθόρως, Θεὸν Λόγον τεκοῦσαν, τὴν ὄντως Θεοτόκον, σὲ μεγαλύνομεν.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "theotokos_hymn",
+          "dynamic_slot_mode": "replace_if_present"
         },
         {
           "type": "text",
@@ -4593,6 +4708,13 @@
             "ar": "",
             "el": "Αἰνεῖτε τόν Κύριον ἐκ τῶν οὐρανῶν. Αἰνεῖτε Αὐτόν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα (3)",
             "en": ""
+          },
+          "dynamic_slot": "communion_hymn",
+          "dynamic_slot_mode": "replace_if_present",
+          "dynamic_slot_speaker": {
+            "ar": "",
+            "el": "Ψάλτης",
+            "en": ""
           }
         },
         {
@@ -5211,7 +5333,9 @@
             "ar": "",
             "el": "Ὁ ἀναστὰς ἐκ νεκρῶν, Χριστὸς ὁ ἀληθινὸς Θεὸς ἡμῶν, ταῖς πρεσβείαις τῆς Παναχράντου καὶ Παναμώμου Ἁγίας Αὐτοῦ Μητρός· δυνάμει τοῦ τιμίου καὶ ζωοποιοῦ Σταυροῦ· προστασίαις τῶν τιμίων, ἐπουρανίων δυνάμεων Ἀσωμάτων· ἱκεσίαις τοῦ τιμίου ἐνδόξου προφήτου, προδρόμου καὶ βαπτιστοῦ Ἰωάννου, τῶν ἁγίων ἐνδόξων καὶ πανευφήμων Ἀποστόλων· τῶν ἁγίων ἐνδόξων καὶ καλλινίκων Μαρτύρων· τῶν ὁσίων καὶ θεοφόρων Πατέρων ἡμῶν· τοῦ ἁγίου (τοῦ ναοῦ) τῶν ἁγίων καὶ δικαίων θεοπατόρων Ἰωακεὶμ καὶ Ἄννης (τῶν ἁγίων τῆς ἡμέρας) καὶ πάντων τῶν ἁγίων, ἐλεήσαι καὶ σώσαι ἡμᾶς, ὡς ἀγαθὸς καὶ φιλάνθρωπος καὶ ἐλεήμων Θεός.",
             "en": ""
-          }
+          },
+          "dynamic_slot": "dismissal",
+          "dynamic_slot_mode": "replace_if_present"
         },
         {
           "type": "text",
@@ -5289,8 +5413,8 @@
         "machine_translation_used": false
       },
       "native_content_status": {
-        "filled_fields": 630,
-        "total_fields": 630,
+        "filled_fields": 631,
+        "total_fields": 631,
         "complete": true
       },
       "native_source": {
@@ -5301,7 +5425,7 @@
         "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "927b464b79b9080eaf9f5f3e4b965f62e1f759ef338dcbde6d36e7928c9bad94",
+        "content_sha256": "cc7263c5c0ba97343cafc74d3a18cc7b9617fdac2b2b56129e2f605af2a200f9",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -5583,8 +5707,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 770,
-    "total_fields": 770,
+    "filled_fields": 777,
+    "total_fields": 777,
     "percent": 100.0,
     "complete": true
   }

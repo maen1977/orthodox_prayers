@@ -1,0 +1,146 @@
+{
+  "schema_version": 2,
+  "status": "PHASE8_FINALIZATION_PIPELINE_ACTIVE_FAIL_CLOSED",
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "editions": {
+    "chrysostom": {
+      "service_id": "divine_liturgy",
+      "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+      "en": "IMPORTED_NATIVE_AUTHORIZED",
+      "el": "IMPORTED_NATIVE_AUTHORIZED",
+      "displayable": true
+    },
+    "basil": {
+      "service_id": "divine_liturgy_basil",
+      "ar": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
+      "en": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "displayable": false,
+      "source_ids": [
+        "goarch_digital_chant_stand_english",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "import_contract": "canonical/liturgy_native_import_contracts.json",
+      "availability_note": {
+        "ar": "اختيار قداس القديس باسيليوس يعمل، لكن النص العربي الأصلي الكامل غير متوفر بعد، والنصان الإنجليزي واليوناني ما زالا في مرحلة الاستيراد والمراجعة. لذلك تبقى الخدمة محجوبة ولا يعرض قداس آخر مكانها.",
+        "en": "Saint Basil’s Liturgy is selected correctly, but the complete native Arabic source is still missing and the English and Greek editions are awaiting controlled import and review. The service remains blocked and no other Liturgy is substituted.",
+        "el": "Ἡ Λειτουργία τοῦ Ἁγίου Βασιλείου ἐπιλέγεται σωστά, ἀλλὰ λείπει ἀκόμη ἡ πλήρης πρωτότυπη ἀραβικὴ πηγή, καὶ οἱ ἀγγλικὴ καὶ ἑλληνικὴ ἐκδόσεις ἀναμένουν ἐλεγχόμενη εἰσαγωγὴ καὶ ἔγκριση. Ἡ ἀκολουθία παραμένει κλειδωμένη χωρὶς ὑποκατάσταση."
+      },
+      "phase8_review_status": "AWAITING_LOCAL_OFFICIAL_SOURCE_FILES_AND_PARAGRAPH_REVIEW"
+    },
+    "presanctified": {
+      "service_id": "presanctified_liturgy",
+      "ar": "OFFICIAL_PDF_ACQUIRED_EXTRACTION_BLOCKED_LEGACY_FONT_ENCODING",
+      "en": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "displayable": false,
+      "source_ids": [
+        "orthodox_jordan",
+        "goarch_digital_chant_stand_english",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "import_contract": "canonical/liturgy_native_import_contracts.json",
+      "availability_note": {
+        "ar": "تم الحصول على الطبعة العربية الرسمية للسابق تقديسه، لكن ترميز خطها القديم يفسد آلاف الأحرف عند الاستخراج. حُظر نشر النص حتى استيراد ملف Word الأصلي أو تفريغ Unicode مطابق ومراجعته صفحة بصفحة، مع بقاء الإنجليزية واليونانية قيد الاستيراد.",
+        "en": "The official Arabic Presanctified service book has been acquired, but its legacy font encoding corrupts thousands of characters during extraction. Publication is blocked until an exact Unicode source is reviewed page by page; the English and Greek lanes also remain in controlled import.",
+        "el": "Ἡ ἐπίσημη ἀραβικὴ ἔκδοση τῶν Προηγιασμένων ἀποκτήθηκε, ἀλλὰ ἡ παλαιὰ κωδικοποίηση γραμματοσειρᾶς καταστρέφει χιλιάδες χαρακτῆρες κατὰ τὴν ἐξαγωγή. Ἡ δημοσίευση παραμένει κλειδωμένη ἕως ὅτου ἐλεγχθεῖ ἀκριβὲς κείμενο Unicode, ἐνῶ καὶ οἱ ἀγγλικὴ καὶ ἑλληνικὴ λωρίδες παραμένουν ὑπὸ ἐλεγχόμενη εἰσαγωγή."
+      },
+      "phase8_review_status": "AWAITING_LOCAL_OFFICIAL_SOURCE_FILES_AND_PARAGRAPH_REVIEW"
+    },
+    "typikon_override_required": {
+      "service_id": null,
+      "ar": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
+      "en": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
+      "el": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
+      "displayable": false
+    }
+  },
+  "publication_rule": "A selected service may extend a library template only when the complete native edition exists for all published language lanes.",
+  "wrong_liturgy_fallback_allowed": false,
+  "machine_translation_allowed": false,
+  "source_documents": {
+    "basil_en_el": {
+      "source_ids": [
+        "goarch_digital_chant_stand_english",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "title": "Divine Liturgy of Saint Basil the Great / Θεία Λειτουργία τοῦ Ἁγίου Βασιλείου τοῦ Μεγάλου",
+      "official_url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/01/01/li2/en/index.html",
+      "import_status": "REGISTERED_NOT_IMPORTED",
+      "native_languages": [
+        "en",
+        "el"
+      ],
+      "complete_text_claim": false
+    },
+    "presanctified_ar": {
+      "source_ids": [
+        "orthodox_jordan"
+      ],
+      "title": "ترتيب خدمة الساعات والقداس السابق تقديسه لأيام الجمع من الصوم الأربعيني",
+      "official_url": "https://orthodoxjordan.org/wp-content/uploads/2024/05/%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.pdf",
+      "edition_note": "Jerusalem/Jordan Arabic service book; fifth edition, 2018.",
+      "import_status": "REGISTERED_NOT_IMPORTED",
+      "native_languages": [
+        "ar"
+      ],
+      "complete_text_claim": false
+    },
+    "presanctified_en_el": {
+      "source_ids": [
+        "goarch_digital_chant_stand_english",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "title": "Liturgy of the Presanctified Gifts / Λειτουργία τῶν Προηγιασμένων Τιμίων Δώρων",
+      "official_url": "https://digitalchantstand.goarch.org/",
+      "import_status": "REGISTERED_NOT_IMPORTED",
+      "native_languages": [
+        "en",
+        "el"
+      ],
+      "complete_text_claim": false
+    }
+  },
+  "phase6_selection_engine": {
+    "status": "ACTIVE_FAIL_CLOSED",
+    "rules": "canonical/liturgy_service_rules.json",
+    "generator": "scripts/update_liturgical_data.py:liturgy_service_selection",
+    "wrong_rite_substitution_prevented": true,
+    "complete_native_text_imported_for": [
+      "chrysostom"
+    ],
+    "blocked_until_complete_native_import": [
+      "basil",
+      "presanctified"
+    ]
+  },
+  "phase7_native_import_pipeline": {
+    "status": "ACTIVE_FAIL_CLOSED",
+    "contract": "canonical/liturgy_native_import_contracts.json",
+    "validator": "scripts/validate_native_liturgy_imports.py",
+    "candidate_importer": "scripts/import_native_liturgy_service.py",
+    "promotion": "scripts/promote_native_liturgy_service.py",
+    "runtime_candidates_allowed": false,
+    "all_three_languages_and_ecclesiastical_approval_required": true,
+    "complete_native_text_imported_for": [
+      "chrysostom"
+    ],
+    "blocked_until_reviewed_import": [
+      "basil",
+      "presanctified"
+    ]
+  },
+  "phase8_finalization_pipeline": {
+    "contract": "canonical/liturgy_phase8_completion_contract.json",
+    "review_packet_builder": "scripts/build_native_liturgy_review_packet.py",
+    "review_packet_applier": "scripts/apply_native_liturgy_review_packet.py",
+    "bilingual_source_splitter": "scripts/import_dcs_bilingual_source.py",
+    "offline_android_builder": "scripts/build_android_with_local_gradle.py",
+    "final_gate": "scripts/validate_liturgy_phase8_completion.py",
+    "complete_release_allowed": false
+  }
+}

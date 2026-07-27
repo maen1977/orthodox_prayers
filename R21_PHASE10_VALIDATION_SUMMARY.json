@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE10",
+  "generated_at_utc": "2026-07-27T10:04:45.074436+00:00",
+  "result": "PASS_WITH_RELEASE_BLOCKERS",
+  "tests": {
+    "all_project_tests_passed": 249,
+    "phase10_tests_passed": 11,
+    "failures": 0
+  },
+  "native_language_packs": {
+    "ar": {
+      "complete_fields": 656,
+      "total_fields": 656,
+      "percent": 100.0
+    },
+    "en": {
+      "complete_fields": 785,
+      "total_fields": 785,
+      "percent": 100.0
+    },
+    "el": {
+      "complete_fields": 777,
+      "total_fields": 777,
+      "percent": 100.0
+    }
+  },
+  "integrity": {
+    "protected_files": 35,
+    "static_hashes_verified": true,
+    "detached_signatures_verified": true,
+    "embedded_signed_date": "2026-07-26",
+    "embedded_data_unchanged": true,
+    "repository_secret_scan_passed": true
+  },
+  "phase10": {
+    "interpretation_subsystem_removed": true,
+    "post_gospel_homily_preserved": true,
+    "reference_sunday_2026_07_19_complete": true,
+    "usfm_strongs_markup_in_reference_day_display": false,
+    "year_2026_audited_days": 365,
+    "year_2026_complete_days": 3,
+    "year_2026_incomplete_days": 362,
+    "annual_complete": false
+  },
+  "quality_gate": {
+    "combined_run": "TIMED_OUT_DURING_VALIDATE_OFFICIAL_SOURCES_AFTER_ALL_PRIOR_CHECKS_PASSED",
+    "remaining_checks_run_individually_and_passed": [
+      "validate_official_sources",
+      "validate_jordan_liturgical_contract",
+      "validate_no_placeholder_guidance",
+      "validate_liturgical_schedule",
+      "validate_fasting_guidance",
+      "quality_check_allow_stale"
+    ]
+  },
+  "android": {
+    "apk_built": false,
+    "device_smoke_test": false,
+    "blocker": "Gradle 8.13 distribution and Android device evidence unavailable locally"
+  },
+  "release": {
+    "complete_release_allowed": false,
+    "candidate_signed_with_official_private_key": false,
+    "fail_closed": true,
+    "blockers": [
+      "phase8:native_service_not_displayable:basil",
+      "phase8:native_service_not_displayable:presanctified",
+      "phase8:annual_variable_parts_unproven_complete",
+      "phase8:phase8_candidate_not_signed_with_official_key",
+      "phase8:android_apk_build_evidence_missing",
+      "phase10_annual_daily_coverage_incomplete"
+    ]
+  }
+}

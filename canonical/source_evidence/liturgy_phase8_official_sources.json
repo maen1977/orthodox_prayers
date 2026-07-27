@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "REGISTERED_OFFICIAL_SOURCES_LOCAL_CAPTURE_REQUIRED",
+  "captured_at": "2026-07-27",
+  "sources": {
+    "basil_en_skeleton": {
+      "source_id": "goarch_digital_chant_stand_english",
+      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/en/index.html",
+      "official_description": "Fixed text for the Divine Liturgy of Saint Basil used with separate daily variable parts.",
+      "known_limitations": [
+        "variable parts omitted",
+        "supplication and catechumen litanies omitted in the displayed skeleton",
+        "first prayer of the faithful omitted in the displayed skeleton"
+      ],
+      "publication_candidate_complete_by_itself": false,
+      "local_capture_status": "PENDING"
+    },
+    "basil_gr_en_dated": {
+      "source_id": "goarch_digital_chant_stand_greek",
+      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/12/24/vl2/gr-en/index.html",
+      "official_description": "Dated bilingual Greek-English Vesperal Liturgy of Saint Basil with appointed variable material.",
+      "local_capture_status": "PENDING",
+      "splitter": "scripts/import_dcs_bilingual_source.py"
+    },
+    "presanctified_gr_en_dated": {
+      "source_id": "goarch_digital_chant_stand_greek",
+      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/03/04/pl2/gr-en/index.html",
+      "official_description": "Dated bilingual Greek-English Divine Liturgy of the Presanctified Gifts.",
+      "local_capture_status": "PENDING",
+      "splitter": "scripts/import_dcs_bilingual_source.py"
+    },
+    "presanctified_ar_editable": {
+      "source_id": "orthodox_jordan",
+      "url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%8A%D8%AC%D9%8A%D8%B3%D9%85%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.docx",
+      "official_description": "Preferred editable Arabic source intended to avoid the legacy-font corruption in the PDF text layer.",
+      "local_capture_status": "PENDING_EXTERNAL_DOWNLOAD",
+      "publication_candidate_complete_by_itself": false
+    }
+  },
+  "policy": {
+    "network_text_is_not_written_directly_to_runtime": true,
+    "local_source_file_hash_required": true,
+    "paragraph_review_required": true,
+    "three_language_atomic_promotion_required": true,
+    "copyrighted_source_files_remain_external": true
+  }
+}

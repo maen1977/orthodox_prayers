@@ -47,10 +47,20 @@
       "daily_troparion",
       "church_troparion",
       "daily_kontakion",
-      "communion_hymn"
+      "communion_hymn",
+      "first_antiphon",
+      "second_antiphon",
+      "third_antiphon",
+      "entrance_hymn",
+      "trisagion_hymn",
+      "alleluia_verses",
+      "theotokos_hymn",
+      "dismissal"
     ],
     "missing_behavior": "HIDE_SLOT_KEEP_FIXED_LITURGY",
-    "never_guess_or_translate": true
+    "never_guess_or_translate": true,
+    "group_replacement_mode": "REPLACE_NATIVE_GROUP_ONLY_WHEN_VERIFIED_TEXT_PRESENT",
+    "phase4_registry": "canonical/liturgy_variable_parts.json"
   },
   "speaker_model": {
     "show_speaker": true,
@@ -110,5 +120,11 @@
     "stale_daily_readings_are_hidden": true,
     "signature_required": true,
     "exact_alarm_permission_required": false
+  },
+  "post_gospel_policy": {
+    "liturgical_response_preserved": true,
+    "homily_position_preserved": true,
+    "app_interpretation_or_commentary": false,
+    "scope_decision": "EXCLUDED_BY_PRODUCT_OWNER_PHASE10"
   }
 }

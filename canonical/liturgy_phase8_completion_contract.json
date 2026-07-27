@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_PHASE8_FINALIZATION_PIPELINE_FAIL_CLOSED_NO_INTERPRETATIONS",
+  "purpose": "Complete the three native service editions, prove annual variable parts, official signing, and Android build evidence without adding interpretations or commentary.",
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "required_release_gates": {
+    "native_service_editions": {
+      "required_services": [
+        "chrysostom",
+        "basil",
+        "presanctified"
+      ],
+      "all_languages_required": true,
+      "ecclesiastical_paragraph_review_required": true,
+      "current_status": "INCOMPLETE"
+    },
+    "annual_variable_parts": {
+      "coverage_registry": "canonical/liturgy_annual_coverage.json",
+      "complete_year_claim_required": true,
+      "current_status": "UNPROVEN_COMPLETE"
+    },
+    "signed_daily_data": {
+      "official_private_key_required": true,
+      "current_status": "UNCHANGED_SIGNED_BASELINE_ONLY"
+    },
+    "android_build": {
+      "gradle_distribution_sha256_source": "gradle/wrapper/gradle-wrapper.properties",
+      "apk_hash_evidence_required": true,
+      "device_smoke_test_required": true,
+      "current_status": "NOT_PROVEN"
+    }
+  },
+  "review_packet": {
+    "builder": "scripts/build_native_liturgy_review_packet.py",
+    "applier": "scripts/apply_native_liturgy_review_packet.py",
+    "candidate_text_must_not_ship": true,
+    "every_segment_requires_explicit_approval": true,
+    "reviewer_identity_and_date_required": true,
+    "candidate_hash_recomputed_after_review": true
+  },
+  "bilingual_source_intake": {
+    "tool": "scripts/import_dcs_bilingual_source.py",
+    "purpose": "Split a locally saved official Greek-English DCS source without translating either lane.",
+    "accepted_local_formats": [
+      "html",
+      "htm",
+      "txt"
+    ],
+    "runtime_network_fetch": false
+  },
+  "offline_android_build": {
+    "tool": "scripts/build_android_with_local_gradle.py",
+    "official_distribution": "gradle-8.13-bin.zip",
+    "expected_sha256": "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78",
+    "default_task": ":app:assembleDebug",
+    "network_required_after_local_distribution_is_supplied": false
+  },
+  "completion_claim": {
+    "allowed_only_when": [
+      "all required native service editions are displayable in ar/en/el",
+      "annual variable-parts registry is proven complete",
+      "signed daily data passes official-key verification",
+      "APK build evidence and device smoke test are present"
+    ],
+    "current_value": false,
+    "scope_exclusion": "Interpretations and commentary are intentionally outside the application scope."
+  }
+}

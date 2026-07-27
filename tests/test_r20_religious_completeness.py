@@ -52,9 +52,18 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
         self.assertEqual(15, len(required))
         for language in ("ar", "en", "el"):
             self.assertEqual(required, set(manifest["languages"][language]))
-            self.assertNotIn(
+        self.assertEqual(
+            "complete_exact_native_edition",
+            manifest["languages"]["ar"]["pre_communion"],
+        )
+        self.assertEqual(
+            "complete_exact_native_edition",
+            manifest["languages"]["ar"]["post_communion"],
+        )
+        for language in ("ar", "en", "el"):
+            self.assertNotEqual(
                 "complete_exact_native_edition",
-                set(manifest["languages"][language].values()),
+                manifest["languages"][language]["chrysostom_liturgy"],
             )
 
     def test_ui_does_not_present_field_coverage_as_religious_completeness(self):

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "status": "PHASE10_DATED_COVERAGE_EXPANSION_NO_INTERPRETATIONS",
+  "calendar": "julian_old_calendar_with_orthodox_pascha_offsets",
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "fixed_major_feasts": [
+    {
+      "julian_date": "02-02",
+      "proper_id": "meeting_of_the_lord",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "julian_date": "03-25",
+      "proper_id": "annunciation_theotokos",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "julian_date": "08-06",
+      "proper_id": "transfiguration_lord",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "julian_date": "08-15",
+      "proper_id": "dormition_theotokos",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "julian_date": "09-08",
+      "proper_id": "nativity_theotokos",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "julian_date": "11-21",
+      "proper_id": "entry_theotokos_temple",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    }
+  ],
+  "paschal_cycle": [
+    {
+      "pascha_offset": -7,
+      "proper_id": "palm_sunday",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "pascha_offset": 39,
+      "proper_id": "ascension_lord",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    {
+      "pascha_offset": 49,
+      "proper_id": "holy_pentecost",
+      "slots": [
+        "troparion",
+        "kontakion",
+        "prokeimenon",
+        "communion"
+      ],
+      "languages_complete": true,
+      "review_status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    }
+  ],
+  "variable_branches_added": [
+    "palm_sunday_entrance",
+    "ascension_entrance_and_dismissal",
+    "pentecost_trisagion_and_dismissal",
+    "appointed_liturgy_type_selector",
+    "basil_calendar_rules",
+    "presanctified_calendar_rules",
+    "great_friday_no_liturgy_gate",
+    "documented_local_override_contract",
+    "native_service_source_acquisition_gate",
+    "native_service_candidate_review_gate",
+    "three_language_atomic_promotion_gate",
+    "legacy_font_extraction_rejection",
+    "paragraph_by_paragraph_native_service_review_packets",
+    "bilingual_dcs_source_lane_splitter",
+    "hash_verified_offline_android_build",
+    "truthful_final_completion_gate",
+    "day_by_day_offline_annual_coverage_audit",
+    "phase9_truthful_daily_completion_gate"
+  ],
+  "explicit_gaps": [
+    "basil_arabic_complete_native_source_acquisition",
+    "basil_three_language_candidate_import_and_ecclesiastical_review",
+    "presanctified_arabic_verified_unicode_source_or_manual_page_verified_transcription",
+    "presanctified_three_language_candidate_import_and_ecclesiastical_review",
+    "complete_menaion_for_every_day_and_saint",
+    "complete_triodion_for_all_pre_paschal_days",
+    "complete_pentecostarion_for_all_days",
+    "combined_feast_and_saint_ordering",
+    "all_feast_antiphons_and_entrance_hymns",
+    "all_megalynaria_and_theotokos_hymns",
+    "all_feast_specific_alleluia_verses",
+    "final_ecclesiastical_human_review",
+    "official_release_signature_and_android_build",
+    "day_by_day_variable_parts_and_readings_for_every_civil_date",
+    "phase9_year_audit_all_days_complete"
+  ],
+  "completion_claim": "unproven_complete",
+  "machine_translation_allowed": false,
+  "liturgy_service_type_coverage": {
+    "status": "RULES_ACTIVE_PHASE8_REVIEW_PIPELINE_TEXT_EDITIONS_STILL_BLOCKED",
+    "chrysostom": {
+      "calendar_selection": true,
+      "complete_three_language_template_displayable": true
+    },
+    "basil": {
+      "calendar_selection": true,
+      "complete_three_language_template_displayable": false,
+      "controlled_import_pipeline": true,
+      "source_lane_statuses": {
+        "ar": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
+        "en": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+        "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING"
+      }
+    },
+    "presanctified": {
+      "calendar_selection": true,
+      "complete_three_language_template_displayable": false,
+      "controlled_import_pipeline": true,
+      "source_lane_statuses": {
+        "ar": "OFFICIAL_PDF_ACQUIRED_EXTRACTION_BLOCKED_LEGACY_FONT_ENCODING",
+        "en": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+        "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING"
+      },
+      "arabic_pdf_acquired": true,
+      "arabic_pdf_text_extraction_accepted": false
+    },
+    "no_divine_liturgy": {
+      "calendar_selection": true,
+      "wrong_liturgy_fallback": false
+    },
+    "fail_closed": true,
+    "phase8_final_gate": "canonical/liturgy_phase8_completion_contract.json"
+  },
+  "phase9_year_audit": {
+    "path": "R21_PHASE9_YEAR_AUDIT_2026.json",
+    "year": 2026,
+    "audited_days": 365,
+    "complete_days": 2,
+    "incomplete_days": 363,
+    "annual_complete": false,
+    "network_fetch_used": false
+  },
+  "interpretation_scope": {
+    "included": false,
+    "decision": "EXCLUDED_BY_PRODUCT_OWNER",
+    "post_gospel": "LITURGICAL_RESPONSE_AND_HOMILY_POSITION_ONLY"
+  },
+  "phase10_year_audit": "R21_PHASE10_YEAR_AUDIT_2026.json"
+}

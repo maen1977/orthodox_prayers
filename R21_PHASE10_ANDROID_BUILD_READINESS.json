@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE10",
+  "gradle_distribution": "gradle-8.13-bin.zip",
+  "local_distribution_found": false,
+  "android_sdk_verified": false,
+  "apk_built": false,
+  "device_smoke_test": false,
+  "status": "BLOCKED_MISSING_LOCAL_GRADLE_AND_DEVICE_EVIDENCE",
+  "fail_closed": true,
+  "interpretations_included": false
+}

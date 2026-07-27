@@ -1,0 +1,17 @@
+{
+  "phase": "R21_PHASE9",
+  "gradle_wrapper_verified": true,
+  "requested_distribution": "gradle-8.13-bin.zip",
+  "offline_build_attempted": true,
+  "success": false,
+  "apk_files": [],
+  "error_class": "java.net.UnknownHostException",
+  "error_host": "services.gradle.org",
+  "next_requirements": [
+    "provide the verified Gradle 8.13 distribution locally",
+    "provide Android SDK/build tools",
+    "run assembleDebug",
+    "record APK SHA-256",
+    "perform device smoke test"
+  ]
+}

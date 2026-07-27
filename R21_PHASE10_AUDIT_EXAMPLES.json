@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE10",
+  "summary": {
+    "audited_days": 365,
+    "complete_days": 3,
+    "incomplete_days": 362,
+    "annual_complete": false,
+    "network_fetch_used": false,
+    "blocker_counts": {
+      "native_service_not_displayable:basil": 10,
+      "native_service_not_displayable:presanctified": 14,
+      "proper_incomplete:communion": 317,
+      "proper_incomplete:kontakion": 349,
+      "proper_incomplete:prokeimenon": 13,
+      "proper_incomplete:troparion": 316,
+      "reading_incomplete:epistle": 362,
+      "reading_incomplete:gospel": 362,
+      "reading_incomplete:matins_gospel": 50,
+      "reading_resolution_error:RuntimeError": 13
+    }
+  },
+  "complete_examples": [
+    {
+      "date": "2026-04-10",
+      "julian_date": "2026-03-28",
+      "weekday": 4,
+      "is_sunday": false,
+      "service_type": "no_divine_liturgy",
+      "service_rule_id": "great_friday_no_divine_liturgy",
+      "service_displayable": false,
+      "proper_id": null,
+      "proper_provenance": "ordinary",
+      "resurrection_tone": null,
+      "eothinon": null,
+      "complete_for_release": true,
+      "blockers": [],
+      "fail_closed": true
+    },
+    {
+      "date": "2026-07-19",
+      "julian_date": "2026-07-06",
+      "weekday": 6,
+      "is_sunday": true,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "service_displayable": true,
+      "proper_id": "dated:2026-07-19",
+      "proper_provenance": "dated",
+      "resurrection_tone": 6,
+      "eothinon": 7,
+      "complete_for_release": true,
+      "blockers": [],
+      "fail_closed": true
+    },
+    {
+      "date": "2026-07-26",
+      "julian_date": "2026-07-13",
+      "weekday": 6,
+      "is_sunday": true,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "service_displayable": true,
+      "proper_id": "dated:2026-07-26",
+      "proper_provenance": "dated",
+      "resurrection_tone": 7,
+      "eothinon": 8,
+      "complete_for_release": true,
+      "blockers": [],
+      "fail_closed": true
+    }
+  ],
+  "incomplete_examples": [
+    {
+      "date": "2026-01-01",
+      "julian_date": "2025-12-19",
+      "weekday": 3,
+      "is_sunday": false,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "service_displayable": true,
+      "proper_id": null,
+      "proper_provenance": "ordinary",
+      "resurrection_tone": null,
+      "eothinon": null,
+      "complete_for_release": false,
+      "blockers": [
+        "reading_incomplete:epistle",
+        "reading_incomplete:gospel",
+        "proper_incomplete:troparion",
+        "proper_incomplete:kontakion",
+        "proper_incomplete:communion"
+      ],
+      "fail_closed": true
+    },
+    {
+      "date": "2026-07-18",
+      "julian_date": "2026-07-05",
+      "weekday": 5,
+      "is_sunday": false,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "service_displayable": true,
+      "proper_id": null,
+      "proper_provenance": "ordinary",
+      "resurrection_tone": null,
+      "eothinon": null,
+      "complete_for_release": false,
+      "blockers": [
+        "reading_incomplete:epistle",
+        "reading_incomplete:gospel",
+        "proper_incomplete:troparion",
+        "proper_incomplete:kontakion",
+        "proper_incomplete:communion"
+      ],
+      "fail_closed": true
+    }
+  ],
+  "interpretations_or_commentary_in_scope": false,
+  "fail_closed": true
+}

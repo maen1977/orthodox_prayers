@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE12",
+  "generated_at_utc": "2026-07-27T11:30:08.826196+00:00",
+  "project_version": "5.0.16",
+  "test_results": {
+    "all_tests_passed": true,
+    "total_tests": 272,
+    "phase12_tests": 12,
+    "failures": 0,
+    "combined_quality_gate": "TIMED_OUT_AFTER_MOST_CHECKS; REMAINING_CHECKS_RERUN_INDIVIDUALLY_AND_PASSED",
+    "remaining_checks_passed": true
+  },
+  "native_language_packs": {
+    "ar": "656/656",
+    "en": "785/785",
+    "el": "777/777"
+  },
+  "protected_static_files": 37,
+  "year_audit": {
+    "year": 2026,
+    "audited_days": 365,
+    "complete_days": 7,
+    "incomplete_days": 358,
+    "annual_complete": false,
+    "network_fetch_used": false
+  },
+  "dated_services_added": [
+    "2026-06-21",
+    "2026-06-28"
+  ],
+  "interpretations_removed": true,
+  "signed_published_data_unchanged": true,
+  "candidate_signed_with_official_key": false,
+  "android": {
+    "schema_version": 1,
+    "phase": "R21_PHASE12",
+    "generated_at_utc": "2026-07-27T11:30:08.826196+00:00",
+    "gradle_distribution": "gradle-8.13-bin.zip",
+    "local_distribution_found": false,
+    "android_sdk_verified": false,
+    "apk_built": false,
+    "device_smoke_test": false,
+    "attempted_command": "./gradlew :app:assembleDebug --no-daemon --stacktrace",
+    "blocker": "java.net.UnknownHostException: services.gradle.org; Gradle 8.13 distribution unavailable locally",
+    "status": "BLOCKED_MISSING_LOCAL_GRADLE_AND_DEVICE_EVIDENCE",
+    "fail_closed": true,
+    "interpretations_included": false
+  },
+  "complete_release_allowed": false,
+  "fail_closed": true
+}

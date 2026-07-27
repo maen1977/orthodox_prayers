@@ -1,0 +1,24 @@
+{
+  "phase": "R21_PHASE11",
+  "pipeline_status": "ACTIVE_PHASE11_TWO_DATED_SUNDAYS_ADDED_FAIL_CLOSED",
+  "complete_release_allowed": false,
+  "interpretations_removed": true,
+  "interpretation_token_files": [],
+  "year_audit_present": true,
+  "year_audit_days": 365,
+  "year_audit_complete_days": 5,
+  "year_audit_incomplete_days": 360,
+  "target_dates_complete": {
+    "2026-07-05": true,
+    "2026-07-12": true
+  },
+  "blockers": [
+    "phase10:phase8:native_service_not_displayable:basil",
+    "phase10:phase8:native_service_not_displayable:presanctified",
+    "phase10:phase8:annual_variable_parts_unproven_complete",
+    "phase10:phase8:phase8_candidate_not_signed_with_official_key",
+    "phase10:phase8:android_apk_build_evidence_missing",
+    "phase11_annual_daily_coverage_incomplete"
+  ],
+  "fail_closed": true
+}

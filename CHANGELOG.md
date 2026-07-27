@@ -465,3 +465,30 @@
 - Replace field-population percentages with a 15-service ecclesiastical completeness manifest.
 - Block production releases until every required service is imported from an authorized complete native edition.
 - Correct the Greek Cherubic Hymn character typo and remove misleading “complete” labels.
+
+## R21 Phase 8 — controlled finalization
+
+- Added paragraph-by-paragraph ecclesiastical review packets for native Basil and Presanctified candidates.
+- Added exact Greek-English DCS source splitting without translation.
+- Added hash-verified local Gradle Android build tooling and APK evidence generation.
+- Added a truthful final completion gate covering native rites, annual propers, patristic commentary, official signing, and Android build proof.
+- Protected 29 liturgical texts, contracts, and source-evidence files with static SHA-256 hashes.
+
+## R21 Phase 9 — Daily annual audit and patristic commentary gate
+
+- Added a deterministic offline audit for all 365 civil dates of 2026, with per-day blockers instead of an inferred annual-completeness percentage.
+- Added a fail-closed patristic Gospel commentary registry, source registry, native-language candidate importer, and three-language review requirement.
+- Added an optional `gospel_commentary` semantic slot after the Gospel response in Arabic, English, and Greek native Liturgy packs; it remains hidden unless all three reviewed native lanes are approved.
+- Preserved the priest's homily as a separate liturgical action; the optional reading aid never replaces it.
+- Registered Saint John Chrysostom, Homily 49 on Matthew, as source evidence for Matthew 14:14-22 without shipping an unreviewed quotation or AI-generated paraphrase.
+- Added phase-nine validators to the main quality gate and protected the new contracts, registries, audit, and native packs with static hashes.
+
+## R21 Phase 10 — Interpretation removal and dated coverage expansion
+
+- Removed the patristic interpretation/commentary subsystem, its active contracts, importers, validators, native-reader slots, and stale phase-nine candidate artifacts.
+- Preserved the post-Gospel liturgical response and the priest's homily position without adding an in-app explanation.
+- Added a fail-closed dated proper for July 19, 2026 in the Jerusalem old-calendar lane: Tone 6, Eothinon 7, Matins John 20:1-10, Romans 15:1-7, and Matthew 9:27-35.
+- Separated Paschal-cycle authority from fixed-date calendar context so a New Calendar commemoration is not copied into the Jerusalem Old Calendar lane.
+- Removed USFM/Strong word attributes from display text while retaining the source words, with a regression test blocking technical markup in the reader.
+- Rebuilt the 2026 offline annual audit: 365 dates audited, 3 currently complete, and 362 explicitly blocked rather than inferred complete.
+- Kept the signed embedded July 26, 2026 release data unchanged; phase-ten candidates remain unsigned and marked do-not-publish.

@@ -37,6 +37,8 @@ DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
         "[فصل من رسالة اليوم]": ("epistle", "replace", "القارئ"),
         "[فصل الإنجيل المعيّن لهذا اليوم]": ("gospel", "replace", "الكاهن"),
         "[آية المناولة]": ("communion_hymn", "replace", "المرتل"),
+        "سبحوا الرب من السماوات، سبحوه في الأعالي. هللويا.":
+            ("communion_hymn", "replace_if_present", "المرتل"),
     },
     "en": {
         "[Matins Gospel appointed for today]": ("matins_gospel", "replace", "Reader"),
@@ -45,6 +47,8 @@ DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
         "(The Reader reads the verses from the Psalms.)": ("prokeimenon", "after", "Reader"),
         "(The Reader reads the designated Apostolic text.)": ("epistle", "after", "Reader"),
         "(The Deacon reads the designated text of the Holy Gospel.)": ("gospel", "after", "Deacon"),
+        "Praise the Lord from the Heavens; praise Him in the highest. Alleluia (3)":
+            ("communion_hymn", "replace_if_present", "Chanter"),
     },
     "el": {
         "[Τὸ Ἑωθινὸν Εὐαγγέλιον τῆς ἡμέρας]": ("matins_gospel", "replace", "Ἀναγνώστης"),
@@ -55,6 +59,8 @@ DYNAMIC_SLOT_ANCHORS: dict[str, dict[str, tuple[str, str, str]]] = {
             ("epistle", "after", "Ἀναγνώστης"),
         "Δόξα σοι, Κύριε, Δόξα σοι. Ὁ Διάκονος ἀναγινώσκει τὴν τεταγμένην περικοπὴν τοῦ ἁγίου Εὐαγγελίου.":
             ("gospel", "after", "Διάκονος"),
+        "Αἰνεῖτε τόν Κύριον ἐκ τῶν οὐρανῶν. Αἰνεῖτε Αὐτόν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα (3)":
+            ("communion_hymn", "replace_if_present", "Ψάλτης"),
     },
 }
 
@@ -81,6 +87,164 @@ GOSPEL_NAME_MARKERS = {
     "en": "(Name)",
     "el": "(Ὂνομα)",
 }
+
+
+def _native_text(segment: dict[str, Any], lang: str) -> str:
+    value = segment.get("text")
+    return str(value.get(lang) or "") if isinstance(value, dict) else ""
+
+
+def _native_title(segment: dict[str, Any], lang: str) -> str:
+    value = segment.get("title")
+    return str(value.get(lang) or "") if isinstance(value, dict) else ""
+
+
+def _native_speaker(segment: dict[str, Any], lang: str) -> str:
+    value = segment.get("speaker")
+    return str(value.get(lang) or "") if isinstance(value, dict) else ""
+
+
+def _mark_group(
+    segments: list[dict[str, Any]],
+    indices: list[int],
+    slot: str,
+    emit_index: int,
+) -> None:
+    if not indices or emit_index not in indices:
+        raise SystemExit(f"divine_liturgy: cannot annotate group {slot}")
+    group_id = f"liturgy:{slot}"
+    for index in indices:
+        segment = segments[index]
+        segment["dynamic_slot"] = slot
+        segment["dynamic_slot_mode"] = "replace_group_if_present"
+        segment["dynamic_slot_group"] = group_id
+        segment["dynamic_slot_group_emit"] = index == emit_index
+
+
+def annotate_phase4_variable_slots(service: dict[str, Any], lang: str) -> set[str]:
+    if service.get("id") != "divine_liturgy":
+        return set()
+    segments = service.get("segments") or []
+    found: set[str] = set()
+    people = {
+        "ar": {"الشعب", "المرتل", "الشعب بصوت هادئ"},
+        "en": {"People", "Chanter"},
+        "el": {"Λαός", "Ψάλτης"},
+    }[lang]
+    section_titles = {
+        "ar": {"first": "صلاة الأنتيفونا الأولى", "second": "صلاة الأنتيفونا الثانية", "entrance": "أثناء الدخول الصغير", "trisagion": "صلاة التريصاجيون"},
+        "en": {"first": "THE FIRST ANTIPHON", "second": "THE SECOND ANTIPHON", "third": "THE THIRD ANTIPHON", "entrance": "THE ENTRANCE", "trisagion": "THE TRISAGION HYMN"},
+        "el": {"first": "ΤΟ ΠΡΩΤΟΝ ΑΝΤΙΦΩΝΟΝ", "second": "ΤΟ ΔΕΥΤΕΡΟΝ ΑΝΤΙΦΩΝΟΝ", "third": "ΤΟ ΤΡΙΤΟΝ ΑΝΤΙΦΩΝΟΝ", "entrance": "Η ΜΙΚΡΑ ΕΙΣΟΔΟΣ", "trisagion": "Ο ΤΡΙΣΑΓΙΟΣ ΥΜΝΟΣ"},
+    }[lang]
+
+    def section_index(title: str) -> int:
+        for i, segment in enumerate(segments):
+            if _native_title(segment, lang) == title:
+                return i
+        return -1
+
+    def sung_group_after(title: str) -> list[int]:
+        start = section_index(title)
+        if start < 0:
+            return []
+        result: list[int] = []
+        begun = False
+        for i in range(start + 1, len(segments)):
+            segment = segments[i]
+            if segment.get("type") == "section":
+                break
+            speaker = _native_speaker(segment, lang)
+            text = _native_text(segment, lang).strip()
+            eligible = bool(text) and speaker in people
+            if eligible:
+                result.append(i)
+                begun = True
+            elif begun:
+                break
+        return result
+
+    for key, slot in (("first", "first_antiphon"), ("second", "second_antiphon")):
+        indices = sung_group_after(section_titles[key])
+        _mark_group(segments, indices, slot, indices[0])
+        found.add(slot)
+
+    if lang == "ar":
+        entrance_section = section_index(section_titles["entrance"])
+        if entrance_section < 0:
+            raise SystemExit("divine_liturgy.ar: entrance section missing")
+        ordinary = {
+            key: "هذا هو اليوم الذي صنعه الرب، فلنفرح ونبتهج فيه." if key == "ar" else ""
+            for key in LANGS
+        }
+        segments.insert(entrance_section, {
+            "type": "text",
+            "speaker": {key: "المرتل" if key == "ar" else "" for key in LANGS},
+            "text": ordinary,
+        })
+    third_indices = sung_group_after(section_titles.get("third", section_titles["entrance"])) if lang != "ar" else []
+    if lang == "ar":
+        third_indices = [i for i, segment in enumerate(segments) if _native_text(segment, lang) == "هذا هو اليوم الذي صنعه الرب، فلنفرح ونبتهج فيه."]
+    _mark_group(segments, third_indices, "third_antiphon", third_indices[0])
+    found.add("third_antiphon")
+
+    entrance_phrases = {
+        "ar": "هلمّ نسجد ونركع للمسيح.",
+        "en": "Come, let us worship and bow before Christ.",
+        "el": "Δεῦτε προσκυνήσωμεν, καὶ προσπέσωμεν Χριστῷ",
+    }
+    entrance_indices = [i for i, segment in enumerate(segments) if _native_text(segment, lang).startswith(entrance_phrases[lang])]
+    _mark_group(segments, entrance_indices, "entrance_hymn", entrance_indices[-1])
+    found.add("entrance_hymn")
+
+    tri_start = section_index(section_titles["trisagion"])
+    tri_indices: list[int] = []
+    tri_started = False
+    tri_markers = {
+        "ar": ("قدوس الله", "المجد للآب والابن", "قدوس الذي لا يموت"),
+        "en": ("Holy God", "Glory to the Father", "Strength."),
+        "el": ("Ἅγιος ὁ Θεός", "Δόξα Πατρὶ", "Δύναμις."),
+    }[lang]
+    for i in range(tri_start + 1, len(segments)):
+        segment = segments[i]
+        if segment.get("type") == "section":
+            break
+        text = _native_text(segment, lang).strip()
+        if any(text.startswith(marker) for marker in tri_markers):
+            tri_indices.append(i)
+            tri_started = True
+        elif tri_started and _native_speaker(segment, lang) not in people and text not in {"Strength.", "Δύναμις."}:
+            break
+    _mark_group(segments, tri_indices, "trisagion_hymn", tri_indices[0])
+    found.add("trisagion_hymn")
+
+    alleluia_prefix = {"ar": "هللويا، هللويا، هللويا", "en": "Alleluia. Alleluia. Alleluia", "el": "Ἀλληλούια, Ἀλληλούια, Ἀλληλούια"}[lang]
+    alleluia_index = next((i for i, segment in enumerate(segments) if _native_text(segment, lang).startswith(alleluia_prefix)), -1)
+    if alleluia_index < 0:
+        raise SystemExit(f"divine_liturgy.{lang}: Alleluia anchor missing")
+    segments[alleluia_index]["dynamic_slot"] = "alleluia_verses"
+    segments[alleluia_index]["dynamic_slot_mode"] = "replace_if_present"
+    found.add("alleluia_verses")
+
+    theotokos_prefix = {"ar": "بواجب الاستئهال", "en": "It is truly right", "el": "Ἄξιόν ἐστιν"}[lang]
+    theotokos_index = next((i for i, segment in enumerate(segments) if _native_text(segment, lang).startswith(theotokos_prefix)), -1)
+    if theotokos_index < 0:
+        raise SystemExit(f"divine_liturgy.{lang}: Theotokos hymn anchor missing")
+    segments[theotokos_index]["dynamic_slot"] = "theotokos_hymn"
+    segments[theotokos_index]["dynamic_slot_mode"] = "replace_if_present"
+    found.add("theotokos_hymn")
+
+    dismissal_prefix = {
+        "ar": "المسيح إلهنا الحقيقي",
+        "en": "May Christ our true God who rose from the dead",
+        "el": "Ὁ ἀναστὰς ἐκ νεκρῶν, Χριστὸς ὁ ἀληθινὸς Θεὸς ἡμῶν",
+    }[lang]
+    dismissal_index = next((i for i, segment in enumerate(segments) if _native_text(segment, lang).startswith(dismissal_prefix)), -1)
+    if dismissal_index < 0:
+        raise SystemExit(f"divine_liturgy.{lang}: dismissal anchor missing")
+    segments[dismissal_index]["dynamic_slot"] = "dismissal"
+    segments[dismissal_index]["dynamic_slot_mode"] = "replace_if_present"
+    found.add("dismissal")
+    return found
 
 
 def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
@@ -135,10 +299,16 @@ def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
             segment["dynamic_inline_marker"] = marker
             inline_found = True
 
-    required = {"matins_gospel", "daily_hymns", "prokeimenon", "epistle", "gospel"} if lang != "ar" else {
+    found.update(annotate_phase4_variable_slots(service, lang))
+
+    required = {"matins_gospel", "daily_hymns", "prokeimenon", "epistle", "gospel", "communion_hymn",
+        "first_antiphon", "second_antiphon", "third_antiphon", "entrance_hymn", "trisagion_hymn",
+        "alleluia_verses", "theotokos_hymn", "dismissal"} if lang != "ar" else {
         "matins_gospel",
         "daily_troparion", "church_troparion", "daily_kontakion",
-        "prokeimenon", "epistle", "gospel",
+        "prokeimenon", "epistle", "gospel", "communion_hymn",
+        "first_antiphon", "second_antiphon", "third_antiphon", "entrance_hymn", "trisagion_hymn",
+        "alleluia_verses", "theotokos_hymn", "dismissal",
     }
     missing = sorted(required - found)
     if missing or not inline_found:

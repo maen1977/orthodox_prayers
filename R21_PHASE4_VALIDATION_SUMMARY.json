@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE4",
+  "status": "SOURCE_TREE_QUALITY_GATE_PASSED",
+  "unit_tests": {
+    "total": 198,
+    "passed": 198,
+    "failed": 0,
+    "phase4_tests": 9
+  },
+  "quality_gate": "PASSED",
+  "protected_static_files": 21,
+  "native_language_packs": {
+    "ar": {"filled": 656, "total": 656},
+    "en": {"filled": 785, "total": 785},
+    "el": {"filled": 777, "total": 777}
+  },
+  "phase4_dynamic_slots": [
+    "first_antiphon",
+    "second_antiphon",
+    "third_antiphon",
+    "entrance_hymn",
+    "trisagion_hymn",
+    "alleluia_verses",
+    "theotokos_hymn",
+    "dismissal"
+  ],
+  "covered_rules": [
+    "nativity",
+    "theophany",
+    "exaltation_cross",
+    "third_sunday_lent",
+    "lazarus_saturday",
+    "holy_saturday",
+    "pascha",
+    "bright_week",
+    "pentecost"
+  ],
+  "signed_release_data_unchanged": true,
+  "phase4_candidate_signed": false,
+  "phase4_candidate_do_not_publish": true,
+  "android_gradle_build": {
+    "status": "NOT_RUN_TO_COMPLETION",
+    "reason": "UnknownHostException while downloading Gradle 8.13 from services.gradle.org"
+  },
+  "religious_completion_claim": "BLOCKED_UNPROVEN_COMPLETE"
+}

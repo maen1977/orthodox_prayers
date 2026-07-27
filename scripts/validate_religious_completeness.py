@@ -13,6 +13,7 @@ PACK_DIR = ROOT / "data/services/native"
 LANGUAGES = ("ar", "en", "el")
 ALLOWED_STATUSES = {
     "complete_exact_native_edition",
+    "complete_authorized_native_selection",
     "abridged",
     "unproven_complete",
     "source_text_partial",

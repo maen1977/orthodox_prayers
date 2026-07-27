@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "calendar": "orthodox_pascha_gregorian_offsets",
+  "policy": "same_language_source_only",
+  "status": "PHASE5_SOURCE_REGISTERED_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+  "offsets": {
+    "-7": {
+      "id": "palm_sunday",
+      "name": {
+        "ar": "أحد الشعانين",
+        "en": "Palm Sunday",
+        "el": "Κυριακὴ τῶν Βαΐων"
+      },
+      "troparion": {
+        "ar": "لما أقمت لعازر من بين الأموات قبل آلامك، حققت القيامة العامة أيها المسيح الإله. لذلك نحن أيضًا كالأطفال نحمل علامات الغلبة والنصر، ونهتف إليك يا غالب الموت: أوصنا في الأعالي، مبارك الآتي باسم الرب.",
+        "en": "By raising Lazarus from the dead before Your Passion, You confirmed the universal resurrection, O Christ God. Like the children with the palms of victory, we cry out to You, O Vanquisher of death: Hosanna in the highest! Blessed is He who comes in the name of the Lord.",
+        "el": "Τὴν κοινὴν Ἀνάστασιν πρὸ τοῦ σου Πάθους πιστούμενος, ἐκ νεκρῶν ἤγειρας τὸν Λάζαρον, Χριστὲ ὁ Θεός· ὅθεν καὶ ἡμεῖς, ὡς οἱ Παῖδες, τὰ τῆς νίκης σύμβολα φέροντες, σοὶ τῷ νικητῇ τοῦ θανάτου βοῶμεν· Ὡσαννὰ ἐν τοῖς ὑψίστοις, εὐλογημένος ὁ ἐρχόμενος ἐν ὀνόματι Κυρίου."
+      },
+      "kontakion": {
+        "ar": "أيها المسيح الإله، يا من في السماء على العرش وعلى الأرض على جحش مركوبًا، لقد قبلت تسبيح الملائكة ونشيد الأطفال الهاتفين إليك: مبارك أنت يا من أتيت لتدعو آدم.",
+        "en": "Enthroned in heaven and riding on a colt on earth, O Christ God, You accepted the praise of the angels and the hymn of the children who cried to You: Blessed are You who come to restore Adam.",
+        "el": "Τῷ θρόνῳ ἐν οὐρανῷ, τῷ πώλῳ ἐπὶ τῆς γῆς ἐποχούμενος Χριστὲ ὁ Θεός, τῶν Ἀγγέλων τὴν αἴνεσιν καὶ τῶν Παίδων ἀνύμνησιν προσεδέξω βοώντων σοι· Εὐλογημένος εἶ ὁ ἐρχόμενος, τὸν Ἀδὰμ ἀνακαλέσασθαι."
+      },
+      "communion": {
+        "ar": "مبارك الآتي باسم الرب. الله الرب ظهر لنا. هللويا.",
+        "en": "Blessed is He who comes in the name of the Lord. God is the Lord and has revealed Himself to us. Alleluia.",
+        "el": "Εὐλογημένος ὁ ἐρχόμενος ἐν ὀνόματι Κυρίου. Θεὸς Κύριος καὶ ἐπέφανεν ἡμῖν. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 4,
+        "title": {
+          "ar": "البروكيمنن — اللحن الرابع",
+          "en": "Prokeimenon — Tone 4",
+          "el": "Προκείμενον — Ἦχος δ΄"
+        },
+        "reference": {
+          "ar": "مزمور 117:26، 27",
+          "en": "Psalm 117:26, 27 (LXX)",
+          "el": "Ψαλμός 117:26, 27"
+        },
+        "body": {
+          "ar": "مبارك الآتي باسم الرب.\nالله الرب ظهر لنا.",
+          "en": "Blessed is He who comes in the name of the Lord.\nGod is the Lord and has revealed Himself to us.",
+          "el": "Εὐλογημένος ὁ ἐρχόμενος ἐν ὀνόματι Κυρίου.\nΘεὸς Κύριος καὶ ἐπέφανεν ἡμῖν."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/palm-sunday",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "41aa744b902c2bb56182ebe485ab9938563b88eea5e8120d628e796a86a13637",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/palm-sunday",
+            "text_sha256": "fa60ec2cbd8a7210e2fbebae31d030e140c3e302e1416a6b523df17a74e3739d",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "d776c8aa9c6e5550df51c54361be9a99f042afea56224296f4c0b939074b551f",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "e53dc5624c20059f26b717e0f918c5eea3bfd2880492828e733883a6847a1cd3",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/palm-sunday",
+            "text_sha256": "abe5ef5078a42d524acde9ec54871ae990077c02c82bc8ce7d769035d6951c68",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "ce95c8870280639c23171a6fcedc6d6906d5d78828bf774da6767de27d47a002",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "5f57d72c33eb417c1601826e40758f4ac476e3829a7b029887dbe6c31546d73b",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/palm-sunday",
+            "text_sha256": "6e410ca01273edeeb2c73646e17bd53c9be4146333b0e47179ed4daa2d81ce16",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "a2f7a446b3ba3e2d84c4d9b522654d1fd250993927f2b9676ff42c3d9dd695f1",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "39": {
+      "id": "ascension_lord",
+      "name": {
+        "ar": "صعود ربنا وإلهنا ومخلصنا يسوع المسيح",
+        "en": "Ascension of our Lord",
+        "el": "Ἡ Ἀνάληψις τοῦ Κυρίου"
+      },
+      "troparion": {
+        "ar": "صعدت بالمجد أيها المسيح إلهنا، وفرحت تلاميذك بموعد الروح القدس، إذ أيقنوا بالبركة أنك أنت ابن الله منقذ العالم.",
+        "en": "O Christ our God, You ascended in glory and gladdened Your disciples by the promise of the Holy Spirit. Your blessing assured them that You are the Son of God, the Redeemer of the world.",
+        "el": "Ἀνελήφθης ἐν δόξῃ, Χριστὲ ὁ Θεὸς ἡμῶν, χαροποιήσας τοὺς Μαθητάς, τῇ ἐπαγγελίᾳ τοῦ ἁγίου Πνεύματος, βεβαιωθέντων αὐτῶν διὰ τῆς εὐλογίας, ὅτι σὺ εἶ ὁ Υἱὸς τοῦ Θεοῦ, ὁ Λυτρωτὴς τοῦ κόσμου."
+      },
+      "kontakion": {
+        "ar": "لمّا أتممت التدبير الذي من أجلنا، وجعلت الذين على الأرض متحدين بالسماويين، صعدت بمجد أيها المسيح إلهنا، غير منفصل من مكان، بل ثابتًا بغير افتراق، وهاتفًا: أنا معكم وليس أحد عليكم.",
+        "en": "O Christ our God, upon fulfilling Your dispensation for our sake, You ascended in glory, uniting the earthly with the heavenly. You were never separate but remained inseparable, and cried out to those who love You: I am with you and no one is against you.",
+        "el": "Τὴν ὑπὲρ ἡμῶν πληρώσας οἰκονομίαν, καὶ τὰ ἐπὶ γῆς ἑνώσας τοῖς οὐρανίοις, ἀνελήφθης ἐν δόξῃ, Χριστὲ ὁ Θεὸς ἡμῶν, οὐδαμόθεν χωριζόμενος, ἀλλὰ μένων ἀδιάστατος, καὶ βοῶν τοῖς ἀγαπῶσί σε· Ἐγώ εἰμι μεθ᾿ ὑμῶν, καὶ οὐδεὶς καθ᾿ ὑμῶν."
+      },
+      "communion": {
+        "ar": "صعد الله بتهليل، والرب بصوت البوق. هللويا.",
+        "en": "God has ascended with a shout, the Lord with the sound of a trumpet. Alleluia.",
+        "el": "Ἀνέβη ὁ Θεὸς ἐν ἀλαλαγμῷ, Κύριος ἐν φωνῇ σάλπιγγος. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 7,
+        "title": {
+          "ar": "البروكيمنن — اللحن السابع",
+          "en": "Prokeimenon — Tone 7",
+          "el": "Προκείμενον — Ἦχος βαρύς"
+        },
+        "reference": {
+          "ar": "مزمور 46:6، 2",
+          "en": "Psalm 46:6, 2 (LXX)",
+          "el": "Ψαλμός 46:6, 2"
+        },
+        "body": {
+          "ar": "صعد الله بتهليل، والرب بصوت البوق.\nيا جميع الأمم صفقوا بالأيادي.",
+          "en": "God has ascended with a shout, the Lord with the sound of a trumpet.\nClap your hands, all peoples.",
+          "el": "Ἀνέβη ὁ Θεὸς ἐν ἀλαλαγμῷ, Κύριος ἐν φωνῇ σάλπιγγος.\nΠάντα τὰ ἔθνη κροτήσατε χεῖρας."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/2023/May/%D8%A7%D9%84%D8%A7%D8%AD%D8%AF-28-%D8%A7%D9%8A%D8%A7%D8%B1-2023",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/ascension",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/05/28/li2/gr-en/index.html",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2023/May/%D8%A7%D9%84%D8%A7%D8%AD%D8%AF-28-%D8%A7%D9%8A%D8%A7%D8%B1-2023",
+            "text_sha256": "c155cd9489f931e7d7c171b70f0d9ebd4431bf93938e916e13809611245e82dc",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/ascension",
+            "text_sha256": "f07123badedb5218ea6875e8ce9b3991beba453c8082ad20e187dd6729ae2e97",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/05/28/li2/gr-en/index.html",
+            "text_sha256": "358153940323a7d0f616c3fa3de7094768ff10d19ce58571ff7e6614643417b4",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2023/May/%D8%A7%D9%84%D8%A7%D8%AD%D8%AF-28-%D8%A7%D9%8A%D8%A7%D8%B1-2023",
+            "text_sha256": "1917a1a705184d338b6c6100ee3920dab9a35eb907a6c9d1dd28b090020b3b7d",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/ascension",
+            "text_sha256": "91c640aa3908fc8ae7beb7844d0b2b5b395ab95659c0e34e21eb73a80cf46eaa",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/05/28/li2/gr-en/index.html",
+            "text_sha256": "fa9883b8a9f2a9c016103ade52daa3b48d8e93abfcaef3f3871adf2575f13cf6",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2023/May/%D8%A7%D9%84%D8%A7%D8%AD%D8%AF-28-%D8%A7%D9%8A%D8%A7%D8%B1-2023",
+            "text_sha256": "35a5d86b4352cbbd65e814355b88ec7c3bae7053da77a33b9ebca122fce1f705",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/ascension",
+            "text_sha256": "b5a6bfba93833823208e3b5ea11c399c9f5d8ac7ae6cb7795c2740e989fbdb8c",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/05/28/li2/gr-en/index.html",
+            "text_sha256": "3164967f2c20429c15ce11a56f2800961bb2c8749020b6969bb82021651e36ac",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "49": {
+      "id": "holy_pentecost",
+      "name": {
+        "ar": "أحد العنصرة المقدسة",
+        "en": "Holy Pentecost",
+        "el": "Ἡ Ἁγία Πεντηκοστή"
+      },
+      "troparion": {
+        "ar": "مبارك أنت أيها المسيح إلهنا، يا من أظهرت الصيادين غزيري الحكمة، إذ سكبت عليهم الروح القدس، وبهم اصطدت المسكونة. يا محب البشر المجد لك.",
+        "en": "Blessed are You, O Christ our God. You made the fishermen all-wise by sending down upon them the Holy Spirit, and through them You drew the world into Your net. O Lover of mankind, glory to You.",
+        "el": "Εὐλογητὸς εἶ Χριστὲ ὁ Θεὸς ἡμῶν, ὁ πανσόφους τοὺς ἁλιεῖς ἀναδείξας, καταπέμψας αὐτοῖς τὸ Πνεῦμα τὸ Ἅγιον, καὶ δι᾿ αὐτῶν τὴν οἰκουμένην σαγηνεύσας, φιλάνθρωπε, δόξα σοι."
+      },
+      "kontakion": {
+        "ar": "لمّا نزل العلي وبلبل الألسنة، قسّم الأمم، ولمّا وزّع الألسنة النارية دعا الكل إلى اتحاد واحد. لذلك نمجد الروح الكلي قدسه باتفاق الأصوات.",
+        "en": "When the Most High came down and confused the tongues, He divided the nations; but when He distributed the tongues of fire, He called all to unity. Therefore, with one voice we glorify the all-holy Spirit.",
+        "el": "Ὅτε καταβὰς τὰς γλώσσας συνέχεε, διεμέριζεν ἔθνη ὁ Ὕψιστος· ὅτε τοῦ πυρὸς τὰς γλώσσας διένειμεν, εἰς ἑνότητα πάντας ἐκάλεσε· καὶ συμφώνως δοξάζομεν τὸ Πανάγιον Πνεῦμα."
+      },
+      "communion": {
+        "ar": "روحك الصالح يهديني في أرض مستقيمة. هللويا.",
+        "en": "Your good Spirit shall lead me in the land of uprightness. Alleluia.",
+        "el": "Τὸ Πνεῦμά σου τὸ ἀγαθὸν ὁδηγήσει με ἐν γῇ εὐθείᾳ. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 8,
+        "title": {
+          "ar": "البروكيمنن — اللحن الثامن",
+          "en": "Prokeimenon — Tone 8",
+          "el": "Προκείμενον — Ἦχος πλ. δ΄"
+        },
+        "reference": {
+          "ar": "مزمور 18:5، 2",
+          "en": "Psalm 18:5, 2 (LXX)",
+          "el": "Ψαλμός 18:5, 2"
+        },
+        "body": {
+          "ar": "إلى كل الأرض خرج صوتهم وإلى أقاصي المسكونة أقوالهم.\nالسماوات تحدث بمجد الله.",
+          "en": "Their proclamation has gone out into all the earth, and their words to the ends of the universe.\nThe heavens declare the glory of God.",
+          "el": "Εἰς πᾶσαν τὴν γῆν ἐξῆλθεν ὁ φθόγγος αὐτῶν, καὶ εἰς τὰ πέρατα τῆς οἰκουμένης τὰ ῥήματα αὐτῶν.\nΟἱ οὐρανοὶ διηγοῦνται δόξαν Θεοῦ."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/pentecost",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "779a15fcde4e37368120a9394d333af6139228607e2dfbf1a81b19e89387241a",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/pentecost",
+            "text_sha256": "4d6a73d0d72b320e438f343e2ea47fbf0e15e0057fbc87856951de4af83dae1f",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "def2404e9484fef1bc96a2012ca6b2756251be25cbb30c21f24738cf33434a55",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "be6c9ec79ecafb7574ba21d9b4f1e00a553f4186855a3a3fd204cddea21f3331",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/pentecost",
+            "text_sha256": "dd0e29bf3ccdcd4e6c3c8ac437bbd3f14cc1b9b759682d3828d5ad68cd1048ee",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "f8c4385e3a71ede17ea46352bc3d167469aea3b437a40edc669d8b4977f51f6d",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "72c90a107ae32891c05e2efbc82ab960e36a7fd89af70c25e04d434d8567e2a1",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/pentecost",
+            "text_sha256": "0d6fa7b2d94374f96783c61f4443fd72f6cc941b1651ef90bd5c921827780fbf",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "b539c4a7879d15dfd6af286bc037456f2fcdc187b40cb01fef09c254f8eb2af6",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    }
+  }
+}

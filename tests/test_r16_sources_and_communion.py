@@ -32,7 +32,8 @@ class R16SourcesAndCommunionTests(unittest.TestCase):
             service = self.services[sid]
             self.assertEqual("communion", service["category"])
             self.assertEqual("orthodox_jordan", service["source_provenance"]["source_id"])
-            self.assertFalse(service["source_provenance"]["complete_text"])
+            self.assertTrue(service["source_provenance"]["complete_text"])
+            self.assertIn("COMPLETE", service["completion_status"])
 
     def test_daily_variables_remain_separate_from_personal_preparation(self):
         pre = self.services["pre_communion_prayers"]

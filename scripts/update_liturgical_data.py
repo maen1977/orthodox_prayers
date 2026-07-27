@@ -609,6 +609,129 @@ def ar_julian_label(day: date) -> str:
     return f"{jd} {AR_MONTHS[jm-1]} {jy} بحسب التقويم الكنسي القديم"
 
 
+LITURGY_SERVICE_LABELS = {
+    "chrysostom": loc("قداس القديس يوحنا الذهبي الفم", "Divine Liturgy of Saint John Chrysostom", "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"),
+    "basil": loc("قداس القديس باسيليوس الكبير", "Divine Liturgy of Saint Basil the Great", "Θεία Λειτουργία τοῦ Ἁγίου Βασιλείου τοῦ Μεγάλου"),
+    "presanctified": loc("قداس السابق تقديسه", "Liturgy of the Presanctified Gifts", "Λειτουργία τῶν Προηγιασμένων Τιμίων Δώρων"),
+    "no_divine_liturgy": loc("لا يقام قداس إلهي", "No Divine Liturgy appointed", "Δεν τελεῖται Θεία Λειτουργία"),
+    "typikon_override_required": loc("يلزم قرار طقسي مؤرخ", "Dated Typikon ruling required", "Ἀπαιτεῖται χρονολογημένη τυπικὴ διάταξη"),
+}
+
+
+def _old_calendar_key(day: date) -> tuple[int, int]:
+    _jy, jm, jd = gregorian_to_julian_date(day)
+    return jm, jd
+
+
+def liturgy_service_selection(day: date, info: dict | None = None) -> dict:
+    """Select the appointed Liturgy without silently substituting another rite.
+
+    This is a conservative Typikon baseline. A dated Jordan/Jerusalem override
+    may supersede it only when the override carries documented source evidence.
+    """
+    pascha = orthodox_pascha_gregorian(day.year)
+    offset = (day - pascha).days
+    jm, jd = _old_calendar_key(day)
+
+    override = (info or {}).get("liturgy_service_override")
+    if not isinstance(override, dict):
+        override_path = ROOT / "scripts" / "overrides" / f"{day:%Y-%m-%d}.json"
+        if override_path.is_file():
+            override_payload = json.loads(override_path.read_text(encoding="utf-8"))
+            candidate = override_payload.get("liturgy_service_override")
+            if isinstance(candidate, dict):
+                override = candidate
+    if isinstance(override, dict):
+        value = str(override.get("service_type") or "").strip()
+        evidence = override.get("evidence") or {}
+        if value not in {"chrysostom", "basil", "presanctified", "no_divine_liturgy"}:
+            raise RuntimeError(f"Invalid liturgy_service_override value: {value!r}")
+        if str(evidence.get("status") or "") != "DOCUMENTED_OVERRIDE":
+            raise RuntimeError("liturgy_service_override requires DOCUMENTED_OVERRIDE evidence")
+        if not str(evidence.get("source_id") or "").strip() or not str(evidence.get("source_url") or "").strip():
+            raise RuntimeError("liturgy_service_override requires source_id and source_url")
+        editions = json.loads((ROOT / "canonical" / "liturgy_service_editions.json").read_text(encoding="utf-8"))
+        edition = copy.deepcopy((editions.get("editions") or {}).get(value) or {})
+        return {
+            "service_type": value,
+            "rule_id": "dated_official_jordan_override",
+            "authority": str(evidence.get("source_id")),
+            "source_url": str(evidence.get("source_url")),
+            "pascha_offset": offset,
+            "label": copy.deepcopy(LITURGY_SERVICE_LABELS[value]),
+            "service_id": edition.get("service_id"),
+            "native_editions": {lang: edition.get(lang) for lang in ("ar", "en", "el")},
+            "availability_note": copy.deepcopy(edition.get("availability_note") or loc("", "", "")),
+            "source_ids": copy.deepcopy(edition.get("source_ids") or []),
+            "import_contract": edition.get("import_contract") or "",
+            "displayable": bool(edition.get("displayable")),
+            "wrong_liturgy_fallback_allowed": False,
+        }
+
+    # A collision of the Annunciation with the Paschal Triduum or Pascha has
+    # detailed year-specific rubrics.  The conservative Jordan/Jerusalem lane
+    # requires a dated official ruling rather than applying a generic shortcut.
+    if (jm, jd) == (3, 25) and offset in {-3, -2, -1, 0}:
+        selected, rule = "typikon_override_required", "annunciation_paschal_triduum_collision"
+    # Great Friday has no Eucharistic Divine Liturgy when no higher documented
+    # feast collision applies.
+    elif offset == -2:
+        selected, rule = "no_divine_liturgy", "great_friday_no_divine_liturgy"
+    elif (jm, jd) == (1, 1):
+        selected, rule = "basil", "saint_basil_day"
+    # The five Sundays of Great Lent retain Basil even if a fixed feast is
+    # combined with the Sunday office.
+    elif offset in {-42, -35, -28, -21, -14}:
+        selected, rule = "basil", "great_lent_sunday"
+    # On a weekday of Great Lent (including Great Monday-Wednesday), the
+    # Annunciation receives the Eucharistic Liturgy of Chrysostom instead of
+    # the Presanctified service.
+    elif (jm, jd) == (3, 25):
+        selected, rule = "chrysostom", "annunciation_chrysostom_exception"
+    elif offset == -3:
+        selected, rule = "basil", "great_holy_thursday"
+    elif offset == -1:
+        selected, rule = "basil", "great_holy_saturday"
+    else:
+        # Nativity and Theophany: normally Basil is joined to Vespers on the
+        # eve. When the feast is Sunday or Monday, Basil is appointed on the
+        # feast itself. This remains overrideable by the local signed calendar.
+        feast_keys = {(12, 25), (1, 6)}
+        eve_keys = {(12, 24), (1, 5)}
+        if (jm, jd) in feast_keys and day.weekday() in {0, 6}:
+            selected, rule = "basil", "nativity_theophany_basil_on_sunday_or_monday_feast"
+        elif (jm, jd) in eve_keys:
+            feast_day = day + timedelta(days=1)
+            if feast_day.weekday() not in {0, 6}:
+                selected, rule = "basil", "nativity_theophany_vesperal_basil_on_eve"
+            else:
+                selected, rule = "chrysostom", "nativity_theophany_eve_when_basil_is_on_feast"
+        elif offset in {-6, -5, -4}:
+            selected, rule = "presanctified", "first_three_days_of_holy_week"
+        elif -47 <= offset <= -9 and day.weekday() in {2, 4}:
+            selected, rule = "presanctified", "great_lent_wednesday_or_friday"
+        else:
+            selected, rule = "chrysostom", "ordinary_chrysostom_baseline"
+
+    editions = json.loads((ROOT / "canonical" / "liturgy_service_editions.json").read_text(encoding="utf-8"))
+    edition = copy.deepcopy((editions.get("editions") or {}).get(selected) or {})
+    return {
+        "service_type": selected,
+        "rule_id": rule,
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": offset,
+        "label": copy.deepcopy(LITURGY_SERVICE_LABELS[selected]),
+        "service_id": edition.get("service_id"),
+        "native_editions": {lang: edition.get(lang) for lang in ("ar", "en", "el")},
+        "availability_note": copy.deepcopy(edition.get("availability_note") or loc("", "", "")),
+        "source_ids": copy.deepcopy(edition.get("source_ids") or []),
+        "import_contract": edition.get("import_contract") or "",
+        "displayable": bool(edition.get("displayable")),
+        "wrong_liturgy_fallback_allowed": False,
+    }
+
+
 def fetch_orthocal_old(day: date, attempts: int = 4) -> dict:
     """Fetch old-calendar daily data from Orthocal for a civil date.
 
@@ -917,6 +1040,10 @@ SUNDAY_PROKEIMENA = {
     for tone, entry in SUNDAY_PROKEIMENA_REGISTRY["tones"].items()
 }
 DAILY_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "daily_propers.json").read_text(encoding="utf-8"))
+RESURRECTIONAL_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "resurrectional_propers.json").read_text(encoding="utf-8"))
+DATED_LITURGICAL_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "dated_liturgical_propers.json").read_text(encoding="utf-8"))
+PASCHAL_CYCLE_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "paschal_cycle_propers.json").read_text(encoding="utf-8"))
+LITURGY_VARIABLE_PARTS_REGISTRY = json.loads((ROOT / "canonical" / "liturgy_variable_parts.json").read_text(encoding="utf-8"))
 
 
 def _localized(value: object) -> dict:
@@ -970,6 +1097,23 @@ def fixed_proper_entry(info: dict) -> dict | None:
     entry = DAILY_PROPERS_REGISTRY.get("fixed_feasts", {}).get(key)
     return copy.deepcopy(entry) if isinstance(entry, dict) else None
 
+
+def dated_liturgical_proper_entry(day: date) -> dict | None:
+    entry = DATED_LITURGICAL_PROPERS_REGISTRY.get("dates", {}).get(day.isoformat())
+    return copy.deepcopy(entry) if isinstance(entry, dict) else None
+
+
+def paschal_cycle_proper_entry(day: date, info: dict) -> dict | None:
+    offset = (day - info["pascha"]).days
+    entry = PASCHAL_CYCLE_PROPERS_REGISTRY.get("offsets", {}).get(str(offset))
+    return copy.deepcopy(entry) if isinstance(entry, dict) else None
+
+
+def resurrectional_proper_entry(tone: int | None) -> dict | None:
+    if tone is None:
+        return None
+    entry = RESURRECTIONAL_PROPERS_REGISTRY.get("tones", {}).get(str(tone))
+    return copy.deepcopy(entry) if isinstance(entry, dict) else None
 
 
 def resurrection_tone(day: date, pascha: date) -> int | None:
@@ -1050,9 +1194,18 @@ def _prokeimenon_reading(entry: dict, sources: dict, provenance: str) -> dict:
 
 
 def exact_or_sunday_prokeimenon(day: date, info: dict) -> dict:
-    feast = fixed_proper_entry(info)
-    if feast and isinstance(feast.get("prokeimenon"), dict):
-        return _prokeimenon_reading(feast["prokeimenon"], _proper_sources(feast), f"fixed_feast:{feast.get('id')}")
+    proper_candidates = (
+        (dated_liturgical_proper_entry(day), f"dated:{day.isoformat()}"),
+        (paschal_cycle_proper_entry(day, info), "paschal_cycle"),
+        (fixed_proper_entry(info), "fixed_feast"),
+    )
+    for feast, provenance in proper_candidates:
+        if feast and isinstance(feast.get("prokeimenon"), dict):
+            return _prokeimenon_reading(
+                feast["prokeimenon"],
+                _proper_sources(feast),
+                f"{provenance}:{feast.get('id')}",
+            )
 
     tone = resurrection_tone(day, info["pascha"])
     if tone:
@@ -1277,27 +1430,154 @@ def synchronize_next_sunday_schedule(
     return refs
 
 
-def feast_inserts(info: dict) -> dict[str, dict]:
-    entry = fixed_proper_entry(info)
-    if entry:
-        return {
-            "troparion": _localized(entry.get("troparion")),
-            "kontakion": _localized(entry.get("kontakion")),
-            "church_troparion": loc(""),
-            "communion": _localized(entry.get("communion")),
-            "evangelist": loc("الإنجيلي", "Evangelist", "Εὐαγγελιστής"),
-            "proper_id": entry.get("id"),
-            "sources": copy.deepcopy(entry.get("sources") or {}),
-        }
+def _empty_variable_parts() -> dict[str, dict]:
     return {
-        "troparion": loc(""),
-        "kontakion": loc(""),
-        "church_troparion": loc(""),
-        "communion": loc(""),
-        "evangelist": loc("الإنجيلي", "Evangelist", "Εὐαγγελιστής"),
-        "proper_id": None,
-        "sources": {},
+        "first_antiphon": loc(""),
+        "second_antiphon": loc(""),
+        "third_antiphon": loc(""),
+        "entrance_hymn": loc(""),
+        "trisagion_hymn": loc(""),
+        "alleluia_verses": loc(""),
+        "theotokos_hymn": loc(""),
+        "dismissal": loc(""),
     }
+
+
+def variable_liturgy_parts(day: date, info: dict, tone: int | None) -> dict:
+    """Resolve seasonal groups with explicit per-slot priority and conflicts.
+
+    A lower-priority rule can fill an empty slot but cannot erase a stronger
+    rule. Two different texts at the same priority are treated as a registry
+    error instead of being silently selected by file order.
+    """
+    result = _empty_variable_parts()
+    applied: list[str] = []
+    slot_state = {slot: {"priority": -1, "rule_id": None} for slot in result}
+    variants = LITURGY_VARIABLE_PARTS_REGISTRY.get("variants", {})
+    jy, jm, jd = gregorian_to_julian_date(day)
+    pascha_offset = (day - info["pascha"]).days
+
+    def apply_candidate(slot: str, candidate: dict, priority: int, rule_id: str) -> bool:
+        if not _has_text(candidate):
+            return False
+        current = slot_state[slot]
+        current_priority = int(current["priority"])
+        if priority < current_priority:
+            return False
+        if priority == current_priority and _has_text(result[slot]) and result[slot] != candidate:
+            raise ValueError(
+                f"Conflicting Liturgy variable parts for slot {slot!r} at priority "
+                f"{priority}: {current['rule_id']!r} vs {rule_id!r}"
+            )
+        result[slot] = candidate
+        slot_state[slot] = {"priority": priority, "rule_id": rule_id}
+        return True
+
+    for rule in LITURGY_VARIABLE_PARTS_REGISTRY.get("rules", []):
+        kind = rule.get("kind")
+        matches = False
+        if kind == "julian_fixed":
+            matches = int(rule.get("month", 0)) == jm and int(rule.get("day", 0)) == jd
+        elif kind == "pascha_offset":
+            matches = int(rule.get("offset", 9999)) == pascha_offset
+        elif kind == "pascha_offset_range":
+            matches = int(rule.get("start", 9999)) <= pascha_offset <= int(rule.get("end", -9999))
+        if not matches:
+            continue
+        variant_id = str(rule.get("variant") or "")
+        rule_id = str(rule.get("id") or variant_id)
+        priority = int(rule.get("priority", 100))
+        variant = variants.get(variant_id) if isinstance(variants, dict) else None
+        parts = variant.get("parts") if isinstance(variant, dict) else None
+        accepted = False
+        if isinstance(parts, dict):
+            for slot in result:
+                accepted = apply_candidate(slot, _localized(parts.get(slot)), priority, rule_id) or accepted
+        if accepted:
+            applied.append(rule_id)
+
+    tone_entry = LITURGY_VARIABLE_PARTS_REGISTRY.get("alleluia_by_tone", {}).get(str(tone))
+    tone_priority = int(
+        LITURGY_VARIABLE_PARTS_REGISTRY.get("rule_resolution", {}).get(
+            "ordinary_tone_alleluia_priority", 10
+        )
+    )
+    if isinstance(tone_entry, dict):
+        apply_candidate(
+            "alleluia_verses", _localized(tone_entry.get("verses")),
+            tone_priority, f"octoechos_alleluia_tone_{tone}",
+        )
+
+    if day.weekday() != 6:
+        weekday_id = str(LITURGY_VARIABLE_PARTS_REGISTRY.get("ordinary_weekday_dismissal_variant") or "")
+        weekday = variants.get(weekday_id) if isinstance(variants, dict) else None
+        parts = weekday.get("parts") if isinstance(weekday, dict) else None
+        candidate = _localized(parts.get("dismissal")) if isinstance(parts, dict) else loc("")
+        weekday_priority = int(
+            LITURGY_VARIABLE_PARTS_REGISTRY.get("rule_resolution", {}).get(
+                "ordinary_weekday_dismissal_priority", 5
+            )
+        )
+        if apply_candidate("dismissal", candidate, weekday_priority, weekday_id):
+            applied.append(weekday_id)
+
+    result["variant_ids"] = list(dict.fromkeys(applied))
+    result["slot_provenance"] = slot_state
+    result["pascha_offset"] = pascha_offset
+    result["julian_date"] = f"{jy:04d}-{jm:02d}-{jd:02d}"
+    return result
+
+
+def feast_inserts(info: dict, day: date | None = None) -> dict[str, dict]:
+    """Resolve source-backed propers and variable Liturgy groups fail-closed."""
+    result: dict = {
+        "troparion": loc(""), "kontakion": loc(""), "church_troparion": loc(""),
+        "communion": loc(""), "evangelist": loc("الإنجيلي", "Evangelist", "Εὐαγγελιστής"),
+        "proper_id": None, "sources": {}, "resurrection_tone": None, "eothinon": None,
+    }
+    dated = dated_liturgical_proper_entry(day) if day is not None else None
+    if dated:
+        result.update({
+            "troparion": _localized(dated.get("troparion")),
+            "kontakion": _localized(dated.get("kontakion")),
+            "communion": _localized(dated.get("communion")),
+            "proper_id": f"dated:{day.isoformat()}",
+            "sources": copy.deepcopy(dated.get("authority") or {}),
+            "resurrection_tone": dated.get("resurrection_tone"),
+            "eothinon": dated.get("eothinon"),
+        })
+    else:
+        movable = paschal_cycle_proper_entry(day, info) if day is not None else None
+        entry = movable or fixed_proper_entry(info)
+        if entry:
+            provenance = "paschal" if movable else "fixed"
+            result.update({
+                "troparion": _localized(entry.get("troparion")),
+                "kontakion": _localized(entry.get("kontakion")),
+                "communion": _localized(entry.get("communion")),
+                "proper_id": f"paschal:{entry.get('id')}" if movable else entry.get("id"),
+                "proper_provenance": provenance,
+                "sources": copy.deepcopy(entry.get("sources") or {}),
+            })
+        else:
+            tone = resurrection_tone(day, info["pascha"]) if day is not None else None
+            resurrectional = resurrectional_proper_entry(tone)
+            if resurrectional:
+                result.update({
+                    "troparion": _localized(resurrectional.get("troparion")),
+                    "communion": _localized(RESURRECTIONAL_PROPERS_REGISTRY.get("ordinary_sunday_communion")),
+                    "proper_id": f"octoechos:tone:{tone}",
+                    "proper_provenance": "octoechos",
+                    "sources": copy.deepcopy(RESURRECTIONAL_PROPERS_REGISTRY.get("sources") or {}),
+                    "resurrection_tone": tone,
+                })
+    if day is not None:
+        variable = variable_liturgy_parts(day, info, result.get("resurrection_tone"))
+        result.update(variable)
+    else:
+        result.update(_empty_variable_parts())
+        result["variant_ids"] = []
+    return result
 
 def evangelist_for_reading(reading: dict) -> str:
     ref = str(reading.get("reference", {}).get("ar") or reading.get("reference", {}).get("en") or "")
@@ -1408,16 +1688,114 @@ def pre_liturgy_segments(info: dict, inserts: dict[str, str]) -> list[dict]:
 
 
 def build_liturgy_service(service_id: str, day: date, info: dict, readings: list[dict], label_prefix_ar: str) -> dict:
-    """Create a small daily overlay instead of duplicating the static Liturgy.
+    """Build the appointed service overlay and never substitute a different rite.
 
-    The Android repository composes this object with ``library:divine_liturgy``
-    and applies the exact placeholder replacements after signature verification.
+    A complete native service template may be extended only when all three
+    published language lanes are present.  Otherwise the selected rite is
+    represented by a non-liturgical availability card with no prayer-text
+    fallback, no template reference, and no dynamic replacements.
     """
+    selection = liturgy_service_selection(day, info)
+    is_upcoming = service_id == "next_sunday_full_liturgy"
+    selected_type = str(selection.get("service_type") or "")
+    selected_label = copy.deepcopy(selection.get("label") or LITURGY_SERVICE_LABELS[selected_type])
+    prefix = loc(
+        label_prefix_ar,
+        "Next Sunday" if is_upcoming else "Today",
+        "Ἡ ἐρχόμενη Κυριακή" if is_upcoming else "Σήμερα",
+    )
+    title = {
+        lang: f"{prefix.get(lang, '')} — {selected_label.get(lang, '')}".strip(" —")
+        for lang in ("ar", "en", "el")
+    }
+    contract = {
+        "rules": "canonical/liturgy_service_rules.json",
+        "editions": "canonical/liturgy_service_editions.json",
+        "selected_liturgy_type": selected_type,
+        "selected_service_id": selection.get("service_id"),
+        "selection_rule_id": selection.get("rule_id"),
+        "selection_authority": selection.get("authority"),
+        "selection_source_url": selection.get("source_url") or "",
+        "pascha_offset": selection.get("pascha_offset"),
+        "native_editions": copy.deepcopy(selection.get("native_editions") or {}),
+        "availability_note": copy.deepcopy(selection.get("availability_note") or loc("", "", "")),
+        "source_ids": copy.deepcopy(selection.get("source_ids") or []),
+        "import_contract": selection.get("import_contract") or "",
+        "displayable": bool(selection.get("displayable")),
+        "wrong_liturgy_fallback_allowed": False,
+        "fail_closed": True,
+    }
+
+    if not selection.get("displayable"):
+        if selected_type == "typikon_override_required":
+            status_text = loc(
+                "يتزامن في هذا التاريخ عيد كبير مع أيام لها ترتيب خاص. يلزم قرار طقسي مؤرخ من الجهة الكنسية المعتمدة قبل اختيار نوع القداس، لذلك لا يعرض التطبيق أي قداس بديل.",
+                "A major feast coincides with days governed by special rubrics. A dated ruling from the approved church authority is required before selecting the Liturgy, so the app displays no substitute rite.",
+                "Μεγάλη ἑορτὴ συμπίπτει μὲ ἡμέρες ἰδιαίτερων τυπικῶν διατάξεων. Ἀπαιτεῖται χρονολογημένη ἀπόφαση τῆς ἐγκεκριμένης ἐκκλησιαστικῆς ἀρχῆς, καὶ ἡ ἐφαρμογὴ δὲν προβάλλει ὑποκατάστατη Λειτουργία.",
+            )
+            publication_status = "BLOCKED_REQUIRES_DATED_OFFICIAL_TYPIKON_OVERRIDE"
+        elif selected_type == "no_divine_liturgy":
+            status_text = loc(
+                "يحدّد التقويم الكنسي أن هذا اليوم لا تُقام فيه خدمة قداس إلهي. لذلك لا يعرض التطبيق قداسًا آخر مكانه.",
+                "The church calendar appoints no Eucharistic Divine Liturgy for this day, so the app does not display another Liturgy in its place.",
+                "Τὸ ἐκκλησιαστικὸ ἡμερολόγιο δὲν ὁρίζει εὐχαριστιακὴ Θεία Λειτουργία γιὰ αὐτὴ τὴν ἡμέρα· ἡ ἐφαρμογὴ δὲν προβάλλει ἄλλη Λειτουργία στὴ θέση της.",
+            )
+            publication_status = "NO_DIVINE_LITURGY_APPOINTED"
+        else:
+            status_text = loc(
+                f"حدّد التقويم الكنسي لهذه الخدمة: {selected_label['ar']}. لم تُدمج بعد الطبعة الأصلية الكاملة في اللغات الثلاث، لذلك لا يعرض التطبيق قداس القديس يوحنا الذهبي الفم بدلها.",
+                f"The church calendar appoints {selected_label['en']}. Its complete native editions have not yet been imported in all three languages, so the app does not substitute the Liturgy of Saint John Chrysostom.",
+                f"Τὸ ἐκκλησιαστικὸ ἡμερολόγιο ὁρίζει: {selected_label['el']}. Οἱ πλήρεις πρωτότυπες ἐκδόσεις δὲν ἔχουν ἀκόμη εἰσαχθεῖ καὶ στὶς τρεῖς γλώσσες, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν ἀντικαθιστᾷ τὴν ἀκολουθία μὲ τὴ Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου.",
+            )
+            publication_status = "BLOCKED_MISSING_COMPLETE_NATIVE_SERVICE_EDITION"
+        return {
+            "id": service_id,
+            "category": "liturgy",
+            "icon": "⛪",
+            "title": title,
+            "summary": copy.deepcopy(status_text),
+            "source_language": "multilingual_status_metadata",
+            "translation_status": "NON_LITURGICAL_AVAILABILITY_METADATA",
+            "dynamic_date": f"{day:%Y-%m-%d}",
+            "selected_liturgy_type": selected_type,
+            "selected_liturgy": copy.deepcopy(selection),
+            "liturgy_service_contract": contract,
+            "publication_status": publication_status,
+            "wrong_liturgy_fallback_allowed": False,
+            "source_provenance": {
+                "policy": "canonical/source_policy.json",
+                "service_rules": "canonical/liturgy_service_rules.json",
+                "service_editions": "canonical/liturgy_service_editions.json",
+                "native_import_contract": selection.get("import_contract") or "canonical/liturgy_native_import_contracts.json",
+                "source_ids": copy.deepcopy(selection.get("source_ids") or []),
+                "complete_service_claim": False,
+                "completeness_status": "SELECTED_RITE_NOT_AVAILABLE_AS_COMPLETE_THREE_LANGUAGE_NATIVE_EDITION",
+                "ai_liturgical_translation_used": False,
+                "fail_closed": True,
+            },
+            "segments": sanitize_segments([
+                {
+                    "type": "section",
+                    "title": loc("نوع الخدمة المعيّن", "Appointed service type", "Ὁρισμένος τύπος ἀκολουθίας"),
+                },
+                {
+                    "type": "text",
+                    "speaker": loc("حالة الخدمة", "Service status", "Κατάσταση ἀκολουθίας"),
+                    "text": status_text,
+                },
+                {
+                    "type": "text",
+                    "speaker": loc("حالة استيراد الطبعة الأصلية", "Native-edition import status", "Κατάσταση εἰσαγωγῆς πρωτότυπης ἐκδόσεως"),
+                    "text": copy.deepcopy(selection.get("availability_note") or loc("", "", "")),
+                },
+            ]),
+        }
+
     epistle = get_reading(readings, "epistle") or {}
     gospel = get_reading(readings, "gospel") or {}
     matins_gospel = get_reading(readings, "matins_gospel") or {}
     prok = get_reading(readings, "prokeimenon") or {}
-    inserts = feast_inserts(info)
+    inserts = feast_inserts(info, day)
 
     exact_replacements = {
         "[طروبارية اليوم]": copy.deepcopy(inserts["troparion"]),
@@ -1428,29 +1806,17 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "[فصل الإنجيل المعيّن لهذا اليوم]": reading_block_loc(gospel, prefer_empty_ar_when_missing=True),
         "[آية المناولة]": copy.deepcopy(inserts["communion"]),
     }
-    inline_replacements = {
-        "[اسم الإنجيلي]": loc(evangelist_for_reading(gospel)),
-    }
+    inline_replacements = {"[اسم الإنجيلي]": loc(evangelist_for_reading(gospel))}
     daily_hymns = {
         language: "\n\n".join(
             str(block.get(language) or "").strip()
-            for block in (
-                inserts["troparion"],
-                inserts["church_troparion"],
-                inserts["kontakion"],
-            )
+            for block in (inserts["troparion"], inserts["church_troparion"], inserts["kontakion"])
             if str(block.get(language) or "").strip()
         )
         for language in ("ar", "en", "el")
     }
-    # Stable semantic slots are language-neutral. The legacy Arabic-marker maps
-    # remain for older installed clients, while R20 clients use these slots in
-    # each independent native service edition.
     slot_replacements = {
-        "matins_gospel": reading_block_loc(
-            matins_gospel,
-            prefer_empty_ar_when_missing=True,
-        ),
+        "matins_gospel": reading_block_loc(matins_gospel, prefer_empty_ar_when_missing=True),
         "daily_hymns": daily_hymns,
         "daily_troparion": copy.deepcopy(inserts["troparion"]),
         "church_troparion": copy.deepcopy(inserts["church_troparion"]),
@@ -1459,70 +1825,79 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "epistle": reading_block_loc(epistle, prefer_empty_ar_when_missing=True),
         "gospel": reading_block_loc(gospel, prefer_empty_ar_when_missing=True),
         "communion_hymn": copy.deepcopy(inserts["communion"]),
+        "first_antiphon": copy.deepcopy(inserts["first_antiphon"]),
+        "second_antiphon": copy.deepcopy(inserts["second_antiphon"]),
+        "third_antiphon": copy.deepcopy(inserts["third_antiphon"]),
+        "entrance_hymn": copy.deepcopy(inserts["entrance_hymn"]),
+        "trisagion_hymn": copy.deepcopy(inserts["trisagion_hymn"]),
+        "alleluia_verses": copy.deepcopy(inserts["alleluia_verses"]),
+        "theotokos_hymn": copy.deepcopy(inserts["theotokos_hymn"]),
+        "dismissal": copy.deepcopy(inserts["dismissal"]),
     }
-    slot_inline_replacements = {
-        "gospel_evangelist_name": loc(evangelist_for_reading(gospel)),
-    }
-
-    is_upcoming = service_id == "next_sunday_full_liturgy"
-    title = loc(
-        f"{label_prefix_ar} — القداس الإلهي",
-        "Next Sunday — Divine Liturgy" if is_upcoming else "Today — Divine Liturgy",
-        "Ἡ ἐρχόμενη Κυριακή — Θεία Λειτουργία" if is_upcoming else "Σήμερα — Θεία Λειτουργία",
-    )
+    slot_inline_replacements = {"gospel_evangelist_name": loc(evangelist_for_reading(gospel))}
     summary = loc(
-        f"{info['feast_ar']} — {info['fast_ar']} — تُركّب قراءات اليوم والقطع المتحققة فوق نص القداس الثابت دون تكراره.",
-        "Verified daily readings and feast texts are composed with the single static Liturgy template.",
-        "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ μοναδικὸ σταθερὸ πρότυπο τῆς Θείας Λειτουργίας.",
+        f"{info['feast_ar']} — {info['fast_ar']} — تُركّب قراءات اليوم والقطع المتحققة فوق النص الثابت للخدمة المعيّنة دون استبدال طقس بآخر.",
+        "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite.",
+        "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ ὁρισμένο πλήρες πρωτότυπο κείμενο, χωρὶς ἀντικατάσταση ἄλλου τύπου Λειτουργίας.",
     )
     segments = sanitize_segments([
-        {"type": "section", "title": loc(f"{label_prefix_ar}: ملحق اليوم")},
         {
-            "type": "note",
-            "speaker": loc("ملاحظة اختيارية", "Optional note", "Προαιρετικὴ σημείωση"),
-            "text": loc(
-                f"التاريخ المدني: {ar_date_label(day)}. التاريخ الكنسي القديم: {info['julian_label_ar']}. حالة اليوم: {info['fast_ar']}. التذكار: {info['feast_ar']}.",
-                f"Civil date: {day:%Y-%m-%d}. Verified daily texts are inserted below where available.",
-                f"Πολιτικὴ ἡμερομηνία: {day:%Y-%m-%d}. Τὰ ἐπαληθευμένα κείμενα τῆς ἡμέρας εἰσάγονται ὅπου διατίθενται.",
+            "type": "section",
+            "title": loc(
+                f"{label_prefix_ar}: خدمة اليوم",
+                "Next Sunday’s service" if is_upcoming else "Today’s service",
+                "Ἡ ἀκολουθία τῆς ἐρχόμενης Κυριακῆς" if is_upcoming else "Ἡ σημερινὴ ἀκολουθία",
             ),
         },
-        {"type": "section", "title": loc("ترتيب قراءات اليوم", "Order of today’s readings", "Τάξη τῶν σημερινῶν ἀναγνωσμάτων")},
         {
-            "type": "note",
-            "speaker": loc("ملاحظة اختيارية", "Optional note", "Προαιρετικὴ σημείωση"),
+            "type": "text",
+            "speaker": loc("اليوم الكنسي", "Church day", "Ἐκκλησιαστικὴ ἡμέρα"),
             "text": loc(
-                "إنجيل السَحَر عند توفره رسميًا، ثم البروكيمنن والرسالة وهلليلويا والإنجيل. أي نص غير موثق في اللغة المختارة يُحجب تلقائيًا.",
-                "The official Matins Gospel when available, then Prokeimenon, Epistle, Alleluia, and Gospel. Unverified target-language text is hidden.",
-                "Τὸ ἐπίσημο Ἑωθινὸν Εὐαγγέλιον, ὅταν διατίθεται, καὶ ἔπειτα Προκείμενον, Ἀπόστολος, Ἀλληλούϊα καὶ Εὐαγγέλιο.",
+                f"{ar_date_label(day)} — {info['feast_ar']} — {info['fast_ar']}. نوع الخدمة: {selected_label['ar']}.",
+                f"{day:%Y-%m-%d} — {info.get('feast_en') or info['feast_ar']} — {info.get('fast_en') or info['fast_ar']}. Service: {selected_label['en']}.",
+                f"{day:%Y-%m-%d} — {info.get('feast_el') or info['feast_ar']} — {info.get('fast_el') or info['fast_ar']}. Ἀκολουθία: {selected_label['el']}.",
             ),
         },
+        {"type": "section", "title": loc("قراءات وقطع اليوم", "Readings and hymns of the day", "Ἀναγνώσματα καὶ ὕμνοι τῆς ἡμέρας")},
     ])
+    selected_service_id = str(selection.get("service_id") or "divine_liturgy")
     return {
         "id": service_id,
-        "extends_service_id": "divine_liturgy",
+        "extends_service_id": selected_service_id,
         "category": "liturgy",
         "icon": "⛪",
         "title": title,
         "summary": summary,
         "source_language": "ar",
-        "translation_status": "verified_daily_overlay_v2",
-        "template_id": "library:divine_liturgy",
+        "translation_status": "verified_daily_overlay_v3_appointed_rite",
+        "template_id": f"library:{selected_service_id}",
         "dynamic_date": f"{day:%Y-%m-%d}",
+        "selected_liturgy_type": selected_type,
+        "selected_liturgy": copy.deepcopy(selection),
+        "liturgy_service_contract": contract,
+        "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_TEMPLATE_SELECTED",
+        "wrong_liturgy_fallback_allowed": False,
         "daily_reading_contract": {
             "authority": "orthodox_jordan",
             "contract": "canonical/jordan_liturgical_contract.json",
             "date_iso": f"{day:%Y-%m-%d}",
+            "selected_liturgy_type": selected_type,
+            "selected_liturgy_rule_id": selection.get("rule_id"),
             "epistle_canonical": str(epistle.get("integrity", {}).get("canonical_reference") or ""),
             "gospel_canonical": str(gospel.get("integrity", {}).get("canonical_reference") or ""),
-            "matins_gospel_canonical": str(
-                matins_gospel.get("integrity", {}).get("canonical_reference") or ""
-            ),
+            "matins_gospel_canonical": str(matins_gospel.get("integrity", {}).get("canonical_reference") or ""),
+            "resurrection_tone": inserts.get("resurrection_tone"),
+            "eothinon": inserts.get("eothinon"),
+            "proper_id": inserts.get("proper_id"),
+            "variable_parts_registry": "canonical/liturgy_variable_parts.json",
+            "variable_part_ids": copy.deepcopy(inserts.get("variant_ids") or []),
+            "variable_parts_fail_closed": True,
             "fail_closed": True,
         },
         "notice": loc(
-            "يُحفظ نص القداس الثابت مرة واحدة في المكتبة. ولا تُحقن القطع اليومية إلا بعد نجاح التحقق من المصدر والتوقيع.",
-            "The static Liturgy is stored once. Daily pieces are injected only after source and signature validation.",
-            "Ἡ σταθερὴ Θεία Λειτουργία ἀποθηκεύεται μία φορά. Τὰ ἡμερήσια κείμενα εἰσάγονται μόνον μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς.",
+            "يُحفظ النص الثابت للخدمة المعيّنة مرة واحدة في المكتبة، ولا تُحقن القطع اليومية إلا بعد التحقق من المصدر والتوقيع.",
+            "The appointed static service is stored once; daily pieces are injected only after source and signature validation.",
+            "Τὸ σταθερὸ κείμενο τῆς ὁρισμένης ἀκολουθίας ἀποθηκεύεται μία φορά· τὰ ἡμερήσια κείμενα εἰσάγονται μόνο μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς.",
         ),
         "source_provenance": {
             "policy": "canonical/source_policy.json",
@@ -1549,7 +1924,7 @@ def daily_context_segments(day: date, info: dict, readings: list[dict], service_
     pieces available from the daily data source are injected. This avoids
     pretending that a generic API supplies every local sticheron or canon.
     """
-    inserts = feast_inserts(info)
+    inserts = feast_inserts(info, day)
     segments: list[dict] = [
         liturgy_section("ملحق اليوم الكنسي"),
         liturgy_text_segment(
@@ -1664,12 +2039,15 @@ def apply_override(day: date, data: dict) -> dict:
 
 
 def discovery_readings(day: date, info: dict) -> list[dict]:
-    """Use Orthocal for discovery only; network failure must not stop generation.
-
-    Official Jordan/Jerusalem resolution later replaces these discovery slots.
-    A missing discovery API therefore yields blocked placeholders, never guessed
-    publication references.
-    """
+    """Resolve a pinned dated authority first; otherwise use discovery only."""
+    dated = dated_liturgical_proper_entry(day)
+    if dated and isinstance(dated.get("readings"), dict):
+        resolved = [default_prokeimenon(info, day)]
+        for kind in ("matins_gospel", "epistle", "gospel"):
+            reading = dated["readings"].get(kind)
+            if isinstance(reading, dict):
+                resolved.append(copy.deepcopy(reading))
+        return resolved
     if os.getenv("ORTHODOX_DISABLE_DISCOVERY_NETWORK") == "1":
         return readings_from_orthocal(None, info, day)
     try:
@@ -1677,7 +2055,6 @@ def discovery_readings(day: date, info: dict) -> list[dict]:
     except Exception as exc:
         print(f"DISCOVERY_SOURCE_UNAVAILABLE date={day.isoformat()} source=orthocal error={exc}")
         return readings_from_orthocal(None, info, day)
-
 
 def build_day(day: date) -> dict:
     info = day_info(day)
@@ -1694,6 +2071,7 @@ def build_day(day: date) -> dict:
         future_readings = discovery_readings(d, inf)
         upcoming_full_readings[d.isoformat()] = future_readings
         refs = reading_references(future_readings)
+        future_selection = liturgy_service_selection(d, inf)
         upcoming.append({
             "date": f"{d:%Y-%m-%d}",
             "day": loc(f"{AR_DAYS[d.weekday()]} {d.day} {AR_MONTHS[d.month-1]} / {inf['julian_day']} {AR_MONTHS[inf['julian_month']-1]} قديم", d.strftime("%A, %B %d")),
@@ -1702,6 +2080,7 @@ def build_day(day: date) -> dict:
             "note": loc(inf["feast_ar"]),
             "fasting": copy.deepcopy(inf["fasting"]),
             "reading_references": refs,
+            "liturgy_service_selection": future_selection,
             "is_sunday": d.weekday() == 6,
         })
 
@@ -1711,6 +2090,8 @@ def build_day(day: date) -> dict:
     if ns_readings is None:
         ns_readings = discovery_readings(ns, ns_info)
     ns_refs = reading_references(ns_readings)
+    today_liturgy_selection = liturgy_service_selection(day, info)
+    next_sunday_liturgy_selection = liturgy_service_selection(ns, ns_info)
 
     today_service = build_liturgy_service("divine_liturgy", day, info, readings, "خدمة اليوم")
     vespers_service = build_daily_aware_service("vespers", day, info, readings)
@@ -1728,6 +2109,7 @@ def build_day(day: date) -> dict:
         "fasting": copy.deepcopy(ns_info["fasting"]),
         "reading_references": ns_refs,
         "service_id": "next_sunday_full_liturgy",
+        "liturgy_service_selection": next_sunday_liturgy_selection,
     }
 
     data = {
@@ -1752,6 +2134,10 @@ def build_day(day: date) -> dict:
         "language_content_mode": "THREE_INDEPENDENT_OFFICIAL_NATIVE_SOURCES",
         "machine_translation_used": False,
         "translation_fallback_policy": "DISABLED_NO_CROSS_LANGUAGE_FALLBACK",
+        "liturgy_service_selection": today_liturgy_selection,
+        "liturgy_service_rules": "canonical/liturgy_service_rules.json",
+        "liturgy_service_editions": "canonical/liturgy_service_editions.json",
+        "wrong_liturgy_fallback_allowed": False,
         "language_sources": {
             "ar": {
                 "policy": "native_official_source_only",

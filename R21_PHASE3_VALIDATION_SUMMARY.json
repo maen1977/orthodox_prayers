@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "phase": "R21_PHASE3",
+  "app_version": "5.0.16",
+  "generated_utc": "2026-07-26T22:32:09.256227+00:00",
+  "status": "SOURCE_IMPLEMENTATION_COMPLETE_CANDIDATE_UNSIGNED",
+  "scope": {
+    "date": "2026-07-26",
+    "resurrection_tone": 7,
+    "eothinon": 8,
+    "matins_gospel": "John 20:11-18",
+    "epistle": "1 Corinthians 1:10-17",
+    "gospel": "Matthew 14:14-22",
+    "proper_id": "dated:2026-07-26"
+  },
+  "implemented": [
+    "Eight-tone resurrectional proper registry with independent ar/en/el text and SHA-256 hashes",
+    "Eleven Eothina canonical-reference registry",
+    "Pinned dated proper record for 2026-07-26",
+    "Dated-authority-first resolver before network discovery",
+    "Daily slots for Matins Gospel, hymns, troparion, kontakion, prokeimenon, epistle, gospel, and communion hymn",
+    "Fail-closed behavior for unavailable church-dedication troparion and other unsourced propers",
+    "Unsigned candidate publication guard"
+  ],
+  "slot_lengths": {
+    "matins_gospel": {
+      "ar": 1223,
+      "en": 1119,
+      "el": 1029
+    },
+    "daily_hymns": {
+      "ar": 385,
+      "en": 566,
+      "el": 494
+    },
+    "daily_troparion": {
+      "ar": 143,
+      "en": 239,
+      "el": 209
+    },
+    "church_troparion": {
+      "ar": 0,
+      "en": 0,
+      "el": 0
+    },
+    "daily_kontakion": {
+      "ar": 240,
+      "en": 325,
+      "el": 283
+    },
+    "prokeimenon": {
+      "ar": 174,
+      "en": 176,
+      "el": 159
+    },
+    "epistle": {
+      "ar": 1016,
+      "en": 996,
+      "el": 791
+    },
+    "gospel": {
+      "ar": 1108,
+      "en": 1071,
+      "el": 1035
+    },
+    "communion_hymn": {
+      "ar": 51,
+      "en": 70,
+      "el": 77
+    }
+  },
+  "validation": {
+    "unit_tests": {
+      "passed": 189,
+      "failed": 0
+    },
+    "phase3_tests": {
+      "passed": 6,
+      "failed": 0
+    },
+    "quality_gate": {
+      "status": "PASSED_IN_SPLIT_RUN",
+      "note": "The aggregate command reached the environment timeout after validate_content_deduplication; every remaining command was then executed individually and passed."
+    },
+    "signed_phase2_assets_preserved": true,
+    "signature_verification": "PASSED",
+    "language_lane_validation": "PASSED",
+    "religious_completeness_declaration": {
+      "ar": "2/15 verified complete",
+      "en": "0/15 verified complete",
+      "el": "0/15 verified complete"
+    },
+    "gradle_test": {
+      "status": "NOT_RUN_TO_COMPLETION",
+      "reason": "Gradle 8.13 distribution could not be downloaded because services.gradle.org was unreachable in the execution environment."
+    }
+  },
+  "signing": {
+    "candidate_signed": false,
+    "do_not_publish": true,
+    "official_private_key_present": false,
+    "public_verification_key_preserved": true,
+    "required_next_step": "Sign the candidate with the existing official release private key, then replace synchronized daily data/assets through the normal release workflow."
+  },
+  "remaining_before_full_liturgy_claim": [
+    "Complete annual Menaion/Triodion/Pentecostarion proper coverage",
+    "Alleluia verses and feast-specific antiphons/eisodikon",
+    "Variable Theotokion/Megalynarion and full variable dismissal",
+    "Church-dedication troparion configuration",
+    "Patristic Gospel commentary with exact attribution",
+    "Independent complete Basil and Presanctified liturgy services",
+    "Final ecclesiastical human review of all eight-tone texts in ar/en/el",
+    "Official signing and Android build verification"
+  ],
+  "artifacts_sha256": {
+    "candidate": "840323e49c45cc06f626c5e76fc3b4040271b69c33a09d0106a51855fbbf7494",
+    "resurrectional_registry": "7b5ec79e0af4c3c8dea9d38e8909eb29ee2f9027f3e14c3dd6b30c0a765f3279",
+    "dated_registry": "5b026387b8dc22c200b6c6da633f61e01573a24e91e96881cd430645adf51bb6",
+    "updater": "dbc75665a3e0a342644b95ea13aca66b945784faf4d6d8dd6455c9ec2e685a32",
+    "phase3_tests": "05610f9fe396e0b0975453602c5411f55cccfb2447eb16e2545378b424e14ddd"
+  }
+}

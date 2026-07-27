@@ -87,10 +87,13 @@ def main() -> None:
             if provenance.get("source_id") != "orthodox_jordan":
                 raise SystemExit(f"{path.name}:{sid}: Jordan source link is missing")
             require_https(str(provenance.get("official_url") or ""), f"{path.name}:{sid}")
-            if provenance.get("complete_text") is not False:
-                raise SystemExit(f"{path.name}:{sid}: incomplete text must be declared truthfully")
-            if "COMPLETE" in str(service.get("completion_status") or "") and "NOT" not in str(service.get("completion_status") or ""):
-                raise SystemExit(f"{path.name}:{sid}: completion status is misleading")
+            if provenance.get("complete_text") is not True:
+                raise SystemExit(f"{path.name}:{sid}: imported complete text must be declared truthfully")
+            status = str(service.get("completion_status") or "")
+            if "COMPLETE" not in status or "NOT" in status:
+                raise SystemExit(f"{path.name}:{sid}: completed source import is not declared")
+            if len(service.get("segments") or []) < (20 if sid == "pre_communion_prayers" else 15):
+                raise SystemExit(f"{path.name}:{sid}: complete source import is structurally too short")
 
     settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
     main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")

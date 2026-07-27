@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "calendar_cycle": "octoechos_resurrectional_sunday",
+  "status": "PHASE3_SOURCE_REGISTERED_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+  "policy": {
+    "same_language_source_only": true,
+    "machine_translation": false,
+    "cross_language_fallback": false,
+    "surface_only_when_tone_resolved": true
+  },
+  "sources": {
+    "ar": {
+      "source_id": "antioch_tripoli_karma_archive_ar",
+      "url": "https://archtripoli.org/Karma/",
+      "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+    },
+    "en": {
+      "source_id": "goarch_digital_chant_stand_english",
+      "url": "https://digitalchantstand.goarch.org/"
+    },
+    "el": {
+      "source_id": "goarch_digital_chant_stand_greek",
+      "url": "https://digitalchantstand.goarch.org/"
+    }
+  },
+  "tones": {
+    "1": {
+      "tone": 1,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 1",
+        "en": "Resurrectional Apolytikion — Tone 1",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 1"
+      },
+      "troparion": {
+        "ar": "إنّ الحجر لمّا خُتم من اليهود، وجسدك الطاهر حُفظ من الجند، قمت في اليوم الثالث أيها المخلّص، مانحًا العالم الحياة. لذلك قوّات السماوات هتفوا إليك يا واهب الحياة: المجد لقيامتك أيها المسيح، المجد لملكك، المجد لتدبيرك يا محبّ البشر وحدك.",
+        "en": "Although the stone was sealed by the Jews, and the soldiers guarded Your most pure body, You rose on the third day, O Savior, granting life to the world. Therefore the powers of heaven cried out to You, O Giver of life: Glory to Your resurrection, O Christ; glory to Your kingdom; glory to Your dispensation, O only Lover of mankind.",
+        "el": "Τοῦ λίθου σφραγισθέντος ὑπὸ τῶν Ἰουδαίων, καὶ στρατιωτῶν φυλασσόντων τὸ ἄχραντόν σου σῶμα, ἀνέστης τριήμερος Σωτήρ, δωρούμενος τῷ κόσμῳ τὴν ζωήν. Διὰ τοῦτο αἱ Δυνάμεις τῶν οὐρανῶν ἐβόων σοι Ζωοδότα· Δόξα τῇ ἀναστάσει σου Χριστέ, δόξα τῇ Βασιλείᾳ σου, δόξα τῇ οἰκονομίᾳ σου, μόνε Φιλάνθρωπε."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "77badf2bfbfe9c1d95d8dd1406aaae362123f7bbec07889f06ef9cfdac6f471b",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "b4ff0ed8f4f907bd20aadf04eee2748fd2bcef333fdb8fa91405727f36aa6e5b",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "68e3ed967726332b283249cc1cc31489bdea0646cf2256d4994b9033aecd73c7",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "2": {
+      "tone": 2,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 2",
+        "en": "Resurrectional Apolytikion — Tone 2",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 2"
+      },
+      "troparion": {
+        "ar": "عندما انحدرتَ إلى الموت، أيها الحياة الذي لا يموت، حينئذٍ أمتَّ الجحيم ببرق لاهوتك. وعندما أقمتَ الأموات من تحت الثرى، صرخ نحوك جميع القوات السماويين: أيها المسيح الإله معطي الحياة، المجد لك.",
+        "en": "When You descended unto death, O immortal Life, then You destroyed Hades with the lightning of Your divinity. And when You raised the dead from the netherworld, all the powers of heaven cried out: O Giver of life, Christ our God, glory to You.",
+        "el": "Ὅτε κατῆλθες πρὸς τὸν θάνατον, ἡ ζωὴ ἡ ἀθάνατος, τότε τὸν ᾍδην ἐνέκρωσας, τῇ ἀστραπῇ τῆς Θεότητος· ὅτε δὲ καὶ τοὺς τεθνεῶτας ἐκ τῶν καταχθονίων ἀνέστησας, πᾶσαι αἱ Δυνάμεις τῶν ἐπουρανίων ἐκραύγαζον· Ζωοδότα Χριστὲ ὁ Θεὸς ἡμῶν, δόξα σοι."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "023926567728c1a42527a6b743338a2740ef26dd98826628e5fdb30e0a633d5a",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "208a31dc5f29440450ded6b91183fcfc8e087bde86ece5e7dd13bc7cbb0d843a",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "2478176253ca6224a349f915e7ebae65079dec8830952a7f5079fafa8f957f6d",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "3": {
+      "tone": 3,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 3",
+        "en": "Resurrectional Apolytikion — Tone 3",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 3"
+      },
+      "troparion": {
+        "ar": "لتفرح السماويات، ولتبتهج الأرضيات، لأن الرب صنع عزًّا بساعِده، ووطئ الموت بالموت، وصار بكر الأموات، وأنقذنا من جوف الجحيم، ومنح العالم الرحمة العظمى.",
+        "en": "Let the heavens be glad and let the earth rejoice, for the Lord has done a mighty act with His arm. He has trampled death by death and become the firstborn of the dead. He has delivered us from the depths of Hades and granted the world great mercy.",
+        "el": "Εὐφραινέσθω τὰ οὐράνια, ἀγαλλιάσθω τὰ ἐπίγεια, ὅτι ἐποίησε κράτος ἐν βραχίονι αὐτοῦ ὁ Κύριος· ἐπάτησε τῷ θανάτῳ τὸν θάνατον· πρωτότοκος τῶν νεκρῶν ἐγένετο· ἐκ κοιλίας ᾍδου ἐρρύσατο ἡμᾶς καὶ παρέσχε τῷ κόσμῳ τὸ μέγα ἔλεος."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "bb5c3b58f2b8e56dcc6ac4cd856838ab6cac2a8aaab75f80317c01b374bb844b",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "0a8cd45516fd06dd88250036f4f927b0c5abbfca5daed2b52f3b5386fa009e4d",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "4c9e162f4e61e1fb676e2f3264f1e27b3d2c77211ea80c8484c33cab45c9b9dc",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "4": {
+      "tone": 4,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 4",
+        "en": "Resurrectional Apolytikion — Tone 4",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 4"
+      },
+      "troparion": {
+        "ar": "إن تلميذات الرب تعلّمن من الملاك الكرز بالقيامة البهج، وطرحن القضاء الجدّي، وخاطبن الرسل مفتخرات وقائلات: سُبي الموت، وقام المسيح الإله، ومنح العالم الرحمة العظمى.",
+        "en": "When the women disciples of the Lord learned from the angel the joyful message of the resurrection, they cast away the ancestral condemnation and proudly told the apostles: Death has been despoiled; Christ God is risen, granting the world great mercy.",
+        "el": "Τὸ φαιδρὸν τῆς Ἀναστάσεως κήρυγμα ἐκ τοῦ Ἀγγέλου μαθοῦσαι αἱ τοῦ Κυρίου Μαθήτριαι, καὶ τὴν προγονικὴν ἀπόφασιν ἀπορρίψασαι, τοῖς Ἀποστόλοις καυχώμεναι ἔλεγον· Ἐσκύλευται ὁ θάνατος, ἠγέρθη Χριστὸς ὁ Θεός, δωρούμενος τῷ κόσμῳ τὸ μέγα ἔλεος."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "35072e969d80542c626b3d375507183c6c8dc8766bcd0bb3fe0301730846b253",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "69af7e1efe4041f493a1f4c77c924e653474cc40eeaff43e3f394d0a1f91023f",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "59ebabb3f85b493a82cc3cae2bb89f9d645d8e4b5840e6358f41a5d1cde3d352",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "5": {
+      "tone": 5,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 5",
+        "en": "Resurrectional Apolytikion — Tone 5",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 5"
+      },
+      "troparion": {
+        "ar": "لنسبّح نحن المؤمنين ونسجد للكلمة المساوي للآب والروح في الأزلية وعدم الابتداء، المولود من العذراء لخلاصنا. لأنه سُرَّ بالجسد أن يعلو على الصليب ويحتمل الموت، وينهض الموتى بقيامته المجيدة.",
+        "en": "Let us, the faithful, praise and worship the Word, coeternal with the Father and the Spirit, born of the Virgin for our salvation. For He willed to be lifted up on the Cross in the flesh, to endure death, and to raise the dead by His glorious resurrection.",
+        "el": "Τὸν συνάναρχον Λόγον Πατρὶ καὶ Πνεύματι, τὸν ἐκ Παρθένου τεχθέντα εἰς σωτηρίαν ἡμῶν, ἀνυμνήσωμεν πιστοί, καὶ προσκυνήσωμεν· ὅτι ηὐδόκησε σαρκί, ἀνελθεῖν ἐν τῷ Σταυρῷ, καὶ θάνατον ὑπομεῖναι, καὶ ἐγεῖραι τοὺς τεθνεῶτας, ἐν τῇ ἐνδόξῳ ἀναστάσει αὐτοῦ."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "893b9ef1baa9afc4f46a9646987a4e99858f4118d0035607a2042643ff32e778",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "b1d49badf6bd2272f307e25e5ad14fef13ff135be76393a3a41b3ca778f377fd",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "aa9d909a8aa756a972e36d79daa8166485148d6ae47f4747ac06c1aa56919eb0",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "6": {
+      "tone": 6,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 6",
+        "en": "Resurrectional Apolytikion — Tone 6",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 6"
+      },
+      "troparion": {
+        "ar": "إن القوات الملائكية ظهروا على قبرك الموقر، والحراس صاروا كالأموات، ومريم وقفت عند القبر طالبة جسدك الطاهر. فسبيت الجحيم ولم تُجرَّب منها، وصادفت البتول مانحًا الحياة. فيا من قام من بين الأموات، يا رب المجد لك.",
+        "en": "The angelic powers appeared at Your tomb, and the guards became as dead men. Mary stood by the grave seeking Your most pure body. You captured Hades without being tempted by it. You met the Virgin and granted life. O Lord, risen from the dead, glory to You.",
+        "el": "Ἀγγελικαὶ Δυνάμεις ἐπὶ τὸ μνῆμά σου, καὶ οἱ φυλάσσοντες ἀπενεκρώθησαν· καὶ ἵστατο Μαρία ἐν τῷ τάφῳ, ζητοῦσα τὸ ἄχραντόν σου σῶμα. Ἐσκύλευσας τὸν ᾍδην, μὴ πειρασθεὶς ὑπ’ αὐτοῦ· ὑπήντησας τῇ Παρθένῳ, δωρούμενος τὴν ζωήν. Ὁ ἀναστὰς ἐκ τῶν νεκρῶν, Κύριε δόξα σοι."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "72727f549330bf0cbc8494ed1fd986d254f6362352022b831134a21d0834cc6d",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "1519d11ef9d8592213967baf5f0a859ca396ea6f1f6687a4cec30a03d67f7363",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "00519ec780e330bb2938ed33e4128d38619511cb91bc46b24dca0ef622b8515c",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "7": {
+      "tone": 7,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 7",
+        "en": "Resurrectional Apolytikion — Tone 7",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 7"
+      },
+      "troparion": {
+        "ar": "حطمت بصليبك الموت، وفتحت للص الفردوس، وحوّلت نوح حاملات الطيب، وأمرت رسلك أن يكرزوا بأنك قد قمت أيها المسيح الإله، مانحًا العالم الرحمة العظمى.",
+        "en": "You destroyed death by Your Cross; You opened Paradise to the thief; You changed the lamentation of the myrrh-bearing women into joy, and commanded Your apostles to proclaim that You had risen, O Christ God, granting the world great mercy.",
+        "el": "Κατέλυσας τῷ Σταυρῷ σου τὸν θάνατον· ἠνέῳξας τῷ λῃστῇ τὸν Παράδεισον· τῶν Μυροφόρων τὸν θρῆνον μετέβαλες, καὶ τοῖς σοῖς Ἀποστόλοις κηρύττειν ἐπέταξας, ὅτι ἀνέστης Χριστὲ ὁ Θεός, παρέχων τῷ κόσμῳ τὸ μέγα ἔλεος."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "4fa06c69069977471ce91be9e3a4b2e048a95153d4aa3faf34189d5ff3f8bde3",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "d9a0ef7bdf0dcc4cce710391416eba3ce2fc6fc977e35766ece186a2f2ea7f22",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "6d62d3b18edf229bf15f64d43513e73f845af35aefe073edf06bb7d06a46871a",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    },
+    "8": {
+      "tone": 8,
+      "title": {
+        "ar": "طروبارية القيامة — اللحن 8",
+        "en": "Resurrectional Apolytikion — Tone 8",
+        "el": "Ἀναστάσιμον Ἀπολυτίκιον — Ἦχος 8"
+      },
+      "troparion": {
+        "ar": "انحدرت من العلو يا متحنن، وقبلت الدفن ذا الثلاثة الأيام لكي تعتقنا من الآلام. فيا حياتنا وقيامتنا، يا رب المجد لك.",
+        "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You.",
+        "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι."
+      },
+      "verification": {
+        "ar": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "source_url": "https://archtripoli.org/Karma/",
+          "text_sha256": "b82670c39e24bcdc32ed1bd1158ceaa77bb368054661fbd7565487b526d72ee4",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "en": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_english",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "06a3c93cd4ffcdd998cf7d7cdaf9b3b894b847857f86f2252134b4059e03c14c",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        },
+        "el": {
+          "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+          "source_id": "goarch_digital_chant_stand_greek",
+          "source_url": "https://digitalchantstand.goarch.org/",
+          "text_sha256": "f44b97911ffdf015d7dbbf5dd18af97a7fcc91ce78bf6fd47928e8c10abfec13",
+          "ai_translation_used": false,
+          "automatic_diacritization_used": false
+        }
+      }
+    }
+  },
+  "ordinary_sunday_communion": {
+    "ar": "سبحوا الرب من السماوات، سبحوه في الأعالي. هلليلويا.",
+    "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia.",
+    "el": "Αἰνεῖτε τὸν Κύριον ἐκ τῶν οὐρανῶν· αἰνεῖτε αὐτὸν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα."
+  },
+  "eothina": {
+    "1": "Matthew 28:16-20",
+    "2": "Mark 16:1-8",
+    "3": "Mark 16:9-20",
+    "4": "Luke 24:1-12",
+    "5": "Luke 24:12-35",
+    "6": "Luke 24:36-53",
+    "7": "John 20:1-10",
+    "8": "John 20:11-18",
+    "9": "John 20:19-31",
+    "10": "John 21:1-14",
+    "11": "John 21:15-25"
+  }
+}

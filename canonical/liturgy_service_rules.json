@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_FAIL_CLOSED_TYPICON_BASELINE",
+  "calendar": "julian_old_calendar_with_orthodox_pascha_offsets",
+  "jurisdiction": "Jerusalem Patriarchate / Jordan priority",
+  "service_types": {
+    "chrysostom": "divine_liturgy",
+    "basil": "divine_liturgy_basil",
+    "presanctified": "presanctified_liturgy",
+    "no_divine_liturgy": null,
+    "typikon_override_required": null
+  },
+  "basil_rules": {
+    "fixed_old_calendar": [
+      "01-01"
+    ],
+    "great_lent_sunday_offsets_from_pascha": [
+      -42,
+      -35,
+      -28,
+      -21,
+      -14
+    ],
+    "holy_week_offsets_from_pascha": [
+      -3,
+      -1
+    ],
+    "nativity_theophany": {
+      "ordinary_rule": "vesperal_basil_on_eve",
+      "when_feast_is_sunday_or_monday": "basil_on_feast",
+      "fixed_feasts_old_calendar": [
+        "12-25",
+        "01-06"
+      ]
+    }
+  },
+  "presanctified_rules": {
+    "great_lent_weekdays": [
+      "wednesday",
+      "friday"
+    ],
+    "great_lent_range_offsets_from_pascha": [
+      -47,
+      -9
+    ],
+    "holy_week_offsets_from_pascha": [
+      -6,
+      -5,
+      -4
+    ],
+    "local_exception_policy": "DATED_OFFICIAL_OVERRIDE_REQUIRED"
+  },
+  "no_divine_liturgy_rules": {
+    "great_friday_offset_from_pascha": -2
+  },
+  "priority": [
+    "dated_official_jordan_override",
+    "annunciation_paschal_triduum_collision_requires_override",
+    "great_friday_no_liturgy",
+    "basil",
+    "annunciation_chrysostom_exception",
+    "presanctified",
+    "ordinary_chrysostom"
+  ],
+  "sources": [
+    {
+      "id": "goarch_basil_usage",
+      "url": "https://www.goarch.org/-/the-divine-liturgy-of-saint-basil-the-great",
+      "claim": "Basil is normally celebrated ten times annually, including the five Sundays of Lent, Holy Thursday, Holy Saturday, Saint Basil's day, and the Nativity/Theophany rule."
+    },
+    {
+      "id": "goarch_lenten_liturgies",
+      "url": "https://www.goarch.org/-/the-sacramental-life-of-the-orthodox-church",
+      "claim": "The Presanctified Liturgy is used on Wednesdays and Fridays of the Great Fast and the first three days of Holy Week."
+    },
+    {
+      "id": "orthodox_jordan_presanctified",
+      "url": "https://orthodoxjordan.org/wp-content/uploads/2024/05/%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.pdf",
+      "claim": "Official Arabic Jerusalem/Jordan service edition and local usage notes."
+    }
+  ],
+  "dated_override_contract": {
+    "field": "liturgy_service_override",
+    "allowed_values": [
+      "chrysostom",
+      "basil",
+      "presanctified",
+      "no_divine_liturgy"
+    ],
+    "requires": [
+      "source_id",
+      "source_url",
+      "status=DOCUMENTED_OVERRIDE"
+    ]
+  },
+  "machine_translation_allowed": false,
+  "fail_closed": true,
+  "collision_policy": {
+    "annunciation_with_holy_thursday_great_friday_holy_saturday_or_pascha": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
+    "reason": "The exact combined order is year- and Typikon-dependent; do not infer it from ordinary single-feast rules."
+  }
+}

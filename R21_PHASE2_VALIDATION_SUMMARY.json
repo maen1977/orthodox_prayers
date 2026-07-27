@@ -1,0 +1,54 @@
+{
+  "phase": "R21_PHASE2",
+  "date": "2026-07-26",
+  "version": "5.0.16",
+  "tests_passed": 183,
+  "quality_gate": {
+    "source_and_assets": "passed",
+    "gradle_android_tests": "blocked_by_offline_distribution_download"
+  },
+  "services": {
+    "ar": {
+      "pre_communion_prayers": {
+        "segments": 66,
+        "characters": 16623,
+        "completion_status": "COMPLETE_EXACT_NATIVE_EDITION_TYPOGRAPHY_NORMALIZED",
+        "sha256": "ae0ddfbbb5ea39dbacbe2d68fc24d4f4e0a1cf2be4d7f45bb107d01d0979dce3"
+      },
+      "thanksgiving_after_communion": {
+        "segments": 29,
+        "characters": 6121,
+        "completion_status": "COMPLETE_EXACT_NATIVE_EDITION_TYPOGRAPHY_NORMALIZED",
+        "sha256": "b01dd0688c2d299e7cf3f0aa5a04862dcdc9d9ece73fecbc0d21cce4998b17e7"
+      }
+    },
+    "en": {
+      "pre_communion_prayers": {
+        "segments": 3,
+        "characters": 1553,
+        "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
+        "sha256": "96ff73eae05711932807517e67e62cab90bc2e4558efb648b439493b6aa51214"
+      },
+      "thanksgiving_after_communion": {
+        "segments": 5,
+        "characters": 644,
+        "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
+        "sha256": "1e829b40d136db20f2749e463bafd0f30a249aa0ac9ec993952ba03658577e6b"
+      }
+    },
+    "el": {
+      "pre_communion_prayers": {
+        "segments": 3,
+        "characters": 1511,
+        "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
+        "sha256": "c33856270664f39c53c187e77e958f9955796b93c8d0c6f7e0451206fa1eccc5"
+      },
+      "thanksgiving_after_communion": {
+        "segments": 5,
+        "characters": 615,
+        "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
+        "sha256": "9735b55f294dc6bb1da2f71074b239c418442ab600700873cca1c0794f42c939"
+      }
+    }
+  }
+}

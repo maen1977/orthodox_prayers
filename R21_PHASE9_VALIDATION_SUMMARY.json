@@ -1,0 +1,57 @@
+{
+  "phase": "R21_PHASE9",
+  "versionName": "5.0.16",
+  "unit_tests": {
+    "passed": 249,
+    "failed": 0,
+    "phase9_tests": 11
+  },
+  "native_language_fields": {
+    "ar": "659/659",
+    "en": "788/788",
+    "el": "780/780"
+  },
+  "protected_static_files": 34,
+  "year_audit": {
+    "year": 2026,
+    "audited_days": 365,
+    "complete_days": 2,
+    "incomplete_days": 363,
+    "annual_complete": false,
+    "network_fetch_used": false,
+    "blocker_counts": {
+      "native_service_not_displayable:basil": 10,
+      "native_service_not_displayable:presanctified": 14,
+      "proper_incomplete:communion": 317,
+      "proper_incomplete:kontakion": 350,
+      "proper_incomplete:prokeimenon": 13,
+      "proper_incomplete:troparion": 316,
+      "reading_incomplete:epistle": 363,
+      "reading_incomplete:gospel": 363,
+      "reading_incomplete:matins_gospel": 51,
+      "reading_resolution_error:RuntimeError": 13
+    }
+  },
+  "patristic_commentary": {
+    "registered_entries": 1,
+    "displayable_entries": 0,
+    "all_languages_required": true,
+    "reference_gospel": "Matthew 14:14-22",
+    "registered_source": "Saint John Chrysostom, Homily 49 on Matthew"
+  },
+  "quality_gate": {
+    "main_checks": "passed; combined command exceeded environment timeout after embedded-data validation, remaining checks passed individually",
+    "signatures": "passed",
+    "jordan_contract": "passed",
+    "fasting": "passed",
+    "reader": "passed",
+    "phase9_gate": "passed_fail_closed"
+  },
+  "android_build": {
+    "success": false,
+    "apk_files": [],
+    "command": "./gradlew :app:assembleDebug --offline",
+    "blocker": "UnknownHostException: services.gradle.org; Gradle 8.13 distribution not cached locally"
+  },
+  "complete_release_allowed": false
+}

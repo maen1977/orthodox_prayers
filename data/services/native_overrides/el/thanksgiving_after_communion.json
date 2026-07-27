@@ -1,0 +1,85 @@
+{
+  "id": "thanksgiving_after_communion",
+  "category": "communion",
+  "icon": "🙏",
+  "title": {
+    "ar": "",
+    "en": "",
+    "el": "Εὐχαριστία μετὰ τὴν Θείαν Μετάληψιν"
+  },
+  "summary": {
+    "ar": "",
+    "en": "",
+    "el": "Ἡ πλήρης εὐχαριστήρια εὐχὴ, ὅπως δημοσιεύεται στὴν καταχωρισμένη ἑλληνικὴ λειτουργικὴ ἔκδοση."
+  },
+  "source_language": "el",
+  "translation_status": "native_sources_only",
+  "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
+  "notice": {
+    "ar": "",
+    "en": "",
+    "el": "Προσωπικὴ εὐχαριστία μετὰ τὴ Μετάληψη· διακρίνεται ἀπὸ τὴ λειτουργικὴ δέηση εὐχαριστίας."
+  },
+  "segments": [
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαριστία μετὰ τὴν Θείαν Μετάληψιν"
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαριστήρια εὐχή"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "en": "",
+        "el": "Οἱ πιστοί, κατ’ ἰδίαν"
+      },
+      "text": {
+        "ar": "",
+        "en": "",
+        "el": "Εὐχαριστοῦμέν Σοι, Δέσποτα φιλάνθρωπε, εὐεργέτα τῶν ψυχῶν ἡμῶν, ὅτι καὶ τῇ παρούσῃ ἡμέρᾳ κατηξίωσας ἡμᾶς τῶν ἐπουρανίων Σου καὶ ἀθανάτων μυστηρίων. Ὀρθοτόμησον ἡμῶν τὴν ὁδόν· στήριξον πάντας ἡμᾶς ἐν τῷ φόβῳ Σου· φρούρησον ἡμῶν τήν ζωήν· ἀσφάλισαι ἡμῶν τὰ διαβήματα, εὐχαῖς καὶ ἱκεσίαις τῆς ἐνδόξου Θεοτόκου καὶ ἀειπαρθένου Μαρίας καὶ πάντων τῶν ἁγίων σου."
+      }
+    },
+    {
+      "type": "section",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἐκφώνησις"
+      }
+    },
+    {
+      "type": "text",
+      "speaker": {
+        "ar": "",
+        "en": "",
+        "el": "Οἱ πιστοί, κατ’ ἰδίαν"
+      },
+      "text": {
+        "ar": "",
+        "en": "",
+        "el": "(Καί ἐκφωνεῖ·) Ὅτι σὺ εἶ ὁ ἁγιασμὸς ἡμῶν καὶ σοὶ τὴν δόξαν ἀναπέμπομεν, τῷ Πατρὶ καὶ τῷ Υἱῷ καὶ τῷ ἁγίῳ Πνεύματι, νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων."
+      }
+    }
+  ],
+  "source_provenance": {
+    "policy": "canonical/source_policy.json",
+    "source_id": "metropolis_toronto_liturgy_el",
+    "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+    "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
+    "complete_text": true,
+    "verified_on": "2026-07-26",
+    "ai_liturgical_translation_used": false,
+    "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
+  }
+}

@@ -50,8 +50,8 @@
       "chrysostom_liturgy": "unproven_complete",
       "basil_liturgy": "missing",
       "presanctified_liturgy": "missing",
-      "pre_communion": "source_text_partial",
-      "post_communion": "unavailable_notice"
+      "pre_communion": "complete_exact_native_edition",
+      "post_communion": "complete_exact_native_edition"
     },
     "en": {
       "vespers": "abridged",
@@ -67,8 +67,8 @@
       "chrysostom_liturgy": "unproven_complete",
       "basil_liturgy": "missing",
       "presanctified_liturgy": "missing",
-      "pre_communion": "unavailable_notice",
-      "post_communion": "unavailable_notice"
+      "pre_communion": "complete_authorized_native_selection",
+      "post_communion": "complete_authorized_native_selection"
     },
     "el": {
       "vespers": "abridged",
@@ -84,10 +84,28 @@
       "chrysostom_liturgy": "unproven_complete",
       "basil_liturgy": "missing",
       "presanctified_liturgy": "missing",
-      "pre_communion": "unavailable_notice",
-      "post_communion": "unavailable_notice"
+      "pre_communion": "complete_authorized_native_selection",
+      "post_communion": "complete_authorized_native_selection"
     }
   },
   "production_complete_status": "complete_exact_native_edition",
-  "machine_translation_allowed": false
+  "machine_translation_allowed": false,
+  "status_notes": {
+    "ar": "فعّلت المرحلة الثامنة حزمة مراجعة فقرة بفقرة، وفصل المصدر اليوناني–الإنجليزي من دون ترجمة، ومسار بناء Android بملف Gradle محلي موثّق. تبقى خدمتا باسيليوس والسابق تقديسه محجوبتين حتى إدخال المصادر الرسمية السليمة واعتماد كل فقرة في اللغات الثلاث.",
+    "en": "Phase eight adds paragraph-by-paragraph review packets, exact Greek–English source splitting without translation, and a hash-verified local Gradle Android build path. Basil and Presanctified remain blocked until clean official sources and every segment in all three languages are approved.",
+    "el": "Ἡ ὄγδοη φάση προσθέτει ἔλεγχο κάθε παραγράφου, χωρισμὸ τῆς ἑλληνικῆς–ἀγγλικῆς πηγῆς χωρὶς μετάφραση, καὶ ἐπαληθευμένη τοπικὴ διαδικασία Gradle γιὰ τὴν κατασκευή Android. Ὁ Βασίλειος καὶ τὰ Προηγιασμένα παραμένουν κλειδωμένα ἕως ὅτου ἐγκριθοῦν ὅλα τὰ τμήματα καὶ στὶς τρεῖς γλώσσες."
+  },
+  "liturgy_service_selection": {
+    "status": "active_fail_closed",
+    "rules": "canonical/liturgy_service_rules.json",
+    "editions": "canonical/liturgy_service_editions.json",
+    "prevents_wrong_rite_substitution": true,
+    "basil_complete_native_edition_available": false,
+    "presanctified_complete_native_edition_available": false,
+    "native_import_pipeline": "canonical/liturgy_native_import_contracts.json",
+    "arabic_presanctified_source_acquired": true,
+    "arabic_presanctified_extraction_accepted": false,
+    "native_review_packet": "canonical/liturgy_phase8_completion_contract.json",
+    "phase8_complete_release_allowed": false
+  }
 }

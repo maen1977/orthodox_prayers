@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "calendar": "julian_old_calendar",
   "policy": "same_language_source_only",
   "weekday_prokeimena": {
@@ -162,6 +162,954 @@
           "url": "https://www.goarch.org/chapel/saints?contentid=187&language=el"
         }
       }
+    },
+    "12-25": {
+      "id": "nativity_christ",
+      "name": {
+        "ar": "ميلاد ربنا وإلهنا ومخلصنا يسوع المسيح بالجسد",
+        "en": "Nativity according to the flesh of our Lord, God, and Savior Jesus Christ",
+        "el": "Ἡ κατὰ σάρκα Γέννησις τοῦ Κυρίου καὶ Θεοῦ καὶ Σωτῆρος ἡμῶν Ἰησοῦ Χριστοῦ"
+      },
+      "troparion": {
+        "ar": "ميلادك أيها المسيح إلهنا قد أشرق نور المعرفة في العالم، لأن الساجدين للكواكب به تعلموا من الكوكب السجود لك يا شمس العدل، وأن يعرفوا أنك من مشارق العلو أتيت. يا رب المجد لك.",
+        "en": "Your Nativity, O Christ our God, has shone to the world the light of wisdom; for by it, those who worshiped the stars were taught by a star to adore You, the Sun of Righteousness, and to know You, the Orient from on high. O Lord, glory to You.",
+        "el": "Ἡ Γέννησίς σου Χριστὲ ὁ Θεὸς ἡμῶν, ἀνέτειλε τῷ κόσμῳ τὸ φῶς τὸ τῆς γνώσεως· ἐν αὐτῇ γὰρ οἱ τοῖς ἄστροις λατρεύοντες, ὑπὸ ἀστέρος ἐδιδάσκοντο, σὲ προσκυνεῖν τὸν Ἥλιον τῆς δικαιοσύνης, καὶ σὲ γινώσκειν ἐξ ὕψους Ἀνατολήν· Κύριε, δόξα σοι."
+      },
+      "kontakion": {
+        "ar": "اليوم البتول تلد الفائق الجوهر، والأرض تقرب المغارة لمن لا يُدنى منه. الملائكة مع الرعاة يمجدون، والمجوس مع الكوكب في الطريق يسيرون، لأنه قد وُلد من أجلنا صبي جديد، الإله الذي قبل الدهور.",
+        "en": "Today the Virgin gives birth to Him who is above all being, and the earth offers a cave to Him whom no one can approach. Angels with shepherds give glory, and Magi journey with a star, for unto us is born a young Child, the pre-eternal God.",
+        "el": "Ἡ Παρθένος σήμερον τὸν ὑπερούσιον τίκτει, καὶ ἡ γῆ τὸ Σπήλαιον τῷ ἀπροσίτῳ προσάγει. Ἄγγελοι μετὰ Ποιμένων δοξολογοῦσι, Μάγοι δὲ μετὰ ἀστέρος ὁδοιποροῦσι· δι᾿ ἡμᾶς γὰρ ἐγεννήθη παιδίον νέον, ὁ πρὸ αἰώνων Θεός."
+      },
+      "communion": {
+        "ar": "أرسل الرب فداءً لشعبه. هللويا.",
+        "en": "The Lord has sent redemption to His people. Alleluia.",
+        "el": "Λύτρωσιν ἀπέστειλε Κύριος τῷ λαῷ αὐτοῦ. Ἀλληλούϊα."
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      }
+    },
+    "01-06": {
+      "id": "holy_theophany",
+      "name": {
+        "ar": "عيد الظهور الإلهي المقدس",
+        "en": "Holy Theophany",
+        "el": "Τὰ Ἅγια Θεοφάνεια"
+      },
+      "troparion": {
+        "ar": "باعتمادك يا رب في نهر الأردن ظهر السجود للثالوث، لأن صوت الآب تقدم لك بالشهادة مسميًا إياك ابنًا محبوبًا، والروح بهيئة حمامة يؤيد حقيقة الكلمة. فيا من ظهرت وأنرت العالم، أيها المسيح الإله المجد لك.",
+        "en": "When You were baptized in the Jordan, O Lord, the worship of the Trinity was revealed; for the voice of the Father bore witness to You, calling You His beloved Son, and the Spirit in the form of a dove confirmed the truth of His word. O Christ our God, who appeared and enlightened the world, glory to You.",
+        "el": "Ἐν Ἰορδάνῃ βαπτιζομένου σου, Κύριε, ἡ τῆς Τριάδος ἐφανερώθη προσκύνησις· τοῦ γὰρ Γεννήτορος ἡ φωνὴ προσεμαρτύρει σοι, ἀγαπητόν σε Υἱὸν ὀνομάζουσα· καὶ τὸ Πνεῦμα ἐν εἴδει περιστερᾶς ἐβεβαίου τοῦ λόγου τὸ ἀσφαλές. Ὁ ἐπιφανεὶς Χριστὲ ὁ Θεός, καὶ τὸν κόσμον φωτίσας, δόξα σοι."
+      },
+      "kontakion": {
+        "ar": "ظهرت اليوم للمسكونة، ونورك يا رب قد ارتسم علينا، نحن الذين نسبحك بمعرفة قائلين: لقد أتيت وظهرت أيها النور الذي لا يُدنى منه.",
+        "en": "You have appeared today to the inhabited world, and Your light, O Lord, has been marked upon us, who with knowledge sing Your praise: You came and appeared, O unapproachable Light.",
+        "el": "Ἐπεφάνης σήμερον τῇ οἰκουμένῃ, καὶ τὸ φῶς σου, Κύριε, ἐσημειώθη ἐφ᾿ ἡμᾶς, ἐν ἐπιγνώσει ὑμνοῦντάς σε· Ἦλθες, ἐφάνης, τὸ Φῶς τὸ ἀπρόσιτον."
+      },
+      "communion": {
+        "ar": "لقد ظهرت نعمة الله المخلصة لجميع الناس. هللويا.",
+        "en": "The grace of God that brings salvation has appeared to all people. Alleluia.",
+        "el": "Ἐπεφάνη ἡ χάρις τοῦ Θεοῦ ἡ σωτήριος πᾶσιν ἀνθρώποις. Ἀλληλούϊα."
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      }
+    },
+    "09-14": {
+      "id": "exaltation_precious_cross",
+      "name": {
+        "ar": "رفع الصليب الكريم المحيي",
+        "en": "Exaltation of the Precious and Life-giving Cross",
+        "el": "Ἡ Ὕψωσις τοῦ Τιμίου καὶ Ζωοποιοῦ Σταυροῦ"
+      },
+      "troparion": {
+        "ar": "خلّص يا رب شعبك وبارك ميراثك، وامنح عبيدك المؤمنين الغلبة على المقاومين، واحفظ بقوة صليبك جميع المختصين بك.",
+        "en": "O Lord, save Your people and bless Your inheritance. Grant victories to the faithful over their adversaries, and by the power of Your Cross preserve Your commonwealth.",
+        "el": "Σῶσον, Κύριε, τὸν λαόν σου καὶ εὐλόγησον τὴν κληρονομίαν σου, νίκας τοῖς πιστοῖς κατὰ βαρβάρων δωρούμενος, καὶ τὸ σὸν φυλάττων διὰ τοῦ Σταυροῦ σου πολίτευμα."
+      },
+      "kontakion": {
+        "ar": "يا من ارتفعت على الصليب مختارًا، امنح رأفتك لشعبك الجديد المسمى باسمك أيها المسيح الإله، وفرّح بقوتك المؤمنين، مانحًا إياهم الغلبة على المحاربين، ولتكن لهم معونتك سلاح سلام وظفر لا يُقهر.",
+        "en": "O Christ God, who were voluntarily raised upon the Cross, bestow Your mercies upon the new community named after You. Gladden the faithful by Your power, granting them victory over adversaries; may they have Your alliance as a weapon of peace and an invincible trophy.",
+        "el": "Ὁ ὑψωθεὶς ἐν τῷ Σταυρῷ ἑκουσίως, τῇ ἐπωνύμῳ σου καινῇ πολιτείᾳ, τοὺς οἰκτιρμούς σου δώρησαι, Χριστὲ ὁ Θεός· εὔφρανον ἐν τῇ δυνάμει σου τοὺς πιστούς, νίκας χορηγῶν αὐτοῖς κατὰ τῶν πολεμίων· τὴν συμμαχίαν ἔχοιεν τὴν σήν, ὅπλον εἰρήνης, ἀήττητον τρόπαιον."
+      },
+      "communion": {
+        "ar": "ارتسم علينا نور وجهك يا رب. هللويا.",
+        "en": "The light of Your countenance, O Lord, has been signed upon us. Alleluia.",
+        "el": "Ἐσημειώθη ἐφ᾿ ἡμᾶς τὸ φῶς τοῦ προσώπου σου, Κύριε. Ἀλληλούϊα."
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      }
+    },
+    "02-02": {
+      "id": "meeting_of_the_lord",
+      "name": {
+        "ar": "دخول السيد إلى الهيكل",
+        "en": "Meeting of the Lord in the Temple",
+        "el": "Ἡ Ὑπαπαντὴ τοῦ Κυρίου"
+      },
+      "troparion": {
+        "ar": "افرحي يا والدة الإله العذراء الممتلئة نعمةً، لأنّه منك أشرق شمس العدل المسيح إلهنا، منيرًا الذين في الظلام. سُرَّ وابتهج أنت أيها الشيخ الصدّيق، حاملًا على ذراعيك المعتق نفوسنا، والمانح إيّانا القيامة.",
+        "en": "Hail, Virgin Theotokos, full of grace, for Christ our God, the Sun of Righteousness, has dawned from you, granting light to those in darkness. Rejoice and be glad, O righteous Elder, receiving in your arms the Deliverer of our souls, who grants us resurrection.",
+        "el": "Χαῖρε κεχαριτωμένη Θεοτόκε Παρθένε, ἐκ σοῦ γὰρ ἀνέτειλεν ὁ Ἥλιος τῆς δικαιοσύνης, Χριστὸς ὁ Θεὸς ἡμῶν, φωτίζων τοὺς ἐν σκότει. Εὐφραίνου καὶ σὺ Πρεσβῦτα δίκαιε, δεξάμενος ἐν ἀγκάλαις τὸν ἐλευθερωτὴν τῶν ψυχῶν ἡμῶν, χαριζόμενον ἡμῖν καὶ τὴν Ἀνάστασιν."
+      },
+      "kontakion": {
+        "ar": "يا من بمولدك أيها المسيح الإله للمستودع البتولي قدّست، وليدَي سمعان كما لاق باركت، ولنا الآن أدركت وخلّصت، احفظ رعيتك بسلام في الحروب، وأيّد المؤمنين الذين أحببتهم، بما أنّك وحدك محب البشر.",
+        "en": "You sanctified the Virgin’s womb by Your birth and blessed Simeon’s hands as was fitting. Now You have come and saved us, O Christ our God. Give peace to Your commonwealth in time of war, and strengthen the faithful whom You have loved, for You alone love mankind.",
+        "el": "Ὁ μήτραν παρθενικὴν ἁγιάσας τῷ τόκῳ σου, καὶ χεῖρας τοῦ Συμεὼν εὐλογήσας ὡς ἔπρεπε, προφθάσας καὶ νῦν ἔσωσας ἡμᾶς Χριστὲ ὁ Θεός. Ἀλλ᾿ εἰρήνευσον ἐν πολέμοις τὸ πολίτευμα, καὶ κραταίωσον τοὺς πιστοὺς οὓς ἠγάπησας, ὁ μόνος φιλάνθρωπος."
+      },
+      "communion": {
+        "ar": "كأس الخلاص أقبل، وباسم الرب أدعو. هللويا.",
+        "en": "I will take the cup of salvation and call upon the name of the Lord. Alleluia.",
+        "el": "Ποτήριον σωτηρίου λήψομαι, καὶ τὸ ὄνομα Κυρίου ἐπικαλέσομαι. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 3,
+        "title": {
+          "ar": "البروكيمنن — اللحن الثالث",
+          "en": "Prokeimenon — Tone 3",
+          "el": "Προκείμενον — Ἦχος γ΄"
+        },
+        "reference": {
+          "ar": "لوقا 1:46، 48",
+          "en": "Luke 1:46, 48",
+          "el": "Λουκᾶς 1:46, 48"
+        },
+        "body": {
+          "ar": "تعظم نفسي الرب.\nلأنه نظر إلى تواضع أمته.",
+          "en": "My soul magnifies the Lord.\nFor He has regarded the low estate of His handmaiden.",
+          "el": "Μεγαλύνει ἡ ψυχή μου τὸν Κύριον.\nὍτι ἐπέβλεψεν ἐπὶ τὴν ταπείνωσιν τῆς δούλης αὐτοῦ."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/2025/February/2",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/presentation",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://www.goarch.org/chapel/saints?language=el",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2025/February/2",
+            "text_sha256": "b79d1bf41034f440a5c1b57343756b1c0e3758ea3e50643edd946ac201960c27",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/presentation",
+            "text_sha256": "4250494f4ec368c6212d1446f355d05e2233f7f31d41d31edd811841300a9a6f",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?language=el",
+            "text_sha256": "2c4bacd8b2386780a4f74d49f67a49c307baa6bbf83d641c6a46a686035ad9aa",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2025/February/2",
+            "text_sha256": "07320c30ddd1ba4a99f74ed14a093ca68567ca2d26b8045168387c230116da91",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/presentation",
+            "text_sha256": "cdfa97d2f77bddd23677b15f8e403ca904dd7d0d76bf064ad686f634dfb8b3f0",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?language=el",
+            "text_sha256": "de206c5b1d8023fd89d9b045c3d781c589d2e34e5b503a7ca354ba92aea31296",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2025/February/2",
+            "text_sha256": "d7f3afc6e27e9d65012795c4ec294e5fb5597837cf9ee559221bf04a5e8392b7",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/presentation",
+            "text_sha256": "79f6a990bd259e39bd9259ec90478f7817f9bb08244be41e803dffeb0d113321",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?language=el",
+            "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "03-25": {
+      "id": "annunciation_theotokos",
+      "name": {
+        "ar": "عيد البشارة المقدسة",
+        "en": "Annunciation of the Most Holy Theotokos",
+        "el": "Ὁ Εὐαγγελισμὸς τῆς Ὑπεραγίας Θεοτόκου"
+      },
+      "troparion": {
+        "ar": "اليوم رأس خلاصنا، وإعلان السرّ الذي منذ الدهور، لأنّ ابن الله يصير ابن البتول، وجبرائيل بالنعمة يبشّر. لذلك نحن أيضًا معه نهتف إلى والدة الإله: افرحي يا ممتلئة نعمة، الرب معك.",
+        "en": "Today is the beginning of our salvation and the revelation of the mystery from all eternity. The Son of God becomes the Son of the Virgin, as Gabriel announces the coming of grace. Together with him let us cry to the Theotokos: Rejoice, O full of grace, the Lord is with you.",
+        "el": "Σήμερον τῆς σωτηρίας ἡμῶν τὸ κεφάλαιον, καὶ τοῦ ἀπ᾿ αἰῶνος μυστηρίου ἡ φανέρωσις· ὁ Υἱὸς τοῦ Θεοῦ Υἱὸς τῆς Παρθένου γίνεται, καὶ Γαβριὴλ τὴν χάριν εὐαγγελίζεται. Διὸ καὶ ἡμεῖς σὺν αὐτῷ τῇ Θεοτόκῳ βοήσωμεν· Χαῖρε κεχαριτωμένη, ὁ Κύριος μετὰ σοῦ."
+      },
+      "kontakion": {
+        "ar": "إنّي أنا مدينتك يا والدة الإله أكتب لك رايات الغلبة يا جندية محامية، وأقدّم لك الشكر كمنقذة من الشدائد. لكن بما أنّ لك العزة التي لا تُحارب، أعتقيني من صنوف الشدائد حتى أصرخ إليك: افرحي يا عروسًا لا عروس لها.",
+        "en": "To you, Theotokos, invincible Defender, having been delivered from peril, I, your city, dedicate the victory festival as a thank offering. In your irresistible might, keep me safe from all trials, that I may call out to you: Rejoice, unwedded Bride.",
+        "el": "Τῇ ὑπερμάχῳ στρατηγῷ τὰ νικητήρια, ὡς λυτρωθεῖσα τῶν δεινῶν εὐχαριστήρια, ἀναγράφω σοι ἡ Πόλις σου Θεοτόκε. Ἀλλ᾿ ὡς ἔχουσα τὸ κράτος ἀπροσμάχητον, ἐκ παντοίων με κινδύνων ἐλευθέρωσον, ἵνα κράζω σοι· Χαῖρε Νύμφη ἀνύμφευτε."
+      },
+      "communion": {
+        "ar": "كأس الخلاص أقبل، وباسم الرب أدعو. هللويا.",
+        "en": "I will take the cup of salvation and call upon the name of the Lord. Alleluia.",
+        "el": "Ποτήριον σωτηρίου λήψομαι, καὶ τὸ ὄνομα Κυρίου ἐπικαλέσομαι. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 3,
+        "title": {
+          "ar": "البروكيمنن — اللحن الثالث",
+          "en": "Prokeimenon — Tone 3",
+          "el": "Προκείμενον — Ἦχος γ΄"
+        },
+        "reference": {
+          "ar": "لوقا 1:46، 48",
+          "en": "Luke 1:46, 48",
+          "el": "Λουκᾶς 1:46, 48"
+        },
+        "body": {
+          "ar": "تعظم نفسي الرب.\nلأنه نظر إلى تواضع أمته.",
+          "en": "My soul magnifies the Lord.\nFor He has regarded the low estate of His handmaiden.",
+          "el": "Μεγαλύνει ἡ ψυχή μου τὸν Κύριον.\nὍτι ἐπέβλεψεν ἐπὶ τὴν ταπείνωσιν τῆς δούλης αὐτοῦ."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/annunciation",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "dc16dbd52e9174cb0286ab6e704d4ad1ea0b58642092befc0199621a2f86b0ce",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/annunciation",
+            "text_sha256": "9f5a8db1077ca10f31c205d5a6f772222e676358b63c65fd655250802fe717f2",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "cd23db6447997d3b370e0d3dd24416842eb8cc5aeb967910100f8c9cad664dcc",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "5d60310f6ab4a1a37be6917c808c9253ed96d947cde6a18936a7be5b72b39ffe",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/annunciation",
+            "text_sha256": "d8a8ec7f19ee7c217649246be87e0cb2507c28357f6585c0876959e614f4d162",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "913b1f4d6e49a78d5f345ea8973e54afaca4dcb0bdc7233568de0b0486741f42",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/",
+            "text_sha256": "d7f3afc6e27e9d65012795c4ec294e5fb5597837cf9ee559221bf04a5e8392b7",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/annunciation",
+            "text_sha256": "79f6a990bd259e39bd9259ec90478f7817f9bb08244be41e803dffeb0d113321",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "08-06": {
+      "id": "transfiguration_lord",
+      "name": {
+        "ar": "عيد التجلي الإلهي",
+        "en": "Holy Transfiguration of the Lord",
+        "el": "Ἡ Μεταμόρφωσις τοῦ Κυρίου"
+      },
+      "troparion": {
+        "ar": "لمّا تجلّيت أيّها المسيح الإله في الجبل أظهرت مجدك للتلاميذ حسبما استطاعوا. فأشرق لنا نحن الخطأة نورك الأزلي، بشفاعات والدة الإله، يا مانح النور المجد لك.",
+        "en": "You were transfigured on the mountain, O Christ our God, showing Your disciples Your glory as far as they could bear it. Let Your everlasting light shine upon us sinners, through the prayers of the Theotokos. O Giver of light, glory to You.",
+        "el": "Μετεμορφώθης ἐν τῷ ὄρει Χριστὲ ὁ Θεός, δείξας τοῖς Μαθηταῖς σου τὴν δόξαν σου, καθὼς ἠδύναντο. Λάμψον καὶ ἡμῖν τοῖς ἁμαρτωλοῖς, τὸ φῶς σου τὸ ἀΐδιον, πρεσβείαις τῆς Θεοτόκου, φωτοδότα δόξα σοι."
+      },
+      "kontakion": {
+        "ar": "تجلّيت أيّها المسيح الإله في الجبل، وحسبما وسع تلاميذك شاهدوا مجدك، حتى عندما يعاينونك مصلوبًا يفطنوا أنّ آلامك طوعًا باختيارك، ويكرزوا للعالم أنّك أنت بالحقيقة شعاع الآب.",
+        "en": "You were transfigured on the mountain, O Christ our God, and Your disciples beheld Your glory as far as they could bear it, so that when they would see You crucified they might understand that Your Passion was voluntary, and proclaim to the world that You are truly the radiance of the Father.",
+        "el": "Ἐπὶ τοῦ ὄρους μετεμορφώθης, καὶ ὡς ἐχώρουν οἱ Μαθηταί σου τὴν δόξαν σου, Χριστὲ ὁ Θεὸς ἐθεάσαντο· ἵνα ὅταν σε ἴδωσι σταυρούμενον, τὸ μὲν πάθος νοήσωσιν ἑκούσιον, τῷ δὲ κόσμῳ κηρύξωσιν, ὅτι σὺ ὑπάρχεις ἀληθῶς, τοῦ Πατρὸς τὸ ἀπαύγασμα."
+      },
+      "communion": {
+        "ar": "يا رب، بنور وجهك نسلك، وباسمك نبتهج إلى الأبد. هللويا.",
+        "en": "O Lord, we will walk in the light of Your countenance, and will exult in Your name forever. Alleluia.",
+        "el": "Κύριε, ἐν τῷ φωτὶ τοῦ προσώπου σου πορευσόμεθα, καὶ ἐν τῷ ὀνόματί σου ἀγαλλιασόμεθα εἰς τὸν αἰῶνα. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 4,
+        "title": {
+          "ar": "البروكيمنن — اللحن الرابع",
+          "en": "Prokeimenon — Tone 4",
+          "el": "Προκείμενον — Ἦχος δ΄"
+        },
+        "reference": {
+          "ar": "مزمور 103:24، 1",
+          "en": "Psalm 103:24, 1 (LXX)",
+          "el": "Ψαλμός 103:24, 1"
+        },
+        "body": {
+          "ar": "ما أعظم أعمالك يا رب، كلها بحكمة صنعت.\nباركي يا نفسي الرب. يا رب إلهي لقد عظمت جدًا.",
+          "en": "How manifold are Your works, O Lord! In wisdom You have made them all.\nBless the Lord, O my soul! O Lord my God, You are very great!",
+          "el": "Ὡς ἐμεγαλύνθη τὰ ἔργα σου, Κύριε· πάντα ἐν σοφίᾳ ἐποίησας.\nΕὐλόγει, ἡ ψυχή μου, τὸν Κύριον· Κύριε ὁ Θεός μου, ἐμεγαλύνθης σφόδρα."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/2023/August/6",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/transfiguration",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2023/August/6",
+            "text_sha256": "cc9a0abb92b934e51f335f637f03a472fb503624f9917de15fbe0ff2034025c3",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/transfiguration",
+            "text_sha256": "97405cfcc6eceaabf9904934bf1989a1ae7d1f4cec52701c16d8211d59ee6680",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "4b7e3c862bcdeed45bcb52dde49ce57ac2a2f4d38778e6a8cf77f89761fc9fd3",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2023/August/6",
+            "text_sha256": "ed312c620dc658b21340b9bc44be0c2ade068f3bfbdcfc2aa5da7699a5301dee",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/transfiguration",
+            "text_sha256": "ef36d4f8e6303f6abea04ee3cb86a461cd1e42242c95e28a1a22c44992226b76",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "0ccf2201f77d9bf83be8a9a3d8f25453a11797e2991a35bc0a6982198e16d6da",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2023/August/6",
+            "text_sha256": "e83674cfaf111449bff517e0472ba001c24ba4a5ee626b4a6b61c065aa75277e",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/transfiguration",
+            "text_sha256": "dfc12dac6408dcb7bbc5d440705254cc97ed5f0846d07259edf17c6790b743b1",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "6dae2f2c4ef978eaa049909879d7205eeb648481afaa771412b41f7fb8bdbf38",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "08-15": {
+      "id": "dormition_theotokos",
+      "name": {
+        "ar": "رقاد السيدة والدة الإله",
+        "en": "Dormition of the Most Holy Theotokos",
+        "el": "Ἡ Κοίμησις τῆς Ὑπεραγίας Θεοτόκου"
+      },
+      "troparion": {
+        "ar": "في ميلادك حفظت البتولية وصنتها، وفي رقادك ما أهملت العالم وتركته يا والدة الإله، لأنك انتقلت إلى الحياة بما أنك أم الحياة. فبشفاعاتك أنقذي من الموت نفوسنا.",
+        "en": "In birth, you preserved your virginity; in death, you did not abandon the world, O Theotokos. As mother of life, you departed to the source of life, delivering our souls from death by your intercessions.",
+        "el": "Ἐν τῇ Γεννήσει τὴν παρθενίαν ἐφύλαξας, ἐν τῇ Κοιμήσει τὸν κόσμον οὐ κατέλιπες Θεοτόκε. Μετέστης πρὸς τὴν ζωήν, Μήτηρ ὑπάρχουσα τῆς ζωῆς, καὶ ταῖς πρεσβείαις ταῖς σαῖς λυτρουμένη ἐκ θανάτου τὰς ψυχὰς ἡμῶν."
+      },
+      "kontakion": {
+        "ar": "إن والدة الإله التي لا تغفل في الشفاعات، والرجاء غير المردود في النجدات، لم يضبطها قبر ولا موت، لكن بما أنها أم الحياة نقلها إلى الحياة الذي حل في مستودعها الدائم البتولية.",
+        "en": "Neither the grave nor death could contain the Theotokos, the unshakable hope, ever vigilant in intercession and protection. As Mother of life, He who dwelt in the ever-virginal womb transposed her to life.",
+        "el": "Τὴν ἐν πρεσβείαις ἀκοίμητον Θεοτόκον, καὶ προστασίαις ἀμετάθετον ἐλπίδα, τάφος καὶ νέκρωσις οὐκ ἐκράτησεν· ὡς γὰρ ζωῆς Μητέρα, πρὸς τὴν ζωὴν μετέστησεν, ὁ μήτραν οἰκήσας ἀειπάρθενον."
+      },
+      "communion": {
+        "ar": "كأس الخلاص أقبل، وباسم الرب أدعو. هللويا.",
+        "en": "I will take the cup of salvation and call upon the name of the Lord. Alleluia.",
+        "el": "Ποτήριον σωτηρίου λήψομαι, καὶ τὸ ὄνομα Κυρίου ἐπικαλέσομαι. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 3,
+        "title": {
+          "ar": "البروكيمنن — اللحن الثالث",
+          "en": "Prokeimenon — Tone 3",
+          "el": "Προκείμενον — Ἦχος γ΄"
+        },
+        "reference": {
+          "ar": "لوقا 1:46، 48",
+          "en": "Luke 1:46, 48",
+          "el": "Λουκᾶς 1:46, 48"
+        },
+        "body": {
+          "ar": "تعظم نفسي الرب.\nلأنه نظر إلى تواضع أمته.",
+          "en": "My soul magnifies the Lord.\nFor He has regarded the low estate of His handmaiden.",
+          "el": "Μεγαλύνει ἡ ψυχή μου τὸν Κύριον.\nὍτι ἐπέβλεψεν ἐπὶ τὴν ταπείνωσιν τῆς δούλης αὐτοῦ."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/2009/August/23",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/dormition",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2009/August/23",
+            "text_sha256": "b80dba4d30efa9c0a27742b8a3b996efbadaaabc5cf2dce77f0cef952a100ee2",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/dormition",
+            "text_sha256": "b14a7651b734312f56ca85f0832ab3f28d0df5eb745178749b1e8d64512626e3",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "068a6a58d494157600c0ba88101fd5e261ce03f7cba656af4bf083eff0dee397",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2009/August/23",
+            "text_sha256": "eb923228fde6e055ed326d0eb1a8c810df6bb9732e68087d852888dd9e99105b",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/dormition",
+            "text_sha256": "334eedcc1d9a182652c576534c46c09f9d526250c6e9b68542baf15e1b9ab16b",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "f01cd2644c88930baf925ed0069ddd6419bd6147ea56e3feb4fce217ade86d38",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2009/August/23",
+            "text_sha256": "d7f3afc6e27e9d65012795c4ec294e5fb5597837cf9ee559221bf04a5e8392b7",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/dormition",
+            "text_sha256": "79f6a990bd259e39bd9259ec90478f7817f9bb08244be41e803dffeb0d113321",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "09-08": {
+      "id": "nativity_theotokos",
+      "name": {
+        "ar": "ميلاد والدة الإله",
+        "en": "Nativity of the Most Holy Theotokos",
+        "el": "Τὸ Γενέσιον τῆς Ὑπεραγίας Θεοτόκου"
+      },
+      "troparion": {
+        "ar": "ميلادك يا والدة الإله بشّر بالفرح كل المسكونة، لأنه منك أشرق شمس العدل المسيح إلهنا، فحلّ اللعنة، ووهب البركة، وأبطل الموت، ومنحنا حياة أبدية.",
+        "en": "Your birth, O Theotokos, brought joy to the whole world, for from you dawned the sun of righteousness, Christ our God. Freeing us from the curse, He gave us His blessings. Abolishing death, He granted us eternal life.",
+        "el": "Ἡ γέννησίς σου Θεοτόκε, χαρὰν ἐμήνυσε πάσῃ τῇ οἰκουμένῃ· ἐκ σοῦ γὰρ ἀνέτειλεν ὁ ἥλιος τῆς δικαιοσύνης, Χριστὸς ὁ Θεὸς ἡμῶν, καὶ λύσας τὴν κατάραν, ἔδωκε τὴν εὐλογίαν· καὶ καταργήσας τὸν θάνατον, ἐδωρήσατο ἡμῖν ζωὴν τὴν αἰώνιον."
+      },
+      "kontakion": {
+        "ar": "إن يواكيم وحنّة قد أُطلقا من عار العقر، وآدم وحواء قد أُعتقا من فساد الموت بمولدك المقدس أيتها الطاهرة. فله أيضًا يعيّد شعبك، إذ قد تخلّص من وصمة الزلات، صارخًا نحوك: العاقر تلد والدة الإله المغذية حياتنا.",
+        "en": "In your holy birth, Immaculate One, Joachim and Anna were rid of the shame of childlessness; Adam and Eve of the corruption of death. And so your people, free of the guilt of their sins, celebrate crying: The barren one gives birth to the Theotokos, who nourishes our life.",
+        "el": "Ἰωακεὶμ καὶ Ἄννα ὀνειδισμοῦ ἀτεκνίας, καὶ Ἀδὰμ καὶ Εὔα ἐκ τῆς φθορᾶς τοῦ θανάτου ἠλευθερώθησαν, Ἄχραντε, ἐν τῇ ἁγίᾳ γεννήσει σου· αὐτὴν ἑορτάζει καὶ ὁ λαός σου, ἐνοχῆς τῶν πταισμάτων λυτρωθείς, ἐν τῷ κράζειν σοι· Ἡ στεῖρα τίκτει τὴν Θεοτόκον καὶ τροφὸν τῆς ζωῆς ἡμῶν."
+      },
+      "communion": {
+        "ar": "كأس الخلاص أقبل، وباسم الرب أدعو. هللويا.",
+        "en": "I will take the cup of salvation and call upon the name of the Lord. Alleluia.",
+        "el": "Ποτήριον σωτηρίου λήψομαι, καὶ τὸ ὄνομα Κυρίου ἐπικαλέσομαι. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 3,
+        "title": {
+          "ar": "البروكيمنن — اللحن الثالث",
+          "en": "Prokeimenon — Tone 3",
+          "el": "Προκείμενον — Ἦχος γ΄"
+        },
+        "reference": {
+          "ar": "لوقا 1:46، 48",
+          "en": "Luke 1:46, 48",
+          "el": "Λουκᾶς 1:46, 48"
+        },
+        "body": {
+          "ar": "تعظم نفسي الرب.\nلأنه نظر إلى تواضع أمته.",
+          "en": "My soul magnifies the Lord.\nFor He has regarded the low estate of His handmaiden.",
+          "el": "Μεγαλύνει ἡ ψυχή μου τὸν Κύριον.\nὍτι ἐπέβλεψεν ἐπὶ τὴν ταπείνωσιν τῆς δούλης αὐτοῦ."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/2010/September/12",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/nativity-theotokos",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2010/September/12",
+            "text_sha256": "06edc1c3ab72607c5c7a8452ffc037fcd9f3e219e6df79da5f8107899c8e2921",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/nativity-theotokos",
+            "text_sha256": "24cf2d17e2104e72e370312bc1189543a76686b81dcd0583034968aaeced7db8",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "157f4f90291648ceb5bcadab367e537c14001f7c9cfe8928161d0bd74480cecb",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2010/September/12",
+            "text_sha256": "0db9fe6e1df8650e206b2c8384d80983d779eb077353e963ffab074c39b5a434",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/nativity-theotokos",
+            "text_sha256": "242252a99ded3c68f07bd77819c780309fc24622ceb0c7fbf505147e9a6d0115",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "0f2fd0627c74f3f97c6db140d4341152c2f035f68da7f823d15a65c1bfb0d5e6",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2010/September/12",
+            "text_sha256": "d7f3afc6e27e9d65012795c4ec294e5fb5597837cf9ee559221bf04a5e8392b7",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/nativity-theotokos",
+            "text_sha256": "79f6a990bd259e39bd9259ec90478f7817f9bb08244be41e803dffeb0d113321",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
+    },
+    "11-21": {
+      "id": "entry_theotokos_temple",
+      "name": {
+        "ar": "دخول والدة الإله إلى الهيكل",
+        "en": "Entrance of the Theotokos into the Temple",
+        "el": "Τὰ Εἰσόδια τῆς Ὑπεραγίας Θεοτόκου"
+      },
+      "troparion": {
+        "ar": "اليوم البتول التي هي مقدمة مسرة الله، وابتداء الكرازة بخلاص البشر، قد ظهرت في هيكل الله علانية، وسبقت مبشرة للجميع بالمسيح. فلنهتف نحوها نحن أيضًا بصوت عظيم: افرحي يا كمال تدبير الخالق.",
+        "en": "Today is the prelude of God’s good pleasure and the proclamation of humanity’s salvation. The Virgin is clearly made manifest in the temple of God and foretells Christ to all. Let us also cry out to her with mighty voice: Hail, fulfillment of the Creator’s dispensation.",
+        "el": "Σήμερον τῆς εὐδοκίας Θεοῦ τὸ προοίμιον, καὶ τῆς τῶν ἀνθρώπων σωτηρίας ἡ προκήρυξις. Ἐν Ναῷ τοῦ Θεοῦ τρανῶς ἡ Παρθένος δείκνυται, καὶ τὸν Χριστὸν τοῖς πᾶσι προκαταγγέλλεται. Αὐτῇ καὶ ἡμεῖς μεγαλοφώνως βοήσωμεν· Χαῖρε τῆς οἰκονομίας τοῦ Κτίστου ἡ ἐκπλήρωσις."
+      },
+      "kontakion": {
+        "ar": "إن الهيكل الكلي النقاوة، هيكل المخلص، البتول الخدر الجزيل الثمن، والكنز الطاهر لمجد الله، اليوم تدخل إلى بيت الرب، وتدخل معها النعمة التي بالروح الإلهي. فلتسبحها ملائكة الله: هذه هي المظلة السماوية.",
+        "en": "Today, the most pure temple of the Savior, the precious bridal chamber and Virgin, the sacred treasure of God, enters the house of the Lord, bringing the grace of the Divine Spirit. The Angels of God praise her. She is the heavenly tabernacle.",
+        "el": "Ὁ καθαρώτατος ναὸς τοῦ Σωτῆρος, ἡ πολυτίμητος παστὰς καὶ Παρθένος, τὸ ἱερὸν θησαύρισμα τῆς δόξης τοῦ Θεοῦ, σήμερον εἰσάγεται ἐν τῷ οἴκῳ Κυρίου, τὴν χάριν συνεισάγουσα, τὴν ἐν Πνεύματι Θείῳ· ἣν ἀνυμνοῦσιν Ἄγγελοι Θεοῦ· Αὕτη ὑπάρχει σκηνὴ ἐπουράνιος."
+      },
+      "communion": {
+        "ar": "كأس الخلاص أقبل، وباسم الرب أدعو. هللويا.",
+        "en": "I will take the cup of salvation and call upon the name of the Lord. Alleluia.",
+        "el": "Ποτήριον σωτηρίου λήψομαι, καὶ τὸ ὄνομα Κυρίου ἐπικαλέσομαι. Ἀλληλούϊα."
+      },
+      "prokeimenon": {
+        "tone": 3,
+        "title": {
+          "ar": "البروكيمنن — اللحن الثالث",
+          "en": "Prokeimenon — Tone 3",
+          "el": "Προκείμενον — Ἦχος γ΄"
+        },
+        "reference": {
+          "ar": "لوقا 1:46، 48",
+          "en": "Luke 1:46, 48",
+          "el": "Λουκᾶς 1:46, 48"
+        },
+        "body": {
+          "ar": "تعظم نفسي الرب.\nلأنه نظر إلى تواضع أمته.",
+          "en": "My soul magnifies the Lord.\nFor He has regarded the low estate of His handmaiden.",
+          "el": "Μεγαλύνει ἡ ψυχή μου τὸν Κύριον.\nὍτι ἐπέβλεψεν ἐπὶ τὴν ταπείνωσιν τῆς δούλης αὐτοῦ."
+        }
+      },
+      "sources": {
+        "ar": {
+          "source_id": "antioch_tripoli_karma_archive_ar",
+          "url": "https://archtripoli.org/Karma/2024/November/24",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "en": {
+          "source_id": "goarch_digital_chant_stand_english",
+          "url": "https://www.goarch.org/entrance-theotokos",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        },
+        "el": {
+          "source_id": "goarch_digital_chant_stand_greek",
+          "url": "https://digitalchantstand.goarch.org/",
+          "review_status": "REGISTERED_SOURCE_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
+        }
+      },
+      "verification": {
+        "troparion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2024/November/24",
+            "text_sha256": "e4c8d773291d89c7bd1d79c0862b28c7d4574d5b3f2df0600467734b801e56a9",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/entrance-theotokos",
+            "text_sha256": "7899f4f43f6802a3c28eb3e6568c383eade50a99973a407b98a745135f7d6542",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "0832866a9aca96de98359b5edae508f0b60953b26ae8d82c4759340d55d7cbe0",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "kontakion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2024/November/24",
+            "text_sha256": "64f306e5510f6ea8ca02a6ec8af5c9584a5e9fc422d4d5e6ed64a0bbd76b7ae0",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/entrance-theotokos",
+            "text_sha256": "9eaf084e51921955eebb298cda3cd88108a6af47aa5ced81e35b94816f79630b",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "2ba28941aadf05ba6f0482830b070db50583be8ff50bc789e023ba7b20a0b80f",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        },
+        "communion": {
+          "ar": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "antioch_tripoli_karma_archive_ar",
+            "source_url": "https://archtripoli.org/Karma/2024/November/24",
+            "text_sha256": "d7f3afc6e27e9d65012795c4ec294e5fb5597837cf9ee559221bf04a5e8392b7",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "en": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_english",
+            "source_url": "https://www.goarch.org/entrance-theotokos",
+            "text_sha256": "79f6a990bd259e39bd9259ec90478f7817f9bb08244be41e803dffeb0d113321",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          },
+          "el": {
+            "status": "HASHED_NATIVE_TEXT_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW",
+            "source_id": "goarch_digital_chant_stand_greek",
+            "source_url": "https://digitalchantstand.goarch.org/",
+            "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false
+          }
+        }
+      }
     }
   },
   "weekly_sources": {
@@ -177,5 +1125,6 @@
       "source_id": "goarch_online_chapel_greek",
       "url": "https://www.goarch.org/chapel"
     }
-  }
+  },
+  "status": "PHASE5_MAJOR_FEAST_REGISTRY_REQUIRES_FINAL_ECCLESIASTICAL_REVIEW"
 }

@@ -1,0 +1,31 @@
+{
+  "phase": "R21_PHASE10",
+  "pipeline_status": "ACTIVE_PHASE10_COMMENTARY_REMOVED_AND_DATED_COVERAGE_EXPANSION_FAIL_CLOSED",
+  "complete_release_allowed": false,
+  "interpretations_removed": true,
+  "interpretation_leftover_files": [],
+  "interpretation_active_token_files": [],
+  "year_audit_present": true,
+  "year_audit_days": 365,
+  "year_audit_complete_days": 3,
+  "year_audit_incomplete_days": 362,
+  "reference_sunday_complete": true,
+  "blockers": [
+    "phase8:native_service_not_displayable:basil",
+    "phase8:native_service_not_displayable:presanctified",
+    "phase8:annual_variable_parts_unproven_complete",
+    "phase8:phase8_candidate_not_signed_with_official_key",
+    "phase8:android_apk_build_evidence_missing",
+    "phase10_annual_daily_coverage_incomplete"
+  ],
+  "fail_closed": true,
+  "post_gospel_app_interpretation": false,
+  "homily_position_preserved": true,
+  "reference_sunday_date": "2026-07-19",
+  "reference_sunday_tone": 6,
+  "reference_sunday_eothinon": 7,
+  "reference_sunday_technical_markup_removed": true,
+  "signed_embedded_release_date_unchanged": "2026-07-26",
+  "official_private_key_used": false,
+  "apk_built": false
+}
