@@ -10,11 +10,11 @@
     "en": "Greek Orthodox Patriarchate of Jerusalem",
     "el": "Πατριαρχεῖον Ἱεροσολύμων"
   },
-  "date_iso": "2026-07-27",
+  "date_iso": "2026-07-28",
   "date_label": {
-    "ar": "الإثنين 27 تموز 2026 / 14 تموز 2026 بحسب التقويم الكنسي القديم",
-    "en": "Monday, July 27, 2026 / July 14, 2026 (Old Style)",
-    "el": "Δευτέρα, 27 Ιουλίου 2026 / 14 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
+    "ar": "الثلاثاء 28 تموز 2026 / 15 تموز 2026 بحسب التقويم الكنسي القديم",
+    "en": "Tuesday, July 28, 2026 / July 15, 2026 (Old Style)",
+    "el": "Τρίτη, 28 Ιουλίου 2026 / 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
   },
   "calendar_label": {
     "ar": "التقويم الكنسي القديم — بطريركية القدس",
@@ -24,8 +24,8 @@
   "julian_date": {
     "year": 2026,
     "month": 7,
-    "day": 14,
-    "label_ar": "14 تموز 2026 بحسب التقويم الكنسي القديم"
+    "day": 15,
+    "label_ar": "15 تموز 2026 بحسب التقويم الكنسي القديم"
   },
   "fast": {
     "ar": "لا صوم",
@@ -220,7 +220,7 @@
     "rule_id": "ordinary_chrysostom_baseline",
     "authority": "canonical/liturgy_service_rules.json",
     "source_url": "",
-    "pascha_offset": 106,
+    "pascha_offset": 107,
     "label": {
       "ar": "قداس القديس يوحنا الذهبي الفم",
       "en": "Divine Liturgy of Saint John Chrysostom",
@@ -325,7 +325,7 @@
         "source": "jerusalem_patriarchate",
         "priority": 2,
         "status": "not_applicable",
-        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-14."
+        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-15."
       },
       {
         "source": "antioch_patriarchate",
@@ -343,7 +343,7 @@
     "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
     "authority_mode": "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE",
     "daily_availability": "FULL",
-    "date_published": "2026-07-27",
+    "date_published": "2026-07-28",
     "usable_when_partial": true,
     "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
   },
@@ -368,13 +368,13 @@
       "official": true,
       "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
       "status": "not_applicable",
-      "date_iso": "2026-07-27",
+      "date_iso": "2026-07-28",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
       "prokeimenon_text": null,
       "sha256": null,
-      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-14."
+      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-15."
     },
     {
       "id": "antioch_patriarchate",
@@ -382,7 +382,7 @@
       "official": true,
       "url": "https://www.antiochpatriarchate.org/images/pages/dalil-2026-full2025-11-23-07-04-09.pdf",
       "status": "calendar_incompatible",
-      "date_iso": "2026-07-27",
+      "date_iso": "2026-07-28",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
@@ -394,23 +394,23 @@
       "id": "official_greek_orthodox",
       "priority": 4,
       "official": true,
-      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/h91/en/index.html",
+      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/h91/en/index.html",
       "status": "current",
-      "date_iso": "2026-07-27",
-      "epistle_reference": "1 Corinthians 11:31-34; 12:1-6",
-      "gospel_reference": "Matthew 18:1-11",
+      "date_iso": "2026-07-28",
+      "epistle_reference": "1 Corinthians 12:12-26",
+      "gospel_reference": "Matthew 18:18-22; 19:1-2, 13-15",
       "tone": null,
       "prokeimenon_text": null,
-      "sha256": "0cdf6343a2cbe202e66351fabbcced8a2c0b372ce2f4bd8afebe74170f2cc619",
-      "reason": "أعيد استخدام رصد DCS الرسمي المؤرخ والمحدود الذي جمعه مركز صحة المصادر في التشغيل نفسه."
+      "sha256": "6c096efeb03ea2d5b439cb630efdc44ba9d49a409a468bdc8c0de879e58910ca",
+      "reason": "sha256=6c096efeb03ea2d5b439cb630efdc44ba9d49a409a468bdc8c0de879e58910ca"
     },
     {
       "id": "orthodox_church_in_america",
       "priority": 5,
       "official": true,
-      "url": "https://www.oca.org/readings/daily/2026/07/27",
+      "url": "https://www.oca.org/readings/daily/2026/07/28",
       "status": "unavailable",
-      "date_iso": "2026-07-27",
+      "date_iso": "2026-07-28",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
@@ -494,21 +494,21 @@
       "icon": "🎵",
       "kind": "prokeimenon",
       "title": {
-        "ar": "البروكيمنن — اللحن الرابع",
-        "en": "Prokeimenon — Tone 4",
-        "el": "Προκείμενον — Ἦχος δ΄"
+        "ar": "البروكيمنن — اللحن السابع",
+        "en": "Prokeimenon — Tone 7",
+        "el": "Προκείμενον — Ἦχος βαρύς"
       },
       "reference": {
-        "ar": "مزمور 103:4، 1",
-        "en": "Psalm 103:4, 1 (LXX)",
-        "el": "Ψαλμός 103:4, 1"
+        "ar": "مزمور 63:11، 2",
+        "en": "Psalm 63:11, 2 (LXX)",
+        "el": "Ψαλμός 63:11, 2"
       },
       "body": {
-        "ar": "الصانع ملائكته أرواحًا وخدامه لهيب نار.\nباركي يا نفسي الرب. يا رب إلهي لقد عظمت جدًا.",
-        "en": "He makes His angels spirits, and His ministers a flame of fire.\nBless the Lord, O my soul! O Lord my God, You are very great!",
-        "el": "Ὁ ποιῶν τοὺς ἀγγέλους αὐτοῦ πνεύματα, καὶ τοὺς λειτουργοὺς αὐτοῦ πυρὸς φλόγα.\nΕὐλόγει, ἡ ψυχή μου, τὸν Κύριον· Κύριε ὁ Θεός μου, ἐμεγαλύνθης σφόδρα."
+        "ar": "يفرح الصديق بالرب ويتكل عليه.\nاستمع يا الله إلى صوتي في تضرعي إليك.",
+        "en": "The righteous shall rejoice in the Lord and shall hope in Him.\nHear my voice, O God, when I pray to You.",
+        "el": "Εὐφρανθήσεται δίκαιος ἐν Κυρίῳ καὶ ἐλπιεῖ ἐπ᾽ αὐτόν.\nΕἰσάκουσον, ὁ Θεός, τῆς φωνῆς μου ἐν τῷ δέεσθαί με πρὸς σέ."
       },
-      "tone": 4,
+      "tone": 7,
       "source": {
         "ar": "https://archtripoli.org/",
         "en": "https://www.goarch.org/chapel",
@@ -522,7 +522,7 @@
           "canonical_reference": "",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "5b7eed17f4ca7807d4c71f3cf3a59bb4ce2ed26726dbb68c7be32ae3e91d5eaa",
+          "text_sha256": "59388f495f102c55c8c186e0a892b95bc337021d825d2c3f50a48167ccea8cef",
           "ai_translation_used": false,
           "automatic_diacritization_used": false
         },
@@ -533,7 +533,7 @@
           "canonical_reference": "",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "306360e53b7aab72df7be1a302c3d1e8e649c9e54a40c796aa76b337e1bfdca9",
+          "text_sha256": "45c4d416d84576310ee4945d3d9c2666e5f6f01dbdee6b13bb390b328c5f7232",
           "ai_translation_used": false,
           "automatic_diacritization_used": false
         },
@@ -544,7 +544,7 @@
           "canonical_reference": "",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "4a009fdd4f9cd2570a895776a69ebbbb1e978f8000f8c666a74a8578456a9bb1",
+          "text_sha256": "ced39c52c8c60e0eb424ebd6b60411d5c59a34694755058f1d2a86180f540b78",
           "ai_translation_used": false,
           "automatic_diacritization_used": false
         }
@@ -568,14 +568,14 @@
         "el": "Ἀπόστολος"
       },
       "reference": {
-        "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 11:31-34; 12:1-6",
-        "en": "Paul’s First Letter to the Corinthians 11:31-34; 12:1-6",
-        "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 11:31-34; 12:1-6"
+        "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 12:12-26",
+        "en": "Paul’s First Letter to the Corinthians 12:12-26",
+        "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26"
       },
       "body": {
-        "ar": "لِأَنَّنَا لَوْ كُنَّا حَكَمْنَا عَلَى أَنْفُسِنَا لَمَا حُكِمَ عَلَيْنَا،\nوَلَكِنْ إِذْ قَدْ حُكِمَ عَلَيْنَا، نُؤَدَّبُ مِنَ ٱلرَّبِّ لِكَيْ لَا نُدَانَ مَعَ ٱلْعَالَمِ.\nإِذًا يَا إِخْوَتِي، حِينَ تَجْتَمِعُونَ لِلْأَكْلِ، ٱنْتَظِرُوا بَعْضُكُمْ بَعْضًا.\nإِنْ كَانَ أَحَدٌ يَجُوعُ فَلْيَأْكُلْ فِي ٱلْبَيْتِ، كَيْ لَا تَجْتَمِعُوا لِلدَّيْنُونَةِ. وَأَمَّا ٱلْأُمُورُ ٱلْبَاقِيَةُ فَعِنْدَمَا أَجِيءُ أُرَتِّبُهَا.\nوَأَمَّا مِنْ جِهَةِ ٱلْمَوَاهِبِ ٱلرُّوحِيَّةِ أَيُّهَا ٱلْإِخْوَةُ، فَلَسْتُ أُرِيدُ أَنْ تَجْهَلُوا.\nأَنْتُمْ تَعْلَمُونَ أَنَّكُمْ كُنْتُمْ أُمَمًا مُنْقَادِينَ إِلَى ٱلْأَوْثَانِ ٱلْبُكْمِ، كَمَا كُنْتُمْ تُسَاقُونَ.\nلِذَلِكَ أُعَرِّفُكُمْ أَنْ لَيْسَ أَحَدٌ وَهُوَ يَتَكَلَّمُ بِرُوحِ ٱللهِ يَقُولُ: «يَسُوعُ أَنَاثِيمَا». وَلَيْسَ أَحَدٌ يَقْدِرُ أَنْ يَقُولَ: «يَسُوعُ رَبٌّ» إِلَّا بِٱلرُّوحِ ٱلْقُدُسِ.\nفَأَنْوَاعُ مَوَاهِبَ مَوْجُودَةٌ، وَلَكِنَّ ٱلرُّوحَ وَاحِدٌ.\nوَأَنْوَاعُ خِدَمٍ مَوْجُودَةٌ، وَلَكِنَّ ٱلرَّبَّ وَاحِدٌ.\nوَأَنْوَاعُ أَعْمَالٍ مَوْجُودَةٌ، وَلَكِنَّ ٱللهَ وَاحِدٌ، ٱلَّذِي يَعْمَلُ ٱلْكُلَّ فِي ٱلْكُلِّ.",
-        "en": "For if we discerned ourselves, we wouldn’t be judged.\nBut when we are judged, we are disciplined by the Lord, that we may not be condemned with the world.\nTherefore, my brothers, when you come together to eat, wait for one another.\nBut if anyone is hungry, let him eat at home, lest your coming together be for judgment. The rest I will set in order whenever I come.\nNow concerning spiritual things, brothers, I don’t want you to be ignorant.\nYou know that when you were heathen, you were led away to those mute idols, however you might be led.\nTherefore I make known to you that no man speaking by God’s Spirit says, “Jesus is accursed.” No one can say, “Jesus is Lord,” but by the Holy Spirit.\nNow there are various kinds of gifts, but the same Spirit.\nThere are various kinds of service, and the same Lord.\nThere are various kinds of workings, but the same God who works all things in all.",
-        "el": "εἰ γὰρ ἑαυτοὺς διεκρίνομεν, οὐκ ἂν ἐκρινόμεθα·\nκρινόμενοι δὲ ὑπὸ [τοῦ] Κυρίου παιδευόμεθα, ἵνα μὴ σὺν τῷ κόσμῳ κατακριθῶμεν.\nὭστε, ἀδελφοί μου, συνερχόμενοι εἰς τὸ φαγεῖν ἀλλήλους ἐκδέχεσθε·\nεἰ δέ τις πεινᾷ, ἐν οἴκῳ ἐσθιέτω, ἵνα μὴ εἰς κρῖμα συνέρχησθε. Τὰ δὲ λοιπὰ ὡς ἂν ἔλθω διατάξομαι.\nΠερὶ δὲ τῶν πνευματικῶν, ἀδελφοί, οὐ θέλω ὑμᾶς ἀγνοεῖν.\nοἴδατε ὅτι, ὅτε ἔθνη ἦτε, πρὸς τὰ εἴδωλα τὰ ἄφωνα ὡς ἂν ἤγεσθε ἀπαγόμενοι.\nδιὸ γνωρίζω ὑμῖν ὅτι οὐδεὶς ἐν Πνεύματι Θεοῦ λαλῶν λέγει ἀνάθεμα Ἰησοῦν, καὶ οὐδεὶς δύναται εἰπεῖν Κύριον Ἰησοῦν εἰ μὴ ἐν Πνεύματι Ἁγίῳ.\nΔιαιρέσεις δὲ χαρισμάτων εἰσί, τὸ δὲ αὐτὸ Πνεῦμα·\nκαὶ διαιρέσεις διακονιῶν εἰσι, καὶ ὁ αὐτὸς Κύριος·\nκαὶ διαιρέσεις ἐνεργημάτων εἰσίν, ὁ δὲ αὐτός ἐστι Θεός, ὁ ἐνεργῶν τὰ πάντα ἐν πᾶσιν."
+        "ar": "لِأَنَّهُ كَمَا أَنَّ ٱلْجَسَدَ هُوَ وَاحِدٌ وَلَهُ أَعْضَاءٌ كَثِيرَةٌ، وَكُلُّ أَعْضَاءِ ٱلْجَسَدِ ٱلْوَاحِدِ إِذَا كَانَتْ كَثِيرَةً هِيَ جَسَدٌ وَاحِدٌ، كَذَلِكَ ٱلْمَسِيحُ أَيْضًا.\nلِأَنَّنَا جَمِيعَنَا بِرُوحٍ وَاحِدٍ أَيْضًا ٱعْتَمَدْنَا إِلَى جَسَدٍ وَاحِدٍ، يَهُودًا كُنَّا أَمْ يُونَانِيِّينَ، عَبِيدًا أَمْ أَحْرَارًا، وَجَمِيعُنَا سُقِينَا رُوحًا وَاحِدًا.\nفَإِنَّ ٱلْجَسَدَ أَيْضًا لَيْسَ عُضْوًا وَاحِدًا بَلْ أَعْضَاءٌ كَثِيرَةٌ.\nإِنْ قَالَتِ ٱلرِّجْلُ: «لِأَنِّي لَسْتُ يَدًا، لَسْتُ مِنَ ٱلْجَسَدِ». أَفَلَمْ تَكُنْ لِذَلِكَ مِنَ ٱلْجَسَدِ؟\nوَإِنْ قَالَتِ ٱلْأُذُنُ: «لِأِنِّي لَسْتُ عَيْنًا، لَسْتُ مِنَ ٱلْجَسَدِ». أَفَلَمْ تَكُنْ لِذَلِكَ مِنَ ٱلْجَسَدِ؟\nلَوْ كَانَ كُلُّ ٱلْجَسَدِ عَيْنًا، فَأَيْنَ ٱلسَّمْعُ؟ لَوْ كَانَ ٱلْكُلُّ سَمْعًا، فَأَيْنَ ٱلشَّمُّ؟\nوَأَمَّا ٱلْآنَ فَقَدْ وَضَعَ ٱللهُ ٱلْأَعْضَاءَ، كُلَّ وَاحِدٍ مِنْهَا فِي ٱلْجَسَدِ، كَمَا أَرَادَ.\nوَلَكِنْ لَوْ كَانَ جَمِيعُهَا عُضْوًا وَاحِدًا، أَيْنَ ٱلْجَسَدُ؟\nفَٱلْآنَ أَعْضَاءٌ كَثِيرَةٌ، وَلَكِنْ جَسَدٌ وَاحِدٌ.\nلَا تَقْدِرُ ٱلْعَيْنُ أَن تَقُولَ لِلْيَدِ: «لَا حَاجَةَ لِي إِلَيْكِ!». أَوِ ٱلرَّأْسُ أَيْضًا لِلرِّجْلَيْنِ: «لَا حَاجَةَ لِي إِلَيْكُمَا!».\nبَلْ بِٱلْأَوْلَى أَعْضَاءُ ٱلْجَسَدِ ٱلَّتِي تَظْهَرُ أَضْعَفَ هِيَ ضَرُورِيَّةٌ.\nوَأَعْضَاءُ ٱلْجَسَدِ ٱلَّتِي نَحْسِبُ أَنَّهَا بِلَا كَرَامَةٍ نُعْطِيهَا كَرَامَةً أَفْضَلَ. وَٱلْأَعْضَاءُ ٱلْقَبِيحَةُ فِينَا لَهَا جَمَالٌ أَفْضَلُ.\nوَأَمَّا ٱلْجَمِيلَةُ فِينَا فَلَيْسَ لَهَا ٱحْتِيَاجٌ. لَكِنَّ ٱللهَ مَزَجَ ٱلْجَسَدَ، مُعْطِيًا ٱلنَّاقِصَ كَرَامَةً أَفْضَلَ،\nلِكَيْ لَا يَكُونَ ٱنْشِقَاقٌ فِي ٱلْجَسَدِ، بَلْ تَهْتَمُّ ٱلْأَعْضَاءُ ٱهْتِمَامًا وَاحِدًا بَعْضُهَا لِبَعْضٍ.\nفَإِنْ كَانَ عُضْوٌ وَاحِدٌ يَتَأَلَّمُ، فَجَمِيعُ ٱلْأَعْضَاءِ تَتَأَلَّمُ مَعَهُ. وَإِنْ كَانَ عُضْوٌ وَاحِدٌ يُكَرَّمُ، فَجَمِيعُ ٱلْأَعْضَاءِ تَفْرَحُ مَعَهُ.",
+        "en": "For as the body is one and has many members, and all the members of the body, being many, are one body; so also is Christ.\nFor in one Spirit we were all baptized into one body, whether Jews or Greeks, whether bond or free; and were all given to drink into one Spirit.\nFor the body is not one member, but many.\nIf the foot would say, “Because I’m not the hand, I’m not part of the body,” it is not therefore not part of the body.\nIf the ear would say, “Because I’m not the eye, I’m not part of the body,” it’s not therefore not part of the body.\nIf the whole body were an eye, where would the hearing be? If the whole were hearing, where would the smelling be?\nBut now God has set the members, each one of them, in the body, just as he desired.\nIf they were all one member, where would the body be?\nBut now they are many members, but one body.\nThe eye can’t tell the hand, “I have no need for you,” or again the head to the feet, “I have no need for you.”\nNo, much rather, those members of the body which seem to be weaker are necessary.\nThose parts of the body which we think to be less honorable, on those we bestow more abundant honor; and our unpresentable parts have more abundant modesty,\nwhile our presentable parts have no such need. But God composed the body together, giving more abundant honor to the inferior part,\nthat there should be no division in the body, but that the members should have the same care for one another.\nWhen one member suffers, all the members suffer with it. When one member is honored, all the members rejoice with it.",
+        "el": "Καθάπερ γὰρ τὸ σῶμα ἕν ἐστι καὶ μέλη ἔχει πολλά, πάντα δὲ τὰ μέλη τοῦ σώματος τοῦ ἑνός, πολλὰ ὄντα, ἕν ἐστι σῶμα, οὕτω καὶ ὁ Χριστός·\nκαὶ γὰρ ἐν ἑνὶ Πνεύματι ἡμεῖς πάντες εἰς ἓν σῶμα ἐβαπτίσθημεν, εἴτε Ἰουδαῖοι εἴτε Ἕλληνες, εἴτε δοῦλοι εἴτε ἐλεύθεροι, καὶ πάντες εἰς ἓν Πνεῦμα ἐποτίσθημεν.\nκαὶ γὰρ τὸ σῶμα οὐκ ἔστιν ἓν μέλος, ἀλλὰ πολλά.\nἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nκαὶ ἐὰν εἴπῃ τὸ οὖς, ὅτι οὐκ εἰμὶ ὀφθαλμός, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nεἰ ὅλον τὸ σῶμα ὀφθαλμός, ποῦ ἡ ἀκοή; εἰ ὅλον ἀκοή, ποῦ ἡ ὄσφρησις;\nνυνὶ δὲ ὁ Θεὸς ἔθετο τὰ μέλη ἓν ἕκαστον αὐτῶν ἐν τῷ σώματι καθὼς ἠθέλησεν.\nεἰ δὲ ἦν τὰ πάντα ἓν μέλος, ποῦ τὸ σῶμα;\nνῦν δὲ πολλὰ μὲν μέλη, ἓν δὲ σῶμα.\nοὐ δύναται δὲ ὀφθαλμὸς εἰπεῖν τῇ χειρί· χρείαν σου οὐκ ἔχω· ἢ πάλιν ἡ κεφαλὴ τοῖς ποσί· χρείαν ὑμῶν οὐκ ἔχω·\nἀλλὰ πολλῷ μᾶλλον τὰ δοκοῦντα μέλη τοῦ σώματος ἀσθενέστερα ὑπάρχειν ἀναγκαῖά ἐστι,\nκαὶ ἃ δοκοῦμεν ἀτιμότερα εἶναι τοῦ σώματος, τούτοις τιμὴν περισσοτέραν περιτίθεμεν, καὶ τὰ ἀσχήμονα ἡμῶν εὐσχημοσύνην περισσοτέραν ἔχει,\nτὰ δὲ εὐσχήμονα ἡμῶν οὐ χρείαν ἔχει. ἀλλ᾽ ὁ Θεὸς συνεκέρασε τὸ σῶμα, τῷ ὑστεροῦντι περισσοτέραν δοὺς τιμήν,\nἵνα μὴ ᾖ σχίσμα ἐν τῷ σώματι, ἀλλὰ τὸ αὐτὸ ὑπὲρ ἀλλήλων μεριμνῶσι τὰ μέλη·\nκαὶ εἴτε πάσχει ἓν μέλος, συμπάσχει πάντα τὰ μέλη, εἴτε δοξάζεται ἓν μέλος, συγχαίρει πάντα τὰ μέλη."
       },
       "source": {
         "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
@@ -585,7 +585,7 @@
       "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "1CO.11.31-34;1CO.12.1-6",
+        "canonical_reference": "1CO.12.12-26",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -596,22 +596,27 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_arabic_van_dyck",
           "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-          "canonical_reference": "1CO.11.31-34;1CO.12.1-6",
+          "canonical_reference": "1CO.12.12-26",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "917c71f924f654e4f8f211292aa3db60c1ce7ca480edf79d03936ab1ab88fd64",
-          "verse_count": 10,
+          "text_sha256": "0024d2aa2d08b03635a8c6b8b4416373b264a2bb1882daac4697f7bacb2e593c",
+          "verse_count": 15,
           "verse_hashes": [
-            "ad2a998f47754e046aed95257337ae73fb4e468a7cf930d1a4e9bed32c9a128d",
-            "a3db3fb4acd5322418aa8f57d5e4889d160713a0146f3f26eb77cb8a4cd0ca25",
-            "ba482896446df2d58f73b8a9c48b1f7a1fae14518070b6f2be7dc428819c01e0",
-            "c9891b2f962b8e506e6bad9eb4c0dadd9f8872875d1f41d93f3d7d7d79a08217",
-            "c491e527ba81768a154b2b01b01a15453049909088dc5bc5e6513cd1fe51600c",
-            "4463b71dc6b7eb7c139f863033042659a01bec7839eab71eff14fab8dd33df65",
-            "c6988937467daac879f3ad1aeac2feaf64c2138e0946f3fd66bdf409e5e72e66",
-            "27ddc197b24715ca5fca3e514491f39e882478b1e375a8d735357beeee000bca",
-            "92877f93f3c21d8d01ee8bff478a2112713f8f1c68d4388ada7647fae0ecb7cb",
-            "cde22c3f53f79c2b710189549f6e9a93192cfea718e22fef877b84d16c5109ab"
+            "591d70bd661e498cce13f3043845195b58b00a04f6315951e2e9fb2301cc7569",
+            "e19120bf6fcaaeb4a4229cb8a8cbb8033f74cf182cdc810a38dde10cf9f724c7",
+            "ca701146c3ab23e855ec795ac90181d5e7522d2d7f0f480fc75b4beed9ec423e",
+            "05b68456e1d808ccad6fe44817a5dc43b8c73de1e18b37759caaa563f76fc5c7",
+            "4540cdddbdf520a5794f648330ab7eaa22e5135aaa950dd4245302d1cfd10acb",
+            "6ba1d01daf78577b00eeb6d73f6d46d6ede673c6b5f201b2f878057d629da95f",
+            "c0838e5faf80f26c00c889ea78eff2c894a03dd09c0c6deb1a9f6aa10b4185d7",
+            "3fa4feb643c2c44cbbbf6e81cc76c012bb43133e58a9de1702691cfe7756a3d5",
+            "b432841f62e1c17e4f488c7819ba1f314811681df6b838f21d32131ea7df1e94",
+            "58f145310de74ccfa72bc6e66c7c89bf7c6d7b24152077203ae79bd9095991ca",
+            "f43cb273ba2060ea4156554f0697569063e5e6c0c9f83090a90d1c4eedbc4ae3",
+            "090dbe434ccb2c913db983fab4063636e391447141a779ad80c721d3dde64821",
+            "ca10fc8c8514e965558d92eeae4a08639fc7e15989006bc1313b4a39ca17f2a9",
+            "f66ea1f8a05fcdf4fe84112168f35b81c1a40cf62c694b20b6aa2e078335c3b1",
+            "4d43cc5f84a2711431c3d25f1f8333f7f096f7e7350ad857e2a0f1b98722d270"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -626,22 +631,27 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
           "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-          "canonical_reference": "1CO.11.31-34;1CO.12.1-6",
+          "canonical_reference": "1CO.12.12-26",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "5d0deb968d0e21c9aaca074c75c83529075de701c1d131c0ba9090abe68c2f3e",
-          "verse_count": 10,
+          "text_sha256": "49c59b20b4f54e844c417381f1132294df465ab176b6853fbc1debb76b5c8f9f",
+          "verse_count": 15,
           "verse_hashes": [
-            "b8b120da7173b21957b14baab528ed068e3b3906e45ecdbcbc9a8b577be71420",
-            "05a485110dbc212d9d755a686730e8006b31c64f9c09e08b80275bc0d16769d1",
-            "9bb1b28c63a33e2f89f54b822712542a32bca3eab7098139c0546abe3757fe8f",
-            "d5db169f48e25a0390217924b109c0bbd3c2be9c0b9e9d625dc51bb65056447f",
-            "5476816ef7e0cafc077b0a4f43979fa083e7a625c5c90928891f7ddfa04fa083",
-            "6519016f2edcb1d911dc4b4fcce431211d2df2078796ae18e84a129be94637b2",
-            "99946f342940dc5497db893b69e6773ee138ca776495136484042144fe426799",
-            "b7cc0cab1199033ae251d9442117f2ae2852ef1f621433357856c923364146c0",
-            "07e653638a7526800c2ed04075b1ad60801814fdb53c017fffa7d61fd4dce3c7",
-            "613e9cc16e23c57f98222d5770daf5aceb5542438e0e3084dbc7cc62dee38cb5"
+            "3a6c34a1d5c9a3680c28fd2a0cd37c0ea664c20e13a493a369843812546459d1",
+            "5f718463c3cca810e6dc36dc4026c2268291bfc1fd832272b58a8e16cfcd6621",
+            "1afdeab574ccdce047419148be9dc37c2c093598b15ca62e4f43aa3a2d074310",
+            "6d9d0155b8b979f9267d732d7674acfd0988fba8efaa38abd7bf044d89953463",
+            "aa4baa76b97c657d8830b78dad275395d392c0b790180a7401a04e663fc385ff",
+            "8362146ecd264931ade04b2da8a89cdd290f160524967c8e3c2f99710677fb73",
+            "04fe367c82f41900c2dc92eda2493135d340fe85de5caf5df64139b691a8d844",
+            "48c0fd7a0147f278a9a1d3b08ad885bb2269a3667bcb88f3d013ce8d47348a11",
+            "88cab85b105f11427a70ee533222eabc6cc378481afa4005aff2f349a7ba742e",
+            "f57e24934a3a82f1e26aca0a1f9ae28eb0b4c3fc4c18decc6896d3a3cc77f9f0",
+            "7029760c2fdb22e409d170b1c665f0d74d6ae6c5cee5fc8f492c42ec14388b21",
+            "f90c9da7edc72fd0dc0c6099d99f76f3760b81e9787c3a17cf265d1844482920",
+            "d3c5896c329a44aed3902ed144a8a9e68325a50aec13ae4e37fb965460d40f4f",
+            "344ae4b5dc175c6da2e72b86c653d10f757224556fe41f6421ad60ee6e44c77b",
+            "b18c7dfbc54b027dc8885ad0043cfe3a7c86327f8cdc1ae967a60a6569f7aed9"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -656,22 +666,27 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_greek_byzantine_1904",
           "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-          "canonical_reference": "1CO.11.31-34;1CO.12.1-6",
+          "canonical_reference": "1CO.12.12-26",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "ae0d3835ce3d3772bccdcddd48e88e86d1c67d24864d588f4de351df0976fb43",
-          "verse_count": 10,
+          "text_sha256": "a9d9cf018fdc5d731b56c338db55aa8b8c988dbc3ad0e84b44dd47676daf5321",
+          "verse_count": 15,
           "verse_hashes": [
-            "ce4b805a55119782bdda89a03915b5a97dcad6908b1e3d75b024eec4d26dab77",
-            "d433d96efea688f11ef4e40db2d1bf3a718992f4ee494e9c76d995635a9b7f9b",
-            "38357d0207240d4c85822f61297add05524a77d973d017b6d7ea2fe963128878",
-            "75214d44e01226febe84d692c4f7910ac0a0189744dc569c70415dd80c54e280",
-            "a2f37fbe6a6ec57b895241866dccadd51f4370e433d5d5a7c612f846f9ead5bf",
-            "a725ee9f89b133e818978505a928b16b0ec26ce82e12f11f7248617553f29db7",
-            "4d632bb47754a83e296e4be6d2b9a608e4d6ec33c9e5dc177a7650a89efef5b1",
-            "5c606d5a4726008a42eeec335e24eab64cc7b762e6268b7a9baf3bb8643af27b",
-            "d35691cc0ed3454c8c5816b2548f65116a022ac044d1d3f4a214b3fcf92dccb9",
-            "60b55359c2dcb343e4d94974ac6d902d8cbcfa64cd3ce627a1a8609e0f7da685"
+            "a0aa6ca12ebbb40d3f344915369d741a76b053d5ef37b6635cdab80c12a59509",
+            "71cdf75447a53fb6f73dea11d9def7ca8be1dc1a12f9c33e350a61cac4c78c3c",
+            "f7ddaaa9fd29271c4c2ca22a28023949db8fbd78760313f64c564b83dc09e86c",
+            "ec683095d5370c1c15dd6b1868218d5ad5344e0ee8ca217cc50aad3b3a8908ae",
+            "aec1abb7cc27c2bdd1f62d137d3e302918541414dfb5ae176bc931e3b13ad059",
+            "d7aa38741bcbb225ccd27d2cc19ca3ef77a744129c13bc1fc621bfbe20842f37",
+            "87a5d5c744631ac82bfdf032aa91dc1ed7b132f1cc88aeb319cd12d6d7389a14",
+            "0337c66e734426dea04e7182cf061f3bc2456b77266e064ffc1fd26d1b7ee1b8",
+            "87df94a0f6aa4bca24dadfc9b22e4c4c4a341874ab7abe6e509eedc8f66a9bff",
+            "e2648f4eb48ececf85efed4641babb7fd208f70c6af560f44992fa29e419d60b",
+            "122ee9c8209961875ae1826cedc50db92480750eaed6bea12c624e1c45d00357",
+            "3aea2b85cbcf68aec56d2f4785da1f24fc46701c3c63ea7e4f8b89e65485554d",
+            "aa61a371c60dad7d36ead953bc69f7af23151ce16ea1c1ea34eb53bb258249c8",
+            "0e3becaaed9cb5a9e0dec541859e890c3b1cf7ba72e7324bb4a07ffe0087d3ee",
+            "fee83cc9235516720709aa2b50c69fea3ea06fc1e48ab0bddfa18245a1bc7c7e"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -693,14 +708,14 @@
         "el": "Εὐαγγέλιο"
       },
       "reference": {
-        "ar": "إِنْجِيلُ مَتَّى 18:1-11",
-        "en": "The Good News According to Matthew 18:1-11",
-        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:1-11"
+        "ar": "إِنْجِيلُ مَتَّى 18:18-22; 19:1-2; 19:13-15",
+        "en": "The Good News According to Matthew 18:18-22; 19:1-2; 19:13-15",
+        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:18-22; 19:1-2; 19:13-15"
       },
       "body": {
-        "ar": "فِي تِلْكَ ٱلسَّاعَةِ تَقَدَّمَ ٱلتَّلَامِيذُ إِلَى يَسُوعَ قَائِلِينَ: «فَمَنْ هُوَ أَعْظَمُ فِي مَلَكُوتِ ٱلسَّمَاوَاتِ؟».\nفَدَعَا يَسُوعُ إِلَيْهِ وَلَدًا وَأَقَامَهُ فِي وَسْطِهِمْ\nوَقَالَ: «اَلْحَقَّ أَقُولُ لَكُمْ: إِنْ لَمْ تَرْجِعُوا وَتَصِيرُوا مِثْلَ ٱلْأَوْلَادِ فَلَنْ تَدْخُلُوا مَلَكُوتَ ٱلسَّمَاوَاتِ.\nفَمَنْ وَضَعَ نَفْسَهُ مِثْلَ هَذَا ٱلْوَلَدِ فَهُوَ ٱلْأَعْظَمُ فِي مَلَكُوتِ ٱلسَّمَاوَاتِ.\nوَمَنْ قَبِلَ وَلَدًا وَاحِدًا مِثْلَ هَذَا بِٱسْمِي فَقَدْ قَبِلَنِي.\nوَمَنْ أَعْثَرَ أَحَدَ هَؤُلَاءِ ٱلصِّغَارِ ٱلْمُؤْمِنِينَ بِي فَخَيْرٌ لَهُ أَنْ يُعَلَّقَ فِي عُنُقِهِ حَجَرُ ٱلرَّحَى وَيُغْرَقَ فِي لُجَّةِ ٱلْبَحْرِ.\nوَيْلٌ لِلْعَالَمِ مِنَ ٱلْعَثَرَاتِ! فَلَا بُدَّ أَنْ تَأْتِيَ ٱلْعَثَرَاتُ، وَلَكِنْ وَيْلٌ لِذَلِكَ ٱلْإِنْسَانِ ٱلَّذِي بِهِ تَأْتِي ٱلْعَثْرَةُ!\nفَإِنْ أَعْثَرَتْكَ يَدُكَ أَوْ رِجْلُكَ فَٱقْطَعْهَا وَأَلْقِهَا عَنْكَ. خَيْرٌ لَكَ أَنْ تَدْخُلَ ٱلْحَيَاةَ أَعْرَجَ أَوْ أَقْطَعَ مِنْ أَنْ تُلْقَى فِي ٱلنَّارِ ٱلْأَبَدِيَّةِ وَلَكَ يَدَانِ أَوْ رِجْلَانِ.\nوَإِنْ أَعْثَرَتْكَ عَيْنُكَ فَٱقْلَعْهَا وَأَلْقِهَا عَنْكَ. خَيْرٌ لَكَ أَنْ تَدْخُلَ ٱلْحَيَاةَ أَعْوَرَ مِنْ أَنْ تُلْقَى فِي جَهَنَّمِ ٱلنَّارِ وَلَكَ عَيْنَانِ. مَثَل الخروف الضال\n«اُنْظُرُوا، لَا تَحْتَقِرُوا أَحَدَ هَؤُلَاءِ ٱلصِّغَارِ، لِأَنِّي أَقُولُ لَكُمْ: إِنَّ مَلَائِكَتَهُمْ فِي ٱلسَّمَاوَاتِ كُلَّ حِينٍ يَنْظُرُونَ وَجْهَ أَبِي ٱلَّذِي فِي ٱلسَّمَاوَاتِ.\nلِأَنَّ ٱبْنَ ٱلْإِنْسَانِ قَدْ جَاءَ لِكَيْ يُخَلِّصَ مَا قَدْ هَلَكَ.",
-        "en": "In that hour the disciples came to Jesus, saying, “Who then is greatest in the Kingdom of Heaven?”\nJesus called a little child to himself, and set him in the middle of them\nand said, “Most certainly I tell you, unless you turn and become as little children, you will in no way enter into the Kingdom of Heaven.\nWhoever therefore humbles himself as this little child is the greatest in the Kingdom of Heaven.\nWhoever receives one such little child in my name receives me,\nbut whoever causes one of these little ones who believe in me to stumble, it would be better for him if a huge millstone were hung around his neck and that he were sunk in the depths of the sea.\n“Woe to the world because of occasions of stumbling! For it must be that the occasions come, but woe to that person through whom the occasion comes!\nIf your hand or your foot causes you to stumble, cut it off and cast it from you. It is better for you to enter into life maimed or crippled, rather than having two hands or two feet to be cast into the eternal fire.\nIf your eye causes you to stumble, pluck it out and cast it from you. It is better for you to enter into life with one eye, rather than having two eyes to be cast into the Gehenna of fire.\nSee that you don’t despise one of these little ones, for I tell you that in heaven their angels always see the face of my Father who is in heaven.\nFor the Son of Man came to save that which was lost.",
-        "el": "Ἐν ἐκείνῃ τῇ ὥρᾳ προσῆλθον οἱ μαθηταὶ τῷ Ἰησοῦ λέγοντες· τίς ἄρα μείζων ἐστὶν ἐν τῇ βασιλείᾳ τῶν οὐρανῶν;\nκαὶ προσκαλεσάμενος ὁ Ἰησοῦς παιδίον ἔστησεν αὐτὸ ἐν μέσῳ αὐτῶν καὶ εἶπεν·\nἀμὴν λέγω ὑμῖν, ἐὰν μὴ στραφῆτε καὶ γένησθε ὡς τὰ παιδία, οὐ μὴ εἰσέλθητε εἰς τὴν βασιλείαν τῶν οὐρανῶν.\nὅστις οὖν ταπεινώσει ἑαυτὸν ὡς τὸ παιδίον τοῦτο, οὗτός ἐστιν ὁ μείζων ἐν τῇ βασιλείᾳ τῶν οὐρανῶν.\nκαὶ ὃς ἐὰν δέξηται παιδίον τοιοῦτον ἓν ἐπὶ τῷ ὀνόματί μου, ἐμὲ δέχεται·\nὃς δ᾽ ἂν σκανδαλίσῃ ἕνα τῶν μικρῶν τούτων τῶν πιστευόντων εἰς ἐμέ, συμφέρει αὐτῷ ἵνα κρεμασθῇ μύλος ὀνικὸς εἰς τὸν τράχηλον αὐτοῦ καὶ καταποντισθῇ ἐν τῷ πελάγει τῆς θαλάσσης.\nΟὐαὶ τῷ κόσμῳ ἀπὸ τῶν σκανδάλων· ἀνάγκη γάρ ἐστιν ἐλθεῖν τὰ σκάνδαλα· πλὴν οὐαὶ τῷ ἀνθρώπῳ ἐκείνῳ δι᾽ οὗ τὸ σκάνδαλον ἔρχεται.\nεἰ δὲ ἡ χείρ σου ἢ ὁ πούς σου σκανδαλίζει σε, ἔκκοψον αὐτὰ καὶ βάλε ἀπὸ σοῦ· καλόν σοί ἐστιν εἰσελθεῖν εἰς τὴν ζωὴν χωλὸν ἢ κυλλόν, ἢ δύο χεῖρας ἢ δύο πόδας ἔχοντα βληθῆναι εἰς τὸ πῦρ τὸ αἰώνιον.\nκαὶ εἰ ὁ ὀφθαλμός σου σκανδαλίζει σε, ἔξελε αὐτὸν καὶ βάλε ἀπὸ σοῦ· καλόν σοί ἐστι μονόφθαλμον εἰς τὴν ζωὴν εἰσελθεῖν, ἢ δύο ὀφθαλμοὺς ἔχοντα βληθῆναι εἰς τὴν γέενναν τοῦ πυρός.\nὉρᾶτε μὴ καταφρονήσητε ἑνὸς τῶν μικρῶν τούτων· λέγω γὰρ ὑμῖν ὅτι οἱ ἄγγελοι αὐτῶν ἐν οὐρανοῖς διὰ παντὸς βλέπουσι τὸ πρόσωπον τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nἦλθε γὰρ ὁ υἱὸς τοῦ ἀνθρώπου σῶσαι τὸ ἀπολωλός."
+        "ar": "اَلْحَقَّ أَقُولُ لَكُمْ: كُلُّ مَا تَرْبِطُونَهُ عَلَى ٱلْأَرْضِ يَكُونُ مَرْبُوطًا فِي ٱلسَّمَاءِ، وَكُلُّ مَا تَحُلُّونَهُ عَلَى ٱلْأَرْضِ يَكُونُ مَحْلُولًا فِي ٱلسَّمَاءِ.\nوَأَقُولُ لَكُمْ أَيْضًا: إِنِ ٱتَّفَقَ ٱثْنَانِ مِنْكُمْ عَلَى ٱلْأَرْضِ فِي أَيِّ شَيْءٍ يَطْلُبَانِهِ فَإِنَّهُ يَكُونُ لَهُمَا مِنْ قِبَلِ أَبِي ٱلَّذِي فِي ٱلسَّمَاوَاتِ،\nلِأَنَّهُ حَيْثُمَا ٱجْتَمَعَ ٱثْنَانِ أَوْ ثَلَاثَةٌ بِٱسْمِي فَهُنَاكَ أَكُونُ فِي وَسْطِهِمْ». مَثَل العبد الذي لا يغفر\nحِينَئِذٍ تَقَدَّمَ إِلَيْهِ بُطْرُسُ وَقَالَ: «يَارَبُّ، كَمْ مَرَّةً يُخْطِئُ إِلَيَّ أَخِي وَأَنَا أَغْفِرُ لَهُ؟ هَلْ إِلَى سَبْعِ مَرَّاتٍ؟».\nقَالَ لَهُ يَسُوعُ: «لَا أَقُولُ لَكَ إِلَى سَبْعِ مَرَّاتٍ، بَلْ إِلَى سَبْعِينَ مَرَّةً سَبْعَ مَرَّاتٍ.\nوَلَمَّا أَكْمَلَ يَسُوعُ هَذَا ٱلْكَلَامَ ٱنْتَقَلَ مِنَ ٱلْجَلِيلِ وَجَاءَ إِلَى تُخُومِ ٱلْيَهُودِيَّةِ مِنْ عَبْرِ ٱلْأُرْدُنِّ.\nوَتَبِعَتْهُ جُمُوعٌ كَثِيرَةٌ فَشَفَاهُمْ هُنَاكَ.\nحِينَئِذٍ قُدِّمَ إِلَيْهِ أَوْلَادٌ لِكَيْ يَضَعَ يَدَيْهِ عَلَيْهِمْ وَيُصَلِّيَ، فَٱنْتَهَرَهُمُ ٱلتَّلَامِيذُ.\nأَمَّا يَسُوعُ فَقَالَ: «دَعُوا ٱلْأَوْلَادَ يَأْتُونَ إِلَيَّ وَلَا تَمْنَعُوهُمْ لِأَنَّ لِمِثْلِ هَؤُلَاءِ مَلَكُوتَ ٱلسَّمَاوَاتِ».\nفَوَضَعَ يَدَيْهِ عَلَيْهِمْ، وَمَضَى مِنْ هُنَاكَ. الشاب الغني",
+        "en": "Most certainly I tell you, whatever things you bind on earth will have been bound in heaven, and whatever things you release on earth will have been released in heaven.\nAgain, assuredly I tell you, that if two of you will agree on earth concerning anything that they will ask, it will be done for them by my Father who is in heaven.\nFor where two or three are gathered together in my name, there I am in the middle of them.”\nThen Peter came and said to him, “Lord, how often shall my brother sin against me, and I forgive him? Until seven times?”\nJesus said to him, “I don’t tell you until seven times, but, until seventy times seven.\nWhen Jesus had finished these words, he departed from Galilee and came into the borders of Judea beyond the Jordan.\nGreat multitudes followed him, and he healed them there.\nThen little children were brought to him that he should lay his hands on them and pray; and the disciples rebuked them.\nBut Jesus said, “Allow the little children, and don’t forbid them to come to me; for the Kingdom of Heaven belongs to ones like these.”\nHe laid his hands on them, and departed from there.",
+        "el": "Ἀμὴν λέγω ὑμῖν, ὅσα ἐὰν δήσητε ἐπὶ τῆς γῆς, ἔσται δεδεμένα ἐν τῷ οὐρανῷ, καὶ ὅσα ἐὰν λύσητε ἐπὶ τῆς γῆς, ἔσται λελυμένα ἐν τῷ οὐρανῷ.\nΠάλιν ἀμὴν λέγω ὑμῖν ὅτι ἐὰν δύο ὑμῶν συμφωνήσωσιν ἐπὶ τῆς γῆς περὶ παντὸς πράγματος οὗ ἐὰν αἰτήσωνται, γενήσεται αὐτοῖς παρὰ τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nοὗ γάρ εἰσι δύο ἢ τρεῖς συνηγμένοι εἰς τὸ ἐμὸν ὄνομα, ἐκεῖ εἰμι ἐν μέσῳ αὐτῶν.\nΤότε προσελθὼν αὐτῷ ὁ Πέτρος εἶπε· Κύριε, ποσάκις ἁμαρτήσει εἰς ἐμὲ ὁ ἀδελφός μου καὶ ἀφήσω αὐτῷ; ἕως ἑπτάκις;\nλέγει αὐτῷ ὁ Ἰησοῦς· οὐ λέγω σοι ἕως ἑπτάκις, ἀλλ᾽ ἕως ἑβδομηκοντάκις ἑπτά.\nΚαὶ ἐγένετο ὅτε ἐτέλεσεν ὁ Ἰησοῦς τοὺς λόγους τούτους μετῆρεν ἀπὸ τῆς Γαλιλαίας καὶ ἦλθεν εἰς τὰ ὅρια τῆς Ἰουδαίας πέραν τοῦ Ἰορδάνου.\nκαὶ ἠκολούθησαν αὐτῷ ὄχλοι πολλοί, καὶ ἐθεράπευσεν αὐτοὺς ἐκεῖ.\nΤότε προσηνέχθη αὐτῷ παιδία, ἵνα ἐπιθῇ αὐτοῖς τὰς χεῖρας καὶ προσεύξηται· οἱ δὲ μαθηταὶ ἐπετίμησαν αὐτοῖς.\nὁ δὲ Ἰησοῦς εἶπεν· ἄφετε τὰ παιδία καὶ μὴ κωλύετε αὐτὰ ἐλθεῖν πρός με· τῶν γὰρ τοιούτων ἐστὶν ἡ βασιλεία τῶν οὐρανῶν.\nκαὶ ἐπιθεὶς τὰς χεῖρας αὐτοῖς ἐπορεύθη ἐκεῖθεν."
       },
       "source": {
         "ar": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
@@ -710,7 +725,7 @@
       "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "MAT.18.1-11",
+        "canonical_reference": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
@@ -721,23 +736,22 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_arabic_van_dyck",
           "source_url": "https://ebible.org/Scriptures/arb-vd_usfm.zip",
-          "canonical_reference": "MAT.18.1-11",
+          "canonical_reference": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "8fcd4a167580fea5fcd9b47371e6c72dc6256edea82006a37b340a3a05704ec5",
-          "verse_count": 11,
+          "text_sha256": "e4e7142f3d2a27401d6b9ef09835fc8575b35b3f4fff4cae0225bde7e8100af7",
+          "verse_count": 10,
           "verse_hashes": [
-            "231ad720d2d84f603d573a01d0f1c39a512920da30f11e44af05cb5bce6fa068",
-            "6fc51e991a4a1dfa303afff467c71838b4cce440c326e818f28f0f41abcc45f3",
-            "f36431330dc8a045c178ac43e0de062ab51d184b0dad2d048fb700d9cb36d557",
-            "9a7bebeff3ff88f25e8c5406166e1ca1ef76d21094cc4c9cd5b0a6a08a9cdcfd",
-            "e2a2e8ed9346c441a73b147fa69554966757f3ea418582613e4ceeebe26e6ba0",
-            "c5e935cf854c7b05c02aaa8c3802cbd2ba5e1c8d18bc0872b8a5de46764a6c41",
-            "1e72c4f495055b2d88d16d5c9b98c053edc020358ff9ddb382b6697966059f00",
-            "30cf8152c942caef51052eaa74aaa034ccf07784a4cb427b37f82306d43214b3",
-            "8634684e4f002f40c3af57de1f03c529bcc10e2532c8b85e2c18281421e69dbf",
-            "e68689c41356f726b1bdb8749b06c8d0f501e21c8752e13a12588866715d2554",
-            "68f626707cf2b042777fdd413287ad5f4656d49e6ff47d5b160900fd892687ce"
+            "6357703f1ec2646e095ec7f81bb8b86f8f430a07baf18a08a8d3089d67a670a4",
+            "eef378589ceb331be433932dc93b5a958e2c0a98eb9086566097cc12fa56fe6a",
+            "45657cbf0d69d85811413aa41b312e4350fe4de3ad3d98d6a25be949cfbdcb02",
+            "f2e458436fa8bb8a95f3e526c5610caba43e683e85d6ea441a0fc270793f16b3",
+            "5d7bb160a0a233ea10223d8927bf7c8476fa617a48386203eaef95e5a3508b2f",
+            "501d463aeb6423ac3b74caa004c0d8475b828cecfd53ddeed84edcd433f30dcc",
+            "c555141b6f5b8190c2d3614a18c8649fb37c501c59360b61c81d1b006c168899",
+            "fae686bcd036866c4ad1c29ed31e6437d4da82dd6f4e0ce7568f8b1406282ed7",
+            "d443c187f24f77a3aac9e14c543f78e298097d78725a8b8d5630287359229b3b",
+            "856963d4deb6eaecd57412c5231ca3f56d07a5a20b67a4ed68dcdf263f254dbc"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -752,23 +766,22 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_world_english_bible",
           "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
-          "canonical_reference": "MAT.18.1-11",
+          "canonical_reference": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "e1f4fe9a13d242faf62c31d97b242c6c5979d568bc8183ecef309d7ad34c7f90",
-          "verse_count": 11,
+          "text_sha256": "098195b5a1f18f7425dbde6e871d6548adb5822b730108246f206f726b5ac339",
+          "verse_count": 10,
           "verse_hashes": [
-            "9ee9ec28638263233f9ad923473eb84eadb6a380901b7d34a378b8ea513368a5",
-            "ac832a495bc3ed400275eb9ab4a7ad550af2f0b5e750c82382cf6bd983bcfdf6",
-            "10dfbe67fea622fe5420aa3673eb9be6a5cb2382b432cdacd46d5c7d6a19ef63",
-            "7d7c8dc5f3fddb737857d1ed26c606dd8daa0ba5dabddda7bf772677e5cf25bd",
-            "12fa1f867d7ab8284f1a636d671ada4127a01b87641d6d32e11a3102af93f502",
-            "07dce949507dad25e3b208841c99aa62c44ad537a6e578472ac1180b54f59c17",
-            "ad33cd6146ce65e3a6e32c49832652f8f504dab9d0b1b7b9f6f9fad201a5f5f7",
-            "10ccda8a4949f9367592b1cbb64978b2e4fd64a1607af3ad371c8a685eb24c87",
-            "7b94bb75f1244e110e4812fa5515208ad12e62eff1765a575a9d828fa6b18b30",
-            "309928af3e6be0ea330fe5ff9d1b85e4c3af7dfc2e0ac1177ba9d5c4c454dbee",
-            "02b0fd7e55c4e805a4dbfae57ab92ae2bab93787c9abf6d17634226c54850f7e"
+            "35abadf3d036e3367a6e0386ba2378cd128e12828363710b3f1f235eccbec442",
+            "9790b70c11dd84b87a271444782d0e8cff49d6ab59db9f0275a645af8597b646",
+            "e9c11b90ce109c273e467b7b8251ebaf6652814111e3f333a7cfe0d5b3d9de63",
+            "75688441360570a885d26517d3a65c16b0227598c2d4c789c2b0d7c72299e68f",
+            "5c778f72d59ffd924ac0c08913fe1dcfb134737acbc2d4256d226a9daaa01f0f",
+            "7877544cf236313172d41d2ca41e91220114a333f41a099d6d445793a64bedde",
+            "db5a900266ed89e0194521e8f89a4b38bf56620caf71be2e85778767ce38d08a",
+            "e45b1a9d023bd82ecee83235c192b4834f90914e24ff220339319b3783d58a03",
+            "aeebc89eb14041fae9526f007d830ab1c7e040f45c7787527dd8883ff7822303",
+            "92c23b0a6d1708b0261848f69b8854137e4f6088cda7f56a8edd4595fa31619e"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -783,23 +796,22 @@
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
           "source_id": "ebible_greek_byzantine_1904",
           "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-          "canonical_reference": "MAT.18.1-11",
+          "canonical_reference": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "c787be0d88be8f91376526648d57ea143697a99b3785b7269da3139f6023f433",
-          "verse_count": 11,
+          "text_sha256": "660846e3639ba2d8358098658ab03015a635e5fe8dbc275520665b5406ff60fd",
+          "verse_count": 10,
           "verse_hashes": [
-            "8df177686e6568937385a4f8a44cbc3da248f1d98ec9367c67e5b9c162ae778c",
-            "15974c2b4cf54d3884c28db9362d9dbe7a97d7694485c06ffc751c0d7a889f88",
-            "51793b489ddb4ece53ab3f7faa80d183cc1bd81f0aead1e31e05db9357eefb4a",
-            "b0119cfebb3d925ce953bf5a39e7697c0bb4c82496ac86e9c75f9b148a8ef2b1",
-            "3b28eb0e32e8906125b752e62da60fa7db1e35bcb6b20c55195cc76399584b68",
-            "bbf0542da7ab97d4e593178cf20f738382244a6c72420936ab6670f1a82cde24",
-            "e44d5ece37273a2099a95e4376465cfe34d8e16d1c4ec898481b86ec91a504a1",
-            "84996b3158659f1343ebf7bc8cb56a9e152e8ef8feb9b19b0a0f5d3f071a499e",
-            "9843215f374ad8ab488254191419891205b982576017f55119f974c53efab17f",
-            "d5df7a70f98135e112be6a80e1b8a6afb129e70355e4f5ac7cc6a31e6b5b8610",
-            "7234c6cb968bab57959517527423b0e743023f65363ebc79f89bafb220f95927"
+            "6c3a65f098b008aae507c482dc12c63504a92ce67cf9cfea12f9234952391910",
+            "67fff385a9d75ebf6a4ea72195a02d73ec32b49241e8516118f4deb8dab3ae2c",
+            "940d7596d7d7a6c1ca478c591511ad805e3587b5168ee9572202907f44fb4ef6",
+            "1a07a8e960ea2c05b28e2d713cef8adc72f8ae0b348188919dc7b7cab124b539",
+            "506b455201535e20d50706260b5cd570f25a1b0d04587becf13d95d026fc9af7",
+            "bb6fc3fc95c3486ea865534d48e5d5ac48984a6f12167f5b752cea6c7eba70b0",
+            "b433a083069abca0512344e37381ca52977bacef1720d547b8c711fb70243a8c",
+            "a0e914f3d879f37c1a544366f3e387b90d68b56ca5a68e22018192f02a62c993",
+            "d6401dcefd0576a3cd28828a913bad662dc518adc72f08e9dee26fef285ec4d5",
+            "2b8d2ffea2af9d954f0f8b76a269fdd360e46312947d5df3bed6062a6482d399"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -1376,13 +1388,13 @@
       ]
     },
     "upcoming_reference_dates": [
-      "2026-07-28",
       "2026-07-29",
       "2026-07-30",
       "2026-07-31",
       "2026-08-01",
       "2026-08-02",
-      "2026-08-03"
+      "2026-08-03",
+      "2026-08-04"
     ]
   },
   "recommended_services": [
@@ -1410,14 +1422,14 @@
       "source_language": "ar",
       "translation_status": "verified_daily_overlay_v3_appointed_rite",
       "template_id": "library:divine_liturgy",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-28",
       "selected_liturgy_type": "chrysostom",
       "selected_liturgy": {
         "service_type": "chrysostom",
         "rule_id": "ordinary_chrysostom_baseline",
         "authority": "canonical/liturgy_service_rules.json",
         "source_url": "",
-        "pascha_offset": 106,
+        "pascha_offset": 107,
         "label": {
           "ar": "قداس القديس يوحنا الذهبي الفم",
           "en": "Divine Liturgy of Saint John Chrysostom",
@@ -1447,7 +1459,7 @@
         "selection_rule_id": "ordinary_chrysostom_baseline",
         "selection_authority": "canonical/liturgy_service_rules.json",
         "selection_source_url": "",
-        "pascha_offset": 106,
+        "pascha_offset": 107,
         "native_editions": {
           "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
           "en": "IMPORTED_NATIVE_AUTHORIZED",
@@ -1469,11 +1481,11 @@
       "daily_reading_contract": {
         "authority": "orthodox_jordan",
         "contract": "canonical/jordan_liturgical_contract.json",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "selected_liturgy_type": "chrysostom",
         "selected_liturgy_rule_id": "ordinary_chrysostom_baseline",
-        "epistle_canonical": "1CO.11.31-34;1CO.12.1-6",
-        "gospel_canonical": "MAT.18.1-11",
+        "epistle_canonical": "1CO.12.12-26",
+        "gospel_canonical": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
         "matins_gospel_canonical": "",
         "resurrection_tone": null,
         "eothinon": null,
@@ -1518,19 +1530,19 @@
           "el": ""
         },
         "[البروكيمنن]": {
-          "ar": "مزمور 103:4، 1\nالصانع ملائكته أرواحًا وخدامه لهيب نار.\nباركي يا نفسي الرب. يا رب إلهي لقد عظمت جدًا.",
-          "en": "Psalm 103:4, 1 (LXX)\nHe makes His angels spirits, and His ministers a flame of fire.\nBless the Lord, O my soul! O Lord my God, You are very great!",
-          "el": "Ψαλμός 103:4, 1\nὉ ποιῶν τοὺς ἀγγέλους αὐτοῦ πνεύματα, καὶ τοὺς λειτουργοὺς αὐτοῦ πυρὸς φλόγα.\nΕὐλόγει, ἡ ψυχή μου, τὸν Κύριον· Κύριε ὁ Θεός μου, ἐμεγαλύνθης σφόδρα."
+          "ar": "مزمور 63:11، 2\nيفرح الصديق بالرب ويتكل عليه.\nاستمع يا الله إلى صوتي في تضرعي إليك.",
+          "en": "Psalm 63:11, 2 (LXX)\nThe righteous shall rejoice in the Lord and shall hope in Him.\nHear my voice, O God, when I pray to You.",
+          "el": "Ψαλμός 63:11, 2\nΕὐφρανθήσεται δίκαιος ἐν Κυρίῳ καὶ ἐλπιεῖ ἐπ᾽ αὐτόν.\nΕἰσάκουσον, ὁ Θεός, τῆς φωνῆς μου ἐν τῷ δέεσθαί με πρὸς σέ."
         },
         "[فصل من رسالة اليوم]": {
-          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 11:31-34; 12:1-6\nلِأَنَّنَا لَوْ كُنَّا حَكَمْنَا عَلَى أَنْفُسِنَا لَمَا حُكِمَ عَلَيْنَا،\nوَلَكِنْ إِذْ قَدْ حُكِمَ عَلَيْنَا، نُؤَدَّبُ مِنَ ٱلرَّبِّ لِكَيْ لَا نُدَانَ مَعَ ٱلْعَالَمِ.\nإِذًا يَا إِخْوَتِي، حِينَ تَجْتَمِعُونَ لِلْأَكْلِ، ٱنْتَظِرُوا بَعْضُكُمْ بَعْضًا.\nإِنْ كَانَ أَحَدٌ يَجُوعُ فَلْيَأْكُلْ فِي ٱلْبَيْتِ، كَيْ لَا تَجْتَمِعُوا لِلدَّيْنُونَةِ. وَأَمَّا ٱلْأُمُورُ ٱلْبَاقِيَةُ فَعِنْدَمَا أَجِيءُ أُرَتِّبُهَا.\nوَأَمَّا مِنْ جِهَةِ ٱلْمَوَاهِبِ ٱلرُّوحِيَّةِ أَيُّهَا ٱلْإِخْوَةُ، فَلَسْتُ أُرِيدُ أَنْ تَجْهَلُوا.\nأَنْتُمْ تَعْلَمُونَ أَنَّكُمْ كُنْتُمْ أُمَمًا مُنْقَادِينَ إِلَى ٱلْأَوْثَانِ ٱلْبُكْمِ، كَمَا كُنْتُمْ تُسَاقُونَ.\nلِذَلِكَ أُعَرِّفُكُمْ أَنْ لَيْسَ أَحَدٌ وَهُوَ يَتَكَلَّمُ بِرُوحِ ٱللهِ يَقُولُ: «يَسُوعُ أَنَاثِيمَا». وَلَيْسَ أَحَدٌ يَقْدِرُ أَنْ يَقُولَ: «يَسُوعُ رَبٌّ» إِلَّا بِٱلرُّوحِ ٱلْقُدُسِ.\nفَأَنْوَاعُ مَوَاهِبَ مَوْجُودَةٌ، وَلَكِنَّ ٱلرُّوحَ وَاحِدٌ.\nوَأَنْوَاعُ خِدَمٍ مَوْجُودَةٌ، وَلَكِنَّ ٱلرَّبَّ وَاحِدٌ.\nوَأَنْوَاعُ أَعْمَالٍ مَوْجُودَةٌ، وَلَكِنَّ ٱللهَ وَاحِدٌ، ٱلَّذِي يَعْمَلُ ٱلْكُلَّ فِي ٱلْكُلِّ.",
-          "en": "Paul’s First Letter to the Corinthians 11:31-34; 12:1-6\nFor if we discerned ourselves, we wouldn’t be judged.\nBut when we are judged, we are disciplined by the Lord, that we may not be condemned with the world.\nTherefore, my brothers, when you come together to eat, wait for one another.\nBut if anyone is hungry, let him eat at home, lest your coming together be for judgment. The rest I will set in order whenever I come.\nNow concerning spiritual things, brothers, I don’t want you to be ignorant.\nYou know that when you were heathen, you were led away to those mute idols, however you might be led.\nTherefore I make known to you that no man speaking by God’s Spirit says, “Jesus is accursed.” No one can say, “Jesus is Lord,” but by the Holy Spirit.\nNow there are various kinds of gifts, but the same Spirit.\nThere are various kinds of service, and the same Lord.\nThere are various kinds of workings, but the same God who works all things in all.",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 11:31-34; 12:1-6\nεἰ γὰρ ἑαυτοὺς διεκρίνομεν, οὐκ ἂν ἐκρινόμεθα·\nκρινόμενοι δὲ ὑπὸ [τοῦ] Κυρίου παιδευόμεθα, ἵνα μὴ σὺν τῷ κόσμῳ κατακριθῶμεν.\nὭστε, ἀδελφοί μου, συνερχόμενοι εἰς τὸ φαγεῖν ἀλλήλους ἐκδέχεσθε·\nεἰ δέ τις πεινᾷ, ἐν οἴκῳ ἐσθιέτω, ἵνα μὴ εἰς κρῖμα συνέρχησθε. Τὰ δὲ λοιπὰ ὡς ἂν ἔλθω διατάξομαι.\nΠερὶ δὲ τῶν πνευματικῶν, ἀδελφοί, οὐ θέλω ὑμᾶς ἀγνοεῖν.\nοἴδατε ὅτι, ὅτε ἔθνη ἦτε, πρὸς τὰ εἴδωλα τὰ ἄφωνα ὡς ἂν ἤγεσθε ἀπαγόμενοι.\nδιὸ γνωρίζω ὑμῖν ὅτι οὐδεὶς ἐν Πνεύματι Θεοῦ λαλῶν λέγει ἀνάθεμα Ἰησοῦν, καὶ οὐδεὶς δύναται εἰπεῖν Κύριον Ἰησοῦν εἰ μὴ ἐν Πνεύματι Ἁγίῳ.\nΔιαιρέσεις δὲ χαρισμάτων εἰσί, τὸ δὲ αὐτὸ Πνεῦμα·\nκαὶ διαιρέσεις διακονιῶν εἰσι, καὶ ὁ αὐτὸς Κύριος·\nκαὶ διαιρέσεις ἐνεργημάτων εἰσίν, ὁ δὲ αὐτός ἐστι Θεός, ὁ ἐνεργῶν τὰ πάντα ἐν πᾶσιν."
+          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 12:12-26\nلِأَنَّهُ كَمَا أَنَّ ٱلْجَسَدَ هُوَ وَاحِدٌ وَلَهُ أَعْضَاءٌ كَثِيرَةٌ، وَكُلُّ أَعْضَاءِ ٱلْجَسَدِ ٱلْوَاحِدِ إِذَا كَانَتْ كَثِيرَةً هِيَ جَسَدٌ وَاحِدٌ، كَذَلِكَ ٱلْمَسِيحُ أَيْضًا.\nلِأَنَّنَا جَمِيعَنَا بِرُوحٍ وَاحِدٍ أَيْضًا ٱعْتَمَدْنَا إِلَى جَسَدٍ وَاحِدٍ، يَهُودًا كُنَّا أَمْ يُونَانِيِّينَ، عَبِيدًا أَمْ أَحْرَارًا، وَجَمِيعُنَا سُقِينَا رُوحًا وَاحِدًا.\nفَإِنَّ ٱلْجَسَدَ أَيْضًا لَيْسَ عُضْوًا وَاحِدًا بَلْ أَعْضَاءٌ كَثِيرَةٌ.\nإِنْ قَالَتِ ٱلرِّجْلُ: «لِأَنِّي لَسْتُ يَدًا، لَسْتُ مِنَ ٱلْجَسَدِ». أَفَلَمْ تَكُنْ لِذَلِكَ مِنَ ٱلْجَسَدِ؟\nوَإِنْ قَالَتِ ٱلْأُذُنُ: «لِأِنِّي لَسْتُ عَيْنًا، لَسْتُ مِنَ ٱلْجَسَدِ». أَفَلَمْ تَكُنْ لِذَلِكَ مِنَ ٱلْجَسَدِ؟\nلَوْ كَانَ كُلُّ ٱلْجَسَدِ عَيْنًا، فَأَيْنَ ٱلسَّمْعُ؟ لَوْ كَانَ ٱلْكُلُّ سَمْعًا، فَأَيْنَ ٱلشَّمُّ؟\nوَأَمَّا ٱلْآنَ فَقَدْ وَضَعَ ٱللهُ ٱلْأَعْضَاءَ، كُلَّ وَاحِدٍ مِنْهَا فِي ٱلْجَسَدِ، كَمَا أَرَادَ.\nوَلَكِنْ لَوْ كَانَ جَمِيعُهَا عُضْوًا وَاحِدًا، أَيْنَ ٱلْجَسَدُ؟\nفَٱلْآنَ أَعْضَاءٌ كَثِيرَةٌ، وَلَكِنْ جَسَدٌ وَاحِدٌ.\nلَا تَقْدِرُ ٱلْعَيْنُ أَن تَقُولَ لِلْيَدِ: «لَا حَاجَةَ لِي إِلَيْكِ!». أَوِ ٱلرَّأْسُ أَيْضًا لِلرِّجْلَيْنِ: «لَا حَاجَةَ لِي إِلَيْكُمَا!».\nبَلْ بِٱلْأَوْلَى أَعْضَاءُ ٱلْجَسَدِ ٱلَّتِي تَظْهَرُ أَضْعَفَ هِيَ ضَرُورِيَّةٌ.\nوَأَعْضَاءُ ٱلْجَسَدِ ٱلَّتِي نَحْسِبُ أَنَّهَا بِلَا كَرَامَةٍ نُعْطِيهَا كَرَامَةً أَفْضَلَ. وَٱلْأَعْضَاءُ ٱلْقَبِيحَةُ فِينَا لَهَا جَمَالٌ أَفْضَلُ.\nوَأَمَّا ٱلْجَمِيلَةُ فِينَا فَلَيْسَ لَهَا ٱحْتِيَاجٌ. لَكِنَّ ٱللهَ مَزَجَ ٱلْجَسَدَ، مُعْطِيًا ٱلنَّاقِصَ كَرَامَةً أَفْضَلَ،\nلِكَيْ لَا يَكُونَ ٱنْشِقَاقٌ فِي ٱلْجَسَدِ، بَلْ تَهْتَمُّ ٱلْأَعْضَاءُ ٱهْتِمَامًا وَاحِدًا بَعْضُهَا لِبَعْضٍ.\nفَإِنْ كَانَ عُضْوٌ وَاحِدٌ يَتَأَلَّمُ، فَجَمِيعُ ٱلْأَعْضَاءِ تَتَأَلَّمُ مَعَهُ. وَإِنْ كَانَ عُضْوٌ وَاحِدٌ يُكَرَّمُ، فَجَمِيعُ ٱلْأَعْضَاءِ تَفْرَحُ مَعَهُ.",
+          "en": "Paul’s First Letter to the Corinthians 12:12-26\nFor as the body is one and has many members, and all the members of the body, being many, are one body; so also is Christ.\nFor in one Spirit we were all baptized into one body, whether Jews or Greeks, whether bond or free; and were all given to drink into one Spirit.\nFor the body is not one member, but many.\nIf the foot would say, “Because I’m not the hand, I’m not part of the body,” it is not therefore not part of the body.\nIf the ear would say, “Because I’m not the eye, I’m not part of the body,” it’s not therefore not part of the body.\nIf the whole body were an eye, where would the hearing be? If the whole were hearing, where would the smelling be?\nBut now God has set the members, each one of them, in the body, just as he desired.\nIf they were all one member, where would the body be?\nBut now they are many members, but one body.\nThe eye can’t tell the hand, “I have no need for you,” or again the head to the feet, “I have no need for you.”\nNo, much rather, those members of the body which seem to be weaker are necessary.\nThose parts of the body which we think to be less honorable, on those we bestow more abundant honor; and our unpresentable parts have more abundant modesty,\nwhile our presentable parts have no such need. But God composed the body together, giving more abundant honor to the inferior part,\nthat there should be no division in the body, but that the members should have the same care for one another.\nWhen one member suffers, all the members suffer with it. When one member is honored, all the members rejoice with it.",
+          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26\nΚαθάπερ γὰρ τὸ σῶμα ἕν ἐστι καὶ μέλη ἔχει πολλά, πάντα δὲ τὰ μέλη τοῦ σώματος τοῦ ἑνός, πολλὰ ὄντα, ἕν ἐστι σῶμα, οὕτω καὶ ὁ Χριστός·\nκαὶ γὰρ ἐν ἑνὶ Πνεύματι ἡμεῖς πάντες εἰς ἓν σῶμα ἐβαπτίσθημεν, εἴτε Ἰουδαῖοι εἴτε Ἕλληνες, εἴτε δοῦλοι εἴτε ἐλεύθεροι, καὶ πάντες εἰς ἓν Πνεῦμα ἐποτίσθημεν.\nκαὶ γὰρ τὸ σῶμα οὐκ ἔστιν ἓν μέλος, ἀλλὰ πολλά.\nἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nκαὶ ἐὰν εἴπῃ τὸ οὖς, ὅτι οὐκ εἰμὶ ὀφθαλμός, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nεἰ ὅλον τὸ σῶμα ὀφθαλμός, ποῦ ἡ ἀκοή; εἰ ὅλον ἀκοή, ποῦ ἡ ὄσφρησις;\nνυνὶ δὲ ὁ Θεὸς ἔθετο τὰ μέλη ἓν ἕκαστον αὐτῶν ἐν τῷ σώματι καθὼς ἠθέλησεν.\nεἰ δὲ ἦν τὰ πάντα ἓν μέλος, ποῦ τὸ σῶμα;\nνῦν δὲ πολλὰ μὲν μέλη, ἓν δὲ σῶμα.\nοὐ δύναται δὲ ὀφθαλμὸς εἰπεῖν τῇ χειρί· χρείαν σου οὐκ ἔχω· ἢ πάλιν ἡ κεφαλὴ τοῖς ποσί· χρείαν ὑμῶν οὐκ ἔχω·\nἀλλὰ πολλῷ μᾶλλον τὰ δοκοῦντα μέλη τοῦ σώματος ἀσθενέστερα ὑπάρχειν ἀναγκαῖά ἐστι,\nκαὶ ἃ δοκοῦμεν ἀτιμότερα εἶναι τοῦ σώματος, τούτοις τιμὴν περισσοτέραν περιτίθεμεν, καὶ τὰ ἀσχήμονα ἡμῶν εὐσχημοσύνην περισσοτέραν ἔχει,\nτὰ δὲ εὐσχήμονα ἡμῶν οὐ χρείαν ἔχει. ἀλλ᾽ ὁ Θεὸς συνεκέρασε τὸ σῶμα, τῷ ὑστεροῦντι περισσοτέραν δοὺς τιμήν,\nἵνα μὴ ᾖ σχίσμα ἐν τῷ σώματι, ἀλλὰ τὸ αὐτὸ ὑπὲρ ἀλλήλων μεριμνῶσι τὰ μέλη·\nκαὶ εἴτε πάσχει ἓν μέλος, συμπάσχει πάντα τὰ μέλη, εἴτε δοξάζεται ἓν μέλος, συγχαίρει πάντα τὰ μέλη."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
-          "ar": "إِنْجِيلُ مَتَّى 18:1-11\nفِي تِلْكَ ٱلسَّاعَةِ تَقَدَّمَ ٱلتَّلَامِيذُ إِلَى يَسُوعَ قَائِلِينَ: «فَمَنْ هُوَ أَعْظَمُ فِي مَلَكُوتِ ٱلسَّمَاوَاتِ؟».\nفَدَعَا يَسُوعُ إِلَيْهِ وَلَدًا وَأَقَامَهُ فِي وَسْطِهِمْ\nوَقَالَ: «اَلْحَقَّ أَقُولُ لَكُمْ: إِنْ لَمْ تَرْجِعُوا وَتَصِيرُوا مِثْلَ ٱلْأَوْلَادِ فَلَنْ تَدْخُلُوا مَلَكُوتَ ٱلسَّمَاوَاتِ.\nفَمَنْ وَضَعَ نَفْسَهُ مِثْلَ هَذَا ٱلْوَلَدِ فَهُوَ ٱلْأَعْظَمُ فِي مَلَكُوتِ ٱلسَّمَاوَاتِ.\nوَمَنْ قَبِلَ وَلَدًا وَاحِدًا مِثْلَ هَذَا بِٱسْمِي فَقَدْ قَبِلَنِي.\nوَمَنْ أَعْثَرَ أَحَدَ هَؤُلَاءِ ٱلصِّغَارِ ٱلْمُؤْمِنِينَ بِي فَخَيْرٌ لَهُ أَنْ يُعَلَّقَ فِي عُنُقِهِ حَجَرُ ٱلرَّحَى وَيُغْرَقَ فِي لُجَّةِ ٱلْبَحْرِ.\nوَيْلٌ لِلْعَالَمِ مِنَ ٱلْعَثَرَاتِ! فَلَا بُدَّ أَنْ تَأْتِيَ ٱلْعَثَرَاتُ، وَلَكِنْ وَيْلٌ لِذَلِكَ ٱلْإِنْسَانِ ٱلَّذِي بِهِ تَأْتِي ٱلْعَثْرَةُ!\nفَإِنْ أَعْثَرَتْكَ يَدُكَ أَوْ رِجْلُكَ فَٱقْطَعْهَا وَأَلْقِهَا عَنْكَ. خَيْرٌ لَكَ أَنْ تَدْخُلَ ٱلْحَيَاةَ أَعْرَجَ أَوْ أَقْطَعَ مِنْ أَنْ تُلْقَى فِي ٱلنَّارِ ٱلْأَبَدِيَّةِ وَلَكَ يَدَانِ أَوْ رِجْلَانِ.\nوَإِنْ أَعْثَرَتْكَ عَيْنُكَ فَٱقْلَعْهَا وَأَلْقِهَا عَنْكَ. خَيْرٌ لَكَ أَنْ تَدْخُلَ ٱلْحَيَاةَ أَعْوَرَ مِنْ أَنْ تُلْقَى فِي جَهَنَّمِ ٱلنَّارِ وَلَكَ عَيْنَانِ. مَثَل الخروف الضال\n«اُنْظُرُوا، لَا تَحْتَقِرُوا أَحَدَ هَؤُلَاءِ ٱلصِّغَارِ، لِأَنِّي أَقُولُ لَكُمْ: إِنَّ مَلَائِكَتَهُمْ فِي ٱلسَّمَاوَاتِ كُلَّ حِينٍ يَنْظُرُونَ وَجْهَ أَبِي ٱلَّذِي فِي ٱلسَّمَاوَاتِ.\nلِأَنَّ ٱبْنَ ٱلْإِنْسَانِ قَدْ جَاءَ لِكَيْ يُخَلِّصَ مَا قَدْ هَلَكَ.",
-          "en": "The Good News According to Matthew 18:1-11\nIn that hour the disciples came to Jesus, saying, “Who then is greatest in the Kingdom of Heaven?”\nJesus called a little child to himself, and set him in the middle of them\nand said, “Most certainly I tell you, unless you turn and become as little children, you will in no way enter into the Kingdom of Heaven.\nWhoever therefore humbles himself as this little child is the greatest in the Kingdom of Heaven.\nWhoever receives one such little child in my name receives me,\nbut whoever causes one of these little ones who believe in me to stumble, it would be better for him if a huge millstone were hung around his neck and that he were sunk in the depths of the sea.\n“Woe to the world because of occasions of stumbling! For it must be that the occasions come, but woe to that person through whom the occasion comes!\nIf your hand or your foot causes you to stumble, cut it off and cast it from you. It is better for you to enter into life maimed or crippled, rather than having two hands or two feet to be cast into the eternal fire.\nIf your eye causes you to stumble, pluck it out and cast it from you. It is better for you to enter into life with one eye, rather than having two eyes to be cast into the Gehenna of fire.\nSee that you don’t despise one of these little ones, for I tell you that in heaven their angels always see the face of my Father who is in heaven.\nFor the Son of Man came to save that which was lost.",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:1-11\nἘν ἐκείνῃ τῇ ὥρᾳ προσῆλθον οἱ μαθηταὶ τῷ Ἰησοῦ λέγοντες· τίς ἄρα μείζων ἐστὶν ἐν τῇ βασιλείᾳ τῶν οὐρανῶν;\nκαὶ προσκαλεσάμενος ὁ Ἰησοῦς παιδίον ἔστησεν αὐτὸ ἐν μέσῳ αὐτῶν καὶ εἶπεν·\nἀμὴν λέγω ὑμῖν, ἐὰν μὴ στραφῆτε καὶ γένησθε ὡς τὰ παιδία, οὐ μὴ εἰσέλθητε εἰς τὴν βασιλείαν τῶν οὐρανῶν.\nὅστις οὖν ταπεινώσει ἑαυτὸν ὡς τὸ παιδίον τοῦτο, οὗτός ἐστιν ὁ μείζων ἐν τῇ βασιλείᾳ τῶν οὐρανῶν.\nκαὶ ὃς ἐὰν δέξηται παιδίον τοιοῦτον ἓν ἐπὶ τῷ ὀνόματί μου, ἐμὲ δέχεται·\nὃς δ᾽ ἂν σκανδαλίσῃ ἕνα τῶν μικρῶν τούτων τῶν πιστευόντων εἰς ἐμέ, συμφέρει αὐτῷ ἵνα κρεμασθῇ μύλος ὀνικὸς εἰς τὸν τράχηλον αὐτοῦ καὶ καταποντισθῇ ἐν τῷ πελάγει τῆς θαλάσσης.\nΟὐαὶ τῷ κόσμῳ ἀπὸ τῶν σκανδάλων· ἀνάγκη γάρ ἐστιν ἐλθεῖν τὰ σκάνδαλα· πλὴν οὐαὶ τῷ ἀνθρώπῳ ἐκείνῳ δι᾽ οὗ τὸ σκάνδαλον ἔρχεται.\nεἰ δὲ ἡ χείρ σου ἢ ὁ πούς σου σκανδαλίζει σε, ἔκκοψον αὐτὰ καὶ βάλε ἀπὸ σοῦ· καλόν σοί ἐστιν εἰσελθεῖν εἰς τὴν ζωὴν χωλὸν ἢ κυλλόν, ἢ δύο χεῖρας ἢ δύο πόδας ἔχοντα βληθῆναι εἰς τὸ πῦρ τὸ αἰώνιον.\nκαὶ εἰ ὁ ὀφθαλμός σου σκανδαλίζει σε, ἔξελε αὐτὸν καὶ βάλε ἀπὸ σοῦ· καλόν σοί ἐστι μονόφθαλμον εἰς τὴν ζωὴν εἰσελθεῖν, ἢ δύο ὀφθαλμοὺς ἔχοντα βληθῆναι εἰς τὴν γέενναν τοῦ πυρός.\nὉρᾶτε μὴ καταφρονήσητε ἑνὸς τῶν μικρῶν τούτων· λέγω γὰρ ὑμῖν ὅτι οἱ ἄγγελοι αὐτῶν ἐν οὐρανοῖς διὰ παντὸς βλέπουσι τὸ πρόσωπον τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nἦλθε γὰρ ὁ υἱὸς τοῦ ἀνθρώπου σῶσαι τὸ ἀπολωλός."
+          "ar": "إِنْجِيلُ مَتَّى 18:18-22; 19:1-2; 19:13-15\nاَلْحَقَّ أَقُولُ لَكُمْ: كُلُّ مَا تَرْبِطُونَهُ عَلَى ٱلْأَرْضِ يَكُونُ مَرْبُوطًا فِي ٱلسَّمَاءِ، وَكُلُّ مَا تَحُلُّونَهُ عَلَى ٱلْأَرْضِ يَكُونُ مَحْلُولًا فِي ٱلسَّمَاءِ.\nوَأَقُولُ لَكُمْ أَيْضًا: إِنِ ٱتَّفَقَ ٱثْنَانِ مِنْكُمْ عَلَى ٱلْأَرْضِ فِي أَيِّ شَيْءٍ يَطْلُبَانِهِ فَإِنَّهُ يَكُونُ لَهُمَا مِنْ قِبَلِ أَبِي ٱلَّذِي فِي ٱلسَّمَاوَاتِ،\nلِأَنَّهُ حَيْثُمَا ٱجْتَمَعَ ٱثْنَانِ أَوْ ثَلَاثَةٌ بِٱسْمِي فَهُنَاكَ أَكُونُ فِي وَسْطِهِمْ». مَثَل العبد الذي لا يغفر\nحِينَئِذٍ تَقَدَّمَ إِلَيْهِ بُطْرُسُ وَقَالَ: «يَارَبُّ، كَمْ مَرَّةً يُخْطِئُ إِلَيَّ أَخِي وَأَنَا أَغْفِرُ لَهُ؟ هَلْ إِلَى سَبْعِ مَرَّاتٍ؟».\nقَالَ لَهُ يَسُوعُ: «لَا أَقُولُ لَكَ إِلَى سَبْعِ مَرَّاتٍ، بَلْ إِلَى سَبْعِينَ مَرَّةً سَبْعَ مَرَّاتٍ.\nوَلَمَّا أَكْمَلَ يَسُوعُ هَذَا ٱلْكَلَامَ ٱنْتَقَلَ مِنَ ٱلْجَلِيلِ وَجَاءَ إِلَى تُخُومِ ٱلْيَهُودِيَّةِ مِنْ عَبْرِ ٱلْأُرْدُنِّ.\nوَتَبِعَتْهُ جُمُوعٌ كَثِيرَةٌ فَشَفَاهُمْ هُنَاكَ.\nحِينَئِذٍ قُدِّمَ إِلَيْهِ أَوْلَادٌ لِكَيْ يَضَعَ يَدَيْهِ عَلَيْهِمْ وَيُصَلِّيَ، فَٱنْتَهَرَهُمُ ٱلتَّلَامِيذُ.\nأَمَّا يَسُوعُ فَقَالَ: «دَعُوا ٱلْأَوْلَادَ يَأْتُونَ إِلَيَّ وَلَا تَمْنَعُوهُمْ لِأَنَّ لِمِثْلِ هَؤُلَاءِ مَلَكُوتَ ٱلسَّمَاوَاتِ».\nفَوَضَعَ يَدَيْهِ عَلَيْهِمْ، وَمَضَى مِنْ هُنَاكَ. الشاب الغني",
+          "en": "The Good News According to Matthew 18:18-22; 19:1-2; 19:13-15\nMost certainly I tell you, whatever things you bind on earth will have been bound in heaven, and whatever things you release on earth will have been released in heaven.\nAgain, assuredly I tell you, that if two of you will agree on earth concerning anything that they will ask, it will be done for them by my Father who is in heaven.\nFor where two or three are gathered together in my name, there I am in the middle of them.”\nThen Peter came and said to him, “Lord, how often shall my brother sin against me, and I forgive him? Until seven times?”\nJesus said to him, “I don’t tell you until seven times, but, until seventy times seven.\nWhen Jesus had finished these words, he departed from Galilee and came into the borders of Judea beyond the Jordan.\nGreat multitudes followed him, and he healed them there.\nThen little children were brought to him that he should lay his hands on them and pray; and the disciples rebuked them.\nBut Jesus said, “Allow the little children, and don’t forbid them to come to me; for the Kingdom of Heaven belongs to ones like these.”\nHe laid his hands on them, and departed from there.",
+          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:18-22; 19:1-2; 19:13-15\nἈμὴν λέγω ὑμῖν, ὅσα ἐὰν δήσητε ἐπὶ τῆς γῆς, ἔσται δεδεμένα ἐν τῷ οὐρανῷ, καὶ ὅσα ἐὰν λύσητε ἐπὶ τῆς γῆς, ἔσται λελυμένα ἐν τῷ οὐρανῷ.\nΠάλιν ἀμὴν λέγω ὑμῖν ὅτι ἐὰν δύο ὑμῶν συμφωνήσωσιν ἐπὶ τῆς γῆς περὶ παντὸς πράγματος οὗ ἐὰν αἰτήσωνται, γενήσεται αὐτοῖς παρὰ τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nοὗ γάρ εἰσι δύο ἢ τρεῖς συνηγμένοι εἰς τὸ ἐμὸν ὄνομα, ἐκεῖ εἰμι ἐν μέσῳ αὐτῶν.\nΤότε προσελθὼν αὐτῷ ὁ Πέτρος εἶπε· Κύριε, ποσάκις ἁμαρτήσει εἰς ἐμὲ ὁ ἀδελφός μου καὶ ἀφήσω αὐτῷ; ἕως ἑπτάκις;\nλέγει αὐτῷ ὁ Ἰησοῦς· οὐ λέγω σοι ἕως ἑπτάκις, ἀλλ᾽ ἕως ἑβδομηκοντάκις ἑπτά.\nΚαὶ ἐγένετο ὅτε ἐτέλεσεν ὁ Ἰησοῦς τοὺς λόγους τούτους μετῆρεν ἀπὸ τῆς Γαλιλαίας καὶ ἦλθεν εἰς τὰ ὅρια τῆς Ἰουδαίας πέραν τοῦ Ἰορδάνου.\nκαὶ ἠκολούθησαν αὐτῷ ὄχλοι πολλοί, καὶ ἐθεράπευσεν αὐτοὺς ἐκεῖ.\nΤότε προσηνέχθη αὐτῷ παιδία, ἵνα ἐπιθῇ αὐτοῖς τὰς χεῖρας καὶ προσεύξηται· οἱ δὲ μαθηταὶ ἐπετίμησαν αὐτοῖς.\nὁ δὲ Ἰησοῦς εἶπεν· ἄφετε τὰ παιδία καὶ μὴ κωλύετε αὐτὰ ἐλθεῖν πρός με· τῶν γὰρ τοιούτων ἐστὶν ἡ βασιλεία τῶν οὐρανῶν.\nκαὶ ἐπιθεὶς τὰς χεῖρας αὐτοῖς ἐπορεύθη ἐκεῖθεν."
         },
         "[آية المناولة]": {
           "ar": "",
@@ -1572,19 +1584,19 @@
           "el": ""
         },
         "prokeimenon": {
-          "ar": "مزمور 103:4، 1\nالصانع ملائكته أرواحًا وخدامه لهيب نار.\nباركي يا نفسي الرب. يا رب إلهي لقد عظمت جدًا.",
-          "en": "Psalm 103:4, 1 (LXX)\nHe makes His angels spirits, and His ministers a flame of fire.\nBless the Lord, O my soul! O Lord my God, You are very great!",
-          "el": "Ψαλμός 103:4, 1\nὉ ποιῶν τοὺς ἀγγέλους αὐτοῦ πνεύματα, καὶ τοὺς λειτουργοὺς αὐτοῦ πυρὸς φλόγα.\nΕὐλόγει, ἡ ψυχή μου, τὸν Κύριον· Κύριε ὁ Θεός μου, ἐμεγαλύνθης σφόδρα."
+          "ar": "مزمور 63:11، 2\nيفرح الصديق بالرب ويتكل عليه.\nاستمع يا الله إلى صوتي في تضرعي إليك.",
+          "en": "Psalm 63:11, 2 (LXX)\nThe righteous shall rejoice in the Lord and shall hope in Him.\nHear my voice, O God, when I pray to You.",
+          "el": "Ψαλμός 63:11, 2\nΕὐφρανθήσεται δίκαιος ἐν Κυρίῳ καὶ ἐλπιεῖ ἐπ᾽ αὐτόν.\nΕἰσάκουσον, ὁ Θεός, τῆς φωνῆς μου ἐν τῷ δέεσθαί με πρὸς σέ."
         },
         "epistle": {
-          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 11:31-34; 12:1-6\nلِأَنَّنَا لَوْ كُنَّا حَكَمْنَا عَلَى أَنْفُسِنَا لَمَا حُكِمَ عَلَيْنَا،\nوَلَكِنْ إِذْ قَدْ حُكِمَ عَلَيْنَا، نُؤَدَّبُ مِنَ ٱلرَّبِّ لِكَيْ لَا نُدَانَ مَعَ ٱلْعَالَمِ.\nإِذًا يَا إِخْوَتِي، حِينَ تَجْتَمِعُونَ لِلْأَكْلِ، ٱنْتَظِرُوا بَعْضُكُمْ بَعْضًا.\nإِنْ كَانَ أَحَدٌ يَجُوعُ فَلْيَأْكُلْ فِي ٱلْبَيْتِ، كَيْ لَا تَجْتَمِعُوا لِلدَّيْنُونَةِ. وَأَمَّا ٱلْأُمُورُ ٱلْبَاقِيَةُ فَعِنْدَمَا أَجِيءُ أُرَتِّبُهَا.\nوَأَمَّا مِنْ جِهَةِ ٱلْمَوَاهِبِ ٱلرُّوحِيَّةِ أَيُّهَا ٱلْإِخْوَةُ، فَلَسْتُ أُرِيدُ أَنْ تَجْهَلُوا.\nأَنْتُمْ تَعْلَمُونَ أَنَّكُمْ كُنْتُمْ أُمَمًا مُنْقَادِينَ إِلَى ٱلْأَوْثَانِ ٱلْبُكْمِ، كَمَا كُنْتُمْ تُسَاقُونَ.\nلِذَلِكَ أُعَرِّفُكُمْ أَنْ لَيْسَ أَحَدٌ وَهُوَ يَتَكَلَّمُ بِرُوحِ ٱللهِ يَقُولُ: «يَسُوعُ أَنَاثِيمَا». وَلَيْسَ أَحَدٌ يَقْدِرُ أَنْ يَقُولَ: «يَسُوعُ رَبٌّ» إِلَّا بِٱلرُّوحِ ٱلْقُدُسِ.\nفَأَنْوَاعُ مَوَاهِبَ مَوْجُودَةٌ، وَلَكِنَّ ٱلرُّوحَ وَاحِدٌ.\nوَأَنْوَاعُ خِدَمٍ مَوْجُودَةٌ، وَلَكِنَّ ٱلرَّبَّ وَاحِدٌ.\nوَأَنْوَاعُ أَعْمَالٍ مَوْجُودَةٌ، وَلَكِنَّ ٱللهَ وَاحِدٌ، ٱلَّذِي يَعْمَلُ ٱلْكُلَّ فِي ٱلْكُلِّ.",
-          "en": "Paul’s First Letter to the Corinthians 11:31-34; 12:1-6\nFor if we discerned ourselves, we wouldn’t be judged.\nBut when we are judged, we are disciplined by the Lord, that we may not be condemned with the world.\nTherefore, my brothers, when you come together to eat, wait for one another.\nBut if anyone is hungry, let him eat at home, lest your coming together be for judgment. The rest I will set in order whenever I come.\nNow concerning spiritual things, brothers, I don’t want you to be ignorant.\nYou know that when you were heathen, you were led away to those mute idols, however you might be led.\nTherefore I make known to you that no man speaking by God’s Spirit says, “Jesus is accursed.” No one can say, “Jesus is Lord,” but by the Holy Spirit.\nNow there are various kinds of gifts, but the same Spirit.\nThere are various kinds of service, and the same Lord.\nThere are various kinds of workings, but the same God who works all things in all.",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 11:31-34; 12:1-6\nεἰ γὰρ ἑαυτοὺς διεκρίνομεν, οὐκ ἂν ἐκρινόμεθα·\nκρινόμενοι δὲ ὑπὸ [τοῦ] Κυρίου παιδευόμεθα, ἵνα μὴ σὺν τῷ κόσμῳ κατακριθῶμεν.\nὭστε, ἀδελφοί μου, συνερχόμενοι εἰς τὸ φαγεῖν ἀλλήλους ἐκδέχεσθε·\nεἰ δέ τις πεινᾷ, ἐν οἴκῳ ἐσθιέτω, ἵνα μὴ εἰς κρῖμα συνέρχησθε. Τὰ δὲ λοιπὰ ὡς ἂν ἔλθω διατάξομαι.\nΠερὶ δὲ τῶν πνευματικῶν, ἀδελφοί, οὐ θέλω ὑμᾶς ἀγνοεῖν.\nοἴδατε ὅτι, ὅτε ἔθνη ἦτε, πρὸς τὰ εἴδωλα τὰ ἄφωνα ὡς ἂν ἤγεσθε ἀπαγόμενοι.\nδιὸ γνωρίζω ὑμῖν ὅτι οὐδεὶς ἐν Πνεύματι Θεοῦ λαλῶν λέγει ἀνάθεμα Ἰησοῦν, καὶ οὐδεὶς δύναται εἰπεῖν Κύριον Ἰησοῦν εἰ μὴ ἐν Πνεύματι Ἁγίῳ.\nΔιαιρέσεις δὲ χαρισμάτων εἰσί, τὸ δὲ αὐτὸ Πνεῦμα·\nκαὶ διαιρέσεις διακονιῶν εἰσι, καὶ ὁ αὐτὸς Κύριος·\nκαὶ διαιρέσεις ἐνεργημάτων εἰσίν, ὁ δὲ αὐτός ἐστι Θεός, ὁ ἐνεργῶν τὰ πάντα ἐν πᾶσιν."
+          "ar": "رِسَالَةُ بُولُسَ ٱلرَّسُولِ ٱلأُولَى إِلَى أَهْلِ كُورِنْثُوسَ 12:12-26\nلِأَنَّهُ كَمَا أَنَّ ٱلْجَسَدَ هُوَ وَاحِدٌ وَلَهُ أَعْضَاءٌ كَثِيرَةٌ، وَكُلُّ أَعْضَاءِ ٱلْجَسَدِ ٱلْوَاحِدِ إِذَا كَانَتْ كَثِيرَةً هِيَ جَسَدٌ وَاحِدٌ، كَذَلِكَ ٱلْمَسِيحُ أَيْضًا.\nلِأَنَّنَا جَمِيعَنَا بِرُوحٍ وَاحِدٍ أَيْضًا ٱعْتَمَدْنَا إِلَى جَسَدٍ وَاحِدٍ، يَهُودًا كُنَّا أَمْ يُونَانِيِّينَ، عَبِيدًا أَمْ أَحْرَارًا، وَجَمِيعُنَا سُقِينَا رُوحًا وَاحِدًا.\nفَإِنَّ ٱلْجَسَدَ أَيْضًا لَيْسَ عُضْوًا وَاحِدًا بَلْ أَعْضَاءٌ كَثِيرَةٌ.\nإِنْ قَالَتِ ٱلرِّجْلُ: «لِأَنِّي لَسْتُ يَدًا، لَسْتُ مِنَ ٱلْجَسَدِ». أَفَلَمْ تَكُنْ لِذَلِكَ مِنَ ٱلْجَسَدِ؟\nوَإِنْ قَالَتِ ٱلْأُذُنُ: «لِأِنِّي لَسْتُ عَيْنًا، لَسْتُ مِنَ ٱلْجَسَدِ». أَفَلَمْ تَكُنْ لِذَلِكَ مِنَ ٱلْجَسَدِ؟\nلَوْ كَانَ كُلُّ ٱلْجَسَدِ عَيْنًا، فَأَيْنَ ٱلسَّمْعُ؟ لَوْ كَانَ ٱلْكُلُّ سَمْعًا، فَأَيْنَ ٱلشَّمُّ؟\nوَأَمَّا ٱلْآنَ فَقَدْ وَضَعَ ٱللهُ ٱلْأَعْضَاءَ، كُلَّ وَاحِدٍ مِنْهَا فِي ٱلْجَسَدِ، كَمَا أَرَادَ.\nوَلَكِنْ لَوْ كَانَ جَمِيعُهَا عُضْوًا وَاحِدًا، أَيْنَ ٱلْجَسَدُ؟\nفَٱلْآنَ أَعْضَاءٌ كَثِيرَةٌ، وَلَكِنْ جَسَدٌ وَاحِدٌ.\nلَا تَقْدِرُ ٱلْعَيْنُ أَن تَقُولَ لِلْيَدِ: «لَا حَاجَةَ لِي إِلَيْكِ!». أَوِ ٱلرَّأْسُ أَيْضًا لِلرِّجْلَيْنِ: «لَا حَاجَةَ لِي إِلَيْكُمَا!».\nبَلْ بِٱلْأَوْلَى أَعْضَاءُ ٱلْجَسَدِ ٱلَّتِي تَظْهَرُ أَضْعَفَ هِيَ ضَرُورِيَّةٌ.\nوَأَعْضَاءُ ٱلْجَسَدِ ٱلَّتِي نَحْسِبُ أَنَّهَا بِلَا كَرَامَةٍ نُعْطِيهَا كَرَامَةً أَفْضَلَ. وَٱلْأَعْضَاءُ ٱلْقَبِيحَةُ فِينَا لَهَا جَمَالٌ أَفْضَلُ.\nوَأَمَّا ٱلْجَمِيلَةُ فِينَا فَلَيْسَ لَهَا ٱحْتِيَاجٌ. لَكِنَّ ٱللهَ مَزَجَ ٱلْجَسَدَ، مُعْطِيًا ٱلنَّاقِصَ كَرَامَةً أَفْضَلَ،\nلِكَيْ لَا يَكُونَ ٱنْشِقَاقٌ فِي ٱلْجَسَدِ، بَلْ تَهْتَمُّ ٱلْأَعْضَاءُ ٱهْتِمَامًا وَاحِدًا بَعْضُهَا لِبَعْضٍ.\nفَإِنْ كَانَ عُضْوٌ وَاحِدٌ يَتَأَلَّمُ، فَجَمِيعُ ٱلْأَعْضَاءِ تَتَأَلَّمُ مَعَهُ. وَإِنْ كَانَ عُضْوٌ وَاحِدٌ يُكَرَّمُ، فَجَمِيعُ ٱلْأَعْضَاءِ تَفْرَحُ مَعَهُ.",
+          "en": "Paul’s First Letter to the Corinthians 12:12-26\nFor as the body is one and has many members, and all the members of the body, being many, are one body; so also is Christ.\nFor in one Spirit we were all baptized into one body, whether Jews or Greeks, whether bond or free; and were all given to drink into one Spirit.\nFor the body is not one member, but many.\nIf the foot would say, “Because I’m not the hand, I’m not part of the body,” it is not therefore not part of the body.\nIf the ear would say, “Because I’m not the eye, I’m not part of the body,” it’s not therefore not part of the body.\nIf the whole body were an eye, where would the hearing be? If the whole were hearing, where would the smelling be?\nBut now God has set the members, each one of them, in the body, just as he desired.\nIf they were all one member, where would the body be?\nBut now they are many members, but one body.\nThe eye can’t tell the hand, “I have no need for you,” or again the head to the feet, “I have no need for you.”\nNo, much rather, those members of the body which seem to be weaker are necessary.\nThose parts of the body which we think to be less honorable, on those we bestow more abundant honor; and our unpresentable parts have more abundant modesty,\nwhile our presentable parts have no such need. But God composed the body together, giving more abundant honor to the inferior part,\nthat there should be no division in the body, but that the members should have the same care for one another.\nWhen one member suffers, all the members suffer with it. When one member is honored, all the members rejoice with it.",
+          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26\nΚαθάπερ γὰρ τὸ σῶμα ἕν ἐστι καὶ μέλη ἔχει πολλά, πάντα δὲ τὰ μέλη τοῦ σώματος τοῦ ἑνός, πολλὰ ὄντα, ἕν ἐστι σῶμα, οὕτω καὶ ὁ Χριστός·\nκαὶ γὰρ ἐν ἑνὶ Πνεύματι ἡμεῖς πάντες εἰς ἓν σῶμα ἐβαπτίσθημεν, εἴτε Ἰουδαῖοι εἴτε Ἕλληνες, εἴτε δοῦλοι εἴτε ἐλεύθεροι, καὶ πάντες εἰς ἓν Πνεῦμα ἐποτίσθημεν.\nκαὶ γὰρ τὸ σῶμα οὐκ ἔστιν ἓν μέλος, ἀλλὰ πολλά.\nἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nκαὶ ἐὰν εἴπῃ τὸ οὖς, ὅτι οὐκ εἰμὶ ὀφθαλμός, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nεἰ ὅλον τὸ σῶμα ὀφθαλμός, ποῦ ἡ ἀκοή; εἰ ὅλον ἀκοή, ποῦ ἡ ὄσφρησις;\nνυνὶ δὲ ὁ Θεὸς ἔθετο τὰ μέλη ἓν ἕκαστον αὐτῶν ἐν τῷ σώματι καθὼς ἠθέλησεν.\nεἰ δὲ ἦν τὰ πάντα ἓν μέλος, ποῦ τὸ σῶμα;\nνῦν δὲ πολλὰ μὲν μέλη, ἓν δὲ σῶμα.\nοὐ δύναται δὲ ὀφθαλμὸς εἰπεῖν τῇ χειρί· χρείαν σου οὐκ ἔχω· ἢ πάλιν ἡ κεφαλὴ τοῖς ποσί· χρείαν ὑμῶν οὐκ ἔχω·\nἀλλὰ πολλῷ μᾶλλον τὰ δοκοῦντα μέλη τοῦ σώματος ἀσθενέστερα ὑπάρχειν ἀναγκαῖά ἐστι,\nκαὶ ἃ δοκοῦμεν ἀτιμότερα εἶναι τοῦ σώματος, τούτοις τιμὴν περισσοτέραν περιτίθεμεν, καὶ τὰ ἀσχήμονα ἡμῶν εὐσχημοσύνην περισσοτέραν ἔχει,\nτὰ δὲ εὐσχήμονα ἡμῶν οὐ χρείαν ἔχει. ἀλλ᾽ ὁ Θεὸς συνεκέρασε τὸ σῶμα, τῷ ὑστεροῦντι περισσοτέραν δοὺς τιμήν,\nἵνα μὴ ᾖ σχίσμα ἐν τῷ σώματι, ἀλλὰ τὸ αὐτὸ ὑπὲρ ἀλλήλων μεριμνῶσι τὰ μέλη·\nκαὶ εἴτε πάσχει ἓν μέλος, συμπάσχει πάντα τὰ μέλη, εἴτε δοξάζεται ἓν μέλος, συγχαίρει πάντα τὰ μέλη."
         },
         "gospel": {
-          "ar": "إِنْجِيلُ مَتَّى 18:1-11\nفِي تِلْكَ ٱلسَّاعَةِ تَقَدَّمَ ٱلتَّلَامِيذُ إِلَى يَسُوعَ قَائِلِينَ: «فَمَنْ هُوَ أَعْظَمُ فِي مَلَكُوتِ ٱلسَّمَاوَاتِ؟».\nفَدَعَا يَسُوعُ إِلَيْهِ وَلَدًا وَأَقَامَهُ فِي وَسْطِهِمْ\nوَقَالَ: «اَلْحَقَّ أَقُولُ لَكُمْ: إِنْ لَمْ تَرْجِعُوا وَتَصِيرُوا مِثْلَ ٱلْأَوْلَادِ فَلَنْ تَدْخُلُوا مَلَكُوتَ ٱلسَّمَاوَاتِ.\nفَمَنْ وَضَعَ نَفْسَهُ مِثْلَ هَذَا ٱلْوَلَدِ فَهُوَ ٱلْأَعْظَمُ فِي مَلَكُوتِ ٱلسَّمَاوَاتِ.\nوَمَنْ قَبِلَ وَلَدًا وَاحِدًا مِثْلَ هَذَا بِٱسْمِي فَقَدْ قَبِلَنِي.\nوَمَنْ أَعْثَرَ أَحَدَ هَؤُلَاءِ ٱلصِّغَارِ ٱلْمُؤْمِنِينَ بِي فَخَيْرٌ لَهُ أَنْ يُعَلَّقَ فِي عُنُقِهِ حَجَرُ ٱلرَّحَى وَيُغْرَقَ فِي لُجَّةِ ٱلْبَحْرِ.\nوَيْلٌ لِلْعَالَمِ مِنَ ٱلْعَثَرَاتِ! فَلَا بُدَّ أَنْ تَأْتِيَ ٱلْعَثَرَاتُ، وَلَكِنْ وَيْلٌ لِذَلِكَ ٱلْإِنْسَانِ ٱلَّذِي بِهِ تَأْتِي ٱلْعَثْرَةُ!\nفَإِنْ أَعْثَرَتْكَ يَدُكَ أَوْ رِجْلُكَ فَٱقْطَعْهَا وَأَلْقِهَا عَنْكَ. خَيْرٌ لَكَ أَنْ تَدْخُلَ ٱلْحَيَاةَ أَعْرَجَ أَوْ أَقْطَعَ مِنْ أَنْ تُلْقَى فِي ٱلنَّارِ ٱلْأَبَدِيَّةِ وَلَكَ يَدَانِ أَوْ رِجْلَانِ.\nوَإِنْ أَعْثَرَتْكَ عَيْنُكَ فَٱقْلَعْهَا وَأَلْقِهَا عَنْكَ. خَيْرٌ لَكَ أَنْ تَدْخُلَ ٱلْحَيَاةَ أَعْوَرَ مِنْ أَنْ تُلْقَى فِي جَهَنَّمِ ٱلنَّارِ وَلَكَ عَيْنَانِ. مَثَل الخروف الضال\n«اُنْظُرُوا، لَا تَحْتَقِرُوا أَحَدَ هَؤُلَاءِ ٱلصِّغَارِ، لِأَنِّي أَقُولُ لَكُمْ: إِنَّ مَلَائِكَتَهُمْ فِي ٱلسَّمَاوَاتِ كُلَّ حِينٍ يَنْظُرُونَ وَجْهَ أَبِي ٱلَّذِي فِي ٱلسَّمَاوَاتِ.\nلِأَنَّ ٱبْنَ ٱلْإِنْسَانِ قَدْ جَاءَ لِكَيْ يُخَلِّصَ مَا قَدْ هَلَكَ.",
-          "en": "The Good News According to Matthew 18:1-11\nIn that hour the disciples came to Jesus, saying, “Who then is greatest in the Kingdom of Heaven?”\nJesus called a little child to himself, and set him in the middle of them\nand said, “Most certainly I tell you, unless you turn and become as little children, you will in no way enter into the Kingdom of Heaven.\nWhoever therefore humbles himself as this little child is the greatest in the Kingdom of Heaven.\nWhoever receives one such little child in my name receives me,\nbut whoever causes one of these little ones who believe in me to stumble, it would be better for him if a huge millstone were hung around his neck and that he were sunk in the depths of the sea.\n“Woe to the world because of occasions of stumbling! For it must be that the occasions come, but woe to that person through whom the occasion comes!\nIf your hand or your foot causes you to stumble, cut it off and cast it from you. It is better for you to enter into life maimed or crippled, rather than having two hands or two feet to be cast into the eternal fire.\nIf your eye causes you to stumble, pluck it out and cast it from you. It is better for you to enter into life with one eye, rather than having two eyes to be cast into the Gehenna of fire.\nSee that you don’t despise one of these little ones, for I tell you that in heaven their angels always see the face of my Father who is in heaven.\nFor the Son of Man came to save that which was lost.",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:1-11\nἘν ἐκείνῃ τῇ ὥρᾳ προσῆλθον οἱ μαθηταὶ τῷ Ἰησοῦ λέγοντες· τίς ἄρα μείζων ἐστὶν ἐν τῇ βασιλείᾳ τῶν οὐρανῶν;\nκαὶ προσκαλεσάμενος ὁ Ἰησοῦς παιδίον ἔστησεν αὐτὸ ἐν μέσῳ αὐτῶν καὶ εἶπεν·\nἀμὴν λέγω ὑμῖν, ἐὰν μὴ στραφῆτε καὶ γένησθε ὡς τὰ παιδία, οὐ μὴ εἰσέλθητε εἰς τὴν βασιλείαν τῶν οὐρανῶν.\nὅστις οὖν ταπεινώσει ἑαυτὸν ὡς τὸ παιδίον τοῦτο, οὗτός ἐστιν ὁ μείζων ἐν τῇ βασιλείᾳ τῶν οὐρανῶν.\nκαὶ ὃς ἐὰν δέξηται παιδίον τοιοῦτον ἓν ἐπὶ τῷ ὀνόματί μου, ἐμὲ δέχεται·\nὃς δ᾽ ἂν σκανδαλίσῃ ἕνα τῶν μικρῶν τούτων τῶν πιστευόντων εἰς ἐμέ, συμφέρει αὐτῷ ἵνα κρεμασθῇ μύλος ὀνικὸς εἰς τὸν τράχηλον αὐτοῦ καὶ καταποντισθῇ ἐν τῷ πελάγει τῆς θαλάσσης.\nΟὐαὶ τῷ κόσμῳ ἀπὸ τῶν σκανδάλων· ἀνάγκη γάρ ἐστιν ἐλθεῖν τὰ σκάνδαλα· πλὴν οὐαὶ τῷ ἀνθρώπῳ ἐκείνῳ δι᾽ οὗ τὸ σκάνδαλον ἔρχεται.\nεἰ δὲ ἡ χείρ σου ἢ ὁ πούς σου σκανδαλίζει σε, ἔκκοψον αὐτὰ καὶ βάλε ἀπὸ σοῦ· καλόν σοί ἐστιν εἰσελθεῖν εἰς τὴν ζωὴν χωλὸν ἢ κυλλόν, ἢ δύο χεῖρας ἢ δύο πόδας ἔχοντα βληθῆναι εἰς τὸ πῦρ τὸ αἰώνιον.\nκαὶ εἰ ὁ ὀφθαλμός σου σκανδαλίζει σε, ἔξελε αὐτὸν καὶ βάλε ἀπὸ σοῦ· καλόν σοί ἐστι μονόφθαλμον εἰς τὴν ζωὴν εἰσελθεῖν, ἢ δύο ὀφθαλμοὺς ἔχοντα βληθῆναι εἰς τὴν γέενναν τοῦ πυρός.\nὉρᾶτε μὴ καταφρονήσητε ἑνὸς τῶν μικρῶν τούτων· λέγω γὰρ ὑμῖν ὅτι οἱ ἄγγελοι αὐτῶν ἐν οὐρανοῖς διὰ παντὸς βλέπουσι τὸ πρόσωπον τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nἦλθε γὰρ ὁ υἱὸς τοῦ ἀνθρώπου σῶσαι τὸ ἀπολωλός."
+          "ar": "إِنْجِيلُ مَتَّى 18:18-22; 19:1-2; 19:13-15\nاَلْحَقَّ أَقُولُ لَكُمْ: كُلُّ مَا تَرْبِطُونَهُ عَلَى ٱلْأَرْضِ يَكُونُ مَرْبُوطًا فِي ٱلسَّمَاءِ، وَكُلُّ مَا تَحُلُّونَهُ عَلَى ٱلْأَرْضِ يَكُونُ مَحْلُولًا فِي ٱلسَّمَاءِ.\nوَأَقُولُ لَكُمْ أَيْضًا: إِنِ ٱتَّفَقَ ٱثْنَانِ مِنْكُمْ عَلَى ٱلْأَرْضِ فِي أَيِّ شَيْءٍ يَطْلُبَانِهِ فَإِنَّهُ يَكُونُ لَهُمَا مِنْ قِبَلِ أَبِي ٱلَّذِي فِي ٱلسَّمَاوَاتِ،\nلِأَنَّهُ حَيْثُمَا ٱجْتَمَعَ ٱثْنَانِ أَوْ ثَلَاثَةٌ بِٱسْمِي فَهُنَاكَ أَكُونُ فِي وَسْطِهِمْ». مَثَل العبد الذي لا يغفر\nحِينَئِذٍ تَقَدَّمَ إِلَيْهِ بُطْرُسُ وَقَالَ: «يَارَبُّ، كَمْ مَرَّةً يُخْطِئُ إِلَيَّ أَخِي وَأَنَا أَغْفِرُ لَهُ؟ هَلْ إِلَى سَبْعِ مَرَّاتٍ؟».\nقَالَ لَهُ يَسُوعُ: «لَا أَقُولُ لَكَ إِلَى سَبْعِ مَرَّاتٍ، بَلْ إِلَى سَبْعِينَ مَرَّةً سَبْعَ مَرَّاتٍ.\nوَلَمَّا أَكْمَلَ يَسُوعُ هَذَا ٱلْكَلَامَ ٱنْتَقَلَ مِنَ ٱلْجَلِيلِ وَجَاءَ إِلَى تُخُومِ ٱلْيَهُودِيَّةِ مِنْ عَبْرِ ٱلْأُرْدُنِّ.\nوَتَبِعَتْهُ جُمُوعٌ كَثِيرَةٌ فَشَفَاهُمْ هُنَاكَ.\nحِينَئِذٍ قُدِّمَ إِلَيْهِ أَوْلَادٌ لِكَيْ يَضَعَ يَدَيْهِ عَلَيْهِمْ وَيُصَلِّيَ، فَٱنْتَهَرَهُمُ ٱلتَّلَامِيذُ.\nأَمَّا يَسُوعُ فَقَالَ: «دَعُوا ٱلْأَوْلَادَ يَأْتُونَ إِلَيَّ وَلَا تَمْنَعُوهُمْ لِأَنَّ لِمِثْلِ هَؤُلَاءِ مَلَكُوتَ ٱلسَّمَاوَاتِ».\nفَوَضَعَ يَدَيْهِ عَلَيْهِمْ، وَمَضَى مِنْ هُنَاكَ. الشاب الغني",
+          "en": "The Good News According to Matthew 18:18-22; 19:1-2; 19:13-15\nMost certainly I tell you, whatever things you bind on earth will have been bound in heaven, and whatever things you release on earth will have been released in heaven.\nAgain, assuredly I tell you, that if two of you will agree on earth concerning anything that they will ask, it will be done for them by my Father who is in heaven.\nFor where two or three are gathered together in my name, there I am in the middle of them.”\nThen Peter came and said to him, “Lord, how often shall my brother sin against me, and I forgive him? Until seven times?”\nJesus said to him, “I don’t tell you until seven times, but, until seventy times seven.\nWhen Jesus had finished these words, he departed from Galilee and came into the borders of Judea beyond the Jordan.\nGreat multitudes followed him, and he healed them there.\nThen little children were brought to him that he should lay his hands on them and pray; and the disciples rebuked them.\nBut Jesus said, “Allow the little children, and don’t forbid them to come to me; for the Kingdom of Heaven belongs to ones like these.”\nHe laid his hands on them, and departed from there.",
+          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:18-22; 19:1-2; 19:13-15\nἈμὴν λέγω ὑμῖν, ὅσα ἐὰν δήσητε ἐπὶ τῆς γῆς, ἔσται δεδεμένα ἐν τῷ οὐρανῷ, καὶ ὅσα ἐὰν λύσητε ἐπὶ τῆς γῆς, ἔσται λελυμένα ἐν τῷ οὐρανῷ.\nΠάλιν ἀμὴν λέγω ὑμῖν ὅτι ἐὰν δύο ὑμῶν συμφωνήσωσιν ἐπὶ τῆς γῆς περὶ παντὸς πράγματος οὗ ἐὰν αἰτήσωνται, γενήσεται αὐτοῖς παρὰ τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nοὗ γάρ εἰσι δύο ἢ τρεῖς συνηγμένοι εἰς τὸ ἐμὸν ὄνομα, ἐκεῖ εἰμι ἐν μέσῳ αὐτῶν.\nΤότε προσελθὼν αὐτῷ ὁ Πέτρος εἶπε· Κύριε, ποσάκις ἁμαρτήσει εἰς ἐμὲ ὁ ἀδελφός μου καὶ ἀφήσω αὐτῷ; ἕως ἑπτάκις;\nλέγει αὐτῷ ὁ Ἰησοῦς· οὐ λέγω σοι ἕως ἑπτάκις, ἀλλ᾽ ἕως ἑβδομηκοντάκις ἑπτά.\nΚαὶ ἐγένετο ὅτε ἐτέλεσεν ὁ Ἰησοῦς τοὺς λόγους τούτους μετῆρεν ἀπὸ τῆς Γαλιλαίας καὶ ἦλθεν εἰς τὰ ὅρια τῆς Ἰουδαίας πέραν τοῦ Ἰορδάνου.\nκαὶ ἠκολούθησαν αὐτῷ ὄχλοι πολλοί, καὶ ἐθεράπευσεν αὐτοὺς ἐκεῖ.\nΤότε προσηνέχθη αὐτῷ παιδία, ἵνα ἐπιθῇ αὐτοῖς τὰς χεῖρας καὶ προσεύξηται· οἱ δὲ μαθηταὶ ἐπετίμησαν αὐτοῖς.\nὁ δὲ Ἰησοῦς εἶπεν· ἄφετε τὰ παιδία καὶ μὴ κωλύετε αὐτὰ ἐλθεῖν πρός με· τῶν γὰρ τοιούτων ἐστὶν ἡ βασιλεία τῶν οὐρανῶν.\nκαὶ ἐπιθεὶς τὰς χεῖρας αὐτοῖς ἐπορεύθη ἐκεῖθεν."
         },
         "communion_hymn": {
           "ar": "",
@@ -1656,9 +1668,9 @@
             "el": "Ἐκκλησιαστικὴ ἡμέρα"
           },
           "text": {
-            "ar": "الإثنين 27 تموز 2026 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. نوع الخدمة: قداس القديس يوحنا الذهبي الفم.",
-            "en": "2026-07-27 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom.",
-            "el": "2026-07-27 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Ἀκολουθία: Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου."
+            "ar": "الثلاثاء 28 تموز 2026 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. نوع الخدمة: قداس القديس يوحنا الذهبي الفم.",
+            "en": "2026-07-28 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom.",
+            "el": "2026-07-28 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Ἀκολουθία: Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου."
           }
         },
         {
@@ -1672,7 +1684,7 @@
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1698,7 +1710,7 @@
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-28",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1729,16 +1741,16 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الإثنين 27 تموز 2026. التاريخ الكنسي القديم: 14 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
-            "el": "Πολιτικὴ ἡμερομηνία: Δευτέρα, 27 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 14 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
+            "ar": "التاريخ المدني: الثلاثاء 28 تموز 2026. التاريخ الكنسي القديم: 15 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
+            "en": "Civil date: Tuesday, July 28, 2026. Old-calendar date: July 15, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1764,7 +1776,7 @@
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-28",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1795,16 +1807,16 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الإثنين 27 تموز 2026. التاريخ الكنسي القديم: 14 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
-            "el": "Πολιτικὴ ἡμερομηνία: Δευτέρα, 27 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 14 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
+            "ar": "التاريخ المدني: الثلاثاء 28 تموز 2026. التاريخ الكنسي القديم: 15 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
+            "en": "Civil date: Tuesday, July 28, 2026. Old-calendar date: July 15, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1830,7 +1842,7 @@
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-28",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1861,16 +1873,16 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الإثنين 27 تموز 2026. التاريخ الكنسي القديم: 14 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
-            "el": "Πολιτικὴ ἡμερομηνία: Δευτέρα, 27 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 14 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
+            "ar": "التاريخ المدني: الثلاثاء 28 تموز 2026. التاريخ الكنسي القديم: 15 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
+            "en": "Civil date: Tuesday, July 28, 2026. Old-calendar date: July 15, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1896,7 +1908,7 @@
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-28",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1927,16 +1939,16 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الإثنين 27 تموز 2026. التاريخ الكنسي القديم: 14 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
-            "el": "Πολιτικὴ ἡμερομηνία: Δευτέρα, 27 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 14 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
+            "ar": "التاريخ المدني: الثلاثاء 28 تموز 2026. التاريخ الكنسي القديم: 15 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
+            "en": "Civil date: Tuesday, July 28, 2026. Old-calendar date: July 15, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1962,7 +1974,7 @@
       },
       "source_language": "el",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-27",
+      "dynamic_date": "2026-07-28",
       "notice": {
         "ar": "يُركّب هذا الملحق فوق النص الثابت الموجود مرة واحدة في المكتبة، ولا يكرر الخدمة كاملة داخل ملف كل يوم.",
         "en": "This verified daily overlay is composed with the single static library service at runtime.",
@@ -1993,16 +2005,16 @@
             "el": "Προαιρετικὴ σημείωση"
           },
           "text": {
-            "ar": "التاريخ المدني: الإثنين 27 تموز 2026. التاريخ الكنسي القديم: 14 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
-            "en": "Civil date: Monday, July 27, 2026. Old-calendar date: July 14, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
-            "el": "Πολιτικὴ ἡμερομηνία: Δευτέρα, 27 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 14 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
+            "ar": "التاريخ المدني: الثلاثاء 28 تموز 2026. التاريخ الكنسي القديم: 15 تموز 2026 بحسب التقويم الكنسي القديم. التذكار: تذكار اليوم بحسب التقويم الكنسي القديم. حالة الصوم: لا صوم.",
+            "en": "Civil date: Tuesday, July 28, 2026. Old-calendar date: July 15, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: No fast.",
+            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-27",
+        "date_iso": "2026-07-28",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -2300,248 +2312,6 @@
     }
   ],
   "upcoming": [
-    {
-      "date": "2026-07-28",
-      "day": {
-        "ar": "الثلاثاء 28 تموز 2026 / 15 تموز 2026 بحسب التقويم الكنسي القديم",
-        "en": "Tuesday, July 28 / July 15, 2026 (Old Style)",
-        "el": "Τρίτη, 28 Ιουλίου / 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
-      },
-      "feast": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "Today’s commemoration according to the old church calendar",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
-      },
-      "status": {
-        "ar": "لا صوم",
-        "en": "No fast",
-        "el": "Χωρὶς νηστεία"
-      },
-      "note": {
-        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
-        "en": "Today’s commemoration according to the old church calendar",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
-      },
-      "fasting": {
-        "code": "fast_free",
-        "season": {
-          "ar": "يوم عادي",
-          "en": "Ordinary day",
-          "el": "Συνήθης ἡμέρα"
-        },
-        "title": {
-          "ar": "لا صوم",
-          "en": "No fast",
-          "el": "Χωρὶς νηστεία"
-        },
-        "level": {
-          "ar": "لا صوم",
-          "en": "No fast",
-          "el": "Χωρὶς νηστεία"
-        },
-        "detail": {
-          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
-          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
-          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
-        },
-        "is_fast": false,
-        "allowed": {
-          "meat": true,
-          "dairy": true,
-          "eggs": true,
-          "fish": true,
-          "wine": true,
-          "oil": true
-        },
-        "display_icons": [
-          "✅"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "اللحوم والدواجن",
-              "en": "Meat and poultry",
-              "el": "Κρέας καὶ πουλερικά"
-            },
-            "allowed": true
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "الألبان",
-              "en": "Dairy",
-              "el": "Γαλακτοκομικά"
-            },
-            "allowed": true
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "البيض",
-              "en": "Eggs",
-              "el": "Αὐγά"
-            },
-            "allowed": true
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "السمك",
-              "en": "Fish",
-              "el": "Ψάρι"
-            },
-            "allowed": true
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "النبيذ",
-              "en": "Wine",
-              "el": "Οἶνος"
-            },
-            "allowed": true
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "الزيت",
-              "en": "Oil",
-              "el": "Ἔλαιο"
-            },
-            "allowed": true
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "ordinary_fast_free",
-          "note": {
-            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
-            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
-          }
-        },
-        "guidance": {
-          "allowed_summary": {
-            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
-            "en": "Permitted: all listed food categories under the general rule",
-            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
-          },
-          "forbidden_summary": {
-            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
-            "en": "Not permitted: no category is restricted by a general fast today",
-            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
-          },
-          "duration": {
-            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
-            "en": "No general fasting duration applies today.",
-            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
-          },
-          "beginner_explanation": {
-            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
-            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
-          },
-          "spiritual_note": {
-            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
-            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
-          },
-          "health_note": {
-            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
-            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
-          }
-        },
-        "abstinence": {
-          "applies": false,
-          "kind": "not_indicated",
-          "start_time": null,
-          "end_time": null,
-          "end_condition": {
-            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
-            "en": "The source does not document a separate total-abstinence interval for this day.",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
-          },
-          "detail": {
-            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
-            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
-          },
-          "verification": {
-            "status": "NOT_INDICATED",
-            "source": "canonical/fasting_policy.json"
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "الرسالة",
-            "en": "Epistle",
-            "el": "Ἀπόστολος"
-          },
-          "reference": {
-            "ar": "١ كورنثوس 12:12-26",
-            "en": "1 Corinthians 12.12-26",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26"
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "الإنجيل",
-            "en": "Gospel",
-            "el": "Εὐαγγέλιο"
-          },
-          "reference": {
-            "ar": "متى 18:18-22, 19:1-2, 13-15",
-            "en": "Matthew 18.18-22, 19.1-2, 13-15",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 18:18-22, 19:1-2, 13-15"
-          }
-        }
-      },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 107,
-        "label": {
-          "ar": "قداس القديس يوحنا الذهبي الفم",
-          "en": "Divine Liturgy of Saint John Chrysostom",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
-          "en": "IMPORTED_NATIVE_AUTHORIZED",
-          "el": "IMPORTED_NATIVE_AUTHORIZED"
-        },
-        "availability_note": {
-          "ar": "",
-          "en": "",
-          "el": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
-      "is_sunday": false,
-      "verification_status": "PREVIEW_REFERENCE_ONLY",
-      "publication_note": {
-        "ar": "مرجع معاينة فقط؛ يُعاد التحقق من النص الكامل في يومه قبل النشر.",
-        "en": "Reference preview only; full text is re-verified on its publication date.",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως."
-      }
-    },
     {
       "date": "2026-07-29",
       "day": {
@@ -3996,12 +3766,254 @@
         "en": "Reference preview only; full text is re-verified on its publication date.",
         "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως."
       }
+    },
+    {
+      "date": "2026-08-04",
+      "day": {
+        "ar": "الثلاثاء 4 آب 2026 / 22 تموز 2026 بحسب التقويم الكنسي القديم",
+        "en": "Tuesday, August 4 / July 22, 2026 (Old Style)",
+        "el": "Τρίτη, 4 Αυγούστου / 22 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)"
+      },
+      "feast": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "status": {
+        "ar": "لا صوم",
+        "en": "No fast",
+        "el": "Χωρὶς νηστεία"
+      },
+      "note": {
+        "ar": "تذكار اليوم بحسب التقويم الكنسي القديم",
+        "en": "Today’s commemoration according to the old church calendar",
+        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
+      },
+      "fasting": {
+        "code": "fast_free",
+        "season": {
+          "ar": "يوم عادي",
+          "en": "Ordinary day",
+          "el": "Συνήθης ἡμέρα"
+        },
+        "title": {
+          "ar": "لا صوم",
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
+        },
+        "level": {
+          "ar": "لا صوم",
+          "en": "No fast",
+          "el": "Χωρὶς νηστεία"
+        },
+        "detail": {
+          "ar": "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم. المسموح بحسب القاعدة العامة: اللحوم والدواجن، الألبان، البيض، السمك، النبيذ، الزيت.",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted.",
+          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές."
+        },
+        "is_fast": false,
+        "allowed": {
+          "meat": true,
+          "dairy": true,
+          "eggs": true,
+          "fish": true,
+          "wine": true,
+          "oil": true
+        },
+        "display_icons": [
+          "✅"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "اللحوم والدواجن",
+              "en": "Meat and poultry",
+              "el": "Κρέας καὶ πουλερικά"
+            },
+            "allowed": true
+          },
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "الألبان",
+              "en": "Dairy",
+              "el": "Γαλακτοκομικά"
+            },
+            "allowed": true
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "البيض",
+              "en": "Eggs",
+              "el": "Αὐγά"
+            },
+            "allowed": true
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "السمك",
+              "en": "Fish",
+              "el": "Ψάρι"
+            },
+            "allowed": true
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "النبيذ",
+              "en": "Wine",
+              "el": "Οἶνος"
+            },
+            "allowed": true
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "الزيت",
+              "en": "Oil",
+              "el": "Ἔλαιο"
+            },
+            "allowed": true
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "ordinary_fast_free",
+          "note": {
+            "ar": "قاعدة آلية محافظة؛ يمكن لملف override موثق أن يطبق تدبيراً محلياً أو رتبة عيد خاصة.",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank.",
+            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "المسموح: جميع الأصناف المذكورة بحسب القاعدة العامة",
+            "en": "Permitted: all listed food categories under the general rule",
+            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα"
+          },
+          "forbidden_summary": {
+            "ar": "غير المسموح: لا توجد أصناف ممنوعة بسبب صوم عام في هذا اليوم",
+            "en": "Not permitted: no category is restricted by a general fast today",
+            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα"
+          },
+          "duration": {
+            "ar": "لا توجد مدة صوم عامة لهذا اليوم.",
+            "en": "No general fasting duration applies today.",
+            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα."
+          },
+          "beginner_explanation": {
+            "ar": "المقصود بنوع الصوم هو قاعدة الطعام العامة لليوم، وليس حكمًا على إيمان الشخص أو صحته.",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health.",
+            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου."
+          },
+          "spiritual_note": {
+            "ar": "الصوم مرتبط أيضًا بالصلاة والتوبة والرحمة وضبط النفس، وليس بالطعام وحده.",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food.",
+            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή."
+          },
+          "health_note": {
+            "ar": "تنبيه صحي: لا توقف دواءً ولا تغيّر علاجًا بسبب التطبيق. الأطفال والحوامل والمرضى وكبار السن وأصحاب الأعمال المجهدة قد يحتاجون ترتيبًا مناسبًا لحالتهم الصحية.",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health.",
+            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "لم يثبت المصدر صومًا انقطاعيًا مستقلًا لهذا اليوم.",
+            "en": "The source does not document a separate total-abstinence interval for this day.",
+            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα."
+          },
+          "detail": {
+            "ar": "إذا وُجد صوم انقطاعي موثق، يعرض التطبيق وقت البداية والنهاية أو شرط الانتهاء كما ورد في المصدر. عند غياب ذلك لا يضع ساعات من عنده.",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours.",
+            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "الرسالة",
+            "en": "Epistle",
+            "el": "Ἀπόστολος"
+          },
+          "reference": {
+            "ar": "١ كورنثوس 15:29-38",
+            "en": "1 Corinthians 15.29-38",
+            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 15:29-38"
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "الإنجيل",
+            "en": "Gospel",
+            "el": "Εὐαγγέλιο"
+          },
+          "reference": {
+            "ar": "متى 21:23-27",
+            "en": "Matthew 21.23-27",
+            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 21:23-27"
+          }
+        }
+      },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 114,
+        "label": {
+          "ar": "قداس القديس يوحنا الذهبي الفم",
+          "en": "Divine Liturgy of Saint John Chrysostom",
+          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
+          "en": "IMPORTED_NATIVE_AUTHORIZED",
+          "el": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "en": "",
+          "el": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
+      "is_sunday": false,
+      "verification_status": "PREVIEW_REFERENCE_ONLY",
+      "publication_note": {
+        "ar": "مرجع معاينة فقط؛ يُعاد التحقق من النص الكامل في يومه قبل النشر.",
+        "en": "Reference preview only; full text is re-verified on its publication date.",
+        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως."
+      }
     }
   ],
   "fasting_guidance_version": 1,
   "source_health": {
     "schema_version": 1,
-    "date_iso": "2026-07-27",
+    "date_iso": "2026-07-28",
     "policy": {
       "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — Jordan priority",
       "network_mode": "best_effort_observation_with_fail_closed_publication",
@@ -4022,59 +4034,24 @@
         "current": 2
       },
       "consensus": {
-        "status": "CONFLICT_REQUIRES_AUTHORITY_RULE",
+        "status": "SINGLE_SOURCE_ONLY",
         "fields": {
           "epistle_reference": {
             "status": "single_source",
-            "normalized": "1 corinthians 11:31-34 12:1-6",
+            "normalized": "1 corinthians 12:12-26",
             "sources": [
-              "goarch_digital_chant_stand"
+              "oca_daily_readings"
             ]
           },
           "gospel_reference": {
             "status": "single_source",
-            "normalized": "john 15:17-16:2",
+            "normalized": "matthew 18:18-22, 19",
             "sources": [
               "oca_daily_readings"
             ]
           }
         },
-        "conflicts": [
-          {
-            "field": "epistle_reference",
-            "variants": [
-              {
-                "normalized": "1 corinthians 11:31-34 12:1-6",
-                "sources": [
-                  "goarch_digital_chant_stand"
-                ]
-              },
-              {
-                "normalized": "2 timothy 2:1-10",
-                "sources": [
-                  "oca_daily_readings"
-                ]
-              }
-            ]
-          },
-          {
-            "field": "gospel_reference",
-            "variants": [
-              {
-                "normalized": "john 15:17-16:2",
-                "sources": [
-                  "oca_daily_readings"
-                ]
-              },
-              {
-                "normalized": "matthew 18:1-11",
-                "sources": [
-                  "goarch_digital_chant_stand"
-                ]
-              }
-            ]
-          }
-        ]
+        "conflicts": []
       }
     },
     "observations": [
@@ -4085,10 +4062,10 @@
         "authority_tier": 1,
         "publication_role": "local_primary_authority",
         "calendar_profile": "jerusalem_old_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://orthodoxjordan.org/",
         "status": "undated",
-        "checked_at_utc": "2026-07-27T18:06:09Z",
+        "checked_at_utc": "2026-07-27T22:57:13Z",
         "http_status": 200,
         "content_sha256": "eca7bc340534407c13999ec159f8fe4b885fafb3df8e005a35d5bff72e4c5530",
         "content_bytes": 498885,
@@ -4113,10 +4090,10 @@
         "authority_tier": 1,
         "publication_role": "official_directory",
         "calendar_profile": "not_applicable",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:11Z",
+        "checked_at_utc": "2026-07-27T22:57:14Z",
         "http_status": 200,
         "content_sha256": "a4e6ad0b505b3cb12270e8218d2a05d975b144453bf819d2c63b6cda0b2217db",
         "content_bytes": 887573,
@@ -4138,10 +4115,10 @@
         "authority_tier": 1,
         "publication_role": "official_live_link",
         "calendar_profile": "not_applicable",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:12Z",
+        "checked_at_utc": "2026-07-27T22:57:15Z",
         "http_status": 200,
         "content_sha256": "7e48301865fa0dabae3b17cc181db62f612461635e44fc4ecbfb6b7465733f13",
         "content_bytes": 377529,
@@ -4163,10 +4140,10 @@
         "authority_tier": 2,
         "publication_role": "jurisdiction_and_feast_authority",
         "calendar_profile": "jerusalem_old_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-27T22:57:15Z",
         "http_status": 200,
         "content_sha256": "b7ffb1ec185476284f9571a539304ea92acf2991a159bce4fefa63d85d57ef0b",
         "content_bytes": 173537,
@@ -4188,10 +4165,10 @@
         "authority_tier": 3,
         "publication_role": "arabic_cross_check",
         "calendar_profile": "antioch_local_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-27T22:57:16Z",
         "http_status": 200,
         "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
         "content_bytes": 6664,
@@ -4213,10 +4190,10 @@
         "authority_tier": 4,
         "publication_role": "regular_cycle_cross_check",
         "calendar_profile": "ecumenical_patriarchate_new_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-27T22:57:16Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -4238,35 +4215,35 @@
         "authority_tier": 4,
         "publication_role": "service_structure_and_link_discovery",
         "calendar_profile": "ecumenical_patriarchate_new_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-27T18:06:13Z",
+        "checked_at_utc": "2026-07-27T22:57:16Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
-        "detected_date": "2026-07-27",
-        "epistle_reference": "1 Corinthians 11:31-34; 12:1-6",
-        "gospel_reference": "Matthew 18:1-11",
+        "detected_date": "2026-07-28",
+        "epistle_reference": null,
+        "gospel_reference": null,
         "commemorations": [],
         "service_links": [
           {
             "title": "Divine Liturgy",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/h91/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/h91/en/index.html",
             "status": "available",
-            "content_sha256": "0cdf6343a2cbe202e66351fabbcced8a2c0b372ce2f4bd8afebe74170f2cc619"
+            "content_sha256": "6c096efeb03ea2d5b439cb630efdc44ba9d49a409a468bdc8c0de879e58910ca"
           },
           {
             "title": "Matins / Orthros",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/ma/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/ma/en/index.html",
             "status": "available",
-            "content_sha256": "323a267183c5bb5fa96a759653c9cffe7e70d03e0c1c85a4ab9ca08ce7f0e2fa"
+            "content_sha256": "5c9185a06dcc9d54060452c6ad1f7d2886d47644dffe94484d92f6c3a43ad907"
           },
           {
             "title": "Vespers",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/27/li/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/li/en/index.html",
             "status": "available",
-            "content_sha256": "d3ac85628b92b1803a29c792aa27ff2bb0ee0b61d76d86318d3d6ddfdd5cacdf"
+            "content_sha256": "5fbdd1dd56c535adebe91d65f7267913d933cff7d345210ca00cbc1cf62aecf3"
           }
         ],
         "church_count": null,
@@ -4274,8 +4251,7 @@
         "rights_mode": "official_links_and_structure_only_without_separate_permission",
         "reason": null,
         "warnings": [
-          "Service links are discovery links; full text import remains rights-gated",
-          "DCS regular-cycle references extracted; full Scripture text is not imported"
+          "Service links are discovery links; full text import remains rights-gated"
         ]
       },
       {
@@ -4285,16 +4261,16 @@
         "authority_tier": 5,
         "publication_role": "last_official_reference_fallback",
         "calendar_profile": "oca_calendar",
-        "target_date": "2026-07-27",
-        "url": "https://www.oca.org/readings/daily/2026/07/27",
+        "target_date": "2026-07-28",
+        "url": "https://www.oca.org/readings/daily/2026/07/28",
         "status": "current",
-        "checked_at_utc": "2026-07-27T18:06:15Z",
+        "checked_at_utc": "2026-07-27T22:57:18Z",
         "http_status": 200,
-        "content_sha256": "21850707524546869f76ce37bd492ae4c1287f70b1b57aed7e75ff426e37bfda",
-        "content_bytes": 14741,
-        "detected_date": "2026-07-27",
-        "epistle_reference": "2 Timothy 2:1-10",
-        "gospel_reference": "John 15:17-16:2",
+        "content_sha256": "dbca458f59845c9e539c125d7065ac066c986e2871f3d577086d96ee4891cfcd",
+        "content_bytes": 14919,
+        "detected_date": "2026-07-28",
+        "epistle_reference": "1 Corinthians 12:12-26",
+        "gospel_reference": "Matthew 18:18-22, 19",
         "commemorations": [],
         "service_links": [],
         "church_count": null,
@@ -4312,10 +4288,10 @@
         "authority_tier": 4,
         "publication_role": "greek_language_cross_check",
         "calendar_profile": "church_of_greece_new_calendar",
-        "target_date": "2026-07-27",
+        "target_date": "2026-07-28",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-27T18:06:19Z",
+        "checked_at_utc": "2026-07-27T22:57:21Z",
         "http_status": 200,
         "content_sha256": "8c74811158fe4ebb2e473539767f7170591e62b04a181231a54fc9baf79fc3ef",
         "content_bytes": 115656,
@@ -4334,7 +4310,7 @@
   },
   "church_directory": {
     "schema_version": 1,
-    "date_iso": "2026-07-27",
+    "date_iso": "2026-07-28",
     "authority": "orthodox_jordan",
     "directory_url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
     "status": "live_official_directory",
@@ -5140,7 +5116,7 @@
   "native_text_contract": "canonical/source_native_contract.json",
   "daily_update_status": {
     "mode": "full",
-    "date": "2026-07-27",
+    "date": "2026-07-28",
     "message": {
       "ar": "بيانات اليوم متاحة؛ قد تبقى بعض النصوص غير المنشورة فارغة حتى ورودها من مصدر رسمي مطابق.",
       "en": "Today data is available; unavailable exact texts remain empty until a matching official source is available.",
