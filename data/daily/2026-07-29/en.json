@@ -2,74 +2,75 @@
   "schema_version": 9,
   "app_title": {
     "ar": "",
-    "el": "Ἐκκλησιαστικὲς Προσευχές",
-    "en": ""
+    "el": "",
+    "en": "Church Prayers"
   },
   "patriarchate": {
     "ar": "",
-    "el": "Πατριαρχεῖον Ἱεροσολύμων",
-    "en": ""
+    "el": "",
+    "en": "Greek Orthodox Patriarchate of Jerusalem"
   },
-  "date_iso": "2026-07-28",
+  "date_iso": "2026-07-29",
   "date_label": {
     "ar": "",
-    "el": "Τρίτη, 28 Ιουλίου 2026 / 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-    "en": ""
+    "el": "",
+    "en": "Wednesday, July 29, 2026 / July 16, 2026 (Old Style)"
   },
   "calendar_label": {
     "ar": "",
-    "el": "Παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο — χρήση Πατριαρχείου Ἱεροσολύμων",
-    "en": ""
+    "el": "",
+    "en": "Old church calendar — Jerusalem Patriarchate usage"
   },
   "julian_date": {
     "year": 2026,
     "month": 7,
-    "day": 15,
-    "label_ar": "15 تموز 2026 بحسب التقويم الكنسي القديم"
+    "day": 16,
+    "label_ar": "16 تموز 2026 بحسب التقويم الكنسي القديم"
   },
   "fast": {
     "ar": "",
-    "el": "Χωρὶς νηστεία",
-    "en": ""
+    "el": "",
+    "en": "Wednesday or Friday fast — Strict fast"
   },
   "fast_detail": {
     "ar": "",
-    "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-    "en": ""
+    "el": "",
+    "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine."
   },
   "fasting": {
-    "code": "fast_free",
+    "code": "strict",
     "season": {
       "ar": "",
-      "el": "Συνήθης ἡμέρα",
-      "en": ""
+      "el": "",
+      "en": "Wednesday or Friday fast"
     },
     "title": {
       "ar": "",
-      "el": "Χωρὶς νηστεία",
-      "en": ""
+      "el": "",
+      "en": "Wednesday or Friday fast — Strict fast"
     },
     "level": {
       "ar": "",
-      "el": "Χωρὶς νηστεία",
-      "en": ""
+      "el": "",
+      "en": "Strict fast"
     },
     "detail": {
       "ar": "",
-      "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-      "en": ""
+      "el": "",
+      "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine."
     },
-    "is_fast": false,
+    "is_fast": true,
     "allowed": {
-      "meat": true,
-      "dairy": true,
-      "eggs": true,
-      "fish": true,
-      "wine": true,
-      "oil": true
+      "meat": false,
+      "dairy": false,
+      "eggs": false,
+      "fish": false,
+      "wine": false,
+      "oil": false
     },
     "display_icons": [
-      "✅"
+      "🍞",
+      "💧"
     ],
     "items": [
       {
@@ -77,102 +78,102 @@
         "icon": "🥩",
         "label": {
           "ar": "",
-          "el": "Κρέας καὶ πουλερικά",
-          "en": ""
+          "el": "",
+          "en": "Meat and poultry"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "dairy",
         "icon": "🥛",
         "label": {
           "ar": "",
-          "el": "Γαλακτοκομικά",
-          "en": ""
+          "el": "",
+          "en": "Dairy"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "eggs",
         "icon": "🥚",
         "label": {
           "ar": "",
-          "el": "Αὐγά",
-          "en": ""
+          "el": "",
+          "en": "Eggs"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "fish",
         "icon": "🐟",
         "label": {
           "ar": "",
-          "el": "Ψάρι",
-          "en": ""
+          "el": "",
+          "en": "Fish"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "wine",
         "icon": "🍷",
         "label": {
           "ar": "",
-          "el": "Οἶνος",
-          "en": ""
+          "el": "",
+          "en": "Wine"
         },
-        "allowed": true
+        "allowed": false
       },
       {
         "key": "oil",
         "icon": "🫒",
         "label": {
           "ar": "",
-          "el": "Ἔλαιο",
-          "en": ""
+          "el": "",
+          "en": "Oil"
         },
-        "allowed": true
+        "allowed": false
       }
     ],
     "verification": {
       "status": "TYPICON_BASELINE",
       "policy": "canonical/fasting_policy.json",
-      "rule": "ordinary_fast_free",
+      "rule": "weekly_wednesday_friday",
       "note": {
         "ar": "",
-        "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-        "en": ""
+        "el": "",
+        "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
       }
     },
     "guidance": {
       "allowed_summary": {
         "ar": "",
-        "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-        "en": ""
+        "el": "",
+        "en": "Permitted: plant foods that do not contain the restricted categories"
       },
       "forbidden_summary": {
         "ar": "",
-        "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-        "en": ""
+        "el": "",
+        "en": "Not permitted: Meat and poultry, Dairy, Eggs, Fish, Wine, and Oil"
       },
       "duration": {
         "ar": "",
-        "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-        "en": ""
+        "el": "",
+        "en": "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time."
       },
       "beginner_explanation": {
         "ar": "",
-        "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-        "en": ""
+        "el": "",
+        "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
       },
       "spiritual_note": {
         "ar": "",
-        "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-        "en": ""
+        "el": "",
+        "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
       },
       "health_note": {
         "ar": "",
-        "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-        "en": ""
+        "el": "",
+        "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
       }
     },
     "abstinence": {
@@ -182,13 +183,13 @@
       "end_time": null,
       "end_condition": {
         "ar": "",
-        "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-        "en": ""
+        "el": "",
+        "en": "The source does not document a separate total-abstinence interval for this day."
       },
       "detail": {
         "ar": "",
-        "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-        "en": ""
+        "el": "",
+        "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
       },
       "verification": {
         "status": "NOT_INDICATED",
@@ -198,18 +199,18 @@
   },
   "feast": {
     "ar": "",
-    "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-    "en": ""
+    "el": "",
+    "en": "Today’s commemoration according to the old church calendar"
   },
   "source_note": {
     "ar": "",
-    "el": "Τὰ δεδομένα ἐντοπισμοῦ εἶναι προσωρινά· ἕνα ἀρχεῖο δημοσιεύεται μόνον μετὰ τὸν ἔλεγχο ἐπισήμων πηγῶν καὶ τὴν προστατευμένη ὑπογραφή.",
-    "en": ""
+    "el": "",
+    "en": "Discovery data is temporary; a file becomes publishable only after the official-source gate and protected signing."
   },
   "translation_notice": {
     "ar": "",
-    "el": "Τὰ βιβλικὰ καὶ λειτουργικὰ κείμενα προέρχονται ἀπὸ ἀνεξάρτητες πρωτότυπες πηγὲς κάθε γλώσσας, χωρὶς μηχανικὴ μετάφραση ἢ ἐφεδρικὴ χρήση ἄλλης γλώσσας.",
-    "en": ""
+    "el": "",
+    "en": "Scripture and liturgical texts come from independent native sources for each language, without machine translation or cross-language fallback."
   },
   "translation_status": "source_native_only_or_unavailable",
   "language_content_mode": "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES",
@@ -220,17 +221,17 @@
     "rule_id": "ordinary_chrysostom_baseline",
     "authority": "canonical/liturgy_service_rules.json",
     "source_url": "",
-    "pascha_offset": 107,
+    "pascha_offset": 108,
     "label": {
       "ar": "",
-      "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-      "en": ""
+      "el": "",
+      "en": "Divine Liturgy of Saint John Chrysostom"
     },
     "service_id": "divine_liturgy",
     "native_editions": {
       "ar": "",
-      "el": "IMPORTED_NATIVE_AUTHORIZED",
-      "en": ""
+      "el": "",
+      "en": "IMPORTED_NATIVE_AUTHORIZED"
     },
     "availability_note": {
       "ar": "",
@@ -246,15 +247,16 @@
   "liturgy_service_editions": "canonical/liturgy_service_editions.json",
   "wrong_liturgy_fallback_allowed": false,
   "language_sources": {
-    "el": {
+    "en": {
       "priority": [
-        "church_of_greece_apostoliki_diakonia",
-        "church_of_greece_ecclesia",
-        "jerusalem_patriarchate_el",
-        "goarch_online_chapel_greek",
-        "goarch_digital_chant_stand_greek",
-        "metropolis_toronto_liturgy_el",
-        "ebible_greek_byzantine_1904"
+        "goarch_online_chapel",
+        "jerusalem_patriarchate_en",
+        "goarch_digital_chant_stand_english",
+        "akroasis_small_menaion_english",
+        "goarch_synekdemos",
+        "oca_official_english",
+        "metropolis_toronto_liturgy_en",
+        "ebible_world_english_bible"
       ],
       "same_language_fallback_only": true,
       "machine_translation_used": false,
@@ -296,7 +298,7 @@
         "source": "jerusalem_patriarchate",
         "priority": 2,
         "status": "not_applicable",
-        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-15."
+        "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-16."
       },
       {
         "source": "antioch_patriarchate",
@@ -314,7 +316,7 @@
     "jurisdiction_lock": "ORTHODOX_JORDAN_FAIL_CLOSED",
     "authority_mode": "JORDAN_OLD_CALENDAR_OFFICIAL_REFERENCE_GATE",
     "daily_availability": "FULL",
-    "date_published": "2026-07-28",
+    "date_published": "2026-07-29",
     "usable_when_partial": true,
     "partial_policy": "publish_verified_sections_and_references; leave_only_unverified_exact_text_empty"
   },
@@ -339,13 +341,13 @@
       "official": true,
       "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
       "status": "not_applicable",
-      "date_iso": "2026-07-28",
+      "date_iso": "2026-07-29",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
       "prokeimenon_text": null,
       "sha256": null,
-      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-15."
+      "reason": "لا يوجد عيد ثابت مثبت لليوم اليولياني 07-16."
     },
     {
       "id": "antioch_patriarchate",
@@ -353,7 +355,7 @@
       "official": true,
       "url": "https://www.antiochpatriarchate.org/images/pages/dalil-2026-full2025-11-23-07-04-09.pdf",
       "status": "calendar_incompatible",
-      "date_iso": "2026-07-28",
+      "date_iso": "2026-07-29",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
@@ -365,23 +367,23 @@
       "id": "official_greek_orthodox",
       "priority": 4,
       "official": true,
-      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/h91/en/index.html",
+      "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/h91/en/index.html",
       "status": "current",
-      "date_iso": "2026-07-28",
-      "epistle_reference": "1 Corinthians 12:12-26",
-      "gospel_reference": "Matthew 18:18-22; 19:1-2, 13-15",
+      "date_iso": "2026-07-29",
+      "epistle_reference": "1 Corinthians 13:4-13; 14:1-5",
+      "gospel_reference": "Matthew 20:1-16",
       "tone": null,
       "prokeimenon_text": null,
-      "sha256": "6c096efeb03ea2d5b439cb630efdc44ba9d49a409a468bdc8c0de879e58910ca",
-      "reason": "sha256=6c096efeb03ea2d5b439cb630efdc44ba9d49a409a468bdc8c0de879e58910ca"
+      "sha256": "218f72bda0a4262949d876acfe09d00f36c55a4cb57e2bc996c75171de6549ef",
+      "reason": "أعيد استخدام رصد DCS الرسمي المؤرخ والمحدود الذي جمعه مركز صحة المصادر في التشغيل نفسه."
     },
     {
       "id": "orthodox_church_in_america",
       "priority": 5,
       "official": true,
-      "url": "https://www.oca.org/readings/daily/2026/07/28",
+      "url": "https://www.oca.org/readings/daily/2026/07/29",
       "status": "unavailable",
-      "date_iso": "2026-07-28",
+      "date_iso": "2026-07-29",
       "epistle_reference": null,
       "gospel_reference": null,
       "tone": null,
@@ -466,34 +468,34 @@
       "kind": "prokeimenon",
       "title": {
         "ar": "",
-        "el": "Προκείμενον — Ἦχος βαρύς",
-        "en": ""
+        "el": "",
+        "en": "Prokeimenon — Tone 3"
       },
       "reference": {
         "ar": "",
-        "el": "Ψαλμός 63:11, 2",
-        "en": ""
+        "el": "",
+        "en": "Luke 1:46–48"
       },
       "body": {
         "ar": "",
-        "el": "Εὐφρανθήσεται δίκαιος ἐν Κυρίῳ καὶ ἐλπιεῖ ἐπ᾽ αὐτόν.\nΕἰσάκουσον, ὁ Θεός, τῆς φωνῆς μου ἐν τῷ δέεσθαί με πρὸς σέ.",
-        "en": ""
+        "el": "",
+        "en": "My soul magnifies the Lord, and my spirit rejoices in God my Savior.\nFor He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed."
       },
-      "tone": 7,
+      "tone": 3,
       "source": {
         "ar": "",
-        "el": "https://www.goarch.org/chapel",
-        "en": ""
+        "el": "",
+        "en": "https://www.goarch.org/chapel"
       },
       "native_source_verification": {
-        "el": {
+        "en": {
           "status": "VERIFIED_EXACT_NATIVE_SOURCE",
-          "source_id": "goarch_online_chapel_greek",
+          "source_id": "goarch_online_chapel",
           "source_url": "https://www.goarch.org/chapel",
           "canonical_reference": "",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "ced39c52c8c60e0eb424ebd6b60411d5c59a34694755058f1d2a86180f540b78",
+          "text_sha256": "19cf35c9bf8819902d27bea259e16fc5accb026eee223cfc3ec3d67b83c74989",
           "ai_translation_used": false,
           "automatic_diacritization_used": false
         }
@@ -513,59 +515,59 @@
       "kind": "epistle",
       "title": {
         "ar": "",
-        "el": "Ἀπόστολος",
-        "en": ""
+        "el": "",
+        "en": "Epistle"
       },
       "reference": {
         "ar": "",
-        "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26",
-        "en": ""
+        "el": "",
+        "en": "Paul’s First Letter to the Corinthians 13:4-13; 14:1-5"
       },
       "body": {
         "ar": "",
-        "el": "Καθάπερ γὰρ τὸ σῶμα ἕν ἐστι καὶ μέλη ἔχει πολλά, πάντα δὲ τὰ μέλη τοῦ σώματος τοῦ ἑνός, πολλὰ ὄντα, ἕν ἐστι σῶμα, οὕτω καὶ ὁ Χριστός·\nκαὶ γὰρ ἐν ἑνὶ Πνεύματι ἡμεῖς πάντες εἰς ἓν σῶμα ἐβαπτίσθημεν, εἴτε Ἰουδαῖοι εἴτε Ἕλληνες, εἴτε δοῦλοι εἴτε ἐλεύθεροι, καὶ πάντες εἰς ἓν Πνεῦμα ἐποτίσθημεν.\nκαὶ γὰρ τὸ σῶμα οὐκ ἔστιν ἓν μέλος, ἀλλὰ πολλά.\nἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nκαὶ ἐὰν εἴπῃ τὸ οὖς, ὅτι οὐκ εἰμὶ ὀφθαλμός, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nεἰ ὅλον τὸ σῶμα ὀφθαλμός, ποῦ ἡ ἀκοή; εἰ ὅλον ἀκοή, ποῦ ἡ ὄσφρησις;\nνυνὶ δὲ ὁ Θεὸς ἔθετο τὰ μέλη ἓν ἕκαστον αὐτῶν ἐν τῷ σώματι καθὼς ἠθέλησεν.\nεἰ δὲ ἦν τὰ πάντα ἓν μέλος, ποῦ τὸ σῶμα;\nνῦν δὲ πολλὰ μὲν μέλη, ἓν δὲ σῶμα.\nοὐ δύναται δὲ ὀφθαλμὸς εἰπεῖν τῇ χειρί· χρείαν σου οὐκ ἔχω· ἢ πάλιν ἡ κεφαλὴ τοῖς ποσί· χρείαν ὑμῶν οὐκ ἔχω·\nἀλλὰ πολλῷ μᾶλλον τὰ δοκοῦντα μέλη τοῦ σώματος ἀσθενέστερα ὑπάρχειν ἀναγκαῖά ἐστι,\nκαὶ ἃ δοκοῦμεν ἀτιμότερα εἶναι τοῦ σώματος, τούτοις τιμὴν περισσοτέραν περιτίθεμεν, καὶ τὰ ἀσχήμονα ἡμῶν εὐσχημοσύνην περισσοτέραν ἔχει,\nτὰ δὲ εὐσχήμονα ἡμῶν οὐ χρείαν ἔχει. ἀλλ᾽ ὁ Θεὸς συνεκέρασε τὸ σῶμα, τῷ ὑστεροῦντι περισσοτέραν δοὺς τιμήν,\nἵνα μὴ ᾖ σχίσμα ἐν τῷ σώματι, ἀλλὰ τὸ αὐτὸ ὑπὲρ ἀλλήλων μεριμνῶσι τὰ μέλη·\nκαὶ εἴτε πάσχει ἓν μέλος, συμπάσχει πάντα τὰ μέλη, εἴτε δοξάζεται ἓν μέλος, συγχαίρει πάντα τὰ μέλη.",
-        "en": ""
+        "el": "",
+        "en": "Love is patient and is kind. Love doesn’t envy. Love doesn’t brag, is not proud,\ndoesn’t behave itself inappropriately, doesn’t seek its own way, is not provoked, takes no account of evil;\ndoesn’t rejoice in unrighteousness, but rejoices with the truth;\nbears all things, believes all things, hopes all things, and endures all things.\nLove never fails. But where there are prophecies, they will be done away with. Where there are various languages, they will cease. Where there is knowledge, it will be done away with.\nFor we know in part and we prophesy in part;\nbut when that which is complete has come, then that which is partial will be done away with.\nWhen I was a child, I spoke as a child, I felt as a child, I thought as a child. Now that I have become a man, I have put away childish things.\nFor now we see in a mirror, dimly, but then face to face. Now I know in part, but then I will know fully, even as I was also fully known.\nBut now faith, hope, and love remain—these three. The greatest of these is love.\nFollow after love and earnestly desire spiritual gifts, but especially that you may prophesy.\nFor he who speaks in another language speaks not to men, but to God, for no one understands, but in the Spirit he speaks mysteries.\nBut he who prophesies speaks to men for their edification, exhortation, and consolation.\nHe who speaks in another language edifies himself, but he who prophesies edifies the assembly.\nNow I desire to have you all speak with other languages, but even more that you would prophesy. For he is greater who prophesies than he who speaks with other languages, unless he interprets, that the assembly may be built up."
       },
       "source": {
         "ar": "",
-        "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-        "en": ""
+        "el": "",
+        "en": "https://ebible.org/Scriptures/engwebp_usfm.zip"
       },
       "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "1CO.12.12-26",
+        "canonical_reference": "1CO.13.4-13;1CO.14.1-5",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
         "automatic_diacritization_used": false
       },
       "native_source_verification": {
-        "el": {
+        "en": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-          "source_id": "ebible_greek_byzantine_1904",
-          "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-          "canonical_reference": "1CO.12.12-26",
+          "source_id": "ebible_world_english_bible",
+          "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+          "canonical_reference": "1CO.13.4-13;1CO.14.1-5",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "a9d9cf018fdc5d731b56c338db55aa8b8c988dbc3ad0e84b44dd47676daf5321",
+          "text_sha256": "86e303931a3a020b6b73a050d24ab3a9fe2d29a34c14a413caba56957022915e",
           "verse_count": 15,
           "verse_hashes": [
-            "a0aa6ca12ebbb40d3f344915369d741a76b053d5ef37b6635cdab80c12a59509",
-            "71cdf75447a53fb6f73dea11d9def7ca8be1dc1a12f9c33e350a61cac4c78c3c",
-            "f7ddaaa9fd29271c4c2ca22a28023949db8fbd78760313f64c564b83dc09e86c",
-            "ec683095d5370c1c15dd6b1868218d5ad5344e0ee8ca217cc50aad3b3a8908ae",
-            "aec1abb7cc27c2bdd1f62d137d3e302918541414dfb5ae176bc931e3b13ad059",
-            "d7aa38741bcbb225ccd27d2cc19ca3ef77a744129c13bc1fc621bfbe20842f37",
-            "87a5d5c744631ac82bfdf032aa91dc1ed7b132f1cc88aeb319cd12d6d7389a14",
-            "0337c66e734426dea04e7182cf061f3bc2456b77266e064ffc1fd26d1b7ee1b8",
-            "87df94a0f6aa4bca24dadfc9b22e4c4c4a341874ab7abe6e509eedc8f66a9bff",
-            "e2648f4eb48ececf85efed4641babb7fd208f70c6af560f44992fa29e419d60b",
-            "122ee9c8209961875ae1826cedc50db92480750eaed6bea12c624e1c45d00357",
-            "3aea2b85cbcf68aec56d2f4785da1f24fc46701c3c63ea7e4f8b89e65485554d",
-            "aa61a371c60dad7d36ead953bc69f7af23151ce16ea1c1ea34eb53bb258249c8",
-            "0e3becaaed9cb5a9e0dec541859e890c3b1cf7ba72e7324bb4a07ffe0087d3ee",
-            "fee83cc9235516720709aa2b50c69fea3ea06fc1e48ab0bddfa18245a1bc7c7e"
+            "174a5458a68f83fb417a8cff24c311faf976a853f330df88b1d176dbadf4894f",
+            "519352be16bb83ffc95d4319efa0084bb0cd6ce78cc7491aff9c567173b3f879",
+            "f7ed8cfd89c1e0df30c2ed214a5de2319dc4cef3875c5ccd340c9b683ac120ee",
+            "defaa9b09543061dfa41f6c42c5b1b9db6afc64046c96bb86553490b7fe87c8f",
+            "fc890a42d846c351b3eae2bb770ae852d57df3975d05e6af9061cb66eb145a93",
+            "ab7d0bdaab4ca6c2b4c430b81036dc0c3ecfc233dc288c11690cbcaf27e4f186",
+            "a6fd179f5358ccd2f83a40a2dfd5f079cddc2cdaad61b912158ad7b0e455033a",
+            "85c5fb944cee5b0ec70284251f0946777c1d9f7b3dd23378e1720b69d295ad7f",
+            "a82791f064f5924060b4c20f58e86023623d714ac5c5849aa48514019aebe5e1",
+            "61e8fff078e8b1d2ad00d107bf81b007d419f223bd90421e4ea11def2b844f98",
+            "24cb74514f35aafc1998588050f72c424eb2e3ae14aeda7fcd8ebe261732df94",
+            "7d7c7427819f8bbb1c14b283dc8a5ad81516034dbc3e63ef675fb9f38102ec4c",
+            "c11159592e49726176f37be1aa2787ff5cf7d5a4c7949209e116c2b83b3e1188",
+            "bdc32bc523209da45a94f8b7d5387e3beb8b8578d00d7d06df99e4763d75545e",
+            "9176aa6977a42265a14e88c8e0c2984c4a3ebf64206c11dbdf56f24adefd2a0f"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -573,7 +575,7 @@
           "automatic_diacritization_used": false,
           "daily_reference_source_id": null,
           "daily_reference_source_url": null,
-          "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+          "corpus_archive_sha256": "9b4330ba6baf9bd5fa8ea63a8ff255c9ab326da8c843f0355c23734e61ee6276",
           "corpus_license": "Public Domain"
         }
       }
@@ -583,54 +585,60 @@
       "kind": "gospel",
       "title": {
         "ar": "",
-        "el": "Εὐαγγέλιο",
-        "en": ""
+        "el": "",
+        "en": "Gospel"
       },
       "reference": {
         "ar": "",
-        "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:18-22; 19:1-2; 19:13-15",
-        "en": ""
+        "el": "",
+        "en": "The Good News According to Matthew 20:1-16"
       },
       "body": {
         "ar": "",
-        "el": "Ἀμὴν λέγω ὑμῖν, ὅσα ἐὰν δήσητε ἐπὶ τῆς γῆς, ἔσται δεδεμένα ἐν τῷ οὐρανῷ, καὶ ὅσα ἐὰν λύσητε ἐπὶ τῆς γῆς, ἔσται λελυμένα ἐν τῷ οὐρανῷ.\nΠάλιν ἀμὴν λέγω ὑμῖν ὅτι ἐὰν δύο ὑμῶν συμφωνήσωσιν ἐπὶ τῆς γῆς περὶ παντὸς πράγματος οὗ ἐὰν αἰτήσωνται, γενήσεται αὐτοῖς παρὰ τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nοὗ γάρ εἰσι δύο ἢ τρεῖς συνηγμένοι εἰς τὸ ἐμὸν ὄνομα, ἐκεῖ εἰμι ἐν μέσῳ αὐτῶν.\nΤότε προσελθὼν αὐτῷ ὁ Πέτρος εἶπε· Κύριε, ποσάκις ἁμαρτήσει εἰς ἐμὲ ὁ ἀδελφός μου καὶ ἀφήσω αὐτῷ; ἕως ἑπτάκις;\nλέγει αὐτῷ ὁ Ἰησοῦς· οὐ λέγω σοι ἕως ἑπτάκις, ἀλλ᾽ ἕως ἑβδομηκοντάκις ἑπτά.\nΚαὶ ἐγένετο ὅτε ἐτέλεσεν ὁ Ἰησοῦς τοὺς λόγους τούτους μετῆρεν ἀπὸ τῆς Γαλιλαίας καὶ ἦλθεν εἰς τὰ ὅρια τῆς Ἰουδαίας πέραν τοῦ Ἰορδάνου.\nκαὶ ἠκολούθησαν αὐτῷ ὄχλοι πολλοί, καὶ ἐθεράπευσεν αὐτοὺς ἐκεῖ.\nΤότε προσηνέχθη αὐτῷ παιδία, ἵνα ἐπιθῇ αὐτοῖς τὰς χεῖρας καὶ προσεύξηται· οἱ δὲ μαθηταὶ ἐπετίμησαν αὐτοῖς.\nὁ δὲ Ἰησοῦς εἶπεν· ἄφετε τὰ παιδία καὶ μὴ κωλύετε αὐτὰ ἐλθεῖν πρός με· τῶν γὰρ τοιούτων ἐστὶν ἡ βασιλεία τῶν οὐρανῶν.\nκαὶ ἐπιθεὶς τὰς χεῖρας αὐτοῖς ἐπορεύθη ἐκεῖθεν.",
-        "en": ""
+        "el": "",
+        "en": "“For the Kingdom of Heaven is like a man who was the master of a household, who went out early in the morning to hire laborers for his vineyard.\nWhen he had agreed with the laborers for a denarius a day, he sent them into his vineyard.\nHe went out about the third hour, and saw others standing idle in the marketplace.\nHe said to them, ‘You also go into the vineyard, and whatever is right I will give you.’ So they went their way.\nAgain he went out about the sixth and the ninth hour, and did likewise.\nAbout the eleventh hour he went out and found others standing idle. He said to them, ‘Why do you stand here all day idle?’\n“They said to him, ‘Because no one has hired us.’ “He said to them, ‘You also go into the vineyard, and you will receive whatever is right.’\n“When evening had come, the lord of the vineyard said to his manager, ‘Call the laborers and pay them their wages, beginning from the last to the first.’\n“When those who were hired at about the eleventh hour came, they each received a denarius.\nWhen the first came, they supposed that they would receive more; and they likewise each received a denarius.\nWhen they received it, they murmured against the master of the household,\nsaying, ‘These last have spent one hour, and you have made them equal to us who have borne the burden of the day and the scorching heat!’\n“But he answered one of them, ‘Friend, I am doing you no wrong. Didn’t you agree with me for a denarius?\nTake that which is yours, and go your way. It is my desire to give to this last just as much as to you.\nIsn’t it lawful for me to do what I want to with what I own? Or is your eye evil, because I am good?’\nSo the last will be first, and the first last. For many are called, but few are chosen.”"
       },
       "source": {
         "ar": "",
-        "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-        "en": ""
+        "el": "",
+        "en": "https://ebible.org/Scriptures/engwebp_usfm.zip"
       },
       "translation_locked": true,
       "integrity": {
         "status": "NATIVE_LANGUAGE_LANES_ENFORCED",
-        "canonical_reference": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
+        "canonical_reference": "MAT.20.1-16",
         "display_text_changed": false,
         "legacy_cross_lane_text_removed": true,
         "ai_translation_used": false,
         "automatic_diacritization_used": false
       },
       "native_source_verification": {
-        "el": {
+        "en": {
           "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-          "source_id": "ebible_greek_byzantine_1904",
-          "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-          "canonical_reference": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
+          "source_id": "ebible_world_english_bible",
+          "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
+          "canonical_reference": "MAT.20.1-16",
           "reference_available": true,
           "text_available": true,
-          "text_sha256": "660846e3639ba2d8358098658ab03015a635e5fe8dbc275520665b5406ff60fd",
-          "verse_count": 10,
+          "text_sha256": "7cd1501c4675faccf5190b08531319ad6bf12cc77bce9aaccecc5c332cb6b109",
+          "verse_count": 16,
           "verse_hashes": [
-            "6c3a65f098b008aae507c482dc12c63504a92ce67cf9cfea12f9234952391910",
-            "67fff385a9d75ebf6a4ea72195a02d73ec32b49241e8516118f4deb8dab3ae2c",
-            "940d7596d7d7a6c1ca478c591511ad805e3587b5168ee9572202907f44fb4ef6",
-            "1a07a8e960ea2c05b28e2d713cef8adc72f8ae0b348188919dc7b7cab124b539",
-            "506b455201535e20d50706260b5cd570f25a1b0d04587becf13d95d026fc9af7",
-            "bb6fc3fc95c3486ea865534d48e5d5ac48984a6f12167f5b752cea6c7eba70b0",
-            "b433a083069abca0512344e37381ca52977bacef1720d547b8c711fb70243a8c",
-            "a0e914f3d879f37c1a544366f3e387b90d68b56ca5a68e22018192f02a62c993",
-            "d6401dcefd0576a3cd28828a913bad662dc518adc72f08e9dee26fef285ec4d5",
-            "2b8d2ffea2af9d954f0f8b76a269fdd360e46312947d5df3bed6062a6482d399"
+            "3bd24b279b078c77a52520ea1a0f4efb80602cd2a67549900b0a9906adde930b",
+            "7f87c31ca93a860df83302b14f3c8364bf8848874906b26f333cb9986d478d23",
+            "71266800bd75a297d6f4faa6a401582ac21afcaa4a2899315477917cf5383f0f",
+            "57e89cc799c727a457dadf344fb9a058c8af685ca0e3fa4efcbd41947e080cf0",
+            "2741d6c9b594eec406761e527eeac34e7994196f98df0b580a396a199ddf4a71",
+            "f50cda40e0de2633e9112123d0ae0d8dfcabf6e5a36f00ce06f4ace38903a358",
+            "f613101185d54011e7542481efe83f5cdd9db9f0d40d8699c9c866cd5d77948c",
+            "84c4fca44a2eb7f048bdbbc4b4d22204bb077deb28c022848c864f83e874d426",
+            "bf00f3cdf92911065c40fabed25050c567cc1762d1c91cb9d141b448b2158dea",
+            "8757da85eeee9f8201c31789fa738c880c9a1a61a214486d471af7d039ac9768",
+            "5ec619e058cb21615af4824a8efb3359a8e2626a84a77f5d11377637879b02e2",
+            "6cd766dad23e2336d4d0c3c4771798aef93fe9ba4d8233a743d7497ed82a03a3",
+            "a0a922d1d037d81ed809ee99829f0f862939c2352319243b09e2de3bdcc38969",
+            "baccb62e55a1d302362d34845df05a330c96e46490ef0561321d070bb3ebcbf3",
+            "05ddfa6ed91899ff49445d36cafc89563acafa949806122b7097e648d5727653",
+            "bf82907291bf61384fb61ae5a986e93a4d189727e9d9a6424645c2f946471a38"
           ],
           "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
           "machine_translation_used": false,
@@ -638,7 +646,7 @@
           "automatic_diacritization_used": false,
           "daily_reference_source_id": null,
           "daily_reference_source_url": null,
-          "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+          "corpus_archive_sha256": "9b4330ba6baf9bd5fa8ea63a8ff255c9ab326da8c843f0355c23734e61ee6276",
           "corpus_license": "Public Domain"
         }
       }
@@ -648,40 +656,40 @@
     "date_iso": "2026-08-02",
     "day": {
       "ar": "",
-      "el": "Κυριακή, 2 Αυγούστου 2026 / 20 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-      "en": ""
+      "el": "",
+      "en": "Sunday, August 2, 2026 / July 20, 2026 (Old Style)"
     },
     "feast": {
       "ar": "",
-      "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-      "en": ""
+      "el": "",
+      "en": "Today’s commemoration according to the old church calendar"
     },
     "fast": {
       "ar": "",
-      "el": "Χωρὶς νηστεία",
-      "en": ""
+      "el": "",
+      "en": "No fast"
     },
     "fasting": {
       "code": "fast_free",
       "season": {
         "ar": "",
-        "el": "Συνήθης ἡμέρα",
-        "en": ""
+        "el": "",
+        "en": "Ordinary day"
       },
       "title": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "level": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "detail": {
         "ar": "",
-        "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-        "en": ""
+        "el": "",
+        "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
       },
       "is_fast": false,
       "allowed": {
@@ -701,8 +709,8 @@
           "icon": "🥩",
           "label": {
             "ar": "",
-            "el": "Κρέας καὶ πουλερικά",
-            "en": ""
+            "el": "",
+            "en": "Meat and poultry"
           },
           "allowed": true
         },
@@ -711,8 +719,8 @@
           "icon": "🥛",
           "label": {
             "ar": "",
-            "el": "Γαλακτοκομικά",
-            "en": ""
+            "el": "",
+            "en": "Dairy"
           },
           "allowed": true
         },
@@ -721,8 +729,8 @@
           "icon": "🥚",
           "label": {
             "ar": "",
-            "el": "Αὐγά",
-            "en": ""
+            "el": "",
+            "en": "Eggs"
           },
           "allowed": true
         },
@@ -731,8 +739,8 @@
           "icon": "🐟",
           "label": {
             "ar": "",
-            "el": "Ψάρι",
-            "en": ""
+            "el": "",
+            "en": "Fish"
           },
           "allowed": true
         },
@@ -741,8 +749,8 @@
           "icon": "🍷",
           "label": {
             "ar": "",
-            "el": "Οἶνος",
-            "en": ""
+            "el": "",
+            "en": "Wine"
           },
           "allowed": true
         },
@@ -751,8 +759,8 @@
           "icon": "🫒",
           "label": {
             "ar": "",
-            "el": "Ἔλαιο",
-            "en": ""
+            "el": "",
+            "en": "Oil"
           },
           "allowed": true
         }
@@ -763,40 +771,40 @@
         "rule": "ordinary_fast_free",
         "note": {
           "ar": "",
-          "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-          "en": ""
+          "el": "",
+          "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
         }
       },
       "guidance": {
         "allowed_summary": {
           "ar": "",
-          "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-          "en": ""
+          "el": "",
+          "en": "Permitted: all listed food categories under the general rule"
         },
         "forbidden_summary": {
           "ar": "",
-          "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-          "en": ""
+          "el": "",
+          "en": "Not permitted: no category is restricted by a general fast today"
         },
         "duration": {
           "ar": "",
-          "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-          "en": ""
+          "el": "",
+          "en": "No general fasting duration applies today."
         },
         "beginner_explanation": {
           "ar": "",
-          "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-          "en": ""
+          "el": "",
+          "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
         },
         "spiritual_note": {
           "ar": "",
-          "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-          "en": ""
+          "el": "",
+          "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
         },
         "health_note": {
           "ar": "",
-          "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-          "en": ""
+          "el": "",
+          "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
         }
       },
       "abstinence": {
@@ -806,13 +814,13 @@
         "end_time": null,
         "end_condition": {
           "ar": "",
-          "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-          "en": ""
+          "el": "",
+          "en": "The source does not document a separate total-abstinence interval for this day."
         },
         "detail": {
           "ar": "",
-          "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-          "en": ""
+          "el": "",
+          "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
         },
         "verification": {
           "status": "NOT_INDICATED",
@@ -824,25 +832,25 @@
       "epistle": {
         "title": {
           "ar": "",
-          "el": "Ἀπόστολος",
-          "en": ""
+          "el": "",
+          "en": "Epistle"
         },
         "reference": {
           "ar": "",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 3:9-17",
-          "en": ""
+          "el": "",
+          "en": "Paul’s First Letter to the Corinthians 3:9-17"
         }
       },
       "gospel": {
         "title": {
           "ar": "",
-          "el": "Εὐαγγέλιο",
-          "en": ""
+          "el": "",
+          "en": "Gospel"
         },
         "reference": {
           "ar": "",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34",
-          "en": ""
+          "el": "",
+          "en": "The Good News According to Matthew 14:22-34"
         }
       }
     },
@@ -855,14 +863,14 @@
       "pascha_offset": 112,
       "label": {
         "ar": "",
-        "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-        "en": ""
+        "el": "",
+        "en": "Divine Liturgy of Saint John Chrysostom"
       },
       "service_id": "divine_liturgy",
       "native_editions": {
         "ar": "",
-        "el": "IMPORTED_NATIVE_AUTHORIZED",
-        "en": ""
+        "el": "",
+        "en": "IMPORTED_NATIVE_AUTHORIZED"
       },
       "availability_note": {
         "ar": "",
@@ -884,34 +892,34 @@
           "kind": "prokeimenon",
           "title": {
             "ar": "",
-            "el": "Προκείμενον — Ἦχος 8",
-            "en": ""
+            "el": "",
+            "en": "Prokeimenon — Tone 8"
           },
           "reference": {
             "ar": "",
-            "el": "Ἀναστάσιμος Ἦχος 8",
-            "en": ""
+            "el": "",
+            "en": "Resurrection Tone 8"
           },
           "body": {
             "ar": "",
-            "el": "Εὔξασθε καὶ ἀπόδοτε Κυρίῳ τῷ Θεῷ ἡμῶν.\nΓνωστὸς ἐν τῇ Ἰουδαίᾳ ὁ Θεός· ἐν τῷ Ἰσραὴλ μέγα τὸ ὄνομα αὐτοῦ.",
-            "en": ""
+            "el": "",
+            "en": "Pray and make your vows before the Lord our God.\nIn Judah God is known; His name is great in Israel."
           },
           "tone": 8,
           "source": {
             "ar": "",
-            "el": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
-            "en": ""
+            "el": "",
+            "en": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning"
           },
           "native_source_verification": {
-            "el": {
+            "en": {
               "status": "VERIFIED_EXACT_NATIVE_SOURCE",
-              "source_id": "goarch_digital_chant_stand_greek",
+              "source_id": "goarch_digital_chant_stand_english",
               "source_url": "https://www.goarch.org/-/daily-personal-prayers-in-the-morning",
               "canonical_reference": "",
               "reference_available": true,
               "text_available": true,
-              "text_sha256": "efefe5225fd3cbbdb47e4e8d09458ac20c28a15a682d52985b0aa335e40e0ad8",
+              "text_sha256": "0f51e3c5a35d419766f8f47e26728a7504a2000c3e509deee7539345017b24c6",
               "ai_translation_used": false,
               "automatic_diacritization_used": false
             }
@@ -931,23 +939,23 @@
           "kind": "epistle",
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 3:9-17",
-            "en": ""
+            "el": "",
+            "en": "Paul’s First Letter to the Corinthians 3:9-17"
           },
           "body": {
             "ar": "",
-            "el": "Θεοῦ γάρ ἐσμεν συνεργοί· Θεοῦ γεώργιον, Θεοῦ οἰκοδομή ἐστε.\nΚατὰ τὴν χάριν τοῦ Θεοῦ τὴν δοθεῖσάν μοι ὡς σοφὸς ἀρχιτέκτων θεμέλιον τέθεικα, ἄλλος δὲ ἐποικοδομεῖ· ἕκαστος δὲ βλεπέτω πῶς ἐποικοδομεῖ·\nθεμέλιον γὰρ ἄλλον οὐδεὶς δύναται θεῖναι παρὰ τὸν κείμενον, ὅς ἐστιν Ἰησοῦς Χριστός.\nεἰ δέ τις ἐποικοδομεῖ ἐπὶ τὸν θεμέλιον τοῦτον χρυσόν, ἄργυρον, λίθους τιμίους, ξύλα, χόρτον, καλάμην,\nἑκάστου τὸ ἔργον φανερὸν γενήσεται· ἡ γὰρ ἡμέρα δηλώσει· ὅτι ἐν πυρὶ ἀποκαλύπτεται· καὶ ἑκάστου τὸ ἔργον ὁποῖόν ἐστι τὸ πῦρ δοκιμάσει.\nεἴ τινος τὸ ἔργον μενεῖ ὃ ἐπῳκοδόμησε, μισθὸν λήψεται·\nεἴ τινος τὸ ἔργον κατακαήσεται, ζημιωθήσεται, αὐτὸς δὲ σωθήσεται, οὕτως δὲ ὡς διὰ πυρός.\nΟὐκ οἴδατε ὅτι ναὸς Θεοῦ ἐστε καὶ τὸ Πνεῦμα τοῦ Θεοῦ οἰκεῖ ἐν ὑμῖν;\nεἴ τις τὸν ναὸν τοῦ Θεοῦ φθείρει, φθερεῖ τοῦτον ὁ Θεός· ὁ γὰρ ναὸς τοῦ Θεοῦ ἅγιός ἐστιν, οἵτινές ἐστε ὑμεῖς.",
-            "en": ""
+            "el": "",
+            "en": "For we are God’s fellow workers. You are God’s farming, God’s building.\nAccording to the grace of God which was given to me, as a wise master builder I laid a foundation, and another builds on it. But let each man be careful how he builds on it.\nFor no one can lay any other foundation than that which has been laid, which is Jesus Christ.\nBut if anyone builds on the foundation with gold, silver, costly stones, wood, hay, or straw,\neach man’s work will be revealed. For the Day will declare it, because it is revealed in fire; and the fire itself will test what sort of work each man’s work is.\nIf any man’s work remains which he built on it, he will receive a reward.\nIf any man’s work is burned, he will suffer loss, but he himself will be saved, but as through fire.\nDon’t you know that you are God’s temple and that God’s Spirit lives in you?\nIf anyone destroys God’s temple, God will destroy him; for God’s temple is holy, which you are."
           },
           "source": {
             "ar": "",
-            "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-            "en": ""
+            "el": "",
+            "en": "https://ebible.org/Scriptures/engwebp_usfm.zip"
           },
           "translation_locked": true,
           "integrity": {
@@ -959,25 +967,25 @@
             "automatic_diacritization_used": false
           },
           "native_source_verification": {
-            "el": {
+            "en": {
               "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_greek_byzantine_1904",
-              "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+              "source_id": "ebible_world_english_bible",
+              "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
               "canonical_reference": "1CO.3.9-17",
               "reference_available": true,
               "text_available": true,
-              "text_sha256": "c84a3d9ab4d1f612eeee8f6900a42a919a555b9ebeca20be943382cd717f1d39",
+              "text_sha256": "140d8cb71b3f91596dcd0c743ff1f6f11c36feb98cd66f07de04d5924fd74ab3",
               "verse_count": 9,
               "verse_hashes": [
-                "83fefe6f8708fc9288e4d3aa1bc402bfc4b5536700efd3ea3d90a88112020a5c",
-                "b975544074a78fab8f7d4d0eb37ff2facec4bda9b9124e8994b58d34e8baeddb",
-                "bd997395ffce78c19fae3e05b5d78738dae4918db99326066e0233dc5f332e9f",
-                "1a0cf57f9583437edd470d143839580b8c8066e0e01aadd47983e5c1e8f29b66",
-                "93ccace174804af1f4e13fdc21ff51c728b7e9ebab547d2d9c7afc079651b7d8",
-                "029648918a7245bc93307d7968d62a73a152636222fea1ab83923c8a59bb946c",
-                "fe9374567edbd8a7a129b6f824b3dface5284b44c6de35788fcdb78df3508219",
-                "408de9d0554342b96e09431fcff9fb1f6ecfbbe2bcd9cd820d6132ffa806f982",
-                "999781fcf2885c6bbde4fb52acd4749970efa8848048c6b4b8595f57cd670f95"
+                "f6f457bdf49d5e2c59307cf6b7e9c5d494a660dd1ff57c670acb22377d3b9988",
+                "332291a2950d3baee4e38aba2bbee2e97775d326fa08019139f08ef04663c409",
+                "6e753b4d477086cbf697f0a78fa5d77a0f9157265ce8ba94bdf4c117406f3d9e",
+                "77941b4079d7e53225a85d62b3f5b205adfb5ea29b3bf7b131e0d9c0c3dbf35e",
+                "db06fc6050fd5dd868470b2357142b7c9543082cac4516bfff0115ba59139aa7",
+                "308dc31cc02dee06c7d34c223a8c7099252fb3927fe7667eb938bda93ef735ef",
+                "6dbfbcb53d37b4b0185ba91fffdd5a60cd1947e76649d01114ce933749b306e5",
+                "f1fae08b9ca3f235ded4e5561e9bac303ded578fc2d79d714dd3447ed53123fa",
+                "fbaba39fdb1d195117c328938ecf199ef4805f8fa906e0aa419983c4a75d5006"
               ],
               "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
               "machine_translation_used": false,
@@ -985,7 +993,7 @@
               "automatic_diacritization_used": false,
               "daily_reference_source_id": null,
               "daily_reference_source_url": null,
-              "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+              "corpus_archive_sha256": "9b4330ba6baf9bd5fa8ea63a8ff255c9ab326da8c843f0355c23734e61ee6276",
               "corpus_license": "Public Domain"
             }
           }
@@ -995,23 +1003,23 @@
           "kind": "gospel",
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34",
-            "en": ""
+            "el": "",
+            "en": "The Good News According to Matthew 14:22-34"
           },
           "body": {
             "ar": "",
-            "el": "Καὶ εὐθέως ἠνάγκασεν ὁ Ἰησοῦς τοὺς μαθητὰς αὐτοῦ ἐμβῆναι εἰς τὸ πλοῖον καὶ προάγειν αὐτὸν εἰς τὸ πέραν, ἕως οὗ ἀπολύσῃ τοὺς ὄχλους.\nκαὶ ἀπολύσας τοὺς ὄχλους ἀνέβη εἰς τὸ ὄρος κατ᾽ ἰδίαν προσεύξασθαι. ὀψίας δὲ γενομένης μόνος ἦν ἐκεῖ.\nτὸ δὲ πλοῖον ἤδη μέσον τῆς θαλάσσης ἦν, βασανιζόμενον ὑπὸ τῶν κυμάτων· ἦν γὰρ ἐναντίος ὁ ἄνεμος.\nτετάρτῃ δὲ φυλακῇ τῆς νυκτὸς ἀπῆλθε πρὸς αὐτοὺς ὁ Ἰησοῦς περιπατῶν ἐπὶ τῆς θαλάσσης.\nκαὶ ἰδόντες αὐτὸν οἱ μαθηταὶ ἐπὶ τὴν θάλασσαν περιπατοῦντα ἐταράχθησαν λέγοντες ὅτι φάντασμά ἐστι, καὶ ἀπὸ τοῦ φόβου ἔκραξαν.\nεὐθέως δὲ ἐλάλησεν αὐτοῖς ὁ Ἰησοῦς λέγων· θαρσεῖτε, ἐγώ εἰμι· μὴ φοβεῖσθε.\nἀποκριθεὶς δὲ αὐτῷ ὁ Πέτρος εἶπε· Κύριε, εἰ σὺ εἶ, κέλευσόν με πρός σε ἐλθεῖν ἐπὶ τὰ ὕδατα.\nὁ δὲ εἶπεν, ἐλθέ. καὶ καταβὰς ἀπὸ τοῦ πλοίου ὁ Πέτρος περιεπάτησεν ἐπὶ τὰ ὕδατα ἐλθεῖν πρὸς τὸν Ἰησοῦν.\nβλέπων δὲ τὸν ἄνεμον ἰσχυρὸν ἐφοβήθη, καὶ ἀρξάμενος καταποντίζεσθαι ἔκραξε λέγων· Κύριε, σῶσόν με.\nεὐθέως δὲ ὁ Ἰησοῦς ἐκτείνας τὴν χεῖρα ἐπελάβετο αὐτοῦ καὶ λέγει αὐτῷ· ὀλιγόπιστε! εἰς τί ἐδίστασας;\nκαὶ ἐμβάντων αὐτῶν εἰς τὸ πλοῖον ἐκόπασεν ὁ ἄνεμος·\nοἱ δὲ ἐν τῷ πλοίῳ ἐλθόντες προσεκύνησαν αὐτῷ λέγοντες· ἀληθῶς Θεοῦ υἱὸς εἶ.\nΚαὶ διαπεράσαντες ἦλθον εἰς τὴν γῆν Γεννησαρέτ.",
-            "en": ""
+            "el": "",
+            "en": "Immediately Jesus made the disciples get into the boat and go ahead of him to the other side, while he sent the multitudes away.\nAfter he had sent the multitudes away, he went up into the mountain by himself to pray. When evening had come, he was there alone.\nBut the boat was now in the middle of the sea, distressed by the waves, for the wind was contrary.\nIn the fourth watch of the night, Jesus came to them, walking on the sea.\nWhen the disciples saw him walking on the sea, they were troubled, saying, “It’s a ghost!” and they cried out for fear.\nBut immediately Jesus spoke to them, saying, “Cheer up! It is I! Don’t be afraid.”\nPeter answered him and said, “Lord, if it is you, command me to come to you on the waters.”\nHe said, “Come!” Peter stepped down from the boat and walked on the waters to come to Jesus.\nBut when he saw that the wind was strong, he was afraid, and beginning to sink, he cried out, saying, “Lord, save me!”\nImmediately Jesus stretched out his hand, took hold of him, and said to him, “You of little faith, why did you doubt?”\nWhen they got up into the boat, the wind ceased.\nThose who were in the boat came and worshiped him, saying, “You are truly the Son of God!”\nWhen they had crossed over, they came to the land of Gennesaret."
           },
           "source": {
             "ar": "",
-            "el": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
-            "en": ""
+            "el": "",
+            "en": "https://ebible.org/Scriptures/engwebp_usfm.zip"
           },
           "translation_locked": true,
           "integrity": {
@@ -1023,29 +1031,29 @@
             "automatic_diacritization_used": false
           },
           "native_source_verification": {
-            "el": {
+            "en": {
               "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
-              "source_id": "ebible_greek_byzantine_1904",
-              "source_url": "https://ebible.org/Scriptures/grcbyz_usfm.zip",
+              "source_id": "ebible_world_english_bible",
+              "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
               "canonical_reference": "MAT.14.22-34",
               "reference_available": true,
               "text_available": true,
-              "text_sha256": "e6a78f3e4ec6b36c04687ef9317a29dcd73ee7dbf5a9bc4cba9e53ab87bbdafb",
+              "text_sha256": "7b39f29400c57addb538a86ed412256c04ff338bd8a9b91236995e94f8dcbc13",
               "verse_count": 13,
               "verse_hashes": [
-                "2c6300ecb54774c887377af3d805fc9aee64767791b00e5e400a22246c83c08a",
-                "2d01301723ac71086c8aa79a18d434979c4a06e7e6f78a8340c6443527bc67b2",
-                "812ffa2e9e173e38154216dcf7d254a7d94e48b687e896d63624878fabd271f4",
-                "25883c47ad573dbcf8fccda8eb36df00851ddf86682b028b086942b810fc9bbf",
-                "136e1d007e51fad810d6a837077ec7e089759f72ce9d1a78f10f6432bad7d950",
-                "b09b0dfc8de0397a8daca82975d257e64461a52611ad406f225ca9cec4281528",
-                "3ab67ce5f3b6ad50837368c49f1073d08dfb6fcaf672eadbd7b3e2ed5bf3c326",
-                "da45eab17e6103d36c0f3ef540d7536fefb4abd8864533cb8b95fe2c516bf65e",
-                "d11b8326a023b83be78c68b79e19d9c255e9eccdd505f561510733841b1bed20",
-                "8924c116c5281f72f53d90e751de6ad9473c72671d7f17fd97fb186ea28b6460",
-                "afda2981464e600884911da689459ab0f52b89294d5171317af2e1a6e9ced8f6",
-                "0cb3c0a233bc417430a554756c3b52f3bf3f4842efc4b1b34240736375ed7c6d",
-                "105e91716696e300a1ab175c3bdc556e17b7c55b1ceac0e53600d0f23a9bbadb"
+                "ea91a1049a0d934f9373c3ff1e793bb0f295093b7ec92dec55761a0ea5502ede",
+                "68ad0f30cda44820d4961027f4a29432d0a6532523402406cef0f92e47147f01",
+                "bb7b861d1cf5f00e73830891880763456d5cf587f6bee23842fa8339e5235b08",
+                "1e528d5b198bdd2181e2d019c536031b26a2eda00ce765da7e8cf7541e36051e",
+                "74f79759fa2984d2afabbeed548baef7c250597dbfcaa9b61bed3fa68ef9866d",
+                "704ea80a258d345249cff3ccd99012daae9113a4e960e64f29a0731bdbfeb198",
+                "e61080528d7a53ee4af9bb599838c36a1c027a218977873b5f22da61c301e7e6",
+                "088954c639171e33ce20ebe20e5574b0bda4378b4b063255b25c91694d5a2145",
+                "2ce04928859561998c442833e5d2cb830b788d8a88050a8a8ef52ff5e33ab3c4",
+                "893a9e2218761da5eb8060aaeab55350f3680206e9da58d1f64c5a6e0b69cf41",
+                "31c1c058b46146b11c38481e8c7cf546b2d14b566b13e7bd334e686dfee77d93",
+                "2c5918e5c843f37e2c03d4ab3fdab0641240a047b48e08648260d2a1aaf4cde0",
+                "87c8c7e33301c0f64eea2617fd7b9d5ff23d566fe8788e1df8115aa8ae3560da"
               ],
               "join_policy": "SOURCE_VERSES_JOINED_WITH_LF_NO_TEXT_MUTATION",
               "machine_translation_used": false,
@@ -1053,7 +1061,7 @@
               "automatic_diacritization_used": false,
               "daily_reference_source_id": null,
               "daily_reference_source_url": null,
-              "corpus_archive_sha256": "45e719ab80d238bc2d63cedbfc35dba4d7d4c8e8ad24b326c25ca18e46f3fe4d",
+              "corpus_archive_sha256": "9b4330ba6baf9bd5fa8ea63a8ff255c9ab326da8c843f0355c23734e61ee6276",
               "corpus_license": "Public Domain"
             }
           }
@@ -1061,13 +1069,13 @@
       ]
     },
     "upcoming_reference_dates": [
-      "2026-07-29",
       "2026-07-30",
       "2026-07-31",
       "2026-08-01",
       "2026-08-02",
       "2026-08-03",
-      "2026-08-04"
+      "2026-08-04",
+      "2026-08-05"
     ]
   },
   "recommended_services": [
@@ -1084,35 +1092,35 @@
       "icon": "⛪",
       "title": {
         "ar": "",
-        "el": "Σήμερα — Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-        "en": ""
+        "el": "",
+        "en": "Today — Divine Liturgy of Saint John Chrysostom"
       },
       "summary": {
         "ar": "",
-        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ ὁρισμένο πλήρες πρωτότυπο κείμενο, χωρὶς ἀντικατάσταση ἄλλου τύπου Λειτουργίας.",
-        "en": ""
+        "el": "",
+        "en": "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "verified_daily_overlay_v3_appointed_rite",
       "template_id": "library:divine_liturgy",
-      "dynamic_date": "2026-07-28",
+      "dynamic_date": "2026-07-29",
       "selected_liturgy_type": "chrysostom",
       "selected_liturgy": {
         "service_type": "chrysostom",
         "rule_id": "ordinary_chrysostom_baseline",
         "authority": "canonical/liturgy_service_rules.json",
         "source_url": "",
-        "pascha_offset": 107,
+        "pascha_offset": 108,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -1132,11 +1140,11 @@
         "selection_rule_id": "ordinary_chrysostom_baseline",
         "selection_authority": "canonical/liturgy_service_rules.json",
         "selection_source_url": "",
-        "pascha_offset": 107,
+        "pascha_offset": 108,
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -1154,11 +1162,11 @@
       "daily_reading_contract": {
         "authority": "orthodox_jordan",
         "contract": "canonical/jordan_liturgical_contract.json",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "selected_liturgy_type": "chrysostom",
         "selected_liturgy_rule_id": "ordinary_chrysostom_baseline",
-        "epistle_canonical": "1CO.12.12-26",
-        "gospel_canonical": "MAT.18.18-22;MAT.19.1-2;MAT.19.13-15",
+        "epistle_canonical": "1CO.13.4-13;1CO.14.1-5",
+        "gospel_canonical": "MAT.20.1-16",
         "matins_gospel_canonical": "",
         "resurrection_tone": null,
         "eothinon": null,
@@ -1172,8 +1180,8 @@
       },
       "notice": {
         "ar": "",
-        "el": "Τὸ σταθερὸ κείμενο τῆς ὁρισμένης ἀκολουθίας ἀποθηκεύεται μία φορά· τὰ ἡμερήσια κείμενα εἰσάγονται μόνο μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς.",
-        "en": ""
+        "el": "",
+        "en": "The appointed static service is stored once; daily pieces are injected only after source and signature validation."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1204,18 +1212,18 @@
         },
         "[البروكيمنن]": {
           "ar": "",
-          "el": "Ψαλμός 63:11, 2\nΕὐφρανθήσεται δίκαιος ἐν Κυρίῳ καὶ ἐλπιεῖ ἐπ᾽ αὐτόν.\nΕἰσάκουσον, ὁ Θεός, τῆς φωνῆς μου ἐν τῷ δέεσθαί με πρὸς σέ.",
-          "en": ""
+          "el": "",
+          "en": "Luke 1:46–48\nMy soul magnifies the Lord, and my spirit rejoices in God my Savior.\nFor He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed."
         },
         "[فصل من رسالة اليوم]": {
           "ar": "",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26\nΚαθάπερ γὰρ τὸ σῶμα ἕν ἐστι καὶ μέλη ἔχει πολλά, πάντα δὲ τὰ μέλη τοῦ σώματος τοῦ ἑνός, πολλὰ ὄντα, ἕν ἐστι σῶμα, οὕτω καὶ ὁ Χριστός·\nκαὶ γὰρ ἐν ἑνὶ Πνεύματι ἡμεῖς πάντες εἰς ἓν σῶμα ἐβαπτίσθημεν, εἴτε Ἰουδαῖοι εἴτε Ἕλληνες, εἴτε δοῦλοι εἴτε ἐλεύθεροι, καὶ πάντες εἰς ἓν Πνεῦμα ἐποτίσθημεν.\nκαὶ γὰρ τὸ σῶμα οὐκ ἔστιν ἓν μέλος, ἀλλὰ πολλά.\nἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nκαὶ ἐὰν εἴπῃ τὸ οὖς, ὅτι οὐκ εἰμὶ ὀφθαλμός, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nεἰ ὅλον τὸ σῶμα ὀφθαλμός, ποῦ ἡ ἀκοή; εἰ ὅλον ἀκοή, ποῦ ἡ ὄσφρησις;\nνυνὶ δὲ ὁ Θεὸς ἔθετο τὰ μέλη ἓν ἕκαστον αὐτῶν ἐν τῷ σώματι καθὼς ἠθέλησεν.\nεἰ δὲ ἦν τὰ πάντα ἓν μέλος, ποῦ τὸ σῶμα;\nνῦν δὲ πολλὰ μὲν μέλη, ἓν δὲ σῶμα.\nοὐ δύναται δὲ ὀφθαλμὸς εἰπεῖν τῇ χειρί· χρείαν σου οὐκ ἔχω· ἢ πάλιν ἡ κεφαλὴ τοῖς ποσί· χρείαν ὑμῶν οὐκ ἔχω·\nἀλλὰ πολλῷ μᾶλλον τὰ δοκοῦντα μέλη τοῦ σώματος ἀσθενέστερα ὑπάρχειν ἀναγκαῖά ἐστι,\nκαὶ ἃ δοκοῦμεν ἀτιμότερα εἶναι τοῦ σώματος, τούτοις τιμὴν περισσοτέραν περιτίθεμεν, καὶ τὰ ἀσχήμονα ἡμῶν εὐσχημοσύνην περισσοτέραν ἔχει,\nτὰ δὲ εὐσχήμονα ἡμῶν οὐ χρείαν ἔχει. ἀλλ᾽ ὁ Θεὸς συνεκέρασε τὸ σῶμα, τῷ ὑστεροῦντι περισσοτέραν δοὺς τιμήν,\nἵνα μὴ ᾖ σχίσμα ἐν τῷ σώματι, ἀλλὰ τὸ αὐτὸ ὑπὲρ ἀλλήλων μεριμνῶσι τὰ μέλη·\nκαὶ εἴτε πάσχει ἓν μέλος, συμπάσχει πάντα τὰ μέλη, εἴτε δοξάζεται ἓν μέλος, συγχαίρει πάντα τὰ μέλη.",
-          "en": ""
+          "el": "",
+          "en": "Paul’s First Letter to the Corinthians 13:4-13; 14:1-5\nLove is patient and is kind. Love doesn’t envy. Love doesn’t brag, is not proud,\ndoesn’t behave itself inappropriately, doesn’t seek its own way, is not provoked, takes no account of evil;\ndoesn’t rejoice in unrighteousness, but rejoices with the truth;\nbears all things, believes all things, hopes all things, and endures all things.\nLove never fails. But where there are prophecies, they will be done away with. Where there are various languages, they will cease. Where there is knowledge, it will be done away with.\nFor we know in part and we prophesy in part;\nbut when that which is complete has come, then that which is partial will be done away with.\nWhen I was a child, I spoke as a child, I felt as a child, I thought as a child. Now that I have become a man, I have put away childish things.\nFor now we see in a mirror, dimly, but then face to face. Now I know in part, but then I will know fully, even as I was also fully known.\nBut now faith, hope, and love remain—these three. The greatest of these is love.\nFollow after love and earnestly desire spiritual gifts, but especially that you may prophesy.\nFor he who speaks in another language speaks not to men, but to God, for no one understands, but in the Spirit he speaks mysteries.\nBut he who prophesies speaks to men for their edification, exhortation, and consolation.\nHe who speaks in another language edifies himself, but he who prophesies edifies the assembly.\nNow I desire to have you all speak with other languages, but even more that you would prophesy. For he is greater who prophesies than he who speaks with other languages, unless he interprets, that the assembly may be built up."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
           "ar": "",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:18-22; 19:1-2; 19:13-15\nἈμὴν λέγω ὑμῖν, ὅσα ἐὰν δήσητε ἐπὶ τῆς γῆς, ἔσται δεδεμένα ἐν τῷ οὐρανῷ, καὶ ὅσα ἐὰν λύσητε ἐπὶ τῆς γῆς, ἔσται λελυμένα ἐν τῷ οὐρανῷ.\nΠάλιν ἀμὴν λέγω ὑμῖν ὅτι ἐὰν δύο ὑμῶν συμφωνήσωσιν ἐπὶ τῆς γῆς περὶ παντὸς πράγματος οὗ ἐὰν αἰτήσωνται, γενήσεται αὐτοῖς παρὰ τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nοὗ γάρ εἰσι δύο ἢ τρεῖς συνηγμένοι εἰς τὸ ἐμὸν ὄνομα, ἐκεῖ εἰμι ἐν μέσῳ αὐτῶν.\nΤότε προσελθὼν αὐτῷ ὁ Πέτρος εἶπε· Κύριε, ποσάκις ἁμαρτήσει εἰς ἐμὲ ὁ ἀδελφός μου καὶ ἀφήσω αὐτῷ; ἕως ἑπτάκις;\nλέγει αὐτῷ ὁ Ἰησοῦς· οὐ λέγω σοι ἕως ἑπτάκις, ἀλλ᾽ ἕως ἑβδομηκοντάκις ἑπτά.\nΚαὶ ἐγένετο ὅτε ἐτέλεσεν ὁ Ἰησοῦς τοὺς λόγους τούτους μετῆρεν ἀπὸ τῆς Γαλιλαίας καὶ ἦλθεν εἰς τὰ ὅρια τῆς Ἰουδαίας πέραν τοῦ Ἰορδάνου.\nκαὶ ἠκολούθησαν αὐτῷ ὄχλοι πολλοί, καὶ ἐθεράπευσεν αὐτοὺς ἐκεῖ.\nΤότε προσηνέχθη αὐτῷ παιδία, ἵνα ἐπιθῇ αὐτοῖς τὰς χεῖρας καὶ προσεύξηται· οἱ δὲ μαθηταὶ ἐπετίμησαν αὐτοῖς.\nὁ δὲ Ἰησοῦς εἶπεν· ἄφετε τὰ παιδία καὶ μὴ κωλύετε αὐτὰ ἐλθεῖν πρός με· τῶν γὰρ τοιούτων ἐστὶν ἡ βασιλεία τῶν οὐρανῶν.\nκαὶ ἐπιθεὶς τὰς χεῖρας αὐτοῖς ἐπορεύθη ἐκεῖθεν.",
-          "en": ""
+          "el": "",
+          "en": "The Good News According to Matthew 20:1-16\n“For the Kingdom of Heaven is like a man who was the master of a household, who went out early in the morning to hire laborers for his vineyard.\nWhen he had agreed with the laborers for a denarius a day, he sent them into his vineyard.\nHe went out about the third hour, and saw others standing idle in the marketplace.\nHe said to them, ‘You also go into the vineyard, and whatever is right I will give you.’ So they went their way.\nAgain he went out about the sixth and the ninth hour, and did likewise.\nAbout the eleventh hour he went out and found others standing idle. He said to them, ‘Why do you stand here all day idle?’\n“They said to him, ‘Because no one has hired us.’ “He said to them, ‘You also go into the vineyard, and you will receive whatever is right.’\n“When evening had come, the lord of the vineyard said to his manager, ‘Call the laborers and pay them their wages, beginning from the last to the first.’\n“When those who were hired at about the eleventh hour came, they each received a denarius.\nWhen the first came, they supposed that they would receive more; and they likewise each received a denarius.\nWhen they received it, they murmured against the master of the household,\nsaying, ‘These last have spent one hour, and you have made them equal to us who have borne the burden of the day and the scorching heat!’\n“But he answered one of them, ‘Friend, I am doing you no wrong. Didn’t you agree with me for a denarius?\nTake that which is yours, and go your way. It is my desire to give to this last just as much as to you.\nIsn’t it lawful for me to do what I want to with what I own? Or is your eye evil, because I am good?’\nSo the last will be first, and the first last. For many are called, but few are chosen.”"
         },
         "[آية المناولة]": {
           "ar": "",
@@ -1226,8 +1234,8 @@
       "inline_replacements": {
         "[اسم الإنجيلي]": {
           "ar": "",
-          "el": "Ματθαῖος ὁ Εὐαγγελιστής",
-          "en": ""
+          "el": "",
+          "en": "Matthew the Evangelist"
         }
       },
       "slot_replacements": {
@@ -1258,18 +1266,18 @@
         },
         "prokeimenon": {
           "ar": "",
-          "el": "Ψαλμός 63:11, 2\nΕὐφρανθήσεται δίκαιος ἐν Κυρίῳ καὶ ἐλπιεῖ ἐπ᾽ αὐτόν.\nΕἰσάκουσον, ὁ Θεός, τῆς φωνῆς μου ἐν τῷ δέεσθαί με πρὸς σέ.",
-          "en": ""
+          "el": "",
+          "en": "Luke 1:46–48\nMy soul magnifies the Lord, and my spirit rejoices in God my Savior.\nFor He has regarded the low estate of His handmaiden; for behold, henceforth all generations will call me blessed."
         },
         "epistle": {
           "ar": "",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 12:12-26\nΚαθάπερ γὰρ τὸ σῶμα ἕν ἐστι καὶ μέλη ἔχει πολλά, πάντα δὲ τὰ μέλη τοῦ σώματος τοῦ ἑνός, πολλὰ ὄντα, ἕν ἐστι σῶμα, οὕτω καὶ ὁ Χριστός·\nκαὶ γὰρ ἐν ἑνὶ Πνεύματι ἡμεῖς πάντες εἰς ἓν σῶμα ἐβαπτίσθημεν, εἴτε Ἰουδαῖοι εἴτε Ἕλληνες, εἴτε δοῦλοι εἴτε ἐλεύθεροι, καὶ πάντες εἰς ἓν Πνεῦμα ἐποτίσθημεν.\nκαὶ γὰρ τὸ σῶμα οὐκ ἔστιν ἓν μέλος, ἀλλὰ πολλά.\nἐὰν εἴπῃ ὁ πούς, ὅτι οὐκ εἰμὶ χείρ, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nκαὶ ἐὰν εἴπῃ τὸ οὖς, ὅτι οὐκ εἰμὶ ὀφθαλμός, οὐκ εἰμὶ ἐκ τοῦ σώματος, — οὐ παρὰ τοῦτο οὐκ ἔστιν ἐκ τοῦ σώματος;\nεἰ ὅλον τὸ σῶμα ὀφθαλμός, ποῦ ἡ ἀκοή; εἰ ὅλον ἀκοή, ποῦ ἡ ὄσφρησις;\nνυνὶ δὲ ὁ Θεὸς ἔθετο τὰ μέλη ἓν ἕκαστον αὐτῶν ἐν τῷ σώματι καθὼς ἠθέλησεν.\nεἰ δὲ ἦν τὰ πάντα ἓν μέλος, ποῦ τὸ σῶμα;\nνῦν δὲ πολλὰ μὲν μέλη, ἓν δὲ σῶμα.\nοὐ δύναται δὲ ὀφθαλμὸς εἰπεῖν τῇ χειρί· χρείαν σου οὐκ ἔχω· ἢ πάλιν ἡ κεφαλὴ τοῖς ποσί· χρείαν ὑμῶν οὐκ ἔχω·\nἀλλὰ πολλῷ μᾶλλον τὰ δοκοῦντα μέλη τοῦ σώματος ἀσθενέστερα ὑπάρχειν ἀναγκαῖά ἐστι,\nκαὶ ἃ δοκοῦμεν ἀτιμότερα εἶναι τοῦ σώματος, τούτοις τιμὴν περισσοτέραν περιτίθεμεν, καὶ τὰ ἀσχήμονα ἡμῶν εὐσχημοσύνην περισσοτέραν ἔχει,\nτὰ δὲ εὐσχήμονα ἡμῶν οὐ χρείαν ἔχει. ἀλλ᾽ ὁ Θεὸς συνεκέρασε τὸ σῶμα, τῷ ὑστεροῦντι περισσοτέραν δοὺς τιμήν,\nἵνα μὴ ᾖ σχίσμα ἐν τῷ σώματι, ἀλλὰ τὸ αὐτὸ ὑπὲρ ἀλλήλων μεριμνῶσι τὰ μέλη·\nκαὶ εἴτε πάσχει ἓν μέλος, συμπάσχει πάντα τὰ μέλη, εἴτε δοξάζεται ἓν μέλος, συγχαίρει πάντα τὰ μέλη.",
-          "en": ""
+          "el": "",
+          "en": "Paul’s First Letter to the Corinthians 13:4-13; 14:1-5\nLove is patient and is kind. Love doesn’t envy. Love doesn’t brag, is not proud,\ndoesn’t behave itself inappropriately, doesn’t seek its own way, is not provoked, takes no account of evil;\ndoesn’t rejoice in unrighteousness, but rejoices with the truth;\nbears all things, believes all things, hopes all things, and endures all things.\nLove never fails. But where there are prophecies, they will be done away with. Where there are various languages, they will cease. Where there is knowledge, it will be done away with.\nFor we know in part and we prophesy in part;\nbut when that which is complete has come, then that which is partial will be done away with.\nWhen I was a child, I spoke as a child, I felt as a child, I thought as a child. Now that I have become a man, I have put away childish things.\nFor now we see in a mirror, dimly, but then face to face. Now I know in part, but then I will know fully, even as I was also fully known.\nBut now faith, hope, and love remain—these three. The greatest of these is love.\nFollow after love and earnestly desire spiritual gifts, but especially that you may prophesy.\nFor he who speaks in another language speaks not to men, but to God, for no one understands, but in the Spirit he speaks mysteries.\nBut he who prophesies speaks to men for their edification, exhortation, and consolation.\nHe who speaks in another language edifies himself, but he who prophesies edifies the assembly.\nNow I desire to have you all speak with other languages, but even more that you would prophesy. For he is greater who prophesies than he who speaks with other languages, unless he interprets, that the assembly may be built up."
         },
         "gospel": {
           "ar": "",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 18:18-22; 19:1-2; 19:13-15\nἈμὴν λέγω ὑμῖν, ὅσα ἐὰν δήσητε ἐπὶ τῆς γῆς, ἔσται δεδεμένα ἐν τῷ οὐρανῷ, καὶ ὅσα ἐὰν λύσητε ἐπὶ τῆς γῆς, ἔσται λελυμένα ἐν τῷ οὐρανῷ.\nΠάλιν ἀμὴν λέγω ὑμῖν ὅτι ἐὰν δύο ὑμῶν συμφωνήσωσιν ἐπὶ τῆς γῆς περὶ παντὸς πράγματος οὗ ἐὰν αἰτήσωνται, γενήσεται αὐτοῖς παρὰ τοῦ πατρός μου τοῦ ἐν οὐρανοῖς.\nοὗ γάρ εἰσι δύο ἢ τρεῖς συνηγμένοι εἰς τὸ ἐμὸν ὄνομα, ἐκεῖ εἰμι ἐν μέσῳ αὐτῶν.\nΤότε προσελθὼν αὐτῷ ὁ Πέτρος εἶπε· Κύριε, ποσάκις ἁμαρτήσει εἰς ἐμὲ ὁ ἀδελφός μου καὶ ἀφήσω αὐτῷ; ἕως ἑπτάκις;\nλέγει αὐτῷ ὁ Ἰησοῦς· οὐ λέγω σοι ἕως ἑπτάκις, ἀλλ᾽ ἕως ἑβδομηκοντάκις ἑπτά.\nΚαὶ ἐγένετο ὅτε ἐτέλεσεν ὁ Ἰησοῦς τοὺς λόγους τούτους μετῆρεν ἀπὸ τῆς Γαλιλαίας καὶ ἦλθεν εἰς τὰ ὅρια τῆς Ἰουδαίας πέραν τοῦ Ἰορδάνου.\nκαὶ ἠκολούθησαν αὐτῷ ὄχλοι πολλοί, καὶ ἐθεράπευσεν αὐτοὺς ἐκεῖ.\nΤότε προσηνέχθη αὐτῷ παιδία, ἵνα ἐπιθῇ αὐτοῖς τὰς χεῖρας καὶ προσεύξηται· οἱ δὲ μαθηταὶ ἐπετίμησαν αὐτοῖς.\nὁ δὲ Ἰησοῦς εἶπεν· ἄφετε τὰ παιδία καὶ μὴ κωλύετε αὐτὰ ἐλθεῖν πρός με· τῶν γὰρ τοιούτων ἐστὶν ἡ βασιλεία τῶν οὐρανῶν.\nκαὶ ἐπιθεὶς τὰς χεῖρας αὐτοῖς ἐπορεύθη ἐκεῖθεν.",
-          "en": ""
+          "el": "",
+          "en": "The Good News According to Matthew 20:1-16\n“For the Kingdom of Heaven is like a man who was the master of a household, who went out early in the morning to hire laborers for his vineyard.\nWhen he had agreed with the laborers for a denarius a day, he sent them into his vineyard.\nHe went out about the third hour, and saw others standing idle in the marketplace.\nHe said to them, ‘You also go into the vineyard, and whatever is right I will give you.’ So they went their way.\nAgain he went out about the sixth and the ninth hour, and did likewise.\nAbout the eleventh hour he went out and found others standing idle. He said to them, ‘Why do you stand here all day idle?’\n“They said to him, ‘Because no one has hired us.’ “He said to them, ‘You also go into the vineyard, and you will receive whatever is right.’\n“When evening had come, the lord of the vineyard said to his manager, ‘Call the laborers and pay them their wages, beginning from the last to the first.’\n“When those who were hired at about the eleventh hour came, they each received a denarius.\nWhen the first came, they supposed that they would receive more; and they likewise each received a denarius.\nWhen they received it, they murmured against the master of the household,\nsaying, ‘These last have spent one hour, and you have made them equal to us who have borne the burden of the day and the scorching heat!’\n“But he answered one of them, ‘Friend, I am doing you no wrong. Didn’t you agree with me for a denarius?\nTake that which is yours, and go your way. It is my desire to give to this last just as much as to you.\nIsn’t it lawful for me to do what I want to with what I own? Or is your eye evil, because I am good?’\nSo the last will be first, and the first last. For many are called, but few are chosen.”"
         },
         "communion_hymn": {
           "ar": "",
@@ -1313,8 +1321,8 @@
         },
         "dismissal": {
           "ar": "",
-          "el": "Χριστὸς ὁ ἀληθινὸς Θεὸς ἡμῶν, ταῖς πρεσβείαις τῆς Παναχράντου καὶ Παναμώμου Ἁγίας Αὐτοῦ Μητρός· δυνάμει τοῦ τιμίου καὶ ζωοποιοῦ Σταυροῦ· ἱκεσίαις τῶν ἁγίων ἐνδόξων καὶ πανευφήμων Ἀποστόλων· τοῦ ἐν ἁγίοις πατρὸς ἡμῶν Ἰωάννου τοῦ Χρυσοστόμου, Ἀρχιεπισκόπου Κωνσταντινουπόλεως· καὶ πάντων τῶν Ἁγίων, ἐλεήσαι καὶ σώσαι ἡμᾶς, ὡς ἀγαθὸς καὶ φιλάνθρωπος.",
-          "en": ""
+          "el": "",
+          "en": "May Christ our true God, through the intercessions of His most pure and holy Mother; the power of the precious and life-giving Cross; the supplications of the holy, glorious and praiseworthy Apostles; of our father among the saints John Chrysostom, Archbishop of Constantinople; and of all the saints, have mercy on us and save us, for He is good and loves mankind."
         }
       },
       "slot_inline_replacements": {
@@ -1329,35 +1337,35 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Ἡ σημερινὴ ἀκολουθία",
-            "en": ""
+            "el": "",
+            "en": "Today’s service"
           }
         },
         {
           "type": "text",
           "speaker": {
             "ar": "",
-            "el": "Ἐκκλησιαστικὴ ἡμέρα",
-            "en": ""
+            "el": "",
+            "en": "Church day"
           },
           "text": {
             "ar": "",
-            "el": "2026-07-28 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Ἀκολουθία: Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου.",
-            "en": ""
+            "el": "",
+            "en": "2026-07-29 — تذكار اليوم بحسب التقويم الكنسي القديم — صوم الأربعاء أو الجمعة — صوم صارم. Service: Divine Liturgy of Saint John Chrysostom."
           }
         },
         {
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Ἀναγνώσματα καὶ ὕμνοι τῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Readings and hymns of the day"
           }
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1373,21 +1381,21 @@
       "icon": "🌆",
       "title": {
         "ar": "",
-        "el": "Ἑσπερινός — ἐπαληθευμένα κείμενα ἡμέρας",
-        "en": ""
+        "el": "",
+        "en": "Vespers — verified daily texts"
       },
       "summary": {
         "ar": "",
-        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία.",
-        "en": ""
+        "el": "",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-28",
+      "dynamic_date": "2026-07-29",
       "notice": {
         "ar": "",
-        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης.",
-        "en": ""
+        "el": "",
+        "en": "This verified daily overlay is composed with the single static library service at runtime."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1402,28 +1410,28 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Church-day supplement"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "",
-            "el": "Προαιρετικὴ σημείωση",
-            "en": ""
+            "el": "",
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
-            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία.",
-            "en": ""
+            "el": "",
+            "en": "Civil date: Wednesday, July 29, 2026. Old-calendar date: July 16, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1439,21 +1447,21 @@
       "icon": "🌄",
       "title": {
         "ar": "",
-        "el": "Ὄρθρος — ἐπαληθευμένα κείμενα ἡμέρας",
-        "en": ""
+        "el": "",
+        "en": "Orthros / Matins — verified daily texts"
       },
       "summary": {
         "ar": "",
-        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία.",
-        "en": ""
+        "el": "",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-28",
+      "dynamic_date": "2026-07-29",
       "notice": {
         "ar": "",
-        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης.",
-        "en": ""
+        "el": "",
+        "en": "This verified daily overlay is composed with the single static library service at runtime."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1468,28 +1476,28 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Church-day supplement"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "",
-            "el": "Προαιρετικὴ σημείωση",
-            "en": ""
+            "el": "",
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
-            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία.",
-            "en": ""
+            "el": "",
+            "en": "Civil date: Wednesday, July 29, 2026. Old-calendar date: July 16, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1505,21 +1513,21 @@
       "icon": "🌅",
       "title": {
         "ar": "",
-        "el": "Πρωινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας",
-        "en": ""
+        "el": "",
+        "en": "Morning Prayer — verified daily texts"
       },
       "summary": {
         "ar": "",
-        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία.",
-        "en": ""
+        "el": "",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-28",
+      "dynamic_date": "2026-07-29",
       "notice": {
         "ar": "",
-        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης.",
-        "en": ""
+        "el": "",
+        "en": "This verified daily overlay is composed with the single static library service at runtime."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1534,28 +1542,28 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Church-day supplement"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "",
-            "el": "Προαιρετικὴ σημείωση",
-            "en": ""
+            "el": "",
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
-            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία.",
-            "en": ""
+            "el": "",
+            "en": "Civil date: Wednesday, July 29, 2026. Old-calendar date: July 16, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1571,21 +1579,21 @@
       "icon": "🕯",
       "title": {
         "ar": "",
-        "el": "Ἑσπερινὴ Προσευχή — ἐπαληθευμένα κείμενα ἡμέρας",
-        "en": ""
+        "el": "",
+        "en": "Evening Prayer — verified daily texts"
       },
       "summary": {
         "ar": "",
-        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία.",
-        "en": ""
+        "el": "",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-28",
+      "dynamic_date": "2026-07-29",
       "notice": {
         "ar": "",
-        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης.",
-        "en": ""
+        "el": "",
+        "en": "This verified daily overlay is composed with the single static library service at runtime."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1600,28 +1608,28 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Church-day supplement"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "",
-            "el": "Προαιρετικὴ σημείωση",
-            "en": ""
+            "el": "",
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
-            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία.",
-            "en": ""
+            "el": "",
+            "en": "Civil date: Wednesday, July 29, 2026. Old-calendar date: July 16, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1637,21 +1645,21 @@
       "icon": "🌙",
       "title": {
         "ar": "",
-        "el": "Μικρὸν Ἀπόδειπνον — ἐπαληθευμένα κείμενα ἡμέρας",
-        "en": ""
+        "el": "",
+        "en": "Small Compline — verified daily texts"
       },
       "summary": {
         "ar": "",
-        "el": "Προβάλλει μόνον τὰ διαθέσιμα ἐπαληθευμένα κείμενα, χωρὶς νὰ τὰ παρουσιάζει ὡς πλήρη ἀκολουθία.",
-        "en": ""
+        "el": "",
+        "en": "Shows only the available texts that passed verification; it does not claim to be a complete office."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "daily_context_overlay",
-      "dynamic_date": "2026-07-28",
+      "dynamic_date": "2026-07-29",
       "notice": {
         "ar": "",
-        "el": "Τὸ ἐπαληθευμένο ἡμερήσιο ἐπίθεμα συντίθεται μὲ τὸ μοναδικὸ σταθερὸ κείμενο τῆς βιβλιοθήκης.",
-        "en": ""
+        "el": "",
+        "en": "This verified daily overlay is composed with the single static library service at runtime."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1666,28 +1674,28 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Συμπλήρωμα τῆς ἐκκλησιαστικῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Church-day supplement"
           }
         },
         {
           "type": "note",
           "speaker": {
             "ar": "",
-            "el": "Προαιρετικὴ σημείωση",
-            "en": ""
+            "el": "",
+            "en": "Optional note"
           },
           "text": {
             "ar": "",
-            "el": "Πολιτικὴ ἡμερομηνία: Τρίτη, 28 Ιουλίου 2026. Ἡμερομηνία παλαιοῦ ἡμερολογίου: 15 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο). Μνήμη: Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο. Νηστεία: Χωρὶς νηστεία.",
-            "en": ""
+            "el": "",
+            "en": "Civil date: Wednesday, July 29, 2026. Old-calendar date: July 16, 2026 (Old Style). Commemoration: Today’s commemoration according to the old church calendar. Fasting: Wednesday or Friday fast — Strict fast."
           },
           "collapsed_by_default": true
         }
       ],
       "integrity": {
         "status": "VERIFIED_DYNAMIC_PROPERS_NATIVE_SCRIPTURE_FAIL_CLOSED",
-        "date_iso": "2026-07-28",
+        "date_iso": "2026-07-29",
         "dynamic_texts": "OFFICIAL_SOURCE_VERIFIED",
         "scripture": "PER_LANGUAGE_OFFICIAL_NATIVE_CORPUS_OR_UNAVAILABLE",
         "static_service_scope": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
@@ -1703,15 +1711,15 @@
       "icon": "⛪",
       "title": {
         "ar": "",
-        "el": "Ἡ ἐρχόμενη Κυριακή — Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-        "en": ""
+        "el": "",
+        "en": "Next Sunday — Divine Liturgy of Saint John Chrysostom"
       },
       "summary": {
         "ar": "",
-        "el": "Τὰ ἐπαληθευμένα ἀναγνώσματα καὶ κείμενα τῆς ἡμέρας συντίθενται μὲ τὸ ὁρισμένο πλήρες πρωτότυπο κείμενο, χωρὶς ἀντικατάσταση ἄλλου τύπου Λειτουργίας.",
-        "en": ""
+        "el": "",
+        "en": "Verified daily readings and feast texts are composed with the appointed complete native service template without substituting another rite."
       },
-      "source_language": "el",
+      "source_language": "en",
       "translation_status": "verified_daily_overlay_v3_appointed_rite",
       "template_id": "library:divine_liturgy",
       "dynamic_date": "2026-08-02",
@@ -1724,14 +1732,14 @@
         "pascha_offset": 112,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -1754,8 +1762,8 @@
         "pascha_offset": 112,
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -1789,8 +1797,8 @@
       },
       "notice": {
         "ar": "",
-        "el": "Τὸ σταθερὸ κείμενο τῆς ὁρισμένης ἀκολουθίας ἀποθηκεύεται μία φορά· τὰ ἡμερήσια κείμενα εἰσάγονται μόνο μετὰ τὴν ἐπαλήθευση πηγῆς καὶ ὑπογραφῆς.",
-        "en": ""
+        "el": "",
+        "en": "The appointed static service is stored once; daily pieces are injected only after source and signature validation."
       },
       "source_provenance": {
         "policy": "canonical/source_policy.json",
@@ -1806,8 +1814,8 @@
       "segment_replacements": {
         "[طروبارية اليوم]": {
           "ar": "",
-          "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι.",
-          "en": ""
+          "el": "",
+          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You."
         },
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": {
           "ar": "",
@@ -1821,30 +1829,30 @@
         },
         "[البروكيمنن]": {
           "ar": "",
-          "el": "Ἀναστάσιμος Ἦχος 8\nΕὔξασθε καὶ ἀπόδοτε Κυρίῳ τῷ Θεῷ ἡμῶν.\nΓνωστὸς ἐν τῇ Ἰουδαίᾳ ὁ Θεός· ἐν τῷ Ἰσραὴλ μέγα τὸ ὄνομα αὐτοῦ.",
-          "en": ""
+          "el": "",
+          "en": "Resurrection Tone 8\nPray and make your vows before the Lord our God.\nIn Judah God is known; His name is great in Israel."
         },
         "[فصل من رسالة اليوم]": {
           "ar": "",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 3:9-17\nΘεοῦ γάρ ἐσμεν συνεργοί· Θεοῦ γεώργιον, Θεοῦ οἰκοδομή ἐστε.\nΚατὰ τὴν χάριν τοῦ Θεοῦ τὴν δοθεῖσάν μοι ὡς σοφὸς ἀρχιτέκτων θεμέλιον τέθεικα, ἄλλος δὲ ἐποικοδομεῖ· ἕκαστος δὲ βλεπέτω πῶς ἐποικοδομεῖ·\nθεμέλιον γὰρ ἄλλον οὐδεὶς δύναται θεῖναι παρὰ τὸν κείμενον, ὅς ἐστιν Ἰησοῦς Χριστός.\nεἰ δέ τις ἐποικοδομεῖ ἐπὶ τὸν θεμέλιον τοῦτον χρυσόν, ἄργυρον, λίθους τιμίους, ξύλα, χόρτον, καλάμην,\nἑκάστου τὸ ἔργον φανερὸν γενήσεται· ἡ γὰρ ἡμέρα δηλώσει· ὅτι ἐν πυρὶ ἀποκαλύπτεται· καὶ ἑκάστου τὸ ἔργον ὁποῖόν ἐστι τὸ πῦρ δοκιμάσει.\nεἴ τινος τὸ ἔργον μενεῖ ὃ ἐπῳκοδόμησε, μισθὸν λήψεται·\nεἴ τινος τὸ ἔργον κατακαήσεται, ζημιωθήσεται, αὐτὸς δὲ σωθήσεται, οὕτως δὲ ὡς διὰ πυρός.\nΟὐκ οἴδατε ὅτι ναὸς Θεοῦ ἐστε καὶ τὸ Πνεῦμα τοῦ Θεοῦ οἰκεῖ ἐν ὑμῖν;\nεἴ τις τὸν ναὸν τοῦ Θεοῦ φθείρει, φθερεῖ τοῦτον ὁ Θεός· ὁ γὰρ ναὸς τοῦ Θεοῦ ἅγιός ἐστιν, οἵτινές ἐστε ὑμεῖς.",
-          "en": ""
+          "el": "",
+          "en": "Paul’s First Letter to the Corinthians 3:9-17\nFor we are God’s fellow workers. You are God’s farming, God’s building.\nAccording to the grace of God which was given to me, as a wise master builder I laid a foundation, and another builds on it. But let each man be careful how he builds on it.\nFor no one can lay any other foundation than that which has been laid, which is Jesus Christ.\nBut if anyone builds on the foundation with gold, silver, costly stones, wood, hay, or straw,\neach man’s work will be revealed. For the Day will declare it, because it is revealed in fire; and the fire itself will test what sort of work each man’s work is.\nIf any man’s work remains which he built on it, he will receive a reward.\nIf any man’s work is burned, he will suffer loss, but he himself will be saved, but as through fire.\nDon’t you know that you are God’s temple and that God’s Spirit lives in you?\nIf anyone destroys God’s temple, God will destroy him; for God’s temple is holy, which you are."
         },
         "[فصل الإنجيل المعيّن لهذا اليوم]": {
           "ar": "",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34\nΚαὶ εὐθέως ἠνάγκασεν ὁ Ἰησοῦς τοὺς μαθητὰς αὐτοῦ ἐμβῆναι εἰς τὸ πλοῖον καὶ προάγειν αὐτὸν εἰς τὸ πέραν, ἕως οὗ ἀπολύσῃ τοὺς ὄχλους.\nκαὶ ἀπολύσας τοὺς ὄχλους ἀνέβη εἰς τὸ ὄρος κατ᾽ ἰδίαν προσεύξασθαι. ὀψίας δὲ γενομένης μόνος ἦν ἐκεῖ.\nτὸ δὲ πλοῖον ἤδη μέσον τῆς θαλάσσης ἦν, βασανιζόμενον ὑπὸ τῶν κυμάτων· ἦν γὰρ ἐναντίος ὁ ἄνεμος.\nτετάρτῃ δὲ φυλακῇ τῆς νυκτὸς ἀπῆλθε πρὸς αὐτοὺς ὁ Ἰησοῦς περιπατῶν ἐπὶ τῆς θαλάσσης.\nκαὶ ἰδόντες αὐτὸν οἱ μαθηταὶ ἐπὶ τὴν θάλασσαν περιπατοῦντα ἐταράχθησαν λέγοντες ὅτι φάντασμά ἐστι, καὶ ἀπὸ τοῦ φόβου ἔκραξαν.\nεὐθέως δὲ ἐλάλησεν αὐτοῖς ὁ Ἰησοῦς λέγων· θαρσεῖτε, ἐγώ εἰμι· μὴ φοβεῖσθε.\nἀποκριθεὶς δὲ αὐτῷ ὁ Πέτρος εἶπε· Κύριε, εἰ σὺ εἶ, κέλευσόν με πρός σε ἐλθεῖν ἐπὶ τὰ ὕδατα.\nὁ δὲ εἶπεν, ἐλθέ. καὶ καταβὰς ἀπὸ τοῦ πλοίου ὁ Πέτρος περιεπάτησεν ἐπὶ τὰ ὕδατα ἐλθεῖν πρὸς τὸν Ἰησοῦν.\nβλέπων δὲ τὸν ἄνεμον ἰσχυρὸν ἐφοβήθη, καὶ ἀρξάμενος καταποντίζεσθαι ἔκραξε λέγων· Κύριε, σῶσόν με.\nεὐθέως δὲ ὁ Ἰησοῦς ἐκτείνας τὴν χεῖρα ἐπελάβετο αὐτοῦ καὶ λέγει αὐτῷ· ὀλιγόπιστε! εἰς τί ἐδίστασας;\nκαὶ ἐμβάντων αὐτῶν εἰς τὸ πλοῖον ἐκόπασεν ὁ ἄνεμος·\nοἱ δὲ ἐν τῷ πλοίῳ ἐλθόντες προσεκύνησαν αὐτῷ λέγοντες· ἀληθῶς Θεοῦ υἱὸς εἶ.\nΚαὶ διαπεράσαντες ἦλθον εἰς τὴν γῆν Γεννησαρέτ.",
-          "en": ""
+          "el": "",
+          "en": "The Good News According to Matthew 14:22-34\nImmediately Jesus made the disciples get into the boat and go ahead of him to the other side, while he sent the multitudes away.\nAfter he had sent the multitudes away, he went up into the mountain by himself to pray. When evening had come, he was there alone.\nBut the boat was now in the middle of the sea, distressed by the waves, for the wind was contrary.\nIn the fourth watch of the night, Jesus came to them, walking on the sea.\nWhen the disciples saw him walking on the sea, they were troubled, saying, “It’s a ghost!” and they cried out for fear.\nBut immediately Jesus spoke to them, saying, “Cheer up! It is I! Don’t be afraid.”\nPeter answered him and said, “Lord, if it is you, command me to come to you on the waters.”\nHe said, “Come!” Peter stepped down from the boat and walked on the waters to come to Jesus.\nBut when he saw that the wind was strong, he was afraid, and beginning to sink, he cried out, saying, “Lord, save me!”\nImmediately Jesus stretched out his hand, took hold of him, and said to him, “You of little faith, why did you doubt?”\nWhen they got up into the boat, the wind ceased.\nThose who were in the boat came and worshiped him, saying, “You are truly the Son of God!”\nWhen they had crossed over, they came to the land of Gennesaret."
         },
         "[آية المناولة]": {
           "ar": "",
-          "el": "Αἰνεῖτε τὸν Κύριον ἐκ τῶν οὐρανῶν· αἰνεῖτε αὐτὸν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα.",
-          "en": ""
+          "el": "",
+          "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia."
         }
       },
       "inline_replacements": {
         "[اسم الإنجيلي]": {
           "ar": "",
-          "el": "Ματθαῖος ὁ Εὐαγγελιστής",
-          "en": ""
+          "el": "",
+          "en": "Matthew the Evangelist"
         }
       },
       "slot_replacements": {
@@ -1855,13 +1863,13 @@
         },
         "daily_hymns": {
           "ar": "",
-          "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι.",
-          "en": ""
+          "el": "",
+          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You."
         },
         "daily_troparion": {
           "ar": "",
-          "el": "Ἐξ ὕψους κατῆλθες ὁ Εὔσπλαγχνος, ταφὴν κατεδέξω τριήμερον, ἵνα ἡμᾶς ἐλευθερώσῃς τῶν παθῶν. Ἡ ζωὴ καὶ ἡ ἀνάστασις ἡμῶν, Κύριε δόξα σοι.",
-          "en": ""
+          "el": "",
+          "en": "You descended from on high, O compassionate One, and consented to a three-day burial, to free us from the passions. O Lord, our life and resurrection, glory to You."
         },
         "church_troparion": {
           "ar": "",
@@ -1875,23 +1883,23 @@
         },
         "prokeimenon": {
           "ar": "",
-          "el": "Ἀναστάσιμος Ἦχος 8\nΕὔξασθε καὶ ἀπόδοτε Κυρίῳ τῷ Θεῷ ἡμῶν.\nΓνωστὸς ἐν τῇ Ἰουδαίᾳ ὁ Θεός· ἐν τῷ Ἰσραὴλ μέγα τὸ ὄνομα αὐτοῦ.",
-          "en": ""
+          "el": "",
+          "en": "Resurrection Tone 8\nPray and make your vows before the Lord our God.\nIn Judah God is known; His name is great in Israel."
         },
         "epistle": {
           "ar": "",
-          "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 3:9-17\nΘεοῦ γάρ ἐσμεν συνεργοί· Θεοῦ γεώργιον, Θεοῦ οἰκοδομή ἐστε.\nΚατὰ τὴν χάριν τοῦ Θεοῦ τὴν δοθεῖσάν μοι ὡς σοφὸς ἀρχιτέκτων θεμέλιον τέθεικα, ἄλλος δὲ ἐποικοδομεῖ· ἕκαστος δὲ βλεπέτω πῶς ἐποικοδομεῖ·\nθεμέλιον γὰρ ἄλλον οὐδεὶς δύναται θεῖναι παρὰ τὸν κείμενον, ὅς ἐστιν Ἰησοῦς Χριστός.\nεἰ δέ τις ἐποικοδομεῖ ἐπὶ τὸν θεμέλιον τοῦτον χρυσόν, ἄργυρον, λίθους τιμίους, ξύλα, χόρτον, καλάμην,\nἑκάστου τὸ ἔργον φανερὸν γενήσεται· ἡ γὰρ ἡμέρα δηλώσει· ὅτι ἐν πυρὶ ἀποκαλύπτεται· καὶ ἑκάστου τὸ ἔργον ὁποῖόν ἐστι τὸ πῦρ δοκιμάσει.\nεἴ τινος τὸ ἔργον μενεῖ ὃ ἐπῳκοδόμησε, μισθὸν λήψεται·\nεἴ τινος τὸ ἔργον κατακαήσεται, ζημιωθήσεται, αὐτὸς δὲ σωθήσεται, οὕτως δὲ ὡς διὰ πυρός.\nΟὐκ οἴδατε ὅτι ναὸς Θεοῦ ἐστε καὶ τὸ Πνεῦμα τοῦ Θεοῦ οἰκεῖ ἐν ὑμῖν;\nεἴ τις τὸν ναὸν τοῦ Θεοῦ φθείρει, φθερεῖ τοῦτον ὁ Θεός· ὁ γὰρ ναὸς τοῦ Θεοῦ ἅγιός ἐστιν, οἵτινές ἐστε ὑμεῖς.",
-          "en": ""
+          "el": "",
+          "en": "Paul’s First Letter to the Corinthians 3:9-17\nFor we are God’s fellow workers. You are God’s farming, God’s building.\nAccording to the grace of God which was given to me, as a wise master builder I laid a foundation, and another builds on it. But let each man be careful how he builds on it.\nFor no one can lay any other foundation than that which has been laid, which is Jesus Christ.\nBut if anyone builds on the foundation with gold, silver, costly stones, wood, hay, or straw,\neach man’s work will be revealed. For the Day will declare it, because it is revealed in fire; and the fire itself will test what sort of work each man’s work is.\nIf any man’s work remains which he built on it, he will receive a reward.\nIf any man’s work is burned, he will suffer loss, but he himself will be saved, but as through fire.\nDon’t you know that you are God’s temple and that God’s Spirit lives in you?\nIf anyone destroys God’s temple, God will destroy him; for God’s temple is holy, which you are."
         },
         "gospel": {
           "ar": "",
-          "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34\nΚαὶ εὐθέως ἠνάγκασεν ὁ Ἰησοῦς τοὺς μαθητὰς αὐτοῦ ἐμβῆναι εἰς τὸ πλοῖον καὶ προάγειν αὐτὸν εἰς τὸ πέραν, ἕως οὗ ἀπολύσῃ τοὺς ὄχλους.\nκαὶ ἀπολύσας τοὺς ὄχλους ἀνέβη εἰς τὸ ὄρος κατ᾽ ἰδίαν προσεύξασθαι. ὀψίας δὲ γενομένης μόνος ἦν ἐκεῖ.\nτὸ δὲ πλοῖον ἤδη μέσον τῆς θαλάσσης ἦν, βασανιζόμενον ὑπὸ τῶν κυμάτων· ἦν γὰρ ἐναντίος ὁ ἄνεμος.\nτετάρτῃ δὲ φυλακῇ τῆς νυκτὸς ἀπῆλθε πρὸς αὐτοὺς ὁ Ἰησοῦς περιπατῶν ἐπὶ τῆς θαλάσσης.\nκαὶ ἰδόντες αὐτὸν οἱ μαθηταὶ ἐπὶ τὴν θάλασσαν περιπατοῦντα ἐταράχθησαν λέγοντες ὅτι φάντασμά ἐστι, καὶ ἀπὸ τοῦ φόβου ἔκραξαν.\nεὐθέως δὲ ἐλάλησεν αὐτοῖς ὁ Ἰησοῦς λέγων· θαρσεῖτε, ἐγώ εἰμι· μὴ φοβεῖσθε.\nἀποκριθεὶς δὲ αὐτῷ ὁ Πέτρος εἶπε· Κύριε, εἰ σὺ εἶ, κέλευσόν με πρός σε ἐλθεῖν ἐπὶ τὰ ὕδατα.\nὁ δὲ εἶπεν, ἐλθέ. καὶ καταβὰς ἀπὸ τοῦ πλοίου ὁ Πέτρος περιεπάτησεν ἐπὶ τὰ ὕδατα ἐλθεῖν πρὸς τὸν Ἰησοῦν.\nβλέπων δὲ τὸν ἄνεμον ἰσχυρὸν ἐφοβήθη, καὶ ἀρξάμενος καταποντίζεσθαι ἔκραξε λέγων· Κύριε, σῶσόν με.\nεὐθέως δὲ ὁ Ἰησοῦς ἐκτείνας τὴν χεῖρα ἐπελάβετο αὐτοῦ καὶ λέγει αὐτῷ· ὀλιγόπιστε! εἰς τί ἐδίστασας;\nκαὶ ἐμβάντων αὐτῶν εἰς τὸ πλοῖον ἐκόπασεν ὁ ἄνεμος·\nοἱ δὲ ἐν τῷ πλοίῳ ἐλθόντες προσεκύνησαν αὐτῷ λέγοντες· ἀληθῶς Θεοῦ υἱὸς εἶ.\nΚαὶ διαπεράσαντες ἦλθον εἰς τὴν γῆν Γεννησαρέτ.",
-          "en": ""
+          "el": "",
+          "en": "The Good News According to Matthew 14:22-34\nImmediately Jesus made the disciples get into the boat and go ahead of him to the other side, while he sent the multitudes away.\nAfter he had sent the multitudes away, he went up into the mountain by himself to pray. When evening had come, he was there alone.\nBut the boat was now in the middle of the sea, distressed by the waves, for the wind was contrary.\nIn the fourth watch of the night, Jesus came to them, walking on the sea.\nWhen the disciples saw him walking on the sea, they were troubled, saying, “It’s a ghost!” and they cried out for fear.\nBut immediately Jesus spoke to them, saying, “Cheer up! It is I! Don’t be afraid.”\nPeter answered him and said, “Lord, if it is you, command me to come to you on the waters.”\nHe said, “Come!” Peter stepped down from the boat and walked on the waters to come to Jesus.\nBut when he saw that the wind was strong, he was afraid, and beginning to sink, he cried out, saying, “Lord, save me!”\nImmediately Jesus stretched out his hand, took hold of him, and said to him, “You of little faith, why did you doubt?”\nWhen they got up into the boat, the wind ceased.\nThose who were in the boat came and worshiped him, saying, “You are truly the Son of God!”\nWhen they had crossed over, they came to the land of Gennesaret."
         },
         "communion_hymn": {
           "ar": "",
-          "el": "Αἰνεῖτε τὸν Κύριον ἐκ τῶν οὐρανῶν· αἰνεῖτε αὐτὸν ἐν τοῖς ὑψίστοις. Ἀλληλούϊα.",
-          "en": ""
+          "el": "",
+          "en": "Praise the Lord from the heavens; praise Him in the highest. Alleluia."
         },
         "first_antiphon": {
           "ar": "",
@@ -1920,8 +1928,8 @@
         },
         "alleluia_verses": {
           "ar": "",
-          "el": "Δεῦτε ἀγαλλιασώμεθα τῷ Κυρίῳ, ἀλαλάξωμεν τῷ Θεῷ τῷ σωτῆρι ἡμῶν.\nΠροφθάσωμεν τὸ πρόσωπον αὐτοῦ ἐν ἐξομολογήσει, καὶ ἐν ψαλμοῖς ἀλαλάξωμεν αὐτῷ.",
-          "en": ""
+          "el": "",
+          "en": "Come, let us rejoice in the Lord; let us shout with joy to God our Savior.\nLet us come before His presence with thanksgiving and shout joyfully to Him with psalms."
         },
         "theotokos_hymn": {
           "ar": "",
@@ -1946,29 +1954,29 @@
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Ἡ ἀκολουθία τῆς ἐρχόμενης Κυριακῆς",
-            "en": ""
+            "el": "",
+            "en": "Next Sunday’s service"
           }
         },
         {
           "type": "text",
           "speaker": {
             "ar": "",
-            "el": "Ἐκκλησιαστικὴ ἡμέρα",
-            "en": ""
+            "el": "",
+            "en": "Church day"
           },
           "text": {
             "ar": "",
-            "el": "2026-08-02 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Ἀκολουθία: Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου.",
-            "en": ""
+            "el": "",
+            "en": "2026-08-02 — تذكار اليوم بحسب التقويم الكنسي القديم — لا صوم. Service: Divine Liturgy of Saint John Chrysostom."
           }
         },
         {
           "type": "section",
           "title": {
             "ar": "",
-            "el": "Ἀναγνώσματα καὶ ὕμνοι τῆς ἡμέρας",
-            "en": ""
+            "el": "",
+            "en": "Readings and hymns of the day"
           }
         }
       ],
@@ -1986,291 +1994,48 @@
   ],
   "upcoming": [
     {
-      "date": "2026-07-29",
-      "day": {
-        "ar": "",
-        "el": "Τετάρτη, 29 Ιουλίου / 16 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
-      },
-      "feast": {
-        "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
-      },
-      "status": {
-        "ar": "",
-        "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία",
-        "en": ""
-      },
-      "note": {
-        "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
-      },
-      "fasting": {
-        "code": "strict",
-        "season": {
-          "ar": "",
-          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς",
-          "en": ""
-        },
-        "title": {
-          "ar": "",
-          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία",
-          "en": ""
-        },
-        "level": {
-          "ar": "",
-          "el": "Αὐστηρὰ νηστεία",
-          "en": ""
-        },
-        "detail": {
-          "ar": "",
-          "el": "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία. Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο.",
-          "en": ""
-        },
-        "is_fast": true,
-        "allowed": {
-          "meat": false,
-          "dairy": false,
-          "eggs": false,
-          "fish": false,
-          "wine": false,
-          "oil": false
-        },
-        "display_icons": [
-          "🍞",
-          "💧"
-        ],
-        "items": [
-          {
-            "key": "meat",
-            "icon": "🥩",
-            "label": {
-              "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "dairy",
-            "icon": "🥛",
-            "label": {
-              "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "eggs",
-            "icon": "🥚",
-            "label": {
-              "ar": "",
-              "el": "Αὐγά",
-              "en": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "fish",
-            "icon": "🐟",
-            "label": {
-              "ar": "",
-              "el": "Ψάρι",
-              "en": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "wine",
-            "icon": "🍷",
-            "label": {
-              "ar": "",
-              "el": "Οἶνος",
-              "en": ""
-            },
-            "allowed": false
-          },
-          {
-            "key": "oil",
-            "icon": "🫒",
-            "label": {
-              "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
-            },
-            "allowed": false
-          }
-        ],
-        "verification": {
-          "status": "TYPICON_BASELINE",
-          "policy": "canonical/fasting_policy.json",
-          "rule": "weekly_wednesday_friday",
-          "note": {
-            "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
-          }
-        },
-        "guidance": {
-          "allowed_summary": {
-            "ar": "",
-            "el": "Ἐπιτρέπονται: φυτικὲς τροφὲς χωρὶς τὶς ἀπαγορευμένες κατηγορίες",
-            "en": ""
-          },
-          "forbidden_summary": {
-            "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: Κρέας καὶ πουλερικά, Γαλακτοκομικά, Αὐγά, Ψάρι, Οἶνος, Ἔλαιο",
-            "en": ""
-          },
-          "duration": {
-            "ar": "",
-            "el": "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα.",
-            "en": ""
-          },
-          "beginner_explanation": {
-            "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
-          },
-          "spiritual_note": {
-            "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
-          },
-          "health_note": {
-            "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
-          }
-        },
-        "abstinence": {
-          "applies": false,
-          "kind": "not_indicated",
-          "start_time": null,
-          "end_time": null,
-          "end_condition": {
-            "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
-          },
-          "detail": {
-            "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
-          },
-          "verification": {
-            "status": "NOT_INDICATED",
-            "source": "canonical/fasting_policy.json"
-          }
-        }
-      },
-      "reading_references": {
-        "epistle": {
-          "title": {
-            "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
-          },
-          "reference": {
-            "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 13:4-14:5",
-            "en": ""
-          }
-        },
-        "gospel": {
-          "title": {
-            "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
-          },
-          "reference": {
-            "ar": "",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 20:1-16",
-            "en": ""
-          }
-        }
-      },
-      "liturgy_service_selection": {
-        "service_type": "chrysostom",
-        "rule_id": "ordinary_chrysostom_baseline",
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": 108,
-        "label": {
-          "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
-        },
-        "service_id": "divine_liturgy",
-        "native_editions": {
-          "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
-        },
-        "availability_note": {
-          "ar": "",
-          "el": "",
-          "en": ""
-        },
-        "source_ids": [],
-        "import_contract": "",
-        "displayable": true,
-        "wrong_liturgy_fallback_allowed": false
-      },
-      "is_sunday": false,
-      "verification_status": "PREVIEW_REFERENCE_ONLY",
-      "publication_note": {
-        "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
-      }
-    },
-    {
       "date": "2026-07-30",
       "day": {
         "ar": "",
-        "el": "Πέμπτη, 30 Ιουλίου / 17 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
+        "el": "",
+        "en": "Thursday, July 30 / July 17, 2026 (Old Style)"
       },
       "feast": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "status": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "note": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "",
-          "el": "Συνήθης ἡμέρα",
-          "en": ""
+          "el": "",
+          "en": "Ordinary day"
         },
         "title": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "level": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "detail": {
           "ar": "",
-          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-          "en": ""
+          "el": "",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
         },
         "is_fast": false,
         "allowed": {
@@ -2290,8 +2055,8 @@
             "icon": "🥩",
             "label": {
               "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
+              "el": "",
+              "en": "Meat and poultry"
             },
             "allowed": true
           },
@@ -2300,8 +2065,8 @@
             "icon": "🥛",
             "label": {
               "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
+              "el": "",
+              "en": "Dairy"
             },
             "allowed": true
           },
@@ -2310,8 +2075,8 @@
             "icon": "🥚",
             "label": {
               "ar": "",
-              "el": "Αὐγά",
-              "en": ""
+              "el": "",
+              "en": "Eggs"
             },
             "allowed": true
           },
@@ -2320,8 +2085,8 @@
             "icon": "🐟",
             "label": {
               "ar": "",
-              "el": "Ψάρι",
-              "en": ""
+              "el": "",
+              "en": "Fish"
             },
             "allowed": true
           },
@@ -2330,8 +2095,8 @@
             "icon": "🍷",
             "label": {
               "ar": "",
-              "el": "Οἶνος",
-              "en": ""
+              "el": "",
+              "en": "Wine"
             },
             "allowed": true
           },
@@ -2340,8 +2105,8 @@
             "icon": "🫒",
             "label": {
               "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
+              "el": "",
+              "en": "Oil"
             },
             "allowed": true
           }
@@ -2352,40 +2117,40 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
           }
         },
         "guidance": {
           "allowed_summary": {
             "ar": "",
-            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-            "en": ""
+            "el": "",
+            "en": "Permitted: all listed food categories under the general rule"
           },
           "forbidden_summary": {
             "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-            "en": ""
+            "el": "",
+            "en": "Not permitted: no category is restricted by a general fast today"
           },
           "duration": {
             "ar": "",
-            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-            "en": ""
+            "el": "",
+            "en": "No general fasting duration applies today."
           },
           "beginner_explanation": {
             "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
           },
           "spiritual_note": {
             "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
           },
           "health_note": {
             "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
           }
         },
         "abstinence": {
@@ -2395,13 +2160,13 @@
           "end_time": null,
           "end_condition": {
             "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
           },
           "detail": {
             "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
           },
           "verification": {
             "status": "NOT_INDICATED",
@@ -2413,25 +2178,25 @@
         "epistle": {
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 14:6-19",
-            "en": ""
+            "el": "",
+            "en": "1 Corinthians 14.6-19"
           }
         },
         "gospel": {
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 20:17-28",
-            "en": ""
+            "el": "",
+            "en": "Matthew 20.17-28"
           }
         }
       },
@@ -2443,14 +2208,14 @@
         "pascha_offset": 109,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -2466,53 +2231,53 @@
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
         "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
       }
     },
     {
       "date": "2026-07-31",
       "day": {
         "ar": "",
-        "el": "Παρασκευή, 31 Ιουλίου / 18 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
+        "el": "",
+        "en": "Friday, July 31 / July 18, 2026 (Old Style)"
       },
       "feast": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "status": {
         "ar": "",
-        "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία",
-        "en": ""
+        "el": "",
+        "en": "Wednesday or Friday fast — Strict fast"
       },
       "note": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "fasting": {
         "code": "strict",
         "season": {
           "ar": "",
-          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς",
-          "en": ""
+          "el": "",
+          "en": "Wednesday or Friday fast"
         },
         "title": {
           "ar": "",
-          "el": "Νηστεία Τετάρτης ἢ Παρασκευῆς — Αὐστηρὰ νηστεία",
-          "en": ""
+          "el": "",
+          "en": "Wednesday or Friday fast — Strict fast"
         },
         "level": {
           "ar": "",
-          "el": "Αὐστηρὰ νηστεία",
-          "en": ""
+          "el": "",
+          "en": "Strict fast"
         },
         "detail": {
           "ar": "",
-          "el": "Πρόκειται γιὰ τὴν τακτικὴ ἑβδομαδιαία ὀρθόδοξη νηστεία, ἐκτὸς ἂν ὑπάρχει τεκμηριωμένη κατάλυση ἢ τοπικὴ οἰκονομία. Ἀποχὴ ἀπὸ κρέας, γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνο.",
-          "en": ""
+          "el": "",
+          "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine."
         },
         "is_fast": true,
         "allowed": {
@@ -2533,8 +2298,8 @@
             "icon": "🥩",
             "label": {
               "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
+              "el": "",
+              "en": "Meat and poultry"
             },
             "allowed": false
           },
@@ -2543,8 +2308,8 @@
             "icon": "🥛",
             "label": {
               "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
+              "el": "",
+              "en": "Dairy"
             },
             "allowed": false
           },
@@ -2553,8 +2318,8 @@
             "icon": "🥚",
             "label": {
               "ar": "",
-              "el": "Αὐγά",
-              "en": ""
+              "el": "",
+              "en": "Eggs"
             },
             "allowed": false
           },
@@ -2563,8 +2328,8 @@
             "icon": "🐟",
             "label": {
               "ar": "",
-              "el": "Ψάρι",
-              "en": ""
+              "el": "",
+              "en": "Fish"
             },
             "allowed": false
           },
@@ -2573,8 +2338,8 @@
             "icon": "🍷",
             "label": {
               "ar": "",
-              "el": "Οἶνος",
-              "en": ""
+              "el": "",
+              "en": "Wine"
             },
             "allowed": false
           },
@@ -2583,8 +2348,8 @@
             "icon": "🫒",
             "label": {
               "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
+              "el": "",
+              "en": "Oil"
             },
             "allowed": false
           }
@@ -2595,40 +2360,40 @@
           "rule": "weekly_wednesday_friday",
           "note": {
             "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
           }
         },
         "guidance": {
           "allowed_summary": {
             "ar": "",
-            "el": "Ἐπιτρέπονται: φυτικὲς τροφὲς χωρὶς τὶς ἀπαγορευμένες κατηγορίες",
-            "en": ""
+            "el": "",
+            "en": "Permitted: plant foods that do not contain the restricted categories"
           },
           "forbidden_summary": {
             "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: Κρέας καὶ πουλερικά, Γαλακτοκομικά, Αὐγά, Ψάρι, Οἶνος, Ἔλαιο",
-            "en": ""
+            "el": "",
+            "en": "Not permitted: Meat and poultry, Dairy, Eggs, Fish, Wine, and Oil"
           },
           "duration": {
             "ar": "",
-            "el": "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα.",
-            "en": ""
+            "el": "",
+            "en": "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time."
           },
           "beginner_explanation": {
             "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
           },
           "spiritual_note": {
             "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
           },
           "health_note": {
             "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
           }
         },
         "abstinence": {
@@ -2638,13 +2403,13 @@
           "end_time": null,
           "end_condition": {
             "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
           },
           "detail": {
             "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
           },
           "verification": {
             "status": "NOT_INDICATED",
@@ -2656,25 +2421,25 @@
         "epistle": {
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 14:26-40",
-            "en": ""
+            "el": "",
+            "en": "1 Corinthians 14.26-40"
           }
         },
         "gospel": {
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 21:12-14, 17-20",
-            "en": ""
+            "el": "",
+            "en": "Matthew 21.12-14, 17-20"
           }
         }
       },
@@ -2686,14 +2451,14 @@
         "pascha_offset": 110,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -2709,53 +2474,53 @@
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
         "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
       }
     },
     {
       "date": "2026-08-01",
       "day": {
         "ar": "",
-        "el": "Σάββατο, 1 Αυγούστου / 19 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
+        "el": "",
+        "en": "Saturday, August 1 / July 19, 2026 (Old Style)"
       },
       "feast": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "status": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "note": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "",
-          "el": "Συνήθης ἡμέρα",
-          "en": ""
+          "el": "",
+          "en": "Ordinary day"
         },
         "title": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "level": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "detail": {
           "ar": "",
-          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-          "en": ""
+          "el": "",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
         },
         "is_fast": false,
         "allowed": {
@@ -2775,8 +2540,8 @@
             "icon": "🥩",
             "label": {
               "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
+              "el": "",
+              "en": "Meat and poultry"
             },
             "allowed": true
           },
@@ -2785,8 +2550,8 @@
             "icon": "🥛",
             "label": {
               "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
+              "el": "",
+              "en": "Dairy"
             },
             "allowed": true
           },
@@ -2795,8 +2560,8 @@
             "icon": "🥚",
             "label": {
               "ar": "",
-              "el": "Αὐγά",
-              "en": ""
+              "el": "",
+              "en": "Eggs"
             },
             "allowed": true
           },
@@ -2805,8 +2570,8 @@
             "icon": "🐟",
             "label": {
               "ar": "",
-              "el": "Ψάρι",
-              "en": ""
+              "el": "",
+              "en": "Fish"
             },
             "allowed": true
           },
@@ -2815,8 +2580,8 @@
             "icon": "🍷",
             "label": {
               "ar": "",
-              "el": "Οἶνος",
-              "en": ""
+              "el": "",
+              "en": "Wine"
             },
             "allowed": true
           },
@@ -2825,8 +2590,8 @@
             "icon": "🫒",
             "label": {
               "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
+              "el": "",
+              "en": "Oil"
             },
             "allowed": true
           }
@@ -2837,40 +2602,40 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
           }
         },
         "guidance": {
           "allowed_summary": {
             "ar": "",
-            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-            "en": ""
+            "el": "",
+            "en": "Permitted: all listed food categories under the general rule"
           },
           "forbidden_summary": {
             "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-            "en": ""
+            "el": "",
+            "en": "Not permitted: no category is restricted by a general fast today"
           },
           "duration": {
             "ar": "",
-            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-            "en": ""
+            "el": "",
+            "en": "No general fasting duration applies today."
           },
           "beginner_explanation": {
             "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
           },
           "spiritual_note": {
             "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
           },
           "health_note": {
             "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
           }
         },
         "abstinence": {
@@ -2880,13 +2645,13 @@
           "end_time": null,
           "end_condition": {
             "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
           },
           "detail": {
             "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
           },
           "verification": {
             "status": "NOT_INDICATED",
@@ -2898,25 +2663,25 @@
         "epistle": {
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ 14:6-9",
-            "en": ""
+            "el": "",
+            "en": "Romans 14.6-9"
           }
         },
         "gospel": {
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 15:32-39",
-            "en": ""
+            "el": "",
+            "en": "Matthew 15.32-39"
           }
         }
       },
@@ -2928,14 +2693,14 @@
         "pascha_offset": 111,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -2951,53 +2716,53 @@
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
         "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
       }
     },
     {
       "date": "2026-08-02",
       "day": {
         "ar": "",
-        "el": "Κυριακή, 2 Αυγούστου / 20 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
+        "el": "",
+        "en": "Sunday, August 2 / July 20, 2026 (Old Style)"
       },
       "feast": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "status": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "note": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "",
-          "el": "Συνήθης ἡμέρα",
-          "en": ""
+          "el": "",
+          "en": "Ordinary day"
         },
         "title": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "level": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "detail": {
           "ar": "",
-          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-          "en": ""
+          "el": "",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
         },
         "is_fast": false,
         "allowed": {
@@ -3017,8 +2782,8 @@
             "icon": "🥩",
             "label": {
               "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
+              "el": "",
+              "en": "Meat and poultry"
             },
             "allowed": true
           },
@@ -3027,8 +2792,8 @@
             "icon": "🥛",
             "label": {
               "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
+              "el": "",
+              "en": "Dairy"
             },
             "allowed": true
           },
@@ -3037,8 +2802,8 @@
             "icon": "🥚",
             "label": {
               "ar": "",
-              "el": "Αὐγά",
-              "en": ""
+              "el": "",
+              "en": "Eggs"
             },
             "allowed": true
           },
@@ -3047,8 +2812,8 @@
             "icon": "🐟",
             "label": {
               "ar": "",
-              "el": "Ψάρι",
-              "en": ""
+              "el": "",
+              "en": "Fish"
             },
             "allowed": true
           },
@@ -3057,8 +2822,8 @@
             "icon": "🍷",
             "label": {
               "ar": "",
-              "el": "Οἶνος",
-              "en": ""
+              "el": "",
+              "en": "Wine"
             },
             "allowed": true
           },
@@ -3067,8 +2832,8 @@
             "icon": "🫒",
             "label": {
               "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
+              "el": "",
+              "en": "Oil"
             },
             "allowed": true
           }
@@ -3079,40 +2844,40 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
           }
         },
         "guidance": {
           "allowed_summary": {
             "ar": "",
-            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-            "en": ""
+            "el": "",
+            "en": "Permitted: all listed food categories under the general rule"
           },
           "forbidden_summary": {
             "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-            "en": ""
+            "el": "",
+            "en": "Not permitted: no category is restricted by a general fast today"
           },
           "duration": {
             "ar": "",
-            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-            "en": ""
+            "el": "",
+            "en": "No general fasting duration applies today."
           },
           "beginner_explanation": {
             "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
           },
           "spiritual_note": {
             "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
           },
           "health_note": {
             "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
           }
         },
         "abstinence": {
@@ -3122,13 +2887,13 @@
           "end_time": null,
           "end_condition": {
             "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
           },
           "detail": {
             "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
           },
           "verification": {
             "status": "NOT_INDICATED",
@@ -3140,25 +2905,25 @@
         "epistle": {
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 3:9-17",
-            "en": ""
+            "el": "",
+            "en": "Paul’s First Letter to the Corinthians 3:9-17"
           }
         },
         "gospel": {
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΤΟ ΚΑΤΑ ΜΑΤΘΑΙΟΝ ΑΓΙΟΝ ΕΥΑΓΓΕΛΙΟΝ 14:22-34",
-            "en": ""
+            "el": "",
+            "en": "The Good News According to Matthew 14:22-34"
           }
         }
       },
@@ -3170,14 +2935,14 @@
         "pascha_offset": 112,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -3193,8 +2958,8 @@
       "verification_status": "VERIFIED_NEXT_SUNDAY_REFERENCES",
       "publication_note": {
         "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
       },
       "source": "official_greek_orthodox"
     },
@@ -3202,45 +2967,45 @@
       "date": "2026-08-03",
       "day": {
         "ar": "",
-        "el": "Δευτέρα, 3 Αυγούστου / 21 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
+        "el": "",
+        "en": "Monday, August 3 / July 21, 2026 (Old Style)"
       },
       "feast": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "status": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "note": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "",
-          "el": "Συνήθης ἡμέρα",
-          "en": ""
+          "el": "",
+          "en": "Ordinary day"
         },
         "title": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "level": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "detail": {
           "ar": "",
-          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-          "en": ""
+          "el": "",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
         },
         "is_fast": false,
         "allowed": {
@@ -3260,8 +3025,8 @@
             "icon": "🥩",
             "label": {
               "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
+              "el": "",
+              "en": "Meat and poultry"
             },
             "allowed": true
           },
@@ -3270,8 +3035,8 @@
             "icon": "🥛",
             "label": {
               "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
+              "el": "",
+              "en": "Dairy"
             },
             "allowed": true
           },
@@ -3280,8 +3045,8 @@
             "icon": "🥚",
             "label": {
               "ar": "",
-              "el": "Αὐγά",
-              "en": ""
+              "el": "",
+              "en": "Eggs"
             },
             "allowed": true
           },
@@ -3290,8 +3055,8 @@
             "icon": "🐟",
             "label": {
               "ar": "",
-              "el": "Ψάρι",
-              "en": ""
+              "el": "",
+              "en": "Fish"
             },
             "allowed": true
           },
@@ -3300,8 +3065,8 @@
             "icon": "🍷",
             "label": {
               "ar": "",
-              "el": "Οἶνος",
-              "en": ""
+              "el": "",
+              "en": "Wine"
             },
             "allowed": true
           },
@@ -3310,8 +3075,8 @@
             "icon": "🫒",
             "label": {
               "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
+              "el": "",
+              "en": "Oil"
             },
             "allowed": true
           }
@@ -3322,40 +3087,40 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
           }
         },
         "guidance": {
           "allowed_summary": {
             "ar": "",
-            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-            "en": ""
+            "el": "",
+            "en": "Permitted: all listed food categories under the general rule"
           },
           "forbidden_summary": {
             "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-            "en": ""
+            "el": "",
+            "en": "Not permitted: no category is restricted by a general fast today"
           },
           "duration": {
             "ar": "",
-            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-            "en": ""
+            "el": "",
+            "en": "No general fasting duration applies today."
           },
           "beginner_explanation": {
             "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
           },
           "spiritual_note": {
             "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
           },
           "health_note": {
             "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
           }
         },
         "abstinence": {
@@ -3365,13 +3130,13 @@
           "end_time": null,
           "end_condition": {
             "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
           },
           "detail": {
             "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
           },
           "verification": {
             "status": "NOT_INDICATED",
@@ -3383,25 +3148,25 @@
         "epistle": {
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 15:12-19",
-            "en": ""
+            "el": "",
+            "en": "1 Corinthians 15.12-19"
           }
         },
         "gospel": {
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 21:18-22",
-            "en": ""
+            "el": "",
+            "en": "Matthew 21.18-22"
           }
         }
       },
@@ -3413,14 +3178,14 @@
         "pascha_offset": 113,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -3436,53 +3201,53 @@
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
         "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
       }
     },
     {
       "date": "2026-08-04",
       "day": {
         "ar": "",
-        "el": "Τρίτη, 4 Αυγούστου / 22 Ιουλίου 2026 (παλαιὸ ἡμερολόγιο)",
-        "en": ""
+        "el": "",
+        "en": "Tuesday, August 4 / July 22, 2026 (Old Style)"
       },
       "feast": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "status": {
         "ar": "",
-        "el": "Χωρὶς νηστεία",
-        "en": ""
+        "el": "",
+        "en": "No fast"
       },
       "note": {
         "ar": "",
-        "el": "Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
-        "en": ""
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
       },
       "fasting": {
         "code": "fast_free",
         "season": {
           "ar": "",
-          "el": "Συνήθης ἡμέρα",
-          "en": ""
+          "el": "",
+          "en": "Ordinary day"
         },
         "title": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "level": {
           "ar": "",
-          "el": "Χωρὶς νηστεία",
-          "en": ""
+          "el": "",
+          "en": "No fast"
         },
         "detail": {
           "ar": "",
-          "el": "Σήμερα δὲν ἰσχύει γενικὴ περίοδος νηστείας οὔτε ἑβδομαδιαία νηστεία. Ἐπιτρέπονται ὅλες οἱ καταγεγραμμένες τροφές.",
-          "en": ""
+          "el": "",
+          "en": "No general fasting season or weekly fast applies today. All listed foods are permitted."
         },
         "is_fast": false,
         "allowed": {
@@ -3502,8 +3267,8 @@
             "icon": "🥩",
             "label": {
               "ar": "",
-              "el": "Κρέας καὶ πουλερικά",
-              "en": ""
+              "el": "",
+              "en": "Meat and poultry"
             },
             "allowed": true
           },
@@ -3512,8 +3277,8 @@
             "icon": "🥛",
             "label": {
               "ar": "",
-              "el": "Γαλακτοκομικά",
-              "en": ""
+              "el": "",
+              "en": "Dairy"
             },
             "allowed": true
           },
@@ -3522,8 +3287,8 @@
             "icon": "🥚",
             "label": {
               "ar": "",
-              "el": "Αὐγά",
-              "en": ""
+              "el": "",
+              "en": "Eggs"
             },
             "allowed": true
           },
@@ -3532,8 +3297,8 @@
             "icon": "🐟",
             "label": {
               "ar": "",
-              "el": "Ψάρι",
-              "en": ""
+              "el": "",
+              "en": "Fish"
             },
             "allowed": true
           },
@@ -3542,8 +3307,8 @@
             "icon": "🍷",
             "label": {
               "ar": "",
-              "el": "Οἶνος",
-              "en": ""
+              "el": "",
+              "en": "Wine"
             },
             "allowed": true
           },
@@ -3552,8 +3317,8 @@
             "icon": "🫒",
             "label": {
               "ar": "",
-              "el": "Ἔλαιο",
-              "en": ""
+              "el": "",
+              "en": "Oil"
             },
             "allowed": true
           }
@@ -3564,40 +3329,40 @@
           "rule": "ordinary_fast_free",
           "note": {
             "ar": "",
-            "el": "Συντηρητικὸς αὐτόματος βασικὸς κανόνας· τεκμηριωμένη ἐξαίρεση μπορεῖ νὰ ἐφαρμόσει τοπικὴ οἰκονομία ἢ ἰδιαίτερη τάξη ἑορτῆς.",
-            "en": ""
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
           }
         },
         "guidance": {
           "allowed_summary": {
             "ar": "",
-            "el": "Ἐπιτρέπονται: ὅλες οἱ καταγεγραμμένες κατηγορίες τροφίμων κατὰ τὸν γενικὸ κανόνα",
-            "en": ""
+            "el": "",
+            "en": "Permitted: all listed food categories under the general rule"
           },
           "forbidden_summary": {
             "ar": "",
-            "el": "Δὲν ἐπιτρέπονται: καμία κατηγορία δὲν περιορίζεται ἀπὸ γενικὴ νηστεία σήμερα",
-            "en": ""
+            "el": "",
+            "en": "Not permitted: no category is restricted by a general fast today"
           },
           "duration": {
             "ar": "",
-            "el": "Δὲν ἰσχύει γενικὴ διάρκεια νηστείας σήμερα.",
-            "en": ""
+            "el": "",
+            "en": "No general fasting duration applies today."
           },
           "beginner_explanation": {
             "ar": "",
-            "el": "Ὁ τύπος νηστείας περιγράφει τὸν γενικὸ διατροφικὸ κανόνα τῆς ἡμέρας· δὲν εἶναι κρίση γιὰ τὴν πίστη ἢ τὴν ὑγεία τοῦ προσώπου.",
-            "en": ""
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
           },
           "spiritual_note": {
             "ar": "",
-            "el": "Ἡ νηστεία συνδέεται μὲ προσευχή, μετάνοια, ἐλεημοσύνη καὶ ἐγκράτεια· δὲν ἀφορᾷ μόνο τὴν τροφή.",
-            "en": ""
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
           },
           "health_note": {
             "ar": "",
-            "el": "Σημείωση ὑγείας: μὴ διακόπτετε φάρμακα καὶ μὴν ἀλλάζετε θεραπεία ἐξαιτίας τῆς ἐφαρμογῆς. Παιδιά, ἔγκυες, ἀσθενεῖς, ἡλικιωμένοι καὶ ὅσοι ἐργάζονται βαριὰ μπορεῖ νὰ χρειάζονται προσαρμογὴ στὴν ὑγεία τους.",
-            "en": ""
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
           }
         },
         "abstinence": {
@@ -3607,13 +3372,13 @@
           "end_time": null,
           "end_condition": {
             "ar": "",
-            "el": "Ἡ πηγὴ δὲν τεκμηριώνει χωριστὸ διάστημα πλήρους ἀποχῆς γιὰ αὐτὴν τὴν ἡμέρα.",
-            "en": ""
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
           },
           "detail": {
             "ar": "",
-            "el": "Ὅταν ὑπάρχει τεκμηριωμένη πλήρης ἀποχή, ἡ ἐφαρμογὴ προβάλλει ἀκριβῶς τὴν ἔναρξη, λήξη ἢ συνθήκη λήξης. Διαφορετικὰ δὲν ἐπινοεῖ ὧρες.",
-            "en": ""
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
           },
           "verification": {
             "status": "NOT_INDICATED",
@@ -3625,25 +3390,25 @@
         "epistle": {
           "title": {
             "ar": "",
-            "el": "Ἀπόστολος",
-            "en": ""
+            "el": "",
+            "en": "Epistle"
           },
           "reference": {
             "ar": "",
-            "el": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄ 15:29-38",
-            "en": ""
+            "el": "",
+            "en": "1 Corinthians 15.29-38"
           }
         },
         "gospel": {
           "title": {
             "ar": "",
-            "el": "Εὐαγγέλιο",
-            "en": ""
+            "el": "",
+            "en": "Gospel"
           },
           "reference": {
             "ar": "",
-            "el": "ΚΑΤΑ ΜΑΤΘΑΙΟΝ 21:23-27",
-            "en": ""
+            "el": "",
+            "en": "Matthew 21.23-27"
           }
         }
       },
@@ -3655,14 +3420,14 @@
         "pascha_offset": 114,
         "label": {
           "ar": "",
-          "el": "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου",
-          "en": ""
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
         },
         "service_id": "divine_liturgy",
         "native_editions": {
           "ar": "",
-          "el": "IMPORTED_NATIVE_AUTHORIZED",
-          "en": ""
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
         },
         "availability_note": {
           "ar": "",
@@ -3678,15 +3443,258 @@
       "verification_status": "PREVIEW_REFERENCE_ONLY",
       "publication_note": {
         "ar": "",
-        "el": "Μόνον προεπισκόπηση παραπομπῆς· τὸ πλήρες κείμενο ἐπαληθεύεται ξανά τὴν ἡμέρα τῆς δημοσιεύσεως.",
-        "en": ""
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "day": {
+        "ar": "",
+        "el": "",
+        "en": "Wednesday, August 5 / July 23, 2026 (Old Style)"
+      },
+      "feast": {
+        "ar": "",
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
+      },
+      "status": {
+        "ar": "",
+        "el": "",
+        "en": "Wednesday or Friday fast — Strict fast"
+      },
+      "note": {
+        "ar": "",
+        "el": "",
+        "en": "Today’s commemoration according to the old church calendar"
+      },
+      "fasting": {
+        "code": "strict",
+        "season": {
+          "ar": "",
+          "el": "",
+          "en": "Wednesday or Friday fast"
+        },
+        "title": {
+          "ar": "",
+          "el": "",
+          "en": "Wednesday or Friday fast — Strict fast"
+        },
+        "level": {
+          "ar": "",
+          "el": "",
+          "en": "Strict fast"
+        },
+        "detail": {
+          "ar": "",
+          "el": "",
+          "en": "This is the regular weekly Orthodox fast unless a documented relaxation or local dispensation applies. Avoid meat, dairy, eggs, fish, oil, and wine."
+        },
+        "is_fast": true,
+        "allowed": {
+          "meat": false,
+          "dairy": false,
+          "eggs": false,
+          "fish": false,
+          "wine": false,
+          "oil": false
+        },
+        "display_icons": [
+          "🍞",
+          "💧"
+        ],
+        "items": [
+          {
+            "key": "meat",
+            "icon": "🥩",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Meat and poultry"
+            },
+            "allowed": false
+          },
+          {
+            "key": "dairy",
+            "icon": "🥛",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Dairy"
+            },
+            "allowed": false
+          },
+          {
+            "key": "eggs",
+            "icon": "🥚",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Eggs"
+            },
+            "allowed": false
+          },
+          {
+            "key": "fish",
+            "icon": "🐟",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Fish"
+            },
+            "allowed": false
+          },
+          {
+            "key": "wine",
+            "icon": "🍷",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Wine"
+            },
+            "allowed": false
+          },
+          {
+            "key": "oil",
+            "icon": "🫒",
+            "label": {
+              "ar": "",
+              "el": "",
+              "en": "Oil"
+            },
+            "allowed": false
+          }
+        ],
+        "verification": {
+          "status": "TYPICON_BASELINE",
+          "policy": "canonical/fasting_policy.json",
+          "rule": "weekly_wednesday_friday",
+          "note": {
+            "ar": "",
+            "el": "",
+            "en": "Conservative automatic baseline; a documented override may apply a local dispensation or a special feast rank."
+          }
+        },
+        "guidance": {
+          "allowed_summary": {
+            "ar": "",
+            "el": "",
+            "en": "Permitted: plant foods that do not contain the restricted categories"
+          },
+          "forbidden_summary": {
+            "ar": "",
+            "el": "",
+            "en": "Not permitted: Meat and poultry, Dairy, Eggs, Fish, Wine, and Oil"
+          },
+          "duration": {
+            "ar": "",
+            "el": "",
+            "en": "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time."
+          },
+          "beginner_explanation": {
+            "ar": "",
+            "el": "",
+            "en": "The fasting type describes the day’s general food rule; it is not a judgment on a person’s faith or health."
+          },
+          "spiritual_note": {
+            "ar": "",
+            "el": "",
+            "en": "Fasting is also joined to prayer, repentance, mercy, and self-control; it is not only about food."
+          },
+          "health_note": {
+            "ar": "",
+            "el": "",
+            "en": "Health note: do not stop medicine or change treatment because of the app. Children, pregnant people, the ill, older adults, and those doing strenuous work may need an arrangement appropriate to their health."
+          }
+        },
+        "abstinence": {
+          "applies": false,
+          "kind": "not_indicated",
+          "start_time": null,
+          "end_time": null,
+          "end_condition": {
+            "ar": "",
+            "el": "",
+            "en": "The source does not document a separate total-abstinence interval for this day."
+          },
+          "detail": {
+            "ar": "",
+            "el": "",
+            "en": "When a documented total-abstinence fast exists, the app shows its start, end, or ending condition exactly as sourced. Otherwise it does not invent hours."
+          },
+          "verification": {
+            "status": "NOT_INDICATED",
+            "source": "canonical/fasting_policy.json"
+          }
+        }
+      },
+      "reading_references": {
+        "epistle": {
+          "title": {
+            "ar": "",
+            "el": "",
+            "en": "Epistle"
+          },
+          "reference": {
+            "ar": "",
+            "el": "",
+            "en": "1 Corinthians 16.4-12"
+          }
+        },
+        "gospel": {
+          "title": {
+            "ar": "",
+            "el": "",
+            "en": "Gospel"
+          },
+          "reference": {
+            "ar": "",
+            "el": "",
+            "en": "Matthew 21.28-32"
+          }
+        }
+      },
+      "liturgy_service_selection": {
+        "service_type": "chrysostom",
+        "rule_id": "ordinary_chrysostom_baseline",
+        "authority": "canonical/liturgy_service_rules.json",
+        "source_url": "",
+        "pascha_offset": 115,
+        "label": {
+          "ar": "",
+          "el": "",
+          "en": "Divine Liturgy of Saint John Chrysostom"
+        },
+        "service_id": "divine_liturgy",
+        "native_editions": {
+          "ar": "",
+          "el": "",
+          "en": "IMPORTED_NATIVE_AUTHORIZED"
+        },
+        "availability_note": {
+          "ar": "",
+          "el": "",
+          "en": ""
+        },
+        "source_ids": [],
+        "import_contract": "",
+        "displayable": true,
+        "wrong_liturgy_fallback_allowed": false
+      },
+      "is_sunday": false,
+      "verification_status": "PREVIEW_REFERENCE_ONLY",
+      "publication_note": {
+        "ar": "",
+        "el": "",
+        "en": "Reference preview only; full text is re-verified on its publication date."
       }
     }
   ],
   "fasting_guidance_version": 1,
   "source_health": {
     "schema_version": 1,
-    "date_iso": "2026-07-28",
+    "date_iso": "2026-07-29",
     "policy": {
       "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — Jordan priority",
       "network_mode": "best_effort_observation_with_fail_closed_publication",
@@ -3707,24 +3715,43 @@
         "current": 2
       },
       "consensus": {
-        "status": "SINGLE_SOURCE_ONLY",
+        "status": "CONFLICT_REQUIRES_AUTHORITY_RULE",
         "fields": {
           "epistle_reference": {
             "status": "single_source",
-            "normalized": "1 corinthians 12:12-26",
+            "normalized": "1 corinthians 13:4-13 14:1-5",
             "sources": [
-              "oca_daily_readings"
+              "goarch_digital_chant_stand"
             ]
           },
           "gospel_reference": {
-            "status": "single_source",
-            "normalized": "matthew 18:18-22, 19",
+            "status": "agreement",
+            "normalized": "matthew 20:1-16",
             "sources": [
+              "goarch_digital_chant_stand",
               "oca_daily_readings"
             ]
           }
         },
-        "conflicts": []
+        "conflicts": [
+          {
+            "field": "epistle_reference",
+            "variants": [
+              {
+                "normalized": "1 corinthians 13:4-13 14:1-5",
+                "sources": [
+                  "goarch_digital_chant_stand"
+                ]
+              },
+              {
+                "normalized": "1 corinthians 13:4-14:5",
+                "sources": [
+                  "oca_daily_readings"
+                ]
+              }
+            ]
+          }
+        ]
       }
     },
     "observations": [
@@ -3735,13 +3762,13 @@
         "authority_tier": 1,
         "publication_role": "local_primary_authority",
         "calendar_profile": "jerusalem_old_calendar",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://orthodoxjordan.org/",
         "status": "undated",
-        "checked_at_utc": "2026-07-28T05:38:00Z",
+        "checked_at_utc": "2026-07-28T22:54:49Z",
         "http_status": 200,
-        "content_sha256": "eca7bc340534407c13999ec159f8fe4b885fafb3df8e005a35d5bff72e4c5530",
-        "content_bytes": 498885,
+        "content_sha256": "a05b740956f126e9cef3eede9aade9e4960b7c552ef96993e1b7f7965a8e9de1",
+        "content_bytes": 498837,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
@@ -3763,12 +3790,12 @@
         "authority_tier": 1,
         "publication_role": "official_directory",
         "calendar_profile": "not_applicable",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
         "status": "available",
-        "checked_at_utc": "2026-07-28T05:38:01Z",
+        "checked_at_utc": "2026-07-28T22:54:55Z",
         "http_status": 200,
-        "content_sha256": "a4e6ad0b505b3cb12270e8218d2a05d975b144453bf819d2c63b6cda0b2217db",
+        "content_sha256": "5ea625a24fed0a8c014d56fcaf91d7abd01349acf7a6cdd4cd33657c8eb25b17",
         "content_bytes": 887573,
         "detected_date": null,
         "epistle_reference": null,
@@ -3788,12 +3815,12 @@
         "authority_tier": 1,
         "publication_role": "official_live_link",
         "calendar_profile": "not_applicable",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
         "status": "available",
-        "checked_at_utc": "2026-07-28T05:38:02Z",
+        "checked_at_utc": "2026-07-28T22:55:00Z",
         "http_status": 200,
-        "content_sha256": "7e48301865fa0dabae3b17cc181db62f612461635e44fc4ecbfb6b7465733f13",
+        "content_sha256": "6a4a59f58299415d107b64a6ab5bf85301e8307a8d3e13b7388a9b09649ff390",
         "content_bytes": 377529,
         "detected_date": null,
         "epistle_reference": null,
@@ -3813,12 +3840,12 @@
         "authority_tier": 2,
         "publication_role": "jurisdiction_and_feast_authority",
         "calendar_profile": "jerusalem_old_calendar",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-28T05:38:03Z",
+        "checked_at_utc": "2026-07-28T22:55:00Z",
         "http_status": 200,
-        "content_sha256": "b7ffb1ec185476284f9571a539304ea92acf2991a159bce4fefa63d85d57ef0b",
+        "content_sha256": "7b4d4101e6e54929088cc387faf915ac495133b40b6b953edb5dacbf5fb79fdc",
         "content_bytes": 173537,
         "detected_date": null,
         "epistle_reference": null,
@@ -3838,10 +3865,10 @@
         "authority_tier": 3,
         "publication_role": "arabic_cross_check",
         "calendar_profile": "antioch_local_calendar",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-28T05:38:04Z",
+        "checked_at_utc": "2026-07-28T22:55:01Z",
         "http_status": 200,
         "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
         "content_bytes": 6664,
@@ -3863,10 +3890,10 @@
         "authority_tier": 4,
         "publication_role": "regular_cycle_cross_check",
         "calendar_profile": "ecumenical_patriarchate_new_calendar",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-28T05:38:05Z",
+        "checked_at_utc": "2026-07-28T22:55:01Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -3888,35 +3915,35 @@
         "authority_tier": 4,
         "publication_role": "service_structure_and_link_discovery",
         "calendar_profile": "ecumenical_patriarchate_new_calendar",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-28T05:38:05Z",
+        "checked_at_utc": "2026-07-28T22:55:01Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
-        "detected_date": "2026-07-28",
-        "epistle_reference": null,
-        "gospel_reference": null,
+        "detected_date": "2026-07-29",
+        "epistle_reference": "1 Corinthians 13:4-13; 14:1-5",
+        "gospel_reference": "Matthew 20:1-16",
         "commemorations": [],
         "service_links": [
           {
             "title": "Divine Liturgy",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/h91/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/h91/en/index.html",
             "status": "available",
-            "content_sha256": "6c096efeb03ea2d5b439cb630efdc44ba9d49a409a468bdc8c0de879e58910ca"
+            "content_sha256": "218f72bda0a4262949d876acfe09d00f36c55a4cb57e2bc996c75171de6549ef"
           },
           {
             "title": "Matins / Orthros",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/ma/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/ma/en/index.html",
             "status": "available",
-            "content_sha256": "5c9185a06dcc9d54060452c6ad1f7d2886d47644dffe94484d92f6c3a43ad907"
+            "content_sha256": "22d753d7793535a87d382137469130233c6d5d8e89ab3e939b25884362d83d45"
           },
           {
             "title": "Vespers",
-            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/28/li/en/index.html",
+            "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/li/en/index.html",
             "status": "available",
-            "content_sha256": "5fbdd1dd56c535adebe91d65f7267913d933cff7d345210ca00cbc1cf62aecf3"
+            "content_sha256": "37f22e8b7dbf83a4757ba390726c1b2bf49fc90822b2b130c1cc1b6a65013e74"
           }
         ],
         "church_count": null,
@@ -3924,7 +3951,8 @@
         "rights_mode": "official_links_and_structure_only_without_separate_permission",
         "reason": null,
         "warnings": [
-          "Service links are discovery links; full text import remains rights-gated"
+          "Service links are discovery links; full text import remains rights-gated",
+          "DCS regular-cycle references extracted; full Scripture text is not imported"
         ]
       },
       {
@@ -3934,16 +3962,16 @@
         "authority_tier": 5,
         "publication_role": "last_official_reference_fallback",
         "calendar_profile": "oca_calendar",
-        "target_date": "2026-07-28",
-        "url": "https://www.oca.org/readings/daily/2026/07/28",
+        "target_date": "2026-07-29",
+        "url": "https://www.oca.org/readings/daily/2026/07/29",
         "status": "current",
-        "checked_at_utc": "2026-07-28T05:38:07Z",
+        "checked_at_utc": "2026-07-28T22:55:03Z",
         "http_status": 200,
-        "content_sha256": "d5a8f5b2a1dd53123700d74e196606ce020ce4cd23a074ea2427fb52eac3fc8f",
-        "content_bytes": 14919,
-        "detected_date": "2026-07-28",
-        "epistle_reference": "1 Corinthians 12:12-26",
-        "gospel_reference": "Matthew 18:18-22, 19",
+        "content_sha256": "98274153f2cc0e7a092cd5515b419164b9aa80f4f14573116d4d175aa87ca898",
+        "content_bytes": 14802,
+        "detected_date": "2026-07-29",
+        "epistle_reference": "1 Corinthians 13:4-14:5",
+        "gospel_reference": "Matthew 20:1-16",
         "commemorations": [],
         "service_links": [],
         "church_count": null,
@@ -3961,12 +3989,12 @@
         "authority_tier": 4,
         "publication_role": "greek_language_cross_check",
         "calendar_profile": "church_of_greece_new_calendar",
-        "target_date": "2026-07-28",
+        "target_date": "2026-07-29",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-28T05:38:11Z",
+        "checked_at_utc": "2026-07-28T22:55:05Z",
         "http_status": 200,
-        "content_sha256": "2d68f422227e4e260a7794c8b4a44cf0e753a7b7ec1bd1818689d92b94edc3a3",
+        "content_sha256": "10668cafe9b068c57c89f3ad3b418157dcba07c2cc18e072386dcd124fa89929",
         "content_bytes": 115656,
         "detected_date": null,
         "epistle_reference": null,
@@ -3983,7 +4011,7 @@
   },
   "church_directory": {
     "schema_version": 1,
-    "date_iso": "2026-07-28",
+    "date_iso": "2026-07-29",
     "authority": "orthodox_jordan",
     "directory_url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
     "status": "live_official_directory",
@@ -4694,8 +4722,8 @@
         "id": "orthodox_jordan_live",
         "title": {
           "ar": "",
-          "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
-          "en": ""
+          "el": "",
+          "en": "Orthodox Jordan live broadcast"
         },
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
       },
@@ -4703,8 +4731,8 @@
         "id": "orthodox_jordan_calendar",
         "title": {
           "ar": "",
-          "el": "Ἐπίσημο ἐκκλησιαστικὸ ἡμερολόγιο",
-          "en": ""
+          "el": "",
+          "en": "Official church calendar"
         },
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%B1%D8%B2%D9%86%D8%A7%D9%85%D8%A9-%D8%A7%D9%84%D9%83%D9%86%D8%B3%D9%8A%D8%A9/"
       }
@@ -4789,26 +4817,27 @@
   "native_text_contract": "canonical/source_native_contract.json",
   "daily_update_status": {
     "mode": "full",
-    "date": "2026-07-28",
+    "date": "2026-07-29",
     "message": {
       "ar": "",
-      "el": "Τὰ σημερινὰ δεδομένα εἶναι διαθέσιμα· τὰ μὴ ἐπαληθευμένα κείμενα παραμένουν κενά.",
-      "en": ""
+      "el": "",
+      "en": "Today data is available; unavailable exact texts remain empty until a matching official source is available."
     }
   },
   "lane_schema_version": 2,
-  "language": "el",
+  "language": "en",
   "calendar_authority": "jerusalem_patriarchate",
   "calendar": "julian_old_calendar",
   "language_source_policy": {
     "priority": [
-      "church_of_greece_apostoliki_diakonia",
-      "church_of_greece_ecclesia",
-      "jerusalem_patriarchate_el",
-      "goarch_online_chapel_greek",
-      "goarch_digital_chant_stand_greek",
-      "metropolis_toronto_liturgy_el",
-      "ebible_greek_byzantine_1904"
+      "goarch_online_chapel",
+      "jerusalem_patriarchate_en",
+      "goarch_digital_chant_stand_english",
+      "akroasis_small_menaion_english",
+      "goarch_synekdemos",
+      "oca_official_english",
+      "metropolis_toronto_liturgy_en",
+      "ebible_world_english_bible"
     ],
     "same_language_fallback_only": true,
     "machine_translation_used": false,
