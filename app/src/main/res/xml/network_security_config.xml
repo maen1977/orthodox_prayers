@@ -6,6 +6,7 @@
     </base-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="false">raw.githubusercontent.com</domain>
+        <domain includeSubdomains="false">cdn.jsdelivr.net</domain>
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>

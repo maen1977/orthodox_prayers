@@ -1,4 +1,4 @@
-# إعداد Orthodox Prayers 5.0.16 R20 على GitHub
+# إعداد Orthodox Prayers 5.0.17 R20 على GitHub
 
 ## 1. إنشاء المستودع ورفع المشروع
 

@@ -24,8 +24,10 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -571,37 +573,55 @@ public final class DataRepository {
     }
 
     private RefreshOutcome performRefresh(boolean forceFullDownload) {
+        if (!NetworkAvailability.hasConnectedNetwork(context)) {
+            return new RefreshOutcome(RefreshResult.FAILED, "network_offline");
+        }
+
         String configuredTodayUrl = context.getString(R.string.data_source_url).trim();
         String configuredTodaySignatureUrl = context.getString(R.string.data_signature_url).trim();
+        String configuredTodayMirrorUrl = context.getString(R.string.data_source_mirror_url).trim();
+        String configuredTodayMirrorSignatureUrl = context.getString(R.string.data_signature_mirror_url).trim();
         String configuredManifestUrl = context.getString(R.string.update_manifest_url).trim();
         String configuredManifestSignatureUrl = context.getString(R.string.update_manifest_signature_url).trim();
-        if (configuredTodayUrl.isEmpty()) {
+        String configuredManifestMirrorUrl = context.getString(R.string.update_manifest_mirror_url).trim();
+        String configuredManifestMirrorSignatureUrl = context.getString(R.string.update_manifest_signature_mirror_url).trim();
+        if (configuredTodayUrl.isEmpty() && configuredTodayMirrorUrl.isEmpty()) {
             return new RefreshOutcome(RefreshResult.FAILED, "data_url_missing");
         }
 
         UpdateManifest.Selection manifestSelection = null;
         Exception manifestError = null;
-        if (!configuredManifestUrl.isEmpty() && !configuredManifestSignatureUrl.isEmpty()) {
+        Set<String> attemptedManifestUrls = new LinkedHashSet<>();
+        String[][] manifestEndpoints = {
+                {configuredManifestUrl, configuredManifestSignatureUrl},
+                {configuredManifestMirrorUrl, configuredManifestMirrorSignatureUrl}
+        };
+        for (String[] endpoint : manifestEndpoints) {
+            String manifestUrl = endpoint[0];
+            String signatureUrl = endpoint[1];
+            if (manifestUrl.isEmpty() || signatureUrl.isEmpty()
+                    || !attemptedManifestUrls.add(manifestUrl)) continue;
             try {
-                manifestSelection = downloadManifestSelection(
-                        configuredManifestUrl,
-                        configuredManifestSignatureUrl
-                );
+                manifestSelection = downloadManifestSelection(manifestUrl, signatureUrl);
+                break;
             } catch (Exception error) {
                 manifestError = error;
-                Log.w(TAG, "Signed update manifest was unavailable; using signed endpoint fallbacks", error);
+                Log.w(TAG, "Signed update manifest endpoint was unavailable; trying fallback", error);
                 String message = error.getMessage() == null ? "" : error.getMessage();
                 if (message.startsWith("app_update_required")
                         || message.startsWith("manifest_revision_rollback")) {
                     return new RefreshOutcome(RefreshResult.FAILED, message);
                 }
-                String expectedDate = currentAmmanDate();
-                if (preferences.acceptedManifestRevisionForDate(expectedDate) > 0L) {
-                    return new RefreshOutcome(
-                            RefreshResult.FAILED,
-                            "manifest_unavailable_after_acceptance"
-                    );
-                }
+            }
+        }
+
+        if (manifestSelection == null) {
+            String expectedDate = currentAmmanDate();
+            if (preferences.acceptedManifestRevisionForDate(expectedDate) > 0L) {
+                return new RefreshOutcome(
+                        RefreshResult.FAILED,
+                        "manifest_unavailable_after_acceptance"
+                );
             }
         }
 
@@ -649,40 +669,51 @@ public final class DataRepository {
 
         Exception lastError = manifestError;
         int endpointIndex = 0;
-        for (String jsonUrl : DailyDataEndpointPolicy.jsonCandidates(
-                configuredTodayUrl,
-                currentAmmanDate(),
-                preferences.effectiveLanguage()
-        )) {
-            String signatureUrl = DailyDataEndpointPolicy.signatureUrl(
-                    configuredTodayUrl,
-                    configuredTodaySignatureUrl,
-                    jsonUrl
-            );
-            for (int attempt = 0; attempt < MAX_DOWNLOAD_ATTEMPTS; attempt++) {
-                boolean bypassCache = forceFullDownload || endpointIndex > 0 || attempt > 0;
-                try {
-                    return downloadAndValidate(
-                            jsonUrl, signatureUrl, bypassCache, attempt, "", 0, 0L
-                    );
-                } catch (Exception error) {
-                    lastError = error;
-                    Log.w(
-                            TAG,
-                            "Daily data refresh endpoint " + (endpointIndex + 1)
-                                    + " attempt " + (attempt + 1) + " failed",
-                            error
-                    );
-                    if (attempt + 1 < MAX_DOWNLOAD_ATTEMPTS) {
-                        try { Thread.sleep(350L); }
-                        catch (InterruptedException interrupted) {
-                            Thread.currentThread().interrupt();
-                            return new RefreshOutcome(RefreshResult.FAILED, "network_interrupted");
+        Set<String> attemptedJsonUrls = new LinkedHashSet<>();
+        String[][] dailyEndpoints = {
+                {configuredTodayUrl, configuredTodaySignatureUrl},
+                {configuredTodayMirrorUrl, configuredTodayMirrorSignatureUrl}
+        };
+        for (String[] endpoint : dailyEndpoints) {
+            String todayUrl = endpoint[0];
+            String todaySignatureUrl = endpoint[1];
+            if (todayUrl.isEmpty()) continue;
+            for (String jsonUrl : DailyDataEndpointPolicy.jsonCandidates(
+                    todayUrl,
+                    currentAmmanDate(),
+                    preferences.effectiveLanguage()
+            )) {
+                if (!attemptedJsonUrls.add(jsonUrl)) continue;
+                String signatureUrl = DailyDataEndpointPolicy.signatureUrl(
+                        todayUrl,
+                        todaySignatureUrl,
+                        jsonUrl
+                );
+                for (int attempt = 0; attempt < MAX_DOWNLOAD_ATTEMPTS; attempt++) {
+                    boolean bypassCache = forceFullDownload || endpointIndex > 0 || attempt > 0;
+                    try {
+                        return downloadAndValidate(
+                                jsonUrl, signatureUrl, bypassCache, attempt, "", 0, 0L
+                        );
+                    } catch (Exception error) {
+                        lastError = error;
+                        Log.w(
+                                TAG,
+                                "Daily data refresh endpoint " + (endpointIndex + 1)
+                                        + " attempt " + (attempt + 1) + " failed",
+                                error
+                        );
+                        if (attempt + 1 < MAX_DOWNLOAD_ATTEMPTS) {
+                            try { Thread.sleep(350L); }
+                            catch (InterruptedException interrupted) {
+                                Thread.currentThread().interrupt();
+                                return new RefreshOutcome(RefreshResult.FAILED, "network_interrupted");
+                            }
                         }
                     }
                 }
+                endpointIndex++;
             }
-            endpointIndex++;
         }
         return new RefreshOutcome(RefreshResult.FAILED, classifyError(lastError));
     }
@@ -950,6 +981,8 @@ public final class DataRepository {
     public static boolean isRetryableRefreshMessage(String message) {
         String value = message == null ? "" : message;
         return value.startsWith("network_")
+                || value.startsWith("server_")
+                || value.startsWith("secure_connection_")
                 || value.startsWith("http_")
                 || value.startsWith("date_not_ready")
                 || value.startsWith("signature_http_")
@@ -968,10 +1001,13 @@ public final class DataRepository {
         if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local("التحديث جارٍ الآن", "An update is already in progress", "Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη");
         if (code.startsWith("app_update_required")) return local("يلزم تحديث إصدار التطبيق لقراءة بيانات اليوم الجديدة", "The app must be updated to read today’s new data", "Απαιτεῖται νεότερη ἔκδοση τῆς ἐφαρμογῆς");
         if (code.startsWith("manifest_revision_rollback")) return local("رُفض إصدار بيانات أقدم حفاظًا على سلامة التحديث", "An older data revision was rejected for update safety", "Ἀπορρίφθηκε παλαιότερη ἀναθεώρηση δεδομένων");
-        if (code.startsWith("manifest_unavailable_after_acceptance")) return local("تعذر التحقق من بيان التحديث الآمن؛ ستبقى آخر نسخة موثوقة ظاهرة", "The secure update manifest could not be verified; the last trusted copy remains in use", "Τὸ ἀσφαλὲς δηλωτικὸ ἐνημέρωσης δὲν ἐπαληθεύθηκε");
-        if (code.startsWith("date_not_ready")) return local("لم تُنشر بيانات تاريخ اليوم على الخادم بعد؛ تظهر آخر نسخة سليمة", "Today’s server data is not published yet; the last valid copy is shown", "Τὰ σημερινὰ δεδομένα δὲν δημοσιεύθηκαν ἀκόμη");
-        if (code.startsWith("http_")) return local("تعذر الوصول إلى خادم التحديث", "The update server could not be reached", "Ὁ διακομιστὴς ἐνημέρωσης δὲν εἶναι διαθέσιμος");
-        if (code.startsWith("network_")) return local("لا يوجد اتصال صالح بالإنترنت الآن", "No usable internet connection is available", "Δὲν ὑπάρχει διαθέσιμη σύνδεση");
+        if (code.startsWith("manifest_unavailable_after_acceptance")) return local("تعذر التحقق من بيان التحديث الآمن؛ ستبقى آخر نسخة موثوقة ظاهرة مع إعادة المحاولة تلقائيًا", "The secure update manifest could not be verified; the last trusted copy remains in use while automatic retries continue", "Τὸ ἀσφαλὲς δηλωτικὸ ἐνημέρωσης δὲν ἐπαληθεύθηκε");
+        if (code.startsWith("date_not_ready") || code.startsWith("server_data_not_ready") || code.startsWith("server_manifest_not_ready")) return local("تحديث اليوم قيد النشر على الخادم؛ تظهر آخر نسخة سليمة وستتم إعادة المحاولة تلقائيًا", "Today’s update is still being published; the last valid copy is shown and the app will retry automatically", "Ἡ σημερινὴ ἐνημέρωση δημοσιεύεται· θὰ γίνει νέα προσπάθεια");
+        if (code.startsWith("secure_connection_")) return local("تعذر إنشاء اتصال آمن بخادم التحديث؛ تظهر آخر نسخة سليمة", "A secure connection to the update server could not be established; the last valid copy is shown", "Ἡ ἀσφαλὴς σύνδεση μὲ τὸν διακομιστὴ ἀπέτυχε");
+        if (code.startsWith("server_") || code.startsWith("http_")) return local("خادم التحديث متأخر أو غير متاح مؤقتًا؛ ستتم إعادة المحاولة تلقائيًا", "The update server is delayed or temporarily unavailable; the app will retry automatically", "Ὁ διακομιστὴς ἐνημέρωσης καθυστερεῖ προσωρινά");
+        if (code.startsWith("network_offline") || code.startsWith("network_unreachable")) return local("الهاتف غير متصل بالشبكة الآن؛ تظهر آخر نسخة سليمة", "The phone is not connected to a network; the last valid copy is shown", "Ἡ συσκευὴ δὲν εἶναι συνδεδεμένη");
+        if (code.startsWith("network_dns_") || code.startsWith("network_io_")) return local("الإنترنت متصل، لكن تعذر الوصول إلى عنوان خادم التحديث؛ سيُجرّب التطبيق الخادم البديل تلقائيًا", "Internet is connected, but the update host could not be reached; the alternate server will be tried automatically", "Τὸ διαδίκτυο λειτουργεῖ, ἀλλὰ ὁ διακομιστὴς δὲν ἐντοπίστηκε");
+        if (code.startsWith("network_")) return local("تعذر الاتصال بخادم التحديث مؤقتًا؛ تظهر آخر نسخة سليمة", "The update server could not be contacted temporarily; the last valid copy is shown", "Προσωρινὴ ἀποτυχία συνδέσεως");
         if (code.contains("signature")) return local("فشل التوقيع الرقمي للتحديث وتم رفضه؛ تظهر آخر نسخة موثوقة", "The update signature failed and was rejected; the last trusted copy is shown", "Ἡ ψηφιακὴ ὑπογραφὴ ἀπέτυχε");
         if (code.startsWith("invalid_")) return local("وصلت بيانات ناقصة أو غير صالحة وتم تجاهلها", "Incomplete or invalid data was received and ignored", "Ἐλήφθησαν ἐλλιπῆ δεδομένα");
         if (preferences.lastRefreshSucceeded()) return local("اكتمل آخر فحص للتحديث بنجاح", "The last update check completed successfully", "Ὁ τελευταῖος ἔλεγχος ὁλοκληρώθηκε");
@@ -1104,15 +1140,7 @@ public final class DataRepository {
     }
 
     private static String classifyError(Exception error) {
-        if (error == null) return "network_unknown";
-        String message = error.getMessage();
-        if (message == null || message.trim().isEmpty()) message = error.getClass().getSimpleName();
-        if (message.startsWith("date_not_ready")) return message;
-        if (message.startsWith("http_") || message.startsWith("signature_http_")) return message;
-        if (message.contains("payload") || message.contains("schema") || message.contains("signature") || message.contains("signed_") || message.contains("missing") || message.contains("incomplete") || message.contains("integrity") || message.contains("content_type") || message.contains("too_large") || message.contains("translation") || message.contains("language_lane") || message.contains("localized_script") || message.contains("date_in_future") || message.contains("date_invalid")) {
-            return "invalid_" + message;
-        }
-        return "network_" + error.getClass().getSimpleName();
+        return RefreshErrorClassifier.classify(error);
     }
 
     private static String safeMessage(Exception error, String fallback) {

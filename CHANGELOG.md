@@ -1,3 +1,11 @@
+## 5.0.17 R20.1 — resilient automatic updates
+
+- Try the signed GitHub raw endpoint first and a pinned jsDelivr mirror second.
+- Distinguish offline, DNS, server, TLS, signature, and invalid-payload failures.
+- Never show “no internet” for a server publication or signature problem.
+- Verify the public manifest and all three signed language payloads after every GitHub publication.
+- Schedule early publication at 00:07, retry at 00:37, and supplement at 06:37 Asia/Amman.
+
 ## Follow-along Liturgy scope and dual daily updates
 
 - Restore the important Home shortcuts for readings, prayers, calendar and fasting,

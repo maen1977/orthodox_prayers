@@ -12,6 +12,7 @@ public final class NetworkEndpointSecurity {
     static {
         LinkedHashSet<String> hosts = new LinkedHashSet<>();
         hosts.add("raw.githubusercontent.com");
+        hosts.add("cdn.jsdelivr.net");
         ALLOWED_HOSTS = Collections.unmodifiableSet(hosts);
     }
 

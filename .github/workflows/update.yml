@@ -14,9 +14,11 @@ on:
         required: false
         type: string
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "7 0 * * *"
       timezone: "Asia/Amman"
-    - cron: "0 6 * * *"
+    - cron: "37 0 * * *"
+      timezone: "Asia/Amman"
+    - cron: "37 6 * * *"
       timezone: "Asia/Amman"
 
 permissions:
@@ -300,6 +302,15 @@ jobs:
           cd "$CHECK"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
           python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
+
+      - name: Verify public HTTPS update endpoint
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          python scripts/verify_public_update_endpoints.py \
+            --expected-date "${{ steps.resolve.outputs.date }}" \
+            --attempts 8 \
+            --delay-seconds 10
 
       - name: Verify scheduled publication
         if: steps.resolve.outputs.mode == 'verify'

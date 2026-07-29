@@ -52,6 +52,23 @@ public final class UpdateManifestTest {
     }
 
     @Test
+    public void resolvesPayloadsAgainstTheSignedMirrorManifest() throws Exception {
+        String mirror = "https://cdn.jsdelivr.net/gh/example/app@verified-data/data/update-manifest.json";
+        UpdateManifest.Selection selection = UpdateManifest.parse(
+                manifest("data/daily/2026-07-20/en.json", "data/daily/2026-07-20/en.json.sig")
+                        .replace("\"ar\":", "\"en\":")
+                        .getBytes(StandardCharsets.UTF_8),
+                mirror,
+                "2026-07-20",
+                "en"
+        );
+        assertEquals(
+                "https://cdn.jsdelivr.net/gh/example/app@verified-data/data/daily/2026-07-20/en.json",
+                selection.dataUrl
+        );
+    }
+
+    @Test
     public void rejectsUnsafeOrMismatchedMetadata() {
         assertThrows(
                 IllegalStateException.class,

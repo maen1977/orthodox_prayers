@@ -10,6 +10,7 @@ import org.junit.Test;
 public final class NetworkEndpointSecurityTest {
     @Test public void acceptsOnlyPinnedHttpsHost() throws Exception {
         NetworkEndpointSecurity.requireAllowedHttps("https://raw.githubusercontent.com/maen1977/orthodox_prayers/verified-data/data/calendar/today.json");
+        NetworkEndpointSecurity.requireAllowedHttps("https://cdn.jsdelivr.net/gh/maen1977/orthodox_prayers@verified-data/data/calendar/today.json");
         for (String unsafe : new String[]{
                 "http://raw.githubusercontent.com/a/b",
                 "https://example.com/a",

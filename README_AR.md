@@ -72,7 +72,7 @@ python scripts/validate_follow_along_liturgy.py
 
 ```bash
 python scripts/create_clean_source_archive.py \
-  ../OrthodoxPrayers-5.0.16-follow-along-FULL.zip \
+  ../OrthodoxPrayers-5.0.17-follow-along-FULL.zip \
   --root-layout
 ```
 
