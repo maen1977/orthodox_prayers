@@ -35,8 +35,16 @@ PLACEHOLDER_PATTERNS = (
 
 UNREVIEWED_PROPER_PATTERNS = (
     re.compile(r"تذكار اليوم بحسب التقويم الكنسي القديم", re.I),
-    re.compile(r"Today[’']s commemoration according to the old church calendar", re.I),
-    re.compile(r"Ἡ σημερινὴ μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο", re.I),
+    re.compile(
+        r"(?:Today[’']s|Daily) commemoration according to the old "
+        r"(?:church|ecclesiastical) calendar",
+        re.I,
+    ),
+    re.compile(
+        r"(?:Ἡ σημερινὴ μνήμη|Μνήμη τῆς ἡμέρας) κατὰ τὸ παλαιὸ "
+        r"ἐκκλησιαστικὸ ἡμερολόγιο",
+        re.I,
+    ),
 )
 
 

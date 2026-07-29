@@ -190,8 +190,24 @@ def localized_civil_old_date(day: date, include_year: bool = True) -> dict:
     return loc(ar, en, el)
 
 
+UNREVIEWED_DAILY_FEAST_AR = "تذكار اليوم بحسب التقويم الكنسي القديم"
+UNAVAILABLE_DAILY_FEAST = {
+    "ar": "التذكار اليومي غير منشور حتى اكتمال المراجعة الكنسية",
+    "en": "Daily commemoration not published pending ecclesiastical review",
+    "el": "Ἡ σημερινὴ μνήμη δὲν δημοσιεύεται πρὶν ἀπὸ τὴν ἐκκλησιαστικὴ ἐπιθεώρηση",
+}
+
+
 def localized_feast(ar_text: str) -> dict:
-    en, el = FEAST_TRANSLATIONS.get(ar_text, ("Commemoration listed by the old church calendar", "Μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"))
+    if ar_text == UNREVIEWED_DAILY_FEAST_AR or ar_text == UNAVAILABLE_DAILY_FEAST["ar"]:
+        return copy.deepcopy(UNAVAILABLE_DAILY_FEAST)
+    en, el = FEAST_TRANSLATIONS.get(
+        ar_text,
+        (
+            "Commemoration listed by the old church calendar",
+            "Μνήμη κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
+        ),
+    )
     return loc(ar_text, en, el)
 
 
@@ -476,7 +492,11 @@ def complete_daily_localizations(data: dict) -> dict:
     )
     feast = data.get("feast") if isinstance(data.get("feast"), dict) else loc("")
     if str(feast.get("ar") or ""):
-        data["feast"] = localized_feast(str(feast["ar"]))
+        completed_feast = localized_feast(str(feast["ar"]))
+        for language in ("en", "el"):
+            if str(feast.get(language) or "").strip():
+                completed_feast[language] = str(feast[language]).strip()
+        data["feast"] = completed_feast
     complete_fasting_localizations(data.get("fasting"))
     if isinstance(data.get("fasting"), dict):
         data["fast"] = copy.deepcopy(data["fasting"].get("title") or data.get("fast"))
@@ -503,7 +523,11 @@ def complete_daily_localizations(data: dict) -> dict:
             next_payload["day"] = localized_civil_old_date(ns_day)
         ns_feast = next_payload.get("feast") if isinstance(next_payload.get("feast"), dict) else loc("")
         if str(ns_feast.get("ar") or ""):
-            next_payload["feast"] = localized_feast(str(ns_feast["ar"]))
+            completed_feast = localized_feast(str(ns_feast["ar"]))
+            for language in ("en", "el"):
+                if str(ns_feast.get(language) or "").strip():
+                    completed_feast[language] = str(ns_feast[language]).strip()
+            next_payload["feast"] = completed_feast
         complete_fasting_localizations(next_payload.get("fasting"))
         if isinstance(next_payload.get("fasting"), dict):
             next_payload["fast"] = copy.deepcopy(next_payload["fasting"].get("title") or next_payload.get("fast"))
@@ -519,7 +543,11 @@ def complete_daily_localizations(data: dict) -> dict:
             item["day"] = localized_civil_old_date(future_day, include_year=False)
         item_feast = item.get("feast") if isinstance(item.get("feast"), dict) else loc("")
         if str(item_feast.get("ar") or ""):
-            item["feast"] = localized_feast(str(item_feast["ar"]))
+            completed_feast = localized_feast(str(item_feast["ar"]))
+            for language in ("en", "el"):
+                if str(item_feast.get(language) or "").strip():
+                    completed_feast[language] = str(item_feast[language]).strip()
+            item["feast"] = completed_feast
             item["note"] = copy.deepcopy(item["feast"])
         complete_fasting_localizations(item.get("fasting"))
         if isinstance(item.get("fasting"), dict):
@@ -967,7 +995,28 @@ def day_info(day: date) -> dict:
     pascha = orthodox_pascha_gregorian(day.year)
     apostles_start = pascha + timedelta(days=57)  # Monday after All Saints Sunday
     apostles_end = julian_to_gregorian_date(day.year, 6, 28)  # Eve of Peter and Paul on old calendar
-    feast = fixed_old_feast(jm, jd) or "تذكار اليوم بحسب التقويم الكنسي القديم"
+
+    # Prefer the pinned annual registry, because it contains reviewed Sunday-cycle
+    # names in all three native languages. Weekday records that still carry the
+    # generic placeholder are published as an explicit unavailable notice rather
+    # than as if that placeholder were an ecclesiastically reviewed commemoration.
+    annual = h2_lectionary_entry(day)
+    annual_feast = annual.get("feast") if isinstance(annual, dict) else None
+    fixed = fixed_old_feast(jm, jd)
+    if isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip():
+        feast = {lang: str(annual_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}
+        if feast["ar"] == UNREVIEWED_DAILY_FEAST_AR:
+            feast = copy.deepcopy(UNAVAILABLE_DAILY_FEAST)
+            feast_status = "UNAVAILABLE_PENDING_ECCLESIASTICAL_REVIEW"
+        else:
+            feast_status = "PINNED_REVIEWED_ANNUAL_ENTRY"
+    elif fixed:
+        feast = localized_feast(fixed)
+        feast_status = "PINNED_FIXED_FEAST"
+    else:
+        feast = copy.deepcopy(UNAVAILABLE_DAILY_FEAST)
+        feast_status = "UNAVAILABLE_PENDING_ECCLESIASTICAL_REVIEW"
+
     fasting = fasting_profile(day, jm, jd, pascha, apostles_start, apostles_end)
 
     return {
@@ -978,8 +1027,13 @@ def day_info(day: date) -> dict:
         "pascha": pascha,
         "apostles_start": apostles_start,
         "apostles_end": apostles_end,
-        "feast_ar": feast,
+        "feast_ar": feast["ar"],
+        "feast_en": feast["en"],
+        "feast_el": feast["el"],
+        "feast_status": feast_status,
         "fast_ar": fasting["title"]["ar"],
+        "fast_en": fasting["title"].get("en", ""),
+        "fast_el": fasting["title"].get("el", ""),
         "fast_detail_ar": fasting["detail"]["ar"],
         "is_fast": fasting["is_fast"],
         "fasting": fasting,
@@ -2144,9 +2198,10 @@ def build_day(day: date) -> dict:
         upcoming.append({
             "date": f"{d:%Y-%m-%d}",
             "day": loc(f"{AR_DAYS[d.weekday()]} {d.day} {AR_MONTHS[d.month-1]} / {inf['julian_day']} {AR_MONTHS[inf['julian_month']-1]} قديم", d.strftime("%A, %B %d")),
-            "feast": loc(inf["feast_ar"]),
+            "feast": loc(inf["feast_ar"], inf["feast_en"], inf["feast_el"]),
             "status": loc(inf["fast_ar"]),
-            "note": loc(inf["feast_ar"]),
+            "note": loc(inf["feast_ar"], inf["feast_en"], inf["feast_el"]),
+            "daily_proper_status": inf["feast_status"],
             "fasting": copy.deepcopy(inf["fasting"]),
             "reading_references": refs,
             "liturgy_service_selection": future_selection,
@@ -2173,7 +2228,8 @@ def build_day(day: date) -> dict:
     next_sunday_payload = {
         "date_iso": f"{ns:%Y-%m-%d}",
         "day": loc(f"{AR_DAYS[ns.weekday()]} {ns.day} {AR_MONTHS[ns.month-1]} / {ns_info['julian_day']} {AR_MONTHS[ns_info['julian_month']-1]} قديم", ns.strftime("%A, %B %d, %Y")),
-        "feast": loc(ns_info["feast_ar"]),
+        "feast": loc(ns_info["feast_ar"], ns_info["feast_en"], ns_info["feast_el"]),
+        "daily_proper_status": ns_info["feast_status"],
         "fast": loc(ns_info["fast_ar"]),
         "fasting": copy.deepcopy(ns_info["fasting"]),
         "reading_references": ns_refs,
@@ -2192,7 +2248,8 @@ def build_day(day: date) -> dict:
         "fast": loc(info["fast_ar"]),
         "fast_detail": loc(info["fast_detail_ar"]),
         "fasting": copy.deepcopy(info["fasting"]),
-        "feast": loc(info["feast_ar"]),
+        "feast": loc(info["feast_ar"], info["feast_en"], info["feast_el"]),
+        "daily_proper_status": info["feast_status"],
         "source_note": loc(
             "تُستخدم بيانات الاكتشاف لتحديد اليوم فقط؛ ولا تُنشر النصوص إلا من مسارات عربية وإنجليزية ويونانية أرثوذكسية معتمدة ومستقلة.",
             "Discovery identifies the day only; text is published solely from approved independent Arabic, English, and Greek Orthodox source lanes.",
