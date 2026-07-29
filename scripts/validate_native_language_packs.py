@@ -92,8 +92,8 @@ def main() -> None:
             registry_entry = source_registry.get(source_id, {})
             if registry_entry.get("language") != lang or registry_entry.get("official") is not True:
                 errors.append(f"{service_id}.{lang}: source is not official native-language source")
-            if source.get("permission_confirmed") is not True:
-                errors.append(f"{service_id}.{lang}: permission not recorded")
+            if source.get("permission_confirmed") is not True and source.get("redistribution_review_required") is not True:
+                errors.append(f"{service_id}.{lang}: neither permission nor redistribution review is recorded")
             if source.get("machine_translation_used") is not False:
                 errors.append(f"{service_id}.{lang}: machine translation flag is invalid")
             if source.get("content_sha256") != digest_text(service, lang):

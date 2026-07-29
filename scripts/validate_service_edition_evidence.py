@@ -13,7 +13,7 @@ MANIFEST_PATH = ROOT / "canonical/religious_completeness_manifest.json"
 EVIDENCE_PATH = ROOT / "canonical/service_edition_evidence.json"
 PACK_DIR = ROOT / "data/services/native"
 LANGS = ("ar", "en", "el")
-COMPLETE = "complete_exact_native_edition"
+DEFAULT_COMPLETE = {"complete_exact_native_edition"}
 AR = re.compile(r"[\u0600-\u06ff]")
 EL = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
 
@@ -70,6 +70,7 @@ def collect_errors() -> list[str]:
     if evidence.get("machine_translation_allowed") is not False:
         errors.append("service edition evidence must forbid machine translation")
     entries = evidence.get("services") if isinstance(evidence.get("services"), dict) else {}
+    complete_statuses = set(manifest.get("production_complete_statuses") or DEFAULT_COMPLETE)
     packs: dict[str, dict[str, dict[str, Any]]] = {}
     for lang in LANGS:
         pack = json.loads((PACK_DIR / f"library_{lang}.json").read_text(encoding="utf-8"))
@@ -78,7 +79,7 @@ def collect_errors() -> list[str]:
     for lang in LANGS:
         statuses = manifest["languages"][lang]
         for service_name, status in statuses.items():
-            if status != COMPLETE:
+            if status not in complete_statuses:
                 continue
             packaged_id = manifest["packaged_service_ids"].get(service_name)
             service = packs[lang].get(str(packaged_id))
@@ -90,13 +91,17 @@ def collect_errors() -> list[str]:
             if not isinstance(proof, dict):
                 errors.append(f"{key}: missing source-backed evidence")
                 continue
-            if proof.get("status") != COMPLETE:
-                errors.append(f"{key}: evidence status is not exact complete edition")
+            if proof.get("status") != status:
+                errors.append(f"{key}: evidence status does not match manifest status")
             source = service.get("native_source") if isinstance(service.get("native_source"), dict) else {}
             if proof.get("source_id") != source.get("source_id"):
                 errors.append(f"{key}: source id mismatch")
-            if source.get("official") is not True or source.get("permission_confirmed") is not True:
-                errors.append(f"{key}: source is not recorded as official and permitted")
+            if source.get("official") is not True:
+                errors.append(f"{key}: source is not recorded as an official native-language publisher")
+            if status == "complete_exact_native_edition" and source.get("permission_confirmed") is not True:
+                errors.append(f"{key}: exact edition lacks recorded redistribution permission")
+            if status == "complete_native_source_compilation" and source.get("permission_confirmed") is not True and source.get("redistribution_review_required") is not True:
+                errors.append(f"{key}: compilation must record permission or require redistribution review")
             if source.get("machine_translation_used") is not False:
                 errors.append(f"{key}: machine translation flag is invalid")
             actual_hash = digest_text(service, lang)

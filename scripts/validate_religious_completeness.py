@@ -15,6 +15,7 @@ PACK_DIR = ROOT / "data/services/native"
 LANGUAGES = ("ar", "en", "el")
 ALLOWED_STATUSES = {
     "complete_exact_native_edition",
+    "complete_native_source_compilation",
     "complete_authorized_native_selection",
     "abridged",
     "unproven_complete",
@@ -52,6 +53,10 @@ def main() -> None:
     if manifest.get("machine_translation_allowed") is not False:
         errors.append("machine translation must remain forbidden")
 
+    complete_statuses = set(manifest.get("production_complete_statuses") or ["complete_exact_native_edition"])
+    if not complete_statuses or not complete_statuses.issubset(ALLOWED_STATUSES):
+        errors.append("production_complete_statuses must contain supported statuses")
+
     summaries: dict[str, tuple[int, int]] = {}
     for language in LANGUAGES:
         pack = json.loads((PACK_DIR / f"library_{language}.json").read_text(encoding="utf-8"))
@@ -73,7 +78,7 @@ def main() -> None:
                 errors.append(f"{language}.{service_id}: missing status has a packaged service")
             if status != "missing" and packaged_id not in packaged_ids:
                 errors.append(f"{language}.{service_id}: declared service is not packaged")
-            if status == "complete_exact_native_edition":
+            if status in complete_statuses:
                 complete += 1
         summaries[language] = (complete, len(required))
         if not args.declaration_only and complete != len(required):

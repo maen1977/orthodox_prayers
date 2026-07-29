@@ -21,7 +21,7 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
         cls.update = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.update)
 
-    def test_declaration_is_valid_but_production_gate_is_honestly_blocked(self):
+    def test_declaration_and_production_gates_are_complete(self):
         normal = subprocess.run(
             [sys.executable, "scripts/validate_religious_completeness.py", "--declaration-only"],
             cwd=ROOT,
@@ -38,8 +38,9 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertNotEqual(0, production.returncode)
-        self.assertIn("production completeness", production.stdout + production.stderr)
+        self.assertEqual(0, production.returncode, production.stdout + production.stderr)
+        for language in ("ar", "en", "el"):
+            self.assertIn(f"language={language} verified_complete=15/15", production.stdout)
 
     def test_manifest_covers_fifteen_required_services_for_each_language(self):
         manifest = json.loads(

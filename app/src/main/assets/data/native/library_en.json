@@ -90,6 +90,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "327ca2832b57228c4d6517475816352e0360b84baa19c8f8e7b4f4fdbf5a298b",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -200,6 +201,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "4955b6fabb8c5a27e1c82b480cd47e30eb282d41cde93eff680366f86ab5a1cd",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -322,6 +324,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "34d5f97dbc44828bd64feaffc51ad751146561fa8a7f70a0661d09aae5f489b1",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -432,6 +435,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/morning-prayers",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "794e6ebc4f4123bec079f26bce50a1a90600dca18db6b53df83410d2e548ff04",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -528,6 +532,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/chapel/prayers",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "d5f26a4c2e4e7b13aad9187fa216af7496ee777a32b73ef90e7880bdfdb5d329",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -1982,6 +1987,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/office-small-compline.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "148d1b8ae0531e64421a56374aa5b9290c21a69770876283b8e0c130dd98179e",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -2058,6 +2064,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "ba45baf01ba98de1fb5ba567dcc2571e8eaa8d19fc923162fa7a4721e7f5eeec",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -2118,6 +2125,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/prayers-at-mealtime",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "0df8468cdc27b777cef7384dc8ba96812bbced5177f86ff200e2cf3a10765e01",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -2181,6 +2189,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/-/prayers-at-mealtime",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "03f3bed8868f408e954acb99780efaec81c7790e0da9e3d7607d05b24e159c0e",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -2243,6 +2252,7 @@
         "native_language": "en",
         "url": "https://www.goarch.org/chapel/prayers",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "3bf2f87a40921800ef9d62fbc0b8b2c3d10317ad8169f3471b66648d1ca943b0",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -2267,7 +2277,7 @@
       },
       "summary": {
         "ar": "",
-        "en": "Native prayers immediately before Holy Communion.",
+        "en": "The complete office of preparation before Holy Communion: ten prayers and the final communion confession and hymns.",
         "el": ""
       },
       "source_language": "en",
@@ -2281,7 +2291,15 @@
           "type": "section",
           "title": {
             "ar": "",
-            "en": "COMMUNION PRAYER",
+            "en": "Prayers before Holy Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Prayers in Preparation",
             "el": ""
           }
         },
@@ -2289,7 +2307,20 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "I believe and confess, Lord, that You are truly the Christ, the Son of the living God, Who came into the world to save sinners, of whom I am the first. I also believe that this is truly Your pure Body and that this is truly Your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, in knowledge or in ignorance. And make me worthy, without condemnation, to partake of Your pure Mysteries for the remission of sins and for eternal life. Amen.",
+            "en": "For Holy Communion",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "1. A Prayer of St. Basil the Great",
             "el": ""
           }
         },
@@ -2297,7 +2328,12 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "Behold, I approach for Divine Communion. O Maker, burn me not as I partake, For You are fire consuming the unworthy. But cleanse me from every stain.",
+            "en": "O Lord and Master, Jesus Christ, our God, Fountain of life and immortality, Creator of all things visible and invisible; co-everlasting and co-eternal Son of the unoriginate Father, who in thine exceeding great love didst become incarnate in the latter days and wast crucified and slain for us ungrateful and wicked men and by thine own Blood didst refashion our nature corrupted by sin: Do thou thyself, O immortal King, receive the repentance of me, the sinner;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         },
@@ -2305,7 +2341,12 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "O Son of God, receive me today as a partaker of Your mystical supper. For I will not speak of the mystery to Your enemies, nor will I give You a kiss, as did Judas. But like the thief, I confess to You: Remember me, Lord, in Your Kingdom.",
+            "en": "incline thine ear unto me and hear my words, for I have sinned, O Lord; I have sinned against heaven and before thee, and I am not worthy to lift up my eyes to the height of thy glory, for I have affronted thy goodness, and transgressed thy commandments and disobeyed thine ordinances. But thou, O Lord who rememberest not evil but art long-suffering and of great mercy, hast not given me over to perish in my lawlessness but dost ever await my return.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         },
@@ -2313,7 +2354,12 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "Tremble, O man, as you behold the divine Blood. It is a burning coal that sears the unworthy. The Body of God both deifies and nourishes me: It deifies the Spirit and wondrously nourishes the mind.",
+            "en": "For, O thou who lovest mankind, thou hast said, by thy prophet, ‘I desire not the death of a sinner, but rather that he should return and live,’ because thou dost not wish, O Master, to destroy the work of thy hands, neither dost thou take pleasure in the destruction of the human race but desirest that all men should be saved and come to the knowledge of the truth.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         },
@@ -2321,7 +2367,12 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "You have smitten me with yearning, O Christ, and by Your divine eros You have changed me. But burn up with spiritual fire my sins, and grant me to be filled with delight in You, so that, leaping for joy, I may magnify, O Good One, Your two comings.",
+            "en": "Wherefore I, although unworthy both of heaven and of earth and of this transitory life, even I, the wretched one, having wholly yielded myself to sin, and become a slave to pleasures and having defiled thine image within me, who am thy creation and thy work, despair not of salvation; but trusting in thine infinite compassion, I draw nigh unto thee. Receive me, O Christ, thou that lovest mankind, as thou didst receive the harlot, the thief, the publican and the prodigal",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         },
@@ -2329,7 +2380,12 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "How shall I, who am unworthy, enter into the splendor of Your saints? If I should dare to enter into the bridal chamber, my vesture will condemn me, since it is not a wedding garment; and being bound up, I shall be cast out by the angels. Cleanse, O Lord, the filth of my soul, and save me, as You are the one Who loves mankind. In Your love, Lord, cleanse my soul, and save me.",
+            "en": "son. Take away the heavy burden of my sins. O thou that takest away the sin of the world and healest the infirmities of men and callest all that are weary and heavy-laden to thyself and givest them rest;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         },
@@ -2337,7 +2393,12 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "Master Who loves mankind, Lord Jesus Christ, my God, let not these Holy Gifts be to my judgment because I am unworthy, but rather for the purification and sanctification of both soul and body and the pledge of the life and Kingdom to come. It is good for me to cleave unto God and to place in Him the hope of my salvation.",
+            "en": "thou that camest not to call the righteous but sinners to repentance, cleanse thou me from every stain of flesh and spirit, and teach me to fulfill holiness in thy fear, that with the witness of my conscience pure, I may receive a portion of thy holy things, and be united to thy holy Body and Blood and may have thee, with the Father and the Holy Spirit, dwelling and abiding in me.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         },
@@ -2345,48 +2406,650 @@
           "type": "text",
           "text": {
             "ar": "",
-            "en": "O Son of God, receive me today as a partaker of Your mystical supper. For I will not speak of the mystery to Your enemies, nor will I give You a kiss, as did Judas. But like the thief, I confess to You: Remember me, Lord, in Your Kingdom.",
+            "en": "Yea, O Lord Jesus Christ my God, grant that the partaking of thine immaculate and life-giving mysteries may not be to my condemnation, nor may I become infirm in soul and body by receiving unworthily thereof, but grant that, even unto my last breath, I may partake of a portion of thy holy things without condemnation, unto the communion of thy Holy Spirit, as a provision for eternal life, and for a good defense at thy fearful judgment seat;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "so that I, as a partner with all thine elect, may also receive those undefiled good things which thou hast prepared for them that love thee, O Lord, in whom thou art glorified forever. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "2. Another Prayer of St. Basil the Great",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord, I know that I receive unworthily thine immaculate Body and precious Blood; I know that I am guilty and that I eat and drink condemnation to myself, not discerning the Body and Blood of Christ my God. But trusting in thy compassion I come unto thee who hast said, ‘Whosoever eateth my flesh and drinketh my blood abideth in me and I in him.’ Therefore, O Lord, have compassion on me and make not an example of me, the sinner.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "But do unto me according to thy mercy, and grant that these holy things may be for me unto the healing, purification, enlightenment, protection, salvation and sanctification of soul and body, and to the expulsion of every evil imagination, wicked deed or work of the devil, which",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "operateth within my mind and members. May they move me to boldness and love toward thee, to amend and keep firm my life, and may they ever be in me unto the increase of virtue, unto the keeping of thy commandments, unto the communion of the Holy Spirit, as a provision for eternal life and for a good defense at thy fearful judgment seat, and not unto judgment nor unto condemnation.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "3. A Prayer of St. John Chrysostom",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord my God, I know that I am not worthy nor sufficient that thou shouldest enter under the roof of the house of my soul, for it is all deserted and in ruins, and thou hast not a worthy place in me to lay thy head. But as from the heights of thy glory thou didst humble thyself, so now bear me in my humility; as thou didst deign to lie in the cave in a manger of dumb animals, so deign now also to come into the manger of my dumb soul and soiled body.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "As thou didst not refrain from entering and eating with sinners in the house of Simon the leper, so also vouchsafe to enter the house of my humble, leprous and sinful soul. As thou didst not reject the harlot and sinner, like unto me, who approached and touched thee, so also have pity on me, the sinner, as I approach and touch thee;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "and as thou didst not loathe the filthy mouth of her who drew near to kiss thee, neither loathe my mouth which is more filthy, nor my unclean lips, nor my yet more unclean tongue. But grant that the fiery coal of thine all-holy Body and precious Blood be for the sanctification, enlightenment and strengthening of my wretched soul and body;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "for the relief from the burden of my many transgressions, for my preservation against every demonic activity, for trampling down and averting of my careless and evil habits, for the mortification of passions; for obedience to thy commandments, for growth in thy divine grace and for the inheritance of thy kingdom. For it is not with presumption that I approach thee, O Christ God, but I come",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "trusting in thine indescribable goodness, lest that through long absence from communion with thee I may become the prey of the invisible wolf. Wherefore, I pray thee, O Master, who alone art holy, sanctify my soul and body, my mind and heart, my reins and bowels, and renew me entirely. Implant in my members the fear of thee, and make thy sanctification to be inalienable from me.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Be thou my Helper and Guide, directing my life in peace, vouchsafing me to stand at thy right hand with thy saints; through the prayers and intercessions of thine all-immaculate Mother, of thy bodiless servitors, and immaculate powers, and of all the saints who from all ages have been well-pleasing unto thee. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "4. Another Prayer of St. John Chrysostom",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord Master, I am not worthy that thou shouldest come under the roof of my soul; but for that thou desirest, O Lover of mankind, to dwell in me, I make bold to draw near. Thou biddest me to open the doors which thou alone hast made, and thou dost enter with thy love for man. Thou dost enter and enlighten my darkened reasoning. I believe that thou wilt so do. For thou didst not turn from the harlot when she came to thee with tears.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Neither didst thou reject the publican who repented, nor the thief when he acknowledged thy kingdom. Nor didst thou despise the persecutor when he was converted. But all who came to thee in repentance thou didst reckon among thy friends, O thou who alone art blessed, always, now and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "5. Another Prayer of St. John Chrysostom",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord Jesus Christ, my God, absolve, remit, be gracious and forgive me, thy sinful, unprofitable and unworthy servant, my sins, offences and transgressions, by which from my youth even unto this present day and hour I have sinned against thee, in knowledge or in ignorance, whether of words or deeds, whether in thought or",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "imagination, in my own counsels and in all my senses.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "And by the intercessions of her who bore thee without seed, Mary, thine all-immaculate and ever-virgin Mother, my only hope which maketh not ashamed, my protection and my salvation, vouchsafe that I may partake without condemnation of thine immaculate, immortal, life-giving and dread mysteries, for the forgiveness of sins and unto life eternal, unto the sanctification, enlightenment, strength, healing and health of both soul and body, and unto the blotting out and complete obliteration of my evil thoughts and imaginings and intents, of night fantasies and the evil spirits of darkness;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "for thine is the kingdom and the power and the glory and the honor and the worship, with the Father and the Holy Spirit, now and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "6. A Prayer of St. John of Damascus",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord and Master, Jesus Christ, our God, who alone hath power to forgive men their sins, for thou art good and lovest mankind: Forgive me all transgressions that I have committed in knowledge or in ignorance, and make me worthy to receive without condemnation thy divine, glorious, immaculate and life-giving mysteries, not unto punishments or unto increase of sins;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "but unto purification, and sanctification and a pledge of the life and kingdom to come, as a protection and a help and an averting of the adversaries, and unto the blotting out my many trespasses. For thou art a God of mercy and compassions and love toward mankind, and unto thee we ascribe glory together with the Father and the Holy Spirit, now and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "7. A Prayer of St. Simeon the New Theologian",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "From filthy lips, from a loathsome heart, from an unclean tongue, from a polluted soul, receive my prayer, O my Christ; and despise not my words, neither my manner nor mine impudence. Suffer me to speak boldly that which I desire, O my Christ. Nay, rather, teach me that which it becometh me to do and to speak. I have sinned more than the harlot who, learning where thou wast lodging, bought ointment and dared to anoint thy feet, O Christ, my Master and my God.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Inasmuch as thou didst not reject her who came to thee from her heart, neither loath thou me, O Word, but grant me also to hold and kiss thy feet and to dare to anoint them with a flood of tears, as with very precious ointment. Wash me with my tears and purify me thereby, O Word. Forgive my transgressions, and grant me pardon. Thou knowest the multitude of mine evil deeds. Thou knowest too my bruises, and thou seest my wounds.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "But thou knowest likewise my faith and beholdest my zeal, and thou hearest my sighs. No tear is hidden from thee, O my God, my Maker, my Deliverer, nor even a part thereof. Thine eyes knew that which I had not yet done, for in thy book is written that which I will do. Behold, my lowliness. Behold, my weariness.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Forgive me all my sins, O God of all, that with a pure heart and fearful mind and contrite soul, I may partake of thine immaculate and all-pure mysteries, wherewith every man who eateth and drinketh thereof with a pure heart is enlivened and made divine. For thou, O Master, didst say, ‘Whosoever eateth my flesh and drinketh my blood abideth in me, and I in him.’ True in all ways is the word of my Lord and God;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "for he who partaketh of the divine and deifying gifts is in no way alone but is with thee, O my Christ, thou tri-radiant Sun who illumineth the world. Suffer me not to dwell apart from thee, O Giver of life, who art my Breath, my Life, my Joy, the Salvation of the world. Wherefore I draw nigh unto thee, as thou seest, with tears and a contrite soul, beseeching that I",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "may be delivered from my transgressions and may partake without condemnation of thy life-bestowing and blameless mysteries, that, as thou hast said, thou mayest abide with me, the thrice-wretched, lest if I be found without thy grace, the tempter should craftily beguile me and entice me away from thy deifying words. For this cause I fall down before thee and earnestly cry unto thee:",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "As thou didst accept the prodigal son and the harlot when she came to thee, so also receive me, who am as a harlot and a prodigal, O compassionate one. Turning to thee now with a contrite soul, I know, O Saviour, that no man hath so sinned against thee as I, nor done the things that I have done.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Yet this also I know, that neither the magnitude of the transgressions, nor the multitude of the sins surpasseth the great long-suffering of my God and his exceeding love toward mankind. But with the oil of compassion thou dost cleanse and enlighten them that earnestly repent, bounteously making them partakers of the light and communicants of thy divinity.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "And strange though it be to angels and to the minds of men, thou dost oft-times converse with them as with thy true friends. These things make me bold; these things give me wing, O my Christ. And emboldened by thy rich bounty toward us, in joy and trembling I, who am as grass, do partake of fire. And lo, a strange wonder! I am inexplicably bedewed, even as of old the burning bush was not consumed.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Now with thankful mind, with thankful heart, with thankfulness in all my members, my soul and my flesh, I worship, magnify and glorify thee, O my God, who art blessed both now and unto the ages.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "8. A Prayer of St. Simeon the Translator",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord, Jesus Christ our God, the Wisdom, Peace and Power of God, who alone art pure and undefiled, who for the compassion of thine ineffable love for mankind didst take our entire nature from the pure and virginal blood of her who bore thee in a manner",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "beyond nature by the descent of the divine Spirit and the good will of the unoriginate Father, who didst accept the life-giving and saving passion, the cross, the nails, the spear and death: Mortify the soul-corrupting passions of my body, O thou who by thy burial didst lead captive the kingdom of hades.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Bury under good thoughts my evil counsels and scatter abroad the evil-spirits, O thou who by thy life-giving, third-day resurrection didst raise the forefathers who had fallen, raise me up, who slip in sin, placing before me the ways of repentance.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O thou who by thy glorious ascension didst vouchsafe that the flesh which thou hadst assumed should sit at the right hand of the Father, thereby ennobling it, so prepare me that, by partaking of thy holy mysteries, I may attain a portion at thy right hand with the saved. O thou who by the descent of the comforting Spirit didst make thy sacred disciples precious vessels, show me, also, to appear a vessel for his descent.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O thou who art about to come and judge the world with righteousness, be well pleased, O my Maker and my Creator, that I too may welcome thee in the clouds with all thy saints, that I may ceaselessly glorify and hymn thee, with thine unoriginate Father and thine all-holy and good and life-giving Spirit, now and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "9. Another Prayer of St. John of Damascus",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "I stand before the doors of thy temple, and yet I refrain not from my terrible thoughts. But do thou, O Christ God, who didst justify the publican, and hadst mercy on the Canaanite woman, and didst open the gates of paradise to the thief; open unto me the compassion of thy love toward mankind, and receive me as I approach and touch thee, like the harlot and the woman with the issue of blood;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "for the one, by embracing thine immaculate feet, received the forgiveness of her sins, and the other, by but touching the hem of thy garment, received healing. And I, most sinful, dare",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "to partake of thy whole Body. Let me not be consumed, but receive me as thou didst receive them, and enlighten the senses of my soul, consuming the accusations of my sins, through the intercessions of her that without seed gave thee birth, and of the heavenly powers; for thou art blessed uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "10. Another Prayer of St. John Chrysostom",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "I believe, O Lord, and I confess that thou art truly the Christ, the Son of the living God, who didst come into the world to save sinners, of whom I am chief. And I believe that this is truly thine own immaculate Body, and that this is truly thine own precious Blood. Wherefore I pray thee, have mercy upon me, and forgive my transgressions both voluntary and involuntary, of word and of deed, of knowledge and of ignorance;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "and make me worthy to partake without condemnation of thine immaculate Mysteries, unto remission of my sins and unto life everlasting. Amen. Of thy Mystical Supper, O Son of God, accept me today as a communicant; for I will not speak of thy Mystery to thine enemies, neither will I give thee a kiss as did Judas; but like the thief will I confess thee: Remember me, O Lord, in thy kingdom.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Not unto judgment nor unto condemnation be my partaking of thy Holy Mysteries, O Lord, but unto the healing of soul and body.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Receive me today as a partaker of Your mystical supper, O Son of God; for I will not speak of Your mystery to Your enemies, neither will I give You a kiss as did Judas, but like the thief will I confess You: Remember me, O Lord, in Your kingdom.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          },
+          "text": {
+            "ar": "",
+            "en": "I believe and confess, O Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am first.",
             "el": ""
           }
         }
       ],
-      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "content_mode": "NATIVE_SOURCE_COMPILATION_REVIEW_REQUIRED",
       "source_document": {
-        "edition_scope": "complete_service_with_registered_variants",
-        "source_id": "goarch_ogden_epubs",
-        "source_name": "Transfiguration Greek Orthodox Church, Ogden — GOA Digital Chant Stand text",
-        "source_url": "https://www.tgoc.ut.goarch.org/doc/Communion%20Prayer.epub",
-        "files": [
-          {
-            "file": "canonical/source_editions/goarch_ogden_epubs/pre_communion.epub",
-            "source_url": "https://www.tgoc.ut.goarch.org/doc/Communion%20Prayer.epub",
-            "sha256": "28a539ac59e179157228858667c1bc394f92006cfba83d99359041debcd14f94"
-          }
-        ],
-        "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
-        "machine_translation_used": false,
-        "document_sha256": "28a539ac59e179157228858667c1bc394f92006cfba83d99359041debcd14f94",
+        "edition_scope": "complete_native_office",
+        "source_id": "st_mary_wichita_communion_en",
+        "document_sha256": "f4c8867416887acd75927973b7b39cf6d78ea450ab8bb88e2675e0a54bff3ff5",
         "private_source_file_not_packaged": true,
-        "recovered_from_owner_archive": true,
-        "source_file": "canonical/source_editions/goarch_ogden_epubs/pre_communion.epub"
+        "human_review_required": true
       },
       "recovery_status": "RECOVERED_SOURCE_NATIVE_PARTIAL",
       "native_content_status": {
-        "filled_fields": 12,
-        "total_fields": 12,
+        "filled_fields": 113,
+        "total_fields": 113,
         "complete": true
       },
       "native_source": {
-        "source_id": "goarch_ogden_epubs",
-        "name": "Transfiguration Greek Orthodox Church, Ogden — GOARCH",
+        "source_id": "st_mary_wichita_communion_en",
+        "name": "St. Mary Orthodox Christian Church — Prayers before Communion",
         "official": true,
         "native_language": "en",
-        "url": "https://www.tgoc.ut.goarch.org/doc/Communion%20Prayer.epub",
-        "permission_confirmed": true,
+        "url": "https://www.stmarywichita.org/",
+        "permission_confirmed": false,
+        "redistribution_review_required": true,
         "machine_translation_used": false,
-        "content_sha256": "7d15c7b2fff076db8af71190852e444d602a8dfbe48e7be9339b1fe52b5cde64",
-        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
-      }
+        "content_sha256": "df3c740de98024c8b165fa5a7a9d1db58ed69a2e4bc5fa43e81244e5346ebff8",
+        "import_status": "NATIVE_SOURCE_IMPORT_REVIEW_REQUIRED"
+      },
+      "completion_status": "COMPLETE_NATIVE_SOURCE_COMPILATION",
+      "technical_coverage": "15_OF_15_LANGUAGE_SERVICE_SET",
+      "ecclesiastical_review_required": true
     },
     {
       "id": "thanksgiving_after_communion",
@@ -2560,6 +3223,7 @@
         "native_language": "en",
         "url": "https://www.tgoc.ut.goarch.org/doc/Prayers%20after%20Holy%20Communion.epub",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "a4d250450c90d87c29775347b4361594590b9bc781a810c9cdd1d9308dd3246b",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -6946,6 +7610,7 @@
         "native_language": "en",
         "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "e706bca63f620be50f1dc24fc246775e6a933377cc57463bb8300526f6125303",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -8675,6 +9340,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/office-vespers.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "a4acb62599d28a2eb4295e48ed882226b1b76fb43ead2d481c5465a24b76b5a0",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -13768,6 +14434,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/liturgics/rubrics/horologion",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "f42054a35b5c3c6a6016460c541cf21070facfd18ab3d5db50dc0df3fa2de081",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -17473,6 +18140,7 @@
         "native_language": "en",
         "url": "https://www.tgoc.ut.goarch.org/doc/Divine%20Liturgy%20of%20St%20Basil.epub",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "2970c02472d3d545fcd6d37ceaaf8726361459aa3f3f0dc2bf70846a17170de7",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -17915,6 +18583,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/first-hour.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "bb8660648550de8f8592228a16dc5c5807898ad781e83d87effd94095d0e8a9b",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -18437,6 +19106,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/ninth-hour.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "3749bf4ae0ec2c65ea1dc9e77d984a9257b8b772934b83a64de73a4928fde6da",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -23232,6 +23902,7 @@
         "native_language": "en",
         "url": "https://www.tgoc.ut.goarch.org/doc/Presanctified_1W.epub",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "5bd2ee58f2dc0ad75b598afc651f9573deb47c8b31a4991d60a5f6b1da48410a",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -23635,6 +24306,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/sixth-hour.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "31897ef4438dc6edb502568b102e8f24527ecbe26e143bb7c637fcf21a72aa02",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -24141,6 +24813,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/third-hour.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "ecde281ead3b43518b9520ea520209fe6ebd9e87b9f6702fdc2772df24b76d06",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -25200,6 +25873,7 @@
         "native_language": "en",
         "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/typika.docx",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "c4c91accec9e5cf9e249e04cb1cced49813fbb7412b3b53fea755ee41b6f73d1",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -25216,39 +25890,1015 @@
       },
       "summary": {
         "ar": "",
-        "en": "The complete Midnight Office.",
+        "en": "The complete Midnight Office for home use, including the opening prayers, Psalm 50, Creed, Bridegroom troparia, prayers, psalms for the departed, and dismissal.",
         "el": ""
       },
       "native_pack_only": true,
       "segments": [
         {
           "type": "text",
-          "editorial_metadata_only": true,
           "text": {
             "ar": "",
-            "en": "Loaded from the native language pack.",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Through the prayers of our holy fathers, Lord Jesus Christ our God, have mercy on us! Amen! Glory to Thee, O God, glory to Thee! O Heavenly King, Comforter, Spirit of Truth, who art everywhere present and fillest all things, Treasury of good things and Giver of life: Come and abide in us, and cleanse us from every stain, and save our souls, O Good One! (From Pascha until Pentecost, “O Heavenly King” is not said;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "from Pascha to its Leavetaking, “Christ is risen” is said three times in its place.) Holy God, Holy Mighty, Holy Immortal, have mercy on us! (3x) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and uunto ages of ages. Amen. All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our transgressions. Holy One, look upon and heal our infirmities for Thy name’s sake. Lord, have mercy; Lord, have mercy; Lord, have mercy.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and uunto ages of ages. Amen. Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come, Thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts as we forgive our debtors, and lead us not into temptation, but deliver us from the evil one. Amen. Lord, have mercy (12).",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father and to the Son and to the Holy Spirit, now and ever, and uunto ages of ages. Amen. Come, let us worship God our King Come, let us worship and fall down before Christ, our King and our God. Come, let us worship and fall down before Christ Himself, our King and our God.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Psalm 50",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Have mercy on me, O God, according to thy great mercy, and according to the multitude of thy compassions, blot out my transgressions. Wash me yet more from my transgressions, and from my sin purify thou me. For I know my transgression, and my sin is continually before me. Against thee alone have I sinned, and have done evil before thee; that thou mightest be justified in thy words, and conquer when thou art judged.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Behold, in transgressions was I conceived, and in sin did my mother bear me. Behold, thou hast loved truth; the hidden and secret things of thy wisdom hast thou revealed unto me. Thou shalt sprinkle me with hyssop, and I shall be cleansed; thou shalt wash me, and I shall be whiter than snow. Thou shalt make me hear joy and gladness; the bones that have been humbled shall rejoice. Turn away thy face from my sins, and blot out my transgressions.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Create in me a clean heart, and renew a right spirit within me. Cast me not away from thy face, and take not thy Holy Spirit from me. Give me again the joy of thy salvation, and establish me with a princely spirit. Then will I teach transgressors thy ways, and the impious shall return unto thee. Deliver me from bloodguiltiness, O God, the God of my salvation; my tongue shall rejoice in thy righteousness. O Lord, open thou my lips, and my mouth shall declare thy praise.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "For if thou hadst desired sacrifice, I would have given it; with burnt-offerings thou wilt not be pleased. A sacrifice to God is a broken spirit; a broken and humbled heart God will not despise. Do good, O Lord, in thy goodwill unto Zion; and let the walls of Jerusalem be built. Then shalt thou be pleased with the sacrifice of righteousness, oblations, and burnt- offerings; then shall they lay bullocks upon thine altar.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Here we may insert hymns from the Octoechos/Triodion",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Then on weekdays, we may read the Seventeenth Kathisma (Psalm 118/119).",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "After the kathisma (if we read one), we say: Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The Creed",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "I believe in one God, the Father almighty, Maker of Heaven and earth, and of all things visible and invisible. And in one Lord, Jesus Christ, the Son of God, the Only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father; by whom all things were made. Who for us men and our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "And was crucified also for us under Pontius Pilate, and suffered and was buried; and the third day He rose again according to the Scriptures; and ascended into heaven and sitteth at the right hand of the Father. And He shall come again with glory to judge the living and the dead; of His kingdom there shall be no end.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "And in the Holy Spirit, the Lord, the Giver of life, who proceedeth from the Father, who with the Father and the Son together is worshipped and glorified, who spake by the prophets. In one holy, catholic, and apostolic Church; I confess one baptism for the forgiveness of sins; I look for the resurrection of the dead, and the life of the age to come. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us! (3x) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and uunto ages of ages. Amen. All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our transgressions. Holy One, look upon and heal our infirmities for Thy name’s sake. Lord, have mercy; Lord, have mercy; Lord, have mercy.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and uunto ages of ages. Amen. Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come, Thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts as we forgive our debtors, and lead us not into temptation, but deliver us from the evil one. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Then these troparia in tone 8:",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Behold, the Bridegroom cometh at midnight, and blessed is the servant whom He shall find watchful, but again unworthy is he whom He shall find slothful. Beware, then, O my soul, let by sleep thou be weighed down, and be given over unto death and shut thyself out from the kingdom; but awake crying: Holy, Holy, Holy art Thou, O God; through the Theotokos, have mercy on us.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father and to the Son and to the Holy Spirit.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "While meditating on that fearful day, O my soul, be watchful, kindling thy lamp, lighting it with oil, for thou knowest not when the voice shall come unto thee, saying: “Behold, the Bridegroom.” Beware then, O my soul, lest thou slumber and remain knocking without, like the five virgins",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Both now and ever and uunto ages of ages. Amen.",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "We pray thee, O Virgin Theotokos, thou impregnable wall, bulwark of salvation, frustrate the counsel of the adversary, the sorrows of thy people change into joy, recall thy world and strengthen the pious; intercede for the peace of the world, O Theotokos, for thou art our hope. Lord, have mercy.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "(40) O Thou, who at all times and at every hour, both in heaven and on earth, art worshipped and glorified, O Christ God, long-suffering, great in mercy and goodness of heart, who lovest the righteous and hast mercy on sinners, who callest all men to salvation through the tidings of good things to come: do Thou, the same Lord, receive also our prayers at this hour;",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "direct our lives in thy commandments, sanctify our souls, cleanse our bodies, direct our thoughts, cleanse our minds, and deliver us from every tribulation, wickedness, and affliction; encompass us by Thy holy angels, that guarded and guided by their host, we may attain to the unity of the faith, and to the understanding of Thine unapproachable glory, for blessed art thou uunto ages of ages. Amen. Lord, have mercy.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "(3) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and uunto ages of ages. Amen. More honorable than the Cherubim and more glorious without compare than the Seraphim, who without corruption gavest birth to God the Word: verily, Theotokos, we magnify thee. Through the prayers of our holy fathers, Lord Jesus Christ have mercy on us. Amen. During the Great Fast, (when the Alleluia is sung), the prayer of St. Ephrem of Syria is read now.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord and Master of my life, the spirit of idleness, of despondency, of love of power, and of idle words, grant me not. (Prostration) But the spirit of continence, of humility, of patience, and of love, do Thou grant unto me Thy servant. (Prostration) Yea O Lord and King, grant unto me to perceive mine own offences and not to judge my brother; for blessed art Thou uunto ages of ages. Amen. (Prostration)",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Then 12 bows to the waist while saying:",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O God, cleanse Thou me a sinner and have mercy on me (12).",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "OR",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O God, have mercy on me a sinner (3). O God, cleanse Thou me a sinner and have mercy on me (3). Thou hast created me, O Lord, have mercy on me (3). Countless times have I sinned, O Lord, forgive me. (3)",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Then repeat the prayer in full, and conclude with a prostration.",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The prayer of St. Mardarius",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Master, God, Father Almighty, Lord, Only-begotten Son, Jesus Christ, and the Holy Spirit, one Godhead, one Power: have mercy on me a sinner, and, by the judgements which Thou discernest, save me Thine unworthy servant, for blessed art thou unto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "A Prayer of St. Basil the Great",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Almighty Lord, the God of hosts and of all flesh, who livest in the heights, yet lookest down on the humble, proving the hearts and emotions, clearly foreknowing the secrets of men: Thou art the Light without beginning, in Whom there is no variation nor shadow of change. O Immortal King, accept the prayers which we now offer Thee from defiled lips. Free us from the sins we have committed in deed, word or thought, knowingly and unknowingly.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Cleanse us from all defilement of flesh and spirit. Grant us to pass through the entire night of this present life with a watchful heart and a sober mind, awaiting the coming of the bright and manifest day of Thine only-begotten Son, our Lord, God and Savior Jesus Christ, when the Judge of all will come with glory to reward each according to his deeds.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "May we not be found fallen and lazy, but alert and roused to action, prepared to enter into His joy and the divine chamber of His glory, where the voice of those who feast is unceasing and indescribable is the delight of those who behold the inexpressible beauty of Thy countenance. For Thou art the true Light which enlightens and sanctifies all, and all creation hymns Thee uunto ages of ages. Amen",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Another Prayer of St. Basil We bless Thee, most high God and Lord of mercies, Who ever doest great and unfathomable things for us – glorious and awesome things without number. Thou givest us sleep for the repose of our frailty, relieving the labors of our over-burdened flesh. We thank Thee for not destroying us in our lawlessness. Instead, Thou has shown Thy usual love for mankind, and raised us, as we lay in despair, to glorify Thy Reign.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Therefore, we implore Thy boundless goodness: enlighten our thoughts and eyes, and awaken our minds from the heavy sleep of laziness. Open our lips and fill them with Thy praise, that we may unwaveringly hymn and confess Thee, the God glorified in all and by all, Father without beginning, with Thine only-begotten Son and Thine all-holy, and life-giving Spirit, now and ever and unto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "A Prayer of St. Eustratius",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Greatly will I magnify thee, O Lord, for Thou didst look upon my humility and didst not shut me up in the hands of the enemy, but thou hast saved my soul from necessities. And now, O Master, let thy hand shelter me, and let thy mercy come upon me, for my soul is disquieted and pained at its departure from this my wretched and foul body.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "May the evil counsel of the foe never meet and hinder it in the darkness because of the sins that in ignorance and with knowledge I have committed in this life. Be gracious unto me, O Mater, and let not my soul see the murky and dark vision of evil demons, but let it be received by thy radiant and shining angels. Give glory to thy holy name, and by thy power lead me to thy divine judgment seat.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "When I shall be judged, let not the hand of the prince of this world take me in order to drag me, a sinner, down into the depths of hell, but stand thou near me, and be unto me a Savior and Helper. Let these bodily torments be a joy unto thy servants. Have mercy, O Lord, on my soul made foul with the passion s of this life, and receive it cleansed through repentance and confession, for blessed art thou uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Come, let us worship God our King. Come, let us worship and fall down before Christ, our King and our God. Come, let us worship and fall down before Christ Himself, our King and our God.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Psalm 120",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "I lifted up mine eyes unto the mountains, whence cometh my help. My help is from the Lord, who hath made heaven and earth. Let not my foot be given to wavering, nor He that keepeth thee slumber. Behold, He that keepeth Israel shall neither slumber nor sleep. The Lord shall keep thee; the Lord is thy shield upon thy right hand. By day the sun shall not smite thee, nor the moon by night. The Lord shall keep thee from all evil; the Lord shall keep thy soul.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "The Lord shall keep thy coming in and thy going out henceforth and forevermore.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Psalm 133",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Behold now, bless the Lord, all ye servants of the Lord, that stand in the house of the Lord, n the courts of the house of our God. In the nights lift up your hands in the sanctuaries and bless ye the Lord. May the Lord bless thee out of Zion, He that made heaven and earth.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now an ever and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us! (3x) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and uunto ages of ages. Amen. All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our transgressions. Holy One, look upon and heal our infirmities for Thy name’s sake. Lord, have mercy; Lord, have mercy; Lord, have mercy.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever and uunto ages of ages. Amen. Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come, Thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts as we forgive our debtors, and lead us not into temptation, but deliver us from the evil one. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "These Troparia for the Departed in Tone 2",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Lord, as thou art good, remember thy servants, and pardon them in whatsoever they have sinned during their life, for none is without sin, but thou who art able to give rest to the departed.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Out of the depth of wisdom and with love of man dost thou dispense all things, and dost distribute to all that which is expedient, O only Artificer; give rest, O Lord, to the souls of they servants, for they did put their hope in thee, our Maker and our Fashioner and our God.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father and to the Son and to the Holy Spirit. With the saints give rest, O Christ, to the souls of Thy servant(s), where there is neither sickness nor sorrow, and no more sighing, but life everlasting.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Now and ever, and uunto ages of ages. Amen. Theotokion",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "We bless thee in every generation, O Virgin Theotokos, for in thee the uncontained Christ was well-pleased to be contained. Blessed are we also that have thee as a Protectress, for day and night, thou dost intercede for us, and the scepters of kings by thy supplications are strengthened. Wherefore in hymning thee, we cry to thee: Rejoice, O thou who art full of grace, the Lord is with thee.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Lord, have mercy (12).",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "And these prayers:",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "The Remembrancer Remember, O Lord, our fathers and brethren who have fallen asleep in the hope of the resurrection unto life eternal, and all them that in piety and faith have completed their lives.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Pardon every sin committed by them in word or deed or thought, and settle them in a place of light, in a place of verdure, in a place of repose, whence all sickness, sorrow, and sighing have fled away, where the light of thy face watcheth over and gladdeneth all thy Saints from the ages. Grant them and us thy kingdom and participation in thine endless and blessed life.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "For thou art the Resurrection, and the Life, and the Repose of thy servants who have fallen asleep, O Christ our God, and unto thee do we send up glory, together with thy Father, who is without beginning, and thine all-holy, and good, and life-creating Spirit, not and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O most glorious ever-virgin Mother of Christ God, offer our prayers unto thy Son and our God, that He may, through thee, save our souls.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "All my hope I place on thee, O Mother of God; keep me beneath thy shelter.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "My hope is the Father, my refuge is the Son, my protection is the Holy Spirit; O Holy Trinity, glory to thee.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "And these Troparia in tone 6:",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Have mercy on us, O Lord, have mercy on us, for laying aside all excuse, we sinners offer unto Thee as to our Master, this supplication: have mercy on us.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit. O Lord, have mercy on us, for in Thee have put our hope. Do not be angry with us, neither remember our iniquities, but look down on us even now, since Thou art compassionate, and deliver us from our enemies; for Thou art our God and we are Thy people; we are all the works of Thy hands, and we call on Thy Name.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Midnight Office For Use at Home",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Now and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "O Blessed Theotokos, open the doors of compassion to us whose hope is in thee, that we may not perish but be delivered from adversities, through thee who art the salvation of the Christian people.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and uunto ages of ages. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Lord, have mercy (3). Through the prayers of our holy fathers, O Lord Jesus Christ our God have mercy on us. Amen.",
+            "el": ""
+          },
+          "speaker": {
+            "ar": "",
+            "en": "Reader",
             "el": ""
           }
         }
       ],
       "source_language": "en",
-      "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+      "content_mode": "NATIVE_SOURCE_COMPILATION_REVIEW_REQUIRED",
       "native_content_status": {
-        "filled_fields": 2,
-        "total_fields": 2,
+        "filled_fields": 149,
+        "total_fields": 149,
         "complete": true
       },
       "native_source": {
-        "source_id": "goarch_synekdemos",
-        "name": "GOARCH Synekdemos",
+        "source_id": "st_maximus_midnight_office_en",
+        "name": "St. Maximus the Confessor Orthodox Mission — Midnight Office",
         "official": true,
         "native_language": "en",
-        "url": "https://www.goarch.org/chapel/prayers",
-        "permission_confirmed": true,
+        "url": "https://stmaximus.org/files/Documents/MidnightOffice.pdf",
+        "permission_confirmed": false,
+        "redistribution_review_required": true,
         "machine_translation_used": false,
-        "content_sha256": "9aa6a2d76719ef81a386a2b0547f80cd838976cd1171cc069611f12237767b3b",
-        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
-      }
+        "content_sha256": "41864a7aba83a872a80bcf5e564794ebed4e27cd95c14d61396f1f98bc432e18",
+        "import_status": "NATIVE_SOURCE_IMPORT_REVIEW_REQUIRED"
+      },
+      "completion_status": "COMPLETE_NATIVE_SOURCE_COMPILATION",
+      "technical_coverage": "15_OF_15_LANGUAGE_SERVICE_SET",
+      "ecclesiastical_review_required": true
     },
     {
       "id": "proskomide",
@@ -25464,8 +27114,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/hapgood_service_book_1906/hapgood.txt",
             "sha256": "b0b66bf496afa245ba96832580ef99ce9269ca727e71dea1bbdae8da1f6ef24c"
           }
-        ],
-        "document_sha256": "b0b66bf496afa245ba96832580ef99ce9269ca727e71dea1bbdae8da1f6ef24c"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -25480,6 +27129,7 @@
         "native_language": "en",
         "url": "https://archive.org/details/servicebookofhol00orth",
         "permission_confirmed": true,
+        "redistribution_review_required": false,
         "machine_translation_used": false,
         "content_sha256": "c5d492079c28271a9ae91f97db9d6242f2455ac01039050b6bede01c71b180cd",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
@@ -25487,8 +27137,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 3250,
-    "total_fields": 3250,
+    "filled_fields": 3498,
+    "total_fields": 3498,
     "percent": 100.0,
     "complete": true
   }

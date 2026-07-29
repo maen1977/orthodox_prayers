@@ -14,7 +14,8 @@
         "antioch_patriarchate_ar",
         "ebible_arabic_van_dyck",
         "orthodox_jordan_arabic_services",
-        "arabic_great_horologion_1870"
+        "arabic_great_horologion_1870",
+        "st_george_flint_basil_ar"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -32,7 +33,9 @@
         "metropolis_toronto_liturgy_en",
         "goarch_ogden_epubs",
         "oca_horologion_2021",
-        "hapgood_service_book_1906"
+        "hapgood_service_book_1906",
+        "st_maximus_midnight_office_en",
+        "st_mary_wichita_communion_en"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -50,7 +53,9 @@
         "imks_greek_services",
         "kilkis_greek_services",
         "goarch_glt_greek",
-        "ecumenical_patriarchate_ieratikon_1875"
+        "ecumenical_patriarchate_ieratikon_1875",
+        "metropolis_limassol_communion_el",
+        "goarch_online_chapel_greek"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -411,6 +416,61 @@
       "public_domain": true,
       "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
       "machine_translation_used": false
+    },
+    "st_george_flint_basil_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://saintgeorgeflint.org/",
+      "capabilities": [
+        "basil_liturgy"
+      ],
+      "permission_confirmed": false,
+      "redistribution_review_required": true,
+      "name": "St. George Orthodox Church, Flint — Arabic Liturgy of St. Basil"
+    },
+    "st_maximus_midnight_office_en": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://stmaximus.org/",
+      "capabilities": [
+        "midnight_office"
+      ],
+      "permission_confirmed": false,
+      "redistribution_review_required": true,
+      "name": "St. Maximus the Confessor Orthodox Mission — Midnight Office"
+    },
+    "st_mary_wichita_communion_en": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.stmarywichita.org/",
+      "capabilities": [
+        "pre_communion_prayers"
+      ],
+      "permission_confirmed": false,
+      "redistribution_review_required": true,
+      "name": "St. Mary Orthodox Christian Church — Prayers before Communion"
+    },
+    "metropolis_limassol_communion_el": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://iml.cy/",
+      "capabilities": [
+        "pre_communion_prayers"
+      ],
+      "permission_confirmed": false,
+      "redistribution_review_required": true,
+      "name": "Ἱερὰ Μητρόπολις Λεμεσοῦ — Ἀκολουθία Θείας Μεταλήψεως"
+    },
+    "goarch_online_chapel_greek": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://www.goarch.org/",
+      "capabilities": [
+        "post_communion_prayers"
+      ],
+      "permission_confirmed": false,
+      "redistribution_review_required": true,
+      "name": "Greek Orthodox Archdiocese of America — Greek Chapel Texts"
     }
   },
   "contract": "canonical/source_native_contract.json"

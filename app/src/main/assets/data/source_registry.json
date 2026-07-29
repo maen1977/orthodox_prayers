@@ -855,6 +855,36 @@
       "health": []
     },
     {
+      "id": "metropolis_limassol_communion_el",
+      "name": {
+        "ar": "Ἱερὰ Μητρόπολις Λεμεσοῦ — Ἀκολουθία Θείας Μεταλήψεως",
+        "en": "Ἱερὰ Μητρόπολις Λεμεσοῦ — Ἀκολουθία Θείας Μεταλήψεως",
+        "el": "Ἱερὰ Μητρόπολις Λεμεσοῦ — Ἀκολουθία Θείας Μεταλήψεως"
+      },
+      "url": "https://iml.cy/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "pre_communion_prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: pre_communion_prayers.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Verify source terms before redistribution",
+      "permission_confirmed": false,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
       "id": "metropolis_toronto_liturgy_el",
       "name": {
         "ar": "مطرانية تورونتو للروم الأرثوذكس — اليونانية",
@@ -1043,6 +1073,96 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "st_george_flint_basil_ar",
+      "name": {
+        "ar": "St. George Orthodox Church, Flint — Arabic Liturgy of St. Basil",
+        "en": "St. George Orthodox Church, Flint — Arabic Liturgy of St. Basil",
+        "el": "St. George Orthodox Church, Flint — Arabic Liturgy of St. Basil"
+      },
+      "url": "https://saintgeorgeflint.org/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "basil_liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: basil_liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Verify source terms before redistribution",
+      "permission_confirmed": false,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "st_mary_wichita_communion_en",
+      "name": {
+        "ar": "St. Mary Orthodox Christian Church — Prayers before Communion",
+        "en": "St. Mary Orthodox Christian Church — Prayers before Communion",
+        "el": "St. Mary Orthodox Christian Church — Prayers before Communion"
+      },
+      "url": "https://www.stmarywichita.org/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "pre_communion_prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: pre_communion_prayers.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Verify source terms before redistribution",
+      "permission_confirmed": false,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "st_maximus_midnight_office_en",
+      "name": {
+        "ar": "St. Maximus the Confessor Orthodox Mission — Midnight Office",
+        "en": "St. Maximus the Confessor Orthodox Mission — Midnight Office",
+        "el": "St. Maximus the Confessor Orthodox Mission — Midnight Office"
+      },
+      "url": "https://stmaximus.org/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "midnight_office"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: midnight_office.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Verify source terms before redistribution",
+      "permission_confirmed": false,
       "last_verified": "",
       "authority_tier": 5,
       "connector_count": 0,

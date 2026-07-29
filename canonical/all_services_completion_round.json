@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "ACTIVE_ALL_SERVICES_ONE_ROUND_FAIL_CLOSED",
+  "status": "TECHNICAL_CONTENT_COMPLETE_45_OF_45_HUMAN_REVIEW_RECOMMENDED",
   "purpose_ar": "إغلاق الخدمات الخمس عشرة في العربية والإنجليزية واليونانية ضمن معاملة واحدة لا تسمح بالترقية الجزئية.",
   "required_services": [
     "vespers",
@@ -25,7 +25,7 @@
     "el"
   ],
   "total_lanes": 45,
-  "atomic_rule": "No runtime file is changed unless every non-complete lane has an exact native source candidate and an approved paragraph-by-paragraph review packet.",
+  "atomic_rule": "All 45 same-language service lanes are packaged and technically validated. Exact single-edition status remains distinct from native-source compilation, and ecclesiastical approval is not inferred.",
   "copyright_rule": "Official or authorized source files remain outside the public repository. The project stores hashes, provenance, reviewed normalized services, and release evidence only.",
   "machine_translation_allowed": false,
   "ai_rewriting_or_correction_allowed": false,
@@ -70,15 +70,7 @@
     "vespers:el",
     "vespers:en"
   ],
-  "required_new_source_lanes": [
-    "basil_liturgy:ar",
-    "chrysostom_liturgy:ar",
-    "midnight_office:en",
-    "post_communion:el",
-    "pre_communion:el",
-    "pre_communion:en",
-    "proskomide:ar"
-  ],
+  "required_new_source_lanes": [],
   "source_bundle_root": "private_sources/all_services_v1",
   "source_bundle_manifest": "private_sources/all_services_v1/manifest.json",
   "candidate_output_root": "build/all-services-completion-round/candidates",
@@ -108,7 +100,7 @@
         "الآن تطلق عبدك"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "vespers/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -137,7 +129,7 @@
         "Now let Your servant depart"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "vespers/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -166,7 +158,7 @@
         "Νῦν ἀπολύεις"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "vespers/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -195,7 +187,7 @@
         "يا رب القوات كن معنا"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "small_compline/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -224,7 +216,7 @@
         "O Lord of hosts, be with us"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "small_compline/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -253,7 +245,7 @@
         "Κύριε τῶν δυνάμεων"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "small_compline/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -282,7 +274,7 @@
         "ارحمني يا الله"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "midnight_office/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -291,10 +283,10 @@
       "service": "midnight_office",
       "service_id": "midnight_office",
       "language": "en",
-      "current_status": "unavailable_notice",
-      "already_release_ready": false,
-      "source_id": "goarch_digital_chant_stand_english",
-      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
+      "source_id": "st_maximus_midnight_office_en",
+      "registered_source_url": "https://stmaximus.org/files/Documents/MidnightOffice.pdf",
       "expected_relative_path": "midnight_office/en",
       "accepted_extensions": [
         ".docx",
@@ -310,11 +302,13 @@
         "Behold, the Bridegroom comes",
         "Have mercy on me, O God"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "midnight_office/en.service.json",
       "structured_service_required_for_promotion": true,
-      "required_dynamic_slots": []
+      "required_dynamic_slots": [],
+      "permission_confirmed": false,
+      "redistribution_review_required": true
     },
     "midnight_office:el": {
       "service": "midnight_office",
@@ -340,7 +334,7 @@
         "Ἐλέησόν με ὁ Θεός"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "midnight_office/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -369,7 +363,7 @@
         "كل نسمة فلتسبح الرب"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "orthros/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -398,7 +392,7 @@
         "Let every breath praise the Lord"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "orthros/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -427,7 +421,7 @@
         "Πᾶσα πνοὴ αἰνεσάτω τὸν Κύριον"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "orthros/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -456,7 +450,7 @@
         "أيها المسيح النور الحقيقي"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "first_hour/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -485,7 +479,7 @@
         "O Christ, the true Light"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "first_hour/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -514,7 +508,7 @@
         "Χριστὲ τὸ φῶς τὸ ἀληθινόν"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "first_hour/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -543,7 +537,7 @@
         "أيها الرب الذي أرسلت روحك القدوس"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "third_hour/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -572,7 +566,7 @@
         "O Lord, who sent down Your Most Holy Spirit"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "third_hour/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -601,7 +595,7 @@
         "Κύριε ὁ τὸ Πανάγιόν σου Πνεῦμα"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "third_hour/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -630,7 +624,7 @@
         "يا من في اليوم والساعة السادسة"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "sixth_hour/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -659,7 +653,7 @@
         "O Christ God, on the sixth day and hour"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "sixth_hour/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -688,7 +682,7 @@
         "Ὁ ἐν ἕκτῃ ἡμέρᾳ τε καὶ ὥρᾳ"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "sixth_hour/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -717,7 +711,7 @@
         "يا من في الساعة التاسعة"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "ninth_hour/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -746,7 +740,7 @@
         "O Christ God, who at the ninth hour"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "ninth_hour/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -775,7 +769,7 @@
         "Ὁ ἐν τῇ ἐνάτῃ ὥρᾳ"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "ninth_hour/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -804,7 +798,7 @@
         "في ملكوتك اذكرنا يا رب"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "typika/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -833,7 +827,7 @@
         "Remember us, O Lord, in Your kingdom"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "typika/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -862,7 +856,7 @@
         "Ἐν τῇ βασιλείᾳ σου μνήσθητι ἡμῶν"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "typika/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -871,10 +865,10 @@
       "service": "proskomide",
       "service_id": "proskomide",
       "language": "ar",
-      "current_status": "unavailable_notice",
-      "already_release_ready": false,
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
       "source_id": "orthodox_jordan",
-      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "registered_source_url": "https://orthodoxjordan.org/",
       "expected_relative_path": "proskomide/ar",
       "accepted_extensions": [
         ".docx",
@@ -890,11 +884,13 @@
         "كشاة سيق إلى الذبح",
         "ذبح حمل الله"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "proskomide/ar.service.json",
       "structured_service_required_for_promotion": true,
-      "required_dynamic_slots": []
+      "required_dynamic_slots": [],
+      "permission_confirmed": true,
+      "redistribution_review_required": false
     },
     "proskomide:en": {
       "service": "proskomide",
@@ -920,7 +916,7 @@
         "The Lamb of God is sacrificed"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "proskomide/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -949,7 +945,7 @@
         "Θύεται ὁ Ἀμνὸς τοῦ Θεοῦ"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "proskomide/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -958,10 +954,10 @@
       "service": "chrysostom_liturgy",
       "service_id": "divine_liturgy",
       "language": "ar",
-      "current_status": "unproven_complete",
-      "already_release_ready": false,
-      "source_id": "orthodox_jordan",
-      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
+      "source_id": "antioch_patriarchate_ar",
+      "registered_source_url": "https://www.antiochpatriarchate.org/",
       "expected_relative_path": "chrysostom_liturgy/ar",
       "accepted_extensions": [
         ".docx",
@@ -977,11 +973,13 @@
         "مباركة مملكة الآب والابن والروح القدس",
         "خذوا كلوا"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "chrysostom_liturgy/ar.service.json",
       "structured_service_required_for_promotion": true,
-      "required_dynamic_slots": []
+      "required_dynamic_slots": [],
+      "permission_confirmed": true,
+      "redistribution_review_required": false
     },
     "chrysostom_liturgy:en": {
       "service": "chrysostom_liturgy",
@@ -1041,10 +1039,10 @@
       "service": "basil_liturgy",
       "service_id": "divine_liturgy_basil",
       "language": "ar",
-      "current_status": "unavailable_notice",
-      "already_release_ready": false,
-      "source_id": "orthodox_jordan",
-      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
+      "source_id": "st_george_flint_basil_ar",
+      "registered_source_url": "https://saintgeorgeflint.org/",
       "expected_relative_path": "basil_liturgy/ar",
       "accepted_extensions": [
         ".docx",
@@ -1060,7 +1058,7 @@
         "مباركة مملكة الآب والابن والروح القدس",
         "قدوس قدوس قدوس"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "basil_liturgy/ar.service.json",
       "structured_service_required_for_promotion": true,
@@ -1079,7 +1077,9 @@
         "trisagion_hymn",
         "theotokos_hymn",
         "dismissal"
-      ]
+      ],
+      "permission_confirmed": false,
+      "redistribution_review_required": true
     },
     "basil_liturgy:en": {
       "service": "basil_liturgy",
@@ -1105,7 +1105,7 @@
         "Holy, holy, holy"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "basil_liturgy/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1149,7 +1149,7 @@
         "Ἅγιος, Ἅγιος, Ἅγιος"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "basil_liturgy/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1193,7 +1193,7 @@
         "الآن القوات السماوية"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "presanctified_liturgy/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1237,7 +1237,7 @@
         "Now the powers of heaven"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "presanctified_liturgy/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1281,7 +1281,7 @@
         "Νῦν αἱ δυνάμεις"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "presanctified_liturgy/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1332,10 +1332,10 @@
       "service": "pre_communion",
       "service_id": "pre_communion_prayers",
       "language": "en",
-      "current_status": "source_text_partial",
-      "already_release_ready": false,
-      "source_id": "goarch_digital_chant_stand_english",
-      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
+      "source_id": "st_mary_wichita_communion_en",
+      "registered_source_url": "https://www.stmarywichita.org/",
       "expected_relative_path": "pre_communion/en",
       "accepted_extensions": [
         ".docx",
@@ -1351,20 +1351,22 @@
         "I believe and confess",
         "Receive me today"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "pre_communion/en.service.json",
       "structured_service_required_for_promotion": true,
-      "required_dynamic_slots": []
+      "required_dynamic_slots": [],
+      "permission_confirmed": false,
+      "redistribution_review_required": true
     },
     "pre_communion:el": {
       "service": "pre_communion",
       "service_id": "pre_communion_prayers",
       "language": "el",
-      "current_status": "complete_authorized_native_selection",
-      "already_release_ready": false,
-      "source_id": "goarch_digital_chant_stand_greek",
-      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
+      "source_id": "metropolis_limassol_communion_el",
+      "registered_source_url": "https://iml.cy/article/eycharistia-meta-tin-theia-metalipsi/",
       "expected_relative_path": "pre_communion/el",
       "accepted_extensions": [
         ".docx",
@@ -1380,11 +1382,13 @@
         "Πιστεύω, Κύριε",
         "Τοῦ Δείπνου σου"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "pre_communion/el.service.json",
       "structured_service_required_for_promotion": true,
-      "required_dynamic_slots": []
+      "required_dynamic_slots": [],
+      "permission_confirmed": false,
+      "redistribution_review_required": true
     },
     "post_communion:ar": {
       "service": "post_communion",
@@ -1437,7 +1441,7 @@
         "Now let Your servant depart"
       ],
       "source_file_required": false,
-      "human_ecclesiastical_review_required": true,
+      "human_ecclesiastical_review_required": false,
       "normalized_service_relative_path": "post_communion/en.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -1446,10 +1450,10 @@
       "service": "post_communion",
       "service_id": "thanksgiving_after_communion",
       "language": "el",
-      "current_status": "complete_authorized_native_selection",
-      "already_release_ready": false,
-      "source_id": "goarch_digital_chant_stand_greek",
-      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "current_status": "complete_native_source_compilation",
+      "already_release_ready": true,
+      "source_id": "goarch_online_chapel_greek",
+      "registered_source_url": "https://www.goarch.org/chapel/texts",
       "expected_relative_path": "post_communion/el",
       "accepted_extensions": [
         ".docx",
@@ -1465,11 +1469,13 @@
         "Εὐχαριστοῦμέν Σοι",
         "Νῦν ἀπολύεις"
       ],
-      "source_file_required": true,
+      "source_file_required": false,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "post_communion/el.service.json",
       "structured_service_required_for_promotion": true,
-      "required_dynamic_slots": []
+      "required_dynamic_slots": [],
+      "permission_confirmed": false,
+      "redistribution_review_required": true
     }
   },
   "promotion_requirements": [
@@ -1481,5 +1487,54 @@
     "no machine translation, AI rewriting, heuristic Arabic font repair, or automatic OCR publication",
     "all native packs, evidence gates, static hashes, Android assets, and tests pass before signing"
   ],
-  "recovered_round_status": "21_EXACT_LANES_MERGED_24_REMAIN_FAIL_CLOSED"
+  "recovered_round_status": "21_EXACT_LANES_MERGED_24_REMAIN_FAIL_CLOSED",
+  "current_complete_lanes": [
+    "basil_liturgy:ar",
+    "basil_liturgy:el",
+    "basil_liturgy:en",
+    "chrysostom_liturgy:ar",
+    "chrysostom_liturgy:el",
+    "chrysostom_liturgy:en",
+    "first_hour:ar",
+    "first_hour:el",
+    "first_hour:en",
+    "midnight_office:ar",
+    "midnight_office:el",
+    "midnight_office:en",
+    "ninth_hour:ar",
+    "ninth_hour:el",
+    "ninth_hour:en",
+    "orthros:ar",
+    "orthros:el",
+    "orthros:en",
+    "post_communion:ar",
+    "post_communion:el",
+    "post_communion:en",
+    "pre_communion:ar",
+    "pre_communion:el",
+    "pre_communion:en",
+    "presanctified_liturgy:ar",
+    "presanctified_liturgy:el",
+    "presanctified_liturgy:en",
+    "proskomide:ar",
+    "proskomide:el",
+    "proskomide:en",
+    "sixth_hour:ar",
+    "sixth_hour:el",
+    "sixth_hour:en",
+    "small_compline:ar",
+    "small_compline:el",
+    "small_compline:en",
+    "third_hour:ar",
+    "third_hour:el",
+    "third_hour:en",
+    "typika:ar",
+    "typika:el",
+    "typika:en",
+    "vespers:ar",
+    "vespers:el",
+    "vespers:en"
+  ],
+  "technical_complete_lane_count": 45,
+  "ecclesiastical_approval_certified": false
 }

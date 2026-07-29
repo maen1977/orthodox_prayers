@@ -66,6 +66,8 @@ def main() -> None:
         (ROOT / "canonical/service_edition_evidence.json").read_text(encoding="utf-8")
     )
     complete = completeness["production_complete_status"]
+    production_complete_statuses = set(completeness.get("production_complete_statuses") or [complete])
+    compilation_status = "complete_native_source_compilation"
     expected_exact = {
         ("ar", "presanctified_liturgy", "presanctified_liturgy"),
         ("en", "basil_liturgy", "divine_liturgy_basil"),
@@ -94,24 +96,38 @@ def main() -> None:
             ):
                 require(service_id in service_map, f"{relative}: missing service shell {service_id}")
                 item = service_map[service_id]
+                declared_status = completeness["languages"][language][service_name]
                 lane_is_exact = (language, service_name, service_id) in expected_exact
-                declared_exact = completeness["languages"][language][service_name] == complete
-                require(declared_exact is lane_is_exact, f"{service_name}.{language}: completeness mismatch")
+                require((declared_status == complete) is lane_is_exact, f"{service_name}.{language}: exact completeness mismatch")
                 recovery_status = str(item.get("recovery_status") or "")
+                evidence_key = f"{service_name}:{language}"
+                proof = edition_evidence.get("services", {}).get(evidence_key)
                 if lane_is_exact:
                     require(
                         recovery_status in exact_recovery_statuses,
                         f"{service_name}.{language}: exact recovery marker missing",
                     )
-                    evidence_key = f"{service_name}:{language}"
-                    proof = edition_evidence.get("services", {}).get(evidence_key)
                     require(isinstance(proof, dict), f"{evidence_key}: exact evidence missing")
+                    require(proof.get("status") == complete, f"{evidence_key}: exact evidence status mismatch")
                     minimum_segments = int(proof.get("minimum_segments", 1))
                     require(
                         len(item.get("segments") or []) >= minimum_segments,
                         f"{service_name}.{language}: segment count below evidence minimum",
                     )
+                elif declared_status == compilation_status:
+                    require(
+                        recovery_status not in exact_recovery_statuses,
+                        f"{service_name}.{language}: compilation falsely marked as an exact recovery",
+                    )
+                    require(isinstance(proof, dict), f"{evidence_key}: compilation evidence missing")
+                    require(proof.get("status") == compilation_status, f"{evidence_key}: compilation evidence status mismatch")
+                    minimum_segments = int(proof.get("minimum_segments", 1))
+                    require(
+                        len(item.get("segments") or []) >= minimum_segments,
+                        f"{service_name}.{language}: compilation segment count below evidence minimum",
+                    )
                 else:
+                    require(declared_status not in production_complete_statuses, f"{service_name}.{language}: unsupported complete status")
                     require(
                         recovery_status not in exact_recovery_statuses,
                         f"{service_name}.{language}: unapproved exact marker",

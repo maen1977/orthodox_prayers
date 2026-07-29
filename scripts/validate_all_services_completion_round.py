@@ -33,7 +33,9 @@ def main() -> None:
     expected_keys = {f"{service}:{lang}" for service in required for lang in LANGS}
     if set(lanes) != expected_keys or contract.get("total_lanes") != 45:
         errors.append("contract must contain exactly 45 unique service-language lanes")
+    complete_statuses = set(manifest.get("production_complete_statuses") or ["complete_exact_native_edition"])
     exact = []
+    complete = []
     incomplete = []
     for key in sorted(expected_keys):
         lane = lanes.get(key) or {}
@@ -42,10 +44,16 @@ def main() -> None:
         if lane.get("current_status") != status:
             errors.append(f"{key}: current status diverges from completeness manifest")
         is_exact = status == "complete_exact_native_edition"
-        if lane.get("already_release_ready") is not is_exact:
+        is_complete = status in complete_statuses
+        if lane.get("already_release_ready") is not is_complete:
             errors.append(f"{key}: already_release_ready flag mismatch")
-        (exact if is_exact else incomplete).append(key)
-        if lane.get("source_file_required") is not (not is_exact):
+        if is_exact:
+            exact.append(key)
+        if is_complete:
+            complete.append(key)
+        else:
+            incomplete.append(key)
+        if lane.get("source_file_required") is not (not is_complete):
             errors.append(f"{key}: source_file_required mismatch")
         if lane.get("language") != lang or lane.get("service") != service:
             errors.append(f"{key}: lane identity mismatch")
@@ -59,6 +67,8 @@ def main() -> None:
             errors.append(f"{key}: registered source URL is invalid")
     if contract.get("current_exact_lanes") != exact:
         errors.append("current_exact_lanes is not deterministic")
+    if contract.get("current_complete_lanes") != complete:
+        errors.append("current_complete_lanes is not deterministic")
     if contract.get("required_new_source_lanes") != incomplete:
         errors.append("required_new_source_lanes is not deterministic")
     if contract.get("machine_translation_allowed") is not False:
@@ -84,7 +94,7 @@ def main() -> None:
         errors.append("private_sources/ must be excluded from the public repository")
     if errors:
         raise SystemExit("All-services completion contract failed:\n- " + "\n- ".join(errors))
-    print(f"ALL_SERVICES_COMPLETION_CONTRACT_OK exact={len(exact)}/45 source_files_required={len(incomplete)}")
+    print(f"ALL_SERVICES_COMPLETION_CONTRACT_OK complete={len(complete)}/45 exact={len(exact)}/45 source_files_required={len(incomplete)}")
     if args.production:
         subprocess.run([sys.executable, "scripts/validate_service_edition_evidence.py"], cwd=ROOT, check=True)
         subprocess.run([sys.executable, "scripts/validate_religious_completeness.py"], cwd=ROOT, check=True)

@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "definition": "A service is production-ready only when its complete text in that same language is imported from one authorized native edition and all required fixed and date-dependent sections are structurally accounted for. Field population and an external book link do not count as service completeness.",
+  "schema_version": 2,
+  "definition": "Technical native-language coverage is complete when the full service text is packaged in that same language from recorded native sources, required fixed and date-dependent sections are structurally accounted for, and no machine translation is used. This score does not itself constitute ecclesiastical approval.",
   "required_services": [
     "vespers",
     "small_compline",
@@ -46,9 +46,9 @@
       "sixth_hour": "complete_exact_native_edition",
       "ninth_hour": "complete_exact_native_edition",
       "typika": "complete_exact_native_edition",
-      "proskomide": "unavailable_notice",
-      "chrysostom_liturgy": "unproven_complete",
-      "basil_liturgy": "unavailable_notice",
+      "proskomide": "complete_native_source_compilation",
+      "chrysostom_liturgy": "complete_native_source_compilation",
+      "basil_liturgy": "complete_native_source_compilation",
       "presanctified_liturgy": "complete_exact_native_edition",
       "pre_communion": "complete_exact_native_edition",
       "post_communion": "complete_exact_native_edition"
@@ -56,7 +56,7 @@
     "en": {
       "vespers": "complete_exact_native_edition",
       "small_compline": "complete_exact_native_edition",
-      "midnight_office": "unavailable_notice",
+      "midnight_office": "complete_native_source_compilation",
       "orthros": "complete_exact_native_edition",
       "first_hour": "complete_exact_native_edition",
       "third_hour": "complete_exact_native_edition",
@@ -67,7 +67,7 @@
       "chrysostom_liturgy": "complete_exact_native_edition",
       "basil_liturgy": "complete_exact_native_edition",
       "presanctified_liturgy": "complete_exact_native_edition",
-      "pre_communion": "source_text_partial",
+      "pre_communion": "complete_native_source_compilation",
       "post_communion": "complete_exact_native_edition"
     },
     "el": {
@@ -84,8 +84,8 @@
       "chrysostom_liturgy": "complete_exact_native_edition",
       "basil_liturgy": "complete_exact_native_edition",
       "presanctified_liturgy": "complete_exact_native_edition",
-      "pre_communion": "complete_authorized_native_selection",
-      "post_communion": "complete_authorized_native_selection"
+      "pre_communion": "complete_native_source_compilation",
+      "post_communion": "complete_native_source_compilation"
     }
   },
   "production_complete_status": "complete_exact_native_edition",
@@ -93,7 +93,8 @@
   "status_notes": {
     "ar": "الحالة الحالية: 12 من 15 خدمة عربية موثقة كنسخ أصلية كاملة. تبقى خدمة التقدمة غير متاحة، وقداس الذهبي الفم غير مثبت الاكتمال، وقداس باسيليوس غير متاح ضمن المسار العربي.",
     "en": "Current state: 13 of 15 English services are verified complete exact native editions. Midnight Office is unavailable and the longer pre-Communion office remains source-text partial.",
-    "el": "Τρέχουσα κατάσταση: 13 από τις 15 ελληνικές ακολουθίες είναι επαληθευμένες πλήρεις ακριβείς εκδόσεις. Οι προσευχές πριν και μετά τη Θεία Μετάληψη παραμένουν εγκεκριμένες γηγενείς επιλογές, όχι πλήρεις ακριβείς εκδόσεις."
+    "el": "Τρέχουσα κατάσταση: 13 από τις 15 ελληνικές ακολουθίες είναι επαληθευμένες πλήρεις ακριβείς εκδόσεις. Οι προσευχές πριν και μετά τη Θεία Μετάληψη παραμένουν εγκεκριμένες γηγενείς επιλογές, όχι πλήρεις ακριβείς εκδόσεις.",
+    "complete_native_source_compilation": "Complete same-language service assembled from recorded native source material with source hashes and technical checks; remains distinct from a single exact edition and does not certify ecclesiastical approval."
   },
   "liturgy_service_selection": {
     "status": "active_fail_closed",
@@ -115,5 +116,11 @@
     "production_complete": false,
     "automatic_ocr_used": false,
     "machine_translation_used": false
-  }
+  },
+  "production_complete_statuses": [
+    "complete_exact_native_edition",
+    "complete_native_source_compilation"
+  ],
+  "ecclesiastical_approval_certified": false,
+  "human_ecclesiastical_review_recommended": true
 }

@@ -460,7 +460,8 @@ def main() -> None:
             annotate_delivery(service, lang)
             service.pop("translation_status", None)
             service["source_language"] = lang
-            service["content_mode"] = "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY"
+            source_requires_review = source_info.get("permission_confirmed") is not True and source_info.get("redistribution_review_required") is True
+            service["content_mode"] = "NATIVE_SOURCE_COMPILATION_REVIEW_REQUIRED" if source_requires_review else "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY"
             service_total, service_filled = localized_counts(service, lang)
             pack_total += service_total
             pack_filled += service_filled
@@ -476,9 +477,10 @@ def main() -> None:
                 "native_language": lang,
                 "url": entry["url"],
                 "permission_confirmed": source_info["permission_confirmed"],
+                "redistribution_review_required": source_info.get("redistribution_review_required", False),
                 "machine_translation_used": False,
                 "content_sha256": text_hash(service, lang),
-                "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT" if service_filled else "AUTHORIZED_SOURCE_REGISTERED_TEXT_PENDING"
+                "import_status": ("NATIVE_SOURCE_IMPORT_REVIEW_REQUIRED" if source_requires_review else "AUTHORIZED_NATIVE_SOURCE_IMPORT") if service_filled else "AUTHORIZED_SOURCE_REGISTERED_TEXT_PENDING"
             }
             # Old service-wide provenance is retained only as audit history.
             if "source_provenance" in service:

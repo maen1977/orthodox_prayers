@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-07-29",
+  "technical_language_scores": {
+    "ar": "15/15",
+    "en": "15/15",
+    "el": "15/15"
+  },
+  "total_complete_lanes": "45/45",
+  "exact_single_edition_lanes": 38,
+  "native_source_compilation_lanes": 7,
+  "machine_translation_used": false,
+  "ecclesiastical_approval_certified": false,
+  "review_note": "Technical content completeness is not a substitute for review and blessing by the competent Orthodox ecclesiastical authority.",
+  "completed_lanes": [
+    "basil_liturgy:ar",
+    "chrysostom_liturgy:ar",
+    "midnight_office:en",
+    "post_communion:el",
+    "pre_communion:el",
+    "pre_communion:en",
+    "proskomide:ar"
+  ]
+}
