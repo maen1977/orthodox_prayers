@@ -806,13 +806,22 @@ public final class DataRepository {
 
             JSONObject parsed = new JSONObject(new String(jsonBytes, StandardCharsets.UTF_8));
             String validationError = validate(parsed, currentAmmanDate(), true);
-            if (validationError != null) throw new IllegalStateException(validationError);
+            if (validationError != null && !isRecoverableReadingValidation(validationError)) {
+                throw new IllegalStateException(validationError);
+            }
+            if (validationError != null) {
+                Log.w(TAG, "Signed package contains a recoverable reading-evidence issue: " + validationError);
+            }
             String rollingError = validateRollingWeekPackage(parsed);
             if (rollingError != null) throw new IllegalStateException(rollingError);
             String translationError = VerifiedContentSanitizer.firstUnsafeTranslationError(parsed);
-            if (!translationError.isEmpty()) throw new IllegalStateException(translationError);
-            // Defense in depth: strict payloads should be unchanged by this sanitizer.
+            if (!translationError.isEmpty()) {
+                Log.w(TAG, "Signed package contains a reading that will be suppressed: " + translationError);
+            }
+            // The package signature and manifest SHA authenticate the bytes. Suppress
+            // only the unsafe reading in memory instead of rejecting all eight days.
             VerifiedContentSanitizer.sanitize(parsed);
+            VerifiedContentSanitizer.sanitizeFutureDays(parsed);
             String regression = DailySnapshotRegressionGuard.firstRegression(
                     today,
                     parsed,
@@ -923,6 +932,16 @@ public final class DataRepository {
         return anyEpistleOrGospel ? null : "scripture_reference_missing";
     }
 
+    private static boolean isRecoverableReadingValidation(String error) {
+        if (error == null || error.isEmpty()) return false;
+        return error.endsWith("_evidence_missing")
+                || error.endsWith("_ai_flag_invalid")
+                || error.endsWith("_diacritization_flag_invalid")
+                || error.endsWith("_text_unverified")
+                || error.endsWith("_hash_invalid")
+                || error.startsWith("unverified_scripture_native_text:");
+    }
+
     private String validateRollingWeekPackage(JSONObject packagePayload) {
         JSONObject metadata = packagePayload.optJSONObject("rolling_week");
         if (metadata == null) return null; // Backwards-compatible signed daily snapshot.
@@ -947,7 +966,12 @@ public final class DataRepository {
             if (day == null) return "rolling_week_member_invalid:" + i;
             String expected = start.plusDays(i + 1L).toString();
             String error = validate(day, expected, true, true);
-            if (error != null) return "rolling_week_" + expected + "_" + error;
+            if (error != null && !isRecoverableReadingValidation(error)) {
+                return "rolling_week_" + expected + "_" + error;
+            }
+            if (error != null) {
+                Log.w(TAG, "Future day " + expected + " has a recoverable reading-evidence issue: " + error);
+            }
             JSONObject publication = day.optJSONObject("publication");
             if (publication == null || !"FULL".equals(publication.optString("daily_availability", ""))) {
                 return "rolling_week_" + expected + "_not_full";
@@ -1072,12 +1096,13 @@ public final class DataRepository {
         signatureVerifier.verify(payload, signature);
         JSONObject candidate = new JSONObject(new String(payload, StandardCharsets.UTF_8));
         String validationError = validate(candidate, currentAmmanDate(), requireToday);
-        if (validationError != null) throw new IllegalStateException(validationError);
+        if (validationError != null && !isRecoverableReadingValidation(validationError)) {
+            throw new IllegalStateException(validationError);
+        }
         String rollingError = validateRollingWeekPackage(candidate);
         if (rollingError != null) throw new IllegalStateException(rollingError);
-        String translationError = VerifiedContentSanitizer.firstUnsafeTranslationError(candidate);
-        if (!translationError.isEmpty()) throw new IllegalStateException(translationError);
         VerifiedContentSanitizer.sanitize(candidate);
+        VerifiedContentSanitizer.sanitizeFutureDays(candidate);
         return candidate;
     }
 

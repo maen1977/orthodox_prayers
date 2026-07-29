@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.18"', "versionCode = 50018"),
+    "app/build.gradle.kts": ('versionName = "5.0.19"', "versionCode = 50019"),
     "scripts/public_domain_scripture.py": (r"\\\+?w",),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DisplayTextSanitizer.java": (
         "class DisplayTextSanitizer",
@@ -62,7 +62,7 @@ def main() -> None:
                 missing.append(f"{relative}: {marker}")
     if missing:
         raise SystemExit("R20_PARTIAL_OR_MISPLACED\n" + "\n".join(missing))
-    print("R20_RELEASE_OK version=5.0.18 level=R20")
+    print("R20_RELEASE_OK version=5.0.19 level=R20")
 
 
 if __name__ == "__main__":

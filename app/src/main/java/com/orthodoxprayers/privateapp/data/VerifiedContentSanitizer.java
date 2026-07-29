@@ -63,6 +63,27 @@ public final class VerifiedContentSanitizer {
         return "";
     }
 
+    /**
+     * Sanitizes the active day and every future day in a signed rolling-week package.
+     * The detached signature authenticates the complete JSON bytes; this pass only
+     * suppresses an individual reading whose evidence metadata does not verify.
+     */
+    public static void sanitizePackage(JSONObject root) {
+        if (root == null) return;
+        sanitize(root);
+        sanitizeFutureDays(root);
+    }
+
+    public static void sanitizeFutureDays(JSONObject root) {
+        if (root == null) return;
+        JSONArray future = root.optJSONArray("weekly_days");
+        if (future == null) return;
+        for (int i = 0; i < future.length(); i++) {
+            JSONObject day = future.optJSONObject(i);
+            if (day != null) sanitize(day);
+        }
+    }
+
     public static void sanitize(JSONObject root) {
         if (root == null) return;
         ArrayList<LockedBody> lockedBodies = new ArrayList<>();

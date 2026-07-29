@@ -12,8 +12,8 @@ class R19RefinementTests(unittest.TestCase):
     def test_release_version_and_native_pack_coverage_are_current(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.18"', build)
-        self.assertIn("versionCode = 50018", build)
+        self.assertIn('versionName = "5.0.19"', build)
+        self.assertIn("versionCode = 50019", build)
         self.assertIn("libraryForLanguage(language)", repository)
         self.assertIn("nativeContentCoverage", repository)
         self.assertNotIn('aggregate.put("library", library())', repository)
