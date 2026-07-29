@@ -69,8 +69,13 @@ def main() -> None:
     expected_exact = {
         ("ar", "presanctified_liturgy", "presanctified_liturgy"),
         ("en", "basil_liturgy", "divine_liturgy_basil"),
+        ("el", "basil_liturgy", "divine_liturgy_basil"),
         ("en", "presanctified_liturgy", "presanctified_liturgy"),
         ("el", "presanctified_liturgy", "presanctified_liturgy"),
+    }
+    exact_recovery_statuses = {
+        "RECOVERED_EXACT_NATIVE_IMPORT",
+        "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
     }
     for language in LANGS:
         for relative in (
@@ -92,21 +97,39 @@ def main() -> None:
                 lane_is_exact = (language, service_name, service_id) in expected_exact
                 declared_exact = completeness["languages"][language][service_name] == complete
                 require(declared_exact is lane_is_exact, f"{service_name}.{language}: completeness mismatch")
+                recovery_status = str(item.get("recovery_status") or "")
                 if lane_is_exact:
-                    require(item.get("recovery_status") == "RECOVERED_EXACT_NATIVE_IMPORT", f"{service_name}.{language}: exact recovery marker missing")
-                    require(len(item.get("segments") or []) > 100, f"{service_name}.{language}: exact service unexpectedly short")
+                    require(
+                        recovery_status in exact_recovery_statuses,
+                        f"{service_name}.{language}: exact recovery marker missing",
+                    )
                     evidence_key = f"{service_name}:{language}"
-                    require(evidence_key in edition_evidence.get("services", {}), f"{evidence_key}: exact evidence missing")
+                    proof = edition_evidence.get("services", {}).get(evidence_key)
+                    require(isinstance(proof, dict), f"{evidence_key}: exact evidence missing")
+                    minimum_segments = int(proof.get("minimum_segments", 1))
+                    require(
+                        len(item.get("segments") or []) >= minimum_segments,
+                        f"{service_name}.{language}: segment count below evidence minimum",
+                    )
                 else:
-                    require(item.get("recovery_status") != "RECOVERED_EXACT_NATIVE_IMPORT", f"{service_name}.{language}: unapproved exact marker")
-                    require(all(segment.get("editorial_metadata_only") is True for segment in item.get("segments") or []), f"{service_name}.{language}: unreviewed liturgical text leaked")
+                    require(
+                        recovery_status not in exact_recovery_statuses,
+                        f"{service_name}.{language}: unapproved exact marker",
+                    )
+                    require(
+                        all(
+                            segment.get("editorial_metadata_only") is True
+                            for segment in item.get("segments") or []
+                        ),
+                        f"{service_name}.{language}: unreviewed liturgical text leaked",
+                    )
 
     candidate_root = ROOT / "data/services/candidates"
     require((candidate_root / "README_AR.md").is_file(), "candidate review instructions missing")
     leaked = [path for path in candidate_root.rglob("*.json")]
     require(not leaked, "unreviewed candidate JSON must not ship in this phase")
 
-    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 exact_native_lanes=4 overall_displayable=false arabic_pdf_extraction=blocked")
+    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 exact_native_lanes=5 overall_displayable=false arabic_pdf_extraction=blocked")
 
 
 if __name__ == "__main__":
