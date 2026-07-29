@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_KEY = ROOT / "canonical/signing/data_signing_public_key.pub"
 PRIMARY_ROOT = "https://raw.githubusercontent.com/maen1977/orthodox_prayers/verified-data"
 MIRROR_ROOT = "https://cdn.jsdelivr.net/gh/maen1977/orthodox_prayers@verified-data"
-USER_AGENT = "OrthodoxPrayers-PublicationVerifier/5.0.19"
+USER_AGENT = "OrthodoxPrayers-PublicationVerifier/5.0.20"
 
 
 def fetch(url: str, *, max_bytes: int, token: str) -> bytes:

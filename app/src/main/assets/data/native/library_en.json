@@ -548,7 +548,7 @@
     },
     {
       "id": "small_compline",
-      "category": "liturgy",
+      "category": "daily",
       "icon": "☦",
       "title": {
         "ar": "",
@@ -2268,7 +2268,7 @@
     },
     {
       "id": "pre_communion_prayers",
-      "category": "liturgy",
+      "category": "communion",
       "icon": "☦",
       "title": {
         "ar": "",
@@ -3053,7 +3053,7 @@
     },
     {
       "id": "thanksgiving_after_communion",
-      "category": "liturgy",
+      "category": "communion",
       "icon": "☦",
       "title": {
         "ar": "",
