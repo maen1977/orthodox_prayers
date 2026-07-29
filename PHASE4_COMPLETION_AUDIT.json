@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "phase": "PHASE4_SERVICE_EDITION_EVIDENCE",
+  "generated_at_utc": "2026-07-28T10:19:03.561563+00:00",
+  "release_allowed": false,
+  "completed_in_this_phase": [
+    {
+      "service": "chrysostom_liturgy",
+      "language": "en",
+      "status": "complete_exact_native_edition"
+    },
+    {
+      "service": "chrysostom_liturgy",
+      "language": "el",
+      "status": "complete_exact_native_edition"
+    }
+  ],
+  "preserved_complete": [
+    {
+      "service": "pre_communion",
+      "language": "ar"
+    },
+    {
+      "service": "post_communion",
+      "language": "ar"
+    }
+  ],
+  "honestly_blocked": [
+    {
+      "service": "chrysostom_liturgy",
+      "language": "ar",
+      "reason": "current package is materially abridged compared with complete source editions and lacks separately structured fixed sections"
+    },
+    {
+      "scope": "whole release",
+      "reason": "not all 15 services are complete exact native editions in ar/en/el"
+    }
+  ],
+  "validation": {
+    "pytest": "301 passed",
+    "service_edition_evidence": "PASS",
+    "declaration_audit": "PASS",
+    "production_gate": "EXPECTED_BLOCK",
+    "static_hash_integrity": "PASS (37 protected files)",
+    "native_language_pack_integrity": "PASS (ar 654/654, en 783/783, el 775/775)",
+    "workflow_validation": "PASS",
+    "r20_release_contract": "PASS"
+  },
+  "completion_summary": {
+    "ar": {
+      "complete": 2,
+      "required": 15
+    },
+    "en": {
+      "complete": 1,
+      "required": 15
+    },
+    "el": {
+      "complete": 1,
+      "required": 15
+    }
+  },
+  "evidence_records": [
+    "chrysostom_liturgy:el",
+    "chrysostom_liturgy:en",
+    "post_communion:ar",
+    "pre_communion:ar"
+  ],
+  "gap_matrix": "CONTENT_GAP_MATRIX.json",
+  "source_acquisition_plan": "canonical/service_source_acquisition_plan.json",
+  "notes": [
+    "No machine translation was introduced.",
+    "No protected private signing key was created or changed.",
+    "No APK claim is made in this phase because Android source code was not changed and Gradle network availability remains external to this content audit."
+  ]
+}

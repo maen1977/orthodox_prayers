@@ -134,6 +134,25 @@ def main() -> None:
         "--require-complete-liturgy",
     )
 
+    # Publish one fail-closed rolling package: the fully validated current day
+    # plus seven independently generated, fully validated future days. The
+    # language-lane step later strips this package to Arabic, English, or Greek
+    # before signing, so Android downloads only the active native-language lane.
+    run(
+        "scripts/build_rolling_week.py",
+        "--start-date",
+        args.date,
+        "--days",
+        "8",
+        *source_mode,
+    )
+    run(
+        "scripts/validate_rolling_week.py",
+        "data/calendar/today.json",
+        "--expected-start",
+        args.date,
+    )
+
     asset = ROOT / "app/src/main/assets/data/today.json"
     asset.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "data/calendar/today.json", asset)
@@ -177,6 +196,15 @@ def main() -> None:
         print(f"DAILY_UPDATE_UNSIGNED_OK date={args.date} mode={mode}")
         return
 
+    # A protected signer must never approve a structurally complete package whose
+    # daily commemorations or variable propers are still generic.
+    run(
+        "scripts/validate_rolling_week.py",
+        "data/calendar/today.json",
+        "--expected-start",
+        args.date,
+        "--require-reviewed-propers",
+    )
     run("scripts/sign_daily_data.py", "--private-key", str(args.private_key))
     run("scripts/verify_data_signature.py")
     print(f"DAILY_UPDATE_OK date={args.date} mode={mode}")

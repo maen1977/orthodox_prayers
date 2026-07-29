@@ -17,7 +17,7 @@
     "basil": {
       "service_id": "divine_liturgy_basil",
       "ar": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
-      "en": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "en": "IMPORTED_NATIVE_AUTHORIZED",
       "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
       "displayable": false,
       "source_ids": [
@@ -30,13 +30,16 @@
         "en": "Saint Basil’s Liturgy is selected correctly, but the complete native Arabic source is still missing and the English and Greek editions are awaiting controlled import and review. The service remains blocked and no other Liturgy is substituted.",
         "el": "Ἡ Λειτουργία τοῦ Ἁγίου Βασιλείου ἐπιλέγεται σωστά, ἀλλὰ λείπει ἀκόμη ἡ πλήρης πρωτότυπη ἀραβικὴ πηγή, καὶ οἱ ἀγγλικὴ καὶ ἑλληνικὴ ἐκδόσεις ἀναμένουν ἐλεγχόμενη εἰσαγωγὴ καὶ ἔγκριση. Ἡ ἀκολουθία παραμένει κλειδωμένη χωρὶς ὑποκατάσταση."
       },
-      "phase8_review_status": "AWAITING_LOCAL_OFFICIAL_SOURCE_FILES_AND_PARAGRAPH_REVIEW"
+      "phase8_review_status": "ENGLISH_EXACT_IMPORTED_ARABIC_GREEK_PENDING",
+      "displayable_languages": [
+        "en"
+      ]
     },
     "presanctified": {
       "service_id": "presanctified_liturgy",
       "ar": "OFFICIAL_PDF_ACQUIRED_EXTRACTION_BLOCKED_LEGACY_FONT_ENCODING",
-      "en": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
-      "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "en": "IMPORTED_NATIVE_AUTHORIZED",
+      "el": "IMPORTED_NATIVE_AUTHORIZED",
       "displayable": false,
       "source_ids": [
         "orthodox_jordan",
@@ -49,7 +52,11 @@
         "en": "The official Arabic Presanctified service book has been acquired, but its legacy font encoding corrupts thousands of characters during extraction. Publication is blocked until an exact Unicode source is reviewed page by page; the English and Greek lanes also remain in controlled import.",
         "el": "Ἡ ἐπίσημη ἀραβικὴ ἔκδοση τῶν Προηγιασμένων ἀποκτήθηκε, ἀλλὰ ἡ παλαιὰ κωδικοποίηση γραμματοσειρᾶς καταστρέφει χιλιάδες χαρακτῆρες κατὰ τὴν ἐξαγωγή. Ἡ δημοσίευση παραμένει κλειδωμένη ἕως ὅτου ἐλεγχθεῖ ἀκριβὲς κείμενο Unicode, ἐνῶ καὶ οἱ ἀγγλικὴ καὶ ἑλληνικὴ λωρίδες παραμένουν ὑπὸ ἐλεγχόμενη εἰσαγωγή."
       },
-      "phase8_review_status": "AWAITING_LOCAL_OFFICIAL_SOURCE_FILES_AND_PARAGRAPH_REVIEW"
+      "phase8_review_status": "ENGLISH_GREEK_EXACT_IMPORTED_ARABIC_PENDING",
+      "displayable_languages": [
+        "en",
+        "el"
+      ]
     },
     "typikon_override_required": {
       "service_id": null,
@@ -142,5 +149,16 @@
     "offline_android_builder": "scripts/build_android_with_local_gradle.py",
     "final_gate": "scripts/validate_liturgy_phase8_completion.py",
     "complete_release_allowed": false
+  },
+  "recovered_import": {
+    "status": "SOURCE_TEXTS_MERGED_OVERALL_RELEASE_STILL_BLOCKED",
+    "basil_exact_languages": [
+      "en"
+    ],
+    "presanctified_exact_languages": [
+      "en",
+      "el"
+    ],
+    "wrong_rite_fallback_allowed": false
   }
 }

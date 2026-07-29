@@ -39,8 +39,12 @@ REQUIRED = {
         '"production_complete_status": "complete_exact_native_edition"',
     ),
     "scripts/validate_religious_completeness.py": (
-        "--require-production-complete",
+        "--declaration-only",
         "RELIGIOUS_COMPLETENESS_OK",
+    ),
+    "scripts/validate_service_edition_evidence.py": (
+        "SERVICE_EDITION_EVIDENCE_OK",
+        "complete_exact_native_edition",
     ),
     "tests/test_r20_religious_completeness.py": (
         "class R20ReligiousCompletenessTests",

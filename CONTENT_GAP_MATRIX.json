@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-07-28T10:17:35.827167+00:00",
+  "summary": {
+    "ar": {
+      "complete": 2,
+      "required": 15
+    },
+    "en": {
+      "complete": 1,
+      "required": 15
+    },
+    "el": {
+      "complete": 1,
+      "required": 15
+    }
+  },
+  "services": [
+    {
+      "service": "vespers",
+      "packaged_service_id": "vespers",
+      "languages": {
+        "ar": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        },
+        "en": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        },
+        "el": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        }
+      }
+    },
+    {
+      "service": "small_compline",
+      "packaged_service_id": "small_compline",
+      "languages": {
+        "ar": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        },
+        "en": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        },
+        "el": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        }
+      }
+    },
+    {
+      "service": "midnight_office",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "orthros",
+      "packaged_service_id": "orthros",
+      "languages": {
+        "ar": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        },
+        "en": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        },
+        "el": {
+          "status": "abridged",
+          "release_ready": false,
+          "blockers": [
+            "Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone."
+          ]
+        }
+      }
+    },
+    {
+      "service": "first_hour",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "third_hour",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "sixth_hour",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "ninth_hour",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "typika",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "proskomide",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "chrysostom_liturgy",
+      "packaged_service_id": "divine_liturgy",
+      "languages": {
+        "ar": {
+          "status": "unproven_complete",
+          "release_ready": false,
+          "blockers": [
+            "Current Arabic package is materially shorter than the complete English/Greek editions.",
+            "Missing separately structured catechumen dismissal and first/second prayers of the faithful.",
+            "Several priestly prayers and rubrics are condensed; exact single-edition completeness is not proven."
+          ]
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true,
+          "blockers": []
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true,
+          "blockers": []
+        }
+      }
+    },
+    {
+      "service": "basil_liturgy",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "presanctified_liturgy",
+      "packaged_service_id": null,
+      "languages": {
+        "ar": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "en": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        },
+        "el": {
+          "status": "missing",
+          "release_ready": false,
+          "blockers": [
+            "No packaged native service exists."
+          ]
+        }
+      }
+    },
+    {
+      "service": "pre_communion",
+      "packaged_service_id": "pre_communion_prayers",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true,
+          "blockers": []
+        },
+        "en": {
+          "status": "complete_authorized_native_selection",
+          "release_ready": false,
+          "blockers": [
+            "Current package is a prayer-book selection, not the complete appointed office."
+          ]
+        },
+        "el": {
+          "status": "complete_authorized_native_selection",
+          "release_ready": false,
+          "blockers": [
+            "Current package is a prayer-book selection, not the complete appointed office."
+          ]
+        }
+      }
+    },
+    {
+      "service": "post_communion",
+      "packaged_service_id": "thanksgiving_after_communion",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true,
+          "blockers": []
+        },
+        "en": {
+          "status": "complete_authorized_native_selection",
+          "release_ready": false,
+          "blockers": [
+            "Current package is a prayer-book selection, not the complete thanksgiving office."
+          ]
+        },
+        "el": {
+          "status": "complete_authorized_native_selection",
+          "release_ready": false,
+          "blockers": [
+            "Current package is a prayer-book selection, not the complete thanksgiving office."
+          ]
+        }
+      }
+    }
+  ],
+  "source_acquisition_plan": "canonical/service_source_acquisition_plan.json"
+}

@@ -46,8 +46,9 @@ def validate_reading(reading,pointer):
         if bad in combined: fail(f'{pointer} contains placeholder marker: {bad}')
 
 def main():
-    args=[a for a in sys.argv[1:] if a!='--allow-stale']
+    args=[a for a in sys.argv[1:] if a not in {'--allow-stale','--skip-sync-check'}]
     allow_stale='--allow-stale' in sys.argv[1:]
+    skip_sync_check='--skip-sync-check' in sys.argv[1:]
     path=Path(args[0]) if args else ROOT/'data/calendar/today.json'
     if not path.is_absolute(): path=ROOT/path
     data=read_json(path)
@@ -96,6 +97,7 @@ def main():
     from validate_liturgical_schedule import validate as validate_schedule
     errors=validate_schedule(data)
     if errors: fail('liturgical schedule invalid: '+' | '.join(errors))
-    check_synced(data,path,date_iso)
+    if not skip_sync_check:
+        check_synced(data,path,date_iso)
     print(f'Quality check passed for {date_iso}: strict native lanes, safe unavailable states, services, schedule, and synchronized signed outputs')
 if __name__=='__main__': main()

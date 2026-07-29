@@ -24,7 +24,7 @@ class Completion430Tests(unittest.TestCase):
                 self.assertIsNotNone(corpus)
                 manifest, index = corpus
                 self.assertEqual("IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS", manifest["status"])
-                self.assertEqual(22, len(index))
+                self.assertGreaterEqual(len(index), 208)
 
     def test_required_references_include_next_sunday_passages(self):
         data = json.loads((ROOT / "data/calendar/candidates/2026-07-16.json").read_text(encoding="utf-8"))

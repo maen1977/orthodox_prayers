@@ -373,6 +373,8 @@ def text_hash(service: dict[str, Any], lang: str) -> str:
 
     def walk(value: Any) -> None:
         if isinstance(value, dict):
+            if value.get("editorial_metadata_only") is True:
+                return
             if lang in value and any(key in value for key in LANGS):
                 text = str(value.get(lang) or "").strip()
                 if text:
@@ -390,6 +392,8 @@ def text_hash(service: dict[str, Any], lang: str) -> str:
 
 
 def localized_counts(value: Any, lang: str) -> tuple[int, int]:
+    if isinstance(value, dict) and value.get("editorial_metadata_only") is True:
+        return 0, 0
     total = 0
     filled = 0
     if isinstance(value, dict):

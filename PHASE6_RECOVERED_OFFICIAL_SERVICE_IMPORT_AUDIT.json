@@ -1,0 +1,406 @@
+{
+  "schema_version": 2,
+  "phase": "PHASE6_RECOVERED_OFFICIAL_SERVICE_IMPORT",
+  "generated_on": "2026-07-28",
+  "result": "VERIFIED_NATIVE_TEXTS_MERGED_FAIL_CLOSED",
+  "source_archive": {
+    "name": "OrthodoxPrayers-5.0.16-R20.4-WITH-OFFICIAL-BOOKS-FULL.zip",
+    "owner_supplied": true,
+    "permission_basis": "CONFIRMED_BY_PROJECT_OWNER records recovered from the prior archive; authorization documents remain outside the public project",
+    "raw_source_books_repackaged": false
+  },
+  "merge": {
+    "previous_exact_lanes": 4,
+    "new_exact_lanes_recovered": 17,
+    "total_exact_lanes": 21,
+    "total_required_lanes": 45,
+    "partial_native_lanes_merged_but_not_promoted": 3,
+    "remaining_lanes": 24,
+    "atomic_full_release_allowed": false
+  },
+  "exact_counts": {
+    "ar": 6,
+    "en": 12,
+    "el": 3
+  },
+  "exact_lanes": {
+    "ar": [
+      {
+        "service": "first_hour",
+        "packaged_service_id": "first_hour",
+        "segments": 33,
+        "source_id": "orthodox_jordan_arabic_services",
+        "content_sha256": "5b27dea969fa4d1d565520fc4711ef3efecba8f72133e5b08f03705b9323907f",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "third_hour",
+        "packaged_service_id": "third_hour",
+        "segments": 34,
+        "source_id": "orthodox_jordan_arabic_services",
+        "content_sha256": "c337dbbc5a570c3a43b599914a8af03216f954178f776759b34bf78f8036ca73",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "sixth_hour",
+        "packaged_service_id": "sixth_hour",
+        "segments": 33,
+        "source_id": "orthodox_jordan_arabic_services",
+        "content_sha256": "e03cf1d9193878a16031c3db217903b2d914c0363ddaf92180c88b1a42d800ad",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "ninth_hour",
+        "packaged_service_id": "ninth_hour",
+        "segments": 34,
+        "source_id": "orthodox_jordan_arabic_services",
+        "content_sha256": "69c61faf37fe6efe9cc468ddb526db10fba8314e0b03ee0f1aeba95b071d77a2",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "pre_communion",
+        "packaged_service_id": "pre_communion_prayers",
+        "segments": 66,
+        "source_id": "orthodox_jordan",
+        "content_sha256": "ae0ddfbbb5ea39dbacbe2d68fc24d4f4e0a1cf2be4d7f45bb107d01d0979dce3",
+        "recovery_status": "PREVIOUSLY_VERIFIED",
+        "evidence_present": true
+      },
+      {
+        "service": "post_communion",
+        "packaged_service_id": "thanksgiving_after_communion",
+        "segments": 29,
+        "source_id": "orthodox_jordan",
+        "content_sha256": "b01dd0688c2d299e7cf3f0aa5a04862dcdc9d9ece73fecbc0d21cce4998b17e7",
+        "recovery_status": "PREVIOUSLY_VERIFIED",
+        "evidence_present": true
+      }
+    ],
+    "en": [
+      {
+        "service": "vespers",
+        "packaged_service_id": "vespers",
+        "segments": 193,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "a4acb62599d28a2eb4295e48ed882226b1b76fb43ead2d481c5465a24b76b5a0",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "small_compline",
+        "packaged_service_id": "small_compline",
+        "segments": 167,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "148d1b8ae0531e64421a56374aa5b9290c21a69770876283b8e0c130dd98179e",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "orthros",
+        "packaged_service_id": "orthros",
+        "segments": 571,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "f42054a35b5c3c6a6016460c541cf21070facfd18ab3d5db50dc0df3fa2de081",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "first_hour",
+        "packaged_service_id": "first_hour",
+        "segments": 44,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "bb8660648550de8f8592228a16dc5c5807898ad781e83d87effd94095d0e8a9b",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "third_hour",
+        "packaged_service_id": "third_hour",
+        "segments": 52,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "ecde281ead3b43518b9520ea520209fe6ebd9e87b9f6702fdc2772df24b76d06",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "sixth_hour",
+        "packaged_service_id": "sixth_hour",
+        "segments": 41,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "31897ef4438dc6edb502568b102e8f24527ecbe26e143bb7c637fcf21a72aa02",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "ninth_hour",
+        "packaged_service_id": "ninth_hour",
+        "segments": 54,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "3749bf4ae0ec2c65ea1dc9e77d984a9257b8b772934b83a64de73a4928fde6da",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "typika",
+        "packaged_service_id": "typika",
+        "segments": 123,
+        "source_id": "oca_horologion_2021",
+        "content_sha256": "c4c91accec9e5cf9e249e04cb1cced49813fbb7412b3b53fea755ee41b6f73d1",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "chrysostom_liturgy",
+        "packaged_service_id": "divine_liturgy",
+        "segments": 328,
+        "source_id": "metropolis_toronto_liturgy_en",
+        "content_sha256": "e706bca63f620be50f1dc24fc246775e6a933377cc57463bb8300526f6125303",
+        "recovery_status": "PREVIOUSLY_VERIFIED",
+        "evidence_present": true
+      },
+      {
+        "service": "basil_liturgy",
+        "packaged_service_id": "divine_liturgy_basil",
+        "segments": 455,
+        "source_id": "goarch_ogden_epubs",
+        "content_sha256": "2970c02472d3d545fcd6d37ceaaf8726361459aa3f3f0dc2bf70846a17170de7",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "presanctified_liturgy",
+        "packaged_service_id": "presanctified_liturgy",
+        "segments": 590,
+        "source_id": "goarch_ogden_epubs",
+        "content_sha256": "5bd2ee58f2dc0ad75b598afc651f9573deb47c8b31a4991d60a5f6b1da48410a",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "post_communion",
+        "packaged_service_id": "thanksgiving_after_communion",
+        "segments": 14,
+        "source_id": "goarch_ogden_epubs",
+        "content_sha256": "a4d250450c90d87c29775347b4361594590b9bc781a810c9cdd1d9308dd3246b",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      }
+    ],
+    "el": [
+      {
+        "service": "small_compline",
+        "packaged_service_id": "small_compline",
+        "segments": 51,
+        "source_id": "kilkis_greek_services",
+        "content_sha256": "c51114b654dabd0aae0e5caf55d46aef8702bc0c027a1d1dfbe690e80e45988f",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      },
+      {
+        "service": "chrysostom_liturgy",
+        "packaged_service_id": "divine_liturgy",
+        "segments": 324,
+        "source_id": "metropolis_toronto_liturgy_el",
+        "content_sha256": "cc7263c5c0ba97343cafc74d3a18cc7b9617fdac2b2b56129e2f605af2a200f9",
+        "recovery_status": "PREVIOUSLY_VERIFIED",
+        "evidence_present": true
+      },
+      {
+        "service": "presanctified_liturgy",
+        "packaged_service_id": "presanctified_liturgy",
+        "segments": 915,
+        "source_id": "imks_greek_services",
+        "content_sha256": "8cf18f8e96d01379479040cd88eefa7e06a60613f8b78a30fd04ba7995e4ac07",
+        "recovery_status": "RECOVERED_EXACT_NATIVE_IMPORT",
+        "evidence_present": true
+      }
+    ]
+  },
+  "partial_lanes": [
+    {
+      "language": "ar",
+      "service_id": "vespers",
+      "segments": 50,
+      "source_id": "orthodox_jordan_arabic_services",
+      "release_ready": false
+    },
+    {
+      "language": "ar",
+      "service_id": "orthros",
+      "segments": 159,
+      "source_id": "orthodox_jordan_arabic_services",
+      "release_ready": false
+    },
+    {
+      "language": "en",
+      "service_id": "pre_communion_prayers",
+      "segments": 9,
+      "source_id": "goarch_ogden_epubs",
+      "release_ready": false
+    }
+  ],
+  "remaining_lanes": {
+    "ar": [
+      {
+        "service": "vespers",
+        "status": "source_text_partial",
+        "packaged_service_id": "vespers"
+      },
+      {
+        "service": "small_compline",
+        "status": "abridged",
+        "packaged_service_id": "small_compline"
+      },
+      {
+        "service": "midnight_office",
+        "status": "missing",
+        "packaged_service_id": null
+      },
+      {
+        "service": "orthros",
+        "status": "source_text_partial",
+        "packaged_service_id": "orthros"
+      },
+      {
+        "service": "typika",
+        "status": "unavailable_notice",
+        "packaged_service_id": "typika"
+      },
+      {
+        "service": "proskomide",
+        "status": "missing",
+        "packaged_service_id": null
+      },
+      {
+        "service": "chrysostom_liturgy",
+        "status": "unproven_complete",
+        "packaged_service_id": "divine_liturgy"
+      },
+      {
+        "service": "basil_liturgy",
+        "status": "unavailable_notice",
+        "packaged_service_id": "divine_liturgy_basil"
+      },
+      {
+        "service": "presanctified_liturgy",
+        "status": "unavailable_notice",
+        "packaged_service_id": "presanctified_liturgy"
+      }
+    ],
+    "en": [
+      {
+        "service": "midnight_office",
+        "status": "missing",
+        "packaged_service_id": null
+      },
+      {
+        "service": "proskomide",
+        "status": "missing",
+        "packaged_service_id": null
+      },
+      {
+        "service": "pre_communion",
+        "status": "source_text_partial",
+        "packaged_service_id": "pre_communion_prayers"
+      }
+    ],
+    "el": [
+      {
+        "service": "vespers",
+        "status": "abridged",
+        "packaged_service_id": "vespers"
+      },
+      {
+        "service": "midnight_office",
+        "status": "missing",
+        "packaged_service_id": null
+      },
+      {
+        "service": "orthros",
+        "status": "abridged",
+        "packaged_service_id": "orthros"
+      },
+      {
+        "service": "first_hour",
+        "status": "unavailable_notice",
+        "packaged_service_id": "first_hour"
+      },
+      {
+        "service": "third_hour",
+        "status": "unavailable_notice",
+        "packaged_service_id": "third_hour"
+      },
+      {
+        "service": "sixth_hour",
+        "status": "unavailable_notice",
+        "packaged_service_id": "sixth_hour"
+      },
+      {
+        "service": "ninth_hour",
+        "status": "unavailable_notice",
+        "packaged_service_id": "ninth_hour"
+      },
+      {
+        "service": "typika",
+        "status": "unavailable_notice",
+        "packaged_service_id": "typika"
+      },
+      {
+        "service": "proskomide",
+        "status": "missing",
+        "packaged_service_id": null
+      },
+      {
+        "service": "basil_liturgy",
+        "status": "unavailable_notice",
+        "packaged_service_id": "divine_liturgy_basil"
+      },
+      {
+        "service": "pre_communion",
+        "status": "complete_authorized_native_selection",
+        "packaged_service_id": "pre_communion_prayers"
+      },
+      {
+        "service": "post_communion",
+        "status": "complete_authorized_native_selection",
+        "packaged_service_id": "thanksgiving_after_communion"
+      }
+    ]
+  },
+  "validation": {
+    "python_unit_tests": {
+      "passed": 300,
+      "failed": 0
+    },
+    "native_pack_fields": {
+      "ar": "990/990",
+      "en": "3225/3225",
+      "el": "1754/1754"
+    },
+    "service_edition_evidence": "PASS",
+    "all_services_contract": "PASS exact=21/45 source_files_required=24",
+    "native_source_contract": "PASS",
+    "reader_services": "PASS 407 composed segments",
+    "static_protected_files": "PASS 39/39",
+    "detached_signatures": "PASS existing signed data unchanged",
+    "secret_scan": "PASS",
+    "gradle_android_tests": {
+      "status": "BLOCKED_ENVIRONMENT_DNS",
+      "attempted_command": "./gradlew :app:testDebugUnitTest --no-daemon --stacktrace",
+      "reason": "UnknownHostException: services.gradle.org while downloading Gradle 8.13",
+      "apk_created": false
+    },
+    "combined_quality_gate_note": "Every constituent check was executed successfully in bounded groups. The single cumulative command exceeded the container time limit during nested historical year-audit gates."
+  },
+  "safety": {
+    "machine_translation_used": false,
+    "automatic_ocr_publication_used": false,
+    "cross_language_fallback_used": false,
+    "wrong_rite_fallback_allowed": false,
+    "trusted_signed_release_replaced": false
+  }
+}

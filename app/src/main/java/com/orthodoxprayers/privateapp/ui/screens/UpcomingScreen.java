@@ -16,15 +16,19 @@ public final class UpcomingScreen extends BaseScreen {
     @Override
     public View createView() {
         UiKit.Page page = page(local("الأيام القادمة", "Upcoming Days", "Ἐπόμενες Ἡμέρες"), true);
-        TextView note = centered(local("تظهر حالة الصيام ومراجع القراءات لكل يوم دون إعادة استخدام بيانات يوم سابق.",
-                "Each day has its own fasting profile and reading references.",
-                "Κάθε ἡμέρα ἔχει δικό της πρόγραμμα νηστείας καὶ ἀναγνωσμάτων."), 13, ui.colors().secondaryText(), false);
+        TextView note = centered(local("الحزمة الموقعة تحفظ اليوم والأيام السبعة القادمة بكامل الصلوات والقراءات والخدمات؛ اضغط أي يوم لفتحه.",
+                "The signed package keeps today and the next seven days with complete prayers, readings, and services. Tap any day to open it.",
+                "Ἡ ὑπογεγραμμένη δέσμη περιέχει σήμερα καὶ τὶς ἑπτὰ ἑπόμενες ἡμέρες πλήρεις. Πατήστε μία ἡμέρα γιὰ ἄνοιγμα."), 13, ui.colors().secondaryText(), false);
         add(page.root, note, 12, 8);
-        JSONArray upcoming = data.today().optJSONArray("upcoming");
+        JSONArray upcoming = data.rollingWeekDays();
+        if (upcoming.length() == 0) upcoming = data.today().optJSONArray("upcoming");
         if (upcoming != null) {
             for (int i = 0; i < upcoming.length(); i++) {
                 JSONObject item = upcoming.optJSONObject(i);
-                if (item != null) add(page.root, dayCard(item), 2, 7);
+                if (item == null) continue;
+                String itemDate = item.optString("date_iso", item.optString("date", ""));
+                if (itemDate.equals(data.currentAmmanDate())) continue;
+                add(page.root, dayCard(item), 2, 7);
             }
         }
         JSONObject todayFasting = data.today().optJSONObject("fasting");
@@ -42,7 +46,8 @@ public final class UpcomingScreen extends BaseScreen {
 
     private LinearLayout dayCard(JSONObject item) {
         LinearLayout card = ui.card();
-        String day = localized(item.optJSONObject("day"), item.optString("date", ""));
+        String itemDate = item.optString("date_iso", item.optString("date", ""));
+        String day = localized(item.optJSONObject("day"), localized(item.optJSONObject("date_label"), itemDate));
         TextView heading = ui.text("📅  " + day, 16, ui.colors().primaryText(), true);
         card.addView(heading);
         card.addView(ui.text(localized(item.optJSONObject("status"), ""), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
@@ -55,6 +60,11 @@ public final class UpcomingScreen extends BaseScreen {
         addReference(card, refs, "epistle", "📜 " + local("الرسالة: ", "Epistle: ", "Ἀπόστολος: "));
         addReference(card, refs, "gospel", "📖 " + local("الإنجيل: ", "Gospel: ", "Εὐαγγέλιον: "));
         card.setContentDescription(day + ". " + feast);
+        if (!itemDate.isEmpty()) {
+            card.setClickable(true);
+            card.setFocusable(true);
+            card.setOnClickListener(v -> host.navigate("calendar_day", itemDate));
+        }
         return card;
     }
 

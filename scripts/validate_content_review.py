@@ -12,6 +12,7 @@ ALLOWED = {
     "automatic_pinned_exact_text_verified",
     "blocked_missing_official_source",
     "automatic_verified_dynamic_with_pinned_static",
+    "automatic_native_lanes_verified_release_gate_partial",
 }
 PUBLISHABLE = {
     "automatic_official_source_verified",

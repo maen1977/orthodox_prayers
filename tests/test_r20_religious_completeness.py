@@ -23,7 +23,7 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
 
     def test_declaration_is_valid_but_production_gate_is_honestly_blocked(self):
         normal = subprocess.run(
-            [sys.executable, "scripts/validate_religious_completeness.py"],
+            [sys.executable, "scripts/validate_religious_completeness.py", "--declaration-only"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -33,7 +33,6 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
             [
                 sys.executable,
                 "scripts/validate_religious_completeness.py",
-                "--require-production-complete",
             ],
             cwd=ROOT,
             capture_output=True,
@@ -60,8 +59,12 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
             "complete_exact_native_edition",
             manifest["languages"]["ar"]["post_communion"],
         )
-        for language in ("ar", "en", "el"):
-            self.assertNotEqual(
+        self.assertNotEqual(
+            "complete_exact_native_edition",
+            manifest["languages"]["ar"]["chrysostom_liturgy"],
+        )
+        for language in ("en", "el"):
+            self.assertEqual(
                 "complete_exact_native_edition",
                 manifest["languages"][language]["chrysostom_liturgy"],
             )

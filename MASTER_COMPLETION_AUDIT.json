@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-07-29T06:46:41.360755+00:00",
+  "release_allowed": false,
+  "definition": "A service is production-ready only when its complete text in that same language is imported from one authorized native edition and all required fixed and date-dependent sections are structurally accounted for. Field population and an external book link do not count as service completeness.",
+  "machine_translation_allowed": false,
+  "summary": {
+    "ar": {
+      "complete": 12,
+      "required": 15
+    },
+    "en": {
+      "complete": 13,
+      "required": 15
+    },
+    "el": {
+      "complete": 13,
+      "required": 15
+    }
+  },
+  "services": [
+    {
+      "service": "vespers",
+      "packaged_service_id": "vespers",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "small_compline",
+      "packaged_service_id": "small_compline",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "midnight_office",
+      "packaged_service_id": "midnight_office",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "unavailable_notice",
+          "release_ready": false
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": false
+    },
+    {
+      "service": "orthros",
+      "packaged_service_id": "orthros",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "first_hour",
+      "packaged_service_id": "first_hour",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "third_hour",
+      "packaged_service_id": "third_hour",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "sixth_hour",
+      "packaged_service_id": "sixth_hour",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "ninth_hour",
+      "packaged_service_id": "ninth_hour",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "typika",
+      "packaged_service_id": "typika",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "proskomide",
+      "packaged_service_id": "proskomide",
+      "languages": {
+        "ar": {
+          "status": "unavailable_notice",
+          "release_ready": false
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": false
+    },
+    {
+      "service": "chrysostom_liturgy",
+      "packaged_service_id": "divine_liturgy",
+      "languages": {
+        "ar": {
+          "status": "unproven_complete",
+          "release_ready": false
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": false
+    },
+    {
+      "service": "basil_liturgy",
+      "packaged_service_id": "divine_liturgy_basil",
+      "languages": {
+        "ar": {
+          "status": "unavailable_notice",
+          "release_ready": false
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": false
+    },
+    {
+      "service": "presanctified_liturgy",
+      "packaged_service_id": "presanctified_liturgy",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        }
+      },
+      "all_languages_release_ready": true
+    },
+    {
+      "service": "pre_communion",
+      "packaged_service_id": "pre_communion_prayers",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "source_text_partial",
+          "release_ready": false
+        },
+        "el": {
+          "status": "complete_authorized_native_selection",
+          "release_ready": false
+        }
+      },
+      "all_languages_release_ready": false
+    },
+    {
+      "service": "post_communion",
+      "packaged_service_id": "thanksgiving_after_communion",
+      "languages": {
+        "ar": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "en": {
+          "status": "complete_exact_native_edition",
+          "release_ready": true
+        },
+        "el": {
+          "status": "complete_authorized_native_selection",
+          "release_ready": false
+        }
+      },
+      "all_languages_release_ready": false
+    }
+  ],
+  "blocking_rules": [
+    "Every required service must be complete_exact_native_edition in ar, en, and el.",
+    "A packaged fragment, abridgement, selection, or external link is not completeness.",
+    "Machine translation cannot promote a service to release-ready.",
+    "The signed release workflow must run validate_religious_completeness.py in production mode."
+  ]
+}

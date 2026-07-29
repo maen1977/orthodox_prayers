@@ -76,7 +76,7 @@ public final class UpdateManifest {
             throw new IllegalStateException("manifest_hash_invalid");
         }
         int size = selected.optInt("size_bytes", 0);
-        if (size < 1 || size > 2_000_000) {
+        if (size < 1 || size > 6_000_000) {
             throw new IllegalStateException("manifest_size_invalid");
         }
         return new Selection(

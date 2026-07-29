@@ -12,7 +12,9 @@
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
         "antioch_patriarchate_ar",
-        "ebible_arabic_van_dyck"
+        "ebible_arabic_van_dyck",
+        "orthodox_jordan_arabic_services",
+        "arabic_great_horologion_1870"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -27,7 +29,10 @@
         "goarch_synekdemos",
         "oca_official_english",
         "ebible_world_english_bible",
-        "metropolis_toronto_liturgy_en"
+        "metropolis_toronto_liturgy_en",
+        "goarch_ogden_epubs",
+        "oca_horologion_2021",
+        "hapgood_service_book_1906"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -41,7 +46,11 @@
         "jerusalem_patriarchate_el",
         "goarch_digital_chant_stand_greek",
         "ebible_greek_byzantine_1904",
-        "metropolis_toronto_liturgy_el"
+        "metropolis_toronto_liturgy_el",
+        "imks_greek_services",
+        "kilkis_greek_services",
+        "goarch_glt_greek",
+        "ecumenical_patriarchate_ieratikon_1875"
       ],
       "fallback": "SAME_LANGUAGE_ONLY",
       "translation_between_languages": false,
@@ -269,6 +278,139 @@
       "document_title": "The Divine Liturgy of Saint John Chrysostom / Η ΘΕΙΑ ΛΕΙΤΟΥΡΓΙΑ ΤΟΥ ΑΓΙΟΥ ΙΩΑΝΝΟΥ ΤΟΥ ΧΡΥΣΟΣΤΟΜΟΥ",
       "publication_year": 2017,
       "name": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy"
+    },
+    "goarch_ogden_epubs": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.tgoc.ut.goarch.org/epub.htm",
+      "capabilities": [
+        "basil_liturgy",
+        "presanctified_liturgy",
+        "pre_communion",
+        "post_communion"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "document_title": "GOA Digital Chant Stand service eBooks",
+      "name": "Transfiguration Greek Orthodox Church, Ogden — GOARCH",
+      "validation_status": "NATIVE_EPUB_TEXT_VALIDATED"
+    },
+    "imks_greek_services": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://imks.gr/",
+      "capabilities": [
+        "presanctified_liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "document_title": "Θεία Λειτουργία των Προηγιασμένων Δώρων",
+      "name": "Ιερά Μητρόπολις Κισάμου και Σελίνου",
+      "validation_status": "NATIVE_TEXT_LAYER_PDF_VALIDATED"
+    },
+    "kilkis_greek_services": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://metamorfosikilkis.gr/",
+      "capabilities": [
+        "small_compline"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "document_title": "Μικρό Απόδειπνο",
+      "name": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς",
+      "validation_status": "NATIVE_HTML_TEXT_VALIDATED"
+    },
+    "oca_horologion_2021": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.oca.org/liturgics/rubrics/horologion",
+      "capabilities": [
+        "horologion",
+        "vespers",
+        "matins",
+        "hours",
+        "typika",
+        "compline"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "document_title": "Horologion — Liturgical Services",
+      "publication_year": 2021,
+      "name": "Orthodox Church in America — Horologion"
+    },
+    "orthodox_jordan_arabic_services": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+      "capabilities": [
+        "vespers",
+        "matins",
+        "hours",
+        "pre_communion",
+        "post_communion"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "document_title": "نصوص الصلوات والخدمات العربية",
+      "name": "مطرانية الروم الأرثوذكس في الأردن",
+      "validation_status": "NATIVE_DOCX_FILES_VALIDATED_INDIVIDUALLY"
+    },
+    "arabic_great_horologion_1870": {
+      "language": "ar",
+      "name": "كتاب السواعي الكبير، أورشليم 1870",
+      "official": true,
+      "base_url": "",
+      "capabilities": [
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "public_domain": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "machine_translation_used": false
+    },
+    "goarch_glt_greek": {
+      "language": "el",
+      "name": "Greek Horologion native text",
+      "official": true,
+      "base_url": "",
+      "capabilities": [
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "public_domain": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "machine_translation_used": false
+    },
+    "ecumenical_patriarchate_ieratikon_1875": {
+      "language": "el",
+      "name": "Ecumenical Patriarchate Ieratikon 1875",
+      "official": true,
+      "base_url": "",
+      "capabilities": [
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "public_domain": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "machine_translation_used": false
+    },
+    "hapgood_service_book_1906": {
+      "language": "en",
+      "name": "Hapgood Service Book 1906",
+      "official": true,
+      "base_url": "",
+      "capabilities": [
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "public_domain": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "machine_translation_used": false
     }
   },
   "contract": "canonical/source_native_contract.json"

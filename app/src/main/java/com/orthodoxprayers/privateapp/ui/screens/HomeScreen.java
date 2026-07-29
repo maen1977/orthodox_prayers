@@ -30,6 +30,7 @@ public final class HomeScreen extends BaseScreen {
             return page.scroll;
         }
         addDateCard(page.root);
+        addRollingWeekStatus(page.root);
         addQuickAccess(page.root);
         addUpcoming(page.root);
         return page.scroll;
@@ -95,6 +96,36 @@ public final class HomeScreen extends BaseScreen {
         add(root, card, 12, 10);
     }
 
+    private void addRollingWeekStatus(LinearLayout root) {
+        LinearLayout card = ui.card();
+        boolean ready = data.hasCompleteRollingWeek();
+        String end = data.rollingWeekEndDate();
+        String title = ready
+                ? local(
+                        "خدمات اليوم والأيام السبعة القادمة مكتملة",
+                        "Today and the next seven days are complete",
+                        "Ἡ σημερινὴ καὶ οἱ ἑπτὰ ἑπόμενες ἡμέρες εἶναι πλήρεις"
+                )
+                : local(
+                        "الحزمة الأسبوعية الكاملة غير متوفرة بعد",
+                        "The complete weekly package is not available yet",
+                        "Ἡ πλήρης ἑβδομαδιαία δέσμη δὲν εἶναι ἀκόμη διαθέσιμη"
+                );
+        card.addView(centered((ready ? "✓  " : "⏳  ") + title, 16,
+                ready ? ui.colors().accentText() : ui.colors().secondaryText(), true));
+        if (ready && !end.isEmpty()) {
+            card.addView(centered(local(
+                    "كل الصلوات والقراءات والخدمات جاهزة حتى " + end,
+                    "All prayers, readings, and services are ready through " + end,
+                    "Ὅλες οἱ προσευχές, τὰ ἀναγνώσματα καὶ οἱ ἀκολουθίες εἶναι ἕτοιμες ἕως " + end
+            ), 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 5, 0, 0));
+        }
+        card.setClickable(true);
+        card.setFocusable(true);
+        card.setOnClickListener(v -> host.navigate("upcoming", null));
+        add(root, card, 0, 10);
+    }
+
     private String fastingValue(JSONObject today) {
         String value = localized(today.optJSONObject("fast"), "");
         if (!value.isEmpty()) return value;
@@ -121,7 +152,7 @@ public final class HomeScreen extends BaseScreen {
 
         LinearLayout second = ui.row();
         addShortcut(second, "📅", local("التقويم والصيام", "Calendar and fasting", "Ἡμερολόγιο καὶ νηστεία"), "calendar", null);
-        addShortcut(second, "🗓", local("الأيام السبعة القادمة", "Next seven days", "Ἑπόμενες ἑπτὰ ἡμέρες"), "upcoming", null);
+        addShortcut(second, "🗓", local("اليوم + 7 أيام مكتملة", "Today + 7 complete days", "Σήμερα + 7 πλήρεις ἡμέρες"), "upcoming", null);
         add(root, second, 0, 0);
 
         LinearLayout third = ui.row();

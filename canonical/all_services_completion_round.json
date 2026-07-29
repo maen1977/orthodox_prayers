@@ -1,0 +1,1485 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_ALL_SERVICES_ONE_ROUND_FAIL_CLOSED",
+  "purpose_ar": "إغلاق الخدمات الخمس عشرة في العربية والإنجليزية واليونانية ضمن معاملة واحدة لا تسمح بالترقية الجزئية.",
+  "required_services": [
+    "vespers",
+    "small_compline",
+    "midnight_office",
+    "orthros",
+    "first_hour",
+    "third_hour",
+    "sixth_hour",
+    "ninth_hour",
+    "typika",
+    "proskomide",
+    "chrysostom_liturgy",
+    "basil_liturgy",
+    "presanctified_liturgy",
+    "pre_communion",
+    "post_communion"
+  ],
+  "languages": [
+    "ar",
+    "en",
+    "el"
+  ],
+  "total_lanes": 45,
+  "atomic_rule": "No runtime file is changed unless every non-complete lane has an exact native source candidate and an approved paragraph-by-paragraph review packet.",
+  "copyright_rule": "Official or authorized source files remain outside the public repository. The project stores hashes, provenance, reviewed normalized services, and release evidence only.",
+  "machine_translation_allowed": false,
+  "ai_rewriting_or_correction_allowed": false,
+  "automatic_ocr_publication_allowed": false,
+  "current_exact_lanes": [
+    "basil_liturgy:en",
+    "chrysostom_liturgy:el",
+    "chrysostom_liturgy:en",
+    "first_hour:ar",
+    "first_hour:en",
+    "ninth_hour:ar",
+    "ninth_hour:en",
+    "orthros:en",
+    "post_communion:ar",
+    "post_communion:en",
+    "pre_communion:ar",
+    "presanctified_liturgy:el",
+    "presanctified_liturgy:en",
+    "sixth_hour:ar",
+    "sixth_hour:en",
+    "small_compline:el",
+    "small_compline:en",
+    "third_hour:ar",
+    "third_hour:en",
+    "typika:en",
+    "vespers:en"
+  ],
+  "required_new_source_lanes": [
+    "basil_liturgy:ar",
+    "basil_liturgy:el",
+    "chrysostom_liturgy:ar",
+    "first_hour:el",
+    "midnight_office:ar",
+    "midnight_office:el",
+    "midnight_office:en",
+    "ninth_hour:el",
+    "orthros:ar",
+    "orthros:el",
+    "post_communion:el",
+    "pre_communion:el",
+    "pre_communion:en",
+    "presanctified_liturgy:ar",
+    "proskomide:ar",
+    "proskomide:el",
+    "proskomide:en",
+    "sixth_hour:el",
+    "small_compline:ar",
+    "third_hour:el",
+    "typika:ar",
+    "typika:el",
+    "vespers:ar",
+    "vespers:el"
+  ],
+  "source_bundle_root": "private_sources/all_services_v1",
+  "source_bundle_manifest": "private_sources/all_services_v1/manifest.json",
+  "candidate_output_root": "build/all-services-completion-round/candidates",
+  "review_packet_output_root": "build/all-services-completion-round/review_packets",
+  "lanes": {
+    "vespers:ar": {
+      "service": "vespers",
+      "service_id": "vespers",
+      "language": "ar",
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "vespers/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 12000,
+      "minimum_paragraphs": 55,
+      "anchors": [
+        "صلاة الغروب",
+        "يا رب إليك صرخت",
+        "الآن تطلق عبدك"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "vespers/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "vespers:en": {
+      "service": "vespers",
+      "service_id": "vespers",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "vespers/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 12000,
+      "minimum_paragraphs": 55,
+      "anchors": [
+        "Vespers",
+        "Lord, I have cried",
+        "Now let Your servant depart"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "vespers/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "vespers:el": {
+      "service": "vespers",
+      "service_id": "vespers",
+      "language": "el",
+      "current_status": "abridged",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "vespers/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 12000,
+      "minimum_paragraphs": 55,
+      "anchors": [
+        "Ἑσπερινός",
+        "Κύριε ἐκέκραξα",
+        "Νῦν ἀπολύεις"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "vespers/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "small_compline:ar": {
+      "service": "small_compline",
+      "service_id": "small_compline",
+      "language": "ar",
+      "current_status": "abridged",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "small_compline/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 7000,
+      "minimum_paragraphs": 35,
+      "anchors": [
+        "صلاة النوم الصغرى",
+        "الله معنا",
+        "يا رب القوات كن معنا"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "small_compline/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "small_compline:en": {
+      "service": "small_compline",
+      "service_id": "small_compline",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "small_compline/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 7000,
+      "minimum_paragraphs": 35,
+      "anchors": [
+        "Small Compline",
+        "God is with us",
+        "O Lord of hosts, be with us"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "small_compline/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "small_compline:el": {
+      "service": "small_compline",
+      "service_id": "small_compline",
+      "language": "el",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "small_compline/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 7000,
+      "minimum_paragraphs": 35,
+      "anchors": [
+        "Μικρόν Ἀπόδειπνον",
+        "Μεθ’ ἡμῶν ὁ Θεός",
+        "Κύριε τῶν δυνάμεων"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "small_compline/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "midnight_office:ar": {
+      "service": "midnight_office",
+      "service_id": "midnight_office",
+      "language": "ar",
+      "current_status": "missing",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "midnight_office/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 11000,
+      "minimum_paragraphs": 50,
+      "anchors": [
+        "صلاة نصف الليل",
+        "هوذا الختن يأتي",
+        "ارحمني يا الله"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "midnight_office/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "midnight_office:en": {
+      "service": "midnight_office",
+      "service_id": "midnight_office",
+      "language": "en",
+      "current_status": "missing",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "midnight_office/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 11000,
+      "minimum_paragraphs": 50,
+      "anchors": [
+        "Midnight Office",
+        "Behold, the Bridegroom comes",
+        "Have mercy on me, O God"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "midnight_office/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "midnight_office:el": {
+      "service": "midnight_office",
+      "service_id": "midnight_office",
+      "language": "el",
+      "current_status": "missing",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "midnight_office/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 11000,
+      "minimum_paragraphs": 50,
+      "anchors": [
+        "Μεσονυκτικόν",
+        "Ἰδοὺ ὁ Νυμφίος ἔρχεται",
+        "Ἐλέησόν με ὁ Θεός"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "midnight_office/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "orthros:ar": {
+      "service": "orthros",
+      "service_id": "orthros",
+      "language": "ar",
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "orthros/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 18000,
+      "minimum_paragraphs": 85,
+      "anchors": [
+        "صلاة السحر",
+        "الله الرب ظهر لنا",
+        "كل نسمة فلتسبح الرب"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "orthros/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "orthros:en": {
+      "service": "orthros",
+      "service_id": "orthros",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "orthros/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 18000,
+      "minimum_paragraphs": 85,
+      "anchors": [
+        "Orthros",
+        "God is the Lord",
+        "Let every breath praise the Lord"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "orthros/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "orthros:el": {
+      "service": "orthros",
+      "service_id": "orthros",
+      "language": "el",
+      "current_status": "abridged",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "orthros/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 18000,
+      "minimum_paragraphs": 85,
+      "anchors": [
+        "Ὄρθρος",
+        "Θεὸς Κύριος",
+        "Πᾶσα πνοὴ αἰνεσάτω τὸν Κύριον"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "orthros/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "first_hour:ar": {
+      "service": "first_hour",
+      "service_id": "first_hour",
+      "language": "ar",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "first_hour/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "الساعة الأولى",
+        "يا رب استمع إلى صلاتي",
+        "أيها المسيح النور الحقيقي"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "first_hour/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "first_hour:en": {
+      "service": "first_hour",
+      "service_id": "first_hour",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "first_hour/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "First Hour",
+        "O Lord, hear my prayer",
+        "O Christ, the true Light"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "first_hour/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "first_hour:el": {
+      "service": "first_hour",
+      "service_id": "first_hour",
+      "language": "el",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "first_hour/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Πρώτη Ὥρα",
+        "Κύριε εἰσάκουσον τῆς προσευχῆς μου",
+        "Χριστὲ τὸ φῶς τὸ ἀληθινόν"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "first_hour/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "third_hour:ar": {
+      "service": "third_hour",
+      "service_id": "third_hour",
+      "language": "ar",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "third_hour/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "الساعة الثالثة",
+        "ارحمني يا الله",
+        "أيها الرب الذي أرسلت روحك القدوس"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "third_hour/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "third_hour:en": {
+      "service": "third_hour",
+      "service_id": "third_hour",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "third_hour/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Third Hour",
+        "Have mercy on me, O God",
+        "O Lord, who sent down Your Most Holy Spirit"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "third_hour/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "third_hour:el": {
+      "service": "third_hour",
+      "service_id": "third_hour",
+      "language": "el",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "third_hour/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Τρίτη Ὥρα",
+        "Ἐλέησόν με ὁ Θεός",
+        "Κύριε ὁ τὸ Πανάγιόν σου Πνεῦμα"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "third_hour/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "sixth_hour:ar": {
+      "service": "sixth_hour",
+      "service_id": "sixth_hour",
+      "language": "ar",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "sixth_hour/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "الساعة السادسة",
+        "اللهم باسمك خلصني",
+        "يا من في اليوم والساعة السادسة"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "sixth_hour/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "sixth_hour:en": {
+      "service": "sixth_hour",
+      "service_id": "sixth_hour",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "sixth_hour/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Sixth Hour",
+        "Save me, O God, by Your name",
+        "O Christ God, on the sixth day and hour"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "sixth_hour/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "sixth_hour:el": {
+      "service": "sixth_hour",
+      "service_id": "sixth_hour",
+      "language": "el",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "sixth_hour/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Ἕκτη Ὥρα",
+        "Ὁ Θεός, ἐν τῷ ὀνόματί σου σῶσόν με",
+        "Ὁ ἐν ἕκτῃ ἡμέρᾳ τε καὶ ὥρᾳ"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "sixth_hour/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "ninth_hour:ar": {
+      "service": "ninth_hour",
+      "service_id": "ninth_hour",
+      "language": "ar",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "ninth_hour/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "الساعة التاسعة",
+        "إلى متى يا رب تنساني",
+        "يا من في الساعة التاسعة"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "ninth_hour/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "ninth_hour:en": {
+      "service": "ninth_hour",
+      "service_id": "ninth_hour",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "ninth_hour/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Ninth Hour",
+        "How long, O Lord, will You forget me",
+        "O Christ God, who at the ninth hour"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "ninth_hour/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "ninth_hour:el": {
+      "service": "ninth_hour",
+      "service_id": "ninth_hour",
+      "language": "el",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "ninth_hour/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 3500,
+      "minimum_paragraphs": 18,
+      "anchors": [
+        "Ἐνάτη Ὥρα",
+        "Ἕως πότε, Κύριε, ἐπιλήσῃ μου",
+        "Ὁ ἐν τῇ ἐνάτῃ ὥρᾳ"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "ninth_hour/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "typika:ar": {
+      "service": "typika",
+      "service_id": "typika",
+      "language": "ar",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "typika/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 5000,
+      "minimum_paragraphs": 24,
+      "anchors": [
+        "خدمة التيبيكا",
+        "باركي يا نفسي الرب",
+        "في ملكوتك اذكرنا يا رب"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "typika/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "typika:en": {
+      "service": "typika",
+      "service_id": "typika",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "typika/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 5000,
+      "minimum_paragraphs": 24,
+      "anchors": [
+        "Typika",
+        "Bless the Lord, O my soul",
+        "Remember us, O Lord, in Your kingdom"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "typika/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "typika:el": {
+      "service": "typika",
+      "service_id": "typika",
+      "language": "el",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "typika/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 5000,
+      "minimum_paragraphs": 24,
+      "anchors": [
+        "Τυπικά",
+        "Εὐλόγει ἡ ψυχή μου τὸν Κύριον",
+        "Ἐν τῇ βασιλείᾳ σου μνήσθητι ἡμῶν"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "typika/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "proskomide:ar": {
+      "service": "proskomide",
+      "service_id": "proskomide",
+      "language": "ar",
+      "current_status": "missing",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "proskomide/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 7000,
+      "minimum_paragraphs": 30,
+      "anchors": [
+        "خدمة التقدمة",
+        "كشاة سيق إلى الذبح",
+        "ذبح حمل الله"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "proskomide/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "proskomide:en": {
+      "service": "proskomide",
+      "service_id": "proskomide",
+      "language": "en",
+      "current_status": "missing",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "proskomide/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 7000,
+      "minimum_paragraphs": 30,
+      "anchors": [
+        "Proskomide",
+        "He was led as a sheep to the slaughter",
+        "The Lamb of God is sacrificed"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "proskomide/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "proskomide:el": {
+      "service": "proskomide",
+      "service_id": "proskomide",
+      "language": "el",
+      "current_status": "missing",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "proskomide/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 7000,
+      "minimum_paragraphs": 30,
+      "anchors": [
+        "Πρόθεσις",
+        "Ὡς πρόβατον ἐπὶ σφαγὴν ἤχθη",
+        "Θύεται ὁ Ἀμνὸς τοῦ Θεοῦ"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "proskomide/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "chrysostom_liturgy:ar": {
+      "service": "chrysostom_liturgy",
+      "service_id": "divine_liturgy",
+      "language": "ar",
+      "current_status": "unproven_complete",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "chrysostom_liturgy/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 28000,
+      "minimum_paragraphs": 150,
+      "anchors": [
+        "قداس القديس يوحنا الذهبي الفم",
+        "مباركة مملكة الآب والابن والروح القدس",
+        "خذوا كلوا"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "chrysostom_liturgy/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "chrysostom_liturgy:en": {
+      "service": "chrysostom_liturgy",
+      "service_id": "divine_liturgy",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "metropolis_toronto_liturgy_en",
+      "registered_source_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+      "expected_relative_path": "chrysostom_liturgy/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 28000,
+      "minimum_paragraphs": 150,
+      "anchors": [
+        "Divine Liturgy of Saint John Chrysostom",
+        "Blessed is the kingdom",
+        "Take, eat"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": false,
+      "required_dynamic_slots": []
+    },
+    "chrysostom_liturgy:el": {
+      "service": "chrysostom_liturgy",
+      "service_id": "divine_liturgy",
+      "language": "el",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "metropolis_toronto_liturgy_el",
+      "registered_source_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+      "expected_relative_path": "chrysostom_liturgy/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 28000,
+      "minimum_paragraphs": 150,
+      "anchors": [
+        "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου",
+        "Εὐλογημένη ἡ βασιλεία",
+        "Λάβετε, φάγετε"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": false,
+      "required_dynamic_slots": []
+    },
+    "basil_liturgy:ar": {
+      "service": "basil_liturgy",
+      "service_id": "divine_liturgy_basil",
+      "language": "ar",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "expected_relative_path": "basil_liturgy/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 28000,
+      "minimum_paragraphs": 150,
+      "anchors": [
+        "قداس القديس باسيليوس الكبير",
+        "مباركة مملكة الآب والابن والروح القدس",
+        "قدوس قدوس قدوس"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "basil_liturgy/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": [
+        "matins_gospel",
+        "daily_hymns",
+        "prokeimenon",
+        "epistle",
+        "alleluia_verses",
+        "gospel",
+        "communion_hymn",
+        "first_antiphon",
+        "second_antiphon",
+        "third_antiphon",
+        "entrance_hymn",
+        "trisagion_hymn",
+        "theotokos_hymn",
+        "dismissal"
+      ]
+    },
+    "basil_liturgy:en": {
+      "service": "basil_liturgy",
+      "service_id": "divine_liturgy_basil",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/en/index.html",
+      "expected_relative_path": "basil_liturgy/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 28000,
+      "minimum_paragraphs": 150,
+      "anchors": [
+        "Divine Liturgy of Saint Basil the Great",
+        "Blessed is the kingdom",
+        "Holy, holy, holy"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "basil_liturgy/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": [
+        "matins_gospel",
+        "daily_hymns",
+        "prokeimenon",
+        "epistle",
+        "alleluia_verses",
+        "gospel",
+        "communion_hymn",
+        "first_antiphon",
+        "second_antiphon",
+        "third_antiphon",
+        "entrance_hymn",
+        "trisagion_hymn",
+        "theotokos_hymn",
+        "dismissal"
+      ]
+    },
+    "basil_liturgy:el": {
+      "service": "basil_liturgy",
+      "service_id": "divine_liturgy_basil",
+      "language": "el",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://dcs.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/gr-en/index.html",
+      "expected_relative_path": "basil_liturgy/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 28000,
+      "minimum_paragraphs": 150,
+      "anchors": [
+        "Θεία Λειτουργία τοῦ Ἁγίου Βασιλείου",
+        "Εὐλογημένη ἡ βασιλεία",
+        "Ἅγιος, Ἅγιος, Ἅγιος"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "basil_liturgy/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": [
+        "matins_gospel",
+        "daily_hymns",
+        "prokeimenon",
+        "epistle",
+        "alleluia_verses",
+        "gospel",
+        "communion_hymn",
+        "first_antiphon",
+        "second_antiphon",
+        "third_antiphon",
+        "entrance_hymn",
+        "trisagion_hymn",
+        "theotokos_hymn",
+        "dismissal"
+      ]
+    },
+    "presanctified_liturgy:ar": {
+      "service": "presanctified_liturgy",
+      "service_id": "presanctified_liturgy",
+      "language": "ar",
+      "current_status": "unavailable_notice",
+      "already_release_ready": false,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%8A%D8%AC%D9%8A%D8%B3%D9%85%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.docx",
+      "expected_relative_path": "presanctified_liturgy/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 18000,
+      "minimum_paragraphs": 80,
+      "anchors": [
+        "القداس السابق تقديسه",
+        "لتستقم صلاتي",
+        "الآن القوات السماوية"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "presanctified_liturgy/ar.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": [
+        "matins_gospel",
+        "daily_hymns",
+        "prokeimenon",
+        "epistle",
+        "alleluia_verses",
+        "gospel",
+        "communion_hymn",
+        "first_antiphon",
+        "second_antiphon",
+        "third_antiphon",
+        "entrance_hymn",
+        "trisagion_hymn",
+        "theotokos_hymn",
+        "dismissal"
+      ]
+    },
+    "presanctified_liturgy:en": {
+      "service": "presanctified_liturgy",
+      "service_id": "presanctified_liturgy",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/goa/dcs/p/s/2026/03/09/pl1/en/se.m03.d10.pl1.pdf",
+      "expected_relative_path": "presanctified_liturgy/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 18000,
+      "minimum_paragraphs": 80,
+      "anchors": [
+        "Liturgy of the Presanctified Gifts",
+        "Let my prayer arise",
+        "Now the powers of heaven"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "presanctified_liturgy/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": [
+        "matins_gospel",
+        "daily_hymns",
+        "prokeimenon",
+        "epistle",
+        "alleluia_verses",
+        "gospel",
+        "communion_hymn",
+        "first_antiphon",
+        "second_antiphon",
+        "third_antiphon",
+        "entrance_hymn",
+        "trisagion_hymn",
+        "theotokos_hymn",
+        "dismissal"
+      ]
+    },
+    "presanctified_liturgy:el": {
+      "service": "presanctified_liturgy",
+      "service_id": "presanctified_liturgy",
+      "language": "el",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "presanctified_liturgy/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 18000,
+      "minimum_paragraphs": 80,
+      "anchors": [
+        "Λειτουργία τῶν Προηγιασμένων",
+        "Κατευθυνθήτω ἡ προσευχή μου",
+        "Νῦν αἱ δυνάμεις"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "presanctified_liturgy/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": [
+        "matins_gospel",
+        "daily_hymns",
+        "prokeimenon",
+        "epistle",
+        "alleluia_verses",
+        "gospel",
+        "communion_hymn",
+        "first_antiphon",
+        "second_antiphon",
+        "third_antiphon",
+        "entrance_hymn",
+        "trisagion_hymn",
+        "theotokos_hymn",
+        "dismissal"
+      ]
+    },
+    "pre_communion:ar": {
+      "service": "pre_communion",
+      "service_id": "pre_communion_prayers",
+      "language": "ar",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+      "expected_relative_path": "pre_communion/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 9000,
+      "minimum_paragraphs": 40,
+      "anchors": [
+        "صلوات قبل المناولة",
+        "أؤمن يا رب وأعترف",
+        "اقبلني اليوم شريكا"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": false,
+      "required_dynamic_slots": []
+    },
+    "pre_communion:en": {
+      "service": "pre_communion",
+      "service_id": "pre_communion_prayers",
+      "language": "en",
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "pre_communion/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 9000,
+      "minimum_paragraphs": 40,
+      "anchors": [
+        "Prayers before Holy Communion",
+        "I believe and confess",
+        "Receive me today"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "pre_communion/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "pre_communion:el": {
+      "service": "pre_communion",
+      "service_id": "pre_communion_prayers",
+      "language": "el",
+      "current_status": "complete_authorized_native_selection",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "pre_communion/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 9000,
+      "minimum_paragraphs": 40,
+      "anchors": [
+        "Εὐχαὶ πρὸ τῆς Θείας Μεταλήψεως",
+        "Πιστεύω, Κύριε",
+        "Τοῦ Δείπνου σου"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "pre_communion/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "post_communion:ar": {
+      "service": "post_communion",
+      "service_id": "thanksgiving_after_communion",
+      "language": "ar",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "orthodox_jordan",
+      "registered_source_url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
+      "expected_relative_path": "post_communion/ar",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 4500,
+      "minimum_paragraphs": 20,
+      "anchors": [
+        "صلاة الشكر بعد المناولة",
+        "أشكرك يا رب",
+        "الآن تطلق عبدك"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": false,
+      "required_dynamic_slots": []
+    },
+    "post_communion:en": {
+      "service": "post_communion",
+      "service_id": "thanksgiving_after_communion",
+      "language": "en",
+      "current_status": "complete_exact_native_edition",
+      "already_release_ready": true,
+      "source_id": "goarch_digital_chant_stand_english",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "post_communion/en",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 4500,
+      "minimum_paragraphs": 20,
+      "anchors": [
+        "Thanksgiving after Holy Communion",
+        "We thank You",
+        "Now let Your servant depart"
+      ],
+      "source_file_required": false,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "post_communion/en.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    },
+    "post_communion:el": {
+      "service": "post_communion",
+      "service_id": "thanksgiving_after_communion",
+      "language": "el",
+      "current_status": "complete_authorized_native_selection",
+      "already_release_ready": false,
+      "source_id": "goarch_digital_chant_stand_greek",
+      "registered_source_url": "https://digitalchantstand.goarch.org/",
+      "expected_relative_path": "post_communion/el",
+      "accepted_extensions": [
+        ".docx",
+        ".html",
+        ".htm",
+        ".txt",
+        ".pdf"
+      ],
+      "minimum_characters": 4500,
+      "minimum_paragraphs": 20,
+      "anchors": [
+        "Εὐχαριστία μετὰ τὴν Θείαν Μετάληψιν",
+        "Εὐχαριστοῦμέν Σοι",
+        "Νῦν ἀπολύεις"
+      ],
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
+      "normalized_service_relative_path": "post_communion/el.service.json",
+      "structured_service_required_for_promotion": true,
+      "required_dynamic_slots": []
+    }
+  },
+  "promotion_requirements": [
+    "all 45 lanes resolve to complete_exact_native_edition",
+    "all imported source files are same-language native editions",
+    "source file SHA-256 and extracted text SHA-256 are recorded",
+    "every candidate paragraph is explicitly approved against its source",
+    "every imported lane has a structured service JSON whose visible text maps back to source paragraphs",
+    "no machine translation, AI rewriting, heuristic Arabic font repair, or automatic OCR publication",
+    "all native packs, evidence gates, static hashes, Android assets, and tests pass before signing"
+  ],
+  "recovered_round_status": "21_EXACT_LANES_MERGED_24_REMAIN_FAIL_CLOSED"
+}

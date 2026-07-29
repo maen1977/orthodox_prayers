@@ -6,6 +6,7 @@ import argparse
 import base64
 import json
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -101,6 +102,23 @@ def verify_lane(
         raise SystemExit(f"lane services missing: {path}")
     if not isinstance(data.get("readings"), list):
         raise SystemExit(f"lane readings missing: {path}")
+    if isinstance(data.get("rolling_week"), dict):
+        validator = ROOT / "scripts/validate_rolling_week.py"
+        if not validator.is_file():
+            raise SystemExit("rolling-week validator is missing")
+        subprocess.run(
+            [
+                sys.executable,
+                str(validator),
+                str(path),
+                "--expected-start",
+                expected_date,
+                "--language",
+                language,
+            ],
+            cwd=ROOT,
+            check=True,
+        )
     leak = isolation_error(data, language)
     if leak and not allow_legacy_multilingual:
         raise SystemExit(f"language lane is not isolated: {path}: {leak}")

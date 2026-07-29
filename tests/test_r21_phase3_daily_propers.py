@@ -110,10 +110,14 @@ class R21Phase3DailyPropersTests(unittest.TestCase):
         manifest = json.loads(
             (ROOT / "canonical/religious_completeness_manifest.json").read_text(encoding="utf-8")
         )
-        for lang in LANGS:
-            self.assertNotEqual(
+        self.assertNotEqual(
+            manifest["production_complete_status"],
+            manifest["languages"]["ar"]["chrysostom_liturgy"],
+        )
+        for language in ("en", "el"):
+            self.assertEqual(
                 manifest["production_complete_status"],
-                manifest["languages"][lang]["chrysostom_liturgy"],
+                manifest["languages"][language]["chrysostom_liturgy"],
             )
 
 

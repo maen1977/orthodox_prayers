@@ -21,6 +21,8 @@ EN = re.compile(r"[A-Za-z]")
 
 def iter_localized(value: Any, pointer: str = "") -> Iterable[tuple[str, dict[str, Any]]]:
     if isinstance(value, dict):
+        if value.get("editorial_metadata_only") is True:
+            return
         if any(key in value for key in LANGS):
             yield pointer, value
         else:

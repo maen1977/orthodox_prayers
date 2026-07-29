@@ -6,6 +6,7 @@ import argparse
 import base64
 import json
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -85,21 +86,27 @@ def main() -> None:
         raise SystemExit(f"source date {data.get('date_iso')!r} does not match requested date {args.date!r}")
     language = args.language
     lane = keep_only_language(data, language)
-    lane.update(
-        {
-            "lane_schema_version": 2,
-            "language": language,
-            "date_iso": args.date,
-            "calendar_authority": "jerusalem_patriarchate",
-            "calendar": "julian_old_calendar",
-            "machine_translation_used": False,
-            "automatic_diacritization_used": False,
-            "language_source_policy": (data.get("language_sources") or {}).get(language, {}),
-        }
-    )
-    for service in lane.get("services") or []:
-        if isinstance(service, dict):
-            service["source_language"] = language
+    lane_metadata = {
+        "lane_schema_version": 2,
+        "language": language,
+        "calendar_authority": "jerusalem_patriarchate",
+        "calendar": "julian_old_calendar",
+        "machine_translation_used": False,
+        "automatic_diacritization_used": False,
+        "language_source_policy": (data.get("language_sources") or {}).get(language, {}),
+    }
+
+    def annotate_day(day: dict[str, Any]) -> None:
+        day.update(lane_metadata)
+        for service in day.get("services") or []:
+            if isinstance(service, dict):
+                service["source_language"] = language
+
+    annotate_day(lane)
+    lane["date_iso"] = args.date
+    for weekly_day in lane.get("weekly_days") or []:
+        if isinstance(weekly_day, dict):
+            annotate_day(weekly_day)
 
     dated = ROOT / f"data/daily/{args.date}/{language}.json"
     dated.parent.mkdir(parents=True, exist_ok=True)
@@ -109,11 +116,44 @@ def main() -> None:
     current.parent.mkdir(parents=True, exist_ok=True)
     current.write_bytes(dated.read_bytes())
 
+    if isinstance(lane.get("rolling_week"), dict):
+        validator = ROOT / "scripts/validate_rolling_week.py"
+        if not validator.is_file():
+            raise SystemExit("rolling-week validator is missing")
+        subprocess.run(
+            [
+                sys.executable,
+                str(validator),
+                str(dated),
+                "--expected-start",
+                args.date,
+                "--language",
+                language,
+            ],
+            cwd=ROOT,
+            check=True,
+        )
+
     if args.unsigned:
         Path(str(dated) + ".sig").unlink(missing_ok=True)
         Path(str(current) + ".sig").unlink(missing_ok=True)
         status = "LANE_UPDATE_UNSIGNED_OK"
     else:
+        if isinstance(lane.get("rolling_week"), dict):
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/validate_rolling_week.py"),
+                    str(dated),
+                    "--expected-start",
+                    args.date,
+                    "--language",
+                    language,
+                    "--require-reviewed-propers",
+                ],
+                cwd=ROOT,
+                check=True,
+            )
         sign(dated, args.private_key)
         sign(current, args.private_key)
         status = "LANE_UPDATE_OK"

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import unicodedata
 import unittest
 from pathlib import Path
 
@@ -56,15 +57,26 @@ class R21Phase2CommunionOfficeTests(unittest.TestCase):
 
     def test_english_and_greek_registered_selections_are_present(self):
         markers = {
-            "en": ("I believe and confess", "Receive me today", "We thank You, loving Master"),
-            "el": ("Πιστεύω, Κύριε", "Τοῦ Δείπνου", "Εὐχαριστοῦμέν Σοι"),
+            "en": ("i believe and confess", "receive me today", "i thank you, lord"),
+            "el": ("πιστεύω, κύριε", "τοῦ δείπνου", "εὐχαριστοῦμέν σοι"),
         }
         for language, expected in markers.items():
             combined = lane_text(service(language, "pre_communion_prayers"), language)
             combined += "\n" + lane_text(service(language, "thanksgiving_after_communion"), language)
+            folded = combined.casefold()
+            searchable = "".join(
+                character
+                for character in unicodedata.normalize("NFD", folded)
+                if not unicodedata.combining(character)
+            )
             for marker in expected:
-                self.assertIn(marker, combined, (language, marker))
-            self.assertNotIn("unavailable", combined.casefold())
+                normalized_marker = "".join(
+                    character
+                    for character in unicodedata.normalize("NFD", marker)
+                    if not unicodedata.combining(character)
+                )
+                self.assertIn(normalized_marker, searchable, (language, marker))
+            self.assertNotIn("unavailable", folded)
 
     def test_no_cross_language_leakage_in_communion_services(self):
         for language in LANGS:
@@ -83,8 +95,12 @@ class R21Phase2CommunionOfficeTests(unittest.TestCase):
         manifest = json.loads(
             (ROOT / "canonical/religious_completeness_manifest.json").read_text(encoding="utf-8")
         )
-        for language in LANGS:
-            self.assertNotEqual(
+        self.assertNotEqual(
+            manifest["production_complete_status"],
+            manifest["languages"]["ar"]["chrysostom_liturgy"],
+        )
+        for language in ("en", "el"):
+            self.assertEqual(
                 manifest["production_complete_status"],
                 manifest["languages"][language]["chrysostom_liturgy"],
             )

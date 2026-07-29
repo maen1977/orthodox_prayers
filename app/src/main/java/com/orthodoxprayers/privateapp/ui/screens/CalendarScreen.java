@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/** Monthly calendar backed by the trusted current snapshot and its upcoming-day records. */
+/** Monthly calendar backed by the trusted daily snapshot plus the compact 2026 H2 old-calendar index. */
 public final class CalendarScreen extends BaseScreen {
     private final YearMonth month;
 
@@ -40,9 +40,9 @@ public final class CalendarScreen extends BaseScreen {
         UiKit.Page page = page(local("التقويم الكنسي", "Church calendar", "Ἐκκλησιαστικὸ ἡμερολόγιο"), true);
         addMonthNavigation(page.root);
         add(page.root, ui.infoBadge(local(
-                "تفاصيل الأعياد والصيام والقراءات تظهر للأيام الموجودة في آخر حزمة موثوقة. الأيام الأخرى تبقى كتقويم فقط ولا تُملأ بتخمينات.",
-                "Feasts, fasting and readings are shown only for dates included in the latest trusted package. Other dates remain calendar-only and are never guessed.",
-                "Ἑορτές, νηστεία καὶ ἀναγνώσματα προβάλλονται μόνο ὅταν ὑπάρχουν στὸ ἔμπιστο πακέτο."
+                "الفهرس السنوي خفيف، بينما الحزمة الموقعة تحفظ اليوم والأيام السبعة القادمة بكامل الصلوات والقراءات والخدمات.",
+                "The annual index stays lightweight, while the signed package keeps today and the next seven days with complete prayers, readings, and services.",
+                "Τὸ ἐτήσιο εὑρετήριο παραμένει ἐλαφρύ, ἐνῶ ἡ ὑπογεγραμμένη δέσμη περιέχει σήμερα καὶ τὶς ἑπτὰ ἑπόμενες ἡμέρες πλήρεις."
         )), 4, 10);
         addCalendarGrid(page.root);
         addKnownDays(page.root);
@@ -139,6 +139,20 @@ public final class CalendarScreen extends BaseScreen {
 
     private Map<String, JSONObject> knownDays() {
         Map<String, JSONObject> result = new HashMap<>();
+        JSONArray annual = data.calendarDays();
+        for (int i = 0; i < annual.length(); i++) {
+            JSONObject item = annual.optJSONObject(i);
+            if (item == null) continue;
+            String date = item.optString("date_iso", item.optString("date", ""));
+            if (!date.isEmpty()) result.put(date, item);
+        }
+        JSONArray weekly = data.rollingWeekDays();
+        for (int i = 0; i < weekly.length(); i++) {
+            JSONObject item = weekly.optJSONObject(i);
+            if (item == null) continue;
+            String date = item.optString("date_iso", "");
+            if (!date.isEmpty()) result.put(date, item);
+        }
         JSONObject today = data.today();
         if (!data.dataDate().isEmpty()) result.put(data.dataDate(), today);
         JSONArray upcoming = today.optJSONArray("upcoming");

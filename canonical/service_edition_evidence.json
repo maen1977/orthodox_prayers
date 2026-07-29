@@ -1,0 +1,881 @@
+{
+  "schema_version": 1,
+  "definition": "Evidence is required for every service declared complete_exact_native_edition. It binds the packaged text to one authorized native edition, minimum structural checkpoints, immutable hashes, and a no-machine-translation rule.",
+  "machine_translation_allowed": false,
+  "services": {
+    "pre_communion:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "pre_communion_prayers",
+      "source_id": "orthodox_jordan",
+      "source_url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/",
+      "content_sha256": "ae0ddfbbb5ea39dbacbe2d68fc24d4f4e0a1cf2be4d7f45bb107d01d0979dce3",
+      "minimum_segments": 60,
+      "minimum_characters": 12000,
+      "required_section_markers": [],
+      "forbidden_text_patterns": [
+        "يضاف لاحقاً",
+        "يضاف لاحقا",
+        "نص مؤقت",
+        "placeholder",
+        "todo"
+      ],
+      "review_basis": "Exact authorized Arabic office already imported; typography-only normalization recorded in service provenance."
+    },
+    "post_communion:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "thanksgiving_after_communion",
+      "source_id": "orthodox_jordan",
+      "source_url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/",
+      "content_sha256": "b01dd0688c2d299e7cf3f0aa5a04862dcdc9d9ece73fecbc0d21cce4998b17e7",
+      "minimum_segments": 25,
+      "minimum_characters": 5000,
+      "required_section_markers": [],
+      "forbidden_text_patterns": [
+        "يضاف لاحقاً",
+        "يضاف لاحقا",
+        "نص مؤقت",
+        "placeholder",
+        "todo"
+      ],
+      "review_basis": "Exact authorized Arabic office already imported; typography-only normalization recorded in service provenance."
+    },
+    "chrysostom_liturgy:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "divine_liturgy",
+      "source_id": "metropolis_toronto_liturgy_en",
+      "source_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+      "source_snapshot_sha256": "ddec146541ab8f09f8cf45b7aaa94fa11451e07c100751863604659d713d36fa",
+      "content_sha256": "e706bca63f620be50f1dc24fc246775e6a933377cc57463bb8300526f6125303",
+      "minimum_segments": 300,
+      "minimum_characters": 30000,
+      "required_section_markers": [
+        "THE GREAT LITANY",
+        "THE ENTRANCE",
+        "THE TRISAGION HYMN",
+        "THE READINGS",
+        "THE HOLY GOSPEL",
+        "THE LITURGY OF THE FAITHFUL",
+        "THE GREAT ENTRANCE",
+        "THE CREED",
+        "THE HOLY ANAPHORA",
+        "THE LORD’S PRAYER",
+        "HOLY COMMUNION",
+        "THE DISMISSAL"
+      ],
+      "forbidden_text_patterns": [
+        "text to be added",
+        "insert the text",
+        "to be completed",
+        "placeholder",
+        "todo"
+      ],
+      "review_basis": "Complete fixed order imported from one authorized native-language lane of the registered 2017 bilingual edition; date-dependent readings and hymns remain signed overlays."
+    },
+    "chrysostom_liturgy:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "divine_liturgy",
+      "source_id": "metropolis_toronto_liturgy_el",
+      "source_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+      "source_snapshot_sha256": "ddec146541ab8f09f8cf45b7aaa94fa11451e07c100751863604659d713d36fa",
+      "content_sha256": "cc7263c5c0ba97343cafc74d3a18cc7b9617fdac2b2b56129e2f605af2a200f9",
+      "minimum_segments": 300,
+      "minimum_characters": 30000,
+      "required_section_markers": [
+        "Η ΜΕΓΑΛΗ ΣΥΝΑΠΤΗ",
+        "Η ΜΙΚΡΑ ΕΙΣΟΔΟΣ",
+        "Ο ΤΡΙΣΑΓΙΟΣ ΥΜΝΟΣ",
+        "ΤΑ ΑΝΑΓΝΩΣΜΑΤΑ",
+        "ΤΟ ΙΕΡΟΝ ΕΥΑΓΓΕΛΙΟΝ",
+        "Η ΛΕΙΤΟΥΡΓΙΑ ΤΩΝ ΠΙΣΤΩΝ",
+        "Η ΜΕΓΑΛΗ ΕΙΣΟΔΟΣ",
+        "ΣΥΜΒΟΛΟΝ ΤΗΣ ΠΙΣΤΕΩΣ",
+        "Η ΑΓΙΑ ΑΝΑΦΟΡΑ",
+        "Η ΚΥΡΙΑΚΗ ΠΡΟΣΕΥΧΗ",
+        "Η ΘΕΙΑ ΜΕΤΑΛΗΨΙΣ",
+        "ΑΠΟΛΥΣΙΣ"
+      ],
+      "forbidden_text_patterns": [
+        "text to be added",
+        "insert the text",
+        "to be completed",
+        "placeholder",
+        "todo"
+      ],
+      "review_basis": "Complete fixed order imported from one authorized native-language lane of the registered 2017 bilingual edition; date-dependent readings and hymns remain signed overlays."
+    },
+    "first_hour:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "first_hour",
+      "source_id": "orthodox_jordan_arabic_services",
+      "source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx",
+      "source_snapshot_sha256": "0b954a17a68e72ae5ae479ae7495ac16fb0626d1d549232950a17dbe32540fbd",
+      "content_sha256": "5b27dea969fa4d1d565520fc4711ef3efecba8f72133e5b08f03705b9323907f",
+      "minimum_segments": 33,
+      "minimum_characters": 4273,
+      "required_section_markers": [
+        "الساعة الأولى",
+        "في الغداة استمع صوتي يا ملكي وإلهي.",
+        "بصلوات أبائنا القديسين أيها الرب يسوع المسيح إلهنا ارحمنا وخلصنا، آمين."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "third_hour:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "third_hour",
+      "source_id": "orthodox_jordan_arabic_services",
+      "source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx",
+      "source_snapshot_sha256": "0b954a17a68e72ae5ae479ae7495ac16fb0626d1d549232950a17dbe32540fbd",
+      "content_sha256": "c337dbbc5a570c3a43b599914a8af03216f954178f776759b34bf78f8036ca73",
+      "minimum_segments": 34,
+      "minimum_characters": 5119,
+      "required_section_markers": [
+        "الساعة الثالثة",
+        "ذكصا كانين  لوالدة الإله \"تقرأ درْجا\"",
+        "بصلوات أبائنا القديسين أيها الرب يسوع المسيح إلهنا ارحمنا وخلصنا، آمين."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "sixth_hour:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "sixth_hour",
+      "source_id": "orthodox_jordan_arabic_services",
+      "source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx",
+      "source_snapshot_sha256": "0b954a17a68e72ae5ae479ae7495ac16fb0626d1d549232950a17dbe32540fbd",
+      "content_sha256": "e03cf1d9193878a16031c3db217903b2d914c0363ddaf92180c88b1a42d800ad",
+      "minimum_segments": 33,
+      "minimum_characters": 5160,
+      "required_section_markers": [
+        "الساعة السادسة",
+        "أستيخن ثاني: أنا إلى الله صرخت والرب استجاب لي.",
+        "بصلوات أبائنا القديسين أيها الرب يسوع المسيح إلهنا ارحمنا وخلصنا، آمين."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "ninth_hour:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "ninth_hour",
+      "source_id": "orthodox_jordan_arabic_services",
+      "source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx",
+      "source_snapshot_sha256": "0b954a17a68e72ae5ae479ae7495ac16fb0626d1d549232950a17dbe32540fbd",
+      "content_sha256": "69c61faf37fe6efe9cc468ddb526db10fba8314e0b03ee0f1aeba95b071d77a2",
+      "minimum_segments": 34,
+      "minimum_characters": 5335,
+      "required_section_markers": [
+        "الساعة التاسعة",
+        "أستخن ثاني: لتدخل طلبتي إلى أمامك. نجني يا رب بحسب كلمتك.",
+        "بصلوات أبائنا القديسين أيها الرب يسوع المسيح إلهنا أرحمنا وخلصنا، أمين."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "vespers:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "vespers",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/office-vespers.docx",
+      "source_snapshot_sha256": "1aac4275bfdf2da68158489e5fea0c3cc41d6a5233fe298caa11738ffde7c224",
+      "content_sha256": "a4acb62599d28a2eb4295e48ed882226b1b76fb43ead2d481c5465a24b76b5a0",
+      "minimum_segments": 193,
+      "minimum_characters": 22436,
+      "required_section_markers": [
+        "THE OFFICE OF VESPERS",
+        "PSALM 141",
+        "THE END OF VESPERS"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "small_compline:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "small_compline",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/office-small-compline.docx",
+      "source_snapshot_sha256": "6b1eb069807cfa4be7dd5dfe3e7ab105eb51efa9e7aadb97325d97e9e67e2a48",
+      "content_sha256": "148d1b8ae0531e64421a56374aa5b9290c21a69770876283b8e0c130dd98179e",
+      "minimum_segments": 167,
+      "minimum_characters": 20326,
+      "required_section_markers": [
+        "THE OFFICE OF SMALL COMPLINE",
+        "ON MONDAY NIGHT: ST. JOHN THE FORERUNNER",
+        "THE END OF SMALL COMPLINE"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "orthros:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "orthros",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/liturgics/rubrics/horologion",
+      "source_snapshot_sha256": "0b65076a3a24cd63fcda1800fb546136c3f64eb861d8d45de3121572dab1e381",
+      "content_sha256": "f42054a35b5c3c6a6016460c541cf21070facfd18ab3d5db50dc0df3fa2de081",
+      "minimum_segments": 571,
+      "minimum_characters": 80897,
+      "required_section_markers": [
+        "THE OFFICE OF DAILY MATINS",
+        "PSALM 37",
+        "THE END OF THE ALL-NIGHT VIGIL"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "first_hour:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "first_hour",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/first-hour.docx",
+      "source_snapshot_sha256": "8c51e9fb18b3800bbebe00ba4873ce3de502c8a91d6f556104199d8ca0d9255c",
+      "content_sha256": "bb8660648550de8f8592228a16dc5c5807898ad781e83d87effd94095d0e8a9b",
+      "minimum_segments": 44,
+      "minimum_characters": 8139,
+      "required_section_markers": [
+        "THE FIRST HOUR",
+        "PSALM 89",
+        "THE END OF THE FIRST HOUR"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "third_hour:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "third_hour",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/third-hour.docx",
+      "source_snapshot_sha256": "0e83096299dea370c68edd0a75451861537e6e5a1f5979ac63c9e5dd4d63b4a3",
+      "content_sha256": "ecde281ead3b43518b9520ea520209fe6ebd9e87b9f6702fdc2772df24b76d06",
+      "minimum_segments": 52,
+      "minimum_characters": 9692,
+      "required_section_markers": [
+        "THE THIRD HOUR",
+        "PSALM 50",
+        "THE END OF THE THIRD HOUR"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "sixth_hour:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "sixth_hour",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/sixth-hour.docx",
+      "source_snapshot_sha256": "560713cec18266d42314e6f69c59e98b5051a5aa396bb0cd508314852d1e2ac2",
+      "content_sha256": "31897ef4438dc6edb502568b102e8f24527ecbe26e143bb7c637fcf21a72aa02",
+      "minimum_segments": 41,
+      "minimum_characters": 8536,
+      "required_section_markers": [
+        "THE SIXTH HOUR",
+        "PSALM 90",
+        "THE END OF THE SIXTH HOUR"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "ninth_hour:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "ninth_hour",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/ninth-hour.docx",
+      "source_snapshot_sha256": "52a3ea9519fd94444c04a017d58428cb64bd456d8e0ee887bd6619f5ed8ffd53",
+      "content_sha256": "3749bf4ae0ec2c65ea1dc9e77d984a9257b8b772934b83a64de73a4928fde6da",
+      "minimum_segments": 54,
+      "minimum_characters": 9850,
+      "required_section_markers": [
+        "THE NINTH HOUR",
+        "PSALM 85",
+        "THE END OF THE NINTH HOUR"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "typika:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "typika",
+      "source_id": "oca_horologion_2021",
+      "source_url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/typika.docx",
+      "source_snapshot_sha256": "7f052e356b5be3149233709cdb3cf463ad5018c7e4d2b0c2bab3438ec368443a",
+      "content_sha256": "c4c91accec9e5cf9e249e04cb1cced49813fbb7412b3b53fea755ee41b6f73d1",
+      "minimum_segments": 123,
+      "minimum_characters": 12824,
+      "required_section_markers": [
+        "THE OFFICE OF THE TYPICA",
+        "ON TUESDAY: ST. JOHN THE FORERUNNER",
+        "THE END OF THE TYPICA"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "basil_liturgy:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "divine_liturgy_basil",
+      "source_id": "goarch_ogden_epubs",
+      "source_url": "https://www.tgoc.ut.goarch.org/doc/Divine%20Liturgy%20of%20St%20Basil.epub",
+      "source_snapshot_sha256": "ef270a31e8dc741044737390219c18194cbda4102f34761c50242f642197a313",
+      "content_sha256": "2970c02472d3d545fcd6d37ceaaf8726361459aa3f3f0dc2bf70846a17170de7",
+      "minimum_segments": 455,
+      "minimum_characters": 44511,
+      "required_section_markers": [
+        "DIVINE LITURGY OF ST. BASIL THE GREAT",
+        "[SAAS]",
+        "THANKSGIVING FOLLOWING HOLY COMMUNION"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "presanctified_liturgy:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "presanctified_liturgy",
+      "source_id": "goarch_ogden_epubs",
+      "source_url": "https://www.tgoc.ut.goarch.org/doc/Presanctified_1W.epub",
+      "source_snapshot_sha256": "0796d4d982fe7971499fb60b967f40ceb8aa65393fc3b471317b56615085048b",
+      "content_sha256": "5bd2ee58f2dc0ad75b598afc651f9573deb47c8b31a4991d60a5f6b1da48410a",
+      "minimum_segments": 590,
+      "minimum_characters": 50730,
+      "required_section_markers": [
+        "THE DIVINE LITURGY OF PRESANCTIFIED GIFTS",
+        "[SAAS]",
+        "CHOIR"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "post_communion:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "thanksgiving_after_communion",
+      "source_id": "goarch_ogden_epubs",
+      "source_url": "https://www.tgoc.ut.goarch.org/doc/Prayers%20after%20Holy%20Communion.epub",
+      "source_snapshot_sha256": "d89e1d1287d04ea51ed604efba954009adb6f5922d5bf6e103d181c55cc5792d",
+      "content_sha256": "a4d250450c90d87c29775347b4361594590b9bc781a810c9cdd1d9308dd3246b",
+      "minimum_segments": 14,
+      "minimum_characters": 4676,
+      "required_section_markers": [],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "small_compline:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "small_compline",
+      "source_id": "kilkis_greek_services",
+      "source_url": "https://metamorfosikilkis.gr/akolouthies/mikro-apodeipno/",
+      "source_snapshot_sha256": "ea53e591eb31c083f890f5693cd149e19d25b3d95b0c2f2cfac307fd09d54cef",
+      "content_sha256": "c51114b654dabd0aae0e5caf55d46aef8702bc0c027a1d1dfbe690e80e45988f",
+      "minimum_segments": 51,
+      "minimum_characters": 27388,
+      "required_section_markers": [],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "presanctified_liturgy:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "presanctified_liturgy",
+      "source_id": "imks_greek_services",
+      "source_url": "https://imks.gr/wp-content/uploads/2013/02/proigiasmeni.pdf",
+      "source_snapshot_sha256": "0431bbd0ad6ee2fb2c647b1a26dafade70f68f16da9b261678dd4e20e680d41f",
+      "content_sha256": "8cf18f8e96d01379479040cd88eefa7e06a60613f8b78a30fd04ba7995e4ac07",
+      "minimum_segments": 915,
+      "minimum_characters": 49504,
+      "required_section_markers": [
+        "ΙΕΡΕΥΣ",
+        "ΧΟΡΟΣ:"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Recovered unchanged from a prior owner-supplied exact native import; source snapshot hash, same-language structure, and no-machine-translation flags revalidated during merge."
+    },
+    "midnight_office:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "midnight_office",
+      "source_id": "arabic_great_horologion_1870",
+      "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
+      "source_snapshot_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c",
+      "content_sha256": "d09037745df229ab8908bcbab0fabd37e4fa28d830a9064d2a9b2e2ba853567f",
+      "minimum_segments": 54,
+      "minimum_characters": 15042,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "و قدوس الله .وما يتلوها بثلث مطانيات .ولان لك هو الملك.",
+        "*"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "orthros:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "orthros",
+      "source_id": "arabic_great_horologion_1870",
+      "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
+      "source_snapshot_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c",
+      "content_sha256": "b0843ee9bb725df28ec5fa7c3b12c707091223c3fc891923a5d27a3e8005a811",
+      "minimum_segments": 189,
+      "minimum_characters": 35073,
+      "required_section_markers": [],
+      "required_text_markers": [
+        ".الناهضمن منه الشاروبيم وترتجف",
+        "نسبحك نباركك .نسجد لك نجدك .نشكرك لاجل"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "typika:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "typika",
+      "source_id": "arabic_great_horologion_1870",
+      "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
+      "source_snapshot_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c",
+      "content_sha256": "0f57db4e9a20fe363f939e12df5b92d295584535eda20ae5fa4bdb66b41a799b",
+      "minimum_segments": 44,
+      "minimum_characters": 10262,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ايها الاله رب القوات .انظر امامك صفحة هـ ) ١٧",
+        "20"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "vespers:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "vespers",
+      "source_id": "arabic_great_horologion_1870",
+      "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
+      "source_snapshot_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c",
+      "content_sha256": "cc9d7e8a8716cc06905adf7e8e5a7393c5f956669db1126d9cd3b7fe19f76985",
+      "minimum_segments": 45,
+      "minimum_characters": 8874,
+      "required_section_markers": [],
+      "required_text_markers": [
+        ".",
+        "*"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "small_compline:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "small_compline",
+      "source_id": "arabic_great_horologion_1870",
+      "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
+      "source_snapshot_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c",
+      "content_sha256": "b59ef84c48411c83be13d9683f15234e8a807725a3136709cdbda29281932605",
+      "minimum_segments": 14,
+      "minimum_characters": 4072,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "وارناالشرف ومجد ابنك والهنا المحتجزوصفه .الذي افوز",
+        "لاني أنا عارف بالمي .وخطيتي امامي في كل حين."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "presanctified_liturgy:ar": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "presanctified_liturgy",
+      "source_id": "orthodox_jordan_arabic_services",
+      "source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "source_snapshot_sha256": "3caf416f2fbcb91927159f6b60a003b75b6634963ca49754d46322a41e08fcb1",
+      "content_sha256": "9567d11fab5e0853211d4f85367783a6f83d77d0a8febf47989a1ab6eb321ac4",
+      "minimum_segments": 10,
+      "minimum_characters": 3124,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "خدمة البرويجيسميني",
+        "وبالتالي علينا هنا أن ننوه بأن لا يُفهم من الكلام السالف الذكر أننا نستطيع المناولة يومياً، بالطبع هذا محبب ولكنه يتطلب استعداداً كبيراً جداً وحياة روحية متقدمة. ولكي نكون في أمان "
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "vespers:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "vespers",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "f62182c6a20f5c48a45073ad1d4c8000690b774a1148872322461307b86f4b22",
+      "content_sha256": "10e74d137eb71113064406becd4c29cf9c5596cfea7f6085a074acd53d76dbe3",
+      "minimum_segments": 236,
+      "minimum_characters": 16845,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΕΣΠΕΡΙΝΟΣ",
+        "Χριστός ανέστη εκ νεκρών, θανάτω θάνατον πατήσας, καί εν τοίς μνήμασι, ζωήν χαρισάμενος."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "orthros:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "orthros",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5",
+      "content_sha256": "7d2cd152925a4ebe4030371ca45ec317d08881e0a9d0a6e3022c6eac3255c743",
+      "minimum_segments": 743,
+      "minimum_characters": 55199,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΟΡΘΡΟΣ",
+        "Α π ό λ υ σ ι ς"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "midnight_office:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "midnight_office",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853",
+      "content_sha256": "f2b4a5b30d2c7ba605d1860e96b2839965e2129bffcfd6e3fe41143242295f4f",
+      "minimum_segments": 91,
+      "minimum_characters": 8062,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΜΕΣΟΝΥΚΤΙΚΟΥ",
+        "ο Χορός. Αμήν."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "first_hour:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "first_hour",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853",
+      "content_sha256": "4030c1112ea8feaacdf5c8ea8a671cbc85112b6180f928aebb71b3f3fff4fe1b",
+      "minimum_segments": 91,
+      "minimum_characters": 6686,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΑΚΟΛΟΥΘΙΑ ΤΗΣ Α’ ΩΡΑΣ",
+        "ο Ιερεύς αμέσως τήν Απόλυσιν"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "third_hour:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "third_hour",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853",
+      "content_sha256": "b980d1b57380375f0a89a0934ccf04f2aec9aefe73ac3f23a47bfa7477f0d9d5",
+      "minimum_segments": 106,
+      "minimum_characters": 7596,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΑΚΟΛΟΥΘΙΑ ΤΗΣ Γ’ ΩΡΑΣ",
+        "ο Ιερεύς αμέσως τήν Απόλυσιν"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "sixth_hour:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "sixth_hour",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853",
+      "content_sha256": "7fc4a06258d5aec1185a2845634e7009fbe68872d6ff696ef8656f258007cdc4",
+      "minimum_segments": 97,
+      "minimum_characters": 7607,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΑΚΟΛΟΥΘΙΑ ΤΗΣ ΣΤ’ ΩΡΑΣ",
+        "ο Ιερεύς αμέσως τήν Απόλυσιν"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "ninth_hour:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "ninth_hour",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853",
+      "content_sha256": "46bc94dfb386d01cc7882de490fbb06845a8b5f404a8d720c61f078ab84ff28f",
+      "minimum_segments": 91,
+      "minimum_characters": 7698,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΑΚΟΛΟΥΘΙΑ ΤΗΣ Θ’ ΩΡΑΣ",
+        "ο Ιερεύς αμέσως τήν Απόλυσιν"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "typika:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "typika",
+      "source_id": "goarch_glt_greek",
+      "source_url": "https://digitalchantstand.goarch.org/",
+      "source_snapshot_sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5",
+      "content_sha256": "dad32fccecb36099e1e4d21d14c6390b54218bba9cc7493d12d4b1976c835a65",
+      "minimum_segments": 1252,
+      "minimum_characters": 138782,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "ΑΚΟΛΟΥΘΙΑ ΤΩΝ ΤΥΠΙΚΩΝ",
+        "Αντιλαβού, σώσον, ελέησον, καί διαφύλαξον ημάς, ο Θεός, τή σή χάριτι."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "basil_liturgy:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "divine_liturgy_basil",
+      "source_id": "ecumenical_patriarchate_ieratikon_1875",
+      "source_url": "https://archive.org/details/ieratikon-1875",
+      "source_snapshot_sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8",
+      "content_sha256": "68a56742e9ab6e0376269654774f01731ab07f40bd860cfa716bbcc8ffb99979",
+      "minimum_segments": 56,
+      "minimum_characters": 31805,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "αγίω Πνεύματι . Και γίνεται Απόλυσις .",
+        "αίρων την αμαρτίαν του κόσμου, ο μόσχος δ άμω"
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "proskomide:el": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "proskomide",
+      "source_id": "ecumenical_patriarchate_ieratikon_1875",
+      "source_url": "https://archive.org/details/ieratikon-1875",
+      "source_snapshot_sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8",
+      "content_sha256": "b03c0037a467272dfe73637d8e8b900fe0dffec97555ce8f6b503d4dac1bcc68",
+      "minimum_segments": 4,
+      "minimum_characters": 1619,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "τωλού και αναξίου δούλου σου τα Δώρα ταύτα . Συ",
+        "ειρήνην τω κόσμω, παρα του Κυρίου αίτησώμεθα."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    },
+    "proskomide:en": {
+      "status": "complete_exact_native_edition",
+      "packaged_service_id": "proskomide",
+      "source_id": "hapgood_service_book_1906",
+      "source_url": "https://archive.org/details/servicebookofhol00orth",
+      "source_snapshot_sha256": "b0b66bf496afa245ba96832580ef99ce9269ca727e71dea1bbdae8da1f6ef24c",
+      "content_sha256": "c5d492079c28271a9ae91f97db9d6242f2455ac01039050b6bede01c71b180cd",
+      "minimum_segments": 19,
+      "minimum_characters": 21964,
+      "required_section_markers": [],
+      "required_text_markers": [
+        "Basil's Liturgy, as the latter, in turn, was a later and abbreviated form of a",
+        "D~acm.Let us pray to the Lord."
+      ],
+      "forbidden_text_patterns": [
+        "placeholder",
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
+      ],
+      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+    }
+  },
+  "recovered_exact_lane_count": 21
+}

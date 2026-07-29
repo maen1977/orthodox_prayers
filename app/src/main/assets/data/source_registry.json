@@ -608,6 +608,71 @@
       "health": []
     },
     {
+      "id": "goarch_digital_chant_stand_greek",
+      "name": {
+        "ar": "منصة الترتيل الرقمية — اليونانية",
+        "en": "GOARCH Digital Chant Stand — Greek",
+        "el": "GOARCH Digital Chant Stand — Greek"
+      },
+      "url": "https://digitalchantstand.goarch.org/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "daily_texts",
+        "liturgy",
+        "services"
+      ],
+      "used_for": {
+        "ar": "بنية الخدمات والقطع المتغيرة باللغة اليونانية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "goarch_ogden_epubs",
+      "name": {
+        "ar": "Transfiguration Greek Orthodox Church, Ogden — GOARCH",
+        "en": "Transfiguration Greek Orthodox Church, Ogden — GOARCH",
+        "el": "Transfiguration Greek Orthodox Church, Ogden — GOARCH"
+      },
+      "url": "https://www.tgoc.ut.goarch.org/epub.htm",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "basil_liturgy",
+        "post_communion",
+        "pre_communion",
+        "presanctified_liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: basil_liturgy, presanctified_liturgy, pre_communion, post_communion.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
       "id": "goarch_synekdemos",
       "name": {
         "ar": "كتاب الصلوات اليومية Synekdemos",
@@ -624,6 +689,66 @@
       ],
       "used_for": {
         "ar": "يُستخدم في: prayers.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "imks_greek_services",
+      "name": {
+        "ar": "Ιερά Μητρόπολις Κισάμου και Σελίνου",
+        "en": "Ιερά Μητρόπολις Κισάμου και Σελίνου",
+        "el": "Ιερά Μητρόπολις Κισάμου και Σελίνου"
+      },
+      "url": "https://imks.gr/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "presanctified_liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: presanctified_liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "kilkis_greek_services",
+      "name": {
+        "ar": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς",
+        "en": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς",
+        "el": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς"
+      },
+      "url": "https://metamorfosikilkis.gr/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "small_compline"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: small_compline.",
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },
@@ -684,6 +809,41 @@
       ],
       "used_for": {
         "ar": "يُستخدم في: liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "oca_horologion_2021",
+      "name": {
+        "ar": "Orthodox Church in America — Horologion",
+        "en": "Orthodox Church in America — Horologion",
+        "el": "Orthodox Church in America — Horologion"
+      },
+      "url": "https://www.oca.org/liturgics/rubrics/horologion",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "compline",
+        "horologion",
+        "hours",
+        "matins",
+        "typika",
+        "vespers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: horologion, vespers, matins, hours, typika, compline.",
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },
@@ -766,6 +926,40 @@
       ]
     },
     {
+      "id": "orthodox_jordan_arabic_services",
+      "name": {
+        "ar": "مطرانية الروم الأرثوذكس في الأردن",
+        "en": "مطرانية الروم الأرثوذكس في الأردن",
+        "el": "مطرانية الروم الأرثوذكس في الأردن"
+      },
+      "url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "hours",
+        "matins",
+        "post_communion",
+        "pre_communion",
+        "vespers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: vespers, matins, hours, pre_communion, post_communion.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
       "id": "ebible_arabic_van_dyck",
       "name": {
         "ar": "الكتاب المقدس العربي — فان دايك",
@@ -795,7 +989,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "6db0bdf57f13ac19f511c95d777bd46c1cfe2eb4e0fc7bd1b43f4b4e7c9aecbc",
+      "content_sha256": "3500180ffbba01111176d0c92b4bf910a89477c5588aef49660b66357160bab0",
       "source_snapshot_sha256": "c393da8bd8bfd485f6906702e559b868fcfb83e4c94b76d63b96adb84837cd62",
       "source_title": "الكتاب المقدس باللغة العربية، فان دايك"
     },
@@ -829,7 +1023,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "e5d4e5e44ed76c9597d52c04c4ed555b292d79c171c43c72cf3e7fb0f7b951c9",
+      "content_sha256": "268c4f24d727008b022b980ab04796726a7df57dcfd41c6d5b95d23f78c86526",
       "source_snapshot_sha256": "0a2af3439977eece7eed0ef6f31fd684065a4580b2d95d8936dbfab62b24ffad",
       "source_title": "1904 Patriarchal Greek New Testament"
     },
@@ -863,7 +1057,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "b6464a2477a3cf7bba3633b5400ca9bbdefd50cc130169e2dbe878cd9ff4c653",
+      "content_sha256": "8ed83a1bff59dc180cea94e949b117adf9725947d25fc7151c23b37c3507648e",
       "source_snapshot_sha256": "53feb24694bdd43fab1077bfcefd8571da43e20b84e289393ef9b0c54ce34202",
       "source_title": "World English Bible"
     }

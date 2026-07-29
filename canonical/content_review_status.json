@@ -6,7 +6,8 @@
       "automatic_official_source_verified",
       "automatic_pinned_exact_text_verified",
       "blocked_missing_official_source",
-      "automatic_verified_dynamic_with_pinned_static"
+      "automatic_verified_dynamic_with_pinned_static",
+      "automatic_native_lanes_verified_release_gate_partial"
     ],
     "publication_rule": "Only exact official-source or pinned exact-text records may be published. Any missing, stale, poisoned, conflicting, paraphrased, or free-translated text is blocked and the last signed good copy remains active."
   },
@@ -74,6 +75,44 @@
     "thanksgiving_after_communion": {
       "status": "automatic_pinned_exact_text_verified",
       "evidence": "scripts/validate_public_source_registry.py"
+    },
+    "first_hour": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "third_hour": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "sixth_hour": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "ninth_hour": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "typika": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "divine_liturgy_basil": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "presanctified_liturgy": {
+      "status": "automatic_native_lanes_verified_release_gate_partial",
+      "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
+    },
+    "midnight_office": {
+      "status": "SOURCE_BACKED_NATIVE_LANES_PARTIAL",
+      "reviewed": false,
+      "notes": "Native editions are complete only in the languages marked by the strict completeness manifest."
+    },
+    "proskomide": {
+      "status": "SOURCE_BACKED_NATIVE_LANES_PARTIAL",
+      "reviewed": false,
+      "notes": "Native editions are complete only in the languages marked by the strict completeness manifest."
     }
   }
 }

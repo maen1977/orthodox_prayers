@@ -185,8 +185,15 @@ class R21Phase5AnnualPropersTests(unittest.TestCase):
 
     def test_religious_completion_claim_remains_blocked(self):
         manifest = json.loads((ROOT / "canonical/religious_completeness_manifest.json").read_text(encoding="utf-8"))
-        for lang in LANGS:
-            self.assertNotEqual(manifest["production_complete_status"], manifest["languages"][lang]["chrysostom_liturgy"])
+        self.assertNotEqual(
+            manifest["production_complete_status"],
+            manifest["languages"]["ar"]["chrysostom_liturgy"],
+        )
+        for language in ("en", "el"):
+            self.assertEqual(
+                manifest["production_complete_status"],
+                manifest["languages"][language]["chrysostom_liturgy"],
+            )
 
 
 if __name__ == "__main__":

@@ -1042,6 +1042,8 @@ SUNDAY_PROKEIMENA = {
 DAILY_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "daily_propers.json").read_text(encoding="utf-8"))
 RESURRECTIONAL_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "resurrectional_propers.json").read_text(encoding="utf-8"))
 DATED_LITURGICAL_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "dated_liturgical_propers.json").read_text(encoding="utf-8"))
+JORDAN_2026_H2_LECTIONARY_REGISTRY = json.loads((ROOT / "canonical" / "jordan_2026_h2_lectionary.json").read_text(encoding="utf-8"))
+JORDAN_2026_H2_BY_DATE = {item.get("date_iso"): item for item in JORDAN_2026_H2_LECTIONARY_REGISTRY.get("days", []) if isinstance(item, dict) and item.get("date_iso")}
 PASCHAL_CYCLE_PROPERS_REGISTRY = json.loads((ROOT / "canonical" / "paschal_cycle_propers.json").read_text(encoding="utf-8"))
 LITURGY_VARIABLE_PARTS_REGISTRY = json.loads((ROOT / "canonical" / "liturgy_variable_parts.json").read_text(encoding="utf-8"))
 
@@ -1101,6 +1103,67 @@ def fixed_proper_entry(info: dict) -> dict | None:
 def dated_liturgical_proper_entry(day: date) -> dict | None:
     entry = DATED_LITURGICAL_PROPERS_REGISTRY.get("dates", {}).get(day.isoformat())
     return copy.deepcopy(entry) if isinstance(entry, dict) else None
+
+
+def h2_lectionary_entry(day: date) -> dict | None:
+    entry = JORDAN_2026_H2_BY_DATE.get(day.isoformat())
+    return copy.deepcopy(entry) if isinstance(entry, dict) else None
+
+
+def _pinned_reference_reading(kind: str, payload: dict, day_entry: dict) -> dict:
+    canonical_reference = str(payload.get("canonical_reference") or "").strip()
+    reference = _localized(payload.get("reference"))
+    titles = {
+        "matins_gospel": loc("إنجيل السحر", "Matins Gospel", "Ἑωθινὸν Εὐαγγέλιον"),
+        "epistle": loc("الرسالة", "Epistle", "Ἀπόστολος"),
+        "gospel": loc("الإنجيل", "Gospel", "Εὐαγγέλιον"),
+    }
+    sources = day_entry.get("sources") if isinstance(day_entry.get("sources"), dict) else {}
+    source_url = str(sources.get("regular_cycle") or sources.get("old_calendar_cross_check") or "")
+    verification = {
+        lang: {
+            "status": "PINNED_EXACT_REFERENCE_TEXT_PENDING_NATIVE_CORPUS",
+            "source_id": "official_orthodox_regular_cycle_with_jordan_old_calendar_overrides",
+            "source_url": source_url,
+            "canonical_reference": canonical_reference,
+            "reference_available": bool(reference.get(lang)),
+            "text_available": False,
+            "ai_translation_used": False,
+            "automatic_diacritization_used": False,
+        } for lang in ("ar", "en", "el")
+    }
+    return {
+        "icon": "📖" if kind in {"gospel", "matins_gospel"} else "📜",
+        "kind": kind,
+        "title": titles[kind],
+        "reference": reference,
+        "body": reading_loc(),
+        "source": {lang: source_url for lang in ("ar", "en", "el")},
+        "native_source_verification": verification,
+        "translation_locked": True,
+        "publication_status": "PINNED_EXACT_REFERENCE_TEXT_PENDING_NATIVE_CORPUS",
+        "integrity": {
+            "status": "PINNED_EXACT_REFERENCE",
+            "canonical_reference": canonical_reference,
+            "calendar": "JORDAN_JERUSALEM_OLD_CALENDAR",
+            "reference_registry": "canonical/jordan_2026_h2_lectionary.json",
+            "ai_translation_used": False,
+            "automatic_diacritization_used": False,
+        },
+    }
+
+
+def h2_reference_readings(day: date, info: dict) -> list[dict] | None:
+    entry = h2_lectionary_entry(day)
+    if not entry:
+        return None
+    refs = entry.get("reading_references") if isinstance(entry.get("reading_references"), dict) else {}
+    resolved = [default_prokeimenon(info, day)]
+    for kind in ("matins_gospel", "epistle", "gospel"):
+        payload = refs.get(kind)
+        if isinstance(payload, dict) and payload.get("canonical_reference"):
+            resolved.append(_pinned_reference_reading(kind, payload, entry))
+    return resolved
 
 
 def paschal_cycle_proper_entry(day: date, info: dict) -> dict | None:
@@ -1235,6 +1298,9 @@ def default_prokeimenon(info: dict, day: date | None = None) -> dict:
 
 def reading_defaults(info: dict, day: date | None = None) -> list[dict]:
     day = day or date.today()
+    h2 = h2_reference_readings(day, info)
+    if h2 is not None:
+        return h2
     if info["julian_month"] == 6 and info["julian_day"] == 29:
         return [
             default_prokeimenon(info, day),
@@ -2039,7 +2105,10 @@ def apply_override(day: date, data: dict) -> dict:
 
 
 def discovery_readings(day: date, info: dict) -> list[dict]:
-    """Resolve a pinned dated authority first; otherwise use discovery only."""
+    """Resolve the pinned annual registry first, then dated authorities, then discovery."""
+    h2 = h2_reference_readings(day, info)
+    if h2 is not None:
+        return h2
     dated = dated_liturgical_proper_entry(day)
     if dated and isinstance(dated.get("readings"), dict):
         resolved = [default_prokeimenon(info, day)]

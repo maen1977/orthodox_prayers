@@ -21,6 +21,7 @@
   "language_lanes": {
     "ar": {
       "priority": [
+        "orthodox_jordan_arabic_services",
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
         "antioch_archdiocese_tripoli_ar",
@@ -33,6 +34,8 @@
     },
     "en": {
       "priority": [
+        "oca_horologion_2021",
+        "goarch_ogden_epubs",
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
         "goarch_digital_chant_stand_english",
@@ -47,6 +50,8 @@
     },
     "el": {
       "priority": [
+        "kilkis_greek_services",
+        "imks_greek_services",
         "church_of_greece_apostoliki_diakonia",
         "church_of_greece_ecclesia",
         "jerusalem_patriarchate_el",
@@ -294,6 +299,78 @@
       "permission_basis": "CONFIRMED_BY_PROJECT_OWNER; retain external authorization record before public distribution",
       "title": "Greek Orthodox Metropolis of Toronto bilingual Divine Liturgy (2017)",
       "role": "authorized_native_liturgy_text"
+    },
+    "goarch_ogden_epubs": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.tgoc.ut.goarch.org/epub.htm",
+      "capabilities": [
+        "basil_liturgy",
+        "presanctified_liturgy",
+        "pre_communion",
+        "post_communion"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "title": "GOARCH Ogden — Digital Chant Stand service eBooks",
+      "role": "authorized_native_service_text"
+    },
+    "imks_greek_services": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://imks.gr/",
+      "capabilities": [
+        "presanctified_liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "title": "Ιερά Μητρόπολις Κισάμου και Σελίνου — Προηγιασμένη",
+      "role": "authorized_native_service_text"
+    },
+    "kilkis_greek_services": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://metamorfosikilkis.gr/",
+      "capabilities": [
+        "small_compline"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "title": "Ι. Μ. Ναός Μεταμορφώσεως Σωτήρος Κιλκίς — Μικρό Απόδειπνο",
+      "role": "authorized_native_service_text"
+    },
+    "oca_horologion_2021": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.oca.org/",
+      "capabilities": [
+        "horologion",
+        "vespers",
+        "matins",
+        "hours",
+        "typika",
+        "compline"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "title": "Orthodox Church in America — Horologion",
+      "role": "authorized_native_horologion_text"
+    },
+    "orthodox_jordan_arabic_services": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://orthodoxjordan.org/",
+      "capabilities": [
+        "vespers",
+        "matins",
+        "hours",
+        "pre_communion",
+        "post_communion"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "title": "مطرانية الروم الأرثوذكس في الأردن — نصوص الصلوات",
+      "role": "authorized_native_service_text"
     }
   },
   "publication": {

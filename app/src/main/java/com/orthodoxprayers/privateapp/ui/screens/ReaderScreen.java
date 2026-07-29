@@ -730,7 +730,10 @@ public final class ReaderScreen extends BaseScreen {
     }
 
     private boolean isLiturgy() {
-        return "divine_liturgy".equals(serviceId) || "next_sunday_full_liturgy".equals(serviceId);
+        String baseId = serviceId;
+        int separator = baseId.indexOf("::");
+        if (separator >= 0) baseId = baseId.substring(separator + 2);
+        return "divine_liturgy".equals(baseId) || "next_sunday_full_liturgy".equals(baseId);
     }
 
     @Override

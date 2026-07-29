@@ -75,16 +75,16 @@
     },
     "small_compline": {
       "ar": {
-        "source_id": "orthodox_jordan",
-        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+        "source_id": "arabic_great_horologion_1870",
+        "url": "https://books.google.com/books?id=public-domain-horologion-1870"
       },
       "el": {
-        "source_id": "church_of_greece_apostoliki_diakonia",
-        "url": "https://apostoliki-diakonia.gr/"
+        "source_id": "kilkis_greek_services",
+        "url": "https://metamorfosikilkis.gr/akolouthies/mikro-apodeipno/"
       },
       "en": {
-        "source_id": "goarch_synekdemos",
-        "url": "https://www.goarch.org/-/the-synekdemos-daily-prayers-for-orthodox-christians"
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/office-small-compline.docx"
       }
     },
     "thanksgiving": {
@@ -159,30 +159,30 @@
     },
     "vespers": {
       "ar": {
-        "source_id": "orthodox_jordan",
-        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+        "source_id": "arabic_great_horologion_1870",
+        "url": "https://books.google.com/books?id=public-domain-horologion-1870"
       },
       "el": {
-        "source_id": "church_of_greece_apostoliki_diakonia",
-        "url": "https://apostoliki-diakonia.gr/"
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
       },
       "en": {
-        "source_id": "goarch_online_chapel",
-        "url": "https://www.goarch.org/-/daily-vespers"
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/office-vespers.docx"
       }
     },
     "orthros": {
       "ar": {
-        "source_id": "orthodox_jordan",
-        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+        "source_id": "arabic_great_horologion_1870",
+        "url": "https://books.google.com/books?id=public-domain-horologion-1870"
       },
       "el": {
-        "source_id": "church_of_greece_apostoliki_diakonia",
-        "url": "https://apostoliki-diakonia.gr/"
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
       },
       "en": {
-        "source_id": "goarch_online_chapel",
-        "url": "https://www.goarch.org/-/daily-orthros"
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/liturgics/rubrics/horologion"
       }
     },
     "pre_communion_prayers": {
@@ -191,8 +191,8 @@
         "url": "https://orthodoxjordan.org/صلاة-المطالبسي-قبل-المناولة/"
       },
       "en": {
-        "source_id": "metropolis_toronto_liturgy_en",
-        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf"
+        "source_id": "goarch_ogden_epubs",
+        "url": "https://www.tgoc.ut.goarch.org/doc/Communion%20Prayer.epub"
       },
       "el": {
         "source_id": "metropolis_toronto_liturgy_el",
@@ -205,12 +205,138 @@
         "url": "https://orthodoxjordan.org/صلاة-الشكر-بعد-المناولة/"
       },
       "en": {
-        "source_id": "metropolis_toronto_liturgy_en",
-        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf"
+        "source_id": "goarch_ogden_epubs",
+        "url": "https://www.tgoc.ut.goarch.org/doc/Prayers%20after%20Holy%20Communion.epub"
       },
       "el": {
         "source_id": "metropolis_toronto_liturgy_el",
         "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf"
+      }
+    },
+    "first_hour": {
+      "ar": {
+        "source_id": "orthodox_jordan_arabic_services",
+        "url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx"
+      },
+      "en": {
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/first-hour.docx"
+      },
+      "el": {
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
+      }
+    },
+    "third_hour": {
+      "ar": {
+        "source_id": "orthodox_jordan_arabic_services",
+        "url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx"
+      },
+      "en": {
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/third-hour.docx"
+      },
+      "el": {
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
+      }
+    },
+    "sixth_hour": {
+      "ar": {
+        "source_id": "orthodox_jordan_arabic_services",
+        "url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx"
+      },
+      "en": {
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/sixth-hour.docx"
+      },
+      "el": {
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
+      }
+    },
+    "ninth_hour": {
+      "ar": {
+        "source_id": "orthodox_jordan_arabic_services",
+        "url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/صلاة-الساعات.docx"
+      },
+      "en": {
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/ninth-hour.docx"
+      },
+      "el": {
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
+      }
+    },
+    "typika": {
+      "ar": {
+        "source_id": "arabic_great_horologion_1870",
+        "url": "https://books.google.com/books?id=public-domain-horologion-1870"
+      },
+      "en": {
+        "source_id": "oca_horologion_2021",
+        "url": "https://www.oca.org/PDF/Music/Rubrics/Horologion/typika.docx"
+      },
+      "el": {
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
+      }
+    },
+    "divine_liturgy_basil": {
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "en": {
+        "source_id": "goarch_ogden_epubs",
+        "url": "https://www.tgoc.ut.goarch.org/doc/Divine%20Liturgy%20of%20St%20Basil.epub"
+      },
+      "el": {
+        "source_id": "ecumenical_patriarchate_ieratikon_1875",
+        "url": "https://archive.org/details/ieratikon-1875"
+      }
+    },
+    "presanctified_liturgy": {
+      "ar": {
+        "source_id": "orthodox_jordan_arabic_services",
+        "url": "https://orthodoxjordan.org/تحميل-الصلوات/"
+      },
+      "en": {
+        "source_id": "goarch_ogden_epubs",
+        "url": "https://www.tgoc.ut.goarch.org/doc/Presanctified_1W.epub"
+      },
+      "el": {
+        "source_id": "imks_greek_services",
+        "url": "https://imks.gr/wp-content/uploads/2013/02/proigiasmeni.pdf"
+      }
+    },
+    "midnight_office": {
+      "ar": {
+        "source_id": "arabic_great_horologion_1870",
+        "url": "https://books.google.com/books?id=public-domain-horologion-1870"
+      },
+      "el": {
+        "source_id": "goarch_glt_greek",
+        "url": "https://digitalchantstand.goarch.org/"
+      },
+      "en": {
+        "source_id": "goarch_synekdemos",
+        "url": "https://www.goarch.org/chapel/prayers"
+      }
+    },
+    "proskomide": {
+      "el": {
+        "source_id": "ecumenical_patriarchate_ieratikon_1875",
+        "url": "https://archive.org/details/ieratikon-1875"
+      },
+      "en": {
+        "source_id": "hapgood_service_book_1906",
+        "url": "https://archive.org/details/servicebookofhol00orth"
+      },
+      "ar": {
+        "source_id": "orthodox_jordan",
+        "url": "https://orthodoxjordan.org/"
       }
     }
   }

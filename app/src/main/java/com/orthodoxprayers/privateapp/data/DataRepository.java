@@ -35,7 +35,7 @@ public final class DataRepository {
     public interface RefreshCallback { void onComplete(RefreshResult result, String message); }
 
     private static final String TAG = "OrthodoxData";
-    private static final int MAX_JSON_BYTES = 2_000_000;
+    private static final int MAX_JSON_BYTES = 6_000_000;
     private static final int MAX_MANIFEST_BYTES = 64_000;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_DOWNLOAD_ATTEMPTS = 2;
@@ -62,6 +62,10 @@ public final class DataRepository {
     private JSONObject fallbackSourceHealth;
     private JSONObject fallbackServiceCoverage;
     private JSONObject religiousCompleteness;
+    private JSONObject calendarIndex;
+    private JSONObject rollingWeekPackage = new JSONObject();
+    private final Map<String, JSONObject> calendarByDate = new LinkedHashMap<>();
+    private final Map<String, JSONObject> rollingWeekByDate = new LinkedHashMap<>();
     private volatile boolean refreshInProgress;
     private volatile RefreshState refreshState = RefreshState.IDLE;
     private volatile String refreshMessage = "";
@@ -102,7 +106,72 @@ public final class DataRepository {
         fallbackSourceHealth = loadJsonAsset("data/source_health.json");
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
-        today = loadBestToday();
+        calendarIndex = loadJsonAsset("data/calendar_2026_h2.json");
+        indexCalendarDays();
+        activatePackage(loadBestToday());
+    }
+
+    private void indexCalendarDays() {
+        calendarByDate.clear();
+        JSONArray days = calendarIndex == null ? null : calendarIndex.optJSONArray("days");
+        if (days == null) return;
+        for (int i = 0; i < days.length(); i++) {
+            JSONObject item = days.optJSONObject(i);
+            if (item == null) continue;
+            String date = item.optString("date_iso", item.optString("date", "")).trim();
+            if (!date.isEmpty()) calendarByDate.put(date, item);
+        }
+    }
+
+    /** Compact, offline old-calendar index for 2026-07-28 through 2026-12-31. */
+    public JSONArray calendarDays() {
+        JSONArray days = calendarIndex == null ? null : calendarIndex.optJSONArray("days");
+        return days == null ? new JSONArray() : days;
+    }
+
+    public JSONObject calendarDay(String date) {
+        if (date == null) return null;
+        String normalized = date.trim();
+        JSONObject complete = rollingWeekByDate.get(normalized);
+        return complete != null ? complete : calendarByDate.get(normalized);
+    }
+
+    /** The active signed package contains today plus seven complete future days. */
+    public JSONArray rollingWeekDays() {
+        JSONArray result = new JSONArray();
+        for (JSONObject day : rollingWeekByDate.values()) result.put(day);
+        return result;
+    }
+
+    public JSONObject dayData(String date) { return calendarDay(date); }
+
+    public boolean hasCompleteRollingWeek() {
+        JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
+        return metadata != null
+                && metadata.optInt("schema_version", 0) == 1
+                && metadata.optInt("day_count", 0) == 8
+                && "COMPLETE".equals(metadata.optString("status", ""))
+                && rollingWeekByDate.size() == 8;
+    }
+
+    public String rollingWeekStartDate() {
+        JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
+        return metadata == null ? "" : metadata.optString("start_date", "");
+    }
+
+    public String rollingWeekEndDate() {
+        JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
+        return metadata == null ? "" : metadata.optString("end_date", "");
+    }
+
+    public int rollingWeekReadyDayCount() { return rollingWeekByDate.size(); }
+
+    public static String datedServiceId(String date, String serviceId) {
+        String safeDate = date == null ? "" : date.trim();
+        String safeService = serviceId == null ? "" : serviceId.trim();
+        return safeDate.matches("\\d{4}-\\d{2}-\\d{2}") && !safeService.isEmpty()
+                ? safeDate + "::" + safeService
+                : safeService;
     }
 
     public synchronized JSONObject today() { return today; }
@@ -298,7 +367,7 @@ public final class DataRepository {
         loadedStoredSource = "";
         loadedStoredHash = "";
         loadError = "";
-        today = loadBestToday();
+        activatePackage(loadBestToday());
     }
 
     public java.util.List<String> availableCachedDates() {
@@ -378,16 +447,28 @@ public final class DataRepository {
     }
 
     public JSONObject findService(String id) {
-        // Never compose a service for today with a stale signed overlay. The
-        // static service remains available, but yesterday's Epistle/Gospel are
-        // not allowed to appear under today's date.
+        String requestedId = id == null ? "" : id.trim();
+        String date = "";
+        String serviceId = requestedId;
+        int separator = requestedId.indexOf("::");
+        if (separator == 10 && requestedId.substring(0, 10).matches("\\d{4}-\\d{2}-\\d{2}")) {
+            date = requestedId.substring(0, 10);
+            serviceId = requestedId.substring(separator + 2);
+        }
+
         JSONObject dynamic = isTodayCurrent()
-                ? findServiceInArray(today().optJSONArray("services"), id)
+                ? findServiceInArray(today().optJSONArray("services"), serviceId)
                 : null;
-        JSONObject selected = dynamic != null ? dynamic : findServiceInArray(library().optJSONArray("services"), id);
+        JSONObject selected = dynamic;
+        if (!date.isEmpty()) {
+            JSONObject day = rollingWeekByDate.get(date);
+            selected = day == null ? null : findServiceInArray(day.optJSONArray("services"), serviceId);
+        }
+
+        if (selected == null) selected = findServiceInArray(library().optJSONArray("services"), serviceId);
         if (selected == null) {
             JSONObject index = searchIndex();
-            selected = index == null ? null : findServiceInArray(index.optJSONArray("reader_services"), id);
+            selected = index == null ? null : findServiceInArray(index.optJSONArray("reader_services"), serviceId);
         }
         JSONObject resolved = resolveService(selected);
         return isFollowAlongLiturgy(resolved) ? composeFollowAlongLiturgy(resolved) : resolved;
@@ -695,6 +776,8 @@ public final class DataRepository {
             JSONObject parsed = new JSONObject(new String(jsonBytes, StandardCharsets.UTF_8));
             String validationError = validate(parsed, currentAmmanDate(), true);
             if (validationError != null) throw new IllegalStateException(validationError);
+            String rollingError = validateRollingWeekPackage(parsed);
+            if (rollingError != null) throw new IllegalStateException(rollingError);
             String translationError = VerifiedContentSanitizer.firstUnsafeTranslationError(parsed);
             if (!translationError.isEmpty()) throw new IllegalStateException(translationError);
             // Defense in depth: strict payloads should be unchanged by this sanitizer.
@@ -713,7 +796,7 @@ public final class DataRepository {
             if (manifestRevision > 0L) {
                 preferences.saveAcceptedManifest(currentAmmanDate(), manifestRevision);
             }
-            synchronized (this) { today = parsed; }
+            synchronized (this) { activatePackage(parsed); }
             trustSource = "signed_remote";
             contentHash = downloadedHash;
             loadError = "";
@@ -740,6 +823,10 @@ public final class DataRepository {
     }
 
     public String validate(JSONObject data, String expectedDate, boolean requireExpectedDate) {
+        return validate(data, expectedDate, requireExpectedDate, false);
+    }
+
+    private String validate(JSONObject data, String expectedDate, boolean requireExpectedDate, boolean allowFuture) {
         if (data == null || data.length() == 0) return "payload_empty";
         if (!DataContract.supportsSchema(data.optInt("schema_version", 0))) return "schema_unsupported";
         String date = data.optString("date_iso", data.optString("date", ""));
@@ -747,7 +834,7 @@ public final class DataRepository {
         try {
             LocalDate parsedDate = LocalDate.parse(date);
             LocalDate ammanToday = LocalDate.parse(currentAmmanDate());
-            if (parsedDate.isAfter(ammanToday)) return "date_in_future:" + date;
+            if (!allowFuture && parsedDate.isAfter(ammanToday)) return "date_in_future:" + date;
         } catch (Exception error) {
             return "date_invalid:" + date;
         }
@@ -805,6 +892,61 @@ public final class DataRepository {
         return anyEpistleOrGospel ? null : "scripture_reference_missing";
     }
 
+    private String validateRollingWeekPackage(JSONObject packagePayload) {
+        JSONObject metadata = packagePayload.optJSONObject("rolling_week");
+        if (metadata == null) return null; // Backwards-compatible signed daily snapshot.
+        if (metadata.optInt("schema_version", 0) != 1) return "rolling_week_schema_unsupported";
+        if (!"TODAY_PLUS_SEVEN_COMPLETE_DAYS".equals(metadata.optString("policy", ""))) return "rolling_week_policy_invalid";
+        if (!"COMPLETE".equals(metadata.optString("status", "")) || !metadata.optBoolean("fail_closed", false)) return "rolling_week_incomplete";
+        if (metadata.optInt("day_count", 0) != 8) return "rolling_week_day_count_invalid";
+        String startValue = metadata.optString("start_date", "");
+        String endValue = metadata.optString("end_date", "");
+        if (!startValue.equals(packagePayload.optString("date_iso", ""))) return "rolling_week_start_mismatch";
+        LocalDate start;
+        try {
+            start = LocalDate.parse(startValue);
+            if (!start.plusDays(7).toString().equals(endValue)) return "rolling_week_end_mismatch";
+        } catch (Exception error) {
+            return "rolling_week_date_invalid";
+        }
+        JSONArray future = packagePayload.optJSONArray("weekly_days");
+        if (future == null || future.length() != 7) return "rolling_week_members_missing";
+        for (int i = 0; i < 7; i++) {
+            JSONObject day = future.optJSONObject(i);
+            if (day == null) return "rolling_week_member_invalid:" + i;
+            String expected = start.plusDays(i + 1L).toString();
+            String error = validate(day, expected, true, true);
+            if (error != null) return "rolling_week_" + expected + "_" + error;
+            JSONObject publication = day.optJSONObject("publication");
+            if (publication == null || !"FULL".equals(publication.optString("daily_availability", ""))) {
+                return "rolling_week_" + expected + "_not_full";
+            }
+        }
+        return null;
+    }
+
+    private synchronized void activatePackage(JSONObject candidate) {
+        rollingWeekPackage = candidate == null ? new JSONObject() : candidate;
+        rollingWeekByDate.clear();
+        if (rollingWeekPackage.length() == 0) {
+            today = new JSONObject();
+            return;
+        }
+        String rootDate = rollingWeekPackage.optString("date_iso", "").trim();
+        if (!rootDate.isEmpty()) rollingWeekByDate.put(rootDate, rollingWeekPackage);
+        JSONArray future = rollingWeekPackage.optJSONArray("weekly_days");
+        if (future != null) {
+            for (int i = 0; i < future.length(); i++) {
+                JSONObject day = future.optJSONObject(i);
+                if (day == null) continue;
+                String date = day.optString("date_iso", "").trim();
+                if (!date.isEmpty()) rollingWeekByDate.put(date, day);
+            }
+        }
+        JSONObject active = rollingWeekByDate.get(currentAmmanDate());
+        today = active != null ? active : rollingWeekPackage;
+    }
+
     public static boolean isRetryableRefreshMessage(String message) {
         String value = message == null ? "" : message;
         return value.startsWith("network_")
@@ -815,14 +957,14 @@ public final class DataRepository {
     }
 
     public String userFacingRefreshStatus() {
-        if (isRefreshing()) return local("جارٍ تحديث بيانات اليوم تلقائيًا…", "Updating today’s data automatically…", "Αὐτόματη ἐνημέρωση δεδομένων…");
+        if (isRefreshing()) return local("جارٍ تحديث خدمات الأسبوع تلقائيًا…", "Updating the week’s services automatically…", "Αὐτόματη ἐνημέρωση ἀκολουθιῶν ἑβδομάδος…");
         String code = refreshMessage == null || refreshMessage.isEmpty() ? preferences.lastRefreshMessage() : refreshMessage;
         if (code == null || code.isEmpty()) {
-            if (hasUsableCurrentData()) return local("بيانات اليوم جاهزة", "Today’s data is ready", "Τὰ σημερινὰ δεδομένα εἶναι ἕτοιμα");
-            return local("بانتظار تحديث بيانات اليوم", "Waiting for today’s data update", "Ἀναμονὴ σημερινῶν δεδομένων");
+            if (hasUsableCurrentData()) return local("خدمات اليوم والأسبوع جاهزة", "Today and the coming week are ready", "Ἡ σημερινὴ καὶ ἡ ἑβδομαδιαία ἀκολουθία εἶναι ἕτοιμες");
+            return local("بانتظار تحديث خدمات الأسبوع", "Waiting for the weekly service update", "Ἀναμονὴ ἐνημερώσεως ἑβδομάδος");
         }
-        if ("updated".equals(code) || "updated_signed".equals(code) || "updated_via_manifest".equals(code)) return local("تم تحديث بيانات اليوم والتحقق من توقيعها", "Today’s data was updated and its signature verified", "Τὰ δεδομένα ἐνημερώθηκαν καὶ ἐπαληθεύθηκαν");
-        if ("not_modified".equals(code) || "manifest_not_modified".equals(code)) return local("بيانات اليوم محدثة بالفعل", "Today’s data is already current", "Τὰ δεδομένα εἶναι ἤδη ἐνημερωμένα");
+        if ("updated".equals(code) || "updated_signed".equals(code) || "updated_via_manifest".equals(code)) return local("تم تحديث خدمات الأيام الثمانية والتحقق من توقيعها", "The eight-day service package was updated and verified", "Ἡ ὀκταήμερη δέσμη ἐνημερώθηκε καὶ ἐπαληθεύθηκε");
+        if ("not_modified".equals(code) || "manifest_not_modified".equals(code)) return local("خدمات الأسبوع محدثة بالفعل", "The weekly services are already current", "Οἱ ἀκολουθίες τῆς ἑβδομάδος εἶναι ἤδη ἐνημερωμένες");
         if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local("التحديث جارٍ الآن", "An update is already in progress", "Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη");
         if (code.startsWith("app_update_required")) return local("يلزم تحديث إصدار التطبيق لقراءة بيانات اليوم الجديدة", "The app must be updated to read today’s new data", "Απαιτεῖται νεότερη ἔκδοση τῆς ἐφαρμογῆς");
         if (code.startsWith("manifest_revision_rollback")) return local("رُفض إصدار بيانات أقدم حفاظًا على سلامة التحديث", "An older data revision was rejected for update safety", "Ἀπορρίφθηκε παλαιότερη ἀναθεώρηση δεδομένων");
@@ -895,6 +1037,8 @@ public final class DataRepository {
         JSONObject candidate = new JSONObject(new String(payload, StandardCharsets.UTF_8));
         String validationError = validate(candidate, currentAmmanDate(), requireToday);
         if (validationError != null) throw new IllegalStateException(validationError);
+        String rollingError = validateRollingWeekPackage(candidate);
+        if (rollingError != null) throw new IllegalStateException(rollingError);
         String translationError = VerifiedContentSanitizer.firstUnsafeTranslationError(candidate);
         if (!translationError.isEmpty()) throw new IllegalStateException(translationError);
         VerifiedContentSanitizer.sanitize(candidate);

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_SOURCE_ACQUISITION_PLAN_FAIL_CLOSED",
+  "rule": "A catalog listing is acquisition evidence only. It never promotes a service until the exact native source file is imported, hashed, structurally validated, and reviewed.",
+  "priority_order": [
+    "chrysostom_liturgy_ar",
+    "presanctified_liturgy_ar_en_el",
+    "basil_liturgy_ar_en_el",
+    "hours_ar_en_el",
+    "vespers_orthros_compline_ar_en_el",
+    "pre_post_communion_en_el"
+  ],
+  "sources": {
+    "orthodox_jordan_prayer_catalog": {
+      "language": "ar",
+      "source_id": "orthodox_jordan",
+      "official": true,
+      "catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "observed_services": [
+        "presanctified_liturgy",
+        "orthros",
+        "hours",
+        "vespers",
+        "great_compline"
+      ],
+      "state": "CATALOG_CONFIRMED_EXACT_FILES_NOT_YET_IMPORTED"
+    },
+    "goarch_liturgical_texts": {
+      "languages": [
+        "en",
+        "el"
+      ],
+      "source_ids": [
+        "goarch_digital_chant_stand_english",
+        "goarch_digital_chant_stand_greek"
+      ],
+      "official": true,
+      "catalog_url": "https://www.goarch.org/chapel/texts",
+      "observed_services": [
+        "basil_liturgy",
+        "chrysostom_liturgy",
+        "orthros",
+        "vespers",
+        "lenten_liturgies"
+      ],
+      "state": "CATALOG_CONFIRMED_EXACT_FILES_NOT_YET_IMPORTED"
+    },
+    "goarch_dcs_presanctified": {
+      "languages": [
+        "en",
+        "el"
+      ],
+      "official": true,
+      "catalog_url": "https://digitalchantstand.goarch.org/",
+      "observed_services": [
+        "first_hour",
+        "third_and_sixth_hours",
+        "ninth_hour",
+        "presanctified_liturgy",
+        "evening_compline",
+        "orthros"
+      ],
+      "state": "DATED_SERVICE_AVAILABLE_NEUTRAL_FIXED_EDITION_EXTRACTION_REQUIRED"
+    }
+  },
+  "promotion_requirements": [
+    "native source file retained outside public repository when licensing requires",
+    "source snapshot SHA-256",
+    "same-language exact extraction",
+    "minimum service structure",
+    "explicit variable-part slots",
+    "no OCR auto-publication",
+    "no machine translation",
+    "validator and tests pass"
+  ]
+}

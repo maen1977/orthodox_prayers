@@ -6,6 +6,8 @@ import argparse
 import json
 from pathlib import Path
 
+from validate_service_edition_evidence import collect_errors as collect_evidence_errors
+
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "canonical/religious_completeness_manifest.json"
 APP_ASSET = ROOT / "app/src/main/assets/data/religious_completeness.json"
@@ -24,8 +26,12 @@ ALLOWED_STATUSES = {
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--require-production-complete", action="store_true")
+    parser.add_argument("--declaration-only", action="store_true", help="Audit declarations without allowing a production release")
     args = parser.parse_args()
+
+    evidence_errors = collect_evidence_errors()
+    if evidence_errors:
+        raise SystemExit("Religious completeness validation failed:\n- " + "\n- ".join(evidence_errors))
 
     manifest_bytes = MANIFEST.read_bytes()
     if not APP_ASSET.is_file() or APP_ASSET.read_bytes() != manifest_bytes:
@@ -70,7 +76,7 @@ def main() -> None:
             if status == "complete_exact_native_edition":
                 complete += 1
         summaries[language] = (complete, len(required))
-        if args.require_production_complete and complete != len(required):
+        if not args.declaration_only and complete != len(required):
             errors.append(
                 f"{language}: production completeness is {complete}/{len(required)}"
             )
@@ -79,7 +85,7 @@ def main() -> None:
         print(f"RELIGIOUS_COMPLETENESS language={language} verified_complete={complete}/{total}")
     if errors:
         raise SystemExit("Religious completeness validation failed:\n- " + "\n- ".join(errors))
-    mode = "production" if args.require_production_complete else "declaration"
+    mode = "declaration" if args.declaration_only else "production"
     print(f"RELIGIOUS_COMPLETENESS_OK mode={mode}")
 
 

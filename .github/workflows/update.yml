@@ -1,4 +1,4 @@
-name: Update
+name: Rolling Week Update
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: orthodox-daily-data
+  group: orthodox-rolling-week-data
   cancel-in-progress: false
 
 env:
@@ -38,7 +38,7 @@ jobs:
     # after all external-source fetching and unsigned validation have finished.
     environment: production-data-signing
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
     steps:
       - name: Resolve mode and date
         id: resolve
@@ -148,6 +148,18 @@ jobs:
       - name: Require one consistent unsigned publication date
         if: steps.resolve.outputs.mode == 'update'
         run: python scripts/validate_publication_consistency.py --expected-date "${{ steps.resolve.outputs.date }}" --unsigned
+
+      - name: Block signing until all daily propers are reviewed
+        if: steps.resolve.outputs.mode == 'update'
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE="${{ steps.resolve.outputs.date }}"
+          python scripts/validate_rolling_week.py data/calendar/today.json --expected-start "$DATE" --require-reviewed-propers
+          for LANG in ar el en; do
+            test ! -f "data/daily/$DATE/$LANG.json" || \
+              python scripts/validate_rolling_week.py "data/daily/$DATE/$LANG.json" --expected-start "$DATE" --language "$LANG" --require-reviewed-propers
+          done
 
       - name: Prepare publication worktree before restoring key
         if: steps.resolve.outputs.mode == 'update'
@@ -302,7 +314,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TITLE="Orthodox daily update failed"
+          TITLE="Orthodox rolling-week update failed"
           BODY="Update/verification failed for ${{ steps.resolve.outputs.date }}. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           EXISTING="$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')"
           if [[ -n "$EXISTING" ]]; then gh issue comment "$EXISTING" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi

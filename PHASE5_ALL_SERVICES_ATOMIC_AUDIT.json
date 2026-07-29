@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "phase": "ALL_SERVICES_ATOMIC_PHASE5",
+  "date": "2026-07-28",
+  "status": "ATOMIC_PIPELINE_COMPLETE_SOURCE_BUNDLE_REQUIRED",
+  "claim_15_of_15": false,
+  "service_count": 15,
+  "language_count": 3,
+  "total_lanes": 45,
+  "exact_lanes_before_source_import": 4,
+  "source_lanes_required": [
+    "basil_liturgy:ar",
+    "basil_liturgy:el",
+    "basil_liturgy:en",
+    "chrysostom_liturgy:ar",
+    "first_hour:ar",
+    "first_hour:el",
+    "first_hour:en",
+    "midnight_office:ar",
+    "midnight_office:el",
+    "midnight_office:en",
+    "ninth_hour:ar",
+    "ninth_hour:el",
+    "ninth_hour:en",
+    "orthros:ar",
+    "orthros:el",
+    "orthros:en",
+    "post_communion:el",
+    "post_communion:en",
+    "pre_communion:el",
+    "pre_communion:en",
+    "presanctified_liturgy:ar",
+    "presanctified_liturgy:el",
+    "presanctified_liturgy:en",
+    "proskomide:ar",
+    "proskomide:el",
+    "proskomide:en",
+    "sixth_hour:ar",
+    "sixth_hour:el",
+    "sixth_hour:en",
+    "small_compline:ar",
+    "small_compline:el",
+    "small_compline:en",
+    "third_hour:ar",
+    "third_hour:el",
+    "third_hour:en",
+    "typika:ar",
+    "typika:el",
+    "typika:en",
+    "vespers:ar",
+    "vespers:el",
+    "vespers:en"
+  ],
+  "runtime_modified_by_inventory": false,
+  "source_bundle_present": false,
+  "prepared_candidates": 0,
+  "tests": {
+    "pytest": {
+      "passed": 307,
+      "failed": 0
+    },
+    "all_services_contract": "PASS exact=4/45 source_files_required=41",
+    "service_edition_evidence": "PASS",
+    "protected_static_files": {
+      "count": 39,
+      "status": "PASS"
+    },
+    "quality_gate_components": "PASS; combined wrapper invocation exceeded execution timeout after preceding checks and remaining checks were rerun individually",
+    "android_gradle": "UNVERIFIED_DNS_BLOCKED_BEFORE_GRADLE_DOWNLOAD"
+  },
+  "implemented": [
+    "15-service by 3-language completion contract",
+    "41-entry authorized source bundle template",
+    "fail-closed source extraction and validation",
+    "paragraph-level exact-source review packets",
+    "structured service validation with language isolation",
+    "dynamic slots for variable liturgical parts",
+    "isolated atomic promotion with rollback",
+    "production GitHub gate requiring 45/45",
+    "private source exclusion from Git"
+  ],
+  "not_completed": [
+    "The 41 missing native source lanes were not imported because their authorized source files and approved paragraph reviews are not present in the private source bundle.",
+    "No APK was built because the environment could not resolve services.gradle.org before downloading Gradle 8.13.",
+    "No production signing was performed."
+  ],
+  "required_services": [
+    "vespers",
+    "small_compline",
+    "midnight_office",
+    "orthros",
+    "first_hour",
+    "third_hour",
+    "sixth_hour",
+    "ninth_hour",
+    "typika",
+    "proskomide",
+    "chrysostom_liturgy",
+    "basil_liturgy",
+    "presanctified_liturgy",
+    "pre_communion",
+    "post_communion"
+  ],
+  "current_exact_lanes": [
+    "chrysostom_liturgy:el",
+    "chrysostom_liturgy:en",
+    "post_communion:ar",
+    "pre_communion:ar"
+  ],
+  "missing_lanes": [
+    {
+      "lane": "vespers:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "vespers:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "vespers:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "small_compline:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "small_compline:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "small_compline:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "midnight_office:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "midnight_office:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "midnight_office:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "orthros:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "orthros:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "orthros:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "first_hour:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "first_hour:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "first_hour:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "third_hour:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "third_hour:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "third_hour:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "sixth_hour:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "sixth_hour:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "sixth_hour:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "ninth_hour:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "ninth_hour:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "ninth_hour:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "typika:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "typika:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "typika:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "proskomide:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "proskomide:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "proskomide:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "chrysostom_liturgy:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "basil_liturgy:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "basil_liturgy:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "basil_liturgy:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "presanctified_liturgy:ar",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "presanctified_liturgy:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "presanctified_liturgy:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "pre_communion:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "pre_communion:el",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "post_communion:en",
+      "reason": "manifest entry missing"
+    },
+    {
+      "lane": "post_communion:el",
+      "reason": "manifest entry missing"
+    }
+  ],
+  "next_command_after_sources_are_supplied": "python scripts/prepare_all_services_completion_round.py --require-complete",
+  "production_validation_command": "python scripts/validate_all_services_completion_round.py --production"
+}

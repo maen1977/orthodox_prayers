@@ -80,7 +80,22 @@ def main() -> None:
         payload = json.loads(dated.read_text(encoding="utf-8"))
         if payload.get("date_iso") != args.date or payload.get("language") != language:
             raise SystemExit(f"invalid language lane metadata: {language}")
+        rolling = payload.get("rolling_week")
+        if rolling is not None:
+            if (
+                not isinstance(rolling, dict)
+                or rolling.get("schema_version") != 1
+                or rolling.get("start_date") != args.date
+                or rolling.get("day_count") != 8
+                or rolling.get("status") != "COMPLETE"
+                or len(payload.get("weekly_days") or []) != 7
+            ):
+                raise SystemExit(f"invalid rolling-week lane metadata: {language}")
         entry = file_entry(dated)
+        if isinstance(rolling, dict):
+            entry["coverage_start_date"] = rolling["start_date"]
+            entry["coverage_end_date"] = rolling["end_date"]
+            entry["coverage_day_count"] = rolling["day_count"]
         entry["current_path"] = current.relative_to(ROOT).as_posix()
         entry["current_signature_path"] = current.relative_to(ROOT).as_posix() + ".sig"
         languages[language] = entry
@@ -96,6 +111,8 @@ def main() -> None:
     )
     if minimum_app_version_code < 1:
         raise SystemExit("minimum app version code must be positive")
+    first_lane = json.loads((ROOT / f"data/daily/{args.date}/{next(iter(languages))}.json").read_text(encoding="utf-8"))
+    rolling = first_lane.get("rolling_week")
     manifest = {
         "manifest_schema_version": 1,
         "date_iso": args.date,
@@ -105,6 +122,14 @@ def main() -> None:
         "calendar": file_entry(calendar),
         "languages": languages,
     }
+    if isinstance(rolling, dict):
+        manifest["coverage"] = {
+            "policy": "TODAY_PLUS_SEVEN_COMPLETE_DAYS",
+            "start_date": rolling["start_date"],
+            "end_date": rolling["end_date"],
+            "day_count": rolling["day_count"],
+            "status": rolling["status"],
+        }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"UPDATE_MANIFEST_BUILT date={args.date} revision={args.revision} lanes={','.join(languages)}")

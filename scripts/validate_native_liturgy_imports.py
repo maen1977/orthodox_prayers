@@ -57,20 +57,55 @@ def main() -> None:
     require(probe.get("normalization_or_guessing_forbidden") is True, "heuristic repair must be forbidden")
     require(evidence.get("local_source_in_repository") is False, "copyrighted source PDF must remain external")
 
-    # No unreviewed Basil or Presanctified service may be present in runtime packs.
-    forbidden_ids = {"divine_liturgy_basil", "presanctified_liturgy"}
+    # Recovered exact native editions may be stored lane-by-lane, while the
+    # cross-language service remains fail-closed until all three lanes exist.
+    completeness = json.loads(
+        (ROOT / "canonical/religious_completeness_manifest.json").read_text(encoding="utf-8")
+    )
+    edition_evidence = json.loads(
+        (ROOT / "canonical/service_edition_evidence.json").read_text(encoding="utf-8")
+    )
+    complete = completeness["production_complete_status"]
+    expected_exact = {
+        ("en", "basil_liturgy", "divine_liturgy_basil"),
+        ("en", "presanctified_liturgy", "presanctified_liturgy"),
+        ("el", "presanctified_liturgy", "presanctified_liturgy"),
+    }
     for language in LANGS:
-        for relative in (f"data/services/native/library_{language}.json", f"app/src/main/assets/data/native/library_{language}.json"):
+        for relative in (
+            f"data/services/native/library_{language}.json",
+            f"app/src/main/assets/data/native/library_{language}.json",
+        ):
             payload = json.loads((ROOT / relative).read_text(encoding="utf-8"))
-            ids = {str(item.get("id") or "") for item in payload.get("services") or []}
-            require(not (ids & forbidden_ids), f"{relative}: unreviewed native service leaked into runtime")
+            service_map = {
+                str(item.get("id") or ""): item
+                for item in payload.get("services") or []
+                if isinstance(item, dict)
+            }
+            for service_name, service_id in (
+                ("basil_liturgy", "divine_liturgy_basil"),
+                ("presanctified_liturgy", "presanctified_liturgy"),
+            ):
+                require(service_id in service_map, f"{relative}: missing service shell {service_id}")
+                item = service_map[service_id]
+                lane_is_exact = (language, service_name, service_id) in expected_exact
+                declared_exact = completeness["languages"][language][service_name] == complete
+                require(declared_exact is lane_is_exact, f"{service_name}.{language}: completeness mismatch")
+                if lane_is_exact:
+                    require(item.get("recovery_status") == "RECOVERED_EXACT_NATIVE_IMPORT", f"{service_name}.{language}: exact recovery marker missing")
+                    require(len(item.get("segments") or []) > 100, f"{service_name}.{language}: exact service unexpectedly short")
+                    evidence_key = f"{service_name}:{language}"
+                    require(evidence_key in edition_evidence.get("services", {}), f"{evidence_key}: exact evidence missing")
+                else:
+                    require(item.get("recovery_status") != "RECOVERED_EXACT_NATIVE_IMPORT", f"{service_name}.{language}: unapproved exact marker")
+                    require(all(segment.get("editorial_metadata_only") is True for segment in item.get("segments") or []), f"{service_name}.{language}: unreviewed liturgical text leaked")
 
     candidate_root = ROOT / "data/services/candidates"
     require((candidate_root / "README_AR.md").is_file(), "candidate review instructions missing")
     leaked = [path for path in candidate_root.rglob("*.json")]
     require(not leaked, "unreviewed candidate JSON must not ship in this phase")
 
-    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 candidates_displayable=false arabic_pdf_extraction=blocked runtime_leaks=0")
+    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 exact_native_lanes=3 overall_displayable=false arabic_pdf_extraction=blocked")
 
 
 if __name__ == "__main__":

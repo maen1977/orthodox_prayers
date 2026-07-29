@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "rolling_week_start": "2026-07-28",
+  "rolling_week_end": "2026-08-04",
+  "required_unique_verses_per_language": 208,
+  "languages": {
+    "ar": {
+      "stored_verses": 230,
+      "required_present": 208,
+      "missing": []
+    },
+    "en": {
+      "stored_verses": 230,
+      "required_present": 208,
+      "missing": []
+    },
+    "el": {
+      "stored_verses": 230,
+      "required_present": 208,
+      "missing": []
+    }
+  }
+}

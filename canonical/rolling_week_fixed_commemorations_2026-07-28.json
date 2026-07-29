@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "calendar": "julian_old_calendar",
+  "civil_coverage": {
+    "start": "2026-07-28",
+    "end": "2026-08-04",
+    "days": 8
+  },
+  "purpose": "Verified fixed-commemoration source map. Names are not promoted into Arabic/English/Greek production payloads until each native language and its daily propers pass ecclesiastical review.",
+  "machine_translation_used": false,
+  "publication_allowed": false,
+  "days": [
+    {
+      "civil_date": "2026-07-28",
+      "old_style_date": "2026-07-15",
+      "official_name_en": "Holy Great Prince Vladimir, Equal of the Apostles; Saints Quiricus and Julitta",
+      "source_url": "https://www.oca.org/readings/daily/2026/07/15"
+    },
+    {
+      "civil_date": "2026-07-29",
+      "old_style_date": "2026-07-16",
+      "official_name_en": "Hieromartyr Athenogenes, Bishop of Heracleopolis, and his ten disciples",
+      "source_url": "https://www.oca.org/saints/all-lives/0579/07/16"
+    },
+    {
+      "civil_date": "2026-07-30",
+      "old_style_date": "2026-07-17",
+      "official_name_en": "Great Martyr Marina (Margaret) of Antioch",
+      "source_url": "https://www.oca.org/saints/all-lives/2034/07/17"
+    },
+    {
+      "civil_date": "2026-07-31",
+      "old_style_date": "2026-07-18",
+      "official_name_en": "Martyr Emilian of Silistria in Bulgaria",
+      "source_url": "https://www.oca.org/saints/all-lives/2001/07/18"
+    },
+    {
+      "civil_date": "2026-08-01",
+      "old_style_date": "2026-07-19",
+      "official_name_en": "Venerable Macrina, sister of Saint Basil the Great",
+      "source_url": "https://www.oca.org/saints/all-lives/2023/07/19"
+    },
+    {
+      "civil_date": "2026-08-02",
+      "old_style_date": "2026-07-20",
+      "official_name_en": "Holy, Glorious Prophet Elijah",
+      "source_url": "https://www.oca.org/saints/all-lives/2026/07/20"
+    },
+    {
+      "civil_date": "2026-08-03",
+      "old_style_date": "2026-07-21",
+      "official_name_en": "Prophet Ezekiel; Venerable Simeon, Fool-for-Christ, and his fellow-ascetic John",
+      "source_url": "https://www.oca.org/saints/all-lives/20143/07/21"
+    },
+    {
+      "civil_date": "2026-08-04",
+      "old_style_date": "2026-07-22",
+      "official_name_en": "Myrrhbearer and Equal of the Apostles Mary Magdalene",
+      "source_url": "https://www.oca.org/saints/all-lives/0579/07/22"
+    }
+  ],
+  "native_language_status": {
+    "ar": "REVIEW_REQUIRED_NOT_PUBLISHED",
+    "en": "FIXED_NAMES_VERIFIED; DAILY PROPERS REVIEW_REQUIRED_NOT_PUBLISHED",
+    "el": "REVIEW_REQUIRED_NOT_PUBLISHED"
+  }
+}

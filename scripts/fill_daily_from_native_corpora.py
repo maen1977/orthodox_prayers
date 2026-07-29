@@ -18,7 +18,7 @@ from enforce_native_daily_lanes import date_evidence
 from orthodox_integrity import parse_reference as parse_human_reference
 from public_domain_scripture import load_public_domain_corpus
 
-SCRIPTURE_KINDS = {"epistle", "gospel"}
+SCRIPTURE_KINDS = {"matins_gospel", "epistle", "gospel"}
 REFERENCE_RE = re.compile(r"^(?P<book>[1-3]?[A-Z]+)\.(?P<start_chapter>\d+)\.(?P<start_verse>\d+)(?:-(?:(?P<end_chapter>\d+)\.)?(?P<end_verse>\d+))?$")
 ReferenceSpan: TypeAlias = tuple[str, int, int, int, int]
 CanonicalSpans: TypeAlias = tuple[ReferenceSpan, ...]
@@ -144,11 +144,21 @@ def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any]
     return manifest, index
 
 
-def required_references(data: dict[str, Any]) -> list[tuple[str, CanonicalSpans]]:
+def current_reading_lists(data: dict[str, Any]) -> Iterable[list[Any]]:
+    """Yield today's readings and today's services, excluding preview Sundays."""
+    if isinstance(data.get("readings"), list):
+        yield data["readings"]
+    for service in data.get("services") or []:
+        if isinstance(service, dict) and isinstance(service.get("readings"), list):
+            yield service["readings"]
+
+
+def required_references(data: dict[str, Any], *, include_preview: bool = True) -> list[tuple[str, CanonicalSpans]]:
     """Return unique canonical Epistle/Gospel references required by this payload."""
     required: list[tuple[str, CanonicalSpans]] = []
     seen: set[str] = set()
-    for readings in reading_lists(data):
+    lists = reading_lists(data) if include_preview else current_reading_lists(data)
+    for readings in lists:
         for reading in readings:
             if not isinstance(reading, dict) or str(reading.get("kind") or "") not in SCRIPTURE_KINDS:
                 continue
@@ -344,17 +354,18 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
     return filled
 
 
-def process(path: Path) -> int:
+def process(path: Path, *, include_preview: bool = True) -> int:
     contract = load_contract()
     data = json.loads(path.read_text(encoding="utf-8"))
-    required = required_references(data)
+    required = required_references(data, include_preview=include_preview)
     corpora = {
         language: ensure_corpus_coverage(language, load_corpus(language, contract), required, contract)
         for language in LANGUAGES
     }
     target_date = str(data.get("date_iso") or data.get("date") or "")
     filled = 0
-    for readings in reading_lists(data):
+    lists = reading_lists(data) if include_preview else current_reading_lists(data)
+    for readings in lists:
         for reading in readings:
             if not isinstance(reading, dict):
                 continue
@@ -385,11 +396,12 @@ def process(path: Path) -> int:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("paths", nargs="*", default=["data/calendar/today.json"])
+    parser.add_argument("--current-only", action="store_true", help="fill today and today services, excluding next-Sunday previews")
     args = parser.parse_args()
     total = 0
     for raw_path in args.paths:
         path = ROOT / raw_path
-        count = process(path)
+        count = process(path, include_preview=not args.current_only)
         total += count
         print(f"Filled {count} exact same-language daily passage(s) in {path.relative_to(ROOT)}")
     print(f"Native-corpus daily fill complete; total language-passages={total}")

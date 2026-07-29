@@ -223,6 +223,8 @@ public final class SettingsScreen extends BaseScreen {
 
         TextView summary = centered(local("إصدار التطبيق: ", "App version: ", "Ἔκδοση: ") + BuildConfig.VERSION_NAME
                 + "\n" + local("تاريخ البيانات المعروضة: ", "Displayed data date: ", "Ἡμερομηνία δεδομένων: ") + dateValue
+                + "\n" + local("الخدمات مكتملة حتى: ", "Services complete through: ", "Πλήρεις ἀκολουθίες ἕως: ")
+                + (data.rollingWeekEndDate().isEmpty() ? local("غير متوفر", "Unavailable", "Μὴ διαθέσιμο") : data.rollingWeekEndDate())
                 + "\n" + local("آخر فحص ناجح: ", "Last successful check: ", "Τελευταῖος ἐπιτυχὴς ἔλεγχος: ") + lastUpdate,
                 13, ui.colors().secondaryText(), false);
         add(page.root, summary, 0, 6);

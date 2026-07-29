@@ -104,13 +104,32 @@ class R21Phase7NativeLiturgyImportTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "missing candidate"):
                 self.promoter.load_candidates("basil", candidate_dir)
 
-    def test_runtime_packs_contain_no_unreviewed_new_rite(self):
-        forbidden = {"divine_liturgy_basil", "presanctified_liturgy"}
-        for lang in LANGS:
-            for relative in (f"data/services/native/library_{lang}.json", f"app/src/main/assets/data/native/library_{lang}.json"):
+    def test_recovered_native_rites_are_lane_specific_and_overall_fail_closed(self):
+        manifest = json.loads(
+            (ROOT / "canonical/religious_completeness_manifest.json").read_text(encoding="utf-8")
+        )
+        complete = manifest["production_complete_status"]
+        self.assertEqual(complete, manifest["languages"]["en"]["basil_liturgy"])
+        self.assertEqual(complete, manifest["languages"]["en"]["presanctified_liturgy"])
+        self.assertEqual(complete, manifest["languages"]["el"]["presanctified_liturgy"])
+        self.assertNotEqual(complete, manifest["languages"]["ar"]["basil_liturgy"])
+        self.assertEqual(complete, manifest["languages"]["ar"]["presanctified_liturgy"])
+        self.assertEqual(complete, manifest["languages"]["el"]["basil_liturgy"])
+
+        minimums = {
+            ("en", "divine_liturgy_basil"): 100,
+            ("en", "presanctified_liturgy"): 100,
+            ("el", "presanctified_liturgy"): 100,
+        }
+        for (language, service_id), minimum in minimums.items():
+            for relative in (
+                f"data/services/native/library_{language}.json",
+                f"app/src/main/assets/data/native/library_{language}.json",
+            ):
                 payload = json.loads((ROOT / relative).read_text(encoding="utf-8"))
-                ids = {item.get("id") for item in payload["services"]}
-                self.assertFalse(ids & forbidden, relative)
+                item = next(service for service in payload["services"] if service.get("id") == service_id)
+                self.assertGreater(len(item.get("segments") or []), minimum, relative)
+                self.assertEqual("RECOVERED_EXACT_NATIVE_IMPORT", item.get("recovery_status"), relative)
 
     def test_basil_and_presanctified_remain_fail_closed(self):
         for service_type in ("basil", "presanctified"):
