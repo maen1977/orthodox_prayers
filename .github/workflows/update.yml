@@ -248,7 +248,14 @@ jobs:
           cp "$SOURCE/requirements-dev.txt" "$TARGET/requirements-dev.txt"
           cp "$SOURCE/.gitattributes" "$TARGET/.gitattributes"
           mkdir -p "$TARGET/scripts" "$TARGET/canonical/signing"
-          cp "$SOURCE/scripts/verify.py" "$SOURCE/scripts/verify_data_signature.py" "$SOURCE/scripts/verify_language_lanes.py" "$SOURCE/scripts/verify_update_manifest.py" "$SOURCE/scripts/validate_publication_consistency.py" "$SOURCE/scripts/validate_partial_daily.py" "$SOURCE/scripts/validate_jordan_liturgical_contract.py" "$SOURCE/scripts/validate_rolling_week.py" "$SOURCE/scripts/validate_reader_services.py" "$SOURCE/scripts/orthodox_integrity.py" "$SOURCE/scripts/official_sources.py" "$SOURCE/scripts/source_connectors.py" "$SOURCE/scripts/attach_source_intelligence.py" "$SOURCE/scripts/validate_source_intelligence.py" "$SOURCE/scripts/sign_daily_data.py" "$SOURCE/scripts/sign_language_lanes.py" "$SOURCE/scripts/build_update_manifest.py" "$SOURCE/scripts/sign_update_manifest.py" "$TARGET/scripts/"
+          # Keep the publication verifier self-contained. A whitelist previously
+          # omitted a transitive validator and allowed generation/signing to pass
+          # before the assembled publication tree failed verification.
+          rsync -a --delete "$SOURCE/scripts/" "$TARGET/scripts/"
+          test -f "$TARGET/scripts/verify.py"
+          test -f "$TARGET/scripts/verify_language_lanes.py"
+          test -f "$TARGET/scripts/validate_rolling_week.py"
+          test -f "$TARGET/scripts/validate_reader_services.py"
           cp "$SOURCE/canonical/signing/data_signing_public_key.pub" "$TARGET/canonical/signing/"
           cp "$SOURCE/canonical/jordan_liturgical_contract.json" "$SOURCE/canonical/update_contract.json" "$SOURCE/canonical/source_connectors.json" "$TARGET/canonical/"
 
@@ -258,6 +265,7 @@ jobs:
           python scripts/validate_publication_consistency.py --expected-date "${{ steps.resolve.outputs.date }}"
           python scripts/build_update_manifest.py --date "${{ steps.resolve.outputs.date }}" --revision "${{ steps.resolve.outputs.revision }}"
           python scripts/sign_update_manifest.py --private-key "$RUNNER_TEMP/data-private.pem"
+          python scripts/verify_update_manifest.py --expected-date "${{ steps.resolve.outputs.date }}"
           python scripts/verify.py --expected-date "${{ steps.resolve.outputs.date }}"
           python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
           python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"

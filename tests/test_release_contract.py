@@ -22,8 +22,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.17"', build)
-        self.assertIn("versionCode = 50017", build)
+        self.assertIn('versionName = "5.0.18"', build)
+        self.assertIn("versionCode = 50018", build)
         contract = json.loads((ROOT / "canonical/update_contract.json").read_text(encoding="utf-8"))
         self.assertEqual(50013, contract["minimum_app_version_code"])
         self.assertIn("compileSdk = 36", build)
@@ -357,8 +357,9 @@ class ReleaseContractTests(unittest.TestCase):
         ):
             self.assertTrue((ROOT / "scripts" / script).is_file())
         publication_copy = workflow.split("Assemble and sign exact publication tree", 1)[1]
-        self.assertIn('"$SOURCE/scripts/validate_rolling_week.py"', publication_copy)
-        self.assertIn('"$SOURCE/scripts/validate_reader_services.py"', publication_copy)
+        self.assertIn('rsync -a --delete "$SOURCE/scripts/" "$TARGET/scripts/"', publication_copy)
+        self.assertIn('test -f "$TARGET/scripts/validate_rolling_week.py"', publication_copy)
+        self.assertIn('test -f "$TARGET/scripts/validate_reader_services.py"', publication_copy)
         self.assertIn('"/data/daily/" + date + "/" + lane + ".json"', endpoint_policy)
         self.assertIn('"/data/daily/current/" + lane + ".json"', endpoint_policy)
         self.assertIn("preferences.effectiveLanguage()", repository)
@@ -634,7 +635,7 @@ class ReleaseContractTests(unittest.TestCase):
     def test_refresh_exceptions_future_dates_and_favorites_migration_are_hardened(self):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
         preferences = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/AppPreferences.java").read_text(encoding="utf-8")
-        self.assertIn("unexpected_refresh_error", repository)
+        self.assertIn("classifyError(error)", repository)
         self.assertIn("date_in_future", repository)
         self.assertIn("firstUnsafeTranslationError", repository)
         self.assertIn("segment_replacements", repository)

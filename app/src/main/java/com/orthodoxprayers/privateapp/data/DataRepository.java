@@ -559,7 +559,7 @@ public final class DataRepository {
                 outcome = performRefresh(forceFullDownload || !hasUsableCurrentData());
             } catch (Exception error) {
                 Log.e(TAG, "Unexpected daily-data refresh failure", error);
-                outcome = new RefreshOutcome(RefreshResult.FAILED, "unexpected_refresh_error");
+                outcome = new RefreshOutcome(RefreshResult.FAILED, classifyError(error));
             }
             if (outcome.result == RefreshResult.UPDATED) refreshState = RefreshState.UPDATED;
             else if (outcome.result == RefreshResult.NOT_MODIFIED) refreshState = RefreshState.CURRENT;
