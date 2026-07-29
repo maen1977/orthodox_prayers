@@ -127,6 +127,8 @@ def main() -> None:
             "scripts/sign_update_manifest.py",
             "scripts/verify_update_manifest.py",
             "scripts/validate_publication_consistency.py",
+            '"$SOURCE/scripts/validate_rolling_week.py"',
+            '"$SOURCE/scripts/validate_reader_services.py"',
             "canonical/update_contract.json",
             "Require one consistent unsigned publication date",
             "verified-data-commit-check",

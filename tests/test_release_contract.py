@@ -349,8 +349,16 @@ class ReleaseContractTests(unittest.TestCase):
             self.assertIn(marker, workflow)
         self.assertIn("rm -rf", workflow)
         self.assertIn("data/daily/current", workflow)
-        for script in ("update_language_lane.py", "verify_language_lanes.py"):
+        for script in (
+            "update_language_lane.py",
+            "verify_language_lanes.py",
+            "validate_rolling_week.py",
+            "validate_reader_services.py",
+        ):
             self.assertTrue((ROOT / "scripts" / script).is_file())
+        publication_copy = workflow.split("Assemble and sign exact publication tree", 1)[1]
+        self.assertIn('"$SOURCE/scripts/validate_rolling_week.py"', publication_copy)
+        self.assertIn('"$SOURCE/scripts/validate_reader_services.py"', publication_copy)
         self.assertIn('"/data/daily/" + date + "/" + lane + ".json"', endpoint_policy)
         self.assertIn('"/data/daily/current/" + lane + ".json"', endpoint_policy)
         self.assertIn("preferences.effectiveLanguage()", repository)
