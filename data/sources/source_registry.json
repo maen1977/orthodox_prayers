@@ -14,7 +14,7 @@
     "en": "This page lists active sources and connectors with authority tier and health. Listing a source never means all content is copied; religious text remains license-, verification-, and native-language-gated.",
     "el": "Ἡ σελίδα παραθέτει ἐνεργὲς πηγὲς καὶ συνδέσεις μὲ βαθμίδα ἀρχῆς καὶ κατάσταση ἐλέγχου."
   },
-  "health_date": "2026-07-29",
+  "health_date": "2026-08-05",
   "health_summary": {
     "connector_count": 9,
     "usable_connector_count": 8,
@@ -26,43 +26,26 @@
       "current": 2
     },
     "consensus": {
-      "status": "CONFLICT_REQUIRES_AUTHORITY_RULE",
+      "status": "MULTI_SOURCE_AGREEMENT",
       "fields": {
         "epistle_reference": {
-          "status": "single_source",
-          "normalized": "1 corinthians 13:4-13 14:1-5",
+          "status": "agreement",
+          "normalized": "1 corinthians 16:4-12",
           "sources": [
-            "goarch_digital_chant_stand"
+            "goarch_digital_chant_stand",
+            "oca_daily_readings"
           ]
         },
         "gospel_reference": {
           "status": "agreement",
-          "normalized": "matthew 20:1-16",
+          "normalized": "matthew 21:28-32",
           "sources": [
             "goarch_digital_chant_stand",
             "oca_daily_readings"
           ]
         }
       },
-      "conflicts": [
-        {
-          "field": "epistle_reference",
-          "variants": [
-            {
-              "normalized": "1 corinthians 13:4-13 14:1-5",
-              "sources": [
-                "goarch_digital_chant_stand"
-              ]
-            },
-            {
-              "normalized": "1 corinthians 13:4-14:5",
-              "sources": [
-                "oca_daily_readings"
-              ]
-            }
-          ]
-        }
-      ]
+      "conflicts": []
     }
   },
   "sources": [
@@ -125,10 +108,10 @@
           "authority_tier": 1,
           "publication_role": "local_primary_authority",
           "calendar_profile": "jerusalem_old_calendar",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://orthodoxjordan.org/",
           "status": "undated",
-          "checked_at_utc": "2026-07-29T05:42:46Z",
+          "checked_at_utc": "2026-07-29T11:25:58Z",
           "http_status": 200,
           "content_sha256": "a05b740956f126e9cef3eede9aade9e4960b7c552ef96993e1b7f7965a8e9de1",
           "content_bytes": 498837,
@@ -153,10 +136,10 @@
           "authority_tier": 1,
           "publication_role": "official_directory",
           "calendar_profile": "not_applicable",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
           "status": "available",
-          "checked_at_utc": "2026-07-29T05:42:47Z",
+          "checked_at_utc": "2026-07-29T11:26:00Z",
           "http_status": 200,
           "content_sha256": "5ea625a24fed0a8c014d56fcaf91d7abd01349acf7a6cdd4cd33657c8eb25b17",
           "content_bytes": 887573,
@@ -178,10 +161,10 @@
           "authority_tier": 1,
           "publication_role": "official_live_link",
           "calendar_profile": "not_applicable",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
           "status": "available",
-          "checked_at_utc": "2026-07-29T05:42:48Z",
+          "checked_at_utc": "2026-07-29T11:26:01Z",
           "http_status": 200,
           "content_sha256": "6a4a59f58299415d107b64a6ab5bf85301e8307a8d3e13b7388a9b09649ff390",
           "content_bytes": 377529,
@@ -246,10 +229,10 @@
           "authority_tier": 2,
           "publication_role": "jurisdiction_and_feast_authority",
           "calendar_profile": "jerusalem_old_calendar",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
           "status": "available",
-          "checked_at_utc": "2026-07-29T05:42:49Z",
+          "checked_at_utc": "2026-07-29T11:26:01Z",
           "http_status": 200,
           "content_sha256": "7b4d4101e6e54929088cc387faf915ac495133b40b6b953edb5dacbf5fb79fdc",
           "content_bytes": 173537,
@@ -314,10 +297,10 @@
           "authority_tier": 3,
           "publication_role": "arabic_cross_check",
           "calendar_profile": "antioch_local_calendar",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://www.antiochpatriarchate.org/",
           "status": "available",
-          "checked_at_utc": "2026-07-29T05:42:49Z",
+          "checked_at_utc": "2026-07-29T11:26:01Z",
           "http_status": 200,
           "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
           "content_bytes": 6664,
@@ -382,10 +365,10 @@
           "authority_tier": 4,
           "publication_role": "greek_language_cross_check",
           "calendar_profile": "church_of_greece_new_calendar",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://apostoliki-diakonia.gr/fk/",
           "status": "available",
-          "checked_at_utc": "2026-07-29T05:42:55Z",
+          "checked_at_utc": "2026-07-29T11:26:04Z",
           "http_status": 200,
           "content_sha256": "f400474bb6777a5e677c2d554617384679e6f3371982479bb7d42437d666abcf",
           "content_bytes": 116021,
@@ -451,35 +434,35 @@
           "authority_tier": 4,
           "publication_role": "service_structure_and_link_discovery",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
           "status": "current",
-          "checked_at_utc": "2026-07-29T05:42:50Z",
+          "checked_at_utc": "2026-07-29T11:26:01Z",
           "http_status": 200,
           "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
           "content_bytes": 2422,
-          "detected_date": "2026-07-29",
-          "epistle_reference": "1 Corinthians 13:4-13; 14:1-5",
-          "gospel_reference": "Matthew 20:1-16",
+          "detected_date": "2026-08-05",
+          "epistle_reference": "1 Corinthians 16:4-12",
+          "gospel_reference": "Matthew 21:28-32",
           "commemorations": [],
           "service_links": [
             {
               "title": "Divine Liturgy",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/h91/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/05/h91/en/index.html",
               "status": "available",
-              "content_sha256": "218f72bda0a4262949d876acfe09d00f36c55a4cb57e2bc996c75171de6549ef"
+              "content_sha256": "661e1c4e4738590279fa958471aa6cb88378092fd249038ecd976bc42ccbd699"
             },
             {
               "title": "Matins / Orthros",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/ma/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/05/ma/en/index.html",
               "status": "available",
-              "content_sha256": "22d753d7793535a87d382137469130233c6d5d8e89ab3e939b25884362d83d45"
+              "content_sha256": "ac5699d2d9c3c61e864518e4e5175b966896cd625b83076dd7abf5971a3356de"
             },
             {
               "title": "Vespers",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/07/29/li/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/05/li/en/index.html",
               "status": "available",
-              "content_sha256": "37f22e8b7dbf83a4757ba390726c1b2bf49fc90822b2b130c1cc1b6a65013e74"
+              "content_sha256": "ace4d01b64af42b08191a35f43834bf06628e20588e486953b39bd3ed74010c9"
             }
           ],
           "church_count": null,
@@ -541,10 +524,10 @@
           "authority_tier": 4,
           "publication_role": "regular_cycle_cross_check",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-07-29",
+          "target_date": "2026-08-05",
           "url": "https://www.goarch.org/chapel/",
           "status": "http_error",
-          "checked_at_utc": "2026-07-29T05:42:49Z",
+          "checked_at_utc": "2026-07-29T11:26:01Z",
           "http_status": 403,
           "content_sha256": null,
           "content_bytes": null,
@@ -592,6 +575,132 @@
       "health": []
     },
     {
+      "id": "arabic_great_horologion_1870",
+      "name": {
+        "ar": "كتاب السواعي الكبير، أورشليم 1870",
+        "en": "كتاب السواعي الكبير، أورشليم 1870",
+        "el": "كتاب السواعي الكبير، أورشليم 1870"
+      },
+      "url": "https://books.google.com/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "ecumenical_patriarchate_ieratikon_1875",
+      "name": {
+        "ar": "Ecumenical Patriarchate Ieratikon 1875",
+        "en": "Ecumenical Patriarchate Ieratikon 1875",
+        "el": "Ecumenical Patriarchate Ieratikon 1875"
+      },
+      "url": "https://archive.org/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "goarch_glt_greek",
+      "name": {
+        "ar": "Greek Horologion native text",
+        "en": "Greek Horologion native text",
+        "el": "Greek Horologion native text"
+      },
+      "url": "https://digitalchantstand.goarch.org/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "goarch_ogden_epubs",
+      "name": {
+        "ar": "Transfiguration Greek Orthodox Church, Ogden — GOARCH",
+        "en": "Transfiguration Greek Orthodox Church, Ogden — GOARCH",
+        "el": "Transfiguration Greek Orthodox Church, Ogden — GOARCH"
+      },
+      "url": "https://www.tgoc.ut.goarch.org/epub.htm",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "basil_liturgy",
+        "post_communion",
+        "pre_communion",
+        "presanctified_liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: basil_liturgy, presanctified_liturgy, pre_communion, post_communion.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
       "id": "goarch_synekdemos",
       "name": {
         "ar": "كتاب الصلوات اليومية Synekdemos",
@@ -608,6 +717,97 @@
       ],
       "used_for": {
         "ar": "يُستخدم في: prayers.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "hapgood_service_book_1906",
+      "name": {
+        "ar": "Hapgood Service Book 1906",
+        "en": "Hapgood Service Book 1906",
+        "el": "Hapgood Service Book 1906"
+      },
+      "url": "https://archive.org/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "imks_greek_services",
+      "name": {
+        "ar": "Ιερά Μητρόπολις Κισάμου και Σελίνου",
+        "en": "Ιερά Μητρόπολις Κισάμου και Σελίνου",
+        "el": "Ιερά Μητρόπολις Κισάμου και Σελίνου"
+      },
+      "url": "https://imks.gr/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "presanctified_liturgy"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: presanctified_liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "kilkis_greek_services",
+      "name": {
+        "ar": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς",
+        "en": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς",
+        "el": "Ιερός Μητροπολιτικός Ναός Μεταμορφώσεως του Σωτήρος Κιλκίς"
+      },
+      "url": "https://metamorfosikilkis.gr/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "small_compline"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: small_compline.",
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },
@@ -682,6 +882,41 @@
       "health": []
     },
     {
+      "id": "oca_horologion_2021",
+      "name": {
+        "ar": "Orthodox Church in America — Horologion",
+        "en": "Orthodox Church in America — Horologion",
+        "el": "Orthodox Church in America — Horologion"
+      },
+      "url": "https://www.oca.org/liturgics/rubrics/horologion",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "compline",
+        "horologion",
+        "hours",
+        "matins",
+        "typika",
+        "vespers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: horologion, vespers, matins, hours, typika, compline.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
       "id": "oca_official_english",
       "name": {
         "ar": "الكنيسة الأرثوذكسية في أميركا — الإنجليزية",
@@ -727,16 +962,16 @@
           "authority_tier": 5,
           "publication_role": "last_official_reference_fallback",
           "calendar_profile": "oca_calendar",
-          "target_date": "2026-07-29",
-          "url": "https://www.oca.org/readings/daily/2026/07/29",
+          "target_date": "2026-08-05",
+          "url": "https://www.oca.org/readings/daily/2026/08/05",
           "status": "current",
-          "checked_at_utc": "2026-07-29T05:42:52Z",
+          "checked_at_utc": "2026-07-29T11:26:02Z",
           "http_status": 200,
-          "content_sha256": "e95917721d95a3390815f48d269b7d27d2367a60837d9bd7b1af5bdd297c57dc",
-          "content_bytes": 14802,
-          "detected_date": "2026-07-29",
-          "epistle_reference": "1 Corinthians 13:4-14:5",
-          "gospel_reference": "Matthew 20:1-16",
+          "content_sha256": "6a2012301b1e9901dc2afae5152ce13243091d036daaa1f368cdef8a8b0fa3d8",
+          "content_bytes": 14636,
+          "detected_date": "2026-08-05",
+          "epistle_reference": "1 Corinthians 16:4-12",
+          "gospel_reference": "Matthew 21:28-32",
           "commemorations": [],
           "service_links": [],
           "church_count": null,
@@ -748,6 +983,40 @@
           ]
         }
       ]
+    },
+    {
+      "id": "orthodox_jordan_arabic_services",
+      "name": {
+        "ar": "مطرانية الروم الأرثوذكس في الأردن",
+        "en": "مطرانية الروم الأرثوذكس في الأردن",
+        "el": "مطرانية الروم الأرثوذكس في الأردن"
+      },
+      "url": "https://orthodoxjordan.org/تحميل-الصلوات-2/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "hours",
+        "matins",
+        "post_communion",
+        "pre_communion",
+        "vespers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: vespers, matins, hours, pre_communion, post_communion.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
     },
     {
       "id": "ebible_arabic_van_dyck",
@@ -779,7 +1048,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "6db0bdf57f13ac19f511c95d777bd46c1cfe2eb4e0fc7bd1b43f4b4e7c9aecbc",
+      "content_sha256": "3500180ffbba01111176d0c92b4bf910a89477c5588aef49660b66357160bab0",
       "source_snapshot_sha256": "c393da8bd8bfd485f6906702e559b868fcfb83e4c94b76d63b96adb84837cd62",
       "source_title": "الكتاب المقدس باللغة العربية، فان دايك"
     },
@@ -813,7 +1082,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "e5d4e5e44ed76c9597d52c04c4ed555b292d79c171c43c72cf3e7fb0f7b951c9",
+      "content_sha256": "268c4f24d727008b022b980ab04796726a7df57dcfd41c6d5b95d23f78c86526",
       "source_snapshot_sha256": "0a2af3439977eece7eed0ef6f31fd684065a4580b2d95d8936dbfab62b24ffad",
       "source_title": "1904 Patriarchal Greek New Testament"
     },
@@ -847,7 +1116,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "b6464a2477a3cf7bba3633b5400ca9bbdefd50cc130169e2dbe878cd9ff4c653",
+      "content_sha256": "8ed83a1bff59dc180cea94e949b117adf9725947d25fc7151c23b37c3507648e",
       "source_snapshot_sha256": "53feb24694bdd43fab1077bfcefd8571da43e20b84e289393ef9b0c54ce34202",
       "source_title": "World English Bible"
     }

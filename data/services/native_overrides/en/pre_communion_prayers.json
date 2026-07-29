@@ -1,23 +1,21 @@
 {
   "id": "pre_communion_prayers",
-  "category": "communion",
-  "icon": "🕯️",
+  "category": "liturgy",
+  "icon": "☦",
   "title": {
     "ar": "",
-    "en": "Prayers before Holy Communion",
+    "en": "Prayers Before Holy Communion",
     "el": ""
   },
   "summary": {
     "ar": "",
-    "en": "The complete four-prayer Communion preparation selection printed in the registered native English Liturgy edition.",
+    "en": "Native prayers immediately before Holy Communion.",
     "el": ""
   },
   "source_language": "en",
-  "translation_status": "native_sources_only",
-  "completion_status": "COMPLETE_AUTHORIZED_NATIVE_SELECTION",
   "notice": {
     "ar": "",
-    "en": "Personal preparation for Communion; it does not replace Orthros or the variable Sunday propers.",
+    "en": "Exact native source text; no machine translation or AI completion.",
     "el": ""
   },
   "segments": [
@@ -25,46 +23,94 @@
       "type": "section",
       "title": {
         "ar": "",
-        "en": "Prayers before Holy Communion",
+        "en": "COMMUNION PRAYER",
         "el": ""
       }
     },
     {
-      "type": "note",
-      "speaker": {
-        "ar": "",
-        "en": "Rubric",
-        "el": ""
-      },
+      "type": "text",
       "text": {
         "ar": "",
-        "en": "The Communion prayers are recited silently by those who will receive Holy Communion.",
+        "en": "I believe and confess, Lord, that You are truly the Christ, the Son of the living God, Who came into the world to save sinners, of whom I am the first. I also believe that this is truly Your pure Body and that this is truly Your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, in knowledge or in ignorance. And make me worthy, without condemnation, to partake of Your pure Mysteries for the remission of sins and for eternal life. Amen.",
         "el": ""
-      },
-      "collapsed_by_default": true
+      }
     },
     {
       "type": "text",
-      "speaker": {
-        "ar": "",
-        "en": "The faithful, silently",
-        "el": ""
-      },
       "text": {
         "ar": "",
-        "en": "(The Communion Prayers are recited silently by those who will receive Holy Communion.) I believe and confess, Lord, that You are truly the Christ, the Son of the living God, who came into the world to save sinners, of whom I am the first. I also believe that this is truly your pure Body and that this is truly your precious Blood. Therefore, I pray to You, have mercy upon me, and forgive my transgressions, voluntary and involuntary, in word and deed, known and unknown. And make me worthy without condemnation to partake of your Mysteries for the forgiveness of sins and for life eternal. Amen. How shall I, who am unworthy, enter into the splendour of your Saints? If I dare to enter into the bridal chamber, my clothing will accuse me, since it is not a wedding garment; and being bound up, I shall be cast out by the Angels. In your love, Lord, cleanse my soul and save me. Loving Master, Lord Jesus Christ, my God, let not these Holy Gifts be to my condemnation because of my unworthiness, but for the cleansing and sanctification of soul and body and the pledge of the future life and Kingdom. It is good for me to cling to God and to place in Him the hope of my salvation. Receive me today, Son of God, as a partaker of your Mystical Supper. I will not reveal your Mystery to your adversaries. Nor will I give You a kiss as did Judas. But as the thief I confess to You: Lord remember me in your Kingdom.",
+        "en": "Behold, I approach for Divine Communion. O Maker, burn me not as I partake, For You are fire consuming the unworthy. But cleanse me from every stain.",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "ar": "",
+        "en": "O Son of God, receive me today as a partaker of Your mystical supper. For I will not speak of the mystery to Your enemies, nor will I give You a kiss, as did Judas. But like the thief, I confess to You: Remember me, Lord, in Your Kingdom.",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "ar": "",
+        "en": "Tremble, O man, as you behold the divine Blood. It is a burning coal that sears the unworthy. The Body of God both deifies and nourishes me: It deifies the Spirit and wondrously nourishes the mind.",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "ar": "",
+        "en": "You have smitten me with yearning, O Christ, and by Your divine eros You have changed me. But burn up with spiritual fire my sins, and grant me to be filled with delight in You, so that, leaping for joy, I may magnify, O Good One, Your two comings.",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "ar": "",
+        "en": "How shall I, who am unworthy, enter into the splendor of Your saints? If I should dare to enter into the bridal chamber, my vesture will condemn me, since it is not a wedding garment; and being bound up, I shall be cast out by the angels. Cleanse, O Lord, the filth of my soul, and save me, as You are the one Who loves mankind. In Your love, Lord, cleanse my soul, and save me.",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "ar": "",
+        "en": "Master Who loves mankind, Lord Jesus Christ, my God, let not these Holy Gifts be to my judgment because I am unworthy, but rather for the purification and sanctification of both soul and body and the pledge of the life and Kingdom to come. It is good for me to cleave unto God and to place in Him the hope of my salvation.",
+        "el": ""
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "ar": "",
+        "en": "O Son of God, receive me today as a partaker of Your mystical supper. For I will not speak of the mystery to Your enemies, nor will I give You a kiss, as did Judas. But like the thief, I confess to You: Remember me, Lord, in Your Kingdom.",
         "el": ""
       }
     }
   ],
-  "source_provenance": {
-    "policy": "canonical/source_policy.json",
-    "source_id": "metropolis_toronto_liturgy_en",
-    "official_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
-    "status": "AUTHORIZED_NATIVE_PRAYER_BOOK_SELECTION_IMPORTED",
-    "complete_text": true,
-    "verified_on": "2026-07-26",
-    "ai_liturgical_translation_used": false,
-    "scope": "COMPLETE_SELECTION_AS_PUBLISHED_IN_REGISTERED_LITURGY_EDITION"
-  }
+  "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+  "source_document": {
+    "edition_scope": "complete_service_with_registered_variants",
+    "source_id": "goarch_ogden_epubs",
+    "source_name": "Transfiguration Greek Orthodox Church, Ogden — GOA Digital Chant Stand text",
+    "source_url": "https://www.tgoc.ut.goarch.org/doc/Communion%20Prayer.epub",
+    "files": [
+      {
+        "file": "canonical/source_editions/goarch_ogden_epubs/pre_communion.epub",
+        "source_url": "https://www.tgoc.ut.goarch.org/doc/Communion%20Prayer.epub",
+        "sha256": "28a539ac59e179157228858667c1bc394f92006cfba83d99359041debcd14f94"
+      }
+    ],
+    "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+    "machine_translation_used": false,
+    "document_sha256": "28a539ac59e179157228858667c1bc394f92006cfba83d99359041debcd14f94",
+    "private_source_file_not_packaged": true,
+    "recovered_from_owner_archive": true,
+    "source_file": "canonical/source_editions/goarch_ogden_epubs/pre_communion.epub"
+  },
+  "recovery_status": "RECOVERED_SOURCE_NATIVE_PARTIAL"
 }

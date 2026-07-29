@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "candidate_date": "2026-07-28",
+  "coverage": {
+    "start": "2026-07-28",
+    "end": "2026-08-04",
+    "days": 8
+  },
+  "candidate_state": "ENGINE_COMPLETE_CONTENT_REVIEW_REQUIRED",
+  "publication_allowed": false,
+  "signature_state": "PENDING_PROTECTED_RELEASE_SIGNER",
+  "trusted_release_preserved": {
+    "date": "2026-07-26",
+    "reason": "The private release-signing key is not available in this workspace."
+  },
+  "required_before_publication": [
+    "Import and review the fixed commemoration names in Arabic, English, and Greek from registered native sources.",
+    "Import and review all daily troparia, kontakia, prokeimena, Alleluia verses, communion hymns, and feast-specific substitutions.",
+    "Pass validate_rolling_week.py --require-reviewed-propers for the multilingual package and each lane.",
+    "Sign only in the protected production-data-signing environment."
+  ],
+  "artifacts": [
+    {
+      "path": "package.json",
+      "bytes": 2640218,
+      "sha256": "534dca147852fb2d62f85173cc1533ba4cdfd6ba44643221e8dadb8f28614e55"
+    },
+    {
+      "path": "lanes/ar.json",
+      "bytes": 1563337,
+      "sha256": "f2c62fa5de41236474cce1d8792e5f42d692e6e7cae2b4104ad60d65911d0f1d"
+    },
+    {
+      "path": "lanes/en.json",
+      "bytes": 1331437,
+      "sha256": "fe194344d1914a7fef741fa13259cd8b61a847a940314cf3faee163fbb4d5d4e"
+    },
+    {
+      "path": "lanes/el.json",
+      "bytes": 1611162,
+      "sha256": "536f4d64460cfa019d61d5cea56abec1ad954431b88be1d45972a32d302397bf"
+    }
+  ]
+}

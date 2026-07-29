@@ -1,39 +1,55 @@
 {
   "manifest_schema_version": 1,
   "date_iso": "2026-07-29",
-  "revision": 7301,
-  "published_at_utc": "2026-07-29T05:43:16Z",
+  "revision": 7601,
+  "published_at_utc": "2026-07-29T11:26:26Z",
   "minimum_app_version_code": 50013,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "f3fb6280feffb2df4c7d30e4602c0e6fefdd9d32c9fef89d75ca71fdc28b2d6f",
-    "size_bytes": 333024
+    "sha256": "c8f65a1a4d77fea6bf6edb0983178b05889025bef9233325151f0cb457bf8e65",
+    "size_bytes": 2875165
   },
   "languages": {
     "ar": {
       "path": "data/daily/2026-07-29/ar.json",
       "signature_path": "data/daily/2026-07-29/ar.json.sig",
-      "sha256": "fe7566c4ba320ca2dfbad3fb294839f8b93b4077ee16d3a2431fa2ff886bba64",
-      "size_bytes": 204593,
+      "sha256": "3fd9829eac5e5ce1ae22e7281e1602647f5aef870f5d527f5d1c4ac37c1f0219",
+      "size_bytes": 1807515,
+      "coverage_start_date": "2026-07-29",
+      "coverage_end_date": "2026-08-05",
+      "coverage_day_count": 8,
       "current_path": "data/daily/current/ar.json",
       "current_signature_path": "data/daily/current/ar.json.sig"
     },
     "en": {
       "path": "data/daily/2026-07-29/en.json",
       "signature_path": "data/daily/2026-07-29/en.json.sig",
-      "sha256": "ee05910f0bed5ed6b6dfe9a3c826fccdbc775d51c0ec145383802205e542fb4a",
-      "size_bytes": 173706,
+      "sha256": "d49876a23b24dc69a67b68a5b0601999adb7a52fe14ad385031cd087a5d643fd",
+      "size_bytes": 1550610,
+      "coverage_start_date": "2026-07-29",
+      "coverage_end_date": "2026-08-05",
+      "coverage_day_count": 8,
       "current_path": "data/daily/current/en.json",
       "current_signature_path": "data/daily/current/en.json.sig"
     },
     "el": {
       "path": "data/daily/2026-07-29/el.json",
       "signature_path": "data/daily/2026-07-29/el.json.sig",
-      "sha256": "4563af81c5a7149866449d82864ded297c408e06441797079b98f46ce45ebe96",
-      "size_bytes": 206654,
+      "sha256": "1e6e60b546b4b411f9a33b16d8534905a5cfa8c23b3432565b4abb4fee0c8e88",
+      "size_bytes": 1832578,
+      "coverage_start_date": "2026-07-29",
+      "coverage_end_date": "2026-08-05",
+      "coverage_day_count": 8,
       "current_path": "data/daily/current/el.json",
       "current_signature_path": "data/daily/current/el.json.sig"
     }
+  },
+  "coverage": {
+    "policy": "TODAY_PLUS_SEVEN_COMPLETE_DAYS",
+    "start_date": "2026-07-29",
+    "end_date": "2026-08-05",
+    "day_count": 8,
+    "status": "COMPLETE"
   }
 }

@@ -4467,18 +4467,6 @@
         },
         {
           "speaker": {
-            "ar": "القارئ",
-            "en": "Reader",
-            "el": "Ἀναγνώστης"
-          },
-          "text": {
-            "ar": "تضاف هنا طروباريات القيامة أو العيد بحسب اليوم.",
-            "en": "The resurrectional or festal troparia are inserted here according to the day.",
-            "el": "Ἐνταῦθα τίθενται τὰ ἀναστάσιμα ἢ ἑόρτια τροπάρια."
-          }
-        },
-        {
-          "speaker": {
             "ar": "الكاهن",
             "en": "Priest",
             "el": "Ἱερεύς"
@@ -4498,6 +4486,284 @@
         "dynamic_texts_fail_closed": true,
         "ai_liturgical_translation_used": false
       }
+    },
+    {
+      "id": "divine_liturgy_basil",
+      "category": "liturgy",
+      "icon": "☦",
+      "title": {
+        "ar": "قداس القديس باسيليوس الكبير",
+        "en": "Divine Liturgy of Saint Basil the Great",
+        "el": "Θεία Λειτουργία τοῦ Μεγάλου Βασιλείου"
+      },
+      "summary": {
+        "ar": "قداس القديس باسيليوس بحسب الطبعة الأصلية المسجلة.",
+        "en": "The Divine Liturgy of Saint Basil from a registered native edition.",
+        "el": "Ἡ Θεία Λειτουργία τοῦ Μεγάλου Βασιλείου ἀπὸ καταχωρισμένη πρωτότυπη ἔκδοση."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "first_hour",
+      "category": "liturgy",
+      "icon": "🕕",
+      "title": {
+        "ar": "الساعة الأولى",
+        "en": "First Hour",
+        "el": "Ἀκολουθία τῆς Αʹ Ὥρας"
+      },
+      "summary": {
+        "ar": "خدمة الساعة الأولى بحسب كتاب السواعي.",
+        "en": "The First Hour from the registered native Horologion.",
+        "el": "Ἡ Ἀκολουθία τῆς Αʹ Ὥρας ἀπὸ τὸ καταχωρισμένο Ὡρολόγιο."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "ninth_hour",
+      "category": "liturgy",
+      "icon": "🕒",
+      "title": {
+        "ar": "الساعة التاسعة",
+        "en": "Ninth Hour",
+        "el": "Ἀκολουθία τῆς Θʹ Ὥρας"
+      },
+      "summary": {
+        "ar": "خدمة الساعة التاسعة بحسب كتاب السواعي.",
+        "en": "The Ninth Hour from the registered native Horologion.",
+        "el": "Ἡ Ἀκολουθία τῆς Θʹ Ὥρας ἀπὸ τὸ καταχωρισμένο Ὡρολόγιο."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "presanctified_liturgy",
+      "category": "liturgy",
+      "icon": "☦",
+      "title": {
+        "ar": "قداس القدسات السابق تقديسها",
+        "en": "Liturgy of the Presanctified Gifts",
+        "el": "Θεία Λειτουργία τῶν Προηγιασμένων Δώρων"
+      },
+      "summary": {
+        "ar": "قداس القدسات السابق تقديسها بحسب الطبعة الأصلية المسجلة.",
+        "en": "The Liturgy of the Presanctified Gifts from a registered native edition.",
+        "el": "Ἡ Θεία Λειτουργία τῶν Προηγιασμένων Δώρων ἀπὸ καταχωρισμένη πρωτότυπη ἔκδοση."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "sixth_hour",
+      "category": "liturgy",
+      "icon": "🕛",
+      "title": {
+        "ar": "الساعة السادسة",
+        "en": "Sixth Hour",
+        "el": "Ἀκολουθία τῆς ΣΤʹ Ὥρας"
+      },
+      "summary": {
+        "ar": "خدمة الساعة السادسة بحسب كتاب السواعي.",
+        "en": "The Sixth Hour from the registered native Horologion.",
+        "el": "Ἡ Ἀκολουθία τῆς ΣΤʹ Ὥρας ἀπὸ τὸ καταχωρισμένο Ὡρολόγιο."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "third_hour",
+      "category": "liturgy",
+      "icon": "🕘",
+      "title": {
+        "ar": "الساعة الثالثة",
+        "en": "Third Hour",
+        "el": "Ἀκολουθία τῆς Γʹ Ὥρας"
+      },
+      "summary": {
+        "ar": "خدمة الساعة الثالثة بحسب كتاب السواعي.",
+        "en": "The Third Hour from the registered native Horologion.",
+        "el": "Ἡ Ἀκολουθία τῆς Γʹ Ὥρας ἀπὸ τὸ καταχωρισμένο Ὡρολόγιο."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "typika",
+      "category": "liturgy",
+      "icon": "📖",
+      "title": {
+        "ar": "خدمة التيبيكا",
+        "en": "Typika",
+        "el": "Ἀκολουθία τῶν Τυπικῶν"
+      },
+      "summary": {
+        "ar": "خدمة التيبيكا بحسب كتاب السواعي.",
+        "en": "The Typika from the registered native Horologion.",
+        "el": "Ἡ Ἀκολουθία τῶν Τυπικῶν ἀπὸ τὸ καταχωρισμένο Ὡρολόγιο."
+      },
+      "notice": {
+        "ar": "لا يُعرض النص إلا بعد استيراد طبعة عربية أصلية كاملة.",
+        "en": "Only a complete native edition is displayed.",
+        "el": "Προβάλλεται μόνο πλήρης πρωτότυπη ἔκδοση."
+      },
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل نص هذه الخدمة من حزمة اللغة الأصلية المختارة.",
+            "en": "This service is loaded from the selected native-language pack.",
+            "el": "Ἡ ἀκολουθία φορτώνεται ἀπὸ τὸ ἐπιλεγμένο πακέτο πρωτότυπης γλώσσας."
+          }
+        }
+      ],
+      "native_pack_only": true
+    },
+    {
+      "id": "midnight_office",
+      "category": "liturgy",
+      "icon": "☦",
+      "title": {
+        "ar": "صلاة نصف الليل",
+        "en": "Midnight Office",
+        "el": "Ἀκολουθία τοῦ Μεσονυκτικοῦ"
+      },
+      "summary": {
+        "ar": "خدمة صلاة نصف الليل.",
+        "en": "The complete Midnight Office.",
+        "el": "Ἡ πλήρης Ἀκολουθία τοῦ Μεσονυκτικοῦ."
+      },
+      "native_pack_only": true,
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل النص من حزمة اللغة الأصلية.",
+            "en": "Loaded from the native language pack.",
+            "el": "Φορτώνεται ἀπὸ τὸ πρωτότυπο γλωσσικὸ πακέτο."
+          }
+        }
+      ]
+    },
+    {
+      "id": "proskomide",
+      "category": "liturgy",
+      "icon": "☦",
+      "title": {
+        "ar": "خدمة التقدمة",
+        "en": "Office of Oblation",
+        "el": "Ἀκολουθία τῆς Προσκομιδῆς"
+      },
+      "summary": {
+        "ar": "خدمة إعداد وتقدمة القرابين.",
+        "en": "The Office of Oblation and preparation of the Gifts.",
+        "el": "Ἡ ἀκολουθία τῆς Προσκομιδῆς καὶ προετοιμασίας τῶν Τιμίων Δώρων."
+      },
+      "native_pack_only": true,
+      "segments": [
+        {
+          "type": "text",
+          "editorial_metadata_only": true,
+          "text": {
+            "ar": "يُحمَّل النص من حزمة اللغة الأصلية.",
+            "en": "Loaded from the native language pack.",
+            "el": "Φορτώνεται ἀπὸ τὸ πρωτότυπο γλωσσικὸ πακέτο."
+          }
+        }
+      ]
     }
   ]
 }
