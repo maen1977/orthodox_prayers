@@ -67,6 +67,7 @@ def main() -> None:
     )
     complete = completeness["production_complete_status"]
     expected_exact = {
+        ("ar", "presanctified_liturgy", "presanctified_liturgy"),
         ("en", "basil_liturgy", "divine_liturgy_basil"),
         ("en", "presanctified_liturgy", "presanctified_liturgy"),
         ("el", "presanctified_liturgy", "presanctified_liturgy"),
@@ -105,7 +106,7 @@ def main() -> None:
     leaked = [path for path in candidate_root.rglob("*.json")]
     require(not leaked, "unreviewed candidate JSON must not ship in this phase")
 
-    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 exact_native_lanes=3 overall_displayable=false arabic_pdf_extraction=blocked")
+    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 exact_native_lanes=4 overall_displayable=false arabic_pdf_extraction=blocked")
 
 
 if __name__ == "__main__":
