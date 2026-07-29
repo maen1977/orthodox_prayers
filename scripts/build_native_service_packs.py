@@ -456,6 +456,13 @@ def main() -> None:
                         key: NATIVE_SOURCE_NOTICES[lang] if key == lang else ""
                         for key in LANGS
                     }
+            # Structural metadata belongs to the reviewed source library, not to
+            # language overrides. Overrides may replace native text, but they must
+            # not move a service into a different navigation/runtime category.
+            source_category = str(raw.get("category") or "").strip()
+            if not source_category:
+                raise SystemExit(f"{service_id}: source category is missing")
+            service["category"] = source_category
             annotate_dynamic_slots(service, lang)
             annotate_delivery(service, lang)
             service.pop("translation_status", None)
