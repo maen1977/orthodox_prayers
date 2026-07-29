@@ -7968,8 +7968,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-1.txt",
             "sha256": "f62182c6a20f5c48a45073ad1d4c8000690b774a1148872322461307b86f4b22"
           }
-        ],
-        "document_sha256": "f62182c6a20f5c48a45073ad1d4c8000690b774a1148872322461307b86f4b22"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -14719,8 +14718,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-typika.txt",
             "sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
           }
-        ],
-        "document_sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -14770,24 +14768,6 @@
             "el": "αγίω Πνεύματι . Και γίνεται Απόλυσις ."
           },
           "source_paragraph": 1
-        },
-        {
-          "type": "text",
-          "text": {
-            "ar": "",
-            "en": "",
-            "el": ".\n 出 盼 留\n 望"
-          },
-          "source_paragraph": 2
-        },
-        {
-          "type": "text",
-          "text": {
-            "ar": "",
-            "en": "",
-            "el": "跑跑\n 困 密密 語 斑斑\n 等 弟"
-          },
-          "source_paragraph": 3
         },
         {
           "type": "text",
@@ -15287,13 +15267,12 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/ecumenical_patriarchate_ieratikon_1875/ieratikon_pdftotext.txt",
             "sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
           }
-        ],
-        "document_sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
-        "filled_fields": 60,
-        "total_fields": 60,
+        "filled_fields": 58,
+        "total_fields": 58,
         "complete": true
       },
       "native_source": {
@@ -15304,7 +15283,7 @@
         "url": "https://archive.org/details/ieratikon-1875",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "68a56742e9ab6e0376269654774f01731ab07f40bd860cfa716bbcc8ffb99979",
+        "content_sha256": "91f73b0697436a6599d6f70efc5e9fd0c20b2b70ac2bff9c0881fed58bf60dea",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -16170,8 +16149,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ],
-        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -17053,8 +17031,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ],
-        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -25370,8 +25347,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ],
-        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -26388,8 +26364,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ],
-        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -26798,7 +26773,8 @@
             "en": "",
             "el": "* * *"
           },
-          "source_paragraph": 41
+          "source_paragraph": 41,
+          "editorial_metadata_only": true
         },
         {
           "type": "text",
@@ -37720,13 +37696,12 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-typika.txt",
             "sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
           }
-        ],
-        "document_sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
-        "filled_fields": 1256,
-        "total_fields": 1256,
+        "filled_fields": 1255,
+        "total_fields": 1255,
         "complete": true
       },
       "native_source": {
@@ -37737,7 +37712,7 @@
         "url": "https://digitalchantstand.goarch.org/",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "dad32fccecb36099e1e4d21d14c6390b54218bba9cc7493d12d4b1976c835a65",
+        "content_sha256": "0383b8646eb4b33471349fbc7a053c8d8cf174eaed4a05844ea6fe16deedf2a9",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -38603,8 +38578,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ],
-        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -38703,8 +38677,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/ecumenical_patriarchate_ieratikon_1875/ieratikon_pdftotext.txt",
             "sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
           }
-        ],
-        "document_sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -38726,8 +38699,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 4509,
-    "total_fields": 4509,
+    "filled_fields": 4506,
+    "total_fields": 4506,
     "percent": 100.0,
     "complete": true
   }

@@ -710,8 +710,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/arabic_great_horologion_1870/horologion.txt",
             "sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
           }
-        ],
-        "document_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -4927,15 +4926,6 @@
         {
           "type": "text",
           "text": {
-            "ar": "052525252525252525252525252 回",
-            "en": "",
-            "el": ""
-          },
-          "source_paragraph": 19
-        },
-        {
-          "type": "text",
-          "text": {
             "ar": "صلوة الغروب\n •",
             "en": "",
             "el": ""
@@ -5188,13 +5178,12 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/arabic_great_horologion_1870/horologion.txt",
             "sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
           }
-        ],
-        "document_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
-        "filled_fields": 49,
-        "total_fields": 49,
+        "filled_fields": 48,
+        "total_fields": 48,
         "complete": true
       },
       "native_source": {
@@ -5205,7 +5194,7 @@
         "url": "https://books.google.com/books?id=public-domain-horologion-1870",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "cc9d7e8a8716cc06905adf7e8e5a7393c5f956669db1126d9cd3b7fe19f76985",
+        "content_sha256": "c4871ebcd287fe74c03615cfe99a10722fe14df682f2588f51821e7b2fcd0e7e",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -5266,15 +5255,6 @@
             "el": ""
           },
           "source_paragraph": 4
-        },
-        {
-          "type": "text",
-          "text": {
-            "ar": "0000",
-            "en": "",
-            "el": ""
-          },
-          "source_paragraph": 5
         },
         {
           "type": "text",
@@ -6953,13 +6933,12 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/arabic_great_horologion_1870/horologion.txt",
             "sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
           }
-        ],
-        "document_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
-        "filled_fields": 193,
-        "total_fields": 193,
+        "filled_fields": 192,
+        "total_fields": 192,
         "complete": true
       },
       "native_source": {
@@ -6970,7 +6949,7 @@
         "url": "https://books.google.com/books?id=public-domain-horologion-1870",
         "permission_confirmed": true,
         "machine_translation_used": false,
-        "content_sha256": "b0843ee9bb725df28ec5fa7c3b12c707091223c3fc891923a5d27a3e8005a811",
+        "content_sha256": "7d1c27e8aa84b5488edee5db1f825f6f3cc7fb6740d15d802967037a2d121a54",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -7813,8 +7792,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/orthodox_jordan_arabic_services/presanctified.docx",
             "sha256": "3caf416f2fbcb91927159f6b60a003b75b6634963ca49754d46322a41e08fcb1"
           }
-        ],
-        "document_sha256": "3caf416f2fbcb91927159f6b60a003b75b6634963ca49754d46322a41e08fcb1"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -8929,8 +8907,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/arabic_great_horologion_1870/horologion.txt",
             "sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
           }
-        ],
-        "document_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -9479,8 +9456,7 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/arabic_great_horologion_1870/horologion.txt",
             "sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
           }
-        ],
-        "document_sha256": "ba53948036b999c06088a6187391e4edd5e897ade0a6907941e7eadb495c5d8c"
+        ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -9547,8 +9523,8 @@
     }
   ],
   "native_content_status": {
-    "filled_fields": 1140,
-    "total_fields": 1140,
+    "filled_fields": 1138,
+    "total_fields": 1138,
     "percent": 100.0,
     "complete": true
   }
