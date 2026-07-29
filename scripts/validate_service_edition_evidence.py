@@ -20,6 +20,8 @@ EL = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
 
 def iter_localized(value: Any) -> Iterable[dict[str, Any]]:
     if isinstance(value, dict):
+        if value.get("editorial_metadata_only") is True:
+            return
         if any(k in value for k in LANGS):
             yield value
         else:
@@ -39,6 +41,8 @@ def visible_text(service: dict[str, Any], lang: str) -> str:
     chunks: list[str] = []
     for segment in service.get("segments", []):
         if not isinstance(segment, dict):
+            continue
+        if segment.get("editorial_metadata_only") is True:
             continue
         for key in ("title", "speaker", "text"):
             value = segment.get(key)

@@ -7968,7 +7968,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-1.txt",
             "sha256": "f62182c6a20f5c48a45073ad1d4c8000690b774a1148872322461307b86f4b22"
           }
-        ]
+        ],
+        "document_sha256": "f62182c6a20f5c48a45073ad1d4c8000690b774a1148872322461307b86f4b22"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -14718,7 +14719,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-typika.txt",
             "sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
           }
-        ]
+        ],
+        "document_sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -15267,7 +15269,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/ecumenical_patriarchate_ieratikon_1875/ieratikon_pdftotext.txt",
             "sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
           }
-        ]
+        ],
+        "document_sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -16149,7 +16152,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ]
+        ],
+        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -17031,7 +17035,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ]
+        ],
+        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -25347,7 +25352,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ]
+        ],
+        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -26364,7 +26370,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ]
+        ],
+        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -26765,6 +26772,16 @@
             "el": "Ο μονογενής Υιός καί Λόγος τού Θεού, αθάνατος υπάρχων, καί καταδεξάμενος, διά τήν ημετέραν σωτηρίαν, σαρκωθήναυ εκ τής αγίας Θεοτόκου καί αειπαρθένου Μαρίας, ατρέπτως ενανθρωπήσας, σταυρωθείς τε, Χριστέ ό Θεός, θανάτω θάνατον πατήσας, Είς ών τής αγίας Τριάδος, συνδοξαζόμενος τώ Πατρί καί τώ άγίω Πνεύματι, σώσον ημάς."
           },
           "source_paragraph": 40
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "* * *"
+          },
+          "source_paragraph": 41,
+          "editorial_metadata_only": true
         },
         {
           "type": "text",
@@ -37686,7 +37703,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-typika.txt",
             "sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
           }
-        ]
+        ],
+        "document_sha256": "5aab8714f7bc92d96599f4066e23b2042f6350628a584dbbf203a6feee3705c5"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -38568,7 +38586,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/goarch_glt_greek/greek-horologion-midnight-hours.txt",
             "sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
           }
-        ]
+        ],
+        "document_sha256": "6707575f03ad6597d17a8a764e9fd4ccd6b4b393221af1e6774a7bc7d736d853"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
@@ -38667,7 +38686,8 @@
             "file": "/mnt/data/books_extract/r204/canonical/source_editions/ecumenical_patriarchate_ieratikon_1875/ieratikon_pdftotext.txt",
             "sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
           }
-        ]
+        ],
+        "document_sha256": "3d1da7e34d320a8ad307f5ba640a25474a5f7c6ee17a3cea406d1e990d480ab8"
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
       "native_content_status": {
