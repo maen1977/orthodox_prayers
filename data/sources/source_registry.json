@@ -608,11 +608,73 @@
       "health": []
     },
     {
-      "id": "goarch_digital_chant_stand_greek",
+      "id": "arabic_great_horologion_1870",
       "name": {
-        "ar": "منصة الترتيل الرقمية — اليونانية",
-        "en": "GOARCH Digital Chant Stand — Greek",
-        "el": "GOARCH Digital Chant Stand — Greek"
+        "ar": "كتاب السواعي الكبير، أورشليم 1870",
+        "en": "كتاب السواعي الكبير، أورشليم 1870",
+        "el": "كتاب السواعي الكبير، أورشليم 1870"
+      },
+      "url": "https://books.google.com/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "ecumenical_patriarchate_ieratikon_1875",
+      "name": {
+        "ar": "Ecumenical Patriarchate Ieratikon 1875",
+        "en": "Ecumenical Patriarchate Ieratikon 1875",
+        "el": "Ecumenical Patriarchate Ieratikon 1875"
+      },
+      "url": "https://archive.org/",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "goarch_glt_greek",
+      "name": {
+        "ar": "Greek Horologion native text",
+        "en": "Greek Horologion native text",
+        "el": "Greek Horologion native text"
       },
       "url": "https://digitalchantstand.goarch.org/",
       "official": true,
@@ -620,12 +682,11 @@
         "el"
       ],
       "categories": [
-        "daily_texts",
         "liturgy",
-        "services"
+        "prayers"
       ],
       "used_for": {
-        "ar": "بنية الخدمات والقطع المتغيرة باللغة اليونانية.",
+        "ar": "يُستخدم في: prayers, liturgy.",
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },
@@ -689,6 +750,37 @@
       ],
       "used_for": {
         "ar": "يُستخدم في: prayers.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "hapgood_service_book_1906",
+      "name": {
+        "ar": "Hapgood Service Book 1906",
+        "en": "Hapgood Service Book 1906",
+        "el": "Hapgood Service Book 1906"
+      },
+      "url": "https://archive.org/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "liturgy",
+        "prayers"
+      ],
+      "used_for": {
+        "ar": "يُستخدم في: prayers, liturgy.",
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },

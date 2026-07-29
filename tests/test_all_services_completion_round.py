@@ -41,19 +41,20 @@ class AllServicesCompletionRoundTests(unittest.TestCase):
         self.assertFalse(self.contract["machine_translation_allowed"])
         self.assertFalse(self.contract["automatic_ocr_publication_allowed"])
 
-    def test_current_state_is_thirty_eight_exact_and_seven_source_lanes(self):
-        self.assertEqual(38, len(self.contract["current_exact_lanes"]))
-        self.assertEqual(7, len(self.contract["required_new_source_lanes"]))
+    def test_current_state_matches_contract_and_source_template(self):
+        self.assertEqual(45, len(self.contract["current_exact_lanes"]) + len(self.contract["required_new_source_lanes"]))
         self.assertEqual(set(self.contract["required_new_source_lanes"]), set(self.template["entries"]))
+        self.assertEqual(len(self.contract["required_new_source_lanes"]), self.template["required_entry_count"])
         self.assertTrue(all(entry["permission_confirmed"] is False for entry in self.template["entries"].values()))
+
 
     def test_inventory_without_private_sources_never_modifies_runtime(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             report = self.prepare.run(root / "sources", root / "output")
             self.assertEqual("SOURCE_BUNDLE_INCOMPLETE_FAIL_CLOSED", report["status"])
-            self.assertEqual(38, report["resolved_lanes"])
-            self.assertEqual(7, len(report["missing_lanes"]))
+            self.assertEqual(len(self.contract["current_exact_lanes"]), report["resolved_lanes"])
+            self.assertEqual(len(self.contract["required_new_source_lanes"]), len(report["missing_lanes"]))
             self.assertFalse(report["runtime_modified"])
             self.assertEqual([], list((root / "output/candidates").rglob("*.json")))
 
@@ -141,7 +142,7 @@ class AllServicesCompletionRoundTests(unittest.TestCase):
                 capture_output=True,
             )
             self.assertEqual(2, completed.returncode)
-            self.assertIn("resolved=38/45", completed.stdout)
+            self.assertIn(f"resolved={len(self.contract['current_exact_lanes'])}/45", completed.stdout)
 
 
 if __name__ == "__main__":

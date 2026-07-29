@@ -60,11 +60,11 @@ for lang,sids in new.items():
  packp.write_text(json.dumps(pack,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); (ROOT/f'app/src/main/assets/data/native/library_{lang}.json').write_bytes(packp.read_bytes())
 evpath.write_text(json.dumps(ev,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 # Add content review register entries for new base services.
-rp=ROOT/'canonical/content_review_register.json'
+rp=ROOT/'canonical/content_review_status.json'
 if rp.exists():
  r=json.load(open(rp,encoding='utf-8'))
  for sid in ('midnight_office','proskomide'):
-  if sid not in r: r[sid]={'status':'SOURCE_BACKED_NATIVE_LANES_PARTIAL','review_required':True}
+  r.setdefault('services', {}).setdefault(sid, {'status':'automatic_native_lanes_verified_release_gate_partial','reviewed':False,'evidence':'canonical/religious_completeness_manifest.json and canonical/service_edition_evidence.json'})
  rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 # update hashes
 p=ROOT/'scripts/update_static_hashes.py'

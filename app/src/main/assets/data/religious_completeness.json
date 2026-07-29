@@ -91,9 +91,9 @@
   "production_complete_status": "complete_exact_native_edition",
   "machine_translation_allowed": false,
   "status_notes": {
-    "ar": "استُعيدت الساعات الأربع العربية الكاملة من ملفات Word الأصلية المسجلة. أُدرج نصا الغروب والسحر الأكثر اكتمالاً مع إبقائهما قيد المراجعة، ولم تُرفع الخدمات العربية غير المتوفرة إلى حالة الاكتمال.",
-    "en": "Recovered exact native Vespers, Small Compline, Orthros, the four Hours, Typika, Basil, Presanctified, and post-Communion services from owner-supplied source snapshots. Midnight Office, Proskomide, and the longer pre-Communion office remain incomplete.",
-    "el": "Ἀνακτήθηκαν ἡ πλήρης Ἀκολουθία τοῦ Μικροῦ Ἀποδείπνου καὶ ἡ Λειτουργία τῶν Προηγιασμένων ἀπὸ τὰ καταχωρισμένα πρωτότυπα ἀρχεῖα. Οἱ λοιπὲς ἀκολουθίες δὲν χαρακτηρίζονται πλήρεις χωρὶς ἐπαληθευμένη πρωτότυπη εἰσαγωγή."
+    "ar": "الحالة الحالية: 12 من 15 خدمة عربية موثقة كنسخ أصلية كاملة. تبقى خدمة التقدمة غير متاحة، وقداس الذهبي الفم غير مثبت الاكتمال، وقداس باسيليوس غير متاح ضمن المسار العربي.",
+    "en": "Current state: 13 of 15 English services are verified complete exact native editions. Midnight Office is unavailable and the longer pre-Communion office remains source-text partial.",
+    "el": "Τρέχουσα κατάσταση: 13 από τις 15 ελληνικές ακολουθίες είναι επαληθευμένες πλήρεις ακριβείς εκδόσεις. Οι προσευχές πριν και μετά τη Θεία Μετάληψη παραμένουν εγκεκριμένες γηγενείς επιλογές, όχι πλήρεις ακριβείς εκδόσεις."
   },
   "liturgy_service_selection": {
     "status": "active_fail_closed",
@@ -111,7 +111,7 @@
   "recovered_official_services": {
     "status": "MERGED_FAIL_CLOSED",
     "source_archive": "owner-supplied R20.4 official-books archive",
-    "exact_lane_count_after_merge": 21,
+    "exact_lane_count_after_merge": 38,
     "production_complete": false,
     "automatic_ocr_used": false,
     "machine_translation_used": false

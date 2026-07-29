@@ -105,14 +105,16 @@
       "evidence": "canonical/religious_completeness_manifest.json + canonical/service_edition_evidence.json"
     },
     "midnight_office": {
-      "status": "SOURCE_BACKED_NATIVE_LANES_PARTIAL",
+      "status": "automatic_native_lanes_verified_release_gate_partial",
       "reviewed": false,
-      "notes": "Native editions are complete only in the languages marked by the strict completeness manifest."
+      "notes": "Native editions are complete only in the languages marked by the strict completeness manifest.",
+      "evidence": "canonical/religious_completeness_manifest.json and canonical/service_edition_evidence.json"
     },
     "proskomide": {
-      "status": "SOURCE_BACKED_NATIVE_LANES_PARTIAL",
+      "status": "automatic_native_lanes_verified_release_gate_partial",
       "reviewed": false,
-      "notes": "Native editions are complete only in the languages marked by the strict completeness manifest."
+      "notes": "Native editions are complete only in the languages marked by the strict completeness manifest.",
+      "evidence": "canonical/religious_completeness_manifest.json and canonical/service_edition_evidence.json"
     }
   }
 }

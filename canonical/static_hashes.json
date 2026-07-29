@@ -8,13 +8,13 @@
     "canonical/source_policy.json": "da56984f7a0efc179a09b2c15edf21d869beed10dbcf693ee7c81c98674e0b13",
     "canonical/jerusalem_fixed_feasts.json": "13de140eacacbcd48b07356de29eab6c74db93b3b465b08465a79aae136fb332",
     "canonical/fasting_policy.json": "12ba92d45309069e9b2d4b14188d37d37a9ded77a6b4d47385d818460b67dcbf",
-    "canonical/source_native_contract.json": "cafbb9dc3866f836a138366808ccef189a6d8df1543021734739392ea0d9c118",
-    "canonical/native_language_sources.json": "6e6d01d15706bf1f3168a0cff4b5a1151dc96fd598bb5abadbef63e037c0e2af",
+    "canonical/source_native_contract.json": "ff606c6234a944da2663501a22c2024926cb0fd29f1ad6c891888bf95fb06d1e",
+    "canonical/native_language_sources.json": "365afbcd3d99d83086311aa645eac839946f64b0c1262616f1a358b16e36f4e8",
     "canonical/static_prayer_sources.json": "3505e1026871c4df535ba88f92665e7b7c9f8b6014aeb6c09a990adde76f5e81",
     "data/services/native/library_ar.json": "f56e59e62d2c56554aaa1eb557298a7123cc00bec05091d2c68cadb2d2ac0f4a",
     "data/services/native/library_en.json": "a34449312473582bf85a5b216caa93f542deb57336d943149a46f0a025f4759a",
     "data/services/native/library_el.json": "e72d303f1c058877d11ac569dc6ee0ea158df3992b6c30ba8f0cd9113e43fb0c",
-    "canonical/religious_completeness_manifest.json": "ea5b8142c99d9ba4660956446e8b67bc45a38f094266871ccc1e39cb2b75be72",
+    "canonical/religious_completeness_manifest.json": "744f97a88783d1718de0b864a4a03acadc29678994b5ce3ce32d6445914aefe5",
     "data/scripture/native/ar/manifest.json": "67dffda47d072bfb737e10b0069be600ca579a0609c91c778373488d8fdee660",
     "data/scripture/native/ar/verses.json": "0b413c3e94ca2dc1f6df5331ac8000d8aa9cf7ddeb6bcaeb058287c04275dbb4",
     "data/scripture/native/en/manifest.json": "d072f73f8fad663ed29fa136eb9c874ec6cf294fcaf3582c26ad19ec5d53eb2a",
@@ -23,7 +23,7 @@
     "data/scripture/native/el/verses.json": "ec75b69918a1c43ab0221d79d2363c42cfe747bcde6eee650239a0c2105e24e9",
     "canonical/jordan_liturgical_contract.json": "0c1682defb9ded979a2d4d403264a5e4d08105893c123521b6dba5f4aeee2199",
     "canonical/communion_prayer_sources.json": "a962a146209c914db9282c427a721d872ce4b07bc7dfcc44c63c910b4b6495c5",
-    "app/src/main/assets/data/religious_completeness.json": "ea5b8142c99d9ba4660956446e8b67bc45a38f094266871ccc1e39cb2b75be72",
+    "app/src/main/assets/data/religious_completeness.json": "744f97a88783d1718de0b864a4a03acadc29678994b5ce3ce32d6445914aefe5",
     "canonical/liturgy_service_rules.json": "27d0e31ae6e2520b9618c9e81a9efcb288d343047dc97384ca98afff59aefba2",
     "canonical/liturgy_service_editions.json": "366f1c766644a4f534c4d5f1561f146bbfd20775bd812be4dc86e2a1ada4f498",
     "canonical/liturgy_annual_coverage.json": "952c35e2d5740b64dd94d5f4b96fc5ad6dfa083d744c284d6df195e7564684bc",
@@ -40,6 +40,6 @@
     "canonical/liturgy_phase12_completion_contract.json": "4a5a272c16d88accaf58cb6399299787371ad0bc559f5cced2b3e5fd78d64cb6",
     "R21_PHASE12_YEAR_AUDIT_2026.json": "d49e37dbabb2c8b4c1da12aae845967f35058a54bcdceb91c66be15b75cbf5a2",
     "canonical/all_services_completion_round.json": "febf0a58d3480a7b1127426e840e8604aed4fb0e2ffcf05603f22e46fb98f62f",
-    "canonical/all_services_source_bundle.template.json": "08c980eeabdb6a4c075a8c18efb0ea7d1a980997f8c00466df109858b41c054e"
+    "canonical/all_services_source_bundle.template.json": "b99a1f27217c57e1edb7b4368674baabe7522bd4eef1a7994eb9bd06e5d9d0ae"
   }
 }

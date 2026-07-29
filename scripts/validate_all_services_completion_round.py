@@ -70,6 +70,8 @@ def main() -> None:
     entries = template.get("entries") if isinstance(template.get("entries"), dict) else {}
     if set(entries) != set(incomplete):
         errors.append("source-bundle template must contain every and only incomplete lane")
+    if template.get("required_entry_count") != len(incomplete):
+        errors.append("source-bundle required_entry_count must match incomplete lanes")
     for key, entry in entries.items():
         if entry.get("permission_confirmed") is not False:
             errors.append(f"{key}: template must not pre-claim permission")

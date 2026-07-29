@@ -21,6 +21,7 @@
   "language_lanes": {
     "ar": {
       "priority": [
+        "arabic_great_horologion_1870",
         "orthodox_jordan_arabic_services",
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
@@ -34,6 +35,7 @@
     },
     "en": {
       "priority": [
+        "hapgood_service_book_1906",
         "oca_horologion_2021",
         "goarch_ogden_epubs",
         "goarch_online_chapel",
@@ -50,6 +52,8 @@
     },
     "el": {
       "priority": [
+        "goarch_glt_greek",
+        "ecumenical_patriarchate_ieratikon_1875",
         "kilkis_greek_services",
         "imks_greek_services",
         "church_of_greece_apostoliki_diakonia",
@@ -371,6 +375,70 @@
       "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
       "title": "مطرانية الروم الأرثوذكس في الأردن — نصوص الصلوات",
       "role": "authorized_native_service_text"
+    },
+    "arabic_great_horologion_1870": {
+      "language": "ar",
+      "official": true,
+      "public_domain": true,
+      "base_url": "https://books.google.com/",
+      "capabilities": [
+        "horologion",
+        "prayers",
+        "services",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "PUBLIC_DOMAIN_SOURCE; CONFIRMED_BY_PROJECT_OWNER",
+      "title": "كتاب السواعي الكبير، أورشليم 1870",
+      "role": "registered_public_domain_native_service_text"
+    },
+    "hapgood_service_book_1906": {
+      "language": "en",
+      "official": true,
+      "public_domain": true,
+      "base_url": "https://archive.org/",
+      "capabilities": [
+        "service_book",
+        "proskomide",
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "PUBLIC_DOMAIN_SOURCE; CONFIRMED_BY_PROJECT_OWNER",
+      "title": "Hapgood Service Book 1906",
+      "role": "registered_public_domain_native_service_text"
+    },
+    "goarch_glt_greek": {
+      "language": "el",
+      "official": true,
+      "public_domain": true,
+      "base_url": "https://digitalchantstand.goarch.org/",
+      "capabilities": [
+        "horologion",
+        "services",
+        "prayers",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "title": "Greek Horologion native text",
+      "role": "registered_native_service_text"
+    },
+    "ecumenical_patriarchate_ieratikon_1875": {
+      "language": "el",
+      "official": true,
+      "public_domain": true,
+      "base_url": "https://archive.org/",
+      "capabilities": [
+        "ieratikon",
+        "proskomide",
+        "basil_liturgy",
+        "liturgy"
+      ],
+      "permission_confirmed": true,
+      "permission_basis": "PUBLIC_DOMAIN_SOURCE; CONFIRMED_BY_PROJECT_OWNER",
+      "title": "Ecumenical Patriarchate Ieratikon 1875",
+      "role": "registered_public_domain_native_service_text"
     }
   },
   "publication": {
