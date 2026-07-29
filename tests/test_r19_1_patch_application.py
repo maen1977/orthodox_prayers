@@ -39,8 +39,8 @@ class R191PatchApplicationTests(unittest.TestCase):
                 self.assertIn("tests/test_r19_refinement.py", names)
                 self.assertFalse(any(name.startswith("orthodox_prayers/") for name in names))
                 build = bundle.read("app/build.gradle.kts").decode("utf-8")
-                self.assertIn('versionName = "5.0.20"', build)
-                self.assertIn("versionCode = 50020", build)
+                self.assertIn('versionName = "5.0.21"', build)
+                self.assertIn("versionCode = 50021", build)
 
 
 if __name__ == "__main__":

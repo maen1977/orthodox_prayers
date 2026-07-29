@@ -28,5 +28,5 @@ def test_future_days_are_sanitized_individually():
 
 def test_release_version_is_5019():
     build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-    assert 'versionName = "5.0.20"' in build
-    assert "versionCode = 50020" in build
+    assert 'versionName = "5.0.21"' in build
+    assert "versionCode = 50021" in build
