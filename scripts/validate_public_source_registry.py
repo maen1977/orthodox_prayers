@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 from urllib.parse import urlparse
 
+from android_ui_resources import source_references_text
+
 ROOT = Path(__file__).resolve().parents[1]
 ASSET = ROOT / "app/src/main/assets/data/source_registry.json"
 DATA = ROOT / "data/sources/source_registry.json"
@@ -101,7 +103,7 @@ def main() -> None:
     prayer_hub = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/PrayerHubScreen.java").read_text(encoding="utf-8")
     if 'host.navigate("sources", null)' not in settings or 'case "sources"' not in main:
         raise SystemExit("Settings source-registry navigation is missing")
-    if 'relatedServicesBox' not in reader or 'فتح المصدر الرسمي' not in reader:
+    if 'relatedServicesBox' not in reader or not source_references_text(reader, 'فتح المصدر الرسمي', 'ar'):
         raise SystemExit("Reader source and related-prayer controls are missing")
     if '"communion"' not in prayer_hub:
         raise SystemExit("Communion-prayer category is missing from PrayerHub")

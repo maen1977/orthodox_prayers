@@ -10,7 +10,7 @@ REQUIRED = {
     "scripts/source_connectors.py": ("dcs_reference_after_heading", "DCS regular-cycle references extracted"),
     "canonical/source_connectors.json": ('"local_authority_source_id": "orthodox_jordan"', '"goarch_digital_chant_stand"'),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/SearchEngine.java": ("scanChurches", "officialServiceLinks", "editDistanceAtMostOne"),
-    "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java": ("Church directory", "officialServiceLinks"),
+    "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java": ("ui_church_directory_36e0707d", "officialServiceLinks"),
     ".github/workflows/update.yml": ("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "validate_source_intelligence.py", "clean_legacy_calendar_snapshots.py\" --root \"$TARGET"),
     ".github/workflows/build.yml": ("clean_legacy_calendar_snapshots.py --root \"$VERIFIED_DIR\"", "--allow-missing-manifest"),
     "scripts/verify.py": ("--allow-missing-manifest", "LEGACY_UPDATE_MANIFEST_ABSENT"),

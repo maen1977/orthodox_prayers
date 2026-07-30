@@ -33,7 +33,7 @@ def verify_pipeline_patch() -> None:
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
         str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
-        str(sources_path.relative_to(ROOT)): "المصادر والمراجع",
+        str(sources_path.relative_to(ROOT)): "data.registeredSources()",
         str(coordinator_path.relative_to(ROOT)): "FIRST_REFRESH_HOUR = 1",
         str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
         str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",

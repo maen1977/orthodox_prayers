@@ -7,6 +7,8 @@ import json
 import sys
 from datetime import date, timedelta
 from pathlib import Path
+
+from android_ui_resources import source_references_text
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -126,9 +128,11 @@ def build_report() -> dict[str, Any]:
     blockers.extend(f"today:{item}" for item in today["blockers"])
     java_day = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
     java_repo = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-    for token in ("data.calendarDay(date)", "ابدأ متابعة القداس", "reading_references"):
+    for token in ("data.calendarDay(date)", "reading_references"):
         if token not in java_day:
             blockers.append(f"calendar_day_ui_missing:{token}")
+    if not source_references_text(java_day, "ابدأ متابعة القداس", "ar"):
+        blockers.append("calendar_day_ui_missing:ابدأ متابعة القداس")
     for token in ("calendar_2026_h2.json", "calendarDays()", "calendarDay(String date)"):
         if token not in java_repo:
             blockers.append(f"repository_wiring_missing:{token}")

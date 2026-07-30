@@ -24,7 +24,7 @@ REQUIRED = {
         "isolateTechnical",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": (
-        "Arabic, English, and Greek are three independent native lanes",
+        "ui_arabic_english_and_greek_are_three_independent_n_d97c4432",
         "new TimePicker",
         "LocalePolicy.formatTimestamp",
     ),
