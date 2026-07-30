@@ -1,20 +1,20 @@
 {
   "manifest_schema_version": 1,
   "date_iso": "2026-07-30",
-  "revision": 8501,
-  "published_at_utc": "2026-07-29T22:36:32Z",
+  "revision": 8601,
+  "published_at_utc": "2026-07-30T06:11:07Z",
   "minimum_app_version_code": 50013,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "006958a29fe0730675fdab9e736322f936609df146eef7f0995b243196b89758",
+    "sha256": "362cb692b79d860b6b8f0b82d3b674d05af982039a05d2c61e953c876add4475",
     "size_bytes": 2843931
   },
   "languages": {
     "ar": {
       "path": "data/daily/2026-07-30/ar.json",
       "signature_path": "data/daily/2026-07-30/ar.json.sig",
-      "sha256": "f64afb1ebc6a6db17879dcb95014b354b84b1a2b4d13b5fa20dc0df2ccd657ea",
+      "sha256": "d0dfe774fdc9d829ee070f5f2c02e4112635a5452f80874dceb9d0dc1782d3b1",
       "size_bytes": 1794958,
       "coverage_start_date": "2026-07-30",
       "coverage_end_date": "2026-08-06",
@@ -25,7 +25,7 @@
     "en": {
       "path": "data/daily/2026-07-30/en.json",
       "signature_path": "data/daily/2026-07-30/en.json.sig",
-      "sha256": "bbf1bfd13869777d0751b7ffe28f695b5c7364b02954edd18c144de4db1a8510",
+      "sha256": "cab6a78ce86d360a8a5e4d482a1a193e3bbebaab2ba387ffd77ba8defe7807c7",
       "size_bytes": 1544601,
       "coverage_start_date": "2026-07-30",
       "coverage_end_date": "2026-08-06",
@@ -36,7 +36,7 @@
     "el": {
       "path": "data/daily/2026-07-30/el.json",
       "signature_path": "data/daily/2026-07-30/el.json.sig",
-      "sha256": "4b69542597f05e39fab156c2ebf2e37d8e941595bb409193b9f7510ff2fba6f3",
+      "sha256": "54756a6d663aee86e64cff6547f5b7f62f7326f396dc150e82155baa3ec3130e",
       "size_bytes": 1822148,
       "coverage_start_date": "2026-07-30",
       "coverage_end_date": "2026-08-06",
