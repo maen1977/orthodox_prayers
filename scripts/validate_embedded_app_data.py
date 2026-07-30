@@ -25,12 +25,14 @@ def validate_today(data):
     required={'schema_version','date_iso','date_label','fast','fasting','readings','services','upcoming','next_sunday','integrity','language_content_mode','language_sources','native_text_contract'}
     missing=sorted(required-set(data))
     if missing: fail('today.json is missing: '+', '.join(missing))
-    if int(data.get('schema_version') or 0)!=9: fail('today.json schema_version must be 9')
+    schema_version=int(data.get('schema_version') or 0)
+    if schema_version not in {9,10}: fail('today.json schema_version must be 9 (signed legacy) or 10 (nine-day window)')
     if data.get('language_content_mode')!='THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES': fail('native language mode is invalid')
     if data.get('machine_translation_used') is not False or data.get('automatic_diacritization_used') is not False: fail('forbidden transformation flag')
     if data.get('translation_fallback_policy')!='DISABLED_NO_CROSS_LANGUAGE_FALLBACK': fail('cross-language fallback is not disabled')
     if not localized_ar(data.get('date_label')) or not localized_ar(data.get('fast')): fail('Arabic UI date/fast label missing')
-    if not isinstance(data.get('upcoming'),list) or len(data['upcoming'])!=7: fail('today.json must contain seven upcoming days')
+    expected_future_days=8 if schema_version>=10 else 7
+    if not isinstance(data.get('upcoming'),list) or len(data['upcoming'])!=expected_future_days: fail(f'today.json must contain {expected_future_days} future days')
     release_errors=top_level_errors(data)
     if release_errors: fail('top-level release policy is invalid: '+' | '.join(release_errors))
     readings=data.get('readings')

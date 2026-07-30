@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "ACTIVE_PHASE8_FINALIZATION_PIPELINE_FAIL_CLOSED_NO_INTERPRETATIONS",
-  "purpose": "Complete the three native service editions, prove annual variable parts, official signing, and Android build evidence without adding interpretations or commentary.",
+  "purpose": "Complete the native appointed service editions, prove the current nine-day rolling window, official signing, and Android build evidence without annual preloading or commentary.",
   "languages": [
     "ar",
     "en",
@@ -18,11 +18,6 @@
       "ecclesiastical_paragraph_review_required": true,
       "current_status": "INCOMPLETE"
     },
-    "annual_variable_parts": {
-      "coverage_registry": "canonical/liturgy_annual_coverage.json",
-      "complete_year_claim_required": true,
-      "current_status": "UNPROVEN_COMPLETE"
-    },
     "signed_daily_data": {
       "official_private_key_required": true,
       "current_status": "UNCHANGED_SIGNED_BASELINE_ONLY"
@@ -32,6 +27,13 @@
       "apk_hash_evidence_required": true,
       "device_smoke_test_required": true,
       "current_status": "NOT_PROVEN"
+    },
+    "rolling_liturgical_window": {
+      "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
+      "day_count": 9,
+      "all_days_complete_required": true,
+      "annual_preload_required": false,
+      "current_status": "AWAITING_NEW_SIGNED_NINE_DAY_PACKAGE"
     }
   },
   "review_packet": {
@@ -62,7 +64,7 @@
   "completion_claim": {
     "allowed_only_when": [
       "all required native service editions are displayable in ar/en/el",
-      "annual variable-parts registry is proven complete",
+      "the signed rolling package contains today plus eight consecutive future days and every appointed service is complete or explicitly no-liturgy",
       "signed daily data passes official-key verification",
       "APK build evidence and device smoke test are present"
     ],

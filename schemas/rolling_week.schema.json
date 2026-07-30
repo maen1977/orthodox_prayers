@@ -3,26 +3,58 @@
   "$id": "https://github.com/maen1977/orthodox_prayers/schemas/rolling_week.schema.json",
   "title": "Orthodox Prayers Rolling Week Package",
   "type": "object",
-  "required": ["date_iso", "rolling_week", "weekly_days", "services", "readings"],
+  "required": [
+    "date_iso",
+    "rolling_week",
+    "weekly_days",
+    "services",
+    "readings"
+  ],
   "properties": {
     "rolling_week": {
       "type": "object",
-      "required": ["schema_version", "policy", "start_date", "end_date", "day_count", "status", "fail_closed"],
+      "required": [
+        "schema_version",
+        "policy",
+        "start_date",
+        "end_date",
+        "day_count",
+        "status",
+        "fail_closed"
+      ],
       "properties": {
-        "schema_version": {"const": 1},
-        "policy": {"const": "TODAY_PLUS_SEVEN_COMPLETE_DAYS"},
-        "start_date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-        "end_date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-        "day_count": {"const": 8},
-        "status": {"const": "COMPLETE"},
-        "fail_closed": {"const": true}
+        "schema_version": {
+          "const": 1
+        },
+        "policy": {
+          "const": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY"
+        },
+        "start_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "end_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "day_count": {
+          "const": 9
+        },
+        "status": {
+          "const": "COMPLETE"
+        },
+        "fail_closed": {
+          "const": true
+        }
       }
     },
     "weekly_days": {
       "type": "array",
-      "minItems": 7,
-      "maxItems": 7,
-      "items": {"type": "object"}
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object"
+      }
     }
   }
 }

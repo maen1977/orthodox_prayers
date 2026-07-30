@@ -57,7 +57,7 @@ def main():
     required=['schema_version','date_label','fast','fasting','readings','upcoming','next_sunday','recommended_services','services']
     for key in required:
         if key not in data: fail(f'missing {key}')
-    if data.get('schema_version')!=9: fail('schema_version must be 9')
+    if int(data.get('schema_version') or 0) not in {9,10}: fail('schema_version must be 9 or 10')
     release_errors=top_level_errors(data)
     if release_errors: fail('top-level release policy invalid: '+' | '.join(release_errors))
     if data.get('language_content_mode')!='THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES': fail('strict independent language mode missing')

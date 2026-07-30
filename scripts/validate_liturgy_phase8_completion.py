@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "canonical/liturgy_phase8_completion_contract.json"
 EDITIONS = ROOT / "canonical/liturgy_service_editions.json"
-ANNUAL = ROOT / "canonical/liturgy_annual_coverage.json"
+DAILY = ROOT / "data/calendar/today.json"
 RELIGIOUS = ROOT / "canonical/religious_completeness_manifest.json"
 BUILD_EVIDENCE = ROOT / "release/android/build-evidence.json"
 
@@ -17,13 +17,20 @@ BUILD_EVIDENCE = ROOT / "release/android/build-evidence.json"
 def build_report() -> dict:
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
     editions = json.loads(EDITIONS.read_text(encoding="utf-8"))
-    annual = json.loads(ANNUAL.read_text(encoding="utf-8"))
+    daily = json.loads(DAILY.read_text(encoding="utf-8"))
     religious = json.loads(RELIGIOUS.read_text(encoding="utf-8"))
     service_ready = {
         service: bool((editions.get("editions") or {}).get(service, {}).get("displayable"))
         for service in ("chrysostom", "basil", "presanctified")
     }
-    annual_complete = str(annual.get("completion_claim") or "").casefold() in {"complete", "proven_complete"}
+    rolling = daily.get("rolling_week") or {}
+    rolling_complete = (
+        rolling.get("policy") == "NINE_CONSECUTIVE_DAYS_STARTING_TODAY"
+        and rolling.get("day_count") == 9
+        and len(daily.get("weekly_days") or []) == 8
+        and rolling.get("status") == "COMPLETE"
+        and rolling.get("fail_closed") is True
+    )
     signed_baseline_only = contract["required_release_gates"]["signed_daily_data"]["current_status"] == "UNCHANGED_SIGNED_BASELINE_ONLY"
     build = None
     if BUILD_EVIDENCE.is_file():
@@ -42,8 +49,8 @@ def build_report() -> dict:
     for service, ready in service_ready.items():
         if not ready:
             blockers.append(f"native_service_not_displayable:{service}")
-    if not annual_complete:
-        blockers.append("annual_variable_parts_unproven_complete")
+    if not rolling_complete:
+        blockers.append("signed_nine_day_rolling_window_missing_or_incomplete")
     if signed_baseline_only:
         blockers.append("phase8_candidate_not_signed_with_official_key")
     if not build_complete:
@@ -54,7 +61,9 @@ def build_report() -> dict:
         "pipeline_status": contract.get("status"),
         "complete_release_allowed": complete,
         "native_service_displayable": service_ready,
-        "annual_variable_parts_complete": annual_complete,
+        "rolling_window_complete": rolling_complete,
+        "rolling_window_days": int(rolling.get("day_count") or 0),
+        "annual_preload_required": False,
         "signed_phase8_candidate": not signed_baseline_only,
         "android_build_complete": build_complete,
         "language_liturgy_states": liturgy_states,

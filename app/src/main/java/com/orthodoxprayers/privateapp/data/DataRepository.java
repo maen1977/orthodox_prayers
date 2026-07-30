@@ -132,7 +132,7 @@ public final class DataRepository {
         return complete != null ? complete : calendarByDate.get(normalized);
     }
 
-    /** The active signed package contains today plus seven complete future days. */
+    /** The active signed package contains nine consecutive complete days starting today. */
     public JSONArray rollingWeekDays() {
         JSONArray result = new JSONArray();
         for (JSONObject day : rollingWeekByDate.values()) result.put(day);
@@ -145,9 +145,9 @@ public final class DataRepository {
         JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
         return metadata != null
                 && metadata.optInt("schema_version", 0) == 1
-                && metadata.optInt("day_count", 0) == 8
+                && metadata.optInt("day_count", 0) == 9
                 && "COMPLETE".equals(metadata.optString("status", ""))
-                && rollingWeekByDate.size() == 8;
+                && rollingWeekByDate.size() == 9;
     }
 
     public String rollingWeekStartDate() {
@@ -961,22 +961,26 @@ public final class DataRepository {
         JSONObject metadata = packagePayload.optJSONObject("rolling_week");
         if (metadata == null) return null; // Backwards-compatible signed daily snapshot.
         if (metadata.optInt("schema_version", 0) != 1) return "rolling_week_schema_unsupported";
-        if (!"TODAY_PLUS_SEVEN_COMPLETE_DAYS".equals(metadata.optString("policy", ""))) return "rolling_week_policy_invalid";
+        if (!"NINE_CONSECUTIVE_DAYS_STARTING_TODAY".equals(metadata.optString("policy", ""))) return "rolling_week_policy_invalid";
         if (!"COMPLETE".equals(metadata.optString("status", "")) || !metadata.optBoolean("fail_closed", false)) return "rolling_week_incomplete";
-        if (metadata.optInt("day_count", 0) != 8) return "rolling_week_day_count_invalid";
+        if (metadata.optInt("day_count", 0) != 9) return "rolling_week_day_count_invalid";
         String startValue = metadata.optString("start_date", "");
         String endValue = metadata.optString("end_date", "");
         if (!startValue.equals(packagePayload.optString("date_iso", ""))) return "rolling_week_start_mismatch";
         LocalDate start;
         try {
             start = LocalDate.parse(startValue);
-            if (!start.plusDays(7).toString().equals(endValue)) return "rolling_week_end_mismatch";
+            if (!start.plusDays(8).toString().equals(endValue)) return "rolling_week_end_mismatch";
         } catch (Exception error) {
             return "rolling_week_date_invalid";
         }
         JSONArray future = packagePayload.optJSONArray("weekly_days");
-        if (future == null || future.length() != 7) return "rolling_week_members_missing";
-        for (int i = 0; i < 7; i++) {
+        if (future == null || future.length() != 8) return "rolling_week_members_missing";
+        String anchorLiturgyError = validateAppointedLiturgy(packagePayload);
+        if (anchorLiturgyError != null) {
+            return "rolling_week_" + startValue + "_" + anchorLiturgyError;
+        }
+        for (int i = 0; i < 8; i++) {
             JSONObject day = future.optJSONObject(i);
             if (day == null) return "rolling_week_member_invalid:" + i;
             String expected = start.plusDays(i + 1L).toString();
@@ -991,6 +995,50 @@ public final class DataRepository {
             if (publication == null || !"FULL".equals(publication.optString("daily_availability", ""))) {
                 return "rolling_week_" + expected + "_not_full";
             }
+            String liturgyError = validateAppointedLiturgy(day);
+            if (liturgyError != null) {
+                return "rolling_week_" + expected + "_" + liturgyError;
+            }
+        }
+        return null;
+    }
+
+    private static String validateAppointedLiturgy(JSONObject day) {
+        JSONObject selection = day == null ? null : day.optJSONObject("liturgy_service_selection");
+        if (selection == null) return "appointed_liturgy_selection_missing";
+        String selectedType = selection.optString("service_type", "").trim();
+        String serviceForm = selection.optString("service_form", "").trim();
+        if (selectedType.isEmpty()) return "appointed_liturgy_type_missing";
+        if (serviceForm.isEmpty()) return "appointed_liturgy_form_missing";
+        if (selection.optJSONObject("reason") == null) return "appointed_liturgy_reason_missing";
+        if (selection.optBoolean("wrong_liturgy_fallback_allowed", true)) {
+            return "appointed_liturgy_fallback_enabled";
+        }
+
+        JSONObject service = findServiceInArray(day.optJSONArray("services"), "divine_liturgy");
+        if (service == null) return "appointed_liturgy_service_missing";
+        if (!selectedType.equals(service.optString("selected_liturgy_type", ""))) {
+            return "appointed_liturgy_type_mismatch";
+        }
+        String publicationStatus = service.optString("publication_status", "");
+        if ("no_divine_liturgy".equals(selectedType)) {
+            return "NO_DIVINE_LITURGY_APPOINTED".equals(publicationStatus)
+                    ? null : "no_liturgy_status_invalid";
+        }
+        if ("typikon_override_required".equals(selectedType)) {
+            return "dated_typikon_override_required";
+        }
+        if (!selection.optBoolean("displayable", false)) {
+            return "appointed_liturgy_complete_native_edition_missing";
+        }
+        if (!service.optBoolean("full_service_complete", false)) {
+            return "appointed_liturgy_not_complete_from_beginning_to_end";
+        }
+        if (!publicationStatus.startsWith("DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END")) {
+            return "appointed_liturgy_publication_status_invalid";
+        }
+        if (service.optString("extends_service_id", "").trim().isEmpty()) {
+            return "appointed_liturgy_template_missing";
         }
         return null;
     }
@@ -1379,8 +1427,16 @@ public final class DataRepository {
 
     private static boolean isFollowAlongLiturgy(JSONObject service) {
         if (service == null) return false;
-        return "divine_liturgy".equals(service.optString("id", ""))
-                || "divine_liturgy".equals(service.optString("composed_from", ""));
+        String id = service.optString("id", "");
+        String composedFrom = service.optString("composed_from", "");
+        return "divine_liturgy".equals(id)
+                || "divine_liturgy".equals(composedFrom)
+                || "divine_liturgy_basil".equals(id)
+                || "divine_liturgy_basil".equals(composedFrom)
+                || "presanctified_liturgy".equals(id)
+                || "presanctified_liturgy".equals(composedFrom)
+                || service.optString("publication_status", "")
+                .startsWith("DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END");
     }
 
     /**
@@ -1396,6 +1452,19 @@ public final class DataRepository {
             JSONObject result = new JSONObject(liturgy.toString());
             JSONArray merged = new JSONArray();
             String language = preferences.effectiveLanguage();
+
+            JSONObject proskomide = findServiceInArray(
+                    library().optJSONArray("services"),
+                    "proskomide"
+            );
+            if (hasNativePrayerText(proskomide, language)) {
+                merged.put(followAlongSection(
+                        "الاستعداد الكهنوتي وخدمة التقدمة",
+                        "Clergy preparation and the Office of Oblation",
+                        "Ἱερατικὴ προετοιμασία καὶ Ἀκολουθία τῆς Προσκομιδῆς"
+                ));
+                appendSegments(merged, proskomide.optJSONArray("segments"));
+            }
 
             JSONObject preparation = findServiceInArray(
                     library().optJSONArray("services"),
@@ -1434,7 +1503,9 @@ public final class DataRepository {
 
             result.put("segments", merged);
             result.put("follow_along_composed", true);
-            result.put("follow_along_mode", "ONE_CONTINUOUS_NATIVE_LANGUAGE_SERVICE");
+            result.put("follow_along_mode", "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING");
+            result.put("full_service_complete", true);
+            result.put("full_service_phase_count", 4);
             return result;
         } catch (Exception error) {
             Log.w(TAG, "Could not compose follow-along Liturgy", error);

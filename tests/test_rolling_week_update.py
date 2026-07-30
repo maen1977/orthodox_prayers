@@ -1,90 +1,77 @@
 from __future__ import annotations
 
+import importlib.util
 import json
-import subprocess
-import sys
+import os
 import unittest
 from datetime import date, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CANDIDATE = ROOT / "data/rolling-week/candidates/2026-07-28"
-LANGUAGES = ("ar", "en", "el")
-REQUIRED_SERVICES = {
-    "divine_liturgy",
-    "vespers",
-    "orthros",
-    "morning_prayer",
-    "evening_prayer",
-    "small_compline",
-}
+
+
+def load_updater():
+    os.environ.setdefault("ORTHODOX_DISABLE_DISCOVERY_NETWORK", "1")
+    path = ROOT / "scripts" / "update_liturgical_data.py"
+    spec = importlib.util.spec_from_file_location("rolling_window_updater_test", path)
+    module = importlib.util.module_from_spec(spec)
+    assert spec and spec.loader
+    spec.loader.exec_module(module)
+    return module
 
 
 class RollingWeekUpdateTests(unittest.TestCase):
-    def load(self, path: Path) -> dict:
-        return json.loads(path.read_text(encoding="utf-8"))
+    @classmethod
+    def setUpClass(cls):
+        cls.update = load_updater()
 
-    def test_unsigned_candidate_contains_today_plus_seven_days(self):
-        payload = self.load(CANDIDATE / "package.json")
-        metadata = payload["rolling_week"]
-        self.assertEqual("TODAY_PLUS_SEVEN_COMPLETE_DAYS", metadata["policy"])
-        self.assertEqual("2026-07-28", metadata["start_date"])
-        self.assertEqual("2026-08-04", metadata["end_date"])
-        self.assertEqual(8, metadata["day_count"])
-        self.assertEqual("COMPLETE", metadata["status"])
-        self.assertTrue(metadata["fail_closed"])
+    def test_contract_is_today_plus_eight_future_days(self):
+        rules = json.loads((ROOT / "canonical/liturgy_service_rules.json").read_text(encoding="utf-8"))
+        rolling = rules["rolling_window"]
+        self.assertEqual("NINE_CONSECUTIVE_DAYS_STARTING_TODAY", rolling["policy"])
+        self.assertEqual(9, rolling["day_count"])
+        self.assertEqual(8, rolling["future_day_count"])
+        self.assertFalse(rolling["annual_preload_required"])
+        self.assertTrue(rolling["fail_closed"])
 
-        days = [payload, *payload["weekly_days"]]
-        self.assertEqual(8, len(days))
-        start = date(2026, 7, 28)
-        for offset, day_payload in enumerate(days):
-            self.assertEqual((start + timedelta(days=offset)).isoformat(), day_payload["date_iso"])
-            self.assertEqual("FULL", day_payload["publication"]["daily_availability"])
-            services = {item["id"] for item in day_payload["services"]}
-            self.assertTrue(REQUIRED_SERVICES.issubset(services))
-            readings = {item["kind"]: item for item in day_payload["readings"]}
-            for kind in ("epistle", "gospel"):
-                for language in LANGUAGES:
-                    self.assertTrue(readings[kind]["body"][language].strip())
+        update_source = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
+        builder_source = (ROOT / "scripts/build_rolling_week.py").read_text(encoding="utf-8")
+        self.assertIn('"--days",\n        "9"', update_source)
+        self.assertIn('default=9', builder_source)
+        self.assertIn('NINE_CONSECUTIVE_DAYS_STARTING_TODAY', builder_source)
 
-    def test_candidate_and_each_native_lane_pass_the_fail_closed_validator(self):
-        subprocess.run(
-            [
-                sys.executable,
-                "scripts/validate_rolling_week.py",
-                "data/rolling-week/candidates/2026-07-28/package.json",
-                "--expected-start",
-                "2026-07-28",
-            ],
-            cwd=ROOT,
-            check=True,
-            stdout=subprocess.DEVNULL,
-        )
-        for language in LANGUAGES:
-            subprocess.run(
-                [
-                    sys.executable,
-                    "scripts/validate_rolling_week.py",
-                    f"data/rolling-week/candidates/2026-07-28/lanes/{language}.json",
-                    "--expected-start",
-                    "2026-07-28",
-                    "--language",
-                    language,
-                ],
-                cwd=ROOT,
-                check=True,
-                stdout=subprocess.DEVNULL,
+    def test_generated_payload_contains_today_plus_eight_consecutive_days(self):
+        payload = self.update.build_day(date(2026, 7, 28))
+        self.assertEqual(10, payload["schema_version"])
+        self.assertEqual(8, len(payload["upcoming"]))
+        expected = [date(2026, 7, 28) + timedelta(days=offset) for offset in range(9)]
+        actual = [date.fromisoformat(payload["date_iso"])] + [
+            date.fromisoformat(item["date"]) for item in payload["upcoming"]
+        ]
+        self.assertEqual(expected, actual)
+
+        cards = [payload, *payload["upcoming"]]
+        for item in cards:
+            selection = item["liturgy_service_selection"]
+            self.assertTrue(selection["service_type"])
+            self.assertTrue(selection["service_form"])
+            self.assertTrue(selection["reason"]["ar"])
+            self.assertFalse(selection["wrong_liturgy_fallback_allowed"])
+            self.assertEqual(
+                "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+                selection["full_service_scope"],
             )
 
-    def test_unsigned_candidate_does_not_replace_the_last_trusted_release(self):
+    def test_signed_last_trusted_release_remains_embedded_unchanged(self):
         trusted = ROOT / "data/calendar/today.json"
         trusted_signature = ROOT / "data/calendar/today.json.sig"
         embedded = ROOT / "app/src/main/assets/data/today.json"
         embedded_signature = ROOT / "app/src/main/assets/data/today.json.sig"
-        self.assertEqual("2026-07-26", self.load(trusted)["date_iso"])
         self.assertEqual(trusted.read_bytes(), embedded.read_bytes())
         self.assertEqual(trusted_signature.read_bytes(), embedded_signature.read_bytes())
-        self.assertNotEqual(trusted.read_bytes(), (CANDIDATE / "package.json").read_bytes())
+
+    def test_legacy_eight_day_unsigned_candidate_is_not_shipped(self):
+        self.assertFalse((ROOT / "data/rolling-week/candidates/2026-07-28").exists())
 
 
 if __name__ == "__main__":

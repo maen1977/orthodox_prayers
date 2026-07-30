@@ -28,6 +28,7 @@ public final class CalendarDayScreen extends BaseScreen {
         addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_old_calendar_date_02f8092d), localized(item.optJSONObject("julian_label"), item.optString("julian_date", "")));
         addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_commemoration_399506fc), localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")));
         addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_fasting_f1b1605d), localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), "")));
+        addLiturgySelection(card, item.optJSONObject("liturgy_service_selection"));
         addFastingGuide(card, item.optJSONObject("fasting"), true);
         JSONObject sunday = item.optJSONObject("sunday");
         if (sunday != null) {
@@ -81,7 +82,7 @@ public final class CalendarDayScreen extends BaseScreen {
         JSONArray services = day.optJSONArray("services");
         if (services == null || services.length() == 0) return;
         card.addView(ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_this_day_is_complete_inside_the_signed_package_2072d1f2)), ui.margins(-1, -2, 0, 8, 0, 8));
-        addServiceButton(card, services, "divine_liturgy", local(com.orthodoxprayers.privateapp.R.string.ui_open_the_complete_divine_liturgy_14695677), true);
+        addServiceButton(card, services, "divine_liturgy", local(com.orthodoxprayers.privateapp.R.string.ui_open_complete_service_beginning_to_end), true);
         addServiceButton(card, services, "orthros", local(com.orthodoxprayers.privateapp.R.string.ui_orthros_2aa869d2), false);
         addServiceButton(card, services, "vespers", local(com.orthodoxprayers.privateapp.R.string.ui_vespers_1daa5b5d), false);
         addServiceButton(card, services, "morning_prayer", local(com.orthodoxprayers.privateapp.R.string.ui_morning_prayers_cbf9758b), false);
@@ -90,16 +91,37 @@ public final class CalendarDayScreen extends BaseScreen {
     }
 
     private void addServiceButton(LinearLayout card, JSONArray services, String id, String label, boolean primary) {
-        boolean exists = false;
+        JSONObject selected = null;
         for (int i = 0; i < services.length(); i++) {
             JSONObject service = services.optJSONObject(i);
-            if (service != null && id.equals(service.optString("id", ""))) { exists = true; break; }
+            if (service != null && id.equals(service.optString("id", ""))) { selected = service; break; }
         }
-        if (!exists) return;
-        Button button = ui.button(label, primary);
+        if (selected == null) return;
+        boolean complete = !"divine_liturgy".equals(id) || selected.optBoolean("full_service_complete", false);
+        String dynamicLabel = label;
+        if ("divine_liturgy".equals(id)) {
+            String title = localized(selected.optJSONObject("title"), "");
+            if (!title.isEmpty()) dynamicLabel = complete
+                    ? localFormat(com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format, title)
+                    : title;
+        }
+        Button button = ui.button(dynamicLabel, primary && complete);
         button.setOnClickListener(v -> host.navigate("reader",
                 com.orthodoxprayers.privateapp.data.DataRepository.datedServiceId(date, id)));
         card.addView(button, ui.margins(-1, -2, 0, 5, 0, 0));
+    }
+
+    private void addLiturgySelection(LinearLayout card, JSONObject selection) {
+        if (selection == null) return;
+        addField(card,
+                local(com.orthodoxprayers.privateapp.R.string.ui_appointed_liturgy_label),
+                localized(selection.optJSONObject("label"), ""));
+        addField(card,
+                local(com.orthodoxprayers.privateapp.R.string.ui_service_form_label),
+                localized(selection.optJSONObject("service_form_label"), ""));
+        addField(card,
+                local(com.orthodoxprayers.privateapp.R.string.ui_selection_reason_label),
+                localized(selection.optJSONObject("reason"), ""));
     }
 
     private JSONObject findDay() {

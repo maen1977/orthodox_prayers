@@ -23,7 +23,10 @@
   ],
   "properties": {
     "schema_version": {
-      "const": 9
+      "enum": [
+        9,
+        10
+      ]
     },
     "date_iso": {
       "type": "string",
@@ -126,7 +129,7 @@
     "upcoming": {
       "type": "array",
       "minItems": 7,
-      "maxItems": 7
+      "maxItems": 8
     },
     "next_sunday": {
       "type": "object",
@@ -538,5 +541,41 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": 10
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "upcoming": {
+            "minItems": 8,
+            "maxItems": 8
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": 9
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "upcoming": {
+            "minItems": 7,
+            "maxItems": 7
+          }
+        }
+      }
+    }
+  ]
 }

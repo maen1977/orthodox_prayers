@@ -24,8 +24,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.21"', build)
-        self.assertIn("versionCode = 50021", build)
+        self.assertIn('versionName = "5.0.22"', build)
+        self.assertIn("versionCode = 50022", build)
         contract = json.loads((ROOT / "canonical/update_contract.json").read_text(encoding="utf-8"))
         self.assertEqual(50013, contract["minimum_app_version_code"])
         self.assertIn("compileSdk = 36", build)
@@ -621,7 +621,7 @@ class ReleaseContractTests(unittest.TestCase):
         network = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/NetworkEndpointSecurity.java").read_text(encoding="utf-8")
         self.assertIn("supportsSchema", repository)
         self.assertIn("MIN_SUPPORTED_SCHEMA_VERSION = 9", contract)
-        self.assertIn("MAX_SUPPORTED_SCHEMA_VERSION = 9", contract)
+        self.assertIn("MAX_SUPPORTED_SCHEMA_VERSION = 10", contract)
         self.assertIn("raw.githubusercontent.com", network)
         self.assertIn("cdn.jsdelivr.net", network)
         self.assertIn("setInstanceFollowRedirects(false)", repository)

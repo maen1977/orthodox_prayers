@@ -143,8 +143,9 @@ def validate(data: dict[str, Any]) -> list[str]:
         validate_reference_block(sunday.get("reading_references"), "next_sunday.reading_references", errors)
 
     upcoming = data.get("upcoming")
-    if not isinstance(upcoming, list) or len(upcoming) != 7:
-        errors.append("upcoming must contain seven days")
+    expected_future_days = 8 if int(data.get("schema_version") or 0) >= 10 else 7
+    if not isinstance(upcoming, list) or len(upcoming) != expected_future_days:
+        errors.append(f"upcoming must contain {expected_future_days} future days")
     else:
         for index, item in enumerate(upcoming):
             if not isinstance(item, dict):

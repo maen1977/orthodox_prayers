@@ -9,7 +9,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_DIRS = {".git", ".gradle", ".idea", ".pytest_cache", "__pycache__", "build", "release", ".venv", "venv"}
+EXCLUDED_DIRS = {".git", ".gradle", ".idea", ".pytest_cache", "__pycache__", ".cache", "build", "release", ".venv", "venv"}
 EXCLUDED_SUFFIXES = {".pyc", ".pyo", ".jks", ".keystore", ".p12", ".pfx"}
 EXCLUDED_NAMES = {"local.properties", ".DS_Store"}
 

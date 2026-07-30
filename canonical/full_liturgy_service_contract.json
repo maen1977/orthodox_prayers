@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_FAIL_CLOSED",
+  "rolling_window": {
+    "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
+    "day_count": 9,
+    "start": "today_in_Asia/Amman",
+    "end_offset_days": 8
+  },
+  "definition_of_complete": {
+    "scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+    "includes": [
+      "appointed_liturgy_type_and_service_form",
+      "native_preparation_office_when_registered",
+      "opening_and_litanies",
+      "antiphons_and_entrances",
+      "daily_hymns_and_readings",
+      "anaphora_or_presanctified_order",
+      "communion",
+      "thanksgiving_and_dismissal"
+    ],
+    "partial_text_allowed": false,
+    "cross_language_fallback_allowed": false,
+    "wrong_rite_fallback_allowed": false
+  },
+  "displayable_rites": [
+    "chrysostom"
+  ],
+  "blocked_until_complete_native_import": [
+    "basil",
+    "presanctified",
+    "james"
+  ],
+  "no_liturgy_is_valid_state": true,
+  "validators": [
+    "scripts/validate_full_liturgy_services.py",
+    "scripts/validate_rolling_week.py"
+  ]
+}

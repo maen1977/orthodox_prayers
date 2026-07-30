@@ -49,6 +49,7 @@ class CleanSourceArchiveTests(unittest.TestCase):
                         self.assertNotIn(".git", path.parts)
                         self.assertNotIn("__pycache__", path.parts)
                         self.assertNotIn(".pytest_cache", path.parts)
+                        self.assertNotIn(".cache", path.parts)
                         self.assertFalse(path.name.startswith("COMMIT_MESSAGE"))
                         self.assertFalse(path.name.lower().endswith((".pem", ".key", ".keystore", ".jks", ".pyc")))
 
@@ -74,8 +75,8 @@ class CleanSourceArchiveTests(unittest.TestCase):
                 self.assertIn("scripts/verify_r19_patch.py", names)
                 self.assertNotIn("orthodox_prayers/app/build.gradle.kts", names)
                 build = archive.read("app/build.gradle.kts").decode("utf-8")
-                self.assertIn('versionName = "5.0.21"', build)
-                self.assertIn("versionCode = 50021", build)
+                self.assertIn('versionName = "5.0.22"', build)
+                self.assertIn("versionCode = 50022", build)
 
 
 if __name__ == "__main__":

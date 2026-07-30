@@ -51,7 +51,7 @@ class R21Phase8FinalizationTests(unittest.TestCase):
 
     def test_contract_requires_all_final_release_gates(self):
         gates = self.contract["required_release_gates"]
-        self.assertEqual({"native_service_editions", "annual_variable_parts", "signed_daily_data", "android_build"}, set(gates))
+        self.assertEqual({"native_service_editions", "rolling_liturgical_window", "signed_daily_data", "android_build"}, set(gates))
         self.assertFalse(self.contract["completion_claim"]["current_value"])
 
     def test_review_packet_hashes_every_segment(self):

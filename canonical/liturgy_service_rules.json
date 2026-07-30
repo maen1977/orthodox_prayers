@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "ACTIVE_FAIL_CLOSED_TYPICON_BASELINE",
   "calendar": "julian_old_calendar_with_orthodox_pascha_offsets",
   "jurisdiction": "Jerusalem Patriarchate / Jordan priority",
@@ -8,7 +8,8 @@
     "basil": "divine_liturgy_basil",
     "presanctified": "presanctified_liturgy",
     "no_divine_liturgy": null,
-    "typikon_override_required": null
+    "typikon_override_required": null,
+    "james": "divine_liturgy_james"
   },
   "basil_rules": {
     "fixed_old_calendar": [
@@ -85,6 +86,7 @@
       "chrysostom",
       "basil",
       "presanctified",
+      "james",
       "no_divine_liturgy"
     ],
     "requires": [
@@ -98,5 +100,31 @@
   "collision_policy": {
     "annunciation_with_holy_thursday_great_friday_holy_saturday_or_pascha": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
     "reason": "The exact combined order is year- and Typikon-dependent; do not infer it from ordinary single-feast rules."
+  },
+  "rolling_window": {
+    "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
+    "day_count": 9,
+    "future_day_count": 8,
+    "timezone": "Asia/Amman",
+    "annual_preload_required": false,
+    "fail_closed": true
+  },
+  "service_forms": {
+    "morning_divine_liturgy": "Morning Divine Liturgy",
+    "vespers_with_divine_liturgy": "Vespers joined to the Divine Liturgy",
+    "lenten_vespers_with_presanctified": "Lenten Vespers joined to the Presanctified Gifts",
+    "no_divine_liturgy": "No Eucharistic Divine Liturgy appointed",
+    "official_override_required": "Dated official ruling required"
+  },
+  "saint_james_policy": {
+    "automatic_selection": false,
+    "selection": "DATED_OFFICIAL_OVERRIDE_ONLY",
+    "reason": "Local celebration varies; the signed Jordan/Jerusalem calendar must explicitly appoint it."
+  },
+  "full_service_policy": {
+    "required": true,
+    "scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+    "partial_service_may_be_labeled_complete": false,
+    "wrong_rite_substitution_allowed": false
   }
 }

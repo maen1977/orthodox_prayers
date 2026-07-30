@@ -1,10 +1,9 @@
 {
   "schema_version": 1,
-  "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
+  "claim_policy": "complete only when every required variable has verified native-language text",
   "services": [
     {
       "service_id": "divine_liturgy",
-      "variable_coverage_applicable": true,
       "required_variable_count": 6,
       "verified_variable_count": 3,
       "coverage_percent": 50,
@@ -13,68 +12,55 @@
         "[القنداق]",
         "[آية المناولة]"
       ],
-      "status": "incomplete",
       "complete": false
     },
     {
       "service_id": "vespers",
-      "variable_coverage_applicable": false,
       "required_variable_count": 0,
       "verified_variable_count": 0,
       "coverage_percent": 100,
       "missing_variables": [],
-      "status": "not_applicable",
-      "complete": null
+      "complete": false
     },
     {
       "service_id": "orthros",
-      "variable_coverage_applicable": false,
       "required_variable_count": 0,
       "verified_variable_count": 0,
       "coverage_percent": 100,
       "missing_variables": [],
-      "status": "not_applicable",
-      "complete": null
+      "complete": false
     },
     {
       "service_id": "morning_prayer",
-      "variable_coverage_applicable": false,
       "required_variable_count": 0,
       "verified_variable_count": 0,
       "coverage_percent": 100,
       "missing_variables": [],
-      "status": "not_applicable",
-      "complete": null
+      "complete": false
     },
     {
       "service_id": "evening_prayer",
-      "variable_coverage_applicable": false,
       "required_variable_count": 0,
       "verified_variable_count": 0,
       "coverage_percent": 100,
       "missing_variables": [],
-      "status": "not_applicable",
-      "complete": null
+      "complete": false
     },
     {
       "service_id": "small_compline",
-      "variable_coverage_applicable": false,
       "required_variable_count": 0,
       "verified_variable_count": 0,
       "coverage_percent": 100,
       "missing_variables": [],
-      "status": "not_applicable",
-      "complete": null
+      "complete": false
     },
     {
       "service_id": "next_sunday_full_liturgy",
-      "variable_coverage_applicable": false,
       "required_variable_count": 0,
       "verified_variable_count": 0,
       "coverage_percent": 100,
       "missing_variables": [],
-      "status": "not_applicable",
-      "complete": null
+      "complete": false
     }
   ]
 }

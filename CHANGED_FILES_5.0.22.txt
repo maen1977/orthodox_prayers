@@ -1,0 +1,36 @@
+Orthodox Prayers 5.0.22 / R24
+
+Core Android
+- app/build.gradle.kts
+- app/src/main/java/com/orthodoxprayers/privateapp/data/DataContract.java
+- app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java
+- app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java
+- app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java
+- app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java
+- app/src/main/res/values*/ui_strings.xml
+
+Canonical contracts and schemas
+- canonical/full_liturgy_service_contract.json
+- canonical/liturgy_service_rules.json
+- canonical/liturgy_service_editions.json
+- canonical/liturgy_phase8_completion_contract.json
+- schemas/daily_data.schema.json
+- schemas/rolling_week.schema.json
+
+Pipeline and validation
+- scripts/build_rolling_week.py
+- scripts/update.py
+- scripts/update_liturgical_data.py
+- scripts/build_update_manifest.py
+- scripts/validate_rolling_week.py
+- scripts/validate_full_liturgy_services.py
+- scripts/validate_liturgy_service_selection.py
+- scripts/validate_release_readiness.py
+- scripts/run_quality_gate.py
+- related compatibility, localization, fasting, schedule, signature, and release validators
+
+Regression tests
+- tests/test_r24_nine_day_liturgy_engine.py
+- tests/test_rolling_week_atomic_publish.py
+- tests/test_rolling_week_update.py
+- related release and compatibility tests

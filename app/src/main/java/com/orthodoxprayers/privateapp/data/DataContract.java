@@ -3,7 +3,7 @@ package com.orthodoxprayers.privateapp.data;
 /** Central Android-side contract for signed daily content. */
 public final class DataContract {
     public static final int MIN_SUPPORTED_SCHEMA_VERSION = 9;
-    public static final int MAX_SUPPORTED_SCHEMA_VERSION = 9;
+    public static final int MAX_SUPPORTED_SCHEMA_VERSION = 10;
     public static final int MIN_LANGUAGE_LANE_SCHEMA_VERSION = 2;
     public static final int MAX_RETAINED_DAYS_PER_LANGUAGE = 30;
 

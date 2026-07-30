@@ -56,9 +56,10 @@ class FastingGuidanceTests(unittest.TestCase):
         profile = self.profile(date(2026, 7, 22))
         profile["allowed"]["fish"] = True
         data = {
+            "schema_version": 10,
             "fasting_guidance_version": 1,
             "fasting": profile,
-            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(7)],
+            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(8)],
             "next_sunday": {"fasting": copy.deepcopy(profile)},
         }
         errors = self.validator.validate(data)
@@ -74,9 +75,10 @@ class FastingGuidanceTests(unittest.TestCase):
             "verification": {"status": "DOCUMENTED_OVERRIDE", "source": "scripts/overrides/2026-07-22.json"},
         })
         data = {
+            "schema_version": 10,
             "fasting_guidance_version": 1,
             "fasting": profile,
-            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(7)],
+            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(8)],
             "next_sunday": {"fasting": copy.deepcopy(profile)},
         }
         self.assertEqual([], self.validator.validate(data))
@@ -90,7 +92,7 @@ class FastingGuidanceTests(unittest.TestCase):
         day = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
         self.assertIn("addFastingGuide", base)
         self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
-        self.assertTrue(source_references_text(home, "جدول الصيام للأيام السبعة", "ar"))
+        self.assertTrue(source_references_text(home, "جدول الصيام للأيام التسعة", "ar"))
         self.assertIn('fasting.optJSONObject("title")', home)
         self.assertIn('addFastingGuide(card, fasting, false)', upcoming)
         self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), true)', day)
@@ -112,7 +114,7 @@ class FastingGuidanceTests(unittest.TestCase):
                 self.update.os.environ["ORTHODOX_DISABLE_DISCOVERY_NETWORK"] = old
         self.assertEqual(1, payload["fasting_guidance_version"])
         self.assertEqual([], self.validator.validate(payload))
-        self.assertEqual(7, len(payload["upcoming"]))
+        self.assertEqual(8, len(payload["upcoming"]))
         for item in payload["upcoming"]:
             self.assertIn("guidance", item["fasting"])
             self.assertIn("abstinence", item["fasting"])

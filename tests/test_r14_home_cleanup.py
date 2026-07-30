@@ -27,7 +27,7 @@ class R14HomeCleanupTests(unittest.TestCase):
         self.assertNotIn("addTodayFastingGuide", create_view)
         self.assertNotIn('today.optJSONObject("feast")', date_card)
         self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
-        self.assertTrue(source_references_text(home, "عرض تفاصيل الأيام السبعة", "ar", exact=True))
+        self.assertTrue(source_references_text(home, "عرض تفاصيل الأيام التسعة", "ar", exact=True))
         self.assertTrue(source_references_text(home, "الأحد القادم", "ar", exact=True))
 
     def test_important_home_shortcuts_are_visible_and_routes_remain(self):
@@ -40,7 +40,7 @@ class R14HomeCleanupTests(unittest.TestCase):
             "القراءات اليومية",
             "الصلوات اليومية",
             "التقويم والصيام",
-            "اليوم + 7 أيام مكتملة",
+            "اليوم + 8 أيام قادمة مكتملة",
             "الكنائس والبث المباشر",
             "البحث",
             "المفضلة",
@@ -50,13 +50,13 @@ class R14HomeCleanupTests(unittest.TestCase):
         ):
             self.assertTrue(source_references_text(home, retained, "ar"), retained)
 
-    def test_home_shows_a_light_seven_day_fasting_table(self):
+    def test_home_shows_a_light_nine_day_fasting_table(self):
         base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
         self.assertTrue(source_references_text(base, "✓ مسموح   ✕ ممنوع", "ar", exact=True))
         self.assertIn('!fasting.optBoolean("is_fast", false)', base)
-        self.assertTrue(source_references_text(home, "جدول الصيام للأيام السبعة", "ar", exact=True))
+        self.assertTrue(source_references_text(home, "جدول الصيام للأيام التسعة", "ar", exact=True))
         self.assertIn('host.navigate("calendar_day", date)', home)
         self.assertIn('"calendar", null', home)
         self.assertIn("addCompactFastingItems(card, fasting)", upcoming)

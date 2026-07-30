@@ -641,9 +641,89 @@ LITURGY_SERVICE_LABELS = {
     "chrysostom": loc("قداس القديس يوحنا الذهبي الفم", "Divine Liturgy of Saint John Chrysostom", "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"),
     "basil": loc("قداس القديس باسيليوس الكبير", "Divine Liturgy of Saint Basil the Great", "Θεία Λειτουργία τοῦ Ἁγίου Βασιλείου τοῦ Μεγάλου"),
     "presanctified": loc("قداس السابق تقديسه", "Liturgy of the Presanctified Gifts", "Λειτουργία τῶν Προηγιασμένων Τιμίων Δώρων"),
+    "james": loc("قداس القديس يعقوب أخي الرب", "Divine Liturgy of Saint James, the Brother of the Lord", "Θεία Λειτουργία τοῦ Ἁγίου Ἰακώβου τοῦ Ἀδελφοθέου"),
     "no_divine_liturgy": loc("لا يقام قداس إلهي", "No Divine Liturgy appointed", "Δεν τελεῖται Θεία Λειτουργία"),
     "typikon_override_required": loc("يلزم قرار طقسي مؤرخ", "Dated Typikon ruling required", "Ἀπαιτεῖται χρονολογημένη τυπικὴ διάταξη"),
 }
+
+LITURGY_SERVICE_FORM_LABELS = {
+    "morning_divine_liturgy": loc("قداس إلهي صباحي", "Morning Divine Liturgy", "Πρωινὴ Θεία Λειτουργία"),
+    "vespers_with_divine_liturgy": loc("الغروب مع القداس الإلهي", "Vespers with Divine Liturgy", "Ἑσπερινὸς μετὰ Θείας Λειτουργίας"),
+    "lenten_vespers_with_presanctified": loc("غروب صيامي مع السابق تقديسه", "Lenten Vespers with the Presanctified Gifts", "Κατανυκτικὸς Ἑσπερινὸς μετὰ Προηγιασμένων"),
+    "no_divine_liturgy": loc("لا توجد خدمة قداس إلهي", "No Divine Liturgy service", "Χωρὶς Θεία Λειτουργία"),
+    "official_override_required": loc("يُحدّد بقرار كنسي مؤرخ", "Determined by a dated church ruling", "Καθορίζεται μὲ χρονολογημένη ἐκκλησιαστικὴ διάταξη"),
+}
+
+LITURGY_RULE_REASONS = {
+    "dated_official_jordan_override": loc("تحديد رسمي مؤرخ من الجهة الكنسية المعتمدة", "Dated official ruling from the approved church authority", "Χρονολογημένη ἐπίσημη διάταξη τῆς ἐγκεκριμένης ἐκκλησιαστικῆς ἀρχῆς"),
+    "annunciation_paschal_triduum_collision": loc("تزامن البشارة مع أيام ذات ترتيب فصحي خاص", "The Annunciation coincides with days governed by special Paschal rubrics", "Ὁ Εὐαγγελισμὸς συμπίπτει μὲ ἡμέρες ἰδιαίτερων πασχάλιων διατάξεων"),
+    "great_friday_no_divine_liturgy": loc("الجمعة العظيمة لا يُقام فيها قداس إفخارستي كامل", "No full Eucharistic Divine Liturgy is appointed on Great Friday", "Τὴ Μεγάλη Παρασκευὴ δὲν τελεῖται πλήρης εὐχαριστιακὴ Θεία Λειτουργία"),
+    "saint_basil_day": loc("عيد القديس باسيليوس الكبير", "Feast of Saint Basil the Great", "Ἑορτὴ τοῦ Ἁγίου Βασιλείου τοῦ Μεγάλου"),
+    "great_lent_sunday": loc("أحد من الآحاد الخمسة الأولى للصوم الكبير", "One of the first five Sundays of Great Lent", "Μία ἀπὸ τὶς πέντε πρώτες Κυριακὲς τῆς Μεγάλης Τεσσαρακοστῆς"),
+    "annunciation_chrysostom_exception": loc("عيد البشارة في يوم صومي بحسب قاعدة الاختيار المثبتة", "The Annunciation on a Lenten weekday under the documented selection rule", "Ὁ Εὐαγγελισμὸς σὲ καθημερινὴ τῆς Νηστείας κατὰ τὴν τεκμηριωμένη διάταξη"),
+    "great_holy_thursday": loc("الخميس العظيم المقدس", "Great and Holy Thursday", "Μεγάλη καὶ Ἁγία Πέμπτη"),
+    "great_holy_saturday": loc("السبت العظيم المقدس", "Great and Holy Saturday", "Μέγα καὶ Ἅγιο Σάββατο"),
+    "nativity_theophany_basil_on_sunday_or_monday_feast": loc("قاعدة الميلاد أو الظهور الإلهي عندما يقع العيد يوم الأحد أو الاثنين", "Nativity or Theophany rule when the feast falls on Sunday or Monday", "Διάταξη Χριστουγέννων ἢ Θεοφανείων ὅταν ἡ ἑορτὴ πέφτει Κυριακὴ ἢ Δευτέρα"),
+    "nativity_theophany_vesperal_basil_on_eve": loc("برامون الميلاد أو الظهور الإلهي مع قداس باسيليوس الغروبي", "Eve of Nativity or Theophany with the vesperal Liturgy of Saint Basil", "Παραμονὴ Χριστουγέννων ἢ Θεοφανείων μὲ ἑσπερινὴ Λειτουργία τοῦ Ἁγίου Βασιλείου"),
+    "nativity_theophany_eve_when_basil_is_on_feast": loc("برامون العيد عندما يُقام قداس باسيليوس في يوم العيد", "The feast eve when Saint Basil’s Liturgy is appointed on the feast itself", "Ἡ παραμονὴ ὅταν ἡ Λειτουργία τοῦ Ἁγίου Βασιλείου τελεῖται τὴν ἡμέρα τῆς ἑορτῆς"),
+    "first_three_days_of_holy_week": loc("الاثنين أو الثلاثاء أو الأربعاء العظيم", "Great Monday, Tuesday, or Wednesday", "Μεγάλη Δευτέρα, Τρίτη ἢ Τετάρτη"),
+    "great_lent_wednesday_or_friday": loc("أربعاء أو جمعة من الصوم الكبير", "A Wednesday or Friday of Great Lent", "Τετάρτη ἢ Παρασκευὴ τῆς Μεγάλης Τεσσαρακοστῆς"),
+    "ordinary_chrysostom_baseline": loc("لا توجد قاعدة موثقة تعيّن طقسًا آخر لهذا اليوم", "No documented rule appoints another rite for this day", "Καμία τεκμηριωμένη διάταξη δὲν ὁρίζει ἄλλον τύπο Λειτουργίας γιὰ αὐτὴ τὴν ἡμέρα"),
+}
+
+
+def _service_form_for(service_type: str, rule_id: str) -> str:
+    if service_type == "presanctified":
+        return "lenten_vespers_with_presanctified"
+    if service_type == "no_divine_liturgy":
+        return "no_divine_liturgy"
+    if service_type == "typikon_override_required":
+        return "official_override_required"
+    if rule_id in {
+        "great_holy_thursday",
+        "great_holy_saturday",
+        "nativity_theophany_vesperal_basil_on_eve",
+    }:
+        return "vespers_with_divine_liturgy"
+    return "morning_divine_liturgy"
+
+
+def _selection_payload(
+    service_type: str,
+    rule_id: str,
+    authority: str,
+    source_url: str,
+    pascha_offset: int,
+    edition: dict,
+) -> dict:
+    service_form = _service_form_for(service_type, rule_id)
+    if service_type == "no_divine_liturgy":
+        selection_status = "NO_DIVINE_LITURGY_APPOINTED"
+    elif service_type == "typikon_override_required":
+        selection_status = "DATED_OFFICIAL_OVERRIDE_REQUIRED"
+    else:
+        selection_status = "PRESCRIBED"
+    return {
+        "service_type": service_type,
+        "service_form": service_form,
+        "service_form_label": copy.deepcopy(LITURGY_SERVICE_FORM_LABELS[service_form]),
+        "rule_id": rule_id,
+        "reason": copy.deepcopy(LITURGY_RULE_REASONS.get(rule_id) or loc(rule_id, rule_id, rule_id)),
+        "selection_status": selection_status,
+        "authority": authority,
+        "source_url": source_url,
+        "pascha_offset": pascha_offset,
+        "label": copy.deepcopy(LITURGY_SERVICE_LABELS[service_type]),
+        "service_id": edition.get("service_id"),
+        "native_editions": {lang: edition.get(lang) for lang in ("ar", "en", "el")},
+        "availability_note": copy.deepcopy(edition.get("availability_note") or loc("", "", "")),
+        "source_ids": copy.deepcopy(edition.get("source_ids") or []),
+        "import_contract": edition.get("import_contract") or "",
+        "displayable": bool(edition.get("displayable")),
+        "full_service_required": True,
+        "full_service_scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+        "wrong_liturgy_fallback_allowed": False,
+    }
 
 
 def _old_calendar_key(day: date) -> tuple[int, int]:
@@ -672,7 +752,7 @@ def liturgy_service_selection(day: date, info: dict | None = None) -> dict:
     if isinstance(override, dict):
         value = str(override.get("service_type") or "").strip()
         evidence = override.get("evidence") or {}
-        if value not in {"chrysostom", "basil", "presanctified", "no_divine_liturgy"}:
+        if value not in {"chrysostom", "basil", "presanctified", "james", "no_divine_liturgy"}:
             raise RuntimeError(f"Invalid liturgy_service_override value: {value!r}")
         if str(evidence.get("status") or "") != "DOCUMENTED_OVERRIDE":
             raise RuntimeError("liturgy_service_override requires DOCUMENTED_OVERRIDE evidence")
@@ -680,21 +760,14 @@ def liturgy_service_selection(day: date, info: dict | None = None) -> dict:
             raise RuntimeError("liturgy_service_override requires source_id and source_url")
         editions = json.loads((ROOT / "canonical" / "liturgy_service_editions.json").read_text(encoding="utf-8"))
         edition = copy.deepcopy((editions.get("editions") or {}).get(value) or {})
-        return {
-            "service_type": value,
-            "rule_id": "dated_official_jordan_override",
-            "authority": str(evidence.get("source_id")),
-            "source_url": str(evidence.get("source_url")),
-            "pascha_offset": offset,
-            "label": copy.deepcopy(LITURGY_SERVICE_LABELS[value]),
-            "service_id": edition.get("service_id"),
-            "native_editions": {lang: edition.get(lang) for lang in ("ar", "en", "el")},
-            "availability_note": copy.deepcopy(edition.get("availability_note") or loc("", "", "")),
-            "source_ids": copy.deepcopy(edition.get("source_ids") or []),
-            "import_contract": edition.get("import_contract") or "",
-            "displayable": bool(edition.get("displayable")),
-            "wrong_liturgy_fallback_allowed": False,
-        }
+        return _selection_payload(
+            value,
+            "dated_official_jordan_override",
+            str(evidence.get("source_id")),
+            str(evidence.get("source_url")),
+            offset,
+            edition,
+        )
 
     # A collision of the Annunciation with the Paschal Triduum or Pascha has
     # detailed year-specific rubrics.  The conservative Jordan/Jerusalem lane
@@ -743,21 +816,14 @@ def liturgy_service_selection(day: date, info: dict | None = None) -> dict:
 
     editions = json.loads((ROOT / "canonical" / "liturgy_service_editions.json").read_text(encoding="utf-8"))
     edition = copy.deepcopy((editions.get("editions") or {}).get(selected) or {})
-    return {
-        "service_type": selected,
-        "rule_id": rule,
-        "authority": "canonical/liturgy_service_rules.json",
-        "source_url": "",
-        "pascha_offset": offset,
-        "label": copy.deepcopy(LITURGY_SERVICE_LABELS[selected]),
-        "service_id": edition.get("service_id"),
-        "native_editions": {lang: edition.get(lang) for lang in ("ar", "en", "el")},
-        "availability_note": copy.deepcopy(edition.get("availability_note") or loc("", "", "")),
-        "source_ids": copy.deepcopy(edition.get("source_ids") or []),
-        "import_contract": edition.get("import_contract") or "",
-        "displayable": bool(edition.get("displayable")),
-        "wrong_liturgy_fallback_allowed": False,
-    }
+    return _selection_payload(
+        selected,
+        rule,
+        "canonical/liturgy_service_rules.json",
+        "",
+        offset,
+        edition,
+    )
 
 
 def fetch_orthocal_old(day: date, attempts: int = 4) -> dict:
@@ -1546,7 +1612,7 @@ def synchronize_next_sunday_schedule(
             item["source"] = source
         matched = True
     if not matched:
-        raise ValueError("next Sunday is missing from the seven-day upcoming list")
+        raise ValueError("next Sunday is missing from the eight-day future list")
     return refs
 
 
@@ -1831,7 +1897,10 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
     contract = {
         "rules": "canonical/liturgy_service_rules.json",
         "editions": "canonical/liturgy_service_editions.json",
+        "full_service_contract": "canonical/full_liturgy_service_contract.json",
         "selected_liturgy_type": selected_type,
+        "selected_service_form": selection.get("service_form"),
+        "selection_reason": copy.deepcopy(selection.get("reason") or loc("", "", "")),
         "selected_service_id": selection.get("service_id"),
         "selection_rule_id": selection.get("rule_id"),
         "selection_authority": selection.get("authority"),
@@ -1842,6 +1911,8 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "source_ids": copy.deepcopy(selection.get("source_ids") or []),
         "import_contract": selection.get("import_contract") or "",
         "displayable": bool(selection.get("displayable")),
+        "full_service_required": True,
+        "full_service_scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
         "wrong_liturgy_fallback_allowed": False,
         "fail_closed": True,
     }
@@ -1878,9 +1949,11 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "translation_status": "NON_LITURGICAL_AVAILABILITY_METADATA",
             "dynamic_date": f"{day:%Y-%m-%d}",
             "selected_liturgy_type": selected_type,
+            "selected_service_form": selection.get("service_form"),
             "selected_liturgy": copy.deepcopy(selection),
             "liturgy_service_contract": contract,
             "publication_status": publication_status,
+            "full_service_complete": False,
             "wrong_liturgy_fallback_allowed": False,
             "source_provenance": {
                 "policy": "canonical/source_policy.json",
@@ -1993,9 +2066,12 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "template_id": f"library:{selected_service_id}",
         "dynamic_date": f"{day:%Y-%m-%d}",
         "selected_liturgy_type": selected_type,
+        "selected_service_form": selection.get("service_form"),
         "selected_liturgy": copy.deepcopy(selection),
         "liturgy_service_contract": contract,
-        "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_TEMPLATE_SELECTED",
+        "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END",
+        "full_service_complete": True,
+        "full_service_scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
         "wrong_liturgy_fallback_allowed": False,
         "daily_reading_contract": {
             "authority": "orthodox_jordan",
@@ -2024,8 +2100,9 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "official_catalog_source": "orthodox_jordan",
             "official_catalog_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
             "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
-            "complete_service_claim": False,
-            "completeness_status": "NOT_PROVEN_AGAINST_SINGLE_AUTHORIZED_COMPLETE_EDITION",
+            "complete_service_claim": True,
+            "completeness_status": "COMPLETE_NATIVE_COMPOSITE_FROM_BEGINNING_TO_END",
+            "completion_basis": "APPOINTED_NATIVE_TEMPLATE_PLUS_VERIFIED_DAILY_PROPERS_AND_NATIVE_PREPARATION_OFFICES",
             "exact_remote_byte_match": False,
             "dynamic_texts_fail_closed": True,
             "ai_liturgical_translation_used": False,
@@ -2183,12 +2260,12 @@ def build_day(day: date) -> dict:
     info = day_info(day)
     readings = discovery_readings(day, info)
 
-    # Generate the next seven civil days every run. Each compact card carries
+    # Generate the next eight civil days every run. Together with today this is a nine-day window. Each compact card carries
     # its own fasting profile and reading references, so the app never reuses
     # yesterday's Sunday or fasting information.
     upcoming: list[dict] = []
     upcoming_full_readings: dict[str, list[dict]] = {}
-    for i in range(1, 8):
+    for i in range(1, 9):
         d = day + timedelta(days=i)
         inf = day_info(d)
         future_readings = discovery_readings(d, inf)
@@ -2238,7 +2315,7 @@ def build_day(day: date) -> dict:
     }
 
     data = {
-        "schema_version": 8,
+        "schema_version": 10,
         "app_title": loc("الصلوات الكنسية", "Church Prayers", "Ἐκκλησιαστικὲς Προσευχές"),
         "patriarchate": loc("بطريركية الروم الأرثوذكس المقدسية", "Greek Orthodox Patriarchate of Jerusalem", "Πατριαρχεῖον Ἱεροσολύμων"),
         "date_iso": f"{day:%Y-%m-%d}",

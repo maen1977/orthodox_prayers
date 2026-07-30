@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.21"', "versionCode = 50021"),
+    "app/build.gradle.kts": ('versionName = "5.0.22"', "versionCode = 50022"),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java": (
         "libraryForLanguage(language)",
         "nativeContentCoverage",
@@ -44,7 +44,7 @@ REQUIRED = {
     ),
     "tests/test_r19_refinement.py": (
         "class R19RefinementTests",
-        'versionName = "5.0.21"',
+        'versionName = "5.0.22"',
     ),
 }
 
@@ -70,7 +70,7 @@ def main() -> None:
             "Extract OrthodoxPrayers-5.0.15-R19.1-root-patch.zip directly into "
             "the repository root and overwrite existing files."
         )
-    print("PATCH_R19_OK version=5.0.21 level=R19.2+R20")
+    print("PATCH_R19_OK version=5.0.22 level=R19.2+R20")
 
 
 if __name__ == "__main__":

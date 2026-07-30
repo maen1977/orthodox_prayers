@@ -86,9 +86,9 @@ def main() -> None:
                 not isinstance(rolling, dict)
                 or rolling.get("schema_version") != 1
                 or rolling.get("start_date") != args.date
-                or rolling.get("day_count") != 8
+                or rolling.get("day_count") != 9
                 or rolling.get("status") != "COMPLETE"
-                or len(payload.get("weekly_days") or []) != 7
+                or len(payload.get("weekly_days") or []) != 8
             ):
                 raise SystemExit(f"invalid rolling-week lane metadata: {language}")
         entry = file_entry(dated)
@@ -124,7 +124,7 @@ def main() -> None:
     }
     if isinstance(rolling, dict):
         manifest["coverage"] = {
-            "policy": "TODAY_PLUS_SEVEN_COMPLETE_DAYS",
+            "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
             "start_date": rolling["start_date"],
             "end_date": rolling["end_date"],
             "day_count": rolling["day_count"],

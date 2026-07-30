@@ -33,7 +33,7 @@ def verify_pipeline_patch() -> None:
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
         str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
-        str(sources_path.relative_to(ROOT)): "data.registeredSources()",
+        str(sources_path.relative_to(ROOT)): "ui_sources_and_references_1a2c2926",
         str(coordinator_path.relative_to(ROOT)): "FIRST_REFRESH_HOUR = 1",
         str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
         str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
@@ -135,7 +135,7 @@ def main() -> None:
     )
 
     # Publish one fail-closed rolling package: the fully validated current day
-    # plus seven independently generated, fully validated future days. The
+    # plus eight independently generated, fully validated future days. The
     # language-lane step later strips this package to Arabic, English, or Greek
     # before signing, so Android downloads only the active native-language lane.
     run(
@@ -143,7 +143,7 @@ def main() -> None:
         "--start-date",
         args.date,
         "--days",
-        "8",
+        "9",
         *source_mode,
     )
     run(
@@ -174,6 +174,7 @@ def main() -> None:
             ("scripts/validate_public_source_registry.py",),
             ("scripts/validate_source_intelligence.py", "data/calendar/today.json", "--expected-date", args.date),
             ("scripts/validate_reader_services.py",),
+            ("scripts/validate_full_liturgy_services.py", "data/calendar/today.json"),
             ("scripts/validate_daily_ui_localizations.py", "data/calendar/today.json"),
             ("scripts/validate_scripture_translations.py", "data/calendar/today.json"),
         ):
@@ -182,6 +183,7 @@ def main() -> None:
         run("scripts/validate_partial_daily.py", "--expected-date", args.date)
         run("scripts/validate_static_prayer_sources.py")
         run("scripts/validate_reader_services.py")
+        run("scripts/validate_full_liturgy_services.py")
         run("scripts/validate_public_source_registry.py")
         run("scripts/validate_source_intelligence.py", "data/calendar/today.json", "--expected-date", args.date)
 

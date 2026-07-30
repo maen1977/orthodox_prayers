@@ -234,7 +234,7 @@ class DailyPipelineTests(unittest.TestCase):
         self.assertIsInstance(
             data["integrity_inputs"]["next_sunday"]["readings"], list
         )
-        self.assertEqual(len(data["upcoming"]), 7)
+        self.assertEqual(len(data["upcoming"]), 8)
         self.assertEqual(data["next_sunday"]["date_iso"], "2026-07-12")
         self.assertEqual(
             data["next_sunday"]["fasting"],

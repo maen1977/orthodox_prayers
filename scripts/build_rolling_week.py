@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build a fail-closed rolling package containing today plus seven complete days.
+"""Build a fail-closed rolling package containing nine complete days starting today.
 
 The current daily payload remains the package root for backwards compatibility.
-Seven independently generated and validated future payloads are stored under
+Eight independently generated and validated future payloads are stored under
 ``weekly_days``.  Language-lane generation then strips the package to one native
 language before signing, so Android downloads one compact package per language.
 """
@@ -71,26 +71,49 @@ def require_full_day(payload: dict, expected: date) -> None:
         raise SystemExit(f"rolling week services missing for {expected_iso}: {','.join(missing_services)}")
 
     liturgy = services.get("divine_liturgy") or {}
-    for language in REQUIRED_LANGUAGES:
-        library = validate_payload(NATIVE_LIBRARY_PATHS[language])
-        composed = compose_overlay(
-            liturgy,
-            library,
-            Path(f"rolling-week-{expected_iso}-{language}.json"),
-        )
-        segments = composed.get("segments") or []
-        if len(segments) < 180:
-            raise SystemExit(
-                f"rolling week divine_liturgy.{language} too short for {expected_iso}: "
-                f"{len(segments)} segments"
+    selection = payload.get("liturgy_service_selection") or {}
+    selected_type = str(selection.get("service_type") or "")
+    if not selected_type or not str(selection.get("service_form") or ""):
+        raise SystemExit(f"rolling week appointed liturgy metadata missing for {expected_iso}")
+    if not isinstance(selection.get("reason"), dict):
+        raise SystemExit(f"rolling week appointed liturgy reason missing for {expected_iso}")
+    if selection.get("wrong_liturgy_fallback_allowed") is not False:
+        raise SystemExit(f"rolling week wrong-liturgy fallback enabled for {expected_iso}")
+    if liturgy.get("selected_liturgy_type") != selected_type:
+        raise SystemExit(f"rolling week appointed liturgy mismatch for {expected_iso}")
+
+    if selected_type == "typikon_override_required":
+        raise SystemExit(f"rolling week dated Typikon override required for {expected_iso}")
+    if selected_type == "no_divine_liturgy":
+        if liturgy.get("publication_status") != "NO_DIVINE_LITURGY_APPOINTED":
+            raise SystemExit(f"rolling week no-liturgy status invalid for {expected_iso}")
+    else:
+        if selection.get("displayable") is not True:
+            raise SystemExit(f"rolling week complete native appointed rite missing for {expected_iso}: {selected_type}")
+        if liturgy.get("full_service_complete") is not True:
+            raise SystemExit(f"rolling week appointed rite is not complete from beginning to end: {expected_iso}")
+        if liturgy.get("publication_status") != "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END":
+            raise SystemExit(f"rolling week appointed rite publication status invalid for {expected_iso}")
+        for language in REQUIRED_LANGUAGES:
+            library = validate_payload(NATIVE_LIBRARY_PATHS[language])
+            composed = compose_overlay(
+                liturgy,
+                library,
+                Path(f"rolling-window-{expected_iso}-{language}.json"),
             )
-        for index, segment in enumerate(segments):
-            content_key = "title" if segment.get("type") == "section" else "text"
-            localized = segment.get(content_key) if isinstance(segment, dict) else None
-            if not isinstance(localized, dict) or not str(localized.get(language) or "").strip():
+            segments = composed.get("segments") or []
+            if len(segments) < 180:
                 raise SystemExit(
-                    f"rolling week divine_liturgy.{language}[{index}] is empty for {expected_iso}"
+                    f"rolling window divine_liturgy.{language} too short for {expected_iso}: "
+                    f"{len(segments)} segments"
                 )
+            for index, segment in enumerate(segments):
+                content_key = "title" if segment.get("type") == "section" else "text"
+                localized = segment.get(content_key) if isinstance(segment, dict) else None
+                if not isinstance(localized, dict) or not str(localized.get(language) or "").strip():
+                    raise SystemExit(
+                        f"rolling window divine_liturgy.{language}[{index}] is empty for {expected_iso}"
+                    )
 
     readings = payload.get("readings") or []
     by_kind = {item.get("kind"): item for item in readings if isinstance(item, dict)}
@@ -222,12 +245,12 @@ def generate_future_day(day: date, offline: bool) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--start-date", required=True)
-    parser.add_argument("--days", type=int, default=8)
+    parser.add_argument("--days", type=int, default=9)
     parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
 
-    if args.days != 8:
-        raise SystemExit("rolling week must contain exactly today plus seven days")
+    if args.days != 9:
+        raise SystemExit("rolling window must contain exactly nine consecutive days starting today")
     start = date.fromisoformat(args.start_date)
     if not CALENDAR.is_file():
         raise SystemExit("current validated daily payload is missing")
@@ -245,6 +268,24 @@ def main() -> None:
     ]
     saved = {path: path.read_bytes() for path in mutable_snapshots if path.is_file()}
 
+    dated_anchor = ROOT / f"data/calendar/{start.isoformat()}.json"
+    calendar_originals: dict[Path, bytes | None] = {
+        CALENDAR: CALENDAR.read_bytes() if CALENDAR.is_file() else None,
+        dated_anchor: dated_anchor.read_bytes() if dated_anchor.is_file() else None,
+    }
+    today_temp = CALENDAR.with_name(f".{CALENDAR.name}.rolling-window.tmp")
+    dated_temp = dated_anchor.with_name(f".{dated_anchor.name}.rolling-window.tmp")
+
+    def restore_calendar_inputs() -> None:
+        for path, content in calendar_originals.items():
+            if content is None:
+                path.unlink(missing_ok=True)
+            else:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(content)
+        today_temp.unlink(missing_ok=True)
+        dated_temp.unlink(missing_ok=True)
+
     fingerprint = generator_fingerprint()
     future_days: list[dict] = []
     try:
@@ -258,36 +299,45 @@ def main() -> None:
             else:
                 print(f"ROLLING_WEEK_DAY_REUSED date={day.isoformat()}", flush=True)
             future_days.append(payload)
+
+        end = start + timedelta(days=args.days - 1)
+        anchor["rolling_week"] = {
+            "schema_version": 1,
+            "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
+            "start_date": start.isoformat(),
+            "end_date": end.isoformat(),
+            "day_count": args.days,
+            "timezone": "Asia/Amman",
+            "status": "COMPLETE",
+            "fail_closed": True,
+            "language_lanes_required": list(REQUIRED_LANGUAGES),
+            "required_service_ids": list(REQUIRED_SERVICES),
+            "generated_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        }
+        anchor["weekly_days"] = future_days
+
+        output = json.dumps(anchor, ensure_ascii=False, indent=2) + "\n"
+        today_temp.write_text(output, encoding="utf-8")
+        dated_temp.write_text(output, encoding="utf-8")
+        today_relative = today_temp.relative_to(ROOT).as_posix()
+        run("scripts/validate_rolling_week.py", today_relative, "--expected-start", start.isoformat())
+        run("scripts/validate_full_liturgy_services.py", today_relative)
+
+        # Commit both files only after every day and every final validator passes.
+        # os.replace/Path.replace is atomic on the repository filesystem.
+        today_temp.replace(CALENDAR)
+        dated_temp.replace(dated_anchor)
+        print(
+            f"ROLLING_WEEK_BUILT start={start.isoformat()} end={end.isoformat()} "
+            f"days={args.days} bytes={len(output.encode('utf-8'))}"
+        )
+    except BaseException:
+        restore_calendar_inputs()
+        raise
     finally:
         for path, content in saved.items():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(content)
-
-    end = start + timedelta(days=args.days - 1)
-    anchor["rolling_week"] = {
-        "schema_version": 1,
-        "policy": "TODAY_PLUS_SEVEN_COMPLETE_DAYS",
-        "start_date": start.isoformat(),
-        "end_date": end.isoformat(),
-        "day_count": args.days,
-        "timezone": "Asia/Amman",
-        "status": "COMPLETE",
-        "fail_closed": True,
-        "language_lanes_required": list(REQUIRED_LANGUAGES),
-        "required_service_ids": list(REQUIRED_SERVICES),
-        "generated_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
-    }
-    anchor["weekly_days"] = future_days
-
-    output = json.dumps(anchor, ensure_ascii=False, indent=2) + "\n"
-    CALENDAR.write_text(output, encoding="utf-8")
-    (ROOT / f"data/calendar/{start.isoformat()}.json").write_text(output, encoding="utf-8")
-
-    run("scripts/validate_rolling_week.py", "data/calendar/today.json", "--expected-start", start.isoformat())
-    print(
-        f"ROLLING_WEEK_BUILT start={start.isoformat()} end={end.isoformat()} "
-        f"days={args.days} bytes={len(output.encode('utf-8'))}"
-    )
 
 
 if __name__ == "__main__":

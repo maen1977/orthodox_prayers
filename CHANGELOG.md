@@ -1,3 +1,16 @@
+# 5.0.22 R24 — Nine-day appointed Liturgy engine
+
+- Replace the old seven-day outlook with one rolling window of exactly nine consecutive days: today plus the next eight days.
+- Select the appointed service independently for every date: St John Chrysostom, St Basil the Great, Presanctified Gifts, St James only by documented dated override, no Divine Liturgy, or unresolved Typikon.
+- Store and display the service type, service form, localized reason, authority, source, confidence, and full-text availability.
+- Keep liturgy type separate from service form, including morning Divine Liturgy, Vespers with Divine Liturgy, and Lenten Vespers with Presanctified Gifts.
+- Open one complete appointed service from preparation and pre-Communion prayers through the fixed rite, Communion, thanksgiving, and dismissal.
+- Forbid cross-rite fallback: an unavailable appointed rite is blocked instead of being silently replaced by St John Chrysostom.
+- Publish the nine-day package atomically: any failed or incomplete future date restores the original current-day data and leaves no partial final package.
+- Keep incomplete or unsafe native editions fail-closed until substantive Arabic, English, and Greek source texts pass the full-service contract.
+- Add schema 10 while retaining read compatibility with already signed schema 9 packages.
+- Add regression coverage for the nine-day contract, liturgical rules, full beginning-to-end composition, no-fallback behavior, and atomic publication rollback.
+
 ## 5.0.17 R20.1 — resilient automatic updates
 
 - Try the signed GitHub raw endpoint first and a pinned jsDelivr mirror second.

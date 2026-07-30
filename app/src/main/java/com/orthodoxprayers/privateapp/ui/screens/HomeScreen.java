@@ -124,7 +124,7 @@ public final class HomeScreen extends BaseScreen {
         root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_quick_access_c927e8a2)));
         Button liturgy = ui.iconButton(
                 com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy,
-                local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7),
+                todayLiturgyButtonLabel(),
                 true
         );
         liturgy.setTextSize(17 * preferences.fontScale());
@@ -201,13 +201,15 @@ public final class HomeScreen extends BaseScreen {
         header.addView(fastingHeader, new LinearLayout.LayoutParams(0, -2, 1f));
         table.addView(header);
 
-        int dayCount = Math.min(7, upcoming.length());
+        int dayCount = Math.min(8, upcoming.length());
         for (int i = 0; i < dayCount; i++) {
             JSONObject item = upcoming.optJSONObject(i);
             if (item == null) continue;
             String date = item.optString("date", "");
             String day = localized(item.optJSONObject("day"), date);
             String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
+            JSONObject selection = item.optJSONObject("liturgy_service_selection");
+            String liturgy = selection == null ? "" : localized(selection.optJSONObject("label"), "");
             String status = localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), ""));
             JSONObject fasting = item.optJSONObject("fasting");
             if (status.isEmpty() && fasting != null) {
@@ -221,7 +223,9 @@ public final class HomeScreen extends BaseScreen {
             row.setPadding(ui.dp(8), ui.dp(7), ui.dp(8), ui.dp(7));
             row.setClickable(!date.isEmpty());
             row.setFocusable(!date.isEmpty());
-            String dayAndFeast = day + (feast.isEmpty() ? "" : "\n" + feast);
+            String dayAndFeast = day
+                    + (feast.isEmpty() ? "" : "\n" + feast)
+                    + (liturgy.isEmpty() ? "" : "\n" + liturgy);
             TextView dayView = ui.text(dayAndFeast, 13, ui.colors().secondaryText(), false);
             dayView.setMaxLines(3);
             TextView statusView = ui.text(status, 13, ui.colors().accentText(), true);
@@ -247,6 +251,18 @@ public final class HomeScreen extends BaseScreen {
         Button details = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_show_seven_day_details_97f48507), false);
         details.setOnClickListener(v -> host.navigate("upcoming", null));
         add(root, details, 0, 12);
+    }
+
+    private String todayLiturgyButtonLabel() {
+        JSONObject selection = data.today().optJSONObject("liturgy_service_selection");
+        String selected = selection == null ? "" : localized(selection.optJSONObject("label"), "");
+        if (selected.isEmpty()) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7);
+        }
+        return localFormat(
+                com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format,
+                selected
+        );
     }
 
     private void addNextSunday(LinearLayout root) {

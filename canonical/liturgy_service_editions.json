@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "status": "PHASE8_FINALIZATION_PIPELINE_ACTIVE_FAIL_CLOSED",
   "languages": [
     "ar",
@@ -64,9 +64,23 @@
       "en": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
       "el": "DATED_OFFICIAL_OVERRIDE_REQUIRED",
       "displayable": false
+    },
+    "james": {
+      "service_id": "divine_liturgy_james",
+      "ar": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
+      "en": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
+      "el": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
+      "displayable": false,
+      "source_ids": [],
+      "import_contract": "canonical/liturgy_native_import_contracts.json",
+      "availability_note": {
+        "ar": "لا يُعرض قداس القديس يعقوب إلا بعد تعيين رسمي مؤرخ واستيراد طبعة أصلية كاملة في اللغات المنشورة.",
+        "en": "The Liturgy of Saint James is displayed only after a dated official appointment and complete native editions are imported for every published language.",
+        "el": "Ἡ Λειτουργία τοῦ Ἁγίου Ἰακώβου προβάλλεται μόνο μετὰ ἀπὸ χρονολογημένη ἐπίσημη διάταξη καὶ εἰσαγωγὴ πλήρων πρωτότυπων ἐκδόσεων σὲ ὅλες τὶς δημοσιευμένες γλώσσες."
+      }
     }
   },
-  "publication_rule": "A selected service may extend a library template only when the complete native edition exists for all published language lanes.",
+  "publication_rule": "A selected rite is displayable only as a complete native beginning-to-end service in every published language lane; partial text and wrong-rite fallback are forbidden.",
   "wrong_liturgy_fallback_allowed": false,
   "machine_translation_allowed": false,
   "source_documents": {
@@ -122,7 +136,8 @@
     ],
     "blocked_until_complete_native_import": [
       "basil",
-      "presanctified"
+      "presanctified",
+      "james"
     ]
   },
   "phase7_native_import_pipeline": {
@@ -138,7 +153,8 @@
     ],
     "blocked_until_reviewed_import": [
       "basil",
-      "presanctified"
+      "presanctified",
+      "james"
     ]
   },
   "phase8_finalization_pipeline": {
@@ -160,5 +176,7 @@
       "el"
     ],
     "wrong_rite_fallback_allowed": false
-  }
+  },
+  "full_service_required": true,
+  "full_service_contract": "canonical/full_liturgy_service_contract.json"
 }

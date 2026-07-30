@@ -24,8 +24,6 @@ public final class UpcomingScreen extends BaseScreen {
             for (int i = 0; i < upcoming.length(); i++) {
                 JSONObject item = upcoming.optJSONObject(i);
                 if (item == null) continue;
-                String itemDate = item.optString("date_iso", item.optString("date", ""));
-                if (itemDate.equals(data.currentAmmanDate())) continue;
                 add(page.root, dayCard(item), 2, 7);
             }
         }
@@ -54,6 +52,7 @@ public final class UpcomingScreen extends BaseScreen {
         addFastingGuide(card, fasting, false);
         String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
         if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
+        addAppointedLiturgy(card, item, itemDate);
         JSONObject refs = item.optJSONObject("reading_references");
         addReference(card, refs, "epistle", local(com.orthodoxprayers.privateapp.R.string.ui_epistle_dd82c199));
         addReference(card, refs, "gospel", local(com.orthodoxprayers.privateapp.R.string.ui_gospel_68845cc5));
@@ -64,6 +63,67 @@ public final class UpcomingScreen extends BaseScreen {
             card.setOnClickListener(v -> host.navigate("calendar_day", itemDate));
         }
         return card;
+    }
+
+    private void addAppointedLiturgy(LinearLayout card, JSONObject item, String itemDate) {
+        JSONObject selection = item.optJSONObject("liturgy_service_selection");
+        if (selection == null) return;
+        String liturgy = localized(selection.optJSONObject("label"), "");
+        String form = localized(selection.optJSONObject("service_form_label"), "");
+        String reason = localized(selection.optJSONObject("reason"), "");
+        if (!liturgy.isEmpty()) {
+            card.addView(ui.text(
+                    local(com.orthodoxprayers.privateapp.R.string.ui_appointed_liturgy_label) + ": " + liturgy,
+                    14,
+                    ui.colors().primaryText(),
+                    true
+            ), ui.margins(-1, -2, 0, 7, 0, 0));
+        }
+        if (!form.isEmpty()) {
+            card.addView(ui.text(
+                    local(com.orthodoxprayers.privateapp.R.string.ui_service_form_label) + ": " + form,
+                    13,
+                    ui.colors().secondaryText(),
+                    false
+            ));
+        }
+        if (!reason.isEmpty()) {
+            card.addView(ui.text(
+                    local(com.orthodoxprayers.privateapp.R.string.ui_selection_reason_label) + ": " + reason,
+                    12,
+                    ui.colors().secondaryText(),
+                    false
+            ));
+        }
+
+        JSONObject service = findService(item.optJSONArray("services"), "divine_liturgy");
+        boolean complete = service != null && service.optBoolean("full_service_complete", false);
+        if (complete && !itemDate.isEmpty()) {
+            android.widget.Button open = ui.smallButton(
+                    local(com.orthodoxprayers.privateapp.R.string.ui_open_complete_service_beginning_to_end),
+                    true
+            );
+            open.setOnClickListener(v -> host.navigate(
+                    "reader",
+                    com.orthodoxprayers.privateapp.data.DataRepository.datedServiceId(itemDate, "divine_liturgy")
+            ));
+            card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
+        } else {
+            String note = localized(selection.optJSONObject("availability_note"), "");
+            if (note.isEmpty()) {
+                note = local(com.orthodoxprayers.privateapp.R.string.ui_complete_service_not_available_without_fallback);
+            }
+            card.addView(ui.badge(note, false), ui.margins(-1, -2, 0, 7, 0, 0));
+        }
+    }
+
+    private JSONObject findService(JSONArray services, String id) {
+        if (services == null) return null;
+        for (int i = 0; i < services.length(); i++) {
+            JSONObject service = services.optJSONObject(i);
+            if (service != null && id.equals(service.optString("id", ""))) return service;
+        }
+        return null;
     }
 
     private void addReference(LinearLayout card, JSONObject refs, String kind, String prefix) {

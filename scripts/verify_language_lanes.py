@@ -92,7 +92,7 @@ def verify_lane(
         raise SystemExit(f"invalid lane JSON: {path}: {error}") from error
     if data.get("date_iso") != expected_date or data.get("language") != language:
         raise SystemExit(f"lane metadata invalid: {path}")
-    if data.get("schema_version") != 9 or data.get("lane_schema_version") != 2:
+    if int(data.get("schema_version") or 0) not in {9, 10} or data.get("lane_schema_version") != 2:
         raise SystemExit(f"lane schema invalid: {path}")
     if data.get("machine_translation_used") is not False:
         raise SystemExit(f"translation flag invalid: {path}")
