@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate fasting profiles, seven-day cards, and the next-Sunday service."""
+"""Validate fasting profiles, the nine-day rolling window, and the next-Sunday service."""
 from __future__ import annotations
 
 import json
@@ -107,8 +107,9 @@ def validate(data: dict[str, Any]) -> list[str]:
         errors.append("fast_detail.ar must equal fasting.detail.ar")
 
     upcoming = data.get("upcoming")
-    if not isinstance(upcoming, list) or len(upcoming) != 7:
-        errors.append("upcoming must contain exactly seven days")
+    expected_future_days = 8 if int(data.get("schema_version") or 0) >= 10 else 7
+    if not isinstance(upcoming, list) or len(upcoming) != expected_future_days:
+        errors.append(f"upcoming must contain exactly {expected_future_days} future days")
         upcoming = []
     by_date: dict[str, dict[str, Any]] = {}
     for index, item in enumerate(upcoming):
@@ -164,7 +165,7 @@ def validate(data: dict[str, Any]) -> list[str]:
             errors.append("next_sunday contains placeholder reading references")
         upcoming_sunday = by_date.get(sunday_iso)
         if not upcoming_sunday:
-            errors.append("next_sunday must also appear in the seven-day list")
+            errors.append("next_sunday must also appear in the rolling-window future list")
         else:
             if upcoming_sunday.get("fasting") != sunday.get("fasting"):
                 errors.append("next_sunday fasting profile differs from its upcoming card")
@@ -208,7 +209,7 @@ def main() -> None:
         for error in errors:
             print(f"::error title=Liturgical schedule validation::{error}")
         raise SystemExit("Liturgical schedule validation failed with " + str(len(errors)) + " error(s)")
-    print("Liturgical schedule validation passed: fasting profiles, seven upcoming days, next Sunday, and daily services are current")
+    print("Liturgical schedule validation passed: fasting profiles, rolling-window future days, next Sunday, and daily services are current")
 
 
 if __name__ == "__main__":

@@ -131,8 +131,8 @@ def build_report() -> dict[str, Any]:
     for token in ("data.calendarDay(date)", "reading_references"):
         if token not in java_day:
             blockers.append(f"calendar_day_ui_missing:{token}")
-    if not source_references_text(java_day, "ابدأ متابعة القداس", "ar"):
-        blockers.append("calendar_day_ui_missing:ابدأ متابعة القداس")
+    if not source_references_text(java_day, "فتح الخدمة الكاملة من البداية إلى النهاية", "ar"):
+        blockers.append("calendar_day_ui_missing:فتح الخدمة الكاملة من البداية إلى النهاية")
     for token in ("calendar_2026_h2.json", "calendarDays()", "calendarDay(String date)"):
         if token not in java_repo:
             blockers.append(f"repository_wiring_missing:{token}")

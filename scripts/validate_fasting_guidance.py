@@ -105,8 +105,9 @@ def validate(data: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     validate_profile(data.get("fasting"), "fasting", errors)
     upcoming = data.get("upcoming")
-    if not isinstance(upcoming, list) or len(upcoming) != 7:
-        errors.append("upcoming: exactly seven days required")
+    expected_future_days = 8 if int(data.get("schema_version") or 0) >= 10 else 7
+    if not isinstance(upcoming, list) or len(upcoming) != expected_future_days:
+        errors.append(f"upcoming: exactly {expected_future_days} future days required")
     else:
         for index, item in enumerate(upcoming):
             validate_profile(item.get("fasting") if isinstance(item, dict) else None, f"upcoming[{index}].fasting", errors)

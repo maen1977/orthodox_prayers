@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the signed-package shape for today plus seven complete days."""
+"""Validate the signed-package shape for nine consecutive complete days starting today."""
 from __future__ import annotations
 
 import argparse
@@ -95,7 +95,7 @@ def validate_composed_liturgy(
         errors.append(f"{iso}: Divine Liturgy service is missing")
         return
     for language in languages:
-        source = Path(f"rolling-week-{iso}-{language}.json")
+        source = Path(f"rolling-window-{iso}-{language}.json")
         try:
             composed = compose_overlay(liturgy, native_libraries[language], source)
         except SystemExit as error:
@@ -148,13 +148,39 @@ def validate_day(
     missing = sorted(REQUIRED_SERVICES - set(services))
     if missing:
         errors.append(f"{iso}: missing services {','.join(missing)}")
-    validate_composed_liturgy(
-        services.get("divine_liturgy") or {},
-        iso,
-        languages,
-        native_libraries,
-        errors,
-    )
+    selection = payload.get("liturgy_service_selection") or {}
+    selected_type = str(selection.get("service_type") or "")
+    if not selected_type:
+        errors.append(f"{iso}: appointed liturgy type is missing")
+    if not str(selection.get("service_form") or ""):
+        errors.append(f"{iso}: appointed service form is missing")
+    if not isinstance(selection.get("reason"), dict):
+        errors.append(f"{iso}: appointed liturgy reason is missing")
+    if selection.get("wrong_liturgy_fallback_allowed") is not False:
+        errors.append(f"{iso}: wrong-liturgy fallback must be false")
+
+    liturgy = services.get("divine_liturgy") or {}
+    if liturgy.get("selected_liturgy_type") != selected_type:
+        errors.append(f"{iso}: selected liturgy does not match service overlay")
+    if selected_type == "typikon_override_required":
+        errors.append(f"{iso}: dated Typikon override is still required")
+    elif selected_type == "no_divine_liturgy":
+        if liturgy.get("publication_status") != "NO_DIVINE_LITURGY_APPOINTED":
+            errors.append(f"{iso}: no-liturgy day has invalid publication status")
+    else:
+        if selection.get("displayable") is not True:
+            errors.append(f"{iso}: selected rite lacks a complete native edition")
+        if liturgy.get("full_service_complete") is not True:
+            errors.append(f"{iso}: selected rite is not complete from beginning to end")
+        if liturgy.get("publication_status") != "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END":
+            errors.append(f"{iso}: selected rite publication status is invalid")
+        validate_composed_liturgy(
+            liturgy,
+            iso,
+            languages,
+            native_libraries,
+            errors,
+        )
 
     readings = {item.get("kind"): item for item in payload.get("readings") or [] if isinstance(item, dict)}
     for kind in ("epistle", "gospel"):
@@ -199,14 +225,14 @@ def main() -> None:
 
     if meta.get("schema_version") != 1:
         errors.append("rolling_week.schema_version must be 1")
-    if meta.get("policy") != "TODAY_PLUS_SEVEN_COMPLETE_DAYS":
+    if meta.get("policy") != "NINE_CONSECUTIVE_DAYS_STARTING_TODAY":
         errors.append("rolling_week.policy is invalid")
     if meta.get("start_date") != start.isoformat():
         errors.append("rolling_week.start_date mismatch")
-    if meta.get("end_date") != (start + timedelta(days=7)).isoformat():
+    if meta.get("end_date") != (start + timedelta(days=8)).isoformat():
         errors.append("rolling_week.end_date mismatch")
-    if meta.get("day_count") != 8:
-        errors.append("rolling_week.day_count must be 8")
+    if meta.get("day_count") != 9:
+        errors.append("rolling_week.day_count must be 9")
     if meta.get("status") != "COMPLETE" or meta.get("fail_closed") is not True:
         errors.append("rolling_week must be COMPLETE and fail_closed")
 
@@ -217,9 +243,9 @@ def main() -> None:
     }
 
     days = [payload] + [item for item in payload.get("weekly_days") or [] if isinstance(item, dict)]
-    if len(days) != 8:
-        errors.append(f"rolling package must contain 8 days, found {len(days)}")
-    for offset, day_payload in enumerate(days[:8]):
+    if len(days) != 9:
+        errors.append(f"rolling package must contain 9 days, found {len(days)}")
+    for offset, day_payload in enumerate(days[:9]):
         validate_day(
             day_payload,
             start + timedelta(days=offset),
@@ -239,8 +265,8 @@ def main() -> None:
             print(f"ROLLING_WEEK_ERROR {error}")
         raise SystemExit(f"ROLLING_WEEK_INVALID errors={len(errors)}")
     print(
-        f"ROLLING_WEEK_OK start={start.isoformat()} end={(start + timedelta(days=7)).isoformat()} "
-        f"days=8 language={args.language or 'all'}"
+        f"ROLLING_WEEK_OK start={start.isoformat()} end={(start + timedelta(days=8)).isoformat()} "
+        f"days=9 language={args.language or 'all'}"
     )
 
 

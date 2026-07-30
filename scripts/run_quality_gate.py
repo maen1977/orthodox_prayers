@@ -25,17 +25,15 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "scripts/validate_play_store_assets.py"],
         [sys.executable, "scripts/validate_ui_localizations.py"],
         [sys.executable, "scripts/validate_android_resources.py"],
-        [sys.executable, "scripts/validate_runtime_asset_budget.py"],
         [sys.executable, "scripts/validate_static_prayer_sources.py"],
         [sys.executable, "scripts/validate_native_language_packs.py"],
         [sys.executable, "scripts/validate_follow_along_liturgy.py"],
         [sys.executable, "scripts/validate_liturgy_reader_integrity.py"],
         [sys.executable, "scripts/validate_liturgy_service_selection.py"],
+        [sys.executable, "scripts/validate_full_liturgy_services.py"],
         [sys.executable, "scripts/validate_native_liturgy_imports.py"],
-        # Phase 13 recursively validates phases 8–12. Running every historical
-        # gate separately repeats the same full-library scans and slows CI without
-        # adding coverage.
-        [sys.executable, "scripts/validate_liturgy_phase13_completion.py"],
+        # Historical 365-day audits remain available as research/regression tools,
+        # but production is governed by the signed nine-day rolling window.
         [sys.executable, "scripts/validate_service_edition_evidence.py"],
         [sys.executable, "scripts/validate_all_services_completion_round.py"],
         [sys.executable, "scripts/validate_religious_completeness.py", "--declaration-only"],

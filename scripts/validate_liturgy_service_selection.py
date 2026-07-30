@@ -52,6 +52,10 @@ def main() -> None:
         info = update.day_info(civil)
         selected = update.liturgy_service_selection(civil, info)
         require(selected.get("service_type") == expected, f"{civil}: expected {expected}, got {selected.get('service_type')}")
+        require(bool(selected.get("service_form")), f"{civil}: service form missing")
+        require(bool((selected.get("reason") or {}).get("ar")), f"{civil}: Arabic selection reason missing")
+        require(selected.get("wrong_liturgy_fallback_allowed") is False, f"{civil}: selection fallback flag")
+        require(selected.get("full_service_required") is True, f"{civil}: full-service requirement missing")
         service = update.build_liturgy_service("divine_liturgy", civil, info, [], "خدمة اليوم")
         require(service.get("wrong_liturgy_fallback_allowed") is False, f"{civil}: fallback flag")
         if expected == "chrysostom":
@@ -72,7 +76,8 @@ def main() -> None:
     require(collision_service.get("publication_status") == "BLOCKED_REQUIRES_DATED_OFFICIAL_TYPIKON_OVERRIDE", "collision must fail closed")
     require(editions["editions"]["basil"].get("displayable") is False, "Basil must remain blocked until complete native import")
     require(editions["editions"]["presanctified"].get("displayable") is False, "Presanctified must remain blocked until complete native import")
-    print("LITURGY_SERVICE_SELECTION_OK cases=11 fail_closed=true wrong_rite_fallback=false")
+    require(editions["editions"]["james"].get("displayable") is False, "Saint James must require dated appointment and complete native import")
+    print("LITURGY_SERVICE_SELECTION_OK cases=11 forms=true reasons=true full_service=true fail_closed=true wrong_rite_fallback=false")
 
 
 if __name__ == "__main__":

@@ -13,6 +13,22 @@ import shutil
 from pathlib import Path
 from typing import Any
 
+try:
+    from .validate_verified_data_contract import rolling_window_shape_errors
+except ImportError:
+    import importlib.util
+
+    _contract_path = Path(__file__).with_name("validate_verified_data_contract.py")
+    _contract_spec = importlib.util.spec_from_file_location(
+        "validate_verified_data_contract_for_preservation",
+        _contract_path,
+    )
+    if _contract_spec is None or _contract_spec.loader is None:
+        raise
+    _contract_module = importlib.util.module_from_spec(_contract_spec)
+    _contract_spec.loader.exec_module(_contract_module)
+    rolling_window_shape_errors = _contract_module.rolling_window_shape_errors
+
 LANGUAGES = ("ar", "en", "el")
 READING_KINDS = ("matins_gospel", "prokeimenon", "epistle", "gospel")
 
@@ -85,6 +101,12 @@ def preserve_lane(
     accepted_data = load(published)
     if not accepted_data or accepted_data.get("date_iso") != date_iso:
         return "no-same-day-baseline"
+    # Never let an authentic but obsolete eight-day lane replace a newly built
+    # nine-day candidate. Same-day preservation is a regression guard, not a
+    # schema downgrade path.
+    compatibility_errors = rolling_window_shape_errors(accepted_data, date_iso)
+    if compatibility_errors:
+        return "incompatible-baseline-rejected"
 
     candidate_data = load(candidate)
     lost = (
