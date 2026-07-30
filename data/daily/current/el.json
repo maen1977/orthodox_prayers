@@ -3854,7 +3854,7 @@
         "target_date": "2026-07-30",
         "url": "https://orthodoxjordan.org/",
         "status": "undated",
-        "checked_at_utc": "2026-07-30T07:15:25Z",
+        "checked_at_utc": "2026-07-30T07:59:19Z",
         "http_status": 200,
         "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
         "content_bytes": 500420,
@@ -3882,7 +3882,7 @@
         "target_date": "2026-07-30",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
         "status": "available",
-        "checked_at_utc": "2026-07-30T07:15:27Z",
+        "checked_at_utc": "2026-07-30T07:59:21Z",
         "http_status": 200,
         "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
         "content_bytes": 889156,
@@ -3907,7 +3907,7 @@
         "target_date": "2026-07-30",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
         "status": "available",
-        "checked_at_utc": "2026-07-30T07:15:28Z",
+        "checked_at_utc": "2026-07-30T07:59:22Z",
         "http_status": 200,
         "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
         "content_bytes": 379112,
@@ -3932,10 +3932,10 @@
         "target_date": "2026-07-30",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-30T07:15:28Z",
+        "checked_at_utc": "2026-07-30T07:59:22Z",
         "http_status": 200,
-        "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-        "content_bytes": 173537,
+        "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+        "content_bytes": 107,
         "detected_date": null,
         "epistle_reference": null,
         "gospel_reference": null,
@@ -3957,7 +3957,7 @@
         "target_date": "2026-07-30",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-30T07:15:29Z",
+        "checked_at_utc": "2026-07-30T07:59:23Z",
         "http_status": 200,
         "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
         "content_bytes": 6664,
@@ -3982,7 +3982,7 @@
         "target_date": "2026-07-30",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-30T07:15:29Z",
+        "checked_at_utc": "2026-07-30T07:59:23Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -4007,7 +4007,7 @@
         "target_date": "2026-07-30",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-30T07:15:29Z",
+        "checked_at_utc": "2026-07-30T07:59:24Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
@@ -4054,9 +4054,9 @@
         "target_date": "2026-07-30",
         "url": "https://www.oca.org/readings/daily/2026/07/30",
         "status": "current",
-        "checked_at_utc": "2026-07-30T07:15:31Z",
+        "checked_at_utc": "2026-07-30T07:59:26Z",
         "http_status": 200,
-        "content_sha256": "0a4d9a9bae26f53cde48292ecaae06f80da0890a1c0da0a5692fa205015e43bc",
+        "content_sha256": "4573b6dfc26f4e944f5640c7cadcfca968f12deb53d846a8d15d5bb002767069",
         "content_bytes": 14883,
         "detected_date": "2026-07-30",
         "epistle_reference": "1 Corinthians 14:6-19",
@@ -4081,7 +4081,7 @@
         "target_date": "2026-07-30",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-30T07:15:35Z",
+        "checked_at_utc": "2026-07-30T07:59:30Z",
         "http_status": 200,
         "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
         "content_bytes": 116021,
@@ -4829,10 +4829,11 @@
   },
   "service_coverage": {
     "schema_version": 1,
-    "claim_policy": "complete only when every required variable has verified native-language text",
+    "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
     "services": [
       {
         "service_id": "divine_liturgy",
+        "variable_coverage_applicable": true,
         "required_variable_count": 6,
         "verified_variable_count": 3,
         "coverage_percent": 50,
@@ -4841,55 +4842,68 @@
           "[القنداق]",
           "[آية المناولة]"
         ],
+        "status": "incomplete",
         "complete": false
       },
       {
         "service_id": "vespers",
+        "variable_coverage_applicable": false,
         "required_variable_count": 0,
         "verified_variable_count": 0,
         "coverage_percent": 100,
         "missing_variables": [],
-        "complete": false
+        "status": "not_applicable",
+        "complete": null
       },
       {
         "service_id": "orthros",
+        "variable_coverage_applicable": false,
         "required_variable_count": 0,
         "verified_variable_count": 0,
         "coverage_percent": 100,
         "missing_variables": [],
-        "complete": false
+        "status": "not_applicable",
+        "complete": null
       },
       {
         "service_id": "morning_prayer",
+        "variable_coverage_applicable": false,
         "required_variable_count": 0,
         "verified_variable_count": 0,
         "coverage_percent": 100,
         "missing_variables": [],
-        "complete": false
+        "status": "not_applicable",
+        "complete": null
       },
       {
         "service_id": "evening_prayer",
+        "variable_coverage_applicable": false,
         "required_variable_count": 0,
         "verified_variable_count": 0,
         "coverage_percent": 100,
         "missing_variables": [],
-        "complete": false
+        "status": "not_applicable",
+        "complete": null
       },
       {
         "service_id": "small_compline",
+        "variable_coverage_applicable": false,
         "required_variable_count": 0,
         "verified_variable_count": 0,
         "coverage_percent": 100,
         "missing_variables": [],
-        "complete": false
+        "status": "not_applicable",
+        "complete": null
       },
       {
         "service_id": "next_sunday_full_liturgy",
+        "variable_coverage_applicable": false,
         "required_variable_count": 0,
         "verified_variable_count": 0,
         "coverage_percent": 100,
         "missing_variables": [],
-        "complete": false
+        "status": "not_applicable",
+        "complete": null
       }
     ]
   },
@@ -4935,7 +4949,7 @@
       "evening_prayer",
       "small_compline"
     ],
-    "generated_at_utc": "2026-07-30T07:17:21Z"
+    "generated_at_utc": "2026-07-30T08:01:24Z"
   },
   "weekly_days": [
     {
@@ -8808,7 +8822,7 @@
             "target_date": "2026-07-31",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:15:39Z",
+            "checked_at_utc": "2026-07-30T07:59:35Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -8836,7 +8850,7 @@
             "target_date": "2026-07-31",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:41Z",
+            "checked_at_utc": "2026-07-30T07:59:37Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -8861,7 +8875,7 @@
             "target_date": "2026-07-31",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:42Z",
+            "checked_at_utc": "2026-07-30T07:59:38Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -8886,10 +8900,10 @@
             "target_date": "2026-07-31",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:43Z",
+            "checked_at_utc": "2026-07-30T07:59:38Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -8911,7 +8925,7 @@
             "target_date": "2026-07-31",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:43Z",
+            "checked_at_utc": "2026-07-30T07:59:38Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -8936,7 +8950,7 @@
             "target_date": "2026-07-31",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:15:43Z",
+            "checked_at_utc": "2026-07-30T07:59:38Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -8961,7 +8975,7 @@
             "target_date": "2026-07-31",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:15:43Z",
+            "checked_at_utc": "2026-07-30T07:59:39Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -9008,9 +9022,9 @@
             "target_date": "2026-07-31",
             "url": "https://www.oca.org/readings/daily/2026/07/31",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:15:45Z",
+            "checked_at_utc": "2026-07-30T07:59:41Z",
             "http_status": 200,
-            "content_sha256": "9f727d0ab68fe872653cb5f23dd913d0302a5c8a4b4e7a324fed3791131c71a4",
+            "content_sha256": "bc39ee839b5450be34aded2a0221193c874a342736d30d70986015524bcf8c85",
             "content_bytes": 14671,
             "detected_date": "2026-07-31",
             "epistle_reference": "1 Corinthians 14:26-40",
@@ -9035,7 +9049,7 @@
             "target_date": "2026-07-31",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:48Z",
+            "checked_at_utc": "2026-07-30T07:59:44Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -9783,10 +9797,11 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 3,
             "coverage_percent": 50,
@@ -9795,55 +9810,68 @@
               "[القنداق]",
               "[آية المناولة]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
@@ -13767,7 +13795,7 @@
             "target_date": "2026-08-01",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:15:53Z",
+            "checked_at_utc": "2026-07-30T07:59:49Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -13795,7 +13823,7 @@
             "target_date": "2026-08-01",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:55Z",
+            "checked_at_utc": "2026-07-30T07:59:51Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -13820,7 +13848,7 @@
             "target_date": "2026-08-01",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:56Z",
+            "checked_at_utc": "2026-07-30T07:59:52Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -13845,10 +13873,10 @@
             "target_date": "2026-08-01",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:56Z",
+            "checked_at_utc": "2026-07-30T07:59:52Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -13870,7 +13898,7 @@
             "target_date": "2026-08-01",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:15:57Z",
+            "checked_at_utc": "2026-07-30T07:59:53Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -13895,7 +13923,7 @@
             "target_date": "2026-08-01",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:15:57Z",
+            "checked_at_utc": "2026-07-30T07:59:53Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -13920,7 +13948,7 @@
             "target_date": "2026-08-01",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:15:57Z",
+            "checked_at_utc": "2026-07-30T07:59:53Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -13967,9 +13995,9 @@
             "target_date": "2026-08-01",
             "url": "https://www.oca.org/readings/daily/2026/08/01",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:15:59Z",
+            "checked_at_utc": "2026-07-30T07:59:55Z",
             "http_status": 200,
-            "content_sha256": "fe4024ac5087302e4e36f5b07e3b86a7100b4e0c2f80d1db9bcd8fdf31de2b0b",
+            "content_sha256": "fdc762f9d9ab5a4c5a71f985e5891bce5fe7bba4d9669ee4bd56a3e453cf4f07",
             "content_bytes": 15288,
             "detected_date": "2026-08-01",
             "epistle_reference": "1 Corinthians 1:18-24",
@@ -13994,7 +14022,7 @@
             "target_date": "2026-08-01",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:02Z",
+            "checked_at_utc": "2026-07-30T07:59:58Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -14742,10 +14770,11 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 3,
             "coverage_percent": 50,
@@ -14754,55 +14783,68 @@
               "[القنداق]",
               "[آية المناولة]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
@@ -18889,7 +18931,7 @@
             "target_date": "2026-08-02",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:16:07Z",
+            "checked_at_utc": "2026-07-30T08:00:03Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -18917,7 +18959,7 @@
             "target_date": "2026-08-02",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:09Z",
+            "checked_at_utc": "2026-07-30T08:00:05Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -18942,7 +18984,7 @@
             "target_date": "2026-08-02",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:10Z",
+            "checked_at_utc": "2026-07-30T08:00:06Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -18967,10 +19009,10 @@
             "target_date": "2026-08-02",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:10Z",
+            "checked_at_utc": "2026-07-30T08:00:06Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -18992,7 +19034,7 @@
             "target_date": "2026-08-02",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:10Z",
+            "checked_at_utc": "2026-07-30T08:00:06Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -19017,7 +19059,7 @@
             "target_date": "2026-08-02",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:16:10Z",
+            "checked_at_utc": "2026-07-30T08:00:06Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -19042,7 +19084,7 @@
             "target_date": "2026-08-02",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:11Z",
+            "checked_at_utc": "2026-07-30T08:00:07Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -19089,9 +19131,9 @@
             "target_date": "2026-08-02",
             "url": "https://www.oca.org/readings/daily/2026/08/02",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:13Z",
+            "checked_at_utc": "2026-07-30T08:00:09Z",
             "http_status": 200,
-            "content_sha256": "777ac9e87a5a4ba99436216b619aae75a8007680ebf81d344fb856eb1e609902",
+            "content_sha256": "3c23c358784918564bc43bee34f01b459b790661be6c9a597f41f11ccb1ac4d9",
             "content_bytes": 14734,
             "detected_date": "2026-08-02",
             "epistle_reference": "1 Corinthians 3:9-17",
@@ -19116,7 +19158,7 @@
             "target_date": "2026-08-02",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:15Z",
+            "checked_at_utc": "2026-07-30T08:00:13Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -19864,65 +19906,79 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 5,
             "coverage_percent": 83,
             "missing_variables": [
               "[القنداق]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
@@ -23811,7 +23867,7 @@
             "target_date": "2026-08-03",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:16:20Z",
+            "checked_at_utc": "2026-07-30T08:00:18Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -23839,7 +23895,7 @@
             "target_date": "2026-08-03",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:21Z",
+            "checked_at_utc": "2026-07-30T08:00:19Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -23864,7 +23920,7 @@
             "target_date": "2026-08-03",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:23Z",
+            "checked_at_utc": "2026-07-30T08:00:21Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -23889,10 +23945,10 @@
             "target_date": "2026-08-03",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:23Z",
+            "checked_at_utc": "2026-07-30T08:00:21Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -23914,7 +23970,7 @@
             "target_date": "2026-08-03",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:23Z",
+            "checked_at_utc": "2026-07-30T08:00:21Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -23939,7 +23995,7 @@
             "target_date": "2026-08-03",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:16:23Z",
+            "checked_at_utc": "2026-07-30T08:00:21Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -23964,7 +24020,7 @@
             "target_date": "2026-08-03",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:24Z",
+            "checked_at_utc": "2026-07-30T08:00:22Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -24011,9 +24067,9 @@
             "target_date": "2026-08-03",
             "url": "https://www.oca.org/readings/daily/2026/08/03",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:25Z",
+            "checked_at_utc": "2026-07-30T08:00:23Z",
             "http_status": 200,
-            "content_sha256": "ee47272a58d41f83968dcead119ff5fbdef770e4c9afbeb22bb32991d3ac6777",
+            "content_sha256": "8a91053a7a0ba19c7a3c53c94302c55e60e237fddc7402a47d9d362a596bdf88",
             "content_bytes": 14578,
             "detected_date": "2026-08-03",
             "epistle_reference": "1 Corinthians 15:12-19",
@@ -24038,7 +24094,7 @@
             "target_date": "2026-08-03",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:29Z",
+            "checked_at_utc": "2026-07-30T08:00:27Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -24786,10 +24842,11 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 3,
             "coverage_percent": 50,
@@ -24798,55 +24855,68 @@
               "[القنداق]",
               "[آية المناولة]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
@@ -28737,7 +28807,7 @@
             "target_date": "2026-08-04",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:16:33Z",
+            "checked_at_utc": "2026-07-30T08:00:32Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -28765,7 +28835,7 @@
             "target_date": "2026-08-04",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:35Z",
+            "checked_at_utc": "2026-07-30T08:00:34Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -28790,7 +28860,7 @@
             "target_date": "2026-08-04",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:36Z",
+            "checked_at_utc": "2026-07-30T08:00:35Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -28815,10 +28885,10 @@
             "target_date": "2026-08-04",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:37Z",
+            "checked_at_utc": "2026-07-30T08:00:35Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -28840,7 +28910,7 @@
             "target_date": "2026-08-04",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:37Z",
+            "checked_at_utc": "2026-07-30T08:00:36Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -28865,7 +28935,7 @@
             "target_date": "2026-08-04",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:16:37Z",
+            "checked_at_utc": "2026-07-30T08:00:36Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -28890,7 +28960,7 @@
             "target_date": "2026-08-04",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:37Z",
+            "checked_at_utc": "2026-07-30T08:00:36Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -28937,9 +29007,9 @@
             "target_date": "2026-08-04",
             "url": "https://www.oca.org/readings/daily/2026/08/04",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:39Z",
+            "checked_at_utc": "2026-07-30T08:00:38Z",
             "http_status": 200,
-            "content_sha256": "25d9e70c4ba40afd031134a963e0be489845045673c2e362d1d166c136504ad0",
+            "content_sha256": "3bc6409aa8931b9820a7f6b3561bd708f57962a656f21df7b2bd2e6c136c0e88",
             "content_bytes": 14565,
             "detected_date": "2026-08-04",
             "epistle_reference": "1 Corinthians 15:29-38",
@@ -28964,7 +29034,7 @@
             "target_date": "2026-08-04",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:42Z",
+            "checked_at_utc": "2026-07-30T08:00:41Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -29712,10 +29782,11 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 3,
             "coverage_percent": 50,
@@ -29724,55 +29795,68 @@
               "[القنداق]",
               "[آية المناولة]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
@@ -33663,7 +33747,7 @@
             "target_date": "2026-08-05",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:16:47Z",
+            "checked_at_utc": "2026-07-30T08:00:46Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -33691,7 +33775,7 @@
             "target_date": "2026-08-05",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:49Z",
+            "checked_at_utc": "2026-07-30T08:00:48Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -33716,7 +33800,7 @@
             "target_date": "2026-08-05",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:50Z",
+            "checked_at_utc": "2026-07-30T08:00:49Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -33741,10 +33825,10 @@
             "target_date": "2026-08-05",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:51Z",
+            "checked_at_utc": "2026-07-30T08:00:50Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -33766,7 +33850,7 @@
             "target_date": "2026-08-05",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:51Z",
+            "checked_at_utc": "2026-07-30T08:00:50Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -33791,7 +33875,7 @@
             "target_date": "2026-08-05",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:16:51Z",
+            "checked_at_utc": "2026-07-30T08:00:50Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -33816,7 +33900,7 @@
             "target_date": "2026-08-05",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:51Z",
+            "checked_at_utc": "2026-07-30T08:00:50Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -33863,9 +33947,9 @@
             "target_date": "2026-08-05",
             "url": "https://www.oca.org/readings/daily/2026/08/05",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:16:53Z",
+            "checked_at_utc": "2026-07-30T08:00:52Z",
             "http_status": 200,
-            "content_sha256": "053f78e0a711dccdb75a3c785befef7ea949ed181b3d06c8f2e9634cfb83c222",
+            "content_sha256": "d5da46adeaef33a42dccbb701250250e0fbf85ed41d647a60a8b0e833a159c84",
             "content_bytes": 14636,
             "detected_date": "2026-08-05",
             "epistle_reference": "1 Corinthians 16:4-12",
@@ -33890,7 +33974,7 @@
             "target_date": "2026-08-05",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:16:56Z",
+            "checked_at_utc": "2026-07-30T08:00:56Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -34638,10 +34722,11 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 3,
             "coverage_percent": 50,
@@ -34650,55 +34735,68 @@
               "[القنداق]",
               "[آية المناولة]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
@@ -38618,7 +38716,7 @@
             "target_date": "2026-08-06",
             "url": "https://orthodoxjordan.org/",
             "status": "undated",
-            "checked_at_utc": "2026-07-30T07:17:05Z",
+            "checked_at_utc": "2026-07-30T08:01:07Z",
             "http_status": 200,
             "content_sha256": "35e9b73a4bd9545650aa181485b886c1655f6f12b97364d29cac540db50c2aa5",
             "content_bytes": 500420,
@@ -38646,7 +38744,7 @@
             "target_date": "2026-08-06",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:17:07Z",
+            "checked_at_utc": "2026-07-30T08:01:09Z",
             "http_status": 200,
             "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
             "content_bytes": 889156,
@@ -38671,7 +38769,7 @@
             "target_date": "2026-08-06",
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:17:08Z",
+            "checked_at_utc": "2026-07-30T08:01:10Z",
             "http_status": 200,
             "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
             "content_bytes": 379112,
@@ -38696,10 +38794,10 @@
             "target_date": "2026-08-06",
             "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:17:09Z",
+            "checked_at_utc": "2026-07-30T08:01:10Z",
             "http_status": 200,
-            "content_sha256": "74c167e06d6884e5e7e4e4c20af5f86b1e973cf27e6a7c67e9139be5e1ce437e",
-            "content_bytes": 173537,
+            "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
+            "content_bytes": 107,
             "detected_date": null,
             "epistle_reference": null,
             "gospel_reference": null,
@@ -38721,7 +38819,7 @@
             "target_date": "2026-08-06",
             "url": "https://www.antiochpatriarchate.org/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:17:09Z",
+            "checked_at_utc": "2026-07-30T08:01:10Z",
             "http_status": 200,
             "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
             "content_bytes": 6664,
@@ -38746,7 +38844,7 @@
             "target_date": "2026-08-06",
             "url": "https://www.goarch.org/chapel/",
             "status": "http_error",
-            "checked_at_utc": "2026-07-30T07:17:09Z",
+            "checked_at_utc": "2026-07-30T08:01:10Z",
             "http_status": 403,
             "content_sha256": null,
             "content_bytes": null,
@@ -38771,7 +38869,7 @@
             "target_date": "2026-08-06",
             "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:17:09Z",
+            "checked_at_utc": "2026-07-30T08:01:11Z",
             "http_status": 200,
             "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
             "content_bytes": 2422,
@@ -38818,9 +38916,9 @@
             "target_date": "2026-08-06",
             "url": "https://www.oca.org/readings/daily/2026/08/06",
             "status": "current",
-            "checked_at_utc": "2026-07-30T07:17:11Z",
+            "checked_at_utc": "2026-07-30T08:01:13Z",
             "http_status": 200,
-            "content_sha256": "8c0b585ca8748068ad767ee756c7b49021a68b81c807ed5d07fcfc31da8871e4",
+            "content_sha256": "31ee039bc46db83e5750f1325207af8545734a83b15c66bb7e8201e3b8ab46d2",
             "content_bytes": 15688,
             "detected_date": "2026-08-06",
             "epistle_reference": "Exodus 24:12-18",
@@ -38845,7 +38943,7 @@
             "target_date": "2026-08-06",
             "url": "https://apostoliki-diakonia.gr/fk/",
             "status": "available",
-            "checked_at_utc": "2026-07-30T07:17:14Z",
+            "checked_at_utc": "2026-07-30T08:01:16Z",
             "http_status": 200,
             "content_sha256": "4a833ac0971a4f533c0a0ef50a9739457b797814b50c5a0f2951fdfb43820f4f",
             "content_bytes": 116021,
@@ -39593,10 +39691,11 @@
       },
       "service_coverage": {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": [
           {
             "service_id": "divine_liturgy",
+            "variable_coverage_applicable": true,
             "required_variable_count": 6,
             "verified_variable_count": 3,
             "coverage_percent": 50,
@@ -39605,55 +39704,68 @@
               "[القنداق]",
               "[آية المناولة]"
             ],
+            "status": "incomplete",
             "complete": false
           },
           {
             "service_id": "vespers",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "orthros",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "morning_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "evening_prayer",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "small_compline",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           },
           {
             "service_id": "next_sunday_full_liturgy",
+            "variable_coverage_applicable": false,
             "required_variable_count": 0,
             "verified_variable_count": 0,
             "coverage_percent": 100,
             "missing_variables": [],
-            "complete": false
+            "status": "not_applicable",
+            "complete": null
           }
         ]
       },
