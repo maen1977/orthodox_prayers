@@ -46,3 +46,5 @@ data-signing/*PRIVATE*
 
 # Authorized liturgical source files are local-only.
 private_sources/
+# Generated rolling-window candidates must never be committed
+data/rolling-week/candidates/
