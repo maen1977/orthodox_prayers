@@ -7,7 +7,10 @@ import json
 from pathlib import Path
 from typing import Any
 
-from source_connectors import ROOT
+try:
+    from source_connectors import ROOT
+except ModuleNotFoundError:  # Imported as scripts.attach_source_intelligence in tests/tools.
+    from scripts.source_connectors import ROOT
 
 HEALTH = ROOT / "data" / "sources" / "health" / "current.json"
 CHURCHES = ROOT / "data" / "directory" / "churches.json"
@@ -34,17 +37,30 @@ def coverage(data: dict[str, Any]) -> dict[str, Any]:
         present = [key for key in required if nonempty_localized(replacements.get(key))]
         missing = [key for key in required if key not in present]
         percent = 100 if not required else round(len(present) * 100 / len(required))
+        applicable = bool(required)
+        status = (
+            "complete"
+            if applicable and not missing
+            else "incomplete"
+            if applicable
+            else "not_applicable"
+        )
         services.append({
             "service_id": service_id,
+            "variable_coverage_applicable": applicable,
             "required_variable_count": len(required),
             "verified_variable_count": len(present),
             "coverage_percent": percent,
             "missing_variables": missing,
-            "complete": bool(required) and not missing,
+            "status": status,
+            "complete": (not missing) if applicable else None,
         })
     return {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": (
+            "complete only when every required variable has verified native-language text; "
+            "services without daily variables are not_applicable"
+        ),
         "services": services,
     }
 
