@@ -10,7 +10,8 @@ public final class DataContractTest {
     @Test public void schemaRangeIsExplicitAndFailClosed() {
         assertFalse(DataContract.supportsSchema(8));
         assertTrue(DataContract.supportsSchema(9));
-        assertFalse(DataContract.supportsSchema(10));
+        assertTrue(DataContract.supportsSchema(10));
+        assertFalse(DataContract.supportsSchema(11));
     }
 
     @Test public void onlySupportedLanguageLanesAreAccepted() {
