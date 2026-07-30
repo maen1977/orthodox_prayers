@@ -22,6 +22,7 @@ import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.R;
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
+import com.orthodoxprayers.privateapp.ui.LocalizedResources;
 
 
 public final class PrayerReminderWorker extends Worker {
@@ -54,10 +55,10 @@ public final class PrayerReminderWorker extends Worker {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     channelId,
-                    channelName(preferences, kind),
+                    channelName(context, preferences, kind),
                     NotificationManager.IMPORTANCE_DEFAULT
             );
-            channel.setDescription(local(preferences, "تذكيرات اختيارية للصلاة وقراءات اليوم", "Optional prayer and daily-reading reminders", "Προαιρετικὲς ὑπενθυμίσεις"));
+            channel.setDescription(local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_optional_prayer_and_daily_reading_reminders_f753da85));
             manager.createNotificationChannel(channel);
         }
 
@@ -75,27 +76,27 @@ public final class PrayerReminderWorker extends Worker {
         String title;
         String body;
         if (ReminderScheduler.EVENING.equals(kind)) {
-            title = local(preferences, "حان وقت صلاة المساء", "Time for evening prayer", "Ὥρα γιὰ ἑσπερινὴ προσευχή");
-            body = local(preferences, "اختم يومك بالصلاة والهدوء.", "Close the day with prayer and stillness.", "Κλείσε τὴν ἡμέρα μὲ προσευχή.");
+            title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_time_for_evening_prayer_81e14848);
+            body = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_close_the_day_with_prayer_and_stillness_67ab7213);
         } else if (ReminderScheduler.READING.equals(kind)) {
-            title = local(preferences, "قراءات اليوم", "Today’s readings", "Τὰ σημερινὰ ἀναγνώσματα");
-            body = local(preferences, "افتح رسالة وإنجيل اليوم.", "Open today’s Epistle and Gospel.", "Ἄνοιξε τὸν Ἀπόστολο καὶ τὸ Εὐαγγέλιο.");
+            title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_readings_5aad1b50);
+            body = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_open_today_s_epistle_and_gospel_980e7457);
         } else if (ReminderScheduler.FEAST.equals(kind)) {
-            title = local(preferences, "تذكار اليوم", "Today’s commemoration", "Ἡ σημερινὴ μνήμη");
+            title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_commemoration_af76eeaa);
             LocalizedValue feast = app.repository().localizedValue(app.repository().today().optJSONObject("feast"), "");
             if (feast.translationUnavailable || feast.text.trim().isEmpty()) return;
             body = feast.text;
         } else if (ReminderScheduler.FAST.equals(kind)) {
-            title = local(preferences, "صيام اليوم", "Today’s fasting", "Ἡ σημερινὴ νηστεία");
+            title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_fasting_aa40c904);
             LocalizedValue fast = app.repository().localizedValue(app.repository().today().optJSONObject("fast"), "");
             if (fast.translationUnavailable || fast.text.trim().isEmpty()) return;
             body = fast.text;
         } else if (ReminderScheduler.PERSONAL.equals(kind)) {
-            title = local(preferences, "تذكيرك الشخصي", "Your personal reminder", "Προσωπικὴ ὑπενθύμιση");
-            body = local(preferences, "خذ دقيقة للصلاة والهدوء.", "Take a moment for prayer and stillness.", "Πάρε λίγο χρόνο γιὰ προσευχή.");
+            title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_your_personal_reminder_be9aca0d);
+            body = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_take_a_moment_for_prayer_and_stillness_34c3a32d);
         } else {
-            title = local(preferences, "حان وقت صلاة الصباح", "Time for morning prayer", "Ὥρα γιὰ πρωινὴ προσευχή");
-            body = local(preferences, "ابدأ يومك بالصلاة.", "Begin your day with prayer.", "Ἄρχισε τὴν ἡμέρα μὲ προσευχή.");
+            title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_time_for_morning_prayer_717b653a);
+            body = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_begin_your_day_with_prayer_a3c8eb48);
         }
 
         Notification.Builder notification = new Notification.Builder(context, channelId)
@@ -122,13 +123,13 @@ public final class PrayerReminderWorker extends Worker {
         return "prayer_reminders_" + (kind == null ? "general" : kind.replaceAll("[^a-z0-9_]", ""));
     }
 
-    private static String channelName(AppPreferences preferences, String kind) {
-        if (ReminderScheduler.MORNING.equals(kind)) return local(preferences, "صلاة الصباح", "Morning prayer", "Πρωινὴ προσευχή");
-        if (ReminderScheduler.EVENING.equals(kind)) return local(preferences, "صلاة المساء", "Evening prayer", "Ἑσπερινὴ προσευχή");
-        if (ReminderScheduler.READING.equals(kind)) return local(preferences, "قراءات اليوم", "Daily readings", "Ἡμερήσια ἀναγνώσματα");
-        if (ReminderScheduler.FEAST.equals(kind)) return local(preferences, "الأعياد والتذكارات", "Feasts and commemorations", "Ἑορτὲς καὶ μνῆμες");
-        if (ReminderScheduler.FAST.equals(kind)) return local(preferences, "حالة الصيام", "Fasting status", "Κατάσταση νηστείας");
-        return local(preferences, "تذكيرات شخصية", "Personal reminders", "Προσωπικὲς ὑπενθυμίσεις");
+    private static String channelName(Context context, AppPreferences preferences, String kind) {
+        if (ReminderScheduler.MORNING.equals(kind)) return local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_morning_prayer_a517a36b);
+        if (ReminderScheduler.EVENING.equals(kind)) return local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_evening_prayer_50c26316);
+        if (ReminderScheduler.READING.equals(kind)) return local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_daily_readings_295eb6f5);
+        if (ReminderScheduler.FEAST.equals(kind)) return local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_feasts_and_commemorations_bea321c8);
+        if (ReminderScheduler.FAST.equals(kind)) return local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_fasting_status_7fa7fda1);
+        return local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_personal_reminders_ac5720b6);
     }
 
     private static String targetScreen(String kind) {
@@ -144,9 +145,7 @@ public final class PrayerReminderWorker extends Worker {
         return null;
     }
 
-    private static String local(AppPreferences preferences, String ar, String en, String el) {
-        if ("en".equals(preferences.effectiveLanguage())) return en;
-        if ("el".equals(preferences.effectiveLanguage())) return el;
-        return ar;
+    private static String local(Context context, AppPreferences preferences, int resourceId) {
+        return LocalizedResources.get(context, preferences.effectiveLanguage(), resourceId);
     }
 }

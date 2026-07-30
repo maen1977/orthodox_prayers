@@ -22,7 +22,7 @@ public final class ReadingDetailScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        String title = reading.optString("icon", "📖") + "  " + localized(reading.optJSONObject("title"), local("قراءة", "Reading", "Ἀνάγνωσμα"));
+        String title = localized(reading.optJSONObject("title"), local(com.orthodoxprayers.privateapp.R.string.ui_reading_6e6a82ce));
         UiKit.Page page = page(title, true);
         LinearLayout card = ui.card();
         String referenceText = localized(reading.optJSONObject("reference"), "").trim();
@@ -43,7 +43,7 @@ public final class ReadingDetailScreen extends BaseScreen {
                 && ("VERIFIED_EXACT_NATIVE_SOURCE".equals(nativeStatus)
                         || "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS".equals(nativeStatus)
                         || "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS".equals(nativeStatus))) {
-            card.addView(ui.badge(local("نص كتابي أصلي موثّق من مصدر مستقل، بلا ترجمة أو تشكيل آلي", "Verified native Scripture from an independent source; no translation or automatic marking", "Ἐπαληθευμένο πρωτότυπο βιβλικὸ κείμενο ἀπὸ ἀνεξάρτητη πηγή, χωρὶς μετάφραση ἢ αὐτόματο τονισμό"), true), ui.margins(-1, -2, 0, 8, 0, 0));
+            card.addView(ui.badge(local(com.orthodoxprayers.privateapp.R.string.ui_verified_native_scripture_from_an_independent_so_a8f7898c), true), ui.margins(-1, -2, 0, 8, 0, 0));
         }
         String source = localized(reading.optJSONObject("source"), "");
         if (!source.isEmpty()) card.addView(centered(source, 12, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 8, 0, 0));
@@ -53,20 +53,20 @@ public final class ReadingDetailScreen extends BaseScreen {
         String sourceId = lane == null ? "" : lane.optString("source_id", "").trim();
         String sourceUrl = lane == null ? "" : lane.optString("source_url", "").trim();
         if (!sourceId.isEmpty()) {
-            card.addView(ui.text(local("المصدر المسجل: ", "Registered source: ", "Καταχωρισμένη πηγή: ") + data.sourceName(sourceId),
+            card.addView(ui.text(local(com.orthodoxprayers.privateapp.R.string.ui_registered_source_b7f2bf22) + data.sourceName(sourceId),
                     12, ui.colors().primaryText(), true), ui.margins(-1, -2, 0, 6, 0, 0));
         }
         if (sourceUrl.isEmpty() && !sourceId.isEmpty()) sourceUrl = data.sourceUrl(sourceId);
         if (!sourceUrl.isEmpty()) {
             final String url = sourceUrl;
-            Button open = ui.smallButton(local("فتح مصدر القراءة", "Open reading source", "Ἄνοιγμα πηγῆς ἀναγνώσματος"), false);
+            Button open = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_open_reading_source_0dc31b35), false);
             open.setOnClickListener(v -> {
                 try { host.activity().startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))); }
                 catch (Exception ignored) { }
             });
             card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
         }
-        Button allSources = ui.smallButton(local("جميع المصادر والمراجع", "All sources and references", "Ὅλες οἱ πηγές"), false);
+        Button allSources = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_all_sources_and_references_5cebd827), false);
         allSources.setOnClickListener(v -> host.navigate("sources", null));
         card.addView(allSources, ui.margins(-1, -2, 0, 5, 0, 0));
         add(page.root, card, 12, 16);
@@ -75,23 +75,15 @@ public final class ReadingDetailScreen extends BaseScreen {
 
     private String unavailableMessage() {
         if ("prokeimenon".equals(reading.optString("kind", ""))) {
-            return local(
-                    "لم يتوفر نص بروكيمنن موثّق لهذا اليوم؛ لن يعرض التطبيق نصًا مخمّنًا.",
-                    "A verified Prokeimenon is not available for this day; the app will not display a guessed text.",
-                    "Δὲν εἶναι διαθέσιμο ἐπαληθευμένο Προκείμενον γιὰ αὐτὴν τὴν ἡμέρα· ἡ ἐφαρμογὴ δὲν θὰ δείξει εἰκαζόμενο κείμενο."
-            );
+            return local(com.orthodoxprayers.privateapp.R.string.ui_a_verified_prokeimenon_is_not_available_for_this_61c99c08);
         }
-        return local(
-                "تعذّر توفير النص الكتابي الموثّق لهذا المقطع. بقيت آخر بيانات سليمة محفوظة.",
-                "Verified Scripture text is unavailable for this passage. The last valid data remains saved.",
-                "Τὸ ἐπαληθευμένο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα. Διατηροῦνται τὰ τελευταῖα ἔγκυρα δεδομένα."
-        );
+        return local(com.orthodoxprayers.privateapp.R.string.ui_verified_scripture_text_is_unavailable_for_this__1624033a);
     }
 
     private String unavailableBadge() {
         if ("prokeimenon".equals(reading.optString("kind", ""))) {
-            return local("البروكيمنن غير متوفر من مصدر موثّق", "Verified Prokeimenon unavailable", "Μὴ διαθέσιμο ἐπαληθευμένο Προκείμενον");
+            return local(com.orthodoxprayers.privateapp.R.string.ui_verified_prokeimenon_unavailable_9ac3fd2f);
         }
-        return local("النص الكتابي الأصلي غير متوفر لهذا المقطع", "Native Scripture text unavailable for this passage", "Τὸ πρωτότυπο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα");
+        return local(com.orthodoxprayers.privateapp.R.string.ui_native_scripture_text_unavailable_for_this_passa_80766f8b);
     }
 }

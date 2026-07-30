@@ -34,11 +34,11 @@ public final class DailyAgendaWidget extends AppWidgetProvider {
             String date = app.repository().dataDate();
             String feast = app.repository().localized(app.repository().today().optJSONObject("feast"), "—");
             String fast = app.repository().localized(app.repository().today().optJSONObject("fast"), "—");
-            views.setTextViewText(R.id.widget_title, app.repository().local("☦  الصلوات الكنسية", "☦  Church Prayers", "☦  Ἐκκλησιαστικὲς Προσευχές"));
+            views.setTextViewText(R.id.widget_title, app.repository().local(com.orthodoxprayers.privateapp.R.string.ui_church_prayers_d7f2a5cb));
             views.setTextViewText(R.id.widget_date, date.isEmpty() ? "—" : date);
             views.setTextViewText(R.id.widget_feast, feast.isEmpty() ? "—" : feast);
             views.setTextViewText(R.id.widget_fast, fast.isEmpty() ? "—" : fast);
-            views.setTextViewText(R.id.widget_open, app.repository().local("فتح الأجندة", "Open agenda", "Ἄνοιγμα ἀτζέντας"));
+            views.setTextViewText(R.id.widget_open, app.repository().local(com.orthodoxprayers.privateapp.R.string.ui_open_agenda_a59ab00e));
         }
 
         Intent open = new Intent(context, MainActivity.class);

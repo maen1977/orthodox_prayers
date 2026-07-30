@@ -16,14 +16,12 @@ public final class PrayerHubScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("الصلوات", "Prayers", "Προσευχές"), false);
-        TextView hint = centered(local("الصلوات اليومية والصلوات الأساسية متاحة هنا، ويظل شريط التنقل ظاهرًا أسفل الشاشة.",
-                "Daily and basic prayers are available here; bottom navigation remains visible.",
-                "Καθημερινὲς καὶ βασικὲς προσευχές."), 14, ui.colors().secondaryText(), false);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_prayers_3a9327c4), false);
+        TextView hint = centered(local(com.orthodoxprayers.privateapp.R.string.ui_daily_and_basic_prayers_are_available_here_botto_36b71462), 14, ui.colors().secondaryText(), false);
         add(page.root, hint, 12, 6);
-        addCategory(page, "daily", local("الصلوات اليومية", "Daily prayers", "Καθημερινὲς προσευχές"));
-        addCategory(page, "basic", local("صلوات أساسية", "Basic prayers", "Βασικὲς προσευχές"));
-        addCategory(page, "communion", local("صلوات المناولة المقدسة", "Holy Communion prayers", "Εὐχαὶ Θείας Μεταλήψεως"));
+        addCategory(page, "daily", local(com.orthodoxprayers.privateapp.R.string.ui_daily_prayers_ef97d9fd));
+        addCategory(page, "basic", local(com.orthodoxprayers.privateapp.R.string.ui_basic_prayers_6f2ed521));
+        addCategory(page, "communion", local(com.orthodoxprayers.privateapp.R.string.ui_holy_communion_prayers_e14c166c));
         return page.scroll;
     }
 
@@ -31,7 +29,7 @@ public final class PrayerHubScreen extends BaseScreen {
         page.root.addView(ui.sectionTitle(title));
         ArrayList<JSONObject> services = data.servicesByCategory(category);
         if (services.isEmpty()) {
-            TextView empty = centered(local("لا توجد نصوص في هذا القسم.", "No texts in this section.", "Δεν υπάρχουν κείμενα."), 14, ui.colors().secondaryText(), false);
+            TextView empty = centered(local(com.orthodoxprayers.privateapp.R.string.ui_no_texts_in_this_section_a43f561b), 14, ui.colors().secondaryText(), false);
             add(page.root, empty, 4, 8);
             return;
         }

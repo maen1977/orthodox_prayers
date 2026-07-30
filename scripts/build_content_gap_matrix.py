@@ -1,34 +1,69 @@
 #!/usr/bin/env python3
+"""Build a gap matrix that distinguishes exact editions from complete compilations."""
 from __future__ import annotations
+
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
-manifest=json.loads((ROOT/'canonical/religious_completeness_manifest.json').read_text(encoding='utf-8'))
-langs=('ar','en','el'); complete='complete_exact_native_edition'
-known={
- ('chrysostom_liturgy','ar'):[
-  'Current Arabic package is materially shorter than the complete English/Greek editions.',
-  'Missing separately structured catechumen dismissal and first/second prayers of the faithful.',
-  'Several priestly prayers and rubrics are condensed; exact single-edition completeness is not proven.'
- ],
- ('pre_communion','en'):['Current package is a prayer-book selection, not the complete appointed office.'],
- ('pre_communion','el'):['Current package is a prayer-book selection, not the complete appointed office.'],
- ('post_communion','en'):['Current package is a prayer-book selection, not the complete thanksgiving office.'],
- ('post_communion','el'):['Current package is a prayer-book selection, not the complete thanksgiving office.'],
-}
-rows=[]
-for service in manifest['required_services']:
- row={'service':service,'packaged_service_id':manifest['packaged_service_ids'][service],'languages':{}}
- for lang in langs:
-  status=manifest['languages'][lang][service]
-  blockers=[] if status==complete else known.get((service,lang),[])
-  if status=='missing': blockers=['No packaged native service exists.']
-  elif status=='abridged': blockers=['Packaged text is an abridgement and cannot be promoted by field coverage or source URL alone.']
-  elif status=='unproven_complete' and not blockers: blockers=['A complete single-edition source comparison and structural proof are missing.']
-  elif status=='complete_authorized_native_selection' and not blockers: blockers=['The imported selection is complete for its scope but not the complete required office.']
-  row['languages'][lang]={'status':status,'release_ready':status==complete,'blockers':blockers}
- rows.append(row)
-out={'schema_version':1,'generated_at_utc':datetime.now(timezone.utc).isoformat(),'summary':{l:{'complete':sum(manifest['languages'][l][s]==complete for s in manifest['required_services']),'required':15} for l in langs},'services':rows,'source_acquisition_plan':'canonical/service_source_acquisition_plan.json'}
-(ROOT/'CONTENT_GAP_MATRIX.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print(ROOT/'CONTENT_GAP_MATRIX.json')
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "canonical" / "religious_completeness_manifest.json"
+OUTPUT = ROOT / "CONTENT_GAP_MATRIX.json"
+LANGUAGES = ("ar", "en", "el")
+EXACT = "complete_exact_native_edition"
+COMPILATION = "complete_native_source_compilation"
+
+
+def main() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    complete_statuses = set(manifest.get("production_complete_statuses") or [EXACT])
+    required = manifest["required_services"]
+    rows = []
+    for service in required:
+        row = {
+            "service": service,
+            "packaged_service_id": manifest["packaged_service_ids"][service],
+            "languages": {},
+        }
+        for language in LANGUAGES:
+            status = manifest["languages"][language][service]
+            ready = status in complete_statuses
+            notes = []
+            if status == COMPILATION:
+                notes.append(
+                    "Complete same-language native-source compilation; kept distinct from a single exact edition."
+                )
+            elif not ready:
+                notes.append("This lane still needs a complete authorized same-language source package.")
+            row["languages"][language] = {
+                "status": status,
+                "technical_release_ready": ready,
+                "remaining_blockers": [] if ready else notes,
+                "classification_notes": notes if ready else [],
+            }
+        rows.append(row)
+
+    summary = {}
+    for language in LANGUAGES:
+        statuses = [manifest["languages"][language][service] for service in required]
+        summary[language] = {
+            "technical_complete": sum(status in complete_statuses for status in statuses),
+            "exact_single_edition": statuses.count(EXACT),
+            "native_source_compilation": statuses.count(COMPILATION),
+            "remaining_gaps": sum(status not in complete_statuses for status in statuses),
+            "required": len(required),
+        }
+    output = {
+        "schema_version": 2,
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "summary": summary,
+        "services": rows,
+        "source_acquisition_plan": "canonical/service_source_acquisition_plan.json",
+        "ecclesiastical_approval_certified": bool(manifest.get("ecclesiastical_approval_certified", False)),
+    }
+    OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(OUTPUT)
+
+
+if __name__ == "__main__":
+    main()

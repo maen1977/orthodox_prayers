@@ -61,8 +61,8 @@ public final class SearchEngine {
             String display = document.optString("display_text", "");
             int score = match + (containsPhrase(title, plan) ? 120 : 0) + (containsPhrase(reference, plan) ? 135 : 0);
             String section = "scripture".equals(document.optString("type"))
-                    ? repository.local("الكتاب المقدس", "Scripture", "Ἁγία Γραφή")
-                    : repository.local("فهرس النص", "Text index", "Εὐρετήριο κειμένου");
+                    ? repository.local(com.orthodoxprayers.privateapp.R.string.ui_scripture_811cf82a)
+                    : repository.local(com.orthodoxprayers.privateapp.R.string.ui_text_index_57a9ffa2);
             putBest(output, targetId, new SearchResult(service, snippet(display, plan.phrase), section, score));
         }
     }
@@ -96,10 +96,10 @@ public final class SearchEngine {
                     referenceScore > 0 ? referenceScore + 145 : 0);
             score = Math.max(score, bodyScore > 0 ? bodyScore + 55 : 0);
             if (score <= 0) continue;
-            JSONObject service = pseudoService("daily-reading-" + kind, "📖", title, reference, body, "");
+            JSONObject service = pseudoService("daily-reading-" + kind, "§", title, reference, body, "");
             putBest(output, service.optString("id"), new SearchResult(service,
                     snippet(reference.isEmpty() ? body : reference + "\n" + body, plan.phrase),
-                    repository.local("قراءات اليوم", "Today’s readings", "Σημερινὰ ἀναγνώσματα"), score + 15));
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_today_s_readings_db2884fb), score + 15));
         }
     }
 
@@ -117,12 +117,12 @@ public final class SearchEngine {
             int score = textScore(searchable, plan);
             if (score <= 0) continue;
             JSONObject health = repository.sourceHealthById(id);
-            String healthLine = health == null ? "" : repository.local("حالة الرصد: ", "Monitor status: ", "Κατάσταση ἐλέγχου: ")
+            String healthLine = health == null ? "" : repository.local(com.orthodoxprayers.privateapp.R.string.ui_monitor_status_070900f8)
                     + health.optString("status", "unknown");
-            JSONObject service = pseudoService("source:" + id, "🔗", name, usage,
+            JSONObject service = pseudoService("source:" + id, "↗", name, usage,
                     usage + (healthLine.isEmpty() ? "" : "\n" + healthLine), source.optString("url", ""));
             putBest(output, service.optString("id"), new SearchResult(service, snippet(usage, plan.phrase),
-                    repository.local("مصدر رسمي", "Official source", "Ἐπίσημη πηγή"), score + 70));
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_official_source_c1baa81f), score + 70));
         }
     }
 
@@ -138,14 +138,12 @@ public final class SearchEngine {
             String searchable = name + " " + city + " كنيسة رعية كاتدرائية دير church parish cathedral monastery";
             int score = textScore(searchable, plan);
             if (score <= 0) continue;
-            String summary = city.isEmpty() ? repository.local("كنيسة أرثوذكسية في الأردن", "Orthodox church in Jordan", "Ὀρθόδοξος ναὸς στὴν Ἰορδανία") : city;
-            JSONObject service = pseudoService("church:" + id, "⛪", name, summary,
-                    repository.local("افتح الصفحة الرسمية لمعرفة بيانات الاتصال والبرنامج الحالي للخدمات.",
-                            "Open the official page for contact details and the current service schedule.",
-                            "Ἀνοίξτε τὴν ἐπίσημη σελίδα γιὰ στοιχεῖα καὶ τὸ τρέχον πρόγραμμα."),
+            String summary = city.isEmpty() ? repository.local(com.orthodoxprayers.privateapp.R.string.ui_orthodox_church_in_jordan_32e4b002) : city;
+            JSONObject service = pseudoService("church:" + id, "", name, summary,
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_open_the_official_page_for_contact_details_and_t_e7480a28),
                     church.optString("url", ""));
             putBest(output, service.optString("id"), new SearchResult(service, summary,
-                    repository.local("دليل الكنائس", "Church directory", "Κατάλογος ναῶν"), score + 95));
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_church_directory_36e0707d), score + 95));
         }
     }
 
@@ -157,19 +155,15 @@ public final class SearchEngine {
             if (resource == null) continue;
             String title = repository.metadataLocalized(
                     resource.optJSONObject("title"),
-                    repository.local(
-                            "رابط كنسي رسمي",
-                            "Official church link",
-                            "Ἐπίσημος ἐκκλησιαστικὸς σύνδεσμος"
-                    )
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_official_church_link_2d1a8bdb)
             );
             int score = textScore(title + " بث مباشر قداس live stream broadcast calendar رزنامة", plan);
             if (score <= 0) continue;
             JSONObject service = pseudoService("resource:" + resource.optString("id", String.valueOf(i)), "▶", title,
-                    repository.local("رابط كنسي رسمي", "Official church link", "Ἐπίσημος ἐκκλησιαστικὸς σύνδεσμος"),
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_official_church_link_2d1a8bdb),
                     title, resource.optString("url", ""));
             putBest(output, service.optString("id"), new SearchResult(service, title,
-                    repository.local("روابط مباشرة", "Live resources", "Ζωντανοὶ σύνδεσμοι"), score + 90));
+                    repository.local(com.orthodoxprayers.privateapp.R.string.ui_live_resources_9822c9d1), score + 90));
         }
     }
 
@@ -179,19 +173,19 @@ public final class SearchEngine {
         String notice = repository.localized(service.optJSONObject("notice"), "");
         int bestScore = textScore(title, plan) + 125;
         String bestText = title;
-        String section = repository.local("العنوان", "Title", "Τίτλος");
+        String section = repository.local(com.orthodoxprayers.privateapp.R.string.ui_title_1e29bd87);
 
         int summaryScore = textScore(summary, plan) + 75;
         if (summaryScore > bestScore) {
             bestScore = summaryScore;
             bestText = summary;
-            section = repository.local("الملخص", "Summary", "Περίληψη");
+            section = repository.local(com.orthodoxprayers.privateapp.R.string.ui_summary_8e163b32);
         }
         int noticeScore = textScore(notice, plan) + 50;
         if (noticeScore > bestScore) {
             bestScore = noticeScore;
             bestText = notice;
-            section = repository.local("الملاحظة", "Notice", "Σημείωση");
+            section = repository.local(com.orthodoxprayers.privateapp.R.string.ui_notice_60ab69a7);
         }
 
         JSONArray segments = service.optJSONArray("segments");
@@ -206,7 +200,7 @@ public final class SearchEngine {
                     bestScore = score;
                     bestText = text;
                     section = repository.localized(segment.optJSONObject("title"),
-                            repository.local("داخل النص", "Inside text", "Μέσα στὸ κείμενο"));
+                            repository.local(com.orthodoxprayers.privateapp.R.string.ui_inside_text_1e1a4774));
                 }
             }
         }

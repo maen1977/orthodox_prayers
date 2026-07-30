@@ -37,13 +37,9 @@ public final class CalendarScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("التقويم الكنسي", "Church calendar", "Ἐκκλησιαστικὸ ἡμερολόγιο"), true);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_church_calendar_54dcd19b), true);
         addMonthNavigation(page.root);
-        add(page.root, ui.infoBadge(local(
-                "الفهرس السنوي خفيف، بينما الحزمة الموقعة تحفظ اليوم والأيام السبعة القادمة بكامل الصلوات والقراءات والخدمات.",
-                "The annual index stays lightweight, while the signed package keeps today and the next seven days with complete prayers, readings, and services.",
-                "Τὸ ἐτήσιο εὑρετήριο παραμένει ἐλαφρύ, ἐνῶ ἡ ὑπογεγραμμένη δέσμη περιέχει σήμερα καὶ τὶς ἑπτὰ ἑπόμενες ἡμέρες πλήρεις."
-        )), 4, 10);
+        add(page.root, ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_the_annual_index_stays_lightweight_while_the_sig_deed927c)), 4, 10);
         addCalendarGrid(page.root);
         addKnownDays(page.root);
         return page.scroll;
@@ -66,7 +62,7 @@ public final class CalendarScreen extends BaseScreen {
         row.addView(next, ui.weight(44));
         add(root, row, 10, 4);
 
-        Button today = ui.smallButton(local("العودة إلى هذا الشهر", "Return to this month", "Ἐπιστροφὴ στὸν τρέχοντα μῆνα"), false);
+        Button today = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_return_to_this_month_ea36d48b), false);
         today.setOnClickListener(v -> host.navigate("calendar", YearMonth.now().toString()));
         add(root, today, 0, 8);
     }
@@ -98,7 +94,7 @@ public final class CalendarScreen extends BaseScreen {
                     : Integer.toString(day);
             Button cell = ui.smallButton((hasDetails ? "• " : "") + number, current);
             cell.setMinHeight(ui.dp(48));
-            cell.setContentDescription(iso + (hasDetails ? local("، توجد تفاصيل", ", details available", ", διαθέσιμες λεπτομέρειες") : ""));
+            cell.setContentDescription(iso + (hasDetails ? local(com.orthodoxprayers.privateapp.R.string.ui_details_available_c1c33f64) : ""));
             if (hasDetails) cell.setOnClickListener(v -> host.navigate("calendar_day", iso));
             grid.addView(cell, cellParams());
         }
@@ -120,21 +116,21 @@ public final class CalendarScreen extends BaseScreen {
         boolean any = false;
         for (Map.Entry<String, JSONObject> entry : known.entrySet()) {
             if (!YearMonth.from(LocalDate.parse(entry.getKey())).equals(month)) continue;
-            if (!any) root.addView(ui.sectionTitle(local("تفاصيل موثوقة لهذا الشهر", "Trusted details this month", "Ἔμπιστες λεπτομέρειες τοῦ μήνα")));
+            if (!any) root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_trusted_details_this_month_a042797d)));
             any = true;
             JSONObject item = entry.getValue();
             LinearLayout card = ui.card();
             card.setClickable(true);
             card.setFocusable(true);
             card.setOnClickListener(v -> host.navigate("calendar_day", entry.getKey()));
-            card.addView(ui.text("📅  " + entry.getKey(), 16, ui.colors().primaryText(), true));
+            card.addView(ui.text(entry.getKey(), 16, ui.colors().primaryText(), true));
             String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
             String status = localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), ""));
             if (!status.isEmpty()) card.addView(ui.text(status, 13, ui.colors().accentText(), true));
             if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
             add(root, card, 2, 7);
         }
-        if (!any) add(root, centered(local("لا توجد تفاصيل منشورة لهذا الشهر داخل الحزمة الحالية.", "No published details for this month are included in the current package.", "Δὲν ὑπάρχουν δημοσιευμένες λεπτομέρειες γιὰ αὐτὸν τὸν μῆνα."), 14, ui.colors().secondaryText(), false), 10, 16);
+        if (!any) add(root, centered(local(com.orthodoxprayers.privateapp.R.string.ui_no_published_details_for_this_month_are_included_9e8eb771), 14, ui.colors().secondaryText(), false), 10, 16);
     }
 
     private Map<String, JSONObject> knownDays() {

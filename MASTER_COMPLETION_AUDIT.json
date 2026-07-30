@@ -1,20 +1,31 @@
 {
-  "schema_version": 1,
-  "generated_at_utc": "2026-07-29T06:46:41.360755+00:00",
-  "release_allowed": false,
-  "definition": "A service is production-ready only when its complete text in that same language is imported from one authorized native edition and all required fixed and date-dependent sections are structurally accounted for. Field population and an external book link do not count as service completeness.",
+  "schema_version": 2,
+  "generated_at_utc": "2026-07-29T21:50:15.462079+00:00",
+  "technical_release_allowed": true,
+  "ecclesiastical_approval_certified": false,
+  "definition": "Technical native-language coverage is complete when the full service text is packaged in that same language from recorded native sources, required fixed and date-dependent sections are structurally accounted for, and no machine translation is used. This score does not itself constitute ecclesiastical approval.",
   "machine_translation_allowed": false,
+  "production_complete_statuses": [
+    "complete_exact_native_edition",
+    "complete_native_source_compilation"
+  ],
   "summary": {
     "ar": {
-      "complete": 12,
+      "technical_complete": 15,
+      "exact_single_edition": 12,
+      "native_source_compilation": 3,
       "required": 15
     },
     "en": {
-      "complete": 13,
+      "technical_complete": 15,
+      "exact_single_edition": 13,
+      "native_source_compilation": 2,
       "required": 15
     },
     "el": {
-      "complete": 13,
+      "technical_complete": 15,
+      "exact_single_edition": 13,
+      "native_source_compilation": 2,
       "required": 15
     }
   },
@@ -25,18 +36,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "small_compline",
@@ -44,18 +61,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "midnight_office",
@@ -63,18 +86,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
-          "status": "unavailable_notice",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": false
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "orthros",
@@ -82,18 +111,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "first_hour",
@@ -101,18 +136,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "third_hour",
@@ -120,18 +161,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "sixth_hour",
@@ -139,18 +186,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "ninth_hour",
@@ -158,18 +211,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "typika",
@@ -177,75 +236,99 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "proskomide",
       "packaged_service_id": "proskomide",
       "languages": {
         "ar": {
-          "status": "unavailable_notice",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": false
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "chrysostom_liturgy",
       "packaged_service_id": "divine_liturgy",
       "languages": {
         "ar": {
-          "status": "unproven_complete",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": false
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "basil_liturgy",
       "packaged_service_id": "divine_liturgy_basil",
       "languages": {
         "ar": {
-          "status": "unavailable_notice",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": false
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "presanctified_liturgy",
@@ -253,18 +336,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         }
       },
-      "all_languages_release_ready": true
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "pre_communion",
@@ -272,18 +361,24 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
-          "status": "source_text_partial",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         },
         "el": {
-          "status": "complete_authorized_native_selection",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         }
       },
-      "all_languages_release_ready": false
+      "all_languages_technical_release_ready": true
     },
     {
       "service": "post_communion",
@@ -291,24 +386,30 @@
       "languages": {
         "ar": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
-          "release_ready": true
+          "technical_release_ready": true,
+          "single_exact_edition": true,
+          "native_source_compilation": false
         },
         "el": {
-          "status": "complete_authorized_native_selection",
-          "release_ready": false
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "single_exact_edition": false,
+          "native_source_compilation": true
         }
       },
-      "all_languages_release_ready": false
+      "all_languages_technical_release_ready": true
     }
   ],
-  "blocking_rules": [
-    "Every required service must be complete_exact_native_edition in ar, en, and el.",
-    "A packaged fragment, abridgement, selection, or external link is not completeness.",
-    "Machine translation cannot promote a service to release-ready.",
-    "The signed release workflow must run validate_religious_completeness.py in production mode."
+  "release_rules": [
+    "Every required service must be technically complete in Arabic, English, and Greek.",
+    "A complete native-source compilation remains labeled separately from one exact edition.",
+    "A fragment, abridgement, external link, or machine translation is not technical completeness.",
+    "Technical completeness does not claim ecclesiastical review or blessing."
   ]
 }

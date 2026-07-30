@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="ui_a_secure_connection_to_the_update_server_could_n_22125562" formatted="false">Ἡ ἀσφαλὴς σύνδεση μὲ τὸν διακομιστὴ ἀπέτυχε</string>
+    <string name="ui_a_verified_prokeimenon_is_not_available_for_this_61c99c08" formatted="false">Δὲν εἶναι διαθέσιμο ἐπαληθευμένο Προκείμενον γιὰ αὐτὴν τὴν ἡμέρα· ἡ ἐφαρμογὴ δὲν θὰ δείξει εἰκαζόμενο κείμενο.</string>
+    <string name="ui_about_the_app_3bd794db" formatted="false">Περὶ τῆς ἐφαρμογῆς</string>
+    <string name="ui_about_the_content_source_8d523461" formatted="false">Περὶ πηγῆς: </string>
+    <string name="ui_active_connectors_34b93171" formatted="false">Ἐνεργὲς συνδέσεις: </string>
+    <string name="ui_active_languages_79779885" formatted="false">Ἐνεργὲς γλῶσσες</string>
+    <string name="ui_all_sources_and_references_5cebd827" formatted="false">Ὅλες οἱ πηγές</string>
+    <string name="ui_allowed_f3016067" formatted="false">ἐπιτρέπεται</string>
+    <string name="ui_allowed_forbidden_3e7d8352" formatted="false">✓ Ἐπιτρέπεται   ✕ Ἀπαγορεύεται</string>
+    <string name="ui_an_older_data_revision_was_rejected_for_update_s_5238c511" formatted="false">Ἀπορρίφθηκε παλαιότερη ἀναθεώρηση δεδομένων</string>
+    <string name="ui_an_update_is_already_in_progress_0afb7ec0" formatted="false">Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη</string>
+    <string name="ui_antioch_patriarchate_68959f82" formatted="false">Πατριαρχεῖο Ἀντιοχείας</string>
+    <string name="ui_app_and_text_language_10b5a3ac" formatted="false">Γλῶσσα ἐφαρμογῆς καὶ κειμένων</string>
+    <string name="ui_app_version_cf5bb661" formatted="false">Ἔκδοση: </string>
+    <string name="ui_arabic_english_and_greek_are_three_independent_n_d97c4432" formatted="false">Τὰ Ἀραβικά, τὰ Ἀγγλικὰ καὶ τὰ Ἑλληνικὰ εἶναι τρεῖς χωριστὲς γλωσσικὲς ροές. Ἡ ἐφαρμογὴ δὲν μεταφράζει οὔτε ἀντιγράφει κείμενο ἀπὸ ἄλλη γλῶσσα.</string>
+    <string name="ui_authority_tier_e909156f" formatted="false">Βαθμίδα ἀρχῆς: </string>
+    <string name="ui_auto_scroll_43606e75" formatted="false">▶ Αὐτόματη κύλιση</string>
+    <string name="ui_auto_scroll_off_763228b7" formatted="false">Αὐτόματη κύλιση: κλειστή</string>
+    <string name="ui_auto_scroll_speed_9b395f14" formatted="false">Ταχύτητα αὐτόματης κύλισης: </string>
+    <string name="ui_automatic_update_01_00_and_06_00_amman_time_plus_a1bb2912" formatted="false">Αὐτόματη ἐνημέρωση: 01:00 καὶ 06:00 ὥρα Ἀμμάν, ἔλεγχος στὸ ἄνοιγμα καὶ ἐπανάληψη ἀνὰ 15 λεπτά</string>
+    <string name="ui_back_18fb18e2" formatted="false">Πίσω</string>
+    <string name="ui_base_texts_for_all_three_languages_are_embedded__06372176" formatted="false">Τὰ βασικὰ κείμενα καὶ τῶν τριῶν γλωσσῶν εἶναι ἐνσωματωμένα. Ἐπίλεξε ποιες γλῶσσες θὰ φαίνονται στὸν ἐπιλογέα.</string>
+    <string name="ui_basic_prayers_6f2ed521" formatted="false">Βασικὲς προσευχές</string>
+    <string name="ui_calendar_and_fasting_51a9bf84" formatted="false">Ἡμερολόγιο καὶ νηστεία</string>
+    <string name="ui_calendar_and_reminders_acba78af" formatted="false">Ἡμερολόγιο καὶ ὑπενθυμίσεις</string>
+    <string name="ui_cancel_1bd7a4b9" formatted="false">Ἀκύρωση</string>
+    <string name="ui_change_time_for_9b3639ec" formatted="false">Ἀλλαγὴ ὥρας γιὰ </string>
+    <string name="ui_choose_a_prayer_or_service_the_bottom_navigation_daa89d81" formatted="false">Ἐπιλέξτε προσευχή ἢ ἀκολουθία.</string>
+    <string name="ui_choose_time_afb7d8a6" formatted="false">Ἐπιλογὴ ὥρας</string>
+    <string name="ui_church_calendar_54dcd19b" formatted="false">Ἐκκλησιαστικὸ ἡμερολόγιο</string>
+    <string name="ui_church_directory_36e0707d" formatted="false">Κατάλογος ναῶν</string>
+    <string name="ui_church_directory_and_live_services_b4f52ad3" formatted="false">Κατάλογος ναῶν καὶ ζωντανὲς μεταδόσεις</string>
+    <string name="ui_church_prayers_65a0f7e5" formatted="false">Ἐκκλησιαστικὲς Προσευχές</string>
+    <string name="ui_church_prayers_d7f2a5cb" formatted="false">Ἐκκλησιαστικὲς Προσευχές</string>
+    <string name="ui_churches_and_live_services_53a37eff" formatted="false">Ναοὶ καὶ ζωντανὲς μεταδόσεις</string>
+    <string name="ui_churches_and_live_services_7171f5ce" formatted="false">Ναοὶ καὶ ζωντανὲς μεταδόσεις</string>
+    <string name="ui_clear_history_0e69bce2" formatted="false">Διαγραφὴ ἱστορικοῦ</string>
+    <string name="ui_clear_search_history_abb8a916" formatted="false">Καθαρισμὸς ἱστορικοῦ</string>
+    <string name="ui_collection_56e98b45" formatted="false">Συλλογή</string>
+    <string name="ui_commemoration_399506fc" formatted="false">Μνήμη</string>
+    <string name="ui_communion_1cf76e7a" formatted="false">Θεία Μετάληψις</string>
+    <string name="ui_complete_arabic_text_pinned_from_an_official_ort_0c91e6fe" formatted="false">Πλήρες ἀραβικὸ κείμενο ἀπὸ ἐπίσημη πηγή</string>
+    <string name="ui_confidence_e698f632" formatted="false"> — βεβαιότητα: </string>
+    <string name="ui_content_fingerprint_8e9ffe73" formatted="false">Ἀποτύπωμα: </string>
+    <string name="ui_content_hash_6fb5464c" formatted="false">Ἀποτύπωμα: </string>
+    <string name="ui_could_not_open_the_official_link_3126ea33" formatted="false">Δὲν ἄνοιξε ὁ ἐπίσημος σύνδεσμος.</string>
+    <string name="ui_current_native_official_text_coverage_english_0f60cec5" formatted="false">Κάλυψη πρωτότυπων ἐπίσημων κειμένων — Ἀγγλικά: </string>
+    <string name="ui_currently_selected_14c25dc4" formatted="false">Τρέχουσα γλῶσσα</string>
+    <string name="ui_daily_a469bee1" formatted="false">Καθημερινά</string>
+    <string name="ui_daily_and_basic_prayers_are_available_here_botto_36b71462" formatted="false">Καθημερινὲς καὶ βασικὲς προσευχές.</string>
+    <string name="ui_daily_prayers_ef97d9fd" formatted="false">Καθημερινὲς προσευχές</string>
+    <string name="ui_daily_propers_and_scripture_passed_source_and_si_d42c1070" formatted="false">Τὰ ἡμερήσια κείμενα ἐπαληθεύθηκαν</string>
+    <string name="ui_daily_readings_295eb6f5" formatted="false">Ἡμερήσια ἀναγνώσματα</string>
+    <string name="ui_daily_readings_7f88fcc0" formatted="false">Ἡμερήσια ἀναγνώσματα</string>
+    <string name="ui_data_date_5059f13c" formatted="false">Ἡμερομηνία: </string>
+    <string name="ui_day_and_commemoration_ab4b3d7f" formatted="false">Ἡμέρα καὶ μνήμη</string>
+    <string name="ui_day_details_37b21832" formatted="false">Λεπτομέρειες ἡμέρας</string>
+    <string name="ui_decrease_text_size_d4631a2b" formatted="false">Μείωση μεγέθους κειμένου</string>
+    <string name="ui_default_25612288" formatted="false">Κανονικό</string>
+    <string name="ui_delete_ea349e00" formatted="false">Διαγραφή</string>
+    <string name="ui_details_available_c1c33f64" formatted="false">, διαθέσιμες λεπτομέρειες</string>
+    <string name="ui_disable_keep_screen_on_14c0033c" formatted="false">Ἀπενεργοποίηση ὀθόνης</string>
+    <string name="ui_dismissal_715bd095" formatted="false">Ἀπόλυσις</string>
+    <string name="ui_displayed_data_date_3ac6be9b" formatted="false">Ἡμερομηνία δεδομένων: </string>
+    <string name="ui_downloading_and_validating_today_s_data_f519f853" formatted="false">Ἔλεγχος σημερινῶν δεδομένων…</string>
+    <string name="ui_edit_note_569b3288" formatted="false">Ἐπεξεργασία</string>
+    <string name="ui_epistle_a17bc087" formatted="false">Ἀπόστολος</string>
+    <string name="ui_epistle_dd82c199" formatted="false">Ἀπόστολος: </string>
+    <string name="ui_evening_prayer_50c26316" formatted="false">Ἑσπερινὴ προσευχή</string>
+    <string name="ui_evening_prayers_23ddb1fe" formatted="false">Ἑσπερινὲς προσευχές</string>
+    <string name="ui_faithful_said_silently_54b6d432" formatted="false">Πιστός — κατ’ ἰδίαν</string>
+    <string name="ui_fasting_f1b1605d" formatted="false">Νηστεία</string>
+    <string name="ui_fasting_status_7fa7fda1" formatted="false">Κατάσταση νηστείας</string>
+    <string name="ui_favorite_1d799489" formatted="false">Ἀγαπημένο</string>
+    <string name="ui_favorites_8eb8984d" formatted="false">Ἀγαπημένα</string>
+    <string name="ui_feasts_and_commemorations_bea321c8" formatted="false">Ἑορτὲς καὶ μνῆμες</string>
+    <string name="ui_font_f5e02ef6" formatted="false">Γραμματοσειρά: </string>
+    <string name="ui_forbidden_8f73bf02" formatted="false">ἀπαγορεύεται</string>
+    <string name="ui_full_liturgy_today_preparation_to_dismissal_08927fc7" formatted="false">Πλήρης σημερινὴ Θεία Λειτουργία — ἀπὸ τὴν προετοιμασία ἕως τὴν ἀπόλυση</string>
+    <string name="ui_gospel_68845cc5" formatted="false">Εὐαγγέλιον: </string>
+    <string name="ui_gospel_b7b033e7" formatted="false">Εὐαγγέλιον</string>
+    <string name="ui_great_entrance_663a8293" formatted="false">Μεγάλη Εἴσοδος</string>
+    <string name="ui_greek_1565698a" formatted="false">Ἑλληνικά: </string>
+    <string name="ui_hide_from_language_selector_47d8e927" formatted="false">Ἀπόκρυψη ἀπὸ τὸν ἐπιλογέα</string>
+    <string name="ui_hide_liturgy_sections_10a04266" formatted="false">Κρύψε ἐνότητες</string>
+    <string name="ui_hide_reading_controls_3f083a9c" formatted="false">⌃ Κρύψε τὰ ἐργαλεῖα ἀναγνώσεως</string>
+    <string name="ui_hide_source_b3b18955" formatted="false">Κρύψε</string>
+    <string name="ui_hide_source_information_7690343f" formatted="false">Κρύψε πληροφορίες</string>
+    <string name="ui_hide_source_text_d8f171c5" formatted="false">Κρύψε πρωτότυπο</string>
+    <string name="ui_hide_technical_details_800e4b8e" formatted="false">Ἀπόκρυψη τεχνικῶν λεπτομερειῶν</string>
+    <string name="ui_holy_communion_prayers_e14c166c" formatted="false">Εὐχαὶ Θείας Μεταλήψεως</string>
+    <string name="ui_home_535f9515" formatted="false">Ἀρχική</string>
+    <string name="ui_id_8ac50ce2" formatted="false">ID: </string>
+    <string name="ui_inactive_e4ed7cb2" formatted="false"> — ἀνενεργή</string>
+    <string name="ui_incomplete_or_invalid_data_was_received_and_igno_e2b95466" formatted="false">Ἐλήφθησαν ἐλλιπῆ δεδομένα</string>
+    <string name="ui_increase_text_size_d8c66ed2" formatted="false">Αὔξηση μεγέθους κειμένου</string>
+    <string name="ui_inside_text_1e1a4774" formatted="false">Μέσα στὸ κείμενο</string>
+    <string name="ui_internet_is_connected_but_the_update_host_could__21495ffe" formatted="false">Τὸ διαδίκτυο λειτουργεῖ, ἀλλὰ ὁ διακομιστὴς δὲν ἐντοπίστηκε</string>
+    <string name="ui_jerusalem_patriarchate_0c841fc7" formatted="false">Πατριαρχεῖο Ἱεροσολύμων</string>
+    <string name="ui_keep_screen_on_while_reading_f9d35a52" formatted="false">Διατήρηση ὀθόνης</string>
+    <string name="ui_languages_409ca23f" formatted="false">Γλῶσσες</string>
+    <string name="ui_languages_96622490" formatted="false">Γλῶσσες: </string>
+    <string name="ui_last_recorded_verification_88c33b18" formatted="false">Τελευταῖος ἔλεγχος: </string>
+    <string name="ui_last_successful_check_dabe14f5" formatted="false">Τελευταῖος ἐπιτυχὴς ἔλεγχος: </string>
+    <string name="ui_last_trusted_backup_50f6c814" formatted="false">Ἔμπιστο ἀντίγραφο</string>
+    <string name="ui_last_update_attempt_b3ee7523" formatted="false">Τελευταία προσπάθεια: </string>
+    <string name="ui_less_spacing_182a14c2" formatted="false">Μικρότερο διάστιχο</string>
+    <string name="ui_liturgy_8ff5e178" formatted="false">Λειτουργικά</string>
+    <string name="ui_liturgy_cdfaf7bd" formatted="false">Λειτουργία</string>
+    <string name="ui_liturgy_sections_4caca03a" formatted="false">Ἐνότητες Λειτουργίας</string>
+    <string name="ui_live_resources_9822c9d1" formatted="false">Ζωντανοὶ σύνδεσμοι</string>
+    <string name="ui_live_services_dc308682" formatted="false">Ζωντανὲς μεταδόσεις</string>
+    <string name="ui_loading_today_s_data_8457881d" formatted="false">Φόρτωση σημερινῶν δεδομένων…</string>
+    <string name="ui_manage_active_languages_9565aa55" formatted="false">Διαχείριση ἐνεργῶν γλωσσῶν</string>
+    <string name="ui_matched_in_d4d746e2" formatted="false">Βρέθηκε στὸ: </string>
+    <string name="ui_matins_gospel_995b30a1" formatted="false">Ἑωθινὸν Εὐαγγέλιον</string>
+    <string name="ui_matins_gospel_f0474804" formatted="false">Ἑωθινὸν Εὐαγγέλιον</string>
+    <string name="ui_monitor_status_070900f8" formatted="false">Κατάσταση ἐλέγχου: </string>
+    <string name="ui_monitored_connectors_9c15d2f8" formatted="false">Παρακολουθούμενες συνδέσεις: </string>
+    <string name="ui_monospace_420f56d9" formatted="false">Σταθεροῦ πλάτους</string>
+    <string name="ui_more_spacing_fe47f0f9" formatted="false">Μεγαλύτερο διάστιχο</string>
+    <string name="ui_morning_prayer_a517a36b" formatted="false">Πρωινὴ προσευχή</string>
+    <string name="ui_morning_prayers_cbf9758b" formatted="false">Πρωινὲς προσευχές</string>
+    <string name="ui_move_down_12468f91" formatted="false">Μετακίνηση κάτω</string>
+    <string name="ui_move_up_12875d17" formatted="false">Μετακίνηση πάνω</string>
+    <string name="ui_native_scripture_text_unavailable_for_this_passa_80766f8b" formatted="false">Τὸ πρωτότυπο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα</string>
+    <string name="ui_next_section_3ecb1f00" formatted="false">Ἑπόμενη ἐνότητα</string>
+    <string name="ui_next_sunday_74b995ae" formatted="false">Ἡ ἐπόμενη Κυριακή</string>
+    <string name="ui_night_e4245684" formatted="false">Νύχτα</string>
+    <string name="ui_no_ads_login_or_tracking_no_private_keys_are_sto_428b410a" formatted="false">Χωρὶς διαφημίσεις, σύνδεση ἢ παρακολούθηση.</string>
+    <string name="ui_no_attempt_has_been_made_yet_478bda45" formatted="false">Χωρὶς προσπάθεια</string>
+    <string name="ui_no_favorites_yet_open_a_prayer_and_press_the_sta_3ddef562" formatted="false">Δεν υπάρχουν ἀγαπημένα.</string>
+    <string name="ui_no_matching_church_in_the_current_directory_d42641ca" formatted="false">Δὲν βρέθηκε ναός.</string>
+    <string name="ui_no_matching_result_65289b38" formatted="false">Δεν βρέθηκε αποτέλεσμα.</string>
+    <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">Δὲν ὑπάρχουν δημοσιευμένες λεπτομέρειες γιὰ αὐτὸν τὸν μῆνα.</string>
+    <string name="ui_no_shareable_passage_is_visible_e0bd031d" formatted="false">Δὲν ὑπάρχει κείμενο γιὰ κοινοποίηση</string>
+    <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">Χωρὶς ἐπιτυχῆ ἐνημέρωση</string>
+    <string name="ui_no_texts_in_this_section_a43f561b" formatted="false">Δεν υπάρχουν κείμενα.</string>
+    <string name="ui_no_trusted_details_for_this_date_are_included_in_dfb3006c" formatted="false">Δὲν ὑπάρχουν ἔμπιστες λεπτομέρειες γιὰ αὐτὴν τὴν ἡμερομηνία.</string>
+    <string name="ui_no_valid_daily_data_is_available_e60f7fe1" formatted="false">Δὲν ὑπάρχουν ἔγκυρα σημερινὰ δεδομένα</string>
+    <string name="ui_note_66183bf4" formatted="false">Σημείωση</string>
+    <string name="ui_note_saved_locally_9d17b58c" formatted="false">Ἡ σημείωση ἀποθηκεύτηκε</string>
+    <string name="ui_notice_60ab69a7" formatted="false">Σημείωση</string>
+    <string name="ui_official_church_link_2d1a8bdb" formatted="false">Ἐπίσημος ἐκκλησιαστικὸς σύνδεσμος</string>
+    <string name="ui_official_greek_orthodox_source_6588efec" formatted="false">Ἐπίσημη ἑλληνικὴ ὀρθόδοξη πηγή</string>
+    <string name="ui_official_live_resources_86f88e7a" formatted="false">Ἐπίσημοι ζωντανοὶ σύνδεσμοι</string>
+    <string name="ui_official_native_text_unavailable_for_this_sectio_6c8fe699" formatted="false">Τὸ ἐπίσημο πρωτότυπο κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ τμήμα</string>
+    <string name="ui_official_parish_name_unavailable_in_english_eea6633c" formatted="false">Ἡ ἐπίσημη ὀνομασία τῆς ἐνορίας δὲν διατίθεται στὰ ἑλληνικά</string>
+    <string name="ui_official_source_c1baa81f" formatted="false">Ἐπίσημη πηγή</string>
+    <string name="ui_old_calendar_date_02f8092d" formatted="false">Ἡμερομηνία παλαιοῦ ἡμερολογίου</string>
+    <string name="ui_open_agenda_a59ab00e" formatted="false">Ἄνοιγμα ἀτζέντας</string>
+    <string name="ui_open_full_reading_a1308e52" formatted="false">Ἄνοιγμα ἀναγνώσματος</string>
+    <string name="ui_open_official_link_aeec6baa" formatted="false">Ἄνοιγμα ἐπισήμου συνδέσμου</string>
+    <string name="ui_open_official_source_7127e1b7" formatted="false">Ἄνοιγμα ἐπίσημης πηγῆς</string>
+    <string name="ui_open_parish_page_f8727b57" formatted="false">Ἄνοιγμα σελίδας ναοῦ</string>
+    <string name="ui_open_reading_source_0dc31b35" formatted="false">Ἄνοιγμα πηγῆς ἀναγνώσματος</string>
+    <string name="ui_open_result_269ccae8" formatted="false">Ἄνοιγμα</string>
+    <string name="ui_open_source_1e0710bf" formatted="false">Ἄνοιγμα πηγῆς</string>
+    <string name="ui_open_the_complete_divine_liturgy_14695677" formatted="false">Ἄνοιγμα πλήρους Θείας Λειτουργίας</string>
+    <string name="ui_open_the_full_sunday_service_82aeef7b" formatted="false">Ἄνοιγμα πλήρους ἀκολουθίας</string>
+    <string name="ui_open_the_official_page_for_contact_details_and_t_e7480a28" formatted="false">Ἀνοίξτε τὴν ἐπίσημη σελίδα γιὰ στοιχεῖα καὶ τὸ τρέχον πρόγραμμα.</string>
+    <string name="ui_optional_note_22796644" formatted="false">Προαιρετικὴ σημείωση</string>
+    <string name="ui_orthodox_church_in_america_2a0d51a3" formatted="false">Ὀρθόδοξη Ἐκκλησία στὴν Ἀμερική</string>
+    <string name="ui_orthodox_church_in_jordan_32e4b002" formatted="false">Ὀρθόδοξος ναὸς στὴν Ἰορδανία</string>
+    <string name="ui_orthodox_cross_8e65fdfc" formatted="false">Ὀρθόδοξος σταυρός</string>
+    <string name="ui_orthodox_jordan_metropolis_7dbcc96e" formatted="false">Μητρόπολη Ἰορδανίας</string>
+    <string name="ui_orthodox_text_ce84a657" formatted="false">Ὀρθόδοξο κείμενο</string>
+    <string name="ui_orthros_2aa869d2" formatted="false">Ὄρθρος</string>
+    <string name="ui_personal_28997b7b" formatted="false">Προσωπικά</string>
+    <string name="ui_personal_reminder_b0bd49be" formatted="false">Προσωπικὴ ὑπενθύμιση</string>
+    <string name="ui_pin_613a1567" formatted="false">Καρφίτσωμα</string>
+    <string name="ui_pin_d4bc9c4f" formatted="false">Καρφίτσωμα</string>
+    <string name="ui_pin_items_reorder_them_and_place_them_in_daily_l_1901ea8a" formatted="false">Μπορεῖς νὰ καρφιτσώσεις, νὰ ταξινομήσεις καὶ νὰ ὁμαδοποιήσεις τὰ κείμενα.</string>
+    <string name="ui_pinned_413a9c52" formatted="false">Καρφιτσωμένα</string>
+    <string name="ui_pinned_c16bc6c1" formatted="false">Καρφιτσωμένο</string>
+    <string name="ui_pinned_fixed_text_daily_variables_change_only_af_c4a09a90" formatted="false">Σταθερὸ κείμενο μὲ ψηφιακὸ ἀποτύπωμα</string>
+    <string name="ui_pinned_texts_5baad15c" formatted="false">Καρφιτσωμένα κείμενα</string>
+    <string name="ui_prayer_48a8929a" formatted="false">Προσευχή</string>
+    <string name="ui_prayer_text_swipe_up_or_down_to_read_bd037213" formatted="false">Κείμενο προσευχῆς. Σύρετε πάνω ἢ κάτω.</string>
+    <string name="ui_prayers_3a9327c4" formatted="false">Προσευχές</string>
+    <string name="ui_prayers_related_to_this_service_7ef08ed3" formatted="false">Σχετικὲς προσευχές</string>
+    <string name="ui_previous_section_6f025d4d" formatted="false">Προηγούμενη ἐνότητα</string>
+    <string name="ui_priest_said_quietly_ca9b3644" formatted="false">Ἱερεύς — χαμηλοφώνως</string>
+    <string name="ui_private_note_f993ef09" formatted="false">Προσωπικὴ σημείωση</string>
+    <string name="ui_prokeimenon_c8263ee7" formatted="false">Προκείμενον</string>
+    <string name="ui_quick_access_c927e8a2" formatted="false">Γρήγορη πρόσβαση</string>
+    <string name="ui_quiet_ends_f728171c" formatted="false">Λήξη ἡσυχίας </string>
+    <string name="ui_quiet_starts_91bc6653" formatted="false">Ἔναρξη ἡσυχίας </string>
+    <string name="ui_reader_theme_70f179d4" formatted="false">Θέμα ἀναγνώστη: </string>
+    <string name="ui_reading_0443f4e6" formatted="false">Ἀνάγνωση</string>
+    <string name="ui_reading_6e6a82ce" formatted="false">Ἀνάγνωσμα</string>
+    <string name="ui_reading_history_0a3be238" formatted="false">Ἱστορικὸ ἀναγνώσεως</string>
+    <string name="ui_reading_history_6bdb8e55" formatted="false">Ἱστορικὸ ἀναγνώσεως</string>
+    <string name="ui_reading_progress_0_30d9316d" formatted="false">Πρόοδος: 0%</string>
+    <string name="ui_reading_progress_b21e6b19" formatted="false">Πρόοδος: </string>
+    <string name="ui_recent_searches_45974f02" formatted="false">Πρόσφατες ἀναζητήσεις</string>
+    <string name="ui_refresh_jordan_readings_now_e178a08f" formatted="false">Ἐνημέρωση ἀναγνωσμάτων Ἰορδανίας</string>
+    <string name="ui_refresh_today_s_data_now_98188698" formatted="false">Ἐνημέρωση σημερινῶν δεδομένων</string>
+    <string name="ui_registered_source_b7f2bf22" formatted="false">Καταχωρισμένη πηγή: </string>
+    <string name="ui_reminder_enabled_f21995e2" formatted="false">Ἡ ὑπενθύμιση ἐνεργοποιήθηκε</string>
+    <string name="ui_reset_7b5a50be" formatted="false">Ἐπαναφορά</string>
+    <string name="ui_reset_reading_settings_34ebb828" formatted="false">Ἐπαναφορὰ ρυθμίσεων ἀνάγνωσης;</string>
+    <string name="ui_reset_reading_settings_71533aa3" formatted="false">Ἐπαναφορὰ ρυθμίσεων ἀνάγνωσης</string>
+    <string name="ui_results_89a9233d" formatted="false">Αποτελέσματα: </string>
+    <string name="ui_retry_update_da94fa97" formatted="false">Νέα προσπάθεια</string>
+    <string name="ui_return_to_the_previous_screen_adc27814" formatted="false">Επιστροφή</string>
+    <string name="ui_return_to_this_month_ea36d48b" formatted="false">Ἐπιστροφὴ στὸν τρέχοντα μῆνα</string>
+    <string name="ui_rights_license_9068c5b7" formatted="false">Δικαιώματα: </string>
+    <string name="ui_sans_ed854c03" formatted="false">Χωρὶς πατούρες</string>
+    <string name="ui_save_d4087fa0" formatted="false">Ἀποθήκευση</string>
+    <string name="ui_saved_cd7c1a66" formatted="false">Ἀγαπημένο</string>
+    <string name="ui_scripture_811cf82a" formatted="false">Ἁγία Γραφή</string>
+    <string name="ui_scripture_source_id_b0a300e5" formatted="false">Πηγὴ Γραφῆς: </string>
+    <string name="ui_search_13f179d6" formatted="false">Ἀναζήτηση</string>
+    <string name="ui_search_by_church_or_city_556a72f2" formatted="false">Ἀναζήτηση ναοῦ ἢ πόλης</string>
+    <string name="ui_search_by_verse_reference_prayer_or_liturgy_74401ea3" formatted="false">Ἀναζήτηση στίχου, παραπομπῆς ἢ ἀκολουθίας</string>
+    <string name="ui_search_f55b3d60" formatted="false">Ἀναζήτηση</string>
+    <string name="ui_search_scripture_prayers_and_liturgy_33e12057" formatted="false">Πεδίο ἀναζήτησης Γραφῆς καὶ ἀκολουθιῶν</string>
+    <string name="ui_section_not_found_7c261455" formatted="false">Ἡ ἐνότητα δὲν βρέθηκε</string>
+    <string name="ui_selected_5eb77fb2" formatted="false">, ἐπιλεγμένο</string>
+    <string name="ui_selected_language_1773d456" formatted="false"> — ἐπιλεγμένη γλῶσσα</string>
+    <string name="ui_selected_official_source_5cf4ee01" formatted="false">Ἐπιλεγμένη ἐπίσημη πηγή: </string>
+    <string name="ui_sepia_eea06eb6" formatted="false">Σέπια</string>
+    <string name="ui_serif_f8812e5c" formatted="false">Μὲ πατούρες</string>
+    <string name="ui_service_times_may_change_by_season_and_feast_the_7a56811a" formatted="false">Τὸ πρόγραμμα μεταβάλλεται· ἡ ἐπίσημη σελίδα εἶναι ἡ τρέχουσα πηγή.</string>
+    <string name="ui_services_and_liturgy_0e5a1fe9" formatted="false">Ἀκολουθίες καὶ Λειτουργία</string>
+    <string name="ui_services_complete_through_df2f69fc" formatted="false">Πλήρεις ἀκολουθίες ἕως: </string>
+    <string name="ui_settings_25169a1d" formatted="false">Ρυθμίσεις</string>
+    <string name="ui_seven_day_fasting_table_9f1b0d97" formatted="false">Πίνακας νηστείας ἑπτὰ ἡμερῶν</string>
+    <string name="ui_share_6b178c11" formatted="false">↗ Κοινοποίηση</string>
+    <string name="ui_share_text_4596efcf" formatted="false">Κοινοποίηση κειμένου</string>
+    <string name="ui_show_gregorian_dates_only_f6e30c65" formatted="false">Μόνο Γρηγοριανὲς ἡμερομηνίες</string>
+    <string name="ui_show_in_language_selector_575c5fa6" formatted="false">Ἐμφάνιση στὸν ἐπιλογέα</string>
+    <string name="ui_show_julian_dates_beside_gregorian_12fda2c8" formatted="false">Ἰουλιανὴ δίπλα στὴ Γρηγοριανή</string>
+    <string name="ui_show_reading_controls_be8aae53" formatted="false">⌄ Ἐμφάνισε τὰ ἐργαλεῖα ἀναγνώσεως</string>
+    <string name="ui_show_seven_day_details_97f48507" formatted="false">Λεπτομέρειες 7 ἡμερῶν</string>
+    <string name="ui_show_source_6b38e880" formatted="false">Πρωτότυπο</string>
+    <string name="ui_show_source_text_f6b54117" formatted="false">Δεῖξε πρωτότυπο</string>
+    <string name="ui_show_technical_details_97bf206d" formatted="false">Προβολὴ τεχνικῶν λεπτομερειῶν</string>
+    <string name="ui_signed_embedded_copy_17eb1066" formatted="false">Ἐνσωματωμένο ἀντίγραφο</string>
+    <string name="ui_signed_local_copy_aee2c1da" formatted="false">Ὑπογεγραμμένο τοπικὸ ἀντίγραφο</string>
+    <string name="ui_signed_network_update_b1b4e0f9" formatted="false">Ὑπογεγραμμένη ἐνημέρωση</string>
+    <string name="ui_small_compline_c17433a9" formatted="false">Μικρὸν Ἀπόδειπνον</string>
+    <string name="ui_small_entrance_a637021b" formatted="false">Μικρὰ Εἴσοδος</string>
+    <string name="ui_source_information_a097085c" formatted="false">Πληροφορίες πηγῆς</string>
+    <string name="ui_source_monitor_d991048b" formatted="false">Ἔλεγχος πηγῶν: </string>
+    <string name="ui_source_state_is_incomplete_unverified_daily_text_0f17ecef" formatted="false">Ἡ κατάσταση πηγῆς εἶναι ἐλλιπής</string>
+    <string name="ui_source_text_0183ef55" formatted="false">Πρωτότυπο</string>
+    <string name="ui_sources_and_references_1a2c2926" formatted="false">Πηγὲς καὶ παραπομπές</string>
+    <string name="ui_spacing_385760af" formatted="false">Διάστιχο </string>
+    <string name="ui_spacing_6ae53d69" formatted="false">Διάστιχο </string>
+    <string name="ui_speed_331b3d1f" formatted="false">Ταχύτητα </string>
+    <string name="ui_stale_readings_are_blocked_because_they_do_not_b_3a3e5947" formatted="false">Τὰ παλαιὰ ἀναγνώσματα ἀποκρύπτονται, διότι δὲν ἀνήκουν στὴ σημερινὴ ἡμερομηνία τῆς Ἰορδανίας.</string>
+    <string name="ui_summary_8e163b32" formatted="false">Περίληψη</string>
+    <string name="ui_sunday_cycle_a83925a1" formatted="false">Κύκλος Κυριακῆς</string>
+    <string name="ui_system_30211fca" formatted="false">Σύστημα</string>
+    <string name="ui_system_theme_b1e709b2" formatted="false">Θέμα συστήματος</string>
+    <string name="ui_tap_to_collapse_2e1fb869" formatted="false">Πατήστε γιὰ σύμπτυξη</string>
+    <string name="ui_tap_to_expand_27c34a66" formatted="false">Πατήστε γιὰ ἀνάπτυξη</string>
+    <string name="ui_text_9b77d3f7" formatted="false">Κείμενο</string>
+    <string name="ui_text_index_57a9ffa2" formatted="false">Εὐρετήριο κειμένου</string>
+    <string name="ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b" formatted="false">Τὸ μέγεθος, ἡ γραμματοσειρά, τὸ διάστιχο, τὸ θέμα, ἡ φωτεινότητα καὶ ἡ αὐτόματη κύλιση θὰ ἐπανέλθουν στὶς προεπιλογές.</string>
+    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">Τὸ ἐτήσιο εὑρετήριο παραμένει ἐλαφρύ, ἐνῶ ἡ ὑπογεγραμμένη δέσμη περιέχει σήμερα καὶ τὶς ἑπτὰ ἑπόμενες ἡμέρες πλήρεις.</string>
+    <string name="ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc" formatted="false">Απαιτεῖται νεότερη ἔκδοση τῆς ἐφαρμογῆς</string>
+    <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">Ἡ ἐφαρμογὴ ἐλέγχει καθημερινὰ στὶς 01:00 καὶ στὶς 06:00. Ἐλέγχει ἐπίσης αὐτόματα κάθε φορὰ ποὺ ἀνοίγει καὶ ἐπαναλαμβάνει ἂν καθυστερεῖ ὁ διακομιστής.</string>
+    <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">Ἡ ἐφαρμογὴ δὲν στέλνει εἰδοποιήσεις στὶς ὧρες ἡσυχίας.</string>
+    <string name="ui_the_app_will_retry_automatically_you_can_also_re_d2cc490a" formatted="false">Ἡ ἐφαρμογὴ θὰ προσπαθήσει ξανά αὐτόματα.</string>
+    <string name="ui_the_complete_weekly_package_is_not_available_yet_e438506f" formatted="false">Ἡ πλήρης ἑβδομαδιαία δέσμη δὲν εἶναι ἀκόμη διαθέσιμη</string>
+    <string name="ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7" formatted="false">Ἡ ὀκταήμερη δέσμη ἐνημερώθηκε καὶ ἐπαληθεύθηκε</string>
+    <string name="ui_the_last_update_check_completed_successfully_bb37cd88" formatted="false">Ὁ τελευταῖος ἔλεγχος ὁλοκληρώθηκε</string>
+    <string name="ui_the_packaged_source_registry_could_not_be_loaded_fdbc55f4" formatted="false">Δὲν φορτώθηκε τὸ μητρῷο πηγῶν.</string>
+    <string name="ui_the_phone_is_not_connected_to_a_network_the_last_55893d04" formatted="false">Ἡ συσκευὴ δὲν εἶναι συνδεδεμένη</string>
+    <string name="ui_the_reminder_was_not_enabled_because_notificatio_a2a9d4b5" formatted="false">Ἡ ὑπενθύμιση δὲν ἐνεργοποιήθηκε</string>
+    <string name="ui_the_requested_text_was_not_found_in_the_app_data_97e2becd" formatted="false">Τὸ ζητούμενο κείμενο δὲν βρέθηκε στὰ δεδομένα.</string>
+    <string name="ui_the_screen_will_update_automatically_after_downl_a93a7fcf" formatted="false">Ἡ ὀθόνη θὰ ἐνημερωθεῖ αὐτόματα.</string>
+    <string name="ui_the_secure_update_manifest_could_not_be_verified_d5b624be" formatted="false">Τὸ ἀσφαλὲς δηλωτικὸ ἐνημέρωσης δὲν ἐπαληθεύθηκε</string>
+    <string name="ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0" formatted="false">Ἡ ὑπογεγραμμένη δέσμη περιέχει σήμερα καὶ τὶς ἑπτὰ ἑπόμενες ἡμέρες πλήρεις. Πατήστε μία ἡμέρα γιὰ ἄνοιγμα.</string>
+    <string name="ui_the_source_link_could_not_be_opened_75a90f8a" formatted="false">Δὲν ἄνοιξε ὁ σύνδεσμος.</string>
+    <string name="ui_the_update_server_could_not_be_contacted_tempora_dc3cce39" formatted="false">Προσωρινὴ ἀποτυχία συνδέσεως</string>
+    <string name="ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4" formatted="false">Ὁ διακομιστὴς ἐνημέρωσης καθυστερεῖ προσωρινά</string>
+    <string name="ui_the_update_signature_failed_and_was_rejected_the_7105a062" formatted="false">Ἡ ψηφιακὴ ὑπογραφὴ ἀπέτυχε</string>
+    <string name="ui_the_weekly_services_are_already_current_2b76496f" formatted="false">Οἱ ἀκολουθίες τῆς ἑβδομάδος εἶναι ἤδη ἐνημερωμένες</string>
+    <string name="ui_this_application_is_free_and_is_presented_by_mae_55914117" formatted="false">Ἡ ἐφαρμογὴ παρέχεται δωρεὰν ἀπὸ τὸ Maen Hanouna Satellite.
+Τηλέφωνο: 00962788272988</string>
+    <string name="ui_this_day_is_complete_inside_the_signed_package_2072d1f2" formatted="false">Αὐτὴ ἡ ἡμέρα περιέχεται πλήρης στὴν ὑπογεγραμμένη δέσμη.</string>
+    <string name="ui_this_item_exists_in_the_index_but_its_content_is_ea12748d" formatted="false">Τὸ στοιχεῖο ὑπάρχει, ἀλλὰ τὸ περιεχόμενο εἶναι κενό.</string>
+    <string name="ui_this_link_could_not_be_opened_on_the_device_9aa42df0" formatted="false">Δὲν ἄνοιξε ὁ σύνδεσμος.</string>
+    <string name="ui_title_1e29bd87" formatted="false">Τίτλος</string>
+    <string name="ui_today_7_complete_days_3057eb0c" formatted="false">Σήμερα + 7 πλήρεις ἡμέρες</string>
+    <string name="ui_today_and_the_coming_week_are_ready_1a099eed" formatted="false">Ἡ σημερινὴ καὶ ἡ ἑβδομαδιαία ἀκολουθία εἶναι ἕτοιμες</string>
+    <string name="ui_today_and_the_next_seven_days_are_complete_66b3fa86" formatted="false">Ἡ σημερινὴ καὶ οἱ ἑπτὰ ἑπόμενες ἡμέρες εἶναι πλήρεις</string>
+    <string name="ui_today_s_readings_3cf1dbd5" formatted="false">Ἀναγνώσματα Ἡμέρας</string>
+    <string name="ui_today_s_readings_db2884fb" formatted="false">Σημερινὰ ἀναγνώσματα</string>
+    <string name="ui_today_s_update_is_still_being_published_the_last_d93b9203" formatted="false">Ἡ σημερινὴ ἐνημέρωση δημοσιεύεται· θὰ γίνει νέα προσπάθεια</string>
+    <string name="ui_total_abstinence_4bf885f8" formatted="false">Πλήρης ἀποχή</string>
+    <string name="ui_trusted_copy_source_4596d692" formatted="false">Πηγὴ ἀντιγράφου: </string>
+    <string name="ui_trusted_details_this_month_a042797d" formatted="false">Ἔμπιστες λεπτομέρειες τοῦ μήνα</string>
+    <string name="ui_type_a_word_or_reference_to_search_approved_nati_703cdad7" formatted="false">Γράψτε λέξη ἢ παραπομπή γιὰ ἀναζήτηση στὸ ἐγκεκριμένο πρωτότυπο κείμενο.</string>
+    <string name="ui_unable_to_open_text_7f8e719c" formatted="false">Ἀδυναμία ἀνοίγματος</string>
+    <string name="ui_unavailable_24f3ca2e" formatted="false">Μὴ διαθέσιμο</string>
+    <string name="ui_unknown_13adce42" formatted="false">Ἄγνωστο</string>
+    <string name="ui_unpin_8711604f" formatted="false">Ξεκαρφίτσωμα</string>
+    <string name="ui_unsorted_5539c6cd" formatted="false">Χωρὶς κατηγορία</string>
+    <string name="ui_upcoming_days_a15c452f" formatted="false">Ἐπόμενες Ἡμέρες</string>
+    <string name="ui_update_and_data_bf22bb6d" formatted="false">Ἐνημέρωση καὶ ἀσφάλεια</string>
+    <string name="ui_update_diagnostic_code_400000df" formatted="false">Κωδικὸς διαγνώσεως: </string>
+    <string name="ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3" formatted="false">Ἡ ἐνημέρωση ἀπέτυχε</string>
+    <string name="ui_update_in_progress_7d1054d7" formatted="false">Ἡ ἐνημέρωση ἐκτελεῖται…</string>
+    <string name="ui_update_manifest_revision_985fb3a6" formatted="false">Ἀναθεώρηση δηλώσεως ἐνημερώσεως: </string>
+    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Αὐτόματη ἐνημέρωση ἀκολουθιῶν ἑβδομάδος…</string>
+    <string name="ui_usable_111b1469" formatted="false">, διαθέσιμες: </string>
+    <string name="ui_use_dark_mode_1564a2ea" formatted="false">Σκοτεινὸ θέμα</string>
+    <string name="ui_use_light_mode_1c895a15" formatted="false">Φωτεινὸ θέμα</string>
+    <string name="ui_verification_https_independent_digital_signature_a5a78dda" formatted="false">Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα</string>
+    <string name="ui_verified_native_scripture_from_an_independent_so_a8f7898c" formatted="false">Ἐπαληθευμένο πρωτότυπο βιβλικὸ κείμενο ἀπὸ ἀνεξάρτητη πηγή, χωρὶς μετάφραση ἢ αὐτόματο τονισμό</string>
+    <string name="ui_verified_prokeimenon_unavailable_9ac3fd2f" formatted="false">Μὴ διαθέσιμο ἐπαληθευμένο Προκείμενον</string>
+    <string name="ui_verified_scripture_text_is_unavailable_for_this__1624033a" formatted="false">Τὸ ἐπαληθευμένο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα. Διατηροῦνται τὰ τελευταῖα ἔγκυρα δεδομένα.</string>
+    <string name="ui_verified_source_d8f667a7" formatted="false">Ἐπαληθευμένη πηγή: </string>
+    <string name="ui_verified_text_in_this_language_is_not_available__fc5b9c50" formatted="false">Τὸ ἐπαληθευμένο κείμενο δὲν εἶναι διαθέσιμο — δεῖξε τὸ πρωτότυπο</string>
+    <string name="ui_verified_variable_liturgy_coverage_4ec89c04" formatted="false">Κάλυψη μεταβλητῶν κειμένων: </string>
+    <string name="ui_vespers_1daa5b5d" formatted="false">Ἑσπερινός</string>
+    <string name="ui_view_all_sources_1b4296c4" formatted="false">Προβολὴ ὅλων τῶν πηγῶν</string>
+    <string name="ui_waiting_for_the_weekly_service_update_0c0844a8" formatted="false">Ἀναμονὴ ἐνημερώσεως ἑβδομάδος</string>
+    <string name="ui_write_a_private_note_stored_only_on_this_device_f02e467f" formatted="false">Γράψε προσωπικὴ σημείωση</string>
+    <string name="ui_your_20_most_recently_opened_texts_will_appear_h_d0013f51" formatted="false">Ἐδῶ θὰ φαίνονται τὰ 20 πρόσφατα κείμενα.</string>
+    <string name="ui_fasting_interval_format">Ἀπὸ %1$s ἕως %2$s</string>
+    <string name="ui_sunday_cycle_detail_format">Κυριακὴ %1$d μετὰ τὴν Πεντηκοστή — Ἦχος %2$d — Ἑωθινὸν %3$d</string>
+    <string name="ui_registered_sources_count_format">Ἡ ἐφαρμογὴ παραθέτει %1$d καταχωρισμένες πηγὲς μὲ κατάσταση ἐπαλήθευσης καὶ δικαιωμάτων.</string>
+    <string name="ui_stale_trusted_copy_date_format">Προβάλλεται τὸ τελευταῖο ἔγκυρο ἀντίγραφο τῆς %1$s· τὰ σημερινὰ δεδομένα ζητοῦνται αὐτομάτως.</string>
+    <string name="ui_rolling_week_ready_through_format">Ὅλες οἱ προσευχές, τὰ ἀναγνώσματα καὶ οἱ ἀκολουθίες εἶναι ἕτοιμα ἕως %1$s</string>
+    <string name="ui_church_directory_count_format">Ἐπίσημος κατάλογος τῆς Ἱερᾶς Μητροπόλεως Ἰορδανίας. Τρέχοντες σύνδεσμοι: %1$d. Ἀνοίξτε τὴ σελίδα τοῦ ναοῦ γιὰ τὸ τρέχον πρόγραμμα.</string>
+    <string name="ui_begin_your_day_with_prayer_a3c8eb48" formatted="false">Ἄρχισε τὴν ἡμέρα μὲ προσευχή.</string>
+    <string name="ui_close_the_day_with_prayer_and_stillness_67ab7213" formatted="false">Κλείσε τὴν ἡμέρα μὲ προσευχή.</string>
+    <string name="ui_open_today_s_epistle_and_gospel_980e7457" formatted="false">Ἄνοιξε τὸν Ἀπόστολο καὶ τὸ Εὐαγγέλιο.</string>
+    <string name="ui_optional_prayer_and_daily_reading_reminders_f753da85" formatted="false">Προαιρετικὲς ὑπενθυμίσεις</string>
+    <string name="ui_personal_reminders_ac5720b6" formatted="false">Προσωπικὲς ὑπενθυμίσεις</string>
+    <string name="ui_take_a_moment_for_prayer_and_stillness_34c3a32d" formatted="false">Πάρε λίγο χρόνο γιὰ προσευχή.</string>
+    <string name="ui_time_for_evening_prayer_81e14848" formatted="false">Ὥρα γιὰ ἑσπερινὴ προσευχή</string>
+    <string name="ui_time_for_morning_prayer_717b653a" formatted="false">Ὥρα γιὰ πρωινὴ προσευχή</string>
+    <string name="ui_today_s_commemoration_af76eeaa" formatted="false">Ἡ σημερινὴ μνήμη</string>
+    <string name="ui_today_s_fasting_aa40c904" formatted="false">Ἡ σημερινὴ νηστεία</string>
+    <string name="ui_today_s_readings_5aad1b50" formatted="false">Τὰ σημερινὰ ἀναγνώσματα</string>
+    <string name="ui_your_personal_reminder_be9aca0d" formatted="false">Προσωπικὴ ὑπενθύμιση</string>
+    <string name="ui_language_arabic_name" formatted="false">Ἀραβικά</string>
+    <string name="ui_language_english_name" formatted="false">Ἀγγλικά</string>
+    <string name="ui_language_greek_name" formatted="false">Ἑλληνικά</string>
+</resources>

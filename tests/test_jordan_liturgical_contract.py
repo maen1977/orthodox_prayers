@@ -8,6 +8,8 @@ import unittest
 from datetime import date
 from pathlib import Path
 
+from scripts.android_ui_resources import source_references_text
+
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
@@ -160,7 +162,7 @@ class JordanLiturgicalContractTests(unittest.TestCase):
         self.assertIn("JSONObject dynamic = isTodayCurrent()", repository)
         search = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/SearchEngine.java").read_text(encoding="utf-8")
         self.assertIn("if (!data.isTodayCurrent())", readings)
-        self.assertIn("حُجبت قراءات النسخة القديمة", readings)
+        self.assertTrue(source_references_text(readings, "حُجبت قراءات النسخة القديمة", "ar"))
         self.assertIn("if (repository.isTodayCurrent())", search)
         self.assertNotIn('scan(repository.today().optJSONArray("services"), repository, needle, bestById);\n        scan(repository.library()', search)
 

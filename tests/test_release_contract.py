@@ -8,6 +8,8 @@ import sys
 import unittest
 from pathlib import Path
 
+from scripts.android_ui_resources import source_omits_text, source_references_text
+
 from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -192,7 +194,7 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("setDecorFitsSystemWindows(false)", source)
         self.assertIn("getSystemWindowInsetBottom()", source)
         for label in ("الرئيسية", "الصلوات", "القداس", "الإعدادات"):
-            self.assertIn(label, source)
+            self.assertTrue(source_references_text(source, label, "ar", exact=True), label)
 
     def test_reader_is_virtualized(self):
         source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReaderScreen.java").read_text(encoding="utf-8")
@@ -214,14 +216,14 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertNotIn("recycler.setPadding(0, controls", reader)
         self.assertIn("controlsPanel.setVisibility(controlsExpanded ? View.VISIBLE : View.GONE)", reader)
         self.assertIn("segments == null || segments.length() == 0", reader)
-        self.assertIn("تم منع فتح صفحة بيضاء", reader)
+        self.assertTrue(source_references_text(reader, "تم منع فتح صفحة بيضاء", "ar"))
         self.assertIn("readerOffset(serviceId)", reader)
         self.assertIn("setReaderPosition(serviceId, position, offset)", reader)
         self.assertIn("migrateReaderLayoutState(READER_LAYOUT_VERSION)", reader)
         self.assertIn("reader_offset_", preferences)
         self.assertIn("reader_layout_version", preferences)
-        self.assertIn("عرض أدوات القراءة", reader)
-        self.assertIn("إخفاء أدوات القراءة", reader)
+        self.assertTrue(source_references_text(reader, "عرض أدوات القراءة", "ar"))
+        self.assertTrue(source_references_text(reader, "إخفاء أدوات القراءة", "ar"))
         self.assertIn("reloadReader()", reader)
         self.assertIn("if (!reloadingReader) preferences.setReaderControlsExpanded(false)", reader)
         self.assertIn("preferences.setReaderControlsExpanded(false)", app)
@@ -246,14 +248,18 @@ class ReleaseContractTests(unittest.TestCase):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
         adapter = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/ReaderAdapter.java").read_text(encoding="utf-8")
-        self.assertIn('addLanguageButton(languages, "العربية", "ar")', settings)
-        self.assertIn('addLanguageButton(languages, "English", "en")', settings)
-        self.assertIn('addLanguageButton(languages, "Ελληνικά", "el")', settings)
+        for language, labels in {
+            "ar": ("العربية", "الإنجليزية", "اليونانية"),
+            "en": ("Arabic", "English", "Greek"),
+            "el": ("Ἀραβικά", "Ἀγγλικά", "Ἑλληνικά"),
+        }.items():
+            for label in labels:
+                self.assertTrue(source_references_text(settings, label, language, exact=True), (language, label))
         self.assertNotIn("isReviewedEnough()", settings)
         self.assertNotIn("اللغات غير المكتملة معطلة", settings)
         self.assertIn("unavailableTranslationText", repository)
         self.assertIn("TranslationCoverage.isValidTargetText", repository)
-        self.assertIn("Official native text unavailable", adapter)
+        self.assertTrue(source_references_text(adapter, "Official native text unavailable", "en"))
         self.assertIn("It must never fall back to Arabic, English, or Greek from another lane", adapter)
         detail = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReadingDetailScreen.java").read_text(encoding="utf-8")
         self.assertNotIn('optString("ar", "").trim()', detail)
@@ -262,9 +268,11 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_native_language_libraries_are_separate_official_source_packs(self):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        self.assertIn('data/native/library_ar.json', repository)
-        self.assertIn('data/native/library_el.json', repository)
-        self.assertIn('data/native/library_en.json', repository)
+        self.assertIn('"data/native/library_" + normalized + ".json"', repository)
+        self.assertIn("activeLanguageLibrary", repository)
+        self.assertNotIn("libraryAr", repository)
+        self.assertNotIn("libraryEn", repository)
+        self.assertNotIn("libraryEl", repository)
         registry = json.loads((ROOT / "canonical/native_language_sources.json").read_text(encoding="utf-8"))
         self.assertEqual("CONFIRMED_BY_PROJECT_OWNER", registry["permission_basis"]["status"])
         for lang in ("ar", "el", "en"):
@@ -281,17 +289,19 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_settings_show_free_app_provider_and_phone(self):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
-        self.assertIn("هذا البرنامج مجاني، ومقدم من معن حنونة للستلايت.", settings)
-        self.assertIn("00962788272988", settings)
-        self.assertIn('local("عن البرنامج", "About the app", "Περὶ τῆς ἐφαρμογῆς")', settings)
+        self.assertTrue(source_references_text(settings, "هذا البرنامج مجاني، ومقدم من معن حنونة للستلايت.", "ar"))
+        self.assertTrue(source_references_text(settings, "00962788272988", "ar"))
+        self.assertTrue(source_references_text(settings, "عن البرنامج", "ar", exact=True))
+        self.assertTrue(source_references_text(settings, "About the app", "en", exact=True))
+        self.assertTrue(source_references_text(settings, "Περὶ τῆς ἐφαρμογῆς", "el", exact=True))
         self.assertIn("freeNotice.setTextIsSelectable(true)", settings)
-        self.assertNotIn("الاتصال بالرقم", settings)
-        self.assertNotIn("Call phone number", settings)
-        self.assertNotIn("سياسة الخصوصية", settings)
-        self.assertNotIn("Privacy policy", settings)
+        self.assertTrue(source_omits_text(settings, "الاتصال بالرقم", "ar"))
+        self.assertTrue(source_omits_text(settings, "Call phone number", "en"))
+        self.assertTrue(source_omits_text(settings, "سياسة الخصوصية", "ar"))
+        self.assertTrue(source_omits_text(settings, "Privacy policy", "en"))
         self.assertNotIn("maen1977.github.io/orthodox_prayers/privacy", settings)
-        self.assertIn("العربية والإنجليزية واليونانية ثلاث قنوات أصلية مستقلة", settings)
-        self.assertIn("لا ينسخ لغة مكان لغة", settings)
+        self.assertTrue(source_references_text(settings, "العربية والإنجليزية واليونانية ثلاث قنوات أصلية مستقلة", "ar"))
+        self.assertTrue(source_references_text(settings, "لا ينسخ لغة مكان لغة", "ar"))
 
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
         self.assertIn('new String[]{"ar", "en", "el"}', repository)
@@ -432,8 +442,8 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn(".update.MidnightUpdateReceiver", manifest)
         self.assertIn("RECEIVE_BOOT_COMPLETED", manifest)
         self.assertIn("TIMEZONE_CHANGED", manifest)
-        self.assertIn("01:00", settings)
-        self.assertIn("06:00", settings)
+        self.assertTrue(source_references_text(settings, "01:00", "ar"))
+        self.assertTrue(source_references_text(settings, "06:00", "ar"))
         self.assertIn("ui.infoBadge", home)
 
 

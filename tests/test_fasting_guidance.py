@@ -6,6 +6,8 @@ import unittest
 from datetime import date
 from pathlib import Path
 
+from scripts.android_ui_resources import source_omits_text, source_references_text
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -87,8 +89,8 @@ class FastingGuidanceTests(unittest.TestCase):
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
         day = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
         self.assertIn("addFastingGuide", base)
-        self.assertNotIn("تفاصيل صوم اليوم", home)
-        self.assertIn("جدول الصيام للأيام السبعة", home)
+        self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
+        self.assertTrue(source_references_text(home, "جدول الصيام للأيام السبعة", "ar"))
         self.assertIn('fasting.optJSONObject("title")', home)
         self.assertIn('addFastingGuide(card, fasting, false)', upcoming)
         self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), true)', day)

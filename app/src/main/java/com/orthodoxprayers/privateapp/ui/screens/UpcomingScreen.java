@@ -15,10 +15,8 @@ public final class UpcomingScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("الأيام القادمة", "Upcoming Days", "Ἐπόμενες Ἡμέρες"), true);
-        TextView note = centered(local("الحزمة الموقعة تحفظ اليوم والأيام السبعة القادمة بكامل الصلوات والقراءات والخدمات؛ اضغط أي يوم لفتحه.",
-                "The signed package keeps today and the next seven days with complete prayers, readings, and services. Tap any day to open it.",
-                "Ἡ ὑπογεγραμμένη δέσμη περιέχει σήμερα καὶ τὶς ἑπτὰ ἑπόμενες ἡμέρες πλήρεις. Πατήστε μία ἡμέρα γιὰ ἄνοιγμα."), 13, ui.colors().secondaryText(), false);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_upcoming_days_a15c452f), true);
+        TextView note = centered(local(com.orthodoxprayers.privateapp.R.string.ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0), 13, ui.colors().secondaryText(), false);
         add(page.root, note, 12, 8);
         JSONArray upcoming = data.rollingWeekDays();
         if (upcoming.length() == 0) upcoming = data.today().optJSONArray("upcoming");
@@ -37,8 +35,8 @@ public final class UpcomingScreen extends BaseScreen {
             LinearLayout reminder = ui.card();
             String spiritual = localized(guidance.optJSONObject("spiritual_note"), "");
             String health = localized(guidance.optJSONObject("health_note"), "");
-            if (!spiritual.isEmpty()) reminder.addView(ui.text("🙏  " + spiritual, 13, ui.colors().secondaryText(), false));
-            if (!health.isEmpty()) reminder.addView(ui.text("⚕  " + health, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 6, 0, 0));
+            if (!spiritual.isEmpty()) reminder.addView(ui.text(spiritual, 13, ui.colors().secondaryText(), false));
+            if (!health.isEmpty()) reminder.addView(ui.text(health, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 6, 0, 0));
             add(page.root, reminder, 8, 16);
         }
         return page.scroll;
@@ -48,7 +46,7 @@ public final class UpcomingScreen extends BaseScreen {
         LinearLayout card = ui.card();
         String itemDate = item.optString("date_iso", item.optString("date", ""));
         String day = localized(item.optJSONObject("day"), localized(item.optJSONObject("date_label"), itemDate));
-        TextView heading = ui.text("📅  " + day, 16, ui.colors().primaryText(), true);
+        TextView heading = ui.text(day, 16, ui.colors().primaryText(), true);
         card.addView(heading);
         card.addView(ui.text(localized(item.optJSONObject("status"), ""), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
         JSONObject fasting = item.optJSONObject("fasting");
@@ -57,8 +55,8 @@ public final class UpcomingScreen extends BaseScreen {
         String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
         if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
         JSONObject refs = item.optJSONObject("reading_references");
-        addReference(card, refs, "epistle", "📜 " + local("الرسالة: ", "Epistle: ", "Ἀπόστολος: "));
-        addReference(card, refs, "gospel", "📖 " + local("الإنجيل: ", "Gospel: ", "Εὐαγγέλιον: "));
+        addReference(card, refs, "epistle", local(com.orthodoxprayers.privateapp.R.string.ui_epistle_dd82c199));
+        addReference(card, refs, "gospel", local(com.orthodoxprayers.privateapp.R.string.ui_gospel_68845cc5));
         card.setContentDescription(day + ". " + feast);
         if (!itemDate.isEmpty()) {
             card.setClickable(true);

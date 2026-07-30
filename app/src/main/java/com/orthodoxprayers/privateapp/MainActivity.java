@@ -199,8 +199,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         Toast.makeText(
                 this,
                 granted
-                        ? repository.local("تم تفعيل التذكير", "Reminder enabled", "Ἡ ὑπενθύμιση ἐνεργοποιήθηκε")
-                        : repository.local("لم يُفعّل التذكير لأن إذن الإشعارات مرفوض", "The reminder was not enabled because notification permission was denied", "Ἡ ὑπενθύμιση δὲν ἐνεργοποιήθηκε"),
+                        ? repository.local(com.orthodoxprayers.privateapp.R.string.ui_reminder_enabled_f21995e2)
+                        : repository.local(com.orthodoxprayers.privateapp.R.string.ui_the_reminder_was_not_enabled_because_notificatio_a2a9d4b5),
                 Toast.LENGTH_SHORT
         ).show();
         ScreenEntry current = backStack.peekLast();
@@ -388,10 +388,10 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     private void rebuildBottomNav(ScreenEntry entry) {
         bottomNav.removeAllViews();
         String active = activeNav(entry);
-        addNav(R.drawable.ic_nav_home, repository.local("الرئيسية", "Home", "Ἀρχική"), "home", active);
-        addNav(R.drawable.ic_nav_prayers, repository.local("الصلوات", "Prayers", "Προσευχές"), "prayers", active);
-        addNav(R.drawable.ic_nav_liturgy, repository.local("القداس", "Liturgy", "Λειτουργία"), "liturgy", active);
-        addNav(R.drawable.ic_nav_settings, repository.local("الإعدادات", "Settings", "Ρυθμίσεις"), "settings", active);
+        addNav(R.drawable.ic_nav_home, repository.local(com.orthodoxprayers.privateapp.R.string.ui_home_535f9515), "home", active);
+        addNav(R.drawable.ic_nav_prayers, repository.local(com.orthodoxprayers.privateapp.R.string.ui_prayers_3a9327c4), "prayers", active);
+        addNav(R.drawable.ic_nav_liturgy, repository.local(com.orthodoxprayers.privateapp.R.string.ui_liturgy_cdfaf7bd), "liturgy", active);
+        addNav(R.drawable.ic_nav_settings, repository.local(com.orthodoxprayers.privateapp.R.string.ui_settings_25169a1d), "settings", active);
     }
 
     private void addNav(int iconResource, String label, String target, String active) {
@@ -415,7 +415,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         TextView labelView = uiKit.text(label, 11, target.equals(active) ? ThemePalette.GOLD : Color.WHITE, true);
         labelView.setGravity(Gravity.CENTER);
         item.addView(labelView);
-        item.setContentDescription(label + (target.equals(active) ? repository.local("، محدد", ", selected", ", ἐπιλεγμένο") : ""));
+        item.setContentDescription(label + (target.equals(active) ? repository.local(com.orthodoxprayers.privateapp.R.string.ui_selected_5eb77fb2) : ""));
         item.setOnClickListener(v -> navigate(target, null));
         bottomNav.addView(item, new LinearLayout.LayoutParams(0, -1, 1f));
     }
@@ -461,13 +461,13 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                 );
             }
             if (manual) {
-                Toast.makeText(this, repository.local("التحديث جارٍ الآن", "An update is already in progress", "Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, repository.local(com.orthodoxprayers.privateapp.R.string.ui_an_update_is_already_in_progress_0afb7ec0), Toast.LENGTH_SHORT).show();
             }
             return;
         }
 
         if (manual) {
-            Toast.makeText(this, repository.local("جاري تنزيل بيانات اليوم وفحصها…", "Downloading and validating today’s data…", "Ἔλεγχος σημερινῶν δεδομένων…"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, repository.local(com.orthodoxprayers.privateapp.R.string.ui_downloading_and_validating_today_s_data_f519f853), Toast.LENGTH_SHORT).show();
         }
         updateCoordinator.refreshForeground(forceFullDownload, (result, message) -> {
             boolean retryableOpenFailure = automaticAppOpen

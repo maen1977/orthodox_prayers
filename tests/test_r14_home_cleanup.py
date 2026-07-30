@@ -4,6 +4,8 @@ import json
 import unittest
 from pathlib import Path
 
+from scripts.android_ui_resources import source_omits_text, source_references_text
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -12,8 +14,8 @@ class R14HomeCleanupTests(unittest.TestCase):
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         widget = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/widget/DailyAgendaWidget.java").read_text(encoding="utf-8")
         library = json.loads((ROOT / "app/src/main/assets/data/library.json").read_text(encoding="utf-8"))
-        self.assertIn("الصلوات الكنسية", home)
-        self.assertIn("الصلوات الكنسية", widget)
+        self.assertTrue(source_references_text(home, "الصلوات الكنسية", "ar", exact=True))
+        self.assertTrue(source_references_text(widget, "الصلوات الكنسية", "ar", exact=True))
         self.assertEqual("الصلوات الكنسية", library["app_name"]["ar"])
         self.assertEqual("Church Prayers", library["app_name"]["en"])
 
@@ -24,9 +26,9 @@ class R14HomeCleanupTests(unittest.TestCase):
         self.assertNotIn("addStatusCard", create_view)
         self.assertNotIn("addTodayFastingGuide", create_view)
         self.assertNotIn('today.optJSONObject("feast")', date_card)
-        self.assertNotIn("تفاصيل صوم اليوم", home)
-        self.assertIn("عرض تفاصيل الأيام السبعة", home)
-        self.assertIn("الأحد القادم", home)
+        self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
+        self.assertTrue(source_references_text(home, "عرض تفاصيل الأيام السبعة", "ar", exact=True))
+        self.assertTrue(source_references_text(home, "الأحد القادم", "ar", exact=True))
 
     def test_important_home_shortcuts_are_visible_and_routes_remain(self):
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
@@ -38,7 +40,7 @@ class R14HomeCleanupTests(unittest.TestCase):
             "القراءات اليومية",
             "الصلوات اليومية",
             "التقويم والصيام",
-            "الأيام السبعة القادمة",
+            "اليوم + 7 أيام مكتملة",
             "الكنائس والبث المباشر",
             "البحث",
             "المفضلة",
@@ -46,27 +48,27 @@ class R14HomeCleanupTests(unittest.TestCase):
             "اللغات",
             "الإعدادات",
         ):
-            self.assertIn(retained, home)
+            self.assertTrue(source_references_text(home, retained, "ar"), retained)
 
     def test_home_shows_a_light_seven_day_fasting_table(self):
         base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
-        self.assertIn("✓ مسموح   ✕ ممنوع", base)
+        self.assertTrue(source_references_text(base, "✓ مسموح   ✕ ممنوع", "ar", exact=True))
         self.assertIn('!fasting.optBoolean("is_fast", false)', base)
-        self.assertIn("جدول الصيام للأيام السبعة", home)
+        self.assertTrue(source_references_text(home, "جدول الصيام للأيام السبعة", "ar", exact=True))
         self.assertIn('host.navigate("calendar_day", date)', home)
         self.assertIn('"calendar", null', home)
         self.assertIn("addCompactFastingItems(card, fasting)", upcoming)
 
     def test_settings_hide_call_and_privacy_actions_only(self):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
-        self.assertNotIn("الاتصال بالرقم", settings)
-        self.assertNotIn("Call phone number", settings)
-        self.assertNotIn("سياسة الخصوصية", settings)
-        self.assertNotIn("Privacy policy", settings)
+        self.assertTrue(source_omits_text(settings, "الاتصال بالرقم", "ar"))
+        self.assertTrue(source_omits_text(settings, "Call phone number", "en"))
+        self.assertTrue(source_omits_text(settings, "سياسة الخصوصية", "ar"))
+        self.assertTrue(source_omits_text(settings, "Privacy policy", "en"))
         self.assertNotIn("maen1977.github.io/orthodox_prayers/privacy", settings)
-        self.assertIn("هذا البرنامج مجاني", settings)
+        self.assertTrue(source_references_text(settings, "هذا البرنامج مجاني", "ar"))
         self.assertTrue((ROOT / "PRIVACY.md").is_file())
 
     def test_daily_prayer_components_remain_available(self):

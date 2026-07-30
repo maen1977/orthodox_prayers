@@ -13,15 +13,11 @@ public final class LanguagePacksScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("اللغات النشطة", "Active languages", "Ἐνεργὲς γλῶσσες"), true);
-        add(page.root, ui.infoBadge(local(
-                "النصوص الأساسية للغات الثلاث مضمّنة وتعمل دون إنترنت. اختر اللغات التي تريد إظهارها في محدد اللغة. لا يستطيع التطبيق حذف ملفات من APK بعد التثبيت.",
-                "Base texts for all three languages are embedded and work offline. Choose which languages appear in the language selector. The app cannot remove files from an installed APK.",
-                "Τὰ βασικὰ κείμενα καὶ τῶν τριῶν γλωσσῶν εἶναι ἐνσωματωμένα. Ἐπίλεξε ποιες γλῶσσες θὰ φαίνονται στὸν ἐπιλογέα."
-        )), 10, 10);
-        addPack(page.root, "ar", "العربية");
-        addPack(page.root, "en", "English");
-        addPack(page.root, "el", "Ελληνικά");
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_active_languages_79779885), true);
+        add(page.root, ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_base_texts_for_all_three_languages_are_embedded__06372176)), 10, 10);
+        addPack(page.root, "ar", local(com.orthodoxprayers.privateapp.R.string.ui_language_arabic_name));
+        addPack(page.root, "en", local(com.orthodoxprayers.privateapp.R.string.ui_language_english_name));
+        addPack(page.root, "el", local(com.orthodoxprayers.privateapp.R.string.ui_language_greek_name));
         return page.scroll;
     }
 
@@ -38,10 +34,10 @@ public final class LanguagePacksScreen extends BaseScreen {
         boolean enabled = preferences.offlineLanguageEnabled(language);
         boolean selected = language.equals(preferences.effectiveLanguage());
         Button toggle = ui.button(selected
-                ? local("اللغة المستخدمة الآن", "Currently selected", "Τρέχουσα γλῶσσα")
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_currently_selected_14c25dc4)
                 : enabled
-                    ? local("إخفاؤها من محدد اللغة", "Hide from language selector", "Ἀπόκρυψη ἀπὸ τὸν ἐπιλογέα")
-                    : local("إظهارها في محدد اللغة", "Show in language selector", "Ἐμφάνιση στὸν ἐπιλογέα"), enabled);
+                    ? local(com.orthodoxprayers.privateapp.R.string.ui_hide_from_language_selector_47d8e927)
+                    : local(com.orthodoxprayers.privateapp.R.string.ui_show_in_language_selector_575c5fa6), enabled);
         toggle.setEnabled(!selected);
         toggle.setAlpha(selected ? 0.7f : 1f);
         toggle.setOnClickListener(v -> {

@@ -9,6 +9,7 @@ import com.orthodoxprayers.privateapp.AppPreferences;
 import com.orthodoxprayers.privateapp.BuildConfig;
 import com.orthodoxprayers.privateapp.R;
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
+import com.orthodoxprayers.privateapp.ui.LocalizedResources;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,13 +53,13 @@ public final class DataRepository {
     private final Object refreshGuard = new Object();
 
     private JSONObject today;
-    private JSONObject fallbackLibrary;
-    private JSONObject arabicLibrary;
-    private JSONObject greekLibrary;
-    private JSONObject englishLibrary;
-    private JSONObject arabicSearchIndex;
-    private JSONObject greekSearchIndex;
-    private JSONObject englishSearchIndex;
+    // Language-heavy assets are loaded only for the selected lane. Keeping all
+    // three libraries and all three search indexes resident added several MB of
+    // avoidable startup memory on low-spec devices. Search remains fully offline
+    // but its index is parsed only when the user opens Search.
+    private String loadedAssetLanguage = "";
+    private JSONObject activeLanguageLibrary;
+    private JSONObject activeLanguageSearchIndex;
     private JSONObject sourceRegistry;
     private JSONObject fallbackChurchDirectory;
     private JSONObject fallbackSourceHealth;
@@ -96,13 +97,6 @@ public final class DataRepository {
         this.signatureVerifier = signatureVerifier;
         this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
-        fallbackLibrary = loadJsonAsset("data/library.json");
-        arabicLibrary = loadJsonAsset("data/native/library_ar.json");
-        greekLibrary = loadJsonAsset("data/native/library_el.json");
-        englishLibrary = loadJsonAsset("data/native/library_en.json");
-        arabicSearchIndex = loadJsonAsset("data/search/search_index_ar.json");
-        greekSearchIndex = loadJsonAsset("data/search/search_index_el.json");
-        englishSearchIndex = loadJsonAsset("data/search/search_index_en.json");
         sourceRegistry = loadJsonAsset("data/source_registry.json");
         fallbackChurchDirectory = loadJsonAsset("data/churches.json");
         fallbackSourceHealth = loadJsonAsset("data/source_health.json");
@@ -181,14 +175,35 @@ public final class DataRepository {
         return libraryForLanguage(preferences.effectiveLanguage());
     }
 
-    private JSONObject libraryForLanguage(String language) {
-        JSONObject selected;
-        if ("en".equals(language)) selected = englishLibrary;
-        else if ("el".equals(language)) selected = greekLibrary;
-        else selected = arabicLibrary;
+    private synchronized JSONObject libraryForLanguage(String language) {
+        ensureLanguageAssets(language, false);
         // Never fall back to another language or to the legacy mixed library.
         // Missing native assets are shown as unavailable rather than substituted.
-        return selected != null ? selected : new JSONObject();
+        return activeLanguageLibrary != null ? activeLanguageLibrary : new JSONObject();
+    }
+
+    private synchronized void ensureLanguageAssets(String language, boolean includeSearchIndex) {
+        String normalized = normalizeAssetLanguage(language);
+        if (!normalized.equals(loadedAssetLanguage)) {
+            loadedAssetLanguage = normalized;
+            activeLanguageLibrary = loadJsonAsset("data/native/library_" + normalized + ".json");
+            activeLanguageSearchIndex = null;
+        }
+        if (includeSearchIndex && activeLanguageSearchIndex == null) {
+            activeLanguageSearchIndex = loadJsonAsset("data/search/search_index_" + normalized + ".json");
+        }
+    }
+
+    private static String normalizeAssetLanguage(String language) {
+        if ("en".equals(language)) return "en";
+        if ("el".equals(language)) return "el";
+        return "ar";
+    }
+
+    private synchronized void clearLanguageAssetCache() {
+        loadedAssetLanguage = "";
+        activeLanguageLibrary = null;
+        activeLanguageSearchIndex = null;
     }
     public String currentAmmanDate() { return LocalDate.now(ZoneId.of("Asia/Amman")).toString(); }
     public boolean isRefreshing() { return refreshInProgress; }
@@ -363,6 +378,7 @@ public final class DataRepository {
 
     /** Reload the best signed snapshot after the user changes the active language lane. */
     public synchronized void reloadForSelectedLanguage() {
+        clearLanguageAssetCache();
         if (languageScopedStore) {
             dataStore = new DailyDataStore(context, preferences.effectiveLanguage());
         }
@@ -376,11 +392,12 @@ public final class DataRepository {
         return dataStore.availableDates();
     }
 
-    public String local(String ar, String en, String el) {
-        String language = preferences.effectiveLanguage();
-        if ("en".equals(language)) return en;
-        if ("el".equals(language)) return el;
-        return ar;
+    public String local(int resourceId) {
+        return LocalizedResources.get(context, preferences.effectiveLanguage(), resourceId);
+    }
+
+    public String localFormat(int resourceId, Object... arguments) {
+        return LocalizedResources.format(context, preferences.effectiveLanguage(), resourceId, arguments);
     }
 
     public LocalizedValue localizedValue(JSONObject object, String fallback) {
@@ -430,11 +447,9 @@ public final class DataRepository {
 
     public String localized(JSONObject object, String fallback) { return localizedValue(object, fallback).text; }
 
-    public JSONObject searchIndex() {
-        String language = preferences.effectiveLanguage();
-        if ("en".equals(language)) return englishSearchIndex;
-        if ("el".equals(language)) return greekSearchIndex;
-        return arabicSearchIndex;
+    public synchronized JSONObject searchIndex() {
+        ensureLanguageAssets(preferences.effectiveLanguage(), true);
+        return activeLanguageSearchIndex != null ? activeLanguageSearchIndex : new JSONObject();
     }
 
     public JSONArray searchDocuments() {
@@ -1014,28 +1029,28 @@ public final class DataRepository {
     }
 
     public String userFacingRefreshStatus() {
-        if (isRefreshing()) return local("جارٍ تحديث خدمات الأسبوع تلقائيًا…", "Updating the week’s services automatically…", "Αὐτόματη ἐνημέρωση ἀκολουθιῶν ἑβδομάδος…");
+        if (isRefreshing()) return local(com.orthodoxprayers.privateapp.R.string.ui_updating_the_week_s_services_automatically_f680f00e);
         String code = refreshMessage == null || refreshMessage.isEmpty() ? preferences.lastRefreshMessage() : refreshMessage;
         if (code == null || code.isEmpty()) {
-            if (hasUsableCurrentData()) return local("خدمات اليوم والأسبوع جاهزة", "Today and the coming week are ready", "Ἡ σημερινὴ καὶ ἡ ἑβδομαδιαία ἀκολουθία εἶναι ἕτοιμες");
-            return local("بانتظار تحديث خدمات الأسبوع", "Waiting for the weekly service update", "Ἀναμονὴ ἐνημερώσεως ἑβδομάδος");
+            if (hasUsableCurrentData()) return local(com.orthodoxprayers.privateapp.R.string.ui_today_and_the_coming_week_are_ready_1a099eed);
+            return local(com.orthodoxprayers.privateapp.R.string.ui_waiting_for_the_weekly_service_update_0c0844a8);
         }
-        if ("updated".equals(code) || "updated_signed".equals(code) || "updated_via_manifest".equals(code)) return local("تم تحديث خدمات الأيام الثمانية والتحقق من توقيعها", "The eight-day service package was updated and verified", "Ἡ ὀκταήμερη δέσμη ἐνημερώθηκε καὶ ἐπαληθεύθηκε");
-        if ("not_modified".equals(code) || "manifest_not_modified".equals(code)) return local("خدمات الأسبوع محدثة بالفعل", "The weekly services are already current", "Οἱ ἀκολουθίες τῆς ἑβδομάδος εἶναι ἤδη ἐνημερωμένες");
-        if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local("التحديث جارٍ الآن", "An update is already in progress", "Ἡ ἐνημέρωση βρίσκεται σὲ ἐξέλιξη");
-        if (code.startsWith("app_update_required")) return local("يلزم تحديث إصدار التطبيق لقراءة بيانات اليوم الجديدة", "The app must be updated to read today’s new data", "Απαιτεῖται νεότερη ἔκδοση τῆς ἐφαρμογῆς");
-        if (code.startsWith("manifest_revision_rollback")) return local("رُفض إصدار بيانات أقدم حفاظًا على سلامة التحديث", "An older data revision was rejected for update safety", "Ἀπορρίφθηκε παλαιότερη ἀναθεώρηση δεδομένων");
-        if (code.startsWith("manifest_unavailable_after_acceptance")) return local("تعذر التحقق من بيان التحديث الآمن؛ ستبقى آخر نسخة موثوقة ظاهرة مع إعادة المحاولة تلقائيًا", "The secure update manifest could not be verified; the last trusted copy remains in use while automatic retries continue", "Τὸ ἀσφαλὲς δηλωτικὸ ἐνημέρωσης δὲν ἐπαληθεύθηκε");
-        if (code.startsWith("date_not_ready") || code.startsWith("server_data_not_ready") || code.startsWith("server_manifest_not_ready")) return local("تحديث اليوم قيد النشر على الخادم؛ تظهر آخر نسخة سليمة وستتم إعادة المحاولة تلقائيًا", "Today’s update is still being published; the last valid copy is shown and the app will retry automatically", "Ἡ σημερινὴ ἐνημέρωση δημοσιεύεται· θὰ γίνει νέα προσπάθεια");
-        if (code.startsWith("secure_connection_")) return local("تعذر إنشاء اتصال آمن بخادم التحديث؛ تظهر آخر نسخة سليمة", "A secure connection to the update server could not be established; the last valid copy is shown", "Ἡ ἀσφαλὴς σύνδεση μὲ τὸν διακομιστὴ ἀπέτυχε");
-        if (code.startsWith("server_") || code.startsWith("http_")) return local("خادم التحديث متأخر أو غير متاح مؤقتًا؛ ستتم إعادة المحاولة تلقائيًا", "The update server is delayed or temporarily unavailable; the app will retry automatically", "Ὁ διακομιστὴς ἐνημέρωσης καθυστερεῖ προσωρινά");
-        if (code.startsWith("network_offline") || code.startsWith("network_unreachable")) return local("الهاتف غير متصل بالشبكة الآن؛ تظهر آخر نسخة سليمة", "The phone is not connected to a network; the last valid copy is shown", "Ἡ συσκευὴ δὲν εἶναι συνδεδεμένη");
-        if (code.startsWith("network_dns_") || code.startsWith("network_io_")) return local("الإنترنت متصل، لكن تعذر الوصول إلى عنوان خادم التحديث؛ سيُجرّب التطبيق الخادم البديل تلقائيًا", "Internet is connected, but the update host could not be reached; the alternate server will be tried automatically", "Τὸ διαδίκτυο λειτουργεῖ, ἀλλὰ ὁ διακομιστὴς δὲν ἐντοπίστηκε");
-        if (code.startsWith("network_")) return local("تعذر الاتصال بخادم التحديث مؤقتًا؛ تظهر آخر نسخة سليمة", "The update server could not be contacted temporarily; the last valid copy is shown", "Προσωρινὴ ἀποτυχία συνδέσεως");
-        if (code.contains("signature")) return local("فشل التوقيع الرقمي للتحديث وتم رفضه؛ تظهر آخر نسخة موثوقة", "The update signature failed and was rejected; the last trusted copy is shown", "Ἡ ψηφιακὴ ὑπογραφὴ ἀπέτυχε");
-        if (code.startsWith("invalid_")) return local("وصلت بيانات ناقصة أو غير صالحة وتم تجاهلها", "Incomplete or invalid data was received and ignored", "Ἐλήφθησαν ἐλλιπῆ δεδομένα");
-        if (preferences.lastRefreshSucceeded()) return local("اكتمل آخر فحص للتحديث بنجاح", "The last update check completed successfully", "Ὁ τελευταῖος ἔλεγχος ὁλοκληρώθηκε");
-        return local("تعذر التحديث؛ تظهر آخر نسخة سليمة محفوظة", "Update failed; the last valid saved copy is shown", "Ἡ ἐνημέρωση ἀπέτυχε");
+        if ("updated".equals(code) || "updated_signed".equals(code) || "updated_via_manifest".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7);
+        if ("not_modified".equals(code) || "manifest_not_modified".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_the_weekly_services_are_already_current_2b76496f);
+        if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_an_update_is_already_in_progress_0afb7ec0);
+        if (code.startsWith("app_update_required")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc);
+        if (code.startsWith("manifest_revision_rollback")) return local(com.orthodoxprayers.privateapp.R.string.ui_an_older_data_revision_was_rejected_for_update_s_5238c511);
+        if (code.startsWith("manifest_unavailable_after_acceptance")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_secure_update_manifest_could_not_be_verified_d5b624be);
+        if (code.startsWith("date_not_ready") || code.startsWith("server_data_not_ready") || code.startsWith("server_manifest_not_ready")) return local(com.orthodoxprayers.privateapp.R.string.ui_today_s_update_is_still_being_published_the_last_d93b9203);
+        if (code.startsWith("secure_connection_")) return local(com.orthodoxprayers.privateapp.R.string.ui_a_secure_connection_to_the_update_server_could_n_22125562);
+        if (code.startsWith("server_") || code.startsWith("http_")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4);
+        if (code.startsWith("network_offline") || code.startsWith("network_unreachable")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_phone_is_not_connected_to_a_network_the_last_55893d04);
+        if (code.startsWith("network_dns_") || code.startsWith("network_io_")) return local(com.orthodoxprayers.privateapp.R.string.ui_internet_is_connected_but_the_update_host_could__21495ffe);
+        if (code.startsWith("network_")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_update_server_could_not_be_contacted_tempora_dc3cce39);
+        if (code.contains("signature")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_update_signature_failed_and_was_rejected_the_7105a062);
+        if (code.startsWith("invalid_")) return local(com.orthodoxprayers.privateapp.R.string.ui_incomplete_or_invalid_data_was_received_and_igno_e2b95466);
+        if (preferences.lastRefreshSucceeded()) return local(com.orthodoxprayers.privateapp.R.string.ui_the_last_update_check_completed_successfully_bb37cd88);
+        return local(com.orthodoxprayers.privateapp.R.string.ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3);
     }
 
     private JSONObject loadBestToday() {

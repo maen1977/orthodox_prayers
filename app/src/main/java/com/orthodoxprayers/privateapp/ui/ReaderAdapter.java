@@ -100,13 +100,13 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
 
     private void bindNote(LinearLayout container, JSONObject segment, int position) {
         LinearLayout card = ui.card(readerCardColor(), readerBorderColor(), 14);
-        String label = data.localized(segment.optJSONObject("speaker"), data.local("ملاحظة اختيارية", "Optional note", "Προαιρετικὴ σημείωση"));
+        String label = data.localized(segment.optJSONObject("speaker"), data.local(com.orthodoxprayers.privateapp.R.string.ui_optional_note_22796644));
         boolean defaultCollapsed = segment.optBoolean("collapsed_by_default", true);
         boolean expanded = defaultCollapsed ? expandedNotes.contains(position) : !collapsedNotes.contains(position);
         Button toggle = ui.smallButton((expanded ? "▾  " : "▸  ") + label, false);
         toggle.setContentDescription(label + ". " + (expanded
-                ? data.local("اضغط للإخفاء", "Tap to collapse", "Πατήστε γιὰ σύμπτυξη")
-                : data.local("اضغط للعرض", "Tap to expand", "Πατήστε γιὰ ἀνάπτυξη")));
+                ? data.local(com.orthodoxprayers.privateapp.R.string.ui_tap_to_collapse_2e1fb869)
+                : data.local(com.orthodoxprayers.privateapp.R.string.ui_tap_to_expand_27c34a66)));
         toggle.setOnClickListener(v -> {
             if (defaultCollapsed) {
                 if (expandedNotes.contains(position)) expandedNotes.remove(position);
@@ -125,11 +125,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
             body.setTextColor(readerPrimaryText());
             card.addView(body, ui.margins(-1, -2, 0, 6, 0, 0));
             if (value.translationUnavailable) {
-                card.addView(ui.badge(data.local(
-                        "النص الأصلي المعتمد بهذه اللغة غير متوفر لهذا المقطع",
-                        "Official native text unavailable for this section",
-                        "Τὸ ἐπίσημο πρωτότυπο κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ τμήμα"
-                ), false));
+                card.addView(ui.badge(data.local(com.orthodoxprayers.privateapp.R.string.ui_official_native_text_unavailable_for_this_sectio_6c8fe699), false));
             }
         }
         container.addView(card, new LinearLayout.LayoutParams(-1, -2));
@@ -149,18 +145,14 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         card.addView(body, ui.margins(-1, -2, 0, speaker.isEmpty() ? 0 : 3, 0, 0));
 
         if (value.translationUnavailable) {
-            card.addView(ui.badge(data.local(
-                    "النص الأصلي المعتمد بهذه اللغة غير متوفر لهذا المقطع",
-                    "Official native text unavailable for this section",
-                    "Τὸ ἐπίσημο πρωτότυπο κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ τμήμα"
-            ), false), ui.margins(-1, -2, 0, 7, 0, 0));
+            card.addView(ui.badge(data.local(com.orthodoxprayers.privateapp.R.string.ui_official_native_text_unavailable_for_this_sectio_6c8fe699), false), ui.margins(-1, -2, 0, 7, 0, 0));
         }
 
         if (preferences.showOriginal()) {
             JSONObject textObject = segment.optJSONObject("text");
             String original = originalText(textObject);
             if (!original.isEmpty() && !original.equals(value.text)) {
-                TextView originalView = ui.text("— " + data.local("النص الأصلي", "Source text", "Πρωτότυπο") + " —\n" + original,
+                TextView originalView = ui.text("— " + data.local(com.orthodoxprayers.privateapp.R.string.ui_source_text_0183ef55) + " —\n" + original,
                         15, readerSecondaryText(), false);
                 originalView.setLineSpacing(ui.dp(3), 1.12f);
                 originalView.setTextIsSelectable(true);
@@ -175,16 +167,8 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         if (!"silent".equals(segment.optString("delivery", ""))) return;
         boolean faithful = "faithful".equals(segment.optString("delivery_actor", ""));
         String label = faithful
-                ? data.local(
-                        "المؤمن — يقولها سراً",
-                        "Faithful — said silently",
-                        "Πιστός — κατ’ ἰδίαν"
-                )
-                : data.local(
-                        "الكاهن — يقولها سراً",
-                        "Priest — said quietly",
-                        "Ἱερεύς — χαμηλοφώνως"
-                );
+                ? data.local(com.orthodoxprayers.privateapp.R.string.ui_faithful_said_silently_54b6d432)
+                : data.local(com.orthodoxprayers.privateapp.R.string.ui_priest_said_quietly_ca9b3644);
         TextView badge = ui.infoBadge(label);
         badge.setContentDescription(label);
         card.addView(badge, ui.margins(-1, -2, 0, 3, 0, 4));

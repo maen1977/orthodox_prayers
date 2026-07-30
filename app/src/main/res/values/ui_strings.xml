@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="ui_a_secure_connection_to_the_update_server_could_n_22125562" formatted="false">تعذر إنشاء اتصال آمن بخادم التحديث؛ تظهر آخر نسخة سليمة</string>
+    <string name="ui_a_verified_prokeimenon_is_not_available_for_this_61c99c08" formatted="false">لم يتوفر نص بروكيمنن موثّق لهذا اليوم؛ لن يعرض التطبيق نصًا مخمّنًا.</string>
+    <string name="ui_about_the_app_3bd794db" formatted="false">عن البرنامج</string>
+    <string name="ui_about_the_content_source_8d523461" formatted="false">عن مصدر المحتوى: </string>
+    <string name="ui_active_connectors_34b93171" formatted="false">الموصلات النشطة: </string>
+    <string name="ui_active_languages_79779885" formatted="false">اللغات النشطة</string>
+    <string name="ui_all_sources_and_references_5cebd827" formatted="false">جميع المصادر والمراجع</string>
+    <string name="ui_allowed_f3016067" formatted="false">مسموح</string>
+    <string name="ui_allowed_forbidden_3e7d8352" formatted="false">✓ مسموح   ✕ ممنوع</string>
+    <string name="ui_an_older_data_revision_was_rejected_for_update_s_5238c511" formatted="false">رُفض إصدار بيانات أقدم حفاظًا على سلامة التحديث</string>
+    <string name="ui_an_update_is_already_in_progress_0afb7ec0" formatted="false">التحديث جارٍ الآن</string>
+    <string name="ui_antioch_patriarchate_68959f82" formatted="false">بطريركية أنطاكية</string>
+    <string name="ui_app_and_text_language_10b5a3ac" formatted="false">لغة التطبيق والنصوص</string>
+    <string name="ui_app_version_cf5bb661" formatted="false">إصدار التطبيق: </string>
+    <string name="ui_arabic_english_and_greek_are_three_independent_n_d97c4432" formatted="false">العربية والإنجليزية واليونانية ثلاث قنوات أصلية مستقلة. لا يترجم التطبيق نصًا من لغة إلى أخرى، ولا ينسخ لغة مكان لغة. عند غياب النص المعتمد تبقى القطعة غير متوفرة بوضوح.</string>
+    <string name="ui_authority_tier_e909156f" formatted="false">درجة السلطة: </string>
+    <string name="ui_auto_scroll_43606e75" formatted="false">▶ تمرير تلقائي</string>
+    <string name="ui_auto_scroll_off_763228b7" formatted="false">التمرير التلقائي: متوقف</string>
+    <string name="ui_auto_scroll_speed_9b395f14" formatted="false">سرعة التمرير التلقائي: </string>
+    <string name="ui_automatic_update_01_00_and_06_00_amman_time_plus_a1bb2912" formatted="false">التحديث التلقائي: 01:00 و06:00 بتوقيت عمّان، وفحص عند كل فتح مع إعادة المحاولة كل 15 دقيقة عند التأخر</string>
+    <string name="ui_back_18fb18e2" formatted="false">رجوع</string>
+    <string name="ui_base_texts_for_all_three_languages_are_embedded__06372176" formatted="false">النصوص الأساسية للغات الثلاث مضمّنة وتعمل دون إنترنت. اختر اللغات التي تريد إظهارها في محدد اللغة. لا يستطيع التطبيق حذف ملفات من APK بعد التثبيت.</string>
+    <string name="ui_basic_prayers_6f2ed521" formatted="false">صلوات أساسية</string>
+    <string name="ui_calendar_and_fasting_51a9bf84" formatted="false">التقويم والصيام</string>
+    <string name="ui_calendar_and_reminders_acba78af" formatted="false">التقويم والتذكيرات</string>
+    <string name="ui_cancel_1bd7a4b9" formatted="false">إلغاء</string>
+    <string name="ui_change_time_for_9b3639ec" formatted="false">تغيير وقت </string>
+    <string name="ui_choose_a_prayer_or_service_the_bottom_navigation_daa89d81" formatted="false">اختر الصلاة أو الخدمة لفتح النص الكامل. الشريط السفلي يبقى ظاهرًا للتنقل.</string>
+    <string name="ui_choose_time_afb7d8a6" formatted="false">اختيار الوقت</string>
+    <string name="ui_church_calendar_54dcd19b" formatted="false">التقويم الكنسي</string>
+    <string name="ui_church_directory_36e0707d" formatted="false">دليل الكنائس</string>
+    <string name="ui_church_directory_and_live_services_b4f52ad3" formatted="false">دليل الكنائس والبث المباشر</string>
+    <string name="ui_church_prayers_65a0f7e5" formatted="false">الصلوات الكنسية</string>
+    <string name="ui_church_prayers_d7f2a5cb" formatted="false">الصلوات الكنسية</string>
+    <string name="ui_churches_and_live_services_53a37eff" formatted="false">الكنائس والبث المباشر</string>
+    <string name="ui_churches_and_live_services_7171f5ce" formatted="false">الكنائس والبث</string>
+    <string name="ui_clear_history_0e69bce2" formatted="false">مسح السجل</string>
+    <string name="ui_clear_search_history_abb8a916" formatted="false">مسح سجل البحث</string>
+    <string name="ui_collection_56e98b45" formatted="false">مجموعة</string>
+    <string name="ui_commemoration_399506fc" formatted="false">التذكار</string>
+    <string name="ui_communion_1cf76e7a" formatted="false">المناولة</string>
+    <string name="ui_complete_arabic_text_pinned_from_an_official_ort_0c91e6fe" formatted="false">نص عربي كامل مثبت من مصدر مطرانية الأردن الرسمي ومحمي ببصمة</string>
+    <string name="ui_confidence_e698f632" formatted="false"> — الثقة: </string>
+    <string name="ui_content_fingerprint_8e9ffe73" formatted="false">بصمة المحتوى: </string>
+    <string name="ui_content_hash_6fb5464c" formatted="false">بصمة النص: </string>
+    <string name="ui_could_not_open_the_official_link_3126ea33" formatted="false">تعذر فتح الرابط الرسمي.</string>
+    <string name="ui_current_native_official_text_coverage_english_0f60cec5" formatted="false">اكتمال مكتبات النصوص الأصلية حاليًا — الإنجليزية: </string>
+    <string name="ui_currently_selected_14c25dc4" formatted="false">اللغة المستخدمة الآن</string>
+    <string name="ui_daily_a469bee1" formatted="false">يومية</string>
+    <string name="ui_daily_and_basic_prayers_are_available_here_botto_36b71462" formatted="false">الصلوات اليومية والصلوات الأساسية متاحة هنا، ويظل شريط التنقل ظاهرًا أسفل الشاشة.</string>
+    <string name="ui_daily_prayers_ef97d9fd" formatted="false">الصلوات اليومية</string>
+    <string name="ui_daily_propers_and_scripture_passed_source_and_si_d42c1070" formatted="false">قطع اليوم والنصوص الكتابية اجتازت تحقق المصادر والتوقيع</string>
+    <string name="ui_daily_readings_295eb6f5" formatted="false">قراءات اليوم</string>
+    <string name="ui_daily_readings_7f88fcc0" formatted="false">القراءات اليومية</string>
+    <string name="ui_data_date_5059f13c" formatted="false">تاريخ البيانات: </string>
+    <string name="ui_day_and_commemoration_ab4b3d7f" formatted="false">اليوم والمناسبة</string>
+    <string name="ui_day_details_37b21832" formatted="false">تفاصيل اليوم</string>
+    <string name="ui_decrease_text_size_d4631a2b" formatted="false">تصغير حجم النص</string>
+    <string name="ui_default_25612288" formatted="false">عادي</string>
+    <string name="ui_delete_ea349e00" formatted="false">حذف</string>
+    <string name="ui_details_available_c1c33f64" formatted="false">، توجد تفاصيل</string>
+    <string name="ui_disable_keep_screen_on_14c0033c" formatted="false">إطفاء خيار إبقاء الشاشة مضاءة</string>
+    <string name="ui_dismissal_715bd095" formatted="false">الختام</string>
+    <string name="ui_displayed_data_date_3ac6be9b" formatted="false">تاريخ البيانات المعروضة: </string>
+    <string name="ui_downloading_and_validating_today_s_data_f519f853" formatted="false">جاري تنزيل بيانات اليوم وفحصها…</string>
+    <string name="ui_edit_note_569b3288" formatted="false">تعديل الملاحظة</string>
+    <string name="ui_epistle_a17bc087" formatted="false">الرسالة</string>
+    <string name="ui_epistle_dd82c199" formatted="false">الرسالة: </string>
+    <string name="ui_evening_prayer_50c26316" formatted="false">صلاة المساء</string>
+    <string name="ui_evening_prayers_23ddb1fe" formatted="false">صلوات المساء</string>
+    <string name="ui_faithful_said_silently_54b6d432" formatted="false">المؤمن — يقولها سراً</string>
+    <string name="ui_fasting_f1b1605d" formatted="false">الصيام</string>
+    <string name="ui_fasting_status_7fa7fda1" formatted="false">حالة الصيام</string>
+    <string name="ui_favorite_1d799489" formatted="false">مفضلة</string>
+    <string name="ui_favorites_8eb8984d" formatted="false">المفضلة</string>
+    <string name="ui_feasts_and_commemorations_bea321c8" formatted="false">الأعياد والتذكارات</string>
+    <string name="ui_font_f5e02ef6" formatted="false">نوع الخط: </string>
+    <string name="ui_forbidden_8f73bf02" formatted="false">ممنوع</string>
+    <string name="ui_full_liturgy_today_preparation_to_dismissal_08927fc7" formatted="false">قداس اليوم الكامل — من الاستعداد إلى الختام</string>
+    <string name="ui_gospel_68845cc5" formatted="false">الإنجيل: </string>
+    <string name="ui_gospel_b7b033e7" formatted="false">الإنجيل</string>
+    <string name="ui_great_entrance_663a8293" formatted="false">الدورة الكبرى</string>
+    <string name="ui_greek_1565698a" formatted="false">اليونانية: </string>
+    <string name="ui_hide_from_language_selector_47d8e927" formatted="false">إخفاؤها من محدد اللغة</string>
+    <string name="ui_hide_liturgy_sections_10a04266" formatted="false">إخفاء أقسام القداس</string>
+    <string name="ui_hide_reading_controls_3f083a9c" formatted="false">⌃ إخفاء أدوات القراءة</string>
+    <string name="ui_hide_source_b3b18955" formatted="false">إخفاء الأصل</string>
+    <string name="ui_hide_source_information_7690343f" formatted="false">إخفاء معلومات المصدر</string>
+    <string name="ui_hide_source_text_d8f171c5" formatted="false">إخفاء النص الأصلي</string>
+    <string name="ui_hide_technical_details_800e4b8e" formatted="false">إخفاء التفاصيل التقنية</string>
+    <string name="ui_holy_communion_prayers_e14c166c" formatted="false">صلوات المناولة المقدسة</string>
+    <string name="ui_home_535f9515" formatted="false">الرئيسية</string>
+    <string name="ui_id_8ac50ce2" formatted="false">المعرّف: </string>
+    <string name="ui_inactive_e4ed7cb2" formatted="false"> — غير نشطة</string>
+    <string name="ui_incomplete_or_invalid_data_was_received_and_igno_e2b95466" formatted="false">وصلت بيانات ناقصة أو غير صالحة وتم تجاهلها</string>
+    <string name="ui_increase_text_size_d8c66ed2" formatted="false">تكبير حجم النص</string>
+    <string name="ui_inside_text_1e1a4774" formatted="false">داخل النص</string>
+    <string name="ui_internet_is_connected_but_the_update_host_could__21495ffe" formatted="false">الإنترنت متصل، لكن تعذر الوصول إلى عنوان خادم التحديث؛ سيُجرّب التطبيق الخادم البديل تلقائيًا</string>
+    <string name="ui_jerusalem_patriarchate_0c841fc7" formatted="false">بطريركية القدس</string>
+    <string name="ui_keep_screen_on_while_reading_f9d35a52" formatted="false">إبقاء الشاشة مضاءة أثناء الصلاة</string>
+    <string name="ui_languages_409ca23f" formatted="false">اللغات</string>
+    <string name="ui_languages_96622490" formatted="false">اللغات: </string>
+    <string name="ui_last_recorded_verification_88c33b18" formatted="false">آخر تحقق مسجل: </string>
+    <string name="ui_last_successful_check_dabe14f5" formatted="false">آخر فحص ناجح: </string>
+    <string name="ui_last_trusted_backup_50f6c814" formatted="false">آخر نسخة احتياطية موثوقة</string>
+    <string name="ui_last_update_attempt_b3ee7523" formatted="false">آخر محاولة تحديث: </string>
+    <string name="ui_less_spacing_182a14c2" formatted="false">تباعد أقل</string>
+    <string name="ui_liturgy_8ff5e178" formatted="false">طقسية</string>
+    <string name="ui_liturgy_cdfaf7bd" formatted="false">القداس</string>
+    <string name="ui_liturgy_sections_4caca03a" formatted="false">أقسام القداس</string>
+    <string name="ui_live_resources_9822c9d1" formatted="false">روابط مباشرة</string>
+    <string name="ui_live_services_dc308682" formatted="false">البث المباشر</string>
+    <string name="ui_loading_today_s_data_8457881d" formatted="false">جارٍ تحميل بيانات اليوم…</string>
+    <string name="ui_manage_active_languages_9565aa55" formatted="false">إدارة اللغات النشطة</string>
+    <string name="ui_matched_in_d4d746e2" formatted="false">المطابقة: </string>
+    <string name="ui_matins_gospel_995b30a1" formatted="false">إنجيل السحر</string>
+    <string name="ui_matins_gospel_f0474804" formatted="false">إنجيل السَحَر</string>
+    <string name="ui_monitor_status_070900f8" formatted="false">حالة الرصد: </string>
+    <string name="ui_monitored_connectors_9c15d2f8" formatted="false">موصلات الرصد: </string>
+    <string name="ui_monospace_420f56d9" formatted="false">ثابت العرض</string>
+    <string name="ui_more_spacing_fe47f0f9" formatted="false">تباعد أكبر</string>
+    <string name="ui_morning_prayer_a517a36b" formatted="false">صلاة الصباح</string>
+    <string name="ui_morning_prayers_cbf9758b" formatted="false">صلوات الصباح</string>
+    <string name="ui_move_down_12468f91" formatted="false">نقل للأسفل</string>
+    <string name="ui_move_up_12875d17" formatted="false">نقل للأعلى</string>
+    <string name="ui_native_scripture_text_unavailable_for_this_passa_80766f8b" formatted="false">النص الكتابي الأصلي غير متوفر لهذا المقطع</string>
+    <string name="ui_next_section_3ecb1f00" formatted="false">القسم التالي</string>
+    <string name="ui_next_sunday_74b995ae" formatted="false">الأحد القادم</string>
+    <string name="ui_night_e4245684" formatted="false">ليلي</string>
+    <string name="ui_no_ads_login_or_tracking_no_private_keys_are_sto_428b410a" formatted="false">لا إعلانات، لا تسجيل دخول، ولا تتبع. لا توجد مفاتيح خاصة داخل التطبيق.</string>
+    <string name="ui_no_attempt_has_been_made_yet_478bda45" formatted="false">لم تُجرَ محاولة بعد</string>
+    <string name="ui_no_favorites_yet_open_a_prayer_and_press_the_sta_3ddef562" formatted="false">لا توجد صلوات محفوظة بعد. افتح أي صلاة واضغط زر النجمة.</string>
+    <string name="ui_no_matching_church_in_the_current_directory_d42641ca" formatted="false">لا توجد كنيسة مطابقة في الدليل الحالي.</string>
+    <string name="ui_no_matching_result_65289b38" formatted="false">لا توجد نتيجة مطابقة.</string>
+    <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">لا توجد تفاصيل منشورة لهذا الشهر داخل الحزمة الحالية.</string>
+    <string name="ui_no_shareable_passage_is_visible_e0bd031d" formatted="false">لا يوجد مقطع قابل للمشاركة هنا</string>
+    <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">لم ينجح تحديث شبكي بعد</string>
+    <string name="ui_no_texts_in_this_section_a43f561b" formatted="false">لا توجد نصوص في هذا القسم.</string>
+    <string name="ui_no_trusted_details_for_this_date_are_included_in_dfb3006c" formatted="false">لا توجد تفاصيل موثوقة لهذا التاريخ داخل الحزمة الحالية.</string>
+    <string name="ui_no_valid_daily_data_is_available_e60f7fe1" formatted="false">لا توجد بيانات يومية سليمة قابلة للعرض</string>
+    <string name="ui_note_66183bf4" formatted="false">ملاحظة</string>
+    <string name="ui_note_saved_locally_9d17b58c" formatted="false">تم حفظ الملاحظة محليًا</string>
+    <string name="ui_notice_60ab69a7" formatted="false">الملاحظة</string>
+    <string name="ui_official_church_link_2d1a8bdb" formatted="false">رابط كنسي رسمي</string>
+    <string name="ui_official_greek_orthodox_source_6588efec" formatted="false">مصدر يوناني أرثوذكسي رسمي</string>
+    <string name="ui_official_live_resources_86f88e7a" formatted="false">روابط كنسية مباشرة</string>
+    <string name="ui_official_native_text_unavailable_for_this_sectio_6c8fe699" formatted="false">النص الأصلي المعتمد بهذه اللغة غير متوفر لهذا المقطع</string>
+    <string name="ui_official_parish_name_unavailable_in_english_eea6633c" formatted="false">اسم الرعية الرسمي غير متوفر بالعربية</string>
+    <string name="ui_official_source_c1baa81f" formatted="false">مصدر رسمي</string>
+    <string name="ui_old_calendar_date_02f8092d" formatted="false">التاريخ القديم</string>
+    <string name="ui_open_agenda_a59ab00e" formatted="false">فتح الأجندة</string>
+    <string name="ui_open_full_reading_a1308e52" formatted="false">فتح القراءة كاملة</string>
+    <string name="ui_open_official_link_aeec6baa" formatted="false">فتح الرابط الرسمي</string>
+    <string name="ui_open_official_source_7127e1b7" formatted="false">فتح المصدر الرسمي</string>
+    <string name="ui_open_parish_page_f8727b57" formatted="false">فتح صفحة الكنيسة</string>
+    <string name="ui_open_reading_source_0dc31b35" formatted="false">فتح مصدر القراءة</string>
+    <string name="ui_open_result_269ccae8" formatted="false">فتح النتيجة</string>
+    <string name="ui_open_source_1e0710bf" formatted="false">فتح المصدر الرسمي</string>
+    <string name="ui_open_the_complete_divine_liturgy_14695677" formatted="false">ابدأ متابعة القداس الكامل</string>
+    <string name="ui_open_the_full_sunday_service_82aeef7b" formatted="false">اضغط لفتح خدمة الأحد كاملة</string>
+    <string name="ui_open_the_official_page_for_contact_details_and_t_e7480a28" formatted="false">افتح الصفحة الرسمية لمعرفة بيانات الاتصال والبرنامج الحالي للخدمات.</string>
+    <string name="ui_optional_note_22796644" formatted="false">ملاحظة اختيارية</string>
+    <string name="ui_orthodox_church_in_america_2a0d51a3" formatted="false">الكنيسة الأرثوذكسية في أمريكا</string>
+    <string name="ui_orthodox_church_in_jordan_32e4b002" formatted="false">كنيسة أرثوذكسية في الأردن</string>
+    <string name="ui_orthodox_cross_8e65fdfc" formatted="false">الصليب الأرثوذكسي</string>
+    <string name="ui_orthodox_jordan_metropolis_7dbcc96e" formatted="false">مطرانية الروم الأرثوذكس في الأردن</string>
+    <string name="ui_orthodox_text_ce84a657" formatted="false">نص كنسي</string>
+    <string name="ui_orthros_2aa869d2" formatted="false">صلاة السحر</string>
+    <string name="ui_personal_28997b7b" formatted="false">شخصية</string>
+    <string name="ui_personal_reminder_b0bd49be" formatted="false">تذكير شخصي</string>
+    <string name="ui_pin_613a1567" formatted="false">تثبيت</string>
+    <string name="ui_pin_d4bc9c4f" formatted="false">تثبيت</string>
+    <string name="ui_pin_items_reorder_them_and_place_them_in_daily_l_1901ea8a" formatted="false">يمكنك تثبيت النص في الأعلى، نقله للأعلى أو للأسفل، ووضعه في مجموعة يومية أو طقسية أو شخصية.</string>
+    <string name="ui_pinned_413a9c52" formatted="false">مثبتة</string>
+    <string name="ui_pinned_c16bc6c1" formatted="false">مثبت</string>
+    <string name="ui_pinned_fixed_text_daily_variables_change_only_af_c4a09a90" formatted="false">نص ثابت مثبت ببصمة؛ لا تتغير قطعه اليومية إلا بعد التحقق الرسمي</string>
+    <string name="ui_pinned_texts_5baad15c" formatted="false">النصوص المثبتة</string>
+    <string name="ui_prayer_48a8929a" formatted="false">صلاة</string>
+    <string name="ui_prayer_text_swipe_up_or_down_to_read_bd037213" formatted="false">نص الصلاة. اسحب للأعلى أو للأسفل للقراءة.</string>
+    <string name="ui_prayers_3a9327c4" formatted="false">الصلوات</string>
+    <string name="ui_prayers_related_to_this_service_7ef08ed3" formatted="false">صلوات مرتبطة بهذه الخدمة</string>
+    <string name="ui_previous_section_6f025d4d" formatted="false">القسم السابق</string>
+    <string name="ui_priest_said_quietly_ca9b3644" formatted="false">الكاهن — يقولها سراً</string>
+    <string name="ui_private_note_f993ef09" formatted="false">ملاحظة شخصية</string>
+    <string name="ui_prokeimenon_c8263ee7" formatted="false">البروكيمنن</string>
+    <string name="ui_quick_access_c927e8a2" formatted="false">الوصول السريع</string>
+    <string name="ui_quiet_ends_f728171c" formatted="false">نهاية الهدوء </string>
+    <string name="ui_quiet_starts_91bc6653" formatted="false">بدء الهدوء </string>
+    <string name="ui_reader_theme_70f179d4" formatted="false">ثيم القارئ: </string>
+    <string name="ui_reading_0443f4e6" formatted="false">القراءة</string>
+    <string name="ui_reading_6e6a82ce" formatted="false">قراءة</string>
+    <string name="ui_reading_history_0a3be238" formatted="false">آخر قراءة</string>
+    <string name="ui_reading_history_6bdb8e55" formatted="false">آخر ما قرأت</string>
+    <string name="ui_reading_progress_0_30d9316d" formatted="false">تقدم القراءة: 0%</string>
+    <string name="ui_reading_progress_b21e6b19" formatted="false">تقدم القراءة: </string>
+    <string name="ui_recent_searches_45974f02" formatted="false">عمليات البحث الأخيرة</string>
+    <string name="ui_refresh_jordan_readings_now_e178a08f" formatted="false">تحديث قراءات الأردن الآن</string>
+    <string name="ui_refresh_today_s_data_now_98188698" formatted="false">تحديث بيانات اليوم الآن</string>
+    <string name="ui_registered_source_b7f2bf22" formatted="false">المصدر المسجل: </string>
+    <string name="ui_reminder_enabled_f21995e2" formatted="false">تم تفعيل التذكير</string>
+    <string name="ui_reset_7b5a50be" formatted="false">إعادة</string>
+    <string name="ui_reset_reading_settings_34ebb828" formatted="false">إعادة إعدادات القراءة؟</string>
+    <string name="ui_reset_reading_settings_71533aa3" formatted="false">إعادة إعدادات القراءة للوضع الافتراضي</string>
+    <string name="ui_results_89a9233d" formatted="false">عدد النتائج: </string>
+    <string name="ui_retry_update_da94fa97" formatted="false">إعادة محاولة التحديث</string>
+    <string name="ui_return_to_the_previous_screen_adc27814" formatted="false">العودة إلى الشاشة السابقة</string>
+    <string name="ui_return_to_this_month_ea36d48b" formatted="false">العودة إلى هذا الشهر</string>
+    <string name="ui_rights_license_9068c5b7" formatted="false">الحقوق/الترخيص: </string>
+    <string name="ui_sans_ed854c03" formatted="false">بسيط</string>
+    <string name="ui_save_d4087fa0" formatted="false">حفظ</string>
+    <string name="ui_saved_cd7c1a66" formatted="false">محفوظة</string>
+    <string name="ui_scripture_811cf82a" formatted="false">الكتاب المقدس</string>
+    <string name="ui_scripture_source_id_b0a300e5" formatted="false">مرجع النص الكتابي: </string>
+    <string name="ui_search_13f179d6" formatted="false">البحث</string>
+    <string name="ui_search_by_church_or_city_556a72f2" formatted="false">ابحث باسم الكنيسة أو المدينة</string>
+    <string name="ui_search_by_verse_reference_prayer_or_liturgy_74401ea3" formatted="false">ابحث بآية أو مرجع أو صلاة، مثل: يوحنا 3:16</string>
+    <string name="ui_search_f55b3d60" formatted="false">بحث</string>
+    <string name="ui_search_scripture_prayers_and_liturgy_33e12057" formatted="false">حقل البحث في الكتاب المقدس والصلوات والقداس</string>
+    <string name="ui_section_not_found_7c261455" formatted="false">لم يتم العثور على هذا الموضع</string>
+    <string name="ui_selected_5eb77fb2" formatted="false">، محدد</string>
+    <string name="ui_selected_language_1773d456" formatted="false"> — اللغة المحددة</string>
+    <string name="ui_selected_official_source_5cf4ee01" formatted="false">المصدر الرسمي المختار لليوم: </string>
+    <string name="ui_sepia_eea06eb6" formatted="false">ورقي</string>
+    <string name="ui_serif_f8812e5c" formatted="false">كتاب</string>
+    <string name="ui_service_times_may_change_by_season_and_feast_the_7a56811a" formatted="false">المواعيد تتغير حسب الموسم والعيد؛ المصدر الرسمي هو المرجع الحالي.</string>
+    <string name="ui_services_and_liturgy_0e5a1fe9" formatted="false">الخدمات والقداس</string>
+    <string name="ui_services_complete_through_df2f69fc" formatted="false">الخدمات مكتملة حتى: </string>
+    <string name="ui_settings_25169a1d" formatted="false">الإعدادات</string>
+    <string name="ui_seven_day_fasting_table_9f1b0d97" formatted="false">جدول الصيام للأيام السبعة</string>
+    <string name="ui_share_6b178c11" formatted="false">↗ مشاركة</string>
+    <string name="ui_share_text_4596efcf" formatted="false">مشاركة النص</string>
+    <string name="ui_show_gregorian_dates_only_f6e30c65" formatted="false">عرض التاريخ الغريغوري فقط</string>
+    <string name="ui_show_in_language_selector_575c5fa6" formatted="false">إظهارها في محدد اللغة</string>
+    <string name="ui_show_julian_dates_beside_gregorian_12fda2c8" formatted="false">إظهار التاريخ اليولياني بجانب الغريغوري</string>
+    <string name="ui_show_reading_controls_be8aae53" formatted="false">⌄ عرض أدوات القراءة</string>
+    <string name="ui_show_seven_day_details_97f48507" formatted="false">عرض تفاصيل الأيام السبعة</string>
+    <string name="ui_show_source_6b38e880" formatted="false">إظهار الأصل</string>
+    <string name="ui_show_source_text_f6b54117" formatted="false">إظهار النص الأصلي</string>
+    <string name="ui_show_technical_details_97bf206d" formatted="false">عرض التفاصيل التقنية</string>
+    <string name="ui_signed_embedded_copy_17eb1066" formatted="false">نسخة مضمّنة موقّعة</string>
+    <string name="ui_signed_local_copy_aee2c1da" formatted="false">نسخة محلية موقّعة</string>
+    <string name="ui_signed_network_update_b1b4e0f9" formatted="false">تحديث شبكي موقّع</string>
+    <string name="ui_small_compline_c17433a9" formatted="false">صلاة النوم الصغرى</string>
+    <string name="ui_small_entrance_a637021b" formatted="false">الدخول الصغير</string>
+    <string name="ui_source_information_a097085c" formatted="false">معلومات المصدر</string>
+    <string name="ui_source_monitor_d991048b" formatted="false">رصد المصادر: </string>
+    <string name="ui_source_state_is_incomplete_unverified_daily_text_0f17ecef" formatted="false">حالة المصدر غير مكتملة؛ لا تُستخدم قطع يومية غير موثقة</string>
+    <string name="ui_source_text_0183ef55" formatted="false">النص الأصلي</string>
+    <string name="ui_sources_and_references_1a2c2926" formatted="false">المصادر والمراجع</string>
+    <string name="ui_spacing_385760af" formatted="false">التباعد </string>
+    <string name="ui_spacing_6ae53d69" formatted="false">تباعد </string>
+    <string name="ui_speed_331b3d1f" formatted="false">سرعة </string>
+    <string name="ui_stale_readings_are_blocked_because_they_do_not_b_3a3e5947" formatted="false">حُجبت قراءات النسخة القديمة لأنها لا تخص تاريخ اليوم في الأردن. اضغط تحديث؛ لن يعرض التطبيق رسالة أو إنجيلاً قديمين باسم اليوم.</string>
+    <string name="ui_summary_8e163b32" formatted="false">الملخص</string>
+    <string name="ui_sunday_cycle_a83925a1" formatted="false">ترتيب الأحد</string>
+    <string name="ui_system_30211fca" formatted="false">النظام</string>
+    <string name="ui_system_theme_b1e709b2" formatted="false">ثيم النظام</string>
+    <string name="ui_tap_to_collapse_2e1fb869" formatted="false">اضغط للإخفاء</string>
+    <string name="ui_tap_to_expand_27c34a66" formatted="false">اضغط للعرض</string>
+    <string name="ui_text_9b77d3f7" formatted="false">النص</string>
+    <string name="ui_text_index_57a9ffa2" formatted="false">فهرس النص</string>
+    <string name="ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b" formatted="false">سيعود حجم النص والخط والتباعد وثيم القارئ والسطوع والتمرير التلقائي إلى الوضع الافتراضي.</string>
+    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">الفهرس السنوي خفيف، بينما الحزمة الموقعة تحفظ اليوم والأيام السبعة القادمة بكامل الصلوات والقراءات والخدمات.</string>
+    <string name="ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc" formatted="false">يلزم تحديث إصدار التطبيق لقراءة بيانات اليوم الجديدة</string>
+    <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">يُجري التطبيق فحصين موثوقين يوميًا: 01:00 صباحًا لجلب بيانات اليوم، و06:00 صباحًا لإضافة ما تنشره المواقع لاحقًا. كما يفحص التحديث تلقائيًا عند كل فتح للبرنامج، ويعيد المحاولة عند تأخر الخادم.</string>
+    <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">لن يصدر التطبيق إشعارات خلال ساعات الهدوء المحددة.</string>
+    <string name="ui_the_app_will_retry_automatically_you_can_also_re_d2cc490a" formatted="false">سيحاول التطبيق التحديث تلقائيًا. يمكنك أيضًا إعادة المحاولة من الزر أدناه.</string>
+    <string name="ui_the_complete_weekly_package_is_not_available_yet_e438506f" formatted="false">الحزمة الأسبوعية الكاملة غير متوفرة بعد</string>
+    <string name="ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7" formatted="false">تم تحديث خدمات الأيام الثمانية والتحقق من توقيعها</string>
+    <string name="ui_the_last_update_check_completed_successfully_bb37cd88" formatted="false">اكتمل آخر فحص للتحديث بنجاح</string>
+    <string name="ui_the_packaged_source_registry_could_not_be_loaded_fdbc55f4" formatted="false">تعذر تحميل سجل المصادر من حزمة التطبيق.</string>
+    <string name="ui_the_phone_is_not_connected_to_a_network_the_last_55893d04" formatted="false">الهاتف غير متصل بالشبكة الآن؛ تظهر آخر نسخة سليمة</string>
+    <string name="ui_the_reminder_was_not_enabled_because_notificatio_a2a9d4b5" formatted="false">لم يُفعّل التذكير لأن إذن الإشعارات مرفوض</string>
+    <string name="ui_the_requested_text_was_not_found_in_the_app_data_97e2becd" formatted="false">تعذر العثور على النص المطلوب داخل بيانات التطبيق.</string>
+    <string name="ui_the_screen_will_update_automatically_after_downl_a93a7fcf" formatted="false">سيتم تحديث الشاشة تلقائيًا فور اكتمال التنزيل وفحص البيانات.</string>
+    <string name="ui_the_secure_update_manifest_could_not_be_verified_d5b624be" formatted="false">تعذر التحقق من بيان التحديث الآمن؛ ستبقى آخر نسخة موثوقة ظاهرة مع إعادة المحاولة تلقائيًا</string>
+    <string name="ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0" formatted="false">الحزمة الموقعة تحفظ اليوم والأيام السبعة القادمة بكامل الصلوات والقراءات والخدمات؛ اضغط أي يوم لفتحه.</string>
+    <string name="ui_the_source_link_could_not_be_opened_75a90f8a" formatted="false">تعذر فتح رابط المصدر.</string>
+    <string name="ui_the_update_server_could_not_be_contacted_tempora_dc3cce39" formatted="false">تعذر الاتصال بخادم التحديث مؤقتًا؛ تظهر آخر نسخة سليمة</string>
+    <string name="ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4" formatted="false">خادم التحديث متأخر أو غير متاح مؤقتًا؛ ستتم إعادة المحاولة تلقائيًا</string>
+    <string name="ui_the_update_signature_failed_and_was_rejected_the_7105a062" formatted="false">فشل التوقيع الرقمي للتحديث وتم رفضه؛ تظهر آخر نسخة موثوقة</string>
+    <string name="ui_the_weekly_services_are_already_current_2b76496f" formatted="false">خدمات الأسبوع محدثة بالفعل</string>
+    <string name="ui_this_application_is_free_and_is_presented_by_mae_55914117" formatted="false">هذا البرنامج مجاني، ومقدم من معن حنونة للستلايت.
+رقم الهاتف: 00962788272988</string>
+    <string name="ui_this_day_is_complete_inside_the_signed_package_2072d1f2" formatted="false">هذا اليوم موجود كاملًا داخل الحزمة الموقعة.</string>
+    <string name="ui_this_item_exists_in_the_index_but_its_content_is_ea12748d" formatted="false">هذا النص موجود في الفهرس، لكن محتواه فارغ. تم منع فتح صفحة بيضاء.</string>
+    <string name="ui_this_link_could_not_be_opened_on_the_device_9aa42df0" formatted="false">تعذر فتح هذا الرابط على الجهاز.</string>
+    <string name="ui_title_1e29bd87" formatted="false">العنوان</string>
+    <string name="ui_today_7_complete_days_3057eb0c" formatted="false">اليوم + 7 أيام مكتملة</string>
+    <string name="ui_today_and_the_coming_week_are_ready_1a099eed" formatted="false">خدمات اليوم والأسبوع جاهزة</string>
+    <string name="ui_today_and_the_next_seven_days_are_complete_66b3fa86" formatted="false">خدمات اليوم والأيام السبعة القادمة مكتملة</string>
+    <string name="ui_today_s_readings_3cf1dbd5" formatted="false">قراءات اليوم</string>
+    <string name="ui_today_s_readings_db2884fb" formatted="false">قراءات اليوم</string>
+    <string name="ui_today_s_update_is_still_being_published_the_last_d93b9203" formatted="false">تحديث اليوم قيد النشر على الخادم؛ تظهر آخر نسخة سليمة وستتم إعادة المحاولة تلقائيًا</string>
+    <string name="ui_total_abstinence_4bf885f8" formatted="false">الصوم الانقطاعي</string>
+    <string name="ui_trusted_copy_source_4596d692" formatted="false">مصدر النسخة: </string>
+    <string name="ui_trusted_details_this_month_a042797d" formatted="false">تفاصيل موثوقة لهذا الشهر</string>
+    <string name="ui_type_a_word_or_reference_to_search_approved_nati_703cdad7" formatted="false">اكتب كلمة أو مرجعًا للبحث في النصوص الأصلية المعتمدة.</string>
+    <string name="ui_unable_to_open_text_7f8e719c" formatted="false">تعذر فتح النص</string>
+    <string name="ui_unavailable_24f3ca2e" formatted="false">غير متوفر</string>
+    <string name="ui_unknown_13adce42" formatted="false">غير معروف</string>
+    <string name="ui_unpin_8711604f" formatted="false">إلغاء التثبيت</string>
+    <string name="ui_unsorted_5539c6cd" formatted="false">غير مصنفة</string>
+    <string name="ui_upcoming_days_a15c452f" formatted="false">الأيام القادمة</string>
+    <string name="ui_update_and_data_bf22bb6d" formatted="false">التحديث والبيانات</string>
+    <string name="ui_update_diagnostic_code_400000df" formatted="false">رمز تشخيص التحديث: </string>
+    <string name="ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3" formatted="false">تعذر التحديث؛ تظهر آخر نسخة سليمة محفوظة</string>
+    <string name="ui_update_in_progress_7d1054d7" formatted="false">التحديث جارٍ الآن…</string>
+    <string name="ui_update_manifest_revision_985fb3a6" formatted="false">مراجعة بيان التحديث: </string>
+    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">جارٍ تحديث خدمات الأسبوع تلقائيًا…</string>
+    <string name="ui_usable_111b1469" formatted="false">، القابلة للاستخدام: </string>
+    <string name="ui_use_dark_mode_1564a2ea" formatted="false">استخدام الوضع الليلي</string>
+    <string name="ui_use_light_mode_1c895a15" formatted="false">استخدام الوضع الفاتح</string>
+    <string name="ui_verification_https_independent_digital_signature_a5a78dda" formatted="false">التحقق: HTTPS + توقيع رقمي مستقل + مخطط البيانات + سلامة النص الكتابي</string>
+    <string name="ui_verified_native_scripture_from_an_independent_so_a8f7898c" formatted="false">نص كتابي أصلي موثّق من مصدر مستقل، بلا ترجمة أو تشكيل آلي</string>
+    <string name="ui_verified_prokeimenon_unavailable_9ac3fd2f" formatted="false">البروكيمنن غير متوفر من مصدر موثّق</string>
+    <string name="ui_verified_scripture_text_is_unavailable_for_this__1624033a" formatted="false">تعذّر توفير النص الكتابي الموثّق لهذا المقطع. بقيت آخر بيانات سليمة محفوظة.</string>
+    <string name="ui_verified_source_d8f667a7" formatted="false">المصدر الموثق: </string>
+    <string name="ui_verified_text_in_this_language_is_not_available__fc5b9c50" formatted="false">النص الموثق بهذه اللغة غير متوفر بعد — استخدم إظهار الأصل</string>
+    <string name="ui_verified_variable_liturgy_coverage_4ec89c04" formatted="false">اكتمال القطع اليومية المتغيرة للقداس: </string>
+    <string name="ui_vespers_1daa5b5d" formatted="false">صلاة الغروب</string>
+    <string name="ui_view_all_sources_1b4296c4" formatted="false">عرض جميع المصادر</string>
+    <string name="ui_waiting_for_the_weekly_service_update_0c0844a8" formatted="false">بانتظار تحديث خدمات الأسبوع</string>
+    <string name="ui_write_a_private_note_stored_only_on_this_device_f02e467f" formatted="false">اكتب ملاحظة شخصية تحفظ على هذا الجهاز فقط</string>
+    <string name="ui_your_20_most_recently_opened_texts_will_appear_h_d0013f51" formatted="false">سيظهر هنا آخر 20 نصًا فتحته.</string>
+    <string name="ui_fasting_interval_format">من %1$s إلى %2$s</string>
+    <string name="ui_sunday_cycle_detail_format">الأحد %1$d بعد العنصرة — اللحن %2$d — الإيوثينا %3$d</string>
+    <string name="ui_registered_sources_count_format">يعرض التطبيق %1$d مصدرًا مسجلًا مع حالة التحقق والحقوق.</string>
+    <string name="ui_stale_trusted_copy_date_format">تظهر آخر نسخة موثوقة بتاريخ %1$s، ويجري طلب بيانات اليوم تلقائيًا.</string>
+    <string name="ui_rolling_week_ready_through_format">كل الصلوات والقراءات والخدمات جاهزة حتى %1$s</string>
+    <string name="ui_church_directory_count_format">دليل رسمي من مطرانية الأردن. عدد الروابط الحالية: %1$d. افتح صفحة الكنيسة للتأكد من مواعيد القداس الحالية.</string>
+    <string name="ui_begin_your_day_with_prayer_a3c8eb48" formatted="false">ابدأ يومك بالصلاة.</string>
+    <string name="ui_close_the_day_with_prayer_and_stillness_67ab7213" formatted="false">اختم يومك بالصلاة والهدوء.</string>
+    <string name="ui_open_today_s_epistle_and_gospel_980e7457" formatted="false">افتح رسالة وإنجيل اليوم.</string>
+    <string name="ui_optional_prayer_and_daily_reading_reminders_f753da85" formatted="false">تذكيرات اختيارية للصلاة وقراءات اليوم</string>
+    <string name="ui_personal_reminders_ac5720b6" formatted="false">تذكيرات شخصية</string>
+    <string name="ui_take_a_moment_for_prayer_and_stillness_34c3a32d" formatted="false">خذ دقيقة للصلاة والهدوء.</string>
+    <string name="ui_time_for_evening_prayer_81e14848" formatted="false">حان وقت صلاة المساء</string>
+    <string name="ui_time_for_morning_prayer_717b653a" formatted="false">حان وقت صلاة الصباح</string>
+    <string name="ui_today_s_commemoration_af76eeaa" formatted="false">تذكار اليوم</string>
+    <string name="ui_today_s_fasting_aa40c904" formatted="false">صيام اليوم</string>
+    <string name="ui_today_s_readings_5aad1b50" formatted="false">قراءات اليوم</string>
+    <string name="ui_your_personal_reminder_be9aca0d" formatted="false">تذكيرك الشخصي</string>
+    <string name="ui_language_arabic_name" formatted="false">العربية</string>
+    <string name="ui_language_english_name" formatted="false">الإنجليزية</string>
+    <string name="ui_language_greek_name" formatted="false">اليونانية</string>
+</resources>

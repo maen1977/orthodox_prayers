@@ -43,7 +43,8 @@ public abstract class BaseScreen implements AppScreen {
         return view;
     }
 
-    protected String local(String ar, String en, String el) { return data.local(ar, en, el); }
+    protected String local(int resourceId) { return data.local(resourceId); }
+    protected String localFormat(int resourceId, Object... arguments) { return data.localFormat(resourceId, arguments); }
     protected String localized(JSONObject object, String fallback) { return data.localized(object, fallback); }
 
     protected void addFastingGuide(LinearLayout card, JSONObject fasting, boolean includeNotes) {
@@ -51,9 +52,9 @@ public abstract class BaseScreen implements AppScreen {
         JSONObject guidance = fasting.optJSONObject("guidance");
         if (guidance == null) return;
 
-        addGuideLine(card, "✅", localized(guidance.optJSONObject("allowed_summary"), ""), true);
-        addGuideLine(card, "⛔", localized(guidance.optJSONObject("forbidden_summary"), ""), true);
-        addGuideLine(card, "🕒", localized(guidance.optJSONObject("duration"), ""), false);
+        addGuideLine(card, "✓", localized(guidance.optJSONObject("allowed_summary"), ""), true);
+        addGuideLine(card, "✕", localized(guidance.optJSONObject("forbidden_summary"), ""), true);
+        addGuideLine(card, "•", localized(guidance.optJSONObject("duration"), ""), false);
 
         JSONObject abstinence = fasting.optJSONObject("abstinence");
         if (abstinence != null && (abstinence.optBoolean("applies", false) || includeNotes)) {
@@ -61,17 +62,17 @@ public abstract class BaseScreen implements AppScreen {
             String start = abstinence.optString("start_time", "").trim();
             String end = abstinence.optString("end_time", "").trim();
             if (!start.isEmpty() || !end.isEmpty()) {
-                String interval = local("من " + start + " إلى " + end, "From " + start + " to " + end, "Ἀπὸ " + start + " ἕως " + end);
+                String interval = localFormat(com.orthodoxprayers.privateapp.R.string.ui_fasting_interval_format, start, end);
                 abstinenceText = interval + (abstinenceText.isEmpty() ? "" : "\n" + abstinenceText);
             }
-            String label = local("الصوم الانقطاعي", "Total abstinence", "Πλήρης ἀποχή");
+            String label = local(com.orthodoxprayers.privateapp.R.string.ui_total_abstinence_4bf885f8);
             if (!abstinenceText.isEmpty()) addGuideLine(card, "⏳", label + ": " + abstinenceText, false);
         }
 
         if (includeNotes) {
             addGuideLine(card, "ℹ", localized(guidance.optJSONObject("beginner_explanation"), ""), false);
-            addGuideLine(card, "🙏", localized(guidance.optJSONObject("spiritual_note"), ""), false);
-            addGuideLine(card, "⚕", localized(guidance.optJSONObject("health_note"), ""), false);
+            addGuideLine(card, "•", localized(guidance.optJSONObject("spiritual_note"), ""), false);
+            addGuideLine(card, "•", localized(guidance.optJSONObject("health_note"), ""), false);
         }
     }
 
@@ -103,8 +104,8 @@ public abstract class BaseScreen implements AppScreen {
             boolean allowed = item.optBoolean("allowed", false);
             String marker = allowed ? "✓" : "✕";
             String word = allowed
-                    ? local("مسموح", "allowed", "ἐπιτρέπεται")
-                    : local("ممنوع", "forbidden", "ἀπαγορεύεται");
+                    ? local(com.orthodoxprayers.privateapp.R.string.ui_allowed_f3016067)
+                    : local(com.orthodoxprayers.privateapp.R.string.ui_forbidden_8f73bf02);
             String token = item.optString("icon", "•") + " " + label + " " + marker;
             if (visible.length() > 0) visible.append(index % 2 == 0 ? "\n" : "   ");
             visible.append(token);
@@ -114,7 +115,7 @@ public abstract class BaseScreen implements AppScreen {
         if (visible.length() == 0) return "";
 
         TextView legend = ui.text(
-                local("✓ مسموح   ✕ ممنوع", "✓ Allowed   ✕ Forbidden", "✓ Ἐπιτρέπεται   ✕ Ἀπαγορεύεται"),
+                local(com.orthodoxprayers.privateapp.R.string.ui_allowed_forbidden_3e7d8352),
                 10,
                 ui.colors().secondaryText(),
                 true
@@ -130,9 +131,9 @@ public abstract class BaseScreen implements AppScreen {
         LinearLayout card = ui.card();
         card.setClickable(true);
         card.setFocusable(true);
-        String title = localized(service.optJSONObject("title"), local("صلاة", "Prayer", "Προσευχή"));
+        String title = localized(service.optJSONObject("title"), local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a));
         String summary = localized(service.optJSONObject("summary"), "");
-        TextView heading = ui.text(service.optString("icon", "☦") + "  " + title, 18, ui.colors().primaryText(), true);
+        TextView heading = ui.text(title, 18, ui.colors().primaryText(), true);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) heading.setAccessibilityHeading(true);
         card.addView(heading);
         if (!summary.isEmpty()) {

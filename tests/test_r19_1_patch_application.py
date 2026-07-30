@@ -17,7 +17,7 @@ class R191PatchApplicationTests(unittest.TestCase):
         verifier = (ROOT / "scripts/verify_r19_patch.py").read_text(encoding="utf-8")
         self.assertLess(
             gate.index('"scripts/verify_r19_patch.py"'),
-            gate.index('"-m", "unittest"'),
+            gate.index('"-m", "pytest"'),
         )
         self.assertIn("PATCH_R19_PARTIAL_OR_MISPLACED", verifier)
         self.assertIn("repository root", verifier)

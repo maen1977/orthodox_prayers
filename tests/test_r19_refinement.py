@@ -4,6 +4,8 @@ import unittest
 import json
 from pathlib import Path
 
+from scripts.android_ui_resources import source_references_text
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,7 +34,9 @@ class R19RefinementTests(unittest.TestCase):
         self.assertIn("advancedDiagnosticsExpanded", settings)
         self.assertIn("if (preferences.advancedDiagnosticsExpanded())", settings)
         self.assertIn("new TimePicker", settings)
-        self.assertIn('setTitle(local("اختيار الوقت", "Choose time", "Ἐπιλογὴ ὥρας"))', settings)
+        self.assertTrue(source_references_text(settings, "اختيار الوقت", "ar", exact=True))
+        self.assertTrue(source_references_text(settings, "Choose time", "en", exact=True))
+        self.assertTrue(source_references_text(settings, "Ἐπιλογὴ ὥρας", "el", exact=True))
         self.assertNotIn("+ 30) % 1440", settings)
         self.assertIn("resetReaderPreferences", preferences)
 
@@ -40,8 +44,13 @@ class R19RefinementTests(unittest.TestCase):
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
         locale_policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/LocalePolicy.java").read_text(encoding="utf-8")
         self.assertIn("LocalePolicy.formatTimestamp", settings)
-        self.assertIn('local("كتاب", "Serif", "Μὲ πατούρες")', settings)
-        self.assertIn('local("ثابت العرض", "Monospace", "Σταθεροῦ πλάτους")', settings)
+        for language, serif, monospace in (
+            ("ar", "كتاب", "ثابت العرض"),
+            ("en", "Serif", "Monospace"),
+            ("el", "Μὲ πατούρες", "Σταθεροῦ πλάτους"),
+        ):
+            self.assertTrue(source_references_text(settings, serif, language, exact=True))
+            self.assertTrue(source_references_text(settings, monospace, language, exact=True))
         self.assertIn("isolateTechnical", locale_policy)
 
     def test_current_documentation_matches_the_follow_along_product_scope(self):

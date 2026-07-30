@@ -173,6 +173,7 @@ jobs:
           python scripts/validate_service_edition_evidence.py
           python scripts/validate_all_services_completion_round.py --production
           python scripts/validate_religious_completeness.py
+          python scripts/validate_play_store_assets.py --require-screenshots
 
       - name: Set up JDK 17
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0

@@ -23,24 +23,23 @@ public final class ChurchesScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("الكنائس والبث", "Churches and live services", "Ναοὶ καὶ ζωντανὲς μεταδόσεις"), true);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_churches_and_live_services_7171f5ce), true);
         JSONObject directory = data.churchDirectory();
         int count = data.registeredChurches().length();
-        add(page.root, ui.infoBadge(local(
-                "دليل رسمي من مطرانية الأردن. عدد الروابط الحالية: " + count + ". افتح صفحة الكنيسة للتأكد من مواعيد القداس الحالية.",
-                "Official Orthodox Jordan directory. Current links: " + count + ". Open the parish page to confirm current service times.",
-                "Ἐπίσημος κατάλογος Ἰορδανίας. Σύνδεσμοι: " + count + ". Ἐλέγξτε τὸ τρέχον πρόγραμμα στὴν ἐπίσημη σελίδα."
+        add(page.root, ui.infoBadge(localFormat(
+                com.orthodoxprayers.privateapp.R.string.ui_church_directory_count_format,
+                count
         )), 10, 9);
 
         JSONArray resources = mergeResources(data.officialLiveResources(), data.officialServiceLinks());
         if (resources.length() > 0) {
-            page.root.addView(ui.sectionTitle(local("روابط كنسية مباشرة", "Official live resources", "Ἐπίσημοι ζωντανοὶ σύνδεσμοι")));
+            page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_official_live_resources_86f88e7a)));
             for (int i = 0; i < resources.length(); i++) {
                 JSONObject resource = resources.optJSONObject(i);
                 if (resource == null) continue;
                 String title = data.metadataLocalized(
                         resource.optJSONObject("title"),
-                        local("رابط كنسي رسمي", "Official church link", "Ἐπίσημος ἐκκλησιαστικὸς σύνδεσμος")
+                        local(com.orthodoxprayers.privateapp.R.string.ui_official_church_link_2d1a8bdb)
                 );
                 Button open = ui.button("▶  " + title, false);
                 String url = resource.optString("url", "");
@@ -49,10 +48,10 @@ public final class ChurchesScreen extends BaseScreen {
             }
         }
 
-        page.root.addView(ui.sectionTitle(local("دليل الكنائس", "Church directory", "Κατάλογος ναῶν")));
+        page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_church_directory_36e0707d)));
         EditText query = new EditText(host.activity());
         query.setSingleLine(true);
-        query.setHint(local("ابحث باسم الكنيسة أو المدينة", "Search by church or city", "Ἀναζήτηση ναοῦ ἢ πόλης"));
+        query.setHint(local(com.orthodoxprayers.privateapp.R.string.ui_search_by_church_or_city_556a72f2));
         query.setTextColor(ui.colors().primaryText());
         query.setHintTextColor(ui.colors().secondaryText());
         query.setTextSize(16 * preferences.fontScale());
@@ -91,11 +90,7 @@ public final class ChurchesScreen extends BaseScreen {
             if (church == null) continue;
             String name = data.metadataLocalized(
                     church.optJSONObject("name"),
-                    local(
-                            "اسم الرعية الرسمي غير متوفر بالعربية",
-                            "Official parish name unavailable in English",
-                            "Ἡ ἐπίσημη ὀνομασία τῆς ἐνορίας δὲν διατίθεται στὰ ἑλληνικά"
-                    )
+                    local(com.orthodoxprayers.privateapp.R.string.ui_official_parish_name_unavailable_in_english_eea6633c)
             );
             String city = data.metadataLocalized(church.optJSONObject("city"), "");
             String searchable = SearchEngine.normalize(name + " " + city);
@@ -104,7 +99,7 @@ public final class ChurchesScreen extends BaseScreen {
             shown++;
         }
         if (shown == 0) {
-            TextView empty = centered(local("لا توجد كنيسة مطابقة في الدليل الحالي.", "No matching church in the current directory.", "Δὲν βρέθηκε ναός."),
+            TextView empty = centered(local(com.orthodoxprayers.privateapp.R.string.ui_no_matching_church_in_the_current_directory_d42641ca),
                     14, ui.colors().secondaryText(), false);
             add(root, empty, 16, 16);
         }
@@ -112,15 +107,11 @@ public final class ChurchesScreen extends BaseScreen {
 
     private LinearLayout churchCard(JSONObject church, String name, String city) {
         LinearLayout card = ui.card();
-        card.addView(ui.text("⛪  " + name, 17, ui.colors().primaryText(), true));
+        card.addView(ui.text(name, 17, ui.colors().primaryText(), true));
         if (!city.isEmpty()) card.addView(ui.text(city, 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 4, 0, 0));
-        card.addView(ui.text(local(
-                "المواعيد تتغير حسب الموسم والعيد؛ المصدر الرسمي هو المرجع الحالي.",
-                "Service times may change by season and feast; the official page is the current authority.",
-                "Τὸ πρόγραμμα μεταβάλλεται· ἡ ἐπίσημη σελίδα εἶναι ἡ τρέχουσα πηγή."
-        ), 12, ui.colors().secondaryText(), false));
+        card.addView(ui.text(local(com.orthodoxprayers.privateapp.R.string.ui_service_times_may_change_by_season_and_feast_the_7a56811a), 12, ui.colors().secondaryText(), false));
         String url = church.optString("url", "");
-        Button open = ui.smallButton(local("فتح صفحة الكنيسة", "Open parish page", "Ἄνοιγμα σελίδας ναοῦ"), false);
+        Button open = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_open_parish_page_f8727b57), false);
         open.setOnClickListener(v -> openUrl(url));
         card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
         return card;
@@ -131,7 +122,7 @@ public final class ChurchesScreen extends BaseScreen {
             if (url == null || !url.startsWith("https://")) throw new IllegalArgumentException("invalid URL");
             host.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         } catch (Exception error) {
-            Toast.makeText(host.activity(), local("تعذر فتح الرابط الرسمي.", "Could not open the official link.", "Δὲν ἄνοιξε ὁ ἐπίσημος σύνδεσμος."), Toast.LENGTH_SHORT).show();
+            Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_could_not_open_the_official_link_3126ea33), Toast.LENGTH_SHORT).show();
         }
     }
 }

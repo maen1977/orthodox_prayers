@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from android_ui_resources import source_references_text
+
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "canonical/follow_along_liturgy_contract.json"
 PACK_ROOT = ROOT / "app/src/main/assets/data/native"
@@ -103,7 +105,7 @@ def main() -> None:
         errors.append("Android dual-window scheduling is not wired")
     if "DailySnapshotRegressionGuard.firstRegression" not in repository:
         errors.append("same-day non-regression protection is not wired")
-    if "قداس اليوم الكامل" not in home or 'host.navigate("reader", "divine_liturgy")' not in home:
+    if not source_references_text(home, "قداس اليوم الكامل", "ar") or 'host.navigate("reader", "divine_liturgy")' not in home:
         errors.append("the Home screen does not open the full Liturgy directly")
 
     if errors:

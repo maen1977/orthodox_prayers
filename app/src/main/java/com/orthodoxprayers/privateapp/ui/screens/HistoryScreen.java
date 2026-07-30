@@ -16,18 +16,14 @@ public final class HistoryScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("آخر ما قرأت", "Reading history", "Ἱστορικὸ ἀναγνώσεως"), true);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_reading_history_6bdb8e55), true);
         List<String> recent = preferences.recentServices();
         if (recent.isEmpty()) {
-            TextView empty = centered(local(
-                    "سيظهر هنا آخر 20 نصًا فتحته.",
-                    "Your 20 most recently opened texts will appear here.",
-                    "Ἐδῶ θὰ φαίνονται τὰ 20 πρόσφατα κείμενα."
-            ), 16, ui.colors().secondaryText(), false);
+            TextView empty = centered(local(com.orthodoxprayers.privateapp.R.string.ui_your_20_most_recently_opened_texts_will_appear_h_d0013f51), 16, ui.colors().secondaryText(), false);
             add(page.root, empty, 30, 30);
             return page.scroll;
         }
-        Button clear = ui.smallButton(local("مسح السجل", "Clear history", "Διαγραφὴ ἱστορικοῦ"), false);
+        Button clear = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_clear_history_0e69bce2), false);
         clear.setOnClickListener(v -> {
             preferences.clearRecentServices();
             host.navigate("history", null);

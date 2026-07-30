@@ -29,25 +29,25 @@ public final class SearchScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local("البحث", "Search", "Ἀναζήτηση"), true);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_search_13f179d6), true);
         EditText input = new EditText(host.activity());
         input.setSingleLine(true);
         input.setText(preferences.lastSearchQuery());
-        input.setHint(local("ابحث بآية أو مرجع أو صلاة، مثل: يوحنا 3:16", "Search by verse, reference, prayer, or liturgy", "Ἀναζήτηση στίχου, παραπομπῆς ἢ ἀκολουθίας"));
+        input.setHint(local(com.orthodoxprayers.privateapp.R.string.ui_search_by_verse_reference_prayer_or_liturgy_74401ea3));
         input.setTextColor(ui.colors().primaryText());
         input.setHintTextColor(ui.colors().secondaryText());
         input.setTextSize(17 * preferences.fontScale());
         input.setPadding(ui.dp(12), ui.dp(8), ui.dp(12), ui.dp(8));
         input.setBackground(ui.round(ui.colors().card(), com.orthodoxprayers.privateapp.ui.ThemePalette.GOLD, 12));
         ui.applyTextDirection(input, input.getHint().toString());
-        input.setContentDescription(local("حقل البحث في الكتاب المقدس والصلوات والقداس", "Search Scripture, prayers, and liturgy", "Πεδίο ἀναζήτησης Γραφῆς καὶ ἀκολουθιῶν"));
+        input.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_search_scripture_prayers_and_liturgy_33e12057));
         add(page.root, input, 14, 7);
 
         LinearLayout recentQueries = new LinearLayout(host.activity());
         recentQueries.setOrientation(LinearLayout.VERTICAL);
         page.root.addView(recentQueries, new LinearLayout.LayoutParams(-1, -2));
 
-        Button search = ui.button(local("بحث", "Search", "Ἀναζήτηση"), false);
+        Button search = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_search_f55b3d60), false);
         add(page.root, search, 0, 10);
         LinearLayout results = new LinearLayout(host.activity());
         results.setOrientation(LinearLayout.VERTICAL);
@@ -60,25 +60,23 @@ public final class SearchScreen extends BaseScreen {
             hideKeyboard(input);
             results.removeAllViews();
             if (query.isEmpty()) {
-                TextView message = centered(local("اكتب كلمة أو مرجعًا للبحث في النصوص الأصلية المعتمدة.",
-                        "Type a word or reference to search approved native-source text.",
-                        "Γράψτε λέξη ἢ παραπομπή γιὰ ἀναζήτηση στὸ ἐγκεκριμένο πρωτότυπο κείμενο."), 15, ui.colors().secondaryText(), false);
+                TextView message = centered(local(com.orthodoxprayers.privateapp.R.string.ui_type_a_word_or_reference_to_search_approved_nati_703cdad7), 15, ui.colors().secondaryText(), false);
                 add(results, message, 20, 20);
                 return;
             }
             ArrayList<SearchResult> matches = SearchEngine.search(data, query);
             if (matches.isEmpty()) {
-                TextView message = centered(local("لا توجد نتيجة مطابقة.", "No matching result.", "Δεν βρέθηκε αποτέλεσμα."), 16, ui.colors().secondaryText(), false);
+                TextView message = centered(local(com.orthodoxprayers.privateapp.R.string.ui_no_matching_result_65289b38), 16, ui.colors().secondaryText(), false);
                 add(results, message, 20, 20);
                 return;
             }
-            TextView count = centered(local("عدد النتائج: ", "Results: ", "Αποτελέσματα: ") + matches.size(), 13, ui.colors().secondaryText(), true);
+            TextView count = centered(local(com.orthodoxprayers.privateapp.R.string.ui_results_89a9233d) + matches.size(), 13, ui.colors().secondaryText(), true);
             add(results, count, 0, 8);
             for (SearchResult match : matches) add(results, resultCard(match), 2, 8);
         };
         List<String> history = preferences.searchHistory();
         if (!history.isEmpty()) {
-            TextView recentTitle = ui.sectionTitle(local("عمليات البحث الأخيرة", "Recent searches", "Πρόσφατες ἀναζητήσεις"));
+            TextView recentTitle = ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_recent_searches_45974f02));
             recentQueries.addView(recentTitle);
             LinearLayout row = ui.row();
             for (int i = 0; i < Math.min(4, history.size()); i++) {
@@ -93,7 +91,7 @@ public final class SearchScreen extends BaseScreen {
                 row.addView(item, ui.weight(44));
             }
             recentQueries.addView(row);
-            Button clear = ui.smallButton(local("مسح سجل البحث", "Clear search history", "Καθαρισμὸς ἱστορικοῦ"), false);
+            Button clear = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_clear_search_history_abb8a916), false);
             clear.setOnClickListener(v -> {
                 preferences.clearSearchHistory();
                 recentQueries.removeAllViews();
@@ -111,9 +109,9 @@ public final class SearchScreen extends BaseScreen {
         JSONObject service = result.service;
         LinearLayout card = ui.card();
         String title = localized(service.optJSONObject("title"), "");
-        card.addView(ui.text(service.optString("icon", "☦") + "  " + title, 18, ui.colors().primaryText(), true));
+        card.addView(ui.text(title, 18, ui.colors().primaryText(), true));
         if (!result.matchedSection.isEmpty()) {
-            TextView matched = ui.badge(local("المطابقة: ", "Matched in: ", "Βρέθηκε στὸ: ") + result.matchedSection, true);
+            TextView matched = ui.badge(local(com.orthodoxprayers.privateapp.R.string.ui_matched_in_d4d746e2) + result.matchedSection, true);
             card.addView(matched, ui.margins(-1, -2, 0, 5, 0, 5));
         }
         TextView snippet = ui.text(result.snippet, 14, ui.colors().secondaryText(), false);
@@ -121,8 +119,8 @@ public final class SearchScreen extends BaseScreen {
         card.addView(snippet);
         String externalUrl = service.optString("external_url", "").trim();
         Button open = ui.smallButton(externalUrl.isEmpty()
-                ? local("فتح النتيجة", "Open result", "Ἄνοιγμα")
-                : local("فتح الرابط الرسمي", "Open official link", "Ἄνοιγμα ἐπισήμου συνδέσμου"), false);
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_open_result_269ccae8)
+                : local(com.orthodoxprayers.privateapp.R.string.ui_open_official_link_aeec6baa), false);
         open.setOnClickListener(v -> {
             if (externalUrl.isEmpty()) {
                 host.navigate("reader", service.optString("id"));
@@ -131,7 +129,7 @@ public final class SearchScreen extends BaseScreen {
             try {
                 host.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(externalUrl)));
             } catch (Exception error) {
-                Toast.makeText(host.activity(), local("تعذر فتح الرابط الرسمي.", "Could not open the official link.", "Δὲν ἄνοιξε ὁ ἐπίσημος σύνδεσμος."), Toast.LENGTH_SHORT).show();
+                Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_could_not_open_the_official_link_3126ea33), Toast.LENGTH_SHORT).show();
             }
         });
         card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));

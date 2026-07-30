@@ -69,20 +69,12 @@ public final class ReaderScreen extends BaseScreen {
     @Override
     public View createView() {
         service = data.findService(serviceId);
-        if (service == null) return errorView(local(
-                "تعذر العثور على النص المطلوب داخل بيانات التطبيق.",
-                "The requested text was not found in the app data.",
-                "Τὸ ζητούμενο κείμενο δὲν βρέθηκε στὰ δεδομένα."
-        ));
+        if (service == null) return errorView(local(com.orthodoxprayers.privateapp.R.string.ui_the_requested_text_was_not_found_in_the_app_data_97e2becd));
 
         preferences.recordRecentService(serviceId);
         JSONArray segments = service.optJSONArray("segments");
         if (segments == null || segments.length() == 0) {
-            return errorView(local(
-                    "هذا النص موجود في الفهرس، لكن محتواه فارغ. تم منع فتح صفحة بيضاء.",
-                    "This item exists in the index, but its content is empty. A blank reader was blocked.",
-                    "Τὸ στοιχεῖο ὑπάρχει, ἀλλὰ τὸ περιεχόμενο εἶναι κενό."
-            ));
+            return errorView(local(com.orthodoxprayers.privateapp.R.string.ui_this_item_exists_in_the_index_but_its_content_is_ea12748d));
         }
 
         preferences.migrateReaderLayoutState(READER_LAYOUT_VERSION);
@@ -118,11 +110,7 @@ public final class ReaderScreen extends BaseScreen {
         recycler.setClipToPadding(false);
         recycler.setPadding(0, ui.dp(4), 0, ui.dp(20));
         recycler.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
-        recycler.setContentDescription(local(
-                "نص الصلاة. اسحب للأعلى أو للأسفل للقراءة.",
-                "Prayer text. Swipe up or down to read.",
-                "Κείμενο προσευχῆς. Σύρετε πάνω ἢ κάτω."
-        ));
+        recycler.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_prayer_text_swipe_up_or_down_to_read_bd037213));
         recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView rv, int dx, int dy) {
@@ -158,20 +146,12 @@ public final class ReaderScreen extends BaseScreen {
         secondaryActions.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(2));
 
         if (isLiturgy()) {
-            liturgyNavigationToggle = ui.smallButton(local(
-                    "أقسام القداس",
-                    "Liturgy sections",
-                    "Ἐνότητες Λειτουργίας"
-            ), false);
+            liturgyNavigationToggle = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_liturgy_sections_4caca03a), false);
             liturgyNavigationToggle.setOnClickListener(v -> toggleLiturgyNavigation());
             secondaryActions.addView(liturgyNavigationToggle, ui.weight(44));
         }
 
-        provenanceToggle = ui.smallButton(local(
-                "معلومات المصدر",
-                "Source information",
-                "Πληροφορίες πηγῆς"
-        ), false);
+        provenanceToggle = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_source_information_a097085c), false);
         provenanceToggle.setOnClickListener(v -> toggleProvenance());
         secondaryActions.addView(provenanceToggle, ui.weight(44));
         panel.addView(secondaryActions, new LinearLayout.LayoutParams(-1, -2));
@@ -196,14 +176,13 @@ public final class ReaderScreen extends BaseScreen {
         header.setPadding(ui.dp(10), ui.dp(7), ui.dp(10), ui.dp(5));
         header.setBackground(ui.gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
 
-        Button back = ui.smallButton((preferences.isRtl() ? "→ " : "← ") + local("رجوع", "Back", "Πίσω"), false);
+        Button back = ui.smallButton((preferences.isRtl() ? "→ " : "← ") + local(com.orthodoxprayers.privateapp.R.string.ui_back_18fb18e2), false);
         back.setOnClickListener(v -> host.goBack());
         LinearLayout.LayoutParams backParams = new LinearLayout.LayoutParams(ui.dp(92), ui.dp(44));
         backParams.setMargins(ui.dp(3), ui.dp(2), ui.dp(3), ui.dp(2));
         header.addView(back, backParams);
 
-        String title = service.optString("icon", "☦") + "  "
-                + localized(service.optJSONObject("title"), local("النص", "Text", "Κείμενο"));
+        String title = localized(service.optJSONObject("title"), local(com.orthodoxprayers.privateapp.R.string.ui_text_9b77d3f7));
         TextView titleView = ui.text(title, 18, ThemePalette.GOLD, true);
         titleView.setGravity(Gravity.CENTER);
         titleView.setMaxLines(2);
@@ -223,8 +202,8 @@ public final class ReaderScreen extends BaseScreen {
         provenancePanel.setVisibility(show ? View.VISIBLE : View.GONE);
         if (provenanceToggle != null) {
             provenanceToggle.setText(show
-                    ? local("إخفاء معلومات المصدر", "Hide source information", "Κρύψε πληροφορίες")
-                    : local("معلومات المصدر", "Source information", "Πληροφορίες πηγῆς"));
+                    ? local(com.orthodoxprayers.privateapp.R.string.ui_hide_source_information_7690343f)
+                    : local(com.orthodoxprayers.privateapp.R.string.ui_source_information_a097085c));
         }
     }
 
@@ -234,8 +213,8 @@ public final class ReaderScreen extends BaseScreen {
         liturgyNavigationPanel.setVisibility(show ? View.VISIBLE : View.GONE);
         if (liturgyNavigationToggle != null) {
             liturgyNavigationToggle.setText(show
-                    ? local("إخفاء أقسام القداس", "Hide liturgy sections", "Κρύψε ἐνότητες")
-                    : local("أقسام القداس", "Liturgy sections", "Ἐνότητες Λειτουργίας"));
+                    ? local(com.orthodoxprayers.privateapp.R.string.ui_hide_liturgy_sections_10a04266)
+                    : local(com.orthodoxprayers.privateapp.R.string.ui_liturgy_sections_4caca03a));
         }
     }
 
@@ -275,16 +254,8 @@ public final class ReaderScreen extends BaseScreen {
     private void updateControlsHandle() {
         if (controlsHandle == null) return;
         String label = controlsExpanded
-                ? local(
-                        "⌃ إخفاء أدوات القراءة",
-                        "⌃ Hide reading controls",
-                        "⌃ Κρύψε τὰ ἐργαλεῖα ἀναγνώσεως"
-                )
-                : local(
-                        "⌄ عرض أدوات القراءة",
-                        "⌄ Show reading controls",
-                        "⌄ Ἐμφάνισε τὰ ἐργαλεῖα ἀναγνώσεως"
-                );
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_hide_reading_controls_3f083a9c)
+                : local(com.orthodoxprayers.privateapp.R.string.ui_show_reading_controls_be8aae53);
         controlsHandle.setText(label);
         controlsHandle.setContentDescription(label);
     }
@@ -300,7 +271,7 @@ public final class ReaderScreen extends BaseScreen {
 
     private View errorView(String detail) {
         com.orthodoxprayers.privateapp.ui.UiKit.Page page = page(
-                local("تعذر فتح النص", "Unable to open text", "Ἀδυναμία ἀνοίγματος"),
+                local(com.orthodoxprayers.privateapp.R.string.ui_unable_to_open_text_7f8e719c),
                 true
         );
         TextView message = centered(detail, 16, ui.colors().warning(), true);
@@ -314,9 +285,13 @@ public final class ReaderScreen extends BaseScreen {
 
         LinearLayout primary = ui.row();
         primary.setPadding(ui.dp(10), ui.dp(3), ui.dp(10), ui.dp(1));
-        Button favorite = ui.smallButton(preferences.isFavorite(serviceId)
-                ? "★ " + local("محفوظة", "Saved", "Ἀγαπημένο")
-                : "☆ " + local("مفضلة", "Favorite", "Ἀγαπημένο"), preferences.isFavorite(serviceId));
+        Button favorite = ui.smallIconButton(
+                com.orthodoxprayers.privateapp.R.drawable.ic_favorite,
+                preferences.isFavorite(serviceId)
+                        ? local(com.orthodoxprayers.privateapp.R.string.ui_saved_cd7c1a66)
+                        : local(com.orthodoxprayers.privateapp.R.string.ui_favorite_1d799489),
+                preferences.isFavorite(serviceId)
+        );
         favorite.setOnClickListener(v -> {
             saveReaderPosition();
             boolean wasFavorite = preferences.isFavorite(serviceId);
@@ -345,8 +320,8 @@ public final class ReaderScreen extends BaseScreen {
         primary.addView(larger, ui.weight(46));
 
         Button source = ui.smallButton(preferences.showOriginal()
-                ? local("إخفاء الأصل", "Hide source", "Κρύψε")
-                : local("إظهار الأصل", "Show source", "Πρωτότυπο"), preferences.showOriginal());
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_hide_source_b3b18955)
+                : local(com.orthodoxprayers.privateapp.R.string.ui_show_source_6b38e880), preferences.showOriginal());
         source.setOnClickListener(v -> {
             saveReaderPosition();
             preferences.setShowOriginal(!preferences.showOriginal());
@@ -358,8 +333,8 @@ public final class ReaderScreen extends BaseScreen {
         LinearLayout secondary = ui.row();
         secondary.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(2));
         Button pin = ui.smallButton(preferences.isPinned(serviceId)
-                ? local("📌 مثبت", "📌 Pinned", "📌 Καρφιτσωμένο")
-                : local("📍 تثبيت", "📍 Pin", "📍 Καρφίτσωμα"), preferences.isPinned(serviceId));
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_pinned_c16bc6c1)
+                : local(com.orthodoxprayers.privateapp.R.string.ui_pin_613a1567), preferences.isPinned(serviceId));
         pin.setOnClickListener(v -> {
             preferences.togglePinned(serviceId);
             reloadReader();
@@ -370,7 +345,7 @@ public final class ReaderScreen extends BaseScreen {
         autoScrollButton.setOnClickListener(v -> cycleAutoScroll());
         secondary.addView(autoScrollButton, ui.weight(44));
 
-        Button spacing = ui.smallButton(local("تباعد " , "Spacing ", "Διάστιχο ") + String.format(java.util.Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
+        Button spacing = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_spacing_6ae53d69) + String.format(java.util.Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
         spacing.setOnClickListener(v -> {
             float next = preferences.lineSpacingMultiplier() >= 1.55f ? 1.0f : preferences.lineSpacingMultiplier() + 0.15f;
             preferences.setLineSpacingMultiplier(next);
@@ -382,7 +357,8 @@ public final class ReaderScreen extends BaseScreen {
 
         LinearLayout readerTools = ui.row();
         readerTools.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(3));
-        Button brightness = ui.smallButton("☀ " + preferences.readerBrightnessPercent() + "%", false);
+        Button brightness = ui.smallIconButton(com.orthodoxprayers.privateapp.R.drawable.ic_action_brightness,
+                preferences.readerBrightnessPercent() + "%", false);
         brightness.setOnClickListener(v -> cycleBrightness());
         readerTools.addView(brightness, ui.weight(44));
 
@@ -391,17 +367,17 @@ public final class ReaderScreen extends BaseScreen {
         readerTools.addView(theme, ui.weight(44));
 
         Button note = ui.smallButton(preferences.serviceNote(serviceId).isEmpty()
-                ? local("✎ ملاحظة", "✎ Note", "✎ Σημείωση")
-                : local("✎ تعديل الملاحظة", "✎ Edit note", "✎ Ἐπεξεργασία"), false);
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_note_66183bf4)
+                : local(com.orthodoxprayers.privateapp.R.string.ui_edit_note_569b3288), false);
         note.setOnClickListener(v -> showNoteDialog());
         readerTools.addView(note, ui.weight(44));
 
-        Button share = ui.smallButton(local("↗ مشاركة", "↗ Share", "↗ Κοινοποίηση"), false);
+        Button share = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_share_6b178c11), false);
         share.setOnClickListener(v -> shareCurrentSegment());
         readerTools.addView(share, ui.weight(44));
         box.addView(readerTools, new LinearLayout.LayoutParams(-1, -2));
 
-        readerProgress = ui.infoBadge(local("تقدم القراءة: 0%", "Reading progress: 0%", "Πρόοδος: 0%"));
+        readerProgress = ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_0_30d9316d));
         readerProgress.setGravity(Gravity.CENTER);
         box.addView(readerProgress, ui.margins(-1, -2, 10, 0, 10, 3));
         return box;
@@ -417,9 +393,9 @@ public final class ReaderScreen extends BaseScreen {
 
     private String readerThemeLabel() {
         String theme = preferences.readerTheme();
-        if ("sepia".equals(theme)) return local("ورقي", "Sepia", "Σέπια");
-        if ("night".equals(theme)) return local("ليلي", "Night", "Νύχτα");
-        return local("ثيم النظام", "System theme", "Θέμα συστήματος");
+        if ("sepia".equals(theme)) return local(com.orthodoxprayers.privateapp.R.string.ui_sepia_eea06eb6);
+        if ("night".equals(theme)) return local(com.orthodoxprayers.privateapp.R.string.ui_night_e4245684);
+        return local(com.orthodoxprayers.privateapp.R.string.ui_system_theme_b1e709b2);
     }
 
     private void cycleReaderTheme() {
@@ -434,24 +410,24 @@ public final class ReaderScreen extends BaseScreen {
         input.setText(preferences.serviceNote(serviceId));
         input.setMinLines(4);
         input.setGravity(Gravity.TOP | (preferences.isRtl() ? Gravity.RIGHT : Gravity.LEFT));
-        input.setHint(local("اكتب ملاحظة شخصية تحفظ على هذا الجهاز فقط", "Write a private note stored only on this device", "Γράψε προσωπικὴ σημείωση"));
+        input.setHint(local(com.orthodoxprayers.privateapp.R.string.ui_write_a_private_note_stored_only_on_this_device_f02e467f));
         int padding = ui.dp(18);
         LinearLayout wrapper = new LinearLayout(host.activity());
         wrapper.setPadding(padding, ui.dp(8), padding, 0);
         wrapper.addView(input, new LinearLayout.LayoutParams(-1, -2));
         new AlertDialog.Builder(host.activity())
-                .setTitle(local("ملاحظة شخصية", "Private note", "Προσωπικὴ σημείωση"))
+                .setTitle(local(com.orthodoxprayers.privateapp.R.string.ui_private_note_f993ef09))
                 .setView(wrapper)
-                .setPositiveButton(local("حفظ", "Save", "Ἀποθήκευση"), (dialog, which) -> {
+                .setPositiveButton(local(com.orthodoxprayers.privateapp.R.string.ui_save_d4087fa0), (dialog, which) -> {
                     preferences.setServiceNote(serviceId, input.getText().toString());
-                    Toast.makeText(host.activity(), local("تم حفظ الملاحظة محليًا", "Note saved locally", "Ἡ σημείωση ἀποθηκεύτηκε"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_note_saved_locally_9d17b58c), Toast.LENGTH_SHORT).show();
                     reloadReader();
                 })
-                .setNeutralButton(local("حذف", "Delete", "Διαγραφή"), (dialog, which) -> {
+                .setNeutralButton(local(com.orthodoxprayers.privateapp.R.string.ui_delete_ea349e00), (dialog, which) -> {
                     preferences.setServiceNote(serviceId, "");
                     reloadReader();
                 })
-                .setNegativeButton(local("إلغاء", "Cancel", "Ἀκύρωση"), null)
+                .setNegativeButton(local(com.orthodoxprayers.privateapp.R.string.ui_cancel_1bd7a4b9), null)
                 .show();
     }
 
@@ -460,28 +436,28 @@ public final class ReaderScreen extends BaseScreen {
         int position = Math.max(0, layoutManager.findFirstVisibleItemPosition());
         String excerpt = adapter.shareTextAt(position);
         if (excerpt.isEmpty()) {
-            Toast.makeText(host.activity(), local("لا يوجد مقطع قابل للمشاركة هنا", "No shareable passage is visible", "Δὲν ὑπάρχει κείμενο γιὰ κοινοποίηση"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_no_shareable_passage_is_visible_e0bd031d), Toast.LENGTH_SHORT).show();
             return;
         }
-        String title = localized(service.optJSONObject("title"), local("نص كنسي", "Orthodox text", "Ὀρθόδοξο κείμενο"));
+        String title = localized(service.optJSONObject("title"), local(com.orthodoxprayers.privateapp.R.string.ui_orthodox_text_ce84a657));
         String source = data.selectedOfficialSource();
         String footer = "\n\n— " + title + "\n"
-                + local("تاريخ البيانات: ", "Data date: ", "Ἡμερομηνία: ") + data.dataDate();
+                + local(com.orthodoxprayers.privateapp.R.string.ui_data_date_5059f13c) + data.dataDate();
         if (source != null && !source.trim().isEmpty()) {
-            footer += "\n" + local("المصدر الموثق: ", "Verified source: ", "Ἐπαληθευμένη πηγή: ") + source;
+            footer += "\n" + local(com.orthodoxprayers.privateapp.R.string.ui_verified_source_d8f667a7) + source;
         }
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, title);
         intent.putExtra(Intent.EXTRA_TEXT, excerpt + footer);
-        host.activity().startActivity(Intent.createChooser(intent, local("مشاركة النص", "Share text", "Κοινοποίηση κειμένου")));
+        host.activity().startActivity(Intent.createChooser(intent, local(com.orthodoxprayers.privateapp.R.string.ui_share_text_4596efcf)));
     }
 
     private void updateReaderProgress() {
         if (readerProgress == null || layoutManager == null || adapter == null || adapter.getItemCount() == 0) return;
         int last = layoutManager.findLastVisibleItemPosition();
         int percent = Math.max(0, Math.min(100, Math.round(((last + 1) * 100f) / adapter.getItemCount())));
-        readerProgress.setText(local("تقدم القراءة: ", "Reading progress: ", "Πρόοδος: ") + percent + "%");
+        readerProgress.setText(local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_b21e6b19) + percent + "%");
     }
 
     private int readerBackground() {
@@ -498,8 +474,8 @@ public final class ReaderScreen extends BaseScreen {
 
     private String autoScrollLabel() {
         int speed = preferences.autoScrollSpeed();
-        if (speed <= 0) return local("▶ تمرير تلقائي", "▶ Auto-scroll", "▶ Αὐτόματη κύλιση");
-        return (autoScrollActive ? "⏸ " : "▶ ") + local("سرعة ", "Speed ", "Ταχύτητα ") + speed;
+        if (speed <= 0) return local(com.orthodoxprayers.privateapp.R.string.ui_auto_scroll_43606e75);
+        return (autoScrollActive ? "⏸ " : "▶ ") + local(com.orthodoxprayers.privateapp.R.string.ui_speed_331b3d1f) + speed;
     }
 
     private void cycleAutoScroll() {
@@ -547,40 +523,20 @@ public final class ReaderScreen extends BaseScreen {
                 && "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE".equals(provenance.optString("status"));
         String badge;
         if (dailyVerified) {
-            badge = local(
-                    "قطع اليوم والنصوص الكتابية اجتازت تحقق المصادر والتوقيع",
-                    "Daily propers and Scripture passed source and signature verification",
-                    "Τὰ ἡμερήσια κείμενα ἐπαληθεύθηκαν"
-            );
+            badge = local(com.orthodoxprayers.privateapp.R.string.ui_daily_propers_and_scripture_passed_source_and_si_d42c1070);
         } else if (officialStatic) {
-            badge = local(
-                    "نص عربي كامل مثبت من مصدر مطرانية الأردن الرسمي ومحمي ببصمة",
-                    "Complete Arabic text pinned from an official Orthodox Jordan source and hash-protected",
-                    "Πλήρες ἀραβικὸ κείμενο ἀπὸ ἐπίσημη πηγή"
-            );
+            badge = local(com.orthodoxprayers.privateapp.R.string.ui_complete_arabic_text_pinned_from_an_official_ort_0c91e6fe);
         } else if (pinnedStatic) {
-            badge = local(
-                    "نص ثابت مثبت ببصمة؛ لا تتغير قطعه اليومية إلا بعد التحقق الرسمي",
-                    "Pinned fixed text; daily variables change only after official verification",
-                    "Σταθερὸ κείμενο μὲ ψηφιακὸ ἀποτύπωμα"
-            );
+            badge = local(com.orthodoxprayers.privateapp.R.string.ui_pinned_fixed_text_daily_variables_change_only_af_c4a09a90);
         } else {
-            badge = local(
-                    "حالة المصدر غير مكتملة؛ لا تُستخدم قطع يومية غير موثقة",
-                    "Source state is incomplete; unverified daily text is not inserted",
-                    "Ἡ κατάσταση πηγῆς εἶναι ἐλλιπής"
-            );
+            badge = local(com.orthodoxprayers.privateapp.R.string.ui_source_state_is_incomplete_unverified_daily_text_0f17ecef);
         }
         box.addView(ui.badge(badge, dailyVerified || officialStatic || pinnedStatic),
                 ui.margins(-1, -2, 0, notice.isEmpty() ? 0 : 7, 0, 0));
 
         LocalizedValue title = data.localizedValue(service.optJSONObject("title"), "");
         if (title.translationUnavailable) {
-            box.addView(ui.badge(local(
-                    "النص الموثق بهذه اللغة غير متوفر بعد — استخدم إظهار الأصل",
-                    "Verified text in this language is not available yet — use Show source",
-                    "Τὸ ἐπαληθευμένο κείμενο δὲν εἶναι διαθέσιμο — δεῖξε τὸ πρωτότυπο"
-            ), false), ui.margins(-1, -2, 0, 5, 0, 0));
+            box.addView(ui.badge(local(com.orthodoxprayers.privateapp.R.string.ui_verified_text_in_this_language_is_not_available__fc5b9c50), false), ui.margins(-1, -2, 0, 5, 0, 0));
         }
 
         JSONObject nativeSource = service.optJSONObject("native_source");
@@ -597,22 +553,22 @@ public final class ReaderScreen extends BaseScreen {
         if (sourceUrl.isEmpty() && !sourceId.isEmpty()) sourceUrl = data.sourceUrl(sourceId);
         if (!sourceId.isEmpty()) {
             String sourceName = data.sourceName(sourceId);
-            box.addView(ui.text(local("المصدر المسجل: ", "Registered source: ", "Καταχωρισμένη πηγή: ") + sourceName,
+            box.addView(ui.text(local(com.orthodoxprayers.privateapp.R.string.ui_registered_source_b7f2bf22) + sourceName,
                     13, ui.colors().primaryText(), true), ui.margins(-1, -2, 0, 8, 0, 0));
         }
         if (!sourceUrl.isEmpty()) {
             final String url = sourceUrl;
-            Button openSource = ui.smallButton(local("فتح المصدر الرسمي", "Open official source", "Ἄνοιγμα ἐπίσημης πηγῆς"), false);
+            Button openSource = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_open_official_source_7127e1b7), false);
             openSource.setOnClickListener(v -> {
                 try {
                     host.activity().startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)));
                 } catch (Exception error) {
-                    Toast.makeText(host.activity(), local("تعذر فتح رابط المصدر.", "The source link could not be opened.", "Δὲν ἄνοιξε ὁ σύνδεσμος."), Toast.LENGTH_LONG).show();
+                    Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_the_source_link_could_not_be_opened_75a90f8a), Toast.LENGTH_LONG).show();
                 }
             });
             box.addView(openSource, ui.margins(-1, -2, 0, 8, 0, 0));
         }
-        Button allSources = ui.smallButton(local("جميع المصادر والمراجع", "All sources and references", "Ὅλες οἱ πηγές"), false);
+        Button allSources = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_all_sources_and_references_5cebd827), false);
         allSources.setOnClickListener(v -> host.navigate("sources", null));
         box.addView(allSources, ui.margins(-1, -2, 0, 5, 0, 0));
         return box;
@@ -622,7 +578,7 @@ public final class ReaderScreen extends BaseScreen {
         JSONArray related = service.optJSONArray("related_services");
         if (related == null || related.length() == 0) return null;
         LinearLayout box = ui.card();
-        box.addView(ui.text(local("صلوات مرتبطة بهذه الخدمة", "Prayers related to this service", "Σχετικὲς προσευχές"),
+        box.addView(ui.text(local(com.orthodoxprayers.privateapp.R.string.ui_prayers_related_to_this_service_7ef08ed3),
                 13, ui.colors().primaryText(), true));
         for (int i = 0; i < related.length(); i++) {
             JSONObject item = related.optJSONObject(i);
@@ -643,32 +599,32 @@ public final class ReaderScreen extends BaseScreen {
         box.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(4));
 
         LinearLayout jumps = ui.row();
-        addJump(jumps, local("إنجيل السَحَر", "Matins Gospel", "Ἑωθινὸν Εὐαγγέλιον"),
+        addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_matins_gospel_f0474804),
                 adapter.findPosition("إنجيل السَحَر", "MATINS GOSPEL", "ΕΩΘΙΝΟΝ ΕΥΑΓΓΕΛΙΟΝ"));
-        addJump(jumps, local("البروكيمنن", "Prokeimenon", "Προκείμενον"),
+        addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_prokeimenon_c8263ee7),
                 adapter.findPosition("البروكيمنن", "Prokeimenon", "Προκείμενον"));
-        addJump(jumps, local("الرسالة", "Epistle", "Ἀπόστολος"),
+        addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_epistle_a17bc087),
                 adapter.findPosition("الرسالة", "Epistle", "Ἀπόστολος"));
-        addJump(jumps, local("الإنجيل", "Gospel", "Εὐαγγέλιον"),
+        addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_gospel_b7b033e7),
                 adapter.findPosition("الإنجيل", "Gospel", "Εὐαγγέλιον"));
         box.addView(jumps);
 
         LinearLayout milestones = ui.row();
-        addJump(milestones, local("الدخول الصغير", "Small Entrance", "Μικρὰ Εἴσοδος"),
+        addJump(milestones, local(com.orthodoxprayers.privateapp.R.string.ui_small_entrance_a637021b),
                 adapter.findPosition("الدخول الصغير", "THE ENTRANCE", "ΜΙΚΡΑ ΕΙΣΟΔΟΣ"));
-        addJump(milestones, local("الدورة الكبرى", "Great Entrance", "Μεγάλη Εἴσοδος"),
+        addJump(milestones, local(com.orthodoxprayers.privateapp.R.string.ui_great_entrance_663a8293),
                 adapter.findPosition("الدورة الكبرى", "THE GREAT ENTRANCE", "ΜΕΓΑΛΗ ΕΙΣΟΔΟΣ"));
-        addJump(milestones, local("المناولة", "Communion", "Θεία Μετάληψις"),
+        addJump(milestones, local(com.orthodoxprayers.privateapp.R.string.ui_communion_1cf76e7a),
                 adapter.findPosition("المناولة", "HOLY COMMUNION", "ΘΕΙΑ ΜΕΤΑΛΗΨΙΣ"));
-        addJump(milestones, local("الختام", "Dismissal", "Ἀπόλυσις"),
+        addJump(milestones, local(com.orthodoxprayers.privateapp.R.string.ui_dismissal_715bd095),
                 adapter.findPosition("الختام والصرف", "THE DISMISSAL", "ΑΠΟΛΥΣΙΣ"));
         box.addView(milestones);
 
         LinearLayout sectionNav = ui.row();
-        Button previous = ui.smallButton(local("القسم السابق", "Previous section", "Προηγούμενη ἐνότητα"), false);
+        Button previous = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_previous_section_6f025d4d), false);
         previous.setOnClickListener(v -> moveSection(false));
         sectionNav.addView(previous, ui.weight(44));
-        Button next = ui.smallButton(local("القسم التالي", "Next section", "Ἑπόμενη ἐνότητα"), false);
+        Button next = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_next_section_3ecb1f00), false);
         next.setOnClickListener(v -> moveSection(true));
         sectionNav.addView(next, ui.weight(44));
         box.addView(sectionNav);
@@ -708,11 +664,7 @@ public final class ReaderScreen extends BaseScreen {
 
     private void scrollTo(int position) {
         if (position < 0 || recycler == null || layoutManager == null) {
-            Toast.makeText(host.activity(), local(
-                    "لم يتم العثور على هذا الموضع",
-                    "Section not found",
-                    "Ἡ ἐνότητα δὲν βρέθηκε"
-            ), Toast.LENGTH_SHORT).show();
+            Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_section_not_found_7c261455), Toast.LENGTH_SHORT).show();
             return;
         }
         performSectionJump(position);

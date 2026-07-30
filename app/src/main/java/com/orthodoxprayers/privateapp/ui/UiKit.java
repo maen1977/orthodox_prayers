@@ -2,6 +2,7 @@ package com.orthodoxprayers.privateapp.ui;
 
 import android.app.Activity;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.view.Gravity;
@@ -53,14 +54,14 @@ public final class UiKit {
         box.setPadding(dp(16), dp(14), dp(16), dp(16));
         box.setBackground(gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
         if (showBack) {
-            Button back = smallButton((preferences.isRtl() ? "→ " : "← ") + local("رجوع", "Back", "Πίσω"), false);
-            back.setContentDescription(local("العودة إلى الشاشة السابقة", "Return to the previous screen", "Επιστροφή"));
+            Button back = smallButton((preferences.isRtl() ? "→ " : "← ") + local(com.orthodoxprayers.privateapp.R.string.ui_back_18fb18e2), false);
+            back.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_return_to_the_previous_screen_adc27814));
             back.setOnClickListener(v -> backAction.run());
             box.addView(back, margins(-1, -2, 0, 0, 0, 8));
         }
         TextView cross = text("☦", 34, ThemePalette.GOLD, true);
         cross.setGravity(Gravity.CENTER);
-        cross.setContentDescription(local("الصليب الأرثوذكسي", "Orthodox cross", "Ὀρθόδοξος σταυρός"));
+        cross.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_orthodox_cross_8e65fdfc));
         box.addView(cross);
         TextView heading = text(title, 24, ThemePalette.GOLD, true);
         heading.setGravity(Gravity.CENTER);
@@ -104,6 +105,35 @@ public final class UiKit {
     public Button smallButton(String label, boolean active) {
         Button button = button(label, active);
         button.setTextSize(13 * preferences.fontScale());
+        return button;
+    }
+
+    public Button smallIconButton(int iconResource, String label, boolean active) {
+        Button button = smallButton(label, active);
+        Drawable icon = activity.getDrawable(iconResource);
+        if (icon != null) {
+            icon = icon.mutate();
+            icon.setTint(active ? android.graphics.Color.WHITE : palette.accentText());
+            int size = dp(18);
+            icon.setBounds(0, 0, size, size);
+            button.setCompoundDrawablesRelative(icon, null, null, null);
+            button.setCompoundDrawablePadding(dp(7));
+        }
+        return button;
+    }
+
+    public Button iconButton(int iconResource, String label, boolean active) {
+        Button button = button(label, active);
+        Drawable icon = activity.getDrawable(iconResource);
+        if (icon != null) {
+            icon = icon.mutate();
+            icon.setTint(active ? android.graphics.Color.WHITE : palette.accentText());
+            button.setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null);
+            button.setCompoundDrawablePadding(dp(7));
+        }
+        button.setPadding(dp(8), dp(9), dp(8), dp(9));
+        button.setMinHeight(dp(76));
+        button.setMinimumHeight(dp(76));
         return button;
     }
 
@@ -184,11 +214,12 @@ public final class UiKit {
 
     public int dp(int value) { return (int) (value * activity.getResources().getDisplayMetrics().density + 0.5f); }
 
-    public String local(String ar, String en, String el) {
-        String language = preferences.effectiveLanguage();
-        if ("en".equals(language)) return en;
-        if ("el".equals(language)) return el;
-        return ar;
+    public String local(int resourceId) {
+        return LocalizedResources.get(activity, preferences.effectiveLanguage(), resourceId);
+    }
+
+    public String localFormat(int resourceId, Object... arguments) {
+        return LocalizedResources.format(activity, preferences.effectiveLanguage(), resourceId, arguments);
     }
 
     public void applyTextDirection(TextView view, String value) {
