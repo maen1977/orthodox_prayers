@@ -526,6 +526,10 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("SHA256SUMS.txt", build)
         self.assertIn("Import latest signed published data for debug APK", build)
         self.assertIn("origin/verified-data", build)
+        self.assertEqual(
+            2,
+            build.count('python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"'),
+        )
         self.assertIn('python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest', build)
         self.assertGreaterEqual(
             build.count('python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"'),

@@ -48,6 +48,7 @@ def main() -> None:
             "scripts/run_quality_gate.py --strict-native-lanes",
             "Import latest signed published data for debug APK",
             "origin/verified-data",
+            'python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"',
             'python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest',
             "wrapper-validation@",
             "name: Android unit tests",
@@ -89,6 +90,9 @@ def main() -> None:
     published_data_migration = 'python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"'
     if build.count(published_data_migration) < 2:
         fail("Build workflow must migrate legacy verified-data aliases in both debug and release imports")
+    verified_contract = 'python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"'
+    if build.count(verified_contract) < 2:
+        fail("Build workflow must preflight the nine-day verified-data contract before both imports")
     first_normalizer = build.index(normalizer)
     first_gate = build.index(debug_gate)
     second_normalizer = build.index(normalizer, first_normalizer + 1)
