@@ -25,6 +25,7 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "scripts/validate_play_store_assets.py"],
         [sys.executable, "scripts/validate_ui_localizations.py"],
         [sys.executable, "scripts/validate_android_resources.py"],
+        [sys.executable, "scripts/validate_runtime_asset_budget.py"],
         [sys.executable, "scripts/validate_static_prayer_sources.py"],
         [sys.executable, "scripts/validate_native_language_packs.py"],
         [sys.executable, "scripts/validate_follow_along_liturgy.py"],

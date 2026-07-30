@@ -34,17 +34,20 @@ def coverage(data: dict[str, Any]) -> dict[str, Any]:
         present = [key for key in required if nonempty_localized(replacements.get(key))]
         missing = [key for key in required if key not in present]
         percent = 100 if not required else round(len(present) * 100 / len(required))
+        applicable = bool(required)
         services.append({
             "service_id": service_id,
+            "variable_coverage_applicable": applicable,
             "required_variable_count": len(required),
             "verified_variable_count": len(present),
             "coverage_percent": percent,
             "missing_variables": missing,
-            "complete": bool(required) and not missing,
+            "status": "complete" if applicable and not missing else ("incomplete" if applicable else "not_applicable"),
+            "complete": not missing if applicable else None,
         })
     return {
         "schema_version": 1,
-        "claim_policy": "complete only when every required variable has verified native-language text",
+        "claim_policy": "complete only when every required variable has verified native-language text; services without daily variables are not_applicable",
         "services": services,
     }
 

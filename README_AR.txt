@@ -1,12 +1,10 @@
-إصلاح Rolling Week Update
-=========================
-1) فك ضغط هذا الملف مباشرة داخل جذر مستودع orthodox_prayers.
-2) وافق على استبدال الملف scripts/update.py.
-3) ارفع التغيير إلى فرع main.
-4) أعد تشغيل Workflow: Rolling Week Update بالتاريخ 2026-07-30.
+إصلاح Build 5.0.21 — ملف واحد فقط
 
-التغيير:
-استبدال علامة التحقق القديمة "المصادر والمراجع"
-بعلامة البنية الحالية data.registeredSources().
+المشكلة:
+كان Workflow يشغّل python -m pytest، لكن requirements-dev.txt لا يحتوي pytest.
 
-لا يعيد هذا الإصلاح النص العربي الثابت إلى Java، ويحافظ على فصل اللغات.
+التطبيق:
+انسخ requirements-dev.txt إلى جذر مستودع orthodox_prayers على فرع main واستبدل الملف الموجود.
+ثم شغّل Actions > Build من جديد.
+
+لا حاجة لتشغيل Rolling Week Update، ولا لتغيير رقم الإصدار.
