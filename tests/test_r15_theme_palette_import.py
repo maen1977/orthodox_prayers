@@ -19,6 +19,11 @@ class R15ThemePaletteImportTests(unittest.TestCase):
         self.assertIn("PATCH_R15_OK", verifier)
         self.assertIn("R15_THEME_PALETTE_IMPORT", verifier)
 
+    def test_current_pipeline_verifies_r32_home_contract_not_retired_palette_marker(self):
+        update = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
+        self.assertIn('str(home_path.relative_to(ROOT)): "R32_OWNER_UI_REFINEMENT"', update)
+        self.assertNotIn('str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT"', update)
+
 
 if __name__ == "__main__":
     unittest.main()

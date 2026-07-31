@@ -1,0 +1,16 @@
+Orthodox Prayers 5.0.23 R32 pipeline hotfix
+Date: 2026-08-01
+
+Fix:
+- scripts/update.py now verifies R32_OWNER_UI_REFINEMENT in HomeScreen.java.
+- Removed the stale runtime dependency on the retired R15_THEME_PALETTE_IMPORT marker.
+- Added a regression test.
+- Updated the Arabic compatibility note.
+
+Validation:
+- 387 passed, 14 subtests passed
+- PATCH_R18_OK version=5.0.23 level=R18.4 refinement=R20
+- PIPELINE_PATCH_OK level=R18.4
+
+Packaging:
+- ZIP contents are rootless. Extract directly into the repository root and overwrite files.
