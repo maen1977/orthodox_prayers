@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build a fail-closed rolling package containing nine complete days starting today.
+"""Build a fail-closed moving package of complete liturgical days.
 
 The current daily payload remains the package root for backwards compatibility.
-Eight independently generated and validated future payloads are stored under
-``weekly_days``.  Language-lane generation then strips the package to one native
-language before signing, so Android downloads one compact package per language.
+Future payloads stay under ``weekly_days`` for wire compatibility, while schema v2
+allows a configurable 9-42 day horizon. The publication workflow rebuilds the
+window every day so new days and weeks enter automatically.
 """
 from __future__ import annotations
 
@@ -18,11 +18,12 @@ import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+from rolling_window_contract import build_metadata, resolve_day_count
 from validate_reader_services import compose_overlay, validate_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 CALENDAR = ROOT / "data/calendar/today.json"
-CACHE_DIR = ROOT / "build/rolling-week/days"
+CACHE_DIR = ROOT / "build/rolling-window/days"
 REQUIRED_LANGUAGES = ("ar", "en", "el")
 NATIVE_LIBRARY_PATHS = {
     language: ROOT / f"app/src/main/assets/data/native/library_{language}.json"
@@ -205,12 +206,15 @@ def generate_future_day(day: date, offline: bool) -> dict:
     date_iso = day.isoformat()
     env = os.environ.copy()
     env["ORTHODOX_DATE"] = date_iso
-    source_mode = ["--offline"] if offline else []
 
-    run("scripts/collect_source_health.py", "--date", date_iso, *source_mode, env=env)
-    run("scripts/build_church_directory.py", "--date", date_iso, *source_mode, env=env)
-    run("scripts/build_public_source_registry.py", env=env)
-    run("scripts/validate_public_source_registry.py", env=env)
+    # External source health and the church directory describe the publication
+    # run, not a future civil date. update.py collects them exactly once for the
+    # anchor day. Reusing that verified snapshot for every member avoids 20-41
+    # repeated network sweeps and keeps a 21-day GitHub Actions run comfortably
+    # inside its timeout while preserving identical provenance on the package.
+    # The ``offline`` parameter remains part of the cache/build API for backward
+    # compatibility; future day composition itself is deterministic and local.
+    _ = offline
     run("scripts/update_liturgical_data.py", env=env)
     run("scripts/attach_source_intelligence.py", "data/calendar/today.json", f"data/calendar/{date_iso}.json", env=env)
     integrity = run("scripts/orthodox_integrity.py", "--apply", env=env, check=False)
@@ -245,12 +249,14 @@ def generate_future_day(day: date, offline: bool) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--start-date", required=True)
-    parser.add_argument("--days", type=int, default=9)
+    parser.add_argument("--days", type=int, default=None)
     parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
 
-    if args.days != 9:
-        raise SystemExit("rolling window must contain exactly nine consecutive days starting today")
+    try:
+        day_count = resolve_day_count(args.days)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
     start = date.fromisoformat(args.start_date)
     if not CALENDAR.is_file():
         raise SystemExit("current validated daily payload is missing")
@@ -289,7 +295,7 @@ def main() -> None:
     fingerprint = generator_fingerprint()
     future_days: list[dict] = []
     try:
-        for offset in range(1, args.days):
+        for offset in range(1, day_count):
             day = start + timedelta(days=offset)
             payload = load_cached_day(day, fingerprint)
             if payload is None:
@@ -300,20 +306,11 @@ def main() -> None:
                 print(f"ROLLING_WEEK_DAY_REUSED date={day.isoformat()}", flush=True)
             future_days.append(payload)
 
-        end = start + timedelta(days=args.days - 1)
-        anchor["rolling_week"] = {
-            "schema_version": 1,
-            "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
-            "start_date": start.isoformat(),
-            "end_date": end.isoformat(),
-            "day_count": args.days,
-            "timezone": "Asia/Amman",
-            "status": "COMPLETE",
-            "fail_closed": True,
-            "language_lanes_required": list(REQUIRED_LANGUAGES),
-            "required_service_ids": list(REQUIRED_SERVICES),
-            "generated_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
-        }
+        end = start + timedelta(days=day_count - 1)
+        generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+        anchor["rolling_week"] = build_metadata(start, day_count, generated_at)
+        anchor["rolling_week"]["language_lanes_required"] = list(REQUIRED_LANGUAGES)
+        anchor["rolling_week"]["required_service_ids"] = list(REQUIRED_SERVICES)
         anchor["weekly_days"] = future_days
 
         output = json.dumps(anchor, ensure_ascii=False, indent=2) + "\n"
@@ -329,7 +326,7 @@ def main() -> None:
         dated_temp.replace(dated_anchor)
         print(
             f"ROLLING_WEEK_BUILT start={start.isoformat()} end={end.isoformat()} "
-            f"days={args.days} bytes={len(output.encode('utf-8'))}"
+            f"days={day_count} bytes={len(output.encode('utf-8'))}"
         )
     except BaseException:
         restore_calendar_inputs()

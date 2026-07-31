@@ -2,10 +2,13 @@
   "schema_version": 1,
   "status": "ACTIVE_FAIL_CLOSED",
   "rolling_window": {
-    "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
-    "day_count": 9,
+    "policy": "ROLLING_FUTURE_WINDOW",
+    "schema_version": 2,
+    "default_day_count": 21,
+    "minimum_day_count": 9,
+    "maximum_day_count": 42,
     "start": "today_in_Asia/Amman",
-    "end_offset_days": 8
+    "end_offset_days": "day_count_minus_one"
   },
   "definition_of_complete": {
     "scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",

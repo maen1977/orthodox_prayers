@@ -152,24 +152,28 @@ def test_ui_exposes_type_form_reason_and_complete_open_action():
 def test_full_service_contract_is_fail_closed_for_every_published_language():
     contract = json.loads((ROOT / "canonical/full_liturgy_service_contract.json").read_text(encoding="utf-8"))
     complete = contract["definition_of_complete"]
-    assert contract["rolling_window"]["day_count"] == 9
+    assert contract["rolling_window"]["default_day_count"] == 21
+    assert contract["rolling_window"]["minimum_day_count"] == 9
+    assert contract["rolling_window"]["maximum_day_count"] == 42
     assert complete["partial_text_allowed"] is False
     assert complete["cross_language_fallback_allowed"] is False
     assert complete["wrong_rite_fallback_allowed"] is False
     assert set(contract["blocked_until_complete_native_import"]) == {"basil", "presanctified", "james"}
 
 
-def test_production_release_gate_uses_nine_days_not_annual_preload():
+def test_production_release_gate_uses_moving_horizon_not_annual_preload():
     source = (ROOT / "scripts/validate_release_readiness.py").read_text(encoding="utf-8")
-    assert "NINE_CONSECUTIVE_DAYS_STARTING_TODAY" in source
-    assert "exactly 8 future days" in source
+    assert "metadata_errors" in source
+    assert "ROLLING_FUTURE_WINDOW" in (ROOT / "scripts/rolling_window_contract.py").read_text(encoding="utf-8")
     assert "validate_full_liturgy_services.py" in source
     assert "wrong-rite substitution is forbidden" in source.lower()
     assert "liturgy_annual_coverage" not in source
     assert "annual_variable_parts" not in source
     phase8 = json.loads((ROOT / "canonical/liturgy_phase8_completion_contract.json").read_text(encoding="utf-8"))
     rolling = phase8["required_release_gates"]["rolling_liturgical_window"]
-    assert rolling["day_count"] == 9
+    assert rolling["default_day_count"] == 21
+    assert rolling["minimum_day_count"] == 9
+    assert rolling["maximum_day_count"] == 42
     assert rolling["annual_preload_required"] is False
 
 

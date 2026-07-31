@@ -102,12 +102,15 @@
     "reason": "The exact combined order is year- and Typikon-dependent; do not infer it from ordinary single-feast rules."
   },
   "rolling_window": {
-    "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
-    "day_count": 9,
-    "future_day_count": 8,
+    "policy": "ROLLING_FUTURE_WINDOW",
+    "schema_version": 2,
+    "default_day_count": 21,
+    "minimum_day_count": 9,
+    "maximum_day_count": 42,
     "timezone": "Asia/Amman",
     "annual_preload_required": false,
-    "fail_closed": true
+    "fail_closed": true,
+    "refresh_policy": "DAILY_REBUILD_SLIDING_HORIZON"
   },
   "service_forms": {
     "morning_divine_liturgy": "Morning Divine Liturgy",

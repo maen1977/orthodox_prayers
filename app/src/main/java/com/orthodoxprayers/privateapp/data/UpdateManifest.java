@@ -3,6 +3,7 @@ package com.orthodoxprayers.privateapp.data;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -57,6 +58,9 @@ public final class UpdateManifest {
         int minimumVersion = manifest.optInt("minimum_app_version_code", 0);
         if (minimumVersion < 1) throw new IllegalStateException("manifest_minimum_version_invalid");
 
+        JSONObject coverage = manifest.optJSONObject("coverage");
+        if (coverage != null) validateCoverage(coverage, expectedDate);
+
         JSONObject selected = null;
         JSONObject languages = manifest.optJSONObject("languages");
         String normalizedLanguage = normalizeLanguage(language);
@@ -76,7 +80,7 @@ public final class UpdateManifest {
             throw new IllegalStateException("manifest_hash_invalid");
         }
         int size = selected.optInt("size_bytes", 0);
-        if (size < 1 || size > 6_000_000) {
+        if (size < 1 || size > 12_000_000) {
             throw new IllegalStateException("manifest_size_invalid");
         }
         return new Selection(
@@ -87,6 +91,37 @@ public final class UpdateManifest {
                 minimumVersion,
                 size
         );
+    }
+
+    private static void validateCoverage(JSONObject coverage, String expectedDate) {
+        int schema = coverage.optInt("schema_version", 1);
+        int dayCount = coverage.optInt("day_count", 0);
+        String policy = coverage.optString("policy", "");
+        boolean supported = (schema == 1
+                && dayCount == 9
+                && "NINE_CONSECUTIVE_DAYS_STARTING_TODAY".equals(policy))
+                || (schema == 2
+                && dayCount >= 9
+                && dayCount <= 42
+                && "ROLLING_FUTURE_WINDOW".equals(policy));
+        if (!supported) throw new IllegalStateException("manifest_coverage_unsupported");
+        String start = coverage.optString("start_date", "");
+        if (!safe(expectedDate).equals(start)) {
+            throw new IllegalStateException("manifest_coverage_start_mismatch");
+        }
+        try {
+            String expectedEnd = LocalDate.parse(start).plusDays(dayCount - 1L).toString();
+            if (!expectedEnd.equals(coverage.optString("end_date", ""))) {
+                throw new IllegalStateException("manifest_coverage_end_mismatch");
+            }
+        } catch (IllegalStateException error) {
+            throw error;
+        } catch (Exception error) {
+            throw new IllegalStateException("manifest_coverage_date_invalid");
+        }
+        if (!"COMPLETE".equals(coverage.optString("status", ""))) {
+            throw new IllegalStateException("manifest_coverage_incomplete");
+        }
     }
 
     private static String resolve(String manifestUrl, String path) {

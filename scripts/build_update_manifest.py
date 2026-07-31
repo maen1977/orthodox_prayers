@@ -82,15 +82,24 @@ def main() -> None:
             raise SystemExit(f"invalid language lane metadata: {language}")
         rolling = payload.get("rolling_week")
         if rolling is not None:
+            members = payload.get("weekly_days")
+            schema = rolling.get("schema_version") if isinstance(rolling, dict) else None
+            policy = rolling.get("policy") if isinstance(rolling, dict) else None
+            count = int(rolling.get("day_count") or 0) if isinstance(rolling, dict) else 0
+            supported = (
+                schema == 1 and policy == "NINE_CONSECUTIVE_DAYS_STARTING_TODAY" and count == 9
+            ) or (
+                schema == 2 and policy == "ROLLING_FUTURE_WINDOW" and 9 <= count <= 42
+            )
             if (
-                not isinstance(rolling, dict)
-                or rolling.get("schema_version") != 1
+                not supported
                 or rolling.get("start_date") != args.date
-                or rolling.get("day_count") != 9
                 or rolling.get("status") != "COMPLETE"
-                or len(payload.get("weekly_days") or []) != 8
+                or rolling.get("fail_closed") is not True
+                or not isinstance(members, list)
+                or len(members) != count - 1
             ):
-                raise SystemExit(f"invalid rolling-week lane metadata: {language}")
+                raise SystemExit(f"invalid rolling-window lane metadata: {language}")
         entry = file_entry(dated)
         if isinstance(rolling, dict):
             entry["coverage_start_date"] = rolling["start_date"]
@@ -124,7 +133,8 @@ def main() -> None:
     }
     if isinstance(rolling, dict):
         manifest["coverage"] = {
-            "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
+            "policy": rolling["policy"],
+            "schema_version": rolling["schema_version"],
             "start_date": rolling["start_date"],
             "end_date": rolling["end_date"],
             "day_count": rolling["day_count"],

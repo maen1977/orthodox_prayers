@@ -11,9 +11,10 @@
   "distribution_status": "REDISTRIBUTABLE",
   "retrieved_at": "2026-07-16T00:00:00+03:00",
   "imported_at": "2026-07-16T15:10:15.637477+00:00",
-  "verse_count": 230,
+  "verse_count": 275,
   "books": [
     "1CO",
+    "2CO",
     "JHN",
     "MAT",
     "ROM"
@@ -22,11 +23,14 @@
   "automatic_diacritization_used": false,
   "display_text_policy": "PRESERVE_SOURCE_UNICODE_CODEPOINTS_EXACTLY",
   "source_snapshot_sha256": "53feb24694bdd43fab1077bfcefd8571da43e20b84e289393ef9b0c54ce34202",
-  "content_sha256": "8ed83a1bff59dc180cea94e949b117adf9725947d25fc7151c23b37c3507648e",
-  "rolling_week_start": "2026-07-28",
-  "rolling_week_required_verse_count": 208,
-  "rolling_week_slice_prepared_at": "2026-07-28T08:34:25.758715+00:00",
+  "content_sha256": "b40866a0ddd8dbfd6cba26a69ca0287d6a7158364ca6f348ec91e36f6fa9f2d0",
   "retrieval_mirror": "https://github.com/midvash/bible-data",
   "retrieval_mirror_commit": "1965127de5c3c103af3fdbc9288c1abec5f39994",
-  "retrieval_mirror_license_metadata": "versions/en/web/metadata.json"
+  "retrieval_mirror_license_metadata": "versions/en/web/metadata.json",
+  "rolling_window_start": "2026-07-30",
+  "rolling_window_end": "2026-08-07",
+  "rolling_window_day_count": 9,
+  "rolling_window_reference_count": 19,
+  "rolling_window_required_verse_count": 165,
+  "rolling_window_slice_prepared_at": "2026-07-30T20:04:48.746607+00:00"
 }

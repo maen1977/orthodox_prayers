@@ -51,29 +51,36 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --force origin verified-data
           VERIFIED_DIR="$RUNNER_TEMP/verified-data-debug"
-          git worktree add --force --detach "$VERIFIED_DIR" origin/verified-data
-          # verified-data from releases before R18.2 may still contain obsolete
-          # top-level calendar aliases. Remove them only in this detached import
-          # worktree before strict verification; the Update workflow will delete
-          # them permanently from the published branch on its next successful run.
-          python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"
-          PUBLISHED_DATE="$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["date_iso"])' "$VERIFIED_DIR/data/calendar/today.json")"
-          python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR" --expected-date "$PUBLISHED_DATE"
-          rsync -a --delete "$VERIFIED_DIR/data/" data/
-          rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
-          # Published data may contain snapshots of static service libraries from an
-          # older release. Runtime data is imported from verified-data, but structural
-          # service metadata must always come from the checked-out application source.
-          git restore --source=HEAD --worktree -- \
-            data/services/library.json \
-            data/services/native \
-            app/src/main/assets/data/library.json \
-            app/src/main/assets/data/native
-          python -m pytest -q tests/test_native_service_category_alignment.py
-          python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-legacy-multilingual-lanes
-          git worktree remove --force "$VERIFIED_DIR"
+          if git fetch --force origin verified-data; then
+            git worktree add --force --detach "$VERIFIED_DIR" origin/verified-data
+            trap 'git worktree remove --force "$VERIFIED_DIR" >/dev/null 2>&1 || true' EXIT
+            # verified-data from releases before R18.2 may still contain obsolete
+            # top-level calendar aliases. Remove them only in this detached import
+            # worktree before strict verification; the Update workflow will delete
+            # them permanently from the published branch on its next successful run.
+            python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"
+            PUBLISHED_DATE="$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["date_iso"])' "$VERIFIED_DIR/data/calendar/today.json")"
+            python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR" --expected-date "$PUBLISHED_DATE"
+            rsync -a --delete "$VERIFIED_DIR/data/" data/
+            rsync -a --delete "$VERIFIED_DIR/app/src/main/assets/data/" app/src/main/assets/data/
+            # Published data may contain snapshots of static service libraries from an
+            # older release. Runtime data is imported from verified-data, but structural
+            # service metadata must always come from the checked-out application source.
+            git restore --source=HEAD --worktree -- \
+              data/services/library.json \
+              data/services/native \
+              app/src/main/assets/data/library.json \
+              app/src/main/assets/data/native
+            python -m pytest -q tests/test_native_service_category_alignment.py
+            python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-legacy-multilingual-lanes
+            git worktree remove --force "$VERIFIED_DIR"
+            trap - EXIT
+          else
+            echo "::warning::verified-data does not exist yet; building debug with the signed embedded bootstrap. Run Update once to create the moving publication branch."
+            python scripts/verify_data_signature.py
+            python scripts/validate_embedded_app_data.py
+          fi
 
       - name: Set up JDK 17
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0

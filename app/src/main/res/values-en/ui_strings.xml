@@ -268,7 +268,7 @@
     <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">The app will not notify during the selected quiet hours.</string>
     <string name="ui_the_app_will_retry_automatically_you_can_also_re_d2cc490a" formatted="false">The app will retry automatically. You can also retry below.</string>
     <string name="ui_the_complete_weekly_package_is_not_available_yet_e438506f" formatted="false">The complete weekly package is not available yet</string>
-    <string name="ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7" formatted="false">The eight-day service package was updated and verified</string>
+    <string name="ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7" formatted="false">The rolling service window was updated and verified</string>
     <string name="ui_the_last_update_check_completed_successfully_bb37cd88" formatted="false">The last update check completed successfully</string>
     <string name="ui_the_packaged_source_registry_could_not_be_loaded_fdbc55f4" formatted="false">The packaged source registry could not be loaded.</string>
     <string name="ui_the_phone_is_not_connected_to_a_network_the_last_55893d04" formatted="false">The phone is not connected to a network; the last valid copy is shown</string>
@@ -281,7 +281,7 @@
     <string name="ui_the_update_server_could_not_be_contacted_tempora_dc3cce39" formatted="false">The update server could not be contacted temporarily; the last valid copy is shown</string>
     <string name="ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4" formatted="false">The update server is delayed or temporarily unavailable; the app will retry automatically</string>
     <string name="ui_the_update_signature_failed_and_was_rejected_the_7105a062" formatted="false">The update signature failed and was rejected; the last trusted copy is shown</string>
-    <string name="ui_the_weekly_services_are_already_current_2b76496f" formatted="false">The weekly services are already current</string>
+    <string name="ui_the_weekly_services_are_already_current_2b76496f" formatted="false">The coming days and weeks are already current</string>
     <string name="ui_this_application_is_free_and_is_presented_by_mae_55914117" formatted="false">This application is free and is presented by Maen Hanouna Satellite.
 Phone: 00962788272988</string>
     <string name="ui_this_day_is_complete_inside_the_signed_package_2072d1f2" formatted="false">This day is complete inside the signed package.</string>
@@ -289,7 +289,7 @@ Phone: 00962788272988</string>
     <string name="ui_this_link_could_not_be_opened_on_the_device_9aa42df0" formatted="false">This link could not be opened on the device.</string>
     <string name="ui_title_1e29bd87" formatted="false">Title</string>
     <string name="ui_today_7_complete_days_3057eb0c" formatted="false">Today + 8 complete future days</string>
-    <string name="ui_today_and_the_coming_week_are_ready_1a099eed" formatted="false">Today and the coming week are ready</string>
+    <string name="ui_today_and_the_coming_week_are_ready_1a099eed" formatted="false">Today and the coming weeks are ready</string>
     <string name="ui_today_and_the_next_seven_days_are_complete_66b3fa86" formatted="false">Nine consecutive days starting today are complete</string>
     <string name="ui_today_s_readings_3cf1dbd5" formatted="false">Today\'s Readings</string>
     <string name="ui_today_s_readings_db2884fb" formatted="false">Today’s readings</string>
@@ -309,7 +309,7 @@ Phone: 00962788272988</string>
     <string name="ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3" formatted="false">Update failed; the last valid saved copy is shown</string>
     <string name="ui_update_in_progress_7d1054d7" formatted="false">Update in progress…</string>
     <string name="ui_update_manifest_revision_985fb3a6" formatted="false">Update manifest revision: </string>
-    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Updating the week’s services automatically…</string>
+    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Updating the coming days and weeks automatically…</string>
     <string name="ui_usable_111b1469" formatted="false">, usable: </string>
     <string name="ui_use_dark_mode_1564a2ea" formatted="false">Use dark mode</string>
     <string name="ui_use_light_mode_1c895a15" formatted="false">Use light mode</string>
@@ -322,7 +322,7 @@ Phone: 00962788272988</string>
     <string name="ui_verified_variable_liturgy_coverage_4ec89c04" formatted="false">Verified variable Liturgy coverage: </string>
     <string name="ui_vespers_1daa5b5d" formatted="false">Vespers</string>
     <string name="ui_view_all_sources_1b4296c4" formatted="false">View all sources</string>
-    <string name="ui_waiting_for_the_weekly_service_update_0c0844a8" formatted="false">Waiting for the weekly service update</string>
+    <string name="ui_waiting_for_the_weekly_service_update_0c0844a8" formatted="false">Waiting for the rolling service update</string>
     <string name="ui_write_a_private_note_stored_only_on_this_device_f02e467f" formatted="false">Write a private note stored only on this device</string>
     <string name="ui_your_20_most_recently_opened_texts_will_appear_h_d0013f51" formatted="false">Your 20 most recently opened texts will appear here.</string>
     <string name="ui_fasting_interval_format">From %1$s to %2$s</string>

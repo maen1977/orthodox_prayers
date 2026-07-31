@@ -25,26 +25,32 @@ class RollingWeekUpdateTests(unittest.TestCase):
     def setUpClass(cls):
         cls.update = load_updater()
 
-    def test_contract_is_today_plus_eight_future_days(self):
+    def test_contract_is_configurable_moving_horizon(self):
         rules = json.loads((ROOT / "canonical/liturgy_service_rules.json").read_text(encoding="utf-8"))
         rolling = rules["rolling_window"]
-        self.assertEqual("NINE_CONSECUTIVE_DAYS_STARTING_TODAY", rolling["policy"])
-        self.assertEqual(9, rolling["day_count"])
-        self.assertEqual(8, rolling["future_day_count"])
+        self.assertEqual("ROLLING_FUTURE_WINDOW", rolling["policy"])
+        self.assertEqual(21, rolling["default_day_count"])
+        self.assertEqual(9, rolling["minimum_day_count"])
+        self.assertEqual(42, rolling["maximum_day_count"])
         self.assertFalse(rolling["annual_preload_required"])
         self.assertTrue(rolling["fail_closed"])
 
         update_source = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
         builder_source = (ROOT / "scripts/build_rolling_week.py").read_text(encoding="utf-8")
-        self.assertIn('"--days",\n        "9"', update_source)
-        self.assertIn('default=9', builder_source)
-        self.assertIn('NINE_CONSECUTIVE_DAYS_STARTING_TODAY', builder_source)
+        self.assertIn("--window-days", update_source)
+        self.assertIn("resolve_day_count", builder_source)
+        self.assertIn("build_metadata", builder_source)
+        # Source discovery is a package-level observation. Running it once per
+        # future date would make a 21-42 day window slow and needlessly fragile.
+        future_function = builder_source.split("def generate_future_day", 1)[1].split("def main", 1)[0]
+        self.assertNotIn("collect_source_health.py", future_function)
+        self.assertNotIn("build_church_directory.py", future_function)
 
-    def test_generated_payload_contains_today_plus_eight_consecutive_days(self):
+    def test_generated_payload_contains_default_moving_horizon(self):
         payload = self.update.build_day(date(2026, 7, 28))
         self.assertEqual(10, payload["schema_version"])
-        self.assertEqual(8, len(payload["upcoming"]))
-        expected = [date(2026, 7, 28) + timedelta(days=offset) for offset in range(9)]
+        self.assertEqual(20, len(payload["upcoming"]))
+        expected = [date(2026, 7, 28) + timedelta(days=offset) for offset in range(21)]
         actual = [date.fromisoformat(payload["date_iso"])] + [
             date.fromisoformat(item["date"]) for item in payload["upcoming"]
         ]

@@ -38,7 +38,9 @@ public final class DataRepository {
     public interface RefreshCallback { void onComplete(RefreshResult result, String message); }
 
     private static final String TAG = "OrthodoxData";
-    private static final int MAX_JSON_BYTES = 6_000_000;
+    private static final int MAX_JSON_BYTES = 12_000_000;
+    private static final int MIN_ROLLING_WINDOW_DAYS = 9;
+    private static final int MAX_ROLLING_WINDOW_DAYS = 42;
     private static final int MAX_MANIFEST_BYTES = 64_000;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_DOWNLOAD_ATTEMPTS = 2;
@@ -132,7 +134,7 @@ public final class DataRepository {
         return complete != null ? complete : calendarByDate.get(normalized);
     }
 
-    /** The active signed package contains nine consecutive complete days starting today. */
+    /** The active signed package contains a moving horizon of complete consecutive days. */
     public JSONArray rollingWeekDays() {
         JSONArray result = new JSONArray();
         for (JSONObject day : rollingWeekByDate.values()) result.put(day);
@@ -143,11 +145,25 @@ public final class DataRepository {
 
     public boolean hasCompleteRollingWeek() {
         JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
-        return metadata != null
-                && metadata.optInt("schema_version", 0) == 1
-                && metadata.optInt("day_count", 0) == 9
-                && "COMPLETE".equals(metadata.optString("status", ""))
-                && rollingWeekByDate.size() == 9;
+        if (metadata == null || !isSupportedRollingWindowMetadata(metadata)) return false;
+        int dayCount = metadata.optInt("day_count", 0);
+        return "COMPLETE".equals(metadata.optString("status", ""))
+                && metadata.optBoolean("fail_closed", false)
+                && rollingWeekByDate.size() == dayCount;
+    }
+
+    private static boolean isSupportedRollingWindowMetadata(JSONObject metadata) {
+        int schema = metadata.optInt("schema_version", 0);
+        int dayCount = metadata.optInt("day_count", 0);
+        String policy = metadata.optString("policy", "");
+        if (schema == 1) {
+            return dayCount == 9
+                    && "NINE_CONSECUTIVE_DAYS_STARTING_TODAY".equals(policy);
+        }
+        return schema == 2
+                && dayCount >= MIN_ROLLING_WINDOW_DAYS
+                && dayCount <= MAX_ROLLING_WINDOW_DAYS
+                && "ROLLING_FUTURE_WINDOW".equals(policy);
     }
 
     public String rollingWeekStartDate() {
@@ -960,27 +976,27 @@ public final class DataRepository {
     private String validateRollingWeekPackage(JSONObject packagePayload) {
         JSONObject metadata = packagePayload.optJSONObject("rolling_week");
         if (metadata == null) return null; // Backwards-compatible signed daily snapshot.
-        if (metadata.optInt("schema_version", 0) != 1) return "rolling_week_schema_unsupported";
-        if (!"NINE_CONSECUTIVE_DAYS_STARTING_TODAY".equals(metadata.optString("policy", ""))) return "rolling_week_policy_invalid";
-        if (!"COMPLETE".equals(metadata.optString("status", "")) || !metadata.optBoolean("fail_closed", false)) return "rolling_week_incomplete";
-        if (metadata.optInt("day_count", 0) != 9) return "rolling_week_day_count_invalid";
+        if (!isSupportedRollingWindowMetadata(metadata)) return "rolling_week_schema_or_policy_unsupported";
+        if (!"COMPLETE".equals(metadata.optString("status", ""))
+                || !metadata.optBoolean("fail_closed", false)) return "rolling_week_incomplete";
+        int dayCount = metadata.optInt("day_count", 0);
         String startValue = metadata.optString("start_date", "");
         String endValue = metadata.optString("end_date", "");
         if (!startValue.equals(packagePayload.optString("date_iso", ""))) return "rolling_week_start_mismatch";
         LocalDate start;
         try {
             start = LocalDate.parse(startValue);
-            if (!start.plusDays(8).toString().equals(endValue)) return "rolling_week_end_mismatch";
+            if (!start.plusDays(dayCount - 1L).toString().equals(endValue)) return "rolling_week_end_mismatch";
         } catch (Exception error) {
             return "rolling_week_date_invalid";
         }
         JSONArray future = packagePayload.optJSONArray("weekly_days");
-        if (future == null || future.length() != 8) return "rolling_week_members_missing";
+        if (future == null || future.length() != dayCount - 1) return "rolling_week_members_missing";
         String anchorLiturgyError = validateAppointedLiturgy(packagePayload);
         if (anchorLiturgyError != null) {
             return "rolling_week_" + startValue + "_" + anchorLiturgyError;
         }
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < dayCount - 1; i++) {
             JSONObject day = future.optJSONObject(i);
             if (day == null) return "rolling_week_member_invalid:" + i;
             String expected = start.plusDays(i + 1L).toString();

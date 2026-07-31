@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "ACTIVE_PHASE8_FINALIZATION_PIPELINE_FAIL_CLOSED_NO_INTERPRETATIONS",
-  "purpose": "Complete the native appointed service editions, prove the current nine-day rolling window, official signing, and Android build evidence without annual preloading or commentary.",
+  "purpose": "Complete the native appointed service editions, prove the configurable moving liturgical window, official signing, and Android build evidence without annual preloading or commentary.",
   "languages": [
     "ar",
     "en",
@@ -29,11 +29,14 @@
       "current_status": "NOT_PROVEN"
     },
     "rolling_liturgical_window": {
-      "policy": "NINE_CONSECUTIVE_DAYS_STARTING_TODAY",
-      "day_count": 9,
+      "policy": "ROLLING_FUTURE_WINDOW",
+      "schema_version": 2,
+      "default_day_count": 21,
+      "minimum_day_count": 9,
+      "maximum_day_count": 42,
       "all_days_complete_required": true,
       "annual_preload_required": false,
-      "current_status": "AWAITING_NEW_SIGNED_NINE_DAY_PACKAGE"
+      "current_status": "AWAITING_NEW_SIGNED_ROLLING_WINDOW_PACKAGE"
     }
   },
   "review_packet": {

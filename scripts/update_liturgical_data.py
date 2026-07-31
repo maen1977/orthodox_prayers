@@ -23,6 +23,8 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from rolling_window_contract import resolve_day_count
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 CALENDAR_DIR = DATA_DIR / "calendar"
@@ -2260,12 +2262,12 @@ def build_day(day: date) -> dict:
     info = day_info(day)
     readings = discovery_readings(day, info)
 
-    # Generate the next eight civil days every run. Together with today this is a nine-day window. Each compact card carries
+    # Generate compact cards for the same configurable moving horizon used by publication. Each card carries
     # its own fasting profile and reading references, so the app never reuses
     # yesterday's Sunday or fasting information.
     upcoming: list[dict] = []
     upcoming_full_readings: dict[str, list[dict]] = {}
-    for i in range(1, 9):
+    for i in range(1, resolve_day_count()):
         d = day + timedelta(days=i)
         inf = day_info(d)
         future_readings = discovery_readings(d, inf)

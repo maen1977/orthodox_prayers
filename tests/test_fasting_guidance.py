@@ -59,7 +59,7 @@ class FastingGuidanceTests(unittest.TestCase):
             "schema_version": 10,
             "fasting_guidance_version": 1,
             "fasting": profile,
-            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(8)],
+            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(20)],
             "next_sunday": {"fasting": copy.deepcopy(profile)},
         }
         errors = self.validator.validate(data)
@@ -78,7 +78,7 @@ class FastingGuidanceTests(unittest.TestCase):
             "schema_version": 10,
             "fasting_guidance_version": 1,
             "fasting": profile,
-            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(8)],
+            "upcoming": [{"fasting": copy.deepcopy(profile)} for _ in range(20)],
             "next_sunday": {"fasting": copy.deepcopy(profile)},
         }
         self.assertEqual([], self.validator.validate(data))
@@ -114,7 +114,7 @@ class FastingGuidanceTests(unittest.TestCase):
                 self.update.os.environ["ORTHODOX_DISABLE_DISCOVERY_NETWORK"] = old
         self.assertEqual(1, payload["fasting_guidance_version"])
         self.assertEqual([], self.validator.validate(payload))
-        self.assertEqual(8, len(payload["upcoming"]))
+        self.assertEqual(20, len(payload["upcoming"]))
         for item in payload["upcoming"]:
             self.assertIn("guidance", item["fasting"])
             self.assertIn("abstinence", item["fasting"])

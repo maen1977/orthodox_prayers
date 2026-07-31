@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from rolling_window_contract import resolve_day_count
+
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PATH = ROOT / "data/calendar/today.json"
 LANGUAGES = ("ar", "en", "el")
@@ -105,7 +107,8 @@ def validate(data: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     validate_profile(data.get("fasting"), "fasting", errors)
     upcoming = data.get("upcoming")
-    expected_future_days = 8 if int(data.get("schema_version") or 0) >= 10 else 7
+    rolling = data.get("rolling_week") if isinstance(data.get("rolling_week"), dict) else None
+    expected_future_days = (int(rolling.get("day_count") or 0) - 1) if rolling else (resolve_day_count() - 1 if int(data.get("schema_version") or 0) >= 10 else 7)
     if not isinstance(upcoming, list) or len(upcoming) != expected_future_days:
         errors.append(f"upcoming: exactly {expected_future_days} future days required")
     else:

@@ -546,14 +546,16 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("environment: production-data-signing", update)
         self.assertIn("scripts/update.py", update)
         self.assertIn("--unsigned", update)
-        self.assertIn("Generate and validate today without signing key", update)
+        self.assertIn("Prepare exact native Scripture horizon", update)
+        self.assertIn("Generate and validate moving horizon without signing key", update)
+        self.assertIn("--window-days", update)
         self.assertIn("Validate unsigned language lanes independently", update)
         self.assertIn("Prepare publication worktree before restoring key", update)
         self.assertIn("Remove private key before commit or network publication", update)
         self.assertNotRegex(update, r"scripts/update\.py[^\n]*--private-key")
         self.assertNotRegex(update, r"scripts/update_language_lane\.py[^\n]*--private-key")
         ordered = [
-            update.index("Generate and validate today without signing key"),
+            update.index("Generate and validate moving horizon without signing key"),
             update.index("Validate unsigned language lanes independently"),
             update.index("Prepare publication worktree before restoring key"),
             update.index("Restore and match the one signing key"),

@@ -9,6 +9,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from rolling_window_contract import resolve_day_count
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -83,6 +85,12 @@ def remove_stale_daily_signatures(date_iso: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", required=True)
+    parser.add_argument(
+        "--window-days",
+        type=int,
+        default=None,
+        help="Signed moving-horizon length (9-42 days; defaults to ORTHODOX_ROLLING_WINDOW_DAYS or 21).",
+    )
     signing = parser.add_mutually_exclusive_group(required=True)
     signing.add_argument("--private-key", type=Path)
     signing.add_argument(
@@ -91,6 +99,10 @@ def main() -> None:
         help="Generate and validate only; remove stale signatures and sign in a later protected step.",
     )
     args = parser.parse_args()
+    try:
+        window_days = resolve_day_count(args.window_days)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
     verify_pipeline_patch()
     os.environ["ORTHODOX_DATE"] = args.date
     live_sources = os.getenv("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "").strip() == "1"
@@ -134,8 +146,8 @@ def main() -> None:
         "--require-complete-liturgy",
     )
 
-    # Publish one fail-closed rolling package: the fully validated current day
-    # plus eight independently generated, fully validated future days. The
+    # Publish one fail-closed moving package: the fully validated current day
+    # plus a configurable horizon of independently generated future days. The
     # language-lane step later strips this package to Arabic, English, or Greek
     # before signing, so Android downloads only the active native-language lane.
     run(
@@ -143,7 +155,7 @@ def main() -> None:
         "--start-date",
         args.date,
         "--days",
-        "9",
+        str(window_days),
         *source_mode,
     )
     run(
@@ -195,7 +207,7 @@ def main() -> None:
 
     if args.unsigned:
         remove_stale_daily_signatures(args.date)
-        print(f"DAILY_UPDATE_UNSIGNED_OK date={args.date} mode={mode}")
+        print(f"DAILY_UPDATE_UNSIGNED_OK date={args.date} mode={mode} window_days={window_days}")
         return
 
     # A protected signer must never approve a structurally complete package whose
@@ -209,7 +221,7 @@ def main() -> None:
     )
     run("scripts/sign_daily_data.py", "--private-key", str(args.private_key))
     run("scripts/verify_data_signature.py")
-    print(f"DAILY_UPDATE_OK date={args.date} mode={mode}")
+    print(f"DAILY_UPDATE_OK date={args.date} mode={mode} window_days={window_days}")
 
 
 if __name__ == "__main__":

@@ -268,7 +268,7 @@
     <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">لن يصدر التطبيق إشعارات خلال ساعات الهدوء المحددة.</string>
     <string name="ui_the_app_will_retry_automatically_you_can_also_re_d2cc490a" formatted="false">سيحاول التطبيق التحديث تلقائيًا. يمكنك أيضًا إعادة المحاولة من الزر أدناه.</string>
     <string name="ui_the_complete_weekly_package_is_not_available_yet_e438506f" formatted="false">الحزمة الأسبوعية الكاملة غير متوفرة بعد</string>
-    <string name="ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7" formatted="false">تم تحديث خدمات الأيام الثمانية والتحقق من توقيعها</string>
+    <string name="ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7" formatted="false">تم تحديث نافذة الأيام والأسابيع المقبلة والتحقق من توقيعها</string>
     <string name="ui_the_last_update_check_completed_successfully_bb37cd88" formatted="false">اكتمل آخر فحص للتحديث بنجاح</string>
     <string name="ui_the_packaged_source_registry_could_not_be_loaded_fdbc55f4" formatted="false">تعذر تحميل سجل المصادر من حزمة التطبيق.</string>
     <string name="ui_the_phone_is_not_connected_to_a_network_the_last_55893d04" formatted="false">الهاتف غير متصل بالشبكة الآن؛ تظهر آخر نسخة سليمة</string>
@@ -281,7 +281,7 @@
     <string name="ui_the_update_server_could_not_be_contacted_tempora_dc3cce39" formatted="false">تعذر الاتصال بخادم التحديث مؤقتًا؛ تظهر آخر نسخة سليمة</string>
     <string name="ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4" formatted="false">خادم التحديث متأخر أو غير متاح مؤقتًا؛ ستتم إعادة المحاولة تلقائيًا</string>
     <string name="ui_the_update_signature_failed_and_was_rejected_the_7105a062" formatted="false">فشل التوقيع الرقمي للتحديث وتم رفضه؛ تظهر آخر نسخة موثوقة</string>
-    <string name="ui_the_weekly_services_are_already_current_2b76496f" formatted="false">خدمات الأسبوع محدثة بالفعل</string>
+    <string name="ui_the_weekly_services_are_already_current_2b76496f" formatted="false">خدمات الأيام والأسابيع المقبلة محدثة بالفعل</string>
     <string name="ui_this_application_is_free_and_is_presented_by_mae_55914117" formatted="false">هذا البرنامج مجاني، ومقدم من معن حنونة للستلايت.
 رقم الهاتف: 00962788272988</string>
     <string name="ui_this_day_is_complete_inside_the_signed_package_2072d1f2" formatted="false">هذا اليوم موجود كاملًا داخل الحزمة الموقعة.</string>
@@ -289,7 +289,7 @@
     <string name="ui_this_link_could_not_be_opened_on_the_device_9aa42df0" formatted="false">تعذر فتح هذا الرابط على الجهاز.</string>
     <string name="ui_title_1e29bd87" formatted="false">العنوان</string>
     <string name="ui_today_7_complete_days_3057eb0c" formatted="false">اليوم + 8 أيام قادمة مكتملة</string>
-    <string name="ui_today_and_the_coming_week_are_ready_1a099eed" formatted="false">خدمات اليوم والأسبوع جاهزة</string>
+    <string name="ui_today_and_the_coming_week_are_ready_1a099eed" formatted="false">خدمات اليوم والأسابيع المقبلة جاهزة</string>
     <string name="ui_today_and_the_next_seven_days_are_complete_66b3fa86" formatted="false">خدمات تسعة أيام متتالية تبدأ من اليوم مكتملة</string>
     <string name="ui_today_s_readings_3cf1dbd5" formatted="false">قراءات اليوم</string>
     <string name="ui_today_s_readings_db2884fb" formatted="false">قراءات اليوم</string>
@@ -309,7 +309,7 @@
     <string name="ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3" formatted="false">تعذر التحديث؛ تظهر آخر نسخة سليمة محفوظة</string>
     <string name="ui_update_in_progress_7d1054d7" formatted="false">التحديث جارٍ الآن…</string>
     <string name="ui_update_manifest_revision_985fb3a6" formatted="false">مراجعة بيان التحديث: </string>
-    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">جارٍ تحديث خدمات الأسبوع تلقائيًا…</string>
+    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">جارٍ تحديث نافذة الأيام والأسابيع المقبلة تلقائيًا…</string>
     <string name="ui_usable_111b1469" formatted="false">، القابلة للاستخدام: </string>
     <string name="ui_use_dark_mode_1564a2ea" formatted="false">استخدام الوضع الليلي</string>
     <string name="ui_use_light_mode_1c895a15" formatted="false">استخدام الوضع الفاتح</string>
@@ -322,7 +322,7 @@
     <string name="ui_verified_variable_liturgy_coverage_4ec89c04" formatted="false">اكتمال القطع اليومية المتغيرة للقداس: </string>
     <string name="ui_vespers_1daa5b5d" formatted="false">صلاة الغروب</string>
     <string name="ui_view_all_sources_1b4296c4" formatted="false">عرض جميع المصادر</string>
-    <string name="ui_waiting_for_the_weekly_service_update_0c0844a8" formatted="false">بانتظار تحديث خدمات الأسبوع</string>
+    <string name="ui_waiting_for_the_weekly_service_update_0c0844a8" formatted="false">بانتظار تحديث الأيام والأسابيع المقبلة</string>
     <string name="ui_write_a_private_note_stored_only_on_this_device_f02e467f" formatted="false">اكتب ملاحظة شخصية تحفظ على هذا الجهاز فقط</string>
     <string name="ui_your_20_most_recently_opened_texts_will_appear_h_d0013f51" formatted="false">سيظهر هنا آخر 20 نصًا فتحته.</string>
     <string name="ui_fasting_interval_format">من %1$s إلى %2$s</string>

@@ -1,4 +1,4 @@
-name: Rolling Week Update
+name: Rolling Liturgical Window Update
 
 on:
   workflow_dispatch:
@@ -13,6 +13,11 @@ on:
         description: "Optional Asia/Amman date (YYYY-MM-DD)"
         required: false
         type: string
+      window_days:
+        description: "Moving horizon length (9-42 days)"
+        required: false
+        default: "21"
+        type: string
   schedule:
     - cron: "7 0 * * *"
       timezone: "Asia/Amman"
@@ -26,12 +31,13 @@ permissions:
   issues: write
 
 concurrency:
-  group: orthodox-rolling-week-data
+  group: orthodox-rolling-window-data
   cancel-in-progress: false
 
 env:
   VERIFIED_DATA_BRANCH: verified-data
   ORTHODOX_ENABLE_LIVE_SOURCE_FETCH: "1"
+  ORTHODOX_ROLLING_WINDOW_DAYS: "21"
 
 jobs:
   daily:
@@ -40,7 +46,7 @@ jobs:
     # after all external-source fetching and unsigned validation have finished.
     environment: production-data-signing
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     steps:
       - name: Resolve mode and date
         id: resolve
@@ -48,15 +54,20 @@ jobs:
         env:
           INPUT_MODE: ${{ github.event.inputs.mode }}
           INPUT_DATE: ${{ github.event.inputs.date }}
+          INPUT_WINDOW_DAYS: ${{ github.event.inputs.window_days }}
         run: |
           set -euo pipefail
           if [[ -n "${INPUT_MODE:-}" ]]; then MODE="$INPUT_MODE"; else MODE=update; fi
           if [[ -n "${INPUT_DATE:-}" ]]; then DATE="$INPUT_DATE"; else DATE="$(TZ=Asia/Amman date +%F)"; fi
           [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
+          WINDOW_DAYS="${INPUT_WINDOW_DAYS:-$ORTHODOX_ROLLING_WINDOW_DAYS}"
+          [[ "$WINDOW_DAYS" =~ ^[0-9]+$ ]]
+          (( WINDOW_DAYS >= 9 && WINDOW_DAYS <= 42 )) || { echo "window_days must be 9-42" >&2; exit 1; }
           REVISION=$((GITHUB_RUN_NUMBER * 100 + GITHUB_RUN_ATTEMPT))
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           echo "revision=$REVISION" >> "$GITHUB_OUTPUT"
+          echo "window_days=$WINDOW_DAYS" >> "$GITHUB_OUTPUT"
 
       - name: Checkout source
         if: steps.resolve.outputs.mode == 'update'
@@ -82,10 +93,20 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
 
-      - name: Generate and validate today without signing key
+      - name: Prepare exact native Scripture horizon
         if: steps.resolve.outputs.mode == 'update'
         run: |
-          python scripts/update.py --date "${{ steps.resolve.outputs.date }}" --unsigned
+          python scripts/prepare_rolling_week_scripture_slice.py \
+            --start-date "${{ steps.resolve.outputs.date }}" \
+            --days "${{ steps.resolve.outputs.window_days }}"
+
+      - name: Generate and validate moving horizon without signing key
+        if: steps.resolve.outputs.mode == 'update'
+        run: |
+          python scripts/update.py \
+            --date "${{ steps.resolve.outputs.date }}" \
+            --window-days "${{ steps.resolve.outputs.window_days }}" \
+            --unsigned
           python scripts/validate_daily_ui_localizations.py data/calendar/today.json
           python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
           python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"
@@ -333,7 +354,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TITLE="Orthodox rolling-week update failed"
+          TITLE="Orthodox rolling-window update failed"
           BODY="Update/verification failed for ${{ steps.resolve.outputs.date }}. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           EXISTING="$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')"
           if [[ -n "$EXISTING" ]]; then gh issue comment "$EXISTING" --body "$BODY"; else gh issue create --title "$TITLE" --body "$BODY"; fi

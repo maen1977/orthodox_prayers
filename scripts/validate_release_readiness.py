@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Block production until the signed nine-day liturgical window is complete.
+"""Block production until the signed moving liturgical window is complete.
 
-The release target is a moving window of today plus eight future days in
-Asia/Amman. It intentionally does not preload or claim a 365-day liturgical
-calendar. Every day must identify the appointed rite and service form, provide
+The release target is a configurable moving horizon in Asia/Amman. It
+intentionally does not preload or claim a permanent 365-day liturgical calendar. Every day must identify the appointed rite and service form, provide
 exact same-language Scripture, and either expose the complete appointed service
 from preparation through dismissal/thanksgiving or explicitly state that no
 Divine Liturgy is appointed. Wrong-rite substitution is forbidden.
@@ -19,13 +18,13 @@ from pathlib import Path
 from typing import Any
 
 from native_text_contract import ROOT, LANGUAGES, load_contract, sha256_text, source_allowed, source_url_allowed
+from rolling_window_contract import metadata_errors
 
 EXACT_STATUSES = {
     "VERIFIED_EXACT_NATIVE_SOURCE",
     "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS",
     "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
 }
-ROLLING_POLICY = "NINE_CONSECUTIVE_DAYS_STARTING_TODAY"
 
 
 def run_gate(command: list[str], label: str, errors: list[str]) -> None:
@@ -39,29 +38,22 @@ def rolling_days(payload: dict[str, Any], errors: list[str]) -> list[dict[str, A
     rolling = payload.get("rolling_week")
     future = payload.get("weekly_days")
     if not isinstance(rolling, dict):
-        errors.append("signed package has no rolling_week metadata")
+        errors.append("signed package has no rolling-window metadata")
         return []
-    if rolling.get("policy") != ROLLING_POLICY:
-        errors.append(f"rolling policy must be {ROLLING_POLICY}")
-    if rolling.get("day_count") != 9:
-        errors.append("rolling window must contain exactly 9 days")
-    if rolling.get("status") != "COMPLETE" or rolling.get("fail_closed") is not True:
-        errors.append("rolling window must be COMPLETE and fail closed")
-    if not isinstance(future, list) or len(future) != 8:
-        errors.append("rolling package must contain exactly 8 future days")
-        return []
-    days = [payload, *[item for item in future if isinstance(item, dict)]]
-    if len(days) != 9:
-        errors.append("rolling package contains invalid day objects")
+    if not isinstance(future, list):
+        errors.append("rolling package members must be an array")
         return []
     try:
         start = date.fromisoformat(str(rolling.get("start_date") or ""))
     except ValueError:
         errors.append("rolling start_date is invalid")
+        return []
+    errors.extend(metadata_errors(rolling, start, len(future)))
+    count = int(rolling.get("day_count") or 0)
+    days = [payload, *[item for item in future if isinstance(item, dict)]]
+    if len(days) != count:
+        errors.append(f"rolling package contains {len(days)} valid day objects; expected {count}")
         return days
-    expected_end = start + timedelta(days=8)
-    if str(rolling.get("end_date") or "") != expected_end.isoformat():
-        errors.append("rolling end_date must be start_date + 8 days")
     for offset, day_payload in enumerate(days):
         expected = (start + timedelta(days=offset)).isoformat()
         if str(day_payload.get("date_iso") or "") != expected:
@@ -132,7 +124,7 @@ def main() -> None:
     relative = str(daily_path.relative_to(ROOT)) if daily_path.is_relative_to(ROOT) else str(daily_path)
     run_gate(
         [sys.executable, "scripts/validate_rolling_week.py", relative, "--expected-start", json.loads(daily_path.read_text(encoding="utf-8")).get("date_iso", "")],
-        "The nine-day rolling package is invalid",
+        "The moving rolling package is invalid",
         errors,
     )
     run_gate(
@@ -151,8 +143,8 @@ def main() -> None:
         raise SystemExit("Production release is blocked:\n- " + "\n- ".join(dict.fromkeys(errors)))
     print(
         f"Production release readiness validated for {daily_path}: "
-        "9/9 consecutive days, exact Arabic/English/Greek Scripture, appointed-rite selection, "
-        "complete beginning-to-end services, and no wrong-rite fallback"
+        f"{len(days)}/{len(days)} consecutive days, exact Arabic/English/Greek Scripture, "
+        "appointed-rite selection, complete beginning-to-end services, and no wrong-rite fallback"
     )
 
 

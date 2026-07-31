@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the signed-package shape for nine consecutive complete days starting today."""
+"""Validate a signed moving package of consecutive complete liturgical days."""
 from __future__ import annotations
 
 import argparse
@@ -8,6 +8,7 @@ import re
 from datetime import date, timedelta
 from pathlib import Path
 
+from rolling_window_contract import metadata_errors
 from validate_reader_services import compose_overlay, validate_payload
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -223,18 +224,9 @@ def main() -> None:
     meta = payload.get("rolling_week") or {}
     errors: list[str] = []
 
-    if meta.get("schema_version") != 1:
-        errors.append("rolling_week.schema_version must be 1")
-    if meta.get("policy") != "NINE_CONSECUTIVE_DAYS_STARTING_TODAY":
-        errors.append("rolling_week.policy is invalid")
-    if meta.get("start_date") != start.isoformat():
-        errors.append("rolling_week.start_date mismatch")
-    if meta.get("end_date") != (start + timedelta(days=8)).isoformat():
-        errors.append("rolling_week.end_date mismatch")
-    if meta.get("day_count") != 9:
-        errors.append("rolling_week.day_count must be 9")
-    if meta.get("status") != "COMPLETE" or meta.get("fail_closed") is not True:
-        errors.append("rolling_week must be COMPLETE and fail_closed")
+    future_members = [item for item in payload.get("weekly_days") or [] if isinstance(item, dict)]
+    errors.extend(metadata_errors(meta, start, len(future_members)))
+    day_count = int(meta.get("day_count") or 0) if isinstance(meta, dict) else 0
 
     languages = (args.language,) if args.language else LANGUAGES
     native_libraries = {
@@ -242,10 +234,10 @@ def main() -> None:
         for language in languages
     }
 
-    days = [payload] + [item for item in payload.get("weekly_days") or [] if isinstance(item, dict)]
-    if len(days) != 9:
-        errors.append(f"rolling package must contain 9 days, found {len(days)}")
-    for offset, day_payload in enumerate(days[:9]):
+    days = [payload, *future_members]
+    if day_count and len(days) != day_count:
+        errors.append(f"rolling package must contain {day_count} days, found {len(days)}")
+    for offset, day_payload in enumerate(days[:day_count or len(days)]):
         validate_day(
             day_payload,
             start + timedelta(days=offset),
@@ -265,8 +257,8 @@ def main() -> None:
             print(f"ROLLING_WEEK_ERROR {error}")
         raise SystemExit(f"ROLLING_WEEK_INVALID errors={len(errors)}")
     print(
-        f"ROLLING_WEEK_OK start={start.isoformat()} end={(start + timedelta(days=8)).isoformat()} "
-        f"days=9 language={args.language or 'all'}"
+        f"ROLLING_WINDOW_OK start={start.isoformat()} end={(start + timedelta(days=day_count - 1)).isoformat()} "
+        f"days={day_count} language={args.language or 'all'}"
     )
 
 
