@@ -14,6 +14,10 @@ import com.orthodoxprayers.privateapp.ui.UiKit;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Locale;
+
 public abstract class BaseScreen implements AppScreen {
     protected final ScreenHost host;
     protected final UiKit ui;
@@ -48,7 +52,9 @@ public abstract class BaseScreen implements AppScreen {
     protected String localized(JSONObject object, String fallback) { return data.localized(object, fallback); }
 
     protected void addFastingGuide(LinearLayout card, JSONObject fasting, boolean includeNotes) {
-        if (fasting == null || fasting.length() == 0) return;
+        // Ordinary days intentionally show only “No fast”; food permissions and
+        // explanatory paragraphs are useful only when a fasting rule applies.
+        if (!isFastingDay(fasting)) return;
         JSONObject guidance = fasting.optJSONObject("guidance");
         if (guidance == null) return;
 
@@ -125,6 +131,95 @@ public abstract class BaseScreen implements AppScreen {
         rules.setContentDescription(accessible.toString());
         card.addView(rules, ui.margins(-1, -2, 0, 2, 0, 3));
         return accessible.toString();
+    }
+
+    protected boolean isFastingDay(JSONObject fasting) {
+        if (fasting == null || fasting.length() == 0) return false;
+        if (fasting.has("is_fast")) return fasting.optBoolean("is_fast", false);
+        return !"fast_free".equals(fasting.optString("code", ""));
+    }
+
+    /**
+     * Produce the concise fasting label shown to ordinary users. Weekly Wednesday
+     * and Friday fasts name the actual weekday instead of the generic
+     * “Wednesday or Friday” rule label. Fast-free days always use one plain label.
+     */
+    protected String fastingDisplayTitle(JSONObject day, String fallbackDate) {
+        JSONObject fasting = day == null ? null : day.optJSONObject("fasting");
+        if (fasting != null && fasting.length() > 0) {
+            if (!isFastingDay(fasting)) {
+                return local(com.orthodoxprayers.privateapp.R.string.ui_no_fast_plain);
+            }
+            JSONObject verification = fasting.optJSONObject("verification");
+            String rule = verification == null ? "" : verification.optString("rule", "");
+            if ("weekly_wednesday_friday".equals(rule)) {
+                DayOfWeek weekday = parseWeekday(dayDate(day, fallbackDate));
+                String season = weekday == DayOfWeek.WEDNESDAY
+                        ? local(com.orthodoxprayers.privateapp.R.string.ui_wednesday_fast)
+                        : weekday == DayOfWeek.FRIDAY
+                        ? local(com.orthodoxprayers.privateapp.R.string.ui_friday_fast)
+                        : localized(fasting.optJSONObject("season"), "");
+                String level = localized(fasting.optJSONObject("level"), "");
+                if (!season.isEmpty()) return level.isEmpty() ? season : season + " — " + level;
+            }
+            String title = localized(fasting.optJSONObject("title"), "");
+            if (!title.isEmpty()) return title;
+        }
+
+        String raw = day == null ? "" : localized(day.optJSONObject("status"),
+                localized(day.optJSONObject("fast"), ""));
+        if (looksFastFree(raw)) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_no_fast_plain);
+        }
+        return raw.isEmpty()
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_unavailable_24f3ca2e)
+                : raw;
+    }
+
+    protected String displayableCommemoration(JSONObject day) {
+        if (day == null) return "";
+        String status = day.optString("daily_proper_status", "").trim();
+        if (status.startsWith("UNAVAILABLE") || status.startsWith("PENDING")) return "";
+        String value = localized(day.optJSONObject("feast"), localized(day.optJSONObject("note"), ""));
+        return isCommemorationPlaceholder(value) ? "" : value;
+    }
+
+    private String dayDate(JSONObject day, String fallbackDate) {
+        if (day != null) {
+            String value = day.optString("date_iso", day.optString("date", "")).trim();
+            if (!value.isEmpty()) return value;
+        }
+        return fallbackDate == null ? "" : fallbackDate.trim();
+    }
+
+    private DayOfWeek parseWeekday(String date) {
+        try { return LocalDate.parse(date).getDayOfWeek(); }
+        catch (Exception ignored) { return null; }
+    }
+
+    private boolean looksFastFree(String value) {
+        String normalized = value == null ? "" : value.trim().toLowerCase(Locale.ROOT);
+        return normalized.equals("لا صوم")
+                || normalized.equals("لا يوجد صوم")
+                || normalized.equals("no fast")
+                || normalized.equals("χωρὶς νηστεία")
+                || normalized.equals("χωρίς νηστεία");
+    }
+
+    private boolean isCommemorationPlaceholder(String value) {
+        if (value == null || value.trim().isEmpty()) return true;
+        String normalized = value.trim().toLowerCase(Locale.ROOT);
+        return normalized.contains("غير منشور")
+                || normalized.contains("تعذر التحقق من تذكار")
+                || normalized.contains("تذكار اليوم بحسب التقويم")
+                || normalized.contains("pending ecclesiastical review")
+                || normalized.contains("could not verify the commemoration")
+                || normalized.contains("today’s commemoration according")
+                || normalized.contains("today's commemoration according")
+                || normalized.contains("δὲν δημοσιεύεται")
+                || normalized.contains("δεν δημοσιεύεται")
+                || normalized.contains("ἡ σημερινὴ μνήμη κατὰ")
+                || normalized.contains("η σημερινή μνήμη κατά");
     }
 
     protected LinearLayout serviceCard(JSONObject service) {

@@ -26,10 +26,11 @@ public final class CalendarDayScreen extends BaseScreen {
         LinearLayout card = ui.card();
         card.addView(centered(date, 21, ui.colors().primaryText(), true));
         addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_old_calendar_date_02f8092d), localized(item.optJSONObject("julian_label"), item.optString("julian_date", "")));
-        addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_commemoration_399506fc), localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), "")));
-        addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_fasting_f1b1605d), localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), "")));
+        addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_commemoration_399506fc), displayableCommemoration(item));
+        JSONObject fasting = item.optJSONObject("fasting");
+        addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_fasting_f1b1605d), fastingDisplayTitle(item, date));
         addLiturgySelection(card, item.optJSONObject("liturgy_service_selection"));
-        addFastingGuide(card, item.optJSONObject("fasting"), true);
+        if (isFastingDay(fasting)) addFastingGuide(card, fasting, true);
         JSONObject sunday = item.optJSONObject("sunday");
         if (sunday != null) {
             addField(card, local(com.orthodoxprayers.privateapp.R.string.ui_sunday_cycle_a83925a1), localFormat(
@@ -119,9 +120,6 @@ public final class CalendarDayScreen extends BaseScreen {
         addField(card,
                 local(com.orthodoxprayers.privateapp.R.string.ui_service_form_label),
                 localized(selection.optJSONObject("service_form_label"), ""));
-        addField(card,
-                local(com.orthodoxprayers.privateapp.R.string.ui_selection_reason_label),
-                localized(selection.optJSONObject("reason"), ""));
     }
 
     private JSONObject findDay() {

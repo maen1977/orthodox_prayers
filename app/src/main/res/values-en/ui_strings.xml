@@ -352,4 +352,11 @@ Phone: 00962788272988</string>
     <string name="ui_open_complete_service_beginning_to_end" formatted="false">Open the complete service from beginning to end</string>
     <string name="ui_complete_service_not_available_without_fallback" formatted="false">The complete text of this rite is not available yet; the app will not substitute another Liturgy.</string>
     <string name="ui_open_full_appointed_liturgy_format">Open the complete %1$s from beginning to end</string>
+    <string name="ui_no_fast_plain" formatted="false">No fast</string>
+    <string name="ui_wednesday_fast" formatted="false">Wednesday fast</string>
+    <string name="ui_friday_fast" formatted="false">Friday fast</string>
+
+    <string name="ui_nine_day_service_ready" formatted="false">The nine-day service window starts today and is complete</string>
+
+    <string name="ui_content_ready_through_format" formatted="false">Prayers and readings are ready through %1$s</string>
 </resources>

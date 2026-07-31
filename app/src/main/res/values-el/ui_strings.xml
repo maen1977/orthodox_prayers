@@ -352,4 +352,11 @@
     <string name="ui_open_complete_service_beginning_to_end" formatted="false">Ἄνοιγμα τῆς πλήρους ἀκολουθίας ἀπὸ τὴν ἀρχὴ ἕως τὸ τέλος</string>
     <string name="ui_complete_service_not_available_without_fallback" formatted="false">Τὸ πλήρες κείμενο αὐτοῦ τοῦ τύπου δὲν εἶναι ἀκόμη διαθέσιμο· ἡ ἐφαρμογὴ δὲν θὰ ὑποκαταστήσει ἄλλη Λειτουργία.</string>
     <string name="ui_open_full_appointed_liturgy_format">Ἄνοιγμα πλήρους %1$s ἀπὸ τὴν ἀρχὴ ἕως τὸ τέλος</string>
+    <string name="ui_no_fast_plain" formatted="false">Χωρὶς νηστεία</string>
+    <string name="ui_wednesday_fast" formatted="false">Νηστεία Τετάρτης</string>
+    <string name="ui_friday_fast" formatted="false">Νηστεία Παρασκευῆς</string>
+
+    <string name="ui_nine_day_service_ready" formatted="false">Ἡ ἐννεαήμερη περίοδος ἀρχίζει σήμερα καὶ εἶναι πλήρης</string>
+
+    <string name="ui_content_ready_through_format" formatted="false">Οἱ προσευχὲς καὶ τὰ ἀναγνώσματα εἶναι ἕτοιμα ἕως %1$s</string>
 </resources>

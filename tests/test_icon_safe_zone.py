@@ -123,15 +123,15 @@ def _alpha_bbox(width: int, height: int, rgba: bytes) -> tuple[int, int, int, in
 
 
 class IconSafeZoneTests(unittest.TestCase):
-    def test_foreground_is_108_canvas_and_art_fits_66_safe_zone(self) -> None:
+    def test_foreground_is_108_canvas_and_art_fits_compact_safe_zone(self) -> None:
         path = ROOT / "app/src/main/res/drawable-nodpi/church_prayers_cross_foreground.png"
         width, height, rgba = _read_rgba_png(path)
         self.assertEqual((108, 108), (width, height))
         box = _alpha_bbox(width, height, rgba)
         self.assertIsNotNone(box)
         assert box is not None
-        self.assertLessEqual(box[2] - box[0], 66)
-        self.assertLessEqual(box[3] - box[1], 66)
+        self.assertLessEqual(box[2] - box[0], 50)
+        self.assertLessEqual(box[3] - box[1], 56)
 
     def test_adaptive_layer_uses_safe_foreground(self) -> None:
         text = (
@@ -139,6 +139,9 @@ class IconSafeZoneTests(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn("@drawable/church_prayers_cross_foreground", text)
         self.assertNotIn("20dp", text)
+        monochrome = (ROOT / "app/src/main/res/drawable/ic_launcher_monochrome.xml").read_text(encoding="utf-8")
+        self.assertIn('android:scaleX="0.82"', monochrome)
+        self.assertIn('android:scaleY="0.82"', monochrome)
 
 
 
