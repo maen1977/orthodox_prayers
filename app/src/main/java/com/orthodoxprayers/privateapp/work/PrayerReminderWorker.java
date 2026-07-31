@@ -100,7 +100,7 @@ public final class PrayerReminderWorker extends Worker {
         }
 
         Notification.Builder notification = new Notification.Builder(context, channelId)
-                .setSmallIcon(R.drawable.ic_nav_prayers)
+                .setSmallIcon(R.drawable.ic_church_prayers_notification)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setStyle(new Notification.BigTextStyle().bigText(body))

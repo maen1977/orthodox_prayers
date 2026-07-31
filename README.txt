@@ -1,4 +1,4 @@
-Orthodox Prayers 5.0.22
+Church Prayers 5.0.23
 
 ابدأ من README_AR.md.
 تعليمات رفع GitHub: GITHUB_UPLOAD_AR.md

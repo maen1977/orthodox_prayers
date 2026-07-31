@@ -7,7 +7,7 @@
     <item android:top="20dp" android:bottom="20dp" android:left="20dp" android:right="20dp"
         android:gravity="center">
         <bitmap
-            android:src="@drawable/orthodox_cross_icon"
+            android:src="@drawable/church_prayers_cross"
             android:gravity="center"
             android:antialias="true"
             android:filter="true" />

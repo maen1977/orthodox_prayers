@@ -1,9 +1,10 @@
+## 5.0.23 — Church Prayers branding hotfix
 
-## R29 — verified-data manifest upgrade compatibility
-
-- Allows the Debug build import to verify an older signed manifest when its minimum app version is not newer than the checked-out app contract.
-- Keeps publication and origin verification strict, preventing a newer-app manifest from being imported by an older build.
-- Fixes the 50013-to-50023 verified-data upgrade deadlock.
+- Unified the installed launcher label as `Church Prayers` without changing the Android application ID.
+- Replaced launcher and Play Store artwork with the supplied Jerusalem cross.
+- Added a Jerusalem-cross monochrome notification/themed icon.
+- Renamed downloadable debug/release APK and AAB artifacts to `Church-Prayers-*`.
+- Added Windows ICO/PNG sidecar branding and documented the Windows APK icon limitation.
 
 ## 5.0.23 — R28 runtime signed-payload storage alignment
 

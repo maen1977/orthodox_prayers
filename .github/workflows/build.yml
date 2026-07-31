@@ -106,19 +106,33 @@ jobs:
       - name: Build debug APK
         run: ./gradlew --no-daemon assembleDebug --stacktrace
 
-      - name: Generate debug APK checksum
+      - name: Prepare branded debug APK
         shell: bash
         run: |
           set -euo pipefail
+          APP_VERSION="$(python - <<'PY'
+          import re
+          from pathlib import Path
+          text = Path("app/build.gradle.kts").read_text(encoding="utf-8")
+          match = re.search(r'versionName\s*=\s*"([^"]+)"', text)
+          if not match:
+              raise SystemExit("versionName not found")
+          print(match.group(1))
+          PY
+          )"
+          echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_ENV"
           mkdir -p release/checksums
-          sha256sum app/build/outputs/apk/debug/app-debug.apk > release/checksums/SHA256SUMS.txt
+          cp app/build/outputs/apk/debug/app-debug.apk "release/Church-Prayers-$APP_VERSION-debug.apk"
+          sha256sum "release/Church-Prayers-$APP_VERSION-debug.apk" > release/checksums/SHA256SUMS.txt
 
-      - name: Upload debug APK and reports
+      - name: Upload Church Prayers debug APK and reports
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
-          name: OrthodoxPrayers-debug-${{ github.run_number }}
+          name: Church-Prayers-${{ env.APP_VERSION }}-debug-${{ github.run_number }}
           path: |
-            app/build/outputs/apk/debug/app-debug.apk
+            release/Church-Prayers-${{ env.APP_VERSION }}-debug.apk
+            release/branding/Church-Prayers.ico
+            release/branding/Church-Prayers-icon-512.png
             app/build/reports/lint-results-debug.html
             release/checksums/SHA256SUMS.txt
           if-no-files-found: error
@@ -244,25 +258,25 @@ jobs:
           set -euo pipefail
           mkdir -p release
           ./gradlew --no-daemon app:dependencies --configuration releaseRuntimeClasspath > release/RELEASE_DEPENDENCIES.txt
-          python scripts/generate_sbom.py --gradle-report release/RELEASE_DEPENDENCIES.txt --output release/OrthodoxPrayers-$RELEASE_VERSION-sbom.cdx.json
-          python scripts/create_clean_source_archive.py --prefix OrthodoxPrayers-$RELEASE_VERSION-source --output release/OrthodoxPrayers-$RELEASE_VERSION-source.zip
+          python scripts/generate_sbom.py --gradle-report release/RELEASE_DEPENDENCIES.txt --output release/Church-Prayers-$RELEASE_VERSION-sbom.cdx.json
+          python scripts/create_clean_source_archive.py --prefix Church-Prayers-$RELEASE_VERSION-source --output release/Church-Prayers-$RELEASE_VERSION-source.zip
 
       - name: Verify and collect release files
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p release
-          cp app/build/outputs/apk/release/app-release.apk "release/OrthodoxPrayers-$RELEASE_VERSION.apk"
-          cp app/build/outputs/bundle/release/app-release.aab "release/OrthodoxPrayers-$RELEASE_VERSION.aab"
+          cp app/build/outputs/apk/release/app-release.apk "release/Church-Prayers-$RELEASE_VERSION.apk"
+          cp app/build/outputs/bundle/release/app-release.aab "release/Church-Prayers-$RELEASE_VERSION.aab"
           APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)"
           test -x "$APKSIGNER"
-          "$APKSIGNER" verify --verbose --print-certs "release/OrthodoxPrayers-$RELEASE_VERSION.apk"
+          "$APKSIGNER" verify --verbose --print-certs "release/Church-Prayers-$RELEASE_VERSION.apk"
           (cd release && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -printf '%f\0' | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
 
       - name: Upload signed release artifacts
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
-          name: OrthodoxPrayers-${{ env.RELEASE_VERSION }}-signed
+          name: Church-Prayers-${{ env.RELEASE_VERSION }}-signed
           path: release/
           if-no-files-found: error
           retention-days: 90

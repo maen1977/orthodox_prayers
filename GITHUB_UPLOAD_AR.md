@@ -1,10 +1,10 @@
-# رفع Orthodox Prayers 5.0.23 إلى GitHub
+# رفع Church Prayers 5.0.23 إلى GitHub
 
 هذه النسخة مجهزة كمستودع مصدر نظيف، مع Workflow للبناء وWorkflow مستقل لنشر البيانات الموقعة.
 
 ## الرفع
 
-1. فك ملف `OrthodoxPrayers-5.0.23-GitHub-Ready.zip` داخل مجلد جديد.
+1. فك ملف `Church-Prayers-5.0.23-GitHub-Ready.zip` داخل مجلد جديد.
 2. أنشئ مستودع GitHub أو ارفع المحتويات إلى جذر المستودع الحالي.
 3. ارفع كل الملفات والمجلدات كما هي، بما فيها `.github` و`gradle` و`gradlew`.
 4. لا ترفع أي ملف Keystore أو مفتاح RSA خاص أو `local.properties`.
@@ -14,7 +14,7 @@
 ```bash
 git init
 git add .
-git commit -m "Release Orthodox Prayers 5.0.23 with moving liturgical window"
+git commit -m "Release Church Prayers 5.0.23 with unified branding"
 git branch -M main
 git remote add origin https://github.com/OWNER/REPOSITORY.git
 git push -u origin main
