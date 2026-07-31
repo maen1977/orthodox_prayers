@@ -1,3 +1,9 @@
+## 5.0.22 — R27 public endpoint payload-size hotfix
+
+- Fixed public endpoint verification for signed language payloads larger than the obsolete 6,000,000-byte verifier limit.
+- Derive the exact download bound from the already verified signed manifest while enforcing the same 12,000,000-byte ceiling used by Android.
+- Keep paths, languages, declared sizes, hashes, and signatures fail-closed and add regression coverage above the former six-megabyte boundary.
+
 ## 5.0.22 — R26 moving-window schema hotfix
 
 - Fixed `daily_data.schema.json` so schema 10 accepts the supported 9–42 day moving horizon instead of only the original nine-day package.
