@@ -26,12 +26,14 @@ def validate_today(data):
     missing=sorted(required-set(data))
     if missing: fail('today.json is missing: '+', '.join(missing))
     schema_version=int(data.get('schema_version') or 0)
-    if schema_version not in {9,10}: fail('today.json schema_version must be 9 (signed legacy) or 10 (nine-day window)')
+    if schema_version not in {9,10}: fail('today.json schema_version must be 9 (signed legacy) or 10 (moving window)')
     if data.get('language_content_mode')!='THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES': fail('native language mode is invalid')
     if data.get('machine_translation_used') is not False or data.get('automatic_diacritization_used') is not False: fail('forbidden transformation flag')
     if data.get('translation_fallback_policy')!='DISABLED_NO_CROSS_LANGUAGE_FALLBACK': fail('cross-language fallback is not disabled')
     if not localized_ar(data.get('date_label')) or not localized_ar(data.get('fast')): fail('Arabic UI date/fast label missing')
-    expected_future_days=8 if schema_version>=10 else 7
+    rolling=data.get('rolling_week') if isinstance(data.get('rolling_week'),dict) else None
+    expected_future_days=int(rolling.get('day_count') or 0)-1 if rolling else (8 if schema_version>=10 else 7)
+    if expected_future_days < 7 or expected_future_days > 41: fail('today.json moving horizon is outside the supported range')
     if not isinstance(data.get('upcoming'),list) or len(data['upcoming'])!=expected_future_days: fail(f'today.json must contain {expected_future_days} future days')
     release_errors=top_level_errors(data)
     if release_errors: fail('top-level release policy is invalid: '+' | '.join(release_errors))

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preflight the published-data branch against the current nine-day runtime contract.
+"""Preflight the published-data branch against the moving-window runtime contract.
 
 This validator is intentionally structural. Detached signatures are verified by the
 normal publication verifier after import. The preflight prevents an older, authentic
@@ -10,12 +10,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
+try:
+    from rolling_window_contract import metadata_errors
+except ModuleNotFoundError:  # direct importlib loading in isolated tests/tools
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from rolling_window_contract import metadata_errors
+
 LANGUAGES = ("ar", "en", "el")
-POLICY = "NINE_CONSECUTIVE_DAYS_STARTING_TODAY"
 FULL_SCOPE = "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING"
 DISPLAYABLE = "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END"
 NO_LITURGY = "NO_DIVINE_LITURGY_APPOINTED"
@@ -55,24 +61,13 @@ def rolling_window_shape_errors(
     meta = payload.get("rolling_week")
     if not isinstance(meta, dict):
         return [*errors, "rolling_week metadata is missing"]
-    if meta.get("schema_version") != 1:
-        errors.append("rolling_week.schema_version must be 1")
-    if meta.get("policy") != POLICY:
-        errors.append("rolling_week.policy is not the nine-day policy")
-    if meta.get("start_date") != expected_start:
-        errors.append("rolling_week.start_date mismatch")
-    if meta.get("end_date") != (start + timedelta(days=8)).isoformat():
-        errors.append("rolling_week.end_date mismatch")
-    if meta.get("day_count") != 9:
-        errors.append("rolling_week.day_count must be 9")
-    if meta.get("status") != "COMPLETE":
-        errors.append("rolling_week.status must be COMPLETE")
-    if meta.get("fail_closed") is not True:
-        errors.append("rolling_week.fail_closed must be true")
-
     weekly = payload.get("weekly_days")
-    if not isinstance(weekly, list) or len(weekly) != 8:
-        errors.append("weekly_days must contain exactly eight future days")
+    if not isinstance(weekly, list):
+        errors.append("weekly_days must be an array")
+        return errors
+    errors.extend(metadata_errors(meta, start, len(weekly)))
+    day_count = int(meta.get("day_count") or 0)
+    if len(weekly) != max(0, day_count - 1):
         return errors
 
     days = [payload, *weekly]
@@ -92,7 +87,7 @@ def published_payload_errors(
 ) -> list[str]:
     errors = rolling_window_shape_errors(payload, expected_start)
     weekly = payload.get("weekly_days")
-    if not isinstance(weekly, list) or len(weekly) != 8:
+    if not isinstance(weekly, list):
         return errors
 
     days = [payload, *weekly]

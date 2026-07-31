@@ -12,6 +12,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from rolling_window_contract import resolve_day_count
+
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ("ar", "en", "el")
 
@@ -143,7 +145,8 @@ def validate(data: dict[str, Any]) -> list[str]:
         validate_reference_block(sunday.get("reading_references"), "next_sunday.reading_references", errors)
 
     upcoming = data.get("upcoming")
-    expected_future_days = 8 if int(data.get("schema_version") or 0) >= 10 else 7
+    rolling = data.get("rolling_week") if isinstance(data.get("rolling_week"), dict) else None
+    expected_future_days = (int(rolling.get("day_count") or 0) - 1) if rolling else (resolve_day_count() - 1 if int(data.get("schema_version") or 0) >= 10 else 7)
     if not isinstance(upcoming, list) or len(upcoming) != expected_future_days:
         errors.append(f"upcoming must contain {expected_future_days} future days")
     else:

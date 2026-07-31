@@ -6,6 +6,8 @@ import argparse
 import json
 from pathlib import Path
 
+from rolling_window_contract import is_supported_metadata
+
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "canonical/liturgy_phase8_completion_contract.json"
 EDITIONS = ROOT / "canonical/liturgy_service_editions.json"
@@ -24,10 +26,10 @@ def build_report() -> dict:
         for service in ("chrysostom", "basil", "presanctified")
     }
     rolling = daily.get("rolling_week") or {}
+    rolling_day_count = int(rolling.get("day_count") or 0)
     rolling_complete = (
-        rolling.get("policy") == "NINE_CONSECUTIVE_DAYS_STARTING_TODAY"
-        and rolling.get("day_count") == 9
-        and len(daily.get("weekly_days") or []) == 8
+        is_supported_metadata(rolling)
+        and len(daily.get("weekly_days") or []) == max(0, rolling_day_count - 1)
         and rolling.get("status") == "COMPLETE"
         and rolling.get("fail_closed") is True
     )
@@ -50,7 +52,7 @@ def build_report() -> dict:
         if not ready:
             blockers.append(f"native_service_not_displayable:{service}")
     if not rolling_complete:
-        blockers.append("signed_nine_day_rolling_window_missing_or_incomplete")
+        blockers.append("signed_rolling_window_missing_or_incomplete")
     if signed_baseline_only:
         blockers.append("phase8_candidate_not_signed_with_official_key")
     if not build_complete:

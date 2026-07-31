@@ -92,7 +92,7 @@ def main() -> None:
         fail("Build workflow must migrate legacy verified-data aliases in both debug and release imports")
     verified_contract = 'python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"'
     if build.count(verified_contract) < 2:
-        fail("Build workflow must preflight the nine-day verified-data contract before both imports")
+        fail("Build workflow must preflight the rolling-window verified-data contract before both imports")
     first_normalizer = build.index(normalizer)
     first_gate = build.index(debug_gate)
     second_normalizer = build.index(normalizer, first_normalizer + 1)
@@ -106,7 +106,11 @@ def main() -> None:
         (
             "scripts/update.py",
             "--unsigned",
-            "Generate and validate today without signing key",
+            "Prepare exact native Scripture horizon",
+            "scripts/prepare_rolling_week_scripture_slice.py",
+            "Generate and validate moving horizon without signing key",
+            "--window-days",
+            "ORTHODOX_ROLLING_WINDOW_DAYS",
             "Validate unsigned language lanes independently",
             "Prepare publication worktree before restoring key",
             "Preserve complete same-day language lanes",
@@ -166,7 +170,7 @@ def main() -> None:
             fail(f"External-source generation must remain unsigned: {pattern}")
 
     ordered_markers = (
-        "Generate and validate today without signing key",
+        "Generate and validate moving horizon without signing key",
         "Validate unsigned language lanes independently",
         "Prepare publication worktree before restoring key",
         "Preserve complete same-day language lanes",

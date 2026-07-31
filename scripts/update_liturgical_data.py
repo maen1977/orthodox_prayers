@@ -23,6 +23,8 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from rolling_window_contract import resolve_day_count
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 CALENDAR_DIR = DATA_DIR / "calendar"
@@ -1184,15 +1186,31 @@ def _proper_sources(entry: dict | None = None) -> dict:
     return DAILY_PROPERS_REGISTRY.get("weekly_sources", {})
 
 
+NATIVE_SOURCE_ID_ALIASES = {
+    # Older canonical proper registries used these historical IDs. Normalize
+    # them at runtime to the IDs registered by source_native_contract.json so
+    # exact same-language text is not erased by the fail-closed lane enforcer.
+    "antioch_tripoli_karma_archive_ar": "antioch_archdiocese_tripoli_ar",
+    "orthodox_church_in_america_all_saints": "oca_official_english",
+    "ebible_world_english_bible_classic": "ebible_world_english_bible",
+}
+
+
+def _canonical_native_source_id(source_id: object) -> str:
+    value = str(source_id or "").strip()
+    return NATIVE_SOURCE_ID_ALIASES.get(value, value)
+
+
 def _native_verification(body: dict, sources: dict, canonical_reference: str = "") -> dict:
     result = {}
     for lang in ("ar", "en", "el"):
         text = str(body.get(lang) or "")
         source = sources.get(lang) if isinstance(sources.get(lang), dict) else {}
-        if text and source.get("source_id"):
+        source_id = _canonical_native_source_id(source.get("source_id"))
+        if text and source_id:
             result[lang] = {
                 "status": "VERIFIED_EXACT_NATIVE_SOURCE",
-                "source_id": source.get("source_id"),
+                "source_id": source_id,
                 "source_url": source.get("url"),
                 "canonical_reference": canonical_reference,
                 "reference_available": True,
@@ -2260,12 +2278,12 @@ def build_day(day: date) -> dict:
     info = day_info(day)
     readings = discovery_readings(day, info)
 
-    # Generate the next eight civil days every run. Together with today this is a nine-day window. Each compact card carries
+    # Generate compact cards for the same configurable moving horizon used by publication. Each card carries
     # its own fasting profile and reading references, so the app never reuses
     # yesterday's Sunday or fasting information.
     upcoming: list[dict] = []
     upcoming_full_readings: dict[str, list[dict]] = {}
-    for i in range(1, 9):
+    for i in range(1, resolve_day_count()):
         d = day + timedelta(days=i)
         inf = day_info(d)
         future_readings = discovery_readings(d, inf)
