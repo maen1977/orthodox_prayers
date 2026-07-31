@@ -554,3 +554,7 @@
 - Removed USFM/Strong word attributes from display text while retaining the source words, with a regression test blocking technical markup in the reader.
 - Rebuilt the 2026 offline annual audit: 365 dates audited, 3 currently complete, and 362 explicitly blocked rather than inferred complete.
 - Kept the signed embedded July 26, 2026 release data unchanged; phase-ten candidates remain unsigned and marked do-not-publish.
+
+### R30 branding Git tracking hotfix
+- Keep generated `release/` outputs ignored while explicitly tracking canonical `release/branding/` assets.
+- Mark `.ico` files as binary and add a regression test for Git ignore rules.

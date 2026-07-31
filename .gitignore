@@ -1,7 +1,12 @@
 .gradle/
 build/
 app/build/
-release/
+# Generated release outputs stay untracked, but canonical branding assets are versioned.
+release/*
+!release/branding/
+!release/branding/Church-Prayers.ico
+!release/branding/Church-Prayers-icon-512.png
+!release/branding/WINDOWS_DESKTOP_ICON_AR.txt
 local.properties
 *.iml
 .DS_Store

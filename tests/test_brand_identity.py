@@ -56,6 +56,15 @@ class BrandIdentityTests(unittest.TestCase):
         self.assertTrue((ROOT / "release/branding/Church-Prayers.ico").is_file())
         self.assertTrue((ROOT / "release/branding/Church-Prayers-icon-512.png").is_file())
 
+    def test_branding_assets_are_not_hidden_by_gitignore(self) -> None:
+        gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("release/*", gitignore)
+        self.assertIn("!release/branding/", gitignore)
+        self.assertIn("!release/branding/Church-Prayers.ico", gitignore)
+        self.assertIn("!release/branding/Church-Prayers-icon-512.png", gitignore)
+        attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
+        self.assertIn("*.ico binary", attributes)
+
     def test_android_identity_is_preserved_for_in_place_updates(self) -> None:
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
         settings = (ROOT / "settings.gradle.kts").read_text(encoding="utf-8")
