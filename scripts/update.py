@@ -113,6 +113,7 @@ def main() -> None:
     live_sources = os.getenv("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "").strip() == "1"
     source_mode = [] if live_sources else ["--offline"]
     run("scripts/collect_source_health.py", "--date", args.date, *source_mode)
+    run("scripts/collect_local_commemorations.py", "--start-date", args.date, "--days", str(window_days), *source_mode)
     run("scripts/build_church_directory.py", "--date", args.date, *source_mode)
     run("scripts/build_public_source_registry.py")
     run("scripts/validate_public_source_registry.py")

@@ -194,9 +194,9 @@ def localized_civil_old_date(day: date, include_year: bool = True) -> dict:
 
 UNREVIEWED_DAILY_FEAST_AR = "تذكار اليوم بحسب التقويم الكنسي القديم"
 UNAVAILABLE_DAILY_FEAST = {
-    "ar": "التذكار اليومي غير منشور حتى اكتمال المراجعة الكنسية",
-    "en": "Daily commemoration not published pending ecclesiastical review",
-    "el": "Ἡ σημερινὴ μνήμη δὲν δημοσιεύεται πρὶν ἀπὸ τὴν ἐκκλησιαστικὴ ἐπιθεώρηση",
+    "ar": "تعذّر التحقق من تذكار هذا اليوم من المصدر الرسمي المحلي؛ تظهر آخر معلومة موثقة إن توفرت",
+    "en": "This day’s commemoration could not be verified from the official local source; the last verified record is shown when available",
+    "el": "Ἡ μνήμη τῆς ἡμέρας δὲν κατέστη δυνατόν νὰ ἐπαληθευθεῖ ἀπὸ τὴν ἐπίσημη τοπικὴ πηγή· ὅπου ὑπάρχει προβάλλεται ἡ τελευταία ἐπαληθευμένη καταχώριση",
 }
 
 
@@ -1058,6 +1058,34 @@ def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: d
     return _fasting_profile("fast_free", "يوم عادي", "لا توجد فترة صوم عامة أو قاعدة أسبوعية لهذا اليوم.", "ordinary_fast_free")
 
 
+LOCAL_COMMEMORATIONS_PATH = ROOT / "canonical" / "local_commemorations.json"
+
+
+def local_official_commemoration(day: date) -> dict | None:
+    """Return a short, source-attributed local commemoration only when verified.
+
+    The collector never republishes long Synaxarion prose. It stores names, dates,
+    authority, URLs, retrieval timestamp, and content hashes. A stale verified
+    record may remain usable as the last known good record; unverified observations
+    never replace reviewed annual/fixed entries.
+    """
+    if not LOCAL_COMMEMORATIONS_PATH.is_file():
+        return None
+    try:
+        payload = json.loads(LOCAL_COMMEMORATIONS_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    record = (payload.get("records") or {}).get(day.isoformat())
+    if not isinstance(record, dict):
+        return None
+    if record.get("verification_status") not in {"LOCAL_OFFICIAL_SOURCE_VERIFIED", "LAST_VERIFIED_LOCAL_RECORD"}:
+        return None
+    names = record.get("commemorations") or {}
+    if not isinstance(names, dict) or not str(names.get("ar") or "").strip():
+        return None
+    return record
+
+
 def day_info(day: date) -> dict:
     jy, jm, jd = gregorian_to_julian_date(day)
     pascha = orthodox_pascha_gregorian(day.year)
@@ -1071,7 +1099,12 @@ def day_info(day: date) -> dict:
     annual = h2_lectionary_entry(day)
     annual_feast = annual.get("feast") if isinstance(annual, dict) else None
     fixed = fixed_old_feast(jm, jd)
-    if isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip():
+    local_record = local_official_commemoration(day)
+    if local_record:
+        names = local_record["commemorations"]
+        feast = {lang: str(names.get(lang) or names.get("ar") or "").strip() for lang in ("ar", "en", "el")}
+        feast_status = str(local_record.get("verification_status"))
+    elif isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip():
         feast = {lang: str(annual_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}
         if feast["ar"] == UNREVIEWED_DAILY_FEAST_AR:
             feast = copy.deepcopy(UNAVAILABLE_DAILY_FEAST)
