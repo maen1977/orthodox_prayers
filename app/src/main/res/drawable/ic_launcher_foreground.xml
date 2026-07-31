@@ -1,13 +1,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval">
-            <solid android:color="#071A33" />
-        </shape>
-    </item>
-    <item android:top="20dp" android:bottom="20dp" android:left="20dp" android:right="20dp"
-        android:gravity="center">
+    <!-- Adaptive-icon canvas is 108dp. The cross itself is pre-scaled to the
+         Android 66dp safe zone so circular and squircle launchers never crop it. -->
+    <item android:gravity="center">
         <bitmap
-            android:src="@drawable/church_prayers_cross"
+            android:src="@drawable/church_prayers_cross_foreground"
             android:gravity="center"
             android:antialias="true"
             android:filter="true" />

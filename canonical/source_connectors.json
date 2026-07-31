@@ -13,15 +13,27 @@
     {
       "id": "orthodox_jordan_daily",
       "source_id": "orthodox_jordan",
-      "name": {"ar": "مطرانية الأردن — بيانات اليوم", "en": "Orthodox Jordan — daily data", "el": "Μητρόπολη Ἰορδανίας — ἡμερήσια δεδομένα"},
+      "name": {
+        "ar": "مطرانية الأردن — بيانات اليوم",
+        "en": "Orthodox Jordan — daily data",
+        "el": "Μητρόπολη Ἰορδανίας — ἡμερήσια δεδομένα"
+      },
       "official": true,
       "authority_tier": 1,
-      "languages": ["ar"],
+      "languages": [
+        "ar"
+      ],
       "calendar_profile": "jerusalem_old_calendar",
       "publication_role": "local_primary_authority",
-      "capabilities": ["commemorations", "fasting", "epistle_reference", "gospel_reference", "daily_prayer"],
+      "capabilities": [
+        "commemorations",
+        "fasting",
+        "epistle_reference",
+        "gospel_reference",
+        "daily_prayer"
+      ],
       "parser": "orthodox_jordan_daily",
-      "url_template": "https://orthodoxjordan.org/",
+      "url_template": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
       "rights_mode": "reference_and_authorized_native_import_only",
       "required_for_publication": false,
       "timeout_seconds": 25,
@@ -30,13 +42,21 @@
     {
       "id": "orthodox_jordan_churches",
       "source_id": "orthodox_jordan",
-      "name": {"ar": "دليل كنائس مطرانية الأردن", "en": "Orthodox Jordan church directory", "el": "Κατάλογος ναῶν Ἰορδανίας"},
+      "name": {
+        "ar": "دليل كنائس مطرانية الأردن",
+        "en": "Orthodox Jordan church directory",
+        "el": "Κατάλογος ναῶν Ἰορδανίας"
+      },
       "official": true,
       "authority_tier": 1,
-      "languages": ["ar"],
+      "languages": [
+        "ar"
+      ],
       "calendar_profile": "not_applicable",
       "publication_role": "official_directory",
-      "capabilities": ["church_directory"],
+      "capabilities": [
+        "church_directory"
+      ],
       "parser": "orthodox_jordan_churches",
       "url_template": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
       "rights_mode": "metadata_and_official_links_only",
@@ -47,13 +67,22 @@
     {
       "id": "orthodox_jordan_live",
       "source_id": "orthodox_jordan",
-      "name": {"ar": "البث الأرثوذكسي الأردني", "en": "Orthodox Jordan live broadcast", "el": "Ζωντανὴ μετάδοση Ἰορδανίας"},
+      "name": {
+        "ar": "البث الأرثوذكسي الأردني",
+        "en": "Orthodox Jordan live broadcast",
+        "el": "Ζωντανὴ μετάδοση Ἰορδανίας"
+      },
       "official": true,
       "authority_tier": 1,
-      "languages": ["ar"],
+      "languages": [
+        "ar"
+      ],
       "calendar_profile": "not_applicable",
       "publication_role": "official_live_link",
-      "capabilities": ["live_broadcast", "weekly_schedule"],
+      "capabilities": [
+        "live_broadcast",
+        "weekly_schedule"
+      ],
       "parser": "availability_only",
       "url_template": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
       "rights_mode": "official_link_only",
@@ -64,13 +93,25 @@
     {
       "id": "jerusalem_major_feasts",
       "source_id": "jerusalem_patriarchate",
-      "name": {"ar": "بطريركية القدس — الأعياد الكبرى", "en": "Jerusalem Patriarchate — major feasts", "el": "Πατριαρχεῖο Ἱεροσολύμων — μεγάλες ἑορτές"},
+      "name": {
+        "ar": "بطريركية القدس — الأعياد الكبرى",
+        "en": "Jerusalem Patriarchate — major feasts",
+        "el": "Πατριαρχεῖο Ἱεροσολύμων — μεγάλες ἑορτές"
+      },
       "official": true,
       "authority_tier": 2,
-      "languages": ["ar", "en", "el"],
+      "languages": [
+        "ar",
+        "en",
+        "el"
+      ],
       "calendar_profile": "jerusalem_old_calendar",
       "publication_role": "jurisdiction_and_feast_authority",
-      "capabilities": ["major_feasts", "jurisdiction", "old_style_date_evidence"],
+      "capabilities": [
+        "major_feasts",
+        "jurisdiction",
+        "old_style_date_evidence"
+      ],
       "parser": "availability_only",
       "url_template": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
       "rights_mode": "reference_and_official_links_only",
@@ -81,13 +122,24 @@
     {
       "id": "antioch_official",
       "source_id": "antioch_patriarchate_ar",
-      "name": {"ar": "بطريركية أنطاكية — المرجع العربي", "en": "Patriarchate of Antioch — Arabic reference", "el": "Πατριαρχεῖο Ἀντιοχείας — ἀραβικὴ πηγή"},
+      "name": {
+        "ar": "بطريركية أنطاكية — المرجع العربي",
+        "en": "Patriarchate of Antioch — Arabic reference",
+        "el": "Πατριαρχεῖο Ἀντιοχείας — ἀραβικὴ πηγή"
+      },
       "official": true,
       "authority_tier": 3,
-      "languages": ["ar", "en"],
+      "languages": [
+        "ar",
+        "en"
+      ],
       "calendar_profile": "antioch_local_calendar",
       "publication_role": "arabic_cross_check",
-      "capabilities": ["feasts", "lectionary_reference", "liturgical_articles"],
+      "capabilities": [
+        "feasts",
+        "lectionary_reference",
+        "liturgical_articles"
+      ],
       "parser": "availability_only",
       "url_template": "https://www.antiochpatriarchate.org/",
       "rights_mode": "reference_only_unless_authorized",
@@ -98,13 +150,25 @@
     {
       "id": "goarch_online_chapel_daily",
       "source_id": "goarch_online_chapel",
-      "name": {"ar": "المصلّى الإلكتروني — القراءات اليومية", "en": "GOARCH Online Chapel — daily readings", "el": "GOARCH Online Chapel — ἡμερήσια ἀναγνώσματα"},
+      "name": {
+        "ar": "المصلّى الإلكتروني — القراءات اليومية",
+        "en": "GOARCH Online Chapel — daily readings",
+        "el": "GOARCH Online Chapel — ἡμερήσια ἀναγνώσματα"
+      },
       "official": true,
       "authority_tier": 4,
-      "languages": ["en", "el"],
+      "languages": [
+        "en",
+        "el"
+      ],
       "calendar_profile": "ecumenical_patriarchate_new_calendar",
       "publication_role": "regular_cycle_cross_check",
-      "capabilities": ["saints", "fasting", "epistle_reference", "gospel_reference"],
+      "capabilities": [
+        "saints",
+        "fasting",
+        "epistle_reference",
+        "gospel_reference"
+      ],
       "parser": "goarch_online_chapel",
       "url_template": "https://www.goarch.org/chapel/",
       "rights_mode": "references_and_links; verify_each_full_text_license",
@@ -115,13 +179,26 @@
     {
       "id": "goarch_digital_chant_stand",
       "source_id": "goarch_digital_chant_stand_english",
-      "name": {"ar": "منصة الترتيل الرقمية — خدمات اليوم", "en": "Digital Chant Stand — daily services", "el": "Digital Chant Stand — ἀκολουθίες ἡμέρας"},
+      "name": {
+        "ar": "منصة الترتيل الرقمية — خدمات اليوم",
+        "en": "Digital Chant Stand — daily services",
+        "el": "Digital Chant Stand — ἀκολουθίες ἡμέρας"
+      },
       "official": true,
       "authority_tier": 4,
-      "languages": ["en", "el"],
+      "languages": [
+        "en",
+        "el"
+      ],
       "calendar_profile": "ecumenical_patriarchate_new_calendar",
       "publication_role": "service_structure_and_link_discovery",
-      "capabilities": ["vespers", "matins", "divine_liturgy", "daily_propers", "service_links"],
+      "capabilities": [
+        "vespers",
+        "matins",
+        "divine_liturgy",
+        "daily_propers",
+        "service_links"
+      ],
       "parser": "dcs_service_probe",
       "url_template": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
       "service_url_templates": [
@@ -137,13 +214,23 @@
     {
       "id": "oca_daily_readings",
       "source_id": "oca_official_english",
-      "name": {"ar": "الكنيسة الأرثوذكسية في أميركا — مراجع القراءات", "en": "OCA — daily reading references", "el": "OCA — παραπομπὲς ἀναγνωσμάτων"},
+      "name": {
+        "ar": "الكنيسة الأرثوذكسية في أميركا — مراجع القراءات",
+        "en": "OCA — daily reading references",
+        "el": "OCA — παραπομπὲς ἀναγνωσμάτων"
+      },
       "official": true,
       "authority_tier": 5,
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "calendar_profile": "oca_calendar",
       "publication_role": "last_official_reference_fallback",
-      "capabilities": ["epistle_reference", "gospel_reference", "saints"],
+      "capabilities": [
+        "epistle_reference",
+        "gospel_reference",
+        "saints"
+      ],
       "parser": "oca_daily_readings",
       "url_template": "https://www.oca.org/readings/daily/{year}/{month:02d}/{day:02d}",
       "rights_mode": "references_only; displayed_NKJV_text_is_web_only",
@@ -154,13 +241,23 @@
     {
       "id": "apostoliki_diakonia_voice",
       "source_id": "church_of_greece_apostoliki_diakonia",
-      "name": {"ar": "صوت الرب — خدمة الرسالة الرسولية", "en": "Voice of the Lord — Apostoliki Diakonia", "el": "Φωνὴ Κυρίου — Ἀποστολικὴ Διακονία"},
+      "name": {
+        "ar": "صوت الرب — خدمة الرسالة الرسولية",
+        "en": "Voice of the Lord — Apostoliki Diakonia",
+        "el": "Φωνὴ Κυρίου — Ἀποστολικὴ Διακονία"
+      },
       "official": true,
       "authority_tier": 4,
-      "languages": ["el"],
+      "languages": [
+        "el"
+      ],
       "calendar_profile": "church_of_greece_new_calendar",
       "publication_role": "greek_language_cross_check",
-      "capabilities": ["weekly_readings", "sermon", "greek_reference"],
+      "capabilities": [
+        "weekly_readings",
+        "sermon",
+        "greek_reference"
+      ],
       "parser": "availability_only",
       "url_template": "https://apostoliki-diakonia.gr/fk/",
       "rights_mode": "official_link_only_unless_explicitly_licensed",

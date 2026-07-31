@@ -52,7 +52,7 @@ class RollingWeekReviewedPropersTests(unittest.TestCase):
         info = self.update.day_info(date(2026, 7, 29))
         self.assertEqual("UNAVAILABLE_PENDING_ECCLESIASTICAL_REVIEW", info["feast_status"])
         self.assertEqual(
-            "التذكار اليومي غير منشور حتى اكتمال المراجعة الكنسية",
+            "تعذّر التحقق من تذكار هذا اليوم من المصدر الرسمي المحلي؛ تظهر آخر معلومة موثقة إن توفرت",
             info["feast_ar"],
         )
 
