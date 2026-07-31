@@ -28,7 +28,7 @@ public final class UpcomingScreen extends BaseScreen {
             }
         }
         JSONObject todayFasting = data.today().optJSONObject("fasting");
-        JSONObject guidance = isFastingDay(todayFasting) ? todayFasting.optJSONObject("guidance") : null;
+        JSONObject guidance = todayFasting == null ? null : todayFasting.optJSONObject("guidance");
         if (guidance != null) {
             LinearLayout reminder = ui.card();
             String spiritual = localized(guidance.optJSONObject("spiritual_note"), "");
@@ -46,13 +46,11 @@ public final class UpcomingScreen extends BaseScreen {
         String day = localized(item.optJSONObject("day"), localized(item.optJSONObject("date_label"), itemDate));
         TextView heading = ui.text(day, 16, ui.colors().primaryText(), true);
         card.addView(heading);
+        card.addView(ui.text(localized(item.optJSONObject("status"), ""), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
         JSONObject fasting = item.optJSONObject("fasting");
-        card.addView(ui.text(fastingDisplayTitle(item, itemDate), 14, ui.colors().accentText(), true), ui.margins(-1, -2, 0, 4, 0, 0));
-        if (isFastingDay(fasting)) {
-            addCompactFastingItems(card, fasting);
-            addFastingGuide(card, fasting, false);
-        }
-        String feast = displayableCommemoration(item);
+        addCompactFastingItems(card, fasting);
+        addFastingGuide(card, fasting, false);
+        String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
         if (!feast.isEmpty()) card.addView(ui.text(feast, 13, ui.colors().secondaryText(), false));
         addAppointedLiturgy(card, item, itemDate);
         JSONObject refs = item.optJSONObject("reading_references");
@@ -72,6 +70,7 @@ public final class UpcomingScreen extends BaseScreen {
         if (selection == null) return;
         String liturgy = localized(selection.optJSONObject("label"), "");
         String form = localized(selection.optJSONObject("service_form_label"), "");
+        String reason = localized(selection.optJSONObject("reason"), "");
         if (!liturgy.isEmpty()) {
             card.addView(ui.text(
                     local(com.orthodoxprayers.privateapp.R.string.ui_appointed_liturgy_label) + ": " + liturgy,
@@ -88,6 +87,15 @@ public final class UpcomingScreen extends BaseScreen {
                     false
             ));
         }
+        if (!reason.isEmpty()) {
+            card.addView(ui.text(
+                    local(com.orthodoxprayers.privateapp.R.string.ui_selection_reason_label) + ": " + reason,
+                    12,
+                    ui.colors().secondaryText(),
+                    false
+            ));
+        }
+
         JSONObject service = findService(item.optJSONArray("services"), "divine_liturgy");
         boolean complete = service != null && service.optBoolean("full_service_complete", false);
         if (complete && !itemDate.isEmpty()) {

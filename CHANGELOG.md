@@ -565,12 +565,3 @@
 ### R30 branding Git tracking hotfix
 - Keep generated `release/` outputs ignored while explicitly tracking canonical `release/branding/` assets.
 - Mark `.ico` files as binary and add a regression test for Git ignore rules.
-
-### R32 owner-requested UI refinement
-- Show the actual Wednesday or Friday fast name and reduce fast-free days to one plain “No fast” line.
-- Hide unavailable commemoration placeholders and internal Liturgy-selection reasons from users.
-- Keep the nine-day content while removing duplicate home shortcuts, table headings, and detail buttons.
-- Restore the exact prayer-list scroll position after returning from a reader.
-- Hide technical language/coverage controls from Settings while retaining their internal behavior.
-- Prefer the official Jordanian Orthodox TV live page, keep the Archdiocese page as fallback, and open streaming externally so it cannot freeze the app UI.
-- Reduce the adaptive and themed launcher artwork again for a safer visual margin.

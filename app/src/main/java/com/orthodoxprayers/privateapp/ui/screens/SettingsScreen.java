@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
+import com.orthodoxprayers.privateapp.data.TranslationCoverage;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.LocalePolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
@@ -28,15 +29,33 @@ public final class SettingsScreen extends BaseScreen {
     public View createView() {
         UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_settings_25169a1d), true);
         page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_app_and_text_language_10b5a3ac)));
+        TranslationCoverage.Result en = data.translationCoverage("en");
+        TranslationCoverage.Result el = data.translationCoverage("el");
         LinearLayout languages = ui.row();
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_arabic_name), "ar");
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_english_name), "en");
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_greek_name), "el");
         add(page.root, languages, 0, 5);
 
-        // Language libraries and source-display controls remain part of the
-        // internal data model, but the settings page exposes only the practical
-        // language choice requested by ordinary users.
+        TextView languagePolicy = ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_arabic_english_and_greek_are_three_independent_n_d97c4432));
+        add(page.root, languagePolicy, 0, 8);
+
+        TextView coverage = centered(local(com.orthodoxprayers.privateapp.R.string.ui_current_native_official_text_coverage_english_0f60cec5) + en.percent + "%\n" + local(com.orthodoxprayers.privateapp.R.string.ui_greek_1565698a) + el.percent + "%",
+                13, ui.colors().secondaryText(), false);
+        add(page.root, coverage, 0, 8);
+
+        Button languagePacks = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_manage_active_languages_9565aa55), false);
+        languagePacks.setOnClickListener(v -> host.navigate("language_packs", null));
+        add(page.root, languagePacks, 0, 8);
+
+        Button original = ui.button(preferences.showOriginal()
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_hide_source_text_d8f171c5)
+                : local(com.orthodoxprayers.privateapp.R.string.ui_show_source_text_f6b54117), preferences.showOriginal());
+        original.setOnClickListener(v -> {
+            preferences.setShowOriginal(!preferences.showOriginal());
+            host.navigate("settings", null);
+        });
+        add(page.root, original, 0, 10);
 
         page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_reading_0443f4e6)));
         LinearLayout font = ui.row();
@@ -123,7 +142,7 @@ public final class SettingsScreen extends BaseScreen {
                 .show());
         add(page.root, resetReading, 0, 10);
 
-        // Keep calendar and reminder controls without an extra technical section tab.
+        page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_reminders_acba78af)));
         LinearLayout quietHours = ui.row();
         Button quietStart = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_quiet_starts_91bc6653) + formatMinute(preferences.quietHoursStartMinute()), false);
         quietStart.setOnClickListener(v -> showTimePicker(preferences.quietHoursStartMinute(), minute -> {
@@ -227,6 +246,12 @@ public final class SettingsScreen extends BaseScreen {
                                 + healthSummary.optInt("usable_connector_count", 0) + "/" + healthSummary.optInt("connector_count", 0),
                         healthSummary.optInt("usable_connector_count", 0) > 0);
                 add(page.root, health, 0, 6);
+            }
+            JSONObject liturgyCoverage = data.serviceCoverage("divine_liturgy");
+            if (liturgyCoverage != null) {
+                TextView liturgyCoverageBadge = ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_verified_variable_liturgy_coverage_4ec89c04)
+                        + liturgyCoverage.optInt("coverage_percent", 0) + "%");
+                add(page.root, liturgyCoverageBadge, 0, 7);
             }
             Button sources = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_view_all_sources_1b4296c4), false);
             sources.setOnClickListener(v -> host.navigate("sources", null));

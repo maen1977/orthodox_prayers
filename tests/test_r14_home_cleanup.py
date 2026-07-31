@@ -22,23 +22,25 @@ class R14HomeCleanupTests(unittest.TestCase):
     def test_duplicate_home_sections_are_hidden(self):
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         create_view = home[home.index("public View createView()") : home.index("private void addUpdateBanner")]
-        date_card = home[home.index("private void addDateCard") : home.index("private void addRollingWeekStatus")]
+        date_card = home[home.index("private void addDateCard") : home.index("private String fastingValue")]
         self.assertNotIn("addStatusCard", create_view)
         self.assertNotIn("addTodayFastingGuide", create_view)
         self.assertNotIn('today.optJSONObject("feast")', date_card)
         self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
-        self.assertTrue(source_omits_text(home, "عرض تفاصيل الأيام التسعة", "ar"))
-        self.assertNotIn("addNextSunday(page.root)", create_view)
+        self.assertTrue(source_references_text(home, "عرض تفاصيل الأيام التسعة", "ar", exact=True))
+        self.assertTrue(source_references_text(home, "الأحد القادم", "ar", exact=True))
 
-    def test_home_shortcuts_are_hidden_but_routes_remain(self):
+    def test_important_home_shortcuts_are_visible_and_routes_remain(self):
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
-        for route in ('case "search"', 'case "favorites"', 'case "calendar"', 'case "language_packs"', 'case "settings"'):
+        for route in ('case "search"', 'case "favorites"', 'case "calendar"', 'case "language_packs"'):
             self.assertIn(route, main)
-        for hidden in (
+        for retained in (
+            "قداس اليوم الكامل",
             "القراءات اليومية",
             "الصلوات اليومية",
             "التقويم والصيام",
+            "اليوم + 8 أيام قادمة مكتملة",
             "الكنائس والبث المباشر",
             "البحث",
             "المفضلة",
@@ -46,8 +48,7 @@ class R14HomeCleanupTests(unittest.TestCase):
             "اللغات",
             "الإعدادات",
         ):
-            self.assertTrue(source_omits_text(home, hidden, "ar"), hidden)
-        self.assertIn('host.navigate("reader", "divine_liturgy")', home)
+            self.assertTrue(source_references_text(home, retained, "ar"), retained)
 
     def test_home_shows_a_light_nine_day_fasting_table(self):
         base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
@@ -55,9 +56,9 @@ class R14HomeCleanupTests(unittest.TestCase):
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
         self.assertTrue(source_references_text(base, "✓ مسموح   ✕ ممنوع", "ar", exact=True))
         self.assertIn('!fasting.optBoolean("is_fast", false)', base)
-        self.assertTrue(source_omits_text(home, "جدول الصيام للأيام التسعة", "ar"))
+        self.assertTrue(source_references_text(home, "جدول الصيام للأيام التسعة", "ar", exact=True))
         self.assertIn('host.navigate("calendar_day", date)', home)
-        self.assertNotIn('host.navigate("calendar", null)', home)
+        self.assertIn('"calendar", null', home)
         self.assertIn("addCompactFastingItems(card, fasting)", upcoming)
 
     def test_settings_hide_call_and_privacy_actions_only(self):

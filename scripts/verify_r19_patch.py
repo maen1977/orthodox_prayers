@@ -24,14 +24,9 @@ REQUIRED = {
         "isolateTechnical",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": (
+        "ui_arabic_english_and_greek_are_three_independent_n_d97c4432",
         "new TimePicker",
         "LocalePolicy.formatTimestamp",
-    ),
-    "app/src/main/res/values/ui_strings.xml": (
-        'name="ui_arabic_english_and_greek_are_three_independent_n_d97c4432"',
-    ),
-    "scripts/validate_ui_localizations.py": (
-        '"ui_arabic_english_and_greek_are_three_independent_n_d97c4432"',
     ),
     "scripts/build_public_source_registry.py": (
         '"last_verified": latest[:10]',

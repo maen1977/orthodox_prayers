@@ -137,14 +137,14 @@ def test_android_reader_composes_preparation_liturgy_and_thanksgiving():
     assert 'full_service_complete' in source
 
 
-def test_ui_exposes_type_form_and_complete_open_action_but_hides_internal_reason():
+def test_ui_exposes_type_form_reason_and_complete_open_action():
     upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
     calendar = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
     home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
     for source in (upcoming, calendar):
         assert "ui_appointed_liturgy_label" in source
         assert "ui_service_form_label" in source
-        assert "ui_selection_reason_label" not in source
+        assert "ui_selection_reason_label" in source
     assert "ui_open_complete_service_beginning_to_end" in calendar
     assert "ui_open_full_appointed_liturgy_format" in home
 
