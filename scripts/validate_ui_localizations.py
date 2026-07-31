@@ -18,6 +18,28 @@ ARABIC = re.compile(r"[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]")
 GREEK = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
 RESOURCE_REFERENCE = re.compile(r"R\.string\.(ui_[A-Za-z0-9_]+)")
 FORMAT_TOKEN = re.compile(r"%(\d+)\$([a-zA-Z])")
+INTENTIONALLY_HIDDEN_UI_RESOURCES = {
+    "ui_arabic_english_and_greek_are_three_independent_n_d97c4432",
+    "ui_calendar_and_fasting_51a9bf84",
+    "ui_calendar_and_reminders_acba78af",
+    "ui_churches_and_live_services_53a37eff",
+    "ui_current_native_official_text_coverage_english_0f60cec5",
+    "ui_daily_readings_7f88fcc0",
+    "ui_greek_1565698a",
+    "ui_hide_source_text_d8f171c5",
+    "ui_languages_409ca23f",
+    "ui_manage_active_languages_9565aa55",
+    "ui_open_the_complete_divine_liturgy_14695677",
+    "ui_pinned_texts_5baad15c",
+    "ui_quick_access_c927e8a2",
+    "ui_reading_history_0a3be238",
+    "ui_selection_reason_label",
+    "ui_seven_day_fasting_table_9f1b0d97",
+    "ui_show_seven_day_details_97f48507",
+    "ui_show_source_text_f6b54117",
+    "ui_today_7_complete_days_3057eb0c",
+}
+
 DIRECT_TRIPLE = re.compile(
     r"\blocal\s*\(\s*\"(?:\\.|[^\"\\])*\"(?:\s*\+\s*\"(?:\\.|[^\"\\])*\")*\s*,"
     r"\s*\"(?:\\.|[^\"\\])*\"(?:\s*\+\s*\"(?:\\.|[^\"\\])*\")*\s*,"
@@ -86,7 +108,10 @@ def main() -> None:
     missing_references = sorted(referenced - expected)
     if missing_references:
         raise SystemExit(f"Java references missing UI resources: {missing_references[:10]}")
-    unused = sorted(expected - referenced)
+    hidden_missing = sorted(INTENTIONALLY_HIDDEN_UI_RESOURCES - expected)
+    if hidden_missing:
+        raise SystemExit(f"Intentionally hidden UI resources are missing: {hidden_missing[:10]}")
+    unused = sorted((expected - referenced) - INTENTIONALLY_HIDDEN_UI_RESOURCES)
     # A small number of shared format strings may be resolved indirectly; a large
     # unused catalog usually means a broken migration or stale duplicated text.
     if len(unused) > 12:

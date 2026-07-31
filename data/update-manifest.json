@@ -1,21 +1,21 @@
 {
   "manifest_schema_version": 1,
   "date_iso": "2026-07-31",
-  "revision": 10501,
-  "published_at_utc": "2026-07-31T15:58:02Z",
+  "revision": 10601,
+  "published_at_utc": "2026-07-31T21:00:34Z",
   "minimum_app_version_code": 50023,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "b4eb8a53535b2581d0da8e3670280ab848bcc3290164a9710d6902eb7c09a849",
-    "size_bytes": 11793067
+    "sha256": "6425cc3e46daa95bc0c53aa6db8de85cff4da0d81146ce126f958399463284bf",
+    "size_bytes": 11803993
   },
   "languages": {
     "ar": {
       "path": "data/daily/2026-07-31/ar.json",
       "signature_path": "data/daily/2026-07-31/ar.json.sig",
-      "sha256": "343542b716478d270a44fd382659cf58c87b656a51810bb358d4cf30f2b82865",
-      "size_bytes": 7313184,
+      "sha256": "8143c74d578833fdc6cf658abb32f12cf543fd739bb7cf4f19535a64bc668974",
+      "size_bytes": 7321611,
       "coverage_start_date": "2026-07-31",
       "coverage_end_date": "2026-08-20",
       "coverage_day_count": 21,
@@ -25,8 +25,8 @@
     "en": {
       "path": "data/daily/2026-07-31/en.json",
       "signature_path": "data/daily/2026-07-31/en.json.sig",
-      "sha256": "b5085f19d500808ea6d0bf0d0500e1864d858a09c06a3895630fb645184a2cfd",
-      "size_bytes": 6390177,
+      "sha256": "72d8009e4cccd62156d134d9e576c4fb00139884705df3db3e16f6f591793213",
+      "size_bytes": 6397890,
       "coverage_start_date": "2026-07-31",
       "coverage_end_date": "2026-08-20",
       "coverage_day_count": 21,
@@ -36,8 +36,8 @@
     "el": {
       "path": "data/daily/2026-07-31/el.json",
       "signature_path": "data/daily/2026-07-31/el.json.sig",
-      "sha256": "b77782d7a3f0690e30543350ba116c2cf9ae3d17b70a79330be02b55c4c9dfd5",
-      "size_bytes": 7733729,
+      "sha256": "fb2dc83d425895d90a69a9c896a0a5f3594c60324527dd0b3a56b7751205bf2e",
+      "size_bytes": 7742807,
       "coverage_start_date": "2026-07-31",
       "coverage_end_date": "2026-08-20",
       "coverage_day_count": 21,

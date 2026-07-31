@@ -7435,7 +7435,7 @@
         "target_date": "2026-07-31",
         "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
         "status": "poisoned",
-        "checked_at_utc": "2026-07-31T15:56:03Z",
+        "checked_at_utc": "2026-07-31T20:58:27Z",
         "http_status": 200,
         "content_sha256": "62e218d1e60e4d28a4d659668298449d4475f81600aa0935d2e3fc9b3b3a8e12",
         "content_bytes": 441260,
@@ -7460,7 +7460,7 @@
         "target_date": "2026-07-31",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
         "status": "available",
-        "checked_at_utc": "2026-07-31T15:56:04Z",
+        "checked_at_utc": "2026-07-31T20:58:28Z",
         "http_status": 200,
         "content_sha256": "96062c3c433aa670c5cb1a84c60dc6fa6bf3ae88e93abe6342375dbcdb433709",
         "content_bytes": 889156,
@@ -7485,7 +7485,7 @@
         "target_date": "2026-07-31",
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
         "status": "available",
-        "checked_at_utc": "2026-07-31T15:56:05Z",
+        "checked_at_utc": "2026-07-31T20:58:30Z",
         "http_status": 200,
         "content_sha256": "0f67ab198dd45e3d82f173ed0dee339163bf1668f7ff44ee5865f05ce3f2ded2",
         "content_bytes": 379112,
@@ -7510,7 +7510,7 @@
         "target_date": "2026-07-31",
         "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
         "status": "available",
-        "checked_at_utc": "2026-07-31T15:56:06Z",
+        "checked_at_utc": "2026-07-31T20:58:30Z",
         "http_status": 200,
         "content_sha256": "ed8d14f97421e68175560fea07eb5515568983176ca108a7c3534f8fff3cde0d",
         "content_bytes": 173537,
@@ -7535,7 +7535,7 @@
         "target_date": "2026-07-31",
         "url": "https://www.antiochpatriarchate.org/",
         "status": "available",
-        "checked_at_utc": "2026-07-31T15:56:07Z",
+        "checked_at_utc": "2026-07-31T20:58:30Z",
         "http_status": 200,
         "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
         "content_bytes": 6664,
@@ -7560,7 +7560,7 @@
         "target_date": "2026-07-31",
         "url": "https://www.goarch.org/chapel/",
         "status": "http_error",
-        "checked_at_utc": "2026-07-31T15:56:07Z",
+        "checked_at_utc": "2026-07-31T20:58:30Z",
         "http_status": 403,
         "content_sha256": null,
         "content_bytes": null,
@@ -7585,7 +7585,7 @@
         "target_date": "2026-07-31",
         "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
         "status": "current",
-        "checked_at_utc": "2026-07-31T15:56:08Z",
+        "checked_at_utc": "2026-07-31T20:58:31Z",
         "http_status": 200,
         "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
         "content_bytes": 2422,
@@ -7632,9 +7632,9 @@
         "target_date": "2026-07-31",
         "url": "https://www.oca.org/readings/daily/2026/07/31",
         "status": "current",
-        "checked_at_utc": "2026-07-31T15:56:08Z",
+        "checked_at_utc": "2026-07-31T20:58:33Z",
         "http_status": 200,
-        "content_sha256": "0b65a95245294499479aec56edeea2a7e096aa164b967669837bc6bc5b4c54e3",
+        "content_sha256": "f1557b70c508fae6a531eade095fd0167e57b6480cfaa2be6863456f48909f43",
         "content_bytes": 14671,
         "detected_date": "2026-07-31",
         "epistle_reference": "1 Corinthians 14:26-40",
@@ -7659,7 +7659,7 @@
         "target_date": "2026-07-31",
         "url": "https://apostoliki-diakonia.gr/fk/",
         "status": "available",
-        "checked_at_utc": "2026-07-31T15:56:11Z",
+        "checked_at_utc": "2026-07-31T20:58:36Z",
         "http_status": 200,
         "content_sha256": "ef3641739a0ebf9e4f4baf957df63d80a8568455428a22fd9bd83b9a6a7161c3",
         "content_bytes": 116021,
@@ -8386,10 +8386,19 @@
     ],
     "live_resources": [
       {
-        "id": "orthodox_jordan_live",
+        "id": "orthodox_jordan_tv_live",
         "title": {
           "ar": "",
-          "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+          "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+          "en": ""
+        },
+        "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+      },
+      {
+        "id": "orthodox_jordan_live_fallback",
+        "title": {
+          "ar": "",
+          "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
           "en": ""
         },
         "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -8522,7 +8531,7 @@
       1,
       6
     ],
-    "generated_at_utc": "2026-07-31T15:57:27Z",
+    "generated_at_utc": "2026-07-31T20:59:59Z",
     "language_lanes_required": [
       "ar",
       "en",
@@ -16610,10 +16619,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -24994,10 +25012,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -33208,10 +33235,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -41427,10 +41463,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -49646,10 +49691,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -57862,10 +57916,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -66088,10 +66151,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -74305,10 +74377,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -82693,10 +82774,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -90922,10 +91012,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -99144,10 +99243,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -107372,10 +107480,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -115603,10 +115720,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -123835,10 +123961,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -132061,10 +132196,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -140443,10 +140587,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -148653,10 +148806,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -156865,10 +157027,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -165251,10 +165422,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
@@ -173460,10 +173640,19 @@
         ],
         "live_resources": [
           {
-            "id": "orthodox_jordan_live",
+            "id": "orthodox_jordan_tv_live",
             "title": {
               "ar": "",
-              "el": "Ζωντανὴ μετάδοση Ἰορδανίας",
+              "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά",
+              "en": ""
+            },
+            "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+          },
+          {
+            "id": "orthodox_jordan_live_fallback",
+            "title": {
+              "ar": "",
+              "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως",
               "en": ""
             },
             "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
