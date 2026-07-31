@@ -11,25 +11,27 @@
   "distribution_status": "REDISTRIBUTABLE",
   "retrieved_at": "2026-07-16T00:00:00+03:00",
   "imported_at": "2026-07-16T15:13:36.023616+00:00",
-  "verse_count": 619,
+  "verse_count": 633,
   "books": [
     "1CO",
     "2CO",
     "2PE",
     "JHN",
+    "LUK",
     "MAT",
     "MRK",
+    "PHP",
     "ROM"
   ],
   "machine_translation_used": false,
   "automatic_diacritization_used": false,
   "display_text_policy": "PRESERVE_SOURCE_UNICODE_CODEPOINTS_EXACTLY",
   "source_snapshot_sha256": "c393da8bd8bfd485f6906702e559b868fcfb83e4c94b76d63b96adb84837cd62",
-  "content_sha256": "05f8e5862c7b5bce1ee304264357fe88ba21c39ff0fa8b9259220870fd1976cb",
-  "rolling_window_start": "2026-07-31",
-  "rolling_window_end": "2026-08-20",
+  "content_sha256": "f839d39dbf8c2d3370cca20e0a7bb12fb7f507b68e9f926d519f48dea87cba2f",
+  "rolling_window_start": "2026-08-01",
+  "rolling_window_end": "2026-08-21",
   "rolling_window_day_count": 21,
   "rolling_window_reference_count": 60,
-  "rolling_window_required_verse_count": 515,
-  "rolling_window_slice_prepared_at": "2026-07-31T20:58:22.938958+00:00"
+  "rolling_window_required_verse_count": 510,
+  "rolling_window_slice_prepared_at": "2026-07-31T22:12:41.196696+00:00"
 }

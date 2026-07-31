@@ -112,12 +112,12 @@ def main() -> None:
         "live_resources": [
             {
                 "id": "orthodox_jordan_tv_live",
-                "title": {"ar": "المحطة الأرثوذكسية الأردنية — مباشر", "en": "Jordanian Orthodox TV — Live", "el": "Ἰορδανικὴ Ὀρθόδοξη Τηλεόραση — Ζωντανά"},
-                "url": "https://orthodoxjo.tv/video/%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D8%A9-%D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3%D9%8A%D8%A9/"
+                "title": {"ar": "المحطة الأرثوذكسية الأردنية — مباشر", "en": "Orthodox Jordan TV — Live", "el": "Ὀρθόδοξη Τηλεόραση Ἰορδανίας — Ζωντανά"},
+                "url": "https://orthodoxjo.tv/video/orthodox-station/"
             },
             {
                 "id": "orthodox_jordan_live_fallback",
-                "title": {"ar": "صفحة البث الرسمية الاحتياطية", "en": "Official live-page fallback", "el": "Ἐπίσημη ἐφεδρικὴ σελίδα μεταδόσεως"},
+                "title": {"ar": "البث الرسمي لمطرانية الأردن — رابط احتياطي", "en": "Orthodox Jordan Metropolis live page — fallback", "el": "Σελίδα ζωντανῆς μεταδόσεως Μητροπόλεως Ἰορδανίας — ἐφεδρική"},
                 "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
             },
             {

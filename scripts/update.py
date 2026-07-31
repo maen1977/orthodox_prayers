@@ -33,7 +33,9 @@ def verify_pipeline_patch() -> None:
         str(integrity_path.relative_to(ROOT)): '"Mt.": "Matthew"',
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
         str(fasting_validator_path.relative_to(ROOT)): "documented_interval",
-        str(home_path.relative_to(ROOT)): "R15_THEME_PALETTE_IMPORT",
+        # R32 intentionally removed the obsolete ThemePalette dependency from HomeScreen.
+        # Verify the current owner-facing home contract instead of the retired R15 marker.
+        str(home_path.relative_to(ROOT)): "R32_OWNER_UI_REFINEMENT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
         str(sources_path.relative_to(ROOT)): "ui_sources_and_references_1a2c2926",
         str(coordinator_path.relative_to(ROOT)): "FIRST_REFRESH_HOUR = 1",

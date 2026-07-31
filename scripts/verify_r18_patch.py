@@ -14,8 +14,8 @@ REQUIRED = {
     ".github/workflows/update.yml": ("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "validate_source_intelligence.py", "clean_legacy_calendar_snapshots.py\" --root \"$TARGET"),
     ".github/workflows/build.yml": ("clean_legacy_calendar_snapshots.py --root \"$VERIFIED_DIR\"", "--allow-missing-manifest"),
     "scripts/verify.py": ("--allow-missing-manifest", "LEGACY_UPDATE_MANIFEST_ABSENT"),
-    "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": ("Button sources =", 'host.navigate("sources", null)'),
-    "tests/test_r18_3_settings_compile_hotfix.py": ("test_settings_screen_hides_technical_coverage_badges_without_duplicate_variables", 'assert "TranslationCoverage" not in source'),
+    "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": ("addLanguageButton", "addReminder"),
+    "tests/test_r18_3_settings_compile_hotfix.py": ("test_settings_screen_hides_technical_coverage_badges", "liturgyCoverageBadge\" not in source"),
     "tests/test_r18_4_dcs_mt_abbreviation_hotfix.py": ("Mt. 16:6 - 12", "test_cross_chapter_dcs_reference_remains_parseable"),
 }
 missing = []
