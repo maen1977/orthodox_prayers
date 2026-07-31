@@ -1,3 +1,10 @@
+## 5.0.23 — R28 runtime signed-payload storage alignment
+
+- Unified the signed remote payload ceiling at 12,000,000 bytes across manifest parsing, HTTP download, and atomic on-device storage.
+- Raised `minimum_app_version_code` to 50023 so 5.0.22 and older fail early with an app-update requirement instead of downloading an unsavable moving-window package.
+- Manual update failures now automatically preserve/open technical diagnostics and show the stable diagnostic code in the failure toast.
+- Added regression coverage for the exact large-language-payload failure.
+
 ## 5.0.22 — R27 public endpoint payload-size hotfix
 
 - Fixed public endpoint verification for signed language payloads larger than the obsolete 6,000,000-byte verifier limit.

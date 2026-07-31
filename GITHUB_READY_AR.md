@@ -1,4 +1,4 @@
-# حالة النسخة الجاهزة لـ GitHub — Orthodox Prayers 5.0.22
+# حالة النسخة الجاهزة لـ GitHub — Orthodox Prayers 5.0.23
 
 ## ما تم إصلاحه
 

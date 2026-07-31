@@ -31,7 +31,7 @@ public final class DailyDataStore {
     private static final String CURRENT_REFERENCE = "current.ref";
     private static final String BACKUP_REFERENCE = "backup.ref";
     private static final String ARCHIVE_DIRECTORY = "archive";
-    private static final int MAX_JSON_BYTES = 6_000_000;
+    private static final int MAX_JSON_BYTES = DataContract.MAX_SIGNED_PAYLOAD_BYTES;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_REFERENCE_BYTES = 128;
 

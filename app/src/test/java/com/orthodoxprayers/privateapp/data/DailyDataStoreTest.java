@@ -57,4 +57,29 @@ public final class DailyDataStoreTest {
         assertArrayEquals("second".getBytes(), stable.readCurrent().json);
         assertArrayEquals("first".getBytes(), stable.readBackup().json);
     }
+    @Test
+    public void acceptsSignedPayloadAboveLegacySixMegabyteLimit() throws Exception {
+        File root = Files.createTempDirectory("daily-store-large-test").toFile();
+        DailyDataStore store = new DailyDataStore(root);
+        byte[] payload = new byte[6_000_001];
+        payload[0] = '{';
+        payload[payload.length - 1] = '}';
+
+        store.saveVerified(payload, SIG);
+
+        assertArrayEquals(payload, store.readCurrent().json);
+    }
+
+    @Test
+    public void rejectsPayloadAboveSharedTwelveMegabyteLimit() throws Exception {
+        File root = Files.createTempDirectory("daily-store-oversize-test").toFile();
+        DailyDataStore store = new DailyDataStore(root);
+        try {
+            store.saveVerified(new byte[DataContract.MAX_SIGNED_PAYLOAD_BYTES + 1], SIG);
+            fail("Expected oversized payload rejection");
+        } catch (IllegalArgumentException expected) {
+            // Expected.
+        }
+    }
+
 }

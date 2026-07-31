@@ -38,7 +38,7 @@ public final class DataRepository {
     public interface RefreshCallback { void onComplete(RefreshResult result, String message); }
 
     private static final String TAG = "OrthodoxData";
-    private static final int MAX_JSON_BYTES = 12_000_000;
+    private static final int MAX_JSON_BYTES = DataContract.MAX_SIGNED_PAYLOAD_BYTES;
     private static final int MIN_ROLLING_WINDOW_DAYS = 9;
     private static final int MAX_ROLLING_WINDOW_DAYS = 42;
     private static final int MAX_MANIFEST_BYTES = 64_000;
@@ -1105,6 +1105,9 @@ public final class DataRepository {
         if (code.startsWith("app_update_required")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc);
         if (code.startsWith("manifest_revision_rollback")) return local(com.orthodoxprayers.privateapp.R.string.ui_an_older_data_revision_was_rejected_for_update_s_5238c511);
         if (code.startsWith("manifest_unavailable_after_acceptance")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_secure_update_manifest_could_not_be_verified_d5b624be);
+        if (code.contains("invalid_json_size") || code.contains("stored_file_size_invalid") || code.contains("response_too_large") || code.contains("manifest_size_invalid")) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc);
+        }
         if (code.startsWith("date_not_ready") || code.startsWith("server_data_not_ready") || code.startsWith("server_manifest_not_ready")) return local(com.orthodoxprayers.privateapp.R.string.ui_today_s_update_is_still_being_published_the_last_d93b9203);
         if (code.startsWith("secure_connection_")) return local(com.orthodoxprayers.privateapp.R.string.ui_a_secure_connection_to_the_update_server_could_n_22125562);
         if (code.startsWith("server_") || code.startsWith("http_")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4);

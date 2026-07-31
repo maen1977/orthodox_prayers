@@ -490,6 +490,12 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                 );
             }
 
+            // A manual failure should be diagnosable without asking the user to reproduce it.
+            // Keep the technical panel expanded and show the stable classifier code in the toast.
+            if (manual && result == DataRepository.RefreshResult.FAILED) {
+                preferences.setAdvancedDiagnosticsExpanded(true);
+            }
+
             // Every data-backed screen must reflect a newly accepted snapshot. Reader
             // screens persist their RecyclerView position in onHidden(); ScrollViews are
             // restored explicitly below.
@@ -500,9 +506,15 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             }
 
             if (manual) {
+                String messageForUser = repository.userFacingRefreshStatus();
+                if (result == DataRepository.RefreshResult.FAILED) {
+                    messageForUser += "\n"
+                            + repository.local(com.orthodoxprayers.privateapp.R.string.ui_update_diagnostic_code_400000df)
+                            + repository.refreshDiagnosticCode();
+                }
                 Toast.makeText(
                         this,
-                        repository.userFacingRefreshStatus(),
+                        messageForUser,
                         result == DataRepository.RefreshResult.FAILED ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT
                 ).show();
             } else if (result == DataRepository.RefreshResult.FAILED && !repository.hasDisplayableData()) {

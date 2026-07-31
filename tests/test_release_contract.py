@@ -25,10 +25,10 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.0.22"', build)
-        self.assertIn("versionCode = 50022", build)
+        self.assertIn('versionName = "5.0.23"', build)
+        self.assertIn("versionCode = 50023", build)
         contract = json.loads((ROOT / "canonical/update_contract.json").read_text(encoding="utf-8"))
-        self.assertEqual(50013, contract["minimum_app_version_code"])
+        self.assertEqual(50023, contract["minimum_app_version_code"])
         self.assertIn("compileSdk = 36", build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("isMinifyEnabled = true", build)

@@ -80,7 +80,7 @@ public final class UpdateManifest {
             throw new IllegalStateException("manifest_hash_invalid");
         }
         int size = selected.optInt("size_bytes", 0);
-        if (size < 1 || size > 12_000_000) {
+        if (size < 1 || size > DataContract.MAX_SIGNED_PAYLOAD_BYTES) {
             throw new IllegalStateException("manifest_size_invalid");
         }
         return new Selection(
