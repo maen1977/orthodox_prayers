@@ -1,3 +1,9 @@
+## 5.0.22 — R25 source-ID hotfix
+
+- Fixed the Arabic Transfiguration prokeimenon being removed by the strict native-language lane gate.
+- Normalized historical proper-source IDs to the canonical IDs registered in the native-source contract.
+- Added a regression test for 2026-08-19 across Arabic, English, and Greek.
+
 ## 5.0.22 — Rolling-window feast-title hotfix (2026-07-31)
 
 - Fixed the 2026-08-19 rolling-window failure by validating Jerusalem fixed feasts against an explicit canonical Arabic alias allowlist instead of one short title only.

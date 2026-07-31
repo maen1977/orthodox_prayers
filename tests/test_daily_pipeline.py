@@ -295,6 +295,23 @@ class DailyPipelineTests(unittest.TestCase):
             evidence = prokeimenon["native_source_verification"][language]
             self.assertEqual("VERIFIED_EXACT_NATIVE_SOURCE", evidence["status"])
 
+    def test_transfiguration_prokeimenon_uses_registered_native_source_ids(self):
+        target = date(2026, 8, 19)
+        info = self.update.day_info(target)
+        prokeimenon = self.update.default_prokeimenon(info, target)
+        contract = json.loads((ROOT / "canonical/source_native_contract.json").read_text(encoding="utf-8"))
+
+        self.assertEqual("مزمور 103:24، 1", prokeimenon["reference"]["ar"])
+        for language in ("ar", "en", "el"):
+            evidence = prokeimenon["native_source_verification"][language]
+            self.assertTrue(prokeimenon["body"][language].strip())
+            self.assertIn(evidence["source_id"], contract["language_lanes"][language]["priority"])
+
+        self.assertEqual(
+            "antioch_archdiocese_tripoli_ar",
+            prokeimenon["native_source_verification"]["ar"]["source_id"],
+        )
+
     def test_weekday_and_sunday_prokeimena_are_not_blank_in_any_language(self):
         for offset in range(7):
             target = date(2026, 7, 13) + timedelta(days=offset)
