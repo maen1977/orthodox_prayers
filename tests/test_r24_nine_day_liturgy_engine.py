@@ -144,7 +144,7 @@ def test_ui_exposes_type_form_reason_and_complete_open_action():
     for source in (upcoming, calendar):
         assert "ui_appointed_liturgy_label" in source
         assert "ui_service_form_label" in source
-        assert "ui_selection_reason_label" in source
+        assert "ui_selection_reason_label" not in source
     assert "ui_open_complete_service_beginning_to_end" in calendar
     assert "ui_open_full_appointed_liturgy_format" in home
 

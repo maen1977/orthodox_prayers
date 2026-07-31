@@ -14,6 +14,10 @@ import com.orthodoxprayers.privateapp.ui.UiKit;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Locale;
+
 public abstract class BaseScreen implements AppScreen {
     protected final ScreenHost host;
     protected final UiKit ui;
@@ -47,8 +51,71 @@ public abstract class BaseScreen implements AppScreen {
     protected String localFormat(int resourceId, Object... arguments) { return data.localFormat(resourceId, arguments); }
     protected String localized(JSONObject object, String fallback) { return data.localized(object, fallback); }
 
+    protected boolean isFastingDay(JSONObject fasting) {
+        return fasting != null && fasting.optBoolean("is_fast", false);
+    }
+
+    protected String fastingDisplayTitle(JSONObject day, String isoDate) {
+        JSONObject fasting = day == null ? null : day.optJSONObject("fasting");
+        if (!isFastingDay(fasting)) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_no_fast_plain);
+        }
+
+        String title = localized(fasting.optJSONObject("title"), "");
+        JSONObject verification = fasting.optJSONObject("verification");
+        String rule = verification == null ? "" : verification.optString("rule", "");
+        if ("weekly_wednesday_friday".equals(rule)) {
+            String dateValue = isoDate == null || isoDate.trim().isEmpty()
+                    ? day.optString("date_iso", day.optString("date", ""))
+                    : isoDate;
+            try {
+                DayOfWeek weekday = LocalDate.parse(dateValue).getDayOfWeek();
+                String weekdayTitle = "";
+                if (weekday == DayOfWeek.WEDNESDAY) {
+                    weekdayTitle = local(com.orthodoxprayers.privateapp.R.string.ui_wednesday_fast);
+                } else if (weekday == DayOfWeek.FRIDAY) {
+                    weekdayTitle = local(com.orthodoxprayers.privateapp.R.string.ui_friday_fast);
+                }
+                if (!weekdayTitle.isEmpty()) {
+                    String level = localized(fasting.optJSONObject("level"), "");
+                    return level.isEmpty() ? weekdayTitle : weekdayTitle + " — " + level;
+                }
+            } catch (Exception ignored) {
+                // Keep the verified localized title when a legacy payload has no ISO date.
+            }
+        }
+
+        if (!title.isEmpty()) return title;
+        String status = day == null ? "" : localized(day.optJSONObject("status"), localized(day.optJSONObject("fast"), ""));
+        return status.isEmpty()
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_fasting_f1b1605d)
+                : status;
+    }
+
+    protected String displayableCommemoration(JSONObject day) {
+        if (day == null) return "";
+        JSONObject commemoration = day.optJSONObject("commemoration");
+        JSONObject localCommemoration = day.optJSONObject("local_commemoration");
+        String status = day.optString("commemoration_status",
+                day.optString("local_commemoration_status", ""));
+        if (commemoration != null && status.isEmpty()) status = commemoration.optString("status", "");
+        if (localCommemoration != null && status.isEmpty()) status = localCommemoration.optString("status", "");
+        status = status.trim().toUpperCase(Locale.ROOT);
+        if (status.startsWith("UNAVAILABLE") || status.startsWith("PENDING")) return "";
+
+        if (localCommemoration != null) {
+            String localTitle = localized(localCommemoration.optJSONObject("title"), "");
+            if (!localTitle.isEmpty()) return localTitle;
+        }
+        if (commemoration != null) {
+            String title = localized(commemoration.optJSONObject("title"), "");
+            if (!title.isEmpty()) return title;
+        }
+        return localized(day.optJSONObject("feast"), localized(day.optJSONObject("note"), ""));
+    }
+
     protected void addFastingGuide(LinearLayout card, JSONObject fasting, boolean includeNotes) {
-        if (fasting == null || fasting.length() == 0) return;
+        if (!isFastingDay(fasting)) return;
         JSONObject guidance = fasting.optJSONObject("guidance");
         if (guidance == null) return;
 

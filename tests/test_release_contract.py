@@ -335,8 +335,9 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertTrue(source_omits_text(settings, "سياسة الخصوصية", "ar"))
         self.assertTrue(source_omits_text(settings, "Privacy policy", "en"))
         self.assertNotIn("maen1977.github.io/orthodox_prayers/privacy", settings)
-        self.assertTrue(source_references_text(settings, "العربية والإنجليزية واليونانية ثلاث قنوات أصلية مستقلة", "ar"))
-        self.assertTrue(source_references_text(settings, "لا ينسخ لغة مكان لغة", "ar"))
+        self.assertTrue(source_omits_text(settings, "العربية والإنجليزية واليونانية ثلاث قنوات أصلية مستقلة", "ar"))
+        self.assertTrue(source_omits_text(settings, "لا ينسخ لغة مكان لغة", "ar"))
+        self.assertIn("addLanguageButton", settings)
 
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
         self.assertIn('new String[]{"ar", "en", "el"}', repository)

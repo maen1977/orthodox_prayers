@@ -120,7 +120,10 @@ public final class ChurchesScreen extends BaseScreen {
     private void openUrl(String url) {
         try {
             if (url == null || !url.startsWith("https://")) throw new IllegalArgumentException("invalid URL");
-            host.activity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+            host.activity().startActivity(intent);
         } catch (Exception error) {
             Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_could_not_open_the_official_link_3126ea33), Toast.LENGTH_SHORT).show();
         }

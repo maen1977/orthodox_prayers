@@ -111,8 +111,13 @@ def main() -> None:
         "churches": churches,
         "live_resources": [
             {
-                "id": "orthodox_jordan_live",
-                "title": {"ar": "البث المباشر الأرثوذكسي الأردني", "en": "Orthodox Jordan live broadcast", "el": "Ζωντανὴ μετάδοση Ἰορδανίας"},
+                "id": "orthodox_jordan_tv_live",
+                "title": {"ar": "المحطة الأرثوذكسية الأردنية — مباشر", "en": "Orthodox Jordan TV — Live", "el": "Ὀρθόδοξη Τηλεόραση Ἰορδανίας — Ζωντανά"},
+                "url": "https://orthodoxjo.tv/video/orthodox-station/"
+            },
+            {
+                "id": "orthodox_jordan_live_fallback",
+                "title": {"ar": "البث الرسمي لمطرانية الأردن — رابط احتياطي", "en": "Orthodox Jordan Metropolis live page — fallback", "el": "Σελίδα ζωντανῆς μεταδόσεως Μητροπόλεως Ἰορδανίας — ἐφεδρική"},
                 "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
             },
             {

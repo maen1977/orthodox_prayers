@@ -282,6 +282,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     @Override
     public void navigate(String screenId, String argument) {
+        captureCurrentScrollPosition();
         ScreenEntry current = backStack.peekLast();
         if (current != null && current.matches(screenId, argument)) {
             show(current);
@@ -295,6 +296,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     @Override
     public void openReading(JSONObject reading) {
+        captureCurrentScrollPosition();
         ScreenEntry next = new ScreenEntry("reading_detail", null, reading == null ? null : reading.toString());
         backStack.addLast(next);
         show(next);
@@ -302,6 +304,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     @Override
     public void goBack() {
+        captureCurrentScrollPosition();
         if (backStack.size() > 1) {
             backStack.removeLast();
             show(backStack.peekLast());
@@ -317,6 +320,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        captureCurrentScrollPosition();
         super.onSaveInstanceState(outState);
         JSONArray array = new JSONArray();
         for (ScreenEntry entry : backStack) array.put(entry.toJson());
@@ -344,6 +348,20 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         }
     }
 
+    private void captureCurrentScrollPosition() {
+        ScreenEntry current = backStack.peekLast();
+        if (current == null || contentHost == null || contentHost.getChildCount() == 0) return;
+        View view = contentHost.getChildAt(0);
+        if (view instanceof ScrollView) {
+            current.scrollY = Math.max(0, view.getScrollY());
+        }
+    }
+
+    private void restoreEntryScrollPosition(ScreenEntry entry, View view) {
+        if (!(view instanceof ScrollView) || entry.scrollY <= 0) return;
+        view.post(() -> ((ScrollView) view).scrollTo(0, entry.scrollY));
+    }
+
     private void show(ScreenEntry entry) {
         if (entry == null || isFinishing()) return;
         if (visibleScreen != null) visibleScreen.onHidden();
@@ -354,6 +372,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         View view = visibleScreen.createView();
         contentHost.removeAllViews();
         contentHost.addView(view, new FrameLayout.LayoutParams(-1, -1));
+        restoreEntryScrollPosition(entry, view);
         rebuildBottomNav(entry);
         visibleScreen.onVisible();
     }
@@ -591,7 +610,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         try {
             JSONObject previous = new JSONObject(entry.payload);
             JSONObject replacement = findCurrentReading(previous);
-            return replacement == null ? entry : new ScreenEntry("reading_detail", null, replacement.toString());
+            return replacement == null ? entry : new ScreenEntry("reading_detail", null, replacement.toString(), entry.scrollY);
         } catch (Exception error) {
             Log.w(TAG, "Could not rebind reading detail after data refresh", error);
             return entry;
@@ -634,11 +653,17 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         final String screenId;
         final String argument;
         final String payload;
+        int scrollY;
 
         ScreenEntry(String screenId, String argument, String payload) {
+            this(screenId, argument, payload, 0);
+        }
+
+        ScreenEntry(String screenId, String argument, String payload, int scrollY) {
             this.screenId = screenId == null ? "home" : screenId;
             this.argument = argument;
             this.payload = payload;
+            this.scrollY = Math.max(0, scrollY);
         }
 
         boolean matches(String screen, String arg) {
@@ -653,6 +678,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                 object.put("screen", screenId);
                 if (argument != null) object.put("argument", argument);
                 if (payload != null) object.put("payload", payload);
+                object.put("scroll_y", scrollY);
             } catch (Exception error) {
                 Log.w(TAG, "Could not serialize navigation entry", error);
             }
@@ -663,7 +689,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             return new ScreenEntry(
                     object.optString("screen", "home"),
                     object.has("argument") ? object.optString("argument", null) : null,
-                    object.has("payload") ? object.optString("payload", null) : null
+                    object.has("payload") ? object.optString("payload", null) : null,
+                    object.optInt("scroll_y", 0)
             );
         }
     }

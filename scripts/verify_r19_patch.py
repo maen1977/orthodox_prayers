@@ -24,7 +24,7 @@ REQUIRED = {
         "isolateTechnical",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": (
-        "ui_arabic_english_and_greek_are_three_independent_n_d97c4432",
+        "addLanguageButton",
         "new TimePicker",
         "LocalePolicy.formatTimestamp",
     ),

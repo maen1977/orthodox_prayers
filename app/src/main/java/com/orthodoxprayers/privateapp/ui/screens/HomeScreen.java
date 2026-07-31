@@ -6,7 +6,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
-import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONArray;
@@ -14,7 +13,7 @@ import org.json.JSONObject;
 
 public final class HomeScreen extends BaseScreen {
     // R14_HOME_COMPACT: duplicate home cards hidden; internal routes remain available.
-    // R15_THEME_PALETTE_IMPORT: Sunday card colors use the shared palette with an explicit Java import.
+    // R32_OWNER_UI_REFINEMENT: duplicate Sunday and utility cards are intentionally absent.
     public HomeScreen(ScreenHost host) { super(host); }
 
     @Override
@@ -77,7 +76,7 @@ public final class HomeScreen extends BaseScreen {
             card.addView(calendar, ui.margins(-1, -2, 0, 4, 0, 0));
         }
 
-        String fastingValue = fastingValue(today);
+        String fastingValue = fastingDisplayTitle(today, data.dataDate());
         TextView fast = centered(fastingValue, 18, ui.colors().accentText(), true);
         card.addView(fast, ui.margins(-1, -2, 0, 8, 0, 0));
 
@@ -96,13 +95,13 @@ public final class HomeScreen extends BaseScreen {
         boolean ready = data.hasCompleteRollingWeek();
         String end = data.rollingWeekEndDate();
         String title = ready
-                ? local(com.orthodoxprayers.privateapp.R.string.ui_today_and_the_next_seven_days_are_complete_66b3fa86)
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_nine_day_service_ready)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_the_complete_weekly_package_is_not_available_yet_e438506f);
         card.addView(centered(title, 16,
                 ready ? ui.colors().accentText() : ui.colors().secondaryText(), true));
         if (ready && !end.isEmpty()) {
             card.addView(centered(localFormat(
-                    com.orthodoxprayers.privateapp.R.string.ui_rolling_week_ready_through_format,
+                    com.orthodoxprayers.privateapp.R.string.ui_content_ready_through_format,
                     end
             ), 13, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 5, 0, 0));
         }
@@ -110,14 +109,6 @@ public final class HomeScreen extends BaseScreen {
         card.setFocusable(true);
         card.setOnClickListener(v -> host.navigate("upcoming", null));
         add(root, card, 0, 10);
-    }
-
-    private String fastingValue(JSONObject today) {
-        String value = localized(today.optJSONObject("fast"), "");
-        if (!value.isEmpty()) return value;
-        JSONObject fasting = today.optJSONObject("fasting");
-        if (fasting != null) value = localized(fasting.optJSONObject("title"), "");
-        return value.isEmpty() ? local(com.orthodoxprayers.privateapp.R.string.ui_unavailable_24f3ca2e) : value;
     }
 
     private void addQuickAccess(LinearLayout root) {
@@ -138,35 +129,8 @@ public final class HomeScreen extends BaseScreen {
 
         LinearLayout second = ui.row();
         addShortcut(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar, local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_fasting_51a9bf84), "calendar", null);
-        addShortcut(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar, local(com.orthodoxprayers.privateapp.R.string.ui_today_7_complete_days_3057eb0c), "upcoming", null);
-        add(root, second, 0, 0);
-
-        LinearLayout third = ui.row();
-        addShortcut(third, com.orthodoxprayers.privateapp.R.drawable.ic_action_live, local(com.orthodoxprayers.privateapp.R.string.ui_churches_and_live_services_53a37eff), "churches", null);
-        addShortcut(third, com.orthodoxprayers.privateapp.R.drawable.ic_action_search, local(com.orthodoxprayers.privateapp.R.string.ui_search_13f179d6), "search", null);
-        add(root, third, 0, 0);
-
-        LinearLayout fourth = ui.row();
-        addShortcut(fourth, com.orthodoxprayers.privateapp.R.drawable.ic_favorite, local(com.orthodoxprayers.privateapp.R.string.ui_favorites_8eb8984d), "favorites", null);
-        addShortcut(fourth, com.orthodoxprayers.privateapp.R.drawable.ic_action_history, local(com.orthodoxprayers.privateapp.R.string.ui_reading_history_0a3be238), "history", null);
-        add(root, fourth, 0, 0);
-
-        LinearLayout fifth = ui.row();
-        addShortcut(fifth, com.orthodoxprayers.privateapp.R.drawable.ic_action_language, local(com.orthodoxprayers.privateapp.R.string.ui_languages_409ca23f), "language_packs", null);
-        addShortcut(fifth, com.orthodoxprayers.privateapp.R.drawable.ic_action_settings, local(com.orthodoxprayers.privateapp.R.string.ui_settings_25169a1d), "settings", null);
-        add(root, fifth, 0, 10);
-
-        if (!preferences.pinnedServices().isEmpty()) {
-            root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_pinned_texts_5baad15c)));
-            int shown = 0;
-            for (String id : preferences.pinnedServices()) {
-                JSONObject service = data.findService(id);
-                if (service != null) {
-                    add(root, serviceCard(service), 2, 7);
-                    if (++shown >= 3) break;
-                }
-            }
-        }
+        addShortcut(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_live, local(com.orthodoxprayers.privateapp.R.string.ui_churches_and_live_services_53a37eff), "churches", null);
+        add(root, second, 0, 10);
     }
 
     private void addShortcut(LinearLayout row, int iconResource, String title, String screen, String argument) {
@@ -179,7 +143,6 @@ public final class HomeScreen extends BaseScreen {
         JSONArray upcoming = data.today().optJSONArray("upcoming");
         if (upcoming == null || upcoming.length() == 0) return;
 
-        root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_seven_day_fasting_table_9f1b0d97)));
         LinearLayout table = ui.card();
 
         LinearLayout header = ui.row();
@@ -207,17 +170,10 @@ public final class HomeScreen extends BaseScreen {
             if (item == null) continue;
             String date = item.optString("date", "");
             String day = localized(item.optJSONObject("day"), date);
-            String feast = localized(item.optJSONObject("feast"), localized(item.optJSONObject("note"), ""));
+            String feast = displayableCommemoration(item);
             JSONObject selection = item.optJSONObject("liturgy_service_selection");
             String liturgy = selection == null ? "" : localized(selection.optJSONObject("label"), "");
-            String status = localized(item.optJSONObject("status"), localized(item.optJSONObject("fast"), ""));
-            JSONObject fasting = item.optJSONObject("fasting");
-            if (status.isEmpty() && fasting != null) {
-                status = localized(fasting.optJSONObject("title"), "");
-            }
-            if (status.isEmpty()) {
-                status = local(com.orthodoxprayers.privateapp.R.string.ui_unavailable_24f3ca2e);
-            }
+            String status = fastingDisplayTitle(item, date);
 
             LinearLayout row = ui.row();
             row.setPadding(ui.dp(8), ui.dp(7), ui.dp(8), ui.dp(7));
@@ -246,11 +202,7 @@ public final class HomeScreen extends BaseScreen {
                 table.addView(divider, new LinearLayout.LayoutParams(-1, ui.dp(1)));
             }
         }
-        add(root, table, 0, 6);
-
-        Button details = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_show_seven_day_details_97f48507), false);
-        details.setOnClickListener(v -> host.navigate("upcoming", null));
-        add(root, details, 0, 12);
+        add(root, table, 0, 12);
     }
 
     private String todayLiturgyButtonLabel() {
@@ -265,21 +217,5 @@ public final class HomeScreen extends BaseScreen {
         );
     }
 
-    private void addNextSunday(LinearLayout root) {
-        JSONObject sunday = data.today().optJSONObject("next_sunday");
-        if (sunday == null || sunday.length() == 0) return;
-        root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_next_sunday_74b995ae)));
-        LinearLayout card = ui.card(ThemePalette.NAVY, ThemePalette.GOLD, 14);
-        card.setClickable(true);
-        card.setFocusable(true);
-        card.setOnClickListener(v -> host.navigate("reader", sunday.optString("service_id", "next_sunday_full_liturgy")));
-        TextView day = centered(localized(sunday.optJSONObject("day"), sunday.optString("date_iso", "")), 18, ThemePalette.GOLD, true);
-        card.addView(day);
-        card.addView(centered(localized(sunday.optJSONObject("feast"), ""), 14, android.graphics.Color.WHITE, true));
-        card.addView(centered(localized(sunday.optJSONObject("fast"), ""), 13, ThemePalette.GOLD, true));
-        TextView open = centered(local(com.orthodoxprayers.privateapp.R.string.ui_open_the_full_sunday_service_82aeef7b), 12, ThemePalette.GOLD, true);
-        card.addView(open, ui.margins(-1, -2, 0, 6, 0, 0));
-        card.setContentDescription(day.getText() + ". " + open.getText());
-        add(root, card, 0, 16);
-    }
+
 }

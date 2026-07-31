@@ -92,10 +92,10 @@ class FastingGuidanceTests(unittest.TestCase):
         day = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java").read_text(encoding="utf-8")
         self.assertIn("addFastingGuide", base)
         self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
-        self.assertTrue(source_references_text(home, "جدول الصيام للأيام التسعة", "ar"))
-        self.assertIn('fasting.optJSONObject("title")', home)
-        self.assertIn('addFastingGuide(card, fasting, false)', upcoming)
-        self.assertIn('addFastingGuide(card, item.optJSONObject("fasting"), true)', day)
+        self.assertTrue(source_omits_text(home, "جدول الصيام للأيام التسعة", "ar"))
+        self.assertIn("fastingDisplayTitle(today, data.dataDate())", home)
+        self.assertIn("if (isFastingDay(fasting))", upcoming)
+        self.assertIn("if (isFastingDay(fasting)) addFastingGuide(card, fasting, true);", day)
 
     def test_r15_patch_verifier_is_present(self):
         verifier = (ROOT / "scripts/verify_r15_patch.py").read_text(encoding="utf-8")

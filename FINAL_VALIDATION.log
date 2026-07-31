@@ -1,20 +1,36 @@
-FINAL_VALIDATION_OK date=2026-07-29 version=5.0.16 level=R20
-UNIT_TESTS_OK count=300
+FINAL_VALIDATION_OK date=2026-08-01 version=5.0.23 level=R32_OWNER_UI_REFINEMENT
+UNIT_TESTS_OK count=386 subtests=14
+R20_RELEASE_OK version=5.0.23 level=R20
+PATCH_R19_OK version=5.0.23 level=R19.2+R20
+PATCH_R18_OK version=5.0.23 level=R18.4 refinement=R20
+WORKFLOWS_OK build_and_update_only=true
+GRADLE_WRAPPER_OK distribution=8.13 checksum_verified=true
+SECRET_SCAN_OK
 STATIC_TEXTS_OK protected_files=39
-NATIVE_LANGUAGE_PACKS_OK ar=1138/1138 en=3250/3250 el=4506/4506
+PLAY_STORE_ASSETS_OK
+UI_LOCALIZATION_OK keys=339 references=337 unused=2 languages=ar,en,el
+ANDROID_RESOURCES_OK xml=38 strings=349 drawables=25 adaptive_icon=true monochrome_icon=true
+STATIC_PRAYER_SOURCES_OK complete=4 explicit_partial=1
+NATIVE_LANGUAGE_PACKS_OK ar=3222/3222 en=3498/3498 el=4636/4636
+FOLLOW_ALONG_LITURGY_OK
+LITURGY_READER_INTEGRITY_OK
+LITURGY_SERVICE_SELECTION_OK
+FULL_LITURGY_OK rolling_window=9-42 default_days=21
 NATIVE_LITURGY_IMPORT_GATE_OK exact_native_lanes=5
 SERVICE_EDITION_EVIDENCE_OK
-ALL_SERVICES_COMPLETION_CONTRACT_OK exact=38/45 source_files_required=7
-RELIGIOUS_COMPLETENESS_OK mode=declaration ar=12/15 en=13/15 el=13/15
+ALL_SERVICES_COMPLETION_CONTRACT_OK complete=45/45 exact=38/45
+RELIGIOUS_COMPLETENESS_OK mode=declaration ar=15/15 en=15/15 el=15/15
+COMPLETION_REPORTING_OK technical=45/45 exact=38/45
 NATIVE_SOURCE_CONTRACT_OK
-PUBLIC_SOURCE_REGISTRY_OK sources=23 monitored_groups=7
+PUBLIC_SOURCE_REGISTRY_OK sources=27 monitored_groups=7
 SOURCE_INTELLIGENCE_OK connectors=9 church_links=41
 NATIVE_COVERAGE_OK english=100.0 greek=100.0
 DAILY_NATIVE_CONTENT_OK languages=ar,en,el
 JSON_SCHEMA_OK
-EMBEDDED_APP_DATA_OK
+EMBEDDED_APP_DATA_OK schema=9 services=7
 READER_SERVICES_OK composed_segments=407
 DATA_SIGNATURE_OK
+SCRIPTURE_POLICY_OK
 CONTENT_DEDUPLICATION_OK
 CONTENT_REVIEW_OK services=25
 OFFICIAL_SOURCES_OK
@@ -23,5 +39,4 @@ NO_PLACEHOLDER_GUIDANCE_OK
 LITURGICAL_SCHEDULE_OK
 FASTING_GUIDANCE_OK
 QUALITY_CHECK_OK
-ANDROID_GRADLE_WRAPPER_OK distribution=8.13
-ANDROID_BUILD_NOT_RUN reason=isolated_environment_has_no_gradle_distribution_and_no_network
+ANDROID_BUILD_NOT_RUN reason=Gradle_8.13_distribution_not_cached_and_services.gradle.org_unreachable_in_isolated_environment
