@@ -1,3 +1,10 @@
+## 5.0.23 — R31 dependency-free icon safe-zone test hotfix
+
+- Removed the accidental Pillow dependency from `tests/test_icon_safe_zone.py`.
+- Kept the real PNG validation by decoding the committed 8-bit RGBA asset with the Python standard library.
+- Continue enforcing a 108×108 adaptive-icon canvas and a maximum 66×66 non-transparent artwork box.
+- Verified the test directly with `python -S`, proving it runs without site packages.
+
 ## 5.0.23 — Church Prayers branding hotfix
 
 - Unified the installed launcher label as `Church Prayers` without changing the Android application ID.
