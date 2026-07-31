@@ -98,6 +98,11 @@ def main() -> None:
         action="store_true",
         help="Generate and validate only; remove stale signatures and sign in a later protected step.",
     )
+    parser.add_argument(
+        "--skip-scripture-preparation",
+        action="store_true",
+        help="Skip the exact native Scripture horizon step because the caller already completed it.",
+    )
     args = parser.parse_args()
     try:
         window_days = resolve_day_count(args.window_days)
@@ -111,6 +116,17 @@ def main() -> None:
     run("scripts/build_church_directory.py", "--date", args.date, *source_mode)
     run("scripts/build_public_source_registry.py")
     run("scripts/validate_public_source_registry.py")
+
+    # Keep the manual CLI and GitHub workflow behavior identical. The workflow
+    # may pre-run this step for clearer logs and then pass --skip-scripture-preparation.
+    if not args.skip_scripture_preparation:
+        run(
+            "scripts/prepare_rolling_week_scripture_slice.py",
+            "--start-date",
+            args.date,
+            "--days",
+            str(window_days),
+        )
 
     if args.private_key is not None and not args.private_key.is_file():
         raise SystemExit("data-signing private key is missing")

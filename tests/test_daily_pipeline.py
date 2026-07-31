@@ -133,6 +133,40 @@ class DailyPipelineTests(unittest.TestCase):
         self.assertEqual(status, "conflict")
         self.assertEqual(len(errors), 1)
 
+    def test_pinned_jerusalem_fixed_feast_accepts_explicit_canonical_aliases(self):
+        aliases = {
+            (8, 6): "عيد تجلي ربنا وإلهنا ومخلصنا يسوع المسيح",
+            (8, 15): "عيد رقاد سيدتنا والدة الإله الدائمة البتولية مريم",
+            (9, 8): "ميلاد سيدتنا والدة الإله الدائمة البتولية مريم",
+            (9, 14): "عيد رفع الصليب الكريم المحيي",
+            (11, 21): "دخول سيدتنا والدة الإله إلى الهيكل",
+        }
+        for (month, day), title in aliases.items():
+            with self.subTest(month=month, day=day):
+                errors, status = self.integrity.verify_jerusalem_fixed_feast({
+                    "julian_date": {"month": month, "day": day},
+                    "feast": {"ar": title},
+                })
+                self.assertEqual([], errors)
+                self.assertEqual("verified", status)
+
+    def test_pinned_feast_normalization_is_typographic_not_fuzzy(self):
+        accepted = {
+            "julian_date": {"month": 8, "day": 6},
+            "feast": {"ar": "عِيدُ الـتَّجَلِّي الإِلَهِي"},
+        }
+        errors, status = self.integrity.verify_jerusalem_fixed_feast(accepted)
+        self.assertEqual([], errors)
+        self.assertEqual("verified", status)
+
+        rejected = {
+            "julian_date": {"month": 8, "day": 6},
+            "feast": {"ar": "عيد آخر غير التجلي"},
+        }
+        errors, status = self.integrity.verify_jerusalem_fixed_feast(rejected)
+        self.assertEqual("conflict", status)
+        self.assertEqual(1, len(errors))
+
     def test_goarch_page_is_advisory_and_parsed_by_date(self):
         sample = """
         <html><body>

@@ -397,6 +397,13 @@ class ReleaseContractTests(unittest.TestCase):
         ):
             self.assertTrue((ROOT / "play-store" / filename).is_file(), filename)
 
+    def test_manual_update_prepares_scripture_horizon_and_workflow_skips_duplicate(self):
+        update = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
+        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
+        self.assertIn('"scripts/prepare_rolling_week_scripture_slice.py"', update)
+        self.assertIn('"--skip-scripture-preparation"', update)
+        self.assertIn('--skip-scripture-preparation', workflow)
+
     def test_daily_refresh_runs_at_one_and_six_amman_with_safe_fallback(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
         main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")

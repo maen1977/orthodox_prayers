@@ -106,7 +106,8 @@ jobs:
           python scripts/update.py \
             --date "${{ steps.resolve.outputs.date }}" \
             --window-days "${{ steps.resolve.outputs.window_days }}" \
-            --unsigned
+            --unsigned \
+            --skip-scripture-preparation
           python scripts/validate_daily_ui_localizations.py data/calendar/today.json
           python scripts/validate_jordan_liturgical_contract.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}" --require-jordan-authority --require-complete-liturgy
           python scripts/validate_source_intelligence.py data/calendar/today.json --expected-date "${{ steps.resolve.outputs.date }}"

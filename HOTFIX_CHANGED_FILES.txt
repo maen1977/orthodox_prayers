@@ -1,0 +1,22 @@
+Orthodox Prayers 5.0.22 — Rolling Window Hotfix (2026-07-31)
+
+Modified:
+- canonical/jerusalem_fixed_feasts.json
+- canonical/static_hashes.json
+- static_hashes.json
+- scripts/orthodox_integrity.py
+- scripts/update.py
+- .github/workflows/update.yml
+- tests/test_daily_pipeline.py
+- tests/test_release_contract.py
+- CHANGELOG.md
+
+Added:
+- ROLLING_WINDOW_FEAST_HOTFIX_AR.md
+- HOTFIX_CHANGED_FILES.txt
+
+Purpose:
+- Accept only explicitly approved canonical Arabic feast-title aliases.
+- Fix the 2026-08-19 Transfiguration rolling-window failure.
+- Prepare the exact Scripture horizon from update.py for manual runs while
+  preventing duplicate preparation in GitHub Actions.

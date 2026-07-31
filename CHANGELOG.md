@@ -1,3 +1,11 @@
+## 5.0.22 — Rolling-window feast-title hotfix (2026-07-31)
+
+- Fixed the 2026-08-19 rolling-window failure by validating Jerusalem fixed feasts against an explicit canonical Arabic alias allowlist instead of one short title only.
+- Added approved aliases for the Transfiguration, Dormition, Nativity of the Theotokos, Exaltation of the Cross, and Entry of the Theotokos.
+- Kept the check fail-closed: Unicode/spacing/diacritic normalization is allowed, but semantic names must be explicitly listed.
+- Made `scripts/update.py` prepare the exact native Scripture horizon itself for manual runs; GitHub Actions passes `--skip-scripture-preparation` after its dedicated preparation step to avoid duplicate work.
+- Added regression tests for canonical feast aliases, rejection of unrelated titles, and update/workflow Scripture-preparation ownership.
+
 # 5.0.22 R24 — Nine-day appointed Liturgy engine
 
 - Replace the old seven-day outlook with one rolling window of exactly nine consecutive days: today plus the next eight days.

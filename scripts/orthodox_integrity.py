@@ -850,6 +850,17 @@ def fetch_goarch(target: date, cfg: dict[str, Any]) -> SourceResult:
         return SourceResult("goarch", cfg["role"], url, "unavailable", note=str(exc))
 
 
+_ARABIC_DIACRITICS_RE = re.compile(r"[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]")
+
+
+def _normalize_pinned_arabic_title(value: str) -> str:
+    """Normalize typography only; semantic variants must remain explicitly allowlisted."""
+    value = unicodedata.normalize("NFKC", value or "")
+    value = value.replace("ـ", "")
+    value = _ARABIC_DIACRITICS_RE.sub("", value)
+    return " ".join(value.split()).strip()
+
+
 def verify_jerusalem_fixed_feast(data: dict[str, Any]) -> tuple[list[str], str]:
     rules_path = ROOT / "canonical" / "jerusalem_fixed_feasts.json"
     rules = load_json(rules_path)
@@ -861,9 +872,15 @@ def verify_jerusalem_fixed_feast(data: dict[str, Any]) -> tuple[list[str], str]:
     expected = rules.get("feasts", {}).get(key)
     if not expected:
         return [], "not_a_pinned_fixed_feast"
+
+    aliases = rules.get("accepted_aliases", {}).get(key, [])
+    accepted_raw = [expected, *aliases] if isinstance(aliases, list) else [expected]
+    accepted = {_normalize_pinned_arabic_title(str(item)) for item in accepted_raw if str(item).strip()}
     actual = str(data.get("feast", {}).get("ar") or "").strip()
-    if actual != expected:
-        return [f"Jerusalem fixed-feast mismatch for {key}: expected {expected!r}, got {actual!r}"], "conflict"
+    if _normalize_pinned_arabic_title(actual) not in accepted:
+        return [
+            f"Jerusalem fixed-feast mismatch for {key}: expected one of {accepted_raw!r}, got {actual!r}"
+        ], "conflict"
     return [], "verified"
 
 
