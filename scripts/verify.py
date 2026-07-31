@@ -24,6 +24,14 @@ def main() -> None:
         help="Permit a legacy branch with neither manifest payload nor signature. Invalid or partial manifests still fail.",
     )
     parser.add_argument(
+        "--allow-compatible-manifest-version",
+        action="store_true",
+        help=(
+            "Migration-only: accept an older signed manifest when its minimum app "
+            "version is not newer than the checked-out application contract."
+        ),
+    )
+    parser.add_argument(
         "--allow-legacy-multilingual-lanes",
         action="store_true",
         help="Migration-only for a previously signed R19 branch; Update remains strict.",
@@ -48,7 +56,10 @@ def main() -> None:
     if args.allow_missing_manifest and not manifest.exists() and not manifest_signature.exists():
         print("LEGACY_UPDATE_MANIFEST_ABSENT accepted_for_debug_import=true")
     else:
-        run("scripts/verify_update_manifest.py", "--expected-date", args.expected_date)
+        manifest_args = ["scripts/verify_update_manifest.py", "--expected-date", args.expected_date]
+        if args.allow_compatible_manifest_version:
+            manifest_args.append("--allow-compatible-minimum-version")
+        run(*manifest_args)
 
     print(f"PUBLISHED_DAILY_OK date={args.expected_date}")
 

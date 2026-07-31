@@ -1,3 +1,10 @@
+
+## R29 — verified-data manifest upgrade compatibility
+
+- Allows the Debug build import to verify an older signed manifest when its minimum app version is not newer than the checked-out app contract.
+- Keeps publication and origin verification strict, preventing a newer-app manifest from being imported by an older build.
+- Fixes the 50013-to-50023 verified-data upgrade deadlock.
+
 ## 5.0.23 — R28 runtime signed-payload storage alignment
 
 - Unified the signed remote payload ceiling at 12,000,000 bytes across manifest parsing, HTTP download, and atomic on-device storage.

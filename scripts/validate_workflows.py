@@ -49,7 +49,7 @@ def main() -> None:
             "Import latest signed published data for debug APK",
             "origin/verified-data",
             'python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"',
-            'python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest',
+            'python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-compatible-manifest-version',
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",

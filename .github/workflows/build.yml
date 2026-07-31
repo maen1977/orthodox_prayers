@@ -73,7 +73,7 @@ jobs:
               app/src/main/assets/data/library.json \
               app/src/main/assets/data/native
             python -m pytest -q tests/test_native_service_category_alignment.py
-            python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-legacy-multilingual-lanes
+            python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-compatible-manifest-version --allow-legacy-multilingual-lanes
             git worktree remove --force "$VERIFIED_DIR"
             trap - EXIT
           else
