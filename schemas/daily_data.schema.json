@@ -129,7 +129,7 @@
     "upcoming": {
       "type": "array",
       "minItems": 7,
-      "maxItems": 8
+      "maxItems": 41
     },
     "next_sunday": {
       "type": "object",
@@ -555,7 +555,7 @@
         "properties": {
           "upcoming": {
             "minItems": 8,
-            "maxItems": 8
+            "maxItems": 41
           }
         }
       }

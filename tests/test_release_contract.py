@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import re
@@ -88,6 +89,40 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertFalse(metadata["human_review_required"])
         self.assertEqual("automatic_native_language_policy_enforced", metadata["review_status"])
         self.assertEqual("CONTENT_RIGHTS.md", metadata["rights_notice"])
+
+    def test_daily_schema_accepts_the_full_supported_moving_window(self):
+        schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
+        validator = Draft202012Validator(schema)
+        template = self.today["upcoming"][0]
+
+        for day_count in (9, 21, 42):
+            candidate = copy.deepcopy(self.today)
+            candidate["schema_version"] = 10
+            candidate["upcoming"] = [copy.deepcopy(template) for _ in range(day_count - 1)]
+            self.assertEqual([], list(validator.iter_errors(candidate)), msg=f"day_count={day_count}")
+
+        too_short = copy.deepcopy(self.today)
+        too_short["schema_version"] = 10
+        too_short["upcoming"] = [copy.deepcopy(template) for _ in range(7)]
+        self.assertNotEqual([], list(validator.iter_errors(too_short)))
+
+        too_long = copy.deepcopy(self.today)
+        too_long["schema_version"] = 10
+        too_long["upcoming"] = [copy.deepcopy(template) for _ in range(42)]
+        self.assertNotEqual([], list(validator.iter_errors(too_long)))
+
+    def test_legacy_schema_still_requires_exactly_seven_future_days(self):
+        schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
+        validator = Draft202012Validator(schema)
+        template = self.today["upcoming"][0]
+
+        legacy = copy.deepcopy(self.today)
+        legacy["schema_version"] = 9
+        legacy["upcoming"] = [copy.deepcopy(template) for _ in range(7)]
+        self.assertEqual([], list(validator.iter_errors(legacy)))
+
+        legacy["upcoming"].append(copy.deepcopy(template))
+        self.assertNotEqual([], list(validator.iter_errors(legacy)))
 
     def test_integrity_schema_accepts_compatible_overlapping_envelopes(self):
         schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))

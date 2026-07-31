@@ -20,3 +20,13 @@ Purpose:
 - Fix the 2026-08-19 Transfiguration rolling-window failure.
 - Prepare the exact Scripture horizon from update.py for manual runs while
   preventing duplicate preparation in GitHub Actions.
+
+R26 additional hotfix (2026-07-31):
+- schemas/daily_data.schema.json
+- tests/test_release_contract.py
+- R26_MOVING_WINDOW_SCHEMA_HOTFIX_AR.md
+- CHANGELOG.md
+
+Purpose:
+- Align the JSON Schema with the already supported 9-42 day moving window.
+- Keep legacy schema 9 compatibility unchanged.

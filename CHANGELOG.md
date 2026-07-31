@@ -1,3 +1,9 @@
+## 5.0.22 — R26 moving-window schema hotfix
+
+- Fixed `daily_data.schema.json` so schema 10 accepts the supported 9–42 day moving horizon instead of only the original nine-day package.
+- Preserved schema 9 compatibility at exactly seven future days.
+- Added behavioral regression coverage for 9, 21, and 42 days and both out-of-range boundaries.
+
 ## 5.0.22 — R25 source-ID hotfix
 
 - Fixed the Arabic Transfiguration prokeimenon being removed by the strict native-language lane gate.
