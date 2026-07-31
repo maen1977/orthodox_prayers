@@ -54,7 +54,7 @@ def main() -> None:
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "component": {
                 "type": "application",
-                "name": "Orthodox Prayers",
+                "name": "Church Prayers",
                 "version": "5.0.23",
                 "purl": "pkg:android/com.orthodoxprayers.privateapp@5.0.23",
             },

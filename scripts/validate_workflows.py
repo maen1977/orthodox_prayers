@@ -57,7 +57,10 @@ def main() -> None:
             "lintDebug --stacktrace",
             "name: Build debug APK",
             "assembleDebug --stacktrace",
-            "app/build/outputs/apk/debug/app-debug.apk",
+            "name: Prepare branded debug APK",
+            'cp app/build/outputs/apk/debug/app-debug.apk "release/Church-Prayers-$APP_VERSION-debug.apk"',
+            "Church-Prayers-${{ env.APP_VERSION }}-debug.apk",
+            "Church-Prayers.ico",
             "SHA256SUMS.txt",
             "chmod +x ./gradlew",
             "environment: production",
@@ -69,9 +72,16 @@ def main() -> None:
             "--require-current --strict-native-lanes",
             "Tag/version mismatch",
             "publish_release",
+            'release/Church-Prayers-$RELEASE_VERSION.apk',
+            'release/Church-Prayers-$RELEASE_VERSION.aab',
+            "name: Church-Prayers-${{ env.RELEASE_VERSION }}-signed",
         ),
         "Build workflow",
     )
+    upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  release:", 1)[0]
+    if "app/build/outputs/apk/debug/app-debug.apk" in upload_debug_block:
+        fail("Raw app-debug.apk must not be exposed in the downloadable artifact")
+
     for forbidden in (
         "github/codeql-action/",
         "android-emulator-runner@",

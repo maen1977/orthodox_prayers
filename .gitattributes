@@ -5,6 +5,7 @@ gradlew text eol=lf
 gradlew.bat text eol=crlf
 *.jar binary
 *.png binary
+*.ico binary
 # Detached signatures cover exact bytes. Never normalize signed payloads in Git.
 data/calendar/*.json -text
 data/calendar/*.json.sig -text
