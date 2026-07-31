@@ -69,6 +69,15 @@ def verify_signature() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--expected-date", required=True)
+    parser.add_argument(
+        "--allow-compatible-minimum-version",
+        action="store_true",
+        help=(
+            "Allow importing an older signed publication whose minimum app version "
+            "is not newer than the checked-out application contract. Publication "
+            "and origin verification remain strict by default."
+        ),
+    )
     args = parser.parse_args()
     if not PAYLOAD.is_file() or not SIGNATURE.is_file():
         fail("signed update manifest is missing")
@@ -87,7 +96,21 @@ def main() -> None:
     contract = json.loads(UPDATE_CONTRACT.read_text(encoding="utf-8"))
     if contract.get("manifest_schema_version") != manifest.get("manifest_schema_version"):
         fail("update contract schema differs from manifest")
-    if contract.get("minimum_app_version_code") != minimum_version:
+    contract_minimum = contract.get("minimum_app_version_code")
+    if not isinstance(contract_minimum, int) or contract_minimum < 1:
+        fail("invalid minimum app version in update contract")
+    if args.allow_compatible_minimum_version:
+        if minimum_version > contract_minimum:
+            fail(
+                "manifest requires a newer app than the checked-out update contract "
+                f"(manifest={minimum_version}, app={contract_minimum})"
+            )
+        if minimum_version != contract_minimum:
+            print(
+                "UPDATE_MANIFEST_COMPATIBLE_MINIMUM "
+                f"manifest={minimum_version} app={contract_minimum}"
+            )
+    elif contract_minimum != minimum_version:
         fail("manifest minimum app version differs from update contract")
     verify_signature()
     calendar = verify_entry(manifest.get("calendar"))
