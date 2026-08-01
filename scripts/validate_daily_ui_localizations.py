@@ -65,7 +65,7 @@ def validate_reading_labels(readings: Any, pointer: str, errors: list[str], requ
         if not isinstance(reading, dict):
             continue
         kind = _text(reading.get("kind"))
-        if kind not in {"prokeimenon", "epistle", "gospel"}:
+        if kind not in {"matins_gospel", "prokeimenon", "epistle", "gospel"}:
             continue
         require_localized(reading.get("title"), f"{pointer}[{index}].title", errors)
         if require_reference:

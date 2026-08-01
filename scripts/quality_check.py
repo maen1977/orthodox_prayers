@@ -78,7 +78,7 @@ def main():
     next_readings=((data.get('integrity_inputs') or {}).get('next_sunday') or {}).get('readings')
     if not isinstance(next_readings,list): fail('next Sunday readings missing')
     for i,reading in enumerate(next_readings):
-        if isinstance(reading,dict) and reading.get('kind') in {'prokeimenon','epistle','gospel'}: validate_reading(reading,f'next_sunday[{i}]')
+        if isinstance(reading,dict) and reading.get('kind') in {'matins_gospel','prokeimenon','epistle','gospel'}: validate_reading(reading,f'next_sunday[{i}]')
     from validate_reader_services import compose_overlay, validate_payload
     library_map=validate_payload(ROOT/'app/src/main/assets/data/library.json')
     services=data.get('services') or []

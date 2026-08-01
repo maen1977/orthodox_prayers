@@ -90,6 +90,19 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertEqual("automatic_native_language_policy_enforced", metadata["review_status"])
         self.assertEqual("CONTENT_RIGHTS.md", metadata["rights_notice"])
 
+    def test_daily_schema_accepts_verified_matins_gospel_and_rejects_unknown_kind(self):
+        schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
+        validator = Draft202012Validator(schema)
+
+        candidate = copy.deepcopy(self.today)
+        matins = copy.deepcopy(next(item for item in candidate["readings"] if item.get("kind") == "gospel"))
+        matins["kind"] = "matins_gospel"
+        candidate["readings"].insert(1, matins)
+        self.assertEqual([], list(validator.iter_errors(candidate)))
+
+        matins["kind"] = "invented_reading_kind"
+        self.assertNotEqual([], list(validator.iter_errors(candidate)))
+
     def test_daily_schema_accepts_the_full_supported_moving_window(self):
         schema = json.loads((ROOT / "schemas/daily_data.schema.json").read_text(encoding="utf-8"))
         validator = Draft202012Validator(schema)

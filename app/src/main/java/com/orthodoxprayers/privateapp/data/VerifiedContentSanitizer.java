@@ -50,7 +50,7 @@ public final class VerifiedContentSanitizer {
             JSONObject reading = readings.optJSONObject(i);
             if (reading == null || !reading.optBoolean("translation_locked", false)) continue;
             String kind = reading.optString("kind", "");
-            if (!"epistle".equals(kind) && !"gospel".equals(kind) && !"prokeimenon".equals(kind)) continue;
+            if (!"matins_gospel".equals(kind) && !"epistle".equals(kind) && !"gospel".equals(kind) && !"prokeimenon".equals(kind)) continue;
             JSONObject body = reading.optJSONObject("body");
             if (body == null) continue;
             for (String language : new String[]{"ar", "en", "el"}) {
@@ -102,7 +102,7 @@ public final class VerifiedContentSanitizer {
             JSONObject reading = readings.optJSONObject(i);
             if (reading == null || !reading.optBoolean("translation_locked", false)) continue;
             String kind = reading.optString("kind", "");
-            if (!"epistle".equals(kind) && !"gospel".equals(kind) && !"prokeimenon".equals(kind)) continue;
+            if (!"matins_gospel".equals(kind) && !"epistle".equals(kind) && !"gospel".equals(kind) && !"prokeimenon".equals(kind)) continue;
 
             JSONObject body = reading.optJSONObject("body");
             if (body == null) continue;

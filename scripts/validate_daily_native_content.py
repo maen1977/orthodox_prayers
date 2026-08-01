@@ -9,7 +9,7 @@ from typing import Any, Iterable
 
 from native_text_contract import ROOT, LANGUAGES, load_contract, sha256_text, source_allowed, script_errors
 
-SCRIPTURE_KINDS = {"prokeimenon", "epistle", "gospel"}
+SCRIPTURE_KINDS = {"matins_gospel", "prokeimenon", "epistle", "gospel"}
 ALLOWED_STATUSES = {
     "VERIFIED_EXACT_NATIVE_SOURCE",
     "IMPORTED_EXACT_OFFICIAL_NATIVE_CORPUS", "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",

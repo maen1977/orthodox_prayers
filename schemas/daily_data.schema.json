@@ -359,6 +359,7 @@
       "properties": {
         "kind": {
           "enum": [
+            "matins_gospel",
             "prokeimenon",
             "epistle",
             "gospel"

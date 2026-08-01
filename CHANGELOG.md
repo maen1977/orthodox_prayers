@@ -1,10 +1,10 @@
-## 5.0.23 — R38.2 verified-data bootstrap fallback
+## 5.0.23 — R38.3 Matins Gospel schema hotfix
 
-- Kept the nine-day publication contract strict and continued rejecting signed 21-day payloads.
-- Changed the debug Build import to fall back to the already signed embedded bootstrap when `verified-data` still uses the legacy rolling-window contract.
-- Left protected release builds fail-closed until the scheduled Update workflow republishes a current nine-day branch.
-- Added workflow regression checks so the compatibility fallback cannot silently spread into the protected release path.
-- Passed 398 tests plus 14 subtests and every remaining strict-native quality-gate command.
+- Added `matins_gospel` to the supported daily reading schema instead of dropping the appointed Orthros reading.
+- Applied the same native-language evidence, exact-text hash, localization, embedded-data, and Android sanitizer checks used for the Epistle and Gospel.
+- Kept the Epistle and Gospel as the required daily core while treating the Matins Gospel as optional and fully validated when present.
+- Added regression coverage that accepts `matins_gospel`, rejects unknown reading kinds, and prevents it from bypassing native-text sanitization.
+- Passed 401 tests plus 14 subtests and all remaining strict-native quality-gate checks.
 
 ## 5.0.23 — R38.1 fixed nine-day quality-gate contract
 
