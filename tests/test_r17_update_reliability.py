@@ -21,11 +21,13 @@ class R17UpdateReliabilityTests(unittest.TestCase):
         self.assertNotIn("AlarmManager", coordinator)
         self.assertIn("DAILY_REFRESH_HOUR = 6", coordinator)
         self.assertIn("REFRESH_MINUTE = 7", coordinator)
-        self.assertIn("INITIAL_SCHEDULE_WORK", coordinator)
-        self.assertIn("SUPPLEMENTAL_SCHEDULE_WORK", coordinator)
+        self.assertIn("DAILY_SCHEDULE_WORK", coordinator)
+        self.assertIn("LEGACY_INITIAL_SCHEDULE_WORK", coordinator)
+        self.assertIn("LEGACY_SUPPLEMENTAL_SCHEDULE_WORK", coordinator)
         self.assertIn("NetworkType.CONNECTED", coordinator)
-        self.assertIn("firstWindow", policy)
-        self.assertIn("secondWindow", policy)
+        self.assertIn("publicationWindow", policy)
+        self.assertIn("UpdateCoordinator.DAILY_REFRESH_HOUR", policy)
+        self.assertIn("UpdateCoordinator.REFRESH_MINUTE", policy)
 
     def test_signed_manifest_scripts_round_trip_with_a_test_key(self):
         date_iso = json.loads((ROOT / "data/calendar/today.json").read_text(encoding="utf-8"))["date_iso"]

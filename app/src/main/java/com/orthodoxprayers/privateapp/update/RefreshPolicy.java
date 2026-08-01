@@ -49,20 +49,12 @@ public final class RefreshPolicy {
 
         ZonedDateTime ammanNow = Instant.ofEpochMilli(now).atZone(AMMAN_ZONE);
         LocalDate today = ammanNow.toLocalDate();
-        ZonedDateTime firstWindow = today
-                .atTime(UpdateCoordinator.FIRST_REFRESH_HOUR, 0)
-                .atZone(AMMAN_ZONE);
-        ZonedDateTime secondWindow = today
-                .atTime(UpdateCoordinator.SECOND_REFRESH_HOUR, 0)
+        ZonedDateTime publicationWindow = today
+                .atTime(UpdateCoordinator.DAILY_REFRESH_HOUR, UpdateCoordinator.REFRESH_MINUTE)
                 .atZone(AMMAN_ZONE);
         Instant attemptedAt = Instant.ofEpochMilli(lastAttempt);
 
-        if (!ammanNow.isBefore(secondWindow)) {
-            return attemptedAt.isBefore(secondWindow.toInstant());
-        }
-        if (!ammanNow.isBefore(firstWindow)) {
-            return attemptedAt.isBefore(firstWindow.toInstant());
-        }
-        return false;
+        if (ammanNow.isBefore(publicationWindow)) return false;
+        return attemptedAt.isBefore(publicationWindow.toInstant());
     }
 }

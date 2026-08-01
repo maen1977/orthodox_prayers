@@ -1,0 +1,9 @@
+R37_1_REFRESH_POLICY_COMPILE_HOTFIX_AR.md
+CHANGED_FILES_R37_1.txt
+app/src/main/java/com/orthodoxprayers/privateapp/update/RefreshPolicy.java
+app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java
+app/src/test/java/com/orthodoxprayers/privateapp/update/RefreshPolicyTest.java
+scripts/update.py
+scripts/verify_r17_patch.py
+tests/test_r17_update_reliability.py
+tests/test_release_contract.py

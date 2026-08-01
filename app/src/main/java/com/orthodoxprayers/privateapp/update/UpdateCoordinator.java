@@ -35,7 +35,7 @@ public final class UpdateCoordinator {
     private static final String IMMEDIATE_WORK = "orthodox-trusted-daily-data-now";
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
     static final int DAILY_REFRESH_HOUR = 6;
-    private static final int REFRESH_MINUTE = 7;
+    static final int REFRESH_MINUTE = 7;
 
     private final Context context;
     private final AppPreferences preferences;

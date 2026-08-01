@@ -38,7 +38,7 @@ def verify_pipeline_patch() -> None:
         str(home_path.relative_to(ROOT)): "R32_OWNER_UI_REFINEMENT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
         str(sources_path.relative_to(ROOT)): "ui_sources_and_references_1a2c2926",
-        str(coordinator_path.relative_to(ROOT)): "FIRST_REFRESH_HOUR = 1",
+        str(coordinator_path.relative_to(ROOT)): "DAILY_REFRESH_HOUR = 6",
         str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
         str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
         "canonical/source_connectors.json": "local_authority_source_id",

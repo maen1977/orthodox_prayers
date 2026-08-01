@@ -43,23 +43,26 @@ public final class RefreshPolicyTest {
     }
 
     @Test
-    public void appOpenCatchesUpOnlyAfterTheOneAndSixAmmanWindows() {
-        long beforeFirst = amman(2026, 7, 25, 0, 30);
-        long afterFirst = amman(2026, 7, 25, 1, 5);
-        long afterFirstAttempt = amman(2026, 7, 25, 1, 6);
-        long beforeSecond = amman(2026, 7, 25, 5, 55);
-        long afterSecond = amman(2026, 7, 25, 6, 5);
-        long afterSecondAttempt = amman(2026, 7, 25, 6, 6);
+    public void appResumeCatchesUpAfterTheSingleDaily0607PublicationWindow() {
+        long beforeWindow = amman(2026, 7, 25, 6, 0);
+        long afterWindow = amman(2026, 7, 25, 6, 15);
+        long afterWindowAttempt = amman(2026, 7, 25, 6, 10);
+        long previousDayAttempt = amman(2026, 7, 24, 23, 55);
 
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(true, 0L, afterFirst));
-        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, 0L, beforeFirst));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(true, 0L, afterWindow));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, 0L, beforeWindow));
         assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
-                false, amman(2026, 7, 24, 23, 55), beforeFirst
+                false, previousDayAttempt, beforeWindow
         ));
-        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, beforeFirst, afterFirst));
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(false, afterFirstAttempt, beforeSecond));
-        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, afterFirstAttempt, afterSecond));
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(false, afterSecondAttempt, afterSecond));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(
+                false, beforeWindow, afterWindow
+        ));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
+                false, afterWindowAttempt, afterWindow
+        ));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
+                false, afterWindow, afterWindowAttempt
+        ));
     }
 
     private static long amman(int year, int month, int day, int hour, int minute) {
