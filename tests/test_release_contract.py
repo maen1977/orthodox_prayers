@@ -577,6 +577,15 @@ class ReleaseContractTests(unittest.TestCase):
             build.count('python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"'),
         )
         self.assertIn('python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest', build)
+        self.assertIn("verified-data requires a nine-day upgrade", build)
+        self.assertIn("Building debug with the signed embedded bootstrap", build)
+        self.assertIn("the next scheduled Rolling Liturgical Window Update will republish verified-data", build)
+        debug_import = build.split("- name: Import latest signed published data for debug APK", 1)[1].split("- name: Set up JDK 17", 1)[0]
+        self.assertIn('if python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"', debug_import)
+        self.assertIn("python scripts/verify_data_signature.py", debug_import)
+        self.assertIn("python scripts/validate_embedded_app_data.py", debug_import)
+        release_import = build.split("- name: Import latest signed verified data", 1)[1].split("- name: Normalize Gradle wrapper permission", 1)[0]
+        self.assertNotIn("Building debug with the signed embedded bootstrap", release_import)
         self.assertGreaterEqual(
             build.count('python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"'),
             2,
