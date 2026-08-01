@@ -1,3 +1,11 @@
+## 5.0.23 — R38.1 fixed nine-day quality-gate contract
+
+- Unified every active rolling-window contract on exactly nine days: today plus eight future days.
+- Rejected legacy 21-day publications instead of treating them as supported input.
+- Updated protected-contract hashes after reviewing the intentional R38 schedule and horizon changes.
+- Corrected Arabic, English, and Greek update text to say twice daily at 04:23 and 16:43 Jordan time.
+- Passed 398 tests plus 14 subtests and all constituent strict-native quality-gate checks.
+
 ## 5.0.23 — R36 card-only Settings hub
 
 - Rebuilt the main Settings screen as five action cards for language, font size, calendar/reminders, update/data, and churches/live services.

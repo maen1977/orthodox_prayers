@@ -200,7 +200,7 @@ def main() -> None:
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
         "external-source generation; debug checks are separated; Update runs only manually "
-        "or twice every 24 hours at 04:23 and 16:43 Asia/Amman"
+        "or twice daily at 04:23 and 16:43 Asia/Amman"
     )
 
 

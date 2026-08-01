@@ -154,7 +154,7 @@ def test_full_service_contract_is_fail_closed_for_every_published_language():
     complete = contract["definition_of_complete"]
     assert contract["rolling_window"]["default_day_count"] == 9
     assert contract["rolling_window"]["minimum_day_count"] == 9
-    assert contract["rolling_window"]["maximum_day_count"] == 42
+    assert contract["rolling_window"]["maximum_day_count"] == 9
     assert complete["partial_text_allowed"] is False
     assert complete["cross_language_fallback_allowed"] is False
     assert complete["wrong_rite_fallback_allowed"] is False
@@ -173,7 +173,7 @@ def test_production_release_gate_uses_moving_horizon_not_annual_preload():
     rolling = phase8["required_release_gates"]["rolling_liturgical_window"]
     assert rolling["default_day_count"] == 9
     assert rolling["minimum_day_count"] == 9
-    assert rolling["maximum_day_count"] == 42
+    assert rolling["maximum_day_count"] == 9
     assert rolling["annual_preload_required"] is False
 
 

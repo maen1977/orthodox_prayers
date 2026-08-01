@@ -106,7 +106,7 @@
     "schema_version": 2,
     "default_day_count": 9,
     "minimum_day_count": 9,
-    "maximum_day_count": 42,
+    "maximum_day_count": 9,
     "timezone": "Asia/Amman",
     "annual_preload_required": false,
     "fail_closed": true,

@@ -61,7 +61,7 @@ def validate_static_contract(errors: list[str]) -> None:
     rolling = contract.get("rolling_window") or {}
     if rolling.get("policy") != "ROLLING_FUTURE_WINDOW" or rolling.get("schema_version") != 2:
         errors.append("full contract rolling policy mismatch")
-    if rolling.get("minimum_day_count") != 9 or rolling.get("maximum_day_count") != 42:
+    if rolling.get("minimum_day_count") != 9 or rolling.get("maximum_day_count") != 9:
         errors.append("full contract must define the supported fixed nine-day horizon")
     if rolling.get("default_day_count") != 9:
         errors.append("full contract default rolling horizon must be 9 days")

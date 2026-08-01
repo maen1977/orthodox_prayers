@@ -23,7 +23,7 @@
 
 ## التحقق المنفذ
 
-- `python -m unittest discover -s tests -p 'test_*.py'`: ناجح — 334 اختبارًا.
+- `python -m pytest -q`: ناجح — 398 اختبارًا و14 اختبارًا فرعيًا.
 - `python scripts/validate_workflows.py`: ناجح.
 - `python scripts/validate_follow_along_liturgy.py`: ناجح.
 - `python scripts/validate_full_liturgy_services.py`: ناجح.
@@ -37,3 +37,10 @@
 ```
 
 قبل رفع الإصدار إلى Google Play.
+
+## إصلاح R38.1
+
+- وُحّدت العقود المتبقية التي كانت تسمح بـ21–42 يومًا على تسعة أيام فقط.
+- أصبحت حزمة 21 يومًا القديمة مرفوضة بوضوح من عقد البيانات المنشورة.
+- صُححت صياغة موعدي التحديث في العربية والإنجليزية واليونانية.
+- نجحت جميع مكونات بوابة الجودة الصارمة منفردة.

@@ -31,7 +31,7 @@ class RollingWeekUpdateTests(unittest.TestCase):
         self.assertEqual("ROLLING_FUTURE_WINDOW", rolling["policy"])
         self.assertEqual(9, rolling["default_day_count"])
         self.assertEqual(9, rolling["minimum_day_count"])
-        self.assertEqual(42, rolling["maximum_day_count"])
+        self.assertEqual(9, rolling["maximum_day_count"])
         self.assertFalse(rolling["annual_preload_required"])
         self.assertTrue(rolling["fail_closed"])
 

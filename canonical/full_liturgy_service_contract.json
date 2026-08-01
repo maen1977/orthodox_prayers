@@ -6,7 +6,7 @@
     "schema_version": 2,
     "default_day_count": 9,
     "minimum_day_count": 9,
-    "maximum_day_count": 42,
+    "maximum_day_count": 9,
     "start": "today_in_Asia/Amman",
     "end_offset_days": "day_count_minus_one"
   },
