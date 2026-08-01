@@ -4,7 +4,7 @@
   "rolling_window": {
     "policy": "ROLLING_FUTURE_WINDOW",
     "schema_version": 2,
-    "default_day_count": 21,
+    "default_day_count": 9,
     "minimum_day_count": 9,
     "maximum_day_count": 42,
     "start": "today_in_Asia/Amman",

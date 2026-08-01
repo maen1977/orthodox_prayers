@@ -75,7 +75,7 @@ def load_previous():
     except Exception: return {'records':{}}
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--start-date',required=True); ap.add_argument('--days',type=int,default=21); ap.add_argument('--offline',action='store_true'); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('--start-date',required=True); ap.add_argument('--days',type=int,default=9); ap.add_argument('--offline',action='store_true'); args=ap.parse_args()
     start=date.fromisoformat(args.start_date); previous=load_previous(); old_records=previous.get('records') or {}; records={}
     checked=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z')
     for offset in range(args.days):

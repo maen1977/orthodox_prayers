@@ -29,7 +29,7 @@ class RollingWeekUpdateTests(unittest.TestCase):
         rules = json.loads((ROOT / "canonical/liturgy_service_rules.json").read_text(encoding="utf-8"))
         rolling = rules["rolling_window"]
         self.assertEqual("ROLLING_FUTURE_WINDOW", rolling["policy"])
-        self.assertEqual(21, rolling["default_day_count"])
+        self.assertEqual(9, rolling["default_day_count"])
         self.assertEqual(9, rolling["minimum_day_count"])
         self.assertEqual(42, rolling["maximum_day_count"])
         self.assertFalse(rolling["annual_preload_required"])
@@ -41,7 +41,7 @@ class RollingWeekUpdateTests(unittest.TestCase):
         self.assertIn("resolve_day_count", builder_source)
         self.assertIn("build_metadata", builder_source)
         # Source discovery is a package-level observation. Running it once per
-        # future date would make a 21-42 day window slow and needlessly fragile.
+        # future date would make a nine-day window slow and needlessly fragile.
         future_function = builder_source.split("def generate_future_day", 1)[1].split("def main", 1)[0]
         self.assertNotIn("collect_source_health.py", future_function)
         self.assertNotIn("build_church_directory.py", future_function)
@@ -49,8 +49,8 @@ class RollingWeekUpdateTests(unittest.TestCase):
     def test_generated_payload_contains_default_moving_horizon(self):
         payload = self.update.build_day(date(2026, 7, 28))
         self.assertEqual(10, payload["schema_version"])
-        self.assertEqual(20, len(payload["upcoming"]))
-        expected = [date(2026, 7, 28) + timedelta(days=offset) for offset in range(21)]
+        self.assertEqual(8, len(payload["upcoming"]))
+        expected = [date(2026, 7, 28) + timedelta(days=offset) for offset in range(9)]
         actual = [date.fromisoformat(payload["date_iso"])] + [
             date.fromisoformat(item["date"]) for item in payload["upcoming"]
         ]

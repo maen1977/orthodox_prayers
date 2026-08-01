@@ -16,9 +16,9 @@ LEGACY_SCHEMA_VERSION = 1
 SCHEMA_VERSION = 2
 LEGACY_POLICY = "NINE_CONSECUTIVE_DAYS_STARTING_TODAY"
 POLICY = "ROLLING_FUTURE_WINDOW"
-DEFAULT_DAY_COUNT = 21
+DEFAULT_DAY_COUNT = 9
 MIN_DAY_COUNT = 9
-MAX_DAY_COUNT = 42
+MAX_DAY_COUNT = 9
 TIMEZONE = "Asia/Amman"
 MEMBERS_FIELD = "weekly_days"
 
@@ -99,6 +99,6 @@ def build_metadata(start: date, day_count: int, generated_at_utc: str) -> dict[s
         "fail_closed": True,
         "members_field": MEMBERS_FIELD,
         "refresh_policy": "DAILY_REBUILD_SLIDING_HORIZON",
-        "refresh_hours_local": [1, 6],
+        "refresh_times_local": ["04:23", "16:43"],
         "generated_at_utc": generated_at_utc,
     }

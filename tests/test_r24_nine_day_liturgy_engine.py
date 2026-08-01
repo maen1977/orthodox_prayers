@@ -152,7 +152,7 @@ def test_ui_exposes_type_form_reason_and_complete_open_action():
 def test_full_service_contract_is_fail_closed_for_every_published_language():
     contract = json.loads((ROOT / "canonical/full_liturgy_service_contract.json").read_text(encoding="utf-8"))
     complete = contract["definition_of_complete"]
-    assert contract["rolling_window"]["default_day_count"] == 21
+    assert contract["rolling_window"]["default_day_count"] == 9
     assert contract["rolling_window"]["minimum_day_count"] == 9
     assert contract["rolling_window"]["maximum_day_count"] == 42
     assert complete["partial_text_allowed"] is False
@@ -171,7 +171,7 @@ def test_production_release_gate_uses_moving_horizon_not_annual_preload():
     assert "annual_variable_parts" not in source
     phase8 = json.loads((ROOT / "canonical/liturgy_phase8_completion_contract.json").read_text(encoding="utf-8"))
     rolling = phase8["required_release_gates"]["rolling_liturgical_window"]
-    assert rolling["default_day_count"] == 21
+    assert rolling["default_day_count"] == 9
     assert rolling["minimum_day_count"] == 9
     assert rolling["maximum_day_count"] == 42
     assert rolling["annual_preload_required"] is False

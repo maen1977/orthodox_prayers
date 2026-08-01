@@ -31,9 +31,9 @@
     "rolling_liturgical_window": {
       "policy": "ROLLING_FUTURE_WINDOW",
       "schema_version": 2,
-      "default_day_count": 21,
+      "default_day_count": 9,
       "minimum_day_count": 9,
-      "maximum_day_count": 42,
+      "maximum_day_count": 9,
       "all_days_complete_required": true,
       "annual_preload_required": false,
       "current_status": "AWAITING_NEW_SIGNED_ROLLING_WINDOW_PACKAGE"

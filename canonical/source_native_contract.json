@@ -488,9 +488,10 @@
     }
   },
   "publication": {
-    "daily_update_time": "06:07 Asia/Amman every 24 hours",
+    "daily_update_time": "04:23 and 16:43 Asia/Amman every 24 hours",
     "daily_update_windows": [
-      "06:07"
+      "04:23",
+      "16:43"
     ],
     "active_product_profile": "canonical/follow_along_liturgy_contract.json",
     "schedule_role": "AUTHORITATIVE_DAILY_PUBLICATION",

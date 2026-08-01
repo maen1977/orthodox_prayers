@@ -62,15 +62,15 @@ def validate_static_contract(errors: list[str]) -> None:
     if rolling.get("policy") != "ROLLING_FUTURE_WINDOW" or rolling.get("schema_version") != 2:
         errors.append("full contract rolling policy mismatch")
     if rolling.get("minimum_day_count") != 9 or rolling.get("maximum_day_count") != 42:
-        errors.append("full contract must define the supported 9-42 day horizon")
-    if rolling.get("default_day_count") != 21:
-        errors.append("full contract default rolling horizon must be 21 days")
+        errors.append("full contract must define the supported fixed nine-day horizon")
+    if rolling.get("default_day_count") != 9:
+        errors.append("full contract default rolling horizon must be 9 days")
     if contract.get("definition_of_complete", {}).get("partial_text_allowed") is not False:
         errors.append("partial liturgy text must be forbidden")
     if contract.get("definition_of_complete", {}).get("wrong_rite_fallback_allowed") is not False:
         errors.append("wrong-rite fallback must be forbidden")
     rule_window = rules.get("rolling_window", {})
-    if rule_window.get("policy") != "ROLLING_FUTURE_WINDOW" or rule_window.get("default_day_count") != 21:
+    if rule_window.get("policy") != "ROLLING_FUTURE_WINDOW" or rule_window.get("default_day_count") != 9:
         errors.append("liturgy rules rolling-window contract mismatch")
 
     libraries: dict[str, dict[str, dict]] = {}
@@ -201,7 +201,7 @@ def main() -> None:
         for error in errors[:100]:
             print(f"FULL_LITURGY_ERROR {error}")
         raise SystemExit(f"FULL_LITURGY_INVALID errors={len(errors)}")
-    print("FULL_LITURGY_OK rolling_window=9-42 default_days=21 wrong_rite_fallback=false scope=beginning_to_end")
+    print("FULL_LITURGY_OK rolling_window=9 default_days=9 wrong_rite_fallback=false scope=beginning_to_end")
 
 
 if __name__ == "__main__":

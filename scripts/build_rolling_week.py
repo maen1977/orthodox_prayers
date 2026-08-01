@@ -3,7 +3,7 @@
 
 The current daily payload remains the package root for backwards compatibility.
 Future payloads stay under ``weekly_days`` for wire compatibility, while schema v2
-allows a configurable 9-42 day horizon. The publication workflow rebuilds the
+allows a configurable fixed nine-day horizon. The publication workflow rebuilds the
 window every day so new days and weeks enter automatically.
 """
 from __future__ import annotations
@@ -210,7 +210,7 @@ def generate_future_day(day: date, offline: bool) -> dict:
     # External source health and the church directory describe the publication
     # run, not a future civil date. update.py collects them exactly once for the
     # anchor day. Reusing that verified snapshot for every member avoids 20-41
-    # repeated network sweeps and keeps a 21-day GitHub Actions run comfortably
+    # repeated network sweeps and keeps a nine-day GitHub Actions run comfortably
     # inside its timeout while preserving identical provenance on the package.
     # The ``offline`` parameter remains part of the cache/build API for backward
     # compatibility; future day composition itself is deterministic and local.

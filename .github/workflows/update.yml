@@ -14,13 +14,15 @@ on:
         required: false
         type: string
       window_days:
-        description: "Moving horizon length (9-42 days)"
+        description: "Moving horizon length (fixed at 9 days)"
         required: false
-        default: "21"
+        default: "9"
         type: string
   schedule:
-    # One authoritative publication run every 24 hours at 06:07 Jordan time.
-    - cron: "7 6 * * *"
+    # Two off-peak publication runs every 24 hours, about twelve hours apart.
+    - cron: "23 4 * * *"
+      timezone: "Asia/Amman"
+    - cron: "43 16 * * *"
       timezone: "Asia/Amman"
 
 permissions:
@@ -34,7 +36,7 @@ concurrency:
 env:
   VERIFIED_DATA_BRANCH: verified-data
   ORTHODOX_ENABLE_LIVE_SOURCE_FETCH: "1"
-  ORTHODOX_ROLLING_WINDOW_DAYS: "21"
+  ORTHODOX_ROLLING_WINDOW_DAYS: "9"
 
 jobs:
   daily:
@@ -59,7 +61,7 @@ jobs:
           [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
           WINDOW_DAYS="${INPUT_WINDOW_DAYS:-$ORTHODOX_ROLLING_WINDOW_DAYS}"
           [[ "$WINDOW_DAYS" =~ ^[0-9]+$ ]]
-          (( WINDOW_DAYS >= 9 && WINDOW_DAYS <= 42 )) || { echo "window_days must be 9-42" >&2; exit 1; }
+          (( WINDOW_DAYS == 9 )) || { echo "window_days must be exactly 9" >&2; exit 1; }
           REVISION=$((GITHUB_RUN_NUMBER * 100 + GITHUB_RUN_ATTEMPT))
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"

@@ -43,11 +43,13 @@ public final class RefreshPolicyTest {
     }
 
     @Test
-    public void appResumeCatchesUpAfterTheSingleDaily0607PublicationWindow() {
-        long beforeWindow = amman(2026, 7, 25, 6, 0);
-        long afterWindow = amman(2026, 7, 25, 6, 15);
-        long afterWindowAttempt = amman(2026, 7, 25, 6, 10);
+    public void appResumeCatchesUpAfterBothDailyPublicationWindows() {
+        long beforeWindow = amman(2026, 7, 25, 4, 0);
+        long afterWindow = amman(2026, 7, 25, 4, 35);
+        long afterWindowAttempt = amman(2026, 7, 25, 4, 30);
         long previousDayAttempt = amman(2026, 7, 24, 23, 55);
+        long afterEveningWindow = amman(2026, 7, 25, 16, 55);
+        long morningAttempt = amman(2026, 7, 25, 5, 0);
 
         assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(true, 0L, afterWindow));
         assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, 0L, beforeWindow));
@@ -62,6 +64,9 @@ public final class RefreshPolicyTest {
         ));
         assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
                 false, afterWindow, afterWindowAttempt
+        ));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(
+                false, morningAttempt, afterEveningWindow
         ));
     }
 

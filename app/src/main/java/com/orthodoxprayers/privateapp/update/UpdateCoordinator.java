@@ -28,14 +28,18 @@ public final class UpdateCoordinator {
             "orthodox-trusted-amman-01-refresh";
     private static final String LEGACY_SUPPLEMENTAL_SCHEDULE_WORK =
             "orthodox-trusted-amman-06-refresh";
-    private static final String DAILY_SCHEDULE_WORK =
-            "orthodox-trusted-amman-0607-refresh-v3";
+    private static final String MORNING_SCHEDULE_WORK =
+            "orthodox-trusted-amman-0423-refresh-v4";
+    private static final String EVENING_SCHEDULE_WORK =
+            "orthodox-trusted-amman-1643-refresh-v4";
     private static final String MIDNIGHT_EXECUTION_WORK =
             "orthodox-trusted-amman-midnight-execution";
     private static final String IMMEDIATE_WORK = "orthodox-trusted-daily-data-now";
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
-    static final int DAILY_REFRESH_HOUR = 6;
-    static final int REFRESH_MINUTE = 7;
+    static final int MORNING_REFRESH_HOUR = 4;
+    static final int MORNING_REFRESH_MINUTE = 23;
+    static final int EVENING_REFRESH_HOUR = 16;
+    static final int EVENING_REFRESH_MINUTE = 43;
 
     private final Context context;
     private final AppPreferences preferences;
@@ -48,10 +52,10 @@ public final class UpdateCoordinator {
     }
 
     /**
-     * Schedules one trusted daily refresh at 06:07 Asia/Amman.
+     * Schedules two trusted daily refreshes at 04:23 and 16:43 Asia/Amman.
      *
-     * GitHub Actions publishes the signed content once every 24 hours. WorkManager
-     * performs a best-effort device check after that publication time, while every
+     * GitHub Actions publishes signed content twice every 24 hours. WorkManager
+     * performs best-effort device checks after both publication times, while every
      * fresh app foreground session still performs a lightweight signed-manifest check.
      */
     public void scheduleDailyRefresh() {
@@ -59,11 +63,12 @@ public final class UpdateCoordinator {
         // Cancel all historical two-window work names during upgrade migration.
         workManager.cancelUniqueWork(LEGACY_INITIAL_SCHEDULE_WORK);
         workManager.cancelUniqueWork(LEGACY_SUPPLEMENTAL_SCHEDULE_WORK);
-        scheduleRefreshWindow(workManager, DAILY_SCHEDULE_WORK, DAILY_REFRESH_HOUR);
+        scheduleRefreshWindow(workManager, MORNING_SCHEDULE_WORK, MORNING_REFRESH_HOUR, MORNING_REFRESH_MINUTE);
+        scheduleRefreshWindow(workManager, EVENING_SCHEDULE_WORK, EVENING_REFRESH_HOUR, EVENING_REFRESH_MINUTE);
     }
 
-    private void scheduleRefreshWindow(WorkManager workManager, String workName, int hour) {
-        long triggerAtMillis = nextAmmanRefreshEpochMillis(hour, REFRESH_MINUTE);
+    private void scheduleRefreshWindow(WorkManager workManager, String workName, int hour, int minute) {
+        long triggerAtMillis = nextAmmanRefreshEpochMillis(hour, minute);
         long delay = Math.max(1_000L, triggerAtMillis - System.currentTimeMillis());
         String datedWorkName = workName + "-"
                 + Instant.ofEpochMilli(triggerAtMillis).atZone(AMMAN_ZONE).toLocalDate();
@@ -127,7 +132,7 @@ public final class UpdateCoordinator {
         );
     }
 
-    /** App-open catch-up checks for the latest signed 06:07 Amman publication. */
+    /** App-open catch-up checks for the latest signed 04:23 or 16:43 Amman publication. */
     public boolean shouldCheckRemoteOnResume() {
         return RefreshPolicy.shouldCheckRemoteOnResume(
                 repository.isRefreshing(),
@@ -163,11 +168,11 @@ public final class UpdateCoordinator {
     }
 
     public static long nextAmmanRefreshEpochMillis() {
-        return nextAmmanRefreshEpochMillis(DAILY_REFRESH_HOUR, REFRESH_MINUTE);
+        return nextAmmanRefreshEpochMillis(MORNING_REFRESH_HOUR, MORNING_REFRESH_MINUTE);
     }
 
     public static long nextAmmanSupplementalRefreshEpochMillis() {
-        return nextAmmanRefreshEpochMillis(DAILY_REFRESH_HOUR, REFRESH_MINUTE);
+        return nextAmmanRefreshEpochMillis(EVENING_REFRESH_HOUR, EVENING_REFRESH_MINUTE);
     }
 
     static long nextAmmanRefreshEpochMillis(int hour, int minute) {
@@ -179,7 +184,7 @@ public final class UpdateCoordinator {
         return candidate.toInstant().toEpochMilli();
     }
 
-    /** Backwards-compatible method name; now returns the next 06:07 Amman refresh instant. */
+    /** Backwards-compatible method name; now returns the next 04:23 Amman refresh instant. */
     public static long nextAmmanMidnightEpochMillis() {
         return nextAmmanRefreshEpochMillis();
     }

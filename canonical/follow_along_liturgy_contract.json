@@ -113,7 +113,8 @@
   "update_policy": {
     "timezone": "Asia/Amman",
     "windows": [
-      "06:07"
+      "04:23",
+      "16:43"
     ],
     "schedule_role": "AUTHORITATIVE_DAILY_PUBLICATION",
     "same_day_revision_must_not_remove_accepted_native_text": true,
