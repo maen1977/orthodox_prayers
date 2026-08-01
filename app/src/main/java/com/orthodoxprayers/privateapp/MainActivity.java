@@ -205,7 +205,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                 Toast.LENGTH_SHORT
         ).show();
         ScreenEntry current = backStack.peekLast();
-        if (current != null && "settings".equals(current.screenId)) show(current);
+        if (current != null && ("settings".equals(current.screenId) || "settings_section".equals(current.screenId))) show(current);
     }
 
 
@@ -393,6 +393,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "calendar_day": return new CalendarDayScreen(this, entry.argument);
             case "language_packs": return new LanguagePacksScreen(this);
             case "settings": return new SettingsScreen(this);
+            case "settings_section": return new SettingsScreen(this, entry.argument);
             case "sources": return new SourcesScreen(this);
             case "churches": return new ChurchesScreen(this);
             case "reader": return new ReaderScreen(this, entry.argument);
@@ -443,7 +444,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     private String activeNav(ScreenEntry entry) {
         if (entry == null) return "home";
-        if ("settings".equals(entry.screenId)) return "settings";
+        if ("settings".equals(entry.screenId) || "settings_section".equals(entry.screenId)
+                || "sources".equals(entry.screenId) || "churches".equals(entry.screenId)) return "settings";
         if ("prayers".equals(entry.screenId) || "prayer_category".equals(entry.screenId)) return "prayers";
         if ("liturgy".equals(entry.screenId)) return "liturgy";
         if ("reader".equals(entry.screenId)) {

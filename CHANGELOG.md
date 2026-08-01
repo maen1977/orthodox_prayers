@@ -1,3 +1,11 @@
+## 5.0.23 — R36 card-only Settings hub
+
+- Rebuilt the main Settings screen as five action cards for language, font size, calendar/reminders, update/data, and churches/live services.
+- Moved the first four setting groups into dedicated back-navigable detail pages without removing any existing option.
+- Kept the About section plain, in the same final position, with its original text and selectable provider notice.
+- Kept the Settings bottom-navigation state active throughout settings detail, sources, and church-directory screens.
+- Added regression coverage for card routing, back navigation, and in-place refresh after changing a setting.
+
 ## 5.0.23 — R35 compact back navigation and smart Home shortcuts
 
 - Replaced wide text back buttons with a mirrored arrow-only 44dp control in subpages and readers.

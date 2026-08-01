@@ -1,0 +1,21 @@
+R36 validation — 2026-08-01
+
+Feature verification
+- Settings hub contains five action cards: language, font size, calendar/reminders, update/data, and church directory/live services.
+- The first four cards open dedicated settings_section pages with the compact back arrow.
+- Changes made inside a detail page refresh that same page instead of returning to the hub.
+- The About section remains plain and byte-for-byte identical to the R35 implementation block.
+- Settings remains the active bottom-navigation section in settings details, sources, and churches.
+
+Automated tests
+- python -m pytest -q
+- Result: 397 passed, 14 subtests passed.
+
+Release validation
+- All checks in scripts/run_quality_gate.py --strict-native-lanes were executed successfully.
+- The combined runner exceeded the execution environment time limit because the complete liturgy validators are long-running, so the remaining validators were run individually and all passed.
+- Verified: workflows, Gradle wrapper contract, secret scan, protected texts, Play Store assets, UI localizations, Android resources, native language packs, follow-along Liturgy, reader integrity, service selection, full Liturgy, native imports, source registry, signed data, Scripture lanes, Jordan contract, fasting guidance, and final quality_check.
+
+Android compilation
+- ./gradlew :app:compileDebugJavaWithJavac --offline --no-daemon could not start because Gradle 8.13 is not cached in this environment and services.gradle.org is unreachable.
+- No Java or Android resource failure was reported before the wrapper download attempt.

@@ -23,12 +23,97 @@ import java.time.ZoneId;
 import java.util.Locale;
 
 public final class SettingsScreen extends BaseScreen {
-    public SettingsScreen(ScreenHost host) { super(host); }
+    private static final String SECTION_LANGUAGE = "language";
+    private static final String SECTION_FONT_SIZE = "font_size";
+    private static final String SECTION_CALENDAR = "calendar_reminders";
+    private static final String SECTION_UPDATE = "update_data";
+
+    private final String section;
+
+    public SettingsScreen(ScreenHost host) { this(host, null); }
+
+    public SettingsScreen(ScreenHost host, String section) {
+        super(host);
+        this.section = section == null ? "" : section.trim();
+    }
 
     @Override
     public View createView() {
+        if (SECTION_LANGUAGE.equals(section)) return createLanguageSettingsView();
+        if (SECTION_FONT_SIZE.equals(section)) return createFontSettingsView();
+        if (SECTION_CALENDAR.equals(section)) return createCalendarSettingsView();
+        if (SECTION_UPDATE.equals(section)) return createUpdateSettingsView();
+        return createSettingsHubView();
+    }
+
+    private View createSettingsHubView() {
         UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_settings_25169a1d), true);
 
+        addSettingsAction(page,
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_language,
+                local(com.orthodoxprayers.privateapp.R.string.ui_language_settings_title),
+                SECTION_LANGUAGE);
+        addSettingsAction(page,
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_brightness,
+                local(com.orthodoxprayers.privateapp.R.string.ui_font_size_settings_title),
+                SECTION_FONT_SIZE);
+        addSettingsAction(page,
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar,
+                local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_reminders_acba78af),
+                SECTION_CALENDAR);
+        addSettingsAction(page,
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_settings,
+                local(com.orthodoxprayers.privateapp.R.string.ui_update_and_data_bf22bb6d),
+                SECTION_UPDATE);
+
+        String churchesTitle = local(com.orthodoxprayers.privateapp.R.string.ui_church_directory_and_live_services_b4f52ad3);
+        LinearLayout churchesCard = ui.actionCard(
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_live,
+                churchesTitle,
+                ""
+        );
+        churchesCard.setOnClickListener(v -> host.navigate("churches", null));
+        add(page.root, churchesCard, 2, 10);
+
+        appendAboutSection(page);
+        return page.scroll;
+    }
+
+    private View createLanguageSettingsView() {
+        UiKit.Page page = detailPage();
+        appendLanguageSettings(page);
+        return page.scroll;
+    }
+
+    private View createFontSettingsView() {
+        UiKit.Page page = detailPage();
+        appendFontSettings(page);
+        return page.scroll;
+    }
+
+    private View createCalendarSettingsView() {
+        UiKit.Page page = detailPage();
+        appendCalendarSettings(page);
+        return page.scroll;
+    }
+
+    private View createUpdateSettingsView() {
+        UiKit.Page page = detailPage();
+        appendUpdateSettings(page);
+        return page.scroll;
+    }
+
+    private UiKit.Page detailPage() {
+        return page(local(com.orthodoxprayers.privateapp.R.string.ui_settings_25169a1d), true);
+    }
+
+    private void addSettingsAction(UiKit.Page page, int iconResource, String title, String targetSection) {
+        LinearLayout card = ui.actionCard(iconResource, title, "");
+        card.setOnClickListener(v -> host.navigate("settings_section", targetSection));
+        add(page.root, card, 2, 8);
+    }
+
+    private void appendLanguageSettings(UiKit.Page page) {
         LinearLayout languageCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_language_settings_title));
         LinearLayout languages = ui.row();
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_arabic_name), "ar");
@@ -36,43 +121,45 @@ public final class SettingsScreen extends BaseScreen {
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_greek_name), "el");
         add(languageCard, languages, 2, 2);
         add(page.root, languageCard, 12, 8);
+    }
 
+    private void appendFontSettings(UiKit.Page page) {
         LinearLayout fontCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_font_size_settings_title));
         LinearLayout font = ui.row();
         Button smaller = ui.button("A−", false);
         smaller.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_decrease_text_size_d4631a2b));
-        smaller.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() - 0.1f); host.navigate("settings", null); });
+        smaller.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() - 0.1f); reloadCurrentSettingsScreen(); });
         font.addView(smaller, ui.weight(48));
         Button reset = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_default_25612288), false);
-        reset.setOnClickListener(v -> { preferences.setFontScale(1.0f); host.navigate("settings", null); });
+        reset.setOnClickListener(v -> { preferences.setFontScale(1.0f); reloadCurrentSettingsScreen(); });
         font.addView(reset, ui.weight(48));
         Button larger = ui.button("A+", false);
         larger.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_increase_text_size_d8c66ed2));
-        larger.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() + 0.1f); host.navigate("settings", null); });
+        larger.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() + 0.1f); reloadCurrentSettingsScreen(); });
         font.addView(larger, ui.weight(48));
         add(fontCard, font, 2, 5);
 
         Button dark = ui.button(preferences.darkMode()
                 ? local(com.orthodoxprayers.privateapp.R.string.ui_use_light_mode_1c895a15)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_use_dark_mode_1564a2ea), preferences.darkMode());
-        dark.setOnClickListener(v -> { preferences.setDarkMode(!preferences.darkMode()); host.navigate("settings", null); });
+        dark.setOnClickListener(v -> { preferences.setDarkMode(!preferences.darkMode()); reloadCurrentSettingsScreen(); });
         add(fontCard, dark, 0, 6);
 
         Button keepOn = ui.button(preferences.keepScreenOn()
                 ? local(com.orthodoxprayers.privateapp.R.string.ui_disable_keep_screen_on_14c0033c)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_keep_screen_on_while_reading_f9d35a52), preferences.keepScreenOn());
-        keepOn.setOnClickListener(v -> { preferences.setKeepScreenOn(!preferences.keepScreenOn()); host.navigate("settings", null); });
+        keepOn.setOnClickListener(v -> { preferences.setKeepScreenOn(!preferences.keepScreenOn()); reloadCurrentSettingsScreen(); });
         add(fontCard, keepOn, 0, 6);
 
         LinearLayout spacing = ui.row();
         Button tighter = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_less_spacing_182a14c2), false);
-        tighter.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() - 0.1f); host.navigate("settings", null); });
+        tighter.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() - 0.1f); reloadCurrentSettingsScreen(); });
         spacing.addView(tighter, ui.weight(48));
         Button spacingReset = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_spacing_385760af) + String.format(Locale.US, "%.2f", preferences.lineSpacingMultiplier()), false);
-        spacingReset.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(1.16f); host.navigate("settings", null); });
+        spacingReset.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(1.16f); reloadCurrentSettingsScreen(); });
         spacing.addView(spacingReset, ui.weight(48));
         Button wider = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_more_spacing_fe47f0f9), false);
-        wider.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() + 0.1f); host.navigate("settings", null); });
+        wider.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() + 0.1f); reloadCurrentSettingsScreen(); });
         spacing.addView(wider, ui.weight(48));
         add(fontCard, spacing, 0, 5);
 
@@ -80,7 +167,7 @@ public final class SettingsScreen extends BaseScreen {
         fontFamily.setOnClickListener(v -> {
             String current = preferences.fontFamily();
             preferences.setFontFamily("sans".equals(current) ? "serif" : "serif".equals(current) ? "monospace" : "sans");
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         add(fontCard, fontFamily, 0, 6);
 
@@ -88,7 +175,7 @@ public final class SettingsScreen extends BaseScreen {
         autoScroll.setOnClickListener(v -> {
             int speed = preferences.autoScrollSpeed();
             preferences.setAutoScrollSpeed(speed >= 4 ? 0 : speed + 1);
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         add(fontCard, autoScroll, 0, 10);
 
@@ -97,7 +184,7 @@ public final class SettingsScreen extends BaseScreen {
         readerTheme.setOnClickListener(v -> {
             String current = preferences.readerTheme();
             preferences.setReaderTheme("system".equals(current) ? "sepia" : "sepia".equals(current) ? "night" : "system");
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         readerAppearance.addView(readerTheme, new LinearLayout.LayoutParams(0, -2, 2f));
         Button brightness = ui.smallIconButton(com.orthodoxprayers.privateapp.R.drawable.ic_action_brightness,
@@ -105,7 +192,7 @@ public final class SettingsScreen extends BaseScreen {
         brightness.setOnClickListener(v -> {
             int current = preferences.readerBrightnessPercent();
             preferences.setReaderBrightnessPercent(current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100);
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         readerAppearance.addView(brightness, ui.weight(48));
         add(fontCard, readerAppearance, 0, 6);
@@ -116,13 +203,15 @@ public final class SettingsScreen extends BaseScreen {
                 .setMessage(local(com.orthodoxprayers.privateapp.R.string.ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b))
                 .setPositiveButton(local(com.orthodoxprayers.privateapp.R.string.ui_reset_7b5a50be), (dialog, which) -> {
                     preferences.resetReaderPreferences();
-                    host.navigate("settings", null);
+                    reloadCurrentSettingsScreen();
                 })
                 .setNegativeButton(local(com.orthodoxprayers.privateapp.R.string.ui_cancel_1bd7a4b9), null)
                 .show());
         add(fontCard, resetReading, 0, 2);
         add(page.root, fontCard, 2, 8);
+    }
 
+    private void appendCalendarSettings(UiKit.Page page) {
         LinearLayout calendarCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_reminders_acba78af));
         LinearLayout quietHours = ui.row();
         Button quietStart = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_quiet_starts_91bc6653) + formatMinute(preferences.quietHoursStartMinute()), false);
@@ -146,7 +235,7 @@ public final class SettingsScreen extends BaseScreen {
                 : local(com.orthodoxprayers.privateapp.R.string.ui_show_julian_dates_beside_gregorian_12fda2c8), "julian".equals(preferences.calendarMode()));
         calendarMode.setOnClickListener(v -> {
             preferences.setCalendarMode("julian".equals(preferences.calendarMode()) ? "gregorian" : "julian");
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         add(calendarCard, calendarMode, 0, 6);
 
@@ -157,7 +246,9 @@ public final class SettingsScreen extends BaseScreen {
         addReminder(calendarCard, ReminderScheduler.FAST, local(com.orthodoxprayers.privateapp.R.string.ui_fasting_status_7fa7fda1), 7 * 60 + 15);
         addReminder(calendarCard, ReminderScheduler.PERSONAL, local(com.orthodoxprayers.privateapp.R.string.ui_personal_reminder_b0bd49be), 18 * 60);
         add(page.root, calendarCard, 2, 8);
+    }
 
+    private void appendUpdateSettings(UiKit.Page page) {
         LinearLayout updateCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_update_and_data_bf22bb6d));
         Button refresh = ui.button(
                 data.isRefreshing()
@@ -198,7 +289,7 @@ public final class SettingsScreen extends BaseScreen {
                 preferences.advancedDiagnosticsExpanded());
         diagnosticsToggle.setOnClickListener(v -> {
             preferences.setAdvancedDiagnosticsExpanded(!preferences.advancedDiagnosticsExpanded());
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         add(updateCard, diagnosticsToggle, 0, 6);
 
@@ -243,16 +334,9 @@ public final class SettingsScreen extends BaseScreen {
             }
         }
         add(page.root, updateCard, 2, 8);
+    }
 
-        String churchesTitle = local(com.orthodoxprayers.privateapp.R.string.ui_church_directory_and_live_services_b4f52ad3);
-        LinearLayout churchesCard = ui.actionCard(
-                com.orthodoxprayers.privateapp.R.drawable.ic_action_live,
-                churchesTitle,
-                ""
-        );
-        churchesCard.setOnClickListener(v -> host.navigate("churches", null));
-        add(page.root, churchesCard, 2, 10);
-
+    private void appendAboutSection(UiKit.Page page) {
         // R14_SETTINGS_CLEANUP: keep the free-app notice but hide call/privacy actions.
         page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_about_the_app_3bd794db)));
         TextView freeNotice = centered(local(com.orthodoxprayers.privateapp.R.string.ui_this_application_is_free_and_is_presented_by_mae_55914117), 15, ui.colors().primaryText(), true);
@@ -261,7 +345,6 @@ public final class SettingsScreen extends BaseScreen {
 
         TextView privacy = centered(local(com.orthodoxprayers.privateapp.R.string.ui_no_ads_login_or_tracking_no_private_keys_are_sto_428b410a), 13, ui.colors().secondaryText(), false);
         add(page.root, privacy, 0, 16);
-        return page.scroll;
     }
 
     private LinearLayout settingsCard(String title) {
@@ -291,7 +374,7 @@ public final class SettingsScreen extends BaseScreen {
             preferences.setRemindersEnabled(kind, next);
             ReminderScheduler scheduler = new ReminderScheduler(host.activity(), preferences);
             if (next) scheduler.schedule(kind); else scheduler.cancel(kind);
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
         });
         row.addView(toggle, new LinearLayout.LayoutParams(0, -2, 2f));
 
@@ -372,7 +455,7 @@ public final class SettingsScreen extends BaseScreen {
             preferences.setShowOriginal(false);
             preferences.clearRemoteMetadata();
             data.reloadForSelectedLanguage();
-            host.navigate("settings", null);
+            reloadCurrentSettingsScreen();
             host.refreshData();
         });
         row.addView(button, ui.weight(60));
@@ -397,7 +480,7 @@ public final class SettingsScreen extends BaseScreen {
                 .setView(wrapper)
                 .setPositiveButton(local(com.orthodoxprayers.privateapp.R.string.ui_save_d4087fa0), (dialog, which) -> {
                     callback.onSelected(picker.getHour() * 60 + picker.getMinute());
-                    host.navigate("settings", null);
+                    reloadCurrentSettingsScreen();
                 })
                 .setNegativeButton(local(com.orthodoxprayers.privateapp.R.string.ui_cancel_1bd7a4b9), null)
                 .show();
@@ -405,5 +488,8 @@ public final class SettingsScreen extends BaseScreen {
 
     private interface MinuteSelection { void onSelected(int minuteOfDay); }
 
-
+    private void reloadCurrentSettingsScreen() {
+        if (section.isEmpty()) host.navigate("settings", null);
+        else host.navigate("settings_section", section);
+    }
 }
