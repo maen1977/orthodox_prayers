@@ -4,16 +4,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.13"', "versionCode = 50013"),
-    "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R17"', "validate_publication_consistency.py"),
+    "app/build.gradle.kts": ('versionName = "5.0.23"', "versionCode = 50023"),
+    "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R18.4"', "verify_pipeline_patch"),
     "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java": (
-        "FIRST_REFRESH_HOUR = 1",
-        "SECOND_REFRESH_HOUR = 6",
+        "DAILY_REFRESH_HOUR = 6",
+        "REFRESH_MINUTE = 7",
         "scheduleDailyRefresh",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/update/RefreshPolicy.java": (
-        "firstWindow",
-        "secondWindow",
+        "publicationWindow",
+        "DAILY_REFRESH_HOUR",
         "shouldCheckRemoteOnResume",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java": (
@@ -39,4 +39,4 @@ if missing:
         "PATCH_R17_NOT_APPLIED\n" + "\n".join(missing)
         + "\nExtract the R17 changes ZIP directly into the repository root and overwrite existing files."
     )
-print("PATCH_R17_OK version=5.0.13 level=R17")
+print("PATCH_R17_OK version=5.0.23 level=R17+R37.1")

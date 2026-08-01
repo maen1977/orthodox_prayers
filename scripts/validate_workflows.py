@@ -137,9 +137,7 @@ def main() -> None:
             "The GitHub secret does not match the public key",
             "VERIFIED_DATA_BRANCH: verified-data",
             'timezone: "Asia/Amman"',
-            'cron: "7 0 * * *"',
-            'cron: "37 0 * * *"',
-            'cron: "37 6 * * *"',
+            'cron: "7 6 * * *"',
             "Verify from origin after publishing",
             "Verify public HTTPS update endpoint",
             "scripts/verify_public_update_endpoints.py",
@@ -159,8 +157,10 @@ def main() -> None:
         ),
         "Update workflow",
     )
-    if update.count('timezone: "Asia/Amman"') != 3:
-        fail("All three scheduled update windows must use the Asia/Amman timezone")
+    if update.count('timezone: "Asia/Amman"') != 1:
+        fail("The single daily update must use the Asia/Amman timezone")
+    if update.count('cron: "7 6 * * *"') != 1:
+        fail("Update workflow must publish exactly once daily at 06:07 Asia/Amman")
 
     for forbidden in (
         "\n  push:\n",
@@ -199,7 +199,7 @@ def main() -> None:
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
         "external-source generation; debug checks are separated; Update runs only manually "
-        "or at 00:07, 00:37, and 06:37 Asia/Amman"
+        "or once every 24 hours at 06:07 Asia/Amman"
     )
 
 
