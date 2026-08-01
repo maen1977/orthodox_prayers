@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 
-/** Restores the 01:00 and 06:00 Amman WorkManager schedules after system changes. */
+/** Restores the daily 06:07 Amman WorkManager schedule after system changes. */
 public final class ScheduleRestoreReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

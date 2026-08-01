@@ -58,8 +58,7 @@ class R19RefinementTests(unittest.TestCase):
         readiness = (ROOT / "RELEASE_READINESS_AR.md").read_text(encoding="utf-8")
         self.assertIn("قداس اليوم الكامل", readme)
         self.assertIn("canonical/follow_along_liturgy_contract.json", readme)
-        self.assertIn("01:00", readme)
-        self.assertIn("06:00", readme)
+        self.assertIn("06:07", readme)
         self.assertIn("لا توجد ترجمة بين القنوات", readme)
         self.assertIn("نطاق الإصدار الفعلي", readiness)
         self.assertIn("ليست شرطًا لهذا المنتج", readiness)
@@ -72,8 +71,8 @@ class R19RefinementTests(unittest.TestCase):
     def test_publication_contract_matches_the_single_scheduled_workflow(self):
         contract = json.loads((ROOT / "canonical/source_native_contract.json").read_text(encoding="utf-8"))
         publication = contract["publication"]
-        self.assertEqual("01:00 and 06:00 Asia/Amman", publication["daily_update_time"])
-        self.assertEqual(["01:00", "06:00"], publication["daily_update_windows"])
+        self.assertEqual("06:07 Asia/Amman every 24 hours", publication["daily_update_time"])
+        self.assertEqual(["06:07"], publication["daily_update_windows"])
         self.assertEqual("same_workflow_after_publish", publication["verification_mode"])
         self.assertNotIn("verification_time", publication)
 

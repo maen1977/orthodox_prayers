@@ -565,7 +565,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         if (updateCoordinator.shouldRefresh(dayChanged, resumeEvent)) {
             requestDataRefresh(false, dayChanged || !repository.hasUsableCurrentData());
         } else if (resumeRemoteCheck) {
-            // Catch up once after either the 01:00 or 06:00 Amman publication
+            // Catch up once after the daily 06:07 Amman publication
             // window. The signed manifest and ETag keep this check lightweight.
             requestDataRefresh(false, false);
         }

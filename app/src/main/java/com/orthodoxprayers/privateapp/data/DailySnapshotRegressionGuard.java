@@ -8,8 +8,8 @@ import java.util.Iterator;
 /**
  * Prevents a later same-day publication from deleting already accepted native text.
  *
- * A 06:00 supplement may add or correct signed content, but a temporarily incomplete
- * source response must not replace the valid 01:00 Epistle, Gospel, Matins Gospel, or
+ * A later corrected signed daily publication may add content, but a temporarily incomplete
+ * source response must not replace the valid accepted Epistle, Gospel, Matins Gospel, or
  * Liturgy propers already stored on the device.
  */
 public final class DailySnapshotRegressionGuard {

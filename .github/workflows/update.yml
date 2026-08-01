@@ -19,11 +19,8 @@ on:
         default: "21"
         type: string
   schedule:
-    - cron: "7 0 * * *"
-      timezone: "Asia/Amman"
-    - cron: "37 0 * * *"
-      timezone: "Asia/Amman"
-    - cron: "37 6 * * *"
+    # One authoritative publication run every 24 hours at 06:07 Jordan time.
+    - cron: "7 6 * * *"
       timezone: "Asia/Amman"
 
 permissions:

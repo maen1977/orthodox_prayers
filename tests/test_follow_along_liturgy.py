@@ -28,7 +28,7 @@ class FollowAlongLiturgyTests(unittest.TestCase):
             contract["product_scope"]["download_full_religious_book_libraries"]
         )
         self.assertEqual(
-            ["01:00", "06:00"],
+            ["06:07"],
             contract["update_policy"]["windows"],
         )
         self.assertFalse(
