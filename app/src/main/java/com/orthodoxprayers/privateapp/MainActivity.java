@@ -36,6 +36,7 @@ import com.orthodoxprayers.privateapp.ui.screens.HistoryScreen;
 import com.orthodoxprayers.privateapp.ui.screens.LanguagePacksScreen;
 import com.orthodoxprayers.privateapp.ui.screens.HomeScreen;
 import com.orthodoxprayers.privateapp.ui.screens.PrayerHubScreen;
+import com.orthodoxprayers.privateapp.ui.screens.ServiceListScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ReaderScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ReadingDetailScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ReadingsScreen;
@@ -381,6 +382,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         switch (entry.screenId) {
             case "home": return new HomeScreen(this);
             case "prayers": return new PrayerHubScreen(this);
+            case "prayer_category": return new ServiceListScreen(this, entry.argument, prayerCategoryTitle(entry.argument));
             case "liturgy": return new ReaderScreen(this, "divine_liturgy");
             case "readings": return new ReadingsScreen(this);
             case "upcoming": return new UpcomingScreen(this);
@@ -442,7 +444,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     private String activeNav(ScreenEntry entry) {
         if (entry == null) return "home";
         if ("settings".equals(entry.screenId)) return "settings";
-        if ("prayers".equals(entry.screenId)) return "prayers";
+        if ("prayers".equals(entry.screenId) || "prayer_category".equals(entry.screenId)) return "prayers";
         if ("liturgy".equals(entry.screenId)) return "liturgy";
         if ("reader".equals(entry.screenId)) {
             JSONObject service = repository.findService(entry.argument);
@@ -450,6 +452,16 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             return "prayers";
         }
         return "home";
+    }
+
+    private String prayerCategoryTitle(String category) {
+        if ("daily".equals(category)) {
+            return repository.local(com.orthodoxprayers.privateapp.R.string.ui_daily_prayers_ef97d9fd);
+        }
+        if ("communion".equals(category)) {
+            return repository.local(com.orthodoxprayers.privateapp.R.string.ui_holy_communion_prayers_e14c166c);
+        }
+        return repository.local(com.orthodoxprayers.privateapp.R.string.ui_basic_prayers_6f2ed521);
     }
 
     private boolean isTopLevel(String id) {

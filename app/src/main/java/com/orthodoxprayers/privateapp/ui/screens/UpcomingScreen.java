@@ -15,7 +15,14 @@ public final class UpcomingScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_upcoming_days_a15c452f), true);
+        UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_fasting_51a9bf84), true);
+        android.widget.Button calendar = ui.smallIconButton(
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar,
+                local(com.orthodoxprayers.privateapp.R.string.ui_church_calendar_54dcd19b),
+                false
+        );
+        calendar.setOnClickListener(v -> host.navigate("calendar", null));
+        add(page.root, calendar, 10, 4);
         TextView note = centered(local(com.orthodoxprayers.privateapp.R.string.ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0), 13, ui.colors().secondaryText(), false);
         add(page.root, note, 12, 8);
         JSONArray upcoming = data.rollingWeekDays();

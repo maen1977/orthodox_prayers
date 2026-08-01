@@ -176,9 +176,8 @@ public final class ReaderScreen extends BaseScreen {
         header.setPadding(ui.dp(10), ui.dp(7), ui.dp(10), ui.dp(5));
         header.setBackground(ui.gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
 
-        Button back = ui.smallButton((preferences.isRtl() ? "→ " : "← ") + local(com.orthodoxprayers.privateapp.R.string.ui_back_18fb18e2), false);
-        back.setOnClickListener(v -> host.goBack());
-        LinearLayout.LayoutParams backParams = new LinearLayout.LayoutParams(ui.dp(92), ui.dp(44));
+        TextView back = ui.backArrow(host::goBack);
+        LinearLayout.LayoutParams backParams = new LinearLayout.LayoutParams(ui.dp(44), ui.dp(44));
         backParams.setMargins(ui.dp(3), ui.dp(2), ui.dp(3), ui.dp(2));
         header.addView(back, backParams);
 

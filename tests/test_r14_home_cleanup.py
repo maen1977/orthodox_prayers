@@ -47,16 +47,19 @@ class R14HomeCleanupTests(unittest.TestCase):
         for hidden in ("البحث", "المفضلة", "آخر قراءة", "اللغات", "الإعدادات"):
             self.assertTrue(source_omits_text(home, hidden, "ar"), hidden)
 
-    def test_home_shows_a_light_nine_day_fasting_table(self):
+    def test_home_uses_a_compact_calendar_icon_for_the_nine_day_fasting_view(self):
         base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
         self.assertTrue(source_references_text(base, "✓ مسموح   ✕ ممنوع", "ar", exact=True))
         self.assertIn('!fasting.optBoolean("is_fast", false)', base)
         self.assertTrue(source_omits_text(home, "جدول الصيام للأيام التسعة", "ar", exact=True))
-        self.assertIn("int dayCount = Math.min(8, upcoming.length());", home)
-        self.assertIn('host.navigate("calendar_day", date)', home)
-        self.assertIn('"calendar", null', home)
+        self.assertIn("R33_COMPACT_FASTING_HOME", home)
+        self.assertIn('ui_calendar_and_fasting_51a9bf84), "upcoming", null', home)
+        self.assertNotIn("int dayCount = Math.min(8, upcoming.length());", home)
+        self.assertNotIn("private void addUpcoming", home)
+        self.assertIn('host.navigate("calendar_day", itemDate)', upcoming)
+        self.assertIn('host.navigate("calendar", null)', upcoming)
         self.assertIn("addCompactFastingItems(card, fasting)", upcoming)
 
     def test_settings_hide_call_and_privacy_actions_only(self):

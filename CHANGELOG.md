@@ -1,3 +1,11 @@
+## 5.0.23 — R35 compact back navigation and smart Home shortcuts
+
+- Replaced wide text back buttons with a mirrored arrow-only 44dp control in subpages and readers.
+- Rebuilt Home quick access as four two-column cards for today’s prayer, readings, calendar/fasting, and churches/live services.
+- Added one context-aware Home card for feasts, Sunday Communion preparation, morning prayer, pre-Liturgy preparation, Compline, or the upcoming-service window.
+- Preserved scroll restoration, the four primary navigation sections, and complete Arabic/English/Greek localization.
+- Added regression coverage for navigation accessibility, the four-card layout, smart routing, and localized card titles.
+
 ## 5.0.23 — R31 dependency-free icon safe-zone test hotfix
 
 - Removed the accidental Pillow dependency from `tests/test_icon_safe_zone.py`.

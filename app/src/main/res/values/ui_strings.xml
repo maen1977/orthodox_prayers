@@ -13,6 +13,8 @@
     <string name="ui_an_update_is_already_in_progress_0afb7ec0" formatted="false">التحديث جارٍ الآن</string>
     <string name="ui_antioch_patriarchate_68959f82" formatted="false">بطريركية أنطاكية</string>
     <string name="ui_app_and_text_language_10b5a3ac" formatted="false">لغة التطبيق والنصوص</string>
+    <string name="ui_language_settings_title" formatted="false">اللغة</string>
+    <string name="ui_font_size_settings_title" formatted="false">حجم الخط</string>
     <string name="ui_app_version_cf5bb661" formatted="false">إصدار التطبيق: </string>
 <string name="ui_authority_tier_e909156f" formatted="false">درجة السلطة: </string>
     <string name="ui_auto_scroll_43606e75" formatted="false">▶ تمرير تلقائي</string>
@@ -47,7 +49,7 @@
     <string name="ui_could_not_open_the_official_link_3126ea33" formatted="false">تعذر فتح الرابط الرسمي.</string>
 <string name="ui_currently_selected_14c25dc4" formatted="false">اللغة المستخدمة الآن</string>
     <string name="ui_daily_a469bee1" formatted="false">يومية</string>
-    <string name="ui_daily_and_basic_prayers_are_available_here_botto_36b71462" formatted="false">الصلوات اليومية والصلوات الأساسية متاحة هنا، ويظل شريط التنقل ظاهرًا أسفل الشاشة.</string>
+    <string name="ui_daily_and_basic_prayers_are_available_here_botto_36b71462" formatted="false">اختر قسمًا لعرض الصلوات التابعة له.</string>
     <string name="ui_daily_prayers_ef97d9fd" formatted="false">الصلوات اليومية</string>
     <string name="ui_daily_propers_and_scripture_passed_source_and_si_d42c1070" formatted="false">قطع اليوم والنصوص الكتابية اجتازت تحقق المصادر والتوقيع</string>
     <string name="ui_daily_readings_295eb6f5" formatted="false">قراءات اليوم</string>
@@ -341,4 +343,5 @@
     <string name="ui_no_fast_plain" formatted="false">لا يوجد صوم</string>
     <string name="ui_nine_day_service_ready" formatted="false">خدمة الأيام التسعة تبدأ من اليوم ومكتملة</string>
     <string name="ui_content_ready_through_format">الصلوات والقراءات مكتملة حتى %1$s</string>
+    <string name="ui_prayer_of_the_day" formatted="false">صلاة اليوم</string>
 </resources>

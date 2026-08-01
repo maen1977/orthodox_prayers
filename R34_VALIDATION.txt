@@ -1,0 +1,14 @@
+R34_CARD_UI_OK
+pytest: 391 passed, 14 subtests passed
+ui_localization: OK (ar,en,el)
+android_resources: OK
+native_language_packs: ar=100%, en=100%, el=100%
+follow_along_liturgy: OK
+liturgy_reader_integrity: OK
+full_liturgy_services: OK
+native_source_contract: OK
+data_signatures: OK
+jordan_contract: OK
+fasting_guidance: OK
+quality_check_allow_stale: OK
+gradle_compile: NOT_RUN_OFFLINE (Gradle 8.13 distribution unavailable; services.gradle.org unreachable)

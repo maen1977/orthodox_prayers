@@ -13,6 +13,8 @@
     <string name="ui_an_update_is_already_in_progress_0afb7ec0" formatted="false">An update is already in progress</string>
     <string name="ui_antioch_patriarchate_68959f82" formatted="false">Antioch Patriarchate</string>
     <string name="ui_app_and_text_language_10b5a3ac" formatted="false">App and text language</string>
+    <string name="ui_language_settings_title" formatted="false">Language</string>
+    <string name="ui_font_size_settings_title" formatted="false">Font size</string>
     <string name="ui_app_version_cf5bb661" formatted="false">App version: </string>
 <string name="ui_authority_tier_e909156f" formatted="false">Authority tier: </string>
     <string name="ui_auto_scroll_43606e75" formatted="false">▶ Auto-scroll</string>
@@ -47,7 +49,7 @@
     <string name="ui_could_not_open_the_official_link_3126ea33" formatted="false">Could not open the official link.</string>
 <string name="ui_currently_selected_14c25dc4" formatted="false">Currently selected</string>
     <string name="ui_daily_a469bee1" formatted="false">Daily</string>
-    <string name="ui_daily_and_basic_prayers_are_available_here_botto_36b71462" formatted="false">Daily and basic prayers are available here; bottom navigation remains visible.</string>
+    <string name="ui_daily_and_basic_prayers_are_available_here_botto_36b71462" formatted="false">Choose a section to view its prayers.</string>
     <string name="ui_daily_prayers_ef97d9fd" formatted="false">Daily prayers</string>
     <string name="ui_daily_propers_and_scripture_passed_source_and_si_d42c1070" formatted="false">Daily propers and Scripture passed source and signature verification</string>
     <string name="ui_daily_readings_295eb6f5" formatted="false">Daily readings</string>
@@ -341,4 +343,5 @@ Phone: 00962788272988</string>
     <string name="ui_no_fast_plain" formatted="false">No fast</string>
     <string name="ui_nine_day_service_ready" formatted="false">The nine-day service window starts today and is complete</string>
     <string name="ui_content_ready_through_format">Prayers and readings are complete through %1$s</string>
+    <string name="ui_prayer_of_the_day" formatted="false">Prayer of the day</string>
 </resources>

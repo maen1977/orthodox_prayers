@@ -8,12 +8,19 @@ import android.widget.TextView;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public final class HomeScreen extends BaseScreen {
     // R14_HOME_COMPACT: duplicate home cards hidden; internal routes remain available.
     // R32_OWNER_UI_REFINEMENT: duplicate Sunday and utility cards are intentionally absent.
+    // R33_COMPACT_FASTING_HOME: the multi-day fasting table lives behind the calendar icon.
+    // R35_HOME_SHORTCUT_CARDS: four compact shortcuts plus one context-aware recommendation.
+    private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
     public HomeScreen(ScreenHost host) { super(host); }
 
     @Override
@@ -29,9 +36,8 @@ public final class HomeScreen extends BaseScreen {
             return page.scroll;
         }
         addDateCard(page.root);
-        addRollingWeekStatus(page.root);
         addQuickAccess(page.root);
-        addUpcoming(page.root);
+        addSmartRecommendation(page.root);
         return page.scroll;
     }
 
@@ -113,96 +119,133 @@ public final class HomeScreen extends BaseScreen {
 
     private void addQuickAccess(LinearLayout root) {
         root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_quick_access_c927e8a2)));
-        Button liturgy = ui.iconButton(
-                com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy,
-                todayLiturgyButtonLabel(),
-                true
-        );
-        liturgy.setTextSize(17 * preferences.fontScale());
-        liturgy.setOnClickListener(v -> host.navigate("reader", "divine_liturgy"));
-        add(root, liturgy, 2, 8);
 
         LinearLayout first = ui.row();
-        addShortcut(first, com.orthodoxprayers.privateapp.R.drawable.ic_action_readings, local(com.orthodoxprayers.privateapp.R.string.ui_daily_readings_7f88fcc0), "readings", null);
-        addShortcut(first, com.orthodoxprayers.privateapp.R.drawable.ic_action_prayers, local(com.orthodoxprayers.privateapp.R.string.ui_daily_prayers_ef97d9fd), "prayers", null);
+        String prayerOfTheDay = local(com.orthodoxprayers.privateapp.R.string.ui_prayer_of_the_day);
+        LinearLayout prayerCard = addShortcutCard(
+                first,
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_prayers,
+                prayerOfTheDay,
+                "reader",
+                currentPrayerServiceId()
+        );
+        prayerCard.setContentDescription(
+                prayerOfTheDay + ". " + local(com.orthodoxprayers.privateapp.R.string.ui_daily_prayers_ef97d9fd)
+        );
+        addShortcutCard(first, com.orthodoxprayers.privateapp.R.drawable.ic_action_readings, local(com.orthodoxprayers.privateapp.R.string.ui_daily_readings_7f88fcc0), "readings", null);
         add(root, first, 0, 0);
 
         LinearLayout second = ui.row();
-        addShortcut(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar, local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_fasting_51a9bf84), "calendar", null);
-        addShortcut(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_live, local(com.orthodoxprayers.privateapp.R.string.ui_churches_and_live_services_53a37eff), "churches", null);
-        add(root, second, 0, 10);
+        addShortcutCard(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar, local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_fasting_51a9bf84), "upcoming", null);
+        addShortcutCard(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_live, local(com.orthodoxprayers.privateapp.R.string.ui_churches_and_live_services_53a37eff), "churches", null);
+        add(root, second, 0, 6);
     }
 
-    private void addShortcut(LinearLayout row, int iconResource, String title, String screen, String argument) {
-        Button button = ui.iconButton(iconResource, title, false);
-        button.setOnClickListener(v -> host.navigate(screen, argument));
-        row.addView(button, ui.weight(76));
+    private LinearLayout addShortcutCard(LinearLayout row, int iconResource, String title, String screen, String argument) {
+        LinearLayout card = ui.shortcutCard(iconResource, title);
+        card.setOnClickListener(v -> host.navigate(screen, argument));
+        row.addView(card, ui.weight(96));
+        return card;
     }
 
-    private void addUpcoming(LinearLayout root) {
-        JSONArray upcoming = data.today().optJSONArray("upcoming");
-        if (upcoming == null || upcoming.length() == 0) return;
-
-        LinearLayout table = ui.card();
-
-        LinearLayout header = ui.row();
-        header.setPadding(ui.dp(8), ui.dp(4), ui.dp(8), ui.dp(6));
-        TextView dayHeader = ui.text(
-                local(com.orthodoxprayers.privateapp.R.string.ui_day_and_commemoration_ab4b3d7f),
-                13,
-                ui.colors().primaryText(),
-                true
-        );
-        TextView fastingHeader = ui.text(
-                local(com.orthodoxprayers.privateapp.R.string.ui_fasting_f1b1605d),
-                13,
-                ui.colors().accentText(),
-                true
-        );
-        fastingHeader.setGravity(android.view.Gravity.CENTER);
-        header.addView(dayHeader, new LinearLayout.LayoutParams(0, -2, 2f));
-        header.addView(fastingHeader, new LinearLayout.LayoutParams(0, -2, 1f));
-        table.addView(header);
-
-        int dayCount = Math.min(8, upcoming.length());
-        for (int i = 0; i < dayCount; i++) {
-            JSONObject item = upcoming.optJSONObject(i);
-            if (item == null) continue;
-            String date = item.optString("date", "");
-            String day = localized(item.optJSONObject("day"), date);
-            String feast = displayableCommemoration(item);
-            JSONObject selection = item.optJSONObject("liturgy_service_selection");
-            String liturgy = selection == null ? "" : localized(selection.optJSONObject("label"), "");
-            String status = fastingDisplayTitle(item, date);
-
-            LinearLayout row = ui.row();
-            row.setPadding(ui.dp(8), ui.dp(7), ui.dp(8), ui.dp(7));
-            row.setClickable(!date.isEmpty());
-            row.setFocusable(!date.isEmpty());
-            String dayAndFeast = day
-                    + (feast.isEmpty() ? "" : "\n" + feast)
-                    + (liturgy.isEmpty() ? "" : "\n" + liturgy);
-            TextView dayView = ui.text(dayAndFeast, 13, ui.colors().secondaryText(), false);
-            dayView.setMaxLines(3);
-            TextView statusView = ui.text(status, 13, ui.colors().accentText(), true);
-            statusView.setGravity(android.view.Gravity.CENTER);
-            statusView.setMaxLines(3);
-            row.addView(dayView, new LinearLayout.LayoutParams(0, -2, 2f));
-            row.addView(statusView, new LinearLayout.LayoutParams(0, -2, 1f));
-            row.setContentDescription(day + ". " + status + (feast.isEmpty() ? "" : ". " + feast));
-            if (!date.isEmpty()) {
-                row.setOnClickListener(v -> host.navigate("calendar_day", date));
-            }
-            table.addView(row);
-
-            if (i + 1 < dayCount) {
-                View divider = new View(host.activity());
-                divider.setBackgroundColor(ui.colors().secondaryText());
-                divider.setAlpha(0.16f);
-                table.addView(divider, new LinearLayout.LayoutParams(-1, ui.dp(1)));
-            }
+    private void addSmartRecommendation(LinearLayout root) {
+        SmartShortcut recommendation = smartRecommendation();
+        LinearLayout card = ui.actionCard(recommendation.iconResource, recommendation.title, recommendation.subtitle);
+        if ("reader".equals(recommendation.screen) && "divine_liturgy".equals(recommendation.argument)) {
+            card.setOnClickListener(v -> host.navigate("reader", "divine_liturgy"));
+        } else {
+            card.setOnClickListener(v -> host.navigate(recommendation.screen, recommendation.argument));
         }
-        add(root, table, 0, 12);
+        add(root, card, 2, 10);
+    }
+
+    private SmartShortcut smartRecommendation() {
+        ZonedDateTime now = ZonedDateTime.now(AMMAN_ZONE);
+        JSONObject today = data.today();
+        String specificCommemoration = specificCommemoration(today);
+        if (!specificCommemoration.isEmpty()) {
+            return new SmartShortcut(
+                    com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy,
+                    specificCommemoration,
+                    todayLiturgyButtonLabel(),
+                    "reader",
+                    "divine_liturgy"
+            );
+        }
+        if (now.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            return serviceShortcut("pre_communion_prayers", "prayer_category", "communion");
+        }
+        LocalTime time = now.toLocalTime();
+        if (time.isBefore(LocalTime.of(7, 0))) {
+            return serviceShortcut("pre_communion_prayers", "reader", "pre_communion_prayers");
+        }
+        if (time.isBefore(LocalTime.of(12, 0))) {
+            return serviceShortcut("morning_prayer", "reader", "morning_prayer");
+        }
+        if (!time.isBefore(LocalTime.of(18, 0))) {
+            return serviceShortcut("small_compline", "reader", "small_compline");
+        }
+        String subtitle = data.hasCompleteRollingWeek() && !data.rollingWeekEndDate().isEmpty()
+                ? localFormat(com.orthodoxprayers.privateapp.R.string.ui_content_ready_through_format, data.rollingWeekEndDate())
+                : local(com.orthodoxprayers.privateapp.R.string.ui_the_complete_weekly_package_is_not_available_yet_e438506f);
+        return new SmartShortcut(
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar,
+                local(com.orthodoxprayers.privateapp.R.string.ui_nine_day_service_ready),
+                subtitle,
+                "upcoming",
+                null
+        );
+    }
+
+    private SmartShortcut serviceShortcut(String serviceId, String screen, String argument) {
+        JSONObject service = data.findService(serviceId);
+        String title = service == null
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a)
+                : localized(service.optJSONObject("title"), local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a));
+        String subtitle = service == null ? "" : localized(service.optJSONObject("summary"), "");
+        return new SmartShortcut(
+                "pre_communion_prayers".equals(serviceId)
+                        ? com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy
+                        : com.orthodoxprayers.privateapp.R.drawable.ic_action_prayers,
+                title,
+                subtitle,
+                screen,
+                argument
+        );
+    }
+
+    private String currentPrayerServiceId() {
+        LocalTime time = ZonedDateTime.now(AMMAN_ZONE).toLocalTime();
+        if (time.isBefore(LocalTime.of(12, 0))) return "morning_prayer";
+        if (!time.isBefore(LocalTime.of(18, 0))) return "evening_prayer";
+        return "thanksgiving";
+    }
+
+    private String specificCommemoration(JSONObject today) {
+        if (today == null) return "";
+        JSONObject localCommemoration = today.optJSONObject("local_commemoration");
+        if (localCommemoration != null) {
+            String title = localized(localCommemoration.optJSONObject("title"), "");
+            if (!title.isEmpty()) return title;
+        }
+        JSONObject commemoration = today.optJSONObject("commemoration");
+        return commemoration == null ? "" : localized(commemoration.optJSONObject("title"), "");
+    }
+
+    private static final class SmartShortcut {
+        final int iconResource;
+        final String title;
+        final String subtitle;
+        final String screen;
+        final String argument;
+
+        SmartShortcut(int iconResource, String title, String subtitle, String screen, String argument) {
+            this.iconResource = iconResource;
+            this.title = title;
+            this.subtitle = subtitle;
+            this.screen = screen;
+            this.argument = argument;
+        }
     }
 
     private String todayLiturgyButtonLabel() {

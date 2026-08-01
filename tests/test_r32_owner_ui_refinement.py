@@ -47,12 +47,17 @@ def test_unavailable_commemorations_and_internal_selection_reasons_are_hidden() 
     assert "ui_selection_reason_label" not in calendar
 
 
-def test_home_keeps_nine_day_content_but_removes_duplicate_tabs_and_detail_button() -> None:
+def test_home_keeps_nine_day_access_behind_the_compact_calendar_icon() -> None:
     home = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java")
+    upcoming = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java")
     assert "ui_nine_day_service_ready" in home
     assert "ui_content_ready_through_format" in home
-    assert "int dayCount = Math.min(8, upcoming.length());" in home
-    assert 'host.navigate("calendar_day", date)' in home
+    assert "R33_COMPACT_FASTING_HOME" in home
+    assert 'ui_calendar_and_fasting_51a9bf84), "upcoming", null' in home
+    assert "int dayCount = Math.min(8, upcoming.length());" not in home
+    assert "private void addUpcoming" not in home
+    assert 'host.navigate("calendar_day", itemDate)' in upcoming
+    assert 'host.navigate("calendar", null)' in upcoming
     assert source_omits_text(home, "عرض تفاصيل الأيام التسعة", "ar")
     assert source_omits_text(home, "البحث", "ar")
     assert source_omits_text(home, "آخر قراءة", "ar")

@@ -1,6 +1,7 @@
 package com.orthodoxprayers.privateapp.ui;
 
 import android.app.Activity;
+import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -8,6 +9,7 @@ import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -51,13 +53,13 @@ public final class UiKit {
         LinearLayout box = new LinearLayout(activity);
         box.setOrientation(LinearLayout.VERTICAL);
         box.setGravity(Gravity.CENTER);
-        box.setPadding(dp(16), dp(14), dp(16), dp(16));
+        box.setPadding(dp(16), dp(10), dp(16), dp(16));
         box.setBackground(gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
         if (showBack) {
-            Button back = smallButton((preferences.isRtl() ? "→ " : "← ") + local(com.orthodoxprayers.privateapp.R.string.ui_back_18fb18e2), false);
-            back.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_return_to_the_previous_screen_adc27814));
-            back.setOnClickListener(v -> backAction.run());
-            box.addView(back, margins(-1, -2, 0, 0, 0, 8));
+            LinearLayout navigationRow = row();
+            navigationRow.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+            navigationRow.addView(backArrow(backAction), new LinearLayout.LayoutParams(dp(44), dp(44)));
+            box.addView(navigationRow, new LinearLayout.LayoutParams(-1, -2));
         }
         TextView cross = text("☦", 34, ThemePalette.GOLD, true);
         cross.setGravity(Gravity.CENTER);
@@ -70,6 +72,25 @@ public final class UiKit {
         return box;
     }
 
+    /**
+     * A compact, system-like back affordance. The arrow mirrors in RTL while
+     * keeping a full 44dp touch target and an accessible spoken label.
+     */
+    public TextView backArrow(Runnable backAction) {
+        TextView back = text(preferences.isRtl() ? "→" : "←", 25, ThemePalette.GOLD, true);
+        back.setGravity(Gravity.CENTER);
+        back.setMinWidth(dp(44));
+        back.setMinimumWidth(dp(44));
+        back.setMinHeight(dp(44));
+        back.setMinimumHeight(dp(44));
+        back.setClickable(true);
+        back.setFocusable(true);
+        back.setBackground(round(ThemePalette.NAVY_2, ThemePalette.GOLD, 12));
+        back.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_return_to_the_previous_screen_adc27814));
+        back.setOnClickListener(v -> backAction.run());
+        return back;
+    }
+
     public TextView sectionTitle(String title) {
         TextView view = text("✥  " + title + "  ✥", 20, palette.primaryText(), true);
         view.setGravity(Gravity.CENTER);
@@ -79,6 +100,72 @@ public final class UiKit {
     }
 
     public LinearLayout card() { return card(palette.card(), palette.border(), 14); }
+
+    /**
+     * Compact two-column shortcut card for the home screen. Unlike a plain
+     * button, the complete card surface remains tappable and accessible.
+     */
+    public LinearLayout shortcutCard(int iconResource, String title) {
+        LinearLayout card = card();
+        card.setGravity(Gravity.CENTER);
+        card.setClickable(true);
+        card.setFocusable(true);
+        card.setMinimumHeight(dp(104));
+
+        ImageView icon = new ImageView(activity);
+        icon.setImageResource(iconResource);
+        icon.setImageTintList(ColorStateList.valueOf(palette.accentText()));
+        icon.setContentDescription(null);
+        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(dp(32), dp(32));
+        iconParams.gravity = Gravity.CENTER_HORIZONTAL;
+        card.addView(icon, iconParams);
+
+        TextView label = text(title, 15, palette.primaryText(), true);
+        label.setGravity(Gravity.CENTER);
+        label.setMaxLines(2);
+        card.addView(label, margins(-1, -2, 0, 8, 0, 0));
+        card.setContentDescription(title);
+        return card;
+    }
+
+    public LinearLayout actionCard(int iconResource, String title, String subtitle) {
+        LinearLayout card = card();
+        card.setOrientation(LinearLayout.HORIZONTAL);
+        card.setGravity(Gravity.CENTER_VERTICAL);
+        card.setClickable(true);
+        card.setFocusable(true);
+        card.setMinimumHeight(dp(82));
+
+        ImageView icon = new ImageView(activity);
+        icon.setImageResource(iconResource);
+        icon.setImageTintList(ColorStateList.valueOf(palette.accentText()));
+        icon.setContentDescription(null);
+        card.addView(icon, new LinearLayout.LayoutParams(dp(34), dp(34)));
+
+        LinearLayout labels = new LinearLayout(activity);
+        labels.setOrientation(LinearLayout.VERTICAL);
+        labels.setGravity(preferences.isRtl() ? Gravity.RIGHT : Gravity.LEFT);
+        labels.setPadding(dp(12), 0, dp(12), 0);
+        TextView heading = text(title, 18, palette.primaryText(), true);
+        heading.setGravity(preferences.isRtl() ? Gravity.RIGHT : Gravity.LEFT);
+        labels.addView(heading, new LinearLayout.LayoutParams(-1, -2));
+        String safeSubtitle = subtitle == null ? "" : subtitle.trim();
+        if (!safeSubtitle.isEmpty()) {
+            TextView detail = text(safeSubtitle, 13, palette.secondaryText(), false);
+            detail.setGravity(preferences.isRtl() ? Gravity.RIGHT : Gravity.LEFT);
+            detail.setMaxLines(2);
+            labels.addView(detail, margins(-1, -2, 0, 3, 0, 0));
+        }
+        card.addView(labels, new LinearLayout.LayoutParams(0, -2, 1f));
+
+        TextView arrow = text(preferences.isRtl() ? "‹" : "›", 28, palette.accentText(), true);
+        arrow.setGravity(Gravity.CENTER);
+        arrow.setContentDescription(null);
+        card.addView(arrow, new LinearLayout.LayoutParams(dp(24), -1));
+        card.setContentDescription(title + (safeSubtitle.isEmpty() ? "" : ". " + safeSubtitle));
+        return card;
+    }
+
     public LinearLayout card(int color, int stroke, int radius) {
         LinearLayout value = new LinearLayout(activity);
         value.setOrientation(LinearLayout.VERTICAL);

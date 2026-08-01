@@ -1,0 +1,44 @@
+R35 validation summary — 2026-08-01
+
+Focused regression tests:
+- tests/test_r35_compact_back_and_home_shortcuts.py
+- tests/test_r34_card_based_hubs.py
+- tests/test_r33_compact_fasting_home.py
+- tests/test_r32_owner_ui_refinement.py
+Result: 14 passed
+
+Full Python test suite:
+Result: 394 passed, 14 subtests passed
+
+Release/data checks passed:
+- workflow validation
+- Gradle wrapper contract verification
+- repository secret scan
+- protected static text verification
+- Play Store asset validation
+- UI localization validation
+- Android resource validation
+- native prayer source validation
+- Arabic, English, and Greek native-language pack validation
+- follow-along Liturgy validation
+- Liturgy reader integrity and service selection
+- full Liturgy and native import gates
+- service completion and evidence reports
+- public source registry and source intelligence
+- R18/R19/R20 release patch verification
+- strict native-language coverage
+- JSON schema and embedded app data
+- reader services and detached signatures
+- Scripture policy, content review/deduplication
+- official sources and Jordan liturgical contract
+- schedule and fasting guidance
+- source-tree quality check
+
+Android compilation attempt:
+./gradlew :app:compileDebugJavaWithJavac --offline --no-daemon
+Result: not executed because Gradle 8.13 was not cached and the environment could not resolve services.gradle.org.
+
+Rootless hotfix verification:
+- Extracted orthodox_prayers_5.0.23_R34_card_hubs_rootless.zip.
+- Overwrote it with orthodox_prayers_R35_back_home_cards_hotfix_rootless.zip at repository root.
+- Result: 394 passed, 14 subtests passed.
