@@ -41,8 +41,10 @@ def validate_today(data):
     if not isinstance(readings,list): fail('readings must be an array')
     by_kind={item.get('kind'):item for item in readings if isinstance(item,dict)}
     for kind in ('prokeimenon','epistle','gospel'):
+        if not by_kind.get(kind): fail(f'missing {kind}')
+    for kind in ('matins_gospel','prokeimenon','epistle','gospel'):
         reading=by_kind.get(kind)
-        if not reading: fail(f'missing {kind}')
+        if not reading: continue
         if reading.get('translation_locked') is not True: fail(f'{kind} is not locked')
         if (reading.get('integrity') or {}).get('status')!='NATIVE_LANGUAGE_LANES_ENFORCED': fail(f'{kind} native-lane integrity missing')
         verification=reading.get('native_source_verification') or {}

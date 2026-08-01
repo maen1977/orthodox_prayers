@@ -38,7 +38,7 @@ def verify_pipeline_patch() -> None:
         str(home_path.relative_to(ROOT)): "R32_OWNER_UI_REFINEMENT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
         str(sources_path.relative_to(ROOT)): "ui_sources_and_references_1a2c2926",
-        str(coordinator_path.relative_to(ROOT)): "DAILY_REFRESH_HOUR = 6",
+        str(coordinator_path.relative_to(ROOT)): "MORNING_REFRESH_HOUR = 4",
         str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
         str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
         "canonical/source_connectors.json": "local_authority_source_id",
@@ -91,7 +91,7 @@ def main() -> None:
         "--window-days",
         type=int,
         default=None,
-        help="Signed moving-horizon length (9-42 days; defaults to ORTHODOX_ROLLING_WINDOW_DAYS or 21).",
+        help="Signed moving-horizon length (exactly 9 days; defaults to ORTHODOX_ROLLING_WINDOW_DAYS or 9).",
     )
     signing = parser.add_mutually_exclusive_group(required=True)
     signing.add_argument("--private-key", type=Path)

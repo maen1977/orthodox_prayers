@@ -50,6 +50,9 @@ def main() -> None:
             "origin/verified-data",
             'python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"',
             'python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-compatible-manifest-version',
+            "verified-data requires a nine-day upgrade",
+            "Building debug with the signed embedded bootstrap",
+            "the next scheduled Rolling Liturgical Window Update will republish verified-data",
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
@@ -137,7 +140,8 @@ def main() -> None:
             "The GitHub secret does not match the public key",
             "VERIFIED_DATA_BRANCH: verified-data",
             'timezone: "Asia/Amman"',
-            'cron: "7 6 * * *"',
+            'cron: "23 4 * * *"',
+            'cron: "43 16 * * *"',
             "Verify from origin after publishing",
             "Verify public HTTPS update endpoint",
             "scripts/verify_public_update_endpoints.py",
@@ -157,10 +161,10 @@ def main() -> None:
         ),
         "Update workflow",
     )
-    if update.count('timezone: "Asia/Amman"') != 1:
-        fail("The single daily update must use the Asia/Amman timezone")
-    if update.count('cron: "7 6 * * *"') != 1:
-        fail("Update workflow must publish exactly once daily at 06:07 Asia/Amman")
+    if update.count('timezone: "Asia/Amman"') != 2:
+        fail("Both daily updates must use the Asia/Amman timezone")
+    if update.count('cron: "23 4 * * *"') != 1 or update.count('cron: "43 16 * * *"') != 1:
+        fail("Update workflow must publish exactly twice daily at 04:23 and 16:43 Asia/Amman")
 
     for forbidden in (
         "\n  push:\n",
@@ -199,7 +203,7 @@ def main() -> None:
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
         "external-source generation; debug checks are separated; Update runs only manually "
-        "or once every 24 hours at 06:07 Asia/Amman"
+        "or twice daily at 04:23 and 16:43 Asia/Amman"
     )
 
 

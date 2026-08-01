@@ -39,8 +39,8 @@ def main() -> None:
         errors.append("full religious book-library downloads must remain disabled")
     if model.get("fixed_template") != "library:divine_liturgy":
         errors.append("the one fixed Liturgy template is not configured")
-    if update.get("timezone") != "Asia/Amman" or update.get("windows") != ["06:07"]:
-        errors.append("the update window must be 06:07 Asia/Amman")
+    if update.get("timezone") != "Asia/Amman" or update.get("windows") != ["04:23", "16:43"]:
+        errors.append("the update windows must be 04:23 and 16:43 Asia/Amman")
     for rule in (
         "translation_between_lanes",
         "machine_translation",
@@ -101,8 +101,8 @@ def main() -> None:
         ROOT
         / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
     ).read_text(encoding="utf-8")
-    if "DAILY_REFRESH_HOUR = 6" not in coordinator or "REFRESH_MINUTE = 7" not in coordinator:
-        errors.append("Android daily 06:07 scheduling is not wired")
+    if "MORNING_REFRESH_HOUR = 4" not in coordinator or "EVENING_REFRESH_HOUR = 16" not in coordinator:
+        errors.append("Android twice-daily 04:23/16:43 scheduling is not wired")
     if "DailySnapshotRegressionGuard.firstRegression" not in repository:
         errors.append("same-day non-regression protection is not wired")
     if not source_references_text(home, "قداس اليوم الكامل", "ar") or 'host.navigate("reader", "divine_liturgy")' not in home:
@@ -112,7 +112,7 @@ def main() -> None:
         raise SystemExit("Follow-along Liturgy validation failed:\n- " + "\n- ".join(errors))
     print(
         "Follow-along Liturgy validated: one native-language service, daily slots, "
-        "silent-role markers, and one 06:07 non-regressing daily update"
+        "silent-role markers, and two non-regressing daily updates at 04:23 and 16:43"
     )
 
 
