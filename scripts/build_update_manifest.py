@@ -89,7 +89,7 @@ def main() -> None:
             supported = (
                 schema == 1 and policy == "NINE_CONSECUTIVE_DAYS_STARTING_TODAY" and count == 9
             ) or (
-                schema == 2 and policy == "ROLLING_FUTURE_WINDOW" and 9 <= count <= 42
+                schema == 2 and policy == "ROLLING_FUTURE_WINDOW" and count == 9
             )
             if (
                 not supported
