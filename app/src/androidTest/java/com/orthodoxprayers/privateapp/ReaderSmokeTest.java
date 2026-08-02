@@ -2,8 +2,14 @@ package com.orthodoxprayers.privateapp;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
+import android.app.Instrumentation;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.os.ParcelFileDescriptor;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,12 +22,40 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.orthodoxprayers.privateapp.data.DataRepository;
 
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 @RunWith(AndroidJUnit4.class)
 public final class ReaderSmokeTest {
+    @BeforeClass
+    public static void disableNetworkForOfflineReaderCoverage() throws Exception {
+        runShellCommand("svc wifi disable");
+        runShellCommand("svc data disable");
+        awaitNoValidatedInternet();
+    }
+
+    @AfterClass
+    public static void restoreNetworkAfterOfflineReaderCoverage() throws Exception {
+        IOException firstFailure = null;
+        try {
+            runShellCommand("svc wifi enable");
+        } catch (IOException exc) {
+            firstFailure = exc;
+        }
+        try {
+            runShellCommand("svc data enable");
+        } catch (IOException exc) {
+            if (firstFailure == null) firstFailure = exc;
+        }
+        if (firstFailure != null) throw firstFailure;
+    }
+
     @Before
     public void resetReaderState() {
         Context context = ApplicationProvider.getApplicationContext();
@@ -87,6 +121,37 @@ public final class ReaderSmokeTest {
         try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
             assertReader(scenario, "next_sunday_full_liturgy", 200);
         }
+    }
+
+    private static void runShellCommand(String command) throws IOException {
+        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
+        try (ParcelFileDescriptor descriptor =
+                     instrumentation.getUiAutomation().executeShellCommand(command);
+             FileInputStream input = new FileInputStream(descriptor.getFileDescriptor())) {
+            byte[] buffer = new byte[256];
+            while (input.read(buffer) != -1) {
+                // Drain output so executeShellCommand completes before the test continues.
+            }
+        }
+    }
+
+    private static void awaitNoValidatedInternet() throws InterruptedException {
+        Context context = ApplicationProvider.getApplicationContext();
+        ConnectivityManager manager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assertNotNull("ConnectivityManager is unavailable", manager);
+
+        for (int attempt = 0; attempt < 40; attempt++) {
+            Network network = manager.getActiveNetwork();
+            NetworkCapabilities capabilities =
+                    network == null ? null : manager.getNetworkCapabilities(network);
+            if (capabilities == null
+                    || !capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
+                return;
+            }
+            Thread.sleep(250L);
+        }
+        fail("Reader smoke tests require the emulator to be offline");
     }
 
     private static String datedEmbeddedServiceId(String serviceId) {

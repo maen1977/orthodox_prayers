@@ -144,7 +144,16 @@ def test_workflows_use_automatic_gate_and_android_emulator():
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
     assert "adb wait-for-device" in emulator_script
     assert "sys.boot_completed" in emulator_script
-    assert "retry_adb_shell svc wifi disable" in emulator_script
+    assert "ro.build.version.sdk" in emulator_script
+    assert "pm path android" in emulator_script
+    assert "stable >= 3" in emulator_script
+    assert "svc wifi disable" not in emulator_script
+    reader_smoke = (
+        ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java"
+    ).read_text(encoding="utf-8")
+    assert 'runShellCommand("svc wifi disable")' in reader_smoke
+    assert 'runShellCommand("svc data disable")' in reader_smoke
+    assert "NET_CAPABILITY_VALIDATED" in reader_smoke
     assert "set -euo pipefail" in emulator_script
     assert "play-store-screenshots" in build
     assert "validate_play_store_assets.py --require-screenshots" in build

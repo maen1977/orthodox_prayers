@@ -63,6 +63,9 @@ def main() -> None:
             "PLAY_SUPPORT_EMAIL",
             "api_level: [29, 35]",
             "validate_release_permissions.py",
+            "emulator-boot-timeout: 900",
+            "ram-size: 2048M",
+            "heap-size: 512M",
             'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"',
             "name: Android debug lint",
             "lintDebug --stacktrace",
@@ -103,12 +106,34 @@ def main() -> None:
             "set -euo pipefail",
             "adb wait-for-device",
             "sys.boot_completed",
-            "retry_adb_shell svc wifi disable",
-            "retry_adb_shell svc data disable",
+            "ro.build.version.sdk",
+            "pm path android",
+            "stable >= 3",
             "connectedDebugAndroidTest --stacktrace",
             "validate_play_store_assets.py --require-screenshots",
         ),
         "Android emulator CI script",
+    )
+    for forbidden in ("svc wifi disable", "svc data disable", "svc wifi enable", "svc data enable"):
+        if forbidden in emulator_text:
+            fail("Host emulator script must not mutate Android network services before DDMLib device discovery")
+
+    reader_smoke = ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java"
+    if not reader_smoke.is_file():
+        fail("Missing ReaderSmokeTest.java")
+    reader_text = reader_smoke.read_text(encoding="utf-8")
+    require_all(
+        reader_text,
+        (
+            "@BeforeClass",
+            'runShellCommand("svc wifi disable")',
+            'runShellCommand("svc data disable")',
+            "NET_CAPABILITY_VALIDATED",
+            "@AfterClass",
+            'runShellCommand("svc wifi enable")',
+            'runShellCommand("svc data enable")',
+        ),
+        "Offline reader instrumentation",
     )
 
     upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  release:", 1)[0]

@@ -186,8 +186,12 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_5
+          cores: 2
+          ram-size: 2048M
+          heap-size: 512M
+          emulator-boot-timeout: 900
           disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-snapshot -camera-back none
           script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"
 
       - name: Upload generated Play Store screenshots

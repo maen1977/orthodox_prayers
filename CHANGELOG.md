@@ -1,3 +1,12 @@
+## R40.4 — Android emulator DDMLib readiness and in-test offline hotfix
+
+- Confirmed the two supplied API 29 logs were byte-for-byte identical and failed because DDMLib could not read stable device properties, so Gradle classified the emulator as `Unknown API Level`.
+- Strengthened emulator readiness to require three consecutive successful probes for boot completion, the requested SDK level, and Android package-manager availability.
+- Removed Wi-Fi/mobile-data mutations from the host Bash script before Gradle device discovery.
+- Moved offline enforcement into `ReaderSmokeTest` after instrumentation has started, with an assertion that no validated Internet connection remains and automatic network restoration afterward.
+- Added longer emulator boot allowance, explicit RAM/heap sizing, and cold no-snapshot startup while retaining API 29 and API 35 coverage.
+- Passed 425 tests plus 14 subtests and all constituent strict-native quality-gate validators available without Gradle distribution network access.
+
 ## R40.3 — Android emulator single-command Bash runner hotfix
 
 - Replaced the multiline `android-emulator-runner` script block with one command that invokes `scripts/run_android_emulator_ci.sh`.

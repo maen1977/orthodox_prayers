@@ -1,0 +1,10 @@
+R40.4 changed files
+
+- .github/workflows/build.yml
+- CHANGELOG.md
+- R40_4_ANDROID_EMULATOR_DDMLIB_STABILITY_HOTFIX_AR.md
+- app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java
+- scripts/run_android_emulator_ci.sh
+- scripts/validate_workflows.py
+- tests/test_r40_3_emulator_script.py
+- tests/test_r40_automated_source_research.py
