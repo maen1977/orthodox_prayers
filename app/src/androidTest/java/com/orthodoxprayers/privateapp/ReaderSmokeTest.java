@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.os.ParcelFileDescriptor;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import org.junit.runner.RunWith;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 @RunWith(AndroidJUnit4.class)
 public final class ReaderSmokeTest {
@@ -78,36 +80,22 @@ public final class ReaderSmokeTest {
     public void manualShowAndHideControlsNeverHidesReaderContent() {
         try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
             scenario.onActivity(activity -> activity.navigate("reader", datedEmbeddedServiceId("next_sunday_full_liturgy")));
-            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
 
-            final int[] collapsedHeight = new int[1];
-            scenario.onActivity(activity -> {
-                RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
-                assertReaderIsVisible(reader, 200);
-                collapsedHeight[0] = reader.getHeight();
-                TextView toggle = findTextContaining(activity.getWindow().getDecorView(), "عرض أدوات القراءة");
-                assertNotNull("Reader controls toggle was not found", toggle);
-                toggle.performClick();
-            });
-            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+            ReaderSnapshot collapsed = awaitReaderReady(scenario, 200, "initial collapsed reader");
+            clickText(scenario, "عرض أدوات القراءة", "Reader controls toggle was not found");
 
-            final int[] expandedHeight = new int[1];
-            scenario.onActivity(activity -> {
-                RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
-                assertReaderIsVisible(reader, 200);
-                expandedHeight[0] = reader.getHeight();
-                assertTrue("Showing controls should use only the available reading area", reader.getHeight() <= collapsedHeight[0]);
-                TextView toggle = findTextContaining(activity.getWindow().getDecorView(), "إخفاء أدوات القراءة");
-                assertNotNull("Expanded controls handle was not found", toggle);
-                toggle.performClick();
-            });
-            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+            ReaderSnapshot expanded = awaitReaderReady(scenario, 200, "expanded reader controls");
+            assertTrue(
+                    "Showing controls should use only the available reading area",
+                    expanded.height <= collapsed.height
+            );
+            clickText(scenario, "إخفاء أدوات القراءة", "Expanded controls handle was not found");
 
-            scenario.onActivity(activity -> {
-                RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
-                assertReaderIsVisible(reader, 200);
-                assertTrue("Hiding controls should restore the reading area", reader.getHeight() >= expandedHeight[0]);
-            });
+            ReaderSnapshot collapsedAgain = awaitReaderReady(scenario, 200, "collapsed reader after hiding controls");
+            assertTrue(
+                    "Hiding controls should restore the reading area",
+                    collapsedAgain.height >= expanded.height
+            );
         }
     }
 
@@ -162,22 +150,133 @@ public final class ReaderSmokeTest {
 
     private static void assertReader(ActivityScenario<MainActivity> scenario, String serviceId, int minimumItems) {
         scenario.onActivity(activity -> activity.navigate("reader", serviceId));
-        InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+        awaitReaderReady(scenario, minimumItems, "reader for " + serviceId);
+    }
+
+    private static ReaderSnapshot awaitReaderReady(
+            ActivityScenario<MainActivity> scenario,
+            int minimumItems,
+            String stage
+    ) {
+        long deadline = SystemClock.elapsedRealtime() + 12_000L;
+        ReaderSnapshot last = ReaderSnapshot.missing();
+
+        while (SystemClock.elapsedRealtime() < deadline) {
+            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+            AtomicReference<ReaderSnapshot> current = new AtomicReference<>(ReaderSnapshot.missing());
+            scenario.onActivity(activity -> {
+                RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
+                ReaderSnapshot snapshot = ReaderSnapshot.capture(reader);
+                current.set(snapshot);
+                if (reader != null
+                        && snapshot.adapterItems >= minimumItems
+                        && snapshot.height > 0
+                        && snapshot.childCount == 0) {
+                    reader.requestLayout();
+                    reader.postInvalidateOnAnimation();
+                }
+            });
+            last = current.get();
+            if (last.isReady(minimumItems)) {
+                assertReaderSnapshot(last, minimumItems);
+                return last;
+            }
+            SystemClock.sleep(100L);
+        }
+
+        fail("Reader did not become ready during " + stage + ": " + last.describe());
+        return last;
+    }
+
+    private static void assertReaderSnapshot(ReaderSnapshot reader, int minimumItems) {
+        assertTrue("Reader RecyclerView was not found", reader.present);
+        assertTrue("Reader adapter was not attached", reader.adapterAttached);
+        assertTrue("Reader has too few content rows", reader.adapterItems >= minimumItems);
+        assertTrue("Reader has no measured height", reader.height > 0);
+        assertTrue(
+                "Reader reserves too much blank top padding",
+                reader.paddingTop < Math.max(32, reader.height / 3)
+        );
+        assertTrue("Reader has no visible child rows", reader.childCount > 0);
+        if (minimumItems >= 100) {
+            assertTrue("Long reader content is not scrollable", reader.canScrollForward);
+        }
+    }
+
+    private static void clickText(
+            ActivityScenario<MainActivity> scenario,
+            String needle,
+            String failureMessage
+    ) {
         scenario.onActivity(activity -> {
-            RecyclerView reader = findFirst(activity.getWindow().getDecorView(), RecyclerView.class);
-            assertReaderIsVisible(reader, minimumItems);
+            TextView toggle = findTextContaining(activity.getWindow().getDecorView(), needle);
+            assertNotNull(failureMessage, toggle);
+            assertTrue("Reader controls toggle click was not accepted", toggle.performClick());
         });
     }
 
-    private static void assertReaderIsVisible(RecyclerView reader, int minimumItems) {
-        assertNotNull("Reader RecyclerView was not found", reader);
-        assertNotNull("Reader adapter was not attached", reader.getAdapter());
-        assertTrue("Reader has too few content rows", reader.getAdapter().getItemCount() >= minimumItems);
-        assertTrue("Reader has no measured height", reader.getHeight() > 0);
-        assertTrue("Reader reserves too much blank top padding", reader.getPaddingTop() < Math.max(32, reader.getHeight() / 3));
-        assertTrue("Reader has no visible child rows", reader.getChildCount() > 0);
-        if (minimumItems >= 100) {
-            assertTrue("Long reader content is not scrollable", reader.canScrollVertically(1));
+    private static final class ReaderSnapshot {
+        final boolean present;
+        final boolean adapterAttached;
+        final int adapterItems;
+        final int height;
+        final int paddingTop;
+        final int childCount;
+        final boolean canScrollForward;
+
+        private ReaderSnapshot(
+                boolean present,
+                boolean adapterAttached,
+                int adapterItems,
+                int height,
+                int paddingTop,
+                int childCount,
+                boolean canScrollForward
+        ) {
+            this.present = present;
+            this.adapterAttached = adapterAttached;
+            this.adapterItems = adapterItems;
+            this.height = height;
+            this.paddingTop = paddingTop;
+            this.childCount = childCount;
+            this.canScrollForward = canScrollForward;
+        }
+
+        static ReaderSnapshot missing() {
+            return new ReaderSnapshot(false, false, 0, 0, 0, 0, false);
+        }
+
+        static ReaderSnapshot capture(RecyclerView reader) {
+            if (reader == null) return missing();
+            RecyclerView.Adapter<?> adapter = reader.getAdapter();
+            return new ReaderSnapshot(
+                    true,
+                    adapter != null,
+                    adapter == null ? 0 : adapter.getItemCount(),
+                    reader.getHeight(),
+                    reader.getPaddingTop(),
+                    reader.getChildCount(),
+                    reader.canScrollVertically(1)
+            );
+        }
+
+        boolean isReady(int minimumItems) {
+            return present
+                    && adapterAttached
+                    && adapterItems >= minimumItems
+                    && height > 0
+                    && childCount > 0
+                    && (minimumItems < 100 || canScrollForward);
+        }
+
+        String describe() {
+            return "present=" + present
+                    + ", adapterAttached=" + adapterAttached
+                    + ", adapterItems=" + adapterItems
+                    + ", height=" + height
+                    + ", paddingTop=" + paddingTop
+                    + ", childCount=" + childCount
+                    + ", canScrollForward=" + canScrollForward;
         }
     }
 

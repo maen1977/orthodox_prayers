@@ -1,3 +1,11 @@
+## R40.7 — Reader layout-readiness instrumentation stabilization
+
+- Fixed the Android 15 runtime failure where `ReaderSmokeTest` inspected the `RecyclerView` after its adapter was populated but before Android attached the first visible child row.
+- Replaced one-shot `waitForIdleSync()` assertions with a bounded 12-second readiness probe that requires the reader, adapter, minimum content count, measured height, visible child rows, and long-content scrolling to be simultaneously ready.
+- Preserved strict failure behavior: the test still fails with a detailed snapshot when the reader does not become visible; no test is skipped, ignored, retried as success, or placed behind `continue-on-error`.
+- Applied the same readiness check before and after expanding and collapsing reader controls, while preserving the reading-area height assertions.
+- Passed 426 tests plus 14 subtests and every non-Gradle strict-native quality-gate validator. Android compilation and emulator execution remain delegated to GitHub because the local environment cannot resolve `services.gradle.org`.
+
 ## R40.6 — KVM-accelerated emulator boot and short-failure stabilization
 
 - Fixed the 30-minute `Timeout waiting for emulator to boot` failure by enabling and verifying `/dev/kvm` before launching the Android emulator on the pinned Ubuntu 24.04 runner.

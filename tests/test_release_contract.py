@@ -292,6 +292,9 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("DataRepository.datedServiceId", smoke)
         self.assertIn("currentNextSundayServiceRendersWhenTheSignedPackageIsCurrent", smoke)
         self.assertIn("Hiding controls should restore the reading area", smoke)
+        self.assertIn("awaitReaderReady", smoke)
+        self.assertIn("Reader did not become ready during", smoke)
+        self.assertIn("SystemClock.elapsedRealtime() + 12_000L", smoke)
         self.assertIn('testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"', build)
         self.assertIn("androidTestImplementation", build)
 
