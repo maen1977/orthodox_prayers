@@ -189,7 +189,7 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: |
-            set -euo pipefail
+            bash -euo pipefail <<'BASH'
             adb shell svc wifi disable || true
             adb shell svc data disable || true
             ./gradlew --no-daemon connectedDebugAndroidTest --stacktrace
@@ -199,6 +199,7 @@ jobs:
               adb pull /sdcard/Android/data/com.orthodoxprayers.privateapp/files/store-screenshots/. play-store/assets/screenshots/
               python scripts/validate_play_store_assets.py --require-screenshots
             fi
+            BASH
 
       - name: Upload generated Play Store screenshots
         if: matrix.api_level == 35

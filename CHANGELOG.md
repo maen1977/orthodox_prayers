@@ -1,3 +1,10 @@
+# R40.1 Android Emulator Bash Hotfix
+
+- Run the emulator action script inside explicit Bash because the action invokes `/bin/sh` by default.
+- Add regression checks that reject direct `pipefail` use under the emulator `script` input.
+- Restore the two branded release icon files omitted from the R40 source ZIP.
+- Preserve the R40 nine-day, twice-daily, automated-source comparison and release pipeline.
+
 ## 5.0.23 — R40 automated source research and release pipeline
 
 - Added a fail-closed nine-day source-comparison engine with Orthodox Jordan and Jerusalem calendar priority, dated cross-check connectors, evidence hashes, and automatic publication decisions without a daily human-review dependency.

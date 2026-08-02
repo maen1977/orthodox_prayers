@@ -138,6 +138,8 @@ def test_workflows_use_automatic_gate_and_android_emulator():
     assert "Require all three publishable language lanes" in update
     assert 'test "$ok" -eq 3' in update
     assert "connectedDebugAndroidTest" in build
+    assert "bash -euo pipefail <<'BASH'" in build
+    assert "script: |\n            set -euo pipefail" not in build
     assert "play-store-screenshots" in build
     assert "validate_play_store_assets.py --require-screenshots" in build
 

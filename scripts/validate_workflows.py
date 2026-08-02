@@ -66,6 +66,7 @@ def main() -> None:
             "api_level: [29, 35]",
             "validate_release_permissions.py",
             "adb shell svc wifi disable",
+            "bash -euo pipefail <<'BASH'",
             "name: Android debug lint",
             "lintDebug --stacktrace",
             "name: Build debug APK",

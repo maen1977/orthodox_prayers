@@ -114,6 +114,7 @@ def test_build_workflow_tests_old_and_new_android_offline_and_packages_play_rele
     for marker in (
         "api_level: [29, 35]",
         "adb shell svc wifi disable",
+        "bash -euo pipefail <<'BASH'",
         "connectedDebugAndroidTest",
         "play-store-screenshots",
         "validate_release_permissions.py",
