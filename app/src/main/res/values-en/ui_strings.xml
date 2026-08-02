@@ -130,7 +130,7 @@
     <string name="ui_no_favorites_yet_open_a_prayer_and_press_the_sta_3ddef562" formatted="false">No favorites yet. Open a prayer and press the star.</string>
     <string name="ui_no_matching_church_in_the_current_directory_d42641ca" formatted="false">No matching church in the current directory.</string>
     <string name="ui_no_matching_result_65289b38" formatted="false">No matching result.</string>
-    <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">No published details for this month are included in the current package.</string>
+    <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">This month is outside the 2026–2050 offline horizon or has no verified details.</string>
     <string name="ui_no_shareable_passage_is_visible_e0bd031d" formatted="false">No shareable passage is visible</string>
     <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">No successful network update yet</string>
     <string name="ui_no_texts_in_this_section_a43f561b" formatted="false">No texts in this section.</string>
@@ -252,7 +252,7 @@
     <string name="ui_text_9b77d3f7" formatted="false">Text</string>
     <string name="ui_text_index_57a9ffa2" formatted="false">Text index</string>
     <string name="ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b" formatted="false">Text size, font, spacing, reader theme, brightness, and auto-scroll will return to their defaults.</string>
-    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">The annual index stays lightweight, while the signed package keeps today and the next eight days with complete prayers, readings, and services.</string>
+    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">The offline church calendar covers 2026–2050, while the signed package refreshes today and the next eight days from verified sources.</string>
     <string name="ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc" formatted="false">The app must be updated to read today’s new data</string>
     <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">GitHub Actions publishes verified content twice daily at 04:23 and 16:43 Jordan time. The app checks automatically whenever it opens and keeps the last valid copy if the server is unavailable.</string>
     <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">The app will not notify during the selected quiet hours.</string>

@@ -82,7 +82,7 @@ class H22026LectionaryTests(unittest.TestCase):
     def test_compact_asset_and_android_wiring_pass_audit(self):
         report = self.audit.build_report()
         self.assertTrue(report["complete_for_current_delivery"], report["blockers"])
-        self.assertLess(report["android_asset_bytes"], 500_000)
+        self.assertLess(report["android_asset_bytes"], 750_000)
 
 
 if __name__ == "__main__":

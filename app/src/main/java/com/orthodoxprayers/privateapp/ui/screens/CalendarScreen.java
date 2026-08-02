@@ -23,8 +23,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/** Monthly calendar backed by the trusted daily snapshot plus the compact 2026 H2 old-calendar index. */
+/** Monthly calendar backed by the signed nine-day package plus the compact 2026–2050 offline index. */
 public final class CalendarScreen extends BaseScreen {
+    private static final YearMonth MIN_MONTH = YearMonth.of(2026, 1);
+    private static final YearMonth MAX_MONTH = YearMonth.of(2050, 12);
     private final YearMonth month;
 
     public CalendarScreen(ScreenHost host, String argument) {
@@ -32,6 +34,8 @@ public final class CalendarScreen extends BaseScreen {
         YearMonth parsed;
         try { parsed = argument == null || argument.isEmpty() ? YearMonth.now() : YearMonth.parse(argument); }
         catch (Exception ignored) { parsed = YearMonth.now(); }
+        if (parsed.isBefore(MIN_MONTH)) parsed = MIN_MONTH;
+        if (parsed.isAfter(MAX_MONTH)) parsed = MAX_MONTH;
         month = parsed;
     }
 
@@ -48,6 +52,7 @@ public final class CalendarScreen extends BaseScreen {
     private void addMonthNavigation(LinearLayout root) {
         LinearLayout row = ui.row();
         Button previous = ui.smallButton(preferences.isRtl() ? "→" : "←", false);
+        previous.setEnabled(month.isAfter(MIN_MONTH));
         previous.setOnClickListener(v -> host.navigate("calendar", month.minusMonths(1).toString()));
         row.addView(previous, ui.weight(44));
 
@@ -58,12 +63,18 @@ public final class CalendarScreen extends BaseScreen {
         row.addView(label, new LinearLayout.LayoutParams(0, -2, 2f));
 
         Button next = ui.smallButton(preferences.isRtl() ? "←" : "→", false);
+        next.setEnabled(month.isBefore(MAX_MONTH));
         next.setOnClickListener(v -> host.navigate("calendar", month.plusMonths(1).toString()));
         row.addView(next, ui.weight(44));
         add(root, row, 10, 4);
 
         Button today = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_return_to_this_month_ea36d48b), false);
-        today.setOnClickListener(v -> host.navigate("calendar", YearMonth.now().toString()));
+        today.setOnClickListener(v -> {
+            YearMonth current = YearMonth.now();
+            if (current.isBefore(MIN_MONTH)) current = MIN_MONTH;
+            if (current.isAfter(MAX_MONTH)) current = MAX_MONTH;
+            host.navigate("calendar", current.toString());
+        });
         add(root, today, 0, 8);
     }
 
@@ -135,7 +146,7 @@ public final class CalendarScreen extends BaseScreen {
 
     private Map<String, JSONObject> knownDays() {
         Map<String, JSONObject> result = new HashMap<>();
-        JSONArray annual = data.calendarDays();
+        JSONArray annual = data.calendarDays(month.getYear());
         for (int i = 0; i < annual.length(); i++) {
             JSONObject item = annual.optJSONObject(i);
             if (item == null) continue;

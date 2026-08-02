@@ -40,7 +40,7 @@ public final class DataRepository {
     private static final String TAG = "OrthodoxData";
     private static final int MAX_JSON_BYTES = DataContract.MAX_SIGNED_PAYLOAD_BYTES;
     private static final int MIN_ROLLING_WINDOW_DAYS = 9;
-    private static final int MAX_ROLLING_WINDOW_DAYS = 42;
+    private static final int MAX_ROLLING_WINDOW_DAYS = 9;
     private static final int MAX_MANIFEST_BYTES = 64_000;
     private static final int MAX_SIGNATURE_BYTES = 16_384;
     private static final int MAX_DOWNLOAD_ATTEMPTS = 2;
@@ -68,6 +68,7 @@ public final class DataRepository {
     private JSONObject fallbackServiceCoverage;
     private JSONObject religiousCompleteness;
     private JSONObject calendarIndex;
+    private int loadedCalendarYear = -1;
     private JSONObject rollingWeekPackage = new JSONObject();
     private final Map<String, JSONObject> calendarByDate = new LinkedHashMap<>();
     private final Map<String, JSONObject> rollingWeekByDate = new LinkedHashMap<>();
@@ -104,34 +105,56 @@ public final class DataRepository {
         fallbackSourceHealth = loadJsonAsset("data/source_health.json");
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
-        calendarIndex = loadJsonAsset("data/calendar_2026_h2.json");
-        indexCalendarDays();
+        calendarIndex = loadJsonAsset("data/calendar/calendar_index.json");
+        loadCalendarYear(LocalDate.now(ZoneId.of("Asia/Amman")).getYear());
         activatePackage(loadBestToday());
     }
 
-    private void indexCalendarDays() {
+    private synchronized void loadCalendarYear(int year) {
+        if (year == loadedCalendarYear && !calendarByDate.isEmpty()) return;
+        JSONObject years = calendarIndex == null ? null : calendarIndex.optJSONObject("years");
+        JSONObject metadata = years == null ? null : years.optJSONObject(Integer.toString(year));
+        if (metadata == null) return;
+        String asset = metadata.optString("asset", "").trim();
+        if (asset.isEmpty()) return;
+        JSONObject yearPayload = loadJsonAsset(asset);
+        JSONArray days = yearPayload.optJSONArray("days");
+        if (days == null || days.length() == 0) return;
         calendarByDate.clear();
-        JSONArray days = calendarIndex == null ? null : calendarIndex.optJSONArray("days");
-        if (days == null) return;
         for (int i = 0; i < days.length(); i++) {
             JSONObject item = days.optJSONObject(i);
             if (item == null) continue;
-            String date = item.optString("date_iso", item.optString("date", "")).trim();
-            if (!date.isEmpty()) calendarByDate.put(date, item);
+            String iso = item.optString("date_iso", item.optString("date", "")).trim();
+            if (!iso.isEmpty()) calendarByDate.put(iso, item);
         }
+        loadedCalendarYear = year;
     }
 
-    /** Compact, offline old-calendar index for 2026-07-28 through 2026-12-31. */
+    /** Compact offline old-calendar index, loaded one year at a time through 2050. */
     public JSONArray calendarDays() {
-        JSONArray days = calendarIndex == null ? null : calendarIndex.optJSONArray("days");
-        return days == null ? new JSONArray() : days;
+        return calendarDays(LocalDate.now(ZoneId.of("Asia/Amman")).getYear());
+    }
+
+    public synchronized JSONArray calendarDays(int year) {
+        loadCalendarYear(year);
+        JSONArray result = new JSONArray();
+        for (JSONObject item : calendarByDate.values()) result.put(item);
+        return result;
     }
 
     public JSONObject calendarDay(String date) {
         if (date == null) return null;
         String normalized = date.trim();
         JSONObject complete = rollingWeekByDate.get(normalized);
-        return complete != null ? complete : calendarByDate.get(normalized);
+        if (complete != null) return complete;
+        if (normalized.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            try {
+                loadCalendarYear(Integer.parseInt(normalized.substring(0, 4)));
+            } catch (NumberFormatException ignored) {
+                return null;
+            }
+        }
+        return calendarByDate.get(normalized);
     }
 
     /** The active signed package contains a moving horizon of complete consecutive days. */

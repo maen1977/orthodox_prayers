@@ -1,3 +1,13 @@
+## 5.0.23 — R39 internal 2026–2050 calendar horizon
+
+- Added a compact offline Jerusalem/Jordan old-calendar baseline for every civil day from 2026-01-01 through 2050-12-31 (9,131 days).
+- Split Android calendar assets by year so only the selected year is parsed on low-memory devices.
+- Calculated Orthodox Pascha, the Triodion/Pentecostarion cycle, major fixed feasts, relative Saturdays/Sundays, fasting baseline, and appointed Liturgy selection locally.
+- Kept the believer-facing signed window at exactly nine days and retained two daily update runs at 04:23 and 16:43 Asia/Amman for source verification and corrections.
+- Preserved fail-closed religious content: daily saints and exact readings are included only when a pinned or signed source exists; no AI translation, invented names, or cross-language fallback is used.
+- Added year-boundary, leap-year, 2050-horizon, lazy-loading, navigation-boundary, and source-policy regression coverage.
+- Passed 407 tests plus 14 subtests and every constituent strict-native quality-gate check.
+
 ## 5.0.23 — R38.3 Matins Gospel schema hotfix
 
 - Added `matins_gospel` to the supported daily reading schema instead of dropping the appointed Orthros reading.

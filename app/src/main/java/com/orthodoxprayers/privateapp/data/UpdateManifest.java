@@ -101,8 +101,7 @@ public final class UpdateManifest {
                 && dayCount == 9
                 && "NINE_CONSECUTIVE_DAYS_STARTING_TODAY".equals(policy))
                 || (schema == 2
-                && dayCount >= 9
-                && dayCount <= 42
+                && dayCount == 9
                 && "ROLLING_FUTURE_WINDOW".equals(policy));
         if (!supported) throw new IllegalStateException("manifest_coverage_unsupported");
         String start = coverage.optString("start_date", "");

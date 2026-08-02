@@ -130,7 +130,7 @@
     <string name="ui_no_favorites_yet_open_a_prayer_and_press_the_sta_3ddef562" formatted="false">لا توجد صلوات محفوظة بعد. افتح أي صلاة واضغط زر النجمة.</string>
     <string name="ui_no_matching_church_in_the_current_directory_d42641ca" formatted="false">لا توجد كنيسة مطابقة في الدليل الحالي.</string>
     <string name="ui_no_matching_result_65289b38" formatted="false">لا توجد نتيجة مطابقة.</string>
-    <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">لا توجد تفاصيل منشورة لهذا الشهر داخل الحزمة الحالية.</string>
+    <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">هذا الشهر خارج نطاق الرزنامة الداخلية 2026–2050 أو لا توجد له تفاصيل موثقة.</string>
     <string name="ui_no_shareable_passage_is_visible_e0bd031d" formatted="false">لا يوجد مقطع قابل للمشاركة هنا</string>
     <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">لم ينجح تحديث شبكي بعد</string>
     <string name="ui_no_texts_in_this_section_a43f561b" formatted="false">لا توجد نصوص في هذا القسم.</string>
@@ -252,7 +252,7 @@
     <string name="ui_text_9b77d3f7" formatted="false">النص</string>
     <string name="ui_text_index_57a9ffa2" formatted="false">فهرس النص</string>
     <string name="ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b" formatted="false">سيعود حجم النص والخط والتباعد وثيم القارئ والسطوع والتمرير التلقائي إلى الوضع الافتراضي.</string>
-    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">الفهرس السنوي خفيف، بينما الحزمة الموقعة تحفظ اليوم والأيام الثمانية القادمة بكامل الصلوات والقراءات والخدمات.</string>
+    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">الرزنامة الكنسية الداخلية تغطي 2026–2050، بينما الحزمة الموقعة تحدّث اليوم والأيام الثمانية القادمة بالمصادر الموثقة.</string>
     <string name="ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc" formatted="false">يلزم تحديث إصدار التطبيق لقراءة بيانات اليوم الجديدة</string>
     <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">ينشر GitHub Actions المحتوى الموثق مرتين يوميًا عند 04:23 و16:43 بتوقيت الأردن. يفحص التطبيق وجود تحديث تلقائيًا عند كل فتح، ويحتفظ بآخر نسخة صحيحة إذا تعذر الاتصال.</string>
     <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">لن يصدر التطبيق إشعارات خلال ساعات الهدوء المحددة.</string>

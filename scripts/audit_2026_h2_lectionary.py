@@ -71,9 +71,9 @@ def body_audit() -> dict[str, Any]:
 
 def build_report() -> dict[str, Any]:
     canonical = load("canonical/jordan_2026_h2_lectionary.json")
-    asset = load("app/src/main/assets/data/calendar_2026_h2.json")
+    asset = load("app/src/main/assets/data/calendar/calendar_2026.json")
     days = canonical.get("days") or []
-    asset_days = asset.get("days") or []
+    asset_days = [item for item in (asset.get("days") or []) if START.isoformat() <= str(item.get("date_iso") or item.get("date") or "") <= END.isoformat()]
     blockers: list[str] = []
     expected_count = (END - START).days + 1
     if len(days) != expected_count:
@@ -133,7 +133,7 @@ def build_report() -> dict[str, Any]:
             blockers.append(f"calendar_day_ui_missing:{token}")
     if not source_references_text(java_day, "فتح الخدمة الكاملة من البداية إلى النهاية", "ar"):
         blockers.append("calendar_day_ui_missing:فتح الخدمة الكاملة من البداية إلى النهاية")
-    for token in ("calendar_2026_h2.json", "calendarDays()", "calendarDay(String date)"):
+    for token in ("calendar_index.json", "calendarDays(int year)", "calendarDay(String date)"):
         if token not in java_repo:
             blockers.append(f"repository_wiring_missing:{token}")
     return {
@@ -151,7 +151,7 @@ def build_report() -> dict[str, Any]:
             for value in blockers
         ),
         "review_snapshot_native_text": today,
-        "android_asset_bytes": (ROOT / "app/src/main/assets/data/calendar_2026_h2.json").stat().st_size,
+        "android_asset_bytes": (ROOT / "app/src/main/assets/data/calendar/calendar_2026.json").stat().st_size,
         "complete_for_current_delivery": not blockers,
         "blockers": blockers,
         "full_user_goal_complete": False,

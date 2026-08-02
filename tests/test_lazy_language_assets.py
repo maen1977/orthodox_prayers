@@ -11,7 +11,7 @@ SOURCE = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepos
 class LazyLanguageAssetTests(unittest.TestCase):
     def test_repository_constructor_does_not_parse_all_language_assets(self):
         source = SOURCE.read_text(encoding="utf-8")
-        constructor = source[source.index("private DataRepository(") : source.index("private void indexCalendarDays")]
+        constructor = source[source.index("private DataRepository(") : source.index("private synchronized void loadCalendarYear")]
         self.assertNotIn('loadJsonAsset("data/native/library_ar.json")', constructor)
         self.assertNotIn('loadJsonAsset("data/native/library_en.json")', constructor)
         self.assertNotIn('loadJsonAsset("data/native/library_el.json")', constructor)

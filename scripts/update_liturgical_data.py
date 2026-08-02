@@ -1059,6 +1059,35 @@ def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: d
 
 
 LOCAL_COMMEMORATIONS_PATH = ROOT / "canonical" / "local_commemorations.json"
+_INTERNAL_CALENDAR_YEAR_CACHE: dict[int, dict[str, dict]] = {}
+
+
+def internal_calendar_entry(day: date) -> dict | None:
+    """Load one compact offline calendar year lazily.
+
+    The signed nine-day package remains authoritative. This entry only prevents
+    year-boundary gaps and supplies calculated major occasions when live sources
+    are unavailable. The calendar generator disables this lookup while rebuilding.
+    """
+    if os.getenv("ORTHODOX_DISABLE_INTERNAL_CALENDAR") == "1":
+        return None
+    year = day.year
+    if year not in _INTERNAL_CALENDAR_YEAR_CACHE:
+        path = ROOT / "app" / "src" / "main" / "assets" / "data" / "calendar" / f"calendar_{year}.json"
+        if not path.is_file():
+            _INTERNAL_CALENDAR_YEAR_CACHE[year] = {}
+        else:
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                _INTERNAL_CALENDAR_YEAR_CACHE[year] = {
+                    str(item.get("date_iso") or item.get("date")): item
+                    for item in payload.get("days", [])
+                    if isinstance(item, dict) and (item.get("date_iso") or item.get("date"))
+                }
+            except (OSError, json.JSONDecodeError):
+                _INTERNAL_CALENDAR_YEAR_CACHE[year] = {}
+    entry = _INTERNAL_CALENDAR_YEAR_CACHE[year].get(day.isoformat())
+    return copy.deepcopy(entry) if isinstance(entry, dict) else None
 
 
 def local_official_commemoration(day: date) -> dict | None:
@@ -1098,6 +1127,8 @@ def day_info(day: date) -> dict:
     # than as if that placeholder were an ecclesiastically reviewed commemoration.
     annual = h2_lectionary_entry(day)
     annual_feast = annual.get("feast") if isinstance(annual, dict) else None
+    internal = internal_calendar_entry(day)
+    internal_feast = internal.get("feast") if isinstance(internal, dict) else None
     fixed = fixed_old_feast(jm, jd)
     local_record = local_official_commemoration(day)
     if local_record:
@@ -1111,6 +1142,9 @@ def day_info(day: date) -> dict:
             feast_status = "UNAVAILABLE_PENDING_ECCLESIASTICAL_REVIEW"
         else:
             feast_status = "PINNED_REVIEWED_ANNUAL_ENTRY"
+    elif isinstance(internal_feast, dict) and str(internal_feast.get("ar") or "").strip():
+        feast = {lang: str(internal_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}
+        feast_status = str(internal.get("occasion_status") or "INTERNAL_CALENDAR_BASELINE")
     elif fixed:
         feast = localized_feast(fixed)
         feast_status = "PINNED_FIXED_FEAST"
@@ -1281,7 +1315,7 @@ def h2_lectionary_entry(day: date) -> dict | None:
     return copy.deepcopy(entry) if isinstance(entry, dict) else None
 
 
-def _pinned_reference_reading(kind: str, payload: dict, day_entry: dict) -> dict:
+def _pinned_reference_reading(kind: str, payload: dict, day_entry: dict, reference_registry: str = "canonical/jordan_2026_h2_lectionary.json") -> dict:
     canonical_reference = str(payload.get("canonical_reference") or "").strip()
     reference = _localized(payload.get("reference"))
     titles = {
@@ -1317,7 +1351,7 @@ def _pinned_reference_reading(kind: str, payload: dict, day_entry: dict) -> dict
             "status": "PINNED_EXACT_REFERENCE",
             "canonical_reference": canonical_reference,
             "calendar": "JORDAN_JERUSALEM_OLD_CALENDAR",
-            "reference_registry": "canonical/jordan_2026_h2_lectionary.json",
+            "reference_registry": reference_registry,
             "ai_translation_used": False,
             "automatic_diacritization_used": False,
         },
@@ -1333,8 +1367,25 @@ def h2_reference_readings(day: date, info: dict) -> list[dict] | None:
     for kind in ("matins_gospel", "epistle", "gospel"):
         payload = refs.get(kind)
         if isinstance(payload, dict) and payload.get("canonical_reference"):
-            resolved.append(_pinned_reference_reading(kind, payload, entry))
+            resolved.append(_pinned_reference_reading(kind, payload, entry, "canonical/jordan_2026_h2_lectionary.json"))
     return resolved
+
+
+def internal_calendar_reference_readings(day: date, info: dict) -> list[dict] | None:
+    entry = internal_calendar_entry(day)
+    if not isinstance(entry, dict):
+        return None
+    refs = entry.get("reading_references") if isinstance(entry.get("reading_references"), dict) else {}
+    if not refs:
+        return None
+    resolved = [default_prokeimenon(info, day)]
+    for kind in ("matins_gospel", "epistle", "gospel"):
+        payload = refs.get(kind)
+        if isinstance(payload, dict) and payload.get("canonical_reference"):
+            resolved.append(_pinned_reference_reading(
+                kind, payload, entry, "canonical/internal_calendar_2026_2050.json"
+            ))
+    return resolved if len(resolved) > 1 else None
 
 
 def paschal_cycle_proper_entry(day: date, info: dict) -> dict | None:
@@ -1461,7 +1512,27 @@ def exact_or_sunday_prokeimenon(day: date, info: dict) -> dict:
     weekday = DAILY_PROPERS_REGISTRY.get("weekday_prokeimena", {}).get(str(day.weekday()))
     if isinstance(weekday, dict):
         return _prokeimenon_reading(weekday, _proper_sources(), f"weekday:{day.weekday()}")
-    raise RuntimeError(f"No prokeimenon registry entry for weekday {day.weekday()}")
+    # Sundays such as Pascha itself do not belong to the ordinary Octoechos
+    # tone fallback. Keep the lane explicitly unavailable rather than crashing
+    # the year-boundary/offline calendar or inventing a weekday prokeimenon.
+    return {
+        "icon": "🎵",
+        "kind": "prokeimenon",
+        "title": loc("البروكيمنن", "Prokeimenon", "Προκείμενον"),
+        "reference": loc(
+            "يُستكمل من المصدر الرسمي لليوم",
+            "Completed from the official source for the day",
+            "Συμπληρώνεται ἀπὸ τὴν ἐπίσημη πηγὴ τῆς ἡμέρας",
+        ),
+        "body": reading_loc(),
+        "publication_status": "BLOCKED_MISSING_OFFICIAL_PROKEIMENON",
+        "translation_locked": True,
+        "integrity": {
+            "status": "UNAVAILABLE_UNTIL_EXACT_OFFICIAL_NATIVE_SOURCE",
+            "ai_translation_used": False,
+            "automatic_diacritization_used": False,
+        },
+    }
 
 def default_prokeimenon(info: dict, day: date | None = None) -> dict:
     return exact_or_sunday_prokeimenon(day or date.today(), info)
@@ -2299,6 +2370,9 @@ def discovery_readings(day: date, info: dict) -> list[dict]:
             if isinstance(reading, dict):
                 resolved.append(copy.deepcopy(reading))
         return resolved
+    internal = internal_calendar_reference_readings(day, info)
+    if internal is not None:
+        return internal
     if os.getenv("ORTHODOX_DISABLE_DISCOVERY_NETWORK") == "1":
         return readings_from_orthocal(None, info, day)
     try:
