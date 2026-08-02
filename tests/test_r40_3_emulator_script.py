@@ -48,18 +48,12 @@ exit 0
     )
     adb.chmod(0o755)
 
-    gradle = tmp_path / "gradlew"
-    gradle.write_text(
-        """#!/usr/bin/env bash
-set -euo pipefail
-printf 'gradle %s\\n' \"$*\" >> \"$FAKE_LOG\"
-mkdir -p app/build/outputs/apk/debug app/build/outputs/apk/androidTest/debug
-printf app > app/build/outputs/apk/debug/app-debug.apk
-printf test > app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-""",
-        encoding="utf-8",
-    )
-    gradle.chmod(0o755)
+    app_apk = tmp_path / "app/build/outputs/apk/debug/app-debug.apk"
+    test_apk = tmp_path / "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
+    app_apk.parent.mkdir(parents=True, exist_ok=True)
+    test_apk.parent.mkdir(parents=True, exist_ok=True)
+    app_apk.write_bytes(b"app")
+    test_apk.write_bytes(b"test")
 
     python = bin_dir / "python"
     python.write_text(
@@ -84,7 +78,7 @@ printf 'python %s\\n' \"$*\" >> \"$FAKE_LOG\"
     assert "wait-for-device" in text
     assert "adb shell getprop sys.boot_completed" in text
     assert "adb shell getprop ro.build.version.sdk" in text
-    assert "gradle --no-daemon assembleDebug assembleDebugAndroidTest --stacktrace" in text
+    assert "gradle " not in text
     assert "adb install -r -t app/build/outputs/apk/debug/app-debug.apk" in text
     assert "adb install -r -t app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk" in text
     assert "adb shell am instrument -w -r com.orthodoxprayers.privateapp.test/androidx.test.runner.AndroidJUnitRunner" in text
@@ -111,10 +105,32 @@ def test_instrumentation_job_uses_one_modern_emulator_and_uploads_diagnostics():
     block = build.split(
         "Run instrumentation and capture Arabic, English, and Greek screens", 1
     )[1].split("Upload generated Play Store screenshots", 1)[0]
-    assert "emulator-boot-timeout: 900" in block
-    assert "ram-size: 3072M" in block
-    assert "heap-size: 512M" in block
+    assert "Build runtime and instrumentation APKs before emulator boot" in build
+    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in build
+    assert "Enable and verify KVM acceleration" in build
+    assert "test -c /dev/kvm" in build
+    assert "test -w /dev/kvm" in build
+    assert "emulator-boot-timeout: 480" in block
+    assert "target: default" in block
+    assert "profile: pixel_2" in block
+    assert "ram-size: 2048M" in block
+    assert "heap-size: 256M" in block
+    assert "disk-size: 4G" in block
+    assert "disable-linux-hw-accel: false" in block
     assert "api-level: 35" in block
     assert "-no-snapshot" in block
+    assert "-accel on" in block
+    assert "pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh" in block
     assert "if: always()" in build
     assert "androidTest-diagnostics" in build
+
+
+def test_emulator_host_preflight_is_fail_fast_and_valid_bash():
+    script = ROOT / "scripts/verify_android_emulator_host.sh"
+    subprocess.run(["bash", "-n", str(script)], check=True)
+    text = script.read_text(encoding="utf-8")
+    assert "test -c /dev/kvm" in text
+    assert "test -r /dev/kvm" in text
+    assert "test -w /dev/kvm" in text
+    assert "emulator -accel-check" in text
+    assert "adb start-server" in text

@@ -155,8 +155,8 @@ jobs:
   android_instrumented:
     name: Android 15 runtime test, offline fallback, and store screenshots
     needs: android_debug
-    runs-on: ubuntu-latest
-    timeout-minutes: 55
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
     steps:
       - name: Checkout repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
@@ -181,19 +181,38 @@ jobs:
       - name: Normalize Gradle wrapper permission
         run: python scripts/ensure_gradlew_executable.py
 
+      - name: Build runtime and instrumentation APKs before emulator boot
+        run: ./gradlew --no-daemon assembleDebug assembleDebugAndroidTest --stacktrace
+
+      - name: Enable and verify KVM acceleration
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          test -c /dev/kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+          echo "KVM acceleration ready: $(ls -l /dev/kvm)"
+
       - name: Run instrumentation and capture Arabic, English, and Greek screens
         uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
         with:
           api-level: 35
-          target: google_apis
+          target: default
           arch: x86_64
-          profile: pixel_5
+          profile: pixel_2
           cores: 2
-          ram-size: 3072M
-          heap-size: 512M
-          emulator-boot-timeout: 900
+          ram-size: 2048M
+          heap-size: 256M
+          disk-size: 4G
+          emulator-boot-timeout: 480
+          disable-linux-hw-accel: false
           disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-snapshot -camera-back none
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none -camera-front none -accel on
+          pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh
           script: bash scripts/run_android_emulator_ci.sh 35
 
       - name: Upload generated Play Store screenshots

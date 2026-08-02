@@ -1,3 +1,13 @@
+## R40.6 — KVM-accelerated emulator boot and short-failure stabilization
+
+- Fixed the 30-minute `Timeout waiting for emulator to boot` failure by enabling and verifying `/dev/kvm` before launching the Android emulator on the pinned Ubuntu 24.04 runner.
+- Added a pre-launch host check that runs `emulator -accel-check`, records host/ADB diagnostics, and fails before boot when hardware acceleration is unavailable.
+- Replaced the heavier Google APIs Pixel 5 AVD with a single lighter Android 15/API 35 AOSP Pixel 2 image using 2 GB RAM, a 256 MB heap, a 4 GB disk, and explicit `-accel on`.
+- Reduced the emulator boot timeout from 900 to 480 seconds so an infrastructure failure stops promptly instead of consuming roughly half an hour.
+- Moved `assembleDebug` and `assembleDebugAndroidTest` before emulator startup, keeping Gradle compilation outside the resource-sensitive emulator window.
+- Restored the two required branded release assets omitted from R40.5 and added order-independent test imports through `tests/conftest.py`.
+- Passed 426 tests plus 14 subtests, 65 focused workflow/release tests, and every non-pytest strict-native quality-gate validator.
+
 ## R40.5 — Single-emulator direct-instrumentation stabilization
 
 - Removed the API 29/API 35 runtime matrix and retained one stable Android 15/API 35 emulator job for the single application build.

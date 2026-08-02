@@ -123,7 +123,7 @@ def test_build_workflow_uses_one_stable_runtime_emulator_and_packages_play_relea
     ):
         assert marker in workflow
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in emulator_script
+    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in workflow
     assert "am instrument -w -r" in emulator_script
     assert "validate_play_store_assets.py --require-screenshots" in emulator_script
 

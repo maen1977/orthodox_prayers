@@ -64,9 +64,21 @@ def main() -> None:
             "api-level: 35",
             "scripts/validate_android_sdk_contract.py",
             "validate_release_permissions.py",
-            "emulator-boot-timeout: 900",
-            "ram-size: 3072M",
-            "heap-size: 512M",
+            "Build runtime and instrumentation APKs before emulator boot",
+            "assembleDebug assembleDebugAndroidTest --stacktrace",
+            "Enable and verify KVM acceleration",
+            "test -c /dev/kvm",
+            "test -w /dev/kvm",
+            "runs-on: ubuntu-24.04",
+            "emulator-boot-timeout: 480",
+            "target: default",
+            "profile: pixel_2",
+            "ram-size: 2048M",
+            "heap-size: 256M",
+            "disk-size: 4G",
+            "disable-linux-hw-accel: false",
+            "-accel on",
+            "pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh",
             "script: bash scripts/run_android_emulator_ci.sh 35",
             "name: Android debug lint",
             "lintDebug --stacktrace",
@@ -101,6 +113,25 @@ def main() -> None:
     if "matrix:" in instrumented_block or "matrix.api_level" in instrumented_block:
         fail("Android runtime instrumentation must use one stable emulator, not an API matrix")
 
+
+    emulator_host_script = ROOT / "scripts/verify_android_emulator_host.sh"
+    if not emulator_host_script.is_file():
+        fail("Missing scripts/verify_android_emulator_host.sh")
+    host_text = emulator_host_script.read_text(encoding="utf-8")
+    require_all(
+        host_text,
+        (
+            "#!/usr/bin/env bash",
+            "set -euo pipefail",
+            "test -c /dev/kvm",
+            "test -r /dev/kvm",
+            "test -w /dev/kvm",
+            "emulator -accel-check",
+            "adb start-server",
+        ),
+        "Android emulator host preflight",
+    )
+
     emulator_script = ROOT / "scripts/run_android_emulator_ci.sh"
     if not emulator_script.is_file():
         fail("Missing scripts/run_android_emulator_ci.sh")
@@ -115,7 +146,6 @@ def main() -> None:
             "ro.build.version.sdk",
             "pm path android",
             "stable >= 5",
-            "assembleDebug assembleDebugAndroidTest --stacktrace",
             "am instrument -w -r",
             "ADB_INSTRUMENT_TIMEOUT_SECONDS",
             "instrumentation-api-$API_LEVEL.txt",

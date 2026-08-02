@@ -1,0 +1,13 @@
+.github/workflows/build.yml
+CHANGELOG.md
+R40_6_ANDROID_EMULATOR_KVM_BOOT_HOTFIX_AR.md
+release/branding/Church-Prayers.ico
+release/branding/Church-Prayers-icon-512.png
+scripts/run_android_emulator_ci.sh
+scripts/validate_workflows.py
+scripts/verify_android_emulator_host.sh
+tests/conftest.py
+tests/test_r40_3_emulator_script.py
+tests/test_r40_automated_source_research.py
+tests/test_r40_release_automation.py
+tests/test_release_contract.py

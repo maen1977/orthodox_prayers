@@ -138,7 +138,7 @@ def test_workflows_use_automatic_gate_and_android_emulator():
     assert "Require all three publishable language lanes" in update
     assert 'test "$ok" -eq 3' in update
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in emulator_script
+    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in build
     assert "am instrument -w -r" in emulator_script
     assert "script: bash scripts/run_android_emulator_ci.sh 35" in build
     assert "api-level: 35" in build

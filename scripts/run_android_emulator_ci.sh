@@ -77,10 +77,9 @@ wait_for_android_framework() {
 
 wait_for_android_framework
 
-# Build APKs without asking Gradle/DDMLib to discover the device. Runtime
-# installation and test execution are performed directly through ADB below.
-./gradlew --no-daemon assembleDebug assembleDebugAndroidTest --stacktrace
-
+# APKs are built before the emulator starts. This keeps Gradle compilation out
+# of the resource-sensitive emulator window and makes boot/test failures easier
+# to diagnose.
 test -s "$APP_APK"
 test -s "$TEST_APK"
 
