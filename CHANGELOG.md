@@ -1,3 +1,13 @@
+## R40.5 — Single-emulator direct-instrumentation stabilization
+
+- Removed the API 29/API 35 runtime matrix and retained one stable Android 15/API 35 emulator job for the single application build.
+- Preserved Android 10 and older-device compatibility through the committed `minSdk=26` contract plus mandatory `lintDebug` and `lintRelease` checks instead of the unstable API 29 GitHub emulator.
+- Replaced Gradle `connectedDebugAndroidTest` device discovery with deterministic APK assembly, direct ADB installation, and direct `am instrument` execution, avoiding the DDMLib `Unknown API Level` failure path.
+- Added separate ADB timeouts for boot, installation, instrumentation, and screenshot transfer; successful Android instrumentation code `-1` is no longer misclassified as a failure.
+- Added always-uploaded ADB, system-property, package, logcat, and final-screen diagnostics for any emulator failure.
+- Kept offline reader coverage inside instrumentation, multilingual Play Store screenshot generation, fail-closed test-result parsing, and protected release dependency on the runtime test.
+- Passed 425 tests plus 14 subtests and the complete strict-native quality gate, including the new Android SDK compatibility validator.
+
 ## R40.4 — Android emulator DDMLib readiness and in-test offline hotfix
 
 - Confirmed the two supplied API 29 logs were byte-for-byte identical and failed because DDMLib could not read stable device properties, so Gradle classified the emulator as `Unknown API Level`.

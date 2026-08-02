@@ -1,0 +1,11 @@
+.github/workflows/build.yml
+CHANGELOG.md
+R40_5_SINGLE_EMULATOR_DIRECT_INSTRUMENTATION_AR.md
+scripts/run_android_emulator_ci.sh
+scripts/run_quality_gate.py
+scripts/validate_android_sdk_contract.py
+scripts/validate_workflows.py
+tests/test_r40_3_emulator_script.py
+tests/test_r40_automated_source_research.py
+tests/test_r40_release_automation.py
+tests/test_release_contract.py

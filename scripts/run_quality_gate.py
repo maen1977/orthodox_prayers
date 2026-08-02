@@ -19,6 +19,7 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "scripts/verify_r19_patch.py"],
         [sys.executable, "-m", "pytest", "-q"],
         [sys.executable, "scripts/validate_workflows.py"],
+        [sys.executable, "scripts/validate_android_sdk_contract.py"],
         [sys.executable, "scripts/validate_internal_calendar_2050.py"],
         [sys.executable, "scripts/validate_calendar_boundaries_2050.py"],
         [sys.executable, "scripts/validate_source_comparison_policy.py"],

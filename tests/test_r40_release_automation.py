@@ -108,12 +108,14 @@ def test_play_package_builder_collects_automated_release_inputs(tmp_path: Path, 
     assert (output / "SHA256SUMS.txt").is_file()
 
 
-def test_build_workflow_tests_old_and_new_android_offline_and_packages_play_release():
+def test_build_workflow_uses_one_stable_runtime_emulator_and_packages_play_release():
     workflow = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
     assert (ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/StoreScreenshotTest.java").is_file()
     for marker in (
-        "api_level: [29, 35]",
-        'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"',
+        "api-level: 35",
+        "script: bash scripts/run_android_emulator_ci.sh 35",
+        "validate_android_sdk_contract.py",
+        "name: Android release lint",
         "play-store-screenshots",
         "validate_release_permissions.py",
         "build_play_store_release_package.py",
@@ -121,7 +123,8 @@ def test_build_workflow_tests_old_and_new_android_offline_and_packages_play_rele
     ):
         assert marker in workflow
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "connectedDebugAndroidTest --stacktrace" in emulator_script
+    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in emulator_script
+    assert "am instrument -w -r" in emulator_script
     assert "validate_play_store_assets.py --require-screenshots" in emulator_script
 
 

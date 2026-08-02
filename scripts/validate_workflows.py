@@ -56,19 +56,22 @@ def main() -> None:
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
-            "Android emulator, offline fallback, and store screenshots",
+            "Android 15 runtime test, offline fallback, and store screenshots",
             "play-store-screenshots",
             "actions/download-artifact@",
             "build_play_store_release_package.py",
             "PLAY_SUPPORT_EMAIL",
-            "api_level: [29, 35]",
+            "api-level: 35",
+            "scripts/validate_android_sdk_contract.py",
             "validate_release_permissions.py",
             "emulator-boot-timeout: 900",
-            "ram-size: 2048M",
+            "ram-size: 3072M",
             "heap-size: 512M",
-            'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"',
+            "script: bash scripts/run_android_emulator_ci.sh 35",
             "name: Android debug lint",
             "lintDebug --stacktrace",
+            "name: Android release lint",
+            "lintRelease --stacktrace",
             "name: Build debug APK",
             "assembleDebug --stacktrace",
             "name: Prepare branded debug APK",
@@ -94,6 +97,9 @@ def main() -> None:
     )
     if "script: |" in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]:
         fail("android-emulator-runner must invoke one repository Bash script, not a multiline script block")
+    instrumented_block = build.split("  android_instrumented:", 1)[1].split("  release:", 1)[0]
+    if "matrix:" in instrumented_block or "matrix.api_level" in instrumented_block:
+        fail("Android runtime instrumentation must use one stable emulator, not an API matrix")
 
     emulator_script = ROOT / "scripts/run_android_emulator_ci.sh"
     if not emulator_script.is_file():
@@ -104,19 +110,25 @@ def main() -> None:
         (
             "#!/usr/bin/env bash",
             "set -euo pipefail",
-            "adb wait-for-device",
+            "wait-for-device",
             "sys.boot_completed",
             "ro.build.version.sdk",
             "pm path android",
-            "stable >= 3",
-            "connectedDebugAndroidTest --stacktrace",
+            "stable >= 5",
+            "assembleDebug assembleDebugAndroidTest --stacktrace",
+            "am instrument -w -r",
+            "ADB_INSTRUMENT_TIMEOUT_SECONDS",
+            "instrumentation-api-$API_LEVEL.txt",
             "validate_play_store_assets.py --require-screenshots",
         ),
         "Android emulator CI script",
     )
-    for forbidden in ("svc wifi disable", "svc data disable", "svc wifi enable", "svc data enable"):
+    for forbidden in (
+        "svc wifi disable", "svc data disable", "svc wifi enable", "svc data enable",
+        "connectedDebugAndroidTest",
+    ):
         if forbidden in emulator_text:
-            fail("Host emulator script must not mutate Android network services before DDMLib device discovery")
+            fail(f"Host emulator script contains forbidden runtime behavior: {forbidden}")
 
     reader_smoke = ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java"
     if not reader_smoke.is_file():

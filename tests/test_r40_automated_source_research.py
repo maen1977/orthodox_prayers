@@ -138,15 +138,18 @@ def test_workflows_use_automatic_gate_and_android_emulator():
     assert "Require all three publishable language lanes" in update
     assert 'test "$ok" -eq 3' in update
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "connectedDebugAndroidTest --stacktrace" in emulator_script
-    assert 'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"' in build
+    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in emulator_script
+    assert "am instrument -w -r" in emulator_script
+    assert "script: bash scripts/run_android_emulator_ci.sh 35" in build
+    assert "api-level: 35" in build
+    assert "api_level: [29, 35]" not in build
     assert "script: |" not in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "adb wait-for-device" in emulator_script
+    assert "wait-for-device" in emulator_script
     assert "sys.boot_completed" in emulator_script
     assert "ro.build.version.sdk" in emulator_script
     assert "pm path android" in emulator_script
-    assert "stable >= 3" in emulator_script
+    assert "stable >= 5" in emulator_script
     assert "svc wifi disable" not in emulator_script
     reader_smoke = (
         ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java"

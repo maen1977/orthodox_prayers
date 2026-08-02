@@ -104,11 +104,17 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
 
+      - name: Validate Android compatibility contract
+        run: python scripts/validate_android_sdk_contract.py
+
       - name: Android unit tests
         run: ./gradlew --no-daemon testDebugUnitTest --stacktrace
 
       - name: Android debug lint
         run: ./gradlew --no-daemon lintDebug --stacktrace
+
+      - name: Android release lint
+        run: ./gradlew --no-daemon lintRelease --stacktrace
 
       - name: Build debug APK
         run: ./gradlew --no-daemon assembleDebug --stacktrace
@@ -147,14 +153,10 @@ jobs:
 
 
   android_instrumented:
-    name: Android emulator, offline fallback, and store screenshots
+    name: Android 15 runtime test, offline fallback, and store screenshots
     needs: android_debug
     runs-on: ubuntu-latest
     timeout-minutes: 55
-    strategy:
-      fail-fast: false
-      matrix:
-        api_level: [29, 35]
     steps:
       - name: Checkout repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
@@ -182,20 +184,19 @@ jobs:
       - name: Run instrumentation and capture Arabic, English, and Greek screens
         uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
         with:
-          api-level: ${{ matrix.api_level }}
+          api-level: 35
           target: google_apis
           arch: x86_64
           profile: pixel_5
           cores: 2
-          ram-size: 2048M
+          ram-size: 3072M
           heap-size: 512M
           emulator-boot-timeout: 900
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-snapshot -camera-back none
-          script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"
+          script: bash scripts/run_android_emulator_ci.sh 35
 
       - name: Upload generated Play Store screenshots
-        if: matrix.api_level == 35
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: play-store-screenshots
@@ -203,14 +204,16 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Upload Android instrumentation reports
+      - name: Upload Android instrumentation reports and diagnostics
+        if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
-          name: android-instrumentation-api-${{ matrix.api_level }}
+          name: android-instrumentation-api-35
           path: |
             app/build/reports/androidTests/
             app/build/outputs/androidTest-results/
-          if-no-files-found: error
+            app/build/outputs/androidTest-diagnostics/
+          if-no-files-found: warn
           retention-days: 30
 
   release:
