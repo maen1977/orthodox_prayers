@@ -1,0 +1,27 @@
+R40.2 changed files:
+.github/workflows/build.yml
+CHANGELOG.md
+R40_2_READER_SMOKE_OFFLINE_HOTFIX_AR.md
+app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java
+scripts/validate_workflows.py
+tests/test_r40_automated_source_research.py
+tests/test_r40_release_automation.py
+tests/test_release_contract.py
+
+Deleted:
+.pytest_cache/.gitignore
+.pytest_cache/CACHEDIR.TAG
+.pytest_cache/README.md
+.pytest_cache/v/cache/nodeids
+scripts/__pycache__/android_ui_resources.cpython-313.pyc
+scripts/__pycache__/build_play_store_release_package.cpython-313.pyc
+scripts/__pycache__/official_sources.cpython-313.pyc
+scripts/__pycache__/orthodox_integrity.cpython-313.pyc
+scripts/__pycache__/rolling_window_contract.cpython-313.pyc
+scripts/__pycache__/source_connectors.cpython-313.pyc
+scripts/__pycache__/source_window_research.cpython-313.pyc
+scripts/__pycache__/update_liturgical_data.cpython-313.pyc
+tests/__pycache__/test_brand_identity.cpython-313-pytest-9.0.2.pyc
+tests/__pycache__/test_r40_automated_source_research.cpython-313-pytest-9.0.2.pyc
+tests/__pycache__/test_r40_release_automation.cpython-313-pytest-9.0.2.pyc
+tests/__pycache__/test_release_contract.cpython-313-pytest-9.0.2.pyc

@@ -113,7 +113,9 @@ def test_build_workflow_tests_old_and_new_android_offline_and_packages_play_rele
     assert (ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/StoreScreenshotTest.java").is_file()
     for marker in (
         "api_level: [29, 35]",
-        "adb shell svc wifi disable",
+        "adb wait-for-device",
+        "sys.boot_completed",
+        "retry_adb svc wifi disable",
         "bash -euo pipefail <<'BASH'",
         "connectedDebugAndroidTest",
         "play-store-screenshots",

@@ -65,7 +65,10 @@ def main() -> None:
             "PLAY_SUPPORT_EMAIL",
             "api_level: [29, 35]",
             "validate_release_permissions.py",
-            "adb shell svc wifi disable",
+            "adb wait-for-device",
+            "sys.boot_completed",
+            "retry_adb svc wifi disable",
+            "retry_adb svc data disable",
             "bash -euo pipefail <<'BASH'",
             "name: Android debug lint",
             "lintDebug --stacktrace",
@@ -92,6 +95,9 @@ def main() -> None:
         ),
         "Build workflow",
     )
+    if "adb shell svc wifi disable || true" in build or "adb shell svc data disable || true" in build:
+        fail("Offline emulator checks must fail closed and retry after Android boot")
+
     upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  release:", 1)[0]
     if "app/build/outputs/apk/debug/app-debug.apk" in upload_debug_block:
         fail("Raw app-debug.apk must not be exposed in the downloadable artifact")

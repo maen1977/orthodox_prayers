@@ -14,6 +14,8 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.orthodoxprayers.privateapp.data.DataRepository;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +35,7 @@ public final class ReaderSmokeTest {
     public void prayersAndLiturgiesRenderScrollableContentWithoutBlankViewport() {
         try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
             assertReader(scenario, "divine_liturgy", 200);
-            assertReader(scenario, "next_sunday_full_liturgy", 200);
+            assertReader(scenario, datedEmbeddedServiceId("next_sunday_full_liturgy"), 200);
             assertReader(scenario, "morning_prayer", 5);
         }
     }
@@ -41,7 +43,7 @@ public final class ReaderSmokeTest {
     @Test
     public void manualShowAndHideControlsNeverHidesReaderContent() {
         try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
-            scenario.onActivity(activity -> activity.navigate("reader", "next_sunday_full_liturgy"));
+            scenario.onActivity(activity -> activity.navigate("reader", datedEmbeddedServiceId("next_sunday_full_liturgy")));
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
 
             final int[] collapsedHeight = new int[1];
@@ -73,6 +75,24 @@ public final class ReaderSmokeTest {
                 assertTrue("Hiding controls should restore the reading area", reader.getHeight() >= expandedHeight[0]);
             });
         }
+    }
+
+    @Test
+    public void currentNextSundayServiceRendersWhenTheSignedPackageIsCurrent() {
+        OrthodoxPrayersApp app = ApplicationProvider.getApplicationContext();
+        org.junit.Assume.assumeTrue(
+                "The bundled signed package is intentionally stale on this test date",
+                app.repository().isTodayCurrent()
+        );
+        try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
+            assertReader(scenario, "next_sunday_full_liturgy", 200);
+        }
+    }
+
+    private static String datedEmbeddedServiceId(String serviceId) {
+        OrthodoxPrayersApp app = ApplicationProvider.getApplicationContext();
+        DataRepository repository = app.repository();
+        return DataRepository.datedServiceId(repository.dataDate(), serviceId);
     }
 
     private static void assertReader(ActivityScenario<MainActivity> scenario, String serviceId, int minimumItems) {

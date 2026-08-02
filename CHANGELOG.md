@@ -1,3 +1,9 @@
+
+## R40.2
+- Fixed offline Android reader instrumentation by using the embedded package date for dynamic next-Sunday services.
+- Added a current-package-only dynamic reader test.
+- Wait for Android boot completion and retry network-disable commands before offline instrumentation.
+
 # R40.1 Android Emulator Bash Hotfix
 
 - Run the emulator action script inside explicit Bash because the action invokes `/bin/sh` by default.

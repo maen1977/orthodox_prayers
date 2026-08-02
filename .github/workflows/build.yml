@@ -190,10 +190,30 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: |
             bash -euo pipefail <<'BASH'
-            adb shell svc wifi disable || true
-            adb shell svc data disable || true
+            adb wait-for-device
+            for attempt in {1..60}; do
+              if [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]]; then
+                break
+              fi
+              sleep 2
+            done
+            [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]]
+
+            retry_adb() {
+              local attempt
+              for attempt in {1..5}; do
+                if adb shell "$@"; then
+                  return 0
+                fi
+                sleep 2
+              done
+              return 1
+            }
+
+            retry_adb svc wifi disable
+            retry_adb svc data disable
             ./gradlew --no-daemon connectedDebugAndroidTest --stacktrace
-            adb shell svc wifi enable || true
+            retry_adb svc wifi enable || true
             if [[ "${{ matrix.api_level }}" == "35" ]]; then
               mkdir -p play-store/assets/screenshots
               adb pull /sdcard/Android/data/com.orthodoxprayers.privateapp/files/store-screenshots/. play-store/assets/screenshots/
