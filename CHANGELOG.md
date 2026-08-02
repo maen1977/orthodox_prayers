@@ -1,3 +1,10 @@
+## R40.3 — Android emulator single-command Bash runner hotfix
+
+- Replaced the multiline `android-emulator-runner` script block with one command that invokes `scripts/run_android_emulator_ci.sh`.
+- Moved Android boot waiting, retry logic, offline network control, instrumentation, network restoration, and API 35 screenshot collection into the repository Bash script.
+- Added regression tests that execute the runner through `/bin/sh -c`, matching the action behavior that previously split multiline loops.
+- Preserved fail-closed offline tests and automatic restoration of Wi-Fi and mobile data.
+
 
 ## R40.2
 - Fixed offline Android reader instrumentation by using the embedded package date for dynamic next-Sunday services.

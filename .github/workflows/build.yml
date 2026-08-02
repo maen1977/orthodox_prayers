@@ -188,38 +188,7 @@ jobs:
           profile: pixel_5
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: |
-            bash -euo pipefail <<'BASH'
-            adb wait-for-device
-            for attempt in {1..60}; do
-              if [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]]; then
-                break
-              fi
-              sleep 2
-            done
-            [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]]
-
-            retry_adb() {
-              local attempt
-              for attempt in {1..5}; do
-                if adb shell "$@"; then
-                  return 0
-                fi
-                sleep 2
-              done
-              return 1
-            }
-
-            retry_adb svc wifi disable
-            retry_adb svc data disable
-            ./gradlew --no-daemon connectedDebugAndroidTest --stacktrace
-            retry_adb svc wifi enable || true
-            if [[ "${{ matrix.api_level }}" == "35" ]]; then
-              mkdir -p play-store/assets/screenshots
-              adb pull /sdcard/Android/data/com.orthodoxprayers.privateapp/files/store-screenshots/. play-store/assets/screenshots/
-              python scripts/validate_play_store_assets.py --require-screenshots
-            fi
-            BASH
+          script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"
 
       - name: Upload generated Play Store screenshots
         if: matrix.api_level == 35

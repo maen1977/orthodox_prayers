@@ -137,12 +137,15 @@ def test_workflows_use_automatic_gate_and_android_emulator():
     assert "human review" not in update.lower()
     assert "Require all three publishable language lanes" in update
     assert 'test "$ok" -eq 3' in update
-    assert "connectedDebugAndroidTest" in build
-    assert "adb wait-for-device" in build
-    assert "sys.boot_completed" in build
-    assert "retry_adb svc wifi disable" in build
-    assert "bash -euo pipefail <<'BASH'" in build
-    assert "script: |\n            set -euo pipefail" not in build
+    emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
+    assert "connectedDebugAndroidTest --stacktrace" in emulator_script
+    assert 'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"' in build
+    assert "script: |" not in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]
+    emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
+    assert "adb wait-for-device" in emulator_script
+    assert "sys.boot_completed" in emulator_script
+    assert "retry_adb_shell svc wifi disable" in emulator_script
+    assert "set -euo pipefail" in emulator_script
     assert "play-store-screenshots" in build
     assert "validate_play_store_assets.py --require-screenshots" in build
 

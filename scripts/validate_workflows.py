@@ -57,19 +57,13 @@ def main() -> None:
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
             "Android emulator, offline fallback, and store screenshots",
-            "connectedDebugAndroidTest --stacktrace",
             "play-store-screenshots",
-            "validate_play_store_assets.py --require-screenshots",
             "actions/download-artifact@",
             "build_play_store_release_package.py",
             "PLAY_SUPPORT_EMAIL",
             "api_level: [29, 35]",
             "validate_release_permissions.py",
-            "adb wait-for-device",
-            "sys.boot_completed",
-            "retry_adb svc wifi disable",
-            "retry_adb svc data disable",
-            "bash -euo pipefail <<'BASH'",
+            'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"',
             "name: Android debug lint",
             "lintDebug --stacktrace",
             "name: Build debug APK",
@@ -95,8 +89,27 @@ def main() -> None:
         ),
         "Build workflow",
     )
-    if "adb shell svc wifi disable || true" in build or "adb shell svc data disable || true" in build:
-        fail("Offline emulator checks must fail closed and retry after Android boot")
+    if "script: |" in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]:
+        fail("android-emulator-runner must invoke one repository Bash script, not a multiline script block")
+
+    emulator_script = ROOT / "scripts/run_android_emulator_ci.sh"
+    if not emulator_script.is_file():
+        fail("Missing scripts/run_android_emulator_ci.sh")
+    emulator_text = emulator_script.read_text(encoding="utf-8")
+    require_all(
+        emulator_text,
+        (
+            "#!/usr/bin/env bash",
+            "set -euo pipefail",
+            "adb wait-for-device",
+            "sys.boot_completed",
+            "retry_adb_shell svc wifi disable",
+            "retry_adb_shell svc data disable",
+            "connectedDebugAndroidTest --stacktrace",
+            "validate_play_store_assets.py --require-screenshots",
+        ),
+        "Android emulator CI script",
+    )
 
     upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  release:", 1)[0]
     if "app/build/outputs/apk/debug/app-debug.apk" in upload_debug_block:

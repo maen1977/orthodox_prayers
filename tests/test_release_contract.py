@@ -606,7 +606,8 @@ class ReleaseContractTests(unittest.TestCase):
             2,
         )
         self.assertIn("chmod +x ./gradlew", build)
-        self.assertIn("connectedDebugAndroidTest", build)
+        emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
+        self.assertIn("connectedDebugAndroidTest --stacktrace", emulator_script)
         self.assertIn("ReactiveCircus/android-emulator-runner@", build)
         self.assertIn("play-store-screenshots", build)
         self.assertIn("validate_play_store_assets.py --require-screenshots", build)

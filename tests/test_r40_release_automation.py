@@ -113,17 +113,16 @@ def test_build_workflow_tests_old_and_new_android_offline_and_packages_play_rele
     assert (ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/StoreScreenshotTest.java").is_file()
     for marker in (
         "api_level: [29, 35]",
-        "adb wait-for-device",
-        "sys.boot_completed",
-        "retry_adb svc wifi disable",
-        "bash -euo pipefail <<'BASH'",
-        "connectedDebugAndroidTest",
+        'script: bash scripts/run_android_emulator_ci.sh "${{ matrix.api_level }}"',
         "play-store-screenshots",
         "validate_release_permissions.py",
         "build_play_store_release_package.py",
         "PLAY_SUPPORT_EMAIL",
     ):
         assert marker in workflow
+    emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
+    assert "connectedDebugAndroidTest --stacktrace" in emulator_script
+    assert "validate_play_store_assets.py --require-screenshots" in emulator_script
 
 
 def test_calendar_boundary_validator_covers_every_year_transition_through_2050():

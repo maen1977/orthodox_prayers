@@ -1,0 +1,10 @@
+.github/workflows/build.yml
+scripts/run_android_emulator_ci.sh
+scripts/validate_workflows.py
+tests/test_r40_3_emulator_script.py
+tests/test_r40_release_automation.py
+tests/test_r40_automated_source_research.py
+tests/test_release_contract.py
+CHANGELOG.md
+R40_3_ANDROID_EMULATOR_SINGLE_COMMAND_HOTFIX_AR.md
+CHANGED_FILES_R40_3.txt
