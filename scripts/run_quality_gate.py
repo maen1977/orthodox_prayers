@@ -20,10 +20,13 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "-m", "pytest", "-q"],
         [sys.executable, "scripts/validate_workflows.py"],
         [sys.executable, "scripts/validate_internal_calendar_2050.py"],
+        [sys.executable, "scripts/validate_calendar_boundaries_2050.py"],
+        [sys.executable, "scripts/validate_source_comparison_policy.py"],
         [sys.executable, "scripts/verify_gradle_wrapper.py"],
         [sys.executable, "scripts/scan_repository_secrets.py"],
         [sys.executable, "scripts/verify_static_texts.py"],
         [sys.executable, "scripts/validate_play_store_assets.py"],
+        [sys.executable, "scripts/validate_play_store_metadata.py"],
         [sys.executable, "scripts/validate_ui_localizations.py"],
         [sys.executable, "scripts/validate_android_resources.py"],
         [sys.executable, "scripts/validate_static_prayer_sources.py"],
@@ -45,6 +48,8 @@ def commands(require_current: bool, strict_native_lanes: bool) -> list[list[str]
         [sys.executable, "scripts/validate_source_intelligence.py", "data/calendar/today.json"],
         [sys.executable, "scripts/verify_r18_patch.py"],
     ]
+    if require_current:
+        checks.append([sys.executable, "scripts/validate_source_comparison.py"])
     if strict_native_lanes:
         # Strict lane integrity rejects copied Arabic and wrong-script content.
         # Completeness remains a separate production-release requirement enforced

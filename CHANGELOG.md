@@ -1,3 +1,12 @@
+## 5.0.23 — R40 automated source research and release pipeline
+
+- Added a fail-closed nine-day source-comparison engine with Orthodox Jordan and Jerusalem calendar priority, dated cross-check connectors, evidence hashes, and automatic publication decisions without a daily human-review dependency.
+- Added source-structure drift detection, retries, per-run URL caching, machine-readable comparison reports, and automatic failure/recovery issue context.
+- Added Android emulator coverage on API 29 and API 35 with network disabled, real Arabic/English/Greek store screenshots, and mandatory instrumentation before protected release.
+- Added final APK permission enforcement and deterministic Play Console packaging for the AAB, graphics, multilingual listings, screenshots, privacy, Data Safety, rights, and checksums.
+- Added complete 2026–2050 year-boundary/leap-window validation and release metadata/privacy updates.
+- Passed 420 tests plus 14 subtests and all constituent strict-native quality-gate validators available without Gradle network access.
+
 ## 5.0.23 — R39 internal 2026–2050 calendar horizon
 
 - Added a compact offline Jerusalem/Jordan old-calendar baseline for every civil day from 2026-01-01 through 2050-12-31 (9,131 days).

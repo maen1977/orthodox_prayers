@@ -56,6 +56,16 @@ def main() -> None:
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
+            "Android emulator, offline fallback, and store screenshots",
+            "connectedDebugAndroidTest --stacktrace",
+            "play-store-screenshots",
+            "validate_play_store_assets.py --require-screenshots",
+            "actions/download-artifact@",
+            "build_play_store_release_package.py",
+            "PLAY_SUPPORT_EMAIL",
+            "api_level: [29, 35]",
+            "validate_release_permissions.py",
+            "adb shell svc wifi disable",
             "name: Android debug lint",
             "lintDebug --stacktrace",
             "name: Build debug APK",
@@ -87,9 +97,6 @@ def main() -> None:
 
     for forbidden in (
         "github/codeql-action/",
-        "android-emulator-runner@",
-        "connectedDebugAndroidTest",
-        "assembleDebugAndroidTest",
         "testDebugUnitTest lintDebug lintRelease",
     ):
         if forbidden in build:
@@ -157,10 +164,25 @@ def main() -> None:
             "Require one consistent unsigned publication date",
             "verified-data-commit-check",
             "git archive HEAD",
+            "Automated religious evidence and cross-source decision gate",
+            "scripts/validate_automated_religious_evidence.py",
+            "scripts/validate_source_comparison.py",
+            "scripts/compare_source_snapshots.py",
+            "canonical/source_comparison_policy.json",
+            "Close recovered source-update alert",
             "Open failure alert",
         ),
         "Update workflow",
     )
+
+    for forbidden in (
+        "--require-reviewed-propers",
+        "Block signing until all daily propers are reviewed",
+        "human review required",
+    ):
+        if forbidden.lower() in update.lower():
+            fail(f"Update workflow still depends on manual religious review: {forbidden}")
+
     if update.count('timezone: "Asia/Amman"') != 2:
         fail("Both daily updates must use the Asia/Amman timezone")
     if update.count('cron: "23 4 * * *"') != 1 or update.count('cron: "43 16 * * *"') != 1:
@@ -186,6 +208,7 @@ def main() -> None:
     ordered_markers = (
         "Generate and validate moving horizon without signing key",
         "Validate unsigned language lanes independently",
+        "Automated religious evidence and cross-source decision gate",
         "Prepare publication worktree before restoring key",
         "Preserve complete same-day language lanes",
         "Restore and match the one signing key",
@@ -202,7 +225,8 @@ def main() -> None:
 
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
-        "external-source generation; debug checks are separated; Update runs only manually "
+        "external-source generation; automatic source comparison is fail-closed; Android "
+        "instrumentation and multilingual screenshots are required; Update runs only manually "
         "or twice daily at 04:23 and 16:43 Asia/Amman"
     )
 

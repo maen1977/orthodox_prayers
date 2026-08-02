@@ -13,6 +13,7 @@ import html as html_module
 import json
 import re
 import socket
+import time
 import unicodedata
 import urllib.error
 import urllib.parse
@@ -62,6 +63,9 @@ class ConnectorDefinition:
     timeout_seconds: int = 25
     max_bytes: int = 2_000_000
     service_url_templates: list[str] = field(default_factory=list)
+    date_scope: str = "availability"
+    comparison_role: str = "reference_only"
+    retry_attempts: int = 3
 
     def url_for(self, target: date) -> str:
         return self.url_template.format(year=target.year, month=target.month, day=target.day)
@@ -81,6 +85,7 @@ class ConnectorObservation:
     checked_at_utc: str
     http_status: int | None = None
     content_sha256: str | None = None
+    structure_sha256: str | None = None
     content_bytes: int | None = None
     detected_date: str | None = None
     epistle_reference: str | None = None
@@ -213,6 +218,20 @@ def safe_fetch(url: str, timeout_seconds: int, max_bytes: int) -> tuple[int, byt
             raise ValueError(f"Source response exceeds maximum size: > {max_bytes}")
         return status, data, final_url
 
+
+
+
+def html_structure_sha256(raw: bytes) -> str:
+    """Hash only the HTML tag skeleton so parser drift is distinguishable from daily text changes."""
+    tags = []
+    for closing, name in re.findall(br"<\s*(/?)\s*([A-Za-z][A-Za-z0-9:-]*)", raw):
+        tag = name.decode("ascii", errors="ignore").lower()
+        if tag in {"script", "style", "svg", "path"}:
+            continue
+        tags.append(("/" if closing else "") + tag)
+        if len(tags) >= 12000:
+            break
+    return hashlib.sha256("|".join(tags).encode("utf-8")).hexdigest()
 
 def decode_document(raw: bytes) -> str:
     for encoding in ("utf-8", "utf-8-sig", "windows-1256", "iso-8859-7", "windows-1252"):
@@ -393,6 +412,58 @@ def parse_goarch_online_chapel(definition: ConnectorDefinition, target: date, ur
     return observation
 
 
+def parse_goarch_calendar_month(definition: ConnectorDefinition, target: date, url: str, status: int, raw: bytes) -> ConnectorObservation:
+    observation = base_observation(definition, target, url)
+    parser = parse_html(raw, url)
+    text = parser.text
+    marker = poison_marker(text)
+    if marker:
+        observation.status = "poisoned"
+        observation.reason = f"poison marker detected: {marker}"
+        return observation
+    month_name = next((name for name, number in MONTHS_EN.items() if number == target.month), "")
+    patterns = (
+        rf"(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)?\s*{target.day}\s+[^\n]{{0,80}}{month_name}\s+0?{target.day}[,]?\s+{target.year}",
+        rf"{month_name}\s+0?{target.day}[,]?\s+{target.year}",
+    )
+    start = -1
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            start = match.start()
+            break
+    if start < 0:
+        observation.status = "unusable"
+        observation.confidence = 0.15
+        observation.reason = "requested date was not located in the GOARCH monthly calendar"
+        return observation
+    segment = text[start:start + 7000]
+    observation.detected_date = target.isoformat()
+    observation.epistle_reference = extract_labeled_reference(segment, ("Epistle Reading", "Epistle", "Ἀπόστολος"))
+    observation.gospel_reference = extract_labeled_reference(segment, ("Gospel Reading", "Gospel", "Εὐαγγέλιο"))
+    matins = extract_labeled_reference(segment, ("Matins Gospel Reading", "Matins Gospel"))
+    if matins:
+        observation.warnings.append(f"matins_gospel_reference={matins}")
+    before_epistle = re.split(r"Epistle Reading|Ἀπόστολος", segment, maxsplit=1, flags=re.I)[0]
+    lines = [compact_text(line) for line in before_epistle.splitlines() if compact_text(line)]
+    for line in lines[1:20]:
+        if len(line) < 4 or len(line) > 220:
+            continue
+        if re.search(r"view all|image|sunday|monday|tuesday|wednesday|thursday|friday|saturday", line, re.I):
+            continue
+        if line not in observation.commemorations:
+            observation.commemorations.append(line)
+    if observation.epistle_reference or observation.gospel_reference:
+        observation.status = "current"
+        observation.confidence = 0.82
+    else:
+        observation.status = "partial"
+        observation.confidence = 0.5
+        observation.reason = "date and commemorations found but reading references were not extracted"
+    observation.warnings.append("GOARCH calendar is a new-calendar cross-check and never overrides Jerusalem/Jordan")
+    return observation
+
+
 def parse_oca_daily_readings(definition: ConnectorDefinition, target: date, url: str, status: int, raw: bytes) -> ConnectorObservation:
     observation = base_observation(definition, target, url)
     parser = parse_html(raw, url)
@@ -483,6 +554,7 @@ PARSERS = {
     "orthodox_jordan_daily": parse_orthodox_jordan_daily,
     "orthodox_jordan_churches": parse_orthodox_jordan_churches,
     "goarch_online_chapel": parse_goarch_online_chapel,
+    "goarch_calendar_month": parse_goarch_calendar_month,
     "oca_daily_readings": parse_oca_daily_readings,
     "dcs_service_probe": parse_dcs_probe,
 }
@@ -494,11 +566,18 @@ def observe_connector(
     *,
     raw: bytes | None = None,
     fixture_status: int = 200,
+    fetch_cache: dict[str, tuple[int, bytes, str]] | None = None,
 ) -> ConnectorObservation:
     url = definition.url_for(target)
     try:
         if raw is None:
-            http_status, raw, url = safe_fetch(url, definition.timeout_seconds, definition.max_bytes)
+            cached = fetch_cache.get(url) if fetch_cache is not None else None
+            if cached is None:
+                http_status, raw, url = safe_fetch(url, definition.timeout_seconds, definition.max_bytes)
+                if fetch_cache is not None:
+                    fetch_cache[definition.url_for(target)] = (http_status, raw, url)
+            else:
+                http_status, raw, url = cached
         else:
             http_status = fixture_status
         digest = hashlib.sha256(raw).hexdigest()
@@ -508,6 +587,7 @@ def observe_connector(
         observation = parser(definition, target, url, http_status, raw)
         observation.http_status = http_status
         observation.content_sha256 = digest
+        observation.structure_sha256 = html_structure_sha256(raw)
         observation.content_bytes = len(raw)
         return observation
     except urllib.error.HTTPError as exc:
@@ -527,6 +607,35 @@ def observe_connector(
         observation.reason = f"{type(exc).__name__}: {exc}"[:500]
         return observation
 
+
+
+def observe_connector_with_retries(
+    definition: ConnectorDefinition,
+    target: date,
+    *,
+    raw: bytes | None = None,
+    fixture_status: int = 200,
+    fetch_cache: dict[str, tuple[int, bytes, str]] | None = None,
+    attempts: int | None = None,
+    initial_backoff_seconds: int = 1,
+    maximum_backoff_seconds: int = 4,
+) -> ConnectorObservation:
+    """Retry transient HTTP/network failures without retrying poisoned or invalid content."""
+    attempt_limit = max(1, int(attempts or definition.retry_attempts or 1))
+    last: ConnectorObservation | None = None
+    for attempt in range(1, attempt_limit + 1):
+        last = observe_connector(definition, target, raw=raw, fixture_status=fixture_status, fetch_cache=fetch_cache)
+        if definition.parser == "dcs_service_probe" and raw is None:
+            last = probe_service_links(last, definition)
+        if last.status not in {"network_error", "http_error", "parser_error"}:
+            break
+        if raw is not None or attempt >= attempt_limit:
+            break
+        delay = min(maximum_backoff_seconds, initial_backoff_seconds * (2 ** (attempt - 1)))
+        time.sleep(max(0, delay))
+    assert last is not None
+    last.warnings.append(f"attempts={attempt}")
+    return last
 
 
 def probe_service_links(observation: ConnectorObservation, definition: ConnectorDefinition) -> ConnectorObservation:

@@ -454,7 +454,7 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn('"--skip-scripture-preparation"', update)
         self.assertIn('--skip-scripture-preparation', workflow)
 
-    def test_daily_refresh_runs_once_at_0607_amman_with_safe_fallback(self):
+    def test_daily_refresh_runs_twice_daily_at_off_peak_amman_times_with_safe_fallback(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
         main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
         policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/update/RefreshPolicy.java").read_text(encoding="utf-8")
@@ -604,8 +604,10 @@ class ReleaseContractTests(unittest.TestCase):
             2,
         )
         self.assertIn("chmod +x ./gradlew", build)
-        self.assertNotIn("connectedDebugAndroidTest", build)
-        self.assertNotIn("android-emulator-runner@", build)
+        self.assertIn("connectedDebugAndroidTest", build)
+        self.assertIn("ReactiveCircus/android-emulator-runner@", build)
+        self.assertIn("play-store-screenshots", build)
+        self.assertIn("validate_play_store_assets.py --require-screenshots", build)
         self.assertNotIn("github/codeql-action/", build)
         self.assertNotIn("assembleDebugAndroidTest", build)
 
@@ -625,6 +627,7 @@ class ReleaseContractTests(unittest.TestCase):
         ordered = [
             update.index("Generate and validate moving horizon without signing key"),
             update.index("Validate unsigned language lanes independently"),
+            update.index("Automated religious evidence and cross-source decision gate"),
             update.index("Prepare publication worktree before restoring key"),
             update.index("Restore and match the one signing key"),
             update.index("Sign and verify generated data"),

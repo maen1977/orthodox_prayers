@@ -527,7 +527,9 @@
         "daily_reading_text",
         "epistle_reference",
         "fasting",
+        "feasts",
         "gospel_reference",
+        "matins_gospel_reference",
         "saints"
       ],
       "used_for": {
@@ -539,11 +541,13 @@
       "permission_confirmed": true,
       "last_verified": "2026-07-26",
       "authority_tier": 4,
-      "connector_count": 1,
+      "connector_count": 2,
       "connector_ids": [
-        "goarch_online_chapel_daily"
+        "goarch_online_chapel_daily",
+        "goarch_calendar_month"
       ],
       "publication_roles": [
+        "dated_monthly_reference_cross_check",
         "regular_cycle_cross_check"
       ],
       "health_statuses": [

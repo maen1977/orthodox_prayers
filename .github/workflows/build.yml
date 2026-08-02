@@ -73,7 +73,7 @@ jobs:
                 app/src/main/assets/data/library.json \
                 app/src/main/assets/data/native
               python -m pytest -q tests/test_native_service_category_alignment.py
-              python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-compatible-manifest-version --allow-legacy-multilingual-lanes
+              python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest --allow-compatible-manifest-version --allow-missing-source-comparison --allow-legacy-multilingual-lanes
               git worktree remove --force "$VERIFIED_DIR"
               trap - EXIT
             else
@@ -145,9 +145,83 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+
+  android_instrumented:
+    name: Android emulator, offline fallback, and store screenshots
+    needs: android_debug
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        api_level: [29, 35]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Normalize Gradle wrapper permission
+        run: python scripts/ensure_gradlew_executable.py
+
+      - name: Run instrumentation and capture Arabic, English, and Greek screens
+        uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
+        with:
+          api-level: ${{ matrix.api_level }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_5
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: |
+            set -euo pipefail
+            adb shell svc wifi disable || true
+            adb shell svc data disable || true
+            ./gradlew --no-daemon connectedDebugAndroidTest --stacktrace
+            adb shell svc wifi enable || true
+            if [[ "${{ matrix.api_level }}" == "35" ]]; then
+              mkdir -p play-store/assets/screenshots
+              adb pull /sdcard/Android/data/com.orthodoxprayers.privateapp/files/store-screenshots/. play-store/assets/screenshots/
+              python scripts/validate_play_store_assets.py --require-screenshots
+            fi
+
+      - name: Upload generated Play Store screenshots
+        if: matrix.api_level == 35
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: play-store-screenshots
+          path: play-store/assets/screenshots/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload Android instrumentation reports
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: android-instrumentation-api-${{ matrix.api_level }}
+          path: |
+            app/build/reports/androidTests/
+            app/build/outputs/androidTest-results/
+          if-no-files-found: error
+          retention-days: 30
+
   release:
     name: Protected signed APK and AAB
-    needs: android_debug
+    needs: [android_debug, android_instrumented]
     if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release == true)
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -193,6 +267,12 @@ jobs:
           python -m pytest -q tests/test_native_service_category_alignment.py
           git worktree remove --force "$VERIFIED_DIR"
           echo "ORTHODOX_DATE=$(TZ=Asia/Amman date +%F)" >> "$GITHUB_ENV"
+
+      - name: Download automatically generated store screenshots
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: play-store-screenshots
+          path: play-store/assets/screenshots
 
       - name: Normalize Gradle wrapper permission
         run: python scripts/ensure_gradlew_executable.py
@@ -258,6 +338,28 @@ jobs:
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew --no-daemon clean testDebugUnitTest lintRelease assembleRelease bundleRelease --stacktrace
+
+      - name: Inspect final release permissions for Data Safety
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release
+          APKANALYZER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name apkanalyzer | sort | tail -1)"
+          test -x "$APKANALYZER"
+          "$APKANALYZER" manifest permissions app/build/outputs/apk/release/app-release.apk > release/RELEASE_PERMISSIONS.txt
+          python scripts/validate_release_permissions.py release/RELEASE_PERMISSIONS.txt
+
+      - name: Build Play Console upload package
+        env:
+          PLAY_SUPPORT_EMAIL: ${{ secrets.PLAY_SUPPORT_EMAIL }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$PLAY_SUPPORT_EMAIL" || { echo "PLAY_SUPPORT_EMAIL is required" >&2; exit 1; }
+          python scripts/build_play_store_release_package.py \
+            --aab app/build/outputs/bundle/release/app-release.aab \
+            --output-dir release/play-store \
+            --support-email "$PLAY_SUPPORT_EMAIL"
 
       - name: Generate dependency report, SBOM, and clean source archive
         shell: bash

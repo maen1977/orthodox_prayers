@@ -44,10 +44,22 @@ def main() -> None:
     if health.get("date_iso") != expected:
         raise SystemExit("daily source-health date mismatch")
     observations = health.get("observations") or []
-    if len(observations) != len(connectors):
-        raise SystemExit("daily source-health connector count mismatch")
-    if {item.get("connector_id") for item in observations} != set(ids):
-        raise SystemExit("daily source-health connector IDs mismatch")
+    observed_ids = {item.get("connector_id") for item in observations}
+    registry_ids = set(ids)
+    if args.expected_date:
+        if len(observations) != len(connectors):
+            raise SystemExit("daily source-health connector count mismatch")
+        if observed_ids != registry_ids:
+            raise SystemExit("daily source-health connector IDs mismatch")
+    else:
+        # A signed embedded bootstrap may predate an additive connector. It remains
+        # immutable until Update republishes it. Source-tree validation accepts only
+        # a complete legacy subset; dated publication validation above stays strict.
+        if len(observations) < 9 or not observed_ids.issubset(registry_ids):
+            raise SystemExit("embedded source-health connector set is not a safe legacy subset")
+        missing = sorted(registry_ids - observed_ids)
+        if missing:
+            print("LEGACY_SOURCE_HEALTH_SUBSET missing=" + ",".join(missing))
     for item in observations:
         if not https(str(item.get("url") or "")):
             raise SystemExit(f"{item.get('connector_id')}: observation URL must be HTTPS")

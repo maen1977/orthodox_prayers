@@ -14,17 +14,17 @@ A free Orthodox church agenda and prayer app with daily readings, prayer service
 
 Main features:
 
-- Daily church agenda and readings.
+- An internal church calendar from 2026 through 2050, showing today and the next eight days.
 - Structured prayers and services with a readable long-form reader.
 - Scripture text from a pinned Bible edition, with reference and verse validation.
-- Digitally signed daily updates that are verified before display.
-- Last trusted copy retained for offline use.
+- Automated church-source comparison and reference checks, followed by digitally signed updates verified before display.
+- Internal calendar data and the last trusted signed copy retained for offline use.
 - Favorites, saved reading position, and adjustable font size.
 - Dark mode.
 - Arabic, English, and Greek interface. Unverified translations are never presented as official text.
 - No ads, no login, and no tracking in the current version.
 
-The app follows a fail-closed source order: Orthodox Jordan Metropolis, Jerusalem Patriarchate, Antioch Patriarchate, official Greek Orthodox sources, then the Orthodox Church in America when required.
+The app follows a fail-closed source order led by Orthodox Jordan and the Jerusalem Patriarchate, with documented date-addressable Orthodox sources used for comparison. A same-calendar conflict blocks publication automatically instead of being guessed.
 
 Provided free of charge by Maen Hanouna Satellite.
 Phone: +962 78 827 2988

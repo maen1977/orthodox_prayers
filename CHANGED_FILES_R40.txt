@@ -1,0 +1,48 @@
+R40 changed files relative to R39
+
+Added (14):
+R40_AUTOMATED_SOURCE_RESEARCH_RELEASE_PIPELINE_AR.md
+app/src/androidTest/java/com/orthodoxprayers/privateapp/StoreScreenshotTest.java
+canonical/source_comparison_policy.json
+scripts/build_play_store_release_package.py
+scripts/compare_source_snapshots.py
+scripts/source_window_research.py
+scripts/validate_automated_religious_evidence.py
+scripts/validate_calendar_boundaries_2050.py
+scripts/validate_play_store_metadata.py
+scripts/validate_release_permissions.py
+scripts/validate_source_comparison.py
+scripts/validate_source_comparison_policy.py
+tests/test_r40_automated_source_research.py
+tests/test_r40_release_automation.py
+
+Changed (27):
+.github/workflows/build.yml
+.github/workflows/update.yml
+CHANGELOG.md
+GITHUB_SECRETS_AR.md
+PRIVACY.md
+README_AR.md
+RELEASE_NOTES_5.0.23_AR.md
+RELEASE_READINESS_AR.md
+app/src/main/assets/data/source_registry.json
+canonical/source_connectors.json
+data/sources/source_registry.json
+docs/privacy/index.html
+play-store/DATA_SAFETY_AR.md
+play-store/PLAY_CONSOLE_CHECKLIST_AR.md
+play-store/REQUIRED_OWNER_INPUT_AR.md
+play-store/STORE_LISTING_AR.md
+play-store/STORE_LISTING_EL.md
+play-store/STORE_LISTING_EN.md
+scripts/collect_source_health.py
+scripts/run_quality_gate.py
+scripts/source_connectors.py
+scripts/update.py
+scripts/update_language_lane.py
+scripts/validate_source_intelligence.py
+scripts/validate_workflows.py
+scripts/verify.py
+tests/test_release_contract.py
+
+Removed (0):

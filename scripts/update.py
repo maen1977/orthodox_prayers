@@ -43,6 +43,8 @@ def verify_pipeline_patch() -> None:
         str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
         "canonical/source_connectors.json": "local_authority_source_id",
         "scripts/source_connectors.py": "dcs_reference_after_heading",
+        "scripts/source_window_research.py": "AUTOMATED_FAIL_CLOSED",
+        "canonical/source_comparison_policy.json": "human_review_required",
     }
     actual = {
         str(integrity_path.relative_to(ROOT)): integrity_text,
@@ -56,6 +58,8 @@ def verify_pipeline_patch() -> None:
         str(workflow_path.relative_to(ROOT)): workflow_path.read_text(encoding="utf-8") if workflow_path.is_file() else "",
         "canonical/source_connectors.json": (ROOT / "canonical/source_connectors.json").read_text(encoding="utf-8"),
         "scripts/source_connectors.py": (ROOT / "scripts/source_connectors.py").read_text(encoding="utf-8"),
+        "scripts/source_window_research.py": (ROOT / "scripts/source_window_research.py").read_text(encoding="utf-8"),
+        "canonical/source_comparison_policy.json": (ROOT / "canonical/source_comparison_policy.json").read_text(encoding="utf-8"),
     }
     missing = [name for name, marker in required.items() if marker not in actual[name]]
     if missing:
@@ -183,6 +187,31 @@ def main() -> None:
         "--expected-start",
         args.date,
     )
+    # Automated source research replaces manual review. It compares the complete
+    # nine-day package against local authority evidence, the internal calendar,
+    # and date-addressable official cross-checks, then attaches a signed decision.
+    run(
+        "scripts/source_window_research.py",
+        "--start-date",
+        args.date,
+        "--days",
+        str(window_days),
+        "--attach",
+        *source_mode,
+    )
+    run(
+        "scripts/validate_source_comparison.py",
+        "--start-date",
+        args.date,
+        "--days",
+        str(window_days),
+    )
+    run(
+        "scripts/validate_rolling_week.py",
+        "data/calendar/today.json",
+        "--expected-start",
+        args.date,
+    )
 
     asset = ROOT / "app/src/main/assets/data/today.json"
     asset.parent.mkdir(parents=True, exist_ok=True)
@@ -229,14 +258,16 @@ def main() -> None:
         print(f"DAILY_UPDATE_UNSIGNED_OK date={args.date} mode={mode} window_days={window_days}")
         return
 
-    # A protected signer must never approve a structurally complete package whose
-    # daily commemorations or variable propers are still generic.
+    # No human review is required for routine publication. The protected signer
+    # approves only a machine-verifiable, fail-closed source comparison.
     run(
-        "scripts/validate_rolling_week.py",
-        "data/calendar/today.json",
-        "--expected-start",
+        "scripts/validate_automated_religious_evidence.py",
+        "--start-date",
         args.date,
-        "--require-reviewed-propers",
+        "--days",
+        str(window_days),
+        "--daily",
+        "data/calendar/today.json",
     )
     run("scripts/sign_daily_data.py", "--private-key", str(args.private_key))
     run("scripts/verify_data_signature.py")
