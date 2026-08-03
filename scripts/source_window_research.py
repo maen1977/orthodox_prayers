@@ -45,6 +45,10 @@ OUTPUT_DIR = ROOT / "data" / "sources" / "comparison"
 ASSET_PATH = ROOT / "app" / "src" / "main" / "assets" / "data" / "source_comparison.json"
 CURRENT_DAILY = ROOT / "data" / "calendar" / "today.json"
 
+# Contract marker consumed by update.py and release validation. This module
+# performs the complete automated, fail-closed nine-day source comparison.
+AUTOMATED_FAIL_CLOSED = True
+
 GENERIC_FEAST_MARKERS = (
     "تذكار اليوم بحسب التقويم الكنسي القديم",
     "تذكار اليوم يُستكمل من التحديث الموثق",
