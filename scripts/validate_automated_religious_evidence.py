@@ -44,12 +44,19 @@ def main() -> None:
         comparison.append("--require-no-internal-failsafe")
     run(*comparison)
     run("scripts/validate_jordan_liturgical_contract.py", args.daily, "--expected-date", args.start_date, "--require-jordan-authority", "--require-complete-liturgy")
-    run("scripts/validate_source_intelligence.py", args.daily, "--expected-date", args.start_date)
+    source_intelligence = [
+        "scripts/validate_source_intelligence.py",
+        args.daily,
+        "--expected-date",
+        args.start_date,
+    ]
     native_content = ["scripts/validate_daily_native_content.py", args.daily, "--require-complete"]
     scripture_policy = ["scripts/validate_scripture_translations.py", args.daily]
     if args.language:
+        source_intelligence.extend(["--language", args.language])
         native_content.extend(["--language", args.language])
         scripture_policy.extend(["--language", args.language])
+    run(*source_intelligence)
     run(*native_content)
     run(*scripture_policy)
     print(

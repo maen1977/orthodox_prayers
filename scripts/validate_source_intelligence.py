@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import Any
 from urllib.parse import urlparse
 
 from source_connectors import ROOT, load_registry, normalize_reference
@@ -16,10 +17,58 @@ def https(url: str) -> bool:
     return parsed.scheme == "https" and bool(parsed.netloc)
 
 
+def validate_church_directory(
+    directory: dict[str, Any],
+    language: str,
+    *,
+    strict_reviewed_names: bool = True,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    if directory.get("authority") != "orthodox_jordan" or not https(str(directory.get("directory_url") or "")):
+        raise SystemExit("official Jordan church directory contract is missing")
+    churches = directory.get("churches") or []
+    if len(churches) < 5 or directory.get("count") != len(churches):
+        raise SystemExit("church directory is incomplete or count is inconsistent")
+
+    native_name_counts = {item: 0 for item in ("ar", "en", "el")}
+    for index, church in enumerate(churches):
+        if not str(church.get("id") or "").strip() or not https(str(church.get("url") or "")):
+            raise SystemExit(f"church directory entry is structurally incomplete at index {index}")
+        if "official" in church and church.get("official") is not True:
+            raise SystemExit(f"church directory entry is not official at index {index}")
+        if "source_id" in church and church.get("source_id") != "orthodox_jordan":
+            raise SystemExit(f"church directory entry has the wrong authority at index {index}")
+        names = church.get("name") or {}
+        for native_language in native_name_counts:
+            if str(names.get(native_language) or "").strip():
+                native_name_counts[native_language] += 1
+        if language == "all" and not any(str(names.get(item) or "").strip() for item in native_name_counts):
+            raise SystemExit(f"church directory entry has no verified display name at index {index}")
+        if language == "ar" and not str(names.get("ar") or "").strip():
+            raise SystemExit(f"church directory Arabic name is missing at index {index}")
+
+    required_reviewed_names = min(5, len(churches))
+    if language == "all":
+        if native_name_counts["ar"] != len(churches):
+            raise SystemExit("aggregate church directory must retain every official Arabic name")
+        for native_language in ("en", "el"):
+            if strict_reviewed_names and native_name_counts[native_language] < required_reviewed_names:
+                raise SystemExit(
+                    f"aggregate church directory lacks reviewed {native_language} names: "
+                    f"{native_name_counts[native_language]}/{required_reviewed_names}"
+                )
+    elif language in {"en", "el"} and native_name_counts[language] < required_reviewed_names:
+        raise SystemExit(
+            f"church directory lacks reviewed native names for {language}: "
+            f"{native_name_counts[language]}/{required_reviewed_names}"
+        )
+    return churches, native_name_counts
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("daily", nargs="?", default="data/calendar/today.json")
     parser.add_argument("--expected-date")
+    parser.add_argument("--language", choices=("all", "ar", "en", "el"))
     args = parser.parse_args()
     policy, connectors = load_registry()
     if len(connectors) < 9:
@@ -39,6 +88,10 @@ def main() -> None:
 
     path = ROOT / args.daily
     daily = json.loads(path.read_text(encoding="utf-8"))
+    embedded_language = str(daily.get("language") or "").strip()
+    language = args.language or embedded_language or "all"
+    if embedded_language and embedded_language != language:
+        raise SystemExit(f"source-intelligence language mismatch: payload={embedded_language} requested={language}")
     expected = args.expected_date or daily.get("date_iso")
     health = daily.get("source_health") or json.loads((ROOT / "data/sources/health/current.json").read_text(encoding="utf-8"))
     if health.get("date_iso") != expected:
@@ -67,14 +120,17 @@ def main() -> None:
             pass
 
     directory = daily.get("church_directory") or json.loads((ROOT / "data/directory/churches.json").read_text(encoding="utf-8"))
-    if directory.get("authority") != "orthodox_jordan" or not https(str(directory.get("directory_url") or "")):
-        raise SystemExit("official Jordan church directory contract is missing")
-    churches = directory.get("churches") or []
-    if len(churches) < 5 or directory.get("count") != len(churches):
-        raise SystemExit("church directory is incomplete or count is inconsistent")
-    for church in churches:
-        if not str((church.get("name") or {}).get("ar") or "").strip() or not https(str(church.get("url") or "")):
-            raise SystemExit("church directory entry is incomplete")
+    strict_reviewed_names = bool(args.expected_date) or language != "all"
+    churches, native_name_counts = validate_church_directory(
+        directory,
+        language,
+        strict_reviewed_names=strict_reviewed_names,
+    )
+    if not strict_reviewed_names and any(native_name_counts[item] < min(5, len(churches)) for item in ("en", "el")):
+        print(
+            "LEGACY_CHURCH_DIRECTORY_LOCALIZATION_SUBSET "
+            f"en={native_name_counts['en']} el={native_name_counts['el']} required_after_update={min(5, len(churches))}"
+        )
 
     # A current local-authority observation must agree with the published reading references.
     generated = {}
@@ -103,7 +159,11 @@ def main() -> None:
         raise SystemExit("Divine Liturgy coverage falsely claims completeness")
     if liturgy.get("coverage_percent", 0) > 100:
         raise SystemExit("invalid service coverage percentage")
-    print(f"Source intelligence validated: {len(connectors)} connectors, {len(churches)} church links")
+    print(
+        f"Source intelligence validated: {len(connectors)} connectors, {len(churches)} church links "
+        f"language={language} native_names="
+        f"ar:{native_name_counts['ar']},en:{native_name_counts['en']},el:{native_name_counts['el']}"
+    )
 
 
 if __name__ == "__main__":
