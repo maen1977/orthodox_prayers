@@ -35,6 +35,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @RunWith(AndroidJUnit4.class)
 public final class ReaderSmokeTest {
+    private static final int MINIMUM_READER_VIEWPORT_DP = 120;
     @BeforeClass
     public static void disableNetworkForOfflineReaderCoverage() throws Exception {
         runShellCommand("svc wifi disable");
@@ -159,6 +160,11 @@ public final class ReaderSmokeTest {
             String stage
     ) {
         long deadline = SystemClock.elapsedRealtime() + 12_000L;
+        float density = ApplicationProvider.getApplicationContext()
+                .getResources()
+                .getDisplayMetrics()
+                .density;
+        int minimumHeightPx = Math.max(1, Math.round(MINIMUM_READER_VIEWPORT_DP * density));
         ReaderSnapshot last = ReaderSnapshot.missing();
 
         while (SystemClock.elapsedRealtime() < deadline) {
@@ -177,8 +183,8 @@ public final class ReaderSmokeTest {
                 }
             });
             last = current.get();
-            if (last.isReady(minimumItems)) {
-                assertReaderSnapshot(last, minimumItems);
+            if (last.isReady(minimumItems, minimumHeightPx)) {
+                assertReaderSnapshot(last, minimumItems, minimumHeightPx);
                 return last;
             }
             SystemClock.sleep(100L);
@@ -188,11 +194,19 @@ public final class ReaderSmokeTest {
         return last;
     }
 
-    private static void assertReaderSnapshot(ReaderSnapshot reader, int minimumItems) {
+    private static void assertReaderSnapshot(
+            ReaderSnapshot reader,
+            int minimumItems,
+            int minimumHeightPx
+    ) {
         assertTrue("Reader RecyclerView was not found", reader.present);
         assertTrue("Reader adapter was not attached", reader.adapterAttached);
         assertTrue("Reader has too few content rows", reader.adapterItems >= minimumItems);
         assertTrue("Reader has no measured height", reader.height > 0);
+        assertTrue(
+                "Reader viewport is too short while controls are visible: " + reader.height + "px",
+                reader.height >= minimumHeightPx
+        );
         assertTrue(
                 "Reader reserves too much blank top padding",
                 reader.paddingTop < Math.max(32, reader.height / 3)
@@ -260,11 +274,11 @@ public final class ReaderSmokeTest {
             );
         }
 
-        boolean isReady(int minimumItems) {
+        boolean isReady(int minimumItems, int minimumHeightPx) {
             return present
                     && adapterAttached
                     && adapterItems >= minimumItems
-                    && height > 0
+                    && height >= minimumHeightPx
                     && childCount > 0
                     && (minimumItems < 100 || canScrollForward);
         }

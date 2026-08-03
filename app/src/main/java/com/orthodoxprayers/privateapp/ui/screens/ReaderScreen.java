@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public final class ReaderScreen extends BaseScreen {
     private ReaderAdapter adapter;
     private JSONObject service;
     private LinearLayout controlsPanel;
+    private MaxHeightScrollView controlsViewport;
     private LinearLayout provenancePanel;
     private LinearLayout liturgyNavigationPanel;
     private TextView controlsHandle;
@@ -93,7 +95,18 @@ public final class ReaderScreen extends BaseScreen {
         root.setLayoutDirection(preferences.isRtl() ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
 
         controlsPanel = buildControlsPanel();
-        root.addView(controlsPanel, new LinearLayout.LayoutParams(-1, -2));
+        int displayHeight = host.activity().getResources().getDisplayMetrics().heightPixels;
+        int maximumControlsHeight = Math.min(
+                ui.dp(340),
+                Math.max(ui.dp(180), Math.round(displayHeight * 0.38f))
+        );
+        controlsViewport = new MaxHeightScrollView(host.activity(), maximumControlsHeight);
+        controlsViewport.setFillViewport(false);
+        controlsViewport.setClipToPadding(false);
+        controlsViewport.setVerticalScrollBarEnabled(true);
+        controlsViewport.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+        controlsViewport.addView(controlsPanel, new ScrollView.LayoutParams(-1, -2));
+        root.addView(controlsViewport, new LinearLayout.LayoutParams(-1, -2));
 
         controlsHandle = ui.infoBadge("");
         controlsHandle.setGravity(Gravity.CENTER);
@@ -111,6 +124,7 @@ public final class ReaderScreen extends BaseScreen {
         recycler.setPadding(0, ui.dp(4), 0, ui.dp(20));
         recycler.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
         recycler.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_prayer_text_swipe_up_or_down_to_read_bd037213));
+        recycler.setMinimumHeight(ui.dp(180));
         recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView rv, int dx, int dy) {
@@ -241,9 +255,15 @@ public final class ReaderScreen extends BaseScreen {
     }
 
     private void applyControlsVisibility(boolean announce) {
-        if (controlsPanel == null) return;
-        controlsPanel.clearAnimation();
-        controlsPanel.setVisibility(controlsExpanded ? View.VISIBLE : View.GONE);
+        if (controlsViewport == null) return;
+        controlsViewport.clearAnimation();
+        controlsViewport.setVisibility(controlsExpanded ? View.VISIBLE : View.GONE);
+        if (controlsExpanded) {
+            controlsViewport.post(() -> {
+                controlsViewport.scrollTo(0, 0);
+                controlsViewport.requestLayout();
+            });
+        }
         updateControlsHandle();
         if (announce && controlsHandle != null) {
             controlsHandle.announceForAccessibility(controlsHandle.getText());
@@ -685,6 +705,27 @@ public final class ReaderScreen extends BaseScreen {
         int separator = baseId.indexOf("::");
         if (separator >= 0) baseId = baseId.substring(separator + 2);
         return "divine_liturgy".equals(baseId) || "next_sunday_full_liturgy".equals(baseId);
+    }
+
+
+    private static final class MaxHeightScrollView extends ScrollView {
+        private final int maximumHeight;
+
+        MaxHeightScrollView(android.content.Context context, int maximumHeight) {
+            super(context);
+            this.maximumHeight = Math.max(1, maximumHeight);
+        }
+
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            int parentMode = MeasureSpec.getMode(heightMeasureSpec);
+            int allowedHeight = maximumHeight;
+            if (parentMode != MeasureSpec.UNSPECIFIED) {
+                allowedHeight = Math.min(allowedHeight, MeasureSpec.getSize(heightMeasureSpec));
+            }
+            int cappedHeight = MeasureSpec.makeMeasureSpec(allowedHeight, MeasureSpec.AT_MOST);
+            super.onMeasure(widthMeasureSpec, cappedHeight);
+        }
     }
 
     @Override

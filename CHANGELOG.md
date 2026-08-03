@@ -1,3 +1,12 @@
+## R40.8 — Reader controls viewport and usable reading-area hotfix
+
+- Fixed the real Android 15 layout defect revealed after emulator stabilization: expanding reader controls could consume nearly the entire screen and collapse the 630-row `RecyclerView` to 17 px.
+- Wrapped the reader tools in a dedicated vertically scrollable viewport capped at 38% of the display height and at 340 dp, while respecting a smaller parent measurement constraint.
+- Reserved a 180 dp minimum height for the prayer reader so controls cannot displace the text into an unusable strip on compact displays.
+- Kept all reader tools reachable by scrolling inside the controls viewport and restored its scroll position to the top whenever the panel is opened.
+- Strengthened Android instrumentation to require at least 120 dp of usable reader height, attached rows, and forward scrolling for long services before accepting the expanded or collapsed state.
+- Passed 428 tests plus 14 subtests and all 44 non-pytest release validators. Local Android compilation remains unavailable only because the execution environment cannot resolve `services.gradle.org`; GitHub performs the final APK/instrumentation proof.
+
 ## R40.7 — Reader layout-readiness instrumentation stabilization
 
 - Fixed the Android 15 runtime failure where `ReaderSmokeTest` inspected the `RecyclerView` after its adapter was populated but before Android attached the first visible child row.
