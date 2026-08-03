@@ -45,8 +45,13 @@ def main() -> None:
     run(*comparison)
     run("scripts/validate_jordan_liturgical_contract.py", args.daily, "--expected-date", args.start_date, "--require-jordan-authority", "--require-complete-liturgy")
     run("scripts/validate_source_intelligence.py", args.daily, "--expected-date", args.start_date)
-    run("scripts/validate_daily_native_content.py", args.daily, "--require-complete")
-    run("scripts/validate_scripture_translations.py", args.daily)
+    native_content = ["scripts/validate_daily_native_content.py", args.daily, "--require-complete"]
+    scripture_policy = ["scripts/validate_scripture_translations.py", args.daily]
+    if args.language:
+        native_content.extend(["--language", args.language])
+        scripture_policy.extend(["--language", args.language])
+    run(*native_content)
+    run(*scripture_policy)
     print(
         f"AUTOMATED_RELIGIOUS_EVIDENCE_OK start={args.start_date} days={args.days} "
         f"language={args.language or 'all'} human_review_required=false"

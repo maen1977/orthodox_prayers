@@ -1,12 +1,9 @@
-## R40.9 — Self-repairing automated source-research pipeline
+# R40.10 — إصلاح التحقق المستقل لمسارات اللغات
 
-- Fixed the misleading `PIPELINE_PATCH_MISMATCH` failure: `scripts/source_window_research.py` was present, but the required `AUTOMATED_FAIL_CLOSED` contract marker was absent.
-- Added the explicit fail-closed contract marker to the automated nine-day source-comparison module.
-- Embedded a compressed, SHA-256-pinned canonical copy of the research module inside `scripts/update.py`; a missing or corrupted module is restored atomically before validation or publication.
-- Added `python scripts/update.py --repair-pipeline-only` and run it before Build quality gates, Android runtime assembly, protected release validation, and the scheduled Update generation step.
-- Improved patch diagnostics to distinguish missing files from missing contract markers instead of reporting both as a missing path.
-- Added regression coverage for missing-file restoration, corrupted-file replacement, executable permissions, checksum verification, and workflow ordering.
-- Passed 432 tests plus 14 subtests in clean batches, 61 focused pipeline/release tests, and all directly relevant workflow, signature, embedded-data, source-policy, localization, Android-resource, and security validators.
+- تمرير `--language` من بوابة الأدلة الدينية إلى مدققي المحتوى وسياسة النصوص.
+- جعل ملف اللغة المستقل يتحقق من لغته فقط، مع إبقاء الملف الجامع ملزمًا باكتمال العربية والإنجليزية واليونانية.
+- تقييد فحص بدائل الرسالة والإنجيل باللغة المختارة بدل مطالبة ملف عربي بأدلة إنجليزية ويونانية غير موجودة عمدًا.
+- إضافة اختبارات رجعية تحاكي فشل `missing native verification` في `ar.json`.
 
 ## R40.8 — Reader controls viewport and usable reading-area hotfix
 
