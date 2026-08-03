@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "jurisdiction": "Greek Orthodox Patriarchate of Jerusalem — Jordan priority",
+  "visible_window_days": 9,
+  "human_review_required": false,
+  "decision_mode": "AUTOMATED_FAIL_CLOSED",
+  "local_authority_connector": "orthodox_jordan_daily",
+  "calendar_authority": "jerusalem_old_calendar",
+  "date_addressable_connectors": [
+    "goarch_calendar_month",
+    "goarch_digital_chant_stand",
+    "oca_daily_readings"
+  ],
+  "calendar_groups": {
+    "jerusalem_old_calendar": "jerusalem_jordan",
+    "antioch_local_calendar": "antioch_reference",
+    "ecumenical_patriarchate_new_calendar": "new_calendar_cross_check",
+    "church_of_greece_new_calendar": "new_calendar_cross_check",
+    "oca_calendar": "new_calendar_cross_check",
+    "not_applicable": "availability_only"
+  },
+  "field_rules": {
+    "epistle_reference": {
+      "required": true,
+      "local_authority_conflict_blocks": true,
+      "pinned_internal_conflict_blocks": true,
+      "same_calendar_conflict_blocks": true,
+      "cross_calendar_conflict_is_warning": true
+    },
+    "gospel_reference": {
+      "required": true,
+      "local_authority_conflict_blocks": true,
+      "pinned_internal_conflict_blocks": true,
+      "same_calendar_conflict_blocks": true,
+      "cross_calendar_conflict_is_warning": true
+    },
+    "commemorations": {
+      "verified_local_record_has_priority": true,
+      "generic_text_is_allowed_only_without_verified_local_record": true
+    },
+    "fasting": {
+      "internal_calendar_is_offline_authority": true,
+      "local_authority_conflict_blocks": true
+    },
+    "liturgy_service_selection": {
+      "internal_calendar_is_offline_authority": true,
+      "wrong_rite_fallback_forbidden": true
+    }
+  },
+  "publication_decisions": [
+    "PUBLISH_AUTOMATED_MULTI_SOURCE",
+    "PUBLISH_AUTOMATED_AUTHORITY",
+    "PUBLISH_AUTOMATED_INTERNAL_FAILSAFE",
+    "BLOCK_AUTOMATED_CONFLICT"
+  ],
+  "minimum_confidence": {
+    "PUBLISH_AUTOMATED_MULTI_SOURCE": 0.9,
+    "PUBLISH_AUTOMATED_AUTHORITY": 0.82,
+    "PUBLISH_AUTOMATED_INTERNAL_FAILSAFE": 0.7
+  },
+  "network": {
+    "attempts": 3,
+    "initial_backoff_seconds": 1,
+    "maximum_backoff_seconds": 4,
+    "cache_same_url_within_run": true
+  },
+  "rights": {
+    "copy_full_web_scripture_text": false,
+    "copy_long_synaxarion_prose": false,
+    "store_short_factual_commemorations": true,
+    "store_references_and_source_hashes": true
+  }
+}

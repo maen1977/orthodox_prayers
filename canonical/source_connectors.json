@@ -7,7 +7,10 @@
     "never_generate_or_translate_liturgical_text": true,
     "local_authority_source_id": "orthodox_jordan",
     "calendar_authority_source_id": "jerusalem_patriarchate",
-    "health_snapshot_retention_days": 30
+    "health_snapshot_retention_days": 30,
+    "automated_comparison_policy": "canonical/source_comparison_policy.json",
+    "human_review_required": false,
+    "publication_decision_mode": "AUTOMATED_FAIL_CLOSED"
   },
   "connectors": [
     {
@@ -37,7 +40,10 @@
       "rights_mode": "reference_and_authorized_native_import_only",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 2000000
+      "max_bytes": 2000000,
+      "date_scope": "current_only",
+      "comparison_role": "local_authority",
+      "retry_attempts": 3
     },
     {
       "id": "orthodox_jordan_churches",
@@ -62,7 +68,10 @@
       "rights_mode": "metadata_and_official_links_only",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 2500000
+      "max_bytes": 2500000,
+      "date_scope": "availability",
+      "comparison_role": "directory",
+      "retry_attempts": 3
     },
     {
       "id": "orthodox_jordan_live",
@@ -88,7 +97,10 @@
       "rights_mode": "official_link_only",
       "required_for_publication": false,
       "timeout_seconds": 20,
-      "max_bytes": 1000000
+      "max_bytes": 1000000,
+      "date_scope": "availability",
+      "comparison_role": "availability",
+      "retry_attempts": 3
     },
     {
       "id": "jerusalem_major_feasts",
@@ -117,7 +129,10 @@
       "rights_mode": "reference_and_official_links_only",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 1500000
+      "max_bytes": 1500000,
+      "date_scope": "availability",
+      "comparison_role": "calendar_authority",
+      "retry_attempts": 3
     },
     {
       "id": "antioch_official",
@@ -145,7 +160,10 @@
       "rights_mode": "reference_only_unless_authorized",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 1500000
+      "max_bytes": 1500000,
+      "date_scope": "availability",
+      "comparison_role": "cross_check",
+      "retry_attempts": 3
     },
     {
       "id": "goarch_online_chapel_daily",
@@ -174,7 +192,44 @@
       "rights_mode": "references_and_links; verify_each_full_text_license",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 2500000
+      "max_bytes": 2500000,
+      "date_scope": "current_only",
+      "comparison_role": "cross_check",
+      "retry_attempts": 3
+    },
+    {
+      "id": "goarch_calendar_month",
+      "source_id": "goarch_online_chapel",
+      "name": {
+        "ar": "المصلّى الإلكتروني — تقويم الشهر المؤرّخ",
+        "en": "GOARCH Online Chapel — dated monthly calendar",
+        "el": "GOARCH Online Chapel — μηνιαῖο ἡμερολόγιο"
+      },
+      "official": true,
+      "authority_tier": 4,
+      "languages": [
+        "en",
+        "el"
+      ],
+      "calendar_profile": "ecumenical_patriarchate_new_calendar",
+      "publication_role": "dated_monthly_reference_cross_check",
+      "capabilities": [
+        "saints",
+        "feasts",
+        "fasting",
+        "epistle_reference",
+        "gospel_reference",
+        "matins_gospel_reference"
+      ],
+      "parser": "goarch_calendar_month",
+      "url_template": "https://www.goarch.org/chapel/calendar?month={month:02d}&year={year}",
+      "rights_mode": "references_short_factual_metadata_and_links_only; no copyrighted full_text_redistribution",
+      "required_for_publication": false,
+      "timeout_seconds": 25,
+      "max_bytes": 3000000,
+      "date_scope": "date_addressable",
+      "comparison_role": "dated_reference_cross_check",
+      "retry_attempts": 3
     },
     {
       "id": "goarch_digital_chant_stand",
@@ -209,7 +264,10 @@
       "rights_mode": "official_links_and_structure_only_without_separate_permission",
       "required_for_publication": false,
       "timeout_seconds": 20,
-      "max_bytes": 1000000
+      "max_bytes": 1000000,
+      "date_scope": "date_addressable",
+      "comparison_role": "dated_service_cross_check",
+      "retry_attempts": 3
     },
     {
       "id": "oca_daily_readings",
@@ -236,7 +294,10 @@
       "rights_mode": "references_only; displayed_NKJV_text_is_web_only",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 2000000
+      "max_bytes": 2000000,
+      "date_scope": "date_addressable",
+      "comparison_role": "dated_reference_cross_check",
+      "retry_attempts": 3
     },
     {
       "id": "apostoliki_diakonia_voice",
@@ -263,7 +324,10 @@
       "rights_mode": "official_link_only_unless_explicitly_licensed",
       "required_for_publication": false,
       "timeout_seconds": 25,
-      "max_bytes": 1500000
+      "max_bytes": 1500000,
+      "date_scope": "availability",
+      "comparison_role": "language_cross_check",
+      "retry_attempts": 3
     }
   ]
 }

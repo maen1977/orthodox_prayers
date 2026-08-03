@@ -36,7 +36,11 @@ def reading_lists(data: dict[str, Any]) -> Iterable[tuple[str, list[Any]]]:
 
 
 
-def require_service_scripture_overlays(data: dict[str, Any], errors: list[str]) -> None:
+def require_service_scripture_overlays(
+    data: dict[str, Any],
+    languages: Iterable[str],
+    errors: list[str],
+) -> None:
     service_by_id = {
         str(service.get("id") or ""): service
         for service in data.get("services") or []
@@ -68,7 +72,7 @@ def require_service_scripture_overlays(data: dict[str, Any], errors: list[str]) 
                 errors.append(f"services: {service_id} missing {kind} replacement")
                 continue
             bodies = reading.get("body") if isinstance(reading.get("body"), dict) else {}
-            for language in LANGUAGES:
+            for language in languages:
                 exact = str(bodies.get(language) or "").strip()
                 rendered = str(replacement.get(language) or "")
                 if exact and exact not in rendered:
@@ -77,14 +81,18 @@ def require_service_scripture_overlays(data: dict[str, Any], errors: list[str]) 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("path", nargs="?", default="data/calendar/today.json")
-    parser.add_argument("--require-complete", action="store_true", help="require exact Epistle and Gospel text in all three native lanes")
+    parser.add_argument("--require-complete", action="store_true", help="require exact Epistle and Gospel text in the selected native lane(s)")
+    parser.add_argument("--language", choices=LANGUAGES, help="validate one isolated native-language lane")
     args = parser.parse_args()
     data = json.loads((ROOT / args.path).read_text(encoding="utf-8"))
     contract = load_contract()
     errors: list[str] = []
-    coverage = {lang: {"references": 0, "texts": 0, "total": 0} for lang in LANGUAGES}
+    languages = (args.language,) if args.language else LANGUAGES
+    coverage = {lang: {"references": 0, "texts": 0, "total": 0} for lang in languages}
     required_missing: list[str] = []
 
+    if args.language and data.get("language") not in (None, "", args.language):
+        errors.append(f"daily language metadata mismatch: expected {args.language}, found {data.get('language')}")
     if data.get("language_content_mode") != "THREE_STRICTLY_INDEPENDENT_OFFICIAL_NATIVE_LANGUAGE_LANES":
         errors.append("daily language_content_mode is invalid")
     if data.get("machine_translation_used") is not False or data.get("automatic_diacritization_used") is not False:
@@ -99,7 +107,7 @@ def main() -> None:
             refs = reading.get("reference") if isinstance(reading.get("reference"), dict) else {}
             bodies = reading.get("body") if isinstance(reading.get("body"), dict) else {}
             verification = reading.get("native_source_verification") if isinstance(reading.get("native_source_verification"), dict) else {}
-            for lang in LANGUAGES:
+            for lang in languages:
                 coverage[lang]["total"] += 1
                 ref = str(refs.get(lang) or "")
                 text = str(bodies.get(lang) or "")
@@ -136,14 +144,17 @@ def main() -> None:
     for lang, stats in coverage.items():
         print(f"daily {lang}: references {stats['references']}/{stats['total']}; exact texts {stats['texts']}/{stats['total']}")
     if args.require_complete:
-        require_service_scripture_overlays(data, errors)
+        require_service_scripture_overlays(data, languages, errors)
     if args.require_complete and required_missing:
         errors.extend(required_missing)
     if args.require_complete and not required_missing:
-        print("Required Epistle and Gospel text is complete in Arabic, English, and Greek")
+        if args.language:
+            print(f"Required Epistle and Gospel text is complete in native lane {args.language}")
+        else:
+            print("Required Epistle and Gospel text is complete in Arabic, English, and Greek")
     if errors:
         raise SystemExit("\n".join(dict.fromkeys(errors)))
-    print("Daily native-language lanes validated")
+    print(f"Daily native-language lanes validated language={args.language or 'all'}")
 
 
 if __name__ == "__main__":

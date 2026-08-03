@@ -56,8 +56,34 @@ def main() -> None:
             "wrapper-validation@",
             "name: Android unit tests",
             "testDebugUnitTest --stacktrace",
+            "Android 15 runtime test, offline fallback, and store screenshots",
+            "play-store-screenshots",
+            "actions/download-artifact@",
+            "build_play_store_release_package.py",
+            "PLAY_SUPPORT_EMAIL",
+            "api-level: 35",
+            "scripts/validate_android_sdk_contract.py",
+            "validate_release_permissions.py",
+            "Build runtime and instrumentation APKs before emulator boot",
+            "assembleDebug assembleDebugAndroidTest --stacktrace",
+            "Enable and verify KVM acceleration",
+            "test -c /dev/kvm",
+            "test -w /dev/kvm",
+            "runs-on: ubuntu-24.04",
+            "emulator-boot-timeout: 480",
+            "target: default",
+            "profile: pixel_2",
+            "ram-size: 2048M",
+            "heap-size: 256M",
+            "disk-size: 4G",
+            "disable-linux-hw-accel: false",
+            "-accel on",
+            "pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh",
+            "script: bash scripts/run_android_emulator_ci.sh 35",
             "name: Android debug lint",
             "lintDebug --stacktrace",
+            "name: Android release lint",
+            "lintRelease --stacktrace",
             "name: Build debug APK",
             "assembleDebug --stacktrace",
             "name: Prepare branded debug APK",
@@ -81,15 +107,83 @@ def main() -> None:
         ),
         "Build workflow",
     )
+    if "script: |" in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]:
+        fail("android-emulator-runner must invoke one repository Bash script, not a multiline script block")
+    instrumented_block = build.split("  android_instrumented:", 1)[1].split("  release:", 1)[0]
+    if "matrix:" in instrumented_block or "matrix.api_level" in instrumented_block:
+        fail("Android runtime instrumentation must use one stable emulator, not an API matrix")
+
+
+    emulator_host_script = ROOT / "scripts/verify_android_emulator_host.sh"
+    if not emulator_host_script.is_file():
+        fail("Missing scripts/verify_android_emulator_host.sh")
+    host_text = emulator_host_script.read_text(encoding="utf-8")
+    require_all(
+        host_text,
+        (
+            "#!/usr/bin/env bash",
+            "set -euo pipefail",
+            "test -c /dev/kvm",
+            "test -r /dev/kvm",
+            "test -w /dev/kvm",
+            "emulator -accel-check",
+            "adb start-server",
+        ),
+        "Android emulator host preflight",
+    )
+
+    emulator_script = ROOT / "scripts/run_android_emulator_ci.sh"
+    if not emulator_script.is_file():
+        fail("Missing scripts/run_android_emulator_ci.sh")
+    emulator_text = emulator_script.read_text(encoding="utf-8")
+    require_all(
+        emulator_text,
+        (
+            "#!/usr/bin/env bash",
+            "set -euo pipefail",
+            "wait-for-device",
+            "sys.boot_completed",
+            "ro.build.version.sdk",
+            "pm path android",
+            "stable >= 5",
+            "am instrument -w -r",
+            "ADB_INSTRUMENT_TIMEOUT_SECONDS",
+            "instrumentation-api-$API_LEVEL.txt",
+            "validate_play_store_assets.py --require-screenshots",
+        ),
+        "Android emulator CI script",
+    )
+    for forbidden in (
+        "svc wifi disable", "svc data disable", "svc wifi enable", "svc data enable",
+        "connectedDebugAndroidTest",
+    ):
+        if forbidden in emulator_text:
+            fail(f"Host emulator script contains forbidden runtime behavior: {forbidden}")
+
+    reader_smoke = ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java"
+    if not reader_smoke.is_file():
+        fail("Missing ReaderSmokeTest.java")
+    reader_text = reader_smoke.read_text(encoding="utf-8")
+    require_all(
+        reader_text,
+        (
+            "@BeforeClass",
+            'runShellCommand("svc wifi disable")',
+            'runShellCommand("svc data disable")',
+            "NET_CAPABILITY_VALIDATED",
+            "@AfterClass",
+            'runShellCommand("svc wifi enable")',
+            'runShellCommand("svc data enable")',
+        ),
+        "Offline reader instrumentation",
+    )
+
     upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  release:", 1)[0]
     if "app/build/outputs/apk/debug/app-debug.apk" in upload_debug_block:
         fail("Raw app-debug.apk must not be exposed in the downloadable artifact")
 
     for forbidden in (
         "github/codeql-action/",
-        "android-emulator-runner@",
-        "connectedDebugAndroidTest",
-        "assembleDebugAndroidTest",
         "testDebugUnitTest lintDebug lintRelease",
     ):
         if forbidden in build:
@@ -157,10 +251,25 @@ def main() -> None:
             "Require one consistent unsigned publication date",
             "verified-data-commit-check",
             "git archive HEAD",
+            "Automated religious evidence and cross-source decision gate",
+            "scripts/validate_automated_religious_evidence.py",
+            "scripts/validate_source_comparison.py",
+            "scripts/compare_source_snapshots.py",
+            "canonical/source_comparison_policy.json",
+            "Close recovered source-update alert",
             "Open failure alert",
         ),
         "Update workflow",
     )
+
+    for forbidden in (
+        "--require-reviewed-propers",
+        "Block signing until all daily propers are reviewed",
+        "human review required",
+    ):
+        if forbidden.lower() in update.lower():
+            fail(f"Update workflow still depends on manual religious review: {forbidden}")
+
     if update.count('timezone: "Asia/Amman"') != 2:
         fail("Both daily updates must use the Asia/Amman timezone")
     if update.count('cron: "23 4 * * *"') != 1 or update.count('cron: "43 16 * * *"') != 1:
@@ -186,6 +295,7 @@ def main() -> None:
     ordered_markers = (
         "Generate and validate moving horizon without signing key",
         "Validate unsigned language lanes independently",
+        "Automated religious evidence and cross-source decision gate",
         "Prepare publication worktree before restoring key",
         "Preserve complete same-day language lanes",
         "Restore and match the one signing key",
@@ -202,7 +312,8 @@ def main() -> None:
 
     print(
         "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
-        "external-source generation; debug checks are separated; Update runs only manually "
+        "external-source generation; automatic source comparison is fail-closed; Android "
+        "instrumentation and multilingual screenshots are required; Update runs only manually "
         "or twice daily at 04:23 and 16:43 Asia/Amman"
     )
 

@@ -36,6 +36,11 @@ def main() -> None:
         action="store_true",
         help="Migration-only for a previously signed R19 branch; Update remains strict.",
     )
+    parser.add_argument(
+        "--allow-missing-source-comparison",
+        action="store_true",
+        help="Migration-only for debug import of a pre-R40 verified-data branch.",
+    )
     args = parser.parse_args()
 
     payload = ROOT / "data/calendar/today.json"
@@ -50,6 +55,18 @@ def main() -> None:
         lane_args.append("--allow-legacy-multilingual")
     run(*lane_args)
     run("scripts/validate_publication_consistency.py", "--expected-date", args.expected_date)
+
+    comparison = ROOT / "data/sources/comparison/current.json"
+    if args.allow_missing_source_comparison and not comparison.is_file():
+        print("LEGACY_SOURCE_COMPARISON_ABSENT accepted_for_debug_import=true")
+    else:
+        run(
+            "scripts/validate_source_comparison.py",
+            "--start-date",
+            args.expected_date,
+            "--days",
+            "9",
+        )
 
     manifest = ROOT / "data/update-manifest.json"
     manifest_signature = ROOT / "data/update-manifest.json.sig"

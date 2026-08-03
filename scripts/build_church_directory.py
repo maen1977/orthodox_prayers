@@ -48,6 +48,43 @@ def infer_city(name: str) -> str:
     return next((city for city in known if city in name), "")
 
 
+def canonical_url_key(url: str) -> tuple[str, str]:
+    parsed = urllib.parse.urlsplit(str(url or ""))
+    return (
+        parsed.netloc.casefold(),
+        urllib.parse.unquote(parsed.path).rstrip("/").casefold(),
+    )
+
+
+def merge_verified_seed_localizations(
+    live: list[dict[str, Any]],
+    seed: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], int]:
+    """Enrich live official links with only the reviewed seed translations.
+
+    The official directory is Arabic.  English and Greek names are copied only
+    when the exact canonical parish URL exists in the reviewed seed, so the
+    update never invents or machine-translates a church name.
+    """
+    verified = {canonical_url_key(item.get("url", "")): item for item in seed}
+    enriched = 0
+    for church in live:
+        seed_item = verified.get(canonical_url_key(church.get("url", "")))
+        if not seed_item:
+            continue
+        changed = False
+        for field in ("name", "city"):
+            target = church.setdefault(field, {"ar": "", "en": "", "el": ""})
+            source = seed_item.get(field) or {}
+            for language in ("ar", "en", "el"):
+                if not str(target.get(language) or "").strip() and str(source.get(language) or "").strip():
+                    target[language] = source[language]
+                    changed = True
+        if changed:
+            enriched += 1
+    return live, enriched
+
+
 def parse_live(raw: bytes) -> list[dict[str, Any]]:
     parser = TextAndLinksParser(DIRECTORY_URL)
     parser.feed(raw.decode("utf-8", errors="replace"))
@@ -91,9 +128,12 @@ def main() -> None:
             _, raw, _ = safe_fetch(DIRECTORY_URL, 25, 2_500_000)
         parsed = parse_live(raw) if raw else []
         if len(parsed) >= 5:
-            churches = parsed
+            churches, enriched = merge_verified_seed_localizations(parsed, seed.get("churches", []))
             status = "live_official_directory"
-            reason = "parsed from the official Orthodox Jordan directory"
+            reason = (
+                "parsed from the official Orthodox Jordan directory; "
+                f"merged {enriched} reviewed seed localizations by exact canonical URL"
+            )
         elif raw:
             reason = f"live page produced only {len(parsed)} church entries; seed retained"
     except Exception as exc:

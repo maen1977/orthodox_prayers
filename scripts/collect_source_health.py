@@ -9,7 +9,7 @@ import shutil
 from datetime import date
 from pathlib import Path
 
-from source_connectors import ROOT, load_registry, observe_connector, probe_service_links, summarize_health
+from source_connectors import ROOT, load_registry, observe_connector, observe_connector_with_retries, summarize_health
 
 OUTPUT_DIR = ROOT / "data" / "sources" / "health"
 ASSET = ROOT / "app" / "src" / "main" / "assets" / "data" / "source_health.json"
@@ -40,9 +40,12 @@ def main() -> None:
             observation.confidence = 0.0
             observation.reason = "network disabled and no fixture supplied"
         else:
-            observation = observe_connector(connector, target, raw=raw)
-            if connector.parser == "dcs_service_probe" and raw is None and not args.offline:
-                observation = probe_service_links(observation, connector)
+            observation = observe_connector_with_retries(
+                connector,
+                target,
+                raw=raw,
+                attempts=connector.retry_attempts,
+            )
         observations.append(observation)
         print(f"SOURCE_HEALTH connector={connector.id} status={observation.status} confidence={observation.confidence:.2f}")
 
