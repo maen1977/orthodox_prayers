@@ -2,24 +2,19 @@
   "schema_version": 1,
   "current_connector_count": 10,
   "previous_connector_count": 10,
-  "change_count": 6,
-  "regression_count": 1,
+  "change_count": 2,
+  "regression_count": 0,
   "changes": [
     {
       "connector_id": "apostoliki_diakonia_voice",
       "changes": {
+        "structure_sha256": {
+          "previous": "301386b06267295c6792c11819f15e8b0f0024ccba1a11c0f2f703e0f8c67e26",
+          "current": "97500ccac8429489c4cb26d534e19430f54f2c5cca802d7e253a9bbbeecf4b94"
+        },
         "content_sha256": {
-          "previous": "121340d73e89c415386e35e3b2940ff2889eb155d829779155f70b74fb80def2",
-          "current": "f826cdd79f15fbb07b27702e7ae884d80181d1f191ee3ce3057d87dd50047e0c"
-        }
-      }
-    },
-    {
-      "connector_id": "jerusalem_major_feasts",
-      "changes": {
-        "content_sha256": {
-          "previous": "6c0a96549bdd4df19d3f01a2d7aec664bd8b0c115ce249560be94d6d674aafff",
-          "current": "1ea957b6876c278c8f275a932e5ee74051c034b6a10fb9f0cc987bb0ef3426aa"
+          "previous": "f826cdd79f15fbb07b27702e7ae884d80181d1f191ee3ce3057d87dd50047e0c",
+          "current": "ad2a1ab1c7909eb00b62cbc0ec77cb5bffbb86f850e7e205e80d999eae5ade98"
         }
       }
     },
@@ -27,83 +22,8 @@
       "connector_id": "oca_daily_readings",
       "changes": {
         "content_sha256": {
-          "previous": "c5fefea9e0a9deb0bb01d2f4d2541b19ba1d74ae43281f69cc3c188a62c67da6",
-          "current": "59e34f2ae96eb5e3387850c978718f1c3e7e099d9898b02b5657154044cef699"
-        }
-      }
-    },
-    {
-      "connector_id": "orthodox_jordan_churches",
-      "changes": {
-        "status": {
-          "previous": "network_error",
-          "current": "available"
-        },
-        "http_status": {
-          "previous": null,
-          "current": 200
-        },
-        "structure_sha256": {
-          "previous": null,
-          "current": "392e4c12caf9d35edb048fc9700ed95891eff523b7b3be63b9a7ba8957c52cfa"
-        },
-        "content_sha256": {
-          "previous": null,
-          "current": "df4d124b247a0b86ecc67ed74c8db5087d6240517d8d88463d562428b75b0eaf"
-        },
-        "reason": {
-          "previous": "[Errno 101] Network is unreachable",
-          "current": null
-        }
-      }
-    },
-    {
-      "connector_id": "orthodox_jordan_daily",
-      "changes": {
-        "status": {
-          "previous": "network_error",
-          "current": "poisoned"
-        },
-        "http_status": {
-          "previous": null,
-          "current": 200
-        },
-        "structure_sha256": {
-          "previous": null,
-          "current": "50b4bd01f258ff32405e371998d71c88c1d7415a06787f7128e87b4fed3b187f"
-        },
-        "content_sha256": {
-          "previous": null,
-          "current": "dfeecf499b08d224f801c1c41d77863f22685bc087e81ea7e8719955ac2cd5a8"
-        },
-        "reason": {
-          "previous": "[Errno 101] Network is unreachable",
-          "current": "poison marker detected: lorem ipsum"
-        }
-      }
-    },
-    {
-      "connector_id": "orthodox_jordan_live",
-      "changes": {
-        "status": {
-          "previous": "network_error",
-          "current": "available"
-        },
-        "http_status": {
-          "previous": null,
-          "current": 200
-        },
-        "structure_sha256": {
-          "previous": null,
-          "current": "7ce61321c3b3fecfd47a3c39fb7b03093f91ea2fc4883b3d4e28488c438aaeb7"
-        },
-        "content_sha256": {
-          "previous": null,
-          "current": "c733e49af385838bd9439dd3aa306f9fe780e88e9e0030eef724af6b2a058c98"
-        },
-        "reason": {
-          "previous": "[Errno 101] Network is unreachable",
-          "current": null
+          "previous": "59e34f2ae96eb5e3387850c978718f1c3e7e099d9898b02b5657154044cef699",
+          "current": "30f042d78e9f2acce54efb64b628ba39685f48c4d81209467695159901a2d292"
         }
       }
     }

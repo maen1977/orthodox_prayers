@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Small, strict release gate for the single Church Prayers build."""
+"""Small, strict gate for the app build and separate daily update workflows."""
 from __future__ import annotations
 
 import subprocess
@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 CHECKS = [
+    [sys.executable, "scripts/keep_required_workflows.py"],
     [sys.executable, "scripts/ensure_gradlew_executable.py"],
     [sys.executable, "scripts/validate_workflows.py"],
     [sys.executable, "scripts/validate_android_sdk_contract.py"],
