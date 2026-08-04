@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from release_version import require_minimum
+
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.23"', "versionCode = 50023"),
     "scripts/public_domain_scripture.py": (r"\\\+?w",),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DisplayTextSanitizer.java": (
         "class DisplayTextSanitizer",
@@ -53,6 +54,7 @@ REQUIRED = {
 
 
 def main() -> None:
+    version_name, version_code = require_minimum(50023)
     missing: list[str] = []
     for relative, markers in REQUIRED.items():
         path = ROOT / relative
@@ -62,7 +64,7 @@ def main() -> None:
                 missing.append(f"{relative}: {marker}")
     if missing:
         raise SystemExit("R20_PARTIAL_OR_MISPLACED\n" + "\n".join(missing))
-    print("R20_RELEASE_OK version=5.0.23 level=R20")
+    print(f"R20_RELEASE_OK version={version_name} code={version_code} level=R20")
 
 
 if __name__ == "__main__":

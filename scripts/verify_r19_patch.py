@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from release_version import require_minimum
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "app/build.gradle.kts": ('versionName = "5.0.23"', "versionCode = 50023"),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java": (
         "libraryForLanguage(language)",
         "nativeContentCoverage",
@@ -44,7 +45,6 @@ REQUIRED = {
     ),
     "tests/test_r19_refinement.py": (
         "class R19RefinementTests",
-        'versionName = "5.0.23"',
     ),
 }
 
@@ -61,6 +61,7 @@ def missing_markers() -> list[str]:
 
 
 def main() -> None:
+    version_name, version_code = require_minimum(50023)
     missing = missing_markers()
     if missing:
         details = "\n".join(missing)
@@ -70,7 +71,7 @@ def main() -> None:
             "Extract OrthodoxPrayers-5.0.15-R19.1-root-patch.zip directly into "
             "the repository root and overwrite existing files."
         )
-    print("PATCH_R19_OK version=5.0.23 level=R19.2+R20")
+    print(f"PATCH_R19_OK version={version_name} code={version_code} level=R19.2+R20")
 
 
 if __name__ == "__main__":

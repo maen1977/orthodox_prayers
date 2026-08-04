@@ -2,24 +2,15 @@
   "schema_version": 1,
   "current_connector_count": 10,
   "previous_connector_count": 10,
-  "change_count": 5,
-  "regression_count": 1,
+  "change_count": 4,
+  "regression_count": 3,
   "changes": [
-    {
-      "connector_id": "apostoliki_diakonia_voice",
-      "changes": {
-        "content_sha256": {
-          "previous": "d1b5eae4e5484fdfa114cca84ad93f326e16499788bdbd9dea344794a0e21a84",
-          "current": "121340d73e89c415386e35e3b2940ff2889eb155d829779155f70b74fb80def2"
-        }
-      }
-    },
     {
       "connector_id": "oca_daily_readings",
       "changes": {
         "content_sha256": {
-          "previous": "f472d70612144e4f973972f5b411d1640990de94706bb4954e382c4535ff78fc",
-          "current": "8045063430319cc84778ebc86aba4ef5411418f5f5da3bad94fcf5dee6597391"
+          "previous": "8045063430319cc84778ebc86aba4ef5411418f5f5da3bad94fcf5dee6597391",
+          "current": "c5fefea9e0a9deb0bb01d2f4d2541b19ba1d74ae43281f69cc3c188a62c67da6"
         }
       }
     },
@@ -27,24 +18,24 @@
       "connector_id": "orthodox_jordan_churches",
       "changes": {
         "status": {
-          "previous": "network_error",
-          "current": "available"
+          "previous": "available",
+          "current": "network_error"
         },
         "http_status": {
-          "previous": null,
-          "current": 200
+          "previous": 200,
+          "current": null
         },
         "structure_sha256": {
-          "previous": null,
-          "current": "392e4c12caf9d35edb048fc9700ed95891eff523b7b3be63b9a7ba8957c52cfa"
+          "previous": "392e4c12caf9d35edb048fc9700ed95891eff523b7b3be63b9a7ba8957c52cfa",
+          "current": null
         },
         "content_sha256": {
-          "previous": null,
-          "current": "df4d124b247a0b86ecc67ed74c8db5087d6240517d8d88463d562428b75b0eaf"
+          "previous": "df4d124b247a0b86ecc67ed74c8db5087d6240517d8d88463d562428b75b0eaf",
+          "current": null
         },
         "reason": {
-          "previous": "[Errno 101] Network is unreachable",
-          "current": null
+          "previous": null,
+          "current": "[Errno 101] Network is unreachable"
         }
       }
     },
@@ -52,24 +43,24 @@
       "connector_id": "orthodox_jordan_daily",
       "changes": {
         "status": {
-          "previous": "network_error",
-          "current": "poisoned"
+          "previous": "poisoned",
+          "current": "network_error"
         },
         "http_status": {
-          "previous": null,
-          "current": 200
+          "previous": 200,
+          "current": null
         },
         "structure_sha256": {
-          "previous": null,
-          "current": "50b4bd01f258ff32405e371998d71c88c1d7415a06787f7128e87b4fed3b187f"
+          "previous": "50b4bd01f258ff32405e371998d71c88c1d7415a06787f7128e87b4fed3b187f",
+          "current": null
         },
         "content_sha256": {
-          "previous": null,
-          "current": "dfeecf499b08d224f801c1c41d77863f22685bc087e81ea7e8719955ac2cd5a8"
+          "previous": "dfeecf499b08d224f801c1c41d77863f22685bc087e81ea7e8719955ac2cd5a8",
+          "current": null
         },
         "reason": {
-          "previous": "[Errno 101] Network is unreachable",
-          "current": "poison marker detected: lorem ipsum"
+          "previous": "poison marker detected: lorem ipsum",
+          "current": "[Errno 101] Network is unreachable"
         }
       }
     },
@@ -77,24 +68,24 @@
       "connector_id": "orthodox_jordan_live",
       "changes": {
         "status": {
-          "previous": "network_error",
-          "current": "available"
+          "previous": "available",
+          "current": "network_error"
         },
         "http_status": {
-          "previous": null,
-          "current": 200
+          "previous": 200,
+          "current": null
         },
         "structure_sha256": {
-          "previous": null,
-          "current": "7ce61321c3b3fecfd47a3c39fb7b03093f91ea2fc4883b3d4e28488c438aaeb7"
+          "previous": "7ce61321c3b3fecfd47a3c39fb7b03093f91ea2fc4883b3d4e28488c438aaeb7",
+          "current": null
         },
         "content_sha256": {
-          "previous": null,
-          "current": "c733e49af385838bd9439dd3aa306f9fe780e88e9e0030eef724af6b2a058c98"
+          "previous": "c733e49af385838bd9439dd3aa306f9fe780e88e9e0030eef724af6b2a058c98",
+          "current": null
         },
         "reason": {
-          "previous": "[Errno 101] Network is unreachable",
-          "current": null
+          "previous": null,
+          "current": "[Errno 101] Network is unreachable"
         }
       }
     }

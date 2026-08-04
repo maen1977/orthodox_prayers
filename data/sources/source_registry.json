@@ -17,11 +17,11 @@
   "health_date": "2026-08-04",
   "health_summary": {
     "connector_count": 10,
-    "usable_connector_count": 7,
+    "usable_connector_count": 5,
     "official_current_count": 2,
     "status_counts": {
-      "poisoned": 1,
-      "available": 5,
+      "network_error": 3,
+      "available": 3,
       "http_error": 2,
       "current": 2
     },
@@ -97,8 +97,7 @@
         "official_live_link"
       ],
       "health_statuses": [
-        "available",
-        "poisoned"
+        "network_error"
       ],
       "health": [
         {
@@ -110,12 +109,12 @@
           "calendar_profile": "jerusalem_old_calendar",
           "target_date": "2026-08-04",
           "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
-          "status": "poisoned",
-          "checked_at_utc": "2026-08-04T04:33:41Z",
-          "http_status": 200,
-          "content_sha256": "dfeecf499b08d224f801c1c41d77863f22685bc087e81ea7e8719955ac2cd5a8",
-          "structure_sha256": "50b4bd01f258ff32405e371998d71c88c1d7415a06787f7128e87b4fed3b187f",
-          "content_bytes": 441260,
+          "status": "network_error",
+          "checked_at_utc": "2026-08-04T04:56:11Z",
+          "http_status": null,
+          "content_sha256": null,
+          "structure_sha256": null,
+          "content_bytes": null,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
@@ -124,9 +123,9 @@
           "church_count": null,
           "confidence": 0.0,
           "rights_mode": "reference_and_authorized_native_import_only",
-          "reason": "poison marker detected: lorem ipsum",
+          "reason": "[Errno 101] Network is unreachable",
           "warnings": [
-            "attempts=1"
+            "attempts=3"
           ]
         },
         {
@@ -138,23 +137,23 @@
           "calendar_profile": "not_applicable",
           "target_date": "2026-08-04",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-          "status": "available",
-          "checked_at_utc": "2026-08-04T04:33:42Z",
-          "http_status": 200,
-          "content_sha256": "df4d124b247a0b86ecc67ed74c8db5087d6240517d8d88463d562428b75b0eaf",
-          "structure_sha256": "392e4c12caf9d35edb048fc9700ed95891eff523b7b3be63b9a7ba8957c52cfa",
-          "content_bytes": 889156,
+          "status": "network_error",
+          "checked_at_utc": "2026-08-04T04:57:29Z",
+          "http_status": null,
+          "content_sha256": null,
+          "structure_sha256": null,
+          "content_bytes": null,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
           "commemorations": [],
           "service_links": [],
-          "church_count": 41,
-          "confidence": 0.9,
+          "church_count": null,
+          "confidence": 0.0,
           "rights_mode": "metadata_and_official_links_only",
-          "reason": null,
+          "reason": "[Errno 101] Network is unreachable",
           "warnings": [
-            "attempts=1"
+            "attempts=3"
           ]
         },
         {
@@ -166,23 +165,23 @@
           "calendar_profile": "not_applicable",
           "target_date": "2026-08-04",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
-          "status": "available",
-          "checked_at_utc": "2026-08-04T04:33:43Z",
-          "http_status": 200,
-          "content_sha256": "c733e49af385838bd9439dd3aa306f9fe780e88e9e0030eef724af6b2a058c98",
-          "structure_sha256": "7ce61321c3b3fecfd47a3c39fb7b03093f91ea2fc4883b3d4e28488c438aaeb7",
-          "content_bytes": 379112,
+          "status": "network_error",
+          "checked_at_utc": "2026-08-04T04:58:32Z",
+          "http_status": null,
+          "content_sha256": null,
+          "structure_sha256": null,
+          "content_bytes": null,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
           "commemorations": [],
           "service_links": [],
           "church_count": null,
-          "confidence": 0.55,
+          "confidence": 0.0,
           "rights_mode": "official_link_only",
-          "reason": null,
+          "reason": "[Errno 101] Network is unreachable",
           "warnings": [
-            "attempts=1"
+            "attempts=3"
           ]
         }
       ]
@@ -238,7 +237,7 @@
           "target_date": "2026-08-04",
           "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
           "status": "available",
-          "checked_at_utc": "2026-08-04T04:33:43Z",
+          "checked_at_utc": "2026-08-04T04:58:33Z",
           "http_status": 200,
           "content_sha256": "6c0a96549bdd4df19d3f01a2d7aec664bd8b0c115ce249560be94d6d674aafff",
           "structure_sha256": "afdbc7d8284f1e3e47eb3a9b0777c6b2d143a76911fb0569e99ede5f880b352e",
@@ -309,7 +308,7 @@
           "target_date": "2026-08-04",
           "url": "https://www.antiochpatriarchate.org/",
           "status": "available",
-          "checked_at_utc": "2026-08-04T04:33:43Z",
+          "checked_at_utc": "2026-08-04T04:58:33Z",
           "http_status": 200,
           "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
           "structure_sha256": "e021b05e38dcd1a2557701e5b424042a5265d464dd5f3deed30b3b97af208979",
@@ -380,7 +379,7 @@
           "target_date": "2026-08-04",
           "url": "https://apostoliki-diakonia.gr/fk/",
           "status": "available",
-          "checked_at_utc": "2026-08-04T04:33:54Z",
+          "checked_at_utc": "2026-08-04T04:58:44Z",
           "http_status": 200,
           "content_sha256": "121340d73e89c415386e35e3b2940ff2889eb155d829779155f70b74fb80def2",
           "structure_sha256": "301386b06267295c6792c11819f15e8b0f0024ccba1a11c0f2f703e0f8c67e26",
@@ -452,7 +451,7 @@
           "target_date": "2026-08-04",
           "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
           "status": "current",
-          "checked_at_utc": "2026-08-04T04:33:50Z",
+          "checked_at_utc": "2026-08-04T04:58:40Z",
           "http_status": 200,
           "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
           "structure_sha256": "1e73c6ce8d282384dcf183de0e0d2e4dc15048194a530298359e0361c1a3eb75",
@@ -548,7 +547,7 @@
           "target_date": "2026-08-04",
           "url": "https://www.goarch.org/chapel/",
           "status": "http_error",
-          "checked_at_utc": "2026-08-04T04:33:47Z",
+          "checked_at_utc": "2026-08-04T04:58:36Z",
           "http_status": 403,
           "content_sha256": null,
           "structure_sha256": null,
@@ -576,7 +575,7 @@
           "target_date": "2026-08-04",
           "url": "https://www.goarch.org/chapel/calendar?month=08&year=2026",
           "status": "http_error",
-          "checked_at_utc": "2026-08-04T04:33:50Z",
+          "checked_at_utc": "2026-08-04T04:58:39Z",
           "http_status": 403,
           "content_sha256": null,
           "structure_sha256": null,
@@ -1047,9 +1046,9 @@
           "target_date": "2026-08-04",
           "url": "https://www.oca.org/readings/daily/2026/08/04",
           "status": "current",
-          "checked_at_utc": "2026-08-04T04:33:51Z",
+          "checked_at_utc": "2026-08-04T04:58:41Z",
           "http_status": 200,
-          "content_sha256": "8045063430319cc84778ebc86aba4ef5411418f5f5da3bad94fcf5dee6597391",
+          "content_sha256": "c5fefea9e0a9deb0bb01d2f4d2541b19ba1d74ae43281f69cc3c188a62c67da6",
           "structure_sha256": "094bf6d69420c3041ea12156ec8e4b262ef6154d632eed4b80e44642a85460d1",
           "content_bytes": 14565,
           "detected_date": "2026-08-04",
