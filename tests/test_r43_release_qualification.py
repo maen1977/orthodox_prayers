@@ -68,7 +68,7 @@ def test_extended_performance_parser_enforces_screen_specific_budgets(tmp_path: 
         "home": "TOTAL PSS: 50000\n",
         "reader": "TOTAL PSS: 65000\n",
         "search": "TOTAL PSS: 70000\n",
-        "gfx": "Janky frames: 3 (4.5%)\n",
+        "gfx": "Total frames rendered: 100\nJanky frames: 3 (4.5%)\n",
     }.items():
         path = tmp_path / f"{name}.txt"; path.write_text(text, encoding="utf-8"); files[name] = path
     output = tmp_path / "metrics.json"

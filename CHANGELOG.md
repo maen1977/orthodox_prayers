@@ -1,3 +1,11 @@
+## R44.1 — Android emulator jank gate stability hotfix
+
+- Kept startup and memory budgets blocking on Android API 26, 29, and 33.
+- Made cloud-emulator `gfxinfo` jank diagnostic on compatibility jobs to prevent false release failures caused by host rendering variance.
+- Kept jank a strict blocking gate on API 35 with a minimum 90-frame sample.
+- Warmed the reader before frame capture and used display-relative controlled gestures.
+- Throttled reading-progress UI updates to one callback per frame and skipped unchanged percentages.
+
 ## R44 — Release artifact attestation and deterministic handoff
 
 - Added fail-closed APK/AAB structural validation, package/version verification, signing verification, and secret-file exclusion.

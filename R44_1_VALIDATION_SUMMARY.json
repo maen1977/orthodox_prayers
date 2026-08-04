@@ -1,0 +1,25 @@
+{
+  "release": "R44.1",
+  "application_version": "5.2.0",
+  "version_code": 50200,
+  "status": "PASS",
+  "affected_tests": {
+    "emulator_and_performance": 28,
+    "release_contract": 44,
+    "r44_operations": 5,
+    "total": 77
+  },
+  "calendar": {
+    "modified": false,
+    "start": "2026-01-01",
+    "end": "2050-12-31",
+    "days": 9131,
+    "files": 28,
+    "aggregate_sha256": "81604edecae2befa2263df01a2231ca3925b0a046a4383db9de9f2388edcebcf"
+  },
+  "performance_policy": {
+    "api_26_29_33": "startup_and_memory_blocking_jank_diagnostic",
+    "api_35": "startup_memory_and_jank_blocking",
+    "minimum_strict_frame_sample": 90
+  }
+}

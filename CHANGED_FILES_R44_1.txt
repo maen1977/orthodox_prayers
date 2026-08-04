@@ -1,0 +1,10 @@
+CHANGELOG.md
+CHANGED_FILES_R44_1.txt
+R44_1_ANDROID_EMULATOR_JANK_GATE_HOTFIX_AR.md
+app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReaderScreen.java
+config/android-performance-budgets.json
+scripts/collect_android_runtime_metrics.sh
+scripts/parse_android_runtime_metrics.py
+scripts/run_android_emulator_ci.sh
+tests/test_r43_release_qualification.py
+tests/test_r44_1_android_jank_gate_hotfix.py

@@ -129,9 +129,15 @@ else
   run_instrumentation failure-recovery -e class com.orthodoxprayers.privateapp.FailureRecoverySmokeTest
 fi
 
+METRICS_MODE="${ANDROID_METRICS_MODE:-}"
+if [[ -z "$METRICS_MODE" ]]; then
+  if [[ "$SUITE_MODE" == "full" ]]; then METRICS_MODE="strict"; else METRICS_MODE="compatibility"; fi
+fi
+
 bash "$SCRIPT_DIR/collect_android_runtime_metrics.sh" \
   "$API_LEVEL" \
-  "app/build/reports/performance/runtime-api-$API_LEVEL.json"
+  "app/build/reports/performance/runtime-api-$API_LEVEL.json" \
+  "$METRICS_MODE"
 
 if [[ "$SUITE_MODE" == "full" ]]; then
   mkdir -p play-store/assets/screenshots

@@ -5,10 +5,18 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BUDGETS = ROOT / "config/android-performance-budgets.json"
+
+
+@dataclass(frozen=True)
+class JankSample:
+    total_frames: int | None
+    janky_frames: int
+    percent: float
 
 
 def required_integer(patterns: list[str], text: str, label: str) -> int:
@@ -35,17 +43,29 @@ def parse_start(path: Path, label: str) -> tuple[int, int]:
     )
 
 
-def parse_jank(path: Path | None) -> float | None:
+def parse_jank(path: Path | None) -> JankSample | None:
     if path is None or not path.is_file():
         return None
     text = path.read_text(encoding="utf-8", errors="replace")
-    match = re.search(r"Janky frames:\s*[0-9]+\s*\(([0-9]+(?:\.[0-9]+)?)%\)", text, re.I)
-    return float(match.group(1)) if match else None
+    match = re.search(
+        r"Janky frames:\s*([0-9]+)\s*\(([0-9]+(?:\.[0-9]+)?)%\)",
+        text,
+        re.I,
+    )
+    if not match:
+        return None
+    total_match = re.search(r"Total frames rendered:\s*([0-9]+)", text, re.I)
+    return JankSample(
+        total_frames=int(total_match.group(1)) if total_match else None,
+        janky_frames=int(match.group(1)),
+        percent=float(match.group(2)),
+    )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--api-level", type=int, required=True)
+    parser.add_argument("--enforcement-mode", choices=("strict", "compatibility"), default="strict")
     parser.add_argument("--start-output", type=Path, required=True)
     parser.add_argument("--warm-start-output", type=Path)
     parser.add_argument("--meminfo-output", type=Path, required=True)
@@ -69,8 +89,9 @@ def main() -> None:
         raise SystemExit(f"No performance budget configured for API {args.api_level}")
 
     metrics: dict[str, object] = {
-        "schema_version": 2,
+        "schema_version": 3,
         "api_level": args.api_level,
+        "enforcement_mode": args.enforcement_mode,
         "cold_start_total_time_ms": total_time,
         "cold_start_wait_time_ms": wait_time,
         "total_pss_kb": total_pss,
@@ -84,20 +105,40 @@ def main() -> None:
     if search_pss is not None:
         metrics["search_total_pss_kb"] = search_pss
     if jank is not None:
-        metrics["janky_frames_percent"] = jank
+        metrics["janky_frames_percent"] = jank.percent
+        metrics["janky_frames_count"] = jank.janky_frames
+        if jank.total_frames is not None:
+            metrics["total_frames_rendered"] = jank.total_frames
 
     failures: list[str] = []
+    warnings: list[str] = []
     checks = [
         (total_time, "cold_start_total_time_ms_max", "cold start", "ms"),
         (total_pss, "total_pss_kb_max", "home TOTAL PSS", "KB"),
         (warm[0] if warm else None, "warm_start_total_time_ms_max", "warm start", "ms"),
         (reader_pss, "reader_total_pss_kb_max", "reader TOTAL PSS", "KB"),
         (search_pss, "search_total_pss_kb_max", "search TOTAL PSS", "KB"),
-        (jank, "janky_frames_percent_max", "janky frames", "%"),
     ]
     for actual, key, label, suffix in checks:
         if actual is not None and key in budget and actual > float(budget[key]):
             failures.append(f"{label} {actual}{suffix} exceeds {budget[key]}{suffix}")
+
+    minimum_frames = int(budget.get("janky_frames_min_sample", 90))
+    metrics["jank_minimum_sample_frames"] = minimum_frames
+    metrics["jank_enforced"] = args.enforcement_mode == "strict"
+    jank_requested = args.gfxinfo_output is not None
+    if jank is None and jank_requested:
+        message = "gfxinfo did not provide a janky-frame sample"
+        (failures if args.enforcement_mode == "strict" else warnings).append(message)
+    elif jank is not None and (jank.total_frames is None or jank.total_frames < minimum_frames):
+        message = f"frame sample {jank.total_frames or 0} is below required {minimum_frames} frames"
+        (failures if args.enforcement_mode == "strict" else warnings).append(message)
+    elif jank is not None and "janky_frames_percent_max" in budget and jank.percent > float(budget["janky_frames_percent_max"]):
+        message = f"janky frames {jank.percent}% exceeds {budget['janky_frames_percent_max']}%"
+        (failures if args.enforcement_mode == "strict" else warnings).append(message)
+
+    if warnings:
+        metrics["warnings"] = warnings
     if failures:
         metrics["status"] = "FAIL"
         metrics["failures"] = failures
@@ -106,11 +147,14 @@ def main() -> None:
     args.output.write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
     print(
         "ANDROID_RUNTIME_METRICS "
-        f"api={args.api_level} cold_ms={total_time} warm_ms={warm[0] if warm else 'n/a'} "
-        f"home_pss_kb={total_pss} reader_pss_kb={reader_pss or 'n/a'} "
-        f"search_pss_kb={search_pss or 'n/a'} jank_percent={jank if jank is not None else 'n/a'} "
-        f"status={metrics['status']}"
+        f"api={args.api_level} mode={args.enforcement_mode} cold_ms={total_time} "
+        f"warm_ms={warm[0] if warm else 'n/a'} home_pss_kb={total_pss} "
+        f"reader_pss_kb={reader_pss or 'n/a'} search_pss_kb={search_pss or 'n/a'} "
+        f"frames={jank.total_frames if jank and jank.total_frames is not None else 'n/a'} "
+        f"jank_percent={jank.percent if jank is not None else 'n/a'} status={metrics['status']}"
     )
+    if warnings:
+        print("ANDROID_RUNTIME_WARNINGS " + "; ".join(warnings))
     if failures:
         raise SystemExit("; ".join(failures))
 

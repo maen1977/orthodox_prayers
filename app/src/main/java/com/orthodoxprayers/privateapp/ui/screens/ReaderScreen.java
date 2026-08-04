@@ -51,6 +51,9 @@ public final class ReaderScreen extends BaseScreen {
     private boolean autoScrollActive;
     private Button autoScrollButton;
     private TextView readerProgress;
+    private int lastDisplayedProgressPercent = -1;
+    private boolean progressUpdateScheduled;
+    private String readingProgressPrefix = "";
     private final Runnable autoScrollTick = new Runnable() {
         @Override public void run() {
             if (!autoScrollActive || recycler == null) return;
@@ -130,7 +133,7 @@ public final class ReaderScreen extends BaseScreen {
         recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView rv, int dx, int dy) {
-                updateReaderProgress();
+                scheduleReaderProgressUpdate();
             }
 
             @Override
@@ -403,6 +406,7 @@ public final class ReaderScreen extends BaseScreen {
         readerTools.addView(share, ui.weight(44));
         box.addView(readerTools, new LinearLayout.LayoutParams(-1, -2));
 
+        readingProgressPrefix = local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_b21e6b19);
         readerProgress = ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_0_30d9316d));
         readerProgress.setGravity(Gravity.CENTER);
         box.addView(readerProgress, ui.margins(-1, -2, 10, 0, 10, 3));
@@ -479,11 +483,22 @@ public final class ReaderScreen extends BaseScreen {
         host.activity().startActivity(Intent.createChooser(intent, local(com.orthodoxprayers.privateapp.R.string.ui_share_text_4596efcf)));
     }
 
+    private void scheduleReaderProgressUpdate() {
+        if (progressUpdateScheduled || recycler == null) return;
+        progressUpdateScheduled = true;
+        recycler.postOnAnimation(() -> {
+            progressUpdateScheduled = false;
+            updateReaderProgress();
+        });
+    }
+
     private void updateReaderProgress() {
         if (readerProgress == null || layoutManager == null || adapter == null || adapter.getItemCount() == 0) return;
         int last = layoutManager.findLastVisibleItemPosition();
         int percent = ReadingProgressPolicy.percentFromLastVisible(last, adapter.getItemCount());
-        readerProgress.setText(local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_b21e6b19) + percent + "%");
+        if (percent == lastDisplayedProgressPercent) return;
+        lastDisplayedProgressPercent = percent;
+        readerProgress.setText(readingProgressPrefix + percent + "%");
     }
 
     private int readerBackground() {
