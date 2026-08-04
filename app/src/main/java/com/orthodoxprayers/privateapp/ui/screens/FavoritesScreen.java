@@ -80,6 +80,13 @@ public final class FavoritesScreen extends BaseScreen {
             host.navigate("favorites", null);
         });
         row.addView(folder, ui.weight(42));
+
+        Button remove = ui.smallButton(local(com.orthodoxprayers.privateapp.R.string.ui_delete_ea349e00), false);
+        remove.setOnClickListener(v -> {
+            if (preferences.isFavorite(id)) preferences.toggleFavorite(id);
+            host.navigate("favorites", null);
+        });
+        row.addView(remove, ui.weight(42));
         wrapper.addView(row, ui.margins(-1, -2, 0, 7, 0, 0));
         return wrapper;
     }

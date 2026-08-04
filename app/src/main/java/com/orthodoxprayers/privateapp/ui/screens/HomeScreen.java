@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.orthodoxprayers.privateapp.ui.ReadingProgressPolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
@@ -36,6 +37,7 @@ public final class HomeScreen extends BaseScreen {
             return page.scroll;
         }
         addDateCard(page.root);
+        addContinueReading(page.root);
         addQuickAccess(page.root);
         addSmartRecommendation(page.root);
         return page.scroll;
@@ -115,6 +117,30 @@ public final class HomeScreen extends BaseScreen {
         card.setFocusable(true);
         card.setOnClickListener(v -> host.navigate("upcoming", null));
         add(root, card, 0, 10);
+    }
+
+    private void addContinueReading(LinearLayout root) {
+        for (String serviceId : preferences.recentServices()) {
+            int progress = preferences.readerProgressPercent(serviceId);
+            if (!ReadingProgressPolicy.isResumable(progress)) continue;
+            JSONObject service = data.findService(serviceId);
+            if (service == null) continue;
+            String serviceTitle = localized(
+                    service.optJSONObject("title"),
+                    local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a)
+            );
+            String subtitle = serviceTitle + " · "
+                    + local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_b21e6b19)
+                    + progress + "%";
+            LinearLayout card = ui.actionCard(
+                    com.orthodoxprayers.privateapp.R.drawable.ic_action_history,
+                    local(com.orthodoxprayers.privateapp.R.string.ui_continue_reading),
+                    subtitle
+            );
+            card.setOnClickListener(v -> host.navigate("reader", serviceId));
+            add(root, card, 2, 10);
+            return;
+        }
     }
 
     private void addQuickAccess(LinearLayout root) {

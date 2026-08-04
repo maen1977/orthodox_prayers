@@ -159,6 +159,18 @@ public final class AppPreferences {
                 .apply();
     }
 
+    public int readerProgressPercent(String serviceId) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return 0;
+        return Math.max(0, Math.min(100, values.getInt("reader_progress_" + serviceId, 0)));
+    }
+
+    public void setReaderProgressPercent(String serviceId, int percent) {
+        if (serviceId == null || serviceId.trim().isEmpty()) return;
+        values.edit().putInt(
+                "reader_progress_" + serviceId,
+                Math.max(0, Math.min(100, percent))
+        ).apply();
+    }
 
     public boolean readerControlsExpanded() { return values.getBoolean("reader_controls_expanded", false); }
     public void setReaderControlsExpanded(boolean value) { values.edit().putBoolean("reader_controls_expanded", value).apply(); }
@@ -168,7 +180,7 @@ public final class AppPreferences {
         if (currentVersion >= targetVersion) return;
         SharedPreferences.Editor editor = values.edit();
         for (String key : values.getAll().keySet()) {
-            if (key.startsWith("reader_position_") || key.startsWith("reader_offset_")) {
+            if (key.startsWith("reader_position_") || key.startsWith("reader_offset_") || key.startsWith("reader_progress_")) {
                 editor.remove(key);
             }
         }

@@ -1,3 +1,10 @@
+## 5.1.0 — Reader continuity and collection workflow
+
+- Added a localized Continue Reading card backed by per-service progress persistence.
+- Added direct favorite actions to Search and removal actions to Favorites.
+- Preserved the signed-data compatibility floor at version code 50023.
+- Modernized historical patch verifiers to accept safe newer application versions.
+
 # R40.11 — إصلاح دليل الكنائس داخل مسارات اللغات
 
 - تمرير `--language` إلى مدقق `source intelligence` بدل فحص ملف اليونانية أو الإنجليزية كأنه الملف الجامع.

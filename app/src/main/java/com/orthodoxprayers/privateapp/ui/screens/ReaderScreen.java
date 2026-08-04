@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 import com.orthodoxprayers.privateapp.ui.ReaderAdapter;
+import com.orthodoxprayers.privateapp.ui.ReadingProgressPolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.ThemePalette;
 
@@ -286,6 +287,11 @@ public final class ReaderScreen extends BaseScreen {
         View first = layoutManager.findViewByPosition(position);
         int offset = first == null ? 0 : first.getTop();
         preferences.setReaderPosition(serviceId, position, offset);
+        int last = layoutManager.findLastVisibleItemPosition();
+        preferences.setReaderProgressPercent(
+                serviceId,
+                ReadingProgressPolicy.percentFromLastVisible(last, adapter.getItemCount())
+        );
     }
 
     private View errorView(String detail) {
@@ -475,7 +481,7 @@ public final class ReaderScreen extends BaseScreen {
     private void updateReaderProgress() {
         if (readerProgress == null || layoutManager == null || adapter == null || adapter.getItemCount() == 0) return;
         int last = layoutManager.findLastVisibleItemPosition();
-        int percent = Math.max(0, Math.min(100, Math.round(((last + 1) * 100f) / adapter.getItemCount())));
+        int percent = ReadingProgressPolicy.percentFromLastVisible(last, adapter.getItemCount());
         readerProgress.setText(local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_b21e6b19) + percent + "%");
     }
 

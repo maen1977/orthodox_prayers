@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.orthodoxprayers.privateapp.data.SearchEngine;
 import com.orthodoxprayers.privateapp.model.SearchResult;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
+import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONObject;
@@ -118,6 +119,7 @@ public final class SearchScreen extends BaseScreen {
         snippet.setMaxLines(7);
         card.addView(snippet);
         String externalUrl = service.optString("external_url", "").trim();
+        LinearLayout actions = ui.row();
         Button open = ui.smallButton(externalUrl.isEmpty()
                 ? local(com.orthodoxprayers.privateapp.R.string.ui_open_result_269ccae8)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_open_official_link_aeec6baa), false);
@@ -132,7 +134,33 @@ public final class SearchScreen extends BaseScreen {
                 Toast.makeText(host.activity(), local(com.orthodoxprayers.privateapp.R.string.ui_could_not_open_the_official_link_3126ea33), Toast.LENGTH_SHORT).show();
             }
         });
-        card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
+        actions.addView(open, ui.weight(50));
+        String serviceId = service.optString("id", "").trim();
+        if (externalUrl.isEmpty() && !serviceId.isEmpty()) {
+            Button favorite = ui.smallButton(
+                    preferences.isFavorite(serviceId)
+                            ? local(com.orthodoxprayers.privateapp.R.string.ui_saved_cd7c1a66)
+                            : local(com.orthodoxprayers.privateapp.R.string.ui_favorite_1d799489),
+                    preferences.isFavorite(serviceId)
+            );
+            favorite.setOnClickListener(v -> {
+                preferences.toggleFavorite(serviceId);
+                boolean active = preferences.isFavorite(serviceId);
+                String label = active
+                        ? local(com.orthodoxprayers.privateapp.R.string.ui_saved_cd7c1a66)
+                        : local(com.orthodoxprayers.privateapp.R.string.ui_favorite_1d799489);
+                favorite.setText(label);
+                favorite.setTextColor(active ? android.graphics.Color.WHITE : ui.colors().primaryText());
+                favorite.setBackground(ui.round(
+                        active ? ThemePalette.NAVY : ui.colors().card(),
+                        ThemePalette.GOLD,
+                        14
+                ));
+                favorite.setContentDescription(label);
+            });
+            actions.addView(favorite, ui.weight(50));
+        }
+        card.addView(actions, ui.margins(-1, -2, 0, 7, 0, 0));
         card.setContentDescription(title + ". " + result.snippet);
         return card;
     }
