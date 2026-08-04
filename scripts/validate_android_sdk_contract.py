@@ -1,48 +1,27 @@
 #!/usr/bin/env python3
-"""Validate the Android SDK compatibility and instrumentation contract."""
-from __future__ import annotations
-
+"""Check the supported Android range and the single-build contract."""
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GRADLE = ROOT / "app/build.gradle.kts"
+gradle = (ROOT / "app" / "build.gradle.kts").read_text(encoding="utf-8")
+workflow = (ROOT / ".github" / "workflows" / "church-prayers.yml").read_text(encoding="utf-8")
 
+expected = {
+    "compileSdk": "36",
+    "minSdk": "26",
+    "targetSdk": "36",
+    "versionCode": "50200",
+    "versionName": '"5.2.0"',
+}
+for key, value in expected.items():
+    pattern = rf"\b{re.escape(key)}\s*=\s*{re.escape(value)}"
+    if not re.search(pattern, gradle):
+        raise SystemExit(f"Android contract mismatch: {key} must be {value}")
 
-def read_int(text: str, name: str) -> int:
-    match = re.search(rf"\b{name}\s*=\s*(\d+)", text)
-    if not match:
-        raise SystemExit(f"{name} is missing from app/build.gradle.kts")
-    return int(match.group(1))
+if workflow.count("\n  build:\n") != 1:
+    raise SystemExit("GitHub must expose exactly one build job")
+if "Church-Prayers.apk" not in workflow or "Church-Prayers.aab" not in workflow:
+    raise SystemExit("GitHub must produce exactly the APK and AAB names")
 
-
-def main() -> None:
-    text = GRADLE.read_text(encoding="utf-8")
-    compile_sdk = read_int(text, "compileSdk")
-    min_sdk = read_int(text, "minSdk")
-    target_sdk = read_int(text, "targetSdk")
-
-    if min_sdk > 29:
-        raise SystemExit(f"minSdk={min_sdk} no longer covers Android 10/API 29")
-    if compile_sdk < 35 or target_sdk < 35:
-        raise SystemExit(
-            f"Modern Android contract requires compileSdk/targetSdk >= 35; "
-            f"got compileSdk={compile_sdk}, targetSdk={target_sdk}"
-        )
-    if min_sdk > target_sdk or target_sdk > compile_sdk:
-        raise SystemExit(
-            f"Invalid SDK ordering: minSdk={min_sdk}, targetSdk={target_sdk}, compileSdk={compile_sdk}"
-        )
-    runner = 'testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"'
-    if runner not in text:
-        raise SystemExit("AndroidJUnitRunner contract is missing")
-
-    print(
-        "ANDROID_SDK_CONTRACT_OK "
-        f"minSdk={min_sdk} targetSdk={target_sdk} compileSdk={compile_sdk} "
-        "runtime_emulator_api=35 legacy_runtime_coverage=lint"
-    )
-
-
-if __name__ == "__main__":
-    main()
+print("ANDROID_CONTRACT_OK min=26 target=36 compile=36 version=5.2.0 jobs=1")

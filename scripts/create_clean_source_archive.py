@@ -9,13 +9,18 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_DIRS = {".git", ".gradle", ".idea", ".pytest_cache", "__pycache__", ".cache", "build", "release", ".venv", "venv"}
+EXCLUDED_DIRS = {".git", ".gradle", ".idea", ".pytest_cache", "__pycache__", ".cache", "build", ".venv", "venv"}
 EXCLUDED_SUFFIXES = {".pyc", ".pyo", ".jks", ".keystore", ".p12", ".pfx", ".pem", ".key"}
 EXCLUDED_NAMES = {"local.properties", ".DS_Store"}
 
 
 def include(path: Path) -> bool:
     rel = path.relative_to(ROOT)
+    # Preserve only stable, public branding sources from release/. Generated
+    # APKs, reports, checksums, and signing material remain excluded.
+    if rel.parts and rel.parts[0] == "release":
+        if len(rel.parts) < 3 or rel.parts[1] != "branding":
+            return False
     if any(part in EXCLUDED_DIRS for part in rel.parts):
         return False
     if path.name in EXCLUDED_NAMES or path.name.startswith("COMMIT_MESSAGE") or path.suffix.lower() in EXCLUDED_SUFFIXES:

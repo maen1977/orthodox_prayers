@@ -1,21 +1,22 @@
 {
   "manifest_schema_version": 1,
   "date_iso": "2026-08-04",
-  "revision": 12601,
-  "published_at_utc": "2026-08-04T05:04:08Z",
+  "revision": 12701,
+  "published_at_utc": "2026-08-04T16:01:43Z",
+  "valid_until_utc": "2026-08-06T16:01:43Z",
   "minimum_app_version_code": 50023,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "30d9816aab34bea0ab90bf6d00a0a4590e8a30fdf290d4e690e341778738a4b9",
-    "size_bytes": 3195099
+    "sha256": "ef98fb71021e607eeaf9c84a280952e69908a754b162b1e3a844f202e5cadb80",
+    "size_bytes": 3459860
   },
   "languages": {
     "ar": {
       "path": "data/daily/2026-08-04/ar.json",
       "signature_path": "data/daily/2026-08-04/ar.json.sig",
-      "sha256": "d809c410950ab9b025e7e74c06d1f33484fa1f5a592813acd4229f15c45349c0",
-      "size_bytes": 1858772,
+      "sha256": "f63c0007cfb7526d7cf02df8af5bd4724a7b1fa09c69ac6fa716d41eedc6dd1c",
+      "size_bytes": 2123533,
       "coverage_start_date": "2026-08-04",
       "coverage_end_date": "2026-08-12",
       "coverage_day_count": 9,
@@ -25,8 +26,8 @@
     "en": {
       "path": "data/daily/2026-08-04/en.json",
       "signature_path": "data/daily/2026-08-04/en.json.sig",
-      "sha256": "d40902eb4256184429e4f2d17f8936a0dd81249e4f90bf85473e862c8f11b797",
-      "size_bytes": 1583385,
+      "sha256": "6489a750dfd1e5953802ea3880a3c865d95b9cd3fb98b1fe27979b0ce3dfe512",
+      "size_bytes": 1823207,
       "coverage_start_date": "2026-08-04",
       "coverage_end_date": "2026-08-12",
       "coverage_day_count": 9,
@@ -36,8 +37,8 @@
     "el": {
       "path": "data/daily/2026-08-04/el.json",
       "signature_path": "data/daily/2026-08-04/el.json.sig",
-      "sha256": "d02bb49c2474ba3369a766a88af4255433059cc457168e58dfe00373a64eb8a4",
-      "size_bytes": 1947173,
+      "sha256": "aa71095093219a1bcce34a56c221099a4de0003b72f0cb116d8b0980833d1e12",
+      "size_bytes": 2186995,
       "coverage_start_date": "2026-08-04",
       "coverage_end_date": "2026-08-12",
       "coverage_day_count": 9,

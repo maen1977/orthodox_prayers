@@ -9,6 +9,7 @@ import json
 import re
 import subprocess
 import tempfile
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -88,6 +89,27 @@ def main() -> None:
         fail("update manifest date mismatch")
     if not isinstance(manifest.get("revision"), int) or manifest["revision"] < 1:
         fail("invalid update manifest revision")
+    published_at = manifest.get("published_at_utc")
+    valid_until = manifest.get("valid_until_utc")
+    if published_at is not None:
+        try:
+            published = datetime.fromisoformat(str(published_at).replace("Z", "+00:00"))
+        except ValueError as error:
+            fail(f"invalid manifest publication time: {error}")
+        if published.tzinfo is None:
+            fail("manifest publication time has no timezone")
+        if valid_until is not None:
+            try:
+                expiry = datetime.fromisoformat(str(valid_until).replace("Z", "+00:00"))
+            except ValueError as error:
+                fail(f"invalid manifest expiry time: {error}")
+            if expiry.tzinfo is None:
+                fail("manifest expiry time has no timezone")
+            window = expiry.astimezone(timezone.utc) - published.astimezone(timezone.utc)
+            if window < timedelta(hours=6) or window > timedelta(hours=72):
+                fail("manifest validity window must be between 6 and 72 hours")
+    elif valid_until is not None:
+        fail("manifest expiry exists without publication time")
     minimum_version = manifest.get("minimum_app_version_code")
     if not isinstance(minimum_version, int) or minimum_version < 1:
         fail("invalid minimum app version")
