@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orthodoxprayers.privateapp.AppPreferences;
+import com.orthodoxprayers.privateapp.data.CommemorationDisplayPolicy;
 import com.orthodoxprayers.privateapp.data.DataRepository;
 import com.orthodoxprayers.privateapp.ui.AppScreen;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
@@ -93,25 +94,7 @@ public abstract class BaseScreen implements AppScreen {
     }
 
     protected String displayableCommemoration(JSONObject day) {
-        if (day == null) return "";
-        JSONObject commemoration = day.optJSONObject("commemoration");
-        JSONObject localCommemoration = day.optJSONObject("local_commemoration");
-        String status = day.optString("commemoration_status",
-                day.optString("local_commemoration_status", ""));
-        if (commemoration != null && status.isEmpty()) status = commemoration.optString("status", "");
-        if (localCommemoration != null && status.isEmpty()) status = localCommemoration.optString("status", "");
-        status = status.trim().toUpperCase(Locale.ROOT);
-        if (status.startsWith("UNAVAILABLE") || status.startsWith("PENDING")) return "";
-
-        if (localCommemoration != null) {
-            String localTitle = localized(localCommemoration.optJSONObject("title"), "");
-            if (!localTitle.isEmpty()) return localTitle;
-        }
-        if (commemoration != null) {
-            String title = localized(commemoration.optJSONObject("title"), "");
-            if (!title.isEmpty()) return title;
-        }
-        return localized(day.optJSONObject("feast"), localized(day.optJSONObject("note"), ""));
+        return CommemorationDisplayPolicy.displayText(day, data::localizedValue);
     }
 
     protected void addFastingGuide(LinearLayout card, JSONObject fasting, boolean includeNotes) {

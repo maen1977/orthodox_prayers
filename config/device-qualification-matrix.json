@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "minimum_android": 26,
+  "automated_emulators": [
+    {"api": 26, "ram_mb": 1024, "screen": "small", "suites": ["upgrade", "offline", "accessibility", "performance"]},
+    {"api": 29, "ram_mb": 1536, "screen": "small", "suites": ["smoke", "rtl", "performance"]},
+    {"api": 33, "ram_mb": 2048, "screen": "phone", "suites": ["smoke", "notifications", "performance"]},
+    {"api": 35, "ram_mb": 2048, "screen": "phone", "suites": ["full", "screenshots", "failure-recovery", "performance"]}
+  ],
+  "physical_device_targets": [
+    {"class": "android_8_low_ram", "minimum_devices": 1, "required_for_production": true},
+    {"class": "android_10_11_midrange", "minimum_devices": 1, "required_for_production": true},
+    {"class": "android_13_plus", "minimum_devices": 1, "required_for_production": true},
+    {"class": "tablet_or_foldable", "minimum_devices": 1, "required_for_production": false}
+  ]
+}

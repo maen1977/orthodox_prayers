@@ -1,3 +1,21 @@
+## R44 — Release artifact attestation and deterministic handoff
+
+- Added fail-closed APK/AAB structural validation, package/version verification, signing verification, and secret-file exclusion.
+- Added an in-toto-style release qualification attestation bound to the immutable 2026–2050 calendar lock.
+- Added deterministic, secret-free qualified release handoff archives with complete SHA-256 manifests.
+- Kept Android 8.0 (API 26) as the minimum and retained version 5.2.0 / code 50200.
+- No calendar JSON file or calendar date was modified.
+
+# R41 — بوابة التدقيق الديني الصارمة وحماية الروزنامة
+
+- تثبيت التوافق عند Android 8.0 / API 26 مع الإبقاء على targetSdk وcompileSdk عند 36 دون حلول توافق قديمة تقلل الأمان.
+- إضافة قفل SHA-256 غير قابل للتجاوز لملفات الروزنامة الداخلية من 2026-01-01 حتى 2050-12-31؛ أي تغيير في ملف أو حجمه أو قائمة السنوات يفشل بوابة الجودة.
+- إضافة تدقيق آلي صارم للرسالة والإنجيل وإنجيل السحر عند وجوده: المرجع القانوني، مصدر كل لغة، بصمة النص، عدد الآيات، وبصمة كل سطر/آية، مع منع الترجمة الآلية والتشكيل الآلي والرجوع إلى لغة أخرى.
+- توحيد سياسة عرض التذكار في الصفحة الرئيسية والتقويم والأيام القادمة والتنبيهات والـWidget: يظهر التذكار الموثق فقط، وتختفي العبارات العامة والحالات المعلقة أو غير المتوفرة بلا عنوان أو شرطة أو مساحة فارغة.
+- تحميل سنة الروزنامة فقط عند فتح التقويم وتحرير فهرس البحث والذاكرة الاختيارية عند ضغط النظام، دون تفريغ بيانات اليوم الموقعة.
+- رفع أهداف اللمس الأساسية للرجوع إلى 48dp وتحسين الوصول على الشاشات الصغيرة.
+- دمج قفل الروزنامة والتدقيق الصارم في Build وUpdate قبل البناء والتوقيع والنشر، وإرفاق تقرير تدقيق واضح في GitHub Actions.
+
 ## 5.1.0 — Reader continuity and collection workflow
 
 - Added a localized Continue Reading card backed by per-service progress persistence.

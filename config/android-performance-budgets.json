@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "package": "com.orthodoxprayers.privateapp",
+  "budgets": {
+    "26": {
+      "cold_start_total_time_ms_max": 8000,
+      "warm_start_total_time_ms_max": 3000,
+      "total_pss_kb_max": 200000,
+      "reader_total_pss_kb_max": 220000,
+      "search_total_pss_kb_max": 225000,
+      "janky_frames_percent_max": 20.0
+    },
+    "29": {
+      "cold_start_total_time_ms_max": 7000,
+      "warm_start_total_time_ms_max": 2500,
+      "total_pss_kb_max": 210000,
+      "reader_total_pss_kb_max": 230000,
+      "search_total_pss_kb_max": 235000,
+      "janky_frames_percent_max": 18.0
+    },
+    "33": {
+      "cold_start_total_time_ms_max": 6500,
+      "warm_start_total_time_ms_max": 2200,
+      "total_pss_kb_max": 215000,
+      "reader_total_pss_kb_max": 235000,
+      "search_total_pss_kb_max": 240000,
+      "janky_frames_percent_max": 17.0
+    },
+    "35": {
+      "cold_start_total_time_ms_max": 6000,
+      "warm_start_total_time_ms_max": 2000,
+      "total_pss_kb_max": 220000,
+      "reader_total_pss_kb_max": 240000,
+      "search_total_pss_kb_max": 245000,
+      "janky_frames_percent_max": 15.0
+    }
+  }
+}

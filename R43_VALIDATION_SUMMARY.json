@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "release": {
+    "name": "Church Prayers",
+    "version_name": "5.2.0",
+    "version_code": 50200,
+    "min_sdk": 26,
+    "target_sdk": 36,
+    "compile_sdk": 36
+  },
+  "validation": {
+    "python_tests_passed": 470,
+    "python_subtests_passed": 14,
+    "strict_religious_gate": "PASS",
+    "signature_gate": "PASS",
+    "secret_scan": "PASS",
+    "workflow_contract": "PASS",
+    "play_internal_dry_run": "PASS",
+    "local_gradle_build": "BLOCKED_EXTERNAL_DNS",
+    "physical_devices": "NOT_AVAILABLE_IN_EXECUTION_ENVIRONMENT",
+    "github_publication": "BLOCKED_CONNECTOR_GIT_DATA_403"
+  },
+  "calendar_lock": {
+    "start": "2026-01-01",
+    "end": "2050-12-31",
+    "days": 9131,
+    "files": 28,
+    "aggregate_sha256": "81604edecae2befa2263df01a2231ca3925b0a046a4383db9de9f2388edcebcf",
+    "calendar_files_modified": false
+  },
+  "android_qualification": {
+    "automated_api_levels": [26, 29, 33, 35],
+    "android_8_ram_mb": 1024,
+    "upgrade_test": true,
+    "offline_recovery_test": true,
+    "corrupt_cache_recovery_test": true,
+    "extended_runtime_metrics": true,
+    "release_size_budgets": true
+  },
+  "store": {
+    "languages": ["ar", "en", "el"],
+    "internal_track_workflow": true,
+    "protected_environment": "play-internal",
+    "real_publish_requires_secret": "PLAY_SERVICE_ACCOUNT_JSON"
+  }
+}

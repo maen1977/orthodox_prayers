@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "application_id": "com.orthodoxprayers.privateapp",
+  "version_name": "5.2.0",
+  "version_code": 50200,
+  "min_sdk": 26,
+  "target_sdk": 36,
+  "max_total_uncompressed_bytes": 268435456,
+  "max_compression_ratio": 250.0,
+  "forbidden_suffixes": [
+    ".jks",
+    ".keystore",
+    ".p12",
+    ".pfx",
+    ".pem",
+    ".key",
+    ".env"
+  ],
+  "forbidden_names": [
+    "id_rsa",
+    "id_ed25519",
+    "google-services.json",
+    "service-account.json"
+  ],
+  "apk_required_entries": [
+    "AndroidManifest.xml"
+  ],
+  "aab_required_entries": [
+    "BundleConfig.pb",
+    "base/manifest/AndroidManifest.xml"
+  ]
+}

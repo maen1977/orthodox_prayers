@@ -1,10 +1,28 @@
-HSPLcom/orthodoxprayers/privateapp/OrthodoxPrayersApp;-><init>()V
-HSPLcom/orthodoxprayers/privateapp/OrthodoxPrayersApp;->onCreate()V
-HSPLcom/orthodoxprayers/privateapp/MainActivity;-><init>()V
-HSPLcom/orthodoxprayers/privateapp/MainActivity;->onCreate(Landroid/os/Bundle;)V
-HSPLcom/orthodoxprayers/privateapp/data/DataRepository;-><init>(Landroid/content/Context;Lcom/orthodoxprayers/privateapp/AppPreferences;)V
-HSPLcom/orthodoxprayers/privateapp/data/DataRepository;->loadBestToday()Lorg/json/JSONObject;
-HSPLcom/orthodoxprayers/privateapp/ui/screens/HomeScreen;->createView()Landroid/view/View;
-HSPLcom/orthodoxprayers/privateapp/ui/screens/ReaderScreen;->createView()Landroid/view/View;
-HSPLcom/orthodoxprayers/privateapp/ui/ReaderAdapter;->onBindViewHolder(Lcom/orthodoxprayers/privateapp/ui/ReaderAdapter$Holder;I)V
-HSPLcom/orthodoxprayers/privateapp/data/SearchEngine;->search(Lcom/orthodoxprayers/privateapp/data/DataRepository;Ljava/lang/String;)Ljava/util/ArrayList;
+# Church Prayers critical user journeys.
+# Startup: application initialization, signed bootstrap, home rendering, and navigation.
+HSPLcom/orthodoxprayers/privateapp/OrthodoxPrayersApp;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/MainActivity;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/AppPreferences;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/data/DataRepository;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/data/DailyDataStore;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/data/DataContract;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/data/VerifiedContentSanitizer;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/data/DisplayTextSanitizer;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/ui/ScreenHost;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/ui/UiKit;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/ui/ThemePalette;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/ui/LocalizedResources;->**(**)**
+HSPLcom/orthodoxprayers/privateapp/ui/screens/HomeScreen;->**(**)**
+
+# Post-startup journeys: open and scroll prayers, readings, search, and calendar.
+HPLcom/orthodoxprayers/privateapp/ui/screens/ReaderScreen;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/ReaderAdapter;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/ReaderControlsPolicy;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/ReadingProgressPolicy;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/screens/ReadingsScreen;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/screens/ReadingDetailScreen;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/screens/SearchScreen;->**(**)**
+HPLcom/orthodoxprayers/privateapp/data/SearchEngine;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/screens/CalendarScreen;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen;->**(**)**
+HPLcom/orthodoxprayers/privateapp/ui/screens/UpcomingScreen;->**(**)**

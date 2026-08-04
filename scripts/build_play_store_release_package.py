@@ -48,6 +48,11 @@ def main() -> None:
     shutil.copytree(screenshots, output / "screenshots")
     for language in ("AR", "EN", "EL"):
         copy_file(ROOT / f"play-store/STORE_LISTING_{language}.md", output / f"listing/STORE_LISTING_{language}.md")
+    for language in ("ar", "en", "el"):
+        copy_file(
+            ROOT / f"play-store/release-notes/{language}.txt",
+            output / f"listing/release-notes-{language}.txt",
+        )
     for relative in (
         "play-store/DATA_SAFETY_AR.md",
         "play-store/PLAY_CONSOLE_CHECKLIST_AR.md",

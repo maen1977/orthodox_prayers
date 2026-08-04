@@ -25,8 +25,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_and_release_hardening(self):
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        self.assertIn('versionName = "5.1.0"', build)
-        self.assertIn("versionCode = 50100", build)
+        self.assertIn('versionName = "5.2.0"', build)
+        self.assertIn("versionCode = 50200", build)
         contract = json.loads((ROOT / "canonical/update_contract.json").read_text(encoding="utf-8"))
         self.assertEqual(50023, contract["minimum_app_version_code"])
         self.assertIn("compileSdk = 36", build)
@@ -238,7 +238,9 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_fixed_bottom_navigation_and_system_insets_remain(self):
         source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
-        self.assertIn("shell.addView(contentHost, new LinearLayout.LayoutParams(-1, 0, 1f))", source)
+        self.assertIn("shell.addView(contentFrame, new LinearLayout.LayoutParams(-1, 0, 1f))", source)
+        self.assertIn("smallestScreenWidthDp >= 600", source)
+        self.assertIn("uiKit.dp(840)", source)
         self.assertIn("shell.addView(bottomNav", source)
         self.assertIn("setDecorFitsSystemWindows(false)", source)
         self.assertIn("getSystemWindowInsetBottom()", source)
@@ -582,7 +584,7 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_workflows_cover_build_verified_data_security_and_signed_release(self):
         workflows = ROOT / ".github/workflows"
-        expected = {"build.yml", "update.yml"}
+        expected = {"build.yml", "update.yml", "play-internal.yml", "weekly-health.yml"}
         self.assertEqual(expected, {path.name for path in workflows.glob("*.yml")})
 
         build = (workflows / "build.yml").read_text(encoding="utf-8")

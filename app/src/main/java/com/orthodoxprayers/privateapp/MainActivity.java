@@ -169,6 +169,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     @Override
     protected void onResume() {
         super.onResume();
+        ((OrthodoxPrayersApp) getApplication()).refreshShortcuts();
         updateCoordinator.scheduleDailyRefresh();
         if (automaticOpenRefreshPending) {
             automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
@@ -232,8 +233,16 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         shell.setOrientation(LinearLayout.VERTICAL);
         shell.setBackgroundColor(uiKit.colors().background());
 
+        FrameLayout contentFrame = new FrameLayout(this);
+        contentFrame.setBackgroundColor(uiKit.colors().background());
         contentHost = new FrameLayout(this);
-        shell.addView(contentHost, new LinearLayout.LayoutParams(-1, 0, 1f));
+        int contentWidth = getResources().getConfiguration().smallestScreenWidthDp >= 600
+                ? uiKit.dp(840)
+                : -1;
+        FrameLayout.LayoutParams contentParams = new FrameLayout.LayoutParams(contentWidth, -1);
+        contentParams.gravity = Gravity.CENTER_HORIZONTAL;
+        contentFrame.addView(contentHost, contentParams);
+        shell.addView(contentFrame, new LinearLayout.LayoutParams(-1, 0, 1f));
 
         bottomNav = new LinearLayout(this);
         bottomNav.setOrientation(LinearLayout.HORIZONTAL);

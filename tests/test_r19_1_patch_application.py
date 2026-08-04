@@ -17,7 +17,7 @@ class R191PatchApplicationTests(unittest.TestCase):
         verifier = (ROOT / "scripts/verify_r19_patch.py").read_text(encoding="utf-8")
         self.assertLess(
             gate.index('"scripts/verify_r19_patch.py"'),
-            gate.index('"-m", "pytest"'),
+            gate.index('"scripts/run_pytest_isolated.py"'),
         )
         self.assertIn("PATCH_R19_PARTIAL_OR_MISPLACED", verifier)
         self.assertIn("repository root", verifier)
@@ -39,8 +39,8 @@ class R191PatchApplicationTests(unittest.TestCase):
                 self.assertIn("tests/test_r19_refinement.py", names)
                 self.assertFalse(any(name.startswith("orthodox_prayers/") for name in names))
                 build = bundle.read("app/build.gradle.kts").decode("utf-8")
-                self.assertIn('versionName = "5.1.0"', build)
-                self.assertIn("versionCode = 50100", build)
+                self.assertIn('versionName = "5.2.0"', build)
+                self.assertIn("versionCode = 50200", build)
 
 
 if __name__ == "__main__":

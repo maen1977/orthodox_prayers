@@ -75,14 +75,23 @@ def main() -> None:
         if not ARABIC.search(value):
             raise SystemExit(f"Arabic UI string has no Arabic text: {key}")
 
-    java_text = "\n".join(path.read_text(encoding="utf-8") for path in JAVA.rglob("*.java"))
-    direct = DIRECT_TRIPLE.search(java_text)
-    if direct:
-        raise SystemExit("A direct three-language Java literal remains; move it to ui_strings.xml")
-    if "local(String ar, String en, String el)" in java_text:
-        raise SystemExit("Legacy three-language Java localization helper remains")
-
-    referenced = set(RESOURCE_REFERENCE.findall(java_text))
+    # Scan source files independently. This keeps the direct-literal check linear
+    # and avoids pathological regex backtracking across one giant concatenated
+    # Java string during long-lived test processes.
+    referenced: set[str] = set()
+    for path in sorted(JAVA.rglob("*.java")):
+        java_text = path.read_text(encoding="utf-8")
+        if DIRECT_TRIPLE.search(java_text):
+            raise SystemExit(
+                "A direct three-language Java literal remains in "
+                f"{path.relative_to(ROOT)}; move it to ui_strings.xml"
+            )
+        if "local(String ar, String en, String el)" in java_text:
+            raise SystemExit(
+                "Legacy three-language Java localization helper remains in "
+                f"{path.relative_to(ROOT)}"
+            )
+        referenced.update(RESOURCE_REFERENCE.findall(java_text))
     missing_references = sorted(referenced - expected)
     if missing_references:
         raise SystemExit(f"Java references missing UI resources: {missing_references[:10]}")

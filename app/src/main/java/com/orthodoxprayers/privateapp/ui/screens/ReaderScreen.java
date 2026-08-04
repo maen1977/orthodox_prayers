@@ -111,7 +111,8 @@ public final class ReaderScreen extends BaseScreen {
 
         controlsHandle = ui.infoBadge("");
         controlsHandle.setGravity(Gravity.CENTER);
-        controlsHandle.setMinHeight(ui.dp(36));
+        controlsHandle.setMinHeight(ui.dp(48));
+        controlsHandle.setMinimumHeight(ui.dp(48));
         controlsHandle.setOnClickListener(v -> setControlsExpanded(!controlsExpanded, true));
         root.addView(controlsHandle, ui.margins(-1, -2, 10, 3, 10, 4));
 
@@ -192,7 +193,7 @@ public final class ReaderScreen extends BaseScreen {
         header.setBackground(ui.gradient(ThemePalette.NAVY, ThemePalette.NAVY_2, 0, 0));
 
         TextView back = ui.backArrow(host::goBack);
-        LinearLayout.LayoutParams backParams = new LinearLayout.LayoutParams(ui.dp(44), ui.dp(44));
+        LinearLayout.LayoutParams backParams = new LinearLayout.LayoutParams(ui.dp(48), ui.dp(48));
         backParams.setMargins(ui.dp(3), ui.dp(2), ui.dp(3), ui.dp(2));
         header.addView(back, backParams);
 

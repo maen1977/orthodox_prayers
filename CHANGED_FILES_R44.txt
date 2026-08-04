@@ -1,0 +1,18 @@
+Orthodox Prayers R44 - release artifact qualification and deterministic handoff
+Generated: 2026-08-04
+Base: R43 release qualification
+Application version remains 5.2.0 / 50200.
+Calendar JSON files are intentionally absent; calendar content was not modified.
+
+.github/workflows/build.yml
+CHANGELOG.md
+CHANGED_FILES_R44.txt
+R44_RELEASE_OPERATIONS_AR.md
+R44_VALIDATION_SUMMARY.json
+config/release-artifact-policy.json
+scripts/create_release_handoff_bundle.py
+scripts/generate_release_attestation.py
+scripts/validate_release_attestation.py
+scripts/validate_workflows.py
+scripts/verify_release_artifacts.py
+tests/test_r44_release_operations.py

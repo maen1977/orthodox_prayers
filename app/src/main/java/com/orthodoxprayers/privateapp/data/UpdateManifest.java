@@ -57,6 +57,10 @@ public final class UpdateManifest {
         if (revision < 1L) throw new IllegalStateException("manifest_revision_invalid");
         int minimumVersion = manifest.optInt("minimum_app_version_code", 0);
         if (minimumVersion < 1) throw new IllegalStateException("manifest_minimum_version_invalid");
+        ManifestSecurityPolicy.validatePublicationWindow(
+                manifest.optString("published_at_utc", ""),
+                manifest.optString("valid_until_utc", "")
+        );
 
         JSONObject coverage = manifest.optJSONObject("coverage");
         if (coverage != null) validateCoverage(coverage, expectedDate);
@@ -92,6 +96,7 @@ public final class UpdateManifest {
                 size
         );
     }
+
 
     private static void validateCoverage(JSONObject coverage, String expectedDate) {
         int schema = coverage.optInt("schema_version", 1);

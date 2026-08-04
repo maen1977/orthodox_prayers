@@ -6,11 +6,13 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import com.orthodoxprayers.privateapp.MainActivity;
 import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.R;
+import com.orthodoxprayers.privateapp.data.CommemorationDisplayPolicy;
 
 /** Privacy-preserving home-screen summary; all content is read from the signed local store. */
 public final class DailyAgendaWidget extends AppWidgetProvider {
@@ -32,11 +34,15 @@ public final class DailyAgendaWidget extends AppWidgetProvider {
         if (application instanceof OrthodoxPrayersApp) {
             OrthodoxPrayersApp app = (OrthodoxPrayersApp) application;
             String date = app.repository().dataDate();
-            String feast = app.repository().localized(app.repository().today().optJSONObject("feast"), "—");
+            String feast = CommemorationDisplayPolicy.displayText(
+                    app.repository().today(),
+                    app.repository()::localizedValue
+            );
             String fast = app.repository().localized(app.repository().today().optJSONObject("fast"), "—");
             views.setTextViewText(R.id.widget_title, app.repository().local(com.orthodoxprayers.privateapp.R.string.ui_church_prayers_d7f2a5cb));
             views.setTextViewText(R.id.widget_date, date.isEmpty() ? "—" : date);
-            views.setTextViewText(R.id.widget_feast, feast.isEmpty() ? "—" : feast);
+            views.setTextViewText(R.id.widget_feast, feast);
+            views.setViewVisibility(R.id.widget_feast, feast.isEmpty() ? View.GONE : View.VISIBLE);
             views.setTextViewText(R.id.widget_fast, fast.isEmpty() ? "—" : fast);
             views.setTextViewText(R.id.widget_open, app.repository().local(com.orthodoxprayers.privateapp.R.string.ui_open_agenda_a59ab00e));
         }

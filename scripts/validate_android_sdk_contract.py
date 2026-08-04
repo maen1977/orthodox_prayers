@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GRADLE = ROOT / "app/build.gradle.kts"
+WORKFLOW = ROOT / ".github/workflows/build.yml"
 
 
 def read_int(text: str, name: str) -> int:
@@ -22,8 +23,8 @@ def main() -> None:
     min_sdk = read_int(text, "minSdk")
     target_sdk = read_int(text, "targetSdk")
 
-    if min_sdk > 29:
-        raise SystemExit(f"minSdk={min_sdk} no longer covers Android 10/API 29")
+    if min_sdk != 26:
+        raise SystemExit(f"Android 8 security floor changed: expected minSdk=26, got {min_sdk}")
     if compile_sdk < 35 or target_sdk < 35:
         raise SystemExit(
             f"Modern Android contract requires compileSdk/targetSdk >= 35; "
@@ -37,10 +38,26 @@ def main() -> None:
     if runner not in text:
         raise SystemExit("AndroidJUnitRunner contract is missing")
 
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    required_runtime_contract = (
+        "api-level: 35",
+        "script: bash scripts/run_android_emulator_ci.sh 35",
+        "api-level: 26",
+        "ram-size: 1024M",
+        "script: bash scripts/run_android_emulator_ci.sh 26 smoke",
+        "api: [29, 33]",
+        "run_android_upgrade_ci.sh 26",
+        "run_android_failure_recovery_ci.sh 35",
+        "needs: [android_debug, android_instrumented, android_legacy, android_compatibility, android_upgrade, android_resilience]",
+    )
+    missing = [value for value in required_runtime_contract if value not in workflow]
+    if missing:
+        raise SystemExit("Android runtime coverage is incomplete: " + ", ".join(missing))
+
     print(
         "ANDROID_SDK_CONTRACT_OK "
         f"minSdk={min_sdk} targetSdk={target_sdk} compileSdk={compile_sdk} "
-        "runtime_emulator_api=35 legacy_runtime_coverage=lint"
+        "runtime_emulators=26-low-memory,29,33,35-current upgrade_and_resilience_required=true"
     )
 
 

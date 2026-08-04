@@ -44,6 +44,9 @@ class CleanSourceArchiveTests(unittest.TestCase):
                     names = [info.filename for info in infos]
                     self.assertEqual(len(names), len(set(names)))
                     self.assertIn("orthodox_prayers/gradlew", names)
+                    self.assertIn("orthodox_prayers/release/branding/Church-Prayers.ico", names)
+                    self.assertIn("orthodox_prayers/release/branding/Church-Prayers-icon-512.png", names)
+                    self.assertFalse(any(name.startswith("orthodox_prayers/release/") and "/branding/" not in name for name in names))
                     for name in names:
                         path = PurePosixPath(name)
                         self.assertNotIn(".git", path.parts)
@@ -75,8 +78,8 @@ class CleanSourceArchiveTests(unittest.TestCase):
                 self.assertIn("scripts/verify_r19_patch.py", names)
                 self.assertNotIn("orthodox_prayers/app/build.gradle.kts", names)
                 build = archive.read("app/build.gradle.kts").decode("utf-8")
-                self.assertIn('versionName = "5.1.0"', build)
-                self.assertIn("versionCode = 50100", build)
+                self.assertIn('versionName = "5.2.0"', build)
+                self.assertIn("versionCode = 50200", build)
 
 
 if __name__ == "__main__":

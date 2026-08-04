@@ -37,12 +37,22 @@ def test_fast_free_days_do_not_render_food_permissions_or_explanations() -> None
 
 def test_unavailable_commemorations_and_internal_selection_reasons_are_hidden() -> None:
     base = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java")
+    policy = read("app/src/main/java/com/orthodoxprayers/privateapp/data/CommemorationDisplayPolicy.java")
     upcoming = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java")
     calendar = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java")
-    assert 'status.startsWith("UNAVAILABLE")' in base
-    assert 'status.startsWith("PENDING")' in base
+    month = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarScreen.java")
+    widget = read("app/src/main/java/com/orthodoxprayers/privateapp/widget/DailyAgendaWidget.java")
+    reminder = read("app/src/main/java/com/orthodoxprayers/privateapp/work/PrayerReminderWorker.java")
+    assert "CommemorationDisplayPolicy.displayText" in base
+    assert 'status.startsWith("UNAVAILABLE")' in policy
+    assert 'status.startsWith("PENDING")' in policy
+    assert "NO_VERIFIED" in policy
+    assert "تذكار اليوم بحسب التقويم الكنسي القديم" in policy
     assert "displayableCommemoration" in upcoming
     assert "displayableCommemoration" in calendar
+    assert "displayableCommemoration(item)" in month
+    assert "View.GONE" in widget
+    assert "CommemorationDisplayPolicy.displayText" in reminder
     assert "ui_selection_reason_label" not in upcoming
     assert "ui_selection_reason_label" not in calendar
 

@@ -24,9 +24,17 @@ public final class OrthodoxPrayersApp extends Application {
         updateCoordinator.scheduleDailyRefresh();
         new ReminderScheduler(this, preferences).scheduleAll();
         DailyAgendaWidget.updateAll(this);
+        AppShortcuts.install(this, repository);
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (repository != null) repository.releaseOptionalCaches(level);
     }
 
     public AppPreferences preferences() { return preferences; }
     public DataRepository repository() { return repository; }
     public UpdateCoordinator updateCoordinator() { return updateCoordinator; }
+    public void refreshShortcuts() { AppShortcuts.install(this, repository); }
 }

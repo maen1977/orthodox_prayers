@@ -21,8 +21,8 @@ android {
         applicationId = "com.orthodoxprayers.privateapp"
         minSdk = 26
         targetSdk = 36
-        versionCode = 50100
-        versionName = "5.1.0"
+        versionCode = 50200
+        versionName = "5.2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -73,6 +73,7 @@ dependencies {
     implementation("androidx.activity:activity:1.10.1")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.work:work-runtime:2.11.2")
+    implementation("androidx.profileinstaller:profileinstaller:1.4.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20240303")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

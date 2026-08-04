@@ -18,6 +18,9 @@ public final class RefreshErrorClassifier {
 
         if (message.startsWith("app_update_required")
                 || message.startsWith("manifest_revision_rollback")
+                || message.startsWith("manifest_expired")
+                || message.startsWith("manifest_publication_time")
+                || message.startsWith("manifest_validity_window")
                 || message.startsWith("manifest_unavailable_after_acceptance")
                 || message.startsWith("date_not_ready")) {
             return message;

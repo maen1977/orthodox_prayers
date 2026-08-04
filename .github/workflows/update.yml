@@ -183,6 +183,7 @@ jobs:
         run: |
           set -euo pipefail
           DATE="${{ steps.resolve.outputs.date }}"
+          python scripts/validate_calendar_immutability.py
           python scripts/validate_source_comparison.py --start-date "$DATE"
           python scripts/validate_automated_religious_evidence.py \
             --start-date "$DATE" \
@@ -196,6 +197,12 @@ jobs:
                 --daily "data/daily/$DATE/$LANG.json" \
                 --language "$LANG"
           done
+          python scripts/validate_strict_religious_content.py \
+            data/calendar/today.json \
+            --expected-date "$DATE" \
+            --require-complete \
+            --report release/strict-religious-content-audit.md
+          cat release/strict-religious-content-audit.md >> "$GITHUB_STEP_SUMMARY"
           cat data/sources/comparison/summary.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Prepare publication worktree before restoring key

@@ -6,7 +6,7 @@ import argparse
 import hashlib
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,10 +56,13 @@ def main() -> None:
     parser.add_argument("--revision", type=int, default=int(os.environ.get("GITHUB_RUN_NUMBER", "1")))
     parser.add_argument("--minimum-app-version-code", type=int)
     parser.add_argument("--published-at-utc")
+    parser.add_argument("--valid-for-hours", type=int, default=48)
     args = parser.parse_args()
 
     if args.revision < 1:
         raise SystemExit("manifest revision must be positive")
+    if args.valid_for_hours < 6 or args.valid_for_hours > 72:
+        raise SystemExit("manifest validity must be between 6 and 72 hours")
     calendar = ROOT / "data/calendar/today.json"
     if not calendar.is_file():
         raise SystemExit("canonical today.json is missing")
@@ -113,6 +116,14 @@ def main() -> None:
         raise SystemExit("no language lanes are available for the manifest")
 
     published_at = args.published_at_utc or datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    try:
+        published_instant = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+    except ValueError as error:
+        raise SystemExit(f"invalid published-at timestamp: {error}") from error
+    if published_instant.tzinfo is None:
+        raise SystemExit("published-at timestamp must include UTC timezone")
+    valid_until = (published_instant.astimezone(timezone.utc) + timedelta(hours=args.valid_for_hours)) \
+        .replace(microsecond=0).isoformat().replace("+00:00", "Z")
     minimum_app_version_code = (
         args.minimum_app_version_code
         if args.minimum_app_version_code is not None
@@ -127,6 +138,7 @@ def main() -> None:
         "date_iso": args.date,
         "revision": args.revision,
         "published_at_utc": published_at,
+        "valid_until_utc": valid_until,
         "minimum_app_version_code": minimum_app_version_code,
         "calendar": file_entry(calendar),
         "languages": languages,

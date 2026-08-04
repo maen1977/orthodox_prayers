@@ -20,6 +20,7 @@ import com.orthodoxprayers.privateapp.AppPreferences;
 import com.orthodoxprayers.privateapp.MainActivity;
 import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.R;
+import com.orthodoxprayers.privateapp.data.CommemorationDisplayPolicy;
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.LocalizedResources;
@@ -83,9 +84,11 @@ public final class PrayerReminderWorker extends Worker {
             body = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_open_today_s_epistle_and_gospel_980e7457);
         } else if (ReminderScheduler.FEAST.equals(kind)) {
             title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_commemoration_af76eeaa);
-            LocalizedValue feast = app.repository().localizedValue(app.repository().today().optJSONObject("feast"), "");
-            if (feast.translationUnavailable || feast.text.trim().isEmpty()) return;
-            body = feast.text;
+            body = CommemorationDisplayPolicy.displayText(
+                    app.repository().today(),
+                    app.repository()::localizedValue
+            );
+            if (body.isEmpty()) return;
         } else if (ReminderScheduler.FAST.equals(kind)) {
             title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_fasting_aa40c904);
             LocalizedValue fast = app.repository().localizedValue(app.repository().today().optJSONObject("fast"), "");

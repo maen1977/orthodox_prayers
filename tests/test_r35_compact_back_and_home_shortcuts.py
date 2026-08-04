@@ -23,7 +23,7 @@ def test_subscreens_use_a_compact_mirrored_arrow_only_back_control() -> None:
 
     assert "public TextView backArrow(Runnable backAction)" in ui
     assert 'preferences.isRtl() ? "→" : "←"' in ui
-    assert "new LinearLayout.LayoutParams(dp(44), dp(44))" in ui
+    assert "new LinearLayout.LayoutParams(dp(48), dp(48))" in ui
     assert "ui_return_to_the_previous_screen_adc27814" in ui
     assert "backArrow(backAction)" in ui
     assert "ui.backArrow(host::goBack)" in reader

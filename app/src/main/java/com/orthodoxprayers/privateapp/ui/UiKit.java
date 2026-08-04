@@ -58,7 +58,7 @@ public final class UiKit {
         if (showBack) {
             LinearLayout navigationRow = row();
             navigationRow.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-            navigationRow.addView(backArrow(backAction), new LinearLayout.LayoutParams(dp(44), dp(44)));
+            navigationRow.addView(backArrow(backAction), new LinearLayout.LayoutParams(dp(48), dp(48)));
             box.addView(navigationRow, new LinearLayout.LayoutParams(-1, -2));
         }
         TextView cross = text("☦", 34, ThemePalette.GOLD, true);
@@ -74,15 +74,15 @@ public final class UiKit {
 
     /**
      * A compact, system-like back affordance. The arrow mirrors in RTL while
-     * keeping a full 44dp touch target and an accessible spoken label.
+     * keeping a full 48dp touch target and an accessible spoken label.
      */
     public TextView backArrow(Runnable backAction) {
         TextView back = text(preferences.isRtl() ? "→" : "←", 25, ThemePalette.GOLD, true);
         back.setGravity(Gravity.CENTER);
-        back.setMinWidth(dp(44));
-        back.setMinimumWidth(dp(44));
-        back.setMinHeight(dp(44));
-        back.setMinimumHeight(dp(44));
+        back.setMinWidth(dp(48));
+        back.setMinimumWidth(dp(48));
+        back.setMinHeight(dp(48));
+        back.setMinimumHeight(dp(48));
         back.setClickable(true);
         back.setFocusable(true);
         back.setBackground(round(ThemePalette.NAVY_2, ThemePalette.GOLD, 12));

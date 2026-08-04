@@ -15,6 +15,7 @@ class UiLocalizationTests(unittest.TestCase):
             cwd=ROOT,
             text=True,
             capture_output=True,
+            timeout=30,
         )
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn("direct_java_triples=0", result.stdout)

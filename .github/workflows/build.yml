@@ -50,6 +50,9 @@ jobs:
       - name: Run source and religious-content quality gate
         run: python scripts/run_quality_gate.py --strict-native-lanes
 
+      - name: Produce strict religious-content audit report
+        run: python scripts/validate_strict_religious_content.py data/calendar/today.json --require-complete --report release/strict-religious-content-audit.md
+
       - name: Import latest signed published data for debug APK
         shell: bash
         run: |
@@ -122,6 +125,9 @@ jobs:
       - name: Build debug APK
         run: ./gradlew --no-daemon assembleDebug --stacktrace
 
+      - name: Build Android instrumentation APK
+        run: ./gradlew --no-daemon assembleDebugAndroidTest --stacktrace
+
       - name: Prepare branded debug APK
         shell: bash
         run: |
@@ -141,6 +147,17 @@ jobs:
           cp app/build/outputs/apk/debug/app-debug.apk "release/Church-Prayers-$APP_VERSION-debug.apk"
           sha256sum "release/Church-Prayers-$APP_VERSION-debug.apk" > release/checksums/SHA256SUMS.txt
 
+      - name: Upload reusable Android test APKs
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: android-test-apks-${{ github.run_number }}
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+          if-no-files-found: error
+          retention-days: 7
+
+
       - name: Upload Church Prayers debug APK and reports
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
@@ -150,6 +167,7 @@ jobs:
             release/branding/Church-Prayers.ico
             release/branding/Church-Prayers-icon-512.png
             app/build/reports/lint-results-debug.html
+            release/strict-religious-content-audit.md
             release/checksums/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
@@ -238,12 +256,265 @@ jobs:
             app/build/reports/androidTests/
             app/build/outputs/androidTest-results/
             app/build/outputs/androidTest-diagnostics/
+            app/build/reports/performance/
+            app/build/outputs/android-performance/
           if-no-files-found: warn
           retention-days: 30
 
+  android_legacy:
+    name: Android 8 low-memory runtime and accessibility test
+    needs: android_debug
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.12"
+
+      - name: Download reusable Android test APKs
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: android-test-apks-${{ github.run_number }}
+          path: app/build/outputs/apk
+
+      - name: Enable and verify KVM acceleration
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          test -c /dev/kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+
+      - name: Run Android 8 low-memory reader and accessibility suite
+        uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
+        with:
+          api-level: 26
+          target: default
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 1024M
+          heap-size: 192M
+          disk-size: 3G
+          emulator-boot-timeout: 480
+          disable-linux-hw-accel: false
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none -camera-front none -accel on
+          pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh
+          script: bash scripts/run_android_emulator_ci.sh 26 smoke
+
+      - name: Upload Android 8 reports and diagnostics
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: android-runtime-api-26
+          path: |
+            app/build/reports/androidTests/
+            app/build/reports/performance/
+            app/build/outputs/android-performance/
+            app/build/outputs/androidTest-diagnostics/
+          if-no-files-found: warn
+          retention-days: 30
+
+
+  android_compatibility:
+    name: Android ${{ matrix.api }} compatibility, RTL, and performance
+    needs: android_debug
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [29, 33]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.12"
+      - name: Download reusable Android test APKs
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: android-test-apks-${{ github.run_number }}
+          path: app/build/outputs
+      - name: Normalize downloaded APK paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP_APK="$(find app/build/outputs -type f -name app-debug.apk -print -quit)"
+          TEST_APK="$(find app/build/outputs -type f -name app-debug-androidTest.apk -print -quit)"
+          test -n "$APP_APK"; test -n "$TEST_APK"
+          mkdir -p app/build/outputs/apk/debug app/build/outputs/apk/androidTest/debug
+          cp "$APP_APK" app/build/outputs/apk/debug/app-debug.apk
+          cp "$TEST_APK" app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - name: Enable and verify KVM acceleration
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm; test -w /dev/kvm
+      - name: Run compatibility smoke suite
+        uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
+        with:
+          api-level: ${{ matrix.api }}
+          target: default
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 1536M
+          heap-size: 224M
+          disk-size: 4G
+          emulator-boot-timeout: 480
+          disable-linux-hw-accel: false
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none -camera-front none -accel on
+          pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh
+          script: bash scripts/run_android_emulator_ci.sh ${{ matrix.api }} smoke
+      - name: Upload compatibility reports
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: android-compatibility-api-${{ matrix.api }}
+          path: |
+            app/build/reports/androidTests/
+            app/build/reports/performance/
+            app/build/outputs/android-performance/
+            app/build/outputs/androidTest-diagnostics/
+          if-no-files-found: warn
+          retention-days: 30
+
+  android_upgrade:
+    name: In-place upgrade from previous revision on Android 8
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout repository with previous revision
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - name: Set up JDK 17
+        uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+      - name: Resolve and build previous plus current APKs with one debug key
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_SHA='${{ github.event.pull_request.base.sha }}'
+          if [[ -z "$BASE_SHA" || "$BASE_SHA" == "null" ]]; then BASE_SHA="$(git rev-parse HEAD^)"; fi
+          git worktree add --force --detach "$RUNNER_TEMP/previous-source" "$BASE_SHA"
+          python scripts/ensure_gradlew_executable.py
+          (cd "$RUNNER_TEMP/previous-source" && python scripts/ensure_gradlew_executable.py && ./gradlew --no-daemon assembleDebug --stacktrace)
+          ./gradlew --no-daemon assembleDebug assembleDebugAndroidTest --stacktrace
+      - name: Enable and verify KVM acceleration
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm; test -w /dev/kvm
+      - name: Install previous build then update in place
+        uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
+        with:
+          api-level: 26
+          target: default
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 1024M
+          heap-size: 192M
+          disk-size: 4G
+          emulator-boot-timeout: 480
+          disable-linux-hw-accel: false
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none -camera-front none -accel on
+          pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh
+          script: bash scripts/run_android_upgrade_ci.sh 26 "$RUNNER_TEMP/previous-source/app/build/outputs/apk/debug/app-debug.apk" app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - name: Upload upgrade reports
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: android-upgrade-api-26
+          path: app/build/reports/upgrade/
+          if-no-files-found: warn
+          retention-days: 30
+
+  android_resilience:
+    name: Offline, process-kill, reinstall, and corrupt-cache recovery
+    needs: android_debug
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - name: Download reusable Android test APKs
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: android-test-apks-${{ github.run_number }}
+          path: downloaded-apks
+      - name: Normalize downloaded APK paths
+        run: |
+          set -euo pipefail
+          mkdir -p app/build/outputs/apk/debug app/build/outputs/apk/androidTest/debug
+          cp "$(find downloaded-apks -type f -name app-debug.apk -print -quit)" app/build/outputs/apk/debug/app-debug.apk
+          cp "$(find downloaded-apks -type f -name app-debug-androidTest.apk -print -quit)" app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - name: Enable and verify KVM acceleration
+        run: |
+          set -euo pipefail
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm; test -w /dev/kvm
+      - name: Run failure and recovery qualification
+        uses: ReactiveCircus/android-emulator-runner@e89f39f1abbbd05b1113a29cf4db69e7540cae5a # v2.37.0
+        with:
+          api-level: 35
+          target: default
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 2048M
+          heap-size: 256M
+          disk-size: 4G
+          emulator-boot-timeout: 480
+          disable-linux-hw-accel: false
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -camera-back none -camera-front none -accel on
+          pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh
+          script: bash scripts/run_android_failure_recovery_ci.sh 35
+      - name: Upload resilience reports
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: android-resilience-api-35
+          path: app/build/reports/failure-recovery/
+          if-no-files-found: warn
+          retention-days: 30
+
+
   release:
     name: Protected signed APK and AAB
-    needs: [android_debug, android_instrumented]
+    needs: [android_debug, android_instrumented, android_legacy, android_compatibility, android_upgrade, android_resilience]
     if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release == true)
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -364,6 +635,12 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew --no-daemon clean testDebugUnitTest lintRelease assembleRelease bundleRelease --stacktrace
 
+      - name: Verify packaged Baseline Profile
+        run: |
+          python scripts/verify_packaged_baseline_profile.py \
+            --apk app/build/outputs/apk/release/app-release.apk \
+            --aab app/build/outputs/bundle/release/app-release.aab
+
       - name: Inspect final release permissions for Data Safety
         shell: bash
         run: |
@@ -395,6 +672,14 @@ jobs:
           python scripts/generate_sbom.py --gradle-report release/RELEASE_DEPENDENCIES.txt --output release/Church-Prayers-$RELEASE_VERSION-sbom.cdx.json
           python scripts/create_clean_source_archive.py --prefix Church-Prayers-$RELEASE_VERSION-source --output release/Church-Prayers-$RELEASE_VERSION-source.zip
 
+      - name: Enforce lightweight APK, AAB, and source archive budgets
+        run: |
+          python scripts/validate_release_size.py \
+            --apk app/build/outputs/apk/release/app-release.apk \
+            --aab app/build/outputs/bundle/release/app-release.aab \
+            --source-zip release/Church-Prayers-$RELEASE_VERSION-source.zip \
+            --report release/RELEASE_SIZE_REPORT.json
+
       - name: Verify and collect release files
         shell: bash
         run: |
@@ -405,7 +690,48 @@ jobs:
           APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)"
           test -x "$APKSIGNER"
           "$APKSIGNER" verify --verbose --print-certs "release/Church-Prayers-$RELEASE_VERSION.apk"
-          (cd release && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -printf '%f\0' | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+
+      - name: Verify release artifact structure, metadata, signing, and secret exclusion
+        shell: bash
+        run: |
+          set -euo pipefail
+          APKANALYZER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name apkanalyzer | sort | tail -1)"
+          APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -1)"
+          test -x "$APKANALYZER"
+          test -x "$APKSIGNER"
+          python scripts/verify_release_artifacts.py \
+            --apk "release/Church-Prayers-$RELEASE_VERSION.apk" \
+            --aab "release/Church-Prayers-$RELEASE_VERSION.aab" \
+            --apkanalyzer "$APKANALYZER" \
+            --apksigner "$APKSIGNER" \
+            --report release/RELEASE_ARTIFACT_REPORT.json
+
+      - name: Generate and validate release qualification attestation
+        run: |
+          python scripts/generate_release_attestation.py \
+            --apk "release/Church-Prayers-$RELEASE_VERSION.apk" \
+            --aab "release/Church-Prayers-$RELEASE_VERSION.aab" \
+            --source-zip "release/Church-Prayers-$RELEASE_VERSION-source.zip" \
+            --sbom "release/Church-Prayers-$RELEASE_VERSION-sbom.cdx.json" \
+            --artifact-report release/RELEASE_ARTIFACT_REPORT.json \
+            --size-report release/RELEASE_SIZE_REPORT.json \
+            --output release/RELEASE_ATTESTATION.json
+          python scripts/validate_release_attestation.py release/RELEASE_ATTESTATION.json \
+            --artifact "release/Church-Prayers-$RELEASE_VERSION.apk" \
+            --artifact "release/Church-Prayers-$RELEASE_VERSION.aab" \
+            --artifact "release/Church-Prayers-$RELEASE_VERSION-source.zip" \
+            --artifact "release/Church-Prayers-$RELEASE_VERSION-sbom.cdx.json"
+
+      - name: Create checksums and deterministic qualified handoff bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd release && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt ! -name "Church-Prayers-$RELEASE_VERSION-qualified.zip" -printf '%f\0' | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          python scripts/create_release_handoff_bundle.py \
+            --release-dir release \
+            --version "$RELEASE_VERSION" \
+            --output "release/Church-Prayers-$RELEASE_VERSION-qualified.zip"
+          (cd release && sha256sum "Church-Prayers-$RELEASE_VERSION-qualified.zip" >> SHA256SUMS.txt)
 
       - name: Upload signed release artifacts
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0

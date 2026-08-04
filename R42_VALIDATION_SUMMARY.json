@@ -1,0 +1,68 @@
+{
+  "revision": "R42",
+  "date": "2026-08-04",
+  "app": {
+    "version_name": "5.1.0",
+    "version_code": 50100
+  },
+  "android": {
+    "min_sdk": 26,
+    "target_sdk": 36,
+    "compile_sdk": 36,
+    "runtime_ci": [
+      {
+        "api": 26,
+        "ram_mb": 1024,
+        "heap_mb": 192,
+        "suite": "smoke+accessibility+performance"
+      },
+      {
+        "api": 35,
+        "ram_mb": 2048,
+        "heap_mb": 256,
+        "suite": "full+screenshots+performance"
+      }
+    ]
+  },
+  "tests": {
+    "python_passed": 461,
+    "subtests_passed": 14,
+    "quality_gate": "PASS"
+  },
+  "calendar": {
+    "modified": false,
+    "start": "2026-01-01",
+    "end": "2050-12-31",
+    "days": 9131,
+    "locked_files": 28,
+    "aggregate_sha256": "81604edecae2befa2263df01a2231ca3925b0a046a4383db9de9f2388edcebcf"
+  },
+  "content": {
+    "languages": [
+      "ar",
+      "en",
+      "el"
+    ],
+    "technical_coverage_percent": {
+      "ar": 100.0,
+      "en": 100.0,
+      "el": 100.0
+    },
+    "strict_religious_audit": "PASS",
+    "commemoration_policy": "show-only-verified-nonblank"
+  },
+  "security": {
+    "manifest_validity_hours": {
+      "minimum": 6,
+      "default": 48,
+      "maximum": 72
+    },
+    "invalid_signed_manifest": "fail-closed",
+    "profileinstaller": "1.4.1"
+  },
+  "local_android_build": {
+    "status": "NOT_RUN",
+    "reason": "Android SDK and Gradle distribution unavailable in the isolated environment",
+    "github_workflow_prepared": true
+  }
+}

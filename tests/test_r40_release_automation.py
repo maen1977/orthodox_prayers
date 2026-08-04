@@ -74,6 +74,9 @@ def test_play_package_builder_collects_automated_release_inputs(tmp_path: Path, 
         "play-store/STORE_LISTING_AR.md",
         "play-store/STORE_LISTING_EN.md",
         "play-store/STORE_LISTING_EL.md",
+        "play-store/release-notes/ar.txt",
+        "play-store/release-notes/en.txt",
+        "play-store/release-notes/el.txt",
         "play-store/DATA_SAFETY_AR.md",
         "play-store/PLAY_CONSOLE_CHECKLIST_AR.md",
         "CONTENT_RIGHTS.md",
@@ -105,6 +108,9 @@ def test_play_package_builder_collects_automated_release_inputs(tmp_path: Path, 
     assert metadata["human_religious_review_required"] is False
     assert metadata["languages"] == ["ar", "en", "el"]
     assert (output / "app-release.aab").is_file()
+    assert (output / "listing/release-notes-ar.txt").is_file()
+    assert (output / "listing/release-notes-en.txt").is_file()
+    assert (output / "listing/release-notes-el.txt").is_file()
     assert (output / "SHA256SUMS.txt").is_file()
 
 

@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 import org.junit.Test;
 
@@ -65,6 +67,34 @@ public final class UpdateManifestTest {
         assertEquals(
                 "https://cdn.jsdelivr.net/gh/example/app@verified-data/data/daily/2026-07-20/en.json",
                 selection.dataUrl
+        );
+    }
+
+
+    @Test
+    public void acceptsShortLivedPublicationWindowAndRejectsReplay() throws Exception {
+        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        String current = manifest("data/daily/2026-07-20/ar.json", "data/daily/2026-07-20/ar.json.sig")
+                .replace(
+                        "\"minimum_app_version_code\":50013,",
+                        "\"published_at_utc\":\"" + now + "\","
+                                + "\"valid_until_utc\":\"" + now.plus(48, ChronoUnit.HOURS) + "\","
+                                + "\"minimum_app_version_code\":50013,"
+                );
+        UpdateManifest.parse(current.getBytes(StandardCharsets.UTF_8), URL, "2026-07-20", "ar");
+
+        String expired = manifest("data/daily/2026-07-20/ar.json", "data/daily/2026-07-20/ar.json.sig")
+                .replace(
+                        "\"minimum_app_version_code\":50013,",
+                        "\"published_at_utc\":\"" + now.minus(96, ChronoUnit.HOURS) + "\","
+                                + "\"valid_until_utc\":\"" + now.minus(48, ChronoUnit.HOURS) + "\","
+                                + "\"minimum_app_version_code\":50013,"
+                );
+        assertThrows(
+                IllegalStateException.class,
+                () -> UpdateManifest.parse(
+                        expired.getBytes(StandardCharsets.UTF_8), URL, "2026-07-20", "ar"
+                )
         );
     }
 

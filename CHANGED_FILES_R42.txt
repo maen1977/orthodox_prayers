@@ -1,0 +1,37 @@
+Orthodox Prayers R42 - changed and added files
+Generated: 2026-08-04
+Calendar JSON files are intentionally absent from this list.
+
+.github/workflows/build.yml
+CHANGED_FILES_R42.txt
+R42_MAXIMUM_QUALITY_IMPLEMENTATION_AR.md
+R42_VALIDATION_SUMMARY.json
+app/build.gradle.kts
+app/src/androidTest/java/com/orthodoxprayers/privateapp/AccessibilitySmokeTest.java
+app/src/main/baseline-prof.txt
+app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java
+app/src/main/java/com/orthodoxprayers/privateapp/data/ManifestSecurityPolicy.java
+app/src/main/java/com/orthodoxprayers/privateapp/data/RefreshErrorClassifier.java
+app/src/main/java/com/orthodoxprayers/privateapp/data/UpdateManifest.java
+app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReaderScreen.java
+app/src/test/java/com/orthodoxprayers/privateapp/data/ManifestSecurityPolicyTest.java
+app/src/test/java/com/orthodoxprayers/privateapp/data/UpdateManifestTest.java
+config/
+play-store/release-notes/
+scripts/build_play_store_release_package.py
+scripts/build_update_manifest.py
+scripts/collect_android_runtime_metrics.sh
+scripts/create_clean_source_archive.py
+scripts/parse_android_runtime_metrics.py
+scripts/run_android_emulator_ci.sh
+scripts/run_quality_gate.py
+scripts/validate_android_sdk_contract.py
+scripts/validate_baseline_profile.py
+scripts/validate_play_store_release_notes.py
+scripts/validate_ui_localizations.py
+scripts/verify_packaged_baseline_profile.py
+scripts/verify_update_manifest.py
+tests/test_clean_source_archive.py
+tests/test_r40_release_automation.py
+tests/test_r42_android8_performance_accessibility.py
+tests/test_ui_localizations.py

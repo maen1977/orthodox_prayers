@@ -248,14 +248,7 @@ public final class HomeScreen extends BaseScreen {
     }
 
     private String specificCommemoration(JSONObject today) {
-        if (today == null) return "";
-        JSONObject localCommemoration = today.optJSONObject("local_commemoration");
-        if (localCommemoration != null) {
-            String title = localized(localCommemoration.optJSONObject("title"), "");
-            if (!title.isEmpty()) return title;
-        }
-        JSONObject commemoration = today.optJSONObject("commemoration");
-        return commemoration == null ? "" : localized(commemoration.optJSONObject("title"), "");
+        return displayableCommemoration(today);
     }
 
     private static final class SmartShortcut {

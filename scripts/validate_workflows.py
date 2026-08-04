@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the two-workflow GitHub Actions contract used by the repository."""
+"""Validate protected build, update, internal-test, and health workflows."""
 from __future__ import annotations
 
 import re
@@ -9,7 +9,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW_DIR = ROOT / ".github/workflows"
-EXPECTED = {"build.yml", "update.yml"}
+EXPECTED = {"build.yml", "update.yml", "play-internal.yml", "weekly-health.yml"}
 FULL_SHA = re.compile(r"^[^@\s]+@[0-9a-f]{40}$")
 
 
@@ -104,12 +104,19 @@ def main() -> None:
             'release/Church-Prayers-$RELEASE_VERSION.apk',
             'release/Church-Prayers-$RELEASE_VERSION.aab',
             "name: Church-Prayers-${{ env.RELEASE_VERSION }}-signed",
+            "scripts/verify_release_artifacts.py",
+            "RELEASE_ARTIFACT_REPORT.json",
+            "scripts/generate_release_attestation.py",
+            "scripts/validate_release_attestation.py",
+            "RELEASE_ATTESTATION.json",
+            "scripts/create_release_handoff_bundle.py",
+            "Church-Prayers-$RELEASE_VERSION-qualified.zip",
         ),
         "Build workflow",
     )
     if "script: |" in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]:
         fail("android-emulator-runner must invoke one repository Bash script, not a multiline script block")
-    instrumented_block = build.split("  android_instrumented:", 1)[1].split("  release:", 1)[0]
+    instrumented_block = build.split("  android_instrumented:", 1)[1].split("  android_legacy:", 1)[0]
     if "matrix:" in instrumented_block or "matrix.api_level" in instrumented_block:
         fail("Android runtime instrumentation must use one stable emulator, not an API matrix")
 
@@ -178,7 +185,7 @@ def main() -> None:
         "Offline reader instrumentation",
     )
 
-    upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  release:", 1)[0]
+    upload_debug_block = build.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("  android_instrumented:", 1)[0]
     if "app/build/outputs/apk/debug/app-debug.apk" in upload_debug_block:
         fail("Raw app-debug.apk must not be exposed in the downloadable artifact")
 
@@ -206,6 +213,34 @@ def main() -> None:
     second_gate = build.index(release_gate)
     if not (first_normalizer < first_gate < second_normalizer < second_gate):
         fail("Gradle wrapper normalization must occur before each quality gate")
+
+
+    play = files["play-internal.yml"].read_text(encoding="utf-8")
+    require_all(
+        play,
+        (
+            "name: Play Internal Testing",
+            "build_run_id",
+            "PLAY_SERVICE_ACCOUNT_JSON",
+            "scripts/upload_play_internal.py",
+            "--track internal",
+            "environment: play-internal",
+            "inputs.publish == true",
+        ),
+        "Play internal workflow",
+    )
+    weekly = files["weekly-health.yml"].read_text(encoding="utf-8")
+    require_all(
+        weekly,
+        (
+            "name: Weekly Release Health",
+            "schedule:",
+            "scripts/run_quality_gate.py --strict-native-lanes",
+            "testDebugUnitTest lintDebug assembleDebug",
+            "Open one actionable issue on failure",
+        ),
+        "Weekly health workflow",
+    )
 
     update = files["update.yml"].read_text(encoding="utf-8")
     require_all(
@@ -311,7 +346,7 @@ def main() -> None:
         fail("Dependabot version-update configuration must remain disabled")
 
     print(
-        "Workflow validation passed: exactly Build and Update; signing keys are isolated from "
+        "Workflow validation passed: protected Build, Update, Play Internal, and Weekly Health; signing keys are isolated from "
         "external-source generation; automatic source comparison is fail-closed; Android "
         "instrumentation and multilingual screenshots are required; Update runs only manually "
         "or twice daily at 04:23 and 16:43 Asia/Amman"

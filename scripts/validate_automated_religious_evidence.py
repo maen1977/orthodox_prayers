@@ -23,6 +23,8 @@ def main() -> None:
     parser.add_argument("--strict-source-confirmation", action="store_true")
     args = parser.parse_args()
 
+    run("scripts/validate_calendar_immutability.py")
+
     rolling = [
         "scripts/validate_rolling_week.py",
         args.daily,
@@ -56,9 +58,19 @@ def main() -> None:
         source_intelligence.extend(["--language", args.language])
         native_content.extend(["--language", args.language])
         scripture_policy.extend(["--language", args.language])
+    strict_content = [
+        "scripts/validate_strict_religious_content.py",
+        args.daily,
+        "--expected-date",
+        args.start_date,
+        "--require-complete",
+    ]
+    if args.language:
+        strict_content.extend(["--language", args.language])
     run(*source_intelligence)
     run(*native_content)
     run(*scripture_policy)
+    run(*strict_content)
     print(
         f"AUTOMATED_RELIGIOUS_EVIDENCE_OK start={args.start_date} days={args.days} "
         f"language={args.language or 'all'} human_review_required=false"

@@ -16,7 +16,7 @@ def test_android_emulator_runner_uses_one_stable_shell_command():
         "Run instrumentation and capture Arabic, English, and Greek screens", 1
     )[1].split("Upload generated Play Store screenshots", 1)[0]
     assert "api-level: 35" in block
-    assert "matrix:" not in build.split("android_instrumented:", 1)[1].split("  release:", 1)[0]
+    assert "matrix:" not in build.split("android_instrumented:", 1)[1].split("  android_legacy:", 1)[0]
     assert "script: bash scripts/run_android_emulator_ci.sh 35" in block
     assert "script: |" not in block
 

@@ -1,5 +1,6 @@
 package com.orthodoxprayers.privateapp.data;
 
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -106,7 +107,8 @@ public final class DataRepository {
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
         calendarIndex = loadJsonAsset("data/calendar/calendar_index.json");
-        loadCalendarYear(LocalDate.now(ZoneId.of("Asia/Amman")).getYear());
+        // Keep startup light on older devices. The immutable annual calendar is
+        // loaded only when a calendar screen or a dated lookup requests it.
         activatePackage(loadBestToday());
     }
 
@@ -243,6 +245,17 @@ public final class DataRepository {
         loadedAssetLanguage = "";
         activeLanguageLibrary = null;
         activeLanguageSearchIndex = null;
+    }
+
+    /** Release only reloadable caches; signed current-day data remains resident. */
+    public synchronized void releaseOptionalCaches(int level) {
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            activeLanguageSearchIndex = null;
+        }
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
+            calendarByDate.clear();
+            loadedCalendarYear = 0;
+        }
     }
     public String currentAmmanDate() { return LocalDate.now(ZoneId.of("Asia/Amman")).toString(); }
     public boolean isRefreshing() { return refreshInProgress; }
@@ -670,6 +683,9 @@ public final class DataRepository {
         }
 
         if (manifestSelection == null) {
+            if (ManifestSecurityPolicy.mustFailClosed(manifestError)) {
+                return new RefreshOutcome(RefreshResult.FAILED, classifyError(manifestError));
+            }
             String expectedDate = currentAmmanDate();
             if (preferences.acceptedManifestRevisionForDate(expectedDate) > 0L) {
                 return new RefreshOutcome(
@@ -771,6 +787,7 @@ public final class DataRepository {
         }
         return new RefreshOutcome(RefreshResult.FAILED, classifyError(lastError));
     }
+
 
     private UpdateManifest.Selection downloadManifestSelection(
             String manifestUrl,
@@ -1127,7 +1144,12 @@ public final class DataRepository {
         if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_an_update_is_already_in_progress_0afb7ec0);
         if (code.startsWith("app_update_required")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc);
         if (code.startsWith("manifest_revision_rollback")) return local(com.orthodoxprayers.privateapp.R.string.ui_an_older_data_revision_was_rejected_for_update_s_5238c511);
-        if (code.startsWith("manifest_unavailable_after_acceptance")) return local(com.orthodoxprayers.privateapp.R.string.ui_the_secure_update_manifest_could_not_be_verified_d5b624be);
+        if (code.startsWith("manifest_unavailable_after_acceptance")
+                || code.startsWith("manifest_expired")
+                || code.startsWith("manifest_publication_time")
+                || code.startsWith("manifest_validity_window")) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_the_secure_update_manifest_could_not_be_verified_d5b624be);
+        }
         if (code.contains("invalid_json_size") || code.contains("stored_file_size_invalid") || code.contains("response_too_large") || code.contains("manifest_size_invalid")) {
             return local(com.orthodoxprayers.privateapp.R.string.ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc);
         }

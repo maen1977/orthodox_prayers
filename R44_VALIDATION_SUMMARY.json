@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "release_level": "R44",
+  "application": {
+    "version_name": "5.2.0",
+    "version_code": 50200,
+    "min_sdk": 26,
+    "target_sdk": 36,
+    "compile_sdk": 36
+  },
+  "tests": {
+    "passed": 475,
+    "subtests_passed": 14,
+    "failed": 0
+  },
+  "calendar_lock": {
+    "start": "2026-01-01",
+    "end": "2050-12-31",
+    "days": 9131,
+    "files": 28,
+    "aggregate_sha256": "81604edecae2befa2263df01a2231ca3925b0a046a4383db9de9f2388edcebcf",
+    "modified_in_r44": false
+  },
+  "r44_changes": {
+    "added": 9,
+    "modified": 3,
+    "removed": 0,
+    "calendar_files_changed": 0
+  },
+  "release_operations": {
+    "apk_aab_structure_gate": true,
+    "secret_exclusion_gate": true,
+    "apk_metadata_gate": true,
+    "apk_signature_gate": true,
+    "release_attestation": true,
+    "deterministic_handoff_bundle": true
+  },
+  "external_execution": {
+    "local_android_build": "BLOCKED_NO_GRADLE_OR_ANDROID_SDK_NETWORK",
+    "github_branch_creation": "BLOCKED_GITHUB_APP_403",
+    "direct_main_write_attempted": false
+  },
+  "status": "SOURCE_AND_PIPELINE_QUALIFIED"
+}
