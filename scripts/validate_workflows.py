@@ -16,6 +16,7 @@ required = (
     "jobs:",
     "build:",
     "name: Build Church Prayers",
+    "python scripts/keep_one_workflow.py",
     "python scripts/simple_quality_gate.py",
     "testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease",
     "output/Church-Prayers.apk",

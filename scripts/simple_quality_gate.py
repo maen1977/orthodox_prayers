@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 CHECKS = [
+    [sys.executable, "scripts/keep_one_workflow.py"],
     [sys.executable, "scripts/ensure_gradlew_executable.py"],
     [sys.executable, "scripts/validate_workflows.py"],
     [sys.executable, "scripts/validate_android_sdk_contract.py"],

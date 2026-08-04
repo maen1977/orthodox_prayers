@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: church-prayers-${{ github.ref }}
@@ -21,6 +21,25 @@ jobs:
     steps:
       - name: Get project
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Keep one Church Prayers workflow
+        run: python scripts/keep_one_workflow.py
+
+      - name: Save the one-workflow cleanup
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- .github/workflows; then
+            echo "Only church-prayers.yml is present."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows
+          git commit -m "Keep one Church Prayers workflow"
+          git push origin HEAD:main
 
       - name: Prepare Python
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
