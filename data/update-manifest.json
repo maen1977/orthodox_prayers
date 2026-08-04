@@ -1,21 +1,21 @@
 {
   "manifest_schema_version": 1,
   "date_iso": "2026-08-04",
-  "revision": 12401,
-  "published_at_utc": "2026-08-03T21:37:28Z",
+  "revision": 12501,
+  "published_at_utc": "2026-08-04T04:35:17Z",
   "minimum_app_version_code": 50023,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "9955ed5fb6060ef37b3eb3a8646f49b246d23bddc04f6db54d373a37dbdcc1f3",
-    "size_bytes": 3195099
+    "sha256": "b88ef3ba45cca7c6b67d902745e7c6945d63d68273645133d351e988fb786470",
+    "size_bytes": 3459860
   },
   "languages": {
     "ar": {
       "path": "data/daily/2026-08-04/ar.json",
       "signature_path": "data/daily/2026-08-04/ar.json.sig",
-      "sha256": "5b20fc0a8df8d2c942e022449d0afd3caca732e9a171eadffd90bdbbf83c1936",
-      "size_bytes": 1858772,
+      "sha256": "5040131c5ab9a2447ca60ac5ba3f8ba6ef679e7f575f017b42ccb508af87a703",
+      "size_bytes": 2123533,
       "coverage_start_date": "2026-08-04",
       "coverage_end_date": "2026-08-12",
       "coverage_day_count": 9,
@@ -25,8 +25,8 @@
     "en": {
       "path": "data/daily/2026-08-04/en.json",
       "signature_path": "data/daily/2026-08-04/en.json.sig",
-      "sha256": "44d1dbac23d4474b9611865c16712201cb72b0f30ee5e662ea0d6049b29e543e",
-      "size_bytes": 1583385,
+      "sha256": "55328b780f4d531a0213e83b2f40cb6714c84e621e22cc501a7594fae657d10f",
+      "size_bytes": 1823207,
       "coverage_start_date": "2026-08-04",
       "coverage_end_date": "2026-08-12",
       "coverage_day_count": 9,
@@ -36,8 +36,8 @@
     "el": {
       "path": "data/daily/2026-08-04/el.json",
       "signature_path": "data/daily/2026-08-04/el.json.sig",
-      "sha256": "deb198d326dd0c678622e0ae909aa077436eab99e3a5649eccbd406845be5fcc",
-      "size_bytes": 1947173,
+      "sha256": "baa1a2fed2aee7fd9caf581986e5311795a692bdf7227e15a57e02e78398dd09",
+      "size_bytes": 2186995,
       "coverage_start_date": "2026-08-04",
       "coverage_end_date": "2026-08-12",
       "coverage_day_count": 9,
