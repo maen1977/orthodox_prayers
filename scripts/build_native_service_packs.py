@@ -132,7 +132,7 @@ def annotate_phase4_variable_slots(service: dict[str, Any], lang: str) -> set[st
         "el": {"Λαός", "Ψάλτης"},
     }[lang]
     section_titles = {
-        "ar": {"first": "صلاة الأنتيفونا الأولى", "second": "صلاة الأنتيفونا الثانية", "entrance": "أثناء الدخول الصغير", "trisagion": "صلاة التريصاجيون"},
+        "ar": {"first": "صلاة الأنتيفونا الأولى", "second": "صلاة الأنتيفونا الثانية", "third": "صلاة الأنتيفونا الثالثة", "entrance": "أثناء الدخول الصغير", "trisagion": "صلاة التريصاجيون"},
         "en": {"first": "THE FIRST ANTIPHON", "second": "THE SECOND ANTIPHON", "third": "THE THIRD ANTIPHON", "entrance": "THE ENTRANCE", "trisagion": "THE TRISAGION HYMN"},
         "el": {"first": "ΤΟ ΠΡΩΤΟΝ ΑΝΤΙΦΩΝΟΝ", "second": "ΤΟ ΔΕΥΤΕΡΟΝ ΑΝΤΙΦΩΝΟΝ", "third": "ΤΟ ΤΡΙΤΟΝ ΑΝΤΙΦΩΝΟΝ", "entrance": "Η ΜΙΚΡΑ ΕΙΣΟΔΟΣ", "trisagion": "Ο ΤΡΙΣΑΓΙΟΣ ΥΜΝΟΣ"},
     }[lang]
@@ -172,15 +172,17 @@ def annotate_phase4_variable_slots(service: dict[str, Any], lang: str) -> set[st
         entrance_section = section_index(section_titles["entrance"])
         if entrance_section < 0:
             raise SystemExit("divine_liturgy.ar: entrance section missing")
-        ordinary = {
-            key: "هذا هو اليوم الذي صنعه الرب، فلنفرح ونبتهج فيه." if key == "ar" else ""
-            for key in LANGS
-        }
-        segments.insert(entrance_section, {
-            "type": "text",
-            "speaker": {key: "المرتل" if key == "ar" else "" for key in LANGS},
-            "text": ordinary,
-        })
+        ordinary_text = "هذا هو اليوم الذي صنعه الرب، فلنفرح ونبتهج فيه."
+        if not any(_native_text(segment, lang) == ordinary_text for segment in segments):
+            ordinary = {
+                key: ordinary_text if key == "ar" else ""
+                for key in LANGS
+            }
+            segments.insert(entrance_section, {
+                "type": "text",
+                "speaker": {key: "المرتل" if key == "ar" else "" for key in LANGS},
+                "text": ordinary,
+            })
     third_indices = sung_group_after(section_titles.get("third", section_titles["entrance"])) if lang != "ar" else []
     if lang == "ar":
         third_indices = [i for i, segment in enumerate(segments) if _native_text(segment, lang) == "هذا هو اليوم الذي صنعه الرب، فلنفرح ونبتهج فيه."]

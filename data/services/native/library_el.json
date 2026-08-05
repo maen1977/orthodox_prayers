@@ -3523,7 +3523,7 @@
           },
           "text": {
             "ar": "",
-            "el": "(Ἡ τάξις τοῦ «Ἅγιος ὁ Θεός...» λειτουργοῦντος Ἀρχιερέως εἰς τό τέλος τοῦ βιβλίου σελ. 44).",
+            "el": "(Ἡ τάξις τοῦ «Ἅγιος ὁ Θεός…» λειτουργοῦντος Ἀρχιερέως εἰς τὸ τέλος τοῦ βιβλίου, σελ. 44.)",
             "en": ""
           },
           "collapsed_by_default": true
@@ -3592,11 +3592,9 @@
           },
           "text": {
             "ar": "",
-            "el": "Πρός.... ἐπιστολῆς (Ὂνομα) τό ἀνάγνωσμα, ἢ Καθολικής ἐπιστολῆς... τό ἀνάγνωσμα ἢ Πράξεων τῶν Ἀποστόλων τό ἀνάγνωσμα.",
+            "el": "Πρὸς … ἐπιστολῆς (Ὄνομα) τὸ ἀνάγνωσμα, ἢ Καθολικῆς ἐπιστολῆς … τὸ ἀνάγνωσμα, ἢ Πράξεων τῶν Ἀποστόλων τὸ ἀνάγνωσμα.",
             "en": ""
-          },
-          "dynamic_inline_slot": "gospel_evangelist_name",
-          "dynamic_inline_marker": "(Ὂνομα)"
+          }
         },
         {
           "type": "text",
@@ -3729,11 +3727,9 @@
           },
           "text": {
             "ar": "",
-            "el": "Ἐκ τοῦ κατά... (Ὂνομα) ἁγίου Εὐαγγελίου τό ἀνάγνωσμα. Πρόσχωμεν.",
+            "el": "Ἐκ τοῦ κατὰ … (Ὄνομα) ἁγίου Εὐαγγελίου τὸ ἀνάγνωσμα. Πρόσχωμεν.",
             "en": ""
-          },
-          "dynamic_inline_slot": "gospel_evangelist_name",
-          "dynamic_inline_marker": "(Ὂνομα)"
+          }
         },
         {
           "type": "text",
@@ -4237,7 +4233,7 @@
           },
           "text": {
             "ar": "",
-            "el": "Οἱ τὰ Χερουβεὶμ μυστικῶς εἰκονίζοντες καὶ τῇ ζωοποιῷ Τριάδι τὸν τρισάγιον ὕμνον προσᾴδοντες, πᾶσαν νῦν βιοτικὴν ἀποθώμεθα μέριμναν, ὡς τὸν βασιλέα τῶν ὅλων ὑποδεξόμενοι...",
+            "el": "Οἱ τὰ Χερουβεὶμ μυστικῶς εἰκονίζοντες καὶ τῇ ζωοποιῷ Τριάδι τὸν τρισάγιον ὕμνον προσᾴδοντες, πᾶσαν νῦν βιοτικὴν ἀποθώμεθα μέριμναν, ὡς τὸν βασιλέα τῶν ὅλων ὑποδεξόμενοι…",
             "en": ""
           }
         },
@@ -6624,7 +6620,7 @@
           },
           "text": {
             "ar": "",
-            "el": "(Ἢ Λειτουργοῦντος Ἀρχιερέως λέγουσιν οἱ Ἱερείς:) Δι᾿ εὐχῶν τοῦ ἁγίου Δεσπότου ἡμῶν, Κύριε Ἰησοῦ Χριστὲ ὁ Θεὸς , ἐλέησον καὶ σῶσον ἡμᾶς.",
+            "el": "(Ἢ Λειτουργοῦντος Ἀρχιερέως λέγουσιν οἱ Ἱερείς:) Δι᾿ εὐχῶν τοῦ ἁγίου Δεσπότου ἡμῶν, Κύριε Ἰησοῦ Χριστὲ ὁ Θεὸς, ἐλέησον καὶ σῶσον ἡμᾶς.",
             "en": ""
           },
           "collapsed_by_default": true
@@ -6651,6 +6647,30 @@
         "page_lane": "alternating native-language pages",
         "machine_translation_used": false
       },
+      "text_integrity_review": {
+        "status": "TYPOGRAPHY_REVIEWED",
+        "known_corrections": 5,
+        "official_structure_cross_check": "GOARCH_GREEK_LITURGICAL_TEXTS",
+        "machine_translation_used": false,
+        "ecclesiastical_review_required": true,
+        "punctuation_placeholders_normalized": 4,
+        "corrected_segments": 5,
+        "corrections": [
+          "Trisagion rubric punctuation and accents",
+          "Epistle placeholder punctuation and accents",
+          "Gospel placeholder punctuation and accents",
+          "Cherubic Hymn ellipsis typography",
+          "Dismissal comma spacing"
+        ],
+        "user_facing_delivery_verified": true,
+        "verified_layers": [
+          "source_override",
+          "generated_native_pack",
+          "android_asset_pack",
+          "search_index"
+        ],
+        "known_broken_text_patterns_remaining": 0
+      },
       "native_content_status": {
         "filled_fields": 631,
         "total_fields": 631,
@@ -6665,7 +6685,7 @@
         "permission_confirmed": true,
         "redistribution_review_required": false,
         "machine_translation_used": false,
-        "content_sha256": "cc7263c5c0ba97343cafc74d3a18cc7b9617fdac2b2b56129e2f605af2a200f9",
+        "content_sha256": "51cad4bbbbef11e71fc0b585280e77f5bb09cf9bbf1abfcd28fb91e3a86cb6cf",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },
@@ -16140,6 +16160,12 @@
         ]
       },
       "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
+      "text_integrity_review": {
+        "status": "RAW_HISTORICAL_OCR_REIMPORT_REQUIRED",
+        "release_assessment": "NOT_WORD_BY_WORD_VERIFIED",
+        "machine_translation_used": false,
+        "ecclesiastical_review_required": true
+      },
       "native_content_status": {
         "filled_fields": 58,
         "total_fields": 58,

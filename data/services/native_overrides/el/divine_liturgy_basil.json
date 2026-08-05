@@ -529,5 +529,11 @@
       }
     ]
   },
-  "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT"
+  "recovery_status": "PUBLIC_DOMAIN_EXACT_NATIVE_IMPORT",
+  "text_integrity_review": {
+    "status": "RAW_HISTORICAL_OCR_REIMPORT_REQUIRED",
+    "release_assessment": "NOT_WORD_BY_WORD_VERIFIED",
+    "machine_translation_used": false,
+    "ecclesiastical_review_required": true
+  }
 }

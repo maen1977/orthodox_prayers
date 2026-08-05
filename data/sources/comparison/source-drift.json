@@ -2,28 +2,15 @@
   "schema_version": 1,
   "current_connector_count": 10,
   "previous_connector_count": 10,
-  "change_count": 2,
+  "change_count": 1,
   "regression_count": 0,
   "changes": [
-    {
-      "connector_id": "apostoliki_diakonia_voice",
-      "changes": {
-        "structure_sha256": {
-          "previous": "301386b06267295c6792c11819f15e8b0f0024ccba1a11c0f2f703e0f8c67e26",
-          "current": "97500ccac8429489c4cb26d534e19430f54f2c5cca802d7e253a9bbbeecf4b94"
-        },
-        "content_sha256": {
-          "previous": "f826cdd79f15fbb07b27702e7ae884d80181d1f191ee3ce3057d87dd50047e0c",
-          "current": "ad2a1ab1c7909eb00b62cbc0ec77cb5bffbb86f850e7e205e80d999eae5ade98"
-        }
-      }
-    },
     {
       "connector_id": "oca_daily_readings",
       "changes": {
         "content_sha256": {
-          "previous": "59e34f2ae96eb5e3387850c978718f1c3e7e099d9898b02b5657154044cef699",
-          "current": "30f042d78e9f2acce54efb64b628ba39685f48c4d81209467695159901a2d292"
+          "previous": "d9c0f5c24ea790f143be995c7d5623125154d96f748050f2a316f16c5b85dc81",
+          "current": "0c7b1aec62488dddaf4b8c36dfa5e7bb89c3f952ea5949c27cdc0df2d2d2046a"
         }
       }
     }
