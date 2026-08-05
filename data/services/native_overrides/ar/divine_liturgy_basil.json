@@ -10162,5 +10162,11 @@
     "document_sha256": "1f29402317d14c826b6c7858117fadf5377b03e3427a3a97f37afa58a5da4c50",
     "private_source_file_not_packaged": true,
     "human_review_required": true
+  },
+  "text_integrity_review": {
+    "status": "OCR_CORRUPTION_DETECTED_REIMPORT_REQUIRED",
+    "release_assessment": "NOT_WORD_BY_WORD_VERIFIED",
+    "machine_translation_used": false,
+    "ecclesiastical_review_required": true
   }
 }

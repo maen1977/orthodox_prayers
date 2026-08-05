@@ -1,19 +1,17 @@
 from pathlib import Path
 
 
-def test_build_restores_static_service_assets_after_verified_data_import():
-    workflow = Path(".github/workflows/build.yml").read_text(encoding="utf-8")
-    marker = "git restore --source=HEAD --worktree --"
-    assert workflow.count(marker) == 2
+def test_simple_build_uses_checked_in_static_service_assets_without_remote_overwrite():
+    workflow = Path(".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    assert "verified-data" not in workflow
+    assert "rsync -a --delete" not in workflow
+    assert "python scripts/simple_quality_gate.py" in workflow
     for required in (
-        "data/services/library.json",
-        "data/services/native",
-        "app/src/main/assets/data/library.json",
-        "app/src/main/assets/data/native",
-        "tests/test_native_service_category_alignment.py",
+        Path("data/services/native/library_ar.json"),
+        Path("data/services/native/library_en.json"),
+        Path("data/services/native/library_el.json"),
+        Path("app/src/main/assets/data/native/library_ar.json"),
+        Path("app/src/main/assets/data/native/library_en.json"),
+        Path("app/src/main/assets/data/native/library_el.json"),
     ):
-        assert workflow.count(required) >= 2
-
-    for block in workflow.split(marker)[1:]:
-        restore_end = block.find("python -m pytest -q tests/test_native_service_category_alignment.py")
-        assert restore_end >= 0
+        assert required.is_file()

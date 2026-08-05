@@ -4822,7 +4822,7 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "O Lord, our God, who dwells on high and looks with mercy upon the lowly; who for the salvation of humanity sent forth your onlybegotten Son and God, our Lord Jesus Christ; look with mercy upon your servants, the Catechumens, who bow their heads before You, and in an appropriate time deem them worthy of the washing of regeneration, of the remission of sins, and of the garment of incorruption; unite them to your Holy, Catholic and Apostolic Church, and number them among your chosen flock."
+            "en": "O Lord, our God, who dwells on high and looks with mercy upon the lowly; who for the salvation of humanity sent forth your only-begotten Son and God, our Lord Jesus Christ; look with mercy upon your servants, the Catechumens, who bow their heads before You, and in an appropriate time deem them worthy of the washing of regeneration, of the remission of sins, and of the garment of incorruption; unite them to your Holy, Catholic and Apostolic Church, and number them among your chosen flock."
           }
         },
         {
@@ -5139,7 +5139,7 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "We who mystically emulate the Cherubim and sing the Thrice-Holy Hymn to the life-creating Trinity, let us set aside all the cares of life that we may receive the King of all ..."
+            "en": "We who mystically represent the Cherubim and sing the Thrice-Holy Hymn to the life-creating Trinity, let us set aside all the cares of life that we may receive the King of all…"
           }
         },
         {
@@ -5886,7 +5886,7 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "It is proper and right to sing to You, bless You, praise You, thank You, and worship You in all places of your dominion; for You are God ineffable, beyond comprehension, invisible, beyond understanding, existing forever and always the same, You and your Only-begotten Son and your Holy Spirit. You brought us into being out of nothing, and when we fell, You raised us up again. You did not cease doing everything until You led us to Heaven and granted us your Kingdom to come. For all these things we thank You and your Onlybegotten Son and your Holy Spirit; for all things that we know and do not know, for blessings seen and unseen that have been bestowed upon us. We also thank You for this liturgy which You are pleased to accept from our hands, even though thousands of Archangels and tens of thousands of Angels stand before You, the Cherubim and the Seraphim, with six wings, with many eyes, soaring aloft upon their wings,"
+            "en": "It is proper and right to sing to You, bless You, praise You, thank You, and worship You in all places of your dominion; for You are God ineffable, beyond comprehension, invisible, beyond understanding, existing forever and always the same, You and your Only-begotten Son and your Holy Spirit. You brought us into being out of nothing, and when we fell, You raised us up again. You did not cease doing everything until You led us to Heaven and granted us your Kingdom to come. For all these things we thank You and your Only-begotten Son and your Holy Spirit; for all things that we know and do not know, for blessings seen and unseen that have been bestowed upon us. We also thank You for this liturgy which You are pleased to accept from our hands, even though thousands of Archangels and tens of thousands of Angels stand before You, the Cherubim and the Seraphim, with six wings, with many eyes, soaring aloft upon their wings,"
           }
         },
         {
@@ -5927,7 +5927,7 @@
           "text": {
             "ar": "",
             "el": "",
-            "en": "Together with these blessed powers, merciful Master, we also proclaim and say: You are Holy and most Holy, You and your Onlybegotten Son and your Holy Spirit. You are Holy and most Holy, and sublime is your glory. You so loved your world that You gave your Only-begotten Son so that whoever believes in Him should not perish, but have eternal life. He came and fulfilled the divine plan for us. On the night when He was delivered up, or rather when He gave Himself up for the life of the world, He took bread in His holy, undefiled and blameless hands, gave thanks and blessed, sanctified, broke, and gave it to His holy Disciples and Apostles, saying:"
+            "en": "Together with these blessed powers, merciful Master, we also proclaim and say: You are Holy and most Holy, You and your Only-begotten Son and your Holy Spirit. You are Holy and most Holy, and sublime is your glory. You so loved your world that You gave your Only-begotten Son so that whoever believes in Him should not perish, but have eternal life. He came and fulfilled the divine plan for us. On the night when He was delivered up, or rather when He gave Himself up for the life of the world, He took bread in His holy, undefiled and blameless hands, gave thanks and blessed, sanctified, broke, and gave it to His holy Disciples and Apostles, saying:"
           }
         },
         {
@@ -7598,6 +7598,26 @@
         "page_lane": "alternating native-language pages",
         "machine_translation_used": false
       },
+      "text_integrity_review": {
+        "status": "TYPOGRAPHY_AND_WORDING_REVIEWED",
+        "official_structure_cross_check": "GOARCH_LITURGICAL_TEXTS",
+        "machine_translation_used": false,
+        "ecclesiastical_review_required": true,
+        "corrected_occurrences": 5,
+        "corrections": [
+          "only-begotten hyphenation: 3 occurrences",
+          "Cherubic Hymn wording: mystically represent, not mystically emulate",
+          "ellipsis typography normalized: 1 occurrence"
+        ],
+        "user_facing_delivery_verified": true,
+        "verified_layers": [
+          "source_override",
+          "generated_native_pack",
+          "android_asset_pack",
+          "search_index"
+        ],
+        "known_broken_text_patterns_remaining": 0
+      },
       "native_content_status": {
         "filled_fields": 639,
         "total_fields": 639,
@@ -7612,7 +7632,7 @@
         "permission_confirmed": true,
         "redistribution_review_required": false,
         "machine_translation_used": false,
-        "content_sha256": "e706bca63f620be50f1dc24fc246775e6a933377cc57463bb8300526f6125303",
+        "content_sha256": "8357e5dd56eb76af17b0204394904c161efee055ee0dd3678d2aec878dfa9568",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
     },

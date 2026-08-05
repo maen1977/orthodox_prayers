@@ -1082,7 +1082,7 @@
       },
       "text": {
         "ar": "",
-        "el": "(Ἡ τάξις τοῦ «Ἅγιος ὁ Θεός...» λειτουργοῦντος Ἀρχιερέως εἰς τό τέλος τοῦ βιβλίου σελ. 44).",
+        "el": "(Ἡ τάξις τοῦ «Ἅγιος ὁ Θεός…» λειτουργοῦντος Ἀρχιερέως εἰς τὸ τέλος τοῦ βιβλίου, σελ. 44.)",
         "en": ""
       },
       "collapsed_by_default": true
@@ -1144,7 +1144,7 @@
       },
       "text": {
         "ar": "",
-        "el": "Πρός.... ἐπιστολῆς (Ὂνομα) τό ἀνάγνωσμα, ἢ Καθολικής ἐπιστολῆς... τό ἀνάγνωσμα ἢ Πράξεων τῶν Ἀποστόλων τό ἀνάγνωσμα.",
+        "el": "Πρὸς … ἐπιστολῆς (Ὄνομα) τὸ ἀνάγνωσμα, ἢ Καθολικῆς ἐπιστολῆς … τὸ ἀνάγνωσμα, ἢ Πράξεων τῶν Ἀποστόλων τὸ ἀνάγνωσμα.",
         "en": ""
       }
     },
@@ -1270,7 +1270,7 @@
       },
       "text": {
         "ar": "",
-        "el": "Ἐκ τοῦ κατά... (Ὂνομα) ἁγίου Εὐαγγελίου τό ἀνάγνωσμα. Πρόσχωμεν.",
+        "el": "Ἐκ τοῦ κατὰ … (Ὄνομα) ἁγίου Εὐαγγελίου τὸ ἀνάγνωσμα. Πρόσχωμεν.",
         "en": ""
       }
     },
@@ -1769,7 +1769,7 @@
       },
       "text": {
         "ar": "",
-        "el": "Οἱ τὰ Χερουβεὶμ μυστικῶς εἰκονίζοντες καὶ τῇ ζωοποιῷ Τριάδι τὸν τρισάγιον ὕμνον προσᾴδοντες, πᾶσαν νῦν βιοτικὴν ἀποθώμεθα μέριμναν, ὡς τὸν βασιλέα τῶν ὅλων ὑποδεξόμενοι...",
+        "el": "Οἱ τὰ Χερουβεὶμ μυστικῶς εἰκονίζοντες καὶ τῇ ζωοποιῷ Τριάδι τὸν τρισάγιον ὕμνον προσᾴδοντες, πᾶσαν νῦν βιοτικὴν ἀποθώμεθα μέριμναν, ὡς τὸν βασιλέα τῶν ὅλων ὑποδεξόμενοι…",
         "en": ""
       }
     },
@@ -4127,7 +4127,7 @@
       },
       "text": {
         "ar": "",
-        "el": "(Ἢ Λειτουργοῦντος Ἀρχιερέως λέγουσιν οἱ Ἱερείς:) Δι᾿ εὐχῶν τοῦ ἁγίου Δεσπότου ἡμῶν, Κύριε Ἰησοῦ Χριστὲ ὁ Θεὸς , ἐλέησον καὶ σῶσον ἡμᾶς.",
+        "el": "(Ἢ Λειτουργοῦντος Ἀρχιερέως λέγουσιν οἱ Ἱερείς:) Δι᾿ εὐχῶν τοῦ ἁγίου Δεσπότου ἡμῶν, Κύριε Ἰησοῦ Χριστὲ ὁ Θεὸς, ἐλέησον καὶ σῶσον ἡμᾶς.",
         "en": ""
       },
       "collapsed_by_default": true
@@ -4153,5 +4153,29 @@
     "document_sha256": "ddec146541ab8f09f8cf45b7aaa94fa11451e07c100751863604659d713d36fa",
     "page_lane": "alternating native-language pages",
     "machine_translation_used": false
+  },
+  "text_integrity_review": {
+    "status": "TYPOGRAPHY_REVIEWED",
+    "known_corrections": 5,
+    "official_structure_cross_check": "GOARCH_GREEK_LITURGICAL_TEXTS",
+    "machine_translation_used": false,
+    "ecclesiastical_review_required": true,
+    "punctuation_placeholders_normalized": 4,
+    "corrected_segments": 5,
+    "corrections": [
+      "Trisagion rubric punctuation and accents",
+      "Epistle placeholder punctuation and accents",
+      "Gospel placeholder punctuation and accents",
+      "Cherubic Hymn ellipsis typography",
+      "Dismissal comma spacing"
+    ],
+    "user_facing_delivery_verified": true,
+    "verified_layers": [
+      "source_override",
+      "generated_native_pack",
+      "android_asset_pack",
+      "search_index"
+    ],
+    "known_broken_text_patterns_remaining": 0
   }
 }

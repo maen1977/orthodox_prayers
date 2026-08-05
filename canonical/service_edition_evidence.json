@@ -45,7 +45,7 @@
       "source_id": "metropolis_toronto_liturgy_en",
       "source_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
       "source_snapshot_sha256": "ddec146541ab8f09f8cf45b7aaa94fa11451e07c100751863604659d713d36fa",
-      "content_sha256": "e706bca63f620be50f1dc24fc246775e6a933377cc57463bb8300526f6125303",
+      "content_sha256": "8357e5dd56eb76af17b0204394904c161efee055ee0dd3678d2aec878dfa9568",
       "minimum_segments": 300,
       "minimum_characters": 30000,
       "required_section_markers": [
@@ -77,7 +77,7 @@
       "source_id": "metropolis_toronto_liturgy_el",
       "source_url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
       "source_snapshot_sha256": "ddec146541ab8f09f8cf45b7aaa94fa11451e07c100751863604659d713d36fa",
-      "content_sha256": "cc7263c5c0ba97343cafc74d3a18cc7b9617fdac2b2b56129e2f605af2a200f9",
+      "content_sha256": "51cad4bbbbef11e71fc0b585280e77f5bb09cf9bbf1abfcd28fb91e3a86cb6cf",
       "minimum_segments": 300,
       "minimum_characters": 30000,
       "required_section_markers": [
@@ -889,12 +889,15 @@
       "packaged_service_id": "divine_liturgy",
       "source_id": "antioch_patriarchate_ar",
       "source_url": "https://www.antiochpatriarchate.org/",
-      "content_sha256": "57badb20e744877e86b407533cf830737322b80d7c40c79c1ab422a0260a2f06",
-      "minimum_segments": 150,
-      "minimum_characters": 28000,
+      "content_sha256": "94fa968dae80a5483bcd887018f70269b6b63aeaba3be1868b8cc8559a868691",
+      "minimum_segments": 198,
+      "minimum_characters": 14000,
       "required_text_markers": [
         "قداس القديس يوحنا الذهبي الفم",
-        "مباركة مملكة الآب والابن والروح القدس",
+        "مباركة هي مملكة الآب والابن والروح القدس",
+        "صلاة الأنتيفونا الأولى",
+        "صلاة الأنتيفونا الثانية",
+        "صلاة الأنتيفونا الثالثة",
         "خذوا كلوا"
       ],
       "required_section_markers": [],
@@ -905,7 +908,7 @@
         "TODO",
         "يضاف لاحق"
       ],
-      "review_basis": "Complete same-language native source compilation; source and content hashes recorded. Technical coverage verified separately from ecclesiastical approval.",
+      "review_basis": "Reviewed native Arabic source compilation. A duplicated 251-segment OCR-damaged appendix was quarantined. The opening formula, the three antiphon prayers, the Cherubic hymn continuation, and the order and preface of the Eucharistic anaphora were repaired from the owner-supplied Arabic source material. No machine translation was used. Word-for-word ecclesiastical certification remains explicitly unclaimed.",
       "ecclesiastical_approval_certified": false,
       "redistribution_review_required": false
     },

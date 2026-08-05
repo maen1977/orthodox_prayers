@@ -47,12 +47,10 @@ class BrandIdentityTests(unittest.TestCase):
         self.assertIn("R.drawable.ic_church_prayers_notification", worker)
 
     def test_downloadable_files_use_church_prayers_name(self) -> None:
-        workflow = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-        self.assertIn("release/Church-Prayers-$APP_VERSION-debug.apk", workflow)
-        self.assertIn("release/Church-Prayers-$RELEASE_VERSION.apk", workflow)
-        self.assertIn("release/Church-Prayers-$RELEASE_VERSION.aab", workflow)
-        upload_block = workflow.split("- name: Upload Church Prayers debug APK and reports", 1)[1].split("\n\n  android_instrumented:", 1)[0]
-        self.assertNotIn("app/build/outputs/apk/debug/app-debug.apk", upload_block)
+        workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+        self.assertIn("output/Church-Prayers.apk", workflow)
+        self.assertIn("output/Church-Prayers.aab", workflow)
+        self.assertIn("name: Church-Prayers", workflow)
         self.assertTrue((ROOT / "release/branding/Church-Prayers.ico").is_file())
         self.assertTrue((ROOT / "release/branding/Church-Prayers-icon-512.png").is_file())
 
