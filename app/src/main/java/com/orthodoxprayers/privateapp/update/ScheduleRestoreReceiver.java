@@ -12,6 +12,8 @@ public final class ScheduleRestoreReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Context applicationContext = context.getApplicationContext();
         if (!(applicationContext instanceof OrthodoxPrayersApp)) return;
-        ((OrthodoxPrayersApp) applicationContext).updateCoordinator().scheduleDailyRefresh();
+        OrthodoxPrayersApp app = (OrthodoxPrayersApp) applicationContext;
+        app.updateCoordinator().scheduleDailyRefresh();
+        app.appUpdateManager().schedulePeriodicChecks();
     }
 }

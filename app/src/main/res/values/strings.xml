@@ -9,4 +9,37 @@
     <string name="update_manifest_mirror_url" translatable="false">https://cdn.jsdelivr.net/gh/maen1977/orthodox_prayers@verified-data/data/update-manifest.json</string>
     <string name="update_manifest_signature_mirror_url" translatable="false">https://cdn.jsdelivr.net/gh/maen1977/orthodox_prayers@verified-data/data/update-manifest.json.sig</string>
     <string name="widget_description">ملخص اليوم الكنسي الموثق</string>
+
+    <string name="app_update_title">تحديث التطبيق</string>
+    <string name="app_update_daily_content_title">تحديث محتوى اليوم</string>
+    <string name="app_update_check_now">البحث عن تحديث للتطبيق الآن</string>
+    <string name="app_update_checking">جارٍ البحث عن إصدار جديد…</string>
+    <string name="app_update_check_failed">تعذر الاتصال بخدمة تحديث التطبيق. حاول لاحقًا.</string>
+    <string name="app_update_up_to_date">لديك أحدث إصدار من التطبيق.</string>
+    <string name="app_update_auto_check_on">الفحص التلقائي للتحديثات: مفعّل</string>
+    <string name="app_update_auto_check_off">الفحص التلقائي للتحديثات: متوقف</string>
+    <string name="app_update_auto_download_on">تنزيل التحديث تلقائيًا عبر Wi‑Fi: مفعّل</string>
+    <string name="app_update_auto_download_off">تنزيل التحديث تلقائيًا عبر Wi‑Fi: متوقف</string>
+    <string name="app_update_installed_version">الإصدار المثبت: </string>
+    <string name="app_update_available_version">الإصدار المتاح: </string>
+    <string name="app_update_last_check">آخر فحص للتطبيق: </string>
+    <string name="app_update_never_checked">لم يتم الفحص بعد</string>
+    <string name="app_update_available_title">يتوفر تحديث جديد</string>
+    <string name="app_update_available_message">الإصدار %1$s جاهز للتنزيل والتثبيت.</string>
+    <string name="app_update_size">حجم التحديث: %1$s</string>
+    <string name="app_update_now">تحديث الآن</string>
+    <string name="app_update_later">لاحقًا</string>
+    <string name="app_update_skip_version">تخطي هذا الإصدار</string>
+    <string name="app_update_downloading">تنزيل تحديث التطبيق</string>
+    <string name="app_update_download_wait">يتم تنزيل الملف والتحقق من سلامته وتوقيعه.</string>
+    <string name="app_update_download_failed">فشل تنزيل التحديث أو التحقق منه. لم يتم تثبيت أي ملف.</string>
+    <string name="app_update_verification_failed">رُفض ملف التحديث لأنه لم يجتز التحقق الأمني.</string>
+    <string name="app_update_permission_title">السماح بتثبيت التحديث</string>
+    <string name="app_update_permission_message">يحتاج أندرويد إلى موافقتك مرة واحدة للسماح لهذا التطبيق بفتح ملف التحديث من GitHub. بعد التفعيل ارجع إلى التطبيق.</string>
+    <string name="app_update_open_settings">فتح الإعدادات</string>
+    <string name="app_update_install_open_failed">تعذر فتح شاشة تثبيت أندرويد.</string>
+    <string name="app_update_notification_available">يتوفر الإصدار %1$s. اضغط لمراجعة التحديث.</string>
+    <string name="app_update_notification_ready">تم تنزيل الإصدار %1$s والتحقق منه. اضغط للتثبيت.</string>
+    <string name="app_update_channel_name">تحديثات التطبيق</string>
+    <string name="app_update_channel_description">تنبيهات إصدارات Orthodox Prayers الجديدة</string>
 </resources>

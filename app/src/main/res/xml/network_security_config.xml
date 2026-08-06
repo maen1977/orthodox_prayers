@@ -7,6 +7,10 @@
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="false">raw.githubusercontent.com</domain>
         <domain includeSubdomains="false">cdn.jsdelivr.net</domain>
+        <domain includeSubdomains="false">objects.githubusercontent.com</domain>
+        <domain includeSubdomains="false">release-assets.githubusercontent.com</domain>
+        <domain includeSubdomains="false">github.com</domain>
+        <domain includeSubdomains="false">api.github.com</domain>
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>

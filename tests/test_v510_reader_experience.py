@@ -8,8 +8,8 @@ def test_510_version_and_reader_progress_contract():
     prefs = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/AppPreferences.java").read_text(encoding="utf-8")
     reader = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReaderScreen.java").read_text(encoding="utf-8")
     home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
-    assert 'versionName = "5.2.0"' in build
-    assert "versionCode = 50200" in build
+    assert 'versionName = "5.2.1"' in build
+    assert "versionCode = 50201" in build
     assert "readerProgressPercent" in prefs
     assert "setReaderProgressPercent" in reader
     assert "ReadingProgressPolicy.isResumable" in home

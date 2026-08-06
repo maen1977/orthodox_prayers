@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.orthodoxprayers.privateapp.BuildConfig;
+import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
+import com.orthodoxprayers.privateapp.appupdate.AppUpdateManager;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.LocalePolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
@@ -250,6 +252,58 @@ public final class SettingsScreen extends BaseScreen {
 
     private void appendUpdateSettings(UiKit.Page page) {
         LinearLayout updateCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_update_and_data_bf22bb6d));
+
+        AppUpdateManager appUpdates = ((OrthodoxPrayersApp) host.activity().getApplication()).appUpdateManager();
+        TextView appUpdateHeading = centered(local(com.orthodoxprayers.privateapp.R.string.app_update_title),
+                17, ui.colors().primaryText(), true);
+        add(updateCard, appUpdateHeading, 2, 6);
+
+        Button checkAppUpdate = ui.button(local(com.orthodoxprayers.privateapp.R.string.app_update_check_now), false);
+        checkAppUpdate.setOnClickListener(v -> appUpdates.checkNowInteractive(host.activity(), this::reloadCurrentSettingsScreen));
+        add(updateCard, checkAppUpdate, 0, 6);
+
+        Button automaticAppUpdates = ui.button(
+                preferences.appUpdateChecksEnabled()
+                        ? local(com.orthodoxprayers.privateapp.R.string.app_update_auto_check_on)
+                        : local(com.orthodoxprayers.privateapp.R.string.app_update_auto_check_off),
+                preferences.appUpdateChecksEnabled()
+        );
+        automaticAppUpdates.setOnClickListener(v -> {
+            preferences.setAppUpdateChecksEnabled(!preferences.appUpdateChecksEnabled());
+            appUpdates.schedulePeriodicChecks();
+            reloadCurrentSettingsScreen();
+        });
+        add(updateCard, automaticAppUpdates, 0, 6);
+
+        Button autoDownload = ui.button(
+                preferences.autoDownloadAppUpdates()
+                        ? local(com.orthodoxprayers.privateapp.R.string.app_update_auto_download_on)
+                        : local(com.orthodoxprayers.privateapp.R.string.app_update_auto_download_off),
+                preferences.autoDownloadAppUpdates()
+        );
+        autoDownload.setOnClickListener(v -> {
+            preferences.setAutoDownloadAppUpdates(!preferences.autoDownloadAppUpdates());
+            reloadCurrentSettingsScreen();
+        });
+        add(updateCard, autoDownload, 0, 6);
+
+        String appUpdateLastCheck = formatTimestamp(
+                preferences.lastAppUpdateCheck(),
+                local(com.orthodoxprayers.privateapp.R.string.app_update_never_checked)
+        );
+        String availableVersion = appUpdates.availableVersionName();
+        String appUpdateSummary = local(com.orthodoxprayers.privateapp.R.string.app_update_installed_version)
+                + BuildConfig.VERSION_NAME
+                + "\n" + local(com.orthodoxprayers.privateapp.R.string.app_update_last_check) + appUpdateLastCheck;
+        if (!availableVersion.isEmpty()) {
+            appUpdateSummary += "\n" + local(com.orthodoxprayers.privateapp.R.string.app_update_available_version) + availableVersion;
+        }
+        TextView appUpdateState = ui.infoBadge(appUpdateSummary);
+        add(updateCard, appUpdateState, 0, 12);
+
+        TextView dataUpdateHeading = centered(local(com.orthodoxprayers.privateapp.R.string.app_update_daily_content_title),
+                17, ui.colors().primaryText(), true);
+        add(updateCard, dataUpdateHeading, 2, 6);
         Button refresh = ui.button(
                 data.isRefreshing()
                         ? local(com.orthodoxprayers.privateapp.R.string.ui_update_in_progress_7d1054d7)

@@ -358,6 +358,65 @@ public final class AppPreferences {
         values.edit().putStringSet("offline_languages", new LinkedHashSet<>(current)).apply();
     }
 
+    public boolean appUpdateChecksEnabled() { return values.getBoolean("app_update_checks_enabled", true); }
+    public void setAppUpdateChecksEnabled(boolean enabled) {
+        values.edit().putBoolean("app_update_checks_enabled", enabled).apply();
+    }
+
+    public boolean autoDownloadAppUpdates() { return values.getBoolean("app_update_auto_download_wifi", true); }
+    public void setAutoDownloadAppUpdates(boolean enabled) {
+        values.edit().putBoolean("app_update_auto_download_wifi", enabled).apply();
+    }
+
+    public long lastAppUpdateCheck() { return values.getLong("app_update_last_check", 0L); }
+    public boolean lastAppUpdateCheckSucceeded() { return values.getBoolean("app_update_last_check_ok", false); }
+    public String lastAppUpdateStatus() { return values.getString("app_update_last_status", ""); }
+    public void recordAppUpdateCheck(boolean succeeded, String status, long timestamp) {
+        values.edit()
+                .putLong("app_update_last_check", Math.max(0L, timestamp))
+                .putBoolean("app_update_last_check_ok", succeeded)
+                .putString("app_update_last_status", status == null ? "" : status)
+                .apply();
+    }
+
+    public String availableAppUpdateJson() { return values.getString("app_update_available_json", ""); }
+    public void setAvailableAppUpdateJson(String value) {
+        SharedPreferences.Editor editor = values.edit();
+        if (value == null || value.trim().isEmpty()) editor.remove("app_update_available_json");
+        else editor.putString("app_update_available_json", value);
+        editor.apply();
+    }
+
+    public long skippedAppUpdateVersionCode() { return values.getLong("app_update_skipped_code", 0L); }
+    public void setSkippedAppUpdateVersionCode(long versionCode) {
+        values.edit().putLong("app_update_skipped_code", Math.max(0L, versionCode)).apply();
+    }
+
+    public long deferredAppUpdateVersionCode() { return values.getLong("app_update_deferred_code", 0L); }
+    public long deferredAppUpdateUntil() { return values.getLong("app_update_deferred_until", 0L); }
+    public void deferAppUpdate(long versionCode, long untilTimestamp) {
+        values.edit()
+                .putLong("app_update_deferred_code", Math.max(0L, versionCode))
+                .putLong("app_update_deferred_until", Math.max(0L, untilTimestamp))
+                .apply();
+    }
+    public void clearDeferredAppUpdate() {
+        values.edit().remove("app_update_deferred_code").remove("app_update_deferred_until").apply();
+    }
+
+    public String downloadedAppUpdatePath() { return values.getString("app_update_downloaded_path", ""); }
+    public void setDownloadedAppUpdatePath(String path) {
+        SharedPreferences.Editor editor = values.edit();
+        if (path == null || path.trim().isEmpty()) editor.remove("app_update_downloaded_path");
+        else editor.putString("app_update_downloaded_path", path.trim());
+        editor.apply();
+    }
+
+    public boolean pendingAppUpdateInstall() { return values.getBoolean("app_update_pending_install", false); }
+    public void setPendingAppUpdateInstall(boolean pending) {
+        values.edit().putBoolean("app_update_pending_install", pending).apply();
+    }
+
     private List<String> readStringList(String key) {
         ArrayList<String> result = new ArrayList<>();
         try {

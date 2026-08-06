@@ -23,6 +23,7 @@ import androidx.activity.ComponentActivity;
 import androidx.activity.OnBackPressedCallback;
 
 import com.orthodoxprayers.privateapp.data.DataRepository;
+import com.orthodoxprayers.privateapp.appupdate.AppUpdateManager;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.AppScreen;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
@@ -69,6 +70,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     private AppPreferences preferences;
     private DataRepository repository;
     private UpdateCoordinator updateCoordinator;
+    private AppUpdateManager appUpdateManager;
     private UiKit uiKit;
     private LinearLayout shell;
     private FrameLayout contentHost;
@@ -121,6 +123,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         preferences = app.preferences();
         repository = app.repository();
         updateCoordinator = app.updateCoordinator();
+        appUpdateManager = app.appUpdateManager();
         uiKit = new UiKit(this, preferences);
         configureWindow();
         buildShell();
@@ -130,6 +133,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         if (backStack.isEmpty()) backStack.addLast(new ScreenEntry("home", null, null));
         applyLaunchIntent(getIntent(), false);
         show(backStack.peekLast());
+        appUpdateManager.handleLaunchIntent(this, getIntent());
         observedAmmanDate = repository.currentAmmanDate();
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -144,6 +148,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         super.onNewIntent(intent);
         setIntent(intent);
         applyLaunchIntent(intent, true);
+        appUpdateManager.handleLaunchIntent(this, intent);
     }
 
     private void applyLaunchIntent(Intent intent, boolean render) {
@@ -171,6 +176,9 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         super.onResume();
         ((OrthodoxPrayersApp) getApplication()).refreshShortcuts();
         updateCoordinator.scheduleDailyRefresh();
+        appUpdateManager.schedulePeriodicChecks();
+        boolean resumingAppUpdateInstall = appUpdateManager.resumePendingInstall(this);
+        if (!resumingAppUpdateInstall) appUpdateManager.checkOnAppOpen(this);
         if (automaticOpenRefreshPending) {
             automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
             automaticUpdateHandler.post(automaticOpenRefreshCheck);

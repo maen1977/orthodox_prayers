@@ -1,3 +1,36 @@
 <resources>
     <string name="widget_description">Trusted daily Orthodox agenda summary</string>
+
+    <string name="app_update_title">App update</string>
+    <string name="app_update_daily_content_title">Daily content update</string>
+    <string name="app_update_check_now">Check for an app update now</string>
+    <string name="app_update_checking">Checking for a new release…</string>
+    <string name="app_update_check_failed">The app update service could not be reached. Try again later.</string>
+    <string name="app_update_up_to_date">You already have the latest app version.</string>
+    <string name="app_update_auto_check_on">Automatic update checks: on</string>
+    <string name="app_update_auto_check_off">Automatic update checks: off</string>
+    <string name="app_update_auto_download_on">Auto-download updates on Wi‑Fi: on</string>
+    <string name="app_update_auto_download_off">Auto-download updates on Wi‑Fi: off</string>
+    <string name="app_update_installed_version">Installed version: </string>
+    <string name="app_update_available_version">Available version: </string>
+    <string name="app_update_last_check">Last app check: </string>
+    <string name="app_update_never_checked">Not checked yet</string>
+    <string name="app_update_available_title">A new update is available</string>
+    <string name="app_update_available_message">Version %1$s is ready to download and install.</string>
+    <string name="app_update_size">Update size: %1$s</string>
+    <string name="app_update_now">Update now</string>
+    <string name="app_update_later">Later</string>
+    <string name="app_update_skip_version">Skip this version</string>
+    <string name="app_update_downloading">Downloading app update</string>
+    <string name="app_update_download_wait">The file is being downloaded and its integrity and signature are being verified.</string>
+    <string name="app_update_download_failed">The update could not be downloaded or verified. No file was installed.</string>
+    <string name="app_update_verification_failed">The update file was rejected because it failed security verification.</string>
+    <string name="app_update_permission_title">Allow update installation</string>
+    <string name="app_update_permission_message">Android needs your one-time approval to let this app open its GitHub update file. Return to the app after enabling it.</string>
+    <string name="app_update_open_settings">Open settings</string>
+    <string name="app_update_install_open_failed">Android’s installation screen could not be opened.</string>
+    <string name="app_update_notification_available">Version %1$s is available. Tap to review the update.</string>
+    <string name="app_update_notification_ready">Version %1$s was downloaded and verified. Tap to install.</string>
+    <string name="app_update_channel_name">App updates</string>
+    <string name="app_update_channel_description">Notifications for new Orthodox Prayers releases</string>
 </resources>

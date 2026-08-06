@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    tags: ["v*"]
 
 permissions:
   contents: write
@@ -21,6 +22,8 @@ jobs:
     steps:
       - name: Get project
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
 
       - name: Keep only build and daily update workflows
         run: python scripts/keep_required_workflows.py
@@ -66,9 +69,10 @@ jobs:
       - name: Prepare Gradle
         uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
 
-      - name: Prepare optional release signing
+      - name: Prepare release signing
         shell: bash
         env:
+          IS_RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/v') }}
           ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -76,21 +80,28 @@ jobs:
         run: |
           set -euo pipefail
           python scripts/ensure_gradlew_executable.py
-          if [[ -n "${ANDROID_KEYSTORE_B64:-}" && -n "${ANDROID_KEYSTORE_PASSWORD:-}" && -n "${ANDROID_KEY_ALIAS:-}" && -n "${ANDROID_KEY_PASSWORD:-}" ]]; then
+          signing_ready=true
+          for value in "$ANDROID_KEYSTORE_B64" "$ANDROID_KEYSTORE_PASSWORD" "$ANDROID_KEY_ALIAS" "$ANDROID_KEY_PASSWORD"; do
+            if [[ -z "$value" ]]; then signing_ready=false; fi
+          done
+          if [[ "$signing_ready" == "true" ]]; then
             printf '%s' "$ANDROID_KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/church-prayers.keystore"
             echo "ANDROID_KEYSTORE_FILE=$RUNNER_TEMP/church-prayers.keystore" >> "$GITHUB_ENV"
             echo "ANDROID_KEYSTORE_PASSWORD=$ANDROID_KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
             echo "ANDROID_KEY_ALIAS=$ANDROID_KEY_ALIAS" >> "$GITHUB_ENV"
             echo "ANDROID_KEY_PASSWORD=$ANDROID_KEY_PASSWORD" >> "$GITHUB_ENV"
             echo "Release signing enabled."
+          elif [[ "$IS_RELEASE_TAG" == "true" ]]; then
+            echo "Release tags require the production signing secrets." >&2
+            exit 1
           else
-            echo "Release signing secrets are not configured; the installable APK will use the debug key."
+            echo "Signing secrets are absent; branch artifacts will use the debug APK fallback."
           fi
 
       - name: Test and build the app
         run: ./gradlew --no-daemon testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease --stacktrace
 
-      - name: Prepare the two final files
+      - name: Prepare final files and updater metadata
         shell: bash
         run: |
           set -euo pipefail
@@ -103,16 +114,60 @@ jobs:
           cp app/build/outputs/bundle/release/app-release.aab output/Church-Prayers.aab
           test -s output/Church-Prayers.apk
           test -s output/Church-Prayers.aab
+          python scripts/generate_app_update_manifest.py \
+            --apk output/Church-Prayers.apk \
+            --output output/app-update.json \
+            --checksum-output output/Church-Prayers.apk.sha256
 
-      - name: Upload Church Prayers
+      - name: Validate release tag and signature requirements
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          set -euo pipefail
+          version_name="$(python -c 'from scripts.release_version import current_release; print(current_release()[0])')"
+          if [[ "$GITHUB_REF_NAME" != "v$version_name" ]]; then
+            echo "Tag $GITHUB_REF_NAME must equal v$version_name from app/build.gradle.kts" >&2
+            exit 1
+          fi
+          test -n "${ANDROID_KEYSTORE_FILE:-}"
+          if [[ ! -f app/build/outputs/apk/release/app-release.apk ]]; then
+            echo "A signed release APK is required for GitHub Releases." >&2
+            exit 1
+          fi
+
+      - name: Upload Church Prayers build artifact
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: Church-Prayers
           path: |
             output/Church-Prayers.apk
             output/Church-Prayers.aab
+            output/Church-Prayers.apk.sha256
+            output/app-update.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish GitHub Release for the updater
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          assets=(
+            output/Church-Prayers.apk
+            output/Church-Prayers.aab
+            output/Church-Prayers.apk.sha256
+            output/app-update.json
+          )
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
+              --verify-tag \
+              --generate-notes \
+              --title "Orthodox Prayers ${GITHUB_REF_NAME#v}"
+          fi
 
       - name: Remove signing key
         if: always()
