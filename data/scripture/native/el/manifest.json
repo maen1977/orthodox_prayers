@@ -11,7 +11,7 @@
   "distribution_status": "REDISTRIBUTABLE",
   "retrieved_at": "2026-07-16T00:00:00+03:00",
   "imported_at": "2026-07-16T15:10:16.979221+00:00",
-  "verse_count": 496,
+  "verse_count": 507,
   "books": [
     "1CO",
     "2CO",
@@ -25,11 +25,11 @@
   "automatic_diacritization_used": false,
   "display_text_policy": "PRESERVE_SOURCE_UNICODE_CODEPOINTS_EXACTLY",
   "source_snapshot_sha256": "0a2af3439977eece7eed0ef6f31fd684065a4580b2d95d8936dbfab62b24ffad",
-  "content_sha256": "be30cb625e991e98f8e24eea76703b6ce30b40bfac104f45648215dd86cd08cb",
-  "rolling_window_start": "2026-08-05",
-  "rolling_window_end": "2026-08-13",
+  "content_sha256": "1d571b8fad6af584672e9ca9a554e9475c68b8e68353c6d07dbbe87ae700ff0d",
+  "rolling_window_start": "2026-08-06",
+  "rolling_window_end": "2026-08-14",
   "rolling_window_day_count": 9,
   "rolling_window_reference_count": 34,
-  "rolling_window_required_verse_count": 298,
-  "rolling_window_slice_prepared_at": "2026-08-05T15:49:25.301325+00:00"
+  "rolling_window_required_verse_count": 295,
+  "rolling_window_slice_prepared_at": "2026-08-06T06:18:04.765743+00:00"
 }

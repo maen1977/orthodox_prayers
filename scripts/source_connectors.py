@@ -178,7 +178,24 @@ def normalize_reference(value: str | None) -> str:
         value = value.replace(old, new)
     value = value.replace("–", "-").replace("—", "-").replace("٫", ":").replace("،", ",")
     value = re.sub(r"[^a-zα-ω0-9:,-]+", " ", value)
-    return re.sub(r"\s+", " ", value).strip()
+    value = re.sub(r"\s+", " ", value).strip()
+
+    # Equivalent references are often published in either compact form
+    # (Matthew 24:27-33,42-51) or with the chapter repeated
+    # (Matthew 24:27-33; 24:42-51). Collapse the repeated marker only when
+    # every explicit chapter marker is identical. Cross-chapter readings such
+    # as Hebrews 12:25-26; 13:22-25 remain distinct and fail closed normally.
+    chapters = re.findall(r"(?<![a-zα-ω0-9])(\d+):", value)
+    if len(chapters) > 1 and len(set(chapters)) == 1:
+        chapter = chapters[0]
+        first_marker = value.find(f"{chapter}:")
+        if first_marker >= 0:
+            head_end = first_marker + len(chapter) + 1
+            head = value[:head_end]
+            tail = value[head_end:]
+            tail = re.sub(rf"(?:\s+|,)+{re.escape(chapter)}:", ",", tail)
+            value = head + tail
+    return value
 
 
 def load_registry() -> tuple[dict[str, Any], list[ConnectorDefinition]]:

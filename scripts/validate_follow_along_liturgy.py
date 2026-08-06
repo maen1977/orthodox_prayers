@@ -89,6 +89,28 @@ def main() -> None:
         if "******" in serialized:
             errors.append(f"{language}: imported source separator artifact remains")
 
+
+    arabic_pack = json.loads((PACK_ROOT / "library_ar.json").read_text(encoding="utf-8"))
+    proskomide = service_by_id(arabic_pack, "proskomide")
+    if proskomide is None:
+        errors.append("ar: proskomide is missing")
+    else:
+        proskomide_segments = [item for item in proskomide.get("segments") or [] if isinstance(item, dict)]
+        visible = json.dumps(proskomide_segments, ensure_ascii=False)
+        for marker in (
+            "واثعنليمعشرصجولتاد",
+            "هلماندهنسجد",
+            "صلوة نصفالليل اليومية",
+            "१ صلوة",
+        ):
+            if marker in visible:
+                errors.append(f"ar: corrupt Horologion OCR remains after the Proskomide conclusion: {marker}")
+        if len(proskomide_segments) != 77:
+            errors.append(f"ar: Proskomide must end at its valid dismissal; got {len(proskomide_segments)} segments")
+        final_title = str((proskomide_segments[-2].get("title") or {}).get("ar") or "") if len(proskomide_segments) >= 2 else ""
+        if final_title != "ختام خدمة التقدمة":
+            errors.append("ar: Proskomide does not end with ختام خدمة التقدمة")
+
     coordinator = (
         ROOT
         / "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java"
@@ -105,8 +127,12 @@ def main() -> None:
         errors.append("Android twice-daily 04:23/16:43 scheduling is not wired")
     if "DailySnapshotRegressionGuard.firstRegression" not in repository:
         errors.append("same-day non-regression protection is not wired")
-    if not source_references_text(home, "قداس اليوم الكامل", "ar") or 'host.navigate("reader", "divine_liturgy")' not in home:
+    if not source_references_text(home, "قداس اليوم الكامل", "ar") or '"divine_liturgy"' not in home:
         errors.append("the Home screen does not open the full Liturgy directly")
+    if "specificCommemoration(today)" in home or "DayOfWeek.SUNDAY" in home:
+        errors.append("the bottom Home card must remain a fixed complete St John Liturgy shortcut")
+    if "thanksgivingSegmentsForLiturgy" not in repository or "arabicThanksgivingVariant" not in repository:
+        errors.append("service-specific thanksgiving filtering is not wired")
 
     if errors:
         raise SystemExit("Follow-along Liturgy validation failed:\n- " + "\n- ".join(errors))
