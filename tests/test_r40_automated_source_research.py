@@ -35,6 +35,32 @@ def test_policy_is_nine_day_automatic_and_fail_closed():
     assert "BLOCK_AUTOMATED_CONFLICT" in value["publication_decisions"]
 
 
+
+def test_repeated_same_chapter_notation_is_equivalent():
+    compact = "Matthew 24:27-33,42-51"
+    repeated = "Matthew 24:27-33; 24:42-51"
+    assert CONNECTORS.normalize_reference(compact) == "matthew 24:27-33,42-51"
+    assert CONNECTORS.normalize_reference(repeated) == "matthew 24:27-33,42-51"
+
+    result = RESEARCH.compare_reference(
+        "gospel_reference",
+        repeated,
+        compact,
+        "PINNED_EXACT_DATE_REFERENCE",
+        [],
+        policy()["calendar_groups"],
+        "orthodox_jordan_daily",
+    )
+    assert result["status"] != "BLOCK"
+    assert not result["errors"]
+
+
+def test_different_chapters_are_not_collapsed():
+    value = "Hebrews 12:25-26; 13:22-25"
+    normalized = CONNECTORS.normalize_reference(value)
+    assert normalized == "hebrews 12:25-26 13:22-25"
+    assert "12:25-26" in normalized and "13:22-25" in normalized
+
 def test_goarch_month_parser_extracts_dated_references_without_overriding_calendar():
     _, definitions = CONNECTORS.load_registry()
     definition = next(item for item in definitions if item.id == "goarch_calendar_month")
