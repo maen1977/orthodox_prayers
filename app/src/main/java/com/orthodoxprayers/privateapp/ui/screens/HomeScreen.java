@@ -11,7 +11,6 @@ import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONObject;
 
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -186,57 +185,23 @@ public final class HomeScreen extends BaseScreen {
     }
 
     private SmartShortcut smartRecommendation() {
-        ZonedDateTime now = ZonedDateTime.now(AMMAN_ZONE);
-        JSONObject today = data.today();
-        String specificCommemoration = specificCommemoration(today);
-        if (!specificCommemoration.isEmpty()) {
-            return new SmartShortcut(
-                    com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy,
-                    specificCommemoration,
-                    todayLiturgyButtonLabel(),
-                    "reader",
-                    "divine_liturgy"
-            );
-        }
-        if (now.getDayOfWeek() == DayOfWeek.SUNDAY) {
-            return serviceShortcut("pre_communion_prayers", "prayer_category", "communion");
-        }
-        LocalTime time = now.toLocalTime();
-        if (time.isBefore(LocalTime.of(7, 0))) {
-            return serviceShortcut("pre_communion_prayers", "reader", "pre_communion_prayers");
-        }
-        if (time.isBefore(LocalTime.of(12, 0))) {
-            return serviceShortcut("morning_prayer", "reader", "morning_prayer");
-        }
-        if (!time.isBefore(LocalTime.of(18, 0))) {
-            return serviceShortcut("small_compline", "reader", "small_compline");
-        }
-        String subtitle = data.hasCompleteRollingWeek() && !data.rollingWeekEndDate().isEmpty()
-                ? localFormat(com.orthodoxprayers.privateapp.R.string.ui_content_ready_through_format, data.rollingWeekEndDate())
-                : local(com.orthodoxprayers.privateapp.R.string.ui_the_complete_weekly_package_is_not_available_yet_e438506f);
-        return new SmartShortcut(
-                com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar,
-                local(com.orthodoxprayers.privateapp.R.string.ui_nine_day_service_ready),
-                subtitle,
-                "upcoming",
-                null
-        );
-    }
-
-    private SmartShortcut serviceShortcut(String serviceId, String screen, String argument) {
-        JSONObject service = data.findService(serviceId);
+        JSONObject service = data.findService("divine_liturgy");
         String title = service == null
-                ? local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a)
-                : localized(service.optJSONObject("title"), local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a));
-        String subtitle = service == null ? "" : localized(service.optJSONObject("summary"), "");
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7)
+                : localized(
+                        service.optJSONObject("title"),
+                        local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7)
+                );
+        String subtitle = localFormat(
+                com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format,
+                title
+        );
         return new SmartShortcut(
-                "pre_communion_prayers".equals(serviceId)
-                        ? com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy
-                        : com.orthodoxprayers.privateapp.R.drawable.ic_action_prayers,
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy,
                 title,
                 subtitle,
-                screen,
-                argument
+                "reader",
+                "divine_liturgy"
         );
     }
 
@@ -245,10 +210,6 @@ public final class HomeScreen extends BaseScreen {
         if (time.isBefore(LocalTime.of(12, 0))) return "morning_prayer";
         if (!time.isBefore(LocalTime.of(18, 0))) return "evening_prayer";
         return "thanksgiving";
-    }
-
-    private String specificCommemoration(JSONObject today) {
-        return displayableCommemoration(today);
     }
 
     private static final class SmartShortcut {
@@ -267,17 +228,6 @@ public final class HomeScreen extends BaseScreen {
         }
     }
 
-    private String todayLiturgyButtonLabel() {
-        JSONObject selection = data.today().optJSONObject("liturgy_service_selection");
-        String selected = selection == null ? "" : localized(selection.optJSONObject("label"), "");
-        if (selected.isEmpty()) {
-            return local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7);
-        }
-        return localFormat(
-                com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format,
-                selected
-        );
-    }
 
 
 }

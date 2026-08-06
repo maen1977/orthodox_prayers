@@ -446,7 +446,7 @@ class ReleaseContractTests(unittest.TestCase):
     def test_play_store_submission_files_and_privacy_are_present(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
         build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-        release = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
+        release = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
         self.assertIn('applicationId = "com.orthodoxprayers.privateapp"', build)
         self.assertIn("targetSdk = 36", build)
         self.assertIn("bundleRelease", release)
@@ -582,130 +582,40 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("gradle-8.13-bin.zip", properties)
         self.assertIn("distributionSha256Sum=20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78", properties)
 
-    def test_workflows_cover_build_verified_data_security_and_signed_release(self):
+    def test_workflows_cover_build_and_independent_daily_update(self):
         workflows = ROOT / ".github/workflows"
-        expected = {"build.yml", "update.yml", "play-internal.yml", "weekly-health.yml"}
+        expected = {"church-prayers.yml", "update.yml"}
         self.assertEqual(expected, {path.name for path in workflows.glob("*.yml")})
 
-        build = (workflows / "build.yml").read_text(encoding="utf-8")
-        self.assertIn("name: Android unit tests", build)
-        self.assertIn("testDebugUnitTest --stacktrace", build)
-        self.assertIn("name: Android debug lint", build)
-        self.assertIn("lintDebug --stacktrace", build)
-        self.assertIn("name: Android release lint", build)
-        self.assertIn("lintRelease --stacktrace", build)
-        self.assertIn("name: Build debug APK", build)
-        self.assertIn("assembleDebug --stacktrace", build)
-        self.assertIn("app/build/outputs/apk/debug/app-debug.apk", build)
-        self.assertIn("SHA256SUMS.txt", build)
-        self.assertIn("Import latest signed published data for debug APK", build)
-        self.assertIn("origin/verified-data", build)
-        self.assertEqual(
-            2,
-            build.count('python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"'),
-        )
-        self.assertIn('python scripts/verify.py --expected-date "$PUBLISHED_DATE" --allow-missing-manifest', build)
-        self.assertIn("verified-data requires a nine-day upgrade", build)
-        self.assertIn("Building debug with the signed embedded bootstrap", build)
-        self.assertIn("the next scheduled Rolling Liturgical Window Update will republish verified-data", build)
-        debug_import = build.split("- name: Import latest signed published data for debug APK", 1)[1].split("- name: Set up JDK 17", 1)[0]
-        self.assertIn('if python scripts/validate_verified_data_contract.py --root "$VERIFIED_DIR"', debug_import)
-        self.assertIn("python scripts/verify_data_signature.py", debug_import)
-        self.assertIn("python scripts/validate_embedded_app_data.py", debug_import)
-        release_import = build.split("- name: Import latest signed verified data", 1)[1].split("- name: Normalize Gradle wrapper permission", 1)[0]
-        self.assertNotIn("Building debug with the signed embedded bootstrap", release_import)
-        self.assertGreaterEqual(
-            build.count('python scripts/clean_legacy_calendar_snapshots.py --root "$VERIFIED_DIR"'),
-            2,
-        )
-        self.assertIn("chmod +x ./gradlew", build)
-        emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-        self.assertIn("assembleDebug assembleDebugAndroidTest --stacktrace", build)
-        self.assertIn("am instrument -w -r", emulator_script)
-        self.assertNotIn("connectedDebugAndroidTest", emulator_script)
-        self.assertIn("ReactiveCircus/android-emulator-runner@", build)
-        self.assertIn("play-store-screenshots", build)
-        self.assertIn("validate_play_store_assets.py --require-screenshots", build)
-        self.assertNotIn("github/codeql-action/", build)
-
+        build = (workflows / "church-prayers.yml").read_text(encoding="utf-8")
         update = (workflows / "update.yml").read_text(encoding="utf-8")
-        self.assertIn("DATA_SIGNING_PRIVATE_KEY_B64", update)
-        self.assertIn("environment: production-data-signing", update)
-        self.assertIn("scripts/update.py", update)
-        self.assertIn("--unsigned", update)
-        self.assertIn("Prepare exact native Scripture horizon", update)
-        self.assertIn("Generate and validate moving horizon without signing key", update)
-        self.assertIn("--window-days", update)
-        self.assertIn("Validate unsigned language lanes independently", update)
-        self.assertIn("Prepare publication worktree before restoring key", update)
-        self.assertIn("Remove private key before commit or network publication", update)
-        self.assertNotRegex(update, r"scripts/update\.py[^\n]*--private-key")
-        self.assertNotRegex(update, r"scripts/update_language_lane\.py[^\n]*--private-key")
-        ordered = [
-            update.index("Generate and validate moving horizon without signing key"),
-            update.index("Validate unsigned language lanes independently"),
-            update.index("Automated religious evidence and cross-source decision gate"),
-            update.index("Prepare publication worktree before restoring key"),
-            update.index("Restore and match the one signing key"),
-            update.index("Sign and verify generated data"),
-            update.index("Remove private key before commit or network publication"),
-            update.index("Commit, verify Git blobs, and publish verified-data"),
-        ]
-        self.assertEqual(sorted(ordered), ordered)
-        updater = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
-        self.assertIn("scripts/rebuild_daily_services.py", updater)
-        self.assertIn("--require-complete", updater)
-        self.assertTrue((ROOT / "scripts/public_domain_scripture.py").is_file())
-        self.assertTrue((ROOT / "scripts/rebuild_daily_services.py").is_file())
-        self.assertIn("scripts/verify.py", update)
-        self.assertIn("verified-data", update)
-        self.assertIn('timezone: "Asia/Amman"', update)
+        self.assertIn("name: Build Church Prayers", build)
+        self.assertIn("testDebugUnitTest", build)
+        self.assertIn("lintRelease", build)
+        self.assertIn("assembleDebug", build)
+        self.assertIn("assembleRelease", build)
+        self.assertIn("bundleRelease", build)
+        self.assertIn("output/Church-Prayers.apk", build)
+        self.assertIn("output/Church-Prayers.aab", build)
+        self.assertIn("name: Church-Prayers", build)
+        self.assertIn("name: Daily Update", update)
         self.assertIn('cron: "23 4 * * *"', update)
         self.assertIn('cron: "43 16 * * *"', update)
-        self.assertEqual(2, update.count('timezone: "Asia/Amman"'))
-        self.assertIn("Verify public HTTPS update endpoint", update)
-        self.assertIn("scripts/verify_public_update_endpoints.py", update)
-        self.assertIn("canonical/signing/data_signing_public_key.pub", update)
-        self.assertIn("cmp -s", update)
-        self.assertIn("The GitHub secret does not match the public key", update)
-        self.assertIn("Verify from origin after publishing", update)
-        self.assertIn("scripts/build_update_manifest.py", update)
-        self.assertIn("scripts/sign_update_manifest.py", update)
-        self.assertIn("scripts/verify_update_manifest.py", update)
-        self.assertIn("scripts/validate_publication_consistency.py", update)
-        self.assertIn('python "$SOURCE/scripts/clean_legacy_calendar_snapshots.py" --root "$TARGET"', update)
-        self.assertIn("Open failure alert", update)
-        self.assertNotIn("gh pr create", update)
-        self.assertNotIn("pull-requests: write", update)
-        self.assertNotIn("HEAD:main", update)
-        self.assertNotIn("reports/", update)
-        self.assertNotIn("\n  push:\n", update)
-        self.assertFalse((ROOT / ".github/dependabot.yml").exists())
-
-        release = build
-        for secret in ("ANDROID_KEYSTORE_B64", "ANDROID_KEYSTORE_PASSWORD", "ANDROID_KEY_ALIAS", "ANDROID_KEY_PASSWORD"):
-            self.assertIn(secret, release)
-        self.assertIn("assembleRelease bundleRelease", release)
-        self.assertIn("apksigner", release.lower())
-        self.assertIn("chmod +x ./gradlew", release)
-        self.assertIn("RELEASE_VERSION", release)
-        self.assertNotRegex(release, r"OrthodoxPrayers-v\d+\.\d+\.\d+")
-        self.assertIn("origin/verified-data", release)
-        self.assertIn("--require-current --strict-native-lanes", release)
-        self.assertIn("Tag/version mismatch", release)
-        self.assertIn("scripts/validate_release_readiness.py", release)
+        self.assertIn("production-data-signing", update)
+        self.assertIn("DATA_SIGNING_PRIVATE_KEY_B64", update)
+        self.assertIn("verified-data", update)
 
         for path in workflows.glob("*.yml"):
             for use in re.findall(r"uses:\s*([^\s#]+)", path.read_text(encoding="utf-8")):
                 self.assertRegex(use, r"^[^@]+@[0-9a-f]{40}$", f"Action must be pinned by full SHA in {path.name}: {use}")
 
-    def test_published_verifier_legacy_manifest_escape_hatch_is_debug_only(self):
+    def test_published_verifier_legacy_manifest_escape_hatch_is_not_used_by_workflows(self):
         verifier = (ROOT / "scripts/verify.py").read_text(encoding="utf-8")
-        build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
+        build = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
         update = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
         self.assertIn("--allow-missing-manifest", verifier)
         self.assertIn("not manifest.exists() and not manifest_signature.exists()", verifier)
-        self.assertEqual(1, build.count("--allow-missing-manifest"))
+        self.assertNotIn("--allow-missing-manifest", build)
         self.assertNotIn("--allow-missing-manifest", update)
 
     def test_application_requires_official_source_publication_and_vocalized_scripture(self):

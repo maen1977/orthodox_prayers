@@ -54,6 +54,11 @@ public final class CommemorationDisplayPolicy {
         if (text.isEmpty()) return false;
         String folded = text.toLowerCase(Locale.ROOT);
         return !folded.contains("تذكار اليوم بحسب التقويم الكنسي القديم")
+                && !folded.contains("تعذّر التحقق من تذكار هذا اليوم")
+                && !folded.contains("تعذر التحقق من تذكار هذا اليوم")
+                && !folded.contains("this day’s commemoration could not be verified")
+                && !folded.contains("this day's commemoration could not be verified")
+                && !folded.contains("ἡ μνήμη τῆς ἡμέρας δὲν κατέστη δυνατόν")
                 && !folded.contains("تذكار اليوم يُستكمل من التحديث الموثق")
                 && !folded.contains("تذكار اليوم يستكمل من التحديث الموثق")
                 && !folded.contains("daily commemoration is completed by the verified update")

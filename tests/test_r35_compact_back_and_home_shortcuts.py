@@ -44,11 +44,10 @@ def test_home_uses_four_shortcut_cards_and_one_context_aware_card() -> None:
     assert 'ui_churches_and_live_services_53a37eff), "churches", null' in home
     assert "addSmartRecommendation(page.root);" in home
     assert "private SmartShortcut smartRecommendation()" in home
-    assert "DayOfWeek.SUNDAY" in home
-    assert 'serviceShortcut("pre_communion_prayers"' in home
-    assert 'serviceShortcut("morning_prayer"' in home
-    assert 'serviceShortcut("small_compline"' in home
-    assert "specificCommemoration(today)" in home
+    assert 'data.findService("divine_liturgy")' in home
+    assert 'host.navigate("reader", "divine_liturgy")' in home
+    assert "DayOfWeek.SUNDAY" not in home
+    assert "specificCommemoration(today)" not in home
     assert "addRollingWeekStatus(page.root);" not in home
 
 

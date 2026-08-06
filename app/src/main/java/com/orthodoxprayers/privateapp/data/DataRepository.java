@@ -876,7 +876,12 @@ public final class DataRepository {
             signatureVerifier.verify(jsonBytes, signatureBytes);
 
             JSONObject parsed = new JSONObject(new String(jsonBytes, StandardCharsets.UTF_8));
-            String validationError = validate(parsed, currentAmmanDate(), true);
+            String currentDate = currentAmmanDate();
+            boolean rollingPackage = hasRollingWindow(parsed);
+            String validationDate = rollingPackage
+                    ? parsed.optString("date_iso", "").trim()
+                    : currentDate;
+            String validationError = validate(parsed, validationDate, true);
             if (validationError != null && !isRecoverableReadingValidation(validationError)) {
                 throw new IllegalStateException(validationError);
             }
@@ -885,6 +890,11 @@ public final class DataRepository {
             }
             String rollingError = validateRollingWeekPackage(parsed);
             if (rollingError != null) throw new IllegalStateException(rollingError);
+            if (rollingPackage && !rollingPackageContainsDate(parsed, currentDate)) {
+                throw new IllegalStateException(
+                        "date_not_ready:" + parsed.optString("date_iso", "") + ":" + currentDate
+                );
+            }
             String translationError = VerifiedContentSanitizer.firstUnsafeTranslationError(parsed);
             if (!translationError.isEmpty()) {
                 Log.w(TAG, "Signed package contains a reading that will be suppressed: " + translationError);
@@ -1011,6 +1021,28 @@ public final class DataRepository {
                 || error.endsWith("_text_unverified")
                 || error.endsWith("_hash_invalid")
                 || error.startsWith("unverified_scripture_native_text:");
+    }
+
+    static boolean hasRollingWindow(JSONObject packagePayload) {
+        return packagePayload != null
+                && packagePayload.optJSONObject("rolling_week") != null
+                && packagePayload.optJSONArray("weekly_days") != null;
+    }
+
+    static boolean rollingPackageContainsDate(JSONObject packagePayload, String expectedDate) {
+        if (!hasRollingWindow(packagePayload)) return false;
+        String requested = expectedDate == null ? "" : expectedDate.trim();
+        if (requested.isEmpty()) return false;
+        if (requested.equals(packagePayload.optString("date_iso", "").trim())) return true;
+        JSONArray future = packagePayload.optJSONArray("weekly_days");
+        if (future == null) return false;
+        for (int i = 0; i < future.length(); i++) {
+            JSONObject day = future.optJSONObject(i);
+            if (day != null && requested.equals(day.optString("date_iso", "").trim())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private String validateRollingWeekPackage(JSONObject packagePayload) {
@@ -1562,7 +1594,14 @@ public final class DataRepository {
                         "Thanksgiving prayers after Holy Communion",
                         "Εὐχαριστήριες εὐχὲς μετὰ τὴν Θείαν Μετάληψιν"
                 ));
-                appendSegments(merged, thanksgiving.optJSONArray("segments"));
+                String selectedLiturgyId = liturgy.optString(
+                        "composed_from",
+                        liturgy.optString("id", "divine_liturgy")
+                );
+                appendSegments(
+                        merged,
+                        thanksgivingSegmentsForLiturgy(thanksgiving, language, selectedLiturgyId)
+                );
             }
 
             result.put("segments", merged);
@@ -1575,6 +1614,88 @@ public final class DataRepository {
             Log.w(TAG, "Could not compose follow-along Liturgy", error);
             return liturgy;
         }
+    }
+
+    private static JSONArray thanksgivingSegmentsForLiturgy(
+            JSONObject thanksgiving,
+            String language,
+            String liturgyId
+    ) throws Exception {
+        JSONArray source = thanksgiving == null ? null : thanksgiving.optJSONArray("segments");
+        JSONArray output = new JSONArray();
+        if (source == null) return output;
+
+        String selected = normalizeLiturgyVariant(liturgyId);
+        String activeArabicVariant = "";
+        boolean suppressNextGreekTroparion = false;
+
+        for (int i = 0; i < source.length(); i++) {
+            JSONObject segment = source.optJSONObject(i);
+            if (segment == null) continue;
+            JSONObject copy = new JSONObject(segment.toString());
+            String type = copy.optString("type", "text");
+            JSONObject titleObject = copy.optJSONObject("title");
+            String title = titleObject == null ? "" : titleObject.optString(language, "").trim();
+
+            if ("ar".equals(language)) {
+                String branch = arabicThanksgivingVariant(title);
+                if (!branch.isEmpty()) {
+                    activeArabicVariant = branch;
+                    if (branch.equals(selected)) {
+                        copy.put("title", new JSONObject()
+                                .put("ar", arabicThanksgivingTitle(branch))
+                                .put("en", "")
+                                .put("el", ""));
+                        output.put(copy);
+                    }
+                    continue;
+                }
+                if (!activeArabicVariant.isEmpty()) {
+                    if ("note".equals(type)) continue;
+                    if ("text".equals(type)) {
+                        if (activeArabicVariant.equals(selected)) output.put(copy);
+                        activeArabicVariant = "";
+                        continue;
+                    }
+                }
+            }
+
+            // The current Greek pack contains the St John dismissal troparion only.
+            // Never show it inside the Basil or Presanctified service as though it
+            // belonged to that Liturgy. Common thanksgiving prayers remain visible.
+            if ("el".equals(language)) {
+                if ("section".equals(type) && "Ἀπολυτίκια".equals(title)) {
+                    suppressNextGreekTroparion = !"divine_liturgy".equals(selected);
+                    if (suppressNextGreekTroparion) continue;
+                } else if (suppressNextGreekTroparion && "text".equals(type)) {
+                    suppressNextGreekTroparion = false;
+                    continue;
+                }
+            }
+            output.put(copy);
+        }
+        return output;
+    }
+
+    private static String normalizeLiturgyVariant(String serviceId) {
+        String id = serviceId == null ? "" : serviceId.trim();
+        if (id.contains("basil")) return "divine_liturgy_basil";
+        if (id.contains("presanctified")) return "presanctified_liturgy";
+        return "divine_liturgy";
+    }
+
+    private static String arabicThanksgivingVariant(String title) {
+        if (title == null) return "";
+        if (title.contains("يوحنا الذهبي")) return "divine_liturgy";
+        if (title.contains("باسيليوس الكبير")) return "divine_liturgy_basil";
+        if (title.contains("السابق تقديسه")) return "presanctified_liturgy";
+        return "";
+    }
+
+    private static String arabicThanksgivingTitle(String variant) {
+        if ("divine_liturgy_basil".equals(variant)) return "طروبارية القديس باسيليوس الكبير";
+        if ("presanctified_liturgy".equals(variant)) return "طروبارية القديس غريغوريوس الكبير";
+        return "طروبارية القديس يوحنا الذهبي الفم";
     }
 
     private void appendNativePrayerService(JSONArray target, String serviceId, String language) {

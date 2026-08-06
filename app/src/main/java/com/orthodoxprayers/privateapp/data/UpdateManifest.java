@@ -50,8 +50,9 @@ public final class UpdateManifest {
         if (manifest.optInt("manifest_schema_version", 0) != 1) {
             throw new IllegalStateException("manifest_schema_unsupported");
         }
-        if (!safe(expectedDate).equals(manifest.optString("date_iso", ""))) {
-            throw new IllegalStateException("manifest_date_mismatch");
+        String manifestDate = safe(manifest.optString("date_iso", ""));
+        if (manifestDate.isEmpty()) {
+            throw new IllegalStateException("manifest_date_invalid");
         }
         long revision = manifest.optLong("revision", 0L);
         if (revision < 1L) throw new IllegalStateException("manifest_revision_invalid");
@@ -63,7 +64,12 @@ public final class UpdateManifest {
         );
 
         JSONObject coverage = manifest.optJSONObject("coverage");
-        if (coverage != null) validateCoverage(coverage, expectedDate);
+        if (coverage != null) {
+            validateCoverage(coverage, manifestDate, expectedDate);
+        } else if (!safe(expectedDate).equals(manifestDate)) {
+            // Legacy one-day manifests remain exact-date only.
+            throw new IllegalStateException("manifest_date_mismatch");
+        }
 
         JSONObject selected = null;
         JSONObject languages = manifest.optJSONObject("languages");
@@ -73,6 +79,7 @@ public final class UpdateManifest {
         }
         if (selected == null) selected = manifest.optJSONObject("calendar");
         if (selected == null) throw new IllegalStateException("manifest_payload_missing");
+        validateSelectedCoverage(selected, coverage, expectedDate);
 
         String path = validatedPath(selected.optString("path", ""));
         String signaturePath = validatedPath(selected.optString("signature_path", ""));
@@ -98,7 +105,11 @@ public final class UpdateManifest {
     }
 
 
-    private static void validateCoverage(JSONObject coverage, String expectedDate) {
+    private static void validateCoverage(
+            JSONObject coverage,
+            String manifestDate,
+            String expectedDate
+    ) {
         int schema = coverage.optInt("schema_version", 1);
         int dayCount = coverage.optInt("day_count", 0);
         String policy = coverage.optString("policy", "");
@@ -109,14 +120,21 @@ public final class UpdateManifest {
                 && dayCount == 9
                 && "ROLLING_FUTURE_WINDOW".equals(policy));
         if (!supported) throw new IllegalStateException("manifest_coverage_unsupported");
-        String start = coverage.optString("start_date", "");
-        if (!safe(expectedDate).equals(start)) {
+
+        String startValue = safe(coverage.optString("start_date", ""));
+        String endValue = safe(coverage.optString("end_date", ""));
+        if (!safe(manifestDate).equals(startValue)) {
             throw new IllegalStateException("manifest_coverage_start_mismatch");
         }
         try {
-            String expectedEnd = LocalDate.parse(start).plusDays(dayCount - 1L).toString();
-            if (!expectedEnd.equals(coverage.optString("end_date", ""))) {
+            LocalDate start = LocalDate.parse(startValue);
+            LocalDate end = LocalDate.parse(endValue);
+            LocalDate requested = LocalDate.parse(safe(expectedDate));
+            if (!start.plusDays(dayCount - 1L).equals(end)) {
                 throw new IllegalStateException("manifest_coverage_end_mismatch");
+            }
+            if (requested.isBefore(start) || requested.isAfter(end)) {
+                throw new IllegalStateException("manifest_date_outside_coverage");
             }
         } catch (IllegalStateException error) {
             throw error;
@@ -125,6 +143,42 @@ public final class UpdateManifest {
         }
         if (!"COMPLETE".equals(coverage.optString("status", ""))) {
             throw new IllegalStateException("manifest_coverage_incomplete");
+        }
+    }
+
+    private static void validateSelectedCoverage(
+            JSONObject selected,
+            JSONObject manifestCoverage,
+            String expectedDate
+    ) {
+        String selectedStart = safe(selected.optString("coverage_start_date", ""));
+        String selectedEnd = safe(selected.optString("coverage_end_date", ""));
+        int selectedCount = selected.optInt("coverage_day_count", 0);
+        boolean hasAnyCoverageField = !selectedStart.isEmpty() || !selectedEnd.isEmpty() || selectedCount > 0;
+        if (!hasAnyCoverageField) return;
+        if (selectedStart.isEmpty() || selectedEnd.isEmpty() || selectedCount != 9) {
+            throw new IllegalStateException("manifest_payload_coverage_invalid");
+        }
+        try {
+            LocalDate start = LocalDate.parse(selectedStart);
+            LocalDate end = LocalDate.parse(selectedEnd);
+            LocalDate requested = LocalDate.parse(safe(expectedDate));
+            if (!start.plusDays(selectedCount - 1L).equals(end)) {
+                throw new IllegalStateException("manifest_payload_coverage_end_mismatch");
+            }
+            if (requested.isBefore(start) || requested.isAfter(end)) {
+                throw new IllegalStateException("manifest_payload_date_outside_coverage");
+            }
+            if (manifestCoverage != null
+                    && (!selectedStart.equals(safe(manifestCoverage.optString("start_date", "")))
+                    || !selectedEnd.equals(safe(manifestCoverage.optString("end_date", "")))
+                    || selectedCount != manifestCoverage.optInt("day_count", 0))) {
+                throw new IllegalStateException("manifest_payload_coverage_mismatch");
+            }
+        } catch (IllegalStateException error) {
+            throw error;
+        } catch (Exception error) {
+            throw new IllegalStateException("manifest_payload_coverage_date_invalid");
         }
     }
 

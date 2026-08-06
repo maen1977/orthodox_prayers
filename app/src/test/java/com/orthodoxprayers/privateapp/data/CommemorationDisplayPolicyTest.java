@@ -59,6 +59,16 @@ public final class CommemorationDisplayPolicyTest {
     }
 
 
+
+    @Test
+    public void unavailableOfficialLocalSourceMessageIsHidden() throws Exception {
+        JSONObject day = new JSONObject().put("note", new JSONObject().put(
+                "ar",
+                "تعذّر التحقق من تذكار هذا اليوم من المصدر الرسمي المحلي؛ تظهر آخر معلومة موثقة إن توفرت"
+        ));
+        assertEquals("", CommemorationDisplayPolicy.displayText(day, ARABIC));
+    }
+
     @Test
     public void unavailableTranslationIsTreatedAsAbsent() throws Exception {
         JSONObject day = new JSONObject().put("feast", new JSONObject().put("ar", "تذكار موثق بالعربية فقط"));
