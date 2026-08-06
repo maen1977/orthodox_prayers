@@ -1,0 +1,123 @@
+[
+  {
+    "id": "windows-user-temp",
+    "name": "الملفات المؤقتة للمستخدم",
+    "description": "ملفات مؤقتة أقدم من 24 ساعة؛ يتم تجاوز الملفات المستخدمة.",
+    "group": "Windows",
+    "rootPath": "%TEMP%",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 24,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "windows-system-temp",
+    "name": "ملفات ويندوز المؤقتة",
+    "description": "ملفات قديمة داخل Windows Temp وقد تتطلب صلاحية مسؤول.",
+    "group": "Windows",
+    "rootPath": "%WINDIR%\\Temp",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 24,
+    "requiresAdministrator": true,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "windows-crash-dumps",
+    "name": "تقارير تعطل البرامج",
+    "description": "ملفات تفريغ الذاكرة الناتجة عن أعطال البرامج.",
+    "group": "Windows",
+    "rootPath": "%LOCALAPPDATA%\\CrashDumps",
+    "searchPatterns": ["*.dmp"],
+    "recursive": true,
+    "minimumAgeHours": 24,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "windows-directx-cache",
+    "name": "ذاكرة DirectX المؤقتة",
+    "description": "ملفات Shader مؤقتة يعاد إنشاؤها تلقائيًا.",
+    "group": "Windows",
+    "rootPath": "%LOCALAPPDATA%\\D3DSCache",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 12,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "discord-cache",
+    "name": "كاش Discord",
+    "description": "كاش واجهة Discord فقط؛ لا يحذف الحساب أو المحادثات.",
+    "group": "Communication",
+    "rootPath": "%APPDATA%\\discord\\Cache",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 48,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "teams-cache",
+    "name": "كاش Microsoft Teams",
+    "description": "كاش التطبيق القديم؛ يعاد إنشاؤه عند التشغيل.",
+    "group": "Communication",
+    "rootPath": "%APPDATA%\\Microsoft\\Teams\\Cache",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 48,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "telegram-cache",
+    "name": "كاش Telegram Desktop",
+    "description": "ملفات كاش مؤقتة فقط؛ لا يحذف المحادثات أو الجلسة.",
+    "group": "Communication",
+    "rootPath": "%APPDATA%\\Telegram Desktop\\tdata\\user_data\\cache",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 72,
+    "enabledByDefault": false,
+    "safetyTier": "Review"
+  },
+  {
+    "id": "steam-html-cache",
+    "name": "كاش واجهة Steam",
+    "description": "كاش متصفح واجهة Steam؛ لا يحذف الألعاب.",
+    "group": "Games",
+    "rootPath": "%LOCALAPPDATA%\\Steam\\htmlcache",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 48,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "epic-web-cache",
+    "name": "كاش Epic Games Launcher",
+    "description": "كاش واجهة المشغّل فقط؛ لا يحذف الألعاب.",
+    "group": "Games",
+    "rootPath": "%LOCALAPPDATA%\\EpicGamesLauncher\\Saved\\webcache",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 48,
+    "enabledByDefault": true,
+    "safetyTier": "Safe"
+  },
+  {
+    "id": "adobe-common-cache",
+    "name": "كاش Adobe المشترك",
+    "description": "ملفات كاش قديمة؛ راجعها عند استخدام مشاريع Adobe نشطة.",
+    "group": "Creative",
+    "rootPath": "%LOCALAPPDATA%\\Adobe\\Common\\Media Cache Files",
+    "searchPatterns": ["*"],
+    "recursive": true,
+    "minimumAgeHours": 168,
+    "enabledByDefault": false,
+    "safetyTier": "Review"
+  }
+]
