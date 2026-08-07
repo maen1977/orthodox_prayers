@@ -43,31 +43,16 @@ public final class RefreshPolicyTest {
     }
 
     @Test
-    public void appResumeCatchesUpAfterBothDailyPublicationWindows() {
-        long beforeWindow = amman(2026, 7, 25, 4, 0);
-        long afterWindow = amman(2026, 7, 25, 4, 35);
-        long afterWindowAttempt = amman(2026, 7, 25, 4, 30);
-        long previousDayAttempt = amman(2026, 7, 24, 23, 55);
-        long afterEveningWindow = amman(2026, 7, 25, 16, 55);
-        long morningAttempt = amman(2026, 7, 25, 5, 0);
+    public void appResumeCompatibilityCheckUsesOnlyLocalState() {
+        long now = amman(2026, 7, 25, 4, 0);
+        long previousAttempt = amman(2026, 7, 24, 23, 55);
+        long futureAttempt = amman(2026, 7, 25, 4, 5);
 
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(true, 0L, afterWindow));
-        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, 0L, beforeWindow));
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
-                false, previousDayAttempt, beforeWindow
-        ));
-        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(
-                false, beforeWindow, afterWindow
-        ));
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
-                false, afterWindowAttempt, afterWindow
-        ));
-        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(
-                false, afterWindow, afterWindowAttempt
-        ));
-        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(
-                false, morningAttempt, afterEveningWindow
-        ));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(true, 0L, now));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, 0L, now));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, previousAttempt, now));
+        assertTrue(RefreshPolicy.shouldCheckRemoteOnResume(false, now, now));
+        assertFalse(RefreshPolicy.shouldCheckRemoteOnResume(false, futureAttempt, now));
     }
 
     private static long amman(int year, int month, int day, int hour, int minute) {
