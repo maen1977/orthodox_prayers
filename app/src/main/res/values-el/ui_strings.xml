@@ -353,4 +353,26 @@
     <string name="ui_local_daily_update_current" formatted="false">Ἡ τοπικὴ ἐκκλησιαστικὴ ἡμέρα εἶναι ἕτοιμη καὶ ἐνημερωμένη</string>
     <string name="ui_local_daily_update_unavailable" formatted="false">Ἡ ἡμέρα δὲν μπόρεσε νὰ προετοιμαστεῖ ἀπὸ τὸ ἐνσωματωμένο ἡμερολόγιο</string>
     <string name="ui_local_offline_engine_source" formatted="false">Ἐνσωματωμένη τοπικὴ μηχανὴ ἡμέρας</string>
+
+    <string name="ui_bible_title">Ἁγία Γραφή</string>
+    <string name="ui_bible_intro">Τὸ κείμενο εἶναι ἀποθηκευμένο μέσα στὴν ἐφαρμογὴ καὶ λειτουργεῖ χωρὶς διαδίκτυο. Τὰ καθημερινὰ ἀναγνώσματα χρησιμοποιοῦν τὸ ἴδιο πλήρες σώμα κειμένου.</string>
+    <string name="ui_bible_source_label">Μετάφραση τῶν Ο΄ (Μπρέντον) + Πατριαρχικὸ Κείμενο 1904 — δημόσιο κτήμα</string>
+    <string name="ui_bible_search_hint">Ἀναζήτηση στὸ κείμενο τῆς Γραφῆς</string>
+    <string name="ui_bible_search">Ἀναζήτηση</string>
+    <string name="ui_bible_searching">Ἀναζήτηση…</string>
+    <string name="ui_bible_no_results">Δὲν βρέθηκαν ἀποτελέσματα.</string>
+    <string name="ui_bible_old_testament">Παλαιὰ Διαθήκη</string>
+    <string name="ui_bible_old_testament_summary">Βιβλία τῆς Παλαιᾶς Διαθήκης</string>
+    <string name="ui_bible_new_testament">Καινὴ Διαθήκη</string>
+    <string name="ui_bible_new_testament_summary">Βιβλία τῆς Καινῆς Διαθήκης</string>
+    <string name="ui_bible_loading_books">Φόρτωση βιβλίων…</string>
+    <string name="ui_bible_chapter_count">Κεφάλαια: %1$d</string>
+    <string name="ui_bible_full_corpus_unavailable">Τὸ πλήρες σώμα τῆς Γραφῆς δὲν συμπεριλήφθηκε σὲ αὐτὴν τὴν κατασκευή.</string>
+    <string name="ui_bible_loading_chapters">Φόρτωση κεφαλαίων…</string>
+    <string name="ui_bible_chapter_title">Κεφάλαιο %1$d</string>
+    <string name="ui_bible_cannot_open_bundled_bible">Δὲν ἦταν δυνατὸ νὰ ἀνοιχθεῖ ἡ ἐνσωματωμένη Γραφή.</string>
+    <string name="ui_bible_loading_text">Φόρτωση κειμένου…</string>
+    <string name="ui_bible_text_unavailable">Τὸ κείμενο δὲν εἶναι διαθέσιμο σὲ αὐτὴν τὴν ἔκδοση.</string>
+    <string name="ui_bible_share_chapter">Κοινοποίηση κεφαλαίου</string>
+    <string name="ui_bible_cannot_open_text">Δὲν ἦταν δυνατὸ νὰ ἀνοιχθεῖ τὸ ἐνσωματωμένο κείμενο.</string>
 </resources>

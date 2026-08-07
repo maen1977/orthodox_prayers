@@ -155,8 +155,9 @@ public final class BibleCorpusRepository {
 
     private CorpusSource[] sourcesForLanguage(String language) {
         if ("ar".equals(language)) return new CorpusSource[] {ARABIC_SOURCE};
+        if ("en".equals(language)) return new CorpusSource[] {ENGLISH_SOURCE};
         if ("el".equals(language)) return new CorpusSource[] {GREEK_OT_SOURCE, GREEK_NT_SOURCE};
-        return new CorpusSource[] {ENGLISH_SOURCE};
+        return new CorpusSource[0];
     }
 
     private BufferedReader open(String name) throws IOException {
@@ -187,8 +188,9 @@ public final class BibleCorpusRepository {
 
     private static String normalizeLanguage(String language) {
         if ("ar".equals(language)) return "ar";
+        if ("en".equals(language)) return "en";
         if ("el".equals(language)) return "el";
-        return "en";
+        return "";
     }
 
     private static String normalizeSearch(String value) {
@@ -202,14 +204,16 @@ public final class BibleCorpusRepository {
 
     public static String sourceId(String language) {
         if ("ar".equals(language)) return "ebible_arabic_van_dyck_full";
+        if ("en".equals(language)) return "ebible_world_english_bible_british_deuterocanon";
         if ("el".equals(language)) return "ebible_greek_lxx_brenton_plus_patriarchal_1904";
-        return "ebible_world_english_bible_british_deuterocanon";
+        return "";
     }
 
     public static String sourceUrl(String language) {
         if ("ar".equals(language)) return "https://ebible.org/arb-vd/";
+        if ("en".equals(language)) return "https://ebible.org/eng-webbe/";
         if ("el".equals(language)) return "https://ebible.org/grcbrent/ + https://ebible.org/grcbyz/";
-        return "https://ebible.org/eng-webbe/";
+        return "";
     }
 
     private static final class CorpusSource {

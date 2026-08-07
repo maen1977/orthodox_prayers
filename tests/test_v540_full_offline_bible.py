@@ -37,12 +37,16 @@ def test_bible_browse_search_and_chapter_routes_exist():
     main = text("app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java")
     home = text("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java")
     screen = text("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BibleScreen.java")
+    testament = text("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BibleTestamentScreen.java")
     assert 'case "bible":' in main
+    assert 'case "bible_testament":' in main
     assert 'case "bible_book":' in main
     assert 'case "bible_chapter":' in main
     assert '"bible", null' in home
     assert "bible.search(lang, value, 80)" in screen
-    assert "bible.books(lang)" in screen
+    assert 'host.navigate("bible_testament", "old")' in screen
+    assert 'host.navigate("bible_testament", "new")' in screen
+    assert "bible.books(lang)" in testament
 
 
 def test_reference_parser_supports_daily_ranges_and_single_verses():

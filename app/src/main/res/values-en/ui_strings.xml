@@ -353,4 +353,26 @@ Phone: 00962788272988</string>
     <string name="ui_local_daily_update_current" formatted="false">The local church day is ready and current</string>
     <string name="ui_local_daily_update_unavailable" formatted="false">The day could not be prepared from the bundled local calendar</string>
     <string name="ui_local_offline_engine_source" formatted="false">Bundled local daily engine</string>
+
+    <string name="ui_bible_title">Holy Bible</string>
+    <string name="ui_bible_intro">The text is stored inside the app and works offline. Daily readings use this same full corpus.</string>
+    <string name="ui_bible_source_label">World English Bible British Edition + Deuterocanon — Public Domain</string>
+    <string name="ui_bible_search_hint">Search the Bible text</string>
+    <string name="ui_bible_search">Search</string>
+    <string name="ui_bible_searching">Searching…</string>
+    <string name="ui_bible_no_results">No results.</string>
+    <string name="ui_bible_old_testament">Old Testament</string>
+    <string name="ui_bible_old_testament_summary">Books of the Old Testament</string>
+    <string name="ui_bible_new_testament">New Testament</string>
+    <string name="ui_bible_new_testament_summary">Books of the New Testament</string>
+    <string name="ui_bible_loading_books">Loading books…</string>
+    <string name="ui_bible_chapter_count">Chapters: %1$d</string>
+    <string name="ui_bible_full_corpus_unavailable">The full Bible corpus was not bundled in this build.</string>
+    <string name="ui_bible_loading_chapters">Loading chapters…</string>
+    <string name="ui_bible_chapter_title">Chapter %1$d</string>
+    <string name="ui_bible_cannot_open_bundled_bible">Could not open the bundled Bible.</string>
+    <string name="ui_bible_loading_text">Loading text…</string>
+    <string name="ui_bible_text_unavailable">Text is not available in this translation.</string>
+    <string name="ui_bible_share_chapter">Share chapter</string>
+    <string name="ui_bible_cannot_open_text">Could not open the bundled text.</string>
 </resources>

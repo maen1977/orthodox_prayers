@@ -353,4 +353,26 @@
     <string name="ui_local_daily_update_current" formatted="false">بيانات اليوم المحلية جاهزة ومحدثة</string>
     <string name="ui_local_daily_update_unavailable" formatted="false">تعذر تجهيز اليوم من التقويم المحلي المضمّن</string>
     <string name="ui_local_offline_engine_source" formatted="false">محرك اليوم المحلي المضمّن</string>
+
+    <string name="ui_bible_title">الكتاب المقدس</string>
+    <string name="ui_bible_intro">النص محفوظ داخل التطبيق ويعمل دون إنترنت. قراءة اليوم تستخدم نفس النص الكامل.</string>
+    <string name="ui_bible_source_label">فان دايك — ملكية عامة</string>
+    <string name="ui_bible_search_hint">ابحث في نص الكتاب المقدس</string>
+    <string name="ui_bible_search">بحث</string>
+    <string name="ui_bible_searching">جارٍ البحث…</string>
+    <string name="ui_bible_no_results">لا توجد نتائج.</string>
+    <string name="ui_bible_old_testament">العهد القديم</string>
+    <string name="ui_bible_old_testament_summary">أسفار العهد القديم</string>
+    <string name="ui_bible_new_testament">العهد الجديد</string>
+    <string name="ui_bible_new_testament_summary">أسفار العهد الجديد</string>
+    <string name="ui_bible_loading_books">جارٍ تحميل قائمة الأسفار…</string>
+    <string name="ui_bible_chapter_count">عدد الأصحاحات: %1$d</string>
+    <string name="ui_bible_full_corpus_unavailable">لم تُضمَّن ملفات الكتاب الكامل في هذا البناء.</string>
+    <string name="ui_bible_loading_chapters">جارٍ تحميل الأصحاحات…</string>
+    <string name="ui_bible_chapter_title">الأصحاح %1$d</string>
+    <string name="ui_bible_cannot_open_bundled_bible">تعذر فتح الكتاب المقدس المضمّن.</string>
+    <string name="ui_bible_loading_text">جارٍ تحميل النص…</string>
+    <string name="ui_bible_text_unavailable">النص غير متوفر في هذه الترجمة.</string>
+    <string name="ui_bible_share_chapter">مشاركة الأصحاح</string>
+    <string name="ui_bible_cannot_open_text">تعذر فتح النص المضمّن.</string>
 </resources>

@@ -30,6 +30,7 @@ import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 import com.orthodoxprayers.privateapp.ui.screens.BibleScreen;
+import com.orthodoxprayers.privateapp.ui.screens.BibleTestamentScreen;
 import com.orthodoxprayers.privateapp.ui.screens.BibleBookScreen;
 import com.orthodoxprayers.privateapp.ui.screens.BibleChapterScreen;
 import com.orthodoxprayers.privateapp.ui.screens.FavoritesScreen;
@@ -425,6 +426,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "liturgy": return new ReaderScreen(this, "divine_liturgy");
             case "readings": return new ReadingsScreen(this);
             case "bible": return new BibleScreen(this);
+            case "bible_testament": return new BibleTestamentScreen(this, entry.argument);
             case "bible_book": return new BibleBookScreen(this, entry.argument);
             case "bible_chapter": return new BibleChapterScreen(this, entry.argument);
             case "upcoming": return new UpcomingScreen(this);

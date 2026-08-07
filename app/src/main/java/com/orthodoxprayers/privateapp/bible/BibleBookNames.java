@@ -19,7 +19,7 @@ public final class BibleBookNames {
         add("JOL","يوئيل","Joel","Ἰωήλ"); add("AMO","عاموس","Amos","Ἀμώς"); add("OBA","عوبديا","Obadiah","Ὀβδιού"); add("JON","يونان","Jonah","Ἰωνᾶς");
         add("MIC","ميخا","Micah","Μιχαίας"); add("NAM","ناحوم","Nahum","Ναούμ"); add("HAB","حبقوق","Habakkuk","Ἀμβακούμ");
         add("ZEP","صفنيا","Zephaniah","Σοφονίας"); add("HAG","حجي","Haggai","Ἀγγαῖος"); add("ZEC","زكريا","Zechariah","Ζαχαρίας"); add("MAL","ملاخي","Malachi","Μαλαχίας");
-        add("MAT","متى","Matthew","Κατὰ Ματθαῖον"); add("MRK","مرقس","Mark","Κατὰ Μᾶρκον"); add("LUK","لوقا","Luke","Κατὰ Λουκᾶν"); add("JHN","يوحنا","John","Κατὰ Ἰωάννην");
+        add("MAT","إنجيل متى","Gospel of Matthew","Κατὰ Ματθαῖον Εὐαγγέλιον"); add("MRK","إنجيل مرقس","Gospel of Mark","Κατὰ Μᾶρκον Εὐαγγέλιον"); add("LUK","إنجيل لوقا","Gospel of Luke","Κατὰ Λουκᾶν Εὐαγγέλιον"); add("JHN","إنجيل يوحنا","Gospel of John","Κατὰ Ἰωάννην Εὐαγγέλιον");
         add("ACT","أعمال الرسل","Acts","Πράξεις Ἀποστόλων"); add("ROM","رومية","Romans","Πρὸς Ῥωμαίους"); add("1CO","كورنثوس الأولى","1 Corinthians","Πρὸς Κορινθίους Α΄");
         add("2CO","كورنثوس الثانية","2 Corinthians","Πρὸς Κορινθίους Β΄"); add("GAL","غلاطية","Galatians","Πρὸς Γαλάτας"); add("EPH","أفسس","Ephesians","Πρὸς Ἐφεσίους");
         add("PHP","فيلبي","Philippians","Πρὸς Φιλιππησίους"); add("COL","كولوسي","Colossians","Πρὸς Κολοσσαεῖς"); add("1TH","تسالونيكي الأولى","1 Thessalonians","Πρὸς Θεσσαλονικεῖς Α΄");
@@ -41,7 +41,22 @@ public final class BibleBookNames {
         String[] names = NAMES.get(code);
         if (names == null) return code;
         if ("ar".equals(language)) return names[0];
+        if ("en".equals(language)) return names[1];
         if ("el".equals(language)) return names[2];
-        return names[1];
+        return code;
+    }
+
+    public static boolean isNewTestament(String code) {
+        if (code == null) return false;
+        switch (code) {
+            case "MAT": case "MRK": case "LUK": case "JHN": case "ACT": case "ROM":
+            case "1CO": case "2CO": case "GAL": case "EPH": case "PHP": case "COL":
+            case "1TH": case "2TH": case "1TI": case "2TI": case "TIT": case "PHM":
+            case "HEB": case "JAS": case "1PE": case "2PE": case "1JN": case "2JN":
+            case "3JN": case "JUD": case "REV":
+                return true;
+            default:
+                return false;
+        }
     }
 }
