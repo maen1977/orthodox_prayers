@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 COMMANDS = [
     [sys.executable, "scripts/simple_quality_gate.py"],
+    [sys.executable, "scripts/validate_full_church_services.py"],
     [sys.executable, "scripts/verify_r17_patch.py"],
     [
         sys.executable,
@@ -26,6 +27,8 @@ COMMANDS = [
         "tests/test_runtime_asset_budget.py",
         "tests/test_reader_service_pruning.py",
         "tests/test_user_reported_liturgy_and_home_regressions.py",
+        "tests/test_v550_full_church_services.py",
+        "tests/test_prepare_church_service_corpus.py",
     ],
 ]
 
@@ -36,7 +39,7 @@ def main() -> None:
         subprocess.run(command, cwd=ROOT, check=True)
     print(
         "\nLOCAL_DAILY_RELEASE_GATE_OK "
-        "version=5.4.0 code=50400 schedule=00:03 timezone=Asia/Amman "
+        "version=5.5.0 code=50500 schedule=00:03 timezone=Asia/Amman "
         "network_required=false github_daily_action=false calendar=2026-2050"
     )
 

@@ -17,6 +17,10 @@ val releaseSigningAvailable = listOf(
 val generatedBibleAssets = layout.buildDirectory.dir("generated/bibleAssets")
 val bibleCorpusOutput = generatedBibleAssets.map { it.dir("bible/corpus") }
 val bibleCorpusCache = layout.buildDirectory.dir("bible-download-cache")
+
+val generatedChurchServiceAssets = layout.buildDirectory.dir("generated/churchServiceAssets")
+val churchServiceOutput = generatedChurchServiceAssets.map { it.dir("data/church") }
+val churchServiceCache = layout.buildDirectory.dir("church-service-download-cache")
 val prepareBibleCorpus by tasks.registering(Exec::class) {
     group = "orthodox prayers"
     description = "Downloads official eBible USFM archives and compiles offline Bible assets."
@@ -30,6 +34,21 @@ val prepareBibleCorpus by tasks.registering(Exec::class) {
     )
 }
 
+val prepareChurchServiceCorpus by tasks.registering(Exec::class) {
+    group = "orthodox prayers"
+    description = "Downloads authorized native Orthodox church-service texts and compiles offline assets without translation."
+    inputs.file(rootProject.file("scripts/prepare_church_service_corpus.py"))
+    inputs.file(rootProject.file("canonical/church_service_full_sources.json"))
+    outputs.dir(churchServiceOutput)
+    commandLine(
+        "python",
+        rootProject.file("scripts/prepare_church_service_corpus.py").absolutePath,
+        "--manifest", rootProject.file("canonical/church_service_full_sources.json").absolutePath,
+        "--output-dir", churchServiceOutput.get().asFile.absolutePath,
+        "--cache-dir", churchServiceCache.get().asFile.absolutePath
+    )
+}
+
 android {
     namespace = "com.orthodoxprayers.privateapp"
     compileSdk = 36
@@ -38,8 +57,8 @@ android {
         applicationId = "com.orthodoxprayers.privateapp"
         minSdk = 26
         targetSdk = 36
-        versionCode = 50400
-        versionName = "5.4.0"
+        versionCode = 50500
+        versionName = "5.5.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -80,6 +99,7 @@ android {
     }
 
     sourceSets.getByName("main").assets.srcDir(generatedBibleAssets.get().asFile)
+    sourceSets.getByName("main").assets.srcDir(generatedChurchServiceAssets.get().asFile)
 
     lint {
         abortOnError = true
@@ -101,4 +121,4 @@ dependencies {
 }
 
 
-tasks.named("preBuild").configure { dependsOn(prepareBibleCorpus) }
+tasks.named("preBuild").configure { dependsOn(prepareBibleCorpus, prepareChurchServiceCorpus) }

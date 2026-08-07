@@ -17,7 +17,11 @@ def test_native_service_categories_match_reviewed_source_library():
     for language in ("ar", "en", "el"):
         native = services(load(f"data/services/native/library_{language}.json"))
         for service_id, native_service in native.items():
-            assert service_id in source, f"{service_id}:{language}"
+            # v5.4+ has strict native Church Service cards outside the legacy mixed library.
+            if service_id not in source:
+                assert service_id.startswith("church_"), f"{service_id}:{language}"
+                assert native_service.get("category") == "church_service", f"{service_id}:{language}"
+                continue
             assert native_service.get("category") == source[service_id].get("category"), (
                 service_id, language, native_service.get("category"), source[service_id].get("category")
             )

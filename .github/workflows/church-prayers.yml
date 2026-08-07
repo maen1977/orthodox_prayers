@@ -63,6 +63,16 @@ jobs:
             --output-dir app/build/generated/bibleAssets/bible/corpus \
             --cache-dir app/build/bible-download-cache
 
+      - name: Prepare complete native church services
+        run: |
+          python scripts/prepare_church_service_corpus.py \
+            --manifest canonical/church_service_full_sources.json \
+            --output-dir app/build/generated/churchServiceAssets/data/church \
+            --cache-dir app/build/church-service-download-cache
+
+      - name: Validate complete church-service corpus
+        run: python scripts/validate_full_church_services.py
+
       - name: Prepare Java
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
         with:

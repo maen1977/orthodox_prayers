@@ -1,3 +1,10 @@
+## 5.5.0 — الخدمات الكنسية الكاملة
+
+- رفع الإصدار إلى 5.5.0 (50500).
+- تجهيز خط بناء لاستيراد الخدمات الكنسية الكاملة من المصادر الكنسية الأصلية المصرح بها، بدون ترجمة بين اللغات.
+- توسيع فهرس «خدمة كنسية» بخدمات إضافية ثابتة ومناسبة للمتابعة خطوة بخطوة.
+- إبقاء التطبيق Offline وقت التشغيل؛ تنزيل النصوص الأصلية يتم وقت البناء فقط.
+
 ## 5.4.0 buildfix6 — خدمة كنسية
 - Added the new Prayer section **خدمة كنسية / Church Service / Ἐκκλησιαστικὴ Ἀκολουθία**.
 - Added 13 fixed-service cards: Baptism/Chrismation, Divine Liturgy & Communion, Confession, Betrothal, Marriage, Removal of Crowns, Sick Visitation/Holy Unction, Funeral, Memorial, Home Blessing, Holy Ordination, Great Blessing of Waters, and the Hours.

@@ -250,6 +250,7 @@ public final class DataRepository {
         if (!normalized.equals(loadedAssetLanguage)) {
             loadedAssetLanguage = normalized;
             activeLanguageLibrary = loadJsonAsset("data/native/library_" + normalized + ".json");
+            applyGeneratedChurchServicePack(activeLanguageLibrary, normalized);
             activeLanguageSearchIndex = null;
         }
         if (includeSearchIndex && activeLanguageSearchIndex == null) {
@@ -564,8 +565,52 @@ public final class DataRepository {
             JSONObject index = searchIndex();
             selected = index == null ? null : findServiceInArray(index.optJSONArray("reader_services"), serviceId);
         }
+        selected = composeBuiltInChurchService(selected);
         JSONObject resolved = resolveService(selected);
         return isFollowAlongLiturgy(resolved) ? composeFollowAlongLiturgy(resolved) : resolved;
+    }
+
+    /** Reuse already-audited native services instead of duplicating or translating text. */
+    private JSONObject composeBuiltInChurchService(JSONObject service) {
+        if (service == null || !"church_service".equals(service.optString("category", ""))) return service;
+        String id = service.optString("id", "");
+        try {
+            if ("church_eucharist".equals(id)) {
+                JSONObject liturgy = findServiceInArray(library().optJSONArray("services"), "divine_liturgy");
+                if (liturgy == null) return service;
+                JSONObject result = new JSONObject(liturgy.toString());
+                // Preserve the Church Service card identity while using the complete native Liturgy text.
+                result.put("id", id);
+                result.put("category", "church_service");
+                result.put("icon", service.optString("icon", "☦"));
+                result.put("title", deepCopyJson(service.optJSONObject("title")));
+                result.put("summary", deepCopyJson(service.optJSONObject("summary")));
+                result.put("content_mode", "FULL_NATIVE_SERVICE_COMPOSED_FROM_AUDITED_LOCAL_ASSETS");
+                result.put("publication_status", "FULL_NATIVE_RITE_TEXT_BUNDLED_OFFLINE");
+                result.put("full_service", true);
+                result.put("composed_from", "divine_liturgy");
+                return result;
+            }
+            if ("church_hours".equals(id)) {
+                JSONArray merged = new JSONArray();
+                String[] hourIds = {"first_hour", "third_hour", "sixth_hour", "ninth_hour"};
+                for (String hourId : hourIds) {
+                    JSONObject hour = findServiceInArray(library().optJSONArray("services"), hourId);
+                    if (hour == null) return service;
+                    appendSegments(merged, hour.optJSONArray("segments"));
+                }
+                JSONObject result = new JSONObject(service.toString());
+                result.put("segments", merged);
+                result.put("content_mode", "FULL_NATIVE_SERVICE_COMPOSED_FROM_AUDITED_LOCAL_ASSETS");
+                result.put("publication_status", "FULL_NATIVE_RITE_TEXT_BUNDLED_OFFLINE");
+                result.put("full_service", true);
+                result.put("composed_from", "first_third_sixth_ninth_hours");
+                return result;
+            }
+        } catch (Exception error) {
+            Log.w(TAG, "Could not compose built-in Church Service " + id, error);
+        }
+        return service;
     }
 
     public ArrayList<JSONObject> servicesByCategory(String category) {
@@ -1362,6 +1407,48 @@ public final class DataRepository {
         } catch (Exception error) {
             Log.e(TAG, "Asset load failed: " + path, error);
             return new JSONObject();
+        }
+    }
+
+    /** Optional generated build asset. Missing source-checkout assets are normal; never substitute another language. */
+    private JSONObject loadOptionalJsonAsset(String path) {
+        try {
+            return new JSONObject(new String(readAssetBytes(path, 20_000_000), StandardCharsets.UTF_8));
+        } catch (Exception ignored) {
+            return null;
+        }
+    }
+
+    private void applyGeneratedChurchServicePack(JSONObject library, String language) {
+        if (library == null || library.length() == 0) return;
+        JSONObject pack = loadOptionalJsonAsset("data/church/full_services_" + language + ".json");
+        if (pack == null) return;
+        if (!language.equals(pack.optString("language", ""))) return;
+        if (pack.optBoolean("machine_translation_used", true)) return;
+
+        JSONArray generated = pack.optJSONArray("services");
+        if (generated == null || generated.length() == 0) return;
+        JSONArray services = library.optJSONArray("services");
+        if (services == null) {
+            services = new JSONArray();
+            try { library.put("services", services); } catch (Exception ignored) { return; }
+        }
+
+        for (int i = 0; i < generated.length(); i++) {
+            JSONObject overlay = generated.optJSONObject(i);
+            if (overlay == null) continue;
+            String id = overlay.optString("id", "").trim();
+            if (id.isEmpty()) continue;
+            JSONObject existing = findServiceInArray(services, id);
+            if (existing == null) {
+                services.put(overlay);
+                continue;
+            }
+            java.util.Iterator<String> keys = overlay.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                try { existing.put(key, overlay.get(key)); } catch (Exception ignored) { }
+            }
         }
     }
 

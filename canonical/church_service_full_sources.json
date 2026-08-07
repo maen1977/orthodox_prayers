@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "policy": "AUTHORIZED_NATIVE_SOURCE_ONLY_NO_TRANSLATION",
+  "runtime_network_required": false,
+  "languages": {
+    "ar": {
+      "source_id": "orthodox_jordan",
+      "source_name": "مطرانية الروم الأرثوذكس في الأردن",
+      "services": [
+        {
+          "id": "church_baptism",
+          "title": "خدمة العماد والميرون",
+          "url": "https://orthodoxjordan.org/خدمة-المعمودية/",
+          "required": true
+        },
+        {
+          "id": "church_confession",
+          "title": "سر الاعتراف الإلهي",
+          "url": "https://orthodoxjordan.org/سر-الاعتراف-الالهي/",
+          "required": true
+        },
+        {
+          "id": "church_betrothal",
+          "title": "صلاة العربون (الخطوبة)",
+          "url": "https://orthodoxjordan.org/صلاة-العربون-الخطوبة/",
+          "required": true
+        },
+        {
+          "id": "church_marriage",
+          "title": "خدمة العرس (الإكليل)",
+          "url": "https://orthodoxjordan.org/خدمة-صلاة-الإكليل/",
+          "required": true
+        },
+        {
+          "id": "church_crowns_removal",
+          "title": "صلاة حل الأكاليل",
+          "url": "https://orthodoxjordan.org/صلاة-لحل-الأكاليل/",
+          "required": true
+        },
+        {
+          "id": "church_unction",
+          "title": "زيارة المرضى وسر الزيت المقدس",
+          "url": "https://orthodoxjordan.org/صلاة-سر-الزيت-المقدس/",
+          "required": true
+        },
+        {
+          "id": "church_funeral",
+          "title": "صلاة الجنازة للعلمانيين",
+          "url": "https://orthodoxjordan.org/صلاة-الجنازة-للعلمانيين/",
+          "required": true
+        },
+        {
+          "id": "church_memorial",
+          "title": "خدمة صلاة الجناز والذكرانيات",
+          "url": "https://orthodoxjordan.org/خدمة-صلاة-الجناز/",
+          "required": true
+        },
+        {
+          "id": "church_trisagion",
+          "title": "صلاة النياحة (التريصاجيون)",
+          "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
+          "required": true
+        },
+        {
+          "id": "church_great_water",
+          "title": "صلاة تقديس الماء الكبرى",
+          "url": "https://orthodoxjordan.org/صلاة-تقديس-الماء-الكبرى/",
+          "required": true
+        }
+      ]
+    },
+    "en": {
+      "source_id": "goarch_online_chapel",
+      "source_name": "Greek Orthodox Archdiocese of America — Liturgical Texts",
+      "services": [
+        {
+          "id": "church_baptism",
+          "title": "Holy Baptism and Chrismation",
+          "url": "https://www.goarch.org/-/the-service-of-holy-baptism",
+          "required": true
+        },
+        {
+          "id": "church_betrothal",
+          "title": "Service of Betrothal",
+          "url": "https://www.goarch.org/-/marriage",
+          "required": true
+        },
+        {
+          "id": "church_marriage",
+          "title": "Service of Marriage (Crowning)",
+          "url": "https://www.goarch.org/-/marriage",
+          "required": true
+        },
+        {
+          "id": "church_funeral",
+          "title": "Funeral Service",
+          "url": "https://www.goarch.org/-/funeral-service",
+          "required": true
+        },
+        {
+          "id": "church_memorial",
+          "title": "Memorial Service",
+          "url": "https://www.goarch.org/-/the-memorial-service",
+          "required": true
+        },
+        {
+          "id": "church_trisagion",
+          "title": "Trisagion Service",
+          "url": "https://www.goarch.org/-/the-trisagion-service",
+          "required": true
+        },
+        {
+          "id": "church_priesthood",
+          "title": "Service of Holy Ordination",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-priesthood",
+          "required": true
+        },
+        {
+          "id": "church_sick_communion",
+          "title": "Communion of the Sick",
+          "url": "https://www.goarch.org/-/communion-of-the-sick-in-a-hospital",
+          "required": false
+        },
+        {
+          "id": "church_artoklasia",
+          "title": "Artoklasia — Blessing of the Five Loaves",
+          "url": "https://www.goarch.org/-/artoklasia",
+          "required": false
+        },
+        {
+          "id": "church_funeral_infant",
+          "title": "Funeral Service for Infants",
+          "url": "https://www.goarch.org/-/funeral-service-for-infants",
+          "required": false
+        },
+        {
+          "id": "church_funeral_paschal",
+          "title": "Funeral Service During Renewal Week",
+          "url": "https://www.goarch.org/-/funeral-service-during-renewal-week",
+          "required": false
+        },
+        {
+          "id": "church_catechumen",
+          "title": "The Making of a Catechumen",
+          "url": "https://www.goarch.org/-/the-making-of-a-catechumen",
+          "required": false
+        },
+        {
+          "id": "church_ordination_diaconate",
+          "title": "Ordination to the Diaconate",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-diaconate",
+          "required": false
+        }
+      ]
+    },
+    "el": {
+      "source_id": "goarch_digital_chant_stand_greek",
+      "source_name": "Greek Orthodox Archdiocese of America — Greek Liturgical Texts",
+      "services": [
+        {
+          "id": "church_baptism",
+          "title": "Ἀκολουθία τοῦ Ἁγίου Βαπτίσματος καὶ Χρίσματος",
+          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/baptism/gr-en/index.html",
+          "required": true,
+          "filter_script": "greek",
+          "start_marker": "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
+        },
+        {
+          "id": "church_betrothal",
+          "title": "Ἀκολουθία Ἀρραβῶνος",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/marriage?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": true,
+          "start_marker": "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ"
+        },
+        {
+          "id": "church_marriage",
+          "title": "Ἀκολουθία Γάμου (Στέψεως)",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/marriage?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": true
+        },
+        {
+          "id": "church_memorial",
+          "title": "Μνημόσυνο",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-memorial-service?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": true
+        },
+        {
+          "id": "church_trisagion",
+          "title": "Τρισάγιον",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-trisagion-service?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": true
+        },
+        {
+          "id": "church_priesthood",
+          "title": "Ἀκολουθία Χειροτονίας Πρεσβυτέρου",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-priesthood?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": true
+        },
+        {
+          "id": "church_funeral_priest",
+          "title": "Ἐξόδιος Ἀκολουθία Ἱερέως",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/funeral-for-clergy?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": false
+        },
+        {
+          "id": "church_artoklasia",
+          "title": "Ἀρτοκλασία — Εὐλογία τῶν Πέντε Ἄρτων",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/artoklasia?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": false
+        },
+        {
+          "id": "church_ordination_diaconate",
+          "title": "Χειροτονία Διακόνου",
+          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-diaconate?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "required": false
+        }
+      ]
+    }
+  }
+}
