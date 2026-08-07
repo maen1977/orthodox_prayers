@@ -1,3 +1,7 @@
+import java.io.InputStream
+import java.net.URI
+import java.net.URLConnection
+
 plugins {
     id("com.android.application")
 }
@@ -33,12 +37,12 @@ val prepareBibleCorpus by tasks.registering {
         bibleCorpusFiles.forEach { (name, spec) ->
             val target = outputDir.resolve(name)
             if (!target.isFile || target.length() < 1024L) {
-                val connection = java.net.URI(spec.first).toURL().openConnection().apply {
+                val connection: URLConnection = URI(spec.first).toURL().openConnection().apply {
                     connectTimeout = 30000
                     readTimeout = 120000
                     setRequestProperty("User-Agent", "OrthodoxPrayers-BibleBuilder/5.4")
                 }
-                connection.getInputStream().use { input ->
+                connection.getInputStream().use { input: InputStream ->
                     target.outputStream().use { output -> input.copyTo(output) }
                 }
             }
