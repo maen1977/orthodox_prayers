@@ -51,6 +51,7 @@ public final class DataRepository {
     private DailyDataStore dataStore;
     private final boolean languageScopedStore;
     private final DataSignatureVerifier signatureVerifier;
+    private final LocalDailyContentEngine localDailyContentEngine;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Object refreshGuard = new Object();
@@ -99,6 +100,7 @@ public final class DataRepository {
         this.preferences = preferences;
         this.dataStore = dataStore;
         this.signatureVerifier = signatureVerifier;
+        this.localDailyContentEngine = new LocalDailyContentEngine(this.context);
         this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
         sourceRegistry = loadJsonAsset("data/source_registry.json");
@@ -110,6 +112,7 @@ public final class DataRepository {
         // Keep startup light on older devices. The immutable annual calendar is
         // loaded only when a calendar screen or a dated lookup requests it.
         activatePackage(loadBestToday());
+        activateLocalCurrentPackageIfNeeded();
     }
 
     private synchronized void loadCalendarYear(int year) {
@@ -169,6 +172,13 @@ public final class DataRepository {
     public JSONObject dayData(String date) { return calendarDay(date); }
 
     public boolean hasCompleteRollingWeek() {
+        JSONObject localWindow = rollingWeekPackage.optJSONObject("local_daily_window");
+        if (localWindow != null) {
+            int dayCount = localWindow.optInt("day_count", 0);
+            return !localWindow.optBoolean("network_required", true)
+                    && dayCount > 0
+                    && rollingWeekByDate.size() == dayCount;
+        }
         JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
         if (metadata == null || !isSupportedRollingWindowMetadata(metadata)) return false;
         int dayCount = metadata.optInt("day_count", 0);
@@ -192,11 +202,15 @@ public final class DataRepository {
     }
 
     public String rollingWeekStartDate() {
+        JSONObject localWindow = rollingWeekPackage.optJSONObject("local_daily_window");
+        if (localWindow != null) return localWindow.optString("start_date", "");
         JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
         return metadata == null ? "" : metadata.optString("start_date", "");
     }
 
     public String rollingWeekEndDate() {
+        JSONObject localWindow = rollingWeekPackage.optJSONObject("local_daily_window");
+        if (localWindow != null) return localWindow.optString("end_date", "");
         JSONObject metadata = rollingWeekPackage.optJSONObject("rolling_week");
         return metadata == null ? "" : metadata.optString("end_date", "");
     }
@@ -438,6 +452,7 @@ public final class DataRepository {
         loadedStoredHash = "";
         loadError = "";
         activatePackage(loadBestToday());
+        activateLocalCurrentPackageIfNeeded();
     }
 
     public java.util.List<String> availableCachedDates() {
@@ -639,7 +654,53 @@ public final class DataRepository {
         }
     }
 
-    private RefreshOutcome performRefresh(boolean forceFullDownload) {
+    /**
+     * The daily update is local-first and succeeds without a network connection.
+     * Remote signed-data code is retained below only as an optional compatibility
+     * path for a future owner-controlled correction channel; automatic daily work
+     * never depends on it.
+     */
+    private RefreshOutcome performRefresh(boolean forceRebuild) {
+        try {
+            String date = currentAmmanDate();
+            JSONObject local = localDailyContentEngine.buildCurrentWindow(LocalDate.parse(date));
+            byte[] encoded = local.toString().getBytes(StandardCharsets.UTF_8);
+            String localHash = sha256(encoded);
+            boolean changed = forceRebuild
+                    || !date.equals(dataDate())
+                    || !localHash.equalsIgnoreCase(contentHash)
+                    || !"local_offline_engine".equals(trustSource);
+            synchronized (this) { activatePackage(local); }
+            trustSource = "local_offline_engine";
+            contentHash = localHash;
+            loadError = "";
+            return new RefreshOutcome(
+                    changed ? RefreshResult.UPDATED : RefreshResult.NOT_MODIFIED,
+                    changed ? "updated_local_offline" : "local_offline_current"
+            );
+        } catch (Exception error) {
+            Log.e(TAG, "Local daily package could not be built", error);
+            return new RefreshOutcome(
+                    RefreshResult.FAILED,
+                    "local_calendar_unavailable:" + safeMessage(error, "unknown")
+            );
+        }
+    }
+
+    private void activateLocalCurrentPackageIfNeeded() {
+        if (hasUsableCurrentData()) return;
+        RefreshOutcome outcome = performRefresh(false);
+        if (outcome.result == RefreshResult.FAILED) {
+            loadError = outcome.message;
+            Log.e(TAG, "No current local daily package is available: " + outcome.message);
+        } else {
+            refreshState = RefreshState.CURRENT;
+            refreshMessage = outcome.message;
+        }
+    }
+
+    @SuppressWarnings("unused")
+    private RefreshOutcome performRemoteRefresh(boolean forceFullDownload) {
         if (!NetworkAvailability.hasConnectedNetwork(context)) {
             return new RefreshOutcome(RefreshResult.FAILED, "network_offline");
         }
@@ -1171,6 +1232,9 @@ public final class DataRepository {
             if (hasUsableCurrentData()) return local(com.orthodoxprayers.privateapp.R.string.ui_today_and_the_coming_week_are_ready_1a099eed);
             return local(com.orthodoxprayers.privateapp.R.string.ui_waiting_for_the_weekly_service_update_0c0844a8);
         }
+        if ("updated_local_offline".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_local_daily_update_ready);
+        if ("local_offline_current".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_local_daily_update_current);
+        if (code.startsWith("local_calendar_unavailable")) return local(com.orthodoxprayers.privateapp.R.string.ui_local_daily_update_unavailable);
         if ("updated".equals(code) || "updated_signed".equals(code) || "updated_via_manifest".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_the_eight_day_service_package_was_updated_and_ve_9ae074b7);
         if ("not_modified".equals(code) || "manifest_not_modified".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_the_weekly_services_are_already_current_2b76496f);
         if ("refresh_in_progress".equals(code) || "refreshing".equals(code)) return local(com.orthodoxprayers.privateapp.R.string.ui_an_update_is_already_in_progress_0afb7ec0);

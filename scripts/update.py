@@ -164,7 +164,7 @@ def verify_pipeline_patch() -> None:
     sources_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SourcesScreen.java"
     coordinator_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java"
     repository_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java"
-    workflow_path = ROOT / ".github/workflows/update.yml"
+    local_engine_path = ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java"
     required = {
         str(integrity_path.relative_to(ROOT)): '"Mt.": "Matthew"',
         str(schedule_path.relative_to(ROOT)): 'data["fasting_guidance_version"] = 1',
@@ -174,9 +174,9 @@ def verify_pipeline_patch() -> None:
         str(home_path.relative_to(ROOT)): "R32_OWNER_UI_REFINEMENT",
         str(settings_path.relative_to(ROOT)): "host.navigate(\"sources\", null)",
         str(sources_path.relative_to(ROOT)): "ui_sources_and_references_1a2c2926",
-        str(coordinator_path.relative_to(ROOT)): "MORNING_REFRESH_HOUR = 4",
-        str(repository_path.relative_to(ROOT)): "downloadManifestSelection",
-        str(workflow_path.relative_to(ROOT)): "ORTHODOX_ENABLE_LIVE_SOURCE_FETCH",
+        str(coordinator_path.relative_to(ROOT)): "LOCAL_REFRESH_HOUR = 0",
+        str(repository_path.relative_to(ROOT)): "LocalDailyContentEngine",
+        str(local_engine_path.relative_to(ROOT)): "network_required",
         "canonical/source_connectors.json": "local_authority_source_id",
         "scripts/source_connectors.py": "dcs_reference_after_heading",
         "scripts/source_window_research.py": "AUTOMATED_FAIL_CLOSED",

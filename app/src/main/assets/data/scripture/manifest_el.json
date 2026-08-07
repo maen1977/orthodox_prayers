@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "language": "el",
+  "contract": "canonical/source_native_contract.json",
+  "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+  "corpus_kind": "public-domain",
+  "source_id": "ebible_greek_byzantine_1904",
+  "source_url": "https://ebible.org/find/details.php?id=grcbyz",
+  "source_title": "1904 Patriarchal Greek New Testament",
+  "license": "Public Domain",
+  "distribution_status": "REDISTRIBUTABLE",
+  "retrieved_at": "2026-07-16T00:00:00+03:00",
+  "imported_at": "2026-07-16T15:10:16.979221+00:00",
+  "verse_count": 275,
+  "books": [
+    "1CO",
+    "2CO",
+    "JHN",
+    "MAT",
+    "ROM"
+  ],
+  "machine_translation_used": false,
+  "automatic_diacritization_used": false,
+  "display_text_policy": "PRESERVE_SOURCE_UNICODE_CODEPOINTS_EXACTLY",
+  "source_snapshot_sha256": "0a2af3439977eece7eed0ef6f31fd684065a4580b2d95d8936dbfab62b24ffad",
+  "content_sha256": "0887708634b021431840e94620ae5043797c5dbe8e4e3193effb74965ca9743c",
+  "rolling_window_start": "2026-07-30",
+  "rolling_window_end": "2026-08-07",
+  "rolling_window_day_count": 9,
+  "rolling_window_reference_count": 19,
+  "rolling_window_required_verse_count": 165,
+  "rolling_window_slice_prepared_at": "2026-07-30T20:04:48.742584+00:00"
+}

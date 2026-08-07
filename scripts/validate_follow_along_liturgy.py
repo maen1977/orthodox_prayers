@@ -39,8 +39,10 @@ def main() -> None:
         errors.append("full religious book-library downloads must remain disabled")
     if model.get("fixed_template") != "library:divine_liturgy":
         errors.append("the one fixed Liturgy template is not configured")
-    if update.get("timezone") != "Asia/Amman" or update.get("windows") != ["04:23", "16:43"]:
-        errors.append("the update windows must be 04:23 and 16:43 Asia/Amman")
+    if update.get("timezone") != "Asia/Amman" or update.get("windows") != ["00:03"]:
+        errors.append("the local update window must be 00:03 Asia/Amman")
+    if update.get("network_required") is not False or update.get("app_open_date_check") is not True:
+        errors.append("the local update policy must require no network and check the date on app open")
     for rule in (
         "translation_between_lanes",
         "machine_translation",
@@ -123,8 +125,13 @@ def main() -> None:
         ROOT
         / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
     ).read_text(encoding="utf-8")
-    if "MORNING_REFRESH_HOUR = 4" not in coordinator or "EVENING_REFRESH_HOUR = 16" not in coordinator:
-        errors.append("Android twice-daily 04:23/16:43 scheduling is not wired")
+    if "LOCAL_REFRESH_HOUR = 0" not in coordinator or "LOCAL_REFRESH_MINUTE = 3" not in coordinator:
+        errors.append("Android local 00:03 Asia/Amman scheduling is not wired")
+    if "NetworkType" in coordinator or "CONNECTED" in coordinator:
+        errors.append("the local daily scheduler must not require a network")
+    local_engine = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java").read_text(encoding="utf-8")
+    if "LocalDailyContentEngine" not in repository or "data/calendar/calendar_" not in local_engine:
+        errors.append("the bundled local daily engine is not wired")
     if "DailySnapshotRegressionGuard.firstRegression" not in repository:
         errors.append("same-day non-regression protection is not wired")
     if not source_references_text(home, "قداس اليوم الكامل", "ar") or '"divine_liturgy"' not in home:
@@ -138,7 +145,7 @@ def main() -> None:
         raise SystemExit("Follow-along Liturgy validation failed:\n- " + "\n- ".join(errors))
     print(
         "Follow-along Liturgy validated: one native-language service, daily slots, "
-        "silent-role markers, and two non-regressing daily updates at 04:23 and 16:43"
+        "silent-role markers, and one network-free local update at 00:03 with app-open recovery"
     )
 
 

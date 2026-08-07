@@ -33,7 +33,7 @@ def main() -> None:
     ):
         if marker.casefold() not in combined.casefold():
             raise SystemExit(f"Play metadata marker is missing: {marker}")
-    print("PLAY_STORE_METADATA_OK languages=ar,en,el privacy=true data_safety=true version=5.2.1")
+    print("PLAY_STORE_METADATA_OK languages=ar,en,el privacy=true data_safety=true version=5.4.0")
 
 
 if __name__ == "__main__":

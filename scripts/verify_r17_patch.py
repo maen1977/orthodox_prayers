@@ -1,33 +1,32 @@
 #!/usr/bin/env python3
-"""Verify that the R17 update-reliability patch was applied at repository root."""
+"""Verify the network-free local Daily Update architecture."""
 from pathlib import Path
-
 from release_version import require_minimum
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = {
-    "scripts/update.py": ('PIPELINE_PATCH_LEVEL = "R18.4"', "verify_pipeline_patch"),
     "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java": (
-        "MORNING_REFRESH_HOUR = 4",
-        "MORNING_REFRESH_MINUTE = 23",
+        "LOCAL_REFRESH_HOUR = 0",
+        "LOCAL_REFRESH_MINUTE = 3",
         "scheduleDailyRefresh",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/update/RefreshPolicy.java": (
-        "MORNING_REFRESH_HOUR",
-        "shouldCheckRemoteOnResume",
+        "local daily refresh behavior",
+        "shouldRefresh",
     ),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java": (
-        "downloadManifestSelection",
-        "manifest_payload_hash_mismatch",
-        "manifest_revision_rollback",
+        "LocalDailyContentEngine",
+        "updated_local_offline",
+        "local_offline_current",
     ),
-    ".github/workflows/update.yml": (
-        "build_update_manifest.py",
-        "sign_update_manifest.py",
-        "validate_publication_consistency.py",
+    "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java": (
+        "No network connection, GitHub workflow",
+        "data/calendar/calendar_",
+        "network_required",
     ),
+    "scripts/validate_local_daily_engine.py": ("LOCAL_DAILY_ENGINE_OK",),
 }
-version_name, version_code = require_minimum(50023)
+version_name, version_code = require_minimum(50300)
 missing = []
 for name, markers in REQUIRED.items():
     path = ROOT / name
@@ -35,9 +34,8 @@ for name, markers in REQUIRED.items():
     for marker in markers:
         if marker not in text:
             missing.append(f"{name}: {marker}")
+if (ROOT / ".github/workflows/update.yml").exists():
+    missing.append(".github/workflows/update.yml: scheduled Daily Update must be removed")
 if missing:
-    raise SystemExit(
-        "PATCH_R17_NOT_APPLIED\n" + "\n".join(missing)
-        + "\nExtract the R17 changes ZIP directly into the repository root and overwrite existing files."
-    )
-print(f"PATCH_R17_OK version={version_name} code={version_code} level=R17+R37.1")
+    raise SystemExit("LOCAL_DAILY_PATCH_NOT_APPLIED\n" + "\n".join(missing))
+print(f"LOCAL_DAILY_PATCH_OK version={version_name} code={version_code} schedule=00:03 network=false")

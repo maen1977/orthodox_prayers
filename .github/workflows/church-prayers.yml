@@ -25,23 +25,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Keep only build and daily update workflows
+      - name: Keep only the optional app build workflow
         run: python scripts/keep_required_workflows.py
 
-      - name: Remove old workflows from GitHub
+      - name: Remove obsolete workflows from GitHub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
           if git diff --quiet -- .github/workflows; then
-            echo "Only church-prayers.yml and update.yml are present."
+            echo "Only the optional church-prayers.yml build workflow is present."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/workflows
-          git commit -m "Keep build and daily update workflows"
+          git commit -m "Keep only optional app build workflow"
           git push origin HEAD:main
 
       - name: Prepare Python
@@ -55,7 +55,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
 
       - name: Check content, languages, security, and calendar
-        run: python scripts/simple_quality_gate.py
+        run: python scripts/run_local_daily_release_gate.py
 
       - name: Prepare Java
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0

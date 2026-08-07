@@ -28,7 +28,7 @@ public final class AppUpdateClient {
     private static final int MAX_REDIRECTS = 6;
     private static final int MAX_METADATA_BYTES = 1_048_576;
     private static final long MAX_APK_BYTES = 250L * 1024L * 1024L;
-    private static final String USER_AGENT = "OrthodoxPrayers-AppUpdater/5.2.1";
+    private static final String USER_AGENT = "OrthodoxPrayers-AppUpdater/5.4.0";
     private static final Set<String> ALLOWED_HOSTS = new HashSet<>();
 
     static {

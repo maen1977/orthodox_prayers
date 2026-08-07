@@ -469,6 +469,7 @@ public final class SettingsScreen extends BaseScreen {
 
     private String trustSourceLabel() {
         String source = data.trustSource();
+        if ("local_offline_engine".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_local_offline_engine_source);
         if ("signed_remote".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_signed_network_update_b1b4e0f9);
         if ("signed_cache".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_signed_local_copy_aee2c1da);
         if ("signed_backup".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_last_trusted_backup_50f6c814);
@@ -482,6 +483,7 @@ public final class SettingsScreen extends BaseScreen {
         if ("antioch_patriarchate".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_antioch_patriarchate_68959f82);
         if ("official_greek_orthodox".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_official_greek_orthodox_source_6588efec);
         if ("orthodox_church_in_america".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_orthodox_church_in_america_2a0d51a3);
+        if ("embedded_calendar_2050".equals(source)) return local(com.orthodoxprayers.privateapp.R.string.ui_local_offline_engine_source);
         return local(com.orthodoxprayers.privateapp.R.string.ui_unavailable_24f3ca2e);
     }
 

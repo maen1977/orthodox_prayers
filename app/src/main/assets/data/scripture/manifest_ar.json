@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "language": "ar",
+  "contract": "canonical/source_native_contract.json",
+  "status": "IMPORTED_EXACT_PUBLIC_DOMAIN_NATIVE_CORPUS",
+  "corpus_kind": "public-domain",
+  "source_id": "ebible_arabic_van_dyck",
+  "source_url": "https://ebible.org/find/details.php?id=arb-vd",
+  "source_title": "الكتاب المقدس باللغة العربية، فان دايك",
+  "license": "Public Domain",
+  "distribution_status": "REDISTRIBUTABLE",
+  "retrieved_at": "2026-07-16T00:00:00+03:00",
+  "imported_at": "2026-07-16T15:13:36.023616+00:00",
+  "verse_count": 275,
+  "books": [
+    "1CO",
+    "2CO",
+    "JHN",
+    "MAT",
+    "ROM"
+  ],
+  "machine_translation_used": false,
+  "automatic_diacritization_used": false,
+  "display_text_policy": "PRESERVE_SOURCE_UNICODE_CODEPOINTS_EXACTLY",
+  "source_snapshot_sha256": "c393da8bd8bfd485f6906702e559b868fcfb83e4c94b76d63b96adb84837cd62",
+  "content_sha256": "440213c6bdd9c0617c4b0aeccf9f687439c84a38be603e4dab7d61d665a8fa8b",
+  "rolling_window_start": "2026-07-30",
+  "rolling_window_end": "2026-08-07",
+  "rolling_window_day_count": 9,
+  "rolling_window_reference_count": 19,
+  "rolling_window_required_verse_count": 165,
+  "rolling_window_slice_prepared_at": "2026-07-30T20:04:48.502407+00:00"
+}

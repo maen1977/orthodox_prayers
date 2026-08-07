@@ -1,19 +1,14 @@
 package com.orthodoxprayers.privateapp.update;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
 
-/** Pure decision logic for daily refresh behavior and safe network throttling. */
+/** Pure decision logic for local daily refresh behavior. */
 public final class RefreshPolicy {
     static final long STALE_RETRY_INTERVAL_MS = TimeUnit.MINUTES.toMillis(15);
-    private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
 
     private RefreshPolicy() {}
 
-    /** A fresh foreground session always checks the small signed manifest first. */
+    /** Compatibility name retained; the operation is a local asset check. */
     public static boolean shouldCheckRemoteOnAppOpen(boolean refreshing) {
         return !refreshing;
     }
@@ -31,34 +26,13 @@ public final class RefreshPolicy {
         if (dayChanged) return true;
         if (current) return false;
         if (!attemptedToday || lastAttempt == 0L) return true;
-        // Repeated stale-data retries are only useful when the user returns to the app.
-        // WorkManager already covers background/day-change refreshes.
         if (!resumed) return false;
         long age = Math.max(0L, now - lastAttempt);
         return age >= STALE_RETRY_INTERVAL_MS;
     }
 
-    public static boolean shouldCheckRemoteOnResume(
-            boolean refreshing,
-            long lastAttempt,
-            long now
-    ) {
-        if (refreshing) return false;
-        if (lastAttempt <= 0L) return true;
-        if (lastAttempt > now) return false;
-
-        ZonedDateTime ammanNow = Instant.ofEpochMilli(now).atZone(AMMAN_ZONE);
-        LocalDate today = ammanNow.toLocalDate();
-        ZonedDateTime morningWindow = today
-                .atTime(UpdateCoordinator.MORNING_REFRESH_HOUR, UpdateCoordinator.MORNING_REFRESH_MINUTE)
-                .atZone(AMMAN_ZONE);
-        ZonedDateTime eveningWindow = today
-                .atTime(UpdateCoordinator.EVENING_REFRESH_HOUR, UpdateCoordinator.EVENING_REFRESH_MINUTE)
-                .atZone(AMMAN_ZONE);
-        Instant attemptedAt = Instant.ofEpochMilli(lastAttempt);
-
-        if (ammanNow.isBefore(morningWindow)) return false;
-        ZonedDateTime latestWindow = ammanNow.isBefore(eveningWindow) ? morningWindow : eveningWindow;
-        return attemptedAt.isBefore(latestWindow.toInstant());
+    /** Compatibility name retained; no publication window or network is consulted. */
+    public static boolean shouldCheckRemoteOnResume(boolean refreshing, long lastAttempt, long now) {
+        return !refreshing && (lastAttempt <= 0L || lastAttempt <= now);
     }
 }

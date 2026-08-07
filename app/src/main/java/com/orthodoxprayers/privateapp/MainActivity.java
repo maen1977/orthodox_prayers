@@ -29,6 +29,9 @@ import com.orthodoxprayers.privateapp.ui.AppScreen;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.ThemePalette;
 import com.orthodoxprayers.privateapp.ui.UiKit;
+import com.orthodoxprayers.privateapp.ui.screens.BibleScreen;
+import com.orthodoxprayers.privateapp.ui.screens.BibleBookScreen;
+import com.orthodoxprayers.privateapp.ui.screens.BibleChapterScreen;
 import com.orthodoxprayers.privateapp.ui.screens.FavoritesScreen;
 import com.orthodoxprayers.privateapp.ui.screens.CalendarScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ChurchesScreen;
@@ -402,6 +405,9 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "prayer_category": return new ServiceListScreen(this, entry.argument, prayerCategoryTitle(entry.argument));
             case "liturgy": return new ReaderScreen(this, "divine_liturgy");
             case "readings": return new ReadingsScreen(this);
+            case "bible": return new BibleScreen(this);
+            case "bible_book": return new BibleBookScreen(this, entry.argument);
+            case "bible_chapter": return new BibleChapterScreen(this, entry.argument);
             case "upcoming": return new UpcomingScreen(this);
             case "search": return new SearchScreen(this);
             case "favorites": return new FavoritesScreen(this);
@@ -524,8 +530,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                     && result == DataRepository.RefreshResult.FAILED
                     && DataRepository.isRetryableRefreshMessage(message);
             if (retryableOpenFailure) {
-                // Keep retrying safely in the background if the user closes the app
-                // before GitHub finishes publishing today's signed data.
+                // A retryable compatibility-channel failure may be retried in the
+                // background, but the normal local daily engine never needs this path.
                 updateCoordinator.enqueueImmediateBackgroundRefresh(false);
             }
 
@@ -578,13 +584,8 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         boolean dayChanged = observedAmmanDate != null && !observedAmmanDate.equals(currentDate);
         observedAmmanDate = currentDate;
 
-        boolean resumeRemoteCheck = resumeEvent && updateCoordinator.shouldCheckRemoteOnResume();
         if (updateCoordinator.shouldRefresh(dayChanged, resumeEvent)) {
             requestDataRefresh(false, dayChanged || !repository.hasUsableCurrentData());
-        } else if (resumeRemoteCheck) {
-            // Catch up once after the 04:23/16:43 Amman publications
-            // window. The signed manifest and ETag keep this check lightweight.
-            requestDataRefresh(false, false);
         }
     }
 

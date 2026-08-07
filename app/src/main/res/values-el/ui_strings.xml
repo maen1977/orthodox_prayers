@@ -20,7 +20,7 @@
     <string name="ui_auto_scroll_43606e75" formatted="false">▶ Αὐτόματη κύλιση</string>
     <string name="ui_auto_scroll_off_763228b7" formatted="false">Αὐτόματη κύλιση: κλειστή</string>
     <string name="ui_auto_scroll_speed_9b395f14" formatted="false">Ταχύτητα αὐτόματης κύλισης: </string>
-    <string name="ui_automatic_update_01_00_and_06_00_amman_time_plus_a1bb2912" formatted="false">Ἐνημέρωση δύο φορὲς καθημερινά: 04:23 καὶ 16:43 ὥρα Ἰορδανίας μέσω GitHub, μὲ ἔλεγχο στὸ ἄνοιγμα καὶ ἐπανάληψη ὅταν καθυστερεῖ</string>
+    <string name="ui_automatic_update_01_00_and_06_00_amman_time_plus_a1bb2912" formatted="false">Τοπικὴ ἡμερήσια ἐνημέρωση μετὰ τὴν ἀλλαγὴ ἡμερομηνίας στὴν Ἰορδανία καὶ ἔλεγχος στὸ ἄνοιγμα· δὲν ἀπαιτοῦνται GitHub ἢ διαδίκτυο</string>
     <string name="ui_back_18fb18e2" formatted="false">Πίσω</string>
     <string name="ui_base_texts_for_all_three_languages_are_embedded__06372176" formatted="false">Τὰ βασικὰ κείμενα καὶ τῶν τριῶν γλωσσῶν εἶναι ἐνσωματωμένα. Ἐπίλεξε ποιες γλῶσσες θὰ φαίνονται στὸν ἐπιλογέα.</string>
     <string name="ui_basic_prayers_6f2ed521" formatted="false">Βασικὲς προσευχές</string>
@@ -64,7 +64,7 @@
     <string name="ui_disable_keep_screen_on_14c0033c" formatted="false">Ἀπενεργοποίηση ὀθόνης</string>
     <string name="ui_dismissal_715bd095" formatted="false">Ἀπόλυσις</string>
     <string name="ui_displayed_data_date_3ac6be9b" formatted="false">Ἡμερομηνία δεδομένων: </string>
-    <string name="ui_downloading_and_validating_today_s_data_f519f853" formatted="false">Ἔλεγχος σημερινῶν δεδομένων…</string>
+    <string name="ui_downloading_and_validating_today_s_data_f519f853" formatted="false">Τοπικὴ προετοιμασία τῶν σημερινῶν δεδομένων…</string>
     <string name="ui_edit_note_569b3288" formatted="false">Ἐπεξεργασία</string>
     <string name="ui_epistle_a17bc087" formatted="false">Ἀπόστολος</string>
     <string name="ui_epistle_dd82c199" formatted="false">Ἀπόστολος: </string>
@@ -132,7 +132,7 @@
     <string name="ui_no_matching_result_65289b38" formatted="false">Δεν βρέθηκε αποτέλεσμα.</string>
     <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">Ὁ μῆνας αὐτὸς εἶναι ἐκτὸς τοῦ ἐσωτερικοῦ ὁρίζοντα 2026–2050 ἢ δὲν ἔχει ἐπαληθευμένες λεπτομέρειες.</string>
     <string name="ui_no_shareable_passage_is_visible_e0bd031d" formatted="false">Δὲν ὑπάρχει κείμενο γιὰ κοινοποίηση</string>
-    <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">Χωρὶς ἐπιτυχῆ ἐνημέρωση</string>
+    <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">Δὲν ἔχει προετοιμαστεῖ ἀκόμη τοπικὴ ἐκκλησιαστικὴ ἡμέρα</string>
     <string name="ui_no_texts_in_this_section_a43f561b" formatted="false">Δεν υπάρχουν κείμενα.</string>
     <string name="ui_no_trusted_details_for_this_date_are_included_in_dfb3006c" formatted="false">Δὲν ὑπάρχουν ἔμπιστες λεπτομέρειες γιὰ αὐτὴν τὴν ἡμερομηνία.</string>
     <string name="ui_no_valid_daily_data_is_available_e60f7fe1" formatted="false">Δὲν ὑπάρχουν ἔγκυρα σημερινὰ δεδομένα</string>
@@ -252,9 +252,9 @@
     <string name="ui_text_9b77d3f7" formatted="false">Κείμενο</string>
     <string name="ui_text_index_57a9ffa2" formatted="false">Εὐρετήριο κειμένου</string>
     <string name="ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b" formatted="false">Τὸ μέγεθος, ἡ γραμματοσειρά, τὸ διάστιχο, τὸ θέμα, ἡ φωτεινότητα καὶ ἡ αὐτόματη κύλιση θὰ ἐπανέλθουν στὶς προεπιλογές.</string>
-    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">Τὸ ἐσωτερικὸ ἐκκλησιαστικὸ ἡμερολόγιο καλύπτει τὰ ἔτη 2026–2050, ἐνῶ ἡ ὑπογεγραμμένη δέσμη ἀνανεώνει τὴ σημερινὴ καὶ τὶς ὀκτὼ ἑπόμενες ἡμέρες ἀπὸ ἐπαληθευμένες πηγές.</string>
+    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">Τὸ ἐνσωματωμένο ἐκκλησιαστικὸ ἡμερολόγιο καὶ τὰ πρωτότυπα κείμενα προετοιμάζουν τοπικὰ τὸ καθημερινὸ περιεχόμενο γιὰ τὰ ἔτη 2026–2050, χωρὶς ἐξωτερικὸ διακομιστή.</string>
     <string name="ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc" formatted="false">Απαιτεῖται νεότερη ἔκδοση τῆς ἐφαρμογῆς</string>
-    <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">Τὸ GitHub Actions δημοσιεύει ἐλεγμένο περιεχόμενο δύο φορὲς καθημερινά, στὶς 04:23 καὶ 16:43 ὥρα Ἰορδανίας. Ἡ ἐφαρμογὴ ἐλέγχει σε κάθε ἄνοιγμα καὶ διατηρεῖ τὸ τελευταῖο ἔγκυρο ἀντίγραφο.</string>
+    <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">Ἡ ἐφαρμογὴ προετοιμάζει τοπικὰ τὴ σημερινὴ καὶ τὶς ὀκτὼ ἑπόμενες ἡμέρες μετὰ τὴν ἀλλαγὴ ἡμερομηνίας στὴν Ἰορδανία καὶ ἐλέγχει ξανά στὸ ἄνοιγμα. Δὲν ἀπαιτοῦνται GitHub Actions ἢ διαδίκτυο.</string>
     <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">Ἡ ἐφαρμογὴ δὲν στέλνει εἰδοποιήσεις στὶς ὧρες ἡσυχίας.</string>
     <string name="ui_the_app_will_retry_automatically_you_can_also_re_d2cc490a" formatted="false">Ἡ ἐφαρμογὴ θὰ προσπαθήσει ξανά αὐτόματα.</string>
     <string name="ui_the_complete_weekly_package_is_not_available_yet_e438506f" formatted="false">Ἡ πλήρης ἑβδομαδιαία δέσμη δὲν εἶναι ἀκόμη διαθέσιμη</string>
@@ -266,7 +266,7 @@
     <string name="ui_the_requested_text_was_not_found_in_the_app_data_97e2becd" formatted="false">Τὸ ζητούμενο κείμενο δὲν βρέθηκε στὰ δεδομένα.</string>
     <string name="ui_the_screen_will_update_automatically_after_downl_a93a7fcf" formatted="false">Ἡ ὀθόνη θὰ ἐνημερωθεῖ αὐτόματα.</string>
     <string name="ui_the_secure_update_manifest_could_not_be_verified_d5b624be" formatted="false">Τὸ ἀσφαλὲς δηλωτικὸ ἐνημέρωσης δὲν ἐπαληθεύθηκε</string>
-    <string name="ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0" formatted="false">Ἡ ὑπογεγραμμένη δέσμη περιέχει ἐννέα συνεχόμενες ἡμέρες ἀρχίζοντας ἀπὸ σήμερα, μὲ πλήρεις διαθέσιμες προσευχές, ἀναγνώσματα καὶ ἀκολουθίες. Πατήστε μία ἡμέρα γιὰ ἄνοιγμα.</string>
+    <string name="ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0" formatted="false">Ἡ τοπικὴ μηχανὴ προετοιμάζει ἐννέα συνεχόμενες ἡμέρες ἀπὸ τὸ ἐνσωματωμένο ἡμερολόγιο καὶ τὰ πρωτότυπα κείμενα. Πατήστε μία ἡμέρα γιὰ ἄνοιγμα.</string>
     <string name="ui_the_source_link_could_not_be_opened_75a90f8a" formatted="false">Δὲν ἄνοιξε ὁ σύνδεσμος.</string>
     <string name="ui_the_update_server_could_not_be_contacted_tempora_dc3cce39" formatted="false">Προσωρινὴ ἀποτυχία συνδέσεως</string>
     <string name="ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4" formatted="false">Ὁ διακομιστὴς ἐνημέρωσης καθυστερεῖ προσωρινά</string>
@@ -297,11 +297,11 @@
     <string name="ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3" formatted="false">Ἡ ἐνημέρωση ἀπέτυχε</string>
     <string name="ui_update_in_progress_7d1054d7" formatted="false">Ἡ ἐνημέρωση ἐκτελεῖται…</string>
     <string name="ui_update_manifest_revision_985fb3a6" formatted="false">Ἀναθεώρηση δηλώσεως ἐνημερώσεως: </string>
-    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Αὐτόματη ἐνημέρωση τῶν προσεχῶν ἡμερῶν καὶ ἑβδομάδων…</string>
+    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Τοπικὴ προετοιμασία τῶν προσεχῶν ἡμερῶν…</string>
     <string name="ui_usable_111b1469" formatted="false">, διαθέσιμες: </string>
     <string name="ui_use_dark_mode_1564a2ea" formatted="false">Σκοτεινὸ θέμα</string>
     <string name="ui_use_light_mode_1c895a15" formatted="false">Φωτεινὸ θέμα</string>
-    <string name="ui_verification_https_independent_digital_signature_a5a78dda" formatted="false">Ἔλεγχος: HTTPS, ψηφιακὴ ὑπογραφή, σχῆμα καὶ ἀκεραιότητα</string>
+    <string name="ui_verification_https_independent_digital_signature_a5a78dda" formatted="false">Τοπικὸς ἔλεγχος: ἀμετάβλητα ἐνσωματωμένα δεδομένα, σχῆμα καὶ ἀκεραιότητα Γραφῆς</string>
     <string name="ui_verified_native_scripture_from_an_independent_so_a8f7898c" formatted="false">Ἐπαληθευμένο πρωτότυπο βιβλικὸ κείμενο ἀπὸ ἀνεξάρτητη πηγή, χωρὶς μετάφραση ἢ αὐτόματο τονισμό</string>
     <string name="ui_verified_prokeimenon_unavailable_9ac3fd2f" formatted="false">Μὴ διαθέσιμο ἐπαληθευμένο Προκείμενον</string>
     <string name="ui_verified_scripture_text_is_unavailable_for_this__1624033a" formatted="false">Τὸ ἐπαληθευμένο βιβλικὸ κείμενο δὲν εἶναι διαθέσιμο γιὰ αὐτὸ τὸ ἀνάγνωσμα. Διατηροῦνται τὰ τελευταῖα ἔγκυρα δεδομένα.</string>
@@ -349,4 +349,8 @@
     <string name="ui_shortcut_daily_readings_r43" formatted="false">Ἀναγνώσματα ἡμέρας</string>
     <string name="ui_shortcut_divine_liturgy_r43" formatted="false">Θεία Λειτουργία</string>
     <string name="ui_shortcut_morning_prayer_r43" formatted="false">Πρωινὴ προσευχή</string>
+    <string name="ui_local_daily_update_ready" formatted="false">Ἡ σημερινὴ καὶ οἱ ὀκτὼ ἑπόμενες ἡμέρες προετοιμάστηκαν τοπικά</string>
+    <string name="ui_local_daily_update_current" formatted="false">Ἡ τοπικὴ ἐκκλησιαστικὴ ἡμέρα εἶναι ἕτοιμη καὶ ἐνημερωμένη</string>
+    <string name="ui_local_daily_update_unavailable" formatted="false">Ἡ ἡμέρα δὲν μπόρεσε νὰ προετοιμαστεῖ ἀπὸ τὸ ἐνσωματωμένο ἡμερολόγιο</string>
+    <string name="ui_local_offline_engine_source" formatted="false">Ἐνσωματωμένη τοπικὴ μηχανὴ ἡμέρας</string>
 </resources>

@@ -11,20 +11,20 @@ public final class AppUpdateReleaseTest {
 
     @Test
     public void semanticVersionCodeMatchesProjectConvention() {
-        assertEquals(50201L, AppUpdateRelease.semanticVersionCode("5.2.1"));
-        assertEquals("5.2.1", AppUpdateRelease.normalizeVersionName("v5.2.1"));
+        assertEquals(50300L, AppUpdateRelease.semanticVersionCode("5.3.0"));
+        assertEquals("5.3.0", AppUpdateRelease.normalizeVersionName("v5.3.0"));
     }
 
     @Test
     public void roundTripsReleaseMetadata() {
         AppUpdateRelease release = new AppUpdateRelease(
-                50201L, "5.2.1", 50200L, false,
+                50300L, "5.3.0", 50200L, false,
                 "https://github.com/example/app.apk", SHA, 1234L,
-                "Notes", "v5.2.1"
+                "Notes", "v5.3.0"
         );
         AppUpdateRelease restored = AppUpdateRelease.fromJson(release.toJson().toString());
-        assertEquals(50201L, restored.versionCode);
-        assertEquals("5.2.1", restored.versionName);
+        assertEquals(50300L, restored.versionCode);
+        assertEquals("5.3.0", restored.versionName);
         assertEquals(SHA, restored.sha256);
         assertTrue(restored.isNewerThan(50200L));
         assertFalse(restored.isMandatoryFor(50200L));

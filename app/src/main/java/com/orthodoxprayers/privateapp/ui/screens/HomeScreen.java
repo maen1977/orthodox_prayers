@@ -164,6 +164,11 @@ public final class HomeScreen extends BaseScreen {
         addShortcutCard(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar, local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_fasting_51a9bf84), "upcoming", null);
         addShortcutCard(second, com.orthodoxprayers.privateapp.R.drawable.ic_action_live, local(com.orthodoxprayers.privateapp.R.string.ui_churches_and_live_services_53a37eff), "churches", null);
         add(root, second, 0, 6);
+
+        LinearLayout third = ui.row();
+        addShortcutCard(third, com.orthodoxprayers.privateapp.R.drawable.ic_action_readings, bibleTitle(), "bible", null);
+        addShortcutCard(third, com.orthodoxprayers.privateapp.R.drawable.ic_action_search, searchTitle(), "search", null);
+        add(root, third, 0, 6);
     }
 
     private LinearLayout addShortcutCard(LinearLayout row, int iconResource, String title, String screen, String argument) {
@@ -171,6 +176,20 @@ public final class HomeScreen extends BaseScreen {
         card.setOnClickListener(v -> host.navigate(screen, argument));
         row.addView(card, ui.weight(96));
         return card;
+    }
+
+    private String bibleTitle() {
+        String language = preferences.effectiveLanguage();
+        if ("ar".equals(language)) return "الكتاب المقدس";
+        if ("el".equals(language)) return "Ἁγία Γραφή";
+        return "Holy Bible";
+    }
+
+    private String searchTitle() {
+        String language = preferences.effectiveLanguage();
+        if ("ar".equals(language)) return "البحث";
+        if ("el".equals(language)) return "Ἀναζήτηση";
+        return "Search";
     }
 
     private void addSmartRecommendation(LinearLayout root) {

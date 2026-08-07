@@ -12,23 +12,25 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class R17UpdateReliabilityTests(unittest.TestCase):
-    def test_android_uses_workmanager_without_exact_alarm_permission(self):
+    def test_android_uses_local_workmanager_without_network_or_exact_alarm(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
         coordinator = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/update/UpdateCoordinator.java").read_text(encoding="utf-8")
-        policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/update/RefreshPolicy.java").read_text(encoding="utf-8")
+        worker = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/work/DailyUpdateWorker.java").read_text(encoding="utf-8")
+        engine = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java").read_text(encoding="utf-8")
         self.assertNotIn("SCHEDULE_EXACT_ALARM", manifest)
         self.assertIn(".update.MidnightUpdateReceiver", manifest)
         self.assertNotIn("AlarmManager", coordinator)
-        self.assertIn("MORNING_REFRESH_HOUR = 4", coordinator)
-        self.assertIn("MORNING_REFRESH_MINUTE = 23", coordinator)
-        self.assertIn("MORNING_SCHEDULE_WORK", coordinator)
-        self.assertIn("LEGACY_INITIAL_SCHEDULE_WORK", coordinator)
-        self.assertIn("LEGACY_SUPPLEMENTAL_SCHEDULE_WORK", coordinator)
-        self.assertIn("NetworkType.CONNECTED", coordinator)
-        self.assertIn("morningWindow", policy)
-        self.assertIn("eveningWindow", policy)
-        self.assertIn("UpdateCoordinator.MORNING_REFRESH_HOUR", policy)
-        self.assertIn("UpdateCoordinator.MORNING_REFRESH_MINUTE", policy)
+        self.assertIn("LOCAL_REFRESH_HOUR = 0", coordinator)
+        self.assertIn("LOCAL_REFRESH_MINUTE = 3", coordinator)
+        self.assertIn("LOCAL_SCHEDULE_WORK", coordinator)
+        self.assertIn("LEGACY_MORNING_SCHEDULE_WORK", coordinator)
+        self.assertIn("LEGACY_EVENING_SCHEDULE_WORK", coordinator)
+        self.assertNotIn("NetworkType.CONNECTED", coordinator)
+        self.assertNotIn("setRequiredNetworkType", coordinator)
+        self.assertNotIn("Result.retry", worker)
+        self.assertIn("LocalDailyContentEngine", engine)
+        self.assertNotIn("HttpURLConnection", engine)
+
 
     def test_signed_manifest_scripts_round_trip_with_a_test_key(self):
         date_iso = json.loads((ROOT / "data/calendar/today.json").read_text(encoding="utf-8"))["date_iso"]
@@ -83,14 +85,14 @@ class R17UpdateReliabilityTests(unittest.TestCase):
             self.assertEqual({"ar", "en", "el"}, set(manifest["languages"]))
             self.assertGreater(manifest["languages"]["ar"]["size_bytes"], 1000)
 
-    def test_publication_consistency_gate_is_wired_before_and_after_signing(self):
-        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-        self.assertIn("Require one consistent unsigned publication date", workflow)
-        self.assertGreaterEqual(workflow.count("validate_publication_consistency.py"), 3)
-        self.assertGreaterEqual(workflow.count("verify_update_manifest.py"), 2)
-        self.assertIn("GITHUB_RUN_NUMBER * 100 + GITHUB_RUN_ATTEMPT", workflow)
-        self.assertGreaterEqual(workflow.count("steps.resolve.outputs.revision"), 2)
-        self.assertIn("canonical/update_contract.json", workflow)
+    def test_daily_content_no_longer_depends_on_github_actions(self):
+        workflows = ROOT / ".github/workflows"
+        self.assertFalse((workflows / "update.yml").exists())
+        self.assertEqual({"church-prayers.yml"}, {path.name for path in workflows.glob("*.yml")})
+        build = (workflows / "church-prayers.yml").read_text(encoding="utf-8")
+        self.assertNotIn("schedule:", build)
+        self.assertNotIn("production-data-signing", build)
+
 
 
 if __name__ == "__main__":

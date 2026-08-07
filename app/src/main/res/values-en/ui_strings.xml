@@ -20,7 +20,7 @@
     <string name="ui_auto_scroll_43606e75" formatted="false">▶ Auto-scroll</string>
     <string name="ui_auto_scroll_off_763228b7" formatted="false">Auto-scroll: off</string>
     <string name="ui_auto_scroll_speed_9b395f14" formatted="false">Auto-scroll speed: </string>
-    <string name="ui_automatic_update_01_00_and_06_00_amman_time_plus_a1bb2912" formatted="false">Twice-daily update: 04:23 and 16:43 Jordan time through GitHub, plus an app-open check and retry when delayed</string>
+    <string name="ui_automatic_update_01_00_and_06_00_amman_time_plus_a1bb2912" formatted="false">Local daily update after the Jordan date changes, plus an app-open check; GitHub and internet are not required</string>
     <string name="ui_back_18fb18e2" formatted="false">Back</string>
     <string name="ui_base_texts_for_all_three_languages_are_embedded__06372176" formatted="false">Base texts for all three languages are embedded and work offline. Choose which languages appear in the language selector. The app cannot remove files from an installed APK.</string>
     <string name="ui_basic_prayers_6f2ed521" formatted="false">Basic prayers</string>
@@ -64,7 +64,7 @@
     <string name="ui_disable_keep_screen_on_14c0033c" formatted="false">Disable keep-screen-on</string>
     <string name="ui_dismissal_715bd095" formatted="false">Dismissal</string>
     <string name="ui_displayed_data_date_3ac6be9b" formatted="false">Displayed data date: </string>
-    <string name="ui_downloading_and_validating_today_s_data_f519f853" formatted="false">Downloading and validating today’s data…</string>
+    <string name="ui_downloading_and_validating_today_s_data_f519f853" formatted="false">Preparing today’s data locally…</string>
     <string name="ui_edit_note_569b3288" formatted="false">Edit note</string>
     <string name="ui_epistle_a17bc087" formatted="false">Epistle</string>
     <string name="ui_epistle_dd82c199" formatted="false">Epistle: </string>
@@ -132,7 +132,7 @@
     <string name="ui_no_matching_result_65289b38" formatted="false">No matching result.</string>
     <string name="ui_no_published_details_for_this_month_are_included_9e8eb771" formatted="false">This month is outside the 2026–2050 offline horizon or has no verified details.</string>
     <string name="ui_no_shareable_passage_is_visible_e0bd031d" formatted="false">No shareable passage is visible</string>
-    <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">No successful network update yet</string>
+    <string name="ui_no_successful_network_update_yet_12387d86" formatted="false">No local church day has been prepared yet</string>
     <string name="ui_no_texts_in_this_section_a43f561b" formatted="false">No texts in this section.</string>
     <string name="ui_no_trusted_details_for_this_date_are_included_in_dfb3006c" formatted="false">No trusted details for this date are included in the current package.</string>
     <string name="ui_no_valid_daily_data_is_available_e60f7fe1" formatted="false">No valid daily data is available</string>
@@ -252,9 +252,9 @@
     <string name="ui_text_9b77d3f7" formatted="false">Text</string>
     <string name="ui_text_index_57a9ffa2" formatted="false">Text index</string>
     <string name="ui_text_size_font_spacing_reader_theme_brightness_a_5b5d5d0b" formatted="false">Text size, font, spacing, reader theme, brightness, and auto-scroll will return to their defaults.</string>
-    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">The offline church calendar covers 2026–2050, while the signed package refreshes today and the next eight days from verified sources.</string>
+    <string name="ui_the_annual_index_stays_lightweight_while_the_sig_deed927c" formatted="false">The bundled church calendar and native texts prepare daily content locally for 2026–2050 without relying on an external server.</string>
     <string name="ui_the_app_must_be_updated_to_read_today_s_new_data_bcfbcddc" formatted="false">The app must be updated to read today’s new data</string>
-    <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">GitHub Actions publishes verified content twice daily at 04:23 and 16:43 Jordan time. The app checks automatically whenever it opens and keeps the last valid copy if the server is unavailable.</string>
+    <string name="ui_the_app_performs_two_verified_checks_each_day_01_8fac151b" formatted="false">The app prepares today and the next eight days locally after the Jordan date changes and checks again whenever it opens. GitHub Actions and internet access are not required.</string>
     <string name="ui_the_app_will_not_notify_during_the_selected_quie_1f2f6d07" formatted="false">The app will not notify during the selected quiet hours.</string>
     <string name="ui_the_app_will_retry_automatically_you_can_also_re_d2cc490a" formatted="false">The app will retry automatically. You can also retry below.</string>
     <string name="ui_the_complete_weekly_package_is_not_available_yet_e438506f" formatted="false">The complete weekly package is not available yet</string>
@@ -266,7 +266,7 @@
     <string name="ui_the_requested_text_was_not_found_in_the_app_data_97e2becd" formatted="false">The requested text was not found in the app data.</string>
     <string name="ui_the_screen_will_update_automatically_after_downl_a93a7fcf" formatted="false">The screen will update automatically after download and data validation.</string>
     <string name="ui_the_secure_update_manifest_could_not_be_verified_d5b624be" formatted="false">The secure update manifest could not be verified; the last trusted copy remains in use while automatic retries continue</string>
-    <string name="ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0" formatted="false">The signed package keeps nine consecutive days starting today, with complete available prayers, readings, and services. Tap any day to open it.</string>
+    <string name="ui_the_signed_package_keeps_today_and_the_next_seve_8ba1a6f0" formatted="false">The local engine prepares nine consecutive days starting today from bundled calendar and native-text assets. Tap any day to open it.</string>
     <string name="ui_the_source_link_could_not_be_opened_75a90f8a" formatted="false">The source link could not be opened.</string>
     <string name="ui_the_update_server_could_not_be_contacted_tempora_dc3cce39" formatted="false">The update server could not be contacted temporarily; the last valid copy is shown</string>
     <string name="ui_the_update_server_is_delayed_or_temporarily_unav_1cb313a4" formatted="false">The update server is delayed or temporarily unavailable; the app will retry automatically</string>
@@ -297,11 +297,11 @@ Phone: 00962788272988</string>
     <string name="ui_update_failed_the_last_valid_saved_copy_is_shown_ed557cb3" formatted="false">Update failed; the last valid saved copy is shown</string>
     <string name="ui_update_in_progress_7d1054d7" formatted="false">Update in progress…</string>
     <string name="ui_update_manifest_revision_985fb3a6" formatted="false">Update manifest revision: </string>
-    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Updating the coming days and weeks automatically…</string>
+    <string name="ui_updating_the_week_s_services_automatically_f680f00e" formatted="false">Preparing the coming days locally…</string>
     <string name="ui_usable_111b1469" formatted="false">, usable: </string>
     <string name="ui_use_dark_mode_1564a2ea" formatted="false">Use dark mode</string>
     <string name="ui_use_light_mode_1c895a15" formatted="false">Use light mode</string>
-    <string name="ui_verification_https_independent_digital_signature_a5a78dda" formatted="false">Verification: HTTPS + independent digital signature + schema + Scripture integrity</string>
+    <string name="ui_verification_https_independent_digital_signature_a5a78dda" formatted="false">Local verification: immutable bundled assets + schema + Scripture integrity</string>
     <string name="ui_verified_native_scripture_from_an_independent_so_a8f7898c" formatted="false">Verified native Scripture from an independent source; no translation or automatic marking</string>
     <string name="ui_verified_prokeimenon_unavailable_9ac3fd2f" formatted="false">Verified Prokeimenon unavailable</string>
     <string name="ui_verified_scripture_text_is_unavailable_for_this__1624033a" formatted="false">Verified Scripture text is unavailable for this passage. The last valid data remains saved.</string>
@@ -349,4 +349,8 @@ Phone: 00962788272988</string>
     <string name="ui_shortcut_daily_readings_r43" formatted="false">Daily readings</string>
     <string name="ui_shortcut_divine_liturgy_r43" formatted="false">Divine Liturgy</string>
     <string name="ui_shortcut_morning_prayer_r43" formatted="false">Morning prayer</string>
+    <string name="ui_local_daily_update_ready" formatted="false">Today and the next eight days were prepared locally</string>
+    <string name="ui_local_daily_update_current" formatted="false">The local church day is ready and current</string>
+    <string name="ui_local_daily_update_unavailable" formatted="false">The day could not be prepared from the bundled local calendar</string>
+    <string name="ui_local_offline_engine_source" formatted="false">Bundled local daily engine</string>
 </resources>

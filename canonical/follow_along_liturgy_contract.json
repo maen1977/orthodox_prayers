@@ -113,14 +113,15 @@
   "update_policy": {
     "timezone": "Asia/Amman",
     "windows": [
-      "04:23",
-      "16:43"
+      "00:03"
     ],
-    "schedule_role": "AUTHORITATIVE_DAILY_PUBLICATION",
+    "schedule_role": "LOCAL_DAILY_REBUILD",
     "same_day_revision_must_not_remove_accepted_native_text": true,
     "stale_daily_readings_are_hidden": true,
-    "signature_required": true,
-    "exact_alarm_permission_required": false
+    "signature_required": false,
+    "exact_alarm_permission_required": false,
+    "network_required": false,
+    "app_open_date_check": true
   },
   "post_gospel_policy": {
     "liturgical_response_preserved": true,

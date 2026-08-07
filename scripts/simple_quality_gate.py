@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Small, strict gate for the app build and separate daily update workflows."""
+"""Small, strict gate for the independent local-daily Android application."""
 from __future__ import annotations
 
 import subprocess
@@ -15,6 +15,7 @@ CHECKS = [
     [sys.executable, "scripts/validate_android_sdk_contract.py"],
     [sys.executable, "scripts/validate_calendar_immutability.py"],
     [sys.executable, "scripts/validate_internal_calendar_2050.py"],
+    [sys.executable, "scripts/validate_local_daily_engine.py", "--date", "2026-08-06"],
     [sys.executable, "scripts/validate_strict_religious_content.py", "data/calendar/today.json", "--require-complete"],
     [sys.executable, "scripts/validate_divine_liturgy_text_integrity.py"],
     [sys.executable, "scripts/validate_divine_liturgy_delivery_integrity.py"],
@@ -31,7 +32,7 @@ def main() -> None:
     for command in CHECKS:
         print(">>> " + " ".join(command), flush=True)
         subprocess.run(command, cwd=ROOT, check=True)
-    print("CHURCH_PRAYERS_CHECKS_OK")
+    print("CHURCH_PRAYERS_LOCAL_DAILY_CHECKS_OK")
 
 
 if __name__ == "__main__":
