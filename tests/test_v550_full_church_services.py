@@ -4,15 +4,15 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_version_is_551():
+def test_version_is_552():
     text = (ROOT / 'app/build.gradle.kts').read_text(encoding='utf-8')
-    assert 'versionCode = 50501' in text
-    assert 'versionName = "5.5.1"' in text
+    assert 'versionCode = 50502' in text
+    assert 'versionName = "5.5.2"' in text
 
 
 def test_native_source_manifest_forbids_translation():
     data = json.loads((ROOT / 'canonical/church_service_full_sources.json').read_text(encoding='utf-8'))
-    assert data['policy'] == 'AUTHORIZED_NATIVE_SOURCE_ONLY_NO_TRANSLATION'
+    assert data['policy'] == 'RIGHTS_AWARE_NATIVE_SOURCE_ONLY_NO_TRANSLATION'
     assert data['runtime_network_required'] is False
     assert set(data['languages']) == {'ar', 'en', 'el'}
     assert len(data['languages']['ar']['services']) >= 10

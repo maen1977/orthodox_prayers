@@ -22,8 +22,9 @@ import urllib.parse
 import urllib.request
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
-BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.5.1"
+BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.5.2"
 MAX_BYTES = 6_000_000
+MAX_OPEN_SOURCE_BYTES = 80_000_000
 MIN_CHARS_REQUIRED = 1200
 MIN_CHARS_OPTIONAL = 500
 
@@ -147,97 +148,19 @@ def _validate_download(data: bytes) -> bytes:
     return data
 
 
-def _browser_executable() -> str | None:
-    for name in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser"):
-        found = shutil.which(name)
-        if found:
-            return found
-    return None
-
-
-def _fetch_with_curl(url: str) -> bytes:
-    curl = shutil.which("curl")
-    if not curl:
-        raise RuntimeError("curl_unavailable")
-    request_url = iri_to_uri(url)
-    headers = _direct_headers(url)
-    command = [
-        curl,
-        "--location",
-        "--fail-with-body",
-        "--silent",
-        "--show-error",
-        "--compressed",
-        "--retry", "2",
-        "--retry-delay", "1",
-        "--connect-timeout", "20",
-        "--max-time", "60",
-    ]
-    for key, value in headers.items():
-        command.extend(["-H", f"{key}: {value}"])
-    command.append(request_url)
-    completed = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=70, check=False)
-    if completed.returncode != 0:
-        detail = completed.stderr.decode("utf-8", errors="replace").strip().replace("\n", " ")[-500:]
-        raise RuntimeError(f"curl_failed:{completed.returncode}:{detail}")
-    data = completed.stdout
-    _validate_download(data)
-    lower = data.lower()
-    if (b"access denied" in lower or b"forbidden" in lower) and len(data) < 15000:
-        raise RuntimeError("curl_access_denied")
-    return data
-
-
-def _fetch_with_headless_browser(url: str) -> bytes:
-    browser = _browser_executable()
-    if not browser:
-        raise RuntimeError("headless_browser_unavailable")
-    request_url = iri_to_uri(url)
-    with tempfile.TemporaryDirectory(prefix="orthodox-prayers-chrome-") as profile:
-        command = [
-            browser,
-            "--headless=new",
-            "--no-sandbox",
-            "--disable-gpu",
-            "--disable-dev-shm-usage",
-            "--no-first-run",
-            "--mute-audio",
-            f"--user-agent={UA}",
-            "--window-size=1280,2400",
-            "--virtual-time-budget=7000",
-            f"--user-data-dir={profile}",
-            "--dump-dom",
-            request_url,
-        ]
-        completed = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=70, check=False)
-    if completed.returncode != 0:
-        detail = completed.stderr.decode("utf-8", errors="replace").strip().replace("\n", " ")[-500:]
-        raise RuntimeError(f"headless_browser_failed:{completed.returncode}:{detail}")
-    data = completed.stdout
-    _validate_download(data)
-    lower = data.lower()
-    if b"access denied" in lower or b"forbidden" in lower and len(data) < 15000:
-        raise RuntimeError("headless_browser_access_denied")
-    return data
-
-
 def _direct_headers(url: str) -> dict[str, str]:
-    headers = {
+    return {
         "User-Agent": UA,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9,el;q=0.8",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "ar,en-US;q=0.9,en;q=0.8,el;q=0.7",
         "Cache-Control": "no-cache",
         "Pragma": "no-cache",
-        "DNT": "1",
-        "Upgrade-Insecure-Requests": "1",
         "X-Orthodox-Prayers-Builder": BUILDER_ID,
     }
-    if urllib.parse.urlsplit(url).netloc.endswith("goarch.org"):
-        headers["Referer"] = "https://www.goarch.org/chapel/texts"
-    return headers
 
 
 def fetch(url: str, cache: Path) -> bytes:
+    """Fetch an explicitly registered HTML source without browser/proxy circumvention."""
     cache.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256(url.encode("utf-8")).hexdigest() + ".html"
     target = cache / key
@@ -255,37 +178,130 @@ def fetch(url: str, cache: Path) -> bytes:
             _validate_download(data)
             target.write_bytes(data)
             return data
-        except urllib.error.HTTPError as exc:  # pragma: no cover - network branch
-            last = exc
-            if exc.code in {403, 429} and urllib.parse.urlsplit(url).netloc.endswith("goarch.org"):
-                print(f"CHURCH_SERVICE_DIRECT_BLOCKED {exc.code} {url}")
-                break
-            time.sleep(1.25 * (attempt + 1))
         except Exception as exc:  # pragma: no cover - network branch
             last = exc
             time.sleep(1.25 * (attempt + 1))
-
-    # GOARCH currently returns HTTP 403 to some non-browser clients from hosted CI ranges.
-    # Keep every fallback on the same official origin: first curl with browser headers, then
-    # a real Chromium/Chrome session. Required services remain required; no proxy, mirror,
-    # translation, or cross-language substitution is permitted.
-    if urllib.parse.urlsplit(url).netloc.endswith("goarch.org"):
-        try:
-            data = _fetch_with_curl(url)
-            target.write_bytes(data)
-            print(f"CHURCH_SERVICE_CURL_FALLBACK_OK {url}")
-            return data
-        except Exception as exc:  # pragma: no cover - network/curl branch
-            last = exc
-        try:
-            data = _fetch_with_headless_browser(url)
-            target.write_bytes(data)
-            print(f"CHURCH_SERVICE_BROWSER_FALLBACK_OK {url}")
-            return data
-        except Exception as exc:  # pragma: no cover - network/browser branch
-            last = exc
     raise RuntimeError(f"download_failed:{url}:{last}")
 
+
+def _fetch_open_source(url: str, cache: Path, suffix: str = ".src") -> bytes:
+    """Fetch a redistributable/public-domain source without HTML-only validation."""
+    cache.mkdir(parents=True, exist_ok=True)
+    key = hashlib.sha256(url.encode("utf-8")).hexdigest() + suffix
+    target = cache / key
+    if target.exists() and target.stat().st_size > 500:
+        return target.read_bytes()
+    request_url = iri_to_uri(url)
+    req = urllib.request.Request(request_url, headers={"User-Agent": UA, "Accept": "*/*"})
+    with urllib.request.urlopen(req, timeout=90) as response:
+        if getattr(response, "status", 200) >= 400:
+            raise RuntimeError(f"http_status_{response.status}")
+        data = response.read(MAX_OPEN_SOURCE_BYTES + 1)
+    if len(data) > MAX_OPEN_SOURCE_BYTES:
+        raise RuntimeError("open_source_too_large")
+    if len(data) < 500:
+        raise RuntimeError("open_source_too_small")
+    target.write_bytes(data)
+    return data
+
+
+def _pdf_to_text(raw: bytes) -> bytes:
+    exe = shutil.which("pdftotext")
+    if not exe:
+        raise RuntimeError("pdftotext_unavailable")
+    with tempfile.TemporaryDirectory(prefix="orthodox-prayers-euchologion-") as tmp:
+        pdf = Path(tmp) / "source.pdf"
+        txt = Path(tmp) / "source.txt"
+        pdf.write_bytes(raw)
+        completed = subprocess.run(
+            [exe, "-layout", "-enc", "UTF-8", str(pdf), str(txt)],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=180, check=False,
+        )
+        if completed.returncode != 0 or not txt.exists():
+            detail = completed.stderr.decode("utf-8", errors="replace").strip().replace("\n", " ")[-500:]
+            raise RuntimeError(f"pdftotext_failed:{completed.returncode}:{detail}")
+        data = txt.read_bytes()
+    if len(data) < 1200:
+        raise RuntimeError(f"pdf_text_too_short:{len(data)}")
+    return data
+
+
+def _fold_marker(value: str) -> str:
+    import unicodedata
+    value = unicodedata.normalize("NFD", value.casefold())
+    value = "".join(ch for ch in value if unicodedata.category(ch) != "Mn")
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def parse_plain_text_blocks(raw: bytes) -> list[str]:
+    text = raw.decode("utf-8", errors="replace").replace("\ufeff", "").replace("\f", "\n")
+    # OCR/plain-text books often wrap every printed line. Keep lines as blocks; later
+    # deduplication and section boundaries protect us from table-of-contents matches.
+    return [clean_text(line) for line in text.splitlines() if len(clean_text(line)) > 1]
+
+
+def find_marker_occurrence(blocks: list[str], markers, occurrence: str = "first") -> int | None:
+    if not markers:
+        return None
+    if isinstance(markers, str):
+        markers = [markers]
+    folded = [_fold_marker(str(m)) for m in markers if str(m).strip()]
+    hits=[]
+    for i, block in enumerate(blocks):
+        b = _fold_marker(block)
+        if any(m in b for m in folded):
+            hits.append(i)
+    if not hits:
+        return None
+    return hits[-1] if occurrence == "last" else hits[0]
+
+
+def normalize_open_source_blocks(raw: bytes, language: str, spec: dict) -> list[str]:
+    blocks = parse_plain_text_blocks(raw)
+    start = find_marker_occurrence(blocks, spec.get("start_marker"), spec.get("marker_occurrence", "last"))
+    if start is None:
+        raise RuntimeError(f"open_source_start_marker_missing:{language}:{spec['id']}")
+    blocks = blocks[start:]
+    end = find_marker_occurrence(blocks[1:], spec.get("end_marker"), "first")
+    if end is not None:
+        blocks = blocks[:end + 1]
+    blocks = apply_script_filter(blocks, spec.get("filter_script"))
+    # Remove repeated page headers/page numbers without rewriting the source.
+    result=[]
+    seen=set()
+    for block in blocks:
+        if re.fullmatch(r"[ivxlcdm\d\-–—. ]{1,12}", block.casefold()):
+            continue
+        fp=re.sub(r"\s+", " ", block).strip()
+        if len(fp) > 80 and fp in seen:
+            continue
+        result.append(block)
+        if len(fp) > 80:
+            seen.add(fp)
+    return result
+
+
+def _fetch_cc_pdf_text(url: str, cache: Path) -> bytes:
+    cache.mkdir(parents=True, exist_ok=True)
+    key = hashlib.sha256(url.encode("utf-8")).hexdigest()
+    txt = cache / (key + ".pdftotext.txt")
+    if txt.exists() and txt.stat().st_size > 1200:
+        return txt.read_bytes()
+    pdf = _fetch_open_source(url, cache, ".pdf")
+    data = _pdf_to_text(pdf)
+    txt.write_bytes(data)
+    return data
+
+
+def fetch_spec(spec: dict, cache: Path) -> bytes:
+    transport = spec.get("source_transport", "html")
+    if transport == "public_domain_plain_text":
+        return _fetch_open_source(spec["url"], cache, ".txt")
+    if transport == "cc_by_pdf_text":
+        return _fetch_cc_pdf_text(spec["url"], cache)
+    if transport == "official_link_only":
+        raise RuntimeError("official_link_only")
+    return fetch(spec["url"], cache)
 
 def parse_blocks(raw: bytes) -> list[str]:
     text = raw.decode("utf-8", errors="replace")
@@ -332,6 +348,8 @@ def find_marker(blocks: list[str], markers) -> int | None:
 
 
 def normalize_blocks(raw: bytes, language: str, spec: dict) -> list[str]:
+    if spec.get("source_transport") in {"public_domain_plain_text", "cc_by_pdf_text"}:
+        return normalize_open_source_blocks(raw, language, spec)
     blocks = parse_blocks(raw)
     nav_exact = {
         "الفئات", "وسم", "تحميل الصلاة", "اقرأ المزيد", "Print", "View »",
@@ -443,8 +461,10 @@ def build_service(spec: dict, lang: str, source_id: str, source_name: str, raw: 
             "official": True,
             "native_language": lang,
             "url": spec["url"],
-            "permission_confirmed": True,
-            "redistribution_review_required": False,
+            "permission_confirmed": bool(spec.get("permission_confirmed", False)),
+            "redistribution_review_required": bool(spec.get("redistribution_review_required", not spec.get("permission_confirmed", False))),
+            "rights_basis": spec.get("rights_basis", "REVIEW_REQUIRED"),
+            "license_url": spec.get("license_url", ""),
             "machine_translation_used": False,
             "import_status": "FULL_AUTHORIZED_NATIVE_RITE_TEXT",
             "content_sha256": digest,
@@ -464,7 +484,7 @@ def main() -> int:
     args = ap.parse_args()
 
     manifest = json.loads(Path(args.manifest).read_text(encoding="utf-8"))
-    if manifest.get("policy") != "AUTHORIZED_NATIVE_SOURCE_ONLY_NO_TRANSLATION":
+    if manifest.get("policy") not in {"AUTHORIZED_NATIVE_SOURCE_ONLY_NO_TRANSLATION", "RIGHTS_VERIFIED_NATIVE_SOURCE_ONLY_NO_TRANSLATION", "RIGHTS_AWARE_NATIVE_SOURCE_ONLY_NO_TRANSLATION"}:
         raise SystemExit("invalid_church_service_source_policy")
     out = Path(args.output_dir)
     cache = Path(args.cache_dir)
@@ -483,15 +503,19 @@ def main() -> int:
                 continue
             ids.add(spec["id"])
             try:
-                raw = fetch(spec["url"], cache / lang)
+                if spec.get("source_transport") == "official_link_only":
+                    print(f"CHURCH_SERVICE_RIGHTS_LINK_ONLY {lang} {spec['id']} {spec['url']}")
+                    continue
+                raw = fetch_spec(spec, cache / lang)
                 svc = build_service(spec, lang, lane["source_id"], lane["source_name"], raw)
                 services.append(svc)
                 print(f"CHURCH_SERVICE_OK {lang} {spec['id']} chars={svc['source_character_count']} blocks={svc['source_block_count']}")
             except Exception as exc:
-                if spec.get("required"):
+                if spec.get("required") and not spec.get("allow_link_fallback", False):
                     failures.append(f"{lang}:{spec['id']}:{exc}")
                 else:
-                    print(f"CHURCH_SERVICE_OPTIONAL_SKIP {lang} {spec['id']} {exc}")
+                    label = "CHURCH_SERVICE_LINK_FALLBACK" if spec.get("allow_link_fallback", False) else "CHURCH_SERVICE_OPTIONAL_SKIP"
+                    print(f"{label} {lang} {spec['id']} {exc}")
         payload = {
             "schema_version": 2,
             "language": lang,

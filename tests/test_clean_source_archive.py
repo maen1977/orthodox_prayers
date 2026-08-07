@@ -78,8 +78,8 @@ class CleanSourceArchiveTests(unittest.TestCase):
                 self.assertIn("scripts/verify_r19_patch.py", names)
                 self.assertNotIn("orthodox_prayers/app/build.gradle.kts", names)
                 build = archive.read("app/build.gradle.kts").decode("utf-8")
-                self.assertIn('versionName = "5.5.1"', build)
-                self.assertIn("versionCode = 50501", build)
+                self.assertIn('versionName = "5.5.2"', build)
+                self.assertIn("versionCode = 50502", build)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "policy": "AUTHORIZED_NATIVE_SOURCE_ONLY_NO_TRANSLATION",
+  "schema_version": 2,
+  "policy": "RIGHTS_AWARE_NATIVE_SOURCE_ONLY_NO_TRANSLATION",
   "runtime_network_required": false,
   "languages": {
     "ar": {
@@ -11,248 +11,568 @@
           "id": "church_baptism",
           "title": "خدمة العماد والميرون",
           "url": "https://orthodoxjordan.org/خدمة-المعمودية/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_confession",
           "title": "سر الاعتراف الإلهي",
           "url": "https://orthodoxjordan.org/سر-الاعتراف-الالهي/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_betrothal",
           "title": "صلاة العربون (الخطوبة)",
           "url": "https://orthodoxjordan.org/صلاة-العربون-الخطوبة/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_marriage",
           "title": "خدمة العرس (الإكليل)",
           "url": "https://orthodoxjordan.org/خدمة-صلاة-الإكليل/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_crowns_removal",
           "title": "صلاة حل الأكاليل",
           "url": "https://orthodoxjordan.org/صلاة-لحل-الأكاليل/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_unction",
           "title": "زيارة المرضى وسر الزيت المقدس",
           "url": "https://orthodoxjordan.org/صلاة-سر-الزيت-المقدس/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_funeral",
           "title": "صلاة الجنازة للعلمانيين",
           "url": "https://orthodoxjordan.org/صلاة-الجنازة-للعلمانيين/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_memorial",
           "title": "خدمة صلاة الجناز والذكرانيات",
           "url": "https://orthodoxjordan.org/خدمة-صلاة-الجناز/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_trisagion",
           "title": "صلاة النياحة (التريصاجيون)",
           "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         },
         {
           "id": "church_great_water",
           "title": "صلاة تقديس الماء الكبرى",
           "url": "https://orthodoxjordan.org/صلاة-تقديس-الماء-الكبرى/",
-          "required": true
+          "required": true,
+          "permission_confirmed": false,
+          "redistribution_review_required": true,
+          "rights_basis": "OFFICIAL_CHURCH_SOURCE_RIGHTS_REVIEW_PENDING"
         }
       ]
     },
     "en": {
-      "source_id": "goarch_online_chapel",
-      "source_name": "Greek Orthodox Archdiocese of America — GOARCH / Digital Chant Stand",
+      "source_id": "hapgood_service_book_1922_public_domain",
+      "source_name": "Isabel F. Hapgood — Service Book, revised edition 1922 (public domain)",
       "services": [
         {
           "id": "church_baptism",
           "title": "Holy Baptism and Chrismation",
-          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/baptism/gr-en/index.html",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "filter_script": "latin",
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ",
-            "Baptism"
+            "PRAYERS AT THE RECEPTION OF CATECHUMENS",
+            "THE OFFICE OF HOLY BAPTISM"
           ],
-          "source_transport": "dcs_static"
+          "end_marker": [
+            "MATRIMONY",
+            "THE OFFICE OF BETROTHAL"
+          ]
+        },
+        {
+          "id": "church_confession",
+          "title": "The Mystery of Confession",
+          "source_transport": "public_domain_plain_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "THE OFFICE OF CONFESSION",
+            "CONFESSION"
+          ],
+          "end_marker": [
+            "HOLY UNCTION",
+            "THE OFFICE OF HOLY UNCTION"
+          ]
         },
         {
           "id": "church_betrothal",
           "title": "Service of Betrothal",
-          "url": "https://www.goarch.org/-/marriage",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "THE OFFICE OF BETROTHAL",
+            "BETROTHAL"
+          ],
+          "end_marker": [
+            "CROWNING",
+            "THE OFFICE OF CROWNING"
+          ]
         },
         {
           "id": "church_marriage",
           "title": "Service of Marriage (Crowning)",
-          "url": "https://www.goarch.org/-/marriage",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "THE OFFICE OF CROWNING",
+            "CROWNING"
+          ],
+          "end_marker": [
+            "REMOVAL OF CROWNS",
+            "SECOND MARRIAGE"
+          ]
+        },
+        {
+          "id": "church_crowns_removal",
+          "title": "Removal of the Crowns",
+          "source_transport": "public_domain_plain_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "REMOVAL OF CROWNS"
+          ],
+          "end_marker": [
+            "SECOND MARRIAGE"
+          ]
+        },
+        {
+          "id": "church_unction",
+          "title": "Holy Unction",
+          "source_transport": "public_domain_plain_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "THE OFFICE OF HOLY UNCTION",
+            "HOLY UNCTION"
+          ],
+          "end_marker": [
+            "BURIAL OF THE DEAD"
+          ]
         },
         {
           "id": "church_funeral",
-          "title": "Funeral Service",
-          "url": "https://www.goarch.org/-/funeral-service",
+          "title": "Funeral Service for Laypeople",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "BURIAL OF THE DEAD (LAYMEN)",
+            "BURIAL OF THE DEAD"
+          ],
+          "end_marker": [
+            "BURIAL OF THE DEAD (PRIESTS)",
+            "BURIAL OF PRIESTS"
+          ]
         },
         {
           "id": "church_memorial",
-          "title": "Memorial Service",
-          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/memorial/gr-en/index.html",
+          "title": "Memorial Service (Panikhida)",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "filter_script": "latin",
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
           "start_marker": [
-            "ΤΟ ΜΝΗΜΟΣΥΝΟΝ",
-            "Memorial Service"
+            "PANIKHIDA",
+            "PANIKHÍDA",
+            "GENERAL REQUIEM"
           ],
-          "source_transport": "dcs_static"
+          "end_marker": [
+            "PARTING OF THE SOUL"
+          ]
         },
         {
-          "id": "church_trisagion",
-          "title": "Trisagion Service",
-          "url": "https://www.goarch.org/-/the-trisagion-service",
+          "id": "church_home_blessing",
+          "title": "Blessing on Entering a New Home",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "ENTERING A NEW HOUSE",
+            "NEW HOUSE"
+          ],
+          "end_marker": [
+            "BLESSING OF ANY OBJECT"
+          ]
         },
         {
           "id": "church_priesthood",
-          "title": "Service of Holy Ordination",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-priesthood",
+          "title": "Ordination to the Priesthood",
+          "source_transport": "public_domain_plain_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "ORDINATION OF A PRIEST",
+            "ORDINATION: PRIEST",
+            "PRIEST. ORDINATION"
+          ],
+          "end_marker": [
+            "ORDINATION OF A DEACON",
+            "DEACON. ORDINATION"
+          ]
         },
         {
-          "id": "church_sick_communion",
-          "title": "Communion of the Sick",
-          "url": "https://www.goarch.org/-/communion-of-the-sick-in-a-hospital",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_artoklasia",
-          "title": "Artoklasia — Blessing of the Five Loaves",
-          "url": "https://www.goarch.org/-/artoklasia",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_funeral_infant",
-          "title": "Funeral Service for Infants",
-          "url": "https://www.goarch.org/-/funeral-service-for-infants",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_funeral_paschal",
-          "title": "Funeral Service During Renewal Week",
-          "url": "https://www.goarch.org/-/funeral-service-during-renewal-week",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_catechumen",
-          "title": "The Making of a Catechumen",
-          "url": "https://www.goarch.org/-/the-making-of-a-catechumen",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_ordination_diaconate",
-          "title": "Ordination to the Diaconate",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-diaconate",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
+          "id": "church_great_water",
+          "title": "Great Blessing of the Waters",
+          "source_transport": "public_domain_plain_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
+          "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
+          "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
+          "marker_occurrence": "last",
+          "start_marker": [
+            "GRAND BLESSING OF THE WATERS",
+            "GREAT BLESSING OF THE WATERS"
+          ],
+          "end_marker": [
+            "LESSER BLESSING OF THE WATERS"
+          ]
         }
       ]
     },
     "el": {
-      "source_id": "goarch_digital_chant_stand_greek",
-      "source_name": "Greek Orthodox Archdiocese of America — Digital Chant Stand / GOARCH Greek Liturgical Texts",
+      "source_id": "uoi_euchologion_1860_cc_by_4_0",
+      "source_name": "Εὐχολόγιον τὸ Μέγα, Venice 1860 — University of Ioannina repository",
+      "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
       "services": [
         {
           "id": "church_baptism",
           "title": "Ἀκολουθία τοῦ Ἁγίου Βαπτίσματος καὶ Χρίσματος",
-          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/baptism/gr-en/index.html",
+          "source_transport": "cc_by_pdf_text",
           "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
           "filter_script": "greek",
           "start_marker": [
             "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ",
-            "Baptism"
+            "ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
           ],
-          "source_transport": "dcs_static"
+          "end_marker": [
+            "ΜΝΗΣΤΡΟΙΣ",
+            "ΑΡΡΑΒΩΝΟΣ"
+          ]
+        },
+        {
+          "id": "church_confession",
+          "title": "Ἀκολουθία Ἐξομολογήσεως",
+          "source_transport": "cc_by_pdf_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΕΞΟΜΟΛΟΓΗΣΕΩΣ",
+            "ΕΞΟΜΟΛΟΓΗΣΙΣ"
+          ],
+          "end_marker": [
+            "ΕΥΧΕΛΑΙΟΥ"
+          ]
         },
         {
           "id": "church_betrothal",
           "title": "Ἀκολουθία Ἀρραβῶνος",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/marriage?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "source_transport": "cc_by_pdf_text",
           "required": true,
-          "start_marker": "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ",
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ",
+            "ΜΝΗΣΤΡΟΙΣ",
+            "ΑΡΡΑΒΩΝΟΣ"
+          ],
+          "end_marker": [
+            "ΣΤΕΦΑΝΩΜΑΤΟΣ",
+            "ΓΑΜΟΥ"
+          ]
         },
         {
           "id": "church_marriage",
           "title": "Ἀκολουθία Γάμου (Στέψεως)",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/marriage?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "source_transport": "cc_by_pdf_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΣΤΕΦΑΝΩΜΑΤΟΣ",
+            "ΣΤΕΦΑΝΩΜΑΤΟΣ",
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΓΑΜΟΥ"
+          ],
+          "end_marker": [
+            "ΛΥΣΙΣ ΤΩΝ ΣΤΕΦΑΝΩΝ",
+            "ΔΕΥΤΕΡΟΓΑΜΙΑ"
+          ]
+        },
+        {
+          "id": "church_crowns_removal",
+          "title": "Λύσις τῶν Στεφάνων",
+          "source_transport": "cc_by_pdf_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΛΥΣΙΣ ΤΩΝ ΣΤΕΦΑΝΩΝ"
+          ],
+          "end_marker": [
+            "ΔΕΥΤΕΡΟΓΑΜΙΑ"
+          ]
+        },
+        {
+          "id": "church_unction",
+          "title": "Ἀκολουθία τοῦ Ἁγίου Εὐχελαίου",
+          "source_transport": "cc_by_pdf_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΕΥΧΕΛΑΙΟΥ",
+            "ΕΥΧΕΛΑΙΟΥ"
+          ],
+          "end_marker": [
+            "ΝΕΚΡΩΣΙΜΟΣ",
+            "ΚΕΚΟΙΜΗΜΕΝΩΝ"
+          ]
+        },
+        {
+          "id": "church_funeral",
+          "title": "Ἐξόδιος Ἀκολουθία",
+          "source_transport": "cc_by_pdf_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΝΕΚΡΩΣΙΜΟΣ ΑΚΟΛΟΥΘΙΑ",
+            "ΕΞΟΔΙΟΣ ΑΚΟΛΟΥΘΙΑ"
+          ],
+          "end_marker": [
+            "ΜΝΗΜΟΣΥΝΟΝ"
+          ]
         },
         {
           "id": "church_memorial",
           "title": "Μνημόσυνο",
-          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/memorial/gr-en/index.html",
+          "source_transport": "cc_by_pdf_text",
           "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
           "filter_script": "greek",
           "start_marker": [
-            "ΤΟ ΜΝΗΜΟΣΥΝΟΝ",
-            "Memorial Service"
+            "ΜΝΗΜΟΣΥΝΟΝ"
           ],
-          "source_transport": "dcs_static"
+          "end_marker": [
+            "ΤΡΙΣΑΓΙΟΝ"
+          ]
         },
         {
           "id": "church_trisagion",
-          "title": "Τρισάγιον",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-trisagion-service?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "title": "Τρισάγιον ὑπὲρ Κεκοιμημένων",
+          "source_transport": "cc_by_pdf_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΤΡΙΣΑΓΙΟΝ",
+            "ΚΕΚΟΙΜΗΜΕΝΩΝ"
+          ],
+          "end_marker": [
+            "ΧΕΙΡΟΤΟΝΙΑ"
+          ]
         },
         {
           "id": "church_priesthood",
           "title": "Ἀκολουθία Χειροτονίας Πρεσβυτέρου",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-priesthood?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
+          "source_transport": "cc_by_pdf_text",
           "required": true,
-          "source_transport": "goarch_browser_fallback"
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΧΕΙΡΟΤΟΝΙΑ ΠΡΕΣΒΥΤΕΡΟΥ",
+            "ΧΕΙΡΟΤΟΝΙΑ ΕΙΣ ΠΡΕΣΒΥΤΕΡΟΝ"
+          ],
+          "end_marker": [
+            "ΧΕΙΡΟΤΟΝΙΑ ΔΙΑΚΟΝΟΥ",
+            "ΧΕΙΡΟΤΟΝΙΑ ΕΙΣ ΔΙΑΚΟΝΟΝ"
+          ]
         },
         {
-          "id": "church_funeral_priest",
-          "title": "Ἐξόδιος Ἀκολουθία Ἱερέως",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/funeral-for-clergy?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_artoklasia",
-          "title": "Ἀρτοκλασία — Εὐλογία τῶν Πέντε Ἄρτων",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/artoklasia?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
-        },
-        {
-          "id": "church_ordination_diaconate",
-          "title": "Χειροτονία Διακόνου",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-diaconate?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": false,
-          "source_transport": "goarch_browser_fallback"
+          "id": "church_great_water",
+          "title": "Ἀκολουθία τοῦ Μεγάλου Ἁγιασμοῦ",
+          "source_transport": "cc_by_pdf_text",
+          "required": true,
+          "allow_link_fallback": true,
+          "permission_confirmed": true,
+          "redistribution_review_required": false,
+          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
+          "marker_occurrence": "last",
+          "filter_script": "greek",
+          "start_marker": [
+            "ΜΕΓΑΛΟΥ ΑΓΙΑΣΜΟΥ",
+            "ΜΕΓΑΣ ΑΓΙΑΣΜΟΣ"
+          ],
+          "end_marker": [
+            "ΜΙΚΡΟΥ ΑΓΙΑΣΜΟΥ",
+            "ΜΙΚΡΟΣ ΑΓΙΑΣΜΟΣ"
+          ]
         }
       ]
     }

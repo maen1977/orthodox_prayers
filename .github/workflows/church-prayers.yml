@@ -63,16 +63,15 @@ jobs:
             --output-dir app/build/generated/bibleAssets/bible/corpus \
             --cache-dir app/build/bible-download-cache
 
-      - name: Verify browser fallback for protected Church sources
+      - name: Prepare open liturgical source tools
         shell: bash
         run: |
           set -euo pipefail
-          browser="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
-          if [[ -z "$browser" ]]; then
-            echo "A Chromium/Chrome executable is required for GOARCH HTTP 403 fallback." >&2
-            exit 1
+          if ! command -v pdftotext >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y poppler-utils
           fi
-          echo "CHURCH_SERVICE_BROWSER_OK $browser"
+          pdftotext -v 2>&1 | head -n 1 || true
 
       - name: Prepare complete native church services
         run: |
