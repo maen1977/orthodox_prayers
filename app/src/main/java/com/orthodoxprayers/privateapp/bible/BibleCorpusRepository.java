@@ -8,13 +8,19 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Reads reference-aware Bible TSV files bundled in the APK. The files are
  * generated at build time from redistributable public-domain eBible USFM
  * archives. No network is used at runtime.
+ *
+ * Daily passage and chapter reads use small per-book assets, avoiding repeated
+ * scans of the entire 30k+ verse corpus. Full-corpus scans are reserved for the
+ * explicit Search screen, which already runs them off the UI thread.
  */
 public final class BibleCorpusRepository {
     public static final String ASSET_ROOT = "bible/corpus/";
@@ -23,15 +29,27 @@ public final class BibleCorpusRepository {
     public static final String GREEK_OT = "grc-grcbrent.tsv";
     public static final String GREEK_NT = "grc-grcbyz.tsv";
 
+    private static final CorpusSource ARABIC_SOURCE = new CorpusSource("arb-vd", ARABIC);
+    private static final CorpusSource ENGLISH_SOURCE = new CorpusSource("eng-webbe", ENGLISH);
+    private static final CorpusSource GREEK_OT_SOURCE = new CorpusSource("grcbrent", GREEK_OT);
+    private static final CorpusSource GREEK_NT_SOURCE = new CorpusSource("grcbyz", GREEK_NT);
+    private static final int PASSAGE_CACHE_LIMIT = 128;
+
     private final Context context;
+    private final LinkedHashMap<String, ResolvedPassage> passageCache =
+            new LinkedHashMap<String, ResolvedPassage>(PASSAGE_CACHE_LIMIT, 0.75f, true) {
+                @Override protected boolean removeEldestEntry(Map.Entry<String, ResolvedPassage> eldest) {
+                    return size() > PASSAGE_CACHE_LIMIT;
+                }
+            };
 
     public BibleCorpusRepository(Context context) {
         this.context = context.getApplicationContext();
     }
 
     public boolean isBundled() {
-        for (String file : new String[] {ARABIC, ENGLISH, GREEK_OT, GREEK_NT}) {
-            try (BufferedReader ignored = open(file)) {
+        for (CorpusSource source : new CorpusSource[] {ARABIC_SOURCE, ENGLISH_SOURCE, GREEK_OT_SOURCE, GREEK_NT_SOURCE}) {
+            try (BufferedReader ignored = open(source.monolithicFile)) {
                 // Continue until every required corpus is proven present.
             } catch (Exception error) {
                 return false;
@@ -43,36 +61,41 @@ public final class BibleCorpusRepository {
     public ResolvedPassage resolve(String language, String canonical) throws IOException {
         List<BibleReference> ranges = BibleReference.parseMany(canonical);
         if (ranges.isEmpty()) return null;
+        String cacheKey = normalizeLanguage(language) + "|" + canonical.trim();
+        synchronized (passageCache) {
+            ResolvedPassage cached = passageCache.get(cacheKey);
+            if (cached != null) return cached;
+        }
+
         StringBuilder text = new StringBuilder();
         int verseCount = 0;
-        for (String file : filesForLanguage(language)) {
-            try (BufferedReader reader = open(file)) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    CorpusVerse verse = parseCorpusLine(line);
-                    if (verse == null) continue;
-                    boolean selected = false;
-                    for (BibleReference range : ranges) {
-                        if (range.contains(verse.book, verse.chapter, verse.verse)) {
-                            selected = true;
-                            break;
-                        }
+        for (BibleReference range : ranges) {
+            for (CorpusSource source : sourcesForLanguage(language)) {
+                try (BufferedReader reader = openBook(source, range.book)) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        CorpusVerse verse = parseCorpusLine(line);
+                        if (verse == null || !range.contains(verse.book, verse.chapter, verse.verse)) continue;
+                        if (verse.text.isEmpty() || "<range>".equals(verse.text)) continue;
+                        if (text.length() > 0) text.append('\n');
+                        text.append(verse.verse).append(". ").append(verse.text);
+                        verseCount++;
                     }
-                    if (!selected || verse.text.isEmpty() || "<range>".equals(verse.text)) continue;
-                    if (text.length() > 0) text.append('\n');
-                    text.append(verse.verse).append(". ").append(verse.text);
-                    verseCount++;
+                } catch (IOException missingBookInThisEdition) {
+                    // Greek OT/NT are separate sources; a book normally exists in only one.
                 }
             }
         }
         if (verseCount == 0) return null;
-        return new ResolvedPassage(text.toString(), sourceId(language), sourceUrl(language), verseCount);
+        ResolvedPassage result = new ResolvedPassage(text.toString(), sourceId(language), sourceUrl(language), verseCount);
+        synchronized (passageCache) { passageCache.put(cacheKey, result); }
+        return result;
     }
 
     public Chapter chapter(String language, String book, int chapter) throws IOException {
         ArrayList<Verse> verses = new ArrayList<>();
-        for (String file : filesForLanguage(language)) {
-            try (BufferedReader reader = open(file)) {
+        for (CorpusSource source : sourcesForLanguage(language)) {
+            try (BufferedReader reader = openBook(source, book)) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     CorpusVerse verse = parseCorpusLine(line);
@@ -81,6 +104,8 @@ public final class BibleCorpusRepository {
                         verses.add(new Verse(verse.book, verse.chapter, verse.verse, verse.text));
                     }
                 }
+            } catch (IOException missingBookInThisEdition) {
+                // Continue to the companion Greek source when appropriate.
             }
         }
         return new Chapter(book, chapter, verses);
@@ -88,8 +113,8 @@ public final class BibleCorpusRepository {
 
     public List<BookInfo> books(String language) throws IOException {
         LinkedHashMap<String, BookInfo> result = new LinkedHashMap<>();
-        for (String file : filesForLanguage(language)) {
-            try (BufferedReader reader = open(file)) {
+        for (CorpusSource source : sourcesForLanguage(language)) {
+            try (BufferedReader reader = open(source.monolithicFile)) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     CorpusVerse verse = parseCorpusLine(line);
@@ -108,9 +133,9 @@ public final class BibleCorpusRepository {
         if (needle.isEmpty()) return new ArrayList<>();
         int max = Math.max(1, Math.min(200, limit));
         ArrayList<SearchHit> result = new ArrayList<>();
-        for (String file : filesForLanguage(language)) {
+        for (CorpusSource source : sourcesForLanguage(language)) {
             if (result.size() >= max) break;
-            try (BufferedReader reader = open(file)) {
+            try (BufferedReader reader = open(source.monolithicFile)) {
                 String line;
                 while ((line = reader.readLine()) != null && result.size() < max) {
                     CorpusVerse verse = parseCorpusLine(line);
@@ -124,15 +149,26 @@ public final class BibleCorpusRepository {
         return result;
     }
 
-    private String[] filesForLanguage(String language) {
-        if ("ar".equals(language)) return new String[] {ARABIC};
-        if ("el".equals(language)) return new String[] {GREEK_OT, GREEK_NT};
-        return new String[] {ENGLISH};
+    public void clearPassageCache() {
+        synchronized (passageCache) { passageCache.clear(); }
+    }
+
+    private CorpusSource[] sourcesForLanguage(String language) {
+        if ("ar".equals(language)) return new CorpusSource[] {ARABIC_SOURCE};
+        if ("el".equals(language)) return new CorpusSource[] {GREEK_OT_SOURCE, GREEK_NT_SOURCE};
+        return new CorpusSource[] {ENGLISH_SOURCE};
     }
 
     private BufferedReader open(String name) throws IOException {
         return new BufferedReader(new InputStreamReader(
                 context.getAssets().open(ASSET_ROOT + name), StandardCharsets.UTF_8), 32 * 1024);
+    }
+
+    private BufferedReader openBook(CorpusSource source, String book) throws IOException {
+        if (book == null || !book.matches("[1-4]?[A-Z0-9]{2,4}")) throw new IOException("bible_book_invalid");
+        return new BufferedReader(new InputStreamReader(
+                context.getAssets().open(ASSET_ROOT + "books/" + source.id + "/" + book + ".tsv"),
+                StandardCharsets.UTF_8), 8 * 1024);
     }
 
     private static CorpusVerse parseCorpusLine(String line) {
@@ -147,6 +183,12 @@ public final class BibleCorpusRepository {
         } catch (NumberFormatException ignored) {
             return null;
         }
+    }
+
+    private static String normalizeLanguage(String language) {
+        if ("ar".equals(language)) return "ar";
+        if ("el".equals(language)) return "el";
+        return "en";
     }
 
     private static String normalizeSearch(String value) {
@@ -168,6 +210,15 @@ public final class BibleCorpusRepository {
         if ("ar".equals(language)) return "https://ebible.org/arb-vd/";
         if ("el".equals(language)) return "https://ebible.org/grcbrent/ + https://ebible.org/grcbyz/";
         return "https://ebible.org/eng-webbe/";
+    }
+
+    private static final class CorpusSource {
+        final String id;
+        final String monolithicFile;
+        CorpusSource(String id, String monolithicFile) {
+            this.id = id;
+            this.monolithicFile = monolithicFile;
+        }
     }
 
     private static final class CorpusVerse {

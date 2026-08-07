@@ -213,6 +213,23 @@ def write_tsv(path: Path, verses: dict[tuple[str, int, int], str]) -> int:
     return count
 
 
+
+
+def write_book_tsvs(output_dir: Path, source_id: str, verses: dict[tuple[str, int, int], str]) -> dict[str, int]:
+    """Write small per-book assets for fast daily/chapter lookups on Android."""
+    source_dir = output_dir / "books" / source_id
+    if source_dir.exists():
+        shutil.rmtree(source_dir)
+    source_dir.mkdir(parents=True, exist_ok=True)
+    by_book: dict[str, dict[tuple[str, int, int], str]] = {}
+    for key, value in verses.items():
+        by_book.setdefault(key[0], {})[key] = value
+    chapters: dict[str, int] = {}
+    for book, book_verses in by_book.items():
+        write_tsv(source_dir / f"{book}.tsv", book_verses)
+        chapters[book] = max(chapter for (_, chapter, _), _ in book_verses.items())
+    return chapters
+
 def prepare(output_dir: Path, cache_dir: Path) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest = {"schemaVersion": 1, "format": "book-tab-chapter-tab-verse-tab-text", "sources": []}
@@ -221,6 +238,7 @@ def prepare(output_dir: Path, cache_dir: Path) -> dict:
         verses = parse_usfm_zip(archive)
         target = output_dir / source.output_name
         verse_count = write_tsv(target, verses)
+        book_chapters = write_book_tsvs(output_dir, source.source_id, verses)
         if verse_count < source.min_verses:
             raise RuntimeError(
                 f"Bible source {source.source_id} is incomplete: {verse_count} textual verses; expected at least {source.min_verses}"
@@ -232,6 +250,8 @@ def prepare(output_dir: Path, cache_dir: Path) -> dict:
             "verseCount": verse_count,
             "archiveSha256": sha256_bytes(archive),
             "downloadedFrom": used_url,
+            "bookDirectory": f"books/{source.source_id}",
+            "bookChapters": book_chapters,
         })
         print(f"BIBLE_CORPUS_OK {source.source_id} verses={verse_count} output={target}")
     manifest_path = output_dir / "manifest.json"

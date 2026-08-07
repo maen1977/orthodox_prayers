@@ -52,6 +52,7 @@ public final class DataRepository {
     private final boolean languageScopedStore;
     private final DataSignatureVerifier signatureVerifier;
     private final LocalDailyContentEngine localDailyContentEngine;
+    private final LocalDailyCacheStore localDailyCacheStore;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Object refreshGuard = new Object();
@@ -101,6 +102,7 @@ public final class DataRepository {
         this.dataStore = dataStore;
         this.signatureVerifier = signatureVerifier;
         this.localDailyContentEngine = new LocalDailyContentEngine(this.context);
+        this.localDailyCacheStore = new LocalDailyCacheStore(this.context);
         this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
         sourceRegistry = loadJsonAsset("data/source_registry.json");
@@ -112,7 +114,10 @@ public final class DataRepository {
         // Keep startup light on older devices. The immutable annual calendar is
         // loaded only when a calendar screen or a dated lookup requests it.
         activatePackage(loadBestToday());
-        activateLocalCurrentPackageIfNeeded();
+        // Never rebuild the nine-day package on the Android main thread. Reuse a
+        // previously generated local package when it is still valid; otherwise
+        // MainActivity/WorkManager will rebuild it asynchronously after first draw.
+        activateCachedLocalPackageIfAvailable();
     }
 
     private synchronized void loadCalendarYear(int year) {
@@ -452,7 +457,9 @@ public final class DataRepository {
         loadedStoredHash = "";
         loadError = "";
         activatePackage(loadBestToday());
-        activateLocalCurrentPackageIfNeeded();
+        // The local package contains all three language lanes, so a language
+        // switch can reuse it immediately without a synchronous rebuild.
+        activateCachedLocalPackageIfAvailable();
     }
 
     public java.util.List<String> availableCachedDates() {
@@ -674,6 +681,13 @@ public final class DataRepository {
             trustSource = "local_offline_engine";
             contentHash = localHash;
             loadError = "";
+            try {
+                localDailyCacheStore.save(encoded);
+            } catch (Exception cacheError) {
+                // The in-memory package is already valid. A cache write failure
+                // must never make Daily Update fail or block the UI.
+                Log.w(TAG, "Local daily cache could not be saved", cacheError);
+            }
             return new RefreshOutcome(
                     changed ? RefreshResult.UPDATED : RefreshResult.NOT_MODIFIED,
                     changed ? "updated_local_offline" : "local_offline_current"
@@ -687,15 +701,25 @@ public final class DataRepository {
         }
     }
 
-    private void activateLocalCurrentPackageIfNeeded() {
-        if (hasUsableCurrentData()) return;
-        RefreshOutcome outcome = performRefresh(false);
-        if (outcome.result == RefreshResult.FAILED) {
-            loadError = outcome.message;
-            Log.e(TAG, "No current local daily package is available: " + outcome.message);
-        } else {
+    private void activateCachedLocalPackageIfAvailable() {
+        try {
+            byte[] cachedBytes = localDailyCacheStore.read();
+            if (cachedBytes == null || cachedBytes.length == 0) return;
+            JSONObject cached = new JSONObject(new String(cachedBytes, StandardCharsets.UTF_8));
+            String error = validate(cached, currentAmmanDate(), true);
+            if (error != null) {
+                localDailyCacheStore.clear();
+                return;
+            }
+            synchronized (this) { activatePackage(cached); }
+            trustSource = "local_offline_engine";
+            contentHash = sha256(cachedBytes);
+            loadError = "";
             refreshState = RefreshState.CURRENT;
-            refreshMessage = outcome.message;
+            refreshMessage = "local_offline_current";
+        } catch (Exception cacheError) {
+            localDailyCacheStore.clear();
+            Log.w(TAG, "Cached local daily package was rejected", cacheError);
         }
     }
 

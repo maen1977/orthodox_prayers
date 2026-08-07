@@ -69,6 +69,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     private static final long MIN_DAY_WATCH_DELAY_MS = 1_000L;
     private static final long AUTOMATIC_OPEN_BUSY_RETRY_DELAY_MS = 1_000L;
     private static final long AUTOMATIC_OPEN_RETRY_DELAY_MS = TimeUnit.MINUTES.toMillis(15);
+    private static final long RESUME_MAINTENANCE_DELAY_MS = 350L;
 
     private AppPreferences preferences;
     private DataRepository repository;
@@ -104,13 +105,30 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                 );
                 return;
             }
+            String currentDate = repository.currentAmmanDate();
+            boolean dayChanged = observedAmmanDate != null && !observedAmmanDate.equals(currentDate);
+            observedAmmanDate = currentDate;
+            if (!updateCoordinator.shouldRefresh(dayChanged, true)) {
+                automaticOpenRefreshPending = false;
+                return;
+            }
             automaticOpenRefreshPending = false;
-            observedAmmanDate = repository.currentAmmanDate();
             requestDataRefresh(
                     false,
-                    !repository.hasUsableCurrentData(),
+                    dayChanged || !repository.hasUsableCurrentData(),
                     true
             );
+        }
+    };
+    private final Runnable resumeMaintenance = new Runnable() {
+        @Override
+        public void run() {
+            if (!dayChangeWatcherRunning || isFinishing()) return;
+            ((OrthodoxPrayersApp) getApplication()).refreshShortcuts();
+            updateCoordinator.scheduleDailyRefresh();
+            appUpdateManager.schedulePeriodicChecks();
+            boolean resumingAppUpdateInstall = appUpdateManager.resumePendingInstall(MainActivity.this);
+            if (!resumingAppUpdateInstall) appUpdateManager.checkOnAppOpen(MainActivity.this);
         }
     };
     private int bottomNavBaseHeight;
@@ -177,11 +195,11 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     @Override
     protected void onResume() {
         super.onResume();
-        ((OrthodoxPrayersApp) getApplication()).refreshShortcuts();
-        updateCoordinator.scheduleDailyRefresh();
-        appUpdateManager.schedulePeriodicChecks();
-        boolean resumingAppUpdateInstall = appUpdateManager.resumePendingInstall(this);
-        if (!resumingAppUpdateInstall) appUpdateManager.checkOnAppOpen(this);
+        // Draw the restored screen first. Launcher shortcuts, WorkManager and the
+        // APK update check are useful maintenance, but none belongs on the path
+        // that must complete before the first visible frame.
+        automaticUpdateHandler.removeCallbacks(resumeMaintenance);
+        automaticUpdateHandler.postDelayed(resumeMaintenance, RESUME_MAINTENANCE_DELAY_MS);
         if (automaticOpenRefreshPending) {
             automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
             automaticUpdateHandler.post(automaticOpenRefreshCheck);
@@ -194,6 +212,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
     protected void onStop() {
         automaticOpenRefreshPending = false;
         automaticUpdateHandler.removeCallbacks(automaticOpenRefreshCheck);
+        automaticUpdateHandler.removeCallbacks(resumeMaintenance);
         stopDayChangeWatcher();
         super.onStop();
     }
