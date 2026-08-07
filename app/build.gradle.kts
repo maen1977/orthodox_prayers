@@ -1,7 +1,3 @@
-import java.io.InputStream
-import java.net.URI
-import java.net.URLConnection
-
 plugins {
     id("com.android.application")
 }
@@ -18,47 +14,20 @@ val releaseSigningAvailable = listOf(
 ).all { !it.isNullOrBlank() }
 
 
-val bibleCorpusFiles = linkedMapOf(
-    "vref.txt" to Triple("https://raw.githubusercontent.com/BibleNLP/ebible/main/metadata/vref.txt", 40000, 40000),
-    "arb-arb-vd.txt" to Triple("https://raw.githubusercontent.com/BibleNLP/ebible/main/corpus/arb-arb-vd.txt", 40000, 31000),
-    "eng-eng-webbe.txt" to Triple("https://raw.githubusercontent.com/BibleNLP/ebible/main/corpus/eng-eng-webbe.txt", 40000, 37000),
-    "grc-grcbrent.txt" to Triple("https://raw.githubusercontent.com/BibleNLP/ebible/main/corpus/grc-grcbrent.txt", 40000, 26000),
-    "grc-grcbyz.txt" to Triple("https://raw.githubusercontent.com/BibleNLP/ebible/main/corpus/grc-grcbyz.txt", 40000, 7900)
-)
 val generatedBibleAssets = layout.buildDirectory.dir("generated/bibleAssets")
-val prepareBibleCorpus by tasks.registering {
+val bibleCorpusOutput = generatedBibleAssets.map { it.dir("bible/corpus") }
+val bibleCorpusCache = layout.buildDirectory.dir("bible-download-cache")
+val prepareBibleCorpus by tasks.registering(Exec::class) {
     group = "orthodox prayers"
-    description = "Downloads redistributable public-domain Bible corpus files and embeds them in the APK."
-    val outputRoot = generatedBibleAssets.map { it.dir("bible/corpus") }
-    outputs.dir(outputRoot)
-    doLast {
-        val outputDir = outputRoot.get().asFile
-        outputDir.mkdirs()
-        bibleCorpusFiles.forEach { (name, spec) ->
-            val target = outputDir.resolve(name)
-            if (!target.isFile || target.length() < 1024L) {
-                val connection: URLConnection = URI(spec.first).toURL().openConnection().apply {
-                    connectTimeout = 30000
-                    readTimeout = 120000
-                    setRequestProperty("User-Agent", "OrthodoxPrayers-BibleBuilder/5.4")
-                }
-                connection.getInputStream().use { input: InputStream ->
-                    target.outputStream().use { output -> input.copyTo(output) }
-                }
-            }
-            val counts = target.bufferedReader(Charsets.UTF_8).useLines { lines ->
-                var total = 0
-                var nonBlank = 0
-                lines.forEach { line ->
-                    total++
-                    if (line.isNotBlank() && line.trim() != "<range>") nonBlank++
-                }
-                Pair(total, nonBlank)
-            }
-            require(counts.first >= spec.second) { "Bible corpus file $name is truncated: ${counts.first} lines" }
-            require(counts.second >= spec.third) { "Bible corpus file $name has too little Scripture text: ${counts.second} nonblank lines" }
-        }
-    }
+    description = "Downloads official eBible USFM archives and compiles offline Bible assets."
+    inputs.file(rootProject.file("scripts/prepare_bible_corpus.py"))
+    outputs.dir(bibleCorpusOutput)
+    commandLine(
+        "python",
+        rootProject.file("scripts/prepare_bible_corpus.py").absolutePath,
+        "--output-dir", bibleCorpusOutput.get().asFile.absolutePath,
+        "--cache-dir", bibleCorpusCache.get().asFile.absolutePath
+    )
 }
 
 android {

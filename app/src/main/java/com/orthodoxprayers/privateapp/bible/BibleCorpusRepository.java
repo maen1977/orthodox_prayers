@@ -8,24 +8,20 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 
 /**
- * Reads verse-per-line Bible corpora bundled in the APK. The files are generated
- * at build time from the redistributable BibleNLP/eBible corpus. No network is
- * used at runtime.
+ * Reads reference-aware Bible TSV files bundled in the APK. The files are
+ * generated at build time from redistributable public-domain eBible USFM
+ * archives. No network is used at runtime.
  */
 public final class BibleCorpusRepository {
     public static final String ASSET_ROOT = "bible/corpus/";
-    public static final String VREF = "vref.txt";
-    public static final String ARABIC = "arb-arb-vd.txt";
-    public static final String ENGLISH = "eng-eng-webbe.txt";
-    public static final String GREEK_OT = "grc-grcbrent.txt";
-    public static final String GREEK_NT = "grc-grcbyz.txt";
+    public static final String ARABIC = "arb-arb-vd.tsv";
+    public static final String ENGLISH = "eng-eng-webbe.tsv";
+    public static final String GREEK_OT = "grc-grcbrent.tsv";
+    public static final String GREEK_NT = "grc-grcbyz.tsv";
 
     private final Context context;
 
@@ -34,11 +30,14 @@ public final class BibleCorpusRepository {
     }
 
     public boolean isBundled() {
-        try (BufferedReader ignored = open(VREF)) {
-            return true;
-        } catch (Exception error) {
-            return false;
+        for (String file : new String[] {ARABIC, ENGLISH, GREEK_OT, GREEK_NT}) {
+            try (BufferedReader ignored = open(file)) {
+                // Continue until every required corpus is proven present.
+            } catch (Exception error) {
+                return false;
+            }
         }
+        return true;
     }
 
     public ResolvedPassage resolve(String language, String canonical) throws IOException {
@@ -46,26 +45,24 @@ public final class BibleCorpusRepository {
         if (ranges.isEmpty()) return null;
         StringBuilder text = new StringBuilder();
         int verseCount = 0;
-        try (ParallelReaders readers = openParallel(language)) {
-            String refLine;
-            while ((refLine = readers.refs.readLine()) != null) {
-                String verseText = readers.nextText();
-                BibleReference.ParsedVerseRef ref = BibleReference.parseVrefLine(refLine);
-                if (ref == null) continue;
-                boolean selected = false;
-                for (BibleReference range : ranges) {
-                    if (range.contains(ref.book, ref.chapter, ref.verse)) {
-                        selected = true;
-                        break;
+        for (String file : filesForLanguage(language)) {
+            try (BufferedReader reader = open(file)) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    CorpusVerse verse = parseCorpusLine(line);
+                    if (verse == null) continue;
+                    boolean selected = false;
+                    for (BibleReference range : ranges) {
+                        if (range.contains(verse.book, verse.chapter, verse.verse)) {
+                            selected = true;
+                            break;
+                        }
                     }
+                    if (!selected || verse.text.isEmpty() || "<range>".equals(verse.text)) continue;
+                    if (text.length() > 0) text.append('\n');
+                    text.append(verse.verse).append(". ").append(verse.text);
+                    verseCount++;
                 }
-                if (!selected) continue;
-                String raw = verseText == null ? "" : verseText.trim();
-                if (raw.isEmpty()) return null;
-                if ("<range>".equals(raw)) continue;
-                if (text.length() > 0) text.append('\n');
-                text.append(ref.verse).append(". ").append(raw);
-                verseCount++;
             }
         }
         if (verseCount == 0) return null;
@@ -74,14 +71,16 @@ public final class BibleCorpusRepository {
 
     public Chapter chapter(String language, String book, int chapter) throws IOException {
         ArrayList<Verse> verses = new ArrayList<>();
-        try (ParallelReaders readers = openParallel(language)) {
-            String refLine;
-            while ((refLine = readers.refs.readLine()) != null) {
-                String verseText = readers.nextText();
-                BibleReference.ParsedVerseRef ref = BibleReference.parseVrefLine(refLine);
-                if (ref == null || !book.equals(ref.book) || ref.chapter != chapter) continue;
-                String clean = cleanCorpusText(verseText);
-                if (!clean.isEmpty()) verses.add(new Verse(ref.book, ref.chapter, ref.verse, clean));
+        for (String file : filesForLanguage(language)) {
+            try (BufferedReader reader = open(file)) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    CorpusVerse verse = parseCorpusLine(line);
+                    if (verse == null || !book.equals(verse.book) || verse.chapter != chapter) continue;
+                    if (!verse.text.isEmpty() && !"<range>".equals(verse.text)) {
+                        verses.add(new Verse(verse.book, verse.chapter, verse.verse, verse.text));
+                    }
+                }
             }
         }
         return new Chapter(book, chapter, verses);
@@ -89,15 +88,16 @@ public final class BibleCorpusRepository {
 
     public List<BookInfo> books(String language) throws IOException {
         LinkedHashMap<String, BookInfo> result = new LinkedHashMap<>();
-        try (ParallelReaders readers = openParallel(language)) {
-            String refLine;
-            while ((refLine = readers.refs.readLine()) != null) {
-                String verseText = readers.nextText();
-                BibleReference.ParsedVerseRef ref = BibleReference.parseVrefLine(refLine);
-                if (ref == null || cleanCorpusText(verseText).isEmpty()) continue;
-                BookInfo current = result.get(ref.book);
-                if (current == null) result.put(ref.book, new BookInfo(ref.book, ref.chapter));
-                else if (ref.chapter > current.chapterCount) current.chapterCount = ref.chapter;
+        for (String file : filesForLanguage(language)) {
+            try (BufferedReader reader = open(file)) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    CorpusVerse verse = parseCorpusLine(line);
+                    if (verse == null || verse.text.isEmpty() || "<range>".equals(verse.text)) continue;
+                    BookInfo current = result.get(verse.book);
+                    if (current == null) result.put(verse.book, new BookInfo(verse.book, verse.chapter));
+                    else if (verse.chapter > current.chapterCount) current.chapterCount = verse.chapter;
+                }
             }
         }
         return new ArrayList<>(result.values());
@@ -108,24 +108,26 @@ public final class BibleCorpusRepository {
         if (needle.isEmpty()) return new ArrayList<>();
         int max = Math.max(1, Math.min(200, limit));
         ArrayList<SearchHit> result = new ArrayList<>();
-        try (ParallelReaders readers = openParallel(language)) {
-            String refLine;
-            while ((refLine = readers.refs.readLine()) != null && result.size() < max) {
-                String verseText = readers.nextText();
-                String clean = cleanCorpusText(verseText);
-                if (clean.isEmpty() || !normalizeSearch(clean).contains(needle)) continue;
-                BibleReference.ParsedVerseRef ref = BibleReference.parseVrefLine(refLine);
-                if (ref != null) result.add(new SearchHit(ref.book, ref.chapter, ref.verse, clean));
+        for (String file : filesForLanguage(language)) {
+            if (result.size() >= max) break;
+            try (BufferedReader reader = open(file)) {
+                String line;
+                while ((line = reader.readLine()) != null && result.size() < max) {
+                    CorpusVerse verse = parseCorpusLine(line);
+                    if (verse == null || verse.text.isEmpty() || "<range>".equals(verse.text)) continue;
+                    if (normalizeSearch(verse.text).contains(needle)) {
+                        result.add(new SearchHit(verse.book, verse.chapter, verse.verse, verse.text));
+                    }
+                }
             }
         }
         return result;
     }
 
-    private ParallelReaders openParallel(String language) throws IOException {
-        BufferedReader refs = open(VREF);
-        if ("ar".equals(language)) return new ParallelReaders(refs, open(ARABIC), null);
-        if ("el".equals(language)) return new ParallelReaders(refs, open(GREEK_OT), open(GREEK_NT));
-        return new ParallelReaders(refs, open(ENGLISH), null);
+    private String[] filesForLanguage(String language) {
+        if ("ar".equals(language)) return new String[] {ARABIC};
+        if ("el".equals(language)) return new String[] {GREEK_OT, GREEK_NT};
+        return new String[] {ENGLISH};
     }
 
     private BufferedReader open(String name) throws IOException {
@@ -133,11 +135,18 @@ public final class BibleCorpusRepository {
                 context.getAssets().open(ASSET_ROOT + name), StandardCharsets.UTF_8), 32 * 1024);
     }
 
-    private static String cleanCorpusText(String text) {
-        if (text == null) return "";
-        String value = text.trim();
-        if (value.isEmpty() || "<range>".equals(value)) return "";
-        return value;
+    private static CorpusVerse parseCorpusLine(String line) {
+        if (line == null || line.isEmpty()) return null;
+        String[] parts = line.split("\\t", 4);
+        if (parts.length != 4) return null;
+        try {
+            int chapter = Integer.parseInt(parts[1]);
+            int verse = Integer.parseInt(parts[2]);
+            if (chapter <= 0 || verse <= 0 || parts[0].isEmpty()) return null;
+            return new CorpusVerse(parts[0], chapter, verse, parts[3].trim());
+        } catch (NumberFormatException ignored) {
+            return null;
+        }
     }
 
     private static String normalizeSearch(String value) {
@@ -157,35 +166,20 @@ public final class BibleCorpusRepository {
 
     public static String sourceUrl(String language) {
         if ("ar".equals(language)) return "https://ebible.org/arb-vd/";
-        if ("el".equals(language)) return "https://ebible.org/";
+        if ("el".equals(language)) return "https://ebible.org/grcbrent/ + https://ebible.org/grcbyz/";
         return "https://ebible.org/eng-webbe/";
     }
 
-    private static final class ParallelReaders implements AutoCloseable {
-        final BufferedReader refs;
-        final BufferedReader primary;
-        final BufferedReader secondary;
-
-        ParallelReaders(BufferedReader refs, BufferedReader primary, BufferedReader secondary) {
-            this.refs = refs;
-            this.primary = primary;
-            this.secondary = secondary;
-        }
-
-        String nextText() throws IOException {
-            String first = primary.readLine();
-            if (secondary == null) return first == null ? "" : first;
-            String second = secondary.readLine();
-            if (first != null && !first.trim().isEmpty()) return first;
-            return second == null ? "" : second;
-        }
-
-        @Override public void close() throws IOException {
-            IOException failure = null;
-            try { refs.close(); } catch (IOException e) { failure = e; }
-            try { primary.close(); } catch (IOException e) { if (failure == null) failure = e; }
-            if (secondary != null) try { secondary.close(); } catch (IOException e) { if (failure == null) failure = e; }
-            if (failure != null) throw failure;
+    private static final class CorpusVerse {
+        final String book;
+        final int chapter;
+        final int verse;
+        final String text;
+        CorpusVerse(String book, int chapter, int verse, String text) {
+            this.book = book;
+            this.chapter = chapter;
+            this.verse = verse;
+            this.text = text;
         }
     }
 

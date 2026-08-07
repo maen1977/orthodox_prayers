@@ -9,12 +9,16 @@ def text(path):
 
 def test_v540_version_and_full_bible_build_assets():
     gradle = text("app/build.gradle.kts")
+    prepare = text("scripts/prepare_bible_corpus.py")
     assert 'versionCode = 50400' in gradle
     assert 'versionName = "5.4.0"' in gradle
-    for name in ["vref.txt", "arb-arb-vd.txt", "eng-eng-webbe.txt", "grc-grcbrent.txt", "grc-grcbyz.txt"]:
-        assert name in gradle
+    for name in ["arb-arb-vd.tsv", "eng-eng-webbe.tsv", "grc-grcbrent.tsv", "grc-grcbyz.tsv"]:
+        assert name in prepare
     assert 'tasks.named("preBuild").configure { dependsOn(prepareBibleCorpus) }' in gradle
-    assert "raw.githubusercontent.com/BibleNLP/ebible/main" in gradle
+    assert 'rootProject.file("scripts/prepare_bible_corpus.py")' in gradle
+    assert "raw.githubusercontent.com/BibleNLP/ebible/main" not in gradle
+    assert "https://ebible.org/Scriptures/" in prepare
+    assert "_usfm.zip" in prepare
 
 
 def test_runtime_bible_is_offline_and_daily_readings_prefer_it():
@@ -52,3 +56,12 @@ def test_public_domain_sources_are_named_explicitly():
     repo = text("app/src/main/java/com/orthodoxprayers/privateapp/bible/BibleCorpusRepository.java")
     for source in ["arb-vd", "eng-webbe", "grcbrent", "grcbyz"]:
         assert source in repo
+
+
+def test_bible_builder_has_retries_cache_and_completeness_gates():
+    prepare = text("scripts/prepare_bible_corpus.py")
+    assert "for attempt in range(1, 4)" in prepare
+    assert "zipfile.is_zipfile" in prepare
+    assert "min_verses" in prepare
+    assert "BIBLE_CORPUS_FAILED" in prepare
+    assert "archiveSha256" in prepare
