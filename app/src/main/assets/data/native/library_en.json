@@ -27154,11 +27154,1030 @@
         "content_sha256": "c5d492079c28271a9ae91f97db9d6242f2455ac01039050b6bede01c71b180cd",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
+    },
+    {
+      "id": "church_baptism",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Holy Baptism and Chrismation",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Holy Baptism and Chrismation",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Fixed Scripture readings",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Epistle — Romans 6:3–12",
+            "el": ""
+          },
+          "canonical_reference": "ROM.6.3-12"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Gospel — Gospel of Matthew 28:16–20",
+            "el": ""
+          },
+          "canonical_reference": "MAT.28.16-20"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "e9c395df935a6d879870c6832502e55e2bb5823347a18ed371e461a7a15d5497"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/خدمة-المعمودية/"
+      }
+    },
+    {
+      "id": "church_eucharist",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Divine Liturgy and Holy Communion",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Divine Liturgy and Holy Communion",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "2b0ae0389fe4dd15717949fd6cef774935e1418c512af70dcd8593cc4ea276ca"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/المعمودية-والميرون/"
+      },
+      "related_services": [
+        {
+          "service_id": "divine_liturgy",
+          "label": {
+            "ar": "",
+            "en": "Divine Liturgy",
+            "el": ""
+          }
+        },
+        {
+          "service_id": "pre_communion_prayers",
+          "label": {
+            "ar": "",
+            "en": "Prayers Before Communion",
+            "el": ""
+          }
+        },
+        {
+          "service_id": "thanksgiving_after_communion",
+          "label": {
+            "ar": "",
+            "en": "Thanksgiving After Communion",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "church_confession",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Holy Confession",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Holy Confession",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Fixed Scripture readings",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Psalm 50 in Orthodox numbering (51 in the local Bible corpus)",
+            "el": ""
+          },
+          "canonical_reference": "PSA.51.1-19"
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "8158eb19655c36c2cd50f6b186bb04fa7fab77c63c58f46bf763d70ec8473ffe"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/سر-الاعتراف-الالهي/"
+      }
+    },
+    {
+      "id": "church_betrothal",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Service of Betrothal",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Service of Betrothal",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "edfc8133106cad80d86daf34b9bc4c4c3556c9fcd913aa3698e6aee7e202e4eb"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-العربون-الخطوبة/"
+      }
+    },
+    {
+      "id": "church_marriage",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Service of Marriage (Crowning)",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Service of Marriage (Crowning)",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Fixed Scripture readings",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Psalm 127 in Orthodox numbering (128 in the local Bible corpus)",
+            "el": ""
+          },
+          "canonical_reference": "PSA.128.1-6"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Epistle — Ephesians 5:20–33",
+            "el": ""
+          },
+          "canonical_reference": "EPH.5.20-33"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Gospel — Gospel of John 2:1–11",
+            "el": ""
+          },
+          "canonical_reference": "JHN.2.1-11"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "7f91a056a5672830aca3ebaa9a16b0c645fc7ad834d2beeb1614c7292ad153c7"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/خدمة-صلاة-الإكليل/"
+      }
+    },
+    {
+      "id": "church_crowns_removal",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Removal of the Crowns",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Removal of the Crowns",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "a9bd650383641188a4f39883c607e87d4f15db787464ae4711dcf9326d00ad66"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-لحل-الأكاليل/"
+      }
+    },
+    {
+      "id": "church_unction",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Visitation of the Sick and Holy Unction",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Visitation of the Sick and Holy Unction",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Fixed Scripture readings",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "First Epistle — James 5:10–16",
+            "el": ""
+          },
+          "canonical_reference": "JAS.5.10-16"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "First Gospel — Gospel of Luke 10:25–37",
+            "el": ""
+          },
+          "canonical_reference": "LUK.10.25-37"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Second Epistle — Romans 15:1–7",
+            "el": ""
+          },
+          "canonical_reference": "ROM.15.1-7"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Second Gospel — Gospel of Luke 19:1–10",
+            "el": ""
+          },
+          "canonical_reference": "LUK.19.1-10"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Third Epistle — 1 Corinthians 12:27–31; 13:1–8",
+            "el": ""
+          },
+          "canonical_reference": "1CO.12.27-31;1CO.13.1-8"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Third Gospel — Gospel of Matthew 10:1, 5–8",
+            "el": ""
+          },
+          "canonical_reference": "MAT.10.1;MAT.10.5-8"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Fourth Epistle — 2 Corinthians 6:16–18; 7:1",
+            "el": ""
+          },
+          "canonical_reference": "2CO.6.16-18;2CO.7.1"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Fourth Gospel — Gospel of Matthew 8:14–23",
+            "el": ""
+          },
+          "canonical_reference": "MAT.8.14-23"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Fifth Epistle — 2 Corinthians 1:8–11",
+            "el": ""
+          },
+          "canonical_reference": "2CO.1.8-11"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Fifth Gospel — Gospel of Matthew 25:1–13",
+            "el": ""
+          },
+          "canonical_reference": "MAT.25.1-13"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Sixth Epistle — Galatians 5:22–26; 6:1–2",
+            "el": ""
+          },
+          "canonical_reference": "GAL.5.22-26;GAL.6.1-2"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Sixth Gospel — Gospel of Matthew 15:21–28",
+            "el": ""
+          },
+          "canonical_reference": "MAT.15.21-28"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Seventh Epistle — 1 Thessalonians 5:14–23",
+            "el": ""
+          },
+          "canonical_reference": "1TH.5.14-23"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Seventh Gospel — Gospel of Matthew 9:9–13",
+            "el": ""
+          },
+          "canonical_reference": "MAT.9.9-13"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "370aa897049276c5d52116e86de63952694866bd4ee8cde2906c37b0b499e464"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-سر-الزيت-المقدس/"
+      },
+      "related_services": [
+        {
+          "service_id": "pre_communion_prayers",
+          "label": {
+            "ar": "",
+            "en": "Prayers Before Communion",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "church_funeral",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Funeral Service",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Funeral Service",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Fixed Scripture readings",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Psalm 90 in Orthodox numbering (91 in the local Bible corpus)",
+            "el": ""
+          },
+          "canonical_reference": "PSA.91.1-16"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Epistle — 1 Thessalonians 4:13–17",
+            "el": ""
+          },
+          "canonical_reference": "1TH.4.13-17"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Gospel — Gospel of John 5:24–30",
+            "el": ""
+          },
+          "canonical_reference": "JHN.5.24-30"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "6d9a6b6ee58ed0dbe9ad51c79dc412fea46471a177f943fbf323e0bfb25576cd"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-الجنازة-للعلمانيين/"
+      }
+    },
+    {
+      "id": "church_memorial",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Memorial Service (Trisagion)",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Memorial Service (Trisagion)",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "de25a4011f949d57d6588f050e7a5accdeafe9aa1335b6a4aa6e217419e94862"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/"
+      }
+    },
+    {
+      "id": "church_home_blessing",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Blessing of a Home",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Blessing of a Home",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "79fcca226ea839bc68d4de126cc51fdbd98f1fe86194ec43794758b6603e274d"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/المعمودية-والميرون/"
+      }
+    },
+    {
+      "id": "church_priesthood",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Service of Holy Ordination",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Service of Holy Ordination",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "55d31f3b3959896ade2b96a4144d45b67204abe676a0946bf56dc65e2aa02358"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/المعمودية-والميرون/"
+      }
+    },
+    {
+      "id": "church_great_water",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "Great Blessing of Waters",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Great Blessing of Waters",
+            "el": ""
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "Fixed Scripture readings",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "First reading — Isaiah 35:1–10",
+            "el": ""
+          },
+          "canonical_reference": "ISA.35.1-10"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Second reading — Isaiah 55:1–13",
+            "el": ""
+          },
+          "canonical_reference": "ISA.55.1-13"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Third reading — Isaiah 12:3–6",
+            "el": ""
+          },
+          "canonical_reference": "ISA.12.3-6"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Epistle — 1 Corinthians 10:1–4",
+            "el": ""
+          },
+          "canonical_reference": "1CO.10.1-4"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "Gospel — Gospel of Mark 1:9–11",
+            "el": ""
+          },
+          "canonical_reference": "MRK.1.9-11"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "31e9970f6d7dd26699748769a9ff1a67319ce66aebf3b2fd966cb5f398bda422"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-تقديس-الماء-الكبرى/"
+      }
+    },
+    {
+      "id": "church_hours",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "The Hours",
+        "el": ""
+      },
+      "summary": {
+        "ar": "",
+        "en": "A fixed Orthodox church service with its documented established Scripture readings where applicable.",
+        "el": ""
+      },
+      "source_language": "en",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "The Hours",
+            "el": ""
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "The complete rite text is never machine-translated. It is included only from an authorized original church source for this language.",
+            "el": ""
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "hapgood_service_book_1906",
+        "name": "Hapgood Service Book 1906",
+        "official": true,
+        "native_language": "en",
+        "url": "https://archive.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "PUBLIC_DOMAIN_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "a91ca97ac7cd95e9c350d7d427a43b231bd543c50e8b97fab631bd24a6adea77"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/"
+      },
+      "related_services": [
+        {
+          "service_id": "first_hour",
+          "label": {
+            "ar": "",
+            "en": "First Hour",
+            "el": ""
+          }
+        },
+        {
+          "service_id": "third_hour",
+          "label": {
+            "ar": "",
+            "en": "Third Hour",
+            "el": ""
+          }
+        },
+        {
+          "service_id": "sixth_hour",
+          "label": {
+            "ar": "",
+            "en": "Sixth Hour",
+            "el": ""
+          }
+        },
+        {
+          "service_id": "ninth_hour",
+          "label": {
+            "ar": "",
+            "en": "Ninth Hour",
+            "el": ""
+          }
+        }
+      ]
     }
   ],
   "native_content_status": {
-    "filled_fields": 3498,
-    "total_fields": 3498,
+    "filled_fields": 3587,
+    "total_fields": 3587,
     "percent": 100.0,
     "complete": true
   }

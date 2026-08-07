@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.util.Log;
 
 import com.orthodoxprayers.privateapp.AppPreferences;
+import com.orthodoxprayers.privateapp.bible.BibleCorpusRepository;
 import com.orthodoxprayers.privateapp.BuildConfig;
 import com.orthodoxprayers.privateapp.R;
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
@@ -53,6 +54,7 @@ public final class DataRepository {
     private final DataSignatureVerifier signatureVerifier;
     private final LocalDailyContentEngine localDailyContentEngine;
     private final LocalDailyCacheStore localDailyCacheStore;
+    private final BibleCorpusRepository bibleCorpusRepository;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Object refreshGuard = new Object();
@@ -103,6 +105,7 @@ public final class DataRepository {
         this.signatureVerifier = signatureVerifier;
         this.localDailyContentEngine = new LocalDailyContentEngine(this.context);
         this.localDailyCacheStore = new LocalDailyCacheStore(this.context);
+        this.bibleCorpusRepository = new BibleCorpusRepository(this.context);
         this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
         sourceRegistry = loadJsonAsset("data/source_registry.json");
@@ -1523,6 +1526,9 @@ public final class DataRepository {
                         preferences.effectiveLanguage()
                 );
                 pruneUnresolvedOrEmptySegments(resolvedSegments);
+                if ("church_service".equals(service.optString("category", ""))) {
+                    resolveChurchServiceScripture(resolvedSegments, preferences.effectiveLanguage());
+                }
                 resolved.put("segments", resolvedSegments);
                 return resolved;
             } catch (Exception error) {
@@ -1580,6 +1586,30 @@ public final class DataRepository {
         } catch (Exception error) {
             Log.w(TAG, "Could not compose daily service overlay " + service.optString("id"), error);
             return service;
+        }
+    }
+
+    private void resolveChurchServiceScripture(JSONArray segments, String language) {
+        if (segments == null || language == null) return;
+        for (int i = 0; i < segments.length(); i++) {
+            JSONObject segment = segments.optJSONObject(i);
+            if (segment == null || "section".equals(segment.optString("type", ""))) continue;
+            String reference = segment.optString("canonical_reference", "").trim();
+            if (reference.isEmpty()) continue;
+            try {
+                BibleCorpusRepository.ResolvedPassage passage = bibleCorpusRepository.resolve(language, reference);
+                if (passage == null || passage.text == null || passage.text.trim().isEmpty()) continue;
+                JSONObject text = segment.optJSONObject("text");
+                if (text == null) text = new JSONObject();
+                String prefix = text.optString(language, "").trim();
+                String merged = prefix.isEmpty() ? passage.text : prefix + "\n\n" + passage.text;
+                text.put(language, merged);
+                segment.put("text", text);
+                segment.put("scripture_source_id", passage.sourceId);
+                segment.put("scripture_verse_count", passage.verseCount);
+            } catch (Exception error) {
+                Log.w(TAG, "Could not resolve fixed church-service Scripture " + reference, error);
+            }
         }
     }
 

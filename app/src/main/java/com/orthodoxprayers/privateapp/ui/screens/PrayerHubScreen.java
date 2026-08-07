@@ -18,13 +18,14 @@ public final class PrayerHubScreen extends BaseScreen {
         addCategory(page, "daily", local(com.orthodoxprayers.privateapp.R.string.ui_daily_prayers_ef97d9fd));
         addCategory(page, "basic", local(com.orthodoxprayers.privateapp.R.string.ui_basic_prayers_6f2ed521));
         addCategory(page, "communion", local(com.orthodoxprayers.privateapp.R.string.ui_holy_communion_prayers_e14c166c));
+        addCategory(page, "church_service", local(com.orthodoxprayers.privateapp.R.string.ui_church_service_section));
         return page.scroll;
     }
 
     private void addCategory(UiKit.Page page, String category, String title) {
         int icon = "daily".equals(category)
                 ? com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar
-                : "communion".equals(category)
+                : ("communion".equals(category) || "church_service".equals(category))
                 ? com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy
                 : com.orthodoxprayers.privateapp.R.drawable.ic_action_prayers;
         LinearLayout card = ui.actionCard(icon, title, "");

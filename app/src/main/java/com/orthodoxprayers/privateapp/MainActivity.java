@@ -507,6 +507,9 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         if ("communion".equals(category)) {
             return repository.local(com.orthodoxprayers.privateapp.R.string.ui_holy_communion_prayers_e14c166c);
         }
+        if ("church_service".equals(category)) {
+            return repository.local(com.orthodoxprayers.privateapp.R.string.ui_church_service_section);
+        }
         return repository.local(com.orthodoxprayers.privateapp.R.string.ui_basic_prayers_6f2ed521);
     }
 

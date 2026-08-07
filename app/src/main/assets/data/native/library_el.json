@@ -39591,11 +39591,1030 @@
         "content_sha256": "b03c0037a467272dfe73637d8e8b900fe0dffec97555ce8f6b503d4dac1bcc68",
         "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
       }
+    },
+    {
+      "id": "church_baptism",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθία Βαπτίσματος καὶ Χρίσματος"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀκολουθία Βαπτίσματος καὶ Χρίσματος"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Σταθερὰ βιβλικὰ ἀναγνώσματα"
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀπόστολος — Πρὸς Ῥωμαίους 6:3–12"
+          },
+          "canonical_reference": "ROM.6.3-12"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐαγγέλιο — Κατὰ Ματθαῖον 28:16–20"
+          },
+          "canonical_reference": "MAT.28.16-20"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "52825a64fba1b414387cd0ced646ed3d07774a52cb8c2164d6358eb887db428b"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/خدمة-المعمودية/"
+      }
+    },
+    {
+      "id": "church_eucharist",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Θεία Λειτουργία καὶ Θεία Μετάληψη"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Θεία Λειτουργία καὶ Θεία Μετάληψη"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "5a1b28a6314f59fbd60e36b57e5473c27cc54685016fd992aa875ed061533239"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/المعمودية-والميرون/"
+      },
+      "related_services": [
+        {
+          "service_id": "divine_liturgy",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Θεία Λειτουργία"
+          }
+        },
+        {
+          "service_id": "pre_communion_prayers",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχὲς πρὸ τῆς Θείας Μεταλήψεως"
+          }
+        },
+        {
+          "service_id": "thanksgiving_after_communion",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχαριστία μετὰ τὴ Θεία Μετάληψη"
+          }
+        }
+      ]
+    },
+    {
+      "id": "church_confession",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἱερὰ Ἐξομολόγηση"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἱερὰ Ἐξομολόγηση"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Σταθερὰ βιβλικὰ ἀναγνώσματα"
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ψαλμὸς 50 κατὰ τὴν ὀρθόδοξη ἀρίθμηση (51 στὸ τοπικὸ βιβλικὸ κείμενο)"
+          },
+          "canonical_reference": "PSA.51.1-19"
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "c9b7c25fc775b9456bc3bf270b741c0e482a9c72ceb551a7a262538c7c1d6353"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/سر-الاعتراف-الالهي/"
+      }
+    },
+    {
+      "id": "church_betrothal",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθία Ἀρραβῶνος"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀκολουθία Ἀρραβῶνος"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "81eba358808fc40ce515b0afac8c366d2007237262e8778f4decf37597c45fd3"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-العربون-الخطوبة/"
+      }
+    },
+    {
+      "id": "church_marriage",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθία Γάμου (Στέψεως)"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀκολουθία Γάμου (Στέψεως)"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Σταθερὰ βιβλικὰ ἀναγνώσματα"
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ψαλμὸς 127 κατὰ τὴν ὀρθόδοξη ἀρίθμηση (128 στὸ τοπικὸ βιβλικὸ κείμενο)"
+          },
+          "canonical_reference": "PSA.128.1-6"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀπόστολος — Πρὸς Ἐφεσίους 5:20–33"
+          },
+          "canonical_reference": "EPH.5.20-33"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐαγγέλιο — Κατὰ Ἰωάννην 2:1–11"
+          },
+          "canonical_reference": "JHN.2.1-11"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "72358c744a2c5839c41123f562d8e7572df83e4cc82e4a53d5e01214e2c13d5d"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/خدمة-صلاة-الإكليل/"
+      }
+    },
+    {
+      "id": "church_crowns_removal",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Λύσις τῶν Στεφάνων"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Λύσις τῶν Στεφάνων"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "314fbed9bdb993f33e978a260baa2a37c4ff00a4f50fb73a8e7113968d744e7d"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-لحل-الأكاليل/"
+      }
+    },
+    {
+      "id": "church_unction",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἐπίσκεψη Ἀσθενῶν καὶ Ἱερὸ Εὐχέλαιο"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἐπίσκεψη Ἀσθενῶν καὶ Ἱερὸ Εὐχέλαιο"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Σταθερὰ βιβλικὰ ἀναγνώσματα"
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Α΄ Ἀπόστολος — Ἰακώβου 5:10–16"
+          },
+          "canonical_reference": "JAS.5.10-16"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Α΄ Εὐαγγέλιο — Κατὰ Λουκᾶν 10:25–37"
+          },
+          "canonical_reference": "LUK.10.25-37"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Β΄ Ἀπόστολος — Πρὸς Ῥωμαίους 15:1–7"
+          },
+          "canonical_reference": "ROM.15.1-7"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Β΄ Εὐαγγέλιο — Κατὰ Λουκᾶν 19:1–10"
+          },
+          "canonical_reference": "LUK.19.1-10"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Γ΄ Ἀπόστολος — Α΄ Κορινθίους 12:27–31· 13:1–8"
+          },
+          "canonical_reference": "1CO.12.27-31;1CO.13.1-8"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Γ΄ Εὐαγγέλιο — Κατὰ Ματθαῖον 10:1, 5–8"
+          },
+          "canonical_reference": "MAT.10.1;MAT.10.5-8"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δ΄ Ἀπόστολος — Β΄ Κορινθίους 6:16–18· 7:1"
+          },
+          "canonical_reference": "2CO.6.16-18;2CO.7.1"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Δ΄ Εὐαγγέλιο — Κατὰ Ματθαῖον 8:14–23"
+          },
+          "canonical_reference": "MAT.8.14-23"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ε΄ Ἀπόστολος — Β΄ Κορινθίους 1:8–11"
+          },
+          "canonical_reference": "2CO.1.8-11"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ε΄ Εὐαγγέλιο — Κατὰ Ματθαῖον 25:1–13"
+          },
+          "canonical_reference": "MAT.25.1-13"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "ΣΤ΄ Ἀπόστολος — Πρὸς Γαλάτας 5:22–26· 6:1–2"
+          },
+          "canonical_reference": "GAL.5.22-26;GAL.6.1-2"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "ΣΤ΄ Εὐαγγέλιο — Κατὰ Ματθαῖον 15:21–28"
+          },
+          "canonical_reference": "MAT.15.21-28"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ζ΄ Ἀπόστολος — Α΄ Θεσσαλονικεῖς 5:14–23"
+          },
+          "canonical_reference": "1TH.5.14-23"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ζ΄ Εὐαγγέλιο — Κατὰ Ματθαῖον 9:9–13"
+          },
+          "canonical_reference": "MAT.9.9-13"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "a1da9f710a80335e5abb6e0033db9293e8e171f0ca541c4613fbdee84a3aee2d"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-سر-الزيت-المقدس/"
+      },
+      "related_services": [
+        {
+          "service_id": "pre_communion_prayers",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐχὲς πρὸ τῆς Θείας Μεταλήψεως"
+          }
+        }
+      ]
+    },
+    {
+      "id": "church_funeral",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Νεκρώσιμη Ἀκολουθία"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Νεκρώσιμη Ἀκολουθία"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Σταθερὰ βιβλικὰ ἀναγνώσματα"
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ψαλμὸς 90 κατὰ τὴν ὀρθόδοξη ἀρίθμηση (91 στὸ τοπικὸ βιβλικὸ κείμενο)"
+          },
+          "canonical_reference": "PSA.91.1-16"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀπόστολος — Α΄ Θεσσαλονικεῖς 4:13–17"
+          },
+          "canonical_reference": "1TH.4.13-17"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐαγγέλιο — Κατὰ Ἰωάννην 5:24–30"
+          },
+          "canonical_reference": "JHN.5.24-30"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "a9b74cb385bcf3687c8d8bf7f536e4ef52a790d2f7588d335f100531c950f96f"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-الجنازة-للعلمانيين/"
+      }
+    },
+    {
+      "id": "church_memorial",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Τρισάγιον καὶ Μνημόσυνο"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Τρισάγιον καὶ Μνημόσυνο"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "b1a7054317e7334adb9f73adb4eb1e89d6179b2a69d3599237ea9ca73326c6cf"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-النياحة-التريصاجيون/"
+      }
+    },
+    {
+      "id": "church_home_blessing",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθία Ἁγιασμοῦ Οἰκίας"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀκολουθία Ἁγιασμοῦ Οἰκίας"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "e556e0d98bb5b292d64a64132767a3288dbf401a9abb39b019555045e926a200"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/المعمودية-والميرون/"
+      }
+    },
+    {
+      "id": "church_priesthood",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθία Χειροτονίας"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀκολουθία Χειροτονίας"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "9a0ecb17109ec500bd4115edaed4868a94ddbf546bf337a59fa77a08cbc0e5ad"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/المعمودية-والميرون/"
+      }
+    },
+    {
+      "id": "church_great_water",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Μέγας Ἁγιασμὸς τῶν Ὑδάτων"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Μέγας Ἁγιασμὸς τῶν Ὑδάτων"
+          }
+        },
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Σταθερὰ βιβλικὰ ἀναγνώσματα"
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Α΄ Ἀνάγνωσμα — Ἠσαΐας 35:1–10"
+          },
+          "canonical_reference": "ISA.35.1-10"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Β΄ Ἀνάγνωσμα — Ἠσαΐας 55:1–13"
+          },
+          "canonical_reference": "ISA.55.1-13"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Γ΄ Ἀνάγνωσμα — Ἠσαΐας 12:3–6"
+          },
+          "canonical_reference": "ISA.12.3-6"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀπόστολος — Α΄ Κορινθίους 10:1–4"
+          },
+          "canonical_reference": "1CO.10.1-4"
+        },
+        {
+          "type": "text",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Εὐαγγέλιο — Κατὰ Μᾶρκον 1:9–11"
+          },
+          "canonical_reference": "MRK.1.9-11"
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "2cfe98b69e9618734c27e8b709ac00b4e074d875fd19e16d73ebb3c6a585e741"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/صلاة-تقديس-الماء-الكبرى/"
+      }
+    },
+    {
+      "id": "church_hours",
+      "category": "church_service",
+      "icon": "☦",
+      "title": {
+        "ar": "",
+        "en": "",
+        "el": "Ἀκολουθία τῶν Ὡρῶν"
+      },
+      "summary": {
+        "ar": "",
+        "en": "",
+        "el": "Σταθερὴ ὀρθόδοξη ἐκκλησιαστικὴ ἀκολουθία, μὲ τὰ τεκμηριωμένα καθιερωμένα βιβλικὰ ἀναγνώσματα ὅπου προβλέπονται."
+      },
+      "source_language": "el",
+      "segments": [
+        {
+          "type": "section",
+          "title": {
+            "ar": "",
+            "en": "",
+            "el": "Ἀκολουθία τῶν Ὡρῶν"
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "ar": "",
+            "en": "",
+            "el": "Τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν μεταφράζεται μηχανικά. Ἐντάσσεται μόνο ἀπὸ ἐγκεκριμένη πρωτότυπη ἐκκλησιαστικὴ πηγή τῆς γλώσσας."
+          }
+        }
+      ],
+      "content_mode": "FIXED_CHURCH_SERVICE_CATALOG_WITH_SCRIPTURE_REFERENCES",
+      "publication_status": "CATALOG_AND_FIXED_SCRIPTURE_ONLY_NATIVE_RITE_TEXT_PENDING_AUTHORIZED_SOURCE",
+      "native_source": {
+        "source_id": "goarch_glt_greek",
+        "name": "Greek Horologion native text",
+        "official": true,
+        "native_language": "el",
+        "url": "https://digitalchantstand.goarch.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "import_status": "AUTHORIZED_NATIVE_SERVICE_REFERENCE",
+        "content_sha256": "bef15efe6108b40f384a3d5b645925050e86db7832c46bdfe0d3c5bf43215f65"
+      },
+      "catalog_source": {
+        "source_id": "orthodox_jordan",
+        "official": true,
+        "url": "https://orthodoxjordan.org/"
+      },
+      "related_services": [
+        {
+          "service_id": "first_hour",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Πρώτη Ὥρα"
+          }
+        },
+        {
+          "service_id": "third_hour",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Τρίτη Ὥρα"
+          }
+        },
+        {
+          "service_id": "sixth_hour",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Ἕκτη Ὥρα"
+          }
+        },
+        {
+          "service_id": "ninth_hour",
+          "label": {
+            "ar": "",
+            "en": "",
+            "el": "Ἐνάτη Ὥρα"
+          }
+        }
+      ]
     }
   ],
   "native_content_status": {
-    "filled_fields": 4636,
-    "total_fields": 4636,
+    "filled_fields": 4725,
+    "total_fields": 4725,
     "percent": 100.0,
     "complete": true
   }

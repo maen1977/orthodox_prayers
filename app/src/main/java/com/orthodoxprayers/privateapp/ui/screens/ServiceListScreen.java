@@ -24,7 +24,8 @@ public final class ServiceListScreen extends BaseScreen {
     @Override
     public View createView() {
         UiKit.Page page = page(title, true);
-        TextView hint = centered(local(com.orthodoxprayers.privateapp.R.string.ui_choose_a_prayer_or_service_the_bottom_navigation_daa89d81), 14, ui.colors().secondaryText(), false);
+        String hintText = "church_service".equals(category) ? local(com.orthodoxprayers.privateapp.R.string.ui_church_service_hint) : local(com.orthodoxprayers.privateapp.R.string.ui_choose_a_prayer_or_service_the_bottom_navigation_daa89d81);
+        TextView hint = centered(hintText, 14, ui.colors().secondaryText(), false);
         add(page.root, hint, 12, 8);
         ArrayList<JSONObject> services = data.servicesByCategory(category);
         if (services.isEmpty()) {

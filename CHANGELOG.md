@@ -1,3 +1,11 @@
+## 5.4.0 buildfix6 — خدمة كنسية
+- Added the new Prayer section **خدمة كنسية / Church Service / Ἐκκλησιαστικὴ Ἀκολουθία**.
+- Added 13 fixed-service cards: Baptism/Chrismation, Divine Liturgy & Communion, Confession, Betrothal, Marriage, Removal of Crowns, Sick Visitation/Holy Unction, Funeral, Memorial, Home Blessing, Holy Ordination, Great Blessing of Waters, and the Hours.
+- Added verified fixed Scripture references for Baptism, Marriage, Funeral, Confession, Holy Unction (7 Epistles + 7 Gospels), and Great Blessing of Waters.
+- Scripture text is resolved from the bundled Bible in the active language; no runtime web dependency is introduced.
+- The Hours link to the existing First/Third/Sixth/Ninth Hour services instead of duplicating prayer text.
+- Complete priestly rite text remains fail-closed unless an authorized native-language source is available; no machine translation or cross-language fallback is used.
+- Added regression tests for language isolation, service parity, fixed reading contracts, related-service routing, and offline Scripture resolution.
 ## 5.4.0 buildfix5 — تقسيم الكتاب المقدس وعزل اللغات
 
 - تقسيم واجهة الكتاب المقدس إلى العهد القديم والعهد الجديد قبل عرض الأسفار.
