@@ -76,3 +76,7 @@ git push origin v5.3.1
 ## إصدار إجباري اختياري
 
 الافتراضي أن التحديث غير إجباري. يمكن توليد `app-update.json` يدويًا مع `--mandatory`، أو تحديد `--minimum-supported-version-code`، لكن يُنصح باستخدام ذلك فقط عندما تكون النسخة القديمة غير آمنة أو غير قابلة للعمل.
+
+## نشر Release بدون إنشاء Tag يدويًا
+
+بعد تطبيق إعداد التوقيع الموضح في `RELEASE_SIGNING_SETUP_AR.md`، شغّل workflow `Build Church Prayers` يدويًا وفعّل خيار **Publish a signed GitHub Release for the current version**. الـworkflow ينشئ Tag المطابق لـ`versionName` تلقائيًا ثم ينشر ملفات التحديث.

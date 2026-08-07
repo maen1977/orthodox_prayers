@@ -2,6 +2,12 @@ name: Build Church Prayers
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_release:
+        description: "Publish a signed GitHub Release for the current version"
+        required: false
+        type: boolean
+        default: false
   push:
     branches: [main]
     tags: ["v*"]
@@ -98,7 +104,7 @@ jobs:
       - name: Prepare release signing
         shell: bash
         env:
-          IS_RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          IS_RELEASE_BUILD: ${{ startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release) }}
           ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -117,8 +123,8 @@ jobs:
             echo "ANDROID_KEY_ALIAS=$ANDROID_KEY_ALIAS" >> "$GITHUB_ENV"
             echo "ANDROID_KEY_PASSWORD=$ANDROID_KEY_PASSWORD" >> "$GITHUB_ENV"
             echo "Release signing enabled."
-          elif [[ "$IS_RELEASE_TAG" == "true" ]]; then
-            echo "Release tags require the production signing secrets." >&2
+          elif [[ "$IS_RELEASE_BUILD" == "true" ]]; then
+            echo "Release tags require the production signing secrets; manual release publishing requires them too." >&2
             exit 1
           else
             echo "Signing secrets are absent; branch artifacts will use the debug APK fallback."
@@ -145,14 +151,15 @@ jobs:
             --output output/app-update.json \
             --checksum-output output/Church-Prayers.apk.sha256
 
-      - name: Validate release tag and signature requirements
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Validate release identity and signature requirements
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)
         shell: bash
         run: |
           set -euo pipefail
           version_name="$(python -c 'from scripts.release_version import current_release; print(current_release()[0])')"
-          if [[ "$GITHUB_REF_NAME" != "v$version_name" ]]; then
-            echo "Tag $GITHUB_REF_NAME must equal v$version_name from app/build.gradle.kts" >&2
+          release_tag="v$version_name"
+          if [[ "$GITHUB_REF" == refs/tags/v* && "$GITHUB_REF_NAME" != "$release_tag" ]]; then
+            echo "Tag $GITHUB_REF_NAME must equal $release_tag from app/build.gradle.kts" >&2
             exit 1
           fi
           test -n "${ANDROID_KEYSTORE_FILE:-}"
@@ -160,6 +167,7 @@ jobs:
             echo "A signed release APK is required for GitHub Releases." >&2
             exit 1
           fi
+          echo "RELEASE_TAG=$release_tag" >> "$GITHUB_ENV"
 
       - name: Upload Church Prayers build artifact
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
@@ -174,25 +182,35 @@ jobs:
           retention-days: 30
 
       - name: Publish GitHub Release for the updater
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+          release_tag="${RELEASE_TAG:?release tag was not validated}"
           assets=(
             output/Church-Prayers.apk
             output/Church-Prayers.aab
             output/Church-Prayers.apk.sha256
             output/app-update.json
           )
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+
+          if ! git rev-parse -q --verify "refs/tags/$release_tag" >/dev/null; then
+            echo "Creating release tag $release_tag at $GITHUB_SHA"
+            gh api --method POST \
+              "repos/$GITHUB_REPOSITORY/git/refs" \
+              -f ref="refs/tags/$release_tag" \
+              -f sha="$GITHUB_SHA" >/dev/null
+          fi
+
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            gh release upload "$release_tag" "${assets[@]}" --clobber
           else
-            gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
+            gh release create "$release_tag" "${assets[@]}" \
               --verify-tag \
               --generate-notes \
-              --title "Orthodox Prayers ${GITHUB_REF_NAME#v}"
+              --title "Orthodox Prayers ${release_tag#v}"
           fi
 
       - name: Remove signing key

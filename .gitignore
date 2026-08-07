@@ -53,3 +53,6 @@ data-signing/*PRIVATE*
 private_sources/
 # Generated rolling-window candidates must never be committed
 data/rolling-week/candidates/
+
+# Local Android production signing material
+.release-signing/
