@@ -13,11 +13,16 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import shutil
+import subprocess
+import tempfile
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
-UA = "OrthodoxPrayers-ChurchServiceBuilder/5.5 (+https://github.com/maen1977/orthodox_prayers)"
+UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.5.1"
 MAX_BYTES = 6_000_000
 MIN_CHARS_REQUIRED = 1200
 MIN_CHARS_OPTIONAL = 500
@@ -131,6 +136,107 @@ def iri_to_uri(value: str) -> str:
     return urllib.parse.urlunsplit((parts.scheme, parts.netloc, path, query, parts.fragment))
 
 
+def _validate_download(data: bytes) -> bytes:
+    if len(data) > MAX_BYTES:
+        raise RuntimeError("source_too_large")
+    if len(data) < 500:
+        raise RuntimeError("source_too_small")
+    probe = data[:5000].lower()
+    if b"<html" not in probe and b"<!doctype html" not in probe:
+        raise RuntimeError("source_not_html")
+    return data
+
+
+def _browser_executable() -> str | None:
+    for name in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser"):
+        found = shutil.which(name)
+        if found:
+            return found
+    return None
+
+
+def _fetch_with_curl(url: str) -> bytes:
+    curl = shutil.which("curl")
+    if not curl:
+        raise RuntimeError("curl_unavailable")
+    request_url = iri_to_uri(url)
+    headers = _direct_headers(url)
+    command = [
+        curl,
+        "--location",
+        "--fail-with-body",
+        "--silent",
+        "--show-error",
+        "--compressed",
+        "--retry", "2",
+        "--retry-delay", "1",
+        "--connect-timeout", "20",
+        "--max-time", "60",
+    ]
+    for key, value in headers.items():
+        command.extend(["-H", f"{key}: {value}"])
+    command.append(request_url)
+    completed = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=70, check=False)
+    if completed.returncode != 0:
+        detail = completed.stderr.decode("utf-8", errors="replace").strip().replace("\n", " ")[-500:]
+        raise RuntimeError(f"curl_failed:{completed.returncode}:{detail}")
+    data = completed.stdout
+    _validate_download(data)
+    lower = data.lower()
+    if (b"access denied" in lower or b"forbidden" in lower) and len(data) < 15000:
+        raise RuntimeError("curl_access_denied")
+    return data
+
+
+def _fetch_with_headless_browser(url: str) -> bytes:
+    browser = _browser_executable()
+    if not browser:
+        raise RuntimeError("headless_browser_unavailable")
+    request_url = iri_to_uri(url)
+    with tempfile.TemporaryDirectory(prefix="orthodox-prayers-chrome-") as profile:
+        command = [
+            browser,
+            "--headless=new",
+            "--no-sandbox",
+            "--disable-gpu",
+            "--disable-dev-shm-usage",
+            "--no-first-run",
+            "--mute-audio",
+            f"--user-agent={UA}",
+            "--window-size=1280,2400",
+            "--virtual-time-budget=7000",
+            f"--user-data-dir={profile}",
+            "--dump-dom",
+            request_url,
+        ]
+        completed = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=70, check=False)
+    if completed.returncode != 0:
+        detail = completed.stderr.decode("utf-8", errors="replace").strip().replace("\n", " ")[-500:]
+        raise RuntimeError(f"headless_browser_failed:{completed.returncode}:{detail}")
+    data = completed.stdout
+    _validate_download(data)
+    lower = data.lower()
+    if b"access denied" in lower or b"forbidden" in lower and len(data) < 15000:
+        raise RuntimeError("headless_browser_access_denied")
+    return data
+
+
+def _direct_headers(url: str) -> dict[str, str]:
+    headers = {
+        "User-Agent": UA,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9,el;q=0.8",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "DNT": "1",
+        "Upgrade-Insecure-Requests": "1",
+        "X-Orthodox-Prayers-Builder": BUILDER_ID,
+    }
+    if urllib.parse.urlsplit(url).netloc.endswith("goarch.org"):
+        headers["Referer"] = "https://www.goarch.org/chapel/texts"
+    return headers
+
+
 def fetch(url: str, cache: Path) -> bytes:
     cache.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256(url.encode("utf-8")).hexdigest() + ".html"
@@ -141,23 +247,43 @@ def fetch(url: str, cache: Path) -> bytes:
     request_url = iri_to_uri(url)
     for attempt in range(3):
         try:
-            req = urllib.request.Request(
-                request_url,
-                headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml"},
-            )
+            req = urllib.request.Request(request_url, headers=_direct_headers(url))
             with urllib.request.urlopen(req, timeout=45) as response:
                 if getattr(response, "status", 200) >= 400:
                     raise RuntimeError(f"http_status_{response.status}")
                 data = response.read(MAX_BYTES + 1)
-            if len(data) > MAX_BYTES:
-                raise RuntimeError("source_too_large")
-            if len(data) < 500:
-                raise RuntimeError("source_too_small")
+            _validate_download(data)
             target.write_bytes(data)
             return data
+        except urllib.error.HTTPError as exc:  # pragma: no cover - network branch
+            last = exc
+            if exc.code in {403, 429} and urllib.parse.urlsplit(url).netloc.endswith("goarch.org"):
+                print(f"CHURCH_SERVICE_DIRECT_BLOCKED {exc.code} {url}")
+                break
+            time.sleep(1.25 * (attempt + 1))
         except Exception as exc:  # pragma: no cover - network branch
             last = exc
             time.sleep(1.25 * (attempt + 1))
+
+    # GOARCH currently returns HTTP 403 to some non-browser clients from hosted CI ranges.
+    # Keep every fallback on the same official origin: first curl with browser headers, then
+    # a real Chromium/Chrome session. Required services remain required; no proxy, mirror,
+    # translation, or cross-language substitution is permitted.
+    if urllib.parse.urlsplit(url).netloc.endswith("goarch.org"):
+        try:
+            data = _fetch_with_curl(url)
+            target.write_bytes(data)
+            print(f"CHURCH_SERVICE_CURL_FALLBACK_OK {url}")
+            return data
+        except Exception as exc:  # pragma: no cover - network/curl branch
+            last = exc
+        try:
+            data = _fetch_with_headless_browser(url)
+            target.write_bytes(data)
+            print(f"CHURCH_SERVICE_BROWSER_FALLBACK_OK {url}")
+            return data
+        except Exception as exc:  # pragma: no cover - network/browser branch
+            last = exc
     raise RuntimeError(f"download_failed:{url}:{last}")
 
 
@@ -207,7 +333,6 @@ def find_marker(blocks: list[str], markers) -> int | None:
 
 def normalize_blocks(raw: bytes, language: str, spec: dict) -> list[str]:
     blocks = parse_blocks(raw)
-    blocks = apply_script_filter(blocks, spec.get("filter_script"))
     nav_exact = {
         "الفئات", "وسم", "تحميل الصلاة", "اقرأ المزيد", "Print", "View »",
         "Liturgical Texts of the Orthodox Church", "Ελληνικά English", "English Ελληνικά", "Image",
@@ -229,6 +354,10 @@ def normalize_blocks(raw: bytes, language: str, spec: dict) -> list[str]:
     end_index = find_marker(blocks, spec.get("end_marker"))
     if end_index is not None and end_index > 0:
         blocks = blocks[:end_index]
+
+    # Bilingual DCS pages are sliced before script filtering so a Greek or English
+    # marker can establish the same service boundary for both native lanes.
+    blocks = apply_script_filter(blocks, spec.get("filter_script"))
 
     if language == "ar" and not spec.get("start_marker"):
         liturgical_markers = ("الكاهن", "القارئ", "الجوق", "المرتل", "أ:", "ب:", "يتوجه", "يدخل", "تقام", "يلبس")

@@ -63,6 +63,17 @@ jobs:
             --output-dir app/build/generated/bibleAssets/bible/corpus \
             --cache-dir app/build/bible-download-cache
 
+      - name: Verify browser fallback for protected Church sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          browser="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [[ -z "$browser" ]]; then
+            echo "A Chromium/Chrome executable is required for GOARCH HTTP 403 fallback." >&2
+            exit 1
+          fi
+          echo "CHURCH_SERVICE_BROWSER_OK $browser"
+
       - name: Prepare complete native church services
         run: |
           python scripts/prepare_church_service_corpus.py \

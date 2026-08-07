@@ -19,8 +19,8 @@ def test_remote_payload_ceiling_is_shared_by_manifest_downloader_and_store():
 def test_5023_is_required_before_publishing_large_moving_window_payloads():
     build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
     update_contract = json.loads((ROOT / "canonical/update_contract.json").read_text(encoding="utf-8"))
-    assert 'versionName = "5.5.0"' in build
-    assert "versionCode = 50500" in build
+    assert 'versionName = "5.5.1"' in build
+    assert "versionCode = 50501" in build
     assert update_contract["minimum_app_version_code"] == 50023
 
 

@@ -4,10 +4,10 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_version_is_550():
+def test_version_is_551():
     text = (ROOT / 'app/build.gradle.kts').read_text(encoding='utf-8')
-    assert 'versionCode = 50500' in text
-    assert 'versionName = "5.5.0"' in text
+    assert 'versionCode = 50501' in text
+    assert 'versionName = "5.5.1"' in text
 
 
 def test_native_source_manifest_forbids_translation():

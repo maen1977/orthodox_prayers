@@ -16,8 +16,8 @@ def read(path: str) -> str:
 
 def test_r43_version_android8_floor_and_calendar_immutability() -> None:
     gradle = read("app/build.gradle.kts")
-    assert 'versionName = "5.5.0"' in gradle
-    assert "versionCode = 50500" in gradle
+    assert 'versionName = "5.5.1"' in gradle
+    assert "versionCode = 50501" in gradle
     assert "minSdk = 26" in gradle
     subprocess.run([sys.executable, "scripts/validate_calendar_immutability.py"], cwd=ROOT, check=True)
 

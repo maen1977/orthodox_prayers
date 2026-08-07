@@ -71,91 +71,114 @@
     },
     "en": {
       "source_id": "goarch_online_chapel",
-      "source_name": "Greek Orthodox Archdiocese of America — Liturgical Texts",
+      "source_name": "Greek Orthodox Archdiocese of America — GOARCH / Digital Chant Stand",
       "services": [
         {
           "id": "church_baptism",
           "title": "Holy Baptism and Chrismation",
-          "url": "https://www.goarch.org/-/the-service-of-holy-baptism",
-          "required": true
+          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/baptism/gr-en/index.html",
+          "required": true,
+          "filter_script": "latin",
+          "start_marker": [
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ",
+            "Baptism"
+          ],
+          "source_transport": "dcs_static"
         },
         {
           "id": "church_betrothal",
           "title": "Service of Betrothal",
           "url": "https://www.goarch.org/-/marriage",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_marriage",
           "title": "Service of Marriage (Crowning)",
           "url": "https://www.goarch.org/-/marriage",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_funeral",
           "title": "Funeral Service",
           "url": "https://www.goarch.org/-/funeral-service",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_memorial",
           "title": "Memorial Service",
-          "url": "https://www.goarch.org/-/the-memorial-service",
-          "required": true
+          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/memorial/gr-en/index.html",
+          "required": true,
+          "filter_script": "latin",
+          "start_marker": [
+            "ΤΟ ΜΝΗΜΟΣΥΝΟΝ",
+            "Memorial Service"
+          ],
+          "source_transport": "dcs_static"
         },
         {
           "id": "church_trisagion",
           "title": "Trisagion Service",
           "url": "https://www.goarch.org/-/the-trisagion-service",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_priesthood",
           "title": "Service of Holy Ordination",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-priesthood",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_sick_communion",
           "title": "Communion of the Sick",
           "url": "https://www.goarch.org/-/communion-of-the-sick-in-a-hospital",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_artoklasia",
           "title": "Artoklasia — Blessing of the Five Loaves",
           "url": "https://www.goarch.org/-/artoklasia",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_funeral_infant",
           "title": "Funeral Service for Infants",
           "url": "https://www.goarch.org/-/funeral-service-for-infants",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_funeral_paschal",
           "title": "Funeral Service During Renewal Week",
           "url": "https://www.goarch.org/-/funeral-service-during-renewal-week",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_catechumen",
           "title": "The Making of a Catechumen",
           "url": "https://www.goarch.org/-/the-making-of-a-catechumen",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_ordination_diaconate",
           "title": "Ordination to the Diaconate",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-diaconate",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         }
       ]
     },
     "el": {
       "source_id": "goarch_digital_chant_stand_greek",
-      "source_name": "Greek Orthodox Archdiocese of America — Greek Liturgical Texts",
+      "source_name": "Greek Orthodox Archdiocese of America — Digital Chant Stand / GOARCH Greek Liturgical Texts",
       "services": [
         {
           "id": "church_baptism",
@@ -163,56 +186,73 @@
           "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/baptism/gr-en/index.html",
           "required": true,
           "filter_script": "greek",
-          "start_marker": "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
+          "start_marker": [
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ",
+            "Baptism"
+          ],
+          "source_transport": "dcs_static"
         },
         {
           "id": "church_betrothal",
           "title": "Ἀκολουθία Ἀρραβῶνος",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/marriage?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
           "required": true,
-          "start_marker": "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ"
+          "start_marker": "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ",
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_marriage",
           "title": "Ἀκολουθία Γάμου (Στέψεως)",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/marriage?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_memorial",
           "title": "Μνημόσυνο",
-          "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-memorial-service?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": true
+          "url": "https://dcs.goarch.org/goa/dcs/h/b/eu/memorial/gr-en/index.html",
+          "required": true,
+          "filter_script": "greek",
+          "start_marker": [
+            "ΤΟ ΜΝΗΜΟΣΥΝΟΝ",
+            "Memorial Service"
+          ],
+          "source_transport": "dcs_static"
         },
         {
           "id": "church_trisagion",
           "title": "Τρισάγιον",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-trisagion-service?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_priesthood",
           "title": "Ἀκολουθία Χειροτονίας Πρεσβυτέρου",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-priesthood?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": true
+          "required": true,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_funeral_priest",
           "title": "Ἐξόδιος Ἀκολουθία Ἱερέως",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/funeral-for-clergy?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_artoklasia",
           "title": "Ἀρτοκλασία — Εὐλογία τῶν Πέντε Ἄρτων",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/artoklasia?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         },
         {
           "id": "church_ordination_diaconate",
           "title": "Χειροτονία Διακόνου",
           "url": "https://www.goarch.org/chapel/texts/-/asset_publisher/ulcNzWPdScz6/content/the-holy-sacrament-of-ordination-to-the-diaconate?_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_ulcNzWPdScz6_languageId=el_GR",
-          "required": false
+          "required": false,
+          "source_transport": "goarch_browser_fallback"
         }
       ]
     }
