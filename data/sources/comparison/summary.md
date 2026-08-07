@@ -1,13 +1,12 @@
 # Automated liturgical source comparison
 
-- Window: `2026-08-06` → `2026-08-14`
+- Window: `2026-08-07` → `2026-08-15`
 - Days: `9`
 - Overall decision: **PUBLISH_AUTOMATED_MULTI_SOURCE**
 - Human review required: `false`
 
 | Date | Decision | Confidence | Warnings | Errors |
 |---|---|---:|---:|---:|
-| 2026-08-06 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 4 | 0 |
 | 2026-08-07 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 2 | 0 |
 | 2026-08-08 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 3 | 0 |
 | 2026-08-09 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 4 | 0 |
@@ -16,3 +15,4 @@
 | 2026-08-12 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 2 | 0 |
 | 2026-08-13 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 5 | 0 |
 | 2026-08-14 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 3 | 0 |
+| 2026-08-15 | PUBLISH_AUTOMATED_MULTI_SOURCE | 0.92 | 4 | 0 |

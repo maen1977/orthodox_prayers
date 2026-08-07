@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'canonical/local_commemorations.json'
-UA='ChurchPrayersLocalCalendar/5.2.0 (+https://github.com/maen1977/orthodox_prayers)'
+UA='ChurchPrayersLocalCalendar/5.2.1 (+https://github.com/maen1977/orthodox_prayers)'
 JORDAN='https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/'
 JERUSALEM_SEARCH='https://en.jerusalem-patriarchate.info/wp-json/wp/v2/search'
 

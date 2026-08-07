@@ -1,46 +1,46 @@
 {
   "manifest_schema_version": 1,
-  "date_iso": "2026-08-06",
-  "revision": 13401,
-  "published_at_utc": "2026-08-06T06:19:56Z",
-  "valid_until_utc": "2026-08-08T06:19:56Z",
+  "date_iso": "2026-08-07",
+  "revision": 13701,
+  "published_at_utc": "2026-08-07T04:08:42Z",
+  "valid_until_utc": "2026-08-09T04:08:42Z",
   "minimum_app_version_code": 50023,
   "calendar": {
     "path": "data/calendar/today.json",
     "signature_path": "data/calendar/today.json.sig",
-    "sha256": "449ea5c14600006ad709eae6efbb7a89e1d23e79d5d48be08d5ebe7b08e52e08",
-    "size_bytes": 3513648
+    "sha256": "7033c5459e6dc964d5b88fd9bb4f0aa386ce5890568f76f9664dd289e5abd6cf",
+    "size_bytes": 3535981
   },
   "languages": {
     "ar": {
-      "path": "data/daily/2026-08-06/ar.json",
-      "signature_path": "data/daily/2026-08-06/ar.json.sig",
-      "sha256": "729b5d6cc99f0b3698112fc49b6752642ba88e2c956eadc877fda99a58b8368c",
-      "size_bytes": 2143914,
-      "coverage_start_date": "2026-08-06",
-      "coverage_end_date": "2026-08-14",
+      "path": "data/daily/2026-08-07/ar.json",
+      "signature_path": "data/daily/2026-08-07/ar.json.sig",
+      "sha256": "d739ab14e800ef2e31035d8a7841f4c05ff1e6b95a9e24e88db2d0b5092f4b41",
+      "size_bytes": 2152611,
+      "coverage_start_date": "2026-08-07",
+      "coverage_end_date": "2026-08-15",
       "coverage_day_count": 9,
       "current_path": "data/daily/current/ar.json",
       "current_signature_path": "data/daily/current/ar.json.sig"
     },
     "en": {
-      "path": "data/daily/2026-08-06/en.json",
-      "signature_path": "data/daily/2026-08-06/en.json.sig",
-      "sha256": "c6479937729c38bff37a7815828aeacbc9f253a196af3ac3945abfa44d6749a8",
-      "size_bytes": 1837852,
-      "coverage_start_date": "2026-08-06",
-      "coverage_end_date": "2026-08-14",
+      "path": "data/daily/2026-08-07/en.json",
+      "signature_path": "data/daily/2026-08-07/en.json.sig",
+      "sha256": "fca9ea087e0c33260d6ec744d36cc3cb8074bfa01f21f00c46f230c55bb47fa6",
+      "size_bytes": 1843066,
+      "coverage_start_date": "2026-08-07",
+      "coverage_end_date": "2026-08-15",
       "coverage_day_count": 9,
       "current_path": "data/daily/current/en.json",
       "current_signature_path": "data/daily/current/en.json.sig"
     },
     "el": {
-      "path": "data/daily/2026-08-06/el.json",
-      "signature_path": "data/daily/2026-08-06/el.json.sig",
-      "sha256": "aea01fe66cb8c198794c9c28aad323717e30e09b3101f9ceff4ff13ea534b7b2",
-      "size_bytes": 2208311,
-      "coverage_start_date": "2026-08-06",
-      "coverage_end_date": "2026-08-14",
+      "path": "data/daily/2026-08-07/el.json",
+      "signature_path": "data/daily/2026-08-07/el.json.sig",
+      "sha256": "ed311b9b595647a8335200f82145a2737e284041a09636e5b7523f8b9001f56e",
+      "size_bytes": 2216097,
+      "coverage_start_date": "2026-08-07",
+      "coverage_end_date": "2026-08-15",
       "coverage_day_count": 9,
       "current_path": "data/daily/current/el.json",
       "current_signature_path": "data/daily/current/el.json.sig"
@@ -49,8 +49,8 @@
   "coverage": {
     "policy": "ROLLING_FUTURE_WINDOW",
     "schema_version": 2,
-    "start_date": "2026-08-06",
-    "end_date": "2026-08-14",
+    "start_date": "2026-08-07",
+    "end_date": "2026-08-15",
     "day_count": 9,
     "status": "COMPLETE"
   }

@@ -14,7 +14,7 @@
     "en": "This page lists active sources and connectors with authority tier and health. Listing a source never means all content is copied; religious text remains license-, verification-, and native-language-gated.",
     "el": "Ἡ σελίδα παραθέτει ἐνεργὲς πηγὲς καὶ συνδέσεις μὲ βαθμίδα ἀρχῆς καὶ κατάσταση ἐλέγχου."
   },
-  "health_date": "2026-08-06",
+  "health_date": "2026-08-07",
   "health_summary": {
     "connector_count": 10,
     "usable_connector_count": 7,
@@ -26,59 +26,26 @@
       "current": 2
     },
     "consensus": {
-      "status": "CONFLICT_REQUIRES_AUTHORITY_RULE",
+      "status": "MULTI_SOURCE_AGREEMENT",
       "fields": {
         "epistle_reference": {
-          "status": "single_source",
-          "normalized": "2 corinthians 1:1-7",
+          "status": "agreement",
+          "normalized": "2 corinthians 1:12-20",
           "sources": [
-            "goarch_digital_chant_stand"
+            "goarch_digital_chant_stand",
+            "oca_daily_readings"
           ]
         },
         "gospel_reference": {
-          "status": "single_source",
-          "normalized": "luke 9:28-36",
+          "status": "agreement",
+          "normalized": "matthew 22:23-33",
           "sources": [
+            "goarch_digital_chant_stand",
             "oca_daily_readings"
           ]
         }
       },
-      "conflicts": [
-        {
-          "field": "epistle_reference",
-          "variants": [
-            {
-              "normalized": "2 corinthians 1:1-7",
-              "sources": [
-                "goarch_digital_chant_stand"
-              ]
-            },
-            {
-              "normalized": "exodus 24:12-18",
-              "sources": [
-                "oca_daily_readings"
-              ]
-            }
-          ]
-        },
-        {
-          "field": "gospel_reference",
-          "variants": [
-            {
-              "normalized": "luke 9:28-36",
-              "sources": [
-                "oca_daily_readings"
-              ]
-            },
-            {
-              "normalized": "matthew 21:43-46",
-              "sources": [
-                "goarch_digital_chant_stand"
-              ]
-            }
-          ]
-        }
-      ]
+      "conflicts": []
     }
   },
   "sources": [
@@ -116,7 +83,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 1,
       "connector_count": 3,
       "connector_ids": [
@@ -141,12 +108,12 @@
           "authority_tier": 1,
           "publication_role": "local_primary_authority",
           "calendar_profile": "jerusalem_old_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/",
           "status": "poisoned",
-          "checked_at_utc": "2026-08-06T06:18:06Z",
+          "checked_at_utc": "2026-08-07T04:06:37Z",
           "http_status": 200,
-          "content_sha256": "70e1057032ec8618aca6762729165111e56ea19b5da2911d1ac6563410efd388",
+          "content_sha256": "f5990a529fc6ec7ae61d8c67b222da60f00e9cef4bbc71db440c1561cea59dd8",
           "structure_sha256": "50b4bd01f258ff32405e371998d71c88c1d7415a06787f7128e87b4fed3b187f",
           "content_bytes": 441260,
           "detected_date": null,
@@ -169,12 +136,12 @@
           "authority_tier": 1,
           "publication_role": "official_directory",
           "calendar_profile": "not_applicable",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
           "status": "available",
-          "checked_at_utc": "2026-08-06T06:18:08Z",
+          "checked_at_utc": "2026-08-07T04:06:43Z",
           "http_status": 200,
-          "content_sha256": "2765b8b7e0106396b8ed1df3e141a2ac9682518f84e21ec67f19fca7aedebfef",
+          "content_sha256": "65361a69a0b981ea1f820b28787c7720a3fe479b7d1a6dbaabb9bb6a76b82393",
           "structure_sha256": "392e4c12caf9d35edb048fc9700ed95891eff523b7b3be63b9a7ba8957c52cfa",
           "content_bytes": 889156,
           "detected_date": null,
@@ -197,12 +164,12 @@
           "authority_tier": 1,
           "publication_role": "official_live_link",
           "calendar_profile": "not_applicable",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/",
           "status": "available",
-          "checked_at_utc": "2026-08-06T06:18:09Z",
+          "checked_at_utc": "2026-08-07T04:06:47Z",
           "http_status": 200,
-          "content_sha256": "36223ae590e7454fa0787c46707b4a37492f9c1ed9bc6aa4a028e7fa41f6f514",
+          "content_sha256": "f4229c2e89aa1709677f0275706f2fad35410bf59b02b3116e0f382bfdcb393b",
           "structure_sha256": "7ce61321c3b3fecfd47a3c39fb7b03093f91ea2fc4883b3d4e28488c438aaeb7",
           "content_bytes": 379112,
           "detected_date": null,
@@ -248,7 +215,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 2,
       "connector_count": 1,
       "connector_ids": [
@@ -268,14 +235,14 @@
           "authority_tier": 2,
           "publication_role": "jurisdiction_and_feast_authority",
           "calendar_profile": "jerusalem_old_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://en.jerusalem-patriarchate.info/liturgical-life/major-feasts/",
           "status": "available",
-          "checked_at_utc": "2026-08-06T06:18:10Z",
+          "checked_at_utc": "2026-08-07T04:06:48Z",
           "http_status": 200,
-          "content_sha256": "269b3a43ad6cb11d80319383b1b4640e97bb042a80dea8b8061c6824f898cab6",
-          "structure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "content_bytes": 107,
+          "content_sha256": "73e2901c7620ecd4c52cb0cffd343504499c6e0f2668331cb5026e253dcdbc62",
+          "structure_sha256": "afdbc7d8284f1e3e47eb3a9b0777c6b2d143a76911fb0569e99ede5f880b352e",
+          "content_bytes": 173624,
           "detected_date": null,
           "epistle_reference": null,
           "gospel_reference": null,
@@ -319,7 +286,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 3,
       "connector_count": 1,
       "connector_ids": [
@@ -339,10 +306,10 @@
           "authority_tier": 3,
           "publication_role": "arabic_cross_check",
           "calendar_profile": "antioch_local_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://www.antiochpatriarchate.org/",
           "status": "available",
-          "checked_at_utc": "2026-08-06T06:18:10Z",
+          "checked_at_utc": "2026-08-07T04:06:49Z",
           "http_status": 200,
           "content_sha256": "ce0854f8613382766b232a413e177c9096869417943a7071456e387de92165c7",
           "structure_sha256": "e021b05e38dcd1a2557701e5b424042a5265d464dd5f3deed30b3b97af208979",
@@ -390,7 +357,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 4,
       "connector_count": 1,
       "connector_ids": [
@@ -410,12 +377,12 @@
           "authority_tier": 4,
           "publication_role": "greek_language_cross_check",
           "calendar_profile": "church_of_greece_new_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://apostoliki-diakonia.gr/fk/",
           "status": "available",
-          "checked_at_utc": "2026-08-06T06:18:21Z",
+          "checked_at_utc": "2026-08-07T04:07:03Z",
           "http_status": 200,
-          "content_sha256": "22f3c8a98566a56b8874c556b36874b01c4cbe115fa5d23dea5b673cfa22aa84",
+          "content_sha256": "ac36106f813af57ab3802a53250ea61694f00beac665daeca5ab07eb62743fb1",
           "structure_sha256": "97500ccac8429489c4cb26d534e19430f54f2c5cca802d7e253a9bbbeecf4b94",
           "content_bytes": 116374,
           "detected_date": null,
@@ -462,7 +429,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 4,
       "connector_count": 1,
       "connector_ids": [
@@ -482,36 +449,36 @@
           "authority_tier": 4,
           "publication_role": "service_structure_and_link_discovery",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://digitalchantstand.goarch.org/goa/dcs/dcs.html",
           "status": "current",
-          "checked_at_utc": "2026-08-06T06:18:17Z",
+          "checked_at_utc": "2026-08-07T04:06:59Z",
           "http_status": 200,
           "content_sha256": "4765642e9fb508b746595779462522e1be26a609843b6f61d60f6bb034124dbe",
           "structure_sha256": "1e73c6ce8d282384dcf183de0e0d2e4dc15048194a530298359e0361c1a3eb75",
           "content_bytes": 2422,
-          "detected_date": "2026-08-06",
-          "epistle_reference": "2 Corinthians 1:1-7",
-          "gospel_reference": "Matthew 21:43-46",
+          "detected_date": "2026-08-07",
+          "epistle_reference": "2 Corinthians 1:12-20",
+          "gospel_reference": "Matthew 22:23-33",
           "commemorations": [],
           "service_links": [
             {
               "title": "Divine Liturgy",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/06/h91/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/07/h91/en/index.html",
               "status": "available",
-              "content_sha256": "f36f189185a4ee1dccc20fdfa91ded89dcac111250b22ab3db57c302b409dd8e"
+              "content_sha256": "d762036197a2fcb8e3a55e09562212342401279bdb906bb1329e23661ec5ba07"
             },
             {
               "title": "Matins / Orthros",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/06/ma/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/07/ma/en/index.html",
               "status": "available",
-              "content_sha256": "1f29cea12b1b749c3cff4a6f2ff92c2ff7b60ea074fa795268aeae580e88720b"
+              "content_sha256": "4b5befdae6e46e4e1cc0856de83a00ec7de403a83b86cdc5ed00a665bd3a3122"
             },
             {
               "title": "Vespers",
-              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/06/li/en/index.html",
+              "url": "https://digitalchantstand.goarch.org/goa/dcs/h/s/2026/08/07/li/en/index.html",
               "status": "available",
-              "content_sha256": "a29052f6b158fb722059a47deeb511e2feed7cdd65c7d21efac068a30e4af2fb"
+              "content_sha256": "e7810d043bb0ba8c71acdf75392fe69fcef06120ca7017de4f4f7d81c426db4f"
             }
           ],
           "church_count": null,
@@ -556,7 +523,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 4,
       "connector_count": 2,
       "connector_ids": [
@@ -578,10 +545,10 @@
           "authority_tier": 4,
           "publication_role": "regular_cycle_cross_check",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://www.goarch.org/chapel/",
           "status": "http_error",
-          "checked_at_utc": "2026-08-06T06:18:13Z",
+          "checked_at_utc": "2026-08-07T04:06:54Z",
           "http_status": 403,
           "content_sha256": null,
           "structure_sha256": null,
@@ -606,10 +573,10 @@
           "authority_tier": 4,
           "publication_role": "dated_monthly_reference_cross_check",
           "calendar_profile": "ecumenical_patriarchate_new_calendar",
-          "target_date": "2026-08-06",
+          "target_date": "2026-08-07",
           "url": "https://www.goarch.org/chapel/calendar?month=08&year=2026",
           "status": "http_error",
-          "checked_at_utc": "2026-08-06T06:18:16Z",
+          "checked_at_utc": "2026-08-07T04:06:59Z",
           "http_status": 403,
           "content_sha256": null,
           "structure_sha256": null,
@@ -1057,7 +1024,7 @@
       },
       "rights": "Permission confirmed by project owner",
       "permission_confirmed": true,
-      "last_verified": "2026-08-06",
+      "last_verified": "2026-08-07",
       "authority_tier": 5,
       "connector_count": 1,
       "connector_ids": [
@@ -1077,17 +1044,17 @@
           "authority_tier": 5,
           "publication_role": "last_official_reference_fallback",
           "calendar_profile": "oca_calendar",
-          "target_date": "2026-08-06",
-          "url": "https://www.oca.org/readings/daily/2026/08/06",
+          "target_date": "2026-08-07",
+          "url": "https://www.oca.org/readings/daily/2026/08/07",
           "status": "current",
-          "checked_at_utc": "2026-08-06T06:18:18Z",
+          "checked_at_utc": "2026-08-07T04:07:00Z",
           "http_status": 200,
-          "content_sha256": "fd06ce24cfe98aed51a3b467af88899bdc15b1b60b938da4b44818a2a52bef47",
-          "structure_sha256": "7ef1218573a6c4dce0f7429f574dfa0c63fe75c253185d1d0df1ddde46b5f9da",
-          "content_bytes": 15688,
-          "detected_date": "2026-08-06",
-          "epistle_reference": "Exodus 24:12-18",
-          "gospel_reference": "Luke 9:28-36",
+          "content_sha256": "e77988cb64a45eed0720a63ccb34b095030d5b377b3a8279efcac326cbdc1bae",
+          "structure_sha256": "e3440a9ad5bc9dc7d03e7b8afc2f1ff978b5f7901ec18b4f64943f6d35625d31",
+          "content_bytes": 15069,
+          "detected_date": "2026-08-07",
+          "epistle_reference": "2 Corinthians 1:12-20",
+          "gospel_reference": "Matthew 22:23-33",
           "commemorations": [],
           "service_links": [],
           "church_count": null,
@@ -1255,7 +1222,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "51e7eb28a7567f5af28a930a240753f0603e6ffc56955459114e62beafaeba91",
+      "content_sha256": "33618794f19d0c62a76e950ad092f270c4580ab93bbe928b48e23a6ab4fd533f",
       "source_snapshot_sha256": "c393da8bd8bfd485f6906702e559b868fcfb83e4c94b76d63b96adb84837cd62",
       "source_title": "الكتاب المقدس باللغة العربية، فان دايك"
     },
@@ -1289,7 +1256,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "1d571b8fad6af584672e9ca9a554e9475c68b8e68353c6d07dbbe87ae700ff0d",
+      "content_sha256": "49ec22e07c2b7caa4004dde220fedffd86e0b9d2b4f926463930037b43854158",
       "source_snapshot_sha256": "0a2af3439977eece7eed0ef6f31fd684065a4580b2d95d8936dbfab62b24ffad",
       "source_title": "1904 Patriarchal Greek New Testament"
     },
@@ -1323,7 +1290,7 @@
       "health_statuses": [],
       "health": [],
       "distribution_status": "REDISTRIBUTABLE",
-      "content_sha256": "d36991ba874340c60a04e790e338eb55cd8a58e4e55f52b3b8de5406ced6d09e",
+      "content_sha256": "e913a2d0452c2daa99c0b4175a51788df7fd260466aae8d56ad587590aa68e12",
       "source_snapshot_sha256": "53feb24694bdd43fab1077bfcefd8571da43e20b84e289393ef9b0c54ce34202",
       "source_title": "World English Bible"
     }
