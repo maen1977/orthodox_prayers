@@ -19,6 +19,7 @@ CHECKS = [
     [sys.executable, "scripts/validate_strict_religious_content.py", "data/calendar/today.json", "--require-complete"],
     [sys.executable, "scripts/validate_divine_liturgy_text_integrity.py"],
     [sys.executable, "scripts/validate_divine_liturgy_delivery_integrity.py"],
+    [sys.executable, "scripts/validate_smart_liturgy_core.py"],
     [sys.executable, "scripts/validate_service_edition_evidence.py"],
     [sys.executable, "scripts/validate_ui_localizations.py"],
     [sys.executable, "scripts/validate_android_resources.py"],

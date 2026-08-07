@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "ACTIVE_FAIL_CLOSED",
+  "status": "R56_SMART_APPOINTED_LITURGY_STRICT_CORE",
   "rolling_window": {
     "policy": "ROLLING_FUTURE_WINDOW",
     "schema_version": 2,
@@ -11,20 +11,29 @@
     "end_offset_days": "day_count_minus_one"
   },
   "definition_of_complete": {
-    "scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+    "scope": "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
     "includes": [
       "appointed_liturgy_type_and_service_form",
-      "native_preparation_office_when_registered",
-      "opening_and_litanies",
+      "opening_blessing_and_litanies",
       "antiphons_and_entrances",
-      "daily_hymns_and_readings",
+      "appointed_daily_hymns_and_liturgy_readings",
       "anaphora_or_presanctified_order",
-      "communion",
-      "thanksgiving_and_dismissal"
+      "communion_within_the_liturgy",
+      "dismissal"
     ],
     "partial_text_allowed": false,
     "cross_language_fallback_allowed": false,
-    "wrong_rite_fallback_allowed": false
+    "wrong_rite_fallback_allowed": false,
+    "excludes_as_separate_offices": [
+      "orthros_and_matins_gospel",
+      "hours",
+      "proskomide",
+      "personal_pre_communion_prayers",
+      "thanksgiving_after_communion",
+      "washing_of_feet_or_other_adjacent_feast_rites"
+    ],
+    "no_unappointed_material_allowed": true,
+    "daily_propers_fail_closed": true
   },
   "displayable_rites": [
     "chrysostom"
@@ -37,6 +46,7 @@
   "no_liturgy_is_valid_state": true,
   "validators": [
     "scripts/validate_full_liturgy_services.py",
-    "scripts/validate_rolling_week.py"
+    "scripts/validate_rolling_week.py",
+    "scripts/validate_smart_liturgy_core.py"
   ]
 }

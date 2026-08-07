@@ -64,9 +64,12 @@ class RollingWeekUpdateTests(unittest.TestCase):
             self.assertTrue(selection["reason"]["ar"])
             self.assertFalse(selection["wrong_liturgy_fallback_allowed"])
             self.assertEqual(
-                "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+                "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
                 selection["full_service_scope"],
             )
+            self.assertTrue(selection["strict_core_only"])
+            self.assertTrue(selection["adjacent_offices_separate"])
+            self.assertTrue(selection["no_unappointed_material"])
 
     def test_signed_last_trusted_release_remains_embedded_unchanged(self):
         trusted = ROOT / "data/calendar/today.json"

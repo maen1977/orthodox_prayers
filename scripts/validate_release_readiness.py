@@ -4,7 +4,7 @@
 The release target is a configurable moving horizon in Asia/Amman. It
 intentionally does not preload or claim a permanent 365-day liturgical calendar. Every day must identify the appointed rite and service form, provide
 exact same-language Scripture, and either expose the complete appointed service
-from preparation through dismissal/thanksgiving or explicitly state that no
+from its opening blessing through dismissal or explicitly state that no
 Divine Liturgy is appointed. Wrong-rite substitution is forbidden.
 """
 from __future__ import annotations
@@ -121,31 +121,68 @@ def main() -> None:
         "The focused follow-along Liturgy profile is incomplete",
         errors,
     )
+    payload = json.loads(daily_path.read_text(encoding="utf-8"))
     relative = str(daily_path.relative_to(ROOT)) if daily_path.is_relative_to(ROOT) else str(daily_path)
+
     run_gate(
-        [sys.executable, "scripts/validate_rolling_week.py", relative, "--expected-start", json.loads(daily_path.read_text(encoding="utf-8")).get("date_iso", "")],
-        "The moving rolling package is invalid",
-        errors,
-    )
-    run_gate(
-        [sys.executable, "scripts/validate_full_liturgy_services.py", relative],
-        "An appointed Liturgy is incomplete or substituted",
+        [sys.executable, "scripts/validate_smart_liturgy_core.py"],
+        "The smart appointed-Liturgy core contract is invalid",
         errors,
     )
 
-    payload = json.loads(daily_path.read_text(encoding="utf-8"))
-    days = rolling_days(payload, errors)
-    contract = load_contract()
-    for day_payload in days:
-        validate_scripture_day(day_payload, contract, errors)
+    # Current production architecture (5.3+): Android builds the rolling nine-day
+    # window locally from immutable calendar assets. The checked-in signed today.json
+    # is a trusted historical/bootstrap snapshot and is not the runtime rolling source.
+    if not isinstance(payload.get("rolling_week"), dict):
+        today = date.today()
+        day_iso = today.isoformat() if date(2026, 1, 1) <= today <= date(2050, 12, 31) else "2026-08-07"
+        run_gate(
+            [sys.executable, "scripts/validate_calendar_immutability.py"],
+            "The embedded 2026-2050 calendar changed unexpectedly",
+            errors,
+        )
+        run_gate(
+            [sys.executable, "scripts/validate_local_daily_engine.py", "--date", day_iso],
+            "The local nine-day Android engine is invalid",
+            errors,
+        )
+        run_gate(
+            [sys.executable, "scripts/validate_full_liturgy_services.py"],
+            "The static appointed-Liturgy contract is incomplete or substituted",
+            errors,
+        )
+        days = []
+    else:
+        # Compatibility path for an explicitly supplied legacy signed moving-window package.
+        run_gate(
+            [sys.executable, "scripts/validate_rolling_week.py", relative, "--expected-start", payload.get("date_iso", "")],
+            "The moving rolling package is invalid",
+            errors,
+        )
+        run_gate(
+            [sys.executable, "scripts/validate_full_liturgy_services.py", relative],
+            "An appointed Liturgy is incomplete or substituted",
+            errors,
+        )
+        days = rolling_days(payload, errors)
+        contract = load_contract()
+        for day_payload in days:
+            validate_scripture_day(day_payload, contract, errors)
 
     if errors:
         raise SystemExit("Production release is blocked:\n- " + "\n- ".join(dict.fromkeys(errors)))
-    print(
-        f"Production release readiness validated for {daily_path}: "
-        f"{len(days)}/{len(days)} consecutive days, exact Arabic/English/Greek Scripture, "
-        "appointed-rite selection, complete beginning-to-end services, and no wrong-rite fallback"
-    )
+    if isinstance(payload.get("rolling_week"), dict):
+        print(
+            f"Production release readiness validated for {daily_path}: "
+            f"{len(days)}/{len(days)} consecutive days, exact Arabic/English/Greek Scripture, "
+            "strict appointed-Liturgy core, and no wrong-rite fallback"
+        )
+    else:
+        print(
+            f"Production release readiness validated for local Android architecture: "
+            f"bootstrap={daily_path} rolling_runtime=embedded_calendar_2026_2050 "
+            "window=9 strict_liturgy_core=true wrong_rite_fallback=false"
+        )
 
 
 if __name__ == "__main__":

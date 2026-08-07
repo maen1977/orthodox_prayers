@@ -166,10 +166,14 @@ class JordanLiturgicalContractTests(unittest.TestCase):
         self.assertIn("if (repository.isTodayCurrent())", search)
         self.assertNotIn('scan(repository.today().optJSONArray("services"), repository, needle, bestById);\n        scan(repository.library()', search)
 
-    def test_update_workflow_requires_jordan_contract_and_complete_liturgy(self):
-        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-        self.assertIn("validate_jordan_liturgical_contract.py", workflow)
-        self.assertIn("--require-jordan-authority --require-complete-liturgy", workflow)
+    def test_build_workflow_uses_local_release_gate_and_smart_liturgy_contract(self):
+        workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+        gate = (ROOT / "scripts/run_local_daily_release_gate.py").read_text(encoding="utf-8")
+        simple = (ROOT / "scripts/simple_quality_gate.py").read_text(encoding="utf-8")
+        self.assertIn("run_local_daily_release_gate.py", workflow)
+        self.assertIn("simple_quality_gate.py", gate)
+        self.assertIn("validate_smart_liturgy_core.py", simple)
+        self.assertFalse((ROOT / ".github/workflows/update.yml").exists())
 
     def test_manual_update_path_cannot_bypass_jordan_gate(self):
         update = (ROOT / "scripts/update.py").read_text(encoding="utf-8")

@@ -124,17 +124,19 @@ def test_complete_chrysostom_overlay_declares_beginning_to_end_contract():
     assert service["publication_status"] == "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END"
     assert service["wrong_liturgy_fallback_allowed"] is False
     contract = service["liturgy_service_contract"]
-    assert contract["full_service_scope"] == "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING"
+    assert contract["full_service_scope"] == "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL"
     assert service["extends_service_id"] == "divine_liturgy"
 
 
-def test_android_reader_composes_preparation_liturgy_and_thanksgiving():
+def test_android_reader_keeps_adjacent_offices_separate_from_liturgy():
     source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-    for required in ("proskomide", "pre_communion_prayers", "thanksgiving_after_communion"):
-        assert required in source
-    assert "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING" in source
+    composer = source.split("private JSONObject composeFollowAlongLiturgy", 1)[1].split("private static JSONArray strictAppointedLiturgyCore", 1)[0]
+    assert "STRICT_APPOINTED_LITURGY_CORE_ONLY" in composer
+    assert "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL" in composer
     assert 'follow_along_mode' in source
     assert 'full_service_complete' in source
+    assert 'findServiceInArray(library().optJSONArray("services"), "pre_communion_prayers")' not in composer
+    assert 'thanksgivingSegmentsForLiturgy' not in composer
 
 
 def test_ui_exposes_type_form_reason_and_complete_open_action():

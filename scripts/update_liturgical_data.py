@@ -723,7 +723,10 @@ def _selection_payload(
         "import_contract": edition.get("import_contract") or "",
         "displayable": bool(edition.get("displayable")),
         "full_service_required": True,
-        "full_service_scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+        "full_service_scope": "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
+        "strict_core_only": True,
+        "adjacent_offices_separate": True,
+        "no_unappointed_material": True,
         "wrong_liturgy_fallback_allowed": False,
     }
 
@@ -1995,6 +1998,50 @@ def pre_liturgy_segments(info: dict, inserts: dict[str, str]) -> list[dict]:
     return segments
 
 
+def liturgy_day_plan(day: date, selection: dict, epistle: dict | None = None, gospel: dict | None = None, matins_gospel: dict | None = None, inserts: dict | None = None) -> dict:
+    """Describe exactly what belongs to today's appointed Liturgy.
+
+    Orthros/Matins, Hours, Proskomide and personal Communion offices are
+    deliberately outside this plan.  This object is metadata, not prayer text.
+    """
+    inserts = inserts or {}
+    def canonical(reading: dict | None) -> str:
+        if not isinstance(reading, dict):
+            return ""
+        return str((reading.get("integrity") or {}).get("canonical_reference") or "")
+    return {
+        "date_iso": day.isoformat(),
+        "appointed_liturgy_type": selection.get("service_type"),
+        "appointed_service_id": selection.get("service_id"),
+        "appointed_service_form": selection.get("service_form"),
+        "selection_rule_id": selection.get("rule_id"),
+        "selection_authority": selection.get("authority"),
+        "displayable": bool(selection.get("displayable")),
+        "strict_core_only": True,
+        "scope": "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
+        "no_unappointed_material": True,
+        "wrong_rite_fallback_allowed": False,
+        "machine_translation_allowed": False,
+        "liturgy_readings": {
+            "epistle_canonical": canonical(epistle),
+            "gospel_canonical": canonical(gospel),
+        },
+        "orthros_separate": {
+            "matins_gospel_canonical": canonical(matins_gospel),
+            "belongs_to": "orthros_not_divine_liturgy",
+        },
+        "daily_propers": {
+            "proper_id": inserts.get("proper_id"),
+            "variable_part_ids": copy.deepcopy(inserts.get("variant_ids") or []),
+            "fail_closed": True,
+        },
+        "separate_adjacent_offices": [
+            "orthros", "hours", "proskomide",
+            "pre_communion_prayers", "thanksgiving_after_communion",
+        ],
+    }
+
+
 def build_liturgy_service(service_id: str, day: date, info: dict, readings: list[dict], label_prefix_ar: str) -> dict:
     """Build the appointed service overlay and never substitute a different rite.
 
@@ -2034,9 +2081,12 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "import_contract": selection.get("import_contract") or "",
         "displayable": bool(selection.get("displayable")),
         "full_service_required": True,
-        "full_service_scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+        "full_service_scope": "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
         "wrong_liturgy_fallback_allowed": False,
         "fail_closed": True,
+        "strict_core_only": True,
+        "adjacent_offices_separate": True,
+        "no_unappointed_material": True,
     }
 
     if not selection.get("displayable"):
@@ -2077,6 +2127,7 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "publication_status": publication_status,
             "full_service_complete": False,
             "wrong_liturgy_fallback_allowed": False,
+            "liturgy_day_plan": liturgy_day_plan(day, selection),
             "source_provenance": {
                 "policy": "canonical/source_policy.json",
                 "service_rules": "canonical/liturgy_service_rules.json",
@@ -2131,7 +2182,6 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         for language in ("ar", "en", "el")
     }
     slot_replacements = {
-        "matins_gospel": reading_block_loc(matins_gospel, prefer_empty_ar_when_missing=True),
         "daily_hymns": daily_hymns,
         "daily_troparion": copy.deepcopy(inserts["troparion"]),
         "church_troparion": copy.deepcopy(inserts["church_troparion"]),
@@ -2193,8 +2243,9 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "liturgy_service_contract": contract,
         "publication_status": "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END",
         "full_service_complete": True,
-        "full_service_scope": "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING",
+        "full_service_scope": "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
         "wrong_liturgy_fallback_allowed": False,
+        "liturgy_day_plan": liturgy_day_plan(day, selection, epistle, gospel, matins_gospel, inserts),
         "daily_reading_contract": {
             "authority": "orthodox_jordan",
             "contract": "canonical/jordan_liturgical_contract.json",
@@ -2203,13 +2254,16 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "selected_liturgy_rule_id": selection.get("rule_id"),
             "epistle_canonical": str(epistle.get("integrity", {}).get("canonical_reference") or ""),
             "gospel_canonical": str(gospel.get("integrity", {}).get("canonical_reference") or ""),
-            "matins_gospel_canonical": str(matins_gospel.get("integrity", {}).get("canonical_reference") or ""),
+            "orthros_matins_gospel_canonical": str(matins_gospel.get("integrity", {}).get("canonical_reference") or ""),
+            "orthros_matins_gospel_belongs_to": "orthros_not_divine_liturgy",
             "resurrection_tone": inserts.get("resurrection_tone"),
             "eothinon": inserts.get("eothinon"),
             "proper_id": inserts.get("proper_id"),
             "variable_parts_registry": "canonical/liturgy_variable_parts.json",
             "variable_part_ids": copy.deepcopy(inserts.get("variant_ids") or []),
             "variable_parts_fail_closed": True,
+            "strict_core_only": True,
+            "no_unappointed_material": True,
             "fail_closed": True,
         },
         "notice": loc(
@@ -2224,7 +2278,7 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
             "status": "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE",
             "complete_service_claim": True,
             "completeness_status": "COMPLETE_NATIVE_COMPOSITE_FROM_BEGINNING_TO_END",
-            "completion_basis": "APPOINTED_NATIVE_TEMPLATE_PLUS_VERIFIED_DAILY_PROPERS_AND_NATIVE_PREPARATION_OFFICES",
+            "completion_basis": "APPOINTED_NATIVE_LITURGY_CORE_PLUS_VERIFIED_DAILY_LITURGY_PROPERS",
             "exact_remote_byte_match": False,
             "dynamic_texts_fail_closed": True,
             "ai_liturgical_translation_used": False,

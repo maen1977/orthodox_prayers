@@ -311,7 +311,7 @@ public final class LocalDailyContentEngine {
     ) throws Exception {
         JSONObject service = new JSONObject();
         service.put("id", id);
-        service.put("extends_service_id", baseId);
+        if (!liturgy) service.put("extends_service_id", baseId);
         service.put("category", category);
         service.put("icon", icon);
         service.put("title", serviceTitle(id));
@@ -341,26 +341,73 @@ public final class LocalDailyContentEngine {
 
         if (liturgy) {
             String selectedType = selection.optString("service_type", "chrysostom");
-            boolean displayable = selection.optBoolean("displayable", true)
-                    && !"no_divine_liturgy".equals(selectedType)
-                    && !"typikon_override_required".equals(selectedType);
+            boolean noLiturgy = "no_divine_liturgy".equals(selectedType);
+            boolean overrideRequired = "typikon_override_required".equals(selectedType);
+            boolean displayable = selection.optBoolean("displayable", false)
+                    && !noLiturgy && !overrideRequired;
+            String appointedServiceId = selection.optString("service_id", "").trim();
             service.put("selected_liturgy_type", selectedType);
+            service.put("selected_service_form", selection.optString("service_form", ""));
             service.put("full_service_complete", displayable);
-            service.put("publication_status", displayable
-                    ? "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END_LOCAL_OFFLINE"
-                    : "NO_DIVINE_LITURGY_APPOINTED");
-            service.put("template_id", "library:" + baseId);
+            service.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
+            service.put("strict_core_only", true);
+            service.put("adjacent_offices_separate", true);
+            service.put("no_unappointed_material", true);
+            if (displayable && !appointedServiceId.isEmpty()) {
+                service.put("extends_service_id", appointedServiceId);
+                service.put("template_id", "library:" + appointedServiceId);
+                service.put("publication_status", "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END_LOCAL_OFFLINE");
+            } else {
+                service.remove("extends_service_id");
+                service.remove("template_id");
+                service.put("publication_status", noLiturgy
+                        ? "NO_DIVINE_LITURGY_APPOINTED"
+                        : (overrideRequired
+                            ? "BLOCKED_REQUIRES_DATED_OFFICIAL_TYPIKON_OVERRIDE"
+                            : "BLOCKED_MISSING_COMPLETE_NATIVE_SERVICE_EDITION"));
+            }
             JSONObject refs = calendarDay.optJSONObject("reading_references");
             service.put("daily_reading_contract", new JSONObject()
                     .put("authority", "embedded_calendar_2026_2050")
                     .put("date_iso", date.toString())
                     .put("epistle_canonical", canonicalReference(refs, "epistle"))
                     .put("gospel_canonical", canonicalReference(refs, "gospel"))
-                    .put("matins_gospel_canonical", canonicalReference(refs, "matins_gospel"))
+                    .put("strict_core_only", true)
+                    .put("no_unappointed_material", true)
                     .put("fail_closed", true)
                     .put("network_required", false));
+            service.put("liturgy_day_plan", liturgyDayPlan(date, selection, refs));
         }
         return service;
+    }
+
+    private JSONObject liturgyDayPlan(LocalDate date, JSONObject selection, JSONObject refs) throws Exception {
+        JSONObject plan = new JSONObject();
+        plan.put("date_iso", date.toString());
+        plan.put("appointed_liturgy_type", selection.optString("service_type", ""));
+        plan.put("appointed_service_id", selection.optString("service_id", ""));
+        plan.put("appointed_service_form", selection.optString("service_form", ""));
+        plan.put("selection_rule_id", selection.optString("rule_id", ""));
+        plan.put("selection_authority", selection.optString("authority", "embedded_calendar_2026_2050"));
+        plan.put("displayable", selection.optBoolean("displayable", false));
+        plan.put("strict_core_only", true);
+        plan.put("scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
+        plan.put("no_unappointed_material", true);
+        plan.put("wrong_liturgy_fallback_allowed", false);
+        plan.put("machine_translation_allowed", false);
+        plan.put("liturgy_readings", new JSONObject()
+                .put("epistle_canonical", canonicalReference(refs, "epistle"))
+                .put("gospel_canonical", canonicalReference(refs, "gospel")));
+        plan.put("orthros_separate", new JSONObject()
+                .put("matins_gospel_canonical", canonicalReference(refs, "matins_gospel"))
+                .put("belongs_to", "orthros_not_divine_liturgy"));
+        plan.put("separate_adjacent_offices", new JSONArray()
+                .put("orthros")
+                .put("hours")
+                .put("proskomide")
+                .put("pre_communion_prayers")
+                .put("thanksgiving_after_communion"));
+        return plan;
     }
 
     private JSONObject normalizedLiturgySelection(JSONObject original) throws Exception {
@@ -377,6 +424,10 @@ public final class LocalDailyContentEngine {
             selection.put("displayable", true);
         }
         selection.put("wrong_liturgy_fallback_allowed", false);
+        selection.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
+        selection.put("strict_core_only", true);
+        selection.put("adjacent_offices_separate", true);
+        selection.put("no_unappointed_material", true);
         if (selection.optJSONObject("reason") == null) {
             selection.put("reason", localized(
                     "اختيار محلي محسوب من قواعد التقويم الكنسي المضمّنة",
@@ -411,7 +462,7 @@ public final class LocalDailyContentEngine {
                     "Ἑσπερινὸς μετὰ Θείας Λειτουργίας"
             );
         }
-        if ("presanctified_evening".equals(form)) {
+        if ("presanctified_evening".equals(form) || "lenten_vespers_with_presanctified".equals(form)) {
             return localized(
                     "قداس السابق تقديسه مساءً",
                     "Evening Liturgy of the Presanctified Gifts",

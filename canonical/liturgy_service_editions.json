@@ -1,6 +1,6 @@
 {
-  "schema_version": 3,
-  "status": "PHASE8_FINALIZATION_PIPELINE_ACTIVE_FAIL_CLOSED",
+  "schema_version": 4,
+  "status": "R56_AUDITED_NATIVE_COMPLETENESS_FAIL_CLOSED",
   "languages": [
     "ar",
     "en",
@@ -9,16 +9,22 @@
   "editions": {
     "chrysostom": {
       "service_id": "divine_liturgy",
-      "ar": "IMPORTED_NATIVE_AUTHORIZED_REVIEW_PENDING",
-      "en": "IMPORTED_NATIVE_AUTHORIZED",
-      "el": "IMPORTED_NATIVE_AUTHORIZED",
-      "displayable": true
+      "ar": "IMPORTED_NATIVE_CORE_STRUCTURE_REVIEWED_OCR_APPENDIX_QUARANTINED",
+      "en": "IMPORTED_NATIVE_AUTHORIZED_REVIEWED",
+      "el": "IMPORTED_NATIVE_AUTHORIZED_REVIEWED",
+      "displayable": true,
+      "displayable_languages": [
+        "ar",
+        "en",
+        "el"
+      ],
+      "r56_audit": "PUBLISHABLE_STRICT_CORE_ALL_THREE_LANGUAGES"
     },
     "basil": {
       "service_id": "divine_liturgy_basil",
-      "ar": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
-      "en": "IMPORTED_NATIVE_AUTHORIZED",
-      "el": "OFFICIAL_NATIVE_SOURCE_REGISTERED_CAPTURE_PENDING",
+      "ar": "IMPORTED_NATIVE_OCR_CORRUPTION_REIMPORT_REQUIRED",
+      "en": "IMPORTED_NATIVE_AUTHORIZED_EXACT",
+      "el": "IMPORTED_NATIVE_RAW_HISTORICAL_OCR_REIMPORT_REQUIRED",
       "displayable": false,
       "source_ids": [
         "goarch_digital_chant_stand_english",
@@ -26,20 +32,21 @@
       ],
       "import_contract": "canonical/liturgy_native_import_contracts.json",
       "availability_note": {
-        "ar": "اختيار قداس القديس باسيليوس يعمل، لكن النص العربي الأصلي الكامل غير متوفر بعد، والنصان الإنجليزي واليوناني ما زالا في مرحلة الاستيراد والمراجعة. لذلك تبقى الخدمة محجوبة ولا يعرض قداس آخر مكانها.",
-        "en": "Saint Basil’s Liturgy is selected correctly, but the complete native Arabic source is still missing and the English and Greek editions are awaiting controlled import and review. The service remains blocked and no other Liturgy is substituted.",
-        "el": "Ἡ Λειτουργία τοῦ Ἁγίου Βασιλείου ἐπιλέγεται σωστά, ἀλλὰ λείπει ἀκόμη ἡ πλήρης πρωτότυπη ἀραβικὴ πηγή, καὶ οἱ ἀγγλικὴ καὶ ἑλληνικὴ ἐκδόσεις ἀναμένουν ἐλεγχόμενη εἰσαγωγὴ καὶ ἔγκριση. Ἡ ἀκολουθία παραμένει κλειδωμένη χωρὶς ὑποκατάσταση."
+        "ar": "يحدّد التقويم قداس القديس باسيليوس عند وجوبه، لكن النسخة العربية الحالية تحتاج إعادة استيراد بسبب فساد OCR، واليونانية تحتاج إعادة استيراد ومراجعة للنص التاريخي. الإنجليزية كاملة؛ لذلك تبقى الخدمة محجوبة في التطبيق ولا يُستبدل بها قداس آخر.",
+        "en": "The calendar appoints Saint Basil when required. The current Arabic lane requires OCR re-import and the Greek historical OCR requires controlled re-import and review. English is complete, so the rite remains blocked rather than substituting another Liturgy.",
+        "el": "Τὸ ἡμερολόγιο ὁρίζει τὴ Λειτουργία τοῦ Ἁγίου Βασιλείου ὅταν πρέπει. Ἡ ἀραβικὴ λωρίδα χρειάζεται νέα εἰσαγωγὴ λόγω σφαλμάτων OCR καὶ ἡ ἑλληνικὴ ἱστορικὴ OCR χρειάζεται ἐλεγχόμενη ἐπανεισαγωγὴ καὶ ἔλεγχο. Ἡ ἀγγλικὴ εἶναι πλήρης, ὁπότε ἡ ἀκολουθία παραμένει κλειδωμένη χωρὶς ὑποκατάσταση."
       },
-      "phase8_review_status": "ENGLISH_EXACT_IMPORTED_ARABIC_GREEK_PENDING",
+      "phase8_review_status": "ENGLISH_EXACT_ARABIC_GREEK_REIMPORT_REQUIRED",
       "displayable_languages": [
         "en"
-      ]
+      ],
+      "r56_audit": "BLOCKED_ARABIC_AND_GREEK_NOT_WORD_BY_WORD_VERIFIED"
     },
     "presanctified": {
       "service_id": "presanctified_liturgy",
-      "ar": "OFFICIAL_PDF_ACQUIRED_EXTRACTION_BLOCKED_LEGACY_FONT_ENCODING",
-      "en": "IMPORTED_NATIVE_AUTHORIZED",
-      "el": "IMPORTED_NATIVE_AUTHORIZED",
+      "ar": "IMPORTED_EXPLANATORY_EXCERPT_NOT_FULL_SERVICE",
+      "en": "IMPORTED_NATIVE_AUTHORIZED_EXACT",
+      "el": "IMPORTED_NATIVE_AUTHORIZED_EXACT",
       "displayable": false,
       "source_ids": [
         "orthodox_jordan",
@@ -48,15 +55,16 @@
       ],
       "import_contract": "canonical/liturgy_native_import_contracts.json",
       "availability_note": {
-        "ar": "تم الحصول على الطبعة العربية الرسمية للسابق تقديسه، لكن ترميز خطها القديم يفسد آلاف الأحرف عند الاستخراج. حُظر نشر النص حتى استيراد ملف Word الأصلي أو تفريغ Unicode مطابق ومراجعته صفحة بصفحة، مع بقاء الإنجليزية واليونانية قيد الاستيراد.",
-        "en": "The official Arabic Presanctified service book has been acquired, but its legacy font encoding corrupts thousands of characters during extraction. Publication is blocked until an exact Unicode source is reviewed page by page; the English and Greek lanes also remain in controlled import.",
-        "el": "Ἡ ἐπίσημη ἀραβικὴ ἔκδοση τῶν Προηγιασμένων ἀποκτήθηκε, ἀλλὰ ἡ παλαιὰ κωδικοποίηση γραμματοσειρᾶς καταστρέφει χιλιάδες χαρακτῆρες κατὰ τὴν ἐξαγωγή. Ἡ δημοσίευση παραμένει κλειδωμένη ἕως ὅτου ἐλεγχθεῖ ἀκριβὲς κείμενο Unicode, ἐνῶ καὶ οἱ ἀγγλικὴ καὶ ἑλληνικὴ λωρίδες παραμένουν ὑπὸ ἐλεγχόμενη εἰσαγωγή."
+        "ar": "يحدّد التقويم قداس السابق تقديسه في أيامه، لكن المحتوى العربي المضمّن حاليًا شرح للخدمة وليس نصها الطقسي الكامل. الإنجليزية واليونانية كاملتان؛ لذلك تبقى الخدمة محجوبة حتى إدخال العربية الكاملة ومراجعتها.",
+        "en": "The calendar appoints the Presanctified Liturgy on its proper days, but the bundled Arabic material is explanatory rather than the complete liturgical service. English and Greek are complete, so the rite remains blocked until a complete reviewed Arabic edition is imported.",
+        "el": "Τὸ ἡμερολόγιο ὁρίζει τὴ Λειτουργία τῶν Προηγιασμένων στὶς προβλεπόμενες ἡμέρες, ἀλλὰ τὸ ἐνσωματωμένο ἀραβικὸ ὑλικό εἶναι ἐπεξηγηματικὸ καὶ ὄχι ἡ πλήρης ἀκολουθία. Ἡ ἀγγλικὴ καὶ ἡ ἑλληνικὴ εἶναι πλήρεις· ἡ ἀκολουθία παραμένει κλειδωμένη ἕως ὅτου εἰσαχθεῖ καὶ ἐλεγχθεῖ πλήρης ἀραβικὴ ἔκδοση."
       },
-      "phase8_review_status": "ENGLISH_GREEK_EXACT_IMPORTED_ARABIC_PENDING",
+      "phase8_review_status": "ENGLISH_GREEK_EXACT_ARABIC_FULL_SERVICE_MISSING",
       "displayable_languages": [
         "en",
         "el"
-      ]
+      ],
+      "r56_audit": "BLOCKED_ARABIC_IS_EXPLANATORY_NOT_COMPLETE_LITURGY"
     },
     "typikon_override_required": {
       "service_id": null,
@@ -80,7 +88,7 @@
       }
     }
   },
-  "publication_rule": "A selected rite is displayable only as a complete native beginning-to-end service in every published language lane; partial text and wrong-rite fallback are forbidden.",
+  "publication_rule": "A rite is displayable only when the appointed Liturgy core is complete and reviewed in Arabic, English, and Greek. Orthros, Hours, Proskomide, personal Communion prayers, thanksgiving, and adjacent feast rites remain separate and are never merged into the Divine Liturgy.",
   "wrong_liturgy_fallback_allowed": false,
   "machine_translation_allowed": false,
   "source_documents": {
@@ -167,7 +175,12 @@
     "complete_release_allowed": false
   },
   "recovered_import": {
-    "status": "SOURCE_TEXTS_MERGED_OVERALL_RELEASE_STILL_BLOCKED",
+    "status": "R56_AUDITED_EXISTING_NATIVE_ASSETS",
+    "chrysostom_publishable_languages": [
+      "ar",
+      "en",
+      "el"
+    ],
     "basil_exact_languages": [
       "en"
     ],
@@ -175,8 +188,12 @@
       "en",
       "el"
     ],
-    "wrong_rite_fallback_allowed": false
+    "wrong_rite_fallback_allowed": false,
+    "machine_translation_allowed": false
   },
   "full_service_required": true,
-  "full_service_contract": "canonical/full_liturgy_service_contract.json"
+  "full_service_contract": "canonical/full_liturgy_service_contract.json",
+  "strict_core_scope": "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL",
+  "adjacent_offices_separate": true,
+  "no_unappointed_material_allowed": true
 }

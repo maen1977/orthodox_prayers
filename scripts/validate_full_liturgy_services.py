@@ -16,11 +16,12 @@ from rolling_window_contract import metadata_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ("ar", "en", "el")
-SUPPORTING_OFFICES = (
+ADJACENT_OFFICES = (
     "proskomide",
     "pre_communion_prayers",
     "thanksgiving_after_communion",
 )
+STRICT_SCOPE = "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL"
 DISPLAYABLE_STATUS = "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END"
 
 
@@ -69,6 +70,15 @@ def validate_static_contract(errors: list[str]) -> None:
         errors.append("partial liturgy text must be forbidden")
     if contract.get("definition_of_complete", {}).get("wrong_rite_fallback_allowed") is not False:
         errors.append("wrong-rite fallback must be forbidden")
+    definition = contract.get("definition_of_complete", {})
+    if definition.get("scope") != STRICT_SCOPE:
+        errors.append("Divine Liturgy scope must be strict opening-blessing-to-dismissal")
+    if definition.get("no_unappointed_material_allowed") is not True:
+        errors.append("unappointed material must be forbidden inside the Divine Liturgy")
+    excluded = set(definition.get("excludes_as_separate_offices") or [])
+    for required in ("orthros_and_matins_gospel", "hours", "proskomide", "personal_pre_communion_prayers", "thanksgiving_after_communion"):
+        if required not in excluded:
+            errors.append(f"strict Liturgy contract does not separate {required}")
     rule_window = rules.get("rolling_window", {})
     if rule_window.get("policy") != "ROLLING_FUTURE_WINDOW" or rule_window.get("default_day_count") != 9:
         errors.append("liturgy rules rolling-window contract mismatch")
@@ -77,14 +87,11 @@ def validate_static_contract(errors: list[str]) -> None:
     for language in LANGUAGES:
         path = ROOT / f"app/src/main/assets/data/native/library_{language}.json"
         libraries[language] = service_index(load(path))
-        for office in SUPPORTING_OFFICES:
-            service = libraries[language].get(office)
-            if service is None:
-                errors.append(f"{language}: supporting office missing: {office}")
-                continue
-            text_count, chars = native_text_stats(service, language)
-            if text_count == 0 or chars < 500:
-                errors.append(f"{language}: supporting office too short: {office} texts={text_count} chars={chars}")
+        # Adjacent offices remain available as their own reader entries, but they
+        # are not part of the Divine Liturgy completeness definition.
+        for office in ADJACENT_OFFICES:
+            if libraries[language].get(office) is None:
+                errors.append(f"{language}: separate adjacent office missing: {office}")
 
     for rite, edition in (editions.get("editions") or {}).items():
         if not isinstance(edition, dict):

@@ -29,6 +29,8 @@ COMMANDS = [
         "tests/test_user_reported_liturgy_and_home_regressions.py",
         "tests/test_v550_full_church_services.py",
         "tests/test_prepare_church_service_corpus.py",
+        "tests/test_v560_smart_liturgy.py",
+        "tests/test_r24_nine_day_liturgy_engine.py",
     ],
 ]
 
@@ -39,7 +41,7 @@ def main() -> None:
         subprocess.run(command, cwd=ROOT, check=True)
     print(
         "\nLOCAL_DAILY_RELEASE_GATE_OK "
-        "version=5.5.2 code=50502 schedule=00:03 timezone=Asia/Amman "
+        "version=5.6.0 code=50600 schedule=00:03 timezone=Asia/Amman "
         "network_required=false github_daily_action=false calendar=2026-2050"
     )
 

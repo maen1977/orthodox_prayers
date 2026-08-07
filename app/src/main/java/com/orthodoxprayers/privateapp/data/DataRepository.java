@@ -1743,82 +1743,93 @@ public final class DataRepository {
     /**
      * Builds one continuous reader without duplicating any religious text in assets.
      *
-     * The optional Communion preparation and thanksgiving services are inserted only
-     * when the selected native-language pack actually contains prayer text. A status
-     * note from another language is never used as a substitute.
+     * The reader contains only the appointed Divine Liturgy itself. Orthros, Hours,
+     * Proskomide, personal Communion preparation and thanksgiving remain separate.
+     * Daily metadata is exposed outside the prayer-text stream.
      */
     private JSONObject composeFollowAlongLiturgy(JSONObject liturgy) {
         if (liturgy == null || liturgy.optBoolean("follow_along_composed", false)) return liturgy;
         try {
             JSONObject result = new JSONObject(liturgy.toString());
-            JSONArray merged = new JSONArray();
             String language = preferences.effectiveLanguage();
-
-            JSONObject proskomide = findServiceInArray(
-                    library().optJSONArray("services"),
-                    "proskomide"
+            JSONArray core = strictAppointedLiturgyCore(
+                    liturgy.optJSONArray("segments"),
+                    language
             );
-            if (hasNativePrayerText(proskomide, language)) {
-                merged.put(followAlongSection(
-                        "الاستعداد الكهنوتي وخدمة التقدمة",
-                        "Clergy preparation and the Office of Oblation",
-                        "Ἱερατικὴ προετοιμασία καὶ Ἀκολουθία τῆς Προσκομιδῆς"
-                ));
-                appendSegments(merged, proskomide.optJSONArray("segments"));
-            }
 
-            JSONObject preparation = findServiceInArray(
-                    library().optJSONArray("services"),
-                    "pre_communion_prayers"
-            );
-            merged.put(followAlongSection(
-                    "الاستعداد الشخصي قبل القداس والمناولة",
-                    "Personal preparation before the Liturgy and Holy Communion",
-                    "Προσωπικὴ προετοιμασία πρὸ τῆς Θείας Λειτουργίας καὶ Μεταλήψεως"
-            ));
-            if (hasNativePrayerText(preparation, language)) {
-                appendSegments(merged, preparation.optJSONArray("segments"));
-            } else {
-                // Never show a status/pending paragraph in the prayer reader. When a
-                // complete native Communion office is not yet registered, use only
-                // short source-backed prayers that already exist in the same language.
-                appendNativePrayerService(merged, "trisagion", language);
-                appendNativePrayerService(merged, "jesus_prayer", language);
-                appendNativePrayerService(merged, "lord_prayer", language);
-            }
-
-            appendSegments(merged, liturgy.optJSONArray("segments"));
-
-            JSONObject thanksgiving = findServiceInArray(
-                    library().optJSONArray("services"),
-                    "thanksgiving_after_communion"
-            );
-            if (hasNativePrayerText(thanksgiving, language)) {
-                merged.put(followAlongSection(
-                        "صلوات الشكر بعد المناولة",
-                        "Thanksgiving prayers after Holy Communion",
-                        "Εὐχαριστήριες εὐχὲς μετὰ τὴν Θείαν Μετάληψιν"
-                ));
-                String selectedLiturgyId = liturgy.optString(
-                        "composed_from",
-                        liturgy.optString("id", "divine_liturgy")
-                );
-                appendSegments(
-                        merged,
-                        thanksgivingSegmentsForLiturgy(thanksgiving, language, selectedLiturgyId)
-                );
-            }
-
-            result.put("segments", merged);
+            // R56: the Liturgy reader is intentionally strict. Matins, the Hours,
+            // Proskomide, personal pre-Communion prayers and thanksgiving are
+            // separate offices. They must never be merged into the appointed
+            // Divine Liturgy and then presented as though they belonged to its
+            // fixed order.
+            result.put("segments", core);
             result.put("follow_along_composed", true);
-            result.put("follow_along_mode", "FROM_BEGINNING_TO_DISMISSAL_WITH_NATIVE_PREPARATION_AND_THANKSGIVING");
-            result.put("full_service_complete", true);
-            result.put("full_service_phase_count", 4);
+            result.put("follow_along_mode", "STRICT_APPOINTED_LITURGY_CORE_ONLY");
+            result.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
+            result.put("full_service_phase_count", 1);
+            result.put("adjacent_offices_separate", true);
+            result.put("excluded_from_liturgy_core", new JSONArray()
+                    .put("orthros")
+                    .put("hours")
+                    .put("proskomide")
+                    .put("pre_communion_prayers")
+                    .put("thanksgiving_after_communion"));
+            // Never upgrade a blocked/partial native edition merely because the
+            // reader successfully filtered its segments.
+            result.put("full_service_complete", liturgy.optBoolean("full_service_complete", false));
             return result;
         } catch (Exception error) {
-            Log.w(TAG, "Could not compose follow-along Liturgy", error);
+            Log.w(TAG, "Could not compose strict appointed Liturgy", error);
             return liturgy;
         }
+    }
+
+    private static JSONArray strictAppointedLiturgyCore(JSONArray source, String language) throws Exception {
+        JSONArray output = new JSONArray();
+        if (source == null) return output;
+        for (int i = 0; i < source.length(); i++) {
+            JSONObject segment = source.optJSONObject(i);
+            if (segment == null) continue;
+            JSONObject copy = new JSONObject(segment.toString());
+
+            // The Matins Gospel belongs to Orthros, even when an older source
+            // edition printed it immediately before the Liturgy booklet.
+            if ("matins_gospel".equals(copy.optString("dynamic_slot", ""))) continue;
+            if (isDailyLiturgyMetadataSegment(copy, language)) continue;
+            if ("section".equals(copy.optString("type", ""))) {
+                JSONObject title = copy.optJSONObject("title");
+                String value = title == null ? "" : title.optString(language, "").trim();
+                if (isMatinsHeading(value, language)) continue;
+                if (copy.optBoolean("follow_along_phase", false)) continue;
+            }
+            output.put(copy);
+        }
+        return output;
+    }
+
+    private static boolean isDailyLiturgyMetadataSegment(JSONObject segment, String language) {
+        if (segment == null) return false;
+        JSONObject speaker = segment.optJSONObject("speaker");
+        String speakerValue = speaker == null ? "" : speaker.optString(language, "").trim();
+        if ("ar".equals(language) && "اليوم الكنسي".equals(speakerValue)) return true;
+        if ("en".equals(language) && "Church day".equals(speakerValue)) return true;
+        if ("el".equals(language) && "Ἐκκλησιαστικὴ ἡμέρα".equals(speakerValue)) return true;
+        if (!"section".equals(segment.optString("type", ""))) return false;
+        JSONObject title = segment.optJSONObject("title");
+        String value = title == null ? "" : title.optString(language, "").trim();
+        if ("ar".equals(language)) return value.contains("خدمة اليوم") || value.contains("قراءات وقطع اليوم");
+        if ("el".equals(language)) return value.contains("σημερινὴ ἀκολουθία") || value.contains("Ἀναγνώσματα καὶ ὕμνοι");
+        String upper = value.toUpperCase(Locale.ROOT);
+        return upper.contains("TODAY’S SERVICE") || upper.contains("TODAY'S SERVICE")
+                || upper.contains("READINGS AND HYMNS OF THE DAY");
+    }
+
+    private static boolean isMatinsHeading(String value, String language) {
+        if (value == null || value.isEmpty()) return false;
+        if ("ar".equals(language)) return value.contains("إنجيل السَحَر") || value.contains("إنجيل السحر");
+        if ("el".equals(language)) return value.contains("ΕΩΘΙΝΟΝ ΕΥΑΓΓΕΛΙΟΝ")
+                || value.contains("Ἑωθινὸν Εὐαγγέλιον");
+        return value.toUpperCase(Locale.ROOT).contains("MATINS GOSPEL");
     }
 
     private static JSONArray thanksgivingSegmentsForLiturgy(
