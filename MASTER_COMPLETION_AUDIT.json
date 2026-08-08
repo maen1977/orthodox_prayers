@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at_utc": "2026-07-29T21:50:15.462079+00:00",
-  "technical_release_allowed": true,
+  "generated_at_utc": "2026-08-08T11:18:39.084841+00:00",
+  "technical_release_allowed": false,
   "ecclesiastical_approval_certified": false,
   "definition": "Technical native-language coverage is complete when the full service text is packaged in that same language from recorded native sources, required fixed and date-dependent sections are structurally accounted for, and no machine translation is used. This score does not itself constitute ecclesiastical approval.",
   "machine_translation_allowed": false,
@@ -11,8 +11,8 @@
   ],
   "summary": {
     "ar": {
-      "technical_complete": 15,
-      "exact_single_edition": 12,
+      "technical_complete": 14,
+      "exact_single_edition": 11,
       "native_source_compilation": 3,
       "required": 15
     },
@@ -110,9 +110,9 @@
       "packaged_service_id": "orthros",
       "languages": {
         "ar": {
-          "status": "complete_exact_native_edition",
-          "technical_release_ready": true,
-          "single_exact_edition": true,
+          "status": "source_text_partial",
+          "technical_release_ready": false,
+          "single_exact_edition": false,
           "native_source_compilation": false
         },
         "en": {
@@ -128,7 +128,7 @@
           "native_source_compilation": false
         }
       },
-      "all_languages_technical_release_ready": true
+      "all_languages_technical_release_ready": false
     },
     {
       "service": "first_hour",

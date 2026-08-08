@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "generated_at_utc": "2026-07-29T21:50:15.996499+00:00",
+  "generated_at_utc": "2026-08-08T11:18:39.109588+00:00",
   "summary": {
     "ar": {
-      "technical_complete": 15,
-      "exact_single_edition": 12,
+      "technical_complete": 14,
+      "exact_single_edition": 11,
       "native_source_compilation": 3,
-      "remaining_gaps": 0,
+      "remaining_gaps": 1,
       "required": 15
     },
     "en": {
@@ -104,9 +104,11 @@
       "packaged_service_id": "orthros",
       "languages": {
         "ar": {
-          "status": "complete_exact_native_edition",
-          "technical_release_ready": true,
-          "remaining_blockers": [],
+          "status": "source_text_partial",
+          "technical_release_ready": false,
+          "remaining_blockers": [
+            "This lane still needs a complete authorized same-language source package."
+          ],
           "classification_notes": []
         },
         "en": {

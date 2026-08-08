@@ -15,8 +15,8 @@ def load_module():
 
 def test_version_is_552():
     text=(ROOT/'app/build.gradle.kts').read_text(encoding='utf-8')
-    assert 'versionCode = 50603' in text
-    assert 'versionName = "5.6.3"' in text
+    assert 'versionCode = 50604' in text
+    assert 'versionName = "5.6.4"' in text
 
 
 def test_manifest_uses_open_redistributable_sources_for_en_el():

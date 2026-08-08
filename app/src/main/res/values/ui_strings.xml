@@ -70,7 +70,7 @@
     <string name="ui_epistle_dd82c199" formatted="false">الرسالة: </string>
     <string name="ui_evening_prayer_50c26316" formatted="false">صلاة المساء</string>
     <string name="ui_evening_prayers_23ddb1fe" formatted="false">صلوات المساء</string>
-    <string name="ui_faithful_said_silently_54b6d432" formatted="false">المؤمن — يقولها سراً</string>
+    <string name="ui_faithful_said_silently_54b6d432" formatted="false">المؤمن — يقولها سرًا أو في داخله</string>
     <string name="ui_fasting_f1b1605d" formatted="false">الصيام</string>
     <string name="ui_fasting_status_7fa7fda1" formatted="false">حالة الصيام</string>
     <string name="ui_favorite_1d799489" formatted="false">مفضلة</string>
@@ -176,7 +176,7 @@
     <string name="ui_prayers_3a9327c4" formatted="false">الصلوات</string>
     <string name="ui_prayers_related_to_this_service_7ef08ed3" formatted="false">صلوات مرتبطة بهذه الخدمة</string>
     <string name="ui_previous_section_6f025d4d" formatted="false">القسم السابق</string>
-    <string name="ui_priest_said_quietly_ca9b3644" formatted="false">الكاهن — يقولها سراً</string>
+    <string name="ui_priest_said_quietly_ca9b3644" formatted="false">الكاهن — يقولها سرًا</string>
     <string name="ui_private_note_f993ef09" formatted="false">ملاحظة شخصية</string>
     <string name="ui_prokeimenon_c8263ee7" formatted="false">البروكيمنن</string>
     <string name="ui_quick_access_c927e8a2" formatted="false">الوصول السريع</string>
@@ -377,7 +377,4 @@
     <string name="ui_bible_cannot_open_text">تعذر فتح النص المضمّن.</string>
     <string name="ui_church_service_section">خدمة كنسية</string>
     <string name="ui_church_service_hint">خدمات طقسية كنسية ثابتة مع قراءاتها الكتابية.</string>
-    <string name="ui_complete_liturgy_library">القداس الكامل المحفوظ داخل التطبيق</string>
-    <string name="ui_full_liturgy_library_hint">قداس القديس يوحنا الذهبي الفم كاملًا من البركة الافتتاحية حتى الصرف، ويعمل دون إنترنت.</string>
-    <string name="ui_liturgy_preparation_and_adjacent_services">الاستعداد والخدمات المحيطة بالقداس</string>
 </resources>

@@ -1,7 +1,17 @@
 {
   "schema_version": 1,
-  "status": "NO_MISSING_TECHNICAL_SOURCE_LANES",
+  "status": "ONE_CLEAN_ARABIC_SOURCE_LANE_REQUIRED",
   "instructions_ar": "استبدل EXT بالامتداد الحقيقي، ضع كل ملف في المسار المحدد، وثبّت الإذن والبصمة. لا تضع هذا المجلد الخاص داخل GitHub أو ZIP التسليم العام.",
-  "entries": {},
-  "required_entry_count": 0
+  "entries": {
+    "orthros:ar": {
+      "file": "orthros/ar.EXT",
+      "normalized_service_file": "orthros/ar.service.json",
+      "source_id": "orthodox_jordan",
+      "source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "permission_confirmed": false,
+      "machine_translation_used": false,
+      "ai_rewriting_or_correction_used": false
+    }
+  },
+  "required_entry_count": 1
 }

@@ -181,7 +181,7 @@ public final class ReaderScreen extends BaseScreen {
             panel.addView(liturgyNavigationPanel, new LinearLayout.LayoutParams(-1, -2));
         }
 
-        LinearLayout related = relatedServicesBox();
+        LinearLayout related = isLiturgy() ? null : relatedServicesBox();
         if (related != null) panel.addView(related, ui.margins(-1, -2, 10, 2, 10, 4));
 
         provenancePanel = provenanceBox();
@@ -640,8 +640,6 @@ public final class ReaderScreen extends BaseScreen {
         box.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(4));
 
         LinearLayout jumps = ui.row();
-        addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_matins_gospel_f0474804),
-                adapter.findPosition("إنجيل السَحَر", "MATINS GOSPEL", "ΕΩΘΙΝΟΝ ΕΥΑΓΓΕΛΙΟΝ"));
         addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_prokeimenon_c8263ee7),
                 adapter.findPosition("البروكيمنن", "Prokeimenon", "Προκείμενον"));
         addJump(jumps, local(com.orthodoxprayers.privateapp.R.string.ui_epistle_a17bc087),

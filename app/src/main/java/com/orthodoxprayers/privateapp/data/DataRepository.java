@@ -567,6 +567,7 @@ public final class DataRepository {
             JSONObject index = searchIndex();
             selected = index == null ? null : findServiceInArray(index.optJSONArray("reader_services"), serviceId);
         }
+        if (!isUserDisplayableService(selected)) return null;
         selected = composeBuiltInChurchService(selected);
         JSONObject resolved = resolveService(selected);
         return isFollowAlongLiturgy(resolved) ? composeFollowAlongLiturgy(resolved) : resolved;
@@ -1591,6 +1592,11 @@ public final class DataRepository {
         return renderable;
     }
 
+    /** Explicit source-quality blocks take precedence over structurally renderable OCR. */
+    private static boolean isUserDisplayableService(JSONObject service) {
+        return service != null && (!service.has("displayable") || service.optBoolean("displayable", true));
+    }
+
     private static JSONObject findServiceInArray(JSONArray array, String id) {
         if (array == null || id == null) return null;
         for (int i = 0; i < array.length(); i++) {
@@ -1758,13 +1764,16 @@ public final class DataRepository {
                     liturgy.optJSONArray("segments"),
                     language
             );
+            JSONArray continuous = new JSONArray();
+            appendLiturgyDayHeader(continuous, liturgy);
+            appendSegments(continuous, core);
 
             // R56: the Liturgy reader is intentionally strict. Matins, the Hours,
             // Proskomide, personal pre-Communion prayers and thanksgiving are
             // separate offices. They must never be merged into the appointed
             // Divine Liturgy and then presented as though they belonged to its
             // fixed order.
-            result.put("segments", core);
+            result.put("segments", continuous);
             result.put("follow_along_composed", true);
             result.put("follow_along_mode", "STRICT_APPOINTED_LITURGY_CORE_ONLY");
             result.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
@@ -1776,6 +1785,7 @@ public final class DataRepository {
                     .put("proskomide")
                     .put("pre_communion_prayers")
                     .put("thanksgiving_after_communion"));
+            result.put("silent_prayer_contract", silentPrayerContract(core));
             // Never upgrade a blocked/partial native edition merely because the
             // reader successfully filtered its segments.
             result.put("full_service_complete", liturgy.optBoolean("full_service_complete", false));
@@ -1784,6 +1794,46 @@ public final class DataRepository {
             Log.w(TAG, "Could not compose strict appointed Liturgy", error);
             return liturgy;
         }
+    }
+
+    private static void appendLiturgyDayHeader(JSONArray target, JSONObject liturgy) throws Exception {
+        if (target == null || liturgy == null || liturgy.optString("dynamic_date", "").trim().isEmpty()) return;
+        target.put(new JSONObject()
+                .put("type", "section")
+                .put("editorial_metadata_only", true)
+                .put("title", new JSONObject()
+                        .put("ar", "قداس اليوم الكامل")
+                        .put("en", "Today’s complete Divine Liturgy")
+                        .put("el", "Ἡ πλήρης σημερινὴ Θεία Λειτουργία")));
+        JSONObject summary = liturgy.optJSONObject("summary");
+        if (summary != null) {
+            target.put(new JSONObject()
+                    .put("type", "text")
+                    .put("editorial_metadata_only", true)
+                    .put("speaker", new JSONObject()
+                            .put("ar", "تذكار اليوم والصيام")
+                            .put("en", "Today’s commemoration and fasting")
+                            .put("el", "Μνήμη καὶ νηστεία τῆς ἡμέρας"))
+                    .put("text", deepCopyJson(summary)));
+        }
+    }
+
+    private static JSONObject silentPrayerContract(JSONArray segments) throws Exception {
+        int priest = 0;
+        int faithful = 0;
+        if (segments != null) {
+            for (int i = 0; i < segments.length(); i++) {
+                JSONObject segment = segments.optJSONObject(i);
+                if (segment == null || !"silent".equals(segment.optString("delivery", ""))) continue;
+                if ("faithful".equals(segment.optString("delivery_actor", ""))) faithful++;
+                else priest++;
+            }
+        }
+        return new JSONObject()
+                .put("source_marked_only", true)
+                .put("priest_silent_prayers", priest)
+                .put("faithful_private_prayers", faithful)
+                .put("spoken_responses_kept_separate", true);
     }
 
     private static JSONArray strictAppointedLiturgyCore(JSONArray source, String language) throws Exception {
@@ -1797,6 +1847,7 @@ public final class DataRepository {
             // The Matins Gospel belongs to Orthros, even when an older source
             // edition printed it immediately before the Liturgy booklet.
             if ("matins_gospel".equals(copy.optString("dynamic_slot", ""))) continue;
+            if ("matins_gospel".equals(copy.optString("follow_along_phase", ""))) continue;
             if (isDailyLiturgyMetadataSegment(copy, language)) continue;
             if ("section".equals(copy.optString("type", ""))) {
                 JSONObject title = copy.optJSONObject("title");
@@ -2228,7 +2279,8 @@ public final class DataRepository {
         if (array == null) return;
         for (int i = 0; i < array.length(); i++) {
             JSONObject service = array.optJSONObject(i);
-            if (!isRenderableService(service) || !category.equals(service.optString("category"))) continue;
+            if (!isRenderableService(service) || !isUserDisplayableService(service)
+                    || !category.equals(service.optString("category"))) continue;
             output.putIfAbsent(service.optString("id", "service-" + i), resolveService(service));
         }
     }
@@ -2237,7 +2289,7 @@ public final class DataRepository {
         if (array == null) return;
         for (int i = 0; i < array.length(); i++) {
             JSONObject service = array.optJSONObject(i);
-            if (isRenderableService(service)) {
+            if (isRenderableService(service) && isUserDisplayableService(service)) {
                 output.putIfAbsent(service.optString("id", "service-" + i), resolveService(service));
             }
         }

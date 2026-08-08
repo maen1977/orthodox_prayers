@@ -40,7 +40,7 @@
       "vespers": "complete_exact_native_edition",
       "small_compline": "complete_exact_native_edition",
       "midnight_office": "complete_exact_native_edition",
-      "orthros": "complete_exact_native_edition",
+      "orthros": "source_text_partial",
       "first_hour": "complete_exact_native_edition",
       "third_hour": "complete_exact_native_edition",
       "sixth_hour": "complete_exact_native_edition",
@@ -91,7 +91,7 @@
   "production_complete_status": "complete_exact_native_edition",
   "machine_translation_allowed": false,
   "status_notes": {
-    "ar": "التغطية التقنية الحالية: 15 من 15 خدمة بالعربية؛ 12 منها من طبعة أصلية واحدة كاملة، و3 تجميعات كاملة من مصادر عربية أصلية مسجلة. لا تتضمن النتيجة ادعاء مراجعة أو بركة كنسية.",
+    "ar": "التغطية التقنية الحالية: 14 من 15 خدمة بالعربية. نُقلت صلاة السَحَر العربية إلى حالة محجوبة لأن استخراج OCR المتاح غير مقروء ويحتاج إلى إعادة استيراد ومراجعة من مصدر عربي موثوق. لا تتضمن النتيجة ادعاء مراجعة أو بركة كنسية.",
     "en": "Technical coverage: 15 of 15 services in English; 13 are complete single native editions and 2 are complete compilations from registered native English sources. This does not claim ecclesiastical review or blessing.",
     "el": "Τεχνικὴ κάλυψη: 15 ἀπὸ 15 ἀκολουθίες στὰ ἑλληνικά· 13 προέρχονται ἀπὸ μία πλήρη γηγενὴ ἔκδοση καὶ 2 εἶναι πλήρεις συνθέσεις ἀπὸ καταγεγραμμένες γηγενεῖς πηγές. Δὲν δηλώνεται ἐκκλησιαστικὴ ἔγκριση.",
     "complete_native_source_compilation": "Complete same-language service assembled from recorded native source material with source hashes and technical checks; remains distinct from a single exact edition and does not certify ecclesiastical approval."

@@ -28,7 +28,7 @@ for svc in ar_lane.get('services',[]):
         errors.append(f'ar_max_chars:{svc.get("id")}')
 
 gradle=(ROOT/'app/build.gradle.kts').read_text(encoding='utf-8')
-for token in ['versionCode = 50603','versionName = "5.6.3"','prepareChurchServiceCorpus','generated/churchServiceAssets']:
+for token in ['versionCode = 50604','versionName = "5.6.4"','prepareChurchServiceCorpus','generated/churchServiceAssets']:
     if token not in gradle: errors.append('gradle:'+token)
 repo=(ROOT/'app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java').read_text(encoding='utf-8')
 for token in ['data/church/full_services_','machine_translation_used','composeBuiltInChurchService']:
@@ -76,4 +76,4 @@ if out.exists():
 if errors:
     print('FULL_CHURCH_SERVICES_FAIL', *errors, sep='\n')
     sys.exit(1)
-print('FULL_CHURCH_SERVICES_OK version=5.6.3 policy=rights_aware_no_translation generated=' + (','.join(materialized) if materialized else 'not_materialized_in_source_checkout'))
+print('FULL_CHURCH_SERVICES_OK version=5.6.4 policy=rights_aware_no_translation generated=' + (','.join(materialized) if materialized else 'not_materialized_in_source_checkout'))

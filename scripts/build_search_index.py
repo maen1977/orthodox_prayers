@@ -39,6 +39,11 @@ def service_documents(lang: str, synonyms: dict[str, list[str]]) -> list[dict[st
     data = json.loads(path.read_text(encoding="utf-8"))
     documents: list[dict[str, Any]] = []
     for service in data.get("services") or []:
+        # Fail closed: unreadable OCR and other explicitly blocked native
+        # services must not leak into search results even if retained locally
+        # as source/audit material for a controlled re-import.
+        if service.get("displayable") is False:
+            continue
         pieces = []
         for segment in service.get("segments") or []:
             if isinstance(segment, dict):

@@ -40,20 +40,20 @@ class AllServicesCompletionRoundTests(unittest.TestCase):
         self.assertFalse(self.contract["machine_translation_allowed"])
         self.assertFalse(self.contract["automatic_ocr_publication_allowed"])
 
-    def test_current_state_is_complete_and_source_template_is_empty(self):
-        self.assertEqual(45, len(self.contract["current_complete_lanes"]))
-        self.assertEqual(38, len(self.contract["current_exact_lanes"]))
-        self.assertEqual([], self.contract["required_new_source_lanes"])
-        self.assertEqual({}, self.template["entries"])
-        self.assertEqual(0, self.template["required_entry_count"])
+    def test_corrupt_arabic_orthros_is_the_only_fail_closed_lane(self):
+        self.assertEqual(44, len(self.contract["current_complete_lanes"]))
+        self.assertEqual(37, len(self.contract["current_exact_lanes"]))
+        self.assertEqual(["orthros:ar"], self.contract["required_new_source_lanes"])
+        self.assertEqual({"orthros:ar"}, set(self.template["entries"]))
+        self.assertEqual(1, self.template["required_entry_count"])
 
     def test_inventory_without_private_sources_is_a_safe_noop(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             report = self.prepare.run(root / "sources", root / "output")
-            self.assertEqual("SOURCE_BUNDLE_READY_FOR_REVIEW", report["status"])
-            self.assertEqual(45, report["resolved_lanes"])
-            self.assertEqual([], report["missing_lanes"])
+            self.assertEqual("SOURCE_BUNDLE_INCOMPLETE_FAIL_CLOSED", report["status"])
+            self.assertEqual(44, report["resolved_lanes"])
+            self.assertEqual([{"lane": "orthros:ar", "reason": "manifest entry missing"}], report["missing_lanes"])
             self.assertEqual(0, report["candidates_prepared"])
             self.assertFalse(report["runtime_modified"])
             self.assertEqual([], list((root / "output/candidates").rglob("*.json")))
@@ -69,13 +69,14 @@ class AllServicesCompletionRoundTests(unittest.TestCase):
             )
             report = self.prepare.run(sources, root / "output")
             self.assertEqual(0, report["candidates_prepared"])
-            self.assertEqual(45, report["resolved_lanes"])
+            self.assertEqual(44, report["resolved_lanes"])
 
-    def test_atomic_promotion_has_no_reviewed_candidates_to_load(self):
+    def test_atomic_promotion_blocks_without_reviewed_arabic_orthros(self):
         with tempfile.TemporaryDirectory() as directory:
-            self.assertEqual({}, self.promote.load_reviewed(Path(directory), self.contract))
+            with self.assertRaisesRegex(RuntimeError, "orthros:ar: reviewed candidate missing"):
+                self.promote.load_reviewed(Path(directory), self.contract)
 
-    def test_command_require_complete_succeeds_without_source_bundle(self):
+    def test_command_require_complete_fails_without_clean_arabic_orthros_source(self):
         with tempfile.TemporaryDirectory() as directory:
             completed = subprocess.run(
                 [
@@ -91,8 +92,8 @@ class AllServicesCompletionRoundTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
             )
-            self.assertEqual(0, completed.returncode, completed.stdout + completed.stderr)
-            self.assertIn("resolved=45/45", completed.stdout)
+            self.assertEqual(2, completed.returncode, completed.stdout + completed.stderr)
+            self.assertIn("resolved=44/45", completed.stdout)
 
 
 if __name__ == "__main__":

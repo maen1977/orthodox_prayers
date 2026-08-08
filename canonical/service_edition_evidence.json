@@ -508,7 +508,7 @@
       "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
     },
     "orthros:ar": {
-      "status": "complete_exact_native_edition",
+      "status": "source_text_partial",
       "packaged_service_id": "orthros",
       "source_id": "arabic_great_horologion_1870",
       "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
@@ -527,7 +527,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "The retained public-domain OCR is not readable enough for publication. This lane is blocked pending a clean same-language source, controlled extraction, and human review; no AI rewriting or automatic OCR correction is published."
     },
     "typika:ar": {
       "status": "complete_exact_native_edition",

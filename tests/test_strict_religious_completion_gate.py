@@ -17,13 +17,13 @@ def test_declaration_audit_remains_available():
     assert "mode=declaration" in result.stdout
 
 
-def test_default_gate_allows_complete_production_release():
+def test_default_gate_blocks_production_while_arabic_orthros_is_unreadable():
     result = subprocess.run(
         [sys.executable, str(SCRIPT)],
         cwd=ROOT,
         text=True,
         capture_output=True,
     )
-    assert result.returncode == 0, result.stdout + result.stderr
-    for language in ("ar", "en", "el"):
-        assert f"language={language} verified_complete=15/15" in result.stdout
+    assert result.returncode != 0
+    assert "language=ar verified_complete=14/15" in result.stdout
+    assert "production completeness is 14/15" in result.stderr

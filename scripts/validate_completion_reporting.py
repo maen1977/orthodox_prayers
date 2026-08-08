@@ -55,22 +55,28 @@ def main() -> None:
             raise SystemExit(f"Headline completion score mismatch for {language}")
 
     expected_total = len(required) * len(LANGUAGES)
-    if master.get("technical_release_allowed") is not True:
-        raise SystemExit("Master report must allow the technically complete 45/45 release")
-    if headline.get("total_complete_lanes") != f"{expected_total}/{expected_total}":
+    expected_complete = sum(
+        manifest["languages"][language][service] in complete_statuses
+        for language in LANGUAGES
+        for service in required
+    )
+    expected_release_allowed = expected_complete == expected_total
+    if master.get("technical_release_allowed") is not expected_release_allowed:
+        raise SystemExit("Master technical release flag does not match the canonical lane count")
+    if headline.get("total_complete_lanes") != f"{expected_complete}/{expected_total}":
         raise SystemExit("Headline total lane count is inconsistent")
     if headline.get("exact_single_edition_lanes") != expected_exact:
         raise SystemExit("Headline exact-edition count is inconsistent")
     if headline.get("native_source_compilation_lanes") != expected_compilations:
         raise SystemExit("Headline native-compilation count is inconsistent")
-    if expected_exact + expected_compilations != expected_total:
-        raise SystemExit("Not every lane is truthfully classified as exact or compiled")
+    if expected_exact + expected_compilations != expected_complete:
+        raise SystemExit("Complete lanes are not truthfully classified as exact or compiled")
     if manifest.get("machine_translation_allowed") is not False:
         raise SystemExit("Machine translation must remain prohibited")
     if master.get("ecclesiastical_approval_certified") is not False:
         raise SystemExit("Technical reports must not claim ecclesiastical approval")
 
-    stale_phrases = ("12 من 15", "13 of 15", "13 από τις 15", '"release_allowed": false')
+    stale_phrases = ("12 من 15", "13 of 15", "13 από τις 15")
     report_text = "\n".join(
         (ROOT / path).read_text(encoding="utf-8")
         for path in (
@@ -86,7 +92,7 @@ def main() -> None:
 
     print(
         "COMPLETION_REPORTING_OK "
-        f"technical={expected_total}/{expected_total} exact={expected_exact}/{expected_total} "
+        f"technical={expected_complete}/{expected_total} exact={expected_exact}/{expected_total} "
         f"native_compilations={expected_compilations}/{expected_total} ecclesiastical_approval=false"
     )
 

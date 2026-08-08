@@ -159,10 +159,10 @@ class JordanLiturgicalContractTests(unittest.TestCase):
         readings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReadingsScreen.java").read_text(encoding="utf-8")
         self.assertIn("public JSONArray currentReadings()", repository)
         self.assertIn("if (!isTodayCurrent()) return new JSONArray();", repository)
-        self.assertIn("JSONObject dynamic = isTodayCurrent()", repository)
+        self.assertIn("JSONObject dynamic = !libraryOnly && isTodayCurrent()", repository)
         search = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/SearchEngine.java").read_text(encoding="utf-8")
         self.assertIn("if (!data.isTodayCurrent())", readings)
-        self.assertTrue(source_references_text(readings, "حُجبت قراءات النسخة القديمة", "ar"))
+        self.assertTrue(source_references_text(readings, "تعذر تجهيز اليوم من التقويم المحلي المضمّن", "ar"))
         self.assertIn("if (repository.isTodayCurrent())", search)
         self.assertNotIn('scan(repository.today().optJSONArray("services"), repository, needle, bestById);\n        scan(repository.library()', search)
 

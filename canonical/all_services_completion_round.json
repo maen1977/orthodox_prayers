@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "TECHNICAL_CONTENT_COMPLETE_45_OF_45_HUMAN_REVIEW_RECOMMENDED",
+  "status": "TECHNICAL_CONTENT_44_OF_45_ARABIC_ORTHROS_BLOCKED",
   "purpose_ar": "إغلاق الخدمات الخمس عشرة في العربية والإنجليزية واليونانية ضمن معاملة واحدة لا تسمح بالترقية الجزئية.",
   "required_services": [
     "vespers",
@@ -43,7 +43,6 @@
     "ninth_hour:ar",
     "ninth_hour:el",
     "ninth_hour:en",
-    "orthros:ar",
     "orthros:el",
     "orthros:en",
     "post_communion:ar",
@@ -70,7 +69,9 @@
     "vespers:el",
     "vespers:en"
   ],
-  "required_new_source_lanes": [],
+  "required_new_source_lanes": [
+    "orthros:ar"
+  ],
   "source_bundle_root": "private_sources/all_services_v1",
   "source_bundle_manifest": "private_sources/all_services_v1/manifest.json",
   "candidate_output_root": "build/all-services-completion-round/candidates",
@@ -343,8 +344,8 @@
       "service": "orthros",
       "service_id": "orthros",
       "language": "ar",
-      "current_status": "complete_exact_native_edition",
-      "already_release_ready": true,
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
       "source_id": "orthodox_jordan",
       "registered_source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
       "expected_relative_path": "orthros/ar",
@@ -362,8 +363,8 @@
         "الله الرب ظهر لنا",
         "كل نسمة فلتسبح الرب"
       ],
-      "source_file_required": false,
-      "human_ecclesiastical_review_required": false,
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "orthros/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": []
@@ -1504,7 +1505,6 @@
     "ninth_hour:ar",
     "ninth_hour:el",
     "ninth_hour:en",
-    "orthros:ar",
     "orthros:el",
     "orthros:en",
     "post_communion:ar",
@@ -1535,6 +1535,6 @@
     "vespers:el",
     "vespers:en"
   ],
-  "technical_complete_lane_count": 45,
+  "technical_complete_lane_count": 44,
   "ecclesiastical_approval_certified": false
 }

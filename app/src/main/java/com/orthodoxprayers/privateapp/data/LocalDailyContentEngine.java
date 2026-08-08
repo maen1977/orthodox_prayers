@@ -353,8 +353,11 @@ public final class LocalDailyContentEngine {
             boolean displayable = selection.optBoolean("displayable", false)
                     && !noLiturgy && !overrideRequired;
             String appointedServiceId = selection.optString("service_id", "").trim();
+            JSONObject appointedTitle = copyObject(selection.optJSONObject("label"));
+            if (appointedTitle.length() > 0) service.put("title", appointedTitle);
             service.put("selected_liturgy_type", selectedType);
             service.put("selected_service_form", selection.optString("service_form", ""));
+            service.put("selected_liturgy", copyObject(selection));
             service.put("full_service_complete", displayable);
             service.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
             service.put("strict_core_only", true);
@@ -398,7 +401,8 @@ public final class LocalDailyContentEngine {
             JSONObject reading = readings.optJSONObject(i);
             if (reading == null) continue;
             String kind = reading.optString("kind", "").trim();
-            if (!"epistle".equals(kind) && !"gospel".equals(kind) && !"matins_gospel".equals(kind)) continue;
+            // The Matins Gospel belongs to Orthros, not to the Divine Liturgy.
+            if (!"epistle".equals(kind) && !"gospel".equals(kind)) continue;
             JSONObject body = reading.optJSONObject("body");
             if (body == null || body.length() == 0) continue;
             slots.put(kind, copyObject(body));
@@ -447,6 +451,14 @@ public final class LocalDailyContentEngine {
                     "Θεία Λειτουργία τοῦ Ἁγίου Ἰωάννου τοῦ Χρυσοστόμου"
             ));
             selection.put("displayable", true);
+        }
+        String serviceType = selection.optString("service_type", "chrysostom").trim();
+        String serviceId = selection.optString("service_id", "").trim();
+        if (serviceId.isEmpty()) {
+            if ("chrysostom".equals(serviceType)) serviceId = "divine_liturgy";
+            else if ("basil".equals(serviceType)) serviceId = "divine_liturgy_basil";
+            else if ("presanctified".equals(serviceType)) serviceId = "presanctified_liturgy";
+            if (!serviceId.isEmpty()) selection.put("service_id", serviceId);
         }
         selection.put("wrong_liturgy_fallback_allowed", false);
         selection.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");

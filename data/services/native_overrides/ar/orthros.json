@@ -8,14 +8,22 @@
     "el": ""
   },
   "summary": {
-    "ar": "صلاة السحر كاملة من كتاب السواعي الكبير، أورشليم 1870.",
+    "ar": "هذه النسخة العربية محجوبة مؤقتًا لأن استخراج OCR المتاح غير مقروء ويحتاج إلى إعادة استيراد ومراجعة من مصدر عربي موثوق.",
     "en": "",
     "el": ""
   },
   "source_language": "ar",
   "content_mode": "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY",
+  "displayable": false,
+  "publication_status": "BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED",
+  "quality_review": {
+    "status": "OCR_WORD_BOUNDARIES_CORRUPTED_NOT_FOR_DISPLAY",
+    "automatic_ocr_publication_allowed": false,
+    "ai_rewriting_or_correction_allowed": false,
+    "clean_same_language_source_required": true
+  },
   "notice": {
-    "ar": "نص المصدر الأصلي كما نُشر، بلا ترجمة آلية أو إكمال بالذكاء الاصطناعي.",
+    "ar": "لا يُعرض هذا النص في التطبيق حتى يُعاد استخراجه ومراجعته من نسخة عربية سليمة؛ لم تُستخدم ترجمة آلية أو إعادة كتابة بالذكاء الاصطناعي.",
     "en": "",
     "el": ""
   },

@@ -14,7 +14,7 @@ def text(path: str) -> str:
 
 
 class DailyLiturgyAndCalendarReadingsTest(unittest.TestCase):
-    def test_liturgy_library_is_available_independently_of_stale_today(self):
+    def test_liturgy_hub_has_one_day_aware_complete_service_entry(self):
         repository = text(
             "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java"
         )
@@ -22,8 +22,9 @@ class DailyLiturgyAndCalendarReadingsTest(unittest.TestCase):
             "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/LiturgyHubScreen.java"
         )
         self.assertIn('requestedId.startsWith("library::")', repository)
-        self.assertIn('data.findService("library::divine_liturgy")', hub)
-        self.assertIn('host.navigate("reader", "library::divine_liturgy")', hub)
+        self.assertEqual(1, hub.count('host.navigate("reader", "divine_liturgy")'))
+        self.assertNotIn('data.findService("library::divine_liturgy")', hub)
+        self.assertNotIn('ADJACENT_SERVICE_IDS', hub)
         for service_id in (
             "proskomide",
             "orthros",
@@ -34,7 +35,40 @@ class DailyLiturgyAndCalendarReadingsTest(unittest.TestCase):
             "pre_communion_prayers",
             "thanksgiving_after_communion",
         ):
-            self.assertIn(f'"{service_id}"', hub)
+            self.assertNotIn(f'"{service_id}"', hub)
+
+    def test_calendar_selection_is_normalized_to_an_actual_service_id(self):
+        engine = text(
+            "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java"
+        )
+        self.assertIn('"chrysostom".equals(serviceType)', engine)
+        self.assertIn('serviceId = "divine_liturgy"', engine)
+        self.assertIn('serviceId = "divine_liturgy_basil"', engine)
+        self.assertIn('serviceId = "presanctified_liturgy"', engine)
+
+    def test_continuous_liturgy_keeps_source_marked_private_prayers(self):
+        repository = text(
+            "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java"
+        )
+        reader = text(
+            "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ReaderScreen.java"
+        )
+        self.assertIn('result.put("silent_prayer_contract"', repository)
+        self.assertIn('"priest_silent_prayers"', repository)
+        self.assertIn('"faithful_private_prayers"', repository)
+        self.assertIn('"matins_gospel".equals(copy.optString("follow_along_phase", ""))', repository)
+        self.assertIn('LinearLayout related = isLiturgy() ? null : relatedServicesBox();', reader)
+
+    def test_unreadable_arabic_orthros_is_fail_closed(self):
+        override = json.loads(text("data/services/native_overrides/ar/orthros.json"))
+        self.assertFalse(override["displayable"])
+        self.assertEqual(
+            "BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED",
+            override["publication_status"],
+        )
+        self.assertFalse(override["quality_review"]["automatic_ocr_publication_allowed"])
+        search = text("scripts/build_search_index.py")
+        self.assertIn('service.get("displayable") is False', search)
 
     def test_stale_daily_package_rebuild_starts_at_launch(self):
         activity = text(

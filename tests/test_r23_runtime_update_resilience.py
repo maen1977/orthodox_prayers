@@ -28,8 +28,8 @@ def test_future_days_are_sanitized_individually():
 
 def test_release_version_is_5019():
     build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-    assert 'versionName = "5.6.3"' in build
-    assert "versionCode = 50603" in build
+    assert 'versionName = "5.6.4"' in build
+    assert "versionCode = 50604" in build
 
 def test_matins_gospel_uses_the_same_native_text_sanitizer_as_other_scripture():
     source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/VerifiedContentSanitizer.java").read_text(encoding="utf-8")

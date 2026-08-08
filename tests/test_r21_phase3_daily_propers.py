@@ -82,11 +82,12 @@ class R21Phase3DailyPropersTests(unittest.TestCase):
         self.assertEqual(8, contract["eothinon"])
         self.assertEqual("dated:2026-07-26", contract["proper_id"])
         for slot in (
-            "matins_gospel", "daily_hymns", "daily_troparion", "daily_kontakion",
+            "daily_hymns", "daily_troparion", "daily_kontakion",
             "prokeimenon", "epistle", "gospel", "communion_hymn",
         ):
             for lang in LANGS:
                 self.assertTrue(service["slot_replacements"][slot][lang].strip(), (slot, lang))
+        self.assertNotIn("matins_gospel", service["slot_replacements"])
         for lang in LANGS:
             combined = "\n".join(
                 str(service["slot_replacements"][slot][lang])
