@@ -121,9 +121,11 @@ def main() -> None:
             "display_text_policy": "EXACT_SOURCE_TEXT_HASHED; NORMALIZATION_IS_INDEX_ONLY",
             "documents": docs,
             "query_synonyms": synonyms,
-            "reader_services": [pseudo_service(d, lang) for d in docs if d["type"] == "scripture"],
         }
-        text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+        # Search indexes are runtime assets. Keep the JSON semantically identical but
+        # write it compactly so exact native text remains bundled without wasting
+        # APK space on indentation and repeated formatting whitespace.
+        text = json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n"
         (ASSET_DIR / f"search_index_{lang}.json").write_text(text, encoding="utf-8")
         (DATA_DIR / f"search_index_{lang}.json").write_text(text, encoding="utf-8")
         digest = hashlib.sha256(text.encode("utf-8")).hexdigest()

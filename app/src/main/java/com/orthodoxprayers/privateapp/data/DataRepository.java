@@ -565,12 +565,94 @@ public final class DataRepository {
         if (selected == null) selected = findServiceInArray(library().optJSONArray("services"), serviceId);
         if (selected == null) {
             JSONObject index = searchIndex();
-            selected = index == null ? null : findServiceInArray(index.optJSONArray("reader_services"), serviceId);
+            selected = readerServiceFromSearchIndex(index, serviceId);
         }
         if (!isUserDisplayableService(selected)) return null;
         selected = composeBuiltInChurchService(selected);
         JSONObject resolved = resolveService(selected);
         return isFollowAlongLiturgy(resolved) ? composeFollowAlongLiturgy(resolved) : resolved;
+    }
+
+    /** Rebuild scripture reader services on demand from the search document.
+     *
+     * Search documents already contain the exact display text, hash, reference and
+     * source metadata. Keeping a second serialized copy of every scripture passage
+     * in reader_services added several megabytes to each language asset. Rebuilding
+     * the lightweight reader object here preserves the exact native text while
+     * keeping the APK/runtime asset budget bounded.
+     */
+    private JSONObject readerServiceFromSearchIndex(JSONObject index, String serviceId) {
+        if (index == null || serviceId == null || serviceId.isEmpty()) return null;
+        JSONArray documents = index.optJSONArray("documents");
+        if (documents == null) return null;
+        String language = index.optString("language", preferences.effectiveLanguage());
+        for (int i = 0; i < documents.length(); i++) {
+            JSONObject document = documents.optJSONObject(i);
+            if (document == null || !"scripture".equals(document.optString("type", ""))) continue;
+            if (!serviceId.equals(document.optString("target_id", ""))) continue;
+            return scriptureReaderService(document, language);
+        }
+        return null;
+    }
+
+    private void collectReaderServicesFromSearchIndex(JSONObject index, Map<String, JSONObject> output) {
+        if (index == null || output == null) return;
+        JSONArray documents = index.optJSONArray("documents");
+        if (documents == null) return;
+        String language = index.optString("language", preferences.effectiveLanguage());
+        for (int i = 0; i < documents.length(); i++) {
+            JSONObject document = documents.optJSONObject(i);
+            if (document == null || !"scripture".equals(document.optString("type", ""))) continue;
+            JSONObject service = scriptureReaderService(document, language);
+            if (isRenderableService(service) && isUserDisplayableService(service)) {
+                output.putIfAbsent(service.optString("id", "scripture-" + i), resolveService(service));
+            }
+        }
+    }
+
+    private static JSONObject scriptureReaderService(JSONObject document, String language) {
+        if (document == null) return null;
+        String lang = "ar".equals(language) || "el".equals(language) ? language : "en";
+        String id = document.optString("target_id", "").trim();
+        String title = document.optString("title", "");
+        String reference = document.optString("reference", "");
+        String displayText = document.optString("display_text", "");
+        if (id.isEmpty() || displayText.isEmpty()) return null;
+        String fallbackSummary = "ar".equals(lang) ? "نص كتابي" : ("el".equals(lang) ? "Γραφή" : "Scripture");
+        JSONObject localizedTitle = localizedOnly(lang, title);
+        JSONObject localizedSummary = localizedOnly(lang, reference.isEmpty() ? fallbackSummary : reference);
+        JSONObject localizedText = localizedOnly(lang, displayText);
+        JSONObject source = document.optJSONObject("source");
+        try {
+            JSONObject service = new JSONObject();
+            service.put("id", id);
+            service.put("category", "scripture");
+            service.put("icon", "📖");
+            service.put("title", localizedTitle);
+            service.put("summary", localizedSummary);
+            service.put("segments", new JSONArray().put(new JSONObject()
+                    .put("speaker", localizedTitle)
+                    .put("text", localizedText)));
+            service.put("content_mode", "OFFICIAL_NATIVE_SOURCE_TEXT_ONLY");
+            service.put("source_language", lang);
+            service.put("native_source", new JSONObject()
+                    .put("source_id", source == null ? "" : source.optString("source_id", ""))
+                    .put("url", source == null ? "" : source.optString("url", ""))
+                    .put("content_sha256", document.optString("display_sha256", ""))
+                    .put("machine_translation_used", false));
+            service.put("search_only", false);
+            return service;
+        } catch (Exception error) {
+            return null;
+        }
+    }
+
+    private static JSONObject localizedOnly(String language, String value) {
+        JSONObject localized = new JSONObject();
+        putQuietly(localized, "ar", "ar".equals(language) ? value : "");
+        putQuietly(localized, "en", "en".equals(language) ? value : "");
+        putQuietly(localized, "el", "el".equals(language) ? value : "");
+        return localized;
     }
 
     /** Reuse already-audited native services instead of duplicating or translating text. */
@@ -628,7 +710,7 @@ public final class DataRepository {
         if (isTodayCurrent()) collectAll(today().optJSONArray("services"), unique);
         collectAll(library().optJSONArray("services"), unique);
         JSONObject index = searchIndex();
-        if (index != null) collectAll(index.optJSONArray("reader_services"), unique);
+        if (index != null) collectReaderServicesFromSearchIndex(index, unique);
         return new ArrayList<>(unique.values());
     }
 
