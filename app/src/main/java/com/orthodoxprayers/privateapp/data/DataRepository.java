@@ -543,6 +543,8 @@ public final class DataRepository {
 
     public JSONObject findService(String id) {
         String requestedId = id == null ? "" : id.trim();
+        boolean libraryOnly = requestedId.startsWith("library::");
+        if (libraryOnly) requestedId = requestedId.substring("library::".length()).trim();
         String date = "";
         String serviceId = requestedId;
         int separator = requestedId.indexOf("::");
@@ -551,11 +553,11 @@ public final class DataRepository {
             serviceId = requestedId.substring(separator + 2);
         }
 
-        JSONObject dynamic = isTodayCurrent()
+        JSONObject dynamic = !libraryOnly && isTodayCurrent()
                 ? findServiceInArray(today().optJSONArray("services"), serviceId)
                 : null;
         JSONObject selected = dynamic;
-        if (!date.isEmpty()) {
+        if (!libraryOnly && !date.isEmpty()) {
             JSONObject day = rollingWeekByDate.get(date);
             selected = day == null ? null : findServiceInArray(day.optJSONArray("services"), serviceId);
         }

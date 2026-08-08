@@ -158,6 +158,13 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
         show(backStack.peekLast());
         appUpdateManager.handleLaunchIntent(this, getIntent());
         observedAmmanDate = repository.currentAmmanDate();
+        // Do not leave a freshly installed or day-stale build on the dated
+        // snapshot while the user is already opening Liturgy or Readings. The
+        // rebuild is local and asynchronous, so it starts immediately after the
+        // first frame and rebinds the visible screen when today's package is ready.
+        if (!repository.hasUsableCurrentData()) {
+            requestDataRefresh(false, true, true);
+        }
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {

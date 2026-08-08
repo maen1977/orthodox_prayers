@@ -16,10 +16,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -274,18 +276,21 @@ public final class LocalDailyContentEngine {
             JSONObject selection
     ) throws Exception {
         JSONArray services = new JSONArray();
-        services.put(buildService("divine_liturgy", "divine_liturgy", "liturgy", "", date, calendarDay, selection, true));
-        services.put(buildService("vespers", "vespers", "liturgy", "", date, calendarDay, selection, false));
-        services.put(buildService("orthros", "orthros", "liturgy", "", date, calendarDay, selection, false));
-        services.put(buildService("morning_prayer", "morning_prayer", "daily", "", date, calendarDay, selection, false));
-        services.put(buildService("evening_prayer", "evening_prayer", "daily", "", date, calendarDay, selection, false));
-        services.put(buildService("small_compline", "small_compline", "daily", "", date, calendarDay, selection, false));
+        services.put(buildService("divine_liturgy", "divine_liturgy", "liturgy", "", date, calendarDay, readings, selection, true));
+        services.put(buildService("vespers", "vespers", "liturgy", "", date, calendarDay, readings, selection, false));
+        services.put(buildService("orthros", "orthros", "liturgy", "", date, calendarDay, readings, selection, false));
+        services.put(buildService("morning_prayer", "morning_prayer", "daily", "", date, calendarDay, readings, selection, false));
+        services.put(buildService("evening_prayer", "evening_prayer", "daily", "", date, calendarDay, readings, selection, false));
+        services.put(buildService("small_compline", "small_compline", "daily", "", date, calendarDay, readings, selection, false));
 
         LocalDate sunday = nextSundayAfter(date);
         JSONObject sundayDay = calendarDay(sunday);
         JSONObject sundaySelection = sundayDay == null
                 ? normalizedLiturgySelection(null)
                 : normalizedLiturgySelection(sundayDay.optJSONObject("liturgy_service_selection"));
+        JSONArray sundayReadings = sundayDay == null
+                ? new JSONArray()
+                : buildReadings(sundayDay.optJSONObject("reading_references"));
         services.put(buildService(
                 "next_sunday_full_liturgy",
                 "divine_liturgy",
@@ -293,6 +298,7 @@ public final class LocalDailyContentEngine {
                 "",
                 sunday,
                 sundayDay == null ? calendarDay : sundayDay,
+                sundayReadings,
                 sundaySelection,
                 true
         ));
@@ -306,6 +312,7 @@ public final class LocalDailyContentEngine {
             String icon,
             LocalDate date,
             JSONObject calendarDay,
+            JSONArray readings,
             JSONObject selection,
             boolean liturgy
     ) throws Exception {
@@ -376,9 +383,27 @@ public final class LocalDailyContentEngine {
                     .put("no_unappointed_material", true)
                     .put("fail_closed", true)
                     .put("network_required", false));
+            JSONObject readingSlots = readingSlotReplacements(readings);
+            if (readingSlots.length() > 0) service.put("slot_replacements", readingSlots);
             service.put("liturgy_day_plan", liturgyDayPlan(date, selection, refs));
         }
         return service;
+    }
+
+    /** Place the exact native daily readings in their appointed Liturgy slots. */
+    private static JSONObject readingSlotReplacements(JSONArray readings) throws Exception {
+        JSONObject slots = new JSONObject();
+        if (readings == null) return slots;
+        for (int i = 0; i < readings.length(); i++) {
+            JSONObject reading = readings.optJSONObject(i);
+            if (reading == null) continue;
+            String kind = reading.optString("kind", "").trim();
+            if (!"epistle".equals(kind) && !"gospel".equals(kind) && !"matins_gospel".equals(kind)) continue;
+            JSONObject body = reading.optJSONObject("body");
+            if (body == null || body.length() == 0) continue;
+            slots.put(kind, copyObject(body));
+        }
+        return slots;
     }
 
     private JSONObject liturgyDayPlan(LocalDate date, JSONObject selection, JSONObject refs) throws Exception {
@@ -543,8 +568,9 @@ public final class LocalDailyContentEngine {
 
     private ResolvedScripture resolveScripture(String language, String canonicalReference) throws Exception {
         if (canonicalReference == null || canonicalReference.trim().isEmpty()) return null;
+        String normalizedReference = canonicalReference.trim().toUpperCase(Locale.ROOT);
         try {
-            BibleCorpusRepository.ResolvedPassage complete = fullBible.resolve(language, canonicalReference);
+            BibleCorpusRepository.ResolvedPassage complete = fullBible.resolve(language, normalizedReference);
             if (complete != null && complete.text != null && !complete.text.trim().isEmpty()) {
                 return new ResolvedScripture(complete.text, complete.sourceId, complete.sourceUrl);
             }
@@ -554,9 +580,11 @@ public final class LocalDailyContentEngine {
         }
         ScriptureCorpus corpus = scriptureCorpus(language);
         if (corpus == null || corpus.verses.isEmpty()) return null;
+        boolean hasDeclaredCoverage = !corpus.supportedReferences.isEmpty();
+        if (hasDeclaredCoverage && !corpus.supportedReferences.contains(normalizedReference)) return null;
 
         ArrayList<JSONObject> selected = new ArrayList<>();
-        for (String rawPart : canonicalReference.split(";")) {
+        for (String rawPart : normalizedReference.split(";")) {
             String part = rawPart.trim();
             Matcher matcher = CANONICAL_RANGE.matcher(part);
             if (!matcher.matches()) return null;
@@ -570,7 +598,13 @@ public final class LocalDailyContentEngine {
 
             String startId = startBook + "." + startChapter + "." + startVerse;
             String endId = endBook + "." + endChapter + "." + endVerse;
-            if (!corpus.byId.containsKey(startId) || !corpus.byId.containsKey(endId)) return null;
+            // Legacy moving-window assets did not declare their complete reference
+            // coverage, so retain the old endpoint guard for them. The all-calendar
+            // fallback manifest is generated and validated reference-by-reference;
+            // it may intentionally follow source-edition numbering that omits a
+            // verse number (for example Mark 7:16 in the Patriarchal Greek text).
+            if (!hasDeclaredCoverage
+                    && (!corpus.byId.containsKey(startId) || !corpus.byId.containsKey(endId))) return null;
 
             ArrayList<JSONObject> segment = new ArrayList<>();
             for (JSONObject verse : corpus.verses) {
@@ -609,6 +643,14 @@ public final class LocalDailyContentEngine {
         JSONObject manifest = new JSONObject(readAssetText(SCRIPTURE_MANIFEST_PREFIX + language + ".json"));
         ArrayList<JSONObject> verses = new ArrayList<>();
         LinkedHashMap<String, JSONObject> byId = new LinkedHashMap<>();
+        HashSet<String> supportedReferences = new HashSet<>();
+        JSONArray declaredReferences = manifest.optJSONArray("supported_canonical_references");
+        if (declaredReferences != null) {
+            for (int i = 0; i < declaredReferences.length(); i++) {
+                String reference = declaredReferences.optString(i, "").trim().toUpperCase(Locale.ROOT);
+                if (!reference.isEmpty()) supportedReferences.add(reference);
+            }
+        }
         for (int i = 0; i < array.length(); i++) {
             JSONObject verse = array.optJSONObject(i);
             if (verse == null) continue;
@@ -624,6 +666,7 @@ public final class LocalDailyContentEngine {
         ScriptureCorpus corpus = new ScriptureCorpus(
                 verses,
                 byId,
+                supportedReferences,
                 manifest.optString("source_id", "embedded_public_domain_native_corpus"),
                 manifest.optString("source_url", "")
         );
@@ -740,12 +783,20 @@ public final class LocalDailyContentEngine {
     private static final class ScriptureCorpus {
         final List<JSONObject> verses;
         final Map<String, JSONObject> byId;
+        final Set<String> supportedReferences;
         final String sourceId;
         final String sourceUrl;
 
-        ScriptureCorpus(List<JSONObject> verses, Map<String, JSONObject> byId, String sourceId, String sourceUrl) {
+        ScriptureCorpus(
+                List<JSONObject> verses,
+                Map<String, JSONObject> byId,
+                Set<String> supportedReferences,
+                String sourceId,
+                String sourceUrl
+        ) {
             this.verses = verses;
             this.byId = byId;
+            this.supportedReferences = supportedReferences;
             this.sourceId = sourceId;
             this.sourceUrl = sourceUrl;
         }

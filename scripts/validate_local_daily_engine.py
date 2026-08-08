@@ -60,8 +60,10 @@ def verify_calendar() -> dict[int, dict[str, dict]]:
     return years
 
 
-def verify_scripture_assets() -> dict[str, set[str]]:
+def verify_scripture_assets() -> tuple[dict[str, set[str]], dict[str, set[str]], dict[str, set[str]]]:
     ids: dict[str, set[str]] = {}
+    references: dict[str, set[str]] = {}
+    omissions: dict[str, set[str]] = {}
     for language in LANGUAGES:
         source = ROOT / f"data/scripture/native/{language}/verses.json"
         asset = ROOT / f"app/src/main/assets/data/scripture/verses_{language}.json"
@@ -79,10 +81,24 @@ def verify_scripture_assets() -> dict[str, set[str]]:
         if "" in verse_ids or len(verse_ids) != len(verses):
             fail(f"scripture_ids_invalid:{language}")
         ids[language] = verse_ids
-    return ids
+        manifest = load_json(manifest_asset)
+        if manifest.get("coverage_status") != "ALL_EMBEDDED_CALENDAR_REFERENCES_2026_2050":
+            fail(f"scripture_calendar_coverage_status:{language}")
+        references[language] = {
+            str(item).strip().upper()
+            for item in manifest.get("supported_canonical_references", [])
+            if str(item).strip()
+        }
+        omissions[language] = {
+            str(item).strip().upper()
+            for item in manifest.get("allowed_source_verse_omissions", [])
+            if str(item).strip()
+        }
+    return ids, references, omissions
 
 
-def endpoints_available(reference: str, verse_ids: set[str]) -> bool:
+def endpoints_available(reference: str, verse_ids: set[str], allowed_omissions: set[str] | None = None) -> bool:
+    allowed_omissions = allowed_omissions or set()
     if not reference:
         return False
     for raw in reference.split(";"):
@@ -94,9 +110,9 @@ def endpoints_available(reference: str, verse_ids: set[str]) -> bool:
         end_chapter = end_chapter or start_chapter
         if start_book != end_book:
             return False
-        if f"{start_book}.{start_chapter}.{start_verse}" not in verse_ids:
+        if f"{start_book}.{start_chapter}.{start_verse}" not in verse_ids | allowed_omissions:
             return False
-        if f"{end_book}.{end_chapter}.{end_verse}" not in verse_ids:
+        if f"{end_book}.{end_chapter}.{end_verse}" not in verse_ids | allowed_omissions:
             return False
     return True
 
@@ -118,6 +134,35 @@ def verify_reference_window(years: dict[int, dict[str, dict]], ids: dict[str, se
     if complete < 2:
         fail(f"anchor_native_scripture_coverage_too_low:{complete}")
     return complete
+
+
+def verify_all_calendar_references(
+        years: dict[int, dict[str, dict]],
+        ids: dict[str, set[str]],
+        supported: dict[str, set[str]],
+        omissions: dict[str, set[str]],
+) -> int:
+    calendar_references: set[str] = set()
+    for days in years.values():
+        for day in days.values():
+            for item in (day.get("reading_references") or {}).values():
+                canonical = str(item.get("canonical_reference") or "").strip().upper()
+                if canonical:
+                    calendar_references.add(canonical)
+    if not calendar_references:
+        fail("calendar_references_empty")
+    for language in LANGUAGES:
+        missing = calendar_references - supported[language]
+        extra = supported[language] - calendar_references
+        if missing or extra:
+            fail(f"scripture_reference_manifest_drift:{language}:missing={len(missing)}:extra={len(extra)}")
+        unavailable = sorted(
+            reference for reference in calendar_references
+            if not endpoints_available(reference, ids[language], omissions[language])
+        )
+        if unavailable:
+            fail(f"scripture_reference_endpoints:{language}:{unavailable[0]}")
+    return len(calendar_references)
 
 
 def verify_native_services() -> None:
@@ -159,8 +204,8 @@ def verify_android_wiring() -> None:
         fail("coordinator_still_requires_network")
     if "Result.retry" in worker:
         fail("worker_retries_deterministic_local_failure")
-    if 'versionName = "5.6.2"' not in build or "versionCode = 50602" not in build:
-        fail("version_not_5_3_0")
+    if 'versionName = "5.6.3"' not in build or "versionCode = 50603" not in build:
+        fail("version_not_5_6_3")
 
 
 def verify_resources() -> None:
@@ -193,15 +238,17 @@ def main() -> None:
         fail(f"date_outside_embedded_range:{anchor}")
 
     years = verify_calendar()
-    ids = verify_scripture_assets()
+    ids, supported, omissions = verify_scripture_assets()
     complete = verify_reference_window(years, ids, anchor)
+    reference_count = verify_all_calendar_references(years, ids, supported, omissions)
     verify_native_services()
     verify_android_wiring()
     verify_resources()
     print(
         "LOCAL_DAILY_ENGINE_OK "
         f"date={anchor} window=9 calendar=2026-2050 languages=ar,en,el "
-        f"native_window_references={complete} network_required=false version=5.6.2"
+        f"native_window_references={complete} calendar_references={reference_count} "
+        "network_required=false version=5.6.3"
     )
 
 

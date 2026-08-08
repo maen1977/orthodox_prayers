@@ -22,7 +22,7 @@ import urllib.parse
 import urllib.request
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
-BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.6.2"
+BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.6.3"
 MAX_BYTES = 6_000_000
 MAX_OPEN_SOURCE_BYTES = 80_000_000
 MIN_CHARS_REQUIRED = 1200

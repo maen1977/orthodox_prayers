@@ -20,13 +20,22 @@ public final class ReadingsScreen extends BaseScreen {
         UiKit.Page page = page(local(com.orthodoxprayers.privateapp.R.string.ui_today_s_readings_3cf1dbd5), true);
         if (!data.isTodayCurrent()) {
             TextView blocked = centered(
-                    local(com.orthodoxprayers.privateapp.R.string.ui_stale_readings_are_blocked_because_they_do_not_b_3a3e5947),
+                    data.isRefreshing()
+                            ? local(com.orthodoxprayers.privateapp.R.string.ui_loading_today_s_data_8457881d)
+                            : local(com.orthodoxprayers.privateapp.R.string.ui_local_daily_update_unavailable),
                     15, ui.colors().primaryText(), true
             );
             add(page.root, blocked, 18, 10);
-            Button refresh = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_refresh_jordan_readings_now_e178a08f), true);
-            refresh.setOnClickListener(v -> host.refreshData());
-            add(page.root, refresh, 2, 12);
+            TextView detail = centered(
+                    local(com.orthodoxprayers.privateapp.R.string.ui_the_screen_will_update_automatically_after_downl_a93a7fcf),
+                    14, ui.colors().secondaryText(), false
+            );
+            add(page.root, detail, 2, 10);
+            if (!data.isRefreshing()) {
+                Button refresh = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_retry_update_da94fa97), true);
+                refresh.setOnClickListener(v -> host.refreshData());
+                add(page.root, refresh, 2, 12);
+            }
             return page.scroll;
         }
         TextView source = centered(localized(data.today().optJSONObject("source_note"), ""), 13, ui.colors().secondaryText(), false);

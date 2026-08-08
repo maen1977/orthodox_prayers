@@ -11,7 +11,6 @@ import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONObject;
 
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -21,6 +20,12 @@ public final class HomeScreen extends BaseScreen {
     // R33_COMPACT_FASTING_HOME: the multi-day fasting table lives behind the calendar icon.
     // R35_HOME_SHORTCUT_CARDS: four compact shortcuts plus one context-aware recommendation.
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
+    private static final String[] DAILY_PRAYER_ROTATION = {
+            "morning_prayer",
+            "thanksgiving",
+            "evening_prayer",
+            "small_compline"
+    };
     public HomeScreen(ScreenHost host) { super(host); }
 
     @Override
@@ -228,10 +233,10 @@ public final class HomeScreen extends BaseScreen {
     }
 
     private String currentPrayerServiceId() {
-        LocalTime time = ZonedDateTime.now(AMMAN_ZONE).toLocalTime();
-        if (time.isBefore(LocalTime.of(12, 0))) return "morning_prayer";
-        if (!time.isBefore(LocalTime.of(18, 0))) return "evening_prayer";
-        return "thanksgiving";
+        // Jordan's church date selects a different substantial daily prayer on
+        // consecutive days. This is deterministic and works fully offline.
+        long day = ZonedDateTime.now(AMMAN_ZONE).toLocalDate().toEpochDay();
+        return DAILY_PRAYER_ROTATION[Math.floorMod(day, DAILY_PRAYER_ROTATION.length)];
     }
 
     private static final class SmartShortcut {
