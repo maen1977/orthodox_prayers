@@ -1,4 +1,4 @@
-# إعداد التوقيع والإصدار التلقائي — Orthodox Prayers 5.6.0
+# إعداد التوقيع والإصدار التلقائي — Orthodox Prayers 5.6.1
 
 هذه الخطوة تُنفذ **مرة واحدة فقط** على جهاز Windows موثوق. هدفها إنشاء مفتاح Android إنتاجي ثابت ثم حفظه في GitHub Actions Secrets بدون إضافته للمستودع.
 
@@ -29,14 +29,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup_release_signing.ps1
 
 **احتفظ بنسخة احتياطية آمنة من مجلد `.release-signing` ولا تحذفه.** هذا المفتاح هو هوية التطبيق للإصدارات القادمة.
 
-## نشر 5.6.0 بعد إعداد التوقيع
+## نشر 5.6.1 بعد إعداد التوقيع
 
 1. افتح GitHub > Actions > **Build Church Prayers**.
 2. اختر **Run workflow**.
 3. فعّل **Publish a signed GitHub Release for the current version**.
 4. شغّل الـworkflow.
 
-الـworkflow سيقرأ `versionName` من `app/build.gradle.kts`، وينشئ Tag `v5.6.0` تلقائيًا إذا لم يكن موجودًا، ثم ينشر Release يحتوي على:
+الـworkflow سيقرأ `versionName` من `app/build.gradle.kts`، وينشئ Tag `v5.6.1` تلقائيًا إذا لم يكن موجودًا، ثم ينشر Release يحتوي على:
 - `Church-Prayers.apk`
 - `Church-Prayers.aab`
 - `Church-Prayers.apk.sha256`

@@ -196,7 +196,10 @@ public final class HomeScreen extends BaseScreen {
         SmartShortcut recommendation = smartRecommendation();
         LinearLayout card = ui.actionCard(recommendation.iconResource, recommendation.title, recommendation.subtitle);
         if ("reader".equals(recommendation.screen) && "divine_liturgy".equals(recommendation.argument)) {
-            card.setOnClickListener(v -> host.navigate("reader", "divine_liturgy"));
+            // R56.1: the Liturgy tab must always remain visible. Route through the
+            // day-aware hub so blocked/non-Eucharistic days show their status
+            // instead of making the Liturgy appear to disappear.
+            card.setOnClickListener(v -> host.navigate("liturgy", null));
         } else {
             card.setOnClickListener(v -> host.navigate(recommendation.screen, recommendation.argument));
         }

@@ -61,11 +61,12 @@ def test_thanksgiving_is_filtered_for_the_selected_liturgy() -> None:
     assert "activeArabicVariant.equals(selected)" in source
 
 
-def test_home_bottom_card_is_always_the_complete_st_john_liturgy() -> None:
+def test_home_liturgy_card_routes_through_the_day_aware_liturgy_hub() -> None:
     source = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java")
     assert 'data.findService("divine_liturgy")' in source
     assert '"divine_liturgy"' in source
-    assert 'host.navigate("reader", "divine_liturgy")' in source
+    assert 'host.navigate("liturgy", null)' in source
+    assert 'host.navigate("reader", "divine_liturgy")' not in source
     assert "specificCommemoration(today)" not in source
     assert "DayOfWeek.SUNDAY" not in source
 

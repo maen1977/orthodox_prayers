@@ -15,14 +15,14 @@ for lang,lane in manifest.get('languages',{}).items():
         if not str(svc.get('url','')).startswith('https://'): errors.append(f'url:{lang}:{svc.get("id")}')
 
 gradle=(ROOT/'app/build.gradle.kts').read_text(encoding='utf-8')
-for token in ['versionCode = 50600','versionName = "5.6.0"','prepareChurchServiceCorpus','generated/churchServiceAssets']:
+for token in ['versionCode = 50601','versionName = "5.6.1"','prepareChurchServiceCorpus','generated/churchServiceAssets']:
     if token not in gradle: errors.append('gradle:'+token)
 repo=(ROOT/'app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java').read_text(encoding='utf-8')
 for token in ['data/church/full_services_','machine_translation_used','composeBuiltInChurchService']:
     if token not in repo: errors.append('runtime:'+token)
 
 
-# 5.6.0 rights/source hardening: protected GOARCH pages are not scraped into the APK.
+# 5.6.1 rights/source hardening: protected GOARCH pages are not scraped into the APK.
 for lang in ('en','el'):
     lane=manifest.get('languages',{}).get(lang,{})
     for svc in lane.get('services',[]):
@@ -58,4 +58,4 @@ if out.exists():
 if errors:
     print('FULL_CHURCH_SERVICES_FAIL', *errors, sep='\n')
     sys.exit(1)
-print('FULL_CHURCH_SERVICES_OK version=5.6.0 policy=rights_aware_no_translation generated=' + (','.join(materialized) if materialized else 'not_materialized_in_source_checkout'))
+print('FULL_CHURCH_SERVICES_OK version=5.6.1 policy=rights_aware_no_translation generated=' + (','.join(materialized) if materialized else 'not_materialized_in_source_checkout'))

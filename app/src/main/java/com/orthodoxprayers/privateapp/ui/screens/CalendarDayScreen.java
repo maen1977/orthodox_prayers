@@ -107,8 +107,14 @@ public final class CalendarDayScreen extends BaseScreen {
                     : title;
         }
         Button button = ui.button(dynamicLabel, primary && complete);
-        button.setOnClickListener(v -> host.navigate("reader",
-                com.orthodoxprayers.privateapp.data.DataRepository.datedServiceId(date, id)));
+        if ("divine_liturgy".equals(id) && !complete) {
+            // Keep the appointed Liturgy visible in the calendar, but do not
+            // open a partial/blocked text as though it were the complete rite.
+            button.setEnabled(false);
+        } else {
+            button.setOnClickListener(v -> host.navigate("reader",
+                    com.orthodoxprayers.privateapp.data.DataRepository.datedServiceId(date, id)));
+        }
         card.addView(button, ui.margins(-1, -2, 0, 5, 0, 0));
     }
 
