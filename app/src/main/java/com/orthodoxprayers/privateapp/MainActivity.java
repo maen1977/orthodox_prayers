@@ -431,7 +431,9 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "home": return new HomeScreen(this);
             case "prayers": return new PrayerHubScreen(this);
             case "prayer_category": return new ServiceListScreen(this, entry.argument, prayerCategoryTitle(entry.argument));
-            case "liturgy": return new LiturgyHubScreen(this);
+            case "liturgy": return canOpenTodayLiturgyDirectly()
+                    ? new ReaderScreen(this, "divine_liturgy")
+                    : new LiturgyHubScreen(this);
             case "readings": return new ReadingsScreen(this);
             case "bible": return new BibleScreen(this);
             case "bible_testament": return new BibleTestamentScreen(this, entry.argument);
@@ -457,6 +459,16 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
                 }
             default: return new HomeScreen(this);
         }
+    }
+
+    private boolean canOpenTodayLiturgyDirectly() {
+        if (!repository.isTodayCurrent()) return false;
+        JSONObject selection = repository.today().optJSONObject("liturgy_service_selection");
+        if (selection == null || !selection.optBoolean("displayable", false)) return false;
+        String type = selection.optString("service_type", "").trim();
+        if ("no_divine_liturgy".equals(type) || "typikon_override_required".equals(type)) return false;
+        String serviceId = selection.optString("service_id", "divine_liturgy").trim();
+        return serviceId.isEmpty() || "divine_liturgy".equals(serviceId);
     }
 
     private void rebuildBottomNav(ScreenEntry entry) {

@@ -128,15 +128,17 @@ def test_complete_chrysostom_overlay_declares_beginning_to_end_contract():
     assert service["extends_service_id"] == "divine_liturgy"
 
 
-def test_android_reader_keeps_adjacent_offices_separate_from_liturgy():
+def test_android_reader_keeps_liturgy_core_strict_inside_distinct_adjacent_phases():
     source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
     composer = source.split("private JSONObject composeFollowAlongLiturgy", 1)[1].split("private static JSONArray strictAppointedLiturgyCore", 1)[0]
-    assert "STRICT_APPOINTED_LITURGY_CORE_ONLY" in composer
+    assert "CONTINUOUS_WORSHIP_PATH_SEPARATE_PHASES" in composer
     assert "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL" in composer
     assert 'follow_along_mode' in source
     assert 'full_service_complete' in source
-    assert 'findServiceInArray(library().optJSONArray("services"), "pre_communion_prayers")' not in composer
-    assert 'thanksgivingSegmentsForLiturgy' not in composer
+    assert 'appendNativePrayerService(continuous, "pre_communion_prayers", language)' in composer
+    assert 'appendNativePrayerService(continuous, "proskomide", language)' in composer
+    assert 'thanksgivingSegmentsForLiturgy' in composer
+    assert 'excluded_from_liturgy_core' in composer
 
 
 def test_ui_exposes_type_form_reason_and_complete_open_action():
@@ -148,7 +150,8 @@ def test_ui_exposes_type_form_reason_and_complete_open_action():
         assert "ui_service_form_label" in source
         assert "ui_selection_reason_label" not in source
     assert "ui_open_complete_service_beginning_to_end" in calendar
-    assert "ui_open_full_appointed_liturgy_format" in home
+    assert "FastingNoticeEngine.evaluate" in home
+    assert "ui_fast_notice_details_hint" in home
 
 
 def test_full_service_contract_is_fail_closed_for_every_published_language():

@@ -78,7 +78,6 @@
     <string name="ui_feasts_and_commemorations_bea321c8" formatted="false">الأعياد والتذكارات</string>
     <string name="ui_font_f5e02ef6" formatted="false">نوع الخط: </string>
     <string name="ui_forbidden_8f73bf02" formatted="false">ممنوع</string>
-    <string name="ui_full_liturgy_today_preparation_to_dismissal_08927fc7" formatted="false">قداس اليوم الكامل — من الاستعداد إلى الختام</string>
     <string name="ui_gospel_68845cc5" formatted="false">الإنجيل: </string>
     <string name="ui_gospel_b7b033e7" formatted="false">الإنجيل</string>
     <string name="ui_great_entrance_663a8293" formatted="false">الدورة الكبرى</string>
@@ -344,7 +343,6 @@
     <string name="ui_nine_day_service_ready" formatted="false">خدمة الأيام التسعة تبدأ من اليوم ومكتملة</string>
     <string name="ui_content_ready_through_format">الصلوات والقراءات مكتملة حتى %1$s</string>
     <string name="ui_prayer_of_the_day" formatted="false">صلاة اليوم</string>
-    <string name="ui_continue_reading" formatted="false">استكمال القراءة</string>
 
     <string name="ui_shortcut_daily_readings_r43" formatted="false">قراءات اليوم</string>
     <string name="ui_shortcut_divine_liturgy_r43" formatted="false">القداس الإلهي</string>
@@ -377,4 +375,21 @@
     <string name="ui_bible_cannot_open_text">تعذر فتح النص المضمّن.</string>
     <string name="ui_church_service_section">خدمة كنسية</string>
     <string name="ui_church_service_hint">خدمات طقسية كنسية ثابتة مع قراءاتها الكتابية.</string>
+
+    <!-- R57: date-aware fasting notice and old-calendar date on Home. -->
+    <string name="ui_old_church_calendar_home_format">التقويم الكنسي القديم: %1$s</string>
+    <string name="ui_fast_family_dormition">صوم رقاد السيدة والدة الإله</string>
+    <string name="ui_fast_family_nativity">صوم الميلاد</string>
+    <string name="ui_fast_family_great_lent">الصوم الكبير</string>
+    <string name="ui_fast_family_apostles">صوم الرسل</string>
+    <string name="ui_fast_notice_starts_in_days_format">باقي %1$d أيام على %2$s</string>
+    <string name="ui_fast_notice_starts_tomorrow_format">غدًا يبدأ %1$s</string>
+    <string name="ui_fast_notice_current_format">اليوم %1$d من %2$s — باقي %3$d يومًا</string>
+    <string name="ui_fast_notice_last_day_format">اليوم الأخير من %1$s</string>
+    <string name="ui_fast_notice_tomorrow_weekly_format">غدًا %1$s — %2$s</string>
+    <string name="ui_fast_notice_next_weekly_format">%1$s القادم — %2$s</string>
+    <string name="ui_fast_notice_none">لا صوم قريب في هذه الفترة</string>
+    <string name="ui_fast_notice_details_hint">اضغط لعرض تفاصيل الصوم والتقويم</string>
+    <string name="ui_weekday_wednesday">الأربعاء</string>
+    <string name="ui_weekday_friday">الجمعة</string>
 </resources>

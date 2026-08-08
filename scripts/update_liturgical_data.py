@@ -1455,6 +1455,20 @@ def reading_block_loc(reading: dict, prefer_empty_ar_when_missing: bool = False)
     return out
 
 
+def named_reading_block_loc(reading: dict) -> dict:
+    """Render a daily reading with its appointed name and localized reference."""
+    block = reading_block_loc(reading, prefer_empty_ar_when_missing=True)
+    title = reading.get("title", {}) if isinstance(reading.get("title"), dict) else {}
+    out = {"ar": "", "en": "", "el": ""}
+    for lang in ("ar", "en", "el"):
+        content = str(block.get(lang) or "").strip()
+        if not content:
+            continue
+        name = str(title.get(lang) or "").strip()
+        out[lang] = (name + " — " + content).strip(" —") if name else content
+    return out
+
+
 def _prokeimenon_reading(entry: dict, sources: dict, provenance: str) -> dict:
     body = _localized(entry.get("body"))
     reference = _localized(entry.get("reference"))
@@ -2028,6 +2042,9 @@ def liturgy_day_plan(day: date, selection: dict, epistle: dict | None = None, go
         },
         "orthros_separate": {
             "matins_gospel_canonical": canonical(matins_gospel),
+            "matins_gospel_reference": copy.deepcopy(
+                (matins_gospel or {}).get("reference") if isinstance((matins_gospel or {}).get("reference"), dict) else {}
+            ),
             "belongs_to": "orthros_not_divine_liturgy",
         },
         "daily_propers": {
@@ -2168,8 +2185,8 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "[طروبارية صاحب الكنيسة أو القديس إن وُجدت]": copy.deepcopy(inserts["church_troparion"]),
         "[القنداق]": copy.deepcopy(inserts["kontakion"]),
         "[البروكيمنن]": reading_block_loc(prok, prefer_empty_ar_when_missing=False),
-        "[فصل من رسالة اليوم]": reading_block_loc(epistle, prefer_empty_ar_when_missing=True),
-        "[فصل الإنجيل المعيّن لهذا اليوم]": reading_block_loc(gospel, prefer_empty_ar_when_missing=True),
+        "[فصل من رسالة اليوم]": named_reading_block_loc(epistle),
+        "[فصل الإنجيل المعيّن لهذا اليوم]": named_reading_block_loc(gospel),
         "[آية المناولة]": copy.deepcopy(inserts["communion"]),
     }
     inline_replacements = {"[اسم الإنجيلي]": loc(evangelist_for_reading(gospel))}
@@ -2187,8 +2204,8 @@ def build_liturgy_service(service_id: str, day: date, info: dict, readings: list
         "church_troparion": copy.deepcopy(inserts["church_troparion"]),
         "daily_kontakion": copy.deepcopy(inserts["kontakion"]),
         "prokeimenon": reading_block_loc(prok, prefer_empty_ar_when_missing=False),
-        "epistle": reading_block_loc(epistle, prefer_empty_ar_when_missing=True),
-        "gospel": reading_block_loc(gospel, prefer_empty_ar_when_missing=True),
+        "epistle": named_reading_block_loc(epistle),
+        "gospel": named_reading_block_loc(gospel),
         "communion_hymn": copy.deepcopy(inserts["communion"]),
         "first_antiphon": copy.deepcopy(inserts["first_antiphon"]),
         "second_antiphon": copy.deepcopy(inserts["second_antiphon"]),

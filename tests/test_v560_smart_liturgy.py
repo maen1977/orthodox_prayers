@@ -79,13 +79,16 @@ def test_chrysostom_day_uses_only_liturgy_slots_not_matins():
     assert svc["extends_service_id"] == "divine_liturgy"
 
 
-def test_android_reader_does_not_merge_adjacent_offices_into_liturgy():
+def test_android_reader_keeps_core_strict_but_surrounds_it_with_distinct_native_phases():
     source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
     composer = source.split("private JSONObject composeFollowAlongLiturgy", 1)[1].split("private static JSONArray strictAppointedLiturgyCore", 1)[0]
-    assert "STRICT_APPOINTED_LITURGY_CORE_ONLY" in composer
+    assert "CONTINUOUS_WORSHIP_PATH_SEPARATE_PHASES" in composer
     assert STRICT_SCOPE in composer
-    assert "thanksgivingSegmentsForLiturgy" not in composer
-    assert "findServiceInArray(library().optJSONArray(\"services\"), \"pre_communion_prayers\")" not in composer
+    assert 'appendNativePrayerService(continuous, "pre_communion_prayers", language)' in composer
+    assert 'appendNativePrayerService(continuous, "proskomide", language)' in composer
+    assert "thanksgivingSegmentsForLiturgy" in composer
+    assert "appendSundayCycleGospel" in composer
+    assert "adjacent_offices_rendered_as_distinct_phases" in composer
     assert '"matins_gospel".equals(copy.optString("dynamic_slot", ""))' in source
 
 

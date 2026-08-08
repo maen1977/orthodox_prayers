@@ -114,8 +114,14 @@ public final class LocalDailyContentEngine {
                 "Old ecclesiastical calendar — Jordan and Jerusalem",
                 "Παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο — Ἰορδανία καὶ Ἱεροσόλυμα"
         ));
-        result.put("julian_date", calendarDay.optString("julian_date", ""));
-        copyIfPresent(calendarDay, result, "julian_label");
+        String julianIso = calendarDay.optString("julian_date", "").trim();
+        result.put("julian_date", julianIso);
+        JSONObject julianLabel = copyObject(calendarDay.optJSONObject("julian_label"));
+        if (julianLabel.length() == 0 && !julianIso.isEmpty()) {
+            try { julianLabel = oldCalendarDateLabel(LocalDate.parse(julianIso)); }
+            catch (Exception ignored) { /* Keep the raw ISO date as the fail-closed UI fallback. */ }
+        }
+        if (julianLabel.length() > 0) result.put("julian_label", julianLabel);
 
         JSONObject feast = copyObject(calendarDay.optJSONObject("feast"));
         if (feast.length() == 0) {
@@ -405,7 +411,25 @@ public final class LocalDailyContentEngine {
             if (!"epistle".equals(kind) && !"gospel".equals(kind)) continue;
             JSONObject body = reading.optJSONObject("body");
             if (body == null || body.length() == 0) continue;
-            slots.put(kind, copyObject(body));
+            JSONObject title = reading.optJSONObject("title");
+            JSONObject reference = reading.optJSONObject("reference");
+            JSONObject replacement = new JSONObject();
+            for (String language : new String[]{"ar", "en", "el"}) {
+                String text = body.optString(language, "").trim();
+                if (text.isEmpty()) continue;
+                String name = title == null ? "" : title.optString(language, "").trim();
+                String ref = reference == null ? "" : reference.optString(language, "").trim();
+                StringBuilder display = new StringBuilder();
+                if (!name.isEmpty()) display.append(name);
+                if (!ref.isEmpty()) {
+                    if (display.length() > 0) display.append(" — ");
+                    display.append(ref);
+                }
+                if (display.length() > 0) display.append("\n\n");
+                display.append(text);
+                replacement.put(language, display.toString());
+            }
+            if (replacement.length() > 0) slots.put(kind, replacement);
         }
         return slots;
     }
@@ -427,8 +451,12 @@ public final class LocalDailyContentEngine {
         plan.put("liturgy_readings", new JSONObject()
                 .put("epistle_canonical", canonicalReference(refs, "epistle"))
                 .put("gospel_canonical", canonicalReference(refs, "gospel")));
+        JSONObject matinsReferenceData = refs == null ? null : refs.optJSONObject("matins_gospel");
         plan.put("orthros_separate", new JSONObject()
                 .put("matins_gospel_canonical", canonicalReference(refs, "matins_gospel"))
+                .put("matins_gospel_reference", matinsReferenceData == null
+                        ? new JSONObject()
+                        : copyObject(matinsReferenceData.optJSONObject("reference")))
                 .put("belongs_to", "orthros_not_divine_liturgy"));
         plan.put("separate_adjacent_offices", new JSONArray()
                 .put("orthros")
@@ -555,6 +583,14 @@ public final class LocalDailyContentEngine {
         );
     }
 
+    private JSONObject oldCalendarDateLabel(LocalDate date) throws Exception {
+        return localized(
+                date.getDayOfMonth() + " " + arabicMonth(date.getMonthValue()) + " " + date.getYear(),
+                englishMonth(date.getMonthValue()) + " " + date.getDayOfMonth() + ", " + date.getYear(),
+                date.getDayOfMonth() + " " + greekMonth(date.getMonthValue()) + " " + date.getYear()
+        );
+    }
+
     private JSONObject serviceTitle(String id) throws Exception {
         switch (id) {
             case "divine_liturgy": return localized("خدمة اليوم — القداس الإلهي", "Today — Divine Liturgy", "Σήμερα — Θεία Λειτουργία");
@@ -570,7 +606,11 @@ public final class LocalDailyContentEngine {
 
     private JSONObject readingTitle(String kind) throws Exception {
         if ("gospel".equals(kind)) return localized("الإنجيل", "Gospel", "Εὐαγγέλιον");
-        if ("matins_gospel".equals(kind)) return localized("إنجيل السَحَر", "Matins Gospel", "Ἑωθινὸν Εὐαγγέλιον");
+        if ("matins_gospel".equals(kind)) return localized(
+                "إنجيل الدورة (إنجيل السَحَر)",
+                "Matins Gospel (Eothinon)",
+                "Ἑωθινὸν Εὐαγγέλιον"
+        );
         return localized("الرسالة", "Epistle", "Ἀπόστολος");
     }
 

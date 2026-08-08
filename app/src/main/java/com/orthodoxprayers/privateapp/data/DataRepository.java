@@ -1831,11 +1831,9 @@ public final class DataRepository {
     }
 
     /**
-     * Builds one continuous reader without duplicating any religious text in assets.
-     *
-     * The reader contains only the appointed Divine Liturgy itself. Orthros, Hours,
-     * Proskomide, personal Communion preparation and thanksgiving remain separate.
-     * Daily metadata is exposed outside the prayer-text stream.
+     * Builds one continuous believer-facing reader without changing the appointed
+     * Divine Liturgy core. Adjacent preparation/thanksgiving offices remain
+     * explicitly marked as separate phases around that untouched core.
      */
     private JSONObject composeFollowAlongLiturgy(JSONObject liturgy) {
         if (liturgy == null || liturgy.optBoolean("follow_along_composed", false)) return liturgy;
@@ -1847,20 +1845,64 @@ public final class DataRepository {
                     language
             );
             JSONArray continuous = new JSONArray();
-            appendLiturgyDayHeader(continuous, liturgy);
+
+            continuous.put(followAlongSection(
+                    "ما قبل القداس — صلوات الاستعداد للمناولة",
+                    "Before the Liturgy — Prayers of Preparation for Communion",
+                    "Πρὸ τῆς Θείας Λειτουργίας — Προσευχὲς προετοιμασίας γιὰ τὴ Θεία Μετάληψη"
+            ));
+            appendNativePrayerService(continuous, "pre_communion_prayers", language);
+
+            continuous.put(followAlongSection(
+                    "خدمة التقدمة (البروسكوميدي)",
+                    "Proskomide — Service of Preparation",
+                    "Προσκομιδή — Ἀκολουθία τῆς Προθέσεως"
+            ));
+            appendNativePrayerService(continuous, "proskomide", language);
+
+            appendSundayCycleGospel(continuous, liturgy, language);
+
+            continuous.put(followAlongSection(
+                    "بداية القداس الإلهي",
+                    "The Divine Liturgy",
+                    "Ἡ Θεία Λειτουργία"
+            ));
             appendSegments(continuous, core);
 
-            // R56: the Liturgy reader is intentionally strict. Matins, the Hours,
-            // Proskomide, personal pre-Communion prayers and thanksgiving are
-            // separate offices. They must never be merged into the appointed
-            // Divine Liturgy and then presented as though they belonged to its
-            // fixed order.
+            JSONObject thanksgiving = findServiceInArray(
+                    library().optJSONArray("services"),
+                    "thanksgiving_after_communion"
+            );
+            JSONArray thanksgivingSegments = thanksgivingSegmentsForLiturgy(
+                    thanksgiving,
+                    language,
+                    liturgy.optString("extends_service_id", liturgy.optString("id", "divine_liturgy"))
+            );
+            if (thanksgivingSegments.length() > 0) {
+                continuous.put(followAlongSection(
+                        "بعد انتهاء القداس — صلوات الشكر بعد المناولة",
+                        "After the Liturgy — Thanksgiving after Holy Communion",
+                        "Μετὰ τὴ Θεία Λειτουργία — Εὐχαριστήριες εὐχὲς μετὰ τὴ Θεία Μετάληψη"
+                ));
+                appendSegments(continuous, thanksgivingSegments);
+            }
+
             result.put("segments", continuous);
             result.put("follow_along_composed", true);
-            result.put("follow_along_mode", "STRICT_APPOINTED_LITURGY_CORE_ONLY");
-            result.put("full_service_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
-            result.put("full_service_phase_count", 1);
+            result.put("follow_along_mode", "CONTINUOUS_WORSHIP_PATH_SEPARATE_PHASES");
+            result.put("liturgy_core_scope", "APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL");
+            result.put("full_service_scope", "PRE_LITURGY_PREPARATION_THROUGH_POST_COMMUNION_THANKSGIVING");
+            result.put("full_service_phase_count", thanksgivingSegments.length() > 0 ? 5 : 4);
             result.put("adjacent_offices_separate", true);
+            result.put("adjacent_offices_rendered_as_distinct_phases", true);
+            result.put("included_reader_phases", new JSONArray()
+                    .put("pre_communion_prayers")
+                    .put("proskomide")
+                    .put("sunday_matins_gospel_when_appointed")
+                    .put("appointed_divine_liturgy_core")
+                    .put("thanksgiving_after_communion"));
+            // These remain excluded from the *Liturgy core* even though the reader
+            // presents selected adjacent offices before/after it as separate phases.
             result.put("excluded_from_liturgy_core", new JSONArray()
                     .put("orthros")
                     .put("hours")
@@ -1869,35 +1911,64 @@ public final class DataRepository {
                     .put("thanksgiving_after_communion"));
             result.put("silent_prayer_contract", silentPrayerContract(core));
             // Never upgrade a blocked/partial native edition merely because the
-            // reader successfully filtered its segments.
+            // reader successfully assembled surrounding native offices.
             result.put("full_service_complete", liturgy.optBoolean("full_service_complete", false));
             return result;
         } catch (Exception error) {
-            Log.w(TAG, "Could not compose strict appointed Liturgy", error);
+            Log.w(TAG, "Could not compose continuous Liturgy reader", error);
             return liturgy;
         }
     }
 
-    private static void appendLiturgyDayHeader(JSONArray target, JSONObject liturgy) throws Exception {
-        if (target == null || liturgy == null || liturgy.optString("dynamic_date", "").trim().isEmpty()) return;
+    private void appendSundayCycleGospel(JSONArray target, JSONObject liturgy, String language) throws Exception {
+        if (target == null || liturgy == null) return;
+        String dynamicDate = liturgy.optString("dynamic_date", "").trim();
+        if (dynamicDate.isEmpty()) return;
+        LocalDate date;
+        try { date = LocalDate.parse(dynamicDate); }
+        catch (Exception ignored) { return; }
+        if (date.getDayOfWeek() != java.time.DayOfWeek.SUNDAY) return;
+
+        JSONObject plan = liturgy.optJSONObject("liturgy_day_plan");
+        JSONObject orthros = plan == null ? null : plan.optJSONObject("orthros_separate");
+        if (orthros == null) return;
+        String canonical = orthros.optString("matins_gospel_canonical", "").trim();
+        if (canonical.isEmpty()) return;
+        BibleCorpusRepository.ResolvedPassage passage;
+        try { passage = bibleCorpusRepository.resolve(language, canonical); }
+        catch (Exception error) {
+            Log.w(TAG, "Could not resolve Sunday Matins Gospel " + canonical, error);
+            return;
+        }
+        if (passage == null || passage.text == null || passage.text.trim().isEmpty()) return;
+
+        JSONObject reference = orthros.optJSONObject("matins_gospel_reference");
+        String localizedReference = reference == null ? "" : reference.optString(language, "").trim();
+        if (localizedReference.isEmpty()) localizedReference = canonical;
+        String heading;
+        String speaker;
+        if ("ar".equals(language)) {
+            heading = "إنجيل الدورة (إنجيل السَحَر) — " + localizedReference;
+            speaker = "القارئ";
+        } else if ("el".equals(language)) {
+            heading = "Ἑωθινὸν Εὐαγγέλιον — " + localizedReference;
+            speaker = "Ἀναγνώστης";
+        } else {
+            heading = "Sunday Matins Gospel (Eothinon) — " + localizedReference;
+            speaker = "Reader";
+        }
         target.put(new JSONObject()
                 .put("type", "section")
-                .put("editorial_metadata_only", true)
-                .put("title", new JSONObject()
-                        .put("ar", "قداس اليوم الكامل")
-                        .put("en", "Today’s complete Divine Liturgy")
-                        .put("el", "Ἡ πλήρης σημερινὴ Θεία Λειτουργία")));
-        JSONObject summary = liturgy.optJSONObject("summary");
-        if (summary != null) {
-            target.put(new JSONObject()
-                    .put("type", "text")
-                    .put("editorial_metadata_only", true)
-                    .put("speaker", new JSONObject()
-                            .put("ar", "تذكار اليوم والصيام")
-                            .put("en", "Today’s commemoration and fasting")
-                            .put("el", "Μνήμη καὶ νηστεία τῆς ἡμέρας"))
-                    .put("text", deepCopyJson(summary)));
-        }
+                .put("follow_along_phase", true)
+                .put("adjacent_office", "orthros")
+                .put("title", localizedOnly(language, heading)));
+        target.put(new JSONObject()
+                .put("type", "text")
+                .put("follow_along_phase", true)
+                .put("adjacent_office", "orthros")
+                .put("speaker", localizedOnly(language, speaker))
+                .put("text", localizedOnly(language, passage.text.trim()))
+                .put("canonical_reference", canonical));
     }
 
     private static JSONObject silentPrayerContract(JSONArray segments) throws Exception {

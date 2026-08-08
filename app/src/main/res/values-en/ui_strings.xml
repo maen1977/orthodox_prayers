@@ -78,7 +78,6 @@
     <string name="ui_feasts_and_commemorations_bea321c8" formatted="false">Feasts and commemorations</string>
     <string name="ui_font_f5e02ef6" formatted="false">Font: </string>
     <string name="ui_forbidden_8f73bf02" formatted="false">forbidden</string>
-    <string name="ui_full_liturgy_today_preparation_to_dismissal_08927fc7" formatted="false">Full Liturgy Today — preparation to dismissal</string>
     <string name="ui_gospel_68845cc5" formatted="false">Gospel: </string>
     <string name="ui_gospel_b7b033e7" formatted="false">Gospel</string>
     <string name="ui_great_entrance_663a8293" formatted="false">Great Entrance</string>
@@ -344,7 +343,6 @@ Phone: 00962788272988</string>
     <string name="ui_nine_day_service_ready" formatted="false">The nine-day service window starts today and is complete</string>
     <string name="ui_content_ready_through_format">Prayers and readings are complete through %1$s</string>
     <string name="ui_prayer_of_the_day" formatted="false">Prayer of the day</string>
-    <string name="ui_continue_reading" formatted="false">Continue reading</string>
 
     <string name="ui_shortcut_daily_readings_r43" formatted="false">Daily readings</string>
     <string name="ui_shortcut_divine_liturgy_r43" formatted="false">Divine Liturgy</string>
@@ -377,4 +375,21 @@ Phone: 00962788272988</string>
     <string name="ui_bible_cannot_open_text">Could not open the bundled text.</string>
     <string name="ui_church_service_section">Church Service</string>
     <string name="ui_church_service_hint">Fixed Orthodox church services with their Scripture readings.</string>
+
+    <!-- R57: date-aware fasting notice and old-calendar date on Home. -->
+    <string name="ui_old_church_calendar_home_format">Old church calendar: %1$s</string>
+    <string name="ui_fast_family_dormition">Dormition Fast</string>
+    <string name="ui_fast_family_nativity">Nativity Fast</string>
+    <string name="ui_fast_family_great_lent">Great Lent</string>
+    <string name="ui_fast_family_apostles">Apostles’ Fast</string>
+    <string name="ui_fast_notice_starts_in_days_format">%1$d days until %2$s</string>
+    <string name="ui_fast_notice_starts_tomorrow_format">%1$s begins tomorrow</string>
+    <string name="ui_fast_notice_current_format">Day %1$d of %2$s — %3$d days remaining</string>
+    <string name="ui_fast_notice_last_day_format">Last day of %1$s</string>
+    <string name="ui_fast_notice_tomorrow_weekly_format">Tomorrow, %1$s — %2$s</string>
+    <string name="ui_fast_notice_next_weekly_format">Next %1$s — %2$s</string>
+    <string name="ui_fast_notice_none">No fast is near in this period</string>
+    <string name="ui_fast_notice_details_hint">Tap for fasting and calendar details</string>
+    <string name="ui_weekday_wednesday">Wednesday</string>
+    <string name="ui_weekday_friday">Friday</string>
 </resources>

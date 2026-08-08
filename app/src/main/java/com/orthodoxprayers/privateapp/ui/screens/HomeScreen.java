@@ -5,12 +5,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.orthodoxprayers.privateapp.ui.ReadingProgressPolicy;
+import com.orthodoxprayers.privateapp.data.FastingNoticeEngine;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
 import org.json.JSONObject;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -41,9 +43,8 @@ public final class HomeScreen extends BaseScreen {
             return page.scroll;
         }
         addDateCard(page.root);
-        addContinueReading(page.root);
         addQuickAccess(page.root);
-        addSmartRecommendation(page.root);
+        addSmartFastingNotice(page.root);
         return page.scroll;
     }
 
@@ -78,14 +79,18 @@ public final class HomeScreen extends BaseScreen {
     private void addDateCard(LinearLayout root) {
         JSONObject today = data.today();
         LinearLayout card = ui.card();
-        String dateValue = localized(today.optJSONObject("date_label"), data.dataDate());
+        String dateValue = civilDateLabel(today);
         TextView date = centered(dateValue, 22, ui.colors().primaryText(), true);
         card.addView(date);
 
-        String calendarValue = localized(today.optJSONObject("calendar_label"), "");
-        if (!calendarValue.isEmpty()) {
-            TextView calendar = centered(calendarValue, 14, ui.colors().secondaryText(), false);
-            card.addView(calendar, ui.margins(-1, -2, 0, 4, 0, 0));
+        String oldCalendarDate = oldCalendarDateLabel(today);
+        if (!oldCalendarDate.isEmpty()) {
+            String calendarValue = localFormat(
+                    com.orthodoxprayers.privateapp.R.string.ui_old_church_calendar_home_format,
+                    oldCalendarDate
+            );
+            TextView calendar = centered(calendarValue, 15, ui.colors().secondaryText(), true);
+            card.addView(calendar, ui.margins(-1, -2, 0, 5, 0, 0));
         }
 
         String fastingValue = fastingDisplayTitle(today, data.dataDate());
@@ -121,30 +126,6 @@ public final class HomeScreen extends BaseScreen {
         card.setFocusable(true);
         card.setOnClickListener(v -> host.navigate("upcoming", null));
         add(root, card, 0, 10);
-    }
-
-    private void addContinueReading(LinearLayout root) {
-        for (String serviceId : preferences.recentServices()) {
-            int progress = preferences.readerProgressPercent(serviceId);
-            if (!ReadingProgressPolicy.isResumable(progress)) continue;
-            JSONObject service = data.findService(serviceId);
-            if (service == null) continue;
-            String serviceTitle = localized(
-                    service.optJSONObject("title"),
-                    local(com.orthodoxprayers.privateapp.R.string.ui_prayer_48a8929a)
-            );
-            String subtitle = serviceTitle + " · "
-                    + local(com.orthodoxprayers.privateapp.R.string.ui_reading_progress_b21e6b19)
-                    + progress + "%";
-            LinearLayout card = ui.actionCard(
-                    com.orthodoxprayers.privateapp.R.drawable.ic_action_history,
-                    local(com.orthodoxprayers.privateapp.R.string.ui_continue_reading),
-                    subtitle
-            );
-            card.setOnClickListener(v -> host.navigate("reader", serviceId));
-            add(root, card, 2, 10);
-            return;
-        }
     }
 
     private void addQuickAccess(LinearLayout root) {
@@ -197,39 +178,133 @@ public final class HomeScreen extends BaseScreen {
         return "Search";
     }
 
-    private void addSmartRecommendation(LinearLayout root) {
-        SmartShortcut recommendation = smartRecommendation();
-        LinearLayout card = ui.actionCard(recommendation.iconResource, recommendation.title, recommendation.subtitle);
-        if ("reader".equals(recommendation.screen) && "divine_liturgy".equals(recommendation.argument)) {
-            // R56.1: the Liturgy tab must always remain visible. Route through the
-            // day-aware hub so blocked/non-Eucharistic days show their status
-            // instead of making the Liturgy appear to disappear.
-            card.setOnClickListener(v -> host.navigate("liturgy", null));
-        } else {
-            card.setOnClickListener(v -> host.navigate(recommendation.screen, recommendation.argument));
-        }
-        add(root, card, 2, 10);
+    private void addSmartFastingNotice(LinearLayout root) {
+        LocalDate baseDate = currentDataDate();
+        FastingNoticeEngine.Notice notice = FastingNoticeEngine.evaluate(
+                baseDate,
+                isoDate -> data.calendarDay(isoDate)
+        );
+        String title = fastingNoticeTitle(notice);
+        LinearLayout card = ui.actionCard(
+                com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar,
+                title,
+                local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_details_hint)
+        );
+        card.setElevation(ui.dp(9));
+        card.setTranslationZ(ui.dp(2));
+        card.setOnClickListener(v -> {
+            if (notice.kind == FastingNoticeEngine.Kind.NONE || notice.targetDate == null) {
+                host.navigate("upcoming", null);
+            } else {
+                host.navigate("calendar_day", notice.targetDate.toString());
+            }
+        });
+        add(root, card, 4, 12);
     }
 
-    private SmartShortcut smartRecommendation() {
-        JSONObject service = data.findService("divine_liturgy");
-        String title = service == null
-                ? local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7)
-                : localized(
-                        service.optJSONObject("title"),
-                        local(com.orthodoxprayers.privateapp.R.string.ui_full_liturgy_today_preparation_to_dismissal_08927fc7)
+    private String fastingNoticeTitle(FastingNoticeEngine.Notice notice) {
+        if (notice == null) return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);
+        if (notice.kind == FastingNoticeEngine.Kind.CURRENT_MAJOR_FAST) {
+            String family = fastFamilyTitle(notice.family);
+            if (notice.daysRemaining <= 0) {
+                return localFormat(
+                        com.orthodoxprayers.privateapp.R.string.ui_fast_notice_last_day_format,
+                        family
                 );
-        String subtitle = localFormat(
-                com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format,
-                title
-        );
-        return new SmartShortcut(
-                com.orthodoxprayers.privateapp.R.drawable.ic_action_liturgy,
-                title,
-                subtitle,
-                "reader",
-                "divine_liturgy"
-        );
+            }
+            return localFormat(
+                    com.orthodoxprayers.privateapp.R.string.ui_fast_notice_current_format,
+                    notice.dayNumber,
+                    family,
+                    notice.daysRemaining
+            );
+        }
+        if (notice.kind == FastingNoticeEngine.Kind.UPCOMING_MAJOR_FAST) {
+            String family = fastFamilyTitle(notice.family);
+            if (notice.daysUntilStart == 1) {
+                return localFormat(
+                        com.orthodoxprayers.privateapp.R.string.ui_fast_notice_starts_tomorrow_format,
+                        family
+                );
+            }
+            return localFormat(
+                    com.orthodoxprayers.privateapp.R.string.ui_fast_notice_starts_in_days_format,
+                    notice.daysUntilStart,
+                    family
+            );
+        }
+        if (notice.kind == FastingNoticeEngine.Kind.UPCOMING_WEEKLY_FAST) {
+            String weekday = weekdayTitle(notice.weekday);
+            String fastTitle = notice.weekday == DayOfWeek.WEDNESDAY
+                    ? local(com.orthodoxprayers.privateapp.R.string.ui_wednesday_fast)
+                    : local(com.orthodoxprayers.privateapp.R.string.ui_friday_fast);
+            if (notice.daysUntilStart == 1) {
+                return localFormat(
+                        com.orthodoxprayers.privateapp.R.string.ui_fast_notice_tomorrow_weekly_format,
+                        weekday,
+                        fastTitle
+                );
+            }
+            return localFormat(
+                    com.orthodoxprayers.privateapp.R.string.ui_fast_notice_next_weekly_format,
+                    weekday,
+                    fastTitle
+            );
+        }
+        return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);
+    }
+
+    private String fastFamilyTitle(FastingNoticeEngine.Family family) {
+        if (family == FastingNoticeEngine.Family.DORMITION) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_fast_family_dormition);
+        }
+        if (family == FastingNoticeEngine.Family.NATIVITY) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_fast_family_nativity);
+        }
+        if (family == FastingNoticeEngine.Family.GREAT_LENT) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_fast_family_great_lent);
+        }
+        if (family == FastingNoticeEngine.Family.APOSTLES) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_fast_family_apostles);
+        }
+        return local(com.orthodoxprayers.privateapp.R.string.ui_no_fast_plain);
+    }
+
+    private String weekdayTitle(DayOfWeek weekday) {
+        if (weekday == DayOfWeek.WEDNESDAY) {
+            return local(com.orthodoxprayers.privateapp.R.string.ui_weekday_wednesday);
+        }
+        return local(com.orthodoxprayers.privateapp.R.string.ui_weekday_friday);
+    }
+
+    private LocalDate currentDataDate() {
+        String value = data.today().optString("date_iso", data.dataDate()).trim();
+        try { return LocalDate.parse(value); }
+        catch (Exception ignored) { return ZonedDateTime.now(AMMAN_ZONE).toLocalDate(); }
+    }
+
+    private String civilDateLabel(JSONObject today) {
+        String value = localized(today.optJSONObject("date_label"), data.dataDate()).trim();
+        int legacySeparator = value.indexOf(" / ");
+        if (legacySeparator > 0) value = value.substring(0, legacySeparator).trim();
+        return value.isEmpty() ? data.dataDate() : value;
+    }
+
+    private String oldCalendarDateLabel(JSONObject today) {
+        String localizedLabel = localized(today.optJSONObject("julian_label"), "").trim();
+        if (!localizedLabel.isEmpty()) return localizedLabel;
+        Object raw = today.opt("julian_date");
+        if (raw instanceof JSONObject) {
+            JSONObject object = (JSONObject) raw;
+            String objectLabel = localized(object, "").trim();
+            if (!objectLabel.isEmpty()) return objectLabel;
+            String legacyArabicLabel = object.optString("label_ar", "").trim();
+            if (!legacyArabicLabel.isEmpty() && "ar".equals(preferences.effectiveLanguage())) {
+                return legacyArabicLabel;
+            }
+        }
+        String iso = raw == null ? "" : String.valueOf(raw).trim();
+        return iso;
     }
 
     private String currentPrayerServiceId() {
@@ -239,21 +314,6 @@ public final class HomeScreen extends BaseScreen {
         return DAILY_PRAYER_ROTATION[Math.floorMod(day, DAILY_PRAYER_ROTATION.length)];
     }
 
-    private static final class SmartShortcut {
-        final int iconResource;
-        final String title;
-        final String subtitle;
-        final String screen;
-        final String argument;
-
-        SmartShortcut(int iconResource, String title, String subtitle, String screen, String argument) {
-            this.iconResource = iconResource;
-            this.title = title;
-            this.subtitle = subtitle;
-            this.screen = screen;
-            this.argument = argument;
-        }
-    }
 
 
 

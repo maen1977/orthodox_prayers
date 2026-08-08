@@ -31,6 +31,7 @@ COMMANDS = [
         "tests/test_prepare_church_service_corpus.py",
         "tests/test_v560_smart_liturgy.py",
         "tests/test_r24_nine_day_liturgy_engine.py",
+        "tests/test_r57_home_fasting_and_liturgy_flow.py",
     ],
 ]
 

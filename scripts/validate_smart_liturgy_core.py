@@ -141,14 +141,17 @@ def audit_source_contract(errors: list[str]) -> None:
         require(token in excluded, f"full contract missing exclusion: {token}", errors)
 
     data_repo = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-    require('"STRICT_APPOINTED_LITURGY_CORE_ONLY"' in data_repo, "Android strict-core reader mode missing", errors)
+    require('"CONTINUOUS_WORSHIP_PATH_SEPARATE_PHASES"' in data_repo, "Android continuous reader mode missing", errors)
     require('"APPOINTED_LITURGY_FROM_OPENING_BLESSING_TO_DISMISSAL"' in data_repo, "Android strict scope missing", errors)
     require('strictAppointedLiturgyCore' in data_repo, "Android strict-core filter missing", errors)
     require('"matins_gospel".equals(copy.optString("dynamic_slot", ""))' in data_repo, "Matins Gospel filter missing", errors)
     composer = data_repo.split("private JSONObject composeFollowAlongLiturgy", 1)[1].split("private static JSONArray strictAppointedLiturgyCore", 1)[0]
-    require('findServiceInArray(library().optJSONArray("services"), "pre_communion_prayers")' not in composer, "pre-Communion prayers are still merged into Liturgy", errors)
-    require("thanksgivingSegmentsForLiturgy" not in composer, "thanksgiving is still merged into Liturgy", errors)
-    require("proskomide" not in composer.split("excluded_from_liturgy_core",1)[0], "Proskomide is still merged before strict exclusion metadata", errors)
+    require('appendNativePrayerService(continuous, "pre_communion_prayers", language)' in composer, "pre-Communion preparation phase missing", errors)
+    require('appendNativePrayerService(continuous, "proskomide", language)' in composer, "Proskomide phase missing", errors)
+    require("thanksgivingSegmentsForLiturgy" in composer, "post-Communion thanksgiving phase missing", errors)
+    require("appendSundayCycleGospel" in composer, "Sunday Matins Gospel phase missing", errors)
+    require("adjacent_offices_rendered_as_distinct_phases" in composer, "adjacent-office separation marker missing", errors)
+    require("excluded_from_liturgy_core" in composer, "strict Liturgy core exclusion metadata missing", errors)
 
     engine = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java").read_text(encoding="utf-8")
     require('"lenten_vespers_with_presanctified".equals(form)' in engine, "Presanctified service-form mapping missing", errors)

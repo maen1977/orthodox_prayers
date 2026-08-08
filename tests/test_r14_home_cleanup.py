@@ -35,16 +35,20 @@ class R14HomeCleanupTests(unittest.TestCase):
         main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
         for route in ('case "search"', 'case "favorites"', 'case "calendar"', 'case "language_packs"'):
             self.assertIn(route, main)
+        # R57: the owner explicitly chose six visible quick-access actions and
+        # replaced the old fixed Liturgy recommendation with a fasting notice.
         for retained in (
-            "قداس اليوم الكامل",
+            "صلاة اليوم",
             "القراءات اليومية",
-            "الصلوات اليومية",
             "التقويم والصيام",
-            "خدمة الأيام التسعة تبدأ من اليوم ومكتملة",
             "الكنائس والبث المباشر",
         ):
             self.assertTrue(source_references_text(home, retained, "ar"), retained)
-        for hidden in ("البحث", "المفضلة", "آخر قراءة", "اللغات", "الإعدادات"):
+        self.assertIn('return "الكتاب المقدس";', home)
+        self.assertIn('return "البحث";', home)
+        self.assertIn("FastingNoticeEngine.evaluate", home)
+        self.assertNotIn("addContinueReading", home)
+        for hidden in ("المفضلة", "آخر قراءة", "اللغات", "الإعدادات"):
             self.assertTrue(source_omits_text(home, hidden, "ar"), hidden)
 
     def test_home_uses_a_compact_calendar_icon_for_the_nine_day_fasting_view(self):

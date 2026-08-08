@@ -125,6 +125,10 @@ def main() -> None:
         ROOT
         / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
     ).read_text(encoding="utf-8")
+    main_activity = (
+        ROOT
+        / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java"
+    ).read_text(encoding="utf-8")
     if "LOCAL_REFRESH_HOUR = 0" not in coordinator or "LOCAL_REFRESH_MINUTE = 3" not in coordinator:
         errors.append("Android local 00:03 Asia/Amman scheduling is not wired")
     if "NetworkType" in coordinator or "CONNECTED" in coordinator:
@@ -134,12 +138,18 @@ def main() -> None:
         errors.append("the bundled local daily engine is not wired")
     if "DailySnapshotRegressionGuard.firstRegression" not in repository:
         errors.append("same-day non-regression protection is not wired")
-    if not source_references_text(home, "قداس اليوم الكامل", "ar") or '"divine_liturgy"' not in home:
-        errors.append("the Home screen does not open the full Liturgy directly")
-    if "specificCommemoration(today)" in home or "DayOfWeek.SUNDAY" in home:
-        errors.append("the bottom Home card must remain a fixed complete St John Liturgy shortcut")
+    if "FastingNoticeEngine.evaluate" not in home or "addContinueReading" in home:
+        errors.append("Home must show the calendar-driven fasting notice without Continue reading")
+    if 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main_activity or 'new ReaderScreen(this, "divine_liturgy")' not in main_activity:
+        errors.append("the Liturgy tab does not open the appointed reader directly when available")
+    if "CONTINUOUS_WORSHIP_PATH_SEPARATE_PHASES" not in repository:
+        errors.append("the believer-facing continuous Liturgy path is not wired")
+    if 'appendNativePrayerService(continuous, "pre_communion_prayers", language)' not in repository or 'appendNativePrayerService(continuous, "proskomide", language)' not in repository:
+        errors.append("pre-Liturgy preparation phases are not wired")
+    if "appendSundayCycleGospel" not in repository:
+        errors.append("Sunday cycle/Matins Gospel is not wired as a separate pre-Liturgy phase")
     if "thanksgivingSegmentsForLiturgy" not in repository or "arabicThanksgivingVariant" not in repository:
-        errors.append("service-specific thanksgiving filtering is not wired")
+        errors.append("service-specific post-Liturgy thanksgiving filtering is not wired")
 
     if errors:
         raise SystemExit("Follow-along Liturgy validation failed:\n- " + "\n- ".join(errors))

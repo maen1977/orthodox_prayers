@@ -61,14 +61,14 @@ def test_thanksgiving_is_filtered_for_the_selected_liturgy() -> None:
     assert "activeArabicVariant.equals(selected)" in source
 
 
-def test_home_liturgy_card_routes_through_the_day_aware_liturgy_hub() -> None:
+def test_home_uses_calendar_driven_fasting_notice_instead_of_continue_reading() -> None:
     source = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java")
-    assert 'data.findService("divine_liturgy")' in source
-    assert '"divine_liturgy"' in source
-    assert 'host.navigate("liturgy", null)' in source
-    assert 'host.navigate("reader", "divine_liturgy")' not in source
+    assert "FastingNoticeEngine.evaluate" in source
+    assert "addSmartFastingNotice" in source
+    assert "addContinueReading" not in source
+    assert "ui_old_church_calendar_home_format" in source
+    assert 'host.navigate("calendar_day", notice.targetDate.toString())' in source
     assert "specificCommemoration(today)" not in source
-    assert "DayOfWeek.SUNDAY" not in source
 
 
 def test_unavailable_commemoration_wording_is_never_displayed() -> None:
