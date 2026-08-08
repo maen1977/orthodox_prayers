@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_KEY = ROOT / "canonical/signing/data_signing_public_key.pub"
 PRIMARY_ROOT = "https://raw.githubusercontent.com/maen1977/orthodox_prayers/verified-data"
 MIRROR_ROOT = "https://cdn.jsdelivr.net/gh/maen1977/orthodox_prayers@verified-data"
-USER_AGENT = "OrthodoxPrayers-PublicationVerifier/5.6.1"
+USER_AGENT = "OrthodoxPrayers-PublicationVerifier/5.6.2"
 MAX_PUBLIC_PAYLOAD_BYTES = 12_000_000
 SAFE_PUBLIC_PATH = re.compile(r"^data/[A-Za-z0-9._/-]+$")
 

@@ -22,11 +22,12 @@ import urllib.parse
 import urllib.request
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
-BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.6.1"
+BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.6.2"
 MAX_BYTES = 6_000_000
 MAX_OPEN_SOURCE_BYTES = 80_000_000
 MIN_CHARS_REQUIRED = 1200
 MIN_CHARS_OPTIONAL = 500
+MAX_SERVICE_CHARS = 80_000
 
 
 class ParagraphParser(HTMLParser):
@@ -439,8 +440,11 @@ def build_service(spec: dict, lang: str, source_id: str, source_name: str, raw: 
     blocks = normalize_blocks(raw, lang, spec)
     chars = sum(len(b) for b in blocks)
     minimum = int(spec.get("min_chars", MIN_CHARS_REQUIRED if spec.get("required") else MIN_CHARS_OPTIONAL))
+    maximum = int(spec.get("max_chars", MAX_SERVICE_CHARS))
     if chars < minimum:
         raise RuntimeError(f"service_too_short:{lang}:{spec['id']}:{chars}<{minimum}")
+    if chars > maximum:
+        raise RuntimeError(f"service_too_large:{lang}:{spec['id']}:{chars}>{maximum}")
     segments = [block_to_segment(b, lang) for b in blocks]
     if not segments:
         raise RuntimeError(f"service_empty:{lang}:{spec['id']}")
@@ -496,6 +500,7 @@ def main() -> int:
             failures.append(f"unsupported_language:{lang}")
             continue
         services = []
+        fallbacks = []
         ids = set()
         for spec in lane.get("services", []):
             if spec["id"] in ids:
@@ -514,8 +519,20 @@ def main() -> int:
                 if spec.get("required") and not spec.get("allow_link_fallback", False):
                     failures.append(f"{lang}:{spec['id']}:{exc}")
                 else:
-                    label = "CHURCH_SERVICE_LINK_FALLBACK" if spec.get("allow_link_fallback", False) else "CHURCH_SERVICE_OPTIONAL_SKIP"
+                    is_link_fallback = bool(spec.get("allow_link_fallback", False))
+                    label = "CHURCH_SERVICE_LINK_FALLBACK" if is_link_fallback else "CHURCH_SERVICE_OPTIONAL_SKIP"
                     print(f"{label} {lang} {spec['id']} {exc}")
+                    if is_link_fallback:
+                        fallbacks.append({
+                            "id": spec["id"],
+                            "title": lane_object(lang, spec["title"]),
+                            "official_source_url": spec.get("url", ""),
+                            "publication_status": "OFFICIAL_SOURCE_LINK_ONLY_BUILD_FALLBACK",
+                            "full_service": False,
+                            "reason": str(exc),
+                            "machine_translation_used": False,
+                            "cross_language_fallback": False,
+                        })
         payload = {
             "schema_version": 2,
             "language": lang,
@@ -525,6 +542,7 @@ def main() -> int:
             "cross_language_fallback": False,
             "runtime_network_required": False,
             "services": services,
+            "fallbacks": fallbacks,
         }
         (out / f"full_services_{lang}.json").write_text(
             json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -534,7 +552,15 @@ def main() -> int:
         for failure in failures:
             print("CHURCH_SERVICE_REQUIRED_FAILURE", failure)
         return 2
-    print(f"CHURCH_SERVICE_CORPUS_OK failures={len(failures)}")
+    fallback_count = 0
+    for lang in manifest["languages"].keys():
+        path = out / f"full_services_{lang}.json"
+        if path.exists():
+            try:
+                fallback_count += len(json.loads(path.read_text(encoding="utf-8")).get("fallbacks", []))
+            except Exception:
+                pass
+    print(f"CHURCH_SERVICE_CORPUS_OK failures={len(failures)} fallbacks={fallback_count}")
     return 0
 
 

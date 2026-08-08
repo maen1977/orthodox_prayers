@@ -208,7 +208,7 @@ def main() -> None:
         for error in errors:
             print("SMART_LITURGY_ERROR", error)
         raise SystemExit(f"SMART_LITURGY_INVALID errors={len(errors)}")
-    print("SMART_LITURGY_OK version=5.6.1 strict_core=true chrysostom=ar,en,el basil=blocked presanctified=blocked wrong_rite_fallback=false machine_translation=false")
+    print("SMART_LITURGY_OK version=5.6.2 strict_core=true chrysostom=ar,en,el basil=blocked presanctified=blocked wrong_rite_fallback=false machine_translation=false")
 
 
 if __name__ == "__main__":
