@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "language": "ar",
+  "policy": "READER_ONLY_OPTIONAL_PRIVATE_DEVOTIONS_NOT_LITURGICAL_RESPONSES",
+  "collective_response_claimed": false,
+  "placements": [
+    {
+      "event": "before_epistle",
+      "placement": "before_section",
+      "anchor": "القراءات: الرسالة",
+      "section_title": "صلاة شخصية للمؤمن قبل الرسالة — اختيارية",
+      "prayers": [
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه — صلاة شخصية اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، افتح أذنيّ لأسمع تعليم رسلك القديسين. لا تجعل القراءة تمرّ عليّ ككلام بعيد، بل اجعلها نوراً لطريقي وتوبة لحياتي وثباتاً في الإيمان.",
+            "en": "",
+            "el": ""
+          },
+          "delivery": "silent",
+          "delivery_actor": "faithful",
+          "not_collective_response": true,
+          "devotional_status": "OPTIONAL_PRIVATE_DEVOTION_FROM_PROJECT_HISTORY",
+          "devotional_event": "before_epistle",
+          "event_context": {
+            "editorial_metadata_only": true,
+            "ar": "قبل الرسالة — صلاة شخصية اختيارية للمؤمن بهدوء",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "event": "great_entrance",
+      "placement": "after_text_prefix",
+      "anchor": "لنطرح الآن كل اهتمام دنيوي",
+      "section_title": "صلوات شخصية أثناء الدورة الكبرى — اختيارية",
+      "prayers": [
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه — صلاة شخصية اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أطرح عني الآن كل اهتمام دنيوي، وأسلم لك يا رب همومي وخطاياي وبيتي وأحبائي وكل الذين أوصوني أن أذكرهم. اذكرهم يا رب في ملكوتك.",
+            "en": "",
+            "el": ""
+          },
+          "delivery": "silent",
+          "delivery_actor": "faithful",
+          "not_collective_response": true,
+          "devotional_status": "OPTIONAL_PRIVATE_DEVOTION_FROM_PROJECT_HISTORY",
+          "devotional_event": "great_entrance",
+          "event_context": {
+            "editorial_metadata_only": true,
+            "ar": "أثناء الدورة الكبرى — صلاة شخصية اختيارية للمؤمن بهدوء",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه — صلاة شخصية اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب، كما تُنقل القرابين إلى مذبحك، اقبل حياتي كلها قرباناً لك: ضعفي وتوبتي ودموعي ورجائي. نقّني واجعلني لك، ولا تدع شيئاً يفصلني عن محبتك.",
+            "en": "",
+            "el": ""
+          },
+          "delivery": "silent",
+          "delivery_actor": "faithful",
+          "not_collective_response": true,
+          "devotional_status": "OPTIONAL_PRIVATE_DEVOTION_FROM_PROJECT_HISTORY",
+          "devotional_event": "great_entrance",
+          "event_context": {
+            "editorial_metadata_only": true,
+            "ar": "أثناء الدورة الكبرى وحمل القرابين — صلاة شخصية اختيارية للمؤمن بهدوء",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    },
+    {
+      "event": "before_creed",
+      "placement": "before_section",
+      "anchor": "السلام وقانون الإيمان",
+      "section_title": "صلاة شخصية للمؤمن قبل قانون الإيمان — اختيارية",
+      "prayers": [
+        {
+          "type": "quiet_prayer",
+          "speaker": {
+            "ar": "المؤمن في قلبه — صلاة شخصية اختيارية",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ثبّتني يا رب في الإيمان الأرثوذكسي المستقيم. اغفر لي كل شك وفتور وغفلة، واجعلني أعترف بالإيمان لا بفمي فقط، بل بحياتي كلها وبمحبة صادقة لإخوتي.",
+            "en": "",
+            "el": ""
+          },
+          "delivery": "silent",
+          "delivery_actor": "faithful",
+          "not_collective_response": true,
+          "devotional_status": "OPTIONAL_PRIVATE_DEVOTION_FROM_PROJECT_HISTORY",
+          "devotional_event": "before_creed",
+          "event_context": {
+            "editorial_metadata_only": true,
+            "ar": "قبل قانون الإيمان — صلاة شخصية اختيارية للمؤمن بهدوء",
+            "en": "",
+            "el": ""
+          }
+        }
+      ]
+    }
+  ]
+}

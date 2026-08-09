@@ -35,6 +35,7 @@ COMMANDS = [
         "tests/test_r58_final_commemoration_and_settings_cleanup.py",
         "tests/test_v540_church_service_section.py",
         "tests/test_r60_final_service_reader_polish.py",
+        "tests/test_r61_arabic_liturgical_reader_completion.py",
         "tests/test_android_resources.py",
     ],
 ]

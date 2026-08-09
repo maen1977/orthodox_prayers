@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "language": "ar",
+  "policy": "READER_SAFE_CORE_FAIL_CLOSED",
+  "services": [
+    {
+      "id": "orthros",
+      "category": "liturgy",
+      "icon": "🌄",
+      "title": {
+        "ar": "صلاة السَحَر",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "هيكل صلاة السَحَر مع المزامير والإنجيل والطلبات.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "تنبيه النص",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القارئ النص العربي المقروء المثبت داخل المشروع فقط، ويخفي نسخة المسح القديمة المشوّهة. القطع غير المتوفرة بنص عربي أصلي متحقق لا تُستكمل بالتخمين أو الترجمة الآلية.",
+            "en": "",
+            "el": ""
+          },
+          "editorial_metadata_only": true,
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد للثالوث القدوس، الإله الواحد، الذي ينهضنا من الليل لنسبحه.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "المجد لك يا مظهر النور. المجد لله في العلى وعلى الأرض السلام وفي الناس المسرة.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أيضاً وأيضاً بسلام إلى الرب نطلب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لأنك أنت إلهنا وإليك نرفع المجد، أيها الآب والابن والروح القدس.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "reader_scope": "READABLE_FIXED_CORE_ONLY_NOT_COMPLETE_OFFICE",
+      "raw_ocr_hidden_from_reader": true,
+      "machine_translation_added_in_r61": false,
+      "source_reference": {
+        "official_catalog": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "historical_native_source": "كتاب السواعي الكبير، أورشليم 1870",
+        "policy": "NO_OCR_REWRITING_NO_CROSS_LANGUAGE_FALLBACK"
+      }
+    },
+    {
+      "id": "vespers",
+      "category": "liturgy",
+      "icon": "🌆",
+      "title": {
+        "ar": "صلاة الغروب",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "هيكل صلاة الغروب مع مزمور وطلبات وصلوات.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "تنبيه النص",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القارئ النص العربي المقروء المثبت داخل المشروع فقط، ويخفي نسخة المسح القديمة المشوّهة. القطع غير المتوفرة بنص عربي أصلي متحقق لا تُستكمل بالتخمين أو الترجمة الآلية.",
+            "en": "",
+            "el": ""
+          },
+          "editorial_metadata_only": true,
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "مبارك إلهنا كل حين، الآن وكل أوان وإلى دهر الداهرين.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "آمين. هلمّوا لنسجد ونركع للمسيح ملكنا وإلهنا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب إليك صرخت فاستجب لي. استجب لي يا رب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشماس",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "لنتمم طلبتنا المسائية إلى الرب.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الشعب",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا رب ارحم.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "السلام للجميع.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ولروحك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "الآن تطلق عبدك يا سيد حسب قولك بسلام، لأن عينيّ قد أبصرتا خلاصك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الكاهن",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بركة الرب ورحمته فلتأتيا عليكم بنعمته ومحبته للبشر كل حين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "reader_scope": "READABLE_FIXED_CORE_ONLY_NOT_COMPLETE_OFFICE",
+      "raw_ocr_hidden_from_reader": true,
+      "machine_translation_added_in_r61": false,
+      "source_reference": {
+        "official_catalog": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "historical_native_source": "كتاب السواعي الكبير، أورشليم 1870",
+        "policy": "NO_OCR_REWRITING_NO_CROSS_LANGUAGE_FALLBACK"
+      }
+    },
+    {
+      "id": "small_compline",
+      "category": "daily",
+      "icon": "🌙",
+      "title": {
+        "ar": "صلاة النوم الصغرى",
+        "en": "",
+        "el": ""
+      },
+      "summary": {
+        "ar": "ترتيب مختصر للصلاة قبل النوم.",
+        "en": "",
+        "el": ""
+      },
+      "segments": [
+        {
+          "type": "note",
+          "speaker": {
+            "ar": "تنبيه النص",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يعرض هذا القارئ النص العربي المقروء المثبت داخل المشروع فقط، ويخفي نسخة المسح القديمة المشوّهة. القطع غير المتوفرة بنص عربي أصلي متحقق لا تُستكمل بالتخمين أو الترجمة الآلية.",
+            "en": "",
+            "el": ""
+          },
+          "editorial_metadata_only": true,
+          "collapsed_by_default": true
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ارحمني يا الله كعظيم رحمتك، وكمثل كثرة رأفتك امحُ مآثمي.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "أعترف لك يا رب بكل ضعف وخطيئة، وأطلب منك قلباً نقياً وروحاً مستقيماً.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "القارئ",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "يا والدة الإله، يا رجاء غير الخازين، كوني لي شفاعة ومعونة، واحفظيني تحت ستر ابنك.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "type": "text",
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "بين يديك يا رب أستودع روحي وجسدي، فباركني وارحمني. آمين.",
+            "en": "",
+            "el": ""
+          }
+        }
+      ],
+      "reader_scope": "READABLE_FIXED_CORE_ONLY_NOT_COMPLETE_OFFICE",
+      "raw_ocr_hidden_from_reader": true,
+      "machine_translation_added_in_r61": false,
+      "source_reference": {
+        "official_catalog": "https://orthodoxjordan.org/تحميل-الصلوات/",
+        "historical_native_source": "كتاب السواعي الكبير، أورشليم 1870",
+        "policy": "NO_OCR_REWRITING_NO_CROSS_LANGUAGE_FALLBACK"
+      }
+    }
+  ]
+}

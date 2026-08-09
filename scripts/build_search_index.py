@@ -38,7 +38,16 @@ def service_documents(lang: str, synonyms: dict[str, list[str]]) -> list[dict[st
     path = ROOT / "app" / "src" / "main" / "assets" / "data" / "native" / f"library_{lang}.json"
     data = json.loads(path.read_text(encoding="utf-8"))
     documents: list[dict[str, Any]] = []
+    safe_arabic_offices = {}
+    if lang == "ar":
+        core_path = ROOT / "app" / "src" / "main" / "assets" / "data" / "native" / "arabic_office_reader_core.json"
+        if core_path.exists():
+            core = json.loads(core_path.read_text(encoding="utf-8"))
+            safe_arabic_offices = {str(item.get("id") or ""): item for item in core.get("services") or []}
     for service in data.get("services") or []:
+        service_id = str(service.get("id") or "")
+        if lang == "ar" and service_id in safe_arabic_offices:
+            service = safe_arabic_offices[service_id]
         # Fail closed: unreadable OCR and other explicitly blocked native
         # services must not leak into search results even if retained locally
         # as source/audit material for a controlled re-import.

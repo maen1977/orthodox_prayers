@@ -1695,102 +1695,119 @@ public final class DataRepository {
     }
 
     /**
-     * Reader-only cleanup for Arabic office texts whose historical scan contains
-     * adjacent services or printed running headers. This method never repairs,
-     * translates, or rewrites liturgical words. It only chooses the registered
-     * service boundary and removes obvious page headers from the reader view.
+     * Arabic reader safety layer for the three offices whose historical scan is
+     * incomplete or hard to read. The raw native source remains bundled for audit,
+     * but the user-facing reader uses only the separately reviewed readable core.
+     * No OCR word repair, AI rewriting, or cross-language fallback happens here.
      */
     private JSONObject prepareOfficeReaderView(JSONObject service) {
         if (service == null || !"ar".equals(preferences.effectiveLanguage())) return service;
         String id = service.optString("id", "");
-        if ("orthros".equals(id) && !isUserDisplayableService(service)) {
-            return arabicOfficeSourceQualityNotice(service);
-        }
-        if (!"vespers".equals(id) && !"small_compline".equals(id)) return service;
-
-        JSONArray sourceSegments = service.optJSONArray("segments");
-        if (sourceSegments == null || sourceSegments.length() == 0) return service;
-        int anchor = -1;
-        for (int i = 0; i < sourceSegments.length(); i++) {
-            JSONObject segment = sourceSegments.optJSONObject(i);
-            if (segment == null) continue;
-            String text = segment.optJSONObject("text") == null
-                    ? ""
-                    : segment.optJSONObject("text").optString("ar", "");
-            if ("vespers".equals(id) && text.contains("صلوة الغروب") && !isArabicOfficeRunningHeader(text)) {
-                anchor = i;
-                break;
-            }
-            if ("small_compline".equals(id) && text.contains("صلوة النور") && text.contains("الصغرى")) {
-                anchor = i;
-                break;
-            }
-        }
-        if (anchor < 0) return service;
-
+        if ("divine_liturgy".equals(id)) return prepareArabicLiturgyReaderDevotions(service);
+        if (!"orthros".equals(id) && !"vespers".equals(id) && !"small_compline".equals(id)) return service;
+        JSONObject core = arabicOfficeReadableCore(id);
+        if (core == null) return service;
         try {
-            JSONObject cleaned = new JSONObject(service.toString());
+            JSONObject safe = new JSONObject(core.toString());
+            // Preserve the current day's title/summary while keeping the readable fixed core.
+            if (service.optJSONObject("title") != null) safe.put("title", deepCopyJson(service.optJSONObject("title")));
+            if (service.optJSONObject("summary") != null) safe.put("summary", deepCopyJson(service.optJSONObject("summary")));
             JSONArray output = new JSONArray();
-            for (int i = anchor; i < sourceSegments.length(); i++) {
-                JSONObject segment = sourceSegments.optJSONObject(i);
-                if (segment == null) continue;
-                JSONObject textObject = segment.optJSONObject("text");
-                String text = textObject == null ? "" : textObject.optString("ar", "");
-                if (isArabicOfficeRunningHeader(text)) continue;
-                output.put(deepCopyJson(segment));
+            JSONArray incoming = service.optJSONArray("segments");
+            if (incoming != null && incoming.length() >= 2) {
+                JSONObject first = incoming.optJSONObject(0);
+                String firstTitle = first == null || first.optJSONObject("title") == null
+                        ? "" : first.optJSONObject("title").optString("ar", "");
+                if ("ملحق اليوم الكنسي".equals(firstTitle)) {
+                    output.put(deepCopyJson(incoming.optJSONObject(0)));
+                    output.put(deepCopyJson(incoming.optJSONObject(1)));
+                }
             }
-            if ("small_compline".equals(id)) {
-                JSONObject note = new JSONObject();
-                note.put("type", "note");
-                note.put("speaker", localizedOnly("ar", "تنبيه المصدر"));
-                note.put("text", localizedOnly("ar",
-                        "النص العربي الأصلي المضمّن لهذه الخدمة يتوقف هنا في المصدر الحالي. "
-                                + "لم يضف التطبيق بقية الصلاة بالتخمين أو الترجمة الآلية."));
-                note.put("collapsed_by_default", false);
-                note.put("editorial_metadata_only", true);
-                output.put(note);
-                cleaned.put("reader_source_partial", true);
-            }
-            cleaned.put("segments", output);
-            cleaned.put("reader_boundary_cleanup", true);
-            return cleaned;
-        } catch (Exception error) {
-            Log.w(TAG, "Could not prepare Arabic office reader view for " + id, error);
-            return service;
-        }
-    }
-
-    private static boolean isArabicOfficeRunningHeader(String raw) {
-        String text = raw == null ? "" : raw.replace('\n', ' ').trim();
-        if (text.isEmpty()) return false;
-        if ((text.contains("السواعي الكبير") || text.contains("السوائي الكبير")) && text.length() < 64) return true;
-        if (text.matches("^[0-9٠-٩۰-۹IVXLCDMivxlcdm*•.\\-–— ]+$")) return true;
-        return text.matches("^[0-9٠-٩۰-۹IVXLCDMivxlcdm ]{1,12}\\s*صلوة\\s+(الغروب|سحر).*$");
-    }
-
-    private JSONObject arabicOfficeSourceQualityNotice(JSONObject service) {
-        try {
-            JSONObject safe = new JSONObject(service.toString());
-            safe.put("displayable", true);
-            safe.put("reader_source_quality_notice", true);
-            JSONArray segments = new JSONArray();
-            segments.put(new JSONObject()
-                    .put("type", "section")
-                    .put("title", localizedOnly("ar", "صلاة السَحَر — تنبيه المصدر")));
-            segments.put(new JSONObject()
-                    .put("type", "note")
-                    .put("speaker", localizedOnly("ar", "تنبيه المصدر"))
-                    .put("text", localizedOnly("ar",
-                            "النص العربي المضمّن لصلاة السَحَر موقوف مؤقتًا لأن نسخة المسح الحالية تحتاج إعادة استيراد نصي موثوق. "
-                                    + "حفاظًا على دقة الصلاة، لم يغيّر التطبيق كلمات النص ولم يستخدم ترجمة آلية أو تصحيحًا بالذكاء الاصطناعي."))
-                    .put("collapsed_by_default", false)
-                    .put("editorial_metadata_only", true));
-            safe.put("segments", segments);
+            appendSegments(output, safe.optJSONArray("segments"));
+            safe.put("segments", output);
+            safe.put("reader_safe_core", true);
+            safe.put("raw_ocr_hidden_from_reader", true);
+            safe.put("reader_source_partial", true);
             return safe;
         } catch (Exception error) {
-            Log.w(TAG, "Could not build Arabic Orthros source-quality notice", error);
+            Log.w(TAG, "Could not prepare readable Arabic office core for " + id, error);
             return service;
         }
+    }
+
+    private JSONObject prepareArabicLiturgyReaderDevotions(JSONObject service) {
+        JSONObject pack = loadOptionalJsonAsset("data/native/arabic_liturgy_private_devotions.json");
+        if (pack == null || !"ar".equals(pack.optString("language", ""))) return service;
+        try {
+            JSONObject result = new JSONObject(service.toString());
+            JSONArray segments = result.optJSONArray("segments");
+            if (segments == null) return service;
+            // Never duplicate the reader layer if the same object is prepared twice.
+            for (int i = 0; i < segments.length(); i++) {
+                JSONObject segment = segments.optJSONObject(i);
+                if (segment != null && "OPTIONAL_PRIVATE_DEVOTION_FROM_PROJECT_HISTORY".equals(
+                        segment.optString("devotional_status", ""))) return result;
+            }
+            JSONArray placements = pack.optJSONArray("placements");
+            if (placements == null) return service;
+            for (int i = 0; i < placements.length(); i++) {
+                JSONObject placement = placements.optJSONObject(i);
+                if (placement != null) segments = applyArabicLiturgyDevotionPlacement(segments, placement);
+            }
+            result.put("segments", segments);
+            result.put("reader_private_devotions", true);
+            result.put("reader_private_devotions_policy",
+                    "OPTIONAL_PRIVATE_DEVOTIONS_NOT_COLLECTIVE_LITURGICAL_RESPONSES");
+            return result;
+        } catch (Exception error) {
+            Log.w(TAG, "Could not add Arabic reader-only private devotions", error);
+            return service;
+        }
+    }
+
+    private JSONArray applyArabicLiturgyDevotionPlacement(JSONArray source, JSONObject placement) throws Exception {
+        String mode = placement.optString("placement", "");
+        String anchor = placement.optString("anchor", "");
+        if (anchor.isEmpty()) return source;
+        int target = -1;
+        for (int i = 0; i < source.length(); i++) {
+            JSONObject segment = source.optJSONObject(i);
+            if (segment == null) continue;
+            if ("before_section".equals(mode)) {
+                JSONObject title = segment.optJSONObject("title");
+                if (title != null && anchor.equals(title.optString("ar", ""))) { target = i; break; }
+            } else if ("after_text_prefix".equals(mode)) {
+                JSONObject text = segment.optJSONObject("text");
+                if (text != null && text.optString("ar", "").startsWith(anchor)) { target = i + 1; break; }
+            }
+        }
+        if (target < 0) return source;
+        JSONArray inserted = new JSONArray();
+        JSONObject section = new JSONObject();
+        section.put("type", "section");
+        section.put("title", localizedOnly("ar", placement.optString("section_title", "")));
+        section.put("reader_optional_private_devotion_section", true);
+        JSONArray prayers = placement.optJSONArray("prayers");
+        for (int i = 0; i <= source.length(); i++) {
+            if (i == target) {
+                inserted.put(section);
+                if (prayers != null) appendSegments(inserted, prayers);
+            }
+            if (i < source.length()) inserted.put(deepCopyJson(source.optJSONObject(i)));
+        }
+        return inserted;
+    }
+
+    private JSONObject arabicOfficeReadableCore(String id) {
+        JSONObject pack = loadOptionalJsonAsset("data/native/arabic_office_reader_core.json");
+        if (pack == null || !"ar".equals(pack.optString("language", ""))) return null;
+        JSONArray services = pack.optJSONArray("services");
+        if (services == null) return null;
+        for (int i = 0; i < services.length(); i++) {
+            JSONObject candidate = services.optJSONObject(i);
+            if (candidate != null && id.equals(candidate.optString("id", ""))) return candidate;
+        }
+        return null;
     }
 
     /** Explicit source-quality blocks take precedence over structurally renderable OCR. */

@@ -102,35 +102,34 @@ def test_reader_renders_event_context_without_changing_prayer_text():
     assert 'data.localizedValue(segment.optJSONObject("text"), "")' in text
 
 
-def test_arabic_office_reader_uses_source_boundaries_not_text_rewriting():
+def test_arabic_office_reader_hides_raw_ocr_and_uses_readable_core():
     text = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
     assert "prepareOfficeReaderView" in text
-    assert 'text.contains("صلوة الغروب")' in text
-    assert 'text.contains("صلوة النور") && text.contains("الصغرى")' in text
-    assert "isArabicOfficeRunningHeader" in text
-    assert "reader_boundary_cleanup" in text
-    assert "لم يضف التطبيق بقية الصلاة بالتخمين أو الترجمة الآلية" in text
+    assert "arabicOfficeReadableCore" in text
+    assert "arabic_office_reader_core.json" in text
+    assert 'safe.put("raw_ocr_hidden_from_reader", true)' in text
 
-
-def test_arabic_orthros_source_remains_fail_closed_and_is_not_ai_corrected():
+def test_arabic_orthros_raw_source_remains_blocked_but_reader_has_safe_core():
     pack = load_json("app/src/main/assets/data/native/library_ar.json")
     orthros = service(pack, "orthros")
     assert orthros.get("displayable") is False
     assert orthros.get("publication_status") == "BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED"
+    core = load_json("app/src/main/assets/data/native/arabic_office_reader_core.json")
+    safe = service(core, "orthros")
+    assert safe.get("raw_ocr_hidden_from_reader") is True
+    assert len(safe.get("segments", [])) >= 5
     text = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-    assert "arabicOfficeSourceQualityNotice" in text
-    assert "لم يستخدم ترجمة آلية أو تصحيحًا بالذكاء الاصطناعي" in text
+    assert "arabicOfficeReadableCore" in text
+    assert "لم يستخدم ترجمة آلية أو تصحيحًا بالذكاء الاصطناعي" not in text
 
-
-def test_arabic_vespers_and_small_compline_source_boundaries_are_detectable():
-    pack = load_json("app/src/main/assets/data/native/library_ar.json")
-    vespers = service(pack, "vespers")["segments"]
-    small = service(pack, "small_compline")["segments"]
-    vespers_index = next(i for i, segment in enumerate(vespers) if "صلوة الغروب" in (segment.get("text") or {}).get("ar", ""))
-    small_index = next(i for i, segment in enumerate(small) if "صلوة النور" in (segment.get("text") or {}).get("ar", "") and "الصغرى" in (segment.get("text") or {}).get("ar", ""))
-    assert vespers_index > 0
-    assert small_index > 0
-
+def test_arabic_vespers_and_small_compline_have_readable_reader_cores():
+    core = load_json("app/src/main/assets/data/native/arabic_office_reader_core.json")
+    vespers = service(core, "vespers")
+    small = service(core, "small_compline")
+    assert vespers.get("raw_ocr_hidden_from_reader") is True
+    assert small.get("raw_ocr_hidden_from_reader") is True
+    assert len(vespers.get("segments", [])) >= 9
+    assert len(small.get("segments", [])) >= 4
 
 def test_no_machine_translation_is_introduced_by_r60_catalog():
     catalog = load_json("canonical/church_service_catalog.json")
