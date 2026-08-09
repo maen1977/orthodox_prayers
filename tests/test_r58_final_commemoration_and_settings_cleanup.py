@@ -81,3 +81,4 @@ def test_new_ui_strings_exist_independently_in_all_languages():
         text = path.read_text(encoding="utf-8")
         assert 'name="ui_language_and_text_settings_title"' in text, language
         assert 'name="ui_today_commemoration_home_format"' in text, language
+        assert "&apos;" not in text, f"{language}: AAPT2-unsafe apostrophe entity"

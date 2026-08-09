@@ -51,8 +51,18 @@ def main() -> None:
 
     xml_files = sorted(RES.rglob("*.xml")) + [MANIFEST]
     for path in xml_files:
+        raw_xml = path.read_text(encoding="utf-8")
+        # Android's resource compiler treats apostrophes inside <string> values
+        # with its own escaping rules after XML entity decoding. An XML &apos;
+        # can therefore become an unescaped ASCII apostrophe and fail AAPT2
+        # with the misleading "Invalid unicode escape sequence" error.
+        if path.parent.name.startswith("values") and "&apos;" in raw_xml:
+            fail(
+                "Android values resources must not use &apos; inside strings; "
+                f"use a typographic apostrophe or Android \\' escaping: {path.relative_to(ROOT)}"
+            )
         try:
-            ET.parse(path)
+            ET.fromstring(raw_xml)
         except ET.ParseError as exc:
             fail(f"malformed XML in {path.relative_to(ROOT)}: {exc}")
 

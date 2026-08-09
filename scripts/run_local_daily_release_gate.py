@@ -32,6 +32,8 @@ COMMANDS = [
         "tests/test_v560_smart_liturgy.py",
         "tests/test_r24_nine_day_liturgy_engine.py",
         "tests/test_r57_home_fasting_and_liturgy_flow.py",
+        "tests/test_r58_final_commemoration_and_settings_cleanup.py",
+        "tests/test_android_resources.py",
     ],
 ]
 

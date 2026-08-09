@@ -1,3 +1,9 @@
+## 5.6.4 R58.1 — Android resource compile hotfix
+
+- Fixed the English Today commemoration resource so AAPT2 no longer rejects the apostrophe during resource compilation.
+- Added a static guard against AAPT2-unsafe `&apos;` entities in Android values resources.
+- Added the final commemoration/settings and Android resource regressions to the main local release gate.
+
 ## 5.6.3 — ظهور القداس وتحديث القراءات اليومية محليًا
 
 - جعل القداس الكامل المخزّن متاحًا دائمًا من قسم القداس حتى أثناء تجهيز بيانات اليوم.
