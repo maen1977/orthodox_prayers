@@ -118,6 +118,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
             notifyItemChanged(position);
         });
         card.addView(toggle);
+        addEventContextBadge(card, segment);
         addDeliveryBadge(card, segment);
         if (expanded) {
             LocalizedValue value = data.localizedValue(segment.optJSONObject("text"), "");
@@ -138,6 +139,7 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
             TextView speakerView = ui.text(speaker, 14, ThemePalette.GOLD, true);
             card.addView(speakerView);
         }
+        addEventContextBadge(card, segment);
         addDeliveryBadge(card, segment);
         LocalizedValue value = data.localizedValue(segment.optJSONObject("text"), "");
         TextView body = ui.body(value.text, rubric);
@@ -161,6 +163,14 @@ public final class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.Hold
         }
         card.setContentDescription((speaker.isEmpty() ? "" : speaker + ". ") + value.text);
         container.addView(card, new LinearLayout.LayoutParams(-1, -2));
+    }
+
+    private void addEventContextBadge(LinearLayout card, JSONObject segment) {
+        String context = data.localized(segment.optJSONObject("event_context"), "").trim();
+        if (context.isEmpty()) return;
+        TextView badge = ui.infoBadge(context);
+        badge.setContentDescription(context);
+        card.addView(badge, ui.margins(-1, -2, 0, 3, 0, 4));
     }
 
     private void addDeliveryBadge(LinearLayout card, JSONObject segment) {

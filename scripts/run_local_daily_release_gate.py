@@ -33,6 +33,8 @@ COMMANDS = [
         "tests/test_r24_nine_day_liturgy_engine.py",
         "tests/test_r57_home_fasting_and_liturgy_flow.py",
         "tests/test_r58_final_commemoration_and_settings_cleanup.py",
+        "tests/test_v540_church_service_section.py",
+        "tests/test_r60_final_service_reader_polish.py",
         "tests/test_android_resources.py",
     ],
 ]

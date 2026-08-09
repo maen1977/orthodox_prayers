@@ -1,3 +1,13 @@
+## 5.6.4 R60 — Final service and reader polish
+
+- Restored the 13-card Church Service catalog in the bundled Arabic, English, and Greek native libraries so the hub remains available even when build-time source downloads fall back.
+- Added a canonical pinned Church Service catalog and taught the native-pack builder to preserve it on every regeneration.
+- Added reader-only event context to already-present faithful private prayers in the Divine Liturgy (Little Entrance, after the Gospel, Great Entrance, Anaphora commemorations, and before Communion where source-marked).
+- Kept all liturgical prayer wording unchanged; event labels are editorial metadata excluded from liturgical text hashes.
+- Corrected Arabic Vespers and Small Compline reader boundaries so unrelated preceding office text and printed page headers are not shown as part of those services.
+- Preserved the Arabic Orthros fail-closed source-quality policy: corrupted OCR is not AI-corrected or machine-translated; the reader shows a source-quality notice instead of presenting damaged text as an approved service.
+- Added R60 regressions and the Church Service section regression to the main local release gate.
+
 ## 5.6.4 R58.1 — Android resource compile hotfix
 
 - Fixed the English Today commemoration resource so AAPT2 no longer rejects the apostrophe during resource compilation.

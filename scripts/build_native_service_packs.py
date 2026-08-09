@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/services/library.json"
 MANIFEST = ROOT / "canonical/native_service_manifest.json"
 REGISTRY = ROOT / "canonical/native_language_sources.json"
+CHURCH_SERVICE_CATALOG = ROOT / "canonical/church_service_catalog.json"
 OUTPUTS = [ROOT / "data/services/native", ROOT / "app/src/main/assets/data/native"]
 OVERRIDE_ROOT = ROOT / "data/services/native_overrides"
 LANGS = ("ar", "el", "en")
@@ -318,6 +319,34 @@ def annotate_dynamic_slots(service: dict[str, Any], lang: str) -> None:
         raise SystemExit(f"divine_liturgy.{lang}: dynamic slot anchor missing: {detail}")
 
 
+def _editorial_context(lang: str, text: str) -> dict[str, Any] | None:
+    """Return reader-only context for source-marked faithful private prayers.
+
+    These labels describe *when* the already-present native prayer is said. They
+    never add, translate, paraphrase, or replace liturgical prayer text.
+    """
+    value = text.strip()
+    labels: dict[str, str] | None = None
+    if lang == "ar":
+        if value.startswith("هلمّ نسجد ونركع للمسيح"):
+            labels = {"ar": "أثناء الدخول الصغير — صلاة المؤمن بهدوء", "en": "", "el": ""}
+        elif value.startswith("المجد لك يا رب، المجد لك"):
+            labels = {"ar": "بعد تلاوة الإنجيل — صلاة المؤمن بهدوء", "en": "", "el": ""}
+        elif value.startswith("لنطرح الآن كل اهتمام دنيوي"):
+            labels = {"ar": "أثناء الدورة الكبرى وحمل القرابين — صلاة المؤمن بهدوء", "en": "", "el": ""}
+        elif value.startswith("يا رب اذكرنا في ملكوتك"):
+            labels = {"ar": "أثناء تذكارات الأنافورا — صلاة المؤمن بهدوء", "en": "", "el": ""}
+        elif value.startswith("أؤمن يا رب وأعترف"):
+            labels = {"ar": "قبل المناولة المقدسة — تُقال سرًا", "en": "", "el": ""}
+    elif lang == "en" and "I believe and confess, Lord" in value:
+        labels = {"ar": "", "en": "Before Holy Communion — said privately", "el": ""}
+    elif lang == "el" and "Πιστεύω, Κύριε" in value:
+        labels = {"ar": "", "en": "", "el": "Πρὸ τῆς Θείας Μεταλήψεως — λέγεται κατ’ ἰδίαν"}
+    if labels is None:
+        return None
+    return {"editorial_metadata_only": True, **labels}
+
+
 def annotate_delivery(service: dict[str, Any], lang: str) -> None:
     """Mark only silence explicitly stated by the native source text."""
     if service.get("id") != "divine_liturgy":
@@ -355,6 +384,10 @@ def annotate_delivery(service: dict[str, Any], lang: str) -> None:
         )
         segment["delivery"] = "silent"
         segment["delivery_actor"] = "faithful" if faithful else "priest"
+        if faithful:
+            context = _editorial_context(lang, text)
+            if context is not None:
+                segment["event_context"] = context
 
 
 def localized_for_language(value: Any, lang: str) -> Any:
@@ -419,6 +452,7 @@ def main() -> None:
     source = json.loads(SOURCE.read_text(encoding="utf-8"))
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    church_catalog = json.loads(CHURCH_SERVICE_CATALOG.read_text(encoding="utf-8"))
     services_manifest = manifest["services"]
     sources = registry["sources"]
 
@@ -495,6 +529,30 @@ def main() -> None:
             if "source_provenance" in service:
                 service["legacy_provenance_audit"] = service.pop("source_provenance")
             pack["services"].append(service)
+
+        # Keep the Church Service hub available offline even when a build-time
+        # native source is temporarily unavailable. Generated full-service packs
+        # overlay these pinned native-language catalog cards at runtime.
+        catalog_services = ((church_catalog.get("languages") or {}).get(lang) or {}).get("services") or []
+        existing_ids = {str(item.get("id") or "") for item in pack["services"]}
+        for raw_catalog_service in catalog_services:
+            service = copy.deepcopy(raw_catalog_service)
+            service_id = str(service.get("id") or "").strip()
+            if not service_id or service_id in existing_ids:
+                continue
+            service["source_language"] = lang
+            service["catalog_snapshot"] = True
+            service["catalog_snapshot_policy"] = "BUILD_GENERATED_NATIVE_TEXT_OVERLAY_IF_AVAILABLE"
+            service_total, service_filled = localized_counts(service, lang)
+            pack_total += service_total
+            pack_filled += service_filled
+            service["native_content_status"] = {
+                "filled_fields": service_filled,
+                "total_fields": service_total,
+                "complete": service_filled == service_total,
+            }
+            pack["services"].append(service)
+            existing_ids.add(service_id)
 
         pack["native_content_status"] = {
             "filled_fields": pack_filled,
