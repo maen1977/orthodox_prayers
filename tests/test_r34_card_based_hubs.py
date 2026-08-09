@@ -36,12 +36,13 @@ def test_prayer_hub_uses_three_navigable_category_cards() -> None:
 def test_settings_are_grouped_into_requested_cards_and_about_is_plain() -> None:
     settings = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java")
 
-    assert "settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_language_settings_title))" in settings
-    assert "settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_font_size_settings_title))" in settings
+    assert "settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_language_and_text_settings_title))" in settings
+    assert "addLanguageButton" in settings
+    assert 'ui.button("A−"' in settings and 'ui.button("A+"' in settings
     assert "settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_reminders_acba78af))" in settings
     assert "settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_update_and_data_bf22bb6d))" in settings
     assert "ui.actionCard(" in settings
-    assert "ui_church_directory_and_live_services_b4f52ad3" in settings
+    assert "ui_church_directory_and_live_services_b4f52ad3" not in settings
     assert "aboutCard" not in settings
     assert "freeNotice.setTextIsSelectable(true)" in settings
 

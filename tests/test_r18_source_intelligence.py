@@ -65,12 +65,14 @@ class R18SourceIntelligenceTests(unittest.TestCase):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
         main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
+        home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
         self.assertIn("scanChurches", search)
         self.assertIn("officialServiceLinks", search)
         self.assertIn("editDistanceAtMostOne", search)
         self.assertIn("metadataLocalized", repository)
         self.assertIn('case "churches"', main)
-        self.assertIn('host.navigate("churches", null)', settings)
+        self.assertNotIn('host.navigate("churches", null)', settings)
+        self.assertIn('"churches", null', home)
 
     def test_workflow_enables_live_monitoring_and_validates_publication(self):
         workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")

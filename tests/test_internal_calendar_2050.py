@@ -47,11 +47,16 @@ def test_pascha_and_year_boundary_are_available_offline():
     assert BY_DATE["2027-01-01"]["date_iso"] == "2027-01-01"
 
 
-def test_future_days_never_claim_unverified_daily_saints_or_readings():
+def test_future_days_have_offline_commemoration_without_inventing_named_saints():
     day = BY_DATE["2040-08-02"]
-    assert day["occasion_status"] in {"PINNED_INTERNAL_RULE", "PENDING_DAILY_SOURCE_ENRICHMENT"}
+    assert day["occasion_status"] in {"PINNED_INTERNAL_RULE", "PINNED_INTERNAL_OLD_CALENDAR_DATE"}
+    commemoration = day["commemoration"]
+    assert commemoration["status"] == day["commemoration_status"]
+    for language in ("ar", "en", "el"):
+        assert commemoration["name"][language].strip()
     if not day["reading_references"]:
         assert day["reference_status"] == "REFERENCE_PENDING_TWICE_DAILY_VERIFICATION"
+    assert CANONICAL["policy"]["named_saints_require_verified_native_source"] is True
     assert CANONICAL["policy"]["machine_translation"] is False
     assert CANONICAL["policy"]["cross_language_fallback"] is False
 

@@ -158,8 +158,6 @@ public final class DataRepository {
     public JSONObject calendarDay(String date) {
         if (date == null) return null;
         String normalized = date.trim();
-        JSONObject complete = rollingWeekByDate.get(normalized);
-        if (complete != null) return complete;
         if (normalized.matches("\\d{4}-\\d{2}-\\d{2}")) {
             try {
                 loadCalendarYear(Integer.parseInt(normalized.substring(0, 4)));
@@ -167,8 +165,30 @@ public final class DataRepository {
                 return null;
             }
         }
-        return calendarByDate.get(normalized);
+
+        JSONObject baseline = calendarByDate.get(normalized);
+        JSONObject complete = rollingWeekByDate.get(normalized);
+        if (complete == null) return baseline;
+
+        // A signed/local daily package may intentionally omit a named saint while
+        // the complete offline calendar still owns the stable Old Calendar
+        // commemoration identity. Preserve verified daily data, but fill only the
+        // missing commemoration slot from the offline 2026-2050 baseline.
+        String completeCommemoration = CommemorationDisplayPolicy.displayText(complete, this::localizedValue);
+        if (!completeCommemoration.isEmpty() || baseline == null) return complete;
+
+        JSONObject baselineFeast = baseline.optJSONObject("feast");
+        if (baselineFeast == null) return complete;
+        try {
+            JSONObject merged = new JSONObject(complete.toString());
+            merged.put("feast", new JSONObject(baselineFeast.toString()));
+            merged.put("occasion_status", baseline.optString("occasion_status", "PINNED_INTERNAL_OLD_CALENDAR_DATE"));
+            return merged;
+        } catch (Exception ignored) {
+            return complete;
+        }
     }
+
 
     /** The active signed package contains a moving horizon of complete consecutive days. */
     public JSONArray rollingWeekDays() {

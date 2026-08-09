@@ -25,8 +25,9 @@ import java.time.ZoneId;
 import java.util.Locale;
 
 public final class SettingsScreen extends BaseScreen {
-    private static final String SECTION_LANGUAGE = "language";
-    private static final String SECTION_FONT_SIZE = "font_size";
+    private static final String SECTION_LANGUAGE_AND_TEXT = "language_text";
+    private static final String LEGACY_SECTION_LANGUAGE = "language";
+    private static final String LEGACY_SECTION_FONT_SIZE = "font_size";
     private static final String SECTION_CALENDAR = "calendar_reminders";
     private static final String SECTION_UPDATE = "update_data";
 
@@ -41,8 +42,11 @@ public final class SettingsScreen extends BaseScreen {
 
     @Override
     public View createView() {
-        if (SECTION_LANGUAGE.equals(section)) return createLanguageSettingsView();
-        if (SECTION_FONT_SIZE.equals(section)) return createFontSettingsView();
+        if (SECTION_LANGUAGE_AND_TEXT.equals(section)
+                || LEGACY_SECTION_LANGUAGE.equals(section)
+                || LEGACY_SECTION_FONT_SIZE.equals(section)) {
+            return createLanguageAndTextSettingsView();
+        }
         if (SECTION_CALENDAR.equals(section)) return createCalendarSettingsView();
         if (SECTION_UPDATE.equals(section)) return createUpdateSettingsView();
         return createSettingsHubView();
@@ -53,12 +57,8 @@ public final class SettingsScreen extends BaseScreen {
 
         addSettingsAction(page,
                 com.orthodoxprayers.privateapp.R.drawable.ic_action_language,
-                local(com.orthodoxprayers.privateapp.R.string.ui_language_settings_title),
-                SECTION_LANGUAGE);
-        addSettingsAction(page,
-                com.orthodoxprayers.privateapp.R.drawable.ic_action_brightness,
-                local(com.orthodoxprayers.privateapp.R.string.ui_font_size_settings_title),
-                SECTION_FONT_SIZE);
+                local(com.orthodoxprayers.privateapp.R.string.ui_language_and_text_settings_title),
+                SECTION_LANGUAGE_AND_TEXT);
         addSettingsAction(page,
                 com.orthodoxprayers.privateapp.R.drawable.ic_action_calendar,
                 local(com.orthodoxprayers.privateapp.R.string.ui_calendar_and_reminders_acba78af),
@@ -68,28 +68,13 @@ public final class SettingsScreen extends BaseScreen {
                 local(com.orthodoxprayers.privateapp.R.string.ui_update_and_data_bf22bb6d),
                 SECTION_UPDATE);
 
-        String churchesTitle = local(com.orthodoxprayers.privateapp.R.string.ui_church_directory_and_live_services_b4f52ad3);
-        LinearLayout churchesCard = ui.actionCard(
-                com.orthodoxprayers.privateapp.R.drawable.ic_action_live,
-                churchesTitle,
-                ""
-        );
-        churchesCard.setOnClickListener(v -> host.navigate("churches", null));
-        add(page.root, churchesCard, 2, 10);
-
         appendAboutSection(page);
         return page.scroll;
     }
 
-    private View createLanguageSettingsView() {
+    private View createLanguageAndTextSettingsView() {
         UiKit.Page page = detailPage();
-        appendLanguageSettings(page);
-        return page.scroll;
-    }
-
-    private View createFontSettingsView() {
-        UiKit.Page page = detailPage();
-        appendFontSettings(page);
+        appendLanguageAndTextSettings(page);
         return page.scroll;
     }
 
@@ -115,18 +100,27 @@ public final class SettingsScreen extends BaseScreen {
         add(page.root, card, 2, 8);
     }
 
-    private void appendLanguageSettings(UiKit.Page page) {
-        LinearLayout languageCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_language_settings_title));
+    private void appendLanguageAndTextSettings(UiKit.Page page) {
+        LinearLayout combinedCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_language_and_text_settings_title));
+
+        TextView languageHeading = centered(
+                local(com.orthodoxprayers.privateapp.R.string.ui_language_settings_title),
+                16, ui.colors().primaryText(), true
+        );
+        add(combinedCard, languageHeading, 0, 6);
+
         LinearLayout languages = ui.row();
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_arabic_name), "ar");
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_english_name), "en");
         addLanguageButton(languages, local(com.orthodoxprayers.privateapp.R.string.ui_language_greek_name), "el");
-        add(languageCard, languages, 2, 2);
-        add(page.root, languageCard, 12, 8);
-    }
+        add(combinedCard, languages, 2, 12);
 
-    private void appendFontSettings(UiKit.Page page) {
-        LinearLayout fontCard = settingsCard(local(com.orthodoxprayers.privateapp.R.string.ui_font_size_settings_title));
+        TextView fontHeading = centered(
+                local(com.orthodoxprayers.privateapp.R.string.ui_font_size_settings_title),
+                16, ui.colors().primaryText(), true
+        );
+        add(combinedCard, fontHeading, 0, 6);
+
         LinearLayout font = ui.row();
         Button smaller = ui.button("A−", false);
         smaller.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_decrease_text_size_d4631a2b));
@@ -139,19 +133,19 @@ public final class SettingsScreen extends BaseScreen {
         larger.setContentDescription(local(com.orthodoxprayers.privateapp.R.string.ui_increase_text_size_d8c66ed2));
         larger.setOnClickListener(v -> { preferences.setFontScale(preferences.fontScale() + 0.1f); reloadCurrentSettingsScreen(); });
         font.addView(larger, ui.weight(48));
-        add(fontCard, font, 2, 5);
+        add(combinedCard, font, 2, 5);
 
         Button dark = ui.button(preferences.darkMode()
                 ? local(com.orthodoxprayers.privateapp.R.string.ui_use_light_mode_1c895a15)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_use_dark_mode_1564a2ea), preferences.darkMode());
         dark.setOnClickListener(v -> { preferences.setDarkMode(!preferences.darkMode()); reloadCurrentSettingsScreen(); });
-        add(fontCard, dark, 0, 6);
+        add(combinedCard, dark, 0, 6);
 
         Button keepOn = ui.button(preferences.keepScreenOn()
                 ? local(com.orthodoxprayers.privateapp.R.string.ui_disable_keep_screen_on_14c0033c)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_keep_screen_on_while_reading_f9d35a52), preferences.keepScreenOn());
         keepOn.setOnClickListener(v -> { preferences.setKeepScreenOn(!preferences.keepScreenOn()); reloadCurrentSettingsScreen(); });
-        add(fontCard, keepOn, 0, 6);
+        add(combinedCard, keepOn, 0, 6);
 
         LinearLayout spacing = ui.row();
         Button tighter = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_less_spacing_182a14c2), false);
@@ -163,7 +157,7 @@ public final class SettingsScreen extends BaseScreen {
         Button wider = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_more_spacing_fe47f0f9), false);
         wider.setOnClickListener(v -> { preferences.setLineSpacingMultiplier(preferences.lineSpacingMultiplier() + 0.1f); reloadCurrentSettingsScreen(); });
         spacing.addView(wider, ui.weight(48));
-        add(fontCard, spacing, 0, 5);
+        add(combinedCard, spacing, 0, 5);
 
         Button fontFamily = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_font_f5e02ef6) + fontFamilyLabel(), false);
         fontFamily.setOnClickListener(v -> {
@@ -171,7 +165,7 @@ public final class SettingsScreen extends BaseScreen {
             preferences.setFontFamily("sans".equals(current) ? "serif" : "serif".equals(current) ? "monospace" : "sans");
             reloadCurrentSettingsScreen();
         });
-        add(fontCard, fontFamily, 0, 6);
+        add(combinedCard, fontFamily, 0, 6);
 
         Button autoScroll = ui.button(autoScrollSettingLabel(), preferences.autoScrollSpeed() > 0);
         autoScroll.setOnClickListener(v -> {
@@ -179,7 +173,7 @@ public final class SettingsScreen extends BaseScreen {
             preferences.setAutoScrollSpeed(speed >= 4 ? 0 : speed + 1);
             reloadCurrentSettingsScreen();
         });
-        add(fontCard, autoScroll, 0, 10);
+        add(combinedCard, autoScroll, 0, 10);
 
         LinearLayout readerAppearance = ui.row();
         Button readerTheme = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_reader_theme_70f179d4) + readerThemeLabel(), false);
@@ -197,7 +191,7 @@ public final class SettingsScreen extends BaseScreen {
             reloadCurrentSettingsScreen();
         });
         readerAppearance.addView(brightness, ui.weight(48));
-        add(fontCard, readerAppearance, 0, 6);
+        add(combinedCard, readerAppearance, 0, 6);
 
         Button resetReading = ui.button(local(com.orthodoxprayers.privateapp.R.string.ui_reset_reading_settings_71533aa3), false);
         resetReading.setOnClickListener(v -> new AlertDialog.Builder(host.activity())
@@ -209,8 +203,8 @@ public final class SettingsScreen extends BaseScreen {
                 })
                 .setNegativeButton(local(com.orthodoxprayers.privateapp.R.string.ui_cancel_1bd7a4b9), null)
                 .show());
-        add(fontCard, resetReading, 0, 2);
-        add(page.root, fontCard, 2, 8);
+        add(combinedCard, resetReading, 0, 2);
+        add(page.root, combinedCard, 12, 8);
     }
 
     private void appendCalendarSettings(UiKit.Page page) {

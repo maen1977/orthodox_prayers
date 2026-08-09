@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Build the compact offline Jerusalem/Jordan calendar horizon through 2050.
 
-The asset is a fail-safe calendar, not a replacement for the twice-daily verified
-publication pipeline. It guarantees civil/Julian dates, Paschal-cycle occasions,
-major fixed feasts, fasting, and appointed service selection without network.
-Daily saints and exact readings are included only when a pinned canonical record
-already exists; GitHub Actions may enrich the visible nine-day signed package.
+The asset is a fail-safe calendar, not a replacement for signed source corrections.
+It guarantees civil/Julian dates, Paschal-cycle occasions, major fixed feasts,
+fasting, appointed service selection, and a non-empty localized commemoration
+label for every civil day through 2050 without network. Named saints are never
+invented: when no pinned named feast/occasion is available, the baseline identifies
+the commemoration by its Old Calendar date and signed/native sources may enrich it.
 """
 from __future__ import annotations
 
@@ -41,6 +42,37 @@ OUT_ASSET_DIR = ROOT / "app" / "src" / "main" / "assets" / "data" / "calendar"
 OUT_ASSET_INDEX = OUT_ASSET_DIR / "calendar_index.json"
 H2_PATH = ROOT / "canonical" / "jordan_2026_h2_lectionary.json"
 FIXED_LECTIONARY_PATH = ROOT / "canonical" / "jerusalem_fixed_feast_lectionary.json"
+
+
+AR_MONTHS = {
+    1: "كانون الثاني", 2: "شباط", 3: "آذار", 4: "نيسان",
+    5: "أيار", 6: "حزيران", 7: "تموز", 8: "آب",
+    9: "أيلول", 10: "تشرين الأول", 11: "تشرين الثاني", 12: "كانون الأول",
+}
+EN_MONTHS = {
+    1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
+    7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December",
+}
+EL_MONTHS_GENITIVE = {
+    1: "Ἰανουαρίου", 2: "Φεβρουαρίου", 3: "Μαρτίου", 4: "Ἀπριλίου",
+    5: "Μαΐου", 6: "Ἰουνίου", 7: "Ἰουλίου", 8: "Αὐγούστου",
+    9: "Σεπτεμβρίου", 10: "Ὀκτωβρίου", 11: "Νοεμβρίου", 12: "Δεκεμβρίου",
+}
+
+
+def dated_commemoration_label(day: date) -> dict[str, str]:
+    """Localized fail-safe commemoration label tied to the Old Calendar date.
+
+    This deliberately does not fabricate saint names. It gives every day a stable,
+    language-isolated commemoration identity while named fixed/movable occasions
+    continue to take precedence whenever the internal calendar has one.
+    """
+    _jy, jm, jd = gregorian_to_julian_date(day)
+    return loc(
+        f"تذكار قديسي يوم {jd} {AR_MONTHS[jm]} حسب التقويم الكنسي القديم",
+        f"Commemoration of the saints of {EN_MONTHS[jm]} {jd} on the Old Church Calendar",
+        f"Μνήμη τῶν Ἁγίων τῆς {jd}ης {EL_MONTHS_GENITIVE[jm]} κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο",
+    )
 
 AR_ORDINALS = {
     1: "الأول", 2: "الثاني", 3: "الثالث", 4: "الرابع", 5: "الخامس",
@@ -228,11 +260,7 @@ def primary_and_occasions(day: date, info: dict) -> tuple[dict[str, str], list[d
     occasions.sort(key=lambda item: int(item["priority"]), reverse=True)
     if occasions:
         return copy.deepcopy(occasions[0]["title"]), occasions
-    return loc(
-        "تذكار اليوم يُستكمل من التحديث الموثق",
-        "Daily commemoration is completed by the verified update",
-        "Ἡ μνήμη τῆς ἡμέρας συμπληρώνεται ἀπὸ τὴν ἐπαληθευμένη ἐνημέρωση",
-    ), []
+    return dated_commemoration_label(day), []
 
 
 def build() -> dict:
@@ -252,14 +280,21 @@ def build() -> dict:
             occasion_days += 1
         jy, jm, jd = gregorian_to_julian_date(cursor)
         selection = liturgy_service_selection(cursor, info)
+        commemoration_status = "PINNED_INTERNAL_RULE" if occasions else "PINNED_INTERNAL_OLD_CALENDAR_DATE"
         days.append({
             "date": cursor.isoformat(),
             "date_iso": cursor.isoformat(),
             "civil_weekday": {"ar": AR_DAYS[cursor.weekday()], "en": EN_DAYS[cursor.weekday()], "el": EL_DAYS[cursor.weekday()]},
             "julian_date": f"{jy:04d}-{jm:02d}-{jd:02d}",
+            "commemoration": {
+                "name": copy.deepcopy(primary),
+                "status": commemoration_status,
+                "source_kind": "internal_named_occasion" if occasions else "old_calendar_date_baseline",
+            },
+            "commemoration_status": commemoration_status,
             "feast": primary,
             "occasions": occasions,
-            "occasion_status": "PINNED_INTERNAL_RULE" if occasions else "PENDING_DAILY_SOURCE_ENRICHMENT",
+            "occasion_status": commemoration_status,
             "fasting": {
                 "code": info["fasting"].get("code"),
                 "title": copy.deepcopy(info["fasting"].get("title") or {}),
@@ -289,7 +324,8 @@ def build() -> dict:
         "policy": {
             "offline_baseline": True,
             "major_fixed_and_movable_occasions": True,
-            "daily_saints_require_verified_source": True,
+            "daily_commemoration_label_offline": True,
+            "named_saints_require_verified_native_source": True,
             "exact_readings_require_pinned_or_signed_source": True,
             "machine_translation": False,
             "cross_language_fallback": False,
@@ -298,6 +334,7 @@ def build() -> dict:
         "coverage": {
             "structural_days": len(days),
             "days_with_named_internal_occasion": occasion_days,
+            "days_with_offline_commemoration": len(days),
             "days_with_pinned_reading_references": exact_reading_days,
             "end_of_horizon": END.isoformat(),
         },
@@ -315,6 +352,8 @@ def _asset_day(item: dict) -> dict:
         "date_iso": item["date_iso"],
         "civil_weekday": item["civil_weekday"],
         "julian_date": item["julian_date"],
+        # The compact Android year asset reuses feast + occasion_status as the
+        # commemoration fallback to avoid duplicating the same three-language text.
         "feast": item["feast"],
         "occasion_status": item["occasion_status"],
         "status": fasting.get("title") or {},
