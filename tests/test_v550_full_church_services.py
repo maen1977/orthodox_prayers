@@ -33,12 +33,15 @@ def test_gradle_builds_and_bundles_church_service_assets():
     assert 'dependsOn(prepareBibleCorpus, prepareChurchServiceCorpus)' in text
 
 
-def test_workflow_prepares_church_services_before_gradle():
+def test_workflow_prepares_church_services_before_main_build():
     text = (ROOT / '.github/workflows/church-prayers.yml').read_text(encoding='utf-8')
-    pos_service = text.index('Prepare complete native church services')
-    pos_gradle = text.index('Test and build the app')
-    assert pos_service < pos_gradle
-    assert '--output-dir app/build/generated/churchServiceAssets/data/church' in text
+    pos_prepare = text.index('Prepare offline Bible and church-service assets once')
+    pos_build = text.index('Test and build the app')
+    assert pos_prepare < pos_build
+    assert 'prepareBibleCorpus prepareChurchServiceCorpus' in text
+    assert 'actions/cache/restore@' in text
+    assert 'actions/cache/save@' in text
+    assert 'app/build/church-service-download-cache' in text
 
 
 def test_runtime_overlays_only_same_language_offline_pack():

@@ -7,6 +7,7 @@ translates, transliterates, or copies content across language lanes.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import html
 from html.parser import HTMLParser
@@ -479,6 +480,50 @@ def build_service(spec: dict, lang: str, source_id: str, source_name: str, raw: 
     }
 
 
+def _source_key(lang: str, spec: dict) -> tuple[str, str, str]:
+    return (lang, spec.get("source_transport", "html"), spec.get("url", ""))
+
+
+def prefetch_registered_sources(manifest: dict, cache: Path) -> dict[tuple[str, str, str], bytes | Exception]:
+    """Fetch each distinct registered source once, concurrently, before service slicing.
+
+    This keeps the native-language policy unchanged while preventing ten independent
+    network waits from serializing the GitHub Actions build. Shared English/Greek
+    source books are fetched/converted only once per run.
+    """
+    jobs: dict[tuple[str, str, str], tuple[str, dict]] = {}
+    for lang, lane in manifest.get("languages", {}).items():
+        for spec in lane.get("services", []):
+            if spec.get("source_transport") == "official_link_only":
+                continue
+            key = _source_key(lang, spec)
+            jobs.setdefault(key, (lang, spec))
+
+    results: dict[tuple[str, str, str], bytes | Exception] = {}
+    if not jobs:
+        return results
+
+    workers = min(8, max(1, len(jobs)))
+    print(f"CHURCH_SERVICE_PREFETCH_START unique_sources={len(jobs)} workers={workers}", flush=True)
+    with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="church-source") as pool:
+        future_map = {}
+        for key, (lang, spec) in jobs.items():
+            transport = spec.get("source_transport", "html")
+            print(f"CHURCH_SERVICE_FETCH_START {lang} {spec['id']} transport={transport}", flush=True)
+            future_map[pool.submit(fetch_spec, spec, cache / lang)] = (key, lang, spec)
+        for future in as_completed(future_map):
+            key, lang, spec = future_map[future]
+            try:
+                raw = future.result()
+                results[key] = raw
+                print(f"CHURCH_SERVICE_FETCH_OK {lang} {spec['id']} bytes={len(raw)}", flush=True)
+            except Exception as exc:
+                results[key] = exc
+                print(f"CHURCH_SERVICE_FETCH_FALLBACK {lang} {spec['id']} {exc}", flush=True)
+    print("CHURCH_SERVICE_PREFETCH_DONE", flush=True)
+    return results
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", default="canonical/church_service_full_sources.json")
@@ -494,6 +539,7 @@ def main() -> int:
     cache = Path(args.cache_dir)
     out.mkdir(parents=True, exist_ok=True)
     failures: list[str] = []
+    prefetched = prefetch_registered_sources(manifest, cache)
 
     for lang, lane in manifest["languages"].items():
         if lang not in {"ar", "en", "el"}:
@@ -509,19 +555,22 @@ def main() -> int:
             ids.add(spec["id"])
             try:
                 if spec.get("source_transport") == "official_link_only":
-                    print(f"CHURCH_SERVICE_RIGHTS_LINK_ONLY {lang} {spec['id']} {spec['url']}")
+                    print(f"CHURCH_SERVICE_RIGHTS_LINK_ONLY {lang} {spec['id']} {spec['url']}", flush=True)
                     continue
-                raw = fetch_spec(spec, cache / lang)
+                cached = prefetched.get(_source_key(lang, spec))
+                if isinstance(cached, Exception):
+                    raise cached
+                raw = cached if isinstance(cached, bytes) else fetch_spec(spec, cache / lang)
                 svc = build_service(spec, lang, lane["source_id"], lane["source_name"], raw)
                 services.append(svc)
-                print(f"CHURCH_SERVICE_OK {lang} {spec['id']} chars={svc['source_character_count']} blocks={svc['source_block_count']}")
+                print(f"CHURCH_SERVICE_OK {lang} {spec['id']} chars={svc['source_character_count']} blocks={svc['source_block_count']}", flush=True)
             except Exception as exc:
                 if spec.get("required") and not spec.get("allow_link_fallback", False):
                     failures.append(f"{lang}:{spec['id']}:{exc}")
                 else:
                     is_link_fallback = bool(spec.get("allow_link_fallback", False))
                     label = "CHURCH_SERVICE_LINK_FALLBACK" if is_link_fallback else "CHURCH_SERVICE_OPTIONAL_SKIP"
-                    print(f"{label} {lang} {spec['id']} {exc}")
+                    print(f"{label} {lang} {spec['id']} {exc}", flush=True)
                     if is_link_fallback:
                         fallbacks.append({
                             "id": spec["id"],
@@ -550,7 +599,7 @@ def main() -> int:
 
     if failures and not args.allow_partial:
         for failure in failures:
-            print("CHURCH_SERVICE_REQUIRED_FAILURE", failure)
+            print("CHURCH_SERVICE_REQUIRED_FAILURE", failure, flush=True)
         return 2
     fallback_count = 0
     for lang in manifest["languages"].keys():
@@ -560,7 +609,7 @@ def main() -> int:
                 fallback_count += len(json.loads(path.read_text(encoding="utf-8")).get("fallbacks", []))
             except Exception:
                 pass
-    print(f"CHURCH_SERVICE_CORPUS_OK failures={len(failures)} fallbacks={fallback_count}")
+    print(f"CHURCH_SERVICE_CORPUS_OK failures={len(failures)} fallbacks={fallback_count}", flush=True)
     return 0
 
 

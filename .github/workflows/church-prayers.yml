@@ -1,4 +1,4 @@
-name: Build Church Prayers
+name: Build Church Prayers Fast
 
 on:
   workflow_dispatch:
@@ -21,9 +21,9 @@ concurrency:
 
 jobs:
   build:
-    name: Build Church Prayers
+    name: Build Church Prayers Fast
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 40
 
     steps:
       - name: Get project
@@ -63,11 +63,16 @@ jobs:
       - name: Check content, languages, security, and calendar
         run: python scripts/run_local_daily_release_gate.py
 
-      - name: Prepare full offline Bible corpus
-        run: |
-          python scripts/prepare_bible_corpus.py \
-            --output-dir app/build/generated/bibleAssets/bible/corpus \
-            --cache-dir app/build/bible-download-cache
+      - name: Restore offline source cache
+        id: source-cache-restore
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            app/build/bible-download-cache
+            app/build/church-service-download-cache
+          key: offline-sources-v3-${{ runner.os }}-${{ hashFiles('scripts/prepare_bible_corpus.py', 'scripts/prepare_church_service_corpus.py', 'canonical/church_service_full_sources.json', 'canonical/bible_sources.json', 'app/build.gradle.kts') }}
+          restore-keys: |
+            offline-sources-v3-${{ runner.os }}-
 
       - name: Prepare open liturgical source tools
         shell: bash
@@ -78,16 +83,6 @@ jobs:
             sudo apt-get install -y poppler-utils
           fi
           pdftotext -v 2>&1 | head -n 1 || true
-
-      - name: Prepare complete native church services
-        run: |
-          python scripts/prepare_church_service_corpus.py \
-            --manifest canonical/church_service_full_sources.json \
-            --output-dir app/build/generated/churchServiceAssets/data/church \
-            --cache-dir app/build/church-service-download-cache
-
-      - name: Validate complete church-service corpus
-        run: python scripts/validate_full_church_services.py
 
       - name: Prepare Java
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
@@ -100,6 +95,24 @@ jobs:
 
       - name: Prepare Gradle
         uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6.2.0
+
+      - name: Prepare offline Bible and church-service assets once
+        timeout-minutes: 12
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: ./gradlew --no-daemon prepareBibleCorpus prepareChurchServiceCorpus --stacktrace
+
+      - name: Validate complete church-service corpus
+        run: python scripts/validate_full_church_services.py
+
+      - name: Save offline source cache immediately
+        if: always() && steps.source-cache-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            app/build/bible-download-cache
+            app/build/church-service-download-cache
+          key: ${{ steps.source-cache-restore.outputs.cache-primary-key }}
 
       - name: Prepare release signing
         shell: bash
@@ -131,6 +144,7 @@ jobs:
           fi
 
       - name: Test and build the app
+        timeout-minutes: 20
         run: ./gradlew --no-daemon testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease --stacktrace
 
       - name: Prepare final files and updater metadata

@@ -29,3 +29,25 @@ def test_segment_has_only_native_language():
     assert seg['text']['en']
     assert seg['text']['ar'] == ''
     assert seg['text']['el'] == ''
+
+
+def test_prefetch_deduplicates_shared_source_and_preserves_lane(monkeypatch, tmp_path):
+    calls = []
+    def fake_fetch(spec, cache):
+        calls.append((spec['url'], cache.name))
+        return (spec['url'] + ':' + cache.name).encode()
+    monkeypatch.setattr(mod, 'fetch_spec', fake_fetch)
+    manifest = {
+        'languages': {
+            'en': {'services': [
+                {'id':'a','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text'},
+                {'id':'b','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text'},
+            ]},
+            'el': {'services': [
+                {'id':'c','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text'},
+            ]},
+        }
+    }
+    result = mod.prefetch_registered_sources(manifest, tmp_path)
+    assert len(result) == 2
+    assert sorted(calls) == [('https://example.test/book.txt', 'el'), ('https://example.test/book.txt', 'en')]
