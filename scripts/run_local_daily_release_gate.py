@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 COMMANDS = [
+    [sys.executable, "scripts/audit_full_app_r62.py"],
     [sys.executable, "scripts/simple_quality_gate.py"],
     [sys.executable, "scripts/validate_full_church_services.py"],
     [sys.executable, "scripts/verify_r17_patch.py"],
@@ -36,6 +37,9 @@ COMMANDS = [
         "tests/test_v540_church_service_section.py",
         "tests/test_r60_final_service_reader_polish.py",
         "tests/test_r61_arabic_liturgical_reader_completion.py",
+        "tests/test_r62_full_app_audit.py",
+        "tests/test_r62_rights_and_source_links.py",
+        "tests/test_r62_runtime_walkthrough.py",
         "tests/test_android_resources.py",
     ],
 ]

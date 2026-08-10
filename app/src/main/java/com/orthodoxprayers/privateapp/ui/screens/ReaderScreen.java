@@ -562,8 +562,12 @@ public final class ReaderScreen extends BaseScreen {
                 && "OFFICIAL_ARABIC_EXACT_PINNED".equals(provenance.optString("status"));
         boolean pinnedStatic = provenance != null
                 && "PINNED_STATIC_TEXT_WITH_OFFICIAL_CATALOG_PROVENANCE".equals(provenance.optString("status"));
+        boolean churchCatalogOnly = "church_service".equals(service.optString("category", ""))
+                && service.optString("publication_status", "").startsWith("CATALOG_AND_FIXED_SCRIPTURE_ONLY");
         String badge;
-        if (dailyVerified) {
+        if (churchCatalogOnly) {
+            badge = local(com.orthodoxprayers.privateapp.R.string.ui_church_service_catalog_only_r62);
+        } else if (dailyVerified) {
             badge = local(com.orthodoxprayers.privateapp.R.string.ui_daily_propers_and_scripture_passed_source_and_si_d42c1070);
         } else if (officialStatic) {
             badge = local(com.orthodoxprayers.privateapp.R.string.ui_complete_arabic_text_pinned_from_an_official_ort_0c91e6fe);
@@ -572,7 +576,7 @@ public final class ReaderScreen extends BaseScreen {
         } else {
             badge = local(com.orthodoxprayers.privateapp.R.string.ui_source_state_is_incomplete_unverified_daily_text_0f17ecef);
         }
-        box.addView(ui.badge(badge, dailyVerified || officialStatic || pinnedStatic),
+        box.addView(ui.badge(badge, !churchCatalogOnly && (dailyVerified || officialStatic || pinnedStatic)),
                 ui.margins(-1, -2, 0, notice.isEmpty() ? 0 : 7, 0, 0));
 
         LocalizedValue title = data.localizedValue(service.optJSONObject("title"), "");
@@ -581,13 +585,19 @@ public final class ReaderScreen extends BaseScreen {
         }
 
         JSONObject nativeSource = service.optJSONObject("native_source");
+        JSONObject catalogSource = service.optJSONObject("catalog_source");
         JSONObject audit = service.optJSONObject("legacy_provenance_audit");
         JSONObject effective = provenance != null ? provenance : audit;
         String sourceId = nativeSource == null ? "" : nativeSource.optString("source_id", "").trim();
         if (sourceId.isEmpty() && effective != null) {
             sourceId = effective.optString("source_id", effective.optString("official_catalog_source", "")).trim();
         }
-        String sourceUrl = nativeSource == null ? "" : nativeSource.optString("url", "").trim();
+        String sourceUrl = churchCatalogOnly && catalogSource != null
+                ? catalogSource.optString("url", "").trim()
+                : (nativeSource == null ? "" : nativeSource.optString("url", "").trim());
+        if (churchCatalogOnly && catalogSource != null && sourceId.isEmpty()) {
+            sourceId = catalogSource.optString("source_id", "").trim();
+        }
         if (sourceUrl.isEmpty() && effective != null) {
             sourceUrl = effective.optString("official_url", effective.optString("official_catalog_url", "")).trim();
         }

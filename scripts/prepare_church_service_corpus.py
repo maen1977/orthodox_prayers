@@ -480,6 +480,11 @@ def build_service(spec: dict, lang: str, source_id: str, source_name: str, raw: 
     }
 
 
+def redistribution_allowed(spec: dict) -> bool:
+    """Only bundle source text when redistribution is explicitly recorded as allowed."""
+    return bool(spec.get("permission_confirmed", False)) and not bool(spec.get("redistribution_review_required", True))
+
+
 def _source_key(lang: str, spec: dict) -> tuple[str, str, str]:
     return (lang, spec.get("source_transport", "html"), spec.get("url", ""))
 
@@ -494,7 +499,7 @@ def prefetch_registered_sources(manifest: dict, cache: Path) -> dict[tuple[str, 
     jobs: dict[tuple[str, str, str], tuple[str, dict]] = {}
     for lang, lane in manifest.get("languages", {}).items():
         for spec in lane.get("services", []):
-            if spec.get("source_transport") == "official_link_only":
+            if spec.get("source_transport") == "official_link_only" or not redistribution_allowed(spec):
                 continue
             key = _source_key(lang, spec)
             jobs.setdefault(key, (lang, spec))
@@ -554,8 +559,18 @@ def main() -> int:
                 continue
             ids.add(spec["id"])
             try:
-                if spec.get("source_transport") == "official_link_only":
+                if spec.get("source_transport") == "official_link_only" or not redistribution_allowed(spec):
                     print(f"CHURCH_SERVICE_RIGHTS_LINK_ONLY {lang} {spec['id']} {spec['url']}", flush=True)
+                    fallbacks.append({
+                        "id": spec["id"],
+                        "title": lane_object(lang, spec["title"]),
+                        "official_source_url": spec.get("url", ""),
+                        "publication_status": "OFFICIAL_SOURCE_LINK_ONLY_RIGHTS_PENDING",
+                        "full_service": False,
+                        "reason": "redistribution_permission_not_confirmed",
+                        "machine_translation_used": False,
+                        "cross_language_fallback": False,
+                    })
                     continue
                 cached = prefetched.get(_source_key(lang, spec))
                 if isinstance(cached, Exception):

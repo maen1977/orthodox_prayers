@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orthodoxprayers.privateapp.data.FastingNoticeEngine;
+import com.orthodoxprayers.privateapp.data.PrayerOfDaySelector;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
@@ -22,12 +23,6 @@ public final class HomeScreen extends BaseScreen {
     // R33_COMPACT_FASTING_HOME: the multi-day fasting table lives behind the calendar icon.
     // R35_HOME_SHORTCUT_CARDS: four compact shortcuts plus one context-aware recommendation.
     private static final ZoneId AMMAN_ZONE = ZoneId.of("Asia/Amman");
-    private static final String[] DAILY_PRAYER_ROTATION = {
-            "morning_prayer",
-            "thanksgiving",
-            "evening_prayer",
-            "small_compline"
-    };
     public HomeScreen(ScreenHost host) { super(host); }
 
     @Override
@@ -318,10 +313,7 @@ public final class HomeScreen extends BaseScreen {
     }
 
     private String currentPrayerServiceId() {
-        // Jordan's church date selects a different substantial daily prayer on
-        // consecutive days. This is deterministic and works fully offline.
-        long day = ZonedDateTime.now(AMMAN_ZONE).toLocalDate().toEpochDay();
-        return DAILY_PRAYER_ROTATION[Math.floorMod(day, DAILY_PRAYER_ROTATION.length)];
+        return PrayerOfDaySelector.forTime(ZonedDateTime.now(AMMAN_ZONE).toLocalTime());
     }
 
 

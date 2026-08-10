@@ -31,22 +31,11 @@ public final class ChurchesScreen extends BaseScreen {
                 count
         )), 10, 9);
 
-        JSONArray resources = mergeResources(data.officialLiveResources(), data.officialServiceLinks());
-        if (resources.length() > 0) {
-            page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_official_live_resources_86f88e7a)));
-            for (int i = 0; i < resources.length(); i++) {
-                JSONObject resource = resources.optJSONObject(i);
-                if (resource == null) continue;
-                String title = data.metadataLocalized(
-                        resource.optJSONObject("title"),
-                        local(com.orthodoxprayers.privateapp.R.string.ui_official_church_link_2d1a8bdb)
-                );
-                Button open = ui.button("▶  " + title, false);
-                String url = resource.optString("url", "");
-                open.setOnClickListener(v -> openUrl(url));
-                add(page.root, open, 0, 6);
-            }
-        }
+        JSONArray liveResources = data.officialLiveResources();
+        addResourceButtons(page.root, liveResources,
+                local(com.orthodoxprayers.privateapp.R.string.ui_official_live_resources_86f88e7a));
+        addResourceButtons(page.root, data.officialChurchDirectoryResources(),
+                local(com.orthodoxprayers.privateapp.R.string.ui_official_directory_sources_r62));
 
         page.root.addView(ui.sectionTitle(local(com.orthodoxprayers.privateapp.R.string.ui_church_directory_36e0707d)));
         EditText query = new EditText(host.activity());
@@ -80,11 +69,29 @@ public final class ChurchesScreen extends BaseScreen {
         return result;
     }
 
+    private void addResourceButtons(LinearLayout root, JSONArray resources, String sectionTitle) {
+        if (resources == null || resources.length() == 0) return;
+        root.addView(ui.sectionTitle(sectionTitle));
+        for (int i = 0; i < resources.length(); i++) {
+            JSONObject resource = resources.optJSONObject(i);
+            if (resource == null) continue;
+            String title = data.metadataLocalized(
+                    resource.optJSONObject("title"),
+                    local(com.orthodoxprayers.privateapp.R.string.ui_official_church_link_2d1a8bdb)
+            );
+            Button open = ui.button("▶  " + title, false);
+            String url = resource.optString("url", "");
+            open.setOnClickListener(v -> openUrl(url));
+            add(root, open, 0, 6);
+        }
+    }
+
     private void renderChurches(LinearLayout root, String rawQuery) {
         root.removeAllViews();
         String query = SearchEngine.normalize(rawQuery);
         JSONArray churches = data.registeredChurches();
         int shown = 0;
+        String activeGroup = "";
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
             if (church == null) continue;
@@ -93,8 +100,15 @@ public final class ChurchesScreen extends BaseScreen {
                     local(com.orthodoxprayers.privateapp.R.string.ui_official_parish_name_unavailable_in_english_eea6633c)
             );
             String city = data.metadataLocalized(church.optJSONObject("city"), "");
-            String searchable = SearchEngine.normalize(name + " " + city);
+            String country = data.metadataLocalized(church.optJSONObject("country"), "");
+            String searchable = SearchEngine.normalize(name + " " + city + " " + country);
             if (!query.isEmpty() && !searchable.contains(query)) continue;
+
+            String groupId = church.optString("country_group", "other");
+            if (!groupId.equals(activeGroup)) {
+                activeGroup = groupId;
+                if (!country.isEmpty()) root.addView(ui.sectionTitle(country));
+            }
             add(root, churchCard(church, name, city), 1, 7);
             shown++;
         }

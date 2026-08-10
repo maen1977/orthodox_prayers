@@ -315,7 +315,7 @@ Phone: 00962788272988</string>
     <string name="ui_sunday_cycle_detail_format">Sunday %1$d after Pentecost — Tone %2$d — Eothinon %3$d</string>
     <string name="ui_registered_sources_count_format">The app lists %1$d registered sources with verification and rights status.</string>
     <string name="ui_stale_trusted_copy_date_format">Showing the last trusted copy dated %1$s; today’s data is requested automatically.</string>
-<string name="ui_church_directory_count_format">Official Orthodox Jordan directory. Current links: %1$d. Open the parish page to confirm current service times.</string>
+<string name="ui_church_directory_count_format">Unified official directory from Orthodox Jordan and the Jerusalem Patriarchate. Registered churches and shrines: %1$d. Open the official source to confirm current schedules.</string>
     <string name="ui_begin_your_day_with_prayer_a3c8eb48" formatted="false">Begin your day with prayer.</string>
     <string name="ui_close_the_day_with_prayer_and_stillness_67ab7213" formatted="false">Close the day with prayer and stillness.</string>
     <string name="ui_open_today_s_epistle_and_gospel_980e7457" formatted="false">Open today’s Epistle and Gospel.</string>
@@ -374,7 +374,7 @@ Phone: 00962788272988</string>
     <string name="ui_bible_share_chapter">Share chapter</string>
     <string name="ui_bible_cannot_open_text">Could not open the bundled text.</string>
     <string name="ui_church_service_section">Church Service</string>
-    <string name="ui_church_service_hint">Fixed Orthodox church services with their Scripture readings.</string>
+    <string name="ui_church_service_hint">These services are source-audited. Some cards contain only the catalog entry and fixed readings until a redistributable native rite text is available.</string>
 
     <!-- R57: date-aware fasting notice and old-calendar date on Home. -->
     <string name="ui_old_church_calendar_home_format">Old church calendar: %1$s</string>
@@ -394,4 +394,8 @@ Phone: 00962788272988</string>
     <string name="ui_weekday_friday">Friday</string>
     <string name="ui_language_and_text_settings_title">Language &amp; text size</string>
     <string name="ui_today_commemoration_home_format">Today’s commemoration: %1$s</string>
+    <string name="ui_official_directory_sources_r62" formatted="false">Official church directories</string>
+    <string name="ui_official_daily_prayer_sources_r62">Additional daily prayers — official source</string>
+    <string name="ui_official_source_link_only_r62">Opens the text at the official church source; the text is not repackaged in the app.</string>
+    <string name="ui_church_service_catalog_only_r62">Catalog and fixed readings only — the complete rite text is not embedded yet.</string>
 </resources>

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "audit": "R62_FULL_APP_AUDIT",
+  "audited_on": "2026-08-10",
+  "base": "OrthodoxPrayers 5.6.4 R61",
+  "policy": "No AI-generated/translated scripture or liturgical text; official-site availability does not imply redistribution permission.",
+  "source_urls": {
+    "orthodox_jordan_churches": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
+    "orthodox_jordan_prayers": "https://orthodoxjordan.org/%D8%AA%D8%AD%D9%85%D9%8A%D9%84-%D8%A7%D9%84%D8%B5%D9%84%D9%88%D8%A7%D8%AA/",
+    "orthodox_jordan_daily_prayers": "https://orthodoxjordan.org/category/%D8%B5%D9%84%D9%88%D8%A7%D8%AA/%D8%B5%D9%84%D9%88%D8%A7%D8%AA-%D9%8A%D9%88%D9%85%D9%8A%D8%A9/",
+    "jerusalem_jordan_churches": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+    "jerusalem_west_bank_churches": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+    "orthodox_tv": "https://orthodoxjo.tv/",
+    "jerusalem_live": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1-%D8%B1%D8%A7%D8%AF%D9%8A%D9%88-%D8%A8%D8%B7%D8%B1%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D8%A7%D9%84%D8%B1%D9%88%D9%85-%D8%A7/",
+    "oca_2026_08_10": "https://www.oca.org/readings/daily/2026/08/10"
+  },
+  "metrics": {
+    "calendar_days": 9131,
+    "reading_counts": {
+      "epistle": 182,
+      "gospel": 182,
+      "matins_gospel": 22
+    },
+    "generic_commemoration_days": 6987,
+    "meaningful_occasion_days": 2144,
+    "fast_days": 4817,
+    "church_groups": {
+      "jordan": 42,
+      "palestine": 9,
+      "jerusalem": 6
+    },
+    "church_total": 57,
+    "church_service_pending_full_text": {
+      "ar": 13,
+      "en": 13,
+      "el": 13
+    },
+    "official_daily_prayer_links": 4,
+    "arabic_church_build_rights_pending": 10
+  },
+  "checks": [
+    {
+      "id": "home_date",
+      "title": "Home date + old calendar",
+      "status": "PASS",
+      "evidence": "9131 civil days are precomputed for 2026-01-01..2050-12-31 with julian_date.",
+      "action": ""
+    },
+    {
+      "id": "prayer_of_day",
+      "title": "Prayer of the Day by local time",
+      "status": "FIXED_R62",
+      "evidence": "Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_prayer 17:30-21:29, small_compline otherwise, using Asia/Amman time.",
+      "action": ""
+    },
+    {
+      "id": "fasting",
+      "title": "Fasting state and food-rule type",
+      "status": "PASS_WITH_SCOPE",
+      "evidence": "4817/9131 days are marked fasting; codes include {'wine_oil': 861, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 535}. Exact abstinence clock times are intentionally not invented.",
+      "action": "Keep fail-closed behavior for abstinence start/end unless an official dated source states it."
+    },
+    {
+      "id": "commemorations",
+      "title": "Daily commemorations through 2050",
+      "status": "INCOMPLETE",
+      "evidence": "2144 days contain explicit occasion entries; 6987 days still use generic date-based commemoration wording.",
+      "action": "Import a verified annual Jerusalem/Jordan native commemoration corpus; do not AI-generate saint names."
+    },
+    {
+      "id": "daily_readings",
+      "title": "Daily Epistle/Gospel coverage through 2050",
+      "status": "INCOMPLETE",
+      "evidence": "Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.",
+      "action": "Build/verify a full Jerusalem-compatible regular lectionary and fixed-feast override corpus before claiming 2050 completeness."
+    },
+    {
+      "id": "current_reading_sample",
+      "title": "2026-08-10 reading spot check",
+      "status": "PASS",
+      "evidence": "Internal refs are 2 Corinthians 2:4-15 and Matthew 23:13-22; this date was cross-checked against the official OCA daily lectionary as a lower-priority regular-cycle authority.",
+      "action": ""
+    },
+    {
+      "id": "daily_prayers",
+      "title": "Daily prayer library",
+      "status": "PARTIAL_WITH_OFFICIAL_LINKS",
+      "evidence": "Arabic embedded core: morning 5 segments; evening 4; small compline 15; before/after food present; pre/post Communion are exact recovered native editions. 4 additional official Jordan daily-prayer links are exposed without repackaging their text.",
+      "action": "Import additional native texts only when redistribution permission is recorded; until then keep official-link-only behavior."
+    },
+    {
+      "id": "orthros_ar",
+      "title": "Arabic Orthros / Matins",
+      "status": "INCOMPLETE_FAIL_CLOSED",
+      "evidence": "Raw Arabic source is BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED; the reader uses a safe core and does not display broken OCR.",
+      "action": "Requires a clean authorized Arabic native edition; do not AI-correct OCR."
+    },
+    {
+      "id": "vespers_ar",
+      "title": "Arabic Vespers",
+      "status": "PARTIAL",
+      "evidence": "Arabic library has 45 segments / 9787 chars from the historical Arabic source, but no recovered exact-native-lane audit marks it complete.",
+      "action": "Replace/verify against a clean authorized Jerusalem/Jordan Arabic edition."
+    },
+    {
+      "id": "small_compline_ar",
+      "title": "Arabic Small Compline",
+      "status": "PARTIAL",
+      "evidence": "Arabic library has 15 segments / 4511 chars; English and Greek have substantially larger exact native imports.",
+      "action": "Replace/verify against a clean authorized Arabic native edition."
+    },
+    {
+      "id": "divine_liturgy",
+      "title": "Divine Liturgy",
+      "status": "PASS_WITH_READER_OVERLAY",
+      "evidence": "Arabic Divine Liturgy is COMPLETE_NATIVE_SOURCE_COMPILATION with 198 source segments. Optional quiet believer prayers remain a reader overlay, not part of the canonical-text hash.",
+      "action": ""
+    },
+    {
+      "id": "church_services",
+      "title": "Church-service section",
+      "status": "CATALOG_COMPLETE_TEXT_INCOMPLETE",
+      "evidence": "13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest has 10/10 registered web sources whose redistribution is not confirmed; R62 blocks bundling them and exposes official links instead.",
+      "action": "Do not label catalog/reference cards as complete services until native full texts are imported and gated. Public-domain/CC-BY lanes may still generate full text at build time where their registered rights permit it."
+    },
+    {
+      "id": "church_directory",
+      "title": "Church directory",
+      "status": "PARTIAL_WITH_FULL_DIRECTORY_LINKS",
+      "evidence": "Packaged directory has 57 entries grouped as {'jordan': 42, 'palestine': 9, 'jerusalem': 6}: the Jordan list and West Bank list are expanded from the official directories, while Jerusalem/Holy Land currently contains selected major entries plus direct links to the complete official Patriarchate directories. No clergy phone numbers are republished.",
+      "action": "Do not claim every Holy Land church/monastery is individually packaged until the official Jerusalem and outside-Jerusalem lists are fully normalized."
+    },
+    {
+      "id": "live",
+      "title": "Official live resources",
+      "status": "FIXED_R62",
+      "evidence": "3 verified official portal/radio links are packaged; unverified direct/stale links were removed from the visible Live section.",
+      "action": ""
+    },
+    {
+      "id": "language_isolation",
+      "title": "Arabic / English / Greek isolation",
+      "status": "PASS_GATE_REQUIRED",
+      "evidence": "All newly added directory metadata contains independent ar/en/el values; existing localization gate remains authoritative.",
+      "action": ""
+    }
+  ],
+  "release_claim": "AUDITED_WITH_KNOWN_CONTENT_GAPS; NOT A 100_PERCENT_CONTENT_COMPLETENESS CLAIM"
+}

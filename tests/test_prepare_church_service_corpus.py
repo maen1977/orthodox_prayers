@@ -40,11 +40,11 @@ def test_prefetch_deduplicates_shared_source_and_preserves_lane(monkeypatch, tmp
     manifest = {
         'languages': {
             'en': {'services': [
-                {'id':'a','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text'},
-                {'id':'b','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text'},
+                {'id':'a','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text','permission_confirmed':True,'redistribution_review_required':False},
+                {'id':'b','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text','permission_confirmed':True,'redistribution_review_required':False},
             ]},
             'el': {'services': [
-                {'id':'c','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text'},
+                {'id':'c','url':'https://example.test/book.txt','source_transport':'public_domain_plain_text','permission_confirmed':True,'redistribution_review_required':False},
             ]},
         }
     }

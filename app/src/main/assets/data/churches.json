@@ -1,32 +1,162 @@
 {
-  "schema_version": 1,
-  "date_iso": "2026-07-17",
-  "authority": "orthodox_jordan",
-  "directory_url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
-  "status": "seed_fallback",
-  "reason": "live official directory was not checked",
-  "count": 5,
-  "rights_mode": "official names and links only; schedules remain live-page data",
+  "schema_version": 2,
+  "date_iso": "2026-08-10",
+  "authority": "jerusalem_patriarchate_and_orthodox_jordan",
+  "status": "official_directory_audited",
+  "reason": "R62 full-app audit: official names grouped by Jordan, Palestine/West Bank, and Jerusalem/Holy Land. Individual parish URLs are used only when already verified; otherwise the official directory page is opened.",
+  "count": 57,
+  "rights_mode": "official names and source links; no clergy personal contact data is republished",
+  "source_directories": [
+    {
+      "id": "orthodox_jordan_churches",
+      "title": {
+        "ar": "دليل كنائس مطرانية الأردن",
+        "en": "Orthodox Jordan church directory",
+        "el": "Κατάλογος ναῶν Μητροπόλεως Ἰορδανίας"
+      },
+      "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/"
+    },
+    {
+      "id": "jerusalem_jordan_churches",
+      "title": {
+        "ar": "دليل بطريركية القدس — كنائس الأردن",
+        "en": "Jerusalem Patriarchate — Jordan churches",
+        "el": "Πατριαρχεῖον Ἱεροσολύμων — ναοὶ Ἰορδανίας"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86"
+    },
+    {
+      "id": "jerusalem_west_bank_churches",
+      "title": {
+        "ar": "دليل بطريركية القدس — كنائس الضفة الغربية",
+        "en": "Jerusalem Patriarchate — West Bank churches",
+        "el": "Πατριαρχεῖον Ἱεροσολύμων — ναοὶ Δυτικῆς Ὄχθης"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/"
+    },
+    {
+      "id": "jerusalem_city_churches",
+      "title": {
+        "ar": "كنائس وأديرة القدس — الدليل الرسمي",
+        "en": "Jerusalem churches and monasteries — official directory",
+        "el": "Ναοὶ καὶ μοναστήρια Ἱεροσολύμων — ἐπίσημος κατάλογος"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D9%84%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AF%D8%A7%D8%AE%D9%84-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3"
+    },
+    {
+      "id": "holy_land_outside_jerusalem",
+      "title": {
+        "ar": "كنائس وأديرة خارج القدس — الدليل الرسمي",
+        "en": "Churches and monasteries outside Jerusalem — official directory",
+        "el": "Ναοὶ καὶ μοναστήρια ἐκτὸς Ἱεροσολύμων — ἐπίσημος κατάλογος"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9%D8%A1%D8%B5"
+    }
+  ],
   "churches": [
     {
-      "id": "annunciation_cathedral_abdali",
+      "id": "jordan_682b3a2485ee",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
       "name": {
-        "ar": "كاتدرائية البشارة للروم الأرثوذكس — العبدلي",
-        "en": "Annunciation Greek Orthodox Cathedral — Abdali",
-        "el": "Καθεδρικὸς Εὐαγγελισμοῦ — Ἀμπντάλι"
+        "ar": "دير القديس نكتاريوس — الصويفية",
+        "en": "Saint Nectarios Monastery — Sweifieh",
+        "el": "Μονὴ Ἁγίου Νεκταρίου — Σουεϊφιέ"
       },
       "city": {
         "ar": "عمّان",
         "en": "Amman",
         "el": "Ἀμμάν"
       },
-      "url": "https://orthodoxjordan.org/%D9%83%D8%A7%D8%AA%D8%AF%D8%B1%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%B4%D8%A7%D8%B1%D8%A9-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%A7%D9%84/"
+      "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
+      "link_kind": "official_directory_entry",
+      "source_id": "orthodox_jordan_official_directory",
+      "verified_on": "2026-08-10"
     },
     {
-      "id": "ascension_khalda",
+      "id": "jordan_a648825ac275",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
       "name": {
-        "ar": "كنيسة الصعود الإلهي للروم الأرثوذكس — خلدا",
-        "en": "Holy Ascension Greek Orthodox Church — Khalda",
+        "ar": "كاتدرائية دخول السيد إلى الهيكل — الصويفية",
+        "en": "Presentation of the Lord Cathedral — Sweifieh",
+        "el": "Καθεδρικὸς Εἰσοδίων τοῦ Κυρίου — Σουεϊφιέ"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_06dbd2bb583c",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كاتدرائية بشارة والدة الإله — العبدلي",
+        "en": "Annunciation of the Theotokos Cathedral — Abdali",
+        "el": "Καθεδρικὸς Εὐαγγελισμοῦ τῆς Θεοτόκου — Ἀμπντάλι"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://orthodoxjordan.org/%D9%83%D8%A7%D8%AA%D8%AF%D8%B1%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%B4%D8%A7%D8%B1%D8%A9-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%A7%D9%84/",
+      "link_kind": "official_parish_page",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_a26ff812b6e6",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة تجلي المخلص — البلد القديمة",
+        "en": "Church of the Transfiguration of the Saviour — Old Amman",
+        "el": "Ναὸς Μεταμορφώσεως τοῦ Σωτῆρος — παλαιὰ Ἀμμάν"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%85%D8%AE%D9%84%D8%B5-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D9%88%D8%B3%D8%B7-%D8%A7%D9%84%D8%A8%D9%84/",
+      "link_kind": "official_parish_page",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_6e8f06def55f",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة الصعود الإلهي — خلدا",
+        "en": "Holy Ascension Church — Khalda",
         "el": "Ναὸς Θείας Ἀναλήψεως — Χάλντα"
       },
       "city": {
@@ -34,78 +164,1238 @@
         "en": "Amman",
         "el": "Ἀμμάν"
       },
-      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D8%B5%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D8%A7%D9%84%D9%87%D9%8A-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%AE/"
+      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D8%B5%D8%B9%D9%88%D8%AF-%D8%A7%D9%84%D8%A7%D9%84%D9%87%D9%8A-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D8%AE/",
+      "link_kind": "official_parish_page",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
     },
     {
-      "id": "saviour_downtown",
+      "id": "jordan_0e1b698f7f27",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
       "name": {
-        "ar": "كنيسة المخلّص للروم الأرثوذكس — وسط البلد",
-        "en": "Saviour Greek Orthodox Church — Downtown Amman",
-        "el": "Ναὸς Μεταμορφώσεως — κέντρο Ἀμμάν"
+        "ar": "كنيسة النبي إيليا والقديسة بربارة — أبو نصير",
+        "en": "Prophet Elijah and Saint Barbara Church — Abu Nseir",
+        "el": "Ναὸς Προφήτου Ἠλιοὺ καὶ Ἁγίας Βαρβάρας — Ἀμπού Νσεΐρ"
       },
       "city": {
         "ar": "عمّان",
         "en": "Amman",
         "el": "Ἀμμάν"
       },
-      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%85%D8%AE%D9%84%D8%B5-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3-%D9%88%D8%B3%D8%B7-%D8%A7%D9%84%D8%A8%D9%84/"
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
     },
     {
-      "id": "st_george_anjara",
+      "id": "jordan_e9e1fe38b676",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
       "name": {
-        "ar": "كنيسة القديس جاورجيوس للروم الأرثوذكس — عنجرة",
-        "en": "Saint George Greek Orthodox Church — Anjara",
-        "el": "Ναὸς Ἁγίου Γεωργίου — Ἄντζαρα"
+        "ar": "كنيسة ميلاد السيدة العذراء — جبل التاج",
+        "en": "Nativity of the Theotokos Church — Jabal al-Taj",
+        "el": "Ναὸς Γεννήσεως τῆς Θεοτόκου — Τζάμπαλ ἀτ-Τάζ"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_960cbc41d182",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — الجبل الهاشمي",
+        "en": "Saint George Church — Jabal al-Hashimi",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Τζάμπαλ ἀλ-Χασίμι"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_dca846a5f296",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس نيقولاوس — ماركا",
+        "en": "Saint Nicholas Church — Marka",
+        "el": "Ναὸς Ἁγίου Νικολάου — Μάρκα"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_02acdac283cb",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديسين قسطنطين وهيلانة — مرج الحمام",
+        "en": "Saints Constantine and Helen Church — Marj al-Hamam",
+        "el": "Ναὸς Ἁγίων Κωνσταντίνου καὶ Ἑλένης — Μαρτζ ἀλ-Χαμάμ"
+      },
+      "city": {
+        "ar": "عمّان",
+        "en": "Amman",
+        "el": "Ἀμμάν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_46ece1e3779f",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس — الفحيص",
+        "en": "Saint George Monastery — Fuheis",
+        "el": "Μονὴ Ἁγίου Γεωργίου — Φουχάις"
+      },
+      "city": {
+        "ar": "الفحيص",
+        "en": "Fuheis",
+        "el": "Φουχάις"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_14ea61e974e8",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس يعقوب أخو الرب — العلالي",
+        "en": "Saint James the Brother of the Lord Church — Al-Alali",
+        "el": "Ναὸς Ἁγίου Ἰακώβου τοῦ Ἀδελφοθέου — Ἀλ-Ἀλάλι"
+      },
+      "city": {
+        "ar": "الفحيص",
+        "en": "Fuheis",
+        "el": "Φουχάις"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_b157823ab3d0",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "مزار القديس جاورجيوس — ماحص",
+        "en": "Saint George Shrine — Mahes",
+        "el": "Προσκύνημα Ἁγίου Γεωργίου — Μάχες"
+      },
+      "city": {
+        "ar": "الفحيص",
+        "en": "Fuheis",
+        "el": "Φουχάις"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_05f2f89e2701",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس الأثرية — الفحيص",
+        "en": "Ancient Saint George Church — Fuheis",
+        "el": "Παλαιὸς Ναὸς Ἁγίου Γεωργίου — Φουχάις"
+      },
+      "city": {
+        "ar": "الفحيص",
+        "en": "Fuheis",
+        "el": "Φουχάις"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_380e185acad0",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة رقاد والدة الإله — السلط",
+        "en": "Dormition of the Theotokos Church — Salt",
+        "el": "Ναὸς Κοιμήσεως τῆς Θεοτόκου — Ἀς-Σαλτ"
+      },
+      "city": {
+        "ar": "السلط",
+        "en": "Salt",
+        "el": "Ἀς-Σαλτ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_43177e647c59",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس الأثرية (مزار الخضر) — السلط",
+        "en": "Ancient Saint George Church (Al-Khader Shrine) — Salt",
+        "el": "Παλαιὸς Ναὸς Ἁγίου Γεωργίου — Ἀς-Σαλτ"
+      },
+      "city": {
+        "ar": "السلط",
+        "en": "Salt",
+        "el": "Ἀς-Σαλτ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_db7128112c9c",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة التجلي الأثرية — السلط",
+        "en": "Ancient Transfiguration Church — Salt",
+        "el": "Παλαιὸς Ναὸς Μεταμορφώσεως — Ἀς-Σαλτ"
+      },
+      "city": {
+        "ar": "السلط",
+        "en": "Salt",
+        "el": "Ἀς-Σαλτ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_919e0b0db495",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة رقاد والدة الإله — الرميمين",
+        "en": "Dormition of the Theotokos Church — Rmeimin",
+        "el": "Ναὸς Κοιμήσεως τῆς Θεοτόκου — Ρουμαϊμίν"
+      },
+      "city": {
+        "ar": "الرميمين",
+        "en": "Rmeimin",
+        "el": "Ρουμαϊμίν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_3a245f2d1137",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — صافوط",
+        "en": "Saint George Church — Safout",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Σαφούτ"
+      },
+      "city": {
+        "ar": "صافوط",
+        "en": "Safout",
+        "el": "Σαφούτ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_efb38b2bae3f",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس — الزرقاء",
+        "en": "Saint George Monastery — Zarqa",
+        "el": "Μονὴ Ἁγίου Γεωργίου — Ζάρκα"
+      },
+      "city": {
+        "ar": "الزرقاء",
+        "en": "Zarqa",
+        "el": "Ζάρκα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_81ef6c4584d5",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس — إربد",
+        "en": "Saint George Monastery — Irbid",
+        "el": "Μονὴ Ἁγίου Γεωργίου — Ἰρμπίντ"
+      },
+      "city": {
+        "ar": "إربد",
+        "en": "Irbid",
+        "el": "Ἰρμπίντ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_8381a2eda9c8",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — الحصن",
+        "en": "Saint George Church — Al-Husn",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Ἀλ-Χουσν"
+      },
+      "city": {
+        "ar": "الحصن",
+        "en": "Al-Husn",
+        "el": "Ἀλ-Χουσν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_f7ed00c773cc",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس نيقولاوس — الصريح",
+        "en": "Saint Nicholas Church — Al-Sarih",
+        "el": "Ναὸς Ἁγίου Νικολάου — Ἀς-Σαρίχ"
+      },
+      "city": {
+        "ar": "الصريح",
+        "en": "Al-Sarih",
+        "el": "Ἀς-Σαρίχ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_9837c663d166",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — شطنا",
+        "en": "Saint George Church — Shatna",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Σάτνα"
+      },
+      "city": {
+        "ar": "شطنا",
+        "en": "Shatna",
+        "el": "Σάτνα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_4124dda3a2ad",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس — عجلون",
+        "en": "Saint George Monastery — Ajloun",
+        "el": "Μονὴ Ἁγίου Γεωργίου — Ἀτζλοῦν"
       },
       "city": {
         "ar": "عجلون",
         "en": "Ajloun",
         "el": "Ἀτζλοῦν"
       },
-      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%B3-%D8%AC%D8%A7%D9%88%D8%B1%D8%AC%D9%8A%D9%88%D8%B3-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-5/"
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
     },
     {
-      "id": "dormition_mafraq",
+      "id": "jordan_a8a35ea0b0a1",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
       "name": {
-        "ar": "كنيسة رقاد والدة الإله للروم الأرثوذكس — المفرق",
-        "en": "Dormition Greek Orthodox Church — Mafraq",
-        "el": "Ναὸς Κοιμήσεως Θεοτόκου — Μάφρακ"
+        "ar": "كنيسة الروح القدس — عجلون",
+        "en": "Holy Spirit Church — Ajloun",
+        "el": "Ναὸς Ἁγίου Πνεύματος — Ἀτζλοῦν"
+      },
+      "city": {
+        "ar": "عجلون",
+        "en": "Ajloun",
+        "el": "Ἀτζλοῦν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_5919a4ea3a8e",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "مزار النبي إيليا — لستب",
+        "en": "Prophet Elijah Shrine — Listib",
+        "el": "Προσκύνημα Προφήτου Ἠλιοὺ — Λιστίμπ"
+      },
+      "city": {
+        "ar": "عجلون",
+        "en": "Ajloun",
+        "el": "Ἀτζλοῦν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_64303ba0eaa5",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — عنجرة",
+        "en": "Saint George Church — Anjara",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Ἄντζαρα"
+      },
+      "city": {
+        "ar": "عنجرة",
+        "en": "Anjara",
+        "el": "Ἄντζαρα"
+      },
+      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%B3-%D8%AC%D8%A7%D9%88%D8%B1%D8%AC%D9%8A%D9%88%D8%B3-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-5/",
+      "link_kind": "official_parish_page",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_4dd148a7f9f7",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة النبي إيليا — الوهادنة",
+        "en": "Prophet Elijah Church — Wahadneh",
+        "el": "Ναὸς Προφήτου Ἠλιοὺ — Ἀλ-Οὐαχάντνα"
+      },
+      "city": {
+        "ar": "الوهادنة",
+        "en": "Wahadneh",
+        "el": "Ἀλ-Οὐαχάντνα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_29a26d26a579",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة رقاد والدة الإله — المفرق",
+        "en": "Dormition of the Theotokos Church — Mafraq",
+        "el": "Ναὸς Κοιμήσεως τῆς Θεοτόκου — Μάφρακ"
       },
       "city": {
         "ar": "المفرق",
         "en": "Mafraq",
         "el": "Μάφρακ"
       },
-      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%B1%D9%82%D8%A7%D8%AF-%D9%88%D8%A7%D9%84%D8%AF%D8%A9-%D8%A7%D9%84%D8%A7%D9%84%D9%87-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-2/"
+      "url": "https://orthodoxjordan.org/%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D8%B1%D9%82%D8%A7%D8%AF-%D9%88%D8%A7%D9%84%D8%AF%D8%A9-%D8%A7%D9%84%D8%A7%D9%84%D9%87-%D9%84%D9%84%D8%B1%D9%88%D9%85-%D8%A7%D9%84%D8%A7%D8%B1%D8%AB%D9%88%D8%B0%D9%83-2/",
+      "link_kind": "official_parish_page",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_12d72af0e67d",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — جرش",
+        "en": "Saint George Church — Jerash",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Γέρασα"
+      },
+      "city": {
+        "ar": "جرش",
+        "en": "Jerash",
+        "el": "Γέρασα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_29d39d11d51d",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "مزار القديس جاورجيوس — سوف",
+        "en": "Saint George Shrine — Souf",
+        "el": "Προσκύνημα Ἁγίου Γεωργίου — Σουφ"
+      },
+      "city": {
+        "ar": "سوف",
+        "en": "Souf",
+        "el": "Σουφ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_08a6baa6daee",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس (الخارطة) — مأدبا",
+        "en": "Saint George Monastery (Map Church) — Madaba",
+        "el": "Μονὴ Ἁγίου Γεωργίου (Χάρτης) — Μάδαβα"
+      },
+      "city": {
+        "ar": "مأدبا",
+        "en": "Madaba",
+        "el": "Μάδαβα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_f63ab650fc48",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة رقاد والدة الإله — حنينا",
+        "en": "Dormition of the Theotokos Church — Hanina",
+        "el": "Ναὸς Κοιμήσεως τῆς Θεοτόκου — Χανίνα"
+      },
+      "city": {
+        "ar": "مأدبا",
+        "en": "Madaba",
+        "el": "Μάδαβα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_8200bdc109f0",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "مزار القديس يوحنا المعمدان — ماعين",
+        "en": "Saint John the Baptist Shrine — Ma’in",
+        "el": "Προσκύνημα Ἁγίου Ἰωάννου τοῦ Βαπτιστοῦ — Μαΐν"
+      },
+      "city": {
+        "ar": "ماعين",
+        "en": "Ma’in",
+        "el": "Μαΐν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_ed0a6e908611",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس — الكرك",
+        "en": "Saint George Monastery — Karak",
+        "el": "Μονὴ Ἁγίου Γεωργίου — Κάρακ"
+      },
+      "city": {
+        "ar": "الكرك",
+        "en": "Karak",
+        "el": "Κάρακ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_ca03ebeb4e98",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — أدر",
+        "en": "Saint George Church — Adir",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Ἀντίρ"
+      },
+      "city": {
+        "ar": "أدر",
+        "en": "Adir",
+        "el": "Ἀντίρ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_ce8b8eff6948",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — حمود",
+        "en": "Saint George Church — Hamoud",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Χαμούντ"
+      },
+      "city": {
+        "ar": "حمود",
+        "en": "Hamoud",
+        "el": "Χαμούντ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_249bb9b04923",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — الربة",
+        "en": "Saint George Church — Rabba",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Ἀρ-Ράμπα"
+      },
+      "city": {
+        "ar": "الربة",
+        "en": "Rabba",
+        "el": "Ἀρ-Ράμπα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_0f87f47387f9",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "كنيسة القديس نيقولاوس — العقبة",
+        "en": "Saint Nicholas Church — Aqaba",
+        "el": "Ναὸς Ἁγίου Νικολάου — Ἄκαμπα"
+      },
+      "city": {
+        "ar": "العقبة",
+        "en": "Aqaba",
+        "el": "Ἄκαμπα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_af17302802e0",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "مزار القديس جاورجيوس — الطيبة",
+        "en": "Saint George Shrine — Taybeh, Jordan",
+        "el": "Προσκύνημα Ἁγίου Γεωργίου — Ἀτ-Ταΐμπα"
+      },
+      "city": {
+        "ar": "الطيبة - الأردن",
+        "en": "Taybeh — Jordan",
+        "el": "Ἀτ-Ταΐμπα — Ἰορδανία"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jordan_152a5213422d",
+      "country_group": "jordan",
+      "country": {
+        "ar": "المملكة الأردنية الهاشمية",
+        "en": "Hashemite Kingdom of Jordan",
+        "el": "Χασεμιτικὸ Βασίλειο τῆς Ἰορδανίας"
+      },
+      "name": {
+        "ar": "مزار القديس جاورجيوس — كفرعان",
+        "en": "Saint George Shrine — Kafran",
+        "el": "Προσκύνημα Ἁγίου Γεωργίου — Καφράν"
+      },
+      "city": {
+        "ar": "كفرعان",
+        "en": "Kafran",
+        "el": "Καφράν"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%82%D9%8A-%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_65efba842097",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة الأجداد — بيت ساحور",
+        "en": "Church of the Forefathers — Beit Sahour",
+        "el": "Ναὸς τῶν Προπατόρων — Μπεΐτ Σαχούρ"
+      },
+      "city": {
+        "ar": "بيت ساحور",
+        "en": "Beit Sahour",
+        "el": "Μπεΐτ Σαχούρ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_2feae658bc60",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — بيرزيت",
+        "en": "Saint George Church — Birzeit",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Μπιρζέιτ"
+      },
+      "city": {
+        "ar": "بيرزيت",
+        "en": "Birzeit",
+        "el": "Μπιρζέιτ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_abe76e077e06",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — جفنا",
+        "en": "Saint George Church — Jifna",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Τζίφνα"
+      },
+      "city": {
+        "ar": "جفنا",
+        "en": "Jifna",
+        "el": "Τζίφνα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_81b5a8c30a22",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — الطيبة",
+        "en": "Saint George Church — Taybeh",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Ταΐμπε"
+      },
+      "city": {
+        "ar": "الطيبة",
+        "en": "Taybeh",
+        "el": "Ταΐμπε"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_0d17355cdbdc",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة رقاد والدة الإله — عين عريك",
+        "en": "Dormition of the Theotokos Church — Ein Arik",
+        "el": "Ναὸς Κοιμήσεως τῆς Θεοτόκου — Ἄιν Ἀρίκ"
+      },
+      "city": {
+        "ar": "عين عريك",
+        "en": "Ein Arik",
+        "el": "Ἄιν Ἀρίκ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_86d2ffc95f28",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة رقاد والدة الإله — عابود",
+        "en": "Dormition of the Theotokos Church — Aboud",
+        "el": "Ναὸς Κοιμήσεως τῆς Θεοτόκου — Ἀμπούντ"
+      },
+      "city": {
+        "ar": "عابود",
+        "en": "Aboud",
+        "el": "Ἀμπούντ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_798b5769d3ef",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — طولكرم",
+        "en": "Saint George Church — Tulkarm",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Τουλκάρμ"
+      },
+      "city": {
+        "ar": "طولكرم",
+        "en": "Tulkarm",
+        "el": "Τουλκάρμ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_8b57991186c6",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة القديس جاورجيوس — الزبابدة",
+        "en": "Saint George Church — Zababdeh",
+        "el": "Ναὸς Ἁγίου Γεωργίου — Ζαμπάμπντε"
+      },
+      "city": {
+        "ar": "الزبابدة",
+        "en": "Zababdeh",
+        "el": "Ζαμπάμπντε"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "palestine_d3f3368f9d0a",
+      "country_group": "palestine",
+      "country": {
+        "ar": "فلسطين — الضفة الغربية",
+        "en": "Palestine — West Bank",
+        "el": "Παλαιστίνη — Δυτικὴ Ὄχθη"
+      },
+      "name": {
+        "ar": "كنيسة الثالوث الأقدس — طوباس",
+        "en": "Holy Trinity Church — Tubas",
+        "el": "Ναὸς Ἁγίας Τριάδος — Τουμπάς"
+      },
+      "city": {
+        "ar": "طوباس",
+        "en": "Tubas",
+        "el": "Τουμπάς"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B6%D9%81%D8%A9-%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9/",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jerusalem_5ddab5ec3d71",
+      "country_group": "jerusalem",
+      "country": {
+        "ar": "القدس والأراضي المقدسة",
+        "en": "Jerusalem and the Holy Land",
+        "el": "Ἱεροσόλυμα καὶ Ἅγιοι Τόποι"
+      },
+      "name": {
+        "ar": "كاتدرائية القديس يعقوب أخو الرب — القدس",
+        "en": "Saint James the Brother of the Lord Cathedral — Jerusalem",
+        "el": "Καθεδρικὸς Ἁγίου Ἰακώβου τοῦ Ἀδελφοθέου — Ἱεροσόλυμα"
+      },
+      "city": {
+        "ar": "القدس",
+        "en": "Jerusalem",
+        "el": "Ἱεροσόλυμα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D9%84%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AF%D8%A7%D8%AE%D9%84-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jerusalem_5c82c4edaed1",
+      "country_group": "jerusalem",
+      "country": {
+        "ar": "القدس والأراضي المقدسة",
+        "en": "Jerusalem and the Holy Land",
+        "el": "Ἱεροσόλυμα καὶ Ἅγιοι Τόποι"
+      },
+      "name": {
+        "ar": "كنيسة الرجال الجليليين — جبل الزيتون",
+        "en": "Church of the Men of Galilee — Mount of Olives",
+        "el": "Ναὸς Ἀνδρῶν Γαλιλαίων — Ὄρος Ἐλαιῶν"
+      },
+      "city": {
+        "ar": "القدس",
+        "en": "Jerusalem",
+        "el": "Ἱεροσόλυμα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D9%84%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AF%D8%A7%D8%AE%D9%84-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jerusalem_fb5d41429ba8",
+      "country_group": "jerusalem",
+      "country": {
+        "ar": "القدس والأراضي المقدسة",
+        "en": "Jerusalem and the Holy Land",
+        "el": "Ἱεροσόλυμα καὶ Ἅγιοι Τόποι"
+      },
+      "name": {
+        "ar": "دير القديس سابا المتقدس",
+        "en": "Lavra of Saint Sabbas the Sanctified",
+        "el": "Λαύρα Ἁγίου Σάββα τοῦ Ἡγιασμένου"
+      },
+      "city": {
+        "ar": "بيت لحم",
+        "en": "Bethlehem",
+        "el": "Βηθλεέμ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9%D8%A1%D8%B5",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jerusalem_f52af0f5bb49",
+      "country_group": "jerusalem",
+      "country": {
+        "ar": "القدس والأراضي المقدسة",
+        "en": "Jerusalem and the Holy Land",
+        "el": "Ἱεροσόλυμα καὶ Ἅγιοι Τόποι"
+      },
+      "name": {
+        "ar": "دير القديس جاورجيوس الخوزيفي — وادي القلط",
+        "en": "Saint George of Choziba Monastery — Wadi Qelt",
+        "el": "Μονὴ Ἁγίου Γεωργίου Χοζεβίτου — Οὐάδι Κελτ"
+      },
+      "city": {
+        "ar": "أريحا",
+        "en": "Jericho",
+        "el": "Ἱεριχώ"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9%D8%A1%D8%B5",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jerusalem_4e55e0eb962d",
+      "country_group": "jerusalem",
+      "country": {
+        "ar": "القدس والأراضي المقدسة",
+        "en": "Jerusalem and the Holy Land",
+        "el": "Ἱεροσόλυμα καὶ Ἅγιοι Τόποι"
+      },
+      "name": {
+        "ar": "دير بئر يعقوب — نابلس",
+        "en": "Jacob’s Well Monastery — Nablus",
+        "el": "Μονὴ Φρέατος τοῦ Ἰακώβ — Νάμπλους"
+      },
+      "city": {
+        "ar": "نابلس",
+        "en": "Nablus",
+        "el": "Νάμπλους"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9%D8%A1%D8%B5",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
+    },
+    {
+      "id": "jerusalem_30aad3eaf6dc",
+      "country_group": "jerusalem",
+      "country": {
+        "ar": "القدس والأراضي المقدسة",
+        "en": "Jerusalem and the Holy Land",
+        "el": "Ἱεροσόλυμα καὶ Ἅγιοι Τόποι"
+      },
+      "name": {
+        "ar": "دير تجلي المخلص — رام الله",
+        "en": "Transfiguration of the Saviour Monastery — Ramallah",
+        "el": "Μονὴ Μεταμορφώσεως τοῦ Σωτῆρος — Ραμάλλα"
+      },
+      "city": {
+        "ar": "رام الله",
+        "en": "Ramallah",
+        "el": "Ραμάλλα"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/%D9%83%D9%86%D8%A7%D8%A6%D8%B3-%D9%88%D8%A7%D8%AF%D9%8A%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D9%82%D8%AF%D8%B3%D8%A9%D8%A1%D8%B5",
+      "link_kind": "official_directory_entry",
+      "source_id": "jerusalem_patriarchate_official_directory",
+      "verified_on": "2026-08-10"
     }
   ],
   "live_resources": [
     {
-      "id": "orthodox_jordan_tv_live",
+      "id": "orthodox_tv_official",
       "title": {
-        "ar": "المحطة الأرثوذكسية الأردنية — مباشر",
-        "en": "Orthodox Jordan TV — Live",
-        "el": "Ὀρθόδοξη Τηλεόραση Ἰορδανίας — Ζωντανά"
+        "ar": "المحطة الأرثوذكسية الرسمية — الأردن وفلسطين",
+        "en": "Official Orthodox TV — Jordan and Palestine",
+        "el": "Ἐπίσημος Ὀρθόδοξος Τηλεοπτικὸς Σταθμός — Ἰορδανία καὶ Παλαιστίνη"
       },
-      "url": "https://orthodoxjo.tv/video/orthodox-station/"
+      "url": "https://orthodoxjo.tv/",
+      "status": "verified_official_2026_08_10"
     },
     {
-      "id": "orthodox_jordan_live_fallback",
+      "id": "orthodox_tv_radio",
       "title": {
-        "ar": "البث الرسمي لمطرانية الأردن — رابط احتياطي",
-        "en": "Orthodox Jordan Metropolis live page — fallback",
-        "el": "Σελίδα ζωντανῆς μεταδόσεως Μητροπόλεως Ἰορδανίας — ἐφεδρική"
+        "ar": "إذاعة صوت الكنيسة — بث رسمي",
+        "en": "Voice of the Church Radio — official stream",
+        "el": "Ραδιόφωνο «Φωνὴ τῆς Ἐκκλησίας» — ἐπίσημη μετάδοση"
       },
-      "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
+      "url": "https://orthodoxjo.tv/audio/%D8%B5%D9%88%D8%AA-%D8%A7%D9%84%D9%83%D9%86%D9%8A%D8%B3%D8%A9/",
+      "status": "verified_official_2026_08_10"
     },
     {
-      "id": "orthodox_jordan_calendar",
+      "id": "jerusalem_patriarchate_radio",
       "title": {
-        "ar": "الرزنامة الكنسية الرسمية",
-        "en": "Official church calendar",
-        "el": "Ἐπίσημο ἐκκλησιαστικὸ ἡμερολόγιο"
+        "ar": "راديو بطريركية القدس — البث المباشر الرسمي",
+        "en": "Jerusalem Patriarchate Radio — official live page",
+        "el": "Ραδιόφωνο Πατριαρχείου Ἱεροσολύμων — ἐπίσημη ζωντανὴ σελίδα"
       },
-      "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%B1%D8%B2%D9%86%D8%A7%D9%85%D8%A9-%D8%A7%D9%84%D9%83%D9%86%D8%B3%D9%8A%D8%A9/"
+      "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1-%D8%B1%D8%A7%D8%AF%D9%8A%D9%88-%D8%A8%D8%B7%D8%B1%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D8%A7%D9%84%D8%B1%D9%88%D9%85-%D8%A7/",
+      "status": "verified_official_2026_08_10"
     }
   ]
 }

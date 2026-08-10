@@ -73,6 +73,7 @@ public final class DataRepository {
     private JSONObject fallbackServiceCoverage;
     private JSONObject religiousCompleteness;
     private JSONObject calendarIndex;
+    private JSONObject officialPrayerResources;
     private int loadedCalendarYear = -1;
     private JSONObject rollingWeekPackage = new JSONObject();
     private final Map<String, JSONObject> calendarByDate = new LinkedHashMap<>();
@@ -114,6 +115,7 @@ public final class DataRepository {
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
         calendarIndex = loadJsonAsset("data/calendar/calendar_index.json");
+        officialPrayerResources = loadJsonAsset("data/official_prayer_resources.json");
         // Keep startup light on older devices. The immutable annual calendar is
         // loaded only when a calendar screen or a dated lookup requests it.
         activatePackage(loadBestToday());
@@ -359,6 +361,11 @@ public final class DataRepository {
 
     public JSONArray officialLiveResources() {
         JSONArray resources = churchDirectory().optJSONArray("live_resources");
+        return resources == null ? new JSONArray() : resources;
+    }
+
+    public JSONArray officialChurchDirectoryResources() {
+        JSONArray resources = churchDirectory().optJSONArray("source_directories");
         return resources == null ? new JSONArray() : resources;
     }
 
@@ -716,6 +723,26 @@ public final class DataRepository {
             Log.w(TAG, "Could not compose built-in Church Service " + id, error);
         }
         return service;
+    }
+
+    public JSONArray officialPrayerResources(String language) {
+        JSONArray all = officialPrayerResources == null ? null : officialPrayerResources.optJSONArray("resources");
+        JSONArray result = new JSONArray();
+        if (all == null) return result;
+        String normalized = normalizeAssetLanguage(language);
+        for (int i = 0; i < all.length(); i++) {
+            JSONObject item = all.optJSONObject(i);
+            if (item == null) continue;
+            JSONArray languages = item.optJSONArray("languages");
+            boolean allowed = languages == null || languages.length() == 0;
+            if (languages != null) {
+                for (int j = 0; j < languages.length(); j++) {
+                    if (normalized.equals(languages.optString(j))) { allowed = true; break; }
+                }
+            }
+            if (allowed) result.put(item);
+        }
+        return result;
     }
 
     public ArrayList<JSONObject> servicesByCategory(String category) {

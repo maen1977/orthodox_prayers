@@ -315,7 +315,7 @@
     <string name="ui_sunday_cycle_detail_format">الأحد %1$d بعد العنصرة — اللحن %2$d — الإيوثينا %3$d</string>
     <string name="ui_registered_sources_count_format">يعرض التطبيق %1$d مصدرًا مسجلًا مع حالة التحقق والحقوق.</string>
     <string name="ui_stale_trusted_copy_date_format">تظهر آخر نسخة موثوقة بتاريخ %1$s، ويجري طلب بيانات اليوم تلقائيًا.</string>
-<string name="ui_church_directory_count_format">دليل رسمي من مطرانية الأردن. عدد الروابط الحالية: %1$d. افتح صفحة الكنيسة للتأكد من مواعيد القداس الحالية.</string>
+<string name="ui_church_directory_count_format">دليل رسمي موحّد من مطرانية الأردن وبطريركية القدس. عدد الكنائس والمزارات المسجلة: %1$d. افتح المصدر الرسمي للتأكد من المواعيد الحالية.</string>
     <string name="ui_begin_your_day_with_prayer_a3c8eb48" formatted="false">ابدأ يومك بالصلاة.</string>
     <string name="ui_close_the_day_with_prayer_and_stillness_67ab7213" formatted="false">اختم يومك بالصلاة والهدوء.</string>
     <string name="ui_open_today_s_epistle_and_gospel_980e7457" formatted="false">افتح رسالة وإنجيل اليوم.</string>
@@ -374,7 +374,7 @@
     <string name="ui_bible_share_chapter">مشاركة الأصحاح</string>
     <string name="ui_bible_cannot_open_text">تعذر فتح النص المضمّن.</string>
     <string name="ui_church_service_section">خدمة كنسية</string>
-    <string name="ui_church_service_hint">خدمات طقسية كنسية ثابتة مع قراءاتها الكتابية.</string>
+    <string name="ui_church_service_hint">الخدمات هنا مُدقَّقة حسب المصدر. بعض البطاقات تعرض الفهرس والقراءات الثابتة فقط إلى أن يتوفر متن طقسي أصلي مصرح بإعادة توزيعه.</string>
 
     <!-- R57: date-aware fasting notice and old-calendar date on Home. -->
     <string name="ui_old_church_calendar_home_format">التقويم الكنسي القديم: %1$s</string>
@@ -394,4 +394,8 @@
     <string name="ui_weekday_friday">الجمعة</string>
     <string name="ui_language_and_text_settings_title">اللغة وحجم النص</string>
     <string name="ui_today_commemoration_home_format">تذكار اليوم: %1$s</string>
+    <string name="ui_official_directory_sources_r62" formatted="false">الأدلة الكنسية الرسمية</string>
+    <string name="ui_official_daily_prayer_sources_r62">صلوات يومية إضافية — المصدر الرسمي</string>
+    <string name="ui_official_source_link_only_r62">يفتح النص في المصدر الكنسي الرسمي؛ النص غير معاد نسخه داخل التطبيق.</string>
+    <string name="ui_church_service_catalog_only_r62">فهرس وقراءات ثابتة فقط — متن الخدمة الطقسي الكامل غير مضمّن بعد.</string>
 </resources>

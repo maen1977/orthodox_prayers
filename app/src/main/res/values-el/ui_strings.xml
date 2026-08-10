@@ -315,7 +315,7 @@
     <string name="ui_sunday_cycle_detail_format">Κυριακὴ %1$d μετὰ τὴν Πεντηκοστή — Ἦχος %2$d — Ἑωθινὸν %3$d</string>
     <string name="ui_registered_sources_count_format">Ἡ ἐφαρμογὴ παραθέτει %1$d καταχωρισμένες πηγὲς μὲ κατάσταση ἐπαλήθευσης καὶ δικαιωμάτων.</string>
     <string name="ui_stale_trusted_copy_date_format">Προβάλλεται τὸ τελευταῖο ἔγκυρο ἀντίγραφο τῆς %1$s· τὰ σημερινὰ δεδομένα ζητοῦνται αὐτομάτως.</string>
-<string name="ui_church_directory_count_format">Ἐπίσημος κατάλογος τῆς Ἱερᾶς Μητροπόλεως Ἰορδανίας. Τρέχοντες σύνδεσμοι: %1$d. Ἀνοίξτε τὴ σελίδα τοῦ ναοῦ γιὰ τὸ τρέχον πρόγραμμα.</string>
+<string name="ui_church_directory_count_format">Ἑνοποιημένος ἐπίσημος κατάλογος τῆς Μητροπόλεως Ἰορδανίας καὶ τοῦ Πατριαρχείου Ἱεροσολύμων. Καταχωρισμένοι ναοὶ καὶ προσκυνήματα: %1$d. Ἀνοίξτε τὴν ἐπίσημη πηγή γιὰ τὸ τρέχον πρόγραμμα.</string>
     <string name="ui_begin_your_day_with_prayer_a3c8eb48" formatted="false">Ἄρχισε τὴν ἡμέρα μὲ προσευχή.</string>
     <string name="ui_close_the_day_with_prayer_and_stillness_67ab7213" formatted="false">Κλείσε τὴν ἡμέρα μὲ προσευχή.</string>
     <string name="ui_open_today_s_epistle_and_gospel_980e7457" formatted="false">Ἄνοιξε τὸν Ἀπόστολο καὶ τὸ Εὐαγγέλιο.</string>
@@ -374,7 +374,7 @@
     <string name="ui_bible_share_chapter">Κοινοποίηση κεφαλαίου</string>
     <string name="ui_bible_cannot_open_text">Δὲν ἦταν δυνατὸ νὰ ἀνοιχθεῖ τὸ ἐνσωματωμένο κείμενο.</string>
     <string name="ui_church_service_section">Ἐκκλησιαστικὴ Ἀκολουθία</string>
-    <string name="ui_church_service_hint">Σταθερὲς ὀρθόδοξες ἀκολουθίες μὲ τὰ βιβλικὰ ἀναγνώσματά τους.</string>
+    <string name="ui_church_service_hint">Οἱ ἀκολουθίες ἐλέγχονται βάσει πηγῶν. Μερικὲς κάρτες περιέχουν μόνον τὸν κατάλογο καὶ τὰ σταθερὰ ἀναγνώσματα, ἕως ὅτου διατεθεῖ πρωτότυπο κείμενο μὲ δικαίωμα ἀναδιανομῆς.</string>
 
     <!-- R57: date-aware fasting notice and old-calendar date on Home. -->
     <string name="ui_old_church_calendar_home_format">Παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο: %1$s</string>
@@ -394,4 +394,8 @@
     <string name="ui_weekday_friday">Παρασκευή</string>
     <string name="ui_language_and_text_settings_title">Γλῶσσα καὶ μέγεθος κειμένου</string>
     <string name="ui_today_commemoration_home_format">Μνήμη τῆς ἡμέρας: %1$s</string>
+    <string name="ui_official_directory_sources_r62" formatted="false">Ἐπίσημοι ἐκκλησιαστικοὶ κατάλογοι</string>
+    <string name="ui_official_daily_prayer_sources_r62">Πρόσθετες καθημερινὲς προσευχές — ἐπίσημη πηγή</string>
+    <string name="ui_official_source_link_only_r62">Ἀνοίγει τὸ κείμενο στὴν ἐπίσημη ἐκκλησιαστικὴ πηγή· τὸ κείμενο δὲν ἀνασυσκευάζεται στὴν ἐφαρμογή.</string>
+    <string name="ui_church_service_catalog_only_r62">Μόνον κατάλογος καὶ σταθερὰ ἀναγνώσματα — τὸ πλήρες κείμενο τῆς ἀκολουθίας δὲν ἔχει ἐνσωματωθεῖ ἀκόμη.</string>
 </resources>
