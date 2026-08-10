@@ -69,13 +69,13 @@ jobs:
           restore-keys: |
             r64-official-network-${{ runner.os }}-
 
-      - name: Harvest full official Jerusalem/Jordan public source network
-        timeout-minutes: 12
+      - name: Harvest focused official Jerusalem/Jordan liturgical source network
+        timeout-minutes: 15
         env:
           PYTHONUNBUFFERED: "1"
         run: |
           set -euo pipefail
-          python scripts/harvest_official_source_network_r64.py --workers 10 --max-pages 5000 --max-depth 5
+          python scripts/harvest_official_source_network_r64.py --workers 16 --max-pages 1200 --max-depth 2
           python scripts/build_r64_official_content_inventory.py --require-harvest
           python scripts/extract_r64_commemoration_candidates.py --require-harvest
 

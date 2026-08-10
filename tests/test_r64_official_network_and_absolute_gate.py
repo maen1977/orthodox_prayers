@@ -14,7 +14,8 @@ def test_r64_network_is_strictly_jerusalem_jordan_and_expanded():
     assert {'orthodox_jordan_ar','orthodox_tv_ar','jerusalem_patriarchate_ar','jerusalem_patriarchate_en','jerusalem_patriarchate_el','jerusalem_patriarchate_radio'} <= roots
     assert cfg['crawl_policy']['authentication_bypass'] is False
     assert cfg['crawl_policy']['captcha_bypass'] is False
-    assert cfg['crawl_policy']['default_max_pages'] >= 5000
+    assert 800 <= cfg['crawl_policy']['default_max_pages'] <= 2000
+    assert cfg['crawl_policy']['default_max_depth'] <= 2
     assert 'commemorations' in cfg['relevance_keywords']
 
 
@@ -39,10 +40,10 @@ def test_r64_absolute_gate_is_in_release_gate_and_workflow_strict_after_bootstra
     gate=(ROOT/'scripts/run_local_daily_release_gate.py').read_text(encoding='utf-8')
     workflow=(ROOT/'.github/workflows/church-prayers.yml').read_text(encoding='utf-8')
     assert 'audit_absolute_coverage_r64.py' in gate
-    assert 'Harvest full official Jerusalem/Jordan public source network' in workflow
+    assert 'Harvest focused official Jerusalem/Jordan liturgical source network' in workflow
     assert 'audit_absolute_coverage_r64.py --require-complete' in workflow
     assert 'audit_absolute_coverage_r64.py --require-complete --require-named-commemorations' in workflow
-    assert workflow.index('Harvest full official Jerusalem/Jordan public source network') < workflow.index('Check content, languages, security, and calendar')
+    assert workflow.index('Harvest focused official Jerusalem/Jordan liturgical source network') < workflow.index('Check content, languages, security, and calendar')
 
 
 def test_perpetual_bootstrap_resolves_every_day_even_when_source_has_no_abbreviated_reading():
@@ -59,3 +60,21 @@ def test_absolute_audit_script_requires_named_commemoration_separately_and_write
     assert 'old_calendar_date_baseline' in text
     assert 'generic_commemoration' in text
     assert audit.EXPECTED==9131
+
+
+
+def test_r64_sitemap_filter_prevents_archive_queue_explosion():
+    roots=['https://orthodoxjordan.org/','https://ar.jerusalem-patriarchate.info/']
+    # High-value ecclesiastical URLs survive.
+    assert h.is_relevant_candidate_url('https://orthodoxjordan.org/صلاة-اليوم/', roots)
+    assert h.is_relevant_candidate_url('https://orthodoxjordan.org/downloads/كتاب-الصلوات.pdf', roots)
+    assert h.is_relevant_candidate_url('https://ar.jerusalem-patriarchate.info/الكنائس-المقدسة-في-الأردن/', roots)
+    # Common WordPress explosion sources do not.
+    assert not h.is_relevant_candidate_url('https://orthodoxjordan.org/tag/news/page/44/', roots)
+    assert not h.is_relevant_candidate_url('https://orthodoxjordan.org/wp-content/uploads/2026/01/photo.jpg', roots)
+    assert not h.is_relevant_candidate_url('https://orthodoxjordan.org/?s=church', roots)
+    # A synthetic 60k sitemap-like URL collection must collapse dramatically.
+    urls=[f'https://orthodoxjordan.org/tag/archive-{i}/page/{i%90+1}/' for i in range(59000)]
+    urls += [f'https://orthodoxjordan.org/صلاة-اليوم-{i}/' for i in range(700)]
+    accepted=[u for u in urls if h.is_relevant_candidate_url(u, roots)]
+    assert len(accepted)==700

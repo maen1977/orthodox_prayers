@@ -1,3 +1,11 @@
+## 5.6.4 R64.1 — Focused official-network harvest hotfix
+
+- Prevented sitemap queue explosion (58k+ URLs) by indexing sitemaps but fetching only liturgical/source-relevant pages.
+- Excluded tags, archives, pagination, search pages, media assets, and tracking URLs from CI fetches.
+- Reduced recursive depth from 5 to 2 and bounded the CI fetch set to 1,200 high-value documents.
+- Increased worker parallelism while preserving per-host rate limiting and the persistent raw-document cache.
+- Added a regression test with a synthetic 59,700-URL sitemap workload.
+
 ## 5.6.4 R64 — Absolute 2050 coverage + expanded official Jerusalem/Jordan network
 
 - Added recursive public-source harvesting across Orthodox Jordan, Orthodox TV, Jerusalem Patriarchate Arabic/English/Greek, and Patriarchate radio domains/subdomains.

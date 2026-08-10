@@ -203,6 +203,78 @@ def candidate_seed_urls(root_url: str) -> list[str]:
     ]
 
 
+LOW_VALUE_PATH_TOKENS = {
+    "/tag/", "/tags/", "/author/", "/feed/", "/comments/", "/comment-page-",
+    "/wp-json/", "/wp-admin/", "/wp-login", "/xmlrpc.php", "/trackback/",
+    "/attachment/", "/amp/", "/page/",
+}
+LOW_VALUE_QUERY_KEYS = {"s", "search", "q", "replytocom", "share", "output"}
+BINARY_ASSET_EXTENSIONS = {
+    ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".ico", ".css", ".js",
+    ".woff", ".woff2", ".ttf", ".eot", ".mp4", ".m4v", ".webm", ".mp3", ".wav",
+    ".zip", ".rar", ".7z", ".apk", ".aab",
+}
+# URL-only hints. Arabic/Greek slugs are decoded before matching.  This list is
+# intentionally broader than the canonical text classifier because it is used
+# only to decide which sitemap entries deserve an HTTP fetch during CI.
+URL_RELEVANCE_HINTS = (
+    # Arabic
+    "صلاة", "صلوات", "تذكار", "سنكسار", "قديس", "قدّيس", "تقويم", "رزنامة",
+    "صوم", "صيام", "رسالة", "إنجيل", "انجيل", "قراءات", "قداس", "ليتورج",
+    "سحر", "غروب", "نوم", "خدمة", "كنيسة", "كنائس", "دير", "أديرة", "بث",
+    "إذاعة", "راديو", "مكتبة", "كتاب", "تحميل",
+    # English
+    "prayer", "commemoration", "synax", "saint", "calendar", "fast", "epistle",
+    "gospel", "reading", "liturgy", "service", "matins", "orthros", "vesper",
+    "compline", "church", "parish", "monastery", "live", "radio", "library",
+    "book", "download",
+    # Greek (stems)
+    "προσευχ", "συναξ", "ἁγ", "αγ", "ημερολόγ", "εορτολόγ", "νηστε", "ἀπόστολ",
+    "εὐαγγέλ", "λειτουργ", "ὄρθρ", "ορθρ", "ἑσπεριν", "εσπεριν", "μονή", "εκκλησ",
+)
+
+
+def is_relevant_candidate_url(url: str, root_urls: Iterable[str] = ()) -> bool:
+    """Return whether a discovered URL is worth fetching during the CI harvest.
+
+    Sitemaps may expose tens of thousands of archive, tag, media and pagination
+    URLs.  R64 only needs ecclesiastical source material, so CI indexes the full
+    sitemap but downloads only likely liturgical/source pages.  Root/language
+    landing pages and PDFs are always retained.
+    """
+    n = normalized_url(url)
+    if not n:
+        return False
+    p = urllib.parse.urlsplit(n)
+    decoded_path = urllib.parse.unquote(p.path or "/").casefold()
+    decoded_query = urllib.parse.unquote_plus(p.query or "").casefold()
+    if any(decoded_path.endswith(ext) for ext in BINARY_ASSET_EXTENSIONS):
+        return False
+    if decoded_path.endswith(".pdf"):
+        return True
+    if any(token in decoded_path for token in LOW_VALUE_PATH_TOKENS):
+        return False
+    query_keys = {k.casefold() for k, _ in urllib.parse.parse_qsl(p.query, keep_blank_values=True)}
+    if query_keys & LOW_VALUE_QUERY_KEYS:
+        return False
+    root_norm = {normalized_url(x).rstrip("/") + "/" for x in root_urls if normalized_url(x)}
+    if n.rstrip("/") + "/" in root_norm:
+        return True
+    hay = decoded_path + "?" + decoded_query
+    return any(hint.casefold() in hay for hint in URL_RELEVANCE_HINTS)
+
+
+def _queue_candidate(queue, url: str, root_id: str, depth: int, *, roots: list[dict], sitemap_stats: Counter | None = None) -> bool:
+    root_urls = [r["url"] for r in roots]
+    if is_relevant_candidate_url(url, root_urls):
+        queue.append((url, root_id, depth))
+        if sitemap_stats is not None:
+            sitemap_stats["accepted"] += 1
+        return True
+    if sitemap_stats is not None:
+        sitemap_stats["filtered"] += 1
+    return False
+
 def harvest(args) -> dict:
     cfg = json.loads(NETWORK.read_text(encoding="utf-8"))
     suffixes = cfg["allowed_domain_suffixes"]
@@ -222,7 +294,7 @@ def harvest(args) -> dict:
             else: page_queue.append((u, root["id"], 0))
         root_ids.setdefault(root["id"], set()).add(normalized_url(root["url"]))
 
-    sitemap_seen = set(); sitemap_failures = []
+    sitemap_seen = set(); sitemap_failures = []; sitemap_stats = Counter()
     # Sitemap discovery is sequential and small; nested sitemap indexes are followed.
     while sitemap_queue and len(sitemap_seen) < 200:
         u, rid = sitemap_queue.popleft()
@@ -234,7 +306,9 @@ def harvest(args) -> dict:
             for link in pages:
                 n = normalized_url(link)
                 host = urllib.parse.urlsplit(n).hostname if n else ""
-                if n and host_allowed(host or "", suffixes): page_queue.append((n, rid, 1))
+                if n and host_allowed(host or "", suffixes):
+                    sitemap_stats["discovered"] += 1
+                    _queue_candidate(page_queue, n, rid, 1, roots=roots, sitemap_stats=sitemap_stats)
             for link in nested:
                 n = normalized_url(link)
                 host = urllib.parse.urlsplit(n).hostname if n else ""
@@ -295,7 +369,9 @@ def harvest(args) -> dict:
                             if not joined: continue
                             host = urllib.parse.urlsplit(joined).hostname or ""
                             if host_allowed(host, suffixes):
-                                if joined not in discovered and joined not in queued:
+                                root_urls = [r["url"] for r in roots]
+                                if (joined not in discovered and joined not in queued
+                                        and is_relevant_candidate_url(joined, root_urls)):
                                     queued.add(joined)
                                     ordered.append((joined, {"depth": info["depth"] + 1, "roots": set(info["roots"])}))
                             elif host in SOCIAL_HOSTS:
@@ -319,6 +395,9 @@ def harvest(args) -> dict:
             "max_pages": args.max_pages,
             "max_depth": args.max_depth,
             "sitemaps_seen": len(sitemap_seen),
+            "sitemap_urls_discovered": int(sitemap_stats["discovered"]),
+            "sitemap_urls_accepted": int(sitemap_stats["accepted"]),
+            "sitemap_urls_filtered": int(sitemap_stats["filtered"]),
         },
         "coverage": {
             "documents": len(records),
@@ -348,7 +427,7 @@ def main() -> None:
     ap.add_argument("--attempts", type=int, default=int(policy["default_attempts"]))
     ap.add_argument("--rate", type=float, default=float(policy["rate_limit_requests_per_host_per_second"]))
     ap.add_argument("--max-pages", type=int, default=int(policy["default_max_pages"]))
-    ap.add_argument("--max-depth", type=int, default=5)
+    ap.add_argument("--max-depth", type=int, default=int(policy.get("default_max_depth", 2)))
     ap.add_argument("--refresh", action="store_true")
     args = ap.parse_args()
     payload = harvest(args)
