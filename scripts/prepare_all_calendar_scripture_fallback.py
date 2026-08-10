@@ -7,8 +7,10 @@ no translation, rewriting or automatic diacritization is performed.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -164,10 +166,29 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
     return {"verses": len(verses), "references": len(references), "omissions": omissions}
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Synchronize the offline native Scripture subset and manifests with every embedded calendar reference through 2050."
+    )
+    parser.add_argument(
+        "--archive-dir",
+        type=Path,
+        help="Persistent directory for the three public-domain USFM source archives.",
+    )
+    args = parser.parse_args(argv)
+    if args.archive_dir is not None:
+        archive_dir = args.archive_dir.resolve()
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        os.environ["ORTHODOX_SCRIPTURE_ARCHIVE_DIR"] = str(archive_dir)
+
     references = calendar_references()
     report = {language: write_language(language, references) for language in LANGUAGES}
-    print(json.dumps({"status": "ALL_CALENDAR_SCRIPTURE_READY", "languages": report}, ensure_ascii=False))
+    print(json.dumps({
+        "status": "ALL_CALENDAR_SCRIPTURE_READY",
+        "reference_count": len(references),
+        "archive_dir": str(args.archive_dir.resolve()) if args.archive_dir is not None else None,
+        "languages": report,
+    }, ensure_ascii=False))
     return 0
 
 

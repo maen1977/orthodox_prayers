@@ -86,6 +86,15 @@ jobs:
           path: app/build/official-source-harvest-r64
           key: ${{ steps.official-network-cache-restore.outputs.cache-primary-key }}
 
+      - name: Restore all-calendar Scripture source cache
+        id: scripture-fallback-cache-restore
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: app/build/all-calendar-scripture-cache
+          key: r64-scripture-fallback-${{ runner.os }}-${{ hashFiles('scripts/public_domain_scripture.py', 'scripts/prepare_all_calendar_scripture_fallback.py') }}
+          restore-keys: |
+            r64-scripture-fallback-${{ runner.os }}-
+
       - name: Restore perpetual lectionary cache
         id: lectionary-cache-restore
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -106,6 +115,22 @@ jobs:
           python scripts/update_calendar_2050_lock.py --approve-r63-perpetual-lectionary
           python scripts/audit_perpetual_lectionary_r63.py --require-baseline
           python scripts/audit_absolute_coverage_r64.py --require-complete
+
+      - name: Synchronize offline Scripture manifests with rebuilt 2026-2050 calendar
+        timeout-minutes: 6
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          set -euo pipefail
+          python scripts/prepare_all_calendar_scripture_fallback.py --archive-dir app/build/all-calendar-scripture-cache
+          python scripts/validate_local_daily_engine.py --date 2026-08-06
+
+      - name: Save all-calendar Scripture source cache
+        if: always() && steps.scripture-fallback-cache-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: app/build/all-calendar-scripture-cache
+          key: ${{ steps.scripture-fallback-cache-restore.outputs.cache-primary-key }}
 
       - name: Save perpetual lectionary cache
         if: always() && steps.lectionary-cache-restore.outputs.cache-hit != 'true'

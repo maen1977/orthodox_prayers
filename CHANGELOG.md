@@ -1,3 +1,8 @@
+## 5.6.4 R64.2 — 2050 Scripture manifest synchronization hotfix
+- Synchronizes native Scripture verses/manifests after the perpetual 2026–2050 calendar is rebuilt.
+- Adds persistent USFM cache and an immediate local-daily validation before the release gate.
+- Prevents stale `supported_canonical_references` from causing manifest drift after lectionary expansion.
+
 ## 5.6.4 R64.1 — Focused official-network harvest hotfix
 
 - Prevented sitemap queue explosion (58k+ URLs) by indexing sitemaps but fetching only liturgical/source-relevant pages.
