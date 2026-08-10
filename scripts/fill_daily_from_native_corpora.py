@@ -144,6 +144,18 @@ def load_corpus(language: str, contract: dict[str, Any]) -> tuple[dict[str, Any]
     return manifest, index
 
 
+
+
+def declared_source_omissions(manifest: dict[str, Any]) -> set[str]:
+    """Return source-edition verse numbers that intentionally have no wording."""
+    result: set[str] = set()
+    for field in ("numbered_source_omissions", "allowed_source_verse_omissions"):
+        for item in manifest.get(field, []) or []:
+            value = str(item or "").strip().upper()
+            if value:
+                result.add(value)
+    return result
+
 def current_reading_lists(data: dict[str, Any]) -> Iterable[list[Any]]:
     """Yield today's readings and today's services, excluding preview Sundays."""
     if isinstance(data.get("readings"), list):
@@ -188,7 +200,11 @@ def ensure_corpus_coverage(
     if corpus is None or not required:
         return corpus
     manifest, index = corpus
-    missing = [canonical for canonical, parsed in required if passage_verses(index, parsed) is None]
+    omissions = declared_source_omissions(manifest)
+    missing = [
+        canonical for canonical, parsed in required
+        if passage_verses(index, parsed, omissions) is None
+    ]
     if not missing:
         return corpus
 
@@ -213,7 +229,11 @@ def ensure_corpus_coverage(
     if full_manifest.get("machine_translation_used") is not False or full_manifest.get("automatic_diacritization_used") is not False:
         raise ValueError(f"{language}: complete public-domain corpus has forbidden transformation flags")
 
-    unresolved = [canonical for canonical, parsed in required if passage_verses(full_index, parsed) is None]
+    full_omissions = declared_source_omissions(full_manifest)
+    unresolved = [
+        canonical for canonical, parsed in required
+        if passage_verses(full_index, parsed, full_omissions) is None
+    ]
     if unresolved:
         raise ValueError(f"{language}: complete public-domain corpus is missing required passage(s): {', '.join(unresolved)}")
     return full_manifest, full_index
@@ -222,43 +242,52 @@ def ensure_corpus_coverage(
 def _span_verses(
     index: dict[tuple[str, int, int], dict[str, Any]],
     parsed: ReferenceSpan,
+    allowed_omissions: set[str] | None = None,
 ) -> list[dict[str, Any]] | None:
     book, start_chapter, start_verse, end_chapter, end_verse = parsed
-    selected = [
-        verse for (item_book, chapter, number), verse in index.items()
-        if item_book == book and (start_chapter, start_verse) <= (chapter, number) <= (end_chapter, end_verse)
-    ]
-    selected.sort(key=lambda item: (int(item["chapter"]), int(item["verse"])))
-    if not selected:
-        return None
-    if (int(selected[0]["chapter"]), int(selected[0]["verse"])) != (start_chapter, start_verse):
-        return None
-    if (int(selected[-1]["chapter"]), int(selected[-1]["verse"])) != (end_chapter, end_verse):
-        return None
-    # Refuse apparent gaps. A chapter boundary may reset to verse 1; within a
-    # chapter every verse number must be consecutive.
-    previous: tuple[int, int] | None = None
-    for item in selected:
-        current = (int(item["chapter"]), int(item["verse"]))
-        if previous is not None:
-            if current[0] == previous[0] and current[1] != previous[1] + 1:
-                return None
-            if current[0] > previous[0]:
-                if current[0] > previous[0] + 1 or current[1] != 1:
-                    return None
-                previous_chapter_max = max(
-                    (number for (item_book, chapter, number) in index if item_book == book and chapter == previous[0]),
-                    default=0,
-                )
-                if previous[1] != previous_chapter_max:
-                    return None
-        previous = current
-    return selected
+    allowed = allowed_omissions or set()
+
+    # Resolve the appointed numeric span exactly, allowing only verse numbers
+    # that the source edition explicitly declares as numbered-but-textless.
+    # This distinguishes a genuine source omission (for example Acts 15:34 in
+    # WEB) from an accidental missing verse in a damaged or partial corpus.
+    chapter_max: dict[int, int] = {}
+    for item_book, chapter, number in index:
+        if item_book == book and start_chapter <= chapter <= end_chapter:
+            chapter_max[chapter] = max(chapter_max.get(chapter, 0), number)
+    for verse_id in allowed:
+        parts = verse_id.split('.')
+        if len(parts) != 3 or parts[0] != book:
+            continue
+        try:
+            chapter = int(parts[1]); number = int(parts[2])
+        except ValueError:
+            continue
+        if start_chapter <= chapter <= end_chapter:
+            chapter_max[chapter] = max(chapter_max.get(chapter, 0), number)
+
+    selected: list[dict[str, Any]] = []
+    for chapter in range(start_chapter, end_chapter + 1):
+        first = start_verse if chapter == start_chapter else 1
+        last = end_verse if chapter == end_chapter else chapter_max.get(chapter, 0)
+        if last < first:
+            return None
+        for number in range(first, last + 1):
+            key = (book, chapter, number)
+            item = index.get(key)
+            if item is not None:
+                selected.append(item)
+                continue
+            if f"{book}.{chapter}.{number}" in allowed:
+                continue
+            return None
+    return selected or None
 
 
 def passage_verses(
     index: dict[tuple[str, int, int], dict[str, Any]],
     parsed: ReferenceSpan | CanonicalSpans,
+    allowed_omissions: set[str] | None = None,
 ) -> list[dict[str, Any]] | None:
     """Resolve every appointed span independently and preserve its exact order."""
     if len(parsed) == 5 and isinstance(parsed[0], str):
@@ -269,7 +298,7 @@ def passage_verses(
     combined: list[dict[str, Any]] = []
     seen: set[tuple[str, int, int]] = set()
     for span in spans:
-        selected = _span_verses(index, span)
+        selected = _span_verses(index, span, allowed_omissions)
         if selected is None:
             return None
         for verse in selected:
@@ -321,7 +350,8 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
         if corpus is None:
             continue
         manifest, index = corpus
-        selected = passage_verses(index, parsed)
+        omissions = declared_source_omissions(manifest)
+        selected = passage_verses(index, parsed, omissions)
         if selected is None:
             # All-or-nothing: never publish a partial passage.
             continue
@@ -348,6 +378,14 @@ def fill_reading(reading: dict[str, Any], corpora: dict[str, tuple[dict[str, Any
             "daily_reference_source_url": (reference_evidence or {}).get(language, {}).get("source_url"),
             "corpus_archive_sha256": manifest.get("archive_sha256"),
             "corpus_license": manifest.get("license"),
+            "source_verse_omissions_in_reference": sorted(
+                verse_id for verse_id in omissions
+                if any(
+                    span[0] == verse_id.split('.')[0]
+                    and (span[1], span[2]) <= (int(verse_id.split('.')[1]), int(verse_id.split('.')[2])) <= (span[3], span[4])
+                    for span in parsed
+                )
+            ),
         }
         filled += 1
     reading["native_source_verification"] = verification

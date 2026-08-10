@@ -140,13 +140,23 @@ def _verse_numbers(token: str) -> list[int]:
     return list(range(start, end + 1))
 
 
-def parse_usfm_document(text: str) -> tuple[str, str, dict[tuple[int, int], str]]:
-    """Return (book_id, localized book title, verse map) for one USFM file."""
+def parse_usfm_document_detailed(
+    text: str,
+) -> tuple[str, str, dict[tuple[int, int], str], set[tuple[int, int]]]:
+    """Return parsed verses plus explicit numbered source omissions.
+
+    Some public-domain source editions keep a verse number in USFM but attach
+    only a textual-variant footnote and no display wording.  That is different
+    from a damaged archive in which the verse marker is missing entirely.
+    Preserve that distinction so liturgical references can keep their canonical
+    endpoints without inventing source text.
+    """
     book_id = ""
     book_title = ""
     chapter = 0
     verses: dict[tuple[int, int], str] = {}
     active_keys: list[tuple[int, int]] = []
+    bridge_placeholders: set[tuple[int, int]] = set()
 
     def append_to_active(fragment: str) -> None:
         cleaned = clean_usfm_text(fragment)
@@ -183,6 +193,10 @@ def parse_usfm_document(text: str) -> tuple[str, str, dict[tuple[int, int], str]
             active_keys = [(chapter, number) for number in numbers]
             for key in active_keys:
                 verses.setdefault(key, "")
+            # A USFM verse bridge such as ``3-4`` carries one wording span.
+            # Later members are not source omissions and must not be reported
+            # as empty numbered verses.
+            bridge_placeholders.update(active_keys[1:])
             append_to_active(match.group(2))
             continue
         if line.startswith("\\"):
@@ -193,13 +207,26 @@ def parse_usfm_document(text: str) -> tuple[str, str, dict[tuple[int, int], str]
             continue
         append_to_active(line)
 
+    numbered_omissions = {
+        key for key, value in verses.items()
+        if not value.strip() and key not in bridge_placeholders
+    }
     verses = {key: value.strip() for key, value in verses.items() if value.strip()}
-    return book_id, book_title or book_id, verses
+    return book_id, book_title or book_id, verses, numbered_omissions
 
 
-def parse_usfm_archive(payload: bytes) -> tuple[dict[tuple[str, int, int], dict[str, Any]], dict[str, str]]:
+def parse_usfm_document(text: str) -> tuple[str, str, dict[tuple[int, int], str]]:
+    """Backward-compatible parser returning only displayable verse text."""
+    book_id, title, verses, _ = parse_usfm_document_detailed(text)
+    return book_id, title, verses
+
+
+def parse_usfm_archive_detailed(
+    payload: bytes,
+) -> tuple[dict[tuple[str, int, int], dict[str, Any]], dict[str, str], set[str]]:
     index: dict[tuple[str, int, int], dict[str, Any]] = {}
     titles: dict[str, str] = {}
+    numbered_omissions: set[str] = set()
     with zipfile.ZipFile(io.BytesIO(payload)) as archive:
         members = _safe_scripture_members(archive)
         for member in members:
@@ -210,10 +237,11 @@ def parse_usfm_archive(payload: bytes) -> tuple[dict[tuple[str, int, int], dict[
                 text = raw.decode("utf-8-sig")
             except UnicodeDecodeError:
                 text = raw.decode("utf-8")
-            book_id, title, verses = parse_usfm_document(text)
-            if not book_id or not verses:
+            book_id, title, verses, omissions = parse_usfm_document_detailed(text)
+            if not book_id or (not verses and not omissions):
                 continue
             titles[book_id] = title
+            numbered_omissions.update(f"{book_id}.{chapter}.{verse}" for chapter, verse in omissions)
             for (chapter, verse), wording in verses.items():
                 key = (book_id, chapter, verse)
                 if key in index:
@@ -228,6 +256,12 @@ def parse_usfm_archive(payload: bytes) -> tuple[dict[tuple[str, int, int], dict[
                 }
     if not index:
         raise ValueError("USFM archive produced an empty verse index")
+    return index, titles, numbered_omissions
+
+
+def parse_usfm_archive(payload: bytes) -> tuple[dict[tuple[str, int, int], dict[str, Any]], dict[str, str]]:
+    """Backward-compatible archive parser returning displayable verses only."""
+    index, titles, _ = parse_usfm_archive_detailed(payload)
     return index, titles
 
 
@@ -271,7 +305,7 @@ def load_public_domain_corpus(language: str) -> tuple[dict[str, Any], dict[tuple
         payload = _download(source["archive_url"])
         downloaded = True
     try:
-        index, titles = parse_usfm_archive(payload)
+        index, titles, numbered_omissions = parse_usfm_archive_detailed(payload)
     except (ValueError, zipfile.BadZipFile):
         if override_dir:
             raise
@@ -279,7 +313,7 @@ def load_public_domain_corpus(language: str) -> tuple[dict[str, Any], dict[tuple
         # once and only replace the cache after the archive parses successfully.
         payload = _download(source["archive_url"])
         downloaded = True
-        index, titles = parse_usfm_archive(payload)
+        index, titles, numbered_omissions = parse_usfm_archive_detailed(payload)
     if downloaded:
         temporary = archive_path.with_suffix(archive_path.suffix + ".tmp")
         temporary.write_bytes(payload)
@@ -296,6 +330,7 @@ def load_public_domain_corpus(language: str) -> tuple[dict[str, Any], dict[tuple
         "archive_sha256": sha256_bytes(payload),
         "verse_count": len(index),
         "books": sorted(titles),
+        "numbered_source_omissions": sorted(numbered_omissions),
         "machine_translation_used": False,
         "automatic_diacritization_used": False,
         "display_text_policy": "USFM_MARKUP_REMOVED_WITH_SOURCE_WORDING_AND_UNICODE_MARKS_PRESERVED",

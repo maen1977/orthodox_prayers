@@ -7,10 +7,8 @@ no translation, rewriting or automatic diacritization is performed.
 """
 from __future__ import annotations
 
-import argparse
 import hashlib
 import json
-import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -23,9 +21,13 @@ LANGUAGES = ("ar", "en", "el")
 
 # Documented source-edition verse-number omissions. The surrounding wording is
 # present and the canonical lectionary reference remains unchanged for display.
+# Historical source-edition omissions retained as a fail-safe.  Newer USFM
+# archives are also inspected directly: an explicit verse marker that contains
+# only source footnote material is recorded by public_domain_scripture.py as a
+# numbered_source_omission.  Canonical lectionary references are never rewritten.
 ALLOWED_SOURCE_OMISSIONS = {
     "ar": set(),
-    "en": {"LUK.17.36"},
+    "en": {"ACT.15.34", "LUK.17.36"},
     "el": {"2CO.13.14", "MRK.7.16"},
 }
 
@@ -75,12 +77,18 @@ def expected_span_ids(index: dict, span: tuple[str, int, int, int, int]) -> list
     return result
 
 
-def selected_for_reference(language: str, reference: str, index: dict) -> list[dict[str, Any]]:
+def selected_for_reference(
+    language: str,
+    reference: str,
+    index: dict,
+    allowed_omissions: set[str] | None = None,
+) -> list[dict[str, Any]]:
     parsed = parse_reference_parts(reference)
     if parsed is None:
         raise ValueError(f"invalid canonical reference: {reference}")
     selected: list[dict[str, Any]] = []
-    allowed = ALLOWED_SOURCE_OMISSIONS[language]
+    allowed = set(ALLOWED_SOURCE_OMISSIONS[language])
+    allowed.update(allowed_omissions or set())
     for span in parsed:
         for verse_id in expected_span_ids(index, span):
             book, chapter, verse = verse_id.split(".")
@@ -97,9 +105,15 @@ def selected_for_reference(language: str, reference: str, index: dict) -> list[d
 
 def write_language(language: str, references: list[str]) -> dict[str, Any]:
     source, index = load_public_domain_corpus(language)
+    detected_omissions = {
+        str(item).strip().upper()
+        for item in source.get("numbered_source_omissions", [])
+        if str(item).strip()
+    }
+    allowed_omissions = set(ALLOWED_SOURCE_OMISSIONS[language]) | detected_omissions
     selected: dict[tuple[str, int, int], dict[str, Any]] = {}
     for reference in references:
-        for item in selected_for_reference(language, reference, index):
+        for item in selected_for_reference(language, reference, index, allowed_omissions):
             key = (str(item["book_id"]), int(item["chapter"]), int(item["verse"]))
             selected[key] = item
 
@@ -123,7 +137,7 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
             "verse": key[2],
         })
 
-    omissions = sorted(ALLOWED_SOURCE_OMISSIONS[language])
+    omissions = sorted(allowed_omissions)
     manifest = {
         "schema_version": 2,
         "language": language,
@@ -136,6 +150,7 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
         "supported_canonical_reference_count": len(references),
         "supported_canonical_references": references,
         "allowed_source_verse_omissions": omissions,
+        "detected_numbered_source_omissions": sorted(detected_omissions),
         "source_id": source_id,
         "source_url": source_url,
         "source_title": str(source.get("title") or ""),
@@ -166,29 +181,10 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
     return {"verses": len(verses), "references": len(references), "omissions": omissions}
 
 
-def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(
-        description="Synchronize the offline native Scripture subset and manifests with every embedded calendar reference through 2050."
-    )
-    parser.add_argument(
-        "--archive-dir",
-        type=Path,
-        help="Persistent directory for the three public-domain USFM source archives.",
-    )
-    args = parser.parse_args(argv)
-    if args.archive_dir is not None:
-        archive_dir = args.archive_dir.resolve()
-        archive_dir.mkdir(parents=True, exist_ok=True)
-        os.environ["ORTHODOX_SCRIPTURE_ARCHIVE_DIR"] = str(archive_dir)
-
+def main() -> int:
     references = calendar_references()
     report = {language: write_language(language, references) for language in LANGUAGES}
-    print(json.dumps({
-        "status": "ALL_CALENDAR_SCRIPTURE_READY",
-        "reference_count": len(references),
-        "archive_dir": str(args.archive_dir.resolve()) if args.archive_dir is not None else None,
-        "languages": report,
-    }, ensure_ascii=False))
+    print(json.dumps({"status": "ALL_CALENDAR_SCRIPTURE_READY", "languages": report}, ensure_ascii=False))
     return 0
 
 

@@ -117,7 +117,12 @@ def endpoints_available(reference: str, verse_ids: set[str], allowed_omissions: 
     return True
 
 
-def verify_reference_window(years: dict[int, dict[str, dict]], ids: dict[str, set[str]], start: date) -> int:
+def verify_reference_window(
+        years: dict[int, dict[str, dict]],
+        ids: dict[str, set[str]],
+        omissions: dict[str, set[str]],
+        start: date,
+) -> int:
     complete = 0
     for offset in range(9):
         current = start + timedelta(days=offset)
@@ -129,7 +134,10 @@ def verify_reference_window(years: dict[int, dict[str, dict]], ids: dict[str, se
             fail(f"anchor_readings_missing:{current}")
         for item in refs.values():
             canonical = item.get("canonical_reference", "")
-            if canonical and all(endpoints_available(canonical, ids[language]) for language in LANGUAGES):
+            if canonical and all(
+                endpoints_available(canonical, ids[language], omissions[language])
+                for language in LANGUAGES
+            ):
                 complete += 1
     if complete < 2:
         fail(f"anchor_native_scripture_coverage_too_low:{complete}")
@@ -239,7 +247,7 @@ def main() -> None:
 
     years = verify_calendar()
     ids, supported, omissions = verify_scripture_assets()
-    complete = verify_reference_window(years, ids, anchor)
+    complete = verify_reference_window(years, ids, omissions, anchor)
     reference_count = verify_all_calendar_references(years, ids, supported, omissions)
     verify_native_services()
     verify_android_wiring()

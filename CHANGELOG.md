@@ -1,7 +1,11 @@
-## 5.6.4 R64.2 — 2050 Scripture manifest synchronization hotfix
-- Synchronizes native Scripture verses/manifests after the perpetual 2026–2050 calendar is rebuilt.
-- Adds persistent USFM cache and an immediate local-daily validation before the release gate.
-- Prevents stale `supported_canonical_references` from causing manifest drift after lectionary expansion.
+## 5.6.4 R64.2 — Scripture omission + manifest sync hotfix
+
+- Fixes build failure on canonical lectionary ranges whose selected public-domain source edition keeps a verse number but has no display wording for that verse (for example Acts 15:34 in WEB).
+- USFM parsing now records explicit numbered-but-textless source omissions without fabricating Scripture text. Verse-bridge placeholders are excluded from omission detection.
+- The all-calendar Scripture fallback unions detected source omissions with the audited legacy omission list and preserves the canonical liturgical reference unchanged.
+- Native daily passage resolution now honors only declared source-edition omissions; an actually missing unapproved verse still blocks partial publication.
+- The GitHub 2026-2050 bootstrap now regenerates all-calendar Scripture manifests immediately after rebuilding the calendar, preventing post-bootstrap manifest drift such as `missing=381`.
+- Adds a dedicated all-calendar Scripture cache and R64.2 regression tests.
 
 ## 5.6.4 R64.1 — Focused official-network harvest hotfix
 
