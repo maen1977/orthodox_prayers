@@ -1,3 +1,24 @@
+## 5.6.4 R64 — Absolute 2050 coverage + expanded official Jerusalem/Jordan network
+
+- Added recursive public-source harvesting across Orthodox Jordan, Orthodox TV, Jerusalem Patriarchate Arabic/English/Greek, and Patriarchate radio domains/subdomains.
+- Added cache, SHA-256 provenance, sitemap discovery, category inventory, and conservative commemoration candidate extraction.
+- Added explicit reading-day resolution for every bootstrapped civil date, including source-confirmed days without an abbreviated appointed reading.
+- Added an absolute 9131-day coverage gate and a stricter named-commemoration gate.
+- GitHub uploads the R64 coverage evidence artifact even when the strict named-commemoration gate fails, then blocks the build.
+- Updated Arabic Jordan church-service redistribution state from pending to project-owner-confirmed based on the owner attestation dated 2026-08-10.
+- Preserved strict ar/en/el lane isolation, no machine translation, and no authentication/CAPTCHA bypass.
+
+## 5.6.4 R63 — Perpetual appointed-reading baseline and Jerusalem/Jordan commemoration queue
+
+- Added a build-time 2026–2050 appointed-reading bootstrap using the pinned MIT-licensed Orthocal Greek-tradition/Julian reference API as a non-jurisdictional baseline only.
+- Preserved priority for existing exact dated Jordan records and Jerusalem old-calendar fixed-feast overrides; the baseline may never override them.
+- Added `appointed_readings` so weekday Lenten Old Testament readings are represented honestly instead of being treated as missing Epistle/Gospel values.
+- Added independent Arabic/English/Greek display labels for appointed and Old Testament readings.
+- Added build cache for 300 monthly source payloads and an approved calendar-lock rewrite that preserves all 28 historical locked assets.
+- Added a strict commemoration acquisition queue: 6,987 unresolved civil dates reduce to 358 pending Old-Calendar MM-DD source slots, with native Arabic/English/Greek promotion requirements and no machine translation.
+- No saint names, stories, or synaxarion prose are imported from the non-Jerusalem reference baseline.
+- Added R63 source/audit, structural 25-year pipeline simulation tests, and regression coverage to the local release gate.
+
 ## 5.6.4 R60 — Final service and reader polish
 
 - Restored the 13-card Church Service catalog in the bundled Arabic, English, and Greek native libraries so the hub remains available even when build-time source downloads fall back.

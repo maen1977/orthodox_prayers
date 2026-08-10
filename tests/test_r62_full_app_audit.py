@@ -83,7 +83,8 @@ def test_audit_report_truthfully_records_known_content_gaps():
     assert status['daily_prayers'] == 'PARTIAL_WITH_OFFICIAL_LINKS'
     assert status['church_directory'] == 'PARTIAL_WITH_FULL_DIRECTORY_LINKS'
     assert audit['metrics']['official_daily_prayer_links'] >= 4
-    assert audit['metrics']['arabic_church_build_rights_pending'] >= 10
+    assert audit['metrics']['arabic_church_build_rights_pending'] == 0
+    assert audit['metrics']['arabic_church_build_rights_confirmed'] >= 10
     assert status['orthros_ar'] == 'INCOMPLETE_FAIL_CLOSED'
 
 

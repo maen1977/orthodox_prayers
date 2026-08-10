@@ -23,7 +23,7 @@ jobs:
   build:
     name: Build Church Prayers Fast
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
 
     steps:
       - name: Get project
@@ -60,8 +60,87 @@ jobs:
       - name: Install checks
         run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
 
+      - name: Restore official Jerusalem/Jordan source-network cache
+        id: official-network-cache-restore
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: app/build/official-source-harvest-r64
+          key: r64-official-network-${{ runner.os }}-${{ hashFiles('canonical/r64_official_source_network.json', 'scripts/harvest_official_source_network_r64.py') }}
+          restore-keys: |
+            r64-official-network-${{ runner.os }}-
+
+      - name: Harvest full official Jerusalem/Jordan public source network
+        timeout-minutes: 12
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          set -euo pipefail
+          python scripts/harvest_official_source_network_r64.py --workers 10 --max-pages 5000 --max-depth 5
+          python scripts/build_r64_official_content_inventory.py --require-harvest
+          python scripts/extract_r64_commemoration_candidates.py --require-harvest
+
+      - name: Save official Jerusalem/Jordan source-network cache
+        if: always() && steps.official-network-cache-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: app/build/official-source-harvest-r64
+          key: ${{ steps.official-network-cache-restore.outputs.cache-primary-key }}
+
+      - name: Restore perpetual lectionary cache
+        id: lectionary-cache-restore
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: app/build/lectionary-download-cache
+          key: r63-perpetual-lectionary-${{ runner.os }}-393d5bb55d31bf14fa9c2a706e21c2f1bb48f400
+          restore-keys: |
+            r63-perpetual-lectionary-${{ runner.os }}-
+
+      - name: Bootstrap perpetual 2026-2050 appointed readings
+        timeout-minutes: 8
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          set -euo pipefail
+          python scripts/bootstrap_perpetual_lectionary_2050.py --workers 8
+          python scripts/build_internal_calendar_2050.py
+          python scripts/update_calendar_2050_lock.py --approve-r63-perpetual-lectionary
+          python scripts/audit_perpetual_lectionary_r63.py --require-baseline
+          python scripts/audit_absolute_coverage_r64.py --require-complete
+
+      - name: Save perpetual lectionary cache
+        if: always() && steps.lectionary-cache-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: app/build/lectionary-download-cache
+          key: ${{ steps.lectionary-cache-restore.outputs.cache-primary-key }}
+
       - name: Check content, languages, security, and calendar
         run: python scripts/run_local_daily_release_gate.py
+
+      - name: Absolute named commemoration coverage through 2050
+        id: r64-strict-named-coverage
+        continue-on-error: true
+        run: python scripts/audit_absolute_coverage_r64.py --require-complete --require-named-commemorations
+
+      - name: Upload R64 coverage evidence even when strict coverage fails
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: R64-2050-Coverage-Audit
+          path: |
+            canonical/r64_absolute_coverage_audit.json
+            canonical/r64_official_source_harvest.json
+            canonical/r64_official_content_inventory.json
+            canonical/r64_commemoration_candidates.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Block build unless absolute named 2050 coverage is proven
+        if: steps.r64-strict-named-coverage.outcome != 'success'
+        shell: bash
+        run: |
+          echo "R64 absolute 2050 coverage is incomplete. Download the R64-2050-Coverage-Audit artifact for exact gaps." >&2
+          exit 1
 
       - name: Restore offline source cache
         id: source-cache-restore

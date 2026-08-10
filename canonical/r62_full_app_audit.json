@@ -36,7 +36,8 @@
       "el": 13
     },
     "official_daily_prayer_links": 4,
-    "arabic_church_build_rights_pending": 10
+    "arabic_church_build_rights_pending": 0,
+    "arabic_church_build_rights_confirmed": 10
   },
   "checks": [
     {
@@ -120,7 +121,7 @@
       "id": "church_services",
       "title": "Church-service section",
       "status": "CATALOG_COMPLETE_TEXT_INCOMPLETE",
-      "evidence": "13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest has 10/10 registered web sources whose redistribution is not confirmed; R62 blocks bundling them and exposes official links instead.",
+      "evidence": "13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest now has 10/10 registered Jordan sources marked owner-confirmed for R64; rights-pending=0. Source checkout can still contain catalog snapshots until the build materializes the authorized native corpus.",
       "action": "Do not label catalog/reference cards as complete services until native full texts are imported and gated. Public-domain/CC-BY lanes may still generate full text at build time where their registered rights permit it."
     },
     {

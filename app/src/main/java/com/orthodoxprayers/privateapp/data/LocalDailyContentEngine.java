@@ -153,7 +153,11 @@ public final class LocalDailyContentEngine {
 
         JSONObject references = copyObject(calendarDay.optJSONObject("reading_references"));
         result.put("reading_references", references);
-        JSONArray readings = buildReadings(references);
+        JSONArray appointedReferences = calendarDay.optJSONArray("appointed_readings") == null
+                ? new JSONArray()
+                : new JSONArray(calendarDay.optJSONArray("appointed_readings").toString());
+        result.put("appointed_readings", appointedReferences);
+        JSONArray readings = buildReadings(references, appointedReferences);
         result.put("readings", readings);
 
         JSONObject selection = normalizedLiturgySelection(calendarDay.optJSONObject("liturgy_service_selection"));
@@ -215,7 +219,21 @@ public final class LocalDailyContentEngine {
     }
 
     private JSONArray buildReadings(JSONObject references) throws Exception {
+        return buildReadings(references, new JSONArray());
+    }
+
+    private JSONArray buildReadings(JSONObject references, JSONArray appointedReferences) throws Exception {
         JSONArray readings = new JSONArray();
+        if (appointedReferences != null && appointedReferences.length() > 0) {
+            for (int i = 0; i < appointedReferences.length(); i++) {
+                JSONObject item = appointedReferences.optJSONObject(i);
+                if (item == null) continue;
+                String kind = item.optString("kind", "appointed").trim();
+                if (kind.isEmpty()) kind = "appointed";
+                readings.put(buildReading(kind, item));
+            }
+            return readings;
+        }
         readings.put(buildReading("epistle", references.optJSONObject("epistle")));
         readings.put(buildReading("gospel", references.optJSONObject("gospel")));
         JSONObject matins = references.optJSONObject("matins_gospel");
@@ -296,7 +314,12 @@ public final class LocalDailyContentEngine {
                 : normalizedLiturgySelection(sundayDay.optJSONObject("liturgy_service_selection"));
         JSONArray sundayReadings = sundayDay == null
                 ? new JSONArray()
-                : buildReadings(sundayDay.optJSONObject("reading_references"));
+                : buildReadings(
+                        sundayDay.optJSONObject("reading_references"),
+                        sundayDay.optJSONArray("appointed_readings") == null
+                                ? new JSONArray()
+                                : sundayDay.optJSONArray("appointed_readings")
+                );
         services.put(buildService(
                 "next_sunday_full_liturgy",
                 "divine_liturgy",
@@ -610,6 +633,16 @@ public final class LocalDailyContentEngine {
                 "إنجيل الدورة (إنجيل السَحَر)",
                 "Matins Gospel (Eothinon)",
                 "Ἑωθινὸν Εὐαγγέλιον"
+        );
+        if ("old_testament".equals(kind)) return localized(
+                "قراءة معيّنة من العهد القديم",
+                "Appointed Old Testament Reading",
+                "Ὁρισμένο παλαιοδιαθηκικὸ ἀνάγνωσμα"
+        );
+        if ("appointed".equals(kind)) return localized(
+                "القراءة المعيّنة لليوم",
+                "Appointed Reading",
+                "Ὁρισμένο ἀνάγνωσμα τῆς ἡμέρας"
         );
         return localized("الرسالة", "Epistle", "Ἀπόστολος");
     }

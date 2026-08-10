@@ -48,7 +48,7 @@ Arabic library has 15 segments / 4511 chars; English and Greek have substantiall
 Arabic Divine Liturgy is COMPLETE_NATIVE_SOURCE_COMPILATION with 198 source segments. Optional quiet believer prayers remain a reader overlay, not part of the canonical-text hash.
 
 ### ⚠️ البطاقات موجودة / النصوص الكاملة ناقصة — Church-service section
-13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest has 10/10 registered web sources whose redistribution is not confirmed; R62 blocks bundling them and exposes official links instead.
+13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest now has 10/10 registered Jordan sources marked owner-confirmed for R64; rights-pending=0. Source checkout can still contain catalog snapshots until the build materializes the authorized native corpus.
 **الإجراء:** Do not label catalog/reference cards as complete services until native full texts are imported and gated. Public-domain/CC-BY lanes may still generate full text at build time where their registered rights permit it.
 
 ### ⚠️ PARTIAL + روابط الدليل الرسمي الكامل — Church directory

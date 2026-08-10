@@ -9,6 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 COMMANDS = [
+    [sys.executable, "scripts/audit_absolute_coverage_r64.py"],
+    [sys.executable, "scripts/audit_perpetual_lectionary_r63.py"],
     [sys.executable, "scripts/audit_full_app_r62.py"],
     [sys.executable, "scripts/simple_quality_gate.py"],
     [sys.executable, "scripts/validate_full_church_services.py"],
@@ -40,6 +42,8 @@ COMMANDS = [
         "tests/test_r62_full_app_audit.py",
         "tests/test_r62_rights_and_source_links.py",
         "tests/test_r62_runtime_walkthrough.py",
+        "tests/test_r63_perpetual_lectionary_2050.py",
+        "tests/test_r64_official_network_and_absolute_gate.py",
         "tests/test_android_resources.py",
     ],
 ]
@@ -52,7 +56,7 @@ def main() -> None:
     print(
         "\nLOCAL_DAILY_RELEASE_GATE_OK "
         "version=5.6.4 code=50604 schedule=00:03 timezone=Asia/Amman "
-        "network_required=false github_daily_action=false calendar=2026-2050"
+        "runtime_network_required=false github_daily_action=false calendar=2026-2050"
     )
 
 

@@ -9,6 +9,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 NATIVE = ROOT / "canonical/native_language_sources.json"
 OFFICIAL = ROOT / "canonical/official_source_registry.json"
+R64_NETWORK = ROOT / "canonical/r64_official_source_network.json"
 CONNECTORS = ROOT / "canonical/source_connectors.json"
 SERVICE_MANIFEST = ROOT / "canonical/native_service_manifest.json"
 STATIC = ROOT / "canonical/static_prayer_sources.json"
@@ -221,6 +222,7 @@ def main() -> None:
             "canonical/native_language_sources.json",
             "canonical/native_service_manifest.json",
             "canonical/official_source_registry.json",
+            "canonical/r64_official_source_network.json",
             "canonical/source_connectors.json",
             "canonical/static_prayer_sources.json",
             "data/sources/health/current.json",
@@ -233,6 +235,7 @@ def main() -> None:
         },
         "health_date": health_snapshot.get("date_iso", ""),
         "health_summary": health_snapshot.get("summary", {}),
+        "r64_official_network": load(R64_NETWORK, {}),
         "sources": sorted(entries.values(), key=lambda x: (x.get("authority_tier") or 99, not x.get("official", False), x["id"])),
     }
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"

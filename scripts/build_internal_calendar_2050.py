@@ -42,6 +42,7 @@ OUT_ASSET_DIR = ROOT / "app" / "src" / "main" / "assets" / "data" / "calendar"
 OUT_ASSET_INDEX = OUT_ASSET_DIR / "calendar_index.json"
 H2_PATH = ROOT / "canonical" / "jordan_2026_h2_lectionary.json"
 FIXED_LECTIONARY_PATH = ROOT / "canonical" / "jerusalem_fixed_feast_lectionary.json"
+PERPETUAL_LECTIONARY_PATH = ROOT / "canonical" / "perpetual_lectionary_2026_2050.json"
 
 
 AR_MONTHS = {
@@ -216,10 +217,40 @@ def load_fixed_lectionary() -> dict[str, dict]:
     return json.loads(FIXED_LECTIONARY_PATH.read_text(encoding="utf-8")).get("feasts", {})
 
 
-def compact_readings(day: date, exact: dict[str, dict], fixed_lectionary: dict[str, dict]) -> tuple[dict, str]:
+def load_perpetual_lectionary() -> dict[str, dict]:
+    if not PERPETUAL_LECTIONARY_PATH.is_file():
+        return {}
+    payload = json.loads(PERPETUAL_LECTIONARY_PATH.read_text(encoding="utf-8"))
+    return payload.get("dates", {}) if isinstance(payload.get("dates"), dict) else {}
+
+
+def appointed_from_refs(refs: dict) -> list[dict]:
+    output = []
+    for kind in ("epistle", "gospel", "matins_gospel"):
+        item = refs.get(kind) if isinstance(refs, dict) else None
+        if not isinstance(item, dict):
+            continue
+        output.append({
+            "kind": kind,
+            "canonical_reference": str(item.get("canonical_reference") or ""),
+            "display_reference": str(item.get("display_reference") or ""),
+            "reference": copy.deepcopy(item.get("reference") or {}),
+            "source": "pinned_calendar_reference",
+        })
+    return output
+
+
+def compact_readings(
+    day: date, exact: dict[str, dict], fixed_lectionary: dict[str, dict], perpetual: dict[str, dict]
+) -> tuple[dict, list[dict], str, dict]:
     entry = exact.get(day.isoformat())
     if isinstance(entry, dict):
-        return copy.deepcopy(entry.get("reading_references") or {}), "PINNED_EXACT_DATE_REFERENCE"
+        refs = copy.deepcopy(entry.get("reading_references") or {})
+        appointed = appointed_from_refs(refs)
+        return refs, appointed, "PINNED_EXACT_DATE_REFERENCE", {
+            "status": "APPOINTED_READINGS_PRESENT" if appointed else "PINNED_EXACT_DATE_WITHOUT_APPOINTED_READING",
+            "reason": "", "source": "jordan_pinned_exact_date_reference"
+        }
     _jy, jm, jd = gregorian_to_julian_date(day)
     fixed = fixed_lectionary.get(f"{jm:02d}-{jd:02d}")
     if isinstance(fixed, dict):
@@ -233,8 +264,28 @@ def compact_readings(day: date, exact: dict[str, dict], fixed_lectionary: dict[s
                     "display_reference": ref,
                     "reference": {"ar": ref, "en": ref, "el": ref},
                 }
-        return result, "PINNED_FIXED_FEAST_REFERENCE"
-    return {}, "REFERENCE_PENDING_TWICE_DAILY_VERIFICATION"
+        appointed = appointed_from_refs(result)
+        return result, appointed, "PINNED_FIXED_FEAST_REFERENCE", {
+            "status": "APPOINTED_READINGS_PRESENT" if appointed else "PINNED_FIXED_FEAST_WITHOUT_APPOINTED_READING",
+            "reason": "", "source": "jerusalem_fixed_feast_reference"
+        }
+    baseline = perpetual.get(day.isoformat())
+    if isinstance(baseline, dict):
+        refs = copy.deepcopy(baseline.get("reading_references") or {})
+        appointed = copy.deepcopy(baseline.get("appointed_readings") or [])
+        resolution = copy.deepcopy(baseline.get("reading_day_resolution") or {})
+        if not resolution:
+            resolution = {
+                "status": "APPOINTED_READINGS_PRESENT" if appointed else "NO_ABBREVIATED_READING_APPOINTED_BY_SOURCE",
+                "reason": "" if appointed else "Pinned perpetual source returned no abbreviated appointed reading for this civil day.",
+                "source": "orthocal_greek_julian_reference_baseline",
+            }
+        return refs, appointed, "PERPETUAL_GREEK_JULIAN_REFERENCE_BASELINE", resolution
+    return {}, [], "REFERENCE_PENDING_TWICE_DAILY_VERIFICATION", {
+        "status": "UNRESOLVED",
+        "reason": "No pinned exact, fixed-feast, or perpetual reference record is available for this civil day.",
+        "source": "none",
+    }
 
 
 def primary_and_occasions(day: date, info: dict) -> tuple[dict[str, str], list[dict]]:
@@ -266,6 +317,7 @@ def primary_and_occasions(day: date, info: dict) -> tuple[dict[str, str], list[d
 def build() -> dict:
     exact = load_exact_2026()
     fixed_lectionary = load_fixed_lectionary()
+    perpetual_lectionary = load_perpetual_lectionary()
     days = []
     cursor = START
     exact_reading_days = 0
@@ -273,7 +325,7 @@ def build() -> dict:
     while cursor <= END:
         info = day_info(cursor)
         primary, occasions = primary_and_occasions(cursor, info)
-        readings, reference_status = compact_readings(cursor, exact, fixed_lectionary)
+        readings, appointed_readings, reference_status, reading_day_resolution = compact_readings(cursor, exact, fixed_lectionary, perpetual_lectionary)
         if readings:
             exact_reading_days += 1
         if occasions:
@@ -303,7 +355,9 @@ def build() -> dict:
                 "display_icons": copy.deepcopy(info["fasting"].get("display_icons") or []),
             },
             "reading_references": readings,
+            "appointed_readings": appointed_readings,
             "reference_status": reference_status,
+            "reading_day_resolution": reading_day_resolution,
             "liturgy_service_selection": {
                 "service_type": selection.get("service_type"),
                 "service_form": selection.get("service_form"),
@@ -327,6 +381,8 @@ def build() -> dict:
             "daily_commemoration_label_offline": True,
             "named_saints_require_verified_native_source": True,
             "exact_readings_require_pinned_or_signed_source": True,
+            "perpetual_reference_baseline": bool(perpetual_lectionary),
+            "perpetual_baseline_is_not_jurisdiction_override": True,
             "machine_translation": False,
             "cross_language_fallback": False,
             "future_synodal_changes_applied_by_signed_update": True,
@@ -336,6 +392,10 @@ def build() -> dict:
             "days_with_named_internal_occasion": occasion_days,
             "days_with_offline_commemoration": len(days),
             "days_with_pinned_reading_references": exact_reading_days,
+            "days_with_appointed_readings": sum(1 for item in days if item.get("appointed_readings")),
+            "days_with_epistle_and_gospel": sum(1 for item in days if {"epistle", "gospel"}.issubset((item.get("reading_references") or {}).keys())),
+            "days_with_reading_day_resolution": sum(1 for item in days if (item.get("reading_day_resolution") or {}).get("status") not in {"", "UNRESOLVED", None}),
+            "days_resolved_without_abbreviated_appointed_reading": sum(1 for item in days if (item.get("reading_day_resolution") or {}).get("status") == "NO_ABBREVIATED_READING_APPOINTED_BY_SOURCE"),
             "end_of_horizon": END.isoformat(),
         },
         "days": days,
@@ -347,6 +407,19 @@ def _asset_day(item: dict) -> dict:
     # remain in the canonical file; the app loads only one calendar year at a time.
     fasting = item.get("fasting") if isinstance(item.get("fasting"), dict) else {}
     selection = item.get("liturgy_service_selection") if isinstance(item.get("liturgy_service_selection"), dict) else {}
+    appointed = item.get("appointed_readings") if isinstance(item.get("appointed_readings"), list) else []
+    kind_counts = {}
+    for reading in appointed:
+        if isinstance(reading, dict):
+            kind = str(reading.get("kind") or "appointed")
+            kind_counts[kind] = kind_counts.get(kind, 0) + 1
+    # The ordinary one-Epistle/one-Gospel case is already represented by
+    # reading_references. Keep appointed_readings in the APK only when they add
+    # information (OT/Lenten readings, multiple appointed passages, etc.).
+    appointed_asset = appointed if (
+        any(kind not in {"epistle", "gospel", "matins_gospel"} for kind in kind_counts)
+        or any(count > 1 for count in kind_counts.values())
+    ) else []
     return {
         "date": item["date"],
         "date_iso": item["date_iso"],
@@ -365,7 +438,9 @@ def _asset_day(item: dict) -> dict:
             "display_icons": fasting.get("display_icons") or [],
         },
         "reading_references": item.get("reading_references") or {},
+        "appointed_readings": appointed_asset,
         "reference_status": item.get("reference_status"),
+        "reading_day_resolution": item.get("reading_day_resolution") or {},
         "liturgy_service_selection": {
             "service_type": selection.get("service_type"),
             "service_form": selection.get("service_form"),

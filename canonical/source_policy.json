@@ -161,5 +161,15 @@
     "translation_between_lanes_allowed": false,
     "missing_native_text_behavior": "SHOW_UNAVAILABLE; NEVER_COPY_TRANSLATE_OR_AUTOMATICALLY_DIACRITIZE"
   },
-  "native_language_contract": "canonical/source_native_contract.json"
+  "native_language_contract": "canonical/source_native_contract.json",
+  "r64_official_network": {
+    "registry": "canonical/r64_official_source_network.json",
+    "scope": "all public sites/subdomains directly within Orthodox Jordan, Orthodox TV, and Jerusalem Patriarchate domains; affiliate links inventory-only unless separately promoted",
+    "project_owner_permission_attested": true,
+    "permission_attestation_date": "2026-08-10",
+    "authentication_or_captcha_bypass_allowed": false,
+    "recursive_crawl_allowed_within_registered_domains": true,
+    "machine_translation_allowed": false,
+    "cross_language_fallback_allowed": false
+  }
 }

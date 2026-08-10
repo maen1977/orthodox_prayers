@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "release": "5.6.4 R63",
+  "generated_on": "2026-08-10",
+  "source_state": {
+    "perpetual_baseline_embedded": false,
+    "reason": "GitHub build-time bootstrap; source archive remains auditable/offline",
+    "existing_exact_coverage_from_r62": {
+      "epistle_days": 182,
+      "gospel_days": 182
+    }
+  },
+  "build_pipeline": {
+    "months_requested": 300,
+    "civil_days_expected": 9131,
+    "source_role": "NON_JURISDICTIONAL_REFERENCE_BASELINE_ONLY",
+    "source_commit": "393d5bb55d31bf14fa9c2a706e21c2f1bb48f400",
+    "priority": [
+      "PINNED_EXACT_DATE_REFERENCE",
+      "PINNED_FIXED_FEAST_REFERENCE",
+      "PERPETUAL_GREEK_JULIAN_REFERENCE_BASELINE"
+    ],
+    "imports_saints_or_stories": false,
+    "runtime_network_required": false
+  },
+  "structural_simulation": {
+    "months": 300,
+    "days": 9131,
+    "bootstrap": "PASS",
+    "calendar_rebuild": "PASS",
+    "calendar_lock": "PASS",
+    "lock_file_count": 28,
+    "religious_correctness_claimed_for_fixtures": false
+  },
+  "commemoration_acquisition": {
+    "unresolved_civil_days": 6987,
+    "old_calendar_slots": 366,
+    "pending_old_calendar_slots": 358,
+    "machine_translation_allowed": false
+  },
+  "publication_truth": {
+    "real_25_year_network_bootstrap_executed_locally": false,
+    "real_25_year_network_bootstrap_expected_in_github_workflow": true,
+    "named_jordan_jerusalem_commemorations_complete": false
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "orthocal_greek_julian_reference_baseline",
+  "role": "NON_JURISDICTIONAL_REFERENCE_BASELINE_ONLY",
+  "calendar_mode": "greek_tradition_julian_old_calendar",
+  "api_template": "https://orthocal.info/api/greek/julian/{year}/{month}/",
+  "repository": "https://github.com/brianglass/orthocal-python",
+  "repository_commit": "393d5bb55d31bf14fa9c2a706e21c2f1bb48f400",
+  "license": "MIT",
+  "scope_copied": [
+    "scripture reference strings",
+    "abbreviated/appointed reading indices",
+    "pascha-distance structural metadata"
+  ],
+  "scope_explicitly_not_copied": [
+    "saint stories",
+    "long synaxarion prose",
+    "saint names as Jerusalem/Jordan authority",
+    "Bible passage text"
+  ],
+  "priority": [
+    "PINNED_EXACT_DATE_REFERENCE",
+    "PINNED_FIXED_FEAST_REFERENCE",
+    "PERPETUAL_GREEK_JULIAN_REFERENCE_BASELINE",
+    "SIGNED_RUNTIME_CORRECTION"
+  ],
+  "policy_note_ar": "هذا المصدر أداة حساب ومقارنة للقراءات الدورية فقط، وليس مرجعاً سلطوياً لتذكارات بطريركية القدس أو مطرانية الأردن. تبقى البيانات الأردنية/الأورشليمية المثبتة أعلى أولوية.",
+  "machine_translation_used": false
+}

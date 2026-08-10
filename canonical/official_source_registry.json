@@ -148,5 +148,167 @@
       ],
       "content": "English native text only"
     }
+  },
+  "r64_official_network": {
+    "registry": "canonical/r64_official_source_network.json",
+    "recursive_public_harvest": true,
+    "roots": [
+      {
+        "id": "orthodox_jordan_ar",
+        "url": "https://orthodoxjordan.org/",
+        "language": "ar",
+        "authority": "Jordan local primary",
+        "categories": [
+          "daily",
+          "calendar",
+          "fasting",
+          "readings",
+          "prayers",
+          "services",
+          "churches",
+          "events",
+          "live",
+          "library"
+        ]
+      },
+      {
+        "id": "orthodox_jordan_en",
+        "url": "https://orthodoxjordan.org/en/",
+        "language": "en",
+        "authority": "Jordan local official English lane",
+        "categories": [
+          "daily",
+          "calendar",
+          "fasting",
+          "readings",
+          "prayers",
+          "services",
+          "churches",
+          "events",
+          "live",
+          "library"
+        ]
+      },
+      {
+        "id": "orthodox_tv_ar",
+        "url": "https://orthodoxjo.tv/",
+        "language": "ar",
+        "authority": "Official Jerusalem Church television — Jordan/Palestine",
+        "categories": [
+          "live",
+          "radio",
+          "services",
+          "prayers",
+          "calendar",
+          "library",
+          "media"
+        ]
+      },
+      {
+        "id": "orthodox_tv_en",
+        "url": "https://orthodoxjo.tv/en/",
+        "language": "en",
+        "authority": "Official Jerusalem Church television English lane",
+        "categories": [
+          "live",
+          "radio",
+          "services",
+          "prayers",
+          "calendar",
+          "library",
+          "media"
+        ]
+      },
+      {
+        "id": "jerusalem_patriarchate_el",
+        "url": "https://jerusalem-patriarchate.info/",
+        "language": "el",
+        "authority": "Patriarchate primary Greek lane",
+        "categories": [
+          "calendar",
+          "feasts",
+          "services",
+          "churches",
+          "monasteries",
+          "events",
+          "announcements",
+          "radio"
+        ]
+      },
+      {
+        "id": "jerusalem_patriarchate_ar",
+        "url": "https://ar.jerusalem-patriarchate.info/",
+        "language": "ar",
+        "authority": "Patriarchate Arabic lane",
+        "categories": [
+          "calendar",
+          "feasts",
+          "services",
+          "churches",
+          "monasteries",
+          "events",
+          "announcements",
+          "radio"
+        ]
+      },
+      {
+        "id": "jerusalem_patriarchate_en",
+        "url": "https://en.jerusalem-patriarchate.info/",
+        "language": "en",
+        "authority": "Patriarchate English lane",
+        "categories": [
+          "calendar",
+          "feasts",
+          "services",
+          "churches",
+          "monasteries",
+          "events",
+          "announcements",
+          "radio"
+        ]
+      },
+      {
+        "id": "jerusalem_patriarchate_radio",
+        "url": "https://radio.jerusalem-patriarchate.info/",
+        "language": "multi",
+        "authority": "Official Patriarchate radio",
+        "categories": [
+          "radio",
+          "live",
+          "schedule"
+        ]
+      }
+    ],
+    "allowed_domain_suffixes": [
+      "orthodoxjordan.org",
+      "orthodoxjo.tv",
+      "jerusalem-patriarchate.info"
+    ],
+    "inventory_only_affiliates": [
+      {
+        "domain": "orthodoxcourt.com",
+        "relationship": "Linked by Orthodox Jordan under church services; inventory only, never a liturgical authority"
+      },
+      {
+        "domain": "gops.edu.jo",
+        "relationship": "Patriarchate schools linked by Orthodox Jordan; inventory only"
+      },
+      {
+        "domain": "theorthodoxcenter.org",
+        "relationship": "Orthodox Center linked by Orthodox Jordan; inventory only"
+      },
+      {
+        "domain": "services.orthodoxjordan.org",
+        "relationship": "Orthodox Jordan service-booking subdomain; covered by recursive official-domain crawl"
+      },
+      {
+        "domain": "jobs.orthodoxjordan.org",
+        "relationship": "Orthodox Jordan jobs subdomain; covered by recursive official-domain crawl"
+      },
+      {
+        "domain": "reyada.orthodoxjordan.org",
+        "relationship": "Orthodox Jordan community-program subdomain; covered by recursive official-domain crawl"
+      }
+    ]
   }
 }

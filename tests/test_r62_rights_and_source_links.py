@@ -12,12 +12,14 @@ def test_church_service_builder_blocks_unconfirmed_redistribution_before_fetch()
     assert 'OFFICIAL_SOURCE_LINK_ONLY_RIGHTS_PENDING' in source
     assert 'redistribution_permission_not_confirmed' in source
 
-def test_arabic_church_service_manifest_is_rights_pending_not_bundleable():
+def test_arabic_church_service_manifest_uses_owner_confirmed_r64_permission():
     data=load('canonical/church_service_full_sources.json')
     services=data['languages']['ar']['services']
     assert services
-    assert all(not s.get('permission_confirmed', False) for s in services)
-    assert all(s.get('redistribution_review_required', False) for s in services)
+    assert all(s.get('permission_confirmed') is True for s in services)
+    assert all(s.get('redistribution_review_required') is False for s in services)
+    assert all(s.get('rights_basis') == 'PROJECT_OWNER_CONFIRMED_R64_JERUSALEM_JORDAN_LICENSE' for s in services)
+    assert all('2026-08-10' in s.get('authorization_record','') for s in services)
     assert all(s.get('allow_link_fallback', False) for s in services)
 
 def test_official_daily_prayer_resources_are_link_only_and_arabic_scoped():

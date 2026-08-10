@@ -67,6 +67,19 @@ public final class UpcomingScreen extends BaseScreen {
         JSONObject refs = item.optJSONObject("reading_references");
         addReference(card, refs, "epistle", local(com.orthodoxprayers.privateapp.R.string.ui_epistle_dd82c199));
         addReference(card, refs, "gospel", local(com.orthodoxprayers.privateapp.R.string.ui_gospel_68845cc5));
+        JSONArray appointed = item.optJSONArray("appointed_readings");
+        if (appointed != null) {
+            for (int r = 0; r < appointed.length(); r++) {
+                JSONObject reading = appointed.optJSONObject(r);
+                if (reading == null) continue;
+                String kind = reading.optString("kind", "appointed");
+                if ("epistle".equals(kind) || "gospel".equals(kind) || kind.contains("matins")) continue;
+                String label = "old_testament".equals(kind)
+                        ? local(com.orthodoxprayers.privateapp.R.string.ui_old_testament_reading_r63)
+                        : local(com.orthodoxprayers.privateapp.R.string.ui_appointed_reading_r63);
+                addReferenceBlock(card, reading, label);
+            }
+        }
         card.setContentDescription(day + ". " + feast);
         if (!itemDate.isEmpty()) {
             card.setClickable(true);
@@ -125,6 +138,13 @@ public final class UpcomingScreen extends BaseScreen {
             if (service != null && id.equals(service.optString("id", ""))) return service;
         }
         return null;
+    }
+
+    private void addReferenceBlock(LinearLayout card, JSONObject reading, String label) {
+        if (reading == null) return;
+        String value = localized(reading.optJSONObject("reference"), reading.optString("display_reference", ""));
+        if (value == null || value.trim().isEmpty()) return;
+        card.addView(ui.text(label + ": " + value, 12, ui.colors().secondaryText(), false), ui.margins(-1, -2, 0, 4, 0, 0));
     }
 
     private void addReference(LinearLayout card, JSONObject refs, String kind, String prefix) {

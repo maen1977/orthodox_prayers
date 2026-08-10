@@ -40,13 +40,18 @@ public final class CalendarDayScreen extends BaseScreen {
                     sunday.optInt("eothinon")
             ));
         }
-        JSONObject refs = item.optJSONObject("reading_references");
-        if (refs != null) {
-            addReference(card, refs.optJSONObject("matins_gospel"), local(com.orthodoxprayers.privateapp.R.string.ui_matins_gospel_995b30a1));
-            addReference(card, refs.optJSONObject("epistle"), local(com.orthodoxprayers.privateapp.R.string.ui_epistle_a17bc087));
-            addReference(card, refs.optJSONObject("gospel"), local(com.orthodoxprayers.privateapp.R.string.ui_gospel_b7b033e7));
+        JSONArray appointed = item.optJSONArray("appointed_readings");
+        if (appointed != null && appointed.length() > 0) {
+            addAppointedReadingReferences(card, appointed);
         } else {
-            addFullReadingReferences(card, item.optJSONArray("readings"));
+            JSONObject refs = item.optJSONObject("reading_references");
+            if (refs != null) {
+                addReference(card, refs.optJSONObject("matins_gospel"), local(com.orthodoxprayers.privateapp.R.string.ui_matins_gospel_995b30a1));
+                addReference(card, refs.optJSONObject("epistle"), local(com.orthodoxprayers.privateapp.R.string.ui_epistle_a17bc087));
+                addReference(card, refs.optJSONObject("gospel"), local(com.orthodoxprayers.privateapp.R.string.ui_gospel_b7b033e7));
+            } else {
+                addFullReadingReferences(card, item.optJSONArray("readings"));
+            }
         }
         addServiceButtons(card, item);
         add(page.root, card, 14, 16);
@@ -62,6 +67,21 @@ public final class CalendarDayScreen extends BaseScreen {
         if (value == null || value.trim().isEmpty()) return;
         TextView text = ui.text(label + ":\n" + value, 15, ui.colors().secondaryText(), false);
         card.addView(text, ui.margins(-1, -2, 0, 8, 0, 0));
+    }
+
+    private void addAppointedReadingReferences(LinearLayout card, JSONArray readings) {
+        for (int i = 0; i < readings.length(); i++) {
+            JSONObject reading = readings.optJSONObject(i);
+            if (reading == null) continue;
+            String kind = reading.optString("kind", "appointed");
+            String label;
+            if ("epistle".equals(kind)) label = local(com.orthodoxprayers.privateapp.R.string.ui_epistle_a17bc087);
+            else if ("gospel".equals(kind)) label = local(com.orthodoxprayers.privateapp.R.string.ui_gospel_b7b033e7);
+            else if (kind.contains("matins")) label = local(com.orthodoxprayers.privateapp.R.string.ui_matins_gospel_995b30a1);
+            else if ("old_testament".equals(kind)) label = local(com.orthodoxprayers.privateapp.R.string.ui_old_testament_reading_r63);
+            else label = local(com.orthodoxprayers.privateapp.R.string.ui_appointed_reading_r63);
+            addReference(card, reading, label);
+        }
     }
 
     private void addFullReadingReferences(LinearLayout card, JSONArray readings) {
