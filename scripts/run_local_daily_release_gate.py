@@ -44,6 +44,7 @@ COMMANDS = [
         "tests/test_r62_runtime_walkthrough.py",
         "tests/test_r63_perpetual_lectionary_2050.py",
         "tests/test_r64_official_network_and_absolute_gate.py",
+        "tests/test_r64_2_scripture_manifest_sync.py",
         "tests/test_r64_2_scripture_omission_sync.py",
         "tests/test_public_domain_scripture.py",
         "tests/test_android_resources.py",

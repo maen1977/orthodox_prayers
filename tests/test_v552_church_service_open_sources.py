@@ -77,4 +77,4 @@ def test_workflow_installs_pdf_text_tool_before_import():
     text=(ROOT/'.github/workflows/church-prayers.yml').read_text(encoding='utf-8')
     assert 'Prepare open liturgical source tools' in text
     assert 'poppler-utils' in text
-    assert text.index('Prepare open liturgical source tools') < text.index('Prepare complete native church services')
+    assert text.index('Prepare open liturgical source tools') < text.index('Prepare offline Bible and church-service assets once')

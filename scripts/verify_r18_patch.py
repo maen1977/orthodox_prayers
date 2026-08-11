@@ -11,9 +11,8 @@ REQUIRED = {
     "scripts/source_connectors.py": ("dcs_reference_after_heading", "DCS regular-cycle references extracted"),
     "canonical/source_connectors.json": ('"local_authority_source_id": "orthodox_jordan"', '"goarch_digital_chant_stand"'),
     "app/src/main/java/com/orthodoxprayers/privateapp/data/SearchEngine.java": ("scanChurches", "officialServiceLinks", "editDistanceAtMostOne"),
-    "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java": ("ui_church_directory_36e0707d", "officialServiceLinks"),
-    ".github/workflows/update.yml": ("ORTHODOX_ENABLE_LIVE_SOURCE_FETCH", "validate_source_intelligence.py", "clean_legacy_calendar_snapshots.py\" --root \"$TARGET"),
-    ".github/workflows/build.yml": ("clean_legacy_calendar_snapshots.py --root \"$VERIFIED_DIR\"", "--allow-missing-manifest"),
+    "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java": ("ui_church_directory_36e0707d", "officialLiveResources", "officialChurchDirectoryResources"),
+    ".github/workflows/church-prayers.yml": ("harvest_official_source_network_r64.py", "run_local_daily_release_gate.py", "keep_required_workflows.py"),
     "scripts/verify.py": ("--allow-missing-manifest", "LEGACY_UPDATE_MANIFEST_ABSENT"),
     "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java": ("addLanguageButton", "addReminder"),
     "tests/test_r18_3_settings_compile_hotfix.py": ("test_settings_screen_hides_technical_coverage_badges", "liturgyCoverageBadge\" not in source"),
@@ -27,6 +26,9 @@ for relative, markers in REQUIRED.items():
     for marker in markers:
         if marker not in text:
             missing.append(f"{relative}: {marker}")
+for retired in (".github/workflows/update.yml", ".github/workflows/build.yml"):
+    if (ROOT / retired).exists():
+        missing.append(f"{retired}: retired workflow must stay removed")
 if missing:
     raise SystemExit("PATCH_R18_NOT_APPLIED\n" + "\n".join(missing))
 print(f"PATCH_R18_OK version={version_name} code={version_code} level=R18.4 refinement=R20")

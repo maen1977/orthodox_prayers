@@ -47,6 +47,20 @@ SOURCES: dict[str, dict[str, str]] = {
     },
 }
 
+# Canonical lectionaries can follow a different verse-number placement than a
+# particular public-domain source edition.  Keep the appointed canonical ID for
+# lookup/display while reusing the exact source wording from the edition's
+# documented location.  The World English Bible source itself notes that its
+# Romans 14:24-26 are numbered Romans 16:25-27 in the Textus Receptus tradition.
+# Never rewrite wording here; only expose an additional canonical coordinate.
+SOURCE_VERSE_RELOCATIONS: dict[str, dict[tuple[str, int, int], tuple[str, int, int]]] = {
+    "en": {
+        ("ROM", 16, 25): ("ROM", 14, 24),
+        ("ROM", 16, 26): ("ROM", 14, 25),
+        ("ROM", 16, 27): ("ROM", 14, 26),
+    },
+}
+
 NOTE_BLOCK = re.compile(r"\\(?P<kind>f|fe|x|fig)\b.*?\\(?P=kind)\*", re.DOTALL)
 # USFM 3 permits nested character styles by prefixing the marker with ``+``.
 # The public-domain English and Patriarchal Greek corpora both use ``\+w``.
@@ -290,6 +304,51 @@ def _download(url: str, attempts: int = 3, timeout: int = 60) -> bytes:
     raise RuntimeError(f"could not download {url}: {last}")
 
 
+def apply_source_verse_relocations(
+    language: str,
+    index: dict[tuple[str, int, int], dict[str, Any]],
+) -> list[dict[str, str]]:
+    """Expose documented source-edition relocations under canonical IDs.
+
+    The cloned entry preserves the exact source text/hash and records the source
+    coordinate explicitly.  Existing canonical verses always win, so a future
+    source archive that supplies the canonical numbering is never overwritten.
+    """
+    applied: list[dict[str, str]] = []
+    for canonical_key, source_key in SOURCE_VERSE_RELOCATIONS.get(language, {}).items():
+        if canonical_key in index:
+            continue
+        source_item = index.get(source_key)
+        if source_item is None:
+            # Unit-test/minimal fixture archives may intentionally omit the
+            # entire affected book.  Skip relocation in that case; if the book
+            # is present but the documented source coordinate disappeared, fail
+            # closed because the upstream edition changed unexpectedly.
+            if not any(key[0] == source_key[0] for key in index):
+                continue
+            canonical_id = ".".join(map(str, canonical_key))
+            source_id = ".".join(map(str, source_key))
+            raise ValueError(
+                f"configured source verse relocation is unavailable: {canonical_id} <- {source_id}"
+            )
+        clone = dict(source_item)
+        clone.update({
+            "book_id": canonical_key[0],
+            "chapter": canonical_key[1],
+            "verse": canonical_key[2],
+            "source_book_id": source_key[0],
+            "source_chapter": source_key[1],
+            "source_verse": source_key[2],
+            "source_verse_relocation": True,
+        })
+        index[canonical_key] = clone
+        applied.append({
+            "canonical_id": ".".join(map(str, canonical_key)),
+            "source_id": ".".join(map(str, source_key)),
+        })
+    return applied
+
+
 def load_public_domain_corpus(language: str) -> tuple[dict[str, Any], dict[tuple[str, int, int], dict[str, Any]]]:
     if language not in SOURCES:
         raise ValueError(f"unsupported language: {language}")
@@ -314,6 +373,15 @@ def load_public_domain_corpus(language: str) -> tuple[dict[str, Any], dict[tuple
         payload = _download(source["archive_url"])
         downloaded = True
         index, titles, numbered_omissions = parse_usfm_archive_detailed(payload)
+    source_verse_count = len(index)
+    source_numbered_omissions = set(numbered_omissions)
+    relocations = apply_source_verse_relocations(language, index)
+    relocated_ids = {item["canonical_id"] for item in relocations}
+    numbered_omissions = {
+        verse_id for verse_id in numbered_omissions
+        if verse_id not in relocated_ids
+    }
+
     if downloaded:
         temporary = archive_path.with_suffix(archive_path.suffix + ".tmp")
         temporary.write_bytes(payload)
@@ -328,9 +396,12 @@ def load_public_domain_corpus(language: str) -> tuple[dict[str, Any], dict[tuple
         "title": source["title"],
         "license": source["license"],
         "archive_sha256": sha256_bytes(payload),
+        "source_verse_count": source_verse_count,
         "verse_count": len(index),
         "books": sorted(titles),
         "numbered_source_omissions": sorted(numbered_omissions),
+        "source_numbered_omissions": sorted(source_numbered_omissions),
+        "source_verse_relocations": relocations,
         "machine_translation_used": False,
         "automatic_diacritization_used": False,
         "display_text_policy": "USFM_MARKUP_REMOVED_WITH_SOURCE_WORDING_AND_UNICODE_MARKS_PRESERVED",

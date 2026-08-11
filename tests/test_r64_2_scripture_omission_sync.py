@@ -107,3 +107,63 @@ def test_local_daily_validator_passes_declared_omissions_to_window_check():
     validator = (ROOT / "scripts/validate_local_daily_engine.py").read_text(encoding="utf-8")
     assert "verify_reference_window(years, ids, omissions, anchor)" in validator
     assert "endpoints_available(canonical, ids[language], omissions[language])" in validator
+
+
+def romans_relocation_usfm() -> str:
+    return "\n".join([
+        "\\id ROM",
+        "\\toc1 Romans",
+        "\\c 14",
+        "\\v 19 Source Romans 14:19",
+        "\\v 20 Source Romans 14:20",
+        "\\v 21 Source Romans 14:21",
+        "\\v 22 Source Romans 14:22",
+        "\\v 23 Source Romans 14:23",
+        "\\v 24 Doxology source line one",
+        "\\v 25 Doxology source line two",
+        "\\v 26 Doxology source line three",
+        "\\c 16",
+        "\\v 25 \\f + \\fr 16:25 \\ft TR places Romans 14:24-26 here as 16:25-27.\\f*",
+    ]) + "\n"
+
+
+def test_english_romans_doxology_source_relocation_resolves_canonical_16_25_27():
+    with tempfile.TemporaryDirectory() as tmp:
+        directory = Path(tmp)
+        source = public.SOURCES["en"]
+        with zipfile.ZipFile(directory / source["archive_name"], "w", zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr("45-ROM.usfm", romans_relocation_usfm())
+        with mock.patch.dict(os.environ, {"ORTHODOX_SCRIPTURE_ARCHIVE_DIR": str(directory)}):
+            manifest, index = public.load_public_domain_corpus("en")
+
+    assert manifest["source_verse_relocations"] == [
+        {"canonical_id": "ROM.16.25", "source_id": "ROM.14.24"},
+        {"canonical_id": "ROM.16.26", "source_id": "ROM.14.25"},
+        {"canonical_id": "ROM.16.27", "source_id": "ROM.14.26"},
+    ]
+    assert "ROM.16.25" in manifest["source_numbered_omissions"]
+    assert "ROM.16.25" not in manifest["numbered_source_omissions"]
+    assert index[("ROM", 16, 25)]["text"] == "Doxology source line one"
+    assert index[("ROM", 16, 26)]["text"] == "Doxology source line two"
+    assert index[("ROM", 16, 27)]["text"] == "Doxology source line three"
+    assert index[("ROM", 16, 26)]["source_chapter"] == 14
+    assert index[("ROM", 16, 26)]["source_verse"] == 25
+    assert index[("ROM", 16, 26)]["source_verse_relocation"] is True
+
+    reference = "ROM.14.19-23;ROM.16.25-27"
+    parsed = fill.parse_reference_parts(reference)
+    assert parsed is not None
+    selected = fill.passage_verses(index, parsed, fill.declared_source_omissions(manifest))
+    assert selected is not None
+    assert [(item["chapter"], item["verse"]) for item in selected] == [
+        (14, 19), (14, 20), (14, 21), (14, 22), (14, 23),
+        (16, 25), (16, 26), (16, 27),
+    ]
+    prepared = prepare.selected_for_reference(
+        "en", reference, index, set(manifest["numbered_source_omissions"])
+    )
+    assert [item["text"] for item in prepared[-3:]] == [
+        "Doxology source line one",
+        "Doxology source line two",
+        "Doxology source line three",
+    ]

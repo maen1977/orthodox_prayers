@@ -31,7 +31,7 @@ def test_subscreens_use_a_compact_mirrored_arrow_only_back_control() -> None:
     assert "ui_back_18fb18e2" not in reader
 
 
-def test_home_uses_four_shortcut_cards_and_one_context_aware_card() -> None:
+def test_home_uses_six_shortcut_cards_and_one_context_aware_fasting_card() -> None:
     home = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java")
     ui = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/UiKit.java")
 
@@ -42,11 +42,12 @@ def test_home_uses_four_shortcut_cards_and_one_context_aware_card() -> None:
     assert '"readings", null' in home
     assert 'ui_calendar_and_fasting_51a9bf84), "upcoming", null' in home
     assert 'ui_churches_and_live_services_53a37eff), "churches", null' in home
-    assert "addSmartRecommendation(page.root);" in home
-    assert "private SmartShortcut smartRecommendation()" in home
-    assert 'data.findService("divine_liturgy")' in home
-    assert 'host.navigate("reader", "divine_liturgy")' in home
-    assert "DayOfWeek.SUNDAY" not in home
+    assert home.count("addShortcutCard(") >= 7  # six calls plus the helper declaration
+    assert 'bibleTitle(), "bible", null' in home
+    assert 'searchTitle(), "search", null' in home
+    assert "addSmartFastingNotice(page.root);" in home
+    assert "FastingNoticeEngine.evaluate" in home
+    assert 'host.navigate("calendar_day", notice.targetDate.toString())' in home
     assert "specificCommemoration(today)" not in home
     assert "addRollingWeekStatus(page.root);" not in home
 

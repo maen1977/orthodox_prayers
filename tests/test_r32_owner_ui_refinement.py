@@ -69,7 +69,8 @@ def test_home_keeps_nine_day_access_behind_the_compact_calendar_icon() -> None:
     assert 'host.navigate("calendar_day", itemDate)' in upcoming
     assert 'host.navigate("calendar", null)' in upcoming
     assert source_omits_text(home, "عرض تفاصيل الأيام التسعة", "ar")
-    assert source_omits_text(home, "البحث", "ar")
+    assert 'addShortcutCard(third, com.orthodoxprayers.privateapp.R.drawable.ic_action_search, searchTitle(), "search", null);' in home
+    assert 'if ("ar".equals(language)) return "البحث";' in home
     assert source_omits_text(home, "آخر قراءة", "ar")
     assert source_omits_text(home, "اللغات", "ar")
     assert source_omits_text(home, "الإعدادات", "ar")
@@ -96,16 +97,40 @@ def test_settings_hide_language_and_coverage_implementation_details() -> None:
     assert "addReminder" in settings
 
 
-def test_official_jordan_tv_direct_page_is_primary_with_official_fallback() -> None:
+def test_official_live_resources_match_the_current_verified_source_registry() -> None:
     directory = json.loads(read("app/src/main/assets/data/churches.json"))
     resources = directory["live_resources"]
-    assert resources[0]["id"] == "orthodox_jordan_tv_live"
-    assert resources[0]["url"].startswith("https://orthodoxjo.tv/video/")
-    assert resources[1]["id"] == "orthodox_jordan_live_fallback"
-    assert resources[1]["url"].startswith("https://orthodoxjordan.org/")
+    assert [item["id"] for item in resources] == [
+        "orthodox_tv_official",
+        "orthodox_tv_radio",
+        "jerusalem_patriarchate_radio",
+    ]
+    assert resources[0]["url"] == "https://orthodoxjo.tv/"
+    assert resources[1]["url"].startswith("https://orthodoxjo.tv/audio/")
+    assert resources[2]["url"].startswith("https://ar.jerusalem-patriarchate.info/")
     builder = read("scripts/build_church_directory.py")
     churches = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/ChurchesScreen.java")
-    assert "orthodox_jordan_tv_live" in builder
-    assert "orthodox_jordan_live_fallback" in builder
+    for resource_id in ("orthodox_tv_official", "orthodox_tv_radio", "jerusalem_patriarchate_radio"):
+        assert resource_id in builder
+    assert "orthodox_jordan_tv_live" not in builder
     assert "Intent.CATEGORY_BROWSABLE" in churches
     assert "Intent.FLAG_ACTIVITY_NEW_DOCUMENT" in churches
+
+def test_church_directory_offline_fallback_cannot_shrink_the_audited_snapshot() -> None:
+    import sys
+
+    scripts = str(ROOT / "scripts")
+    if scripts not in sys.path:
+        sys.path.insert(0, scripts)
+    from build_church_directory import SEED, load_best_reviewed_fallback
+
+    seed = json.loads(SEED.read_text(encoding="utf-8"))
+    churches, status, snapshot_date, metadata = load_best_reviewed_fallback(seed)
+    assert len(seed["churches"]) == 5
+    assert len(churches) == 57
+    assert status == "official_directory_audited"
+    assert snapshot_date == "2026-08-10"
+    assert "orthodox_jordan" in metadata["authority"]
+    builder = read("scripts/build_church_directory.py")
+    assert "minimum_safe_live_count" in builder
+    assert "fallback_count * 7" in builder

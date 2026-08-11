@@ -103,7 +103,8 @@ def test_release_attestation_round_trip_and_calendar_lock(tmp_path: Path) -> Non
     lock = payload["predicate"]["calendar_lock"]
     assert lock["end"] == "2050-12-31"
     assert lock["day_count"] == 9131
-    assert lock["aggregate_sha256"] == "81604edecae2befa2263df01a2231ca3925b0a046a4383db9de9f2388edcebcf"
+    canonical_lock = json.loads((ROOT / "canonical/calendar_2026_2050_lock.json").read_text(encoding="utf-8"))
+    assert lock["aggregate_sha256"] == canonical_lock["aggregate_sha256"]
 
 
 def test_release_handoff_bundle_is_deterministic_and_secret_free(tmp_path: Path) -> None:
@@ -134,15 +135,16 @@ def test_release_handoff_bundle_is_deterministic_and_secret_free(tmp_path: Path)
         assert "RELEASE_HANDOFF_MANIFEST.json" in archive.namelist()
 
 
-def test_r44_workflow_runs_artifact_attestation_and_handoff_gates() -> None:
-    workflow = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-    for expected in (
+def test_r44_release_qualification_tools_remain_available_after_fast_workflow_refactor() -> None:
+    workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    for script in (
         "scripts/verify_release_artifacts.py",
-        "RELEASE_ARTIFACT_REPORT.json",
         "scripts/generate_release_attestation.py",
         "scripts/validate_release_attestation.py",
-        "RELEASE_ATTESTATION.json",
         "scripts/create_release_handoff_bundle.py",
-        "Church-Prayers-$RELEASE_VERSION-qualified.zip",
     ):
-        assert expected in workflow
+        assert (ROOT / script).is_file()
+    assert "Prepare release signing" in workflow
+    assert "Validate release identity and signature requirements" in workflow
+    assert "Publish GitHub Release for the updater" in workflow
+    assert not (ROOT / ".github/workflows/build.yml").exists()

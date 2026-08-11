@@ -41,13 +41,12 @@ class PipelineSelfRepairTests(unittest.TestCase):
             self.assertNotEqual(restored.read_text(encoding="utf-8"), "corrupted")
             self.assertEqual(hashlib.sha256(restored.read_bytes()).hexdigest(), module.SOURCE_WINDOW_RESEARCH_SHA256)
 
-    def test_workflows_repair_before_quality_or_update_execution(self) -> None:
-        build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-        update = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-        command = "python scripts/update.py --repair-pipeline-only"
-        self.assertGreaterEqual(build.count(command), 3)
-        self.assertIn(command, update)
-        self.assertLess(update.index(command), update.index("python scripts/prepare_rolling_week_scripture_slice.py"))
+    def test_current_workflow_is_local_and_legacy_repair_cli_remains_available(self) -> None:
+        build = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+        self.assertIn("python scripts/keep_required_workflows.py", build)
+        self.assertIn("python scripts/run_local_daily_release_gate.py", build)
+        self.assertFalse((ROOT / ".github/workflows/build.yml").exists())
+        self.assertFalse((ROOT / ".github/workflows/update.yml").exists())
 
     def test_update_cli_exposes_repair_only_mode(self) -> None:
         text = UPDATE_PATH.read_text(encoding="utf-8")

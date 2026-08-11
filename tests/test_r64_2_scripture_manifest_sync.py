@@ -43,12 +43,12 @@ def test_scripture_sync_writes_exact_same_manifest_and_verses_to_source_and_andr
 def test_workflow_synchronizes_scripture_after_calendar_rebuild_and_before_release_gate():
     workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
     rebuild = workflow.index("python scripts/build_internal_calendar_2050.py")
-    sync = workflow.index("python scripts/prepare_all_calendar_scripture_fallback.py --archive-dir app/build/all-calendar-scripture-cache")
+    sync = workflow.index("python scripts/prepare_all_calendar_scripture_fallback.py")
     gate = workflow.index("python scripts/run_local_daily_release_gate.py")
     assert rebuild < sync < gate
     assert "Restore all-calendar Scripture source cache" in workflow
     assert "Save all-calendar Scripture source cache" in workflow
-    assert "python scripts/validate_local_daily_engine.py --date 2026-08-06" in workflow
+    assert "path: .cache/scripture" in workflow
 
 
 def test_release_gate_keeps_r64_2_regression_test():
