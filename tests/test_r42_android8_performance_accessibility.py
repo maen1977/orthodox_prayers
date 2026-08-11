@@ -19,18 +19,16 @@ def test_release_branding_assets_are_present_in_clean_source() -> None:
     assert (branding / "Church-Prayers-transparent-1024.png").stat().st_size > 10_000
 
 
-def test_android8_low_memory_runtime_lane_blocks_release() -> None:
-    workflow = read(".github/workflows/build.yml")
-    legacy = workflow.split("  android_legacy:", 1)[1].split("\n  release:", 1)[0]
-    assert "api-level: 26" in legacy
-    assert "ram-size: 1024M" in legacy
-    assert "heap-size: 192M" in legacy
-    assert "script: bash scripts/run_android_emulator_ci.sh 26 smoke" in legacy
-    assert "AccessibilitySmokeTest" not in legacy  # Class filtering belongs in the runner.
-    assert "android_compatibility" in workflow
-    assert "android_upgrade" in workflow
-    assert "android_resilience" in workflow
-
+def test_android8_low_memory_qualification_remains_available_with_fast_release_workflow() -> None:
+    workflow = read(".github/workflows/church-prayers.yml")
+    gradle = read("app/build.gradle.kts")
+    runner = read("scripts/run_android_emulator_ci.sh")
+    assert "minSdk = 26" in gradle
+    assert "26|29|33|35" in runner
+    assert "full|smoke" in runner
+    assert "python scripts/run_local_daily_release_gate.py" in workflow
+    assert "testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease" in workflow
+    assert not (ROOT / ".github/workflows/build.yml").exists()
 
 def test_runtime_runner_supports_android8_and_current_android() -> None:
     runner = read("scripts/run_android_emulator_ci.sh")
@@ -133,13 +131,12 @@ def test_lightweight_baseline_profile_is_pinned_and_app_only():
     assert "validate_baseline_profile.py" in gate
 
 
-def test_release_workflow_verifies_compiled_baseline_profile():
-    workflow = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
+def test_packaged_baseline_profile_verifier_remains_available_for_release_qualification():
+    workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
     verifier = (ROOT / "scripts/verify_packaged_baseline_profile.py").read_text(encoding="utf-8")
 
-    assert "Verify packaged Baseline Profile" in workflow
-    assert "--apk app/build/outputs/apk/release/app-release.apk" in workflow
-    assert "--aab app/build/outputs/bundle/release/app-release.aab" in workflow
+    assert "lintRelease assembleDebug assembleRelease bundleRelease" in workflow
     assert "dexopt/baseline.prof" in verifier
     assert "dexopt/baseline.profm" in verifier
     assert "1536 * 1024" in verifier
+    assert not (ROOT / ".github/workflows/build.yml").exists()

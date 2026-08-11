@@ -74,12 +74,12 @@ class R18SourceIntelligenceTests(unittest.TestCase):
         self.assertNotIn('host.navigate("churches", null)', settings)
         self.assertIn('"churches", null', home)
 
-    def test_workflow_enables_live_monitoring_and_validates_publication(self):
-        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-        self.assertIn('ORTHODOX_ENABLE_LIVE_SOURCE_FETCH: "1"', workflow)
-        self.assertGreaterEqual(workflow.count("validate_source_intelligence.py"), 2)
-        self.assertIn("canonical/source_connectors.json", workflow)
-        self.assertIn('rsync -a --delete "$SOURCE/data/"', workflow)
+    def test_current_build_harvests_official_sources_without_restoring_retired_daily_workflow(self):
+        workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+        self.assertIn("harvest_official_source_network_r64.py", workflow)
+        self.assertIn("run_local_daily_release_gate.py", workflow)
+        self.assertIn("build_r64_official_content_inventory.py", workflow)
+        self.assertFalse((ROOT / ".github/workflows/update.yml").exists())
 
 
 if __name__ == "__main__":

@@ -27,8 +27,8 @@ def test_runtime_bible_is_offline_and_daily_readings_prefer_it():
     assert "getAssets().open" in repo
     assert "HttpURLConnection" not in repo
     assert "URL(" not in repo
-    assert "fullBible.resolve(language, canonicalReference)" in engine
-    full_pos = engine.index("fullBible.resolve(language, canonicalReference)")
+    assert "fullBible.resolve(language, normalizedReference)" in engine
+    full_pos = engine.index("fullBible.resolve(language, normalizedReference)")
     slice_pos = engine.index("ScriptureCorpus corpus = scriptureCorpus(language)", full_pos)
     assert full_pos < slice_pos
 

@@ -114,25 +114,22 @@ def test_play_package_builder_collects_automated_release_inputs(tmp_path: Path, 
     assert (output / "SHA256SUMS.txt").is_file()
 
 
-def test_build_workflow_uses_one_stable_runtime_emulator_and_packages_play_release():
-    workflow = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
+def test_fast_build_workflow_keeps_release_build_and_standalone_runtime_qualification_tools():
+    workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    assert not (ROOT / ".github/workflows/build.yml").exists()
     assert (ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/StoreScreenshotTest.java").is_file()
     for marker in (
-        "api-level: 35",
-        "script: bash scripts/run_android_emulator_ci.sh 35",
-        "validate_android_sdk_contract.py",
-        "name: Android release lint",
-        "play-store-screenshots",
-        "validate_release_permissions.py",
-        "build_play_store_release_package.py",
-        "PLAY_SUPPORT_EMAIL",
+        "python scripts/run_local_daily_release_gate.py",
+        "testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease",
+        "actions/upload-artifact@",
+        "Church-Prayers.apk",
+        "Church-Prayers.aab",
     ):
         assert marker in workflow
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in workflow
     assert "am instrument -w -r" in emulator_script
     assert "validate_play_store_assets.py --require-screenshots" in emulator_script
-
+    subprocess.run(["bash", "-n", str(ROOT / "scripts/run_android_emulator_ci.sh")], check=True)
 
 def test_calendar_boundary_validator_covers_every_year_transition_through_2050():
     result = subprocess.run(

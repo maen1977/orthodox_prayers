@@ -153,39 +153,15 @@ def test_undated_reference_cannot_create_a_false_conflict():
     assert result["conflicts"] == []
 
 
-def test_workflows_use_automatic_gate_and_android_emulator():
-    update = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-    build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-    assert "validate_automated_religious_evidence.py" in update
-    assert "validate_source_comparison.py" in update
-    assert "compare_source_snapshots.py" in update
-    assert "--require-reviewed-propers" not in update
-    assert "human review" not in update.lower()
-    assert "Require all three publishable language lanes" in update
-    assert 'test "$ok" -eq 3' in update
+def test_current_workflow_uses_automatic_official_source_harvest_and_local_release_gate():
+    build = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    assert "harvest_official_source_network_r64.py" in build
+    assert "build_r64_official_content_inventory.py" in build
+    assert "audit_absolute_coverage_r64.py --require-complete" in build
+    assert "run_local_daily_release_gate.py" in build
+    assert not (ROOT / ".github/workflows/update.yml").exists()
     emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in build
     assert "am instrument -w -r" in emulator_script
-    assert "script: bash scripts/run_android_emulator_ci.sh 35" in build
-    assert "api-level: 35" in build
-    assert "api_level: [29, 35]" not in build
-    assert "script: |" not in build.split("Run instrumentation and capture Arabic, English, and Greek screens", 1)[1].split("Upload generated Play Store screenshots", 1)[0]
-    emulator_script = (ROOT / "scripts/run_android_emulator_ci.sh").read_text(encoding="utf-8")
-    assert "wait-for-device" in emulator_script
-    assert "sys.boot_completed" in emulator_script
-    assert "ro.build.version.sdk" in emulator_script
-    assert "pm path android" in emulator_script
-    assert "stable >= 5" in emulator_script
-    assert "svc wifi disable" not in emulator_script
-    reader_smoke = (
-        ROOT / "app/src/androidTest/java/com/orthodoxprayers/privateapp/ReaderSmokeTest.java"
-    ).read_text(encoding="utf-8")
-    assert 'runShellCommand("svc wifi disable")' in reader_smoke
-    assert 'runShellCommand("svc data disable")' in reader_smoke
-    assert "NET_CAPABILITY_VALIDATED" in reader_smoke
-    assert "set -euo pipefail" in emulator_script
-    assert "play-store-screenshots" in build
-    assert "validate_play_store_assets.py --require-screenshots" in build
 
 
 def test_source_snapshot_drift_is_machine_readable(tmp_path: Path):

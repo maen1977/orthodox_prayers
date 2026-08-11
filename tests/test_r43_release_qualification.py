@@ -37,28 +37,26 @@ def test_launcher_shortcuts_are_lightweight_and_localized() -> None:
 
 
 def test_upgrade_qualification_preserves_user_state() -> None:
-    workflow = read(".github/workflows/build.yml")
+    workflow = read(".github/workflows/church-prayers.yml")
     test = read("app/src/androidTest/java/com/orthodoxprayers/privateapp/UpgradePersistenceTest.java")
     runner = read("scripts/run_android_upgrade_ci.sh")
-    assert "android_upgrade:" in workflow
-    assert "In-place upgrade from previous revision on Android 8" in workflow
-    assert "git worktree add" in workflow
-    assert "run_android_upgrade_ci.sh 26" in workflow
+    assert "python scripts/run_local_daily_release_gate.py" in workflow
+    assert "testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease" in workflow
     assert "adb install -r -t" in runner
     for value in ("favorites_csv", "reader_position_morning_prayer", "last_search_query", "upgrade-sentinel-r43.txt"):
         assert value in test
     subprocess.run(["bash", "-n", str(ROOT / "scripts/run_android_upgrade_ci.sh")], check=True)
+    assert not (ROOT / ".github/workflows/build.yml").exists()
 
-
-def test_compatibility_and_resilience_jobs_block_release() -> None:
-    workflow = read(".github/workflows/build.yml")
-    assert "api: [29, 33]" in workflow
-    assert "run_android_failure_recovery_ci.sh 35" in workflow
-    assert "android_compatibility, android_upgrade, android_resilience" in workflow
-    assert "DailyPresentationSmokeTest" in read("scripts/run_android_emulator_ci.sh")
-    assert "FailureRecoverySmokeTest" in read("scripts/run_android_emulator_ci.sh")
+def test_compatibility_and_resilience_qualification_tools_remain_available() -> None:
+    workflow = read(".github/workflows/church-prayers.yml")
+    emulator = read("scripts/run_android_emulator_ci.sh")
+    assert "python scripts/run_local_daily_release_gate.py" in workflow
+    assert "DailyPresentationSmokeTest" in emulator
+    assert "FailureRecoverySmokeTest" in emulator
+    assert (ROOT / "scripts/run_android_failure_recovery_ci.sh").is_file()
     subprocess.run(["bash", "-n", str(ROOT / "scripts/run_android_failure_recovery_ci.sh")], check=True)
-
+    assert not (ROOT / ".github/workflows/build.yml").exists()
 
 def test_extended_performance_parser_enforces_screen_specific_budgets(tmp_path: Path) -> None:
     files = {}
@@ -93,34 +91,26 @@ def test_release_size_budget_validator(tmp_path: Path) -> None:
     report = tmp_path / "size.json"
     subprocess.run([sys.executable, "scripts/validate_release_size.py", "--apk", str(apk), "--aab", str(aab), "--source-zip", str(source), "--report", str(report)], cwd=ROOT, check=True)
     assert json.loads(report.read_text(encoding="utf-8"))["status"] == "PASS"
-    assert "validate_release_size.py" in read(".github/workflows/build.yml")
+    workflow = read(".github/workflows/church-prayers.yml")
+    assert "assembleRelease bundleRelease" in workflow
+    assert (ROOT / "scripts/validate_release_size.py").is_file()
 
-
-def test_play_internal_workflow_is_manual_protected_and_dry_run_capable(tmp_path: Path) -> None:
-    workflow = read(".github/workflows/play-internal.yml")
+def test_play_internal_uploader_remains_dry_run_capable_without_a_second_workflow(tmp_path: Path) -> None:
     uploader = read("scripts/upload_play_internal.py")
-    yaml.safe_load(workflow)
-    assert "workflow_dispatch" in workflow
-    assert "environment: play-internal" in workflow
-    assert "PLAY_SERVICE_ACCOUNT_JSON" in workflow
-    assert "inputs.publish == true" in workflow
+    assert not (ROOT / ".github/workflows/play-internal.yml").exists()
     assert "androidpublisher.googleapis.com/upload/androidpublisher/v3" in uploader
     aab = tmp_path / "sample.aab"; aab.write_bytes(b"bundle" * 300)
     report = tmp_path / "dry-run.json"
     subprocess.run([sys.executable, "scripts/upload_play_internal.py", "--aab", str(aab), "--release-name", "R43", "--dry-run", "--report", str(report)], cwd=ROOT, check=True)
     assert json.loads(report.read_text(encoding="utf-8"))["result"] == "VALIDATED_ONLY"
 
-
-def test_weekly_health_and_device_qualification_contract(tmp_path: Path) -> None:
-    workflow = read(".github/workflows/weekly-health.yml")
-    yaml.safe_load(workflow)
-    assert "Weekly Release Health" in workflow
-    assert "gh issue create" in workflow
+def test_device_qualification_contract_remains_available_with_single_workflow(tmp_path: Path) -> None:
+    assert not (ROOT / ".github/workflows/weekly-health.yml").exists()
+    assert [p.name for p in (ROOT / ".github/workflows").glob("*.yml")] == ["church-prayers.yml"]
     report = tmp_path / "device.json"
     subprocess.run([sys.executable, "scripts/validate_device_qualification.py", "--report", str(report)], cwd=ROOT, check=True)
     payload = json.loads(report.read_text(encoding="utf-8"))
     assert payload["automated_apis"] == [26, 29, 33, 35]
-
 
 def test_workflow_validator_accepts_all_protected_workflows() -> None:
     subprocess.run([sys.executable, "scripts/validate_workflows.py"], cwd=ROOT, check=True)

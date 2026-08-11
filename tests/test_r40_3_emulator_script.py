@@ -10,16 +10,14 @@ def test_android_emulator_ci_script_is_valid_bash():
     subprocess.run(["bash", "-n", str(SCRIPT)], check=True)
 
 
-def test_android_emulator_runner_uses_one_stable_shell_command():
-    build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-    block = build.split(
-        "Run instrumentation and capture Arabic, English, and Greek screens", 1
-    )[1].split("Upload generated Play Store screenshots", 1)[0]
-    assert "api-level: 35" in block
-    assert "matrix:" not in build.split("android_instrumented:", 1)[1].split("  android_legacy:", 1)[0]
-    assert "script: bash scripts/run_android_emulator_ci.sh 35" in block
-    assert "script: |" not in block
-
+def test_android_emulator_runner_is_preserved_as_standalone_qualification_tool():
+    workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    script = SCRIPT.read_text(encoding="utf-8")
+    assert "python scripts/run_local_daily_release_gate.py" in workflow
+    assert "testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease" in workflow
+    assert "26|29|33|35" in script
+    assert "am instrument -w -r" in script
+    assert not (ROOT / ".github/workflows/build.yml").exists()
 
 def test_android_emulator_ci_script_runs_direct_instrumentation_with_fake_adb(tmp_path: Path):
     bin_dir = tmp_path / "bin"
@@ -100,30 +98,16 @@ def test_reader_smoke_test_owns_offline_transition():
     assert 'runShellCommand("svc data enable")' in reader
 
 
-def test_instrumentation_job_uses_one_modern_emulator_and_uploads_diagnostics():
-    build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-    block = build.split(
-        "Run instrumentation and capture Arabic, English, and Greek screens", 1
-    )[1].split("Upload generated Play Store screenshots", 1)[0]
-    assert "Build runtime and instrumentation APKs before emulator boot" in build
-    assert "assembleDebug assembleDebugAndroidTest --stacktrace" in build
-    assert "Enable and verify KVM acceleration" in build
-    assert "test -c /dev/kvm" in build
-    assert "test -w /dev/kvm" in build
-    assert "emulator-boot-timeout: 480" in block
-    assert "target: default" in block
-    assert "profile: pixel_2" in block
-    assert "ram-size: 2048M" in block
-    assert "heap-size: 256M" in block
-    assert "disk-size: 4G" in block
-    assert "disable-linux-hw-accel: false" in block
-    assert "api-level: 35" in block
-    assert "-no-snapshot" in block
-    assert "-accel on" in block
-    assert "pre-emulator-launch-script: bash scripts/verify_android_emulator_host.sh" in block
-    assert "if: always()" in build
-    assert "androidTest-diagnostics" in build
-
+def test_instrumentation_support_files_remain_valid_after_fast_workflow_refactor():
+    workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    runner = SCRIPT.read_text(encoding="utf-8")
+    host = (ROOT / "scripts/verify_android_emulator_host.sh").read_text(encoding="utf-8")
+    assert "testDebugUnitTest lintRelease assembleDebug assembleRelease bundleRelease" in workflow
+    assert "collect_android_runtime_metrics.sh" in runner
+    assert "am instrument -w -r" in runner
+    assert "/dev/kvm" in host
+    assert "emulator" in host.lower()
+    assert not (ROOT / ".github/workflows/build.yml").exists()
 
 def test_emulator_host_preflight_is_fail_fast_and_valid_bash():
     script = ROOT / "scripts/verify_android_emulator_host.sh"

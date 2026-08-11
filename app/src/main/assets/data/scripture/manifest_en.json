@@ -324,7 +324,18 @@
     "TIT.1.5-2.1"
   ],
   "allowed_source_verse_omissions": [
-    "LUK.17.36"
+    "ACT.15.34",
+    "ACT.24.7",
+    "ACT.8.37",
+    "LUK.17.36",
+    "ROM.16.25"
+  ],
+  "detected_numbered_source_omissions": [
+    "ACT.15.34",
+    "ACT.24.7",
+    "ACT.8.37",
+    "LUK.17.36",
+    "ROM.16.25"
   ],
   "source_id": "ebible_world_english_bible",
   "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",

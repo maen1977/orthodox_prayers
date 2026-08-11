@@ -16,15 +16,16 @@ def resource_value(relative: str, name: str) -> str:
     raise AssertionError(f"missing resource {name} in {relative}")
 
 
-def test_prayer_hub_uses_three_navigable_category_cards() -> None:
+def test_prayer_hub_uses_four_navigable_category_cards() -> None:
     hub = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/PrayerHubScreen.java")
     main = read("app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java")
     ui = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/UiKit.java")
 
-    assert hub.count("addCategory(page,") == 3
+    assert hub.count("addCategory(page,") == 4
     assert 'addCategory(page, "daily"' in hub
     assert 'addCategory(page, "basic"' in hub
     assert 'addCategory(page, "communion"' in hub
+    assert 'addCategory(page, "church_service"' in hub
     assert "ui.actionCard" in hub
     assert 'host.navigate("prayer_category", category)' in hub
     assert 'case "prayer_category"' in main

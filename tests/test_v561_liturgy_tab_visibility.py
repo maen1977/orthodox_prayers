@@ -10,8 +10,9 @@ def text(path):
 def test_liturgy_is_stable_top_level_destination():
     main = text('app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java')
     assert 'addNav(R.drawable.ic_nav_liturgy' in main
-    assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
-    assert 'case "liturgy": return new ReaderScreen(this, "divine_liturgy");' not in main
+    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' in main
+    assert 'new ReaderScreen(this, "divine_liturgy")' in main
+    assert 'new LiturgyHubScreen(this)' in main
 
 
 def test_hub_never_hides_tab_when_appointed_text_is_blocked():
@@ -24,9 +25,11 @@ def test_hub_never_hides_tab_when_appointed_text_is_blocked():
     assert hub.index('if (displayable)') < hub.index('host.navigate("reader", "divine_liturgy")')
 
 
-def test_home_liturgy_card_routes_via_day_aware_hub():
+def test_home_keeps_liturgy_available_through_the_stable_top_navigation():
+    main = text('app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java')
     home = text('app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java')
-    assert 'host.navigate("liturgy", null)' in home
+    assert 'addNav(R.drawable.ic_nav_liturgy' in main
+    assert 'host.navigate("liturgy", null)' not in home
 
 
 def test_calendar_keeps_blocked_liturgy_visible_but_not_openable():

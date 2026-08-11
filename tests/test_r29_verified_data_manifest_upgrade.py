@@ -115,8 +115,9 @@ def test_manifest_requiring_newer_app_is_rejected_even_in_compatibility_mode() -
         assert "manifest requires a newer app" in result.stderr + result.stdout
 
 
-def test_debug_build_uses_compatible_manifest_import_but_update_publish_stays_strict() -> None:
-    build = (ROOT / ".github/workflows/build.yml").read_text(encoding="utf-8")
-    update = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-    assert "--allow-compatible-manifest-version" in build
-    assert "--allow-compatible-minimum-version" not in update
+def test_local_build_no_longer_depends_on_remote_manifest_import_workflows() -> None:
+    build = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    assert "run_local_daily_release_gate.py" in build
+    assert "--allow-compatible-manifest-version" not in build
+    assert not (ROOT / ".github/workflows/build.yml").exists()
+    assert not (ROOT / ".github/workflows/update.yml").exists()
