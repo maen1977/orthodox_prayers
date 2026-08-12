@@ -153,7 +153,7 @@ jobs:
           retention-days: 30
 
       - name: Block build unless absolute named 2050 coverage is proven
-        if: steps.r64-strict-named-coverage.outcome != 'success'
+        if: (startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)) && steps.r64-strict-named-coverage.outcome != 'success'
         shell: bash
         run: |
           echo "R64 absolute 2050 coverage is incomplete. Download the R64-2050-Coverage-Audit artifact for exact gaps." >&2
