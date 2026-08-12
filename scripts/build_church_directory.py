@@ -85,6 +85,44 @@ def merge_verified_seed_localizations(
     return live, enriched
 
 
+
+def load_best_reviewed_fallback(seed_payload: dict[str, Any]) -> tuple[list[dict[str, Any]], str, str, dict[str, Any]]:
+    """Return the largest committed official snapshot instead of regressing to the tiny seed.
+
+    ``update.py`` normally runs this builder offline.  Older revisions always
+    fell back to the five-entry canonical seed, which could silently replace a
+    much larger audited directory.  Prefer a committed audited/generated
+    snapshot when it is structurally valid, while keeping the seed as the
+    last-resort bootstrap for a brand-new checkout.
+    """
+    best = list(seed_payload.get("churches") or [])
+    best_status = "seed_fallback"
+    best_date = ""
+    best_metadata: dict[str, Any] = {}
+    for candidate in (OUTPUT, ASSET):
+        try:
+            payload = json.loads(candidate.read_text(encoding="utf-8"))
+        except (OSError, ValueError, TypeError):
+            continue
+        if "orthodox_jordan" not in str(payload.get("authority") or ""):
+            continue
+        churches = payload.get("churches")
+        if not isinstance(churches, list) or len(churches) <= len(best):
+            continue
+        trusted_hosts = {"orthodoxjordan.org", "ar.jerusalem-patriarchate.info"}
+        if not all(
+            isinstance(item, dict)
+            and urllib.parse.urlsplit(str(item.get("url") or "")).scheme == "https"
+            and urllib.parse.urlsplit(str(item.get("url") or "")).netloc.casefold() in trusted_hosts
+            for item in churches
+        ):
+            continue
+        best = churches
+        best_status = str(payload.get("status") or "audited_snapshot_fallback")
+        best_date = str(payload.get("date_iso") or "")
+        best_metadata = payload
+    return best, best_status, best_date, best_metadata
+
 def parse_live(raw: bytes) -> list[dict[str, Any]]:
     parser = TextAndLinksParser(DIRECTORY_URL)
     parser.feed(raw.decode("utf-8", errors="replace"))
@@ -116,9 +154,12 @@ def main() -> None:
     args = parser.parse_args()
     target = date.fromisoformat(args.date)
     seed = json.loads(SEED.read_text(encoding="utf-8"))
-    churches = seed.get("churches", [])
-    status = "seed_fallback"
-    reason = "live official directory was not checked"
+    churches, status, fallback_date, fallback_metadata = load_best_reviewed_fallback(seed)
+    fallback_count = len(churches)
+    snapshot_label = "committed audited snapshot" if fallback_count > len(seed.get("churches", [])) else "canonical seed"
+    reason = f"live official directory was not checked; {snapshot_label} retained"
+    output_date = fallback_date or target.isoformat()
+    live_accepted = False
     try:
         if args.fixture:
             raw = args.fixture.read_bytes()
@@ -127,46 +168,73 @@ def main() -> None:
         else:
             _, raw, _ = safe_fetch(DIRECTORY_URL, 25, 2_500_000)
         parsed = parse_live(raw) if raw else []
-        if len(parsed) >= 5:
-            churches, enriched = merge_verified_seed_localizations(parsed, seed.get("churches", []))
+        # A sudden large shrink usually means the official page markup changed
+        # and the parser only captured a fragment.  Keep the audited snapshot
+        # unless the live result retains at least 70% of it (and at least 5).
+        minimum_safe_live_count = max(5, (fallback_count * 7 + 9) // 10)
+        if len(parsed) >= minimum_safe_live_count:
+            churches, enriched = merge_verified_seed_localizations(parsed, churches)
             status = "live_official_directory"
+            output_date = target.isoformat()
+            live_accepted = True
             reason = (
                 "parsed from the official Orthodox Jordan directory; "
-                f"merged {enriched} reviewed seed localizations by exact canonical URL"
+                f"merged {enriched} reviewed localizations by exact canonical URL"
             )
         elif raw:
-            reason = f"live page produced only {len(parsed)} church entries; seed retained"
+            reason = (
+                f"live page produced only {len(parsed)} church entries below the safe threshold "
+                f"{minimum_safe_live_count}; {snapshot_label} retained"
+            )
     except Exception as exc:
-        reason = f"{type(exc).__name__}: {exc}"[:400]
+        reason = f"{type(exc).__name__}: {exc}; {snapshot_label} retained"[:400]
 
     payload = {
         "schema_version": 1,
-        "date_iso": target.isoformat(),
-        "authority": "orthodox_jordan",
+        "date_iso": output_date,
+        "authority": "orthodox_jordan" if live_accepted else str(fallback_metadata.get("authority") or "orthodox_jordan"),
         "directory_url": DIRECTORY_URL,
         "status": status,
         "reason": reason,
         "count": len(churches),
-        "rights_mode": "official names and links only; schedules remain live-page data",
+        "rights_mode": str(fallback_metadata.get("rights_mode") or "official names and links only; schedules remain live-page data"),
         "churches": churches,
         "live_resources": [
             {
-                "id": "orthodox_jordan_tv_live",
-                "title": {"ar": "المحطة الأرثوذكسية الأردنية — مباشر", "en": "Orthodox Jordan TV — Live", "el": "Ὀρθόδοξη Τηλεόραση Ἰορδανίας — Ζωντανά"},
-                "url": "https://orthodoxjo.tv/video/orthodox-station/"
+                "id": "orthodox_tv_official",
+                "title": {
+                    "ar": "المحطة الأرثوذكسية الرسمية — الأردن وفلسطين",
+                    "en": "Official Orthodox TV — Jordan and Palestine",
+                    "el": "Ἐπίσημος Ὀρθόδοξος Τηλεοπτικὸς Σταθμός — Ἰορδανία καὶ Παλαιστίνη",
+                },
+                "url": "https://orthodoxjo.tv/",
+                "status": "verified_official_2026_08_11",
             },
             {
-                "id": "orthodox_jordan_live_fallback",
-                "title": {"ar": "البث الرسمي لمطرانية الأردن — رابط احتياطي", "en": "Orthodox Jordan Metropolis live page — fallback", "el": "Σελίδα ζωντανῆς μεταδόσεως Μητροπόλεως Ἰορδανίας — ἐφεδρική"},
-                "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1/"
+                "id": "orthodox_tv_radio",
+                "title": {
+                    "ar": "إذاعة صوت الكنيسة — بث رسمي",
+                    "en": "Voice of the Church Radio — official stream",
+                    "el": "Ραδιόφωνο «Φωνὴ τῆς Ἐκκλησίας» — ἐπίσημη μετάδοση",
+                },
+                "url": "https://orthodoxjo.tv/audio/%D8%B5%D9%88%D8%AA-%D8%A7%D9%84%D9%83%D9%86%D9%8A%D8%B3%D8%A9/",
+                "status": "verified_official_2026_08_11",
             },
             {
-                "id": "orthodox_jordan_calendar",
-                "title": {"ar": "الرزنامة الكنسية الرسمية", "en": "Official church calendar", "el": "Ἐπίσημο ἐκκλησιαστικὸ ἡμερολόγιο"},
-                "url": "https://orthodoxjordan.org/%D8%A7%D9%84%D8%B1%D8%B2%D9%86%D8%A7%D9%85%D8%A9-%D8%A7%D9%84%D9%83%D9%86%D8%B3%D9%8A%D8%A9/"
-            }
+                "id": "jerusalem_patriarchate_radio",
+                "title": {
+                    "ar": "راديو بطريركية القدس — البث المباشر الرسمي",
+                    "en": "Jerusalem Patriarchate Radio — official live page",
+                    "el": "Ραδιόφωνο Πατριαρχείου Ἱεροσολύμων — ἐπίσημη ζωντανὴ σελίδα",
+                },
+                "url": "https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1-%D8%B1%D8%A7%D8%AF%D9%8A%D9%88-%D8%A8%D8%B7%D8%B1%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D8%A7%D9%84%D8%B1%D9%88%D9%85-%D8%A7/",
+                "status": "verified_official_2026_08_11",
+            },
         ]
     }
+    if not live_accepted and isinstance(fallback_metadata.get("source_directories"), list):
+        payload["source_directories"] = fallback_metadata["source_directories"]
+
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
     OUTPUT.write_text(text, encoding="utf-8")

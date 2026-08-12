@@ -3,12 +3,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_publication_tree_copies_complete_validator_runtime():
-    workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-    assembled = workflow.split("Assemble and sign exact publication tree", 1)[1]
-    assert 'rsync -a --delete "$SOURCE/scripts/" "$TARGET/scripts/"' in assembled
+def test_validator_runtime_remains_complete_under_local_daily_architecture():
+    workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+    assert "run_local_daily_release_gate.py" in workflow
+    assert not (ROOT / ".github/workflows/update.yml").exists()
     for name in ("verify.py", "verify_language_lanes.py", "validate_rolling_week.py", "validate_reader_services.py"):
-        assert f'test -f "$TARGET/scripts/{name}"' in assembled
+        assert (ROOT / "scripts" / name).is_file()
 
 
 def test_unexpected_refresh_exceptions_are_classified():

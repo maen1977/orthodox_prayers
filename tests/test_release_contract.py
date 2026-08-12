@@ -414,36 +414,18 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("validateServices(services)", repository)
         self.assertIn('new String[]{"ar", "en", "el"}', repository)
 
-    def test_three_independent_signed_language_lanes(self):
-        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
+    def test_three_independent_native_language_lanes_remain_fail_closed(self):
+        engine = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java").read_text(encoding="utf-8")
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
-        endpoint_policy = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DailyDataEndpointPolicy.java").read_text(encoding="utf-8")
         preferences = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/AppPreferences.java").read_text(encoding="utf-8")
         settings = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/SettingsScreen.java").read_text(encoding="utf-8")
-        for marker in ("lane_ar", "lane_el", "lane_en", "Update Arabic lane", "Update Greek lane", "Update English lane"):
-            self.assertIn(marker, workflow)
-        self.assertIn("rm -rf", workflow)
-        self.assertIn("data/daily/current", workflow)
-        for script in (
-            "update_language_lane.py",
-            "verify_language_lanes.py",
-            "validate_rolling_week.py",
-            "validate_reader_services.py",
-        ):
-            self.assertTrue((ROOT / "scripts" / script).is_file())
-        publication_copy = workflow.split("Assemble and sign exact publication tree", 1)[1]
-        self.assertIn('rsync -a --delete "$SOURCE/scripts/" "$TARGET/scripts/"', publication_copy)
-        self.assertIn('test -f "$TARGET/scripts/validate_rolling_week.py"', publication_copy)
-        self.assertIn('test -f "$TARGET/scripts/validate_reader_services.py"', publication_copy)
-        self.assertIn('"/data/daily/" + date + "/" + lane + ".json"', endpoint_policy)
-        self.assertIn('"/data/daily/current/" + lane + ".json"', endpoint_policy)
+        self.assertIn('new String[]{"ar", "en", "el"}', engine)
+        self.assertIn("STRICT_NATIVE_LANGUAGE_LANES", engine)
+        self.assertIn("SAME_LANGUAGE_ONLY_FAIL_CLOSED", engine)
         self.assertIn("preferences.effectiveLanguage()", repository)
-        self.assertIn("language_lane_mismatch", repository)
-        self.assertIn("language_lane_schema_unsupported", repository)
-        self.assertIn("language_lane_services_missing", repository)
-        self.assertIn("cachedEtag(jsonUrl)", repository)
-        self.assertIn("cache_today_etag_endpoint", preferences)
         self.assertIn("reloadForSelectedLanguage", settings)
+        self.assertIn("cache_today_etag_endpoint", preferences)
+        self.assertFalse((ROOT / ".github/workflows/update.yml").exists())
 
     def test_play_store_submission_files_and_privacy_are_present(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
@@ -462,12 +444,14 @@ class ReleaseContractTests(unittest.TestCase):
         ):
             self.assertTrue((ROOT / "play-store" / filename).is_file(), filename)
 
-    def test_manual_update_prepares_scripture_horizon_and_workflow_skips_duplicate(self):
-        update = (ROOT / "scripts/update.py").read_text(encoding="utf-8")
-        workflow = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
-        self.assertIn('"scripts/prepare_rolling_week_scripture_slice.py"', update)
-        self.assertIn('"--skip-scripture-preparation"', update)
-        self.assertIn('--skip-scripture-preparation', workflow)
+    def test_current_build_regenerates_scripture_after_calendar_bootstrap(self):
+        workflow = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
+        calendar = workflow.index("python scripts/build_internal_calendar_2050.py")
+        scripture = workflow.index("python scripts/prepare_all_calendar_scripture_fallback.py", calendar)
+        gate = workflow.index("python scripts/run_local_daily_release_gate.py", scripture)
+        self.assertLess(calendar, scripture)
+        self.assertLess(scripture, gate)
+        self.assertFalse((ROOT / ".github/workflows/update.yml").exists())
 
     def test_daily_refresh_is_local_after_amman_midnight_and_needs_no_network(self):
         manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
@@ -586,14 +570,14 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("gradle-8.13-bin.zip", properties)
         self.assertIn("distributionSha256Sum=20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78", properties)
 
-    def test_workflows_cover_build_and_independent_daily_update(self):
+    def test_single_build_workflow_covers_app_build_and_local_daily_gate(self):
         workflows = ROOT / ".github/workflows"
-        expected = {"church-prayers.yml", "update.yml"}
+        expected = {"church-prayers.yml"}
         self.assertEqual(expected, {path.name for path in workflows.glob("*.yml")})
 
         build = (workflows / "church-prayers.yml").read_text(encoding="utf-8")
-        update = (workflows / "update.yml").read_text(encoding="utf-8")
-        self.assertIn("name: Build Church Prayers", build)
+        self.assertIn("name: Build Church Prayers Fast", build)
+        self.assertIn("run_local_daily_release_gate.py", build)
         self.assertIn("testDebugUnitTest", build)
         self.assertIn("lintRelease", build)
         self.assertIn("assembleDebug", build)
@@ -601,26 +585,19 @@ class ReleaseContractTests(unittest.TestCase):
         self.assertIn("bundleRelease", build)
         self.assertIn("output/Church-Prayers.apk", build)
         self.assertIn("output/Church-Prayers.aab", build)
-        self.assertIn("name: Church-Prayers", build)
-        self.assertIn("name: Daily Update", update)
-        self.assertIn('cron: "23 4 * * *"', update)
-        self.assertIn('cron: "43 16 * * *"', update)
-        self.assertIn("production-data-signing", update)
-        self.assertIn("DATA_SIGNING_PRIVATE_KEY_B64", update)
-        self.assertIn("verified-data", update)
+        self.assertNotIn("DATA_SIGNING_PRIVATE_KEY_B64", build)
 
         for path in workflows.glob("*.yml"):
             for use in re.findall(r"uses:\s*([^\s#]+)", path.read_text(encoding="utf-8")):
                 self.assertRegex(use, r"^[^@]+@[0-9a-f]{40}$", f"Action must be pinned by full SHA in {path.name}: {use}")
 
-    def test_published_verifier_legacy_manifest_escape_hatch_is_not_used_by_workflows(self):
+    def test_published_verifier_legacy_manifest_escape_hatch_is_not_used_by_current_workflow(self):
         verifier = (ROOT / "scripts/verify.py").read_text(encoding="utf-8")
         build = (ROOT / ".github/workflows/church-prayers.yml").read_text(encoding="utf-8")
-        update = (ROOT / ".github/workflows/update.yml").read_text(encoding="utf-8")
         self.assertIn("--allow-missing-manifest", verifier)
         self.assertIn("not manifest.exists() and not manifest_signature.exists()", verifier)
         self.assertNotIn("--allow-missing-manifest", build)
-        self.assertNotIn("--allow-missing-manifest", update)
+        self.assertFalse((ROOT / ".github/workflows/update.yml").exists())
 
     def test_application_requires_official_source_publication_and_vocalized_scripture(self):
         repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")

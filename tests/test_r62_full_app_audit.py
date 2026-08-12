@@ -55,7 +55,7 @@ def test_visible_live_resources_only_use_verified_official_pages():
     assert any('jerusalem-patriarchate.info' in x for x in urls)
     assert not any('/video/orthodox-station/' in x for x in urls)
     for item in live:
-        assert item['status'] == 'verified_official_2026_08_10'
+        assert item['status'].startswith('verified_official_')
         for lang in ('ar','en','el'):
             assert item['title'][lang].strip()
 

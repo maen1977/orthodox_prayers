@@ -324,12 +324,35 @@
     "TIT.1.5-2.1"
   ],
   "allowed_source_verse_omissions": [
+    "ACT.15.34",
+    "ACT.24.7",
+    "ACT.8.37",
+    "LUK.17.36"
+  ],
+  "detected_numbered_source_omissions": [
+    "ACT.15.34",
+    "ACT.24.7",
+    "ACT.8.37",
     "LUK.17.36"
   ],
   "source_id": "ebible_world_english_bible",
   "source_url": "https://ebible.org/Scriptures/engwebp_usfm.zip",
   "source_title": "World English Bible",
   "license": "Public Domain",
+  "source_verse_relocations": [
+    {
+      "canonical_id": "ROM.16.25",
+      "source_id": "ROM.14.24"
+    },
+    {
+      "canonical_id": "ROM.16.26",
+      "source_id": "ROM.14.25"
+    },
+    {
+      "canonical_id": "ROM.16.27",
+      "source_id": "ROM.14.26"
+    }
+  ],
   "verse_count": 2743,
   "books": [
     "1CO",

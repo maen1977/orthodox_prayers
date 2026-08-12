@@ -70,6 +70,7 @@ public final class BibleCorpusRepository {
         StringBuilder text = new StringBuilder();
         int verseCount = 0;
         for (BibleReference range : ranges) {
+            int rangeStartVerseCount = verseCount;
             for (CorpusSource source : sourcesForLanguage(language)) {
                 try (BufferedReader reader = openBook(source, range.book)) {
                     String line;
@@ -85,6 +86,11 @@ public final class BibleCorpusRepository {
                     // Greek OT/NT are separate sources; a book normally exists in only one.
                 }
             }
+            // Canonical references may contain multiple disjoint spans.  Never
+            // return a silently truncated passage when an entire appointed span
+            // is absent from this source edition; let the audited fallback
+            // corpus resolve source-edition numbering/omission differences.
+            if (verseCount == rangeStartVerseCount) return null;
         }
         if (verseCount == 0) return null;
         ResolvedPassage result = new ResolvedPassage(text.toString(), sourceId(language), sourceUrl(language), verseCount);

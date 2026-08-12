@@ -83,7 +83,7 @@ class DailyLiturgyAndCalendarReadingsTest(unittest.TestCase):
         engine = text(
             "app/src/main/java/com/orthodoxprayers/privateapp/data/LocalDailyContentEngine.java"
         )
-        self.assertIn('slots.put(kind, copyObject(body));', engine)
+        self.assertIn('if (replacement.length() > 0) slots.put(kind, replacement);', engine)
         self.assertIn('service.put("slot_replacements", readingSlots)', engine)
         self.assertIn('"epistle".equals(kind)', engine)
         self.assertIn('"gospel".equals(kind)', engine)
@@ -92,9 +92,10 @@ class DailyLiturgyAndCalendarReadingsTest(unittest.TestCase):
         home = text(
             "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java"
         )
-        self.assertIn("DAILY_PRAYER_ROTATION", home)
-        self.assertIn("toLocalDate().toEpochDay()", home)
-        self.assertIn("Math.floorMod(day, DAILY_PRAYER_ROTATION.length)", home)
+        self.assertIn("PrayerOfDaySelector.forTime", home)
+        self.assertIn("ZonedDateTime.now(AMMAN_ZONE).toLocalTime()", home)
+        selector = text("app/src/main/java/com/orthodoxprayers/privateapp/data/PrayerOfDaySelector.java")
+        self.assertIn("LocalTime", selector)
 
     def test_every_calendar_reference_has_native_offline_coverage(self):
         references = set()

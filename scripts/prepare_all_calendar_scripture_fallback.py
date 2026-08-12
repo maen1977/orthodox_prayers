@@ -123,7 +123,7 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
     for key in sorted(selected):
         item = selected[key]
         text = str(item["text"])
-        verses.append({
+        verse_payload = {
             "automatic_diacritization_used": False,
             "book_id": key[0],
             "book_name": str(item.get("book_name") or key[0]),
@@ -135,7 +135,15 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
             "text": text,
             "text_sha256": sha256_text(text),
             "verse": key[2],
-        })
+        }
+        if item.get("source_verse_relocation") is True:
+            verse_payload.update({
+                "source_book_id": str(item.get("source_book_id") or key[0]),
+                "source_chapter": int(item.get("source_chapter") or key[1]),
+                "source_verse": int(item.get("source_verse") or key[2]),
+                "source_verse_relocation": True,
+            })
+        verses.append(verse_payload)
 
     omissions = sorted(allowed_omissions)
     manifest = {
@@ -155,6 +163,7 @@ def write_language(language: str, references: list[str]) -> dict[str, Any]:
         "source_url": source_url,
         "source_title": str(source.get("title") or ""),
         "license": str(source.get("license") or "Public Domain"),
+        "source_verse_relocations": list(source.get("source_verse_relocations") or []),
         "verse_count": len(verses),
         "books": sorted({item["book_id"] for item in verses}),
         "machine_translation_used": False,

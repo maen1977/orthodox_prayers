@@ -27,8 +27,8 @@ def test_runtime_bible_is_offline_and_daily_readings_prefer_it():
     assert "getAssets().open" in repo
     assert "HttpURLConnection" not in repo
     assert "URL(" not in repo
-    assert "fullBible.resolve(language, canonicalReference)" in engine
-    full_pos = engine.index("fullBible.resolve(language, canonicalReference)")
+    assert "fullBible.resolve(language, normalizedReference)" in engine
+    full_pos = engine.index("fullBible.resolve(language, normalizedReference)")
     slice_pos = engine.index("ScriptureCorpus corpus = scriptureCorpus(language)", full_pos)
     assert full_pos < slice_pos
 
@@ -69,3 +69,10 @@ def test_bible_builder_has_retries_cache_and_completeness_gates():
     assert "min_verses" in prepare
     assert "BIBLE_CORPUS_FAILED" in prepare
     assert "archiveSha256" in prepare
+
+
+def test_multi_span_bible_resolution_never_returns_a_missing_whole_span():
+    repo = text("app/src/main/java/com/orthodoxprayers/privateapp/bible/BibleCorpusRepository.java")
+    assert "int rangeStartVerseCount = verseCount;" in repo
+    assert "if (verseCount == rangeStartVerseCount) return null;" in repo
+    assert "let the audited fallback" in repo
