@@ -34,6 +34,7 @@ import com.orthodoxprayers.privateapp.ui.screens.BibleTestamentScreen;
 import com.orthodoxprayers.privateapp.ui.screens.BibleBookScreen;
 import com.orthodoxprayers.privateapp.ui.screens.BibleChapterScreen;
 import com.orthodoxprayers.privateapp.ui.screens.FavoritesScreen;
+import com.orthodoxprayers.privateapp.ui.screens.FastingSummaryScreen;
 import com.orthodoxprayers.privateapp.ui.screens.CalendarScreen;
 import com.orthodoxprayers.privateapp.ui.screens.ChurchesScreen;
 import com.orthodoxprayers.privateapp.ui.screens.CalendarDayScreen;
