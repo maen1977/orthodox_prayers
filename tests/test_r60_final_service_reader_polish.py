@@ -109,11 +109,15 @@ def test_arabic_office_reader_hides_raw_ocr_and_uses_readable_core():
     assert "arabic_office_reader_core.json" in text
     assert 'safe.put("raw_ocr_hidden_from_reader", true)' in text
 
-def test_arabic_orthros_raw_source_remains_blocked_but_reader_has_safe_core():
+def test_arabic_orthros_clean_authorized_source_replaces_raw_ocr():
     pack = load_json("app/src/main/assets/data/native/library_ar.json")
     orthros = service(pack, "orthros")
-    assert orthros.get("displayable") is False
-    assert orthros.get("publication_status") == "BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED"
+    assert orthros.get("displayable") is True
+    assert orthros.get("publication_status") == "DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE"
+    assert len(orthros.get("segments", [])) >= 150
+    serialized = json.dumps(orthros, ensure_ascii=False)
+    assert "الناهضمن" not in serialized
+    assert "السوائي الكبير" not in serialized
     core = load_json("app/src/main/assets/data/native/arabic_office_reader_core.json")
     safe = service(core, "orthros")
     assert safe.get("raw_ocr_hidden_from_reader") is True

@@ -41,7 +41,7 @@ class R21Phase6LiturgyServiceSelectionTests(unittest.TestCase):
             selected = self.select(self.pascha + timedelta(days=offset))
             self.assertEqual("basil", selected["service_type"], offset)
             self.assertEqual("great_lent_sunday", selected["rule_id"], offset)
-            self.assertFalse(selected["displayable"])
+            self.assertTrue(selected["displayable"])
 
     def test_saint_basil_holy_thursday_and_holy_saturday(self):
         saint_basil = self.update.julian_to_gregorian_date(2026, 1, 1)
@@ -59,7 +59,7 @@ class R21Phase6LiturgyServiceSelectionTests(unittest.TestCase):
         for civil in cases:
             selected = self.select(civil)
             self.assertEqual("presanctified", selected["service_type"], civil)
-            self.assertFalse(selected["displayable"], civil)
+            self.assertTrue(selected["displayable"], civil)
 
     def test_annunciation_exception_and_great_friday(self):
         annunciation = self.update.julian_to_gregorian_date(2026, 3, 25)
@@ -102,7 +102,7 @@ class R21Phase6LiturgyServiceSelectionTests(unittest.TestCase):
         self.assertEqual("chrysostom", service["selected_liturgy_type"])
         self.assertFalse(service["wrong_liturgy_fallback_allowed"])
 
-    def test_missing_basil_and_presanctified_editions_fail_closed(self):
+    def test_basil_and_presanctified_editions_open_the_appointed_templates(self):
         for civil, expected in (
             (self.pascha - timedelta(days=42), "basil"),
             (date(2026, 2, 25), "presanctified"),
@@ -111,14 +111,16 @@ class R21Phase6LiturgyServiceSelectionTests(unittest.TestCase):
                 "divine_liturgy", civil, self.update.day_info(civil), [], "خدمة اليوم"
             )
             self.assertEqual(expected, service["selected_liturgy_type"])
-            self.assertNotIn("extends_service_id", service)
-            self.assertNotIn("template_id", service)
-            self.assertNotIn("slot_replacements", service)
-            self.assertNotIn("segment_replacements", service)
+            expected_id = "divine_liturgy_basil" if expected == "basil" else "presanctified_liturgy"
+            self.assertEqual(expected_id, service["extends_service_id"])
+            self.assertEqual(f"library:{expected_id}", service["template_id"])
+            self.assertIn("slot_replacements", service)
+            self.assertIn("segment_replacements", service)
             self.assertEqual(
-                "BLOCKED_MISSING_COMPLETE_NATIVE_SERVICE_EDITION",
+                "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END",
                 service["publication_status"],
             )
+            self.assertTrue(service["full_service_complete"])
             self.assertFalse(service["wrong_liturgy_fallback_allowed"])
             serialized = json.dumps(service, ensure_ascii=False)
             self.assertNotIn("ملاحظة اختيارية", serialized)
@@ -154,7 +156,7 @@ class R21Phase6LiturgyServiceSelectionTests(unittest.TestCase):
         )
         self.assertEqual("basil", selected["service_type"])
         self.assertEqual("dated_official_jordan_override", selected["rule_id"])
-        self.assertFalse(selected["displayable"])
+        self.assertTrue(selected["displayable"])
 
     def test_build_day_exposes_today_upcoming_and_next_sunday_selection(self):
         payload = self.update.build_day(date(2026, 7, 26))
@@ -165,22 +167,21 @@ class R21Phase6LiturgyServiceSelectionTests(unittest.TestCase):
         for card in payload["upcoming"]:
             self.assertIn("liturgy_service_selection", card)
 
-    def test_contracts_register_sources_and_remain_partial(self):
+    def test_contracts_register_complete_authorized_sources(self):
         self.assertTrue(self.rules["fail_closed"])
         self.assertFalse(self.rules["machine_translation_allowed"])
         self.assertFalse(self.editions["wrong_liturgy_fallback_allowed"])
         self.assertFalse(self.editions["machine_translation_allowed"])
-        self.assertFalse(self.editions["editions"]["basil"]["displayable"])
-        self.assertFalse(self.editions["editions"]["presanctified"]["displayable"])
+        self.assertTrue(self.editions["editions"]["basil"]["displayable"])
+        self.assertTrue(self.editions["editions"]["presanctified"]["displayable"])
         source_urls = " ".join(item["url"] for item in self.rules["sources"])
         self.assertIn("goarch.org", source_urls)
         self.assertIn("orthodoxjordan.org", source_urls)
         for service_type in ("basil", "presanctified"):
-            for lang in LANGS:
-                self.assertNotEqual(
-                    "IMPORTED_COMPLETE_NATIVE_EDITION",
-                    self.editions["editions"][service_type].get(lang),
-                )
+            self.assertEqual(
+                "NOT_CLAIMED",
+                self.editions["editions"][service_type]["ecclesiastical_human_certification"],
+            )
 
 
 if __name__ == "__main__":

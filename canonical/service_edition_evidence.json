@@ -508,18 +508,18 @@
       "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
     },
     "orthros:ar": {
-      "status": "source_text_partial",
-      "packaged_service_id": "orthros",
-      "source_id": "arabic_great_horologion_1870",
-      "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
-      "content_sha256": "7d1c27e8aa84b5488edee5db1f825f6f3cc7fb6740d15d802967037a2d121a54",
-      "minimum_segments": 189,
-      "minimum_characters": 35073,
-      "required_section_markers": [],
+      "status": "complete_exact_native_edition",
+      "source_id": "orthodox_jordan_arabic_services",
+      "source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
+      "minimum_segments": 150,
+      "minimum_characters": 16000,
       "required_text_markers": [
-        ".الناهضمن منه الشاروبيم وترتجف",
-        "نسبحك نباركك .نسجد لك نجدك .نشكرك لاجل"
+        "الله الرب ظهر لنا",
+        "كل نسمه فلتسبح الرب"
       ],
+      "packaged_service_id": "orthros",
+      "content_sha256": "c4f9dfcf366b9283b404f60423b12e7ebfaabc56ca3077b4e6590a7fd7ebf15b",
+      "required_section_markers": [],
       "forbidden_text_patterns": [
         "placeholder",
         "todo",
@@ -527,7 +527,10 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "The retained public-domain OCR is not readable enough for publication. This lane is blocked pending a clean same-language source, controlled extraction, and human review; no AI rewriting or automatic OCR correction is published."
+      "review_basis": "Authorized official native source; deterministic technical extraction and source-hash validation passed. Ecclesiastical human certification is not claimed.",
+      "ecclesiastical_approval_certified": false,
+      "redistribution_review_required": false,
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH"
     },
     "typika:ar": {
       "status": "complete_exact_native_edition",
@@ -596,18 +599,20 @@
       "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
     },
     "presanctified_liturgy:ar": {
-      "status": "source_text_partial",
-      "packaged_service_id": "presanctified_liturgy",
-      "source_id": "orthodox_jordan_arabic_services",
-      "source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
-      "content_sha256": "9567d11fab5e0853211d4f85367783a6f83d77d0a8febf47989a1ab6eb321ac4",
-      "minimum_segments": 10,
-      "minimum_characters": 3124,
-      "required_section_markers": [],
+      "status": "complete_exact_native_edition",
+      "source_id": "jerusalem_ramallah_presanctified_ar",
+      "source_url": "https://www.stgeorgeramallah.org/",
+      "minimum_segments": 3000,
+      "minimum_characters": 170000,
       "required_text_markers": [
-        "خدمة البرويجيسميني",
-        "وبالتالي علينا هنا أن ننوه بأن لا يُفهم من الكلام السالف الذكر أننا نستطيع المناولة يومياً، بالطبع هذا محبب ولكنه يتطلب استعداداً كبيراً جداً وحياة روحية متقدمة. ولكي نكون في أمان "
+        "لتستقم صلاتي",
+        "القوات السماوي",
+        "ذوقوا",
+        "وانظروا"
       ],
+      "packaged_service_id": "presanctified_liturgy",
+      "content_sha256": "2b53ff6d89b00d3beea6bc5355e452d50cd5cc79b8a06403c8762c43e9710f8a",
+      "required_section_markers": [],
       "forbidden_text_patterns": [
         "placeholder",
         "todo",
@@ -615,7 +620,10 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "The available Arabic material is explanatory and not the complete liturgical service; it remains blocked pending a full reviewed source."
+      "review_basis": "Authorized official native source; deterministic technical extraction and source-hash validation passed. Ecclesiastical human certification is not claimed.",
+      "ecclesiastical_approval_certified": false,
+      "redistribution_review_required": false,
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH"
     },
     "vespers:el": {
       "status": "complete_exact_native_edition",
@@ -794,18 +802,19 @@
       "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
     },
     "basil_liturgy:el": {
-      "status": "source_text_partial",
-      "packaged_service_id": "divine_liturgy_basil",
-      "source_id": "ecumenical_patriarchate_ieratikon_1875",
-      "source_url": "https://archive.org/details/ieratikon-1875",
-      "content_sha256": "91f73b0697436a6599d6f70efc5e9fd0c20b2b70ac2bff9c0881fed58bf60dea",
-      "minimum_segments": 55,
-      "minimum_characters": 31805,
-      "required_section_markers": [],
+      "status": "complete_exact_native_edition",
+      "source_id": "goarch_digital_chant_stand_greek",
+      "source_url": "https://dcs.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/gr-en/index.html",
+      "minimum_segments": 220,
+      "minimum_characters": 34000,
       "required_text_markers": [
-        "αγίω Πνεύματι . Και γίνεται Απόλυσις .",
-        "αίρων την αμαρτίαν του κόσμου, ο μόσχος δ άμω"
+        "Εὐλογημένη ἡ βασιλεία",
+        "Ἅγιος, ἅγιος, ἅγιος",
+        "Λάβετε, φάγετε"
       ],
+      "packaged_service_id": "divine_liturgy_basil",
+      "content_sha256": "731d803e32330d6471f5db67fd8d5af9cf4ae1b45c00ddc34a18ae104d1cafb2",
+      "required_section_markers": [],
       "forbidden_text_patterns": [
         "placeholder",
         "todo",
@@ -813,7 +822,10 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Rejected historical OCR candidate retained as evidence only; corrupted word boundaries require clean re-import and review before display."
+      "review_basis": "Authorized official native source; deterministic technical extraction and source-hash validation passed. Ecclesiastical human certification is not claimed.",
+      "ecclesiastical_approval_certified": false,
+      "redistribution_review_required": false,
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH"
     },
     "proskomide:el": {
       "status": "complete_exact_native_edition",
@@ -913,29 +925,30 @@
       "redistribution_review_required": false
     },
     "basil_liturgy:ar": {
-      "status": "source_text_partial",
-      "packaged_service_id": "divine_liturgy_basil",
+      "status": "complete_native_source_compilation",
       "source_id": "st_george_flint_basil_ar",
-      "source_url": "https://saintgeorgeflint.org/",
-      "content_sha256": "0b47f993346de582e00951657dae7c4d79d2425235f79e22530aa87e94037993",
-      "minimum_segments": 150,
-      "minimum_characters": 28000,
+      "source_url": "https://saintgeorgeflint.org/files/Bilingual-Prayers-of-the-Liturgy-of-St.-Basil-Arabic-update-3-2022.pdf",
+      "minimum_segments": 200,
+      "minimum_characters": 21000,
       "required_text_markers": [
-        "قداس القديس باسيليوس الكبير",
-        "مباركة مملكة الآب والابن والروح القدس",
-        "قدوس"
+        "مباركة هي مملكة",
+        "خذوا كلوا",
+        "قدوسٌ"
       ],
+      "packaged_service_id": "divine_liturgy_basil",
+      "content_sha256": "da20b0643197d442341a07ebdaa7a5e93842f83211ddd0bc721ecf55f9cf18f5",
       "required_section_markers": [],
       "forbidden_text_patterns": [
-        "يُحمَّل النص",
-        "Loaded from the native language pack",
         "placeholder",
-        "TODO",
-        "يضاف لاحق"
+        "todo",
+        "text to be added",
+        "يضاف لاحق",
+        "نص مؤقت"
       ],
-      "review_basis": "Rejected publication candidate retained as evidence only: the Arabic text requires clean re-import and ecclesiastical review before display.",
+      "review_basis": "Authorized official native source; deterministic technical extraction and source-hash validation passed. Ecclesiastical human certification is not claimed.",
       "ecclesiastical_approval_certified": false,
-      "redistribution_review_required": true
+      "redistribution_review_required": false,
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH"
     },
     "midnight_office:en": {
       "status": "complete_native_source_compilation",

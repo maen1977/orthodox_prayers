@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "generated_at_utc": "2026-08-13T06:38:40.533172+00:00",
+  "generated_at_utc": "2026-08-13T07:38:01.923525+00:00",
   "summary": {
     "ar": {
-      "technical_complete": 12,
-      "exact_single_edition": 10,
-      "native_source_compilation": 2,
-      "remaining_gaps": 3,
+      "technical_complete": 15,
+      "exact_single_edition": 12,
+      "native_source_compilation": 3,
+      "remaining_gaps": 0,
       "required": 15
     },
     "en": {
@@ -17,10 +17,10 @@
       "required": 15
     },
     "el": {
-      "technical_complete": 14,
-      "exact_single_edition": 12,
+      "technical_complete": 15,
+      "exact_single_edition": 13,
       "native_source_compilation": 2,
-      "remaining_gaps": 1,
+      "remaining_gaps": 0,
       "required": 15
     }
   },
@@ -104,11 +104,9 @@
       "packaged_service_id": "orthros",
       "languages": {
         "ar": {
-          "status": "source_text_partial",
-          "technical_release_ready": false,
-          "remaining_blockers": [
-            "This lane still needs a complete authorized same-language source package."
-          ],
+          "status": "complete_exact_native_edition",
+          "technical_release_ready": true,
+          "remaining_blockers": [],
           "classification_notes": []
         },
         "en": {
@@ -302,12 +300,12 @@
       "packaged_service_id": "divine_liturgy_basil",
       "languages": {
         "ar": {
-          "status": "source_text_partial",
-          "technical_release_ready": false,
-          "remaining_blockers": [
-            "This lane still needs a complete authorized same-language source package."
-          ],
-          "classification_notes": []
+          "status": "complete_native_source_compilation",
+          "technical_release_ready": true,
+          "remaining_blockers": [],
+          "classification_notes": [
+            "Complete same-language native-source compilation; kept distinct from a single exact edition."
+          ]
         },
         "en": {
           "status": "complete_exact_native_edition",
@@ -316,11 +314,9 @@
           "classification_notes": []
         },
         "el": {
-          "status": "source_text_partial",
-          "technical_release_ready": false,
-          "remaining_blockers": [
-            "This lane still needs a complete authorized same-language source package."
-          ],
+          "status": "complete_exact_native_edition",
+          "technical_release_ready": true,
+          "remaining_blockers": [],
           "classification_notes": []
         }
       }
@@ -330,11 +326,9 @@
       "packaged_service_id": "presanctified_liturgy",
       "languages": {
         "ar": {
-          "status": "source_text_partial",
-          "technical_release_ready": false,
-          "remaining_blockers": [
-            "This lane still needs a complete authorized same-language source package."
-          ],
+          "status": "complete_exact_native_edition",
+          "technical_release_ready": true,
+          "remaining_blockers": [],
           "classification_notes": []
         },
         "en": {

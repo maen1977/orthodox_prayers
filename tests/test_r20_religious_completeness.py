@@ -21,7 +21,7 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
         cls.update = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.update)
 
-    def test_declaration_is_honest_and_production_fails_closed(self):
+    def test_declaration_and_production_report_full_technical_completion(self):
         normal = subprocess.run(
             [sys.executable, "scripts/validate_religious_completeness.py", "--declaration-only"],
             cwd=ROOT,
@@ -38,10 +38,11 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertNotEqual(0, production.returncode)
-        self.assertIn("language=ar verified_complete=12/15", production.stdout)
+        self.assertEqual(0, production.returncode, production.stdout + production.stderr)
+        self.assertIn("language=ar verified_complete=15/15", production.stdout)
         self.assertIn("language=en verified_complete=15/15", production.stdout)
-        self.assertIn("language=el verified_complete=14/15", production.stdout)
+        self.assertIn("language=el verified_complete=15/15", production.stdout)
+        self.assertIn("RELIGIOUS_COMPLETENESS_OK mode=production", production.stdout)
 
     def test_manifest_covers_fifteen_required_services_for_each_language(self):
         manifest = json.loads(

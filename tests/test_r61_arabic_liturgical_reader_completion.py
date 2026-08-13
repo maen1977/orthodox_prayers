@@ -91,9 +91,9 @@ def test_private_devotion_anchors_exist_in_exact_arabic_liturgy():
         else:
             assert any((s.get("text") or {}).get("ar", "").startswith(anchor) for s in segments)
 
-def test_r61_does_not_claim_full_exact_arabic_offices():
+def test_new_exact_orthros_supersedes_but_does_not_relabel_legacy_r61_core():
     manifest = load("canonical/religious_completeness_manifest.json")
-    assert manifest["languages"]["ar"]["orthros"] == "source_text_partial"
+    assert manifest["languages"]["ar"]["orthros"] == "complete_exact_native_edition"
     core = load("data/services/reader/arabic_office_reader_core.json")
     for item in core["services"]:
         assert item["reader_scope"] == "READABLE_FIXED_CORE_ONLY_NOT_COMPLETE_OFFICE"

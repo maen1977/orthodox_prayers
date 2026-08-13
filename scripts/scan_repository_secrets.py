@@ -10,7 +10,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_DIRS = {".git", ".gradle", ".idea", "build", "release", "reports", "__pycache__", ".pytest_cache", ".cache"}
+EXCLUDED_DIRS = {".git", ".gradle", ".idea", "build", "release", "reports", "__pycache__", ".pytest_cache", "pytest-of-root", ".cache"}
+EXCLUDED_ROOT_PREFIXES = ("tmp", "orthodox-calendar-cleanup-", "orthodox-r17-")
 FORBIDDEN_SUFFIXES = {".jks", ".keystore", ".p12", ".pfx", ".key", ".pem"}
 FORBIDDEN_NAMES = {
     "keystore.properties",
@@ -38,6 +39,8 @@ def iter_files():
         if not path.is_file():
             continue
         relative = path.relative_to(ROOT)
+        if relative.parts and relative.parts[0].startswith(EXCLUDED_ROOT_PREFIXES):
+            continue
         if any(part in EXCLUDED_DIRS for part in relative.parts):
             continue
         yield path, relative

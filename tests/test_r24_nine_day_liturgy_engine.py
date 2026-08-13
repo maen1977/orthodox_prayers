@@ -45,10 +45,10 @@ def test_first_five_lenten_sundays_select_basil_and_never_substitute_chrysostom(
         service = UPDATE.build_liturgy_service("divine_liturgy", day, UPDATE.day_info(day), [], "خدمة اليوم")
         assert selected["service_type"] == "basil"
         assert selected["service_form"] == "morning_divine_liturgy"
-        assert selected["displayable"] is False
-        assert service["full_service_complete"] is False
-        assert service["publication_status"] == "BLOCKED_MISSING_COMPLETE_NATIVE_SERVICE_EDITION"
-        assert "extends_service_id" not in service
+        assert selected["displayable"] is True
+        assert service["full_service_complete"] is True
+        assert service["publication_status"] == "DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END"
+        assert service["extends_service_id"] == "divine_liturgy_basil"
         assert service["wrong_liturgy_fallback_allowed"] is False
 
 
@@ -67,7 +67,7 @@ def test_lenten_wednesday_and_holy_week_days_select_presanctified_form():
         selected = selection(day)
         assert selected["service_type"] == "presanctified"
         assert selected["service_form"] == "lenten_vespers_with_presanctified"
-        assert selected["displayable"] is False
+        assert selected["displayable"] is True
 
 
 def test_great_friday_is_explicit_no_liturgy_state():

@@ -9,13 +9,19 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_DIRS = {".git", ".gradle", ".idea", ".pytest_cache", "__pycache__", ".cache", "build", ".venv", "venv"}
-EXCLUDED_SUFFIXES = {".pyc", ".pyo", ".jks", ".keystore", ".p12", ".pfx", ".pem", ".key"}
+EXCLUDED_DIRS = {".git", ".gradle", ".idea", ".pytest_cache", "pytest-of-root", "__pycache__", ".cache", "build", ".venv", "venv"}
+EXCLUDED_SUFFIXES = {".pyc", ".pyo", ".jks", ".keystore", ".p12", ".pfx", ".pem", ".key", ".zip", ".apk", ".aab"}
 EXCLUDED_NAMES = {"local.properties", ".DS_Store"}
 
 
 def include(path: Path) -> bool:
     rel = path.relative_to(ROOT)
+    if rel.parts and (
+        rel.parts[0].startswith("tmp")
+        or rel.parts[0].startswith("orthodox-calendar-cleanup-")
+        or rel.parts[0].startswith("orthodox-r17-")
+    ):
+        return False
     # Preserve only stable, public branding sources from release/. Generated
     # APKs, reports, checksums, and signing material remain excluded.
     if rel.parts and rel.parts[0] == "release":
@@ -24,6 +30,8 @@ def include(path: Path) -> bool:
     if any(part in EXCLUDED_DIRS for part in rel.parts):
         return False
     if path.name in EXCLUDED_NAMES or path.name.startswith("COMMIT_MESSAGE") or path.suffix.lower() in EXCLUDED_SUFFIXES:
+        return False
+    if path.name.endswith((".zip.sha256", ".apk.sha256", ".aab.sha256")):
         return False
     if path.name.endswith(".tmp") or path.name.endswith("~"):
         return False

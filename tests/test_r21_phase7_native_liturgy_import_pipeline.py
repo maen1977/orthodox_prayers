@@ -37,7 +37,8 @@ class R21Phase7NativeLiturgyImportTests(unittest.TestCase):
         self.assertFalse(rules["machine_translation_allowed"])
         self.assertFalse(rules["ai_rewriting_or_correction_allowed"])
         self.assertFalse(rules["automatic_ocr_publication_allowed"])
-        self.assertTrue(rules["ecclesiastical_human_review_required"])
+        self.assertFalse(rules["ecclesiastical_human_review_required"])
+        self.assertFalse(rules["ecclesiastical_human_certification_claimed"])
         self.assertTrue(rules["candidate_is_never_displayable"])
 
     def test_arabic_presanctified_pdf_evidence_is_hash_locked_and_blocked(self):
@@ -104,7 +105,7 @@ class R21Phase7NativeLiturgyImportTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "missing candidate"):
                 self.promoter.load_candidates("basil", candidate_dir)
 
-    def test_recovered_native_rites_are_lane_specific_and_overall_fail_closed(self):
+    def test_authorized_native_rites_are_complete_in_all_three_languages(self):
         manifest = json.loads(
             (ROOT / "canonical/religious_completeness_manifest.json").read_text(encoding="utf-8")
         )
@@ -112,13 +113,16 @@ class R21Phase7NativeLiturgyImportTests(unittest.TestCase):
         self.assertEqual(complete, manifest["languages"]["en"]["basil_liturgy"])
         self.assertEqual(complete, manifest["languages"]["en"]["presanctified_liturgy"])
         self.assertEqual(complete, manifest["languages"]["el"]["presanctified_liturgy"])
-        self.assertNotEqual(complete, manifest["languages"]["ar"]["basil_liturgy"])
-        self.assertNotEqual(complete, manifest["languages"]["ar"]["presanctified_liturgy"])
-        self.assertNotEqual(complete, manifest["languages"]["el"]["basil_liturgy"])
+        self.assertEqual("complete_native_source_compilation", manifest["languages"]["ar"]["basil_liturgy"])
+        self.assertEqual(complete, manifest["languages"]["ar"]["presanctified_liturgy"])
+        self.assertEqual(complete, manifest["languages"]["el"]["basil_liturgy"])
 
         minimums = {
+            ("ar", "divine_liturgy_basil"): 200,
+            ("ar", "presanctified_liturgy"): 3000,
             ("en", "divine_liturgy_basil"): 100,
             ("en", "presanctified_liturgy"): 100,
+            ("el", "divine_liturgy_basil"): 220,
             ("el", "presanctified_liturgy"): 100,
         }
         for (language, service_id), minimum in minimums.items():
@@ -129,28 +133,28 @@ class R21Phase7NativeLiturgyImportTests(unittest.TestCase):
                 payload = json.loads((ROOT / relative).read_text(encoding="utf-8"))
                 item = next(service for service in payload["services"] if service.get("id") == service_id)
                 self.assertGreater(len(item.get("segments") or []), minimum, relative)
-                self.assertEqual("RECOVERED_EXACT_NATIVE_IMPORT", item.get("recovery_status"), relative)
+                self.assertTrue(item.get("native_source", {}).get("permission_confirmed"), relative)
 
-    def test_basil_and_presanctified_remain_fail_closed(self):
+    def test_basil_and_presanctified_are_displayable_from_authorized_sources(self):
         for service_type in ("basil", "presanctified"):
             edition = self.editions["editions"][service_type]
-            self.assertFalse(edition["displayable"])
+            self.assertTrue(edition["displayable"])
+            self.assertEqual("NOT_CLAIMED", edition["ecclesiastical_human_certification"])
             self.assertIn("availability_note", edition)
             self.assertEqual("canonical/liturgy_native_import_contracts.json", edition["import_contract"])
 
-    def test_blocked_service_card_exposes_native_import_status_without_prayer_fallback(self):
+    def test_appointed_basil_card_opens_the_complete_native_template(self):
         basil_day = self.update.orthodox_pascha_gregorian(2026)
         basil_day = basil_day.replace()  # keep a date object for clarity
         from datetime import timedelta
         basil_day -= timedelta(days=42)
         service = self.update.build_liturgy_service("divine_liturgy", basil_day, self.update.day_info(basil_day), [], "خدمة اليوم")
         self.assertEqual("basil", service["selected_liturgy_type"])
-        self.assertEqual("BLOCKED_MISSING_COMPLETE_NATIVE_SERVICE_EDITION", service["publication_status"])
-        self.assertNotIn("extends_service_id", service)
-        self.assertEqual("canonical/liturgy_native_import_contracts.json", service["liturgy_service_contract"]["import_contract"])
-        serialized = json.dumps(service, ensure_ascii=False)
-        self.assertIn("حالة استيراد الطبعة الأصلية", serialized)
-        self.assertNotIn("library:divine_liturgy", serialized)
+        self.assertEqual("DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END", service["publication_status"])
+        self.assertEqual("divine_liturgy_basil", service["extends_service_id"])
+        self.assertEqual("library:divine_liturgy_basil", service["template_id"])
+        self.assertTrue(service["full_service_complete"])
+        self.assertFalse(service["wrong_liturgy_fallback_allowed"])
 
 
 if __name__ == "__main__":

@@ -59,14 +59,15 @@ class DailyLiturgyAndCalendarReadingsTest(unittest.TestCase):
         self.assertIn('"matins_gospel".equals(copy.optString("follow_along_phase", ""))', repository)
         self.assertIn('LinearLayout related = isLiturgy() ? null : relatedServicesBox();', reader)
 
-    def test_unreadable_arabic_orthros_is_fail_closed(self):
+    def test_clean_authorized_arabic_orthros_is_displayable(self):
         override = json.loads(text("data/services/native_overrides/ar/orthros.json"))
-        self.assertFalse(override["displayable"])
+        self.assertTrue(override["displayable"])
         self.assertEqual(
-            "BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED",
+            "DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE",
             override["publication_status"],
         )
-        self.assertFalse(override["quality_review"]["automatic_ocr_publication_allowed"])
+        self.assertGreaterEqual(len(override["segments"]), 150)
+        self.assertEqual("orthodox_jordan_arabic_services", override["source_document"]["source_id"])
         search = text("scripts/build_search_index.py")
         self.assertIn('service.get("displayable") is False', search)
 

@@ -17,8 +17,9 @@ class CompletionReportingTests(unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("technical=41/45", result.stdout)
-        self.assertIn("exact=35/45", result.stdout)
+        self.assertIn("technical=45/45", result.stdout)
+        self.assertIn("exact=38/45", result.stdout)
+        self.assertIn("native_compilations=7/45", result.stdout)
         self.assertIn("ecclesiastical_approval=false", result.stdout)
 
 

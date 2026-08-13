@@ -38,17 +38,17 @@ def test_strict_core_contract_excludes_adjacent_offices():
     assert "thanksgiving_after_communion" in excluded
 
 
-def test_only_chrysostom_is_publishable_across_all_three_native_lanes():
+def test_all_appointed_rites_are_publishable_across_three_native_lanes():
     editions = json.loads((ROOT / "canonical/liturgy_service_editions.json").read_text(encoding="utf-8"))["editions"]
     assert editions["chrysostom"]["displayable"] is True
-    assert editions["basil"]["displayable"] is False
-    assert "OCR_CORRUPTION" in editions["basil"]["ar"]
-    assert "REIMPORT_REQUIRED" in editions["basil"]["el"]
-    assert editions["presanctified"]["displayable"] is False
-    assert "EXPLANATORY_EXCERPT_NOT_FULL_SERVICE" in editions["presanctified"]["ar"]
+    assert editions["basil"]["displayable"] is True
+    assert "COMPLETE_AUTHORIZED" in editions["basil"]["ar"]
+    assert "COMPLETE_AUTHORIZED" in editions["basil"]["el"]
+    assert editions["presanctified"]["displayable"] is True
+    assert "COMPLETE_AUTHORIZED" in editions["presanctified"]["ar"]
 
 
-def test_calendar_selects_rite_but_never_substitutes_blocked_rite():
+def test_calendar_selects_each_available_rite_without_substitution():
     u = updater()
     pascha = u.orthodox_pascha_gregorian(2026)
     for day, kind, form in [
@@ -62,8 +62,13 @@ def test_calendar_selects_rite_but_never_substitutes_blocked_rite():
         assert sel["service_type"] == kind
         assert sel["service_form"] == form
         assert sel["wrong_liturgy_fallback_allowed"] is False
-        assert "extends_service_id" not in svc
-        assert svc["full_service_complete"] is False
+        if kind == "no_divine_liturgy":
+            assert "extends_service_id" not in svc
+            assert svc["full_service_complete"] is False
+        else:
+            expected_id = "divine_liturgy_basil" if kind == "basil" else "presanctified_liturgy"
+            assert svc["extends_service_id"] == expected_id
+            assert svc["full_service_complete"] is True
 
 
 def test_chrysostom_day_uses_only_liturgy_slots_not_matins():

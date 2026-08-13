@@ -76,12 +76,18 @@ def test_meal_additions_are_arabic_lane_only_without_empty_foreign_segments():
         assert all((segment.get("text") or {}).get(language, "").strip() for segment in item["segments"])
 
 
-def test_unverified_liturgy_lanes_ship_notice_shells_and_are_absent_from_search():
-    blocked = {
+def test_authorized_liturgy_lanes_ship_complete_native_text_and_enter_search():
+    imported = {
         "ar": {"orthros", "divine_liturgy_basil", "presanctified_liturgy"},
         "el": {"divine_liturgy_basil"},
     }
-    for language, service_ids in blocked.items():
+    minimum_segments = {
+        ("ar", "orthros"): 150,
+        ("ar", "divine_liturgy_basil"): 200,
+        ("ar", "presanctified_liturgy"): 3000,
+        ("el", "divine_liturgy_basil"): 220,
+    }
+    for language, service_ids in imported.items():
         pack = load(f"app/src/main/assets/data/native/library_{language}.json")
         search_ids = {
             item["target_id"]
@@ -90,22 +96,19 @@ def test_unverified_liturgy_lanes_ship_notice_shells_and_are_absent_from_search(
         }
         for service_id in service_ids:
             item = service(pack, service_id)
-            assert item["displayable"] is False
-            assert item["recovery_status"] == "BLOCKED_SOURCE_TEXT_REVIEW_REQUIRED"
-            assert len(item["segments"]) == 1
-            assert item["segments"][0]["editorial_metadata_only"] is True
-            # Arabic Orthros deliberately exposes a separate reviewed safe core;
-            # the blocked raw OCR service itself never enters the index.
-            if service_id != "orthros":
-                assert service_id not in search_ids
+            assert item["displayable"] is True
+            assert item["publication_status"] == "DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE"
+            assert len(item["segments"]) >= minimum_segments[(language, service_id)]
+            assert item["native_source"]["permission_confirmed"] is True
+            assert service_id in search_ids
 
 
-def test_completion_reports_match_the_fail_closed_liturgy_audit():
+def test_completion_reports_match_the_completed_authorized_liturgy_audit():
     manifest = load("canonical/religious_completeness_manifest.json")
-    assert manifest["languages"]["ar"]["orthros"] == "source_text_partial"
-    assert manifest["languages"]["ar"]["basil_liturgy"] == "source_text_partial"
-    assert manifest["languages"]["ar"]["presanctified_liturgy"] == "source_text_partial"
-    assert manifest["languages"]["el"]["basil_liturgy"] == "source_text_partial"
+    assert manifest["languages"]["ar"]["orthros"] == "complete_exact_native_edition"
+    assert manifest["languages"]["ar"]["basil_liturgy"] == "complete_native_source_compilation"
+    assert manifest["languages"]["ar"]["presanctified_liturgy"] == "complete_exact_native_edition"
+    assert manifest["languages"]["el"]["basil_liturgy"] == "complete_exact_native_edition"
     headline = load("canonical/all_languages_15_of_15_report.json")
-    assert headline["technical_language_scores"] == {"ar": "12/15", "en": "15/15", "el": "14/15"}
-    assert headline["total_complete_lanes"] == "41/45"
+    assert headline["technical_language_scores"] == {"ar": "15/15", "en": "15/15", "el": "15/15"}
+    assert headline["total_complete_lanes"] == "45/45"

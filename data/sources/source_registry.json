@@ -1413,15 +1413,16 @@
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },
-      "rights": "Verify source terms before redistribution",
-      "permission_confirmed": false,
-      "last_verified": "",
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "2026-08-13",
       "authority_tier": 5,
       "connector_count": 0,
       "connector_ids": [],
       "publication_roles": [],
       "health_statuses": [],
-      "health": []
+      "health": [],
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH"
     },
     {
       "id": "st_mary_wichita_communion_en",
@@ -1584,6 +1585,78 @@
       "content_sha256": "03a8b0f246825913114eeb350f41f1fbeb78e2839f571f2f574a0c7ba10161ac",
       "source_snapshot_sha256": "",
       "source_title": "World English Bible"
+    },
+    {
+      "id": "jerusalem_ramallah_presanctified_ar",
+      "name": {
+        "ar": "رام الله — خدمة السابق تقديسها العربية",
+        "en": "رام الله — خدمة السابق تقديسها العربية",
+        "el": "رام الله — خدمة السابق تقديسها العربية"
+      },
+      "url": "https://www.stgeorgeramallah.org/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "presanctified_liturgy",
+        "liturgy"
+      ],
+      "used_for": {
+        "ar": "النص العربي الكامل أو التحقق المقارن لخدمة السابق تقديسها.",
+        "en": "Arabic Presanctified service source.",
+        "el": "Πηγὴ ἀραβικοῦ κειμένου Προηγιασμένων."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
+      "last_verified": "2026-08-13",
+      "authority_tier": 2,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [
+        "authorized_native_service_import"
+      ],
+      "health_statuses": [
+        "source_acquired"
+      ],
+      "health": []
+    },
+    {
+      "id": "antiochian_au_presanctified_ar",
+      "name": {
+        "ar": "Antiochian Orthodox Archdiocese of Australia — Presanctified",
+        "en": "Antiochian Orthodox Archdiocese of Australia — Presanctified",
+        "el": "Antiochian Orthodox Archdiocese of Australia — Presanctified"
+      },
+      "url": "https://www.antiochian.org.au/holy-week-service-books/",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "presanctified_liturgy",
+        "liturgy"
+      ],
+      "used_for": {
+        "ar": "النص العربي الكامل أو التحقق المقارن لخدمة السابق تقديسها.",
+        "en": "Arabic Presanctified service source.",
+        "el": "Πηγὴ ἀραβικοῦ κειμένου Προηγιασμένων."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
+      "last_verified": "2026-08-13",
+      "authority_tier": 2,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [
+        "authorized_native_service_import"
+      ],
+      "health_statuses": [
+        "source_acquired"
+      ],
+      "health": []
     }
   ]
 }

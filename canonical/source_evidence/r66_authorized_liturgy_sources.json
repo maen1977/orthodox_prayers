@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-13",
+  "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
+  "policy": "SOURCE_LETTERS_ONLY_NO_TRANSLATION_NO_AI_REWRITING",
+  "ecclesiastical_human_certification": "NOT_CLAIMED",
+  "orthros_ar": {
+    "source_sha256": "7e936d0d415048e8bafb2389fe90a2fa3cbf24efab410c582addb70e3d9d0a3c",
+    "text_sha256": "1317af59f1baa45f9c6164cfc83ba2f90e4efb9553e1ac19a42aad235cddc486",
+    "paragraphs": 159,
+    "characters": 17218,
+    "arabic_letter_ratio": 1.0,
+    "anchors": {
+      "الصلاة السحرية": true,
+      "الله الرب ظهر لنا": true,
+      "كل نسمه فلتسبح الرب": true
+    }
+  },
+  "basil_ar": {
+    "pages": 12,
+    "paragraphs": 75,
+    "characters": 15304,
+    "arabic_letter_ratio": 1.0,
+    "ocr_role": "WHITESPACE_BOUNDARIES_ONLY",
+    "mean_boundary_alignment": 0.955703,
+    "text_sha256": "38803ccf324dea14c4d239a5a6fcf0012a45377ed13264e08c8348e1db6fc484",
+    "source_sha256": "1f29402317d14c826b6c7858117fadf5377b03e3427a3a97f37afa58a5da4c50",
+    "service_segments": 206,
+    "service_characters": 22242,
+    "anchors": {
+      "مباركة": true,
+      "قدوس": true,
+      "خذوا": true,
+      "كلوا": true
+    }
+  },
+  "basil_el": {
+    "source_sha256": "278ab878b18ef592c517b81058633fea3f2fb11d8ab3adfe61540a31d780daf8",
+    "split_text_sha256": "c9ddd0df9e54ddd5a2ee295aeba81a6e6fd83d4e1ced469fb6f6d778a354c19b",
+    "text_sha256": "9d5e9c7cae892a61277b4d95b096d0103d3a03c859cad98a937f6274d8868a6c",
+    "paragraphs": 227,
+    "characters": 35887,
+    "greek_letter_ratio": 0.998791,
+    "anchors": {
+      "Εὐλογημένη ἡ βασιλεία": true,
+      "Ἅγιος, ἅγιος, ἅγιος": true,
+      "Λάβετε, φάγετε": true
+    }
+  },
+  "presanctified_ar": {
+    "pages_total": 174,
+    "service_pages": 162,
+    "printed_lines": 3140,
+    "characters": 182010,
+    "arabic_letter_ratio": 1.0,
+    "unknown_private_glyphs_omitted_as_diacritics": [
+      "U+E820",
+      "U+E821",
+      "U+E822",
+      "U+E823",
+      "U+E824",
+      "U+E825",
+      "U+E828",
+      "U+E829",
+      "U+E82A",
+      "U+E82B",
+      "U+E82C",
+      "U+E82D"
+    ],
+    "text_sha256": "9b9b693cfb4fb0b766a8f1a2d400868b31a91fe62cffdfb66bc61d0f0d9229ca",
+    "source_sha256": "0fe6655fe16ec2621b52945991b21aedf926f80f0600870a414ef302f13b53a3",
+    "service_segments": 3302,
+    "service_characters": 178871,
+    "cross_check_source": {
+      "source_id": "antiochian_au_presanctified_ar",
+      "title": "Presanctified Liturgy Bilingual",
+      "url": "https://antiochianprodsa.blob.core.windows.net/liturgicalinstructions/Presanctified%20Liturgy%20Bilingual.pdf",
+      "source_sha256": "e72d12615f92ff1b2fe82a52cbc699b8c6ed84a38d6405fc51298e9e63dbf181",
+      "role": "STRUCTURE_AND_MAJOR_HYMN_CROSS_CHECK_ONLY"
+    },
+    "anchors": {
+      "خدمة القداس السابق تقديسها": true,
+      "لتستقم صلاتي": true,
+      "الآن قوات السماوات": true,
+      "ذوقوا وانظروا": true
+    }
+  }
+}

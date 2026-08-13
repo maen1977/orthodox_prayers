@@ -40,7 +40,7 @@
       "vespers": "complete_exact_native_edition",
       "small_compline": "complete_exact_native_edition",
       "midnight_office": "complete_exact_native_edition",
-      "orthros": "source_text_partial",
+      "orthros": "complete_exact_native_edition",
       "first_hour": "complete_exact_native_edition",
       "third_hour": "complete_exact_native_edition",
       "sixth_hour": "complete_exact_native_edition",
@@ -48,8 +48,8 @@
       "typika": "complete_exact_native_edition",
       "proskomide": "complete_native_source_compilation",
       "chrysostom_liturgy": "complete_native_source_compilation",
-      "basil_liturgy": "source_text_partial",
-      "presanctified_liturgy": "source_text_partial",
+      "basil_liturgy": "complete_native_source_compilation",
+      "presanctified_liturgy": "complete_exact_native_edition",
       "pre_communion": "complete_exact_native_edition",
       "post_communion": "complete_exact_native_edition"
     },
@@ -82,7 +82,7 @@
       "typika": "complete_exact_native_edition",
       "proskomide": "complete_exact_native_edition",
       "chrysostom_liturgy": "complete_exact_native_edition",
-      "basil_liturgy": "source_text_partial",
+      "basil_liturgy": "complete_exact_native_edition",
       "presanctified_liturgy": "complete_exact_native_edition",
       "pre_communion": "complete_native_source_compilation",
       "post_communion": "complete_native_source_compilation"

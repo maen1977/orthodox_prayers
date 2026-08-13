@@ -112,7 +112,8 @@ class R21Phase8FinalizationTests(unittest.TestCase):
     def test_phase8_gate_reports_real_blockers(self):
         report = self.gate.build_report()
         self.assertFalse(report["complete_release_allowed"])
-        self.assertIn("native_service_not_displayable:basil", report["blockers"])
+        self.assertNotIn("native_service_not_displayable:basil", report["blockers"])
+        self.assertNotIn("native_service_not_displayable:presanctified", report["blockers"])
         self.assertIn("android_apk_build_evidence_missing", report["blockers"])
         self.assertTrue(report["fail_closed"])
 

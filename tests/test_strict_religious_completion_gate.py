@@ -17,14 +17,15 @@ def test_declaration_audit_remains_available():
     assert "mode=declaration" in result.stdout
 
 
-def test_default_gate_blocks_production_while_four_lanes_need_clean_sources():
+def test_default_gate_accepts_all_forty_five_completed_native_lanes():
     result = subprocess.run(
         [sys.executable, str(SCRIPT)],
         cwd=ROOT,
         text=True,
         capture_output=True,
     )
-    assert result.returncode != 0
-    assert "language=ar verified_complete=12/15" in result.stdout
-    assert "language=el verified_complete=14/15" in result.stdout
-    assert "production completeness is 12/15" in result.stderr
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "language=ar verified_complete=15/15" in result.stdout
+    assert "language=en verified_complete=15/15" in result.stdout
+    assert "language=el verified_complete=15/15" in result.stdout
+    assert "RELIGIOUS_COMPLETENESS_OK mode=production" in result.stdout

@@ -2,28 +2,27 @@
   "schema_version": 1,
   "generated_on": "2026-08-13",
   "technical_language_scores": {
-    "ar": "12/15",
+    "ar": "15/15",
     "en": "15/15",
-    "el": "14/15"
+    "el": "15/15"
   },
-  "total_complete_lanes": "41/45",
-  "exact_single_edition_lanes": 35,
-  "native_source_compilation_lanes": 6,
+  "total_complete_lanes": "45/45",
+  "exact_single_edition_lanes": 38,
+  "native_source_compilation_lanes": 7,
   "machine_translation_used": false,
   "ecclesiastical_approval_certified": false,
   "review_note": "Technical content completeness is not a substitute for review and blessing by the competent Orthodox ecclesiastical authority.",
-  "blocked_lanes": [
-    "basil_liturgy:ar",
-    "basil_liturgy:el",
-    "orthros:ar",
-    "presanctified_liturgy:ar"
-  ],
+  "blocked_lanes": [],
   "completed_lanes": [
     "chrysostom_liturgy:ar",
     "midnight_office:en",
     "post_communion:el",
     "pre_communion:el",
     "pre_communion:en",
-    "proskomide:ar"
+    "proskomide:ar",
+    "orthros:ar",
+    "basil_liturgy:ar",
+    "basil_liturgy:el",
+    "presanctified_liturgy:ar"
   ]
 }

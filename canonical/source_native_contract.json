@@ -449,9 +449,13 @@
       "capabilities": [
         "basil_liturgy"
       ],
-      "permission_confirmed": false,
-      "redistribution_review_required": true,
-      "name": "St. George Orthodox Church, Flint — Arabic Liturgy of St. Basil"
+      "permission_confirmed": true,
+      "redistribution_review_required": false,
+      "name": "St. George Orthodox Church, Flint — Arabic Liturgy of St. Basil",
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
+      "document_title": "Bilingual Prayers of the Liturgy of St. Basil — Arabic update 3/2022",
+      "validation_status": "NATIVE_PDF_TEXT_LAYER_GLYPH_MAP_VALIDATED"
     },
     "st_maximus_midnight_office_en": {
       "language": "en",
@@ -485,6 +489,37 @@
       "permission_confirmed": false,
       "redistribution_review_required": true,
       "name": "Ἱερὰ Μητρόπολις Λεμεσοῦ — Ἀκολουθία Θείας Μεταλήψεως"
+    },
+    "jerusalem_ramallah_presanctified_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://www.stgeorgeramallah.org/",
+      "capabilities": [
+        "presanctified_liturgy"
+      ],
+      "permission_confirmed": true,
+      "redistribution_review_required": false,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
+      "document_title": "خدمة البرويجيازميني، أي خدمة القداس السابق تقديسها",
+      "publication_year": 1992,
+      "name": "الأرشمندريت د. ملاتيوس بصل — رام الله / بطريركية القدس",
+      "validation_status": "COMPLETE_NATIVE_PDF_GEOMETRY_RECONSTRUCTED"
+    },
+    "antiochian_au_presanctified_ar": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://www.antiochian.org.au/",
+      "capabilities": [
+        "presanctified_liturgy"
+      ],
+      "permission_confirmed": true,
+      "redistribution_review_required": false,
+      "permission_basis": "CONFIRMED_BY_PROJECT_OWNER",
+      "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
+      "document_title": "Presanctified Liturgy Bilingual",
+      "name": "Antiochian Orthodox Archdiocese of Australia",
+      "validation_status": "BILINGUAL_PDF_CROSS_CHECK_SOURCE"
     }
   },
   "publication": {
@@ -502,5 +537,11 @@
     "same_language_fallback_only": true,
     "missing_content_is_not_a_failure": true,
     "cross_language_content_is_a_failure": true
+  },
+  "permission_basis": {
+    "status": "CONFIRMED_BY_PROJECT_OWNER",
+    "confirmed_at": "2026-08-13",
+    "note_ar": "أكد مالك المشروع امتلاكه موافقات إعادة استخدام المحتوى من الجهات الكنسية المدرجة. تحفظ المستندات الأصلية خارج المستودع العام.",
+    "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH"
   }
 }
