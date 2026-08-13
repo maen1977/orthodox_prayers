@@ -191,7 +191,7 @@ public final class HomeScreen extends BaseScreen {
             if (notice.kind == FastingNoticeEngine.Kind.NONE || notice.targetDate == null) {
                 host.navigate("upcoming", null);
             } else {
-                host.navigate("calendar_day", notice.targetDate.toString());
+                host.navigate("fasting_summary", notice.targetDate.toString());
             }
         });
         add(root, card, 4, 12);

@@ -401,4 +401,16 @@ Phone: 00962788272988</string>
     <string name="ui_church_service_catalog_only_r62">Catalog and fixed readings only — the complete rite text is not embedded yet.</string>
     <string name="ui_appointed_reading_r63" formatted="false">Appointed reading</string>
     <string name="ui_old_testament_reading_r63" formatted="false">Appointed Old Testament reading</string>
+
+    <!-- R66: simple fasting summary opened from the Home fasting notice. -->
+    <string name="ui_fasting_summary_title_r66" formatted="false">Fasting details</string>
+    <string name="ui_fast_summary_type" formatted="false">Fast type</string>
+    <string name="ui_fast_summary_period" formatted="false">Period</string>
+    <string name="ui_fast_summary_period_format">From %1$s to %2$s</string>
+    <string name="ui_fast_summary_days" formatted="false">Number of days</string>
+    <string name="ui_fast_summary_days_format">%1$d day(s)</string>
+    <string name="ui_fast_summary_allowed" formatted="false">Allowed</string>
+    <string name="ui_fast_summary_forbidden" formatted="false">Forbidden</string>
+    <string name="ui_fast_summary_no_fast" formatted="false">There is no specified fast for this day.</string>
+    <string name="ui_fast_summary_details_unavailable" formatted="false">Fasting details are not available for this day.</string>
 </resources>

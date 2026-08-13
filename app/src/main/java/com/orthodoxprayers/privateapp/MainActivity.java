@@ -445,6 +445,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "history": return new HistoryScreen(this);
             case "calendar": return new CalendarScreen(this, entry.argument);
             case "calendar_day": return new CalendarDayScreen(this, entry.argument);
+            case "fasting_summary": return new FastingSummaryScreen(this, entry.argument);
             case "language_packs": return new LanguagePacksScreen(this);
             case "settings": return new SettingsScreen(this);
             case "settings_section": return new SettingsScreen(this, entry.argument);

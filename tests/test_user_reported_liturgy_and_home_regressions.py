@@ -67,7 +67,7 @@ def test_home_uses_calendar_driven_fasting_notice_instead_of_continue_reading() 
     assert "addSmartFastingNotice" in source
     assert "addContinueReading" not in source
     assert "ui_old_church_calendar_home_format" in source
-    assert 'host.navigate("calendar_day", notice.targetDate.toString())' in source
+    assert 'host.navigate("fasting_summary", notice.targetDate.toString())' in source
     assert "specificCommemoration(today)" not in source
 
 

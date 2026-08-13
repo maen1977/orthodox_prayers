@@ -47,7 +47,7 @@ def test_home_uses_six_shortcut_cards_and_one_context_aware_fasting_card() -> No
     assert 'searchTitle(), "search", null' in home
     assert "addSmartFastingNotice(page.root);" in home
     assert "FastingNoticeEngine.evaluate" in home
-    assert 'host.navigate("calendar_day", notice.targetDate.toString())' in home
+    assert 'host.navigate("fasting_summary", notice.targetDate.toString())' in home
     assert "specificCommemoration(today)" not in home
     assert "addRollingWeekStatus(page.root);" not in home
 
