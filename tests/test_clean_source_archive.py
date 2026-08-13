@@ -54,7 +54,7 @@ class CleanSourceArchiveTests(unittest.TestCase):
                         self.assertNotIn(".pytest_cache", path.parts)
                         self.assertNotIn(".cache", path.parts)
                         self.assertFalse(path.name.startswith("COMMIT_MESSAGE"))
-                        self.assertFalse(path.name.lower().endswith((".pem", ".key", ".keystore", ".jks", ".pyc")))
+                        self.assertFalse(path.name.lower().endswith((".pem", ".key", ".keystore", ".jks", ".pyc", ".zip", ".apk", ".aab")))
 
                     gradlew_info = archive.getinfo("orthodox_prayers/gradlew")
                     mode = (gradlew_info.external_attr >> 16) & 0xFFFF

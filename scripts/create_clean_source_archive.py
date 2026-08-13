@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import os
 import stat
 import zipfile
@@ -54,9 +55,10 @@ def main() -> None:
         parser.error("an output ZIP path is required")
     output = selected if selected.is_absolute() else ROOT / selected
     output.parent.mkdir(parents=True, exist_ok=True)
+    temporary_output = output.with_name(output.name + ".tmp")
 
     files = sorted((path for path in ROOT.rglob("*") if include(path)), key=lambda p: p.as_posix())
-    with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+    with zipfile.ZipFile(temporary_output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for path in files:
             relative = path.relative_to(ROOT).as_posix()
             archive_name = relative if args.root_layout else f"{args.prefix.strip('/')}/{relative}"
@@ -65,10 +67,21 @@ def main() -> None:
             info.external_attr = (stat.S_IFREG | mode) << 16
             info.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(info, path.read_bytes())
-    import hashlib
+    # Publish the completed archive atomically. Explicit fsync avoids a caller
+    # observing a delayed/truncated ZIP on hosted and synchronized filesystems.
+    with temporary_output.open("rb") as handle:
+        os.fsync(handle.fileno())
+    os.replace(temporary_output, output)
+    directory_fd = os.open(output.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
     digest = hashlib.sha256(output.read_bytes()).hexdigest()
     checksum = output.with_suffix(output.suffix + ".sha256")
     checksum.write_text(f"{digest}  {output.name}\n", encoding="utf-8")
+    with checksum.open("rb") as handle:
+        os.fsync(handle.fileno())
     print(f"Clean source archive created: {output} ({len(files)} files; sha256={digest})")
 
 

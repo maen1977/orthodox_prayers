@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -14,13 +15,17 @@ public final class FastingNoticeEngineTest {
     private static JSONObject calendarDay(String isoDate) {
         LocalDate date = LocalDate.parse(isoDate);
         boolean dormition = !date.isBefore(START) && !date.isAfter(END);
-        JSONObject title = new JSONObject()
-                .put("ar", dormition ? "صوم رقاد السيدة والدة الإله" : "لا يوجد صوم")
-                .put("en", dormition ? "Dormition Fast" : "No fast")
-                .put("el", dormition ? "Νηστεία τῆς Κοιμήσεως" : "Χωρὶς νηστεία");
-        return new JSONObject().put("fasting", new JSONObject()
-                .put("is_fast", dormition)
-                .put("title", title));
+        try {
+            JSONObject title = new JSONObject()
+                    .put("ar", dormition ? "صوم رقاد السيدة والدة الإله" : "لا يوجد صوم")
+                    .put("en", dormition ? "Dormition Fast" : "No fast")
+                    .put("el", dormition ? "Νηστεία τῆς Κοιμήσεως" : "Χωρὶς νηστεία");
+            return new JSONObject().put("fasting", new JSONObject()
+                    .put("is_fast", dormition)
+                    .put("title", title));
+        } catch (JSONException error) {
+            throw new AssertionError("Test fixture must create valid fasting JSON", error);
+        }
     }
 
     @Test
