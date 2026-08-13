@@ -88,16 +88,6 @@ public final class HomeScreen extends BaseScreen {
             card.addView(calendar, ui.margins(-1, -2, 0, 5, 0, 0));
         }
 
-        JSONObject commemorationDay = data.calendarDay(data.dataDate());
-        String commemorationValue = displayableCommemoration(commemorationDay);
-        if (!commemorationValue.isEmpty()) {
-            TextView commemoration = centered(
-                    localFormat(com.orthodoxprayers.privateapp.R.string.ui_today_commemoration_home_format, commemorationValue),
-                    16, ui.colors().primaryText(), true
-            );
-            card.addView(commemoration, ui.margins(-1, -2, 0, 7, 0, 0));
-        }
-
         String fastingValue = fastingDisplayTitle(today, data.dataDate());
         TextView fast = centered(fastingValue, 18, ui.colors().accentText(), true);
         card.addView(fast, ui.margins(-1, -2, 0, 8, 0, 0));
@@ -211,17 +201,41 @@ public final class HomeScreen extends BaseScreen {
         if (notice == null) return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);
         if (notice.kind == FastingNoticeEngine.Kind.CURRENT_MAJOR_FAST) {
             String family = fastFamilyTitle(notice.family);
+            if (notice.dayNumber == 1) {
+                return localFormat(
+                        com.orthodoxprayers.privateapp.R.string.ui_fast_notice_first_day_format,
+                        family
+                );
+            }
             if (notice.daysRemaining <= 0) {
                 return localFormat(
                         com.orthodoxprayers.privateapp.R.string.ui_fast_notice_last_day_format,
                         family
                 );
             }
+            if (notice.daysRemaining <= 3) {
+                if (notice.daysRemaining == 1) {
+                    return localFormat(
+                            com.orthodoxprayers.privateapp.R.string.ui_fast_notice_ends_in_one_day_format,
+                            family
+                    );
+                }
+                if (notice.daysRemaining == 2) {
+                    return localFormat(
+                            com.orthodoxprayers.privateapp.R.string.ui_fast_notice_ends_in_two_days_format,
+                            family
+                    );
+                }
+                return localFormat(
+                        com.orthodoxprayers.privateapp.R.string.ui_fast_notice_ends_in_days_format,
+                        notice.daysRemaining,
+                        family
+                );
+            }
             return localFormat(
                     com.orthodoxprayers.privateapp.R.string.ui_fast_notice_current_format,
                     notice.dayNumber,
-                    family,
-                    notice.daysRemaining
+                    family
             );
         }
         if (notice.kind == FastingNoticeEngine.Kind.UPCOMING_MAJOR_FAST) {

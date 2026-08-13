@@ -17,7 +17,7 @@ def test_declaration_audit_remains_available():
     assert "mode=declaration" in result.stdout
 
 
-def test_default_gate_blocks_production_while_arabic_orthros_is_unreadable():
+def test_default_gate_blocks_production_while_four_lanes_need_clean_sources():
     result = subprocess.run(
         [sys.executable, str(SCRIPT)],
         cwd=ROOT,
@@ -25,5 +25,6 @@ def test_default_gate_blocks_production_while_arabic_orthros_is_unreadable():
         capture_output=True,
     )
     assert result.returncode != 0
-    assert "language=ar verified_complete=14/15" in result.stdout
-    assert "production completeness is 14/15" in result.stderr
+    assert "language=ar verified_complete=12/15" in result.stdout
+    assert "language=el verified_complete=14/15" in result.stdout
+    assert "production completeness is 12/15" in result.stderr

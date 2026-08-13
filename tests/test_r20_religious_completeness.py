@@ -39,9 +39,9 @@ class R20ReligiousCompletenessTests(unittest.TestCase):
             text=True,
         )
         self.assertNotEqual(0, production.returncode)
-        self.assertIn("language=ar verified_complete=14/15", production.stdout)
+        self.assertIn("language=ar verified_complete=12/15", production.stdout)
         self.assertIn("language=en verified_complete=15/15", production.stdout)
-        self.assertIn("language=el verified_complete=15/15", production.stdout)
+        self.assertIn("language=el verified_complete=14/15", production.stdout)
 
     def test_manifest_covers_fifteen_required_services_for_each_language(self):
         manifest = json.loads(

@@ -76,7 +76,10 @@ def main() -> None:
     if master.get("ecclesiastical_approval_certified") is not False:
         raise SystemExit("Technical reports must not claim ecclesiastical approval")
 
-    stale_phrases = ("12 من 15", "13 of 15", "13 από τις 15")
+    stale_phrases = (
+        "14 من 15 خدمة بالعربية",
+        "15 ἀπὸ 15 ἀκολουθίες στὰ ἑλληνικά",
+    )
     report_text = "\n".join(
         (ROOT / path).read_text(encoding="utf-8")
         for path in (

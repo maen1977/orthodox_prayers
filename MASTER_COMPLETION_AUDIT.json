@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at_utc": "2026-08-08T11:18:39.084841+00:00",
+  "generated_at_utc": "2026-08-13T06:38:40.512033+00:00",
   "technical_release_allowed": false,
   "ecclesiastical_approval_certified": false,
   "definition": "Technical native-language coverage is complete when the full service text is packaged in that same language from recorded native sources, required fixed and date-dependent sections are structurally accounted for, and no machine translation is used. This score does not itself constitute ecclesiastical approval.",
@@ -11,9 +11,9 @@
   ],
   "summary": {
     "ar": {
-      "technical_complete": 14,
-      "exact_single_edition": 11,
-      "native_source_compilation": 3,
+      "technical_complete": 12,
+      "exact_single_edition": 10,
+      "native_source_compilation": 2,
       "required": 15
     },
     "en": {
@@ -23,8 +23,8 @@
       "required": 15
     },
     "el": {
-      "technical_complete": 15,
-      "exact_single_edition": 13,
+      "technical_complete": 14,
+      "exact_single_edition": 12,
       "native_source_compilation": 2,
       "required": 15
     }
@@ -310,10 +310,10 @@
       "packaged_service_id": "divine_liturgy_basil",
       "languages": {
         "ar": {
-          "status": "complete_native_source_compilation",
-          "technical_release_ready": true,
+          "status": "source_text_partial",
+          "technical_release_ready": false,
           "single_exact_edition": false,
-          "native_source_compilation": true
+          "native_source_compilation": false
         },
         "en": {
           "status": "complete_exact_native_edition",
@@ -322,22 +322,22 @@
           "native_source_compilation": false
         },
         "el": {
-          "status": "complete_exact_native_edition",
-          "technical_release_ready": true,
-          "single_exact_edition": true,
+          "status": "source_text_partial",
+          "technical_release_ready": false,
+          "single_exact_edition": false,
           "native_source_compilation": false
         }
       },
-      "all_languages_technical_release_ready": true
+      "all_languages_technical_release_ready": false
     },
     {
       "service": "presanctified_liturgy",
       "packaged_service_id": "presanctified_liturgy",
       "languages": {
         "ar": {
-          "status": "complete_exact_native_edition",
-          "technical_release_ready": true,
-          "single_exact_edition": true,
+          "status": "source_text_partial",
+          "technical_release_ready": false,
+          "single_exact_edition": false,
           "native_source_compilation": false
         },
         "en": {
@@ -353,7 +353,7 @@
           "native_source_compilation": false
         }
       },
-      "all_languages_technical_release_ready": true
+      "all_languages_technical_release_ready": false
     },
     {
       "service": "pre_communion",

@@ -649,6 +649,36 @@
             "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our debts, as we forgive our debtors; and lead us not into temptation, but deliver us from the evil one. Amen.",
             "el": "Πάτερ ἡμῶν, ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς· τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ. Ἀμήν."
           }
+        },
+        {
+          "languages": [
+            "ar"
+          ],
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "اعين الكل اياك تترجى وانت تعطيهم طعامهم في حينه، تفتح يدك فتمتلا كل حي سرورا.",
+            "en": "",
+            "el": ""
+          }
+        },
+        {
+          "languages": [
+            "ar"
+          ],
+          "speaker": {
+            "ar": "الجميع",
+            "en": "",
+            "el": ""
+          },
+          "text": {
+            "ar": "ياكل البائسون ويشبعون ويسبحون الرب، والذين يلتمسونه تحيا قلوبهم الى الابد.",
+            "en": "",
+            "el": ""
+          }
         }
       ],
       "source_provenance": {
@@ -657,10 +687,9 @@
         "source_id": "orthodox_jordan",
         "official_url": "https://orthodoxjordan.org/صلوات-المائدة/",
         "status": "OFFICIAL_ARABIC_EXACT_PINNED",
-        "complete_text": false,
+        "complete_text": true,
         "ai_liturgical_translation_used": false,
-        "arabic_sha256": "2c6ca0dcee8ae3c2a007c714372eb8aaf3a6425d62313daebcb45e02dc3509ba",
-        "completeness_note_ar": "الصلاة الربانية المثبتة فقط؛ ليست كامل صلوات المائدة المنشورة."
+        "arabic_sha256": "e4187acab9949ce56feccc319677472eee999e0b2e83efe64bb6c26b57d13418"
       }
     },
     {

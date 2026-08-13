@@ -80,12 +80,16 @@ def test_audit_report_truthfully_records_known_content_gaps():
     assert status['daily_readings'] == 'INCOMPLETE'
     assert status['commemorations'] == 'INCOMPLETE'
     assert status['church_services'] == 'CATALOG_COMPLETE_TEXT_INCOMPLETE'
-    assert status['daily_prayers'] == 'PARTIAL_WITH_OFFICIAL_LINKS'
+    assert status['daily_prayers'] == 'OFFLINE_CORE_NO_EXTERNAL_CARDS'
     assert status['church_directory'] == 'PARTIAL_WITH_FULL_DIRECTORY_LINKS'
-    assert audit['metrics']['official_daily_prayer_links'] >= 4
+    assert audit['metrics']['official_daily_prayer_references'] >= 4
     assert audit['metrics']['arabic_church_build_rights_pending'] == 0
     assert audit['metrics']['arabic_church_build_rights_confirmed'] >= 10
     assert status['orthros_ar'] == 'INCOMPLETE_FAIL_CLOSED'
+    assert status['basil_liturgy'] == 'INCOMPLETE_FAIL_CLOSED'
+    assert status['presanctified_liturgy'] == 'INCOMPLETE_FAIL_CLOSED'
+    assert status['vespers_ar'] == 'PASS'
+    assert status['small_compline_ar'] == 'PASS'
 
 
 def test_new_directory_localization_has_no_arabic_leakage_in_non_arabic_lanes():

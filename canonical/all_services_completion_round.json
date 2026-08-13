@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "TECHNICAL_CONTENT_44_OF_45_ARABIC_ORTHROS_BLOCKED",
+  "status": "TECHNICAL_CONTENT_41_OF_45_FOUR_SOURCE_LANES_BLOCKED",
   "purpose_ar": "إغلاق الخدمات الخمس عشرة في العربية والإنجليزية واليونانية ضمن معاملة واحدة لا تسمح بالترقية الجزئية.",
   "required_services": [
     "vespers",
@@ -31,7 +31,6 @@
   "ai_rewriting_or_correction_allowed": false,
   "automatic_ocr_publication_allowed": false,
   "current_exact_lanes": [
-    "basil_liturgy:el",
     "basil_liturgy:en",
     "chrysostom_liturgy:el",
     "chrysostom_liturgy:en",
@@ -48,7 +47,6 @@
     "post_communion:ar",
     "post_communion:en",
     "pre_communion:ar",
-    "presanctified_liturgy:ar",
     "presanctified_liturgy:el",
     "presanctified_liturgy:en",
     "proskomide:el",
@@ -70,7 +68,10 @@
     "vespers:en"
   ],
   "required_new_source_lanes": [
-    "orthros:ar"
+    "basil_liturgy:ar",
+    "basil_liturgy:el",
+    "orthros:ar",
+    "presanctified_liturgy:ar"
   ],
   "source_bundle_root": "private_sources/all_services_v1",
   "source_bundle_manifest": "private_sources/all_services_v1/manifest.json",
@@ -1040,8 +1041,8 @@
       "service": "basil_liturgy",
       "service_id": "divine_liturgy_basil",
       "language": "ar",
-      "current_status": "complete_native_source_compilation",
-      "already_release_ready": true,
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
       "source_id": "st_george_flint_basil_ar",
       "registered_source_url": "https://saintgeorgeflint.org/",
       "expected_relative_path": "basil_liturgy/ar",
@@ -1059,7 +1060,7 @@
         "مباركة مملكة الآب والابن والروح القدس",
         "قدوس قدوس قدوس"
       ],
-      "source_file_required": false,
+      "source_file_required": true,
       "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "basil_liturgy/ar.service.json",
       "structured_service_required_for_promotion": true,
@@ -1130,8 +1131,8 @@
       "service": "basil_liturgy",
       "service_id": "divine_liturgy_basil",
       "language": "el",
-      "current_status": "complete_exact_native_edition",
-      "already_release_ready": true,
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
       "source_id": "goarch_digital_chant_stand_greek",
       "registered_source_url": "https://dcs.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/gr-en/index.html",
       "expected_relative_path": "basil_liturgy/el",
@@ -1149,8 +1150,8 @@
         "Εὐλογημένη ἡ βασιλεία",
         "Ἅγιος, Ἅγιος, Ἅγιος"
       ],
-      "source_file_required": false,
-      "human_ecclesiastical_review_required": false,
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "basil_liturgy/el.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1174,8 +1175,8 @@
       "service": "presanctified_liturgy",
       "service_id": "presanctified_liturgy",
       "language": "ar",
-      "current_status": "complete_exact_native_edition",
-      "already_release_ready": true,
+      "current_status": "source_text_partial",
+      "already_release_ready": false,
       "source_id": "orthodox_jordan",
       "registered_source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%8A%D8%AC%D9%8A%D8%B3%D9%85%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.docx",
       "expected_relative_path": "presanctified_liturgy/ar",
@@ -1193,8 +1194,8 @@
         "لتستقم صلاتي",
         "الآن القوات السماوية"
       ],
-      "source_file_required": false,
-      "human_ecclesiastical_review_required": false,
+      "source_file_required": true,
+      "human_ecclesiastical_review_required": true,
       "normalized_service_relative_path": "presanctified_liturgy/ar.service.json",
       "structured_service_required_for_promotion": true,
       "required_dynamic_slots": [
@@ -1488,10 +1489,8 @@
     "no machine translation, AI rewriting, heuristic Arabic font repair, or automatic OCR publication",
     "all native packs, evidence gates, static hashes, Android assets, and tests pass before signing"
   ],
-  "recovered_round_status": "21_EXACT_LANES_MERGED_24_REMAIN_FAIL_CLOSED",
+  "recovered_round_status": "41_COMPLETE_LANES_MERGED_4_REMAIN_FAIL_CLOSED",
   "current_complete_lanes": [
-    "basil_liturgy:ar",
-    "basil_liturgy:el",
     "basil_liturgy:en",
     "chrysostom_liturgy:ar",
     "chrysostom_liturgy:el",
@@ -1513,7 +1512,6 @@
     "pre_communion:ar",
     "pre_communion:el",
     "pre_communion:en",
-    "presanctified_liturgy:ar",
     "presanctified_liturgy:el",
     "presanctified_liturgy:en",
     "proskomide:ar",
@@ -1535,6 +1533,6 @@
     "vespers:el",
     "vespers:en"
   ],
-  "technical_complete_lane_count": 44,
+  "technical_complete_lane_count": 41,
   "ecclesiastical_approval_certified": false
 }

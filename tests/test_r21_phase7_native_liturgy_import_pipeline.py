@@ -113,8 +113,8 @@ class R21Phase7NativeLiturgyImportTests(unittest.TestCase):
         self.assertEqual(complete, manifest["languages"]["en"]["presanctified_liturgy"])
         self.assertEqual(complete, manifest["languages"]["el"]["presanctified_liturgy"])
         self.assertNotEqual(complete, manifest["languages"]["ar"]["basil_liturgy"])
-        self.assertEqual(complete, manifest["languages"]["ar"]["presanctified_liturgy"])
-        self.assertEqual(complete, manifest["languages"]["el"]["basil_liturgy"])
+        self.assertNotEqual(complete, manifest["languages"]["ar"]["presanctified_liturgy"])
+        self.assertNotEqual(complete, manifest["languages"]["el"]["basil_liturgy"])
 
         minimums = {
             ("en", "divine_liturgy_basil"): 100,

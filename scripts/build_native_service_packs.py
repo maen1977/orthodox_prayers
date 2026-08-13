@@ -17,6 +17,7 @@ SOURCE = ROOT / "data/services/library.json"
 MANIFEST = ROOT / "canonical/native_service_manifest.json"
 REGISTRY = ROOT / "canonical/native_language_sources.json"
 CHURCH_SERVICE_CATALOG = ROOT / "canonical/church_service_catalog.json"
+COMPLETENESS = ROOT / "canonical/religious_completeness_manifest.json"
 OUTPUTS = [ROOT / "data/services/native", ROOT / "app/src/main/assets/data/native"]
 OVERRIDE_ROOT = ROOT / "data/services/native_overrides"
 LANGS = ("ar", "el", "en")
@@ -25,6 +26,12 @@ NATIVE_SOURCE_NOTICES = {
     "ar": "النص المعروض في هذه الحزمة مأخوذ من مصدر عربي أصلي مسجل، وليس ناتجًا عن ترجمة آلية.",
     "en": "The text displayed in this pack comes from a registered native English source and is not machine-translated.",
     "el": "Τὸ κείμενο αὐτοῦ τοῦ πακέτου προέρχεται ἀπὸ καταχωρισμένη πρωτότυπη ἑλληνικὴ πηγὴ καὶ δὲν εἶναι μηχανικὴ μετάφραση.",
+}
+
+BLOCKED_SERVICE_NOTICES = {
+    "ar": "هذه الخدمة محجوبة حتى يكتمل استيراد نص عربي موثّق ومراجع.",
+    "en": "This service is blocked until a complete verified native-language source is imported and reviewed.",
+    "el": "Ἡ ἀκολουθία παραμένει κλειδωμένη μέχρι νὰ εἰσαχθεῖ καὶ νὰ ἐλεγχθεῖ πλήρες κείμενο ἀπὸ ἐπαληθευμένη γηγενὴ πηγή.",
 }
 
 
@@ -403,6 +410,49 @@ def localized_for_language(value: Any, lang: str) -> Any:
     return {key: localized_for_language(child, lang) for key, child in value.items()}
 
 
+def source_service_for_language(raw: dict[str, Any], lang: str) -> dict[str, Any]:
+    """Drop explicitly lane-scoped segments before building a native pack.
+
+    This lets the reviewed mixed source library preserve an exact Arabic-only
+    addition without creating empty cards or cross-language fallback in the
+    English and Greek packs.
+    """
+    service = copy.deepcopy(raw)
+    segments = service.get("segments")
+    if isinstance(segments, list):
+        service["segments"] = [
+            segment for segment in segments
+            if not isinstance(segment, dict)
+            or not isinstance(segment.get("languages"), list)
+            or lang in segment["languages"]
+        ]
+        for segment in service["segments"]:
+            if isinstance(segment, dict):
+                segment.pop("languages", None)
+    return service
+
+
+def block_unverified_service(service: dict[str, Any], lang: str) -> dict[str, Any]:
+    """Keep an editorial notice shell without shipping unreviewed prayer text."""
+    service["segments"] = [
+        {
+            "type": "notice",
+            "editorial_metadata_only": True,
+            "text": {
+                key: BLOCKED_SERVICE_NOTICES[lang] if key == lang else ""
+                for key in LANGS
+            },
+        }
+    ]
+    service["publication"] = {
+        "displayable": False,
+        "reason": "SOURCE_TEXT_PARTIAL_REVIEW_REQUIRED",
+    }
+    service["displayable"] = False
+    service["recovery_status"] = "BLOCKED_SOURCE_TEXT_REVIEW_REQUIRED"
+    return service
+
+
 def text_hash(service: dict[str, Any], lang: str) -> str:
     pieces: list[str] = []
 
@@ -453,6 +503,12 @@ def main() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     church_catalog = json.loads(CHURCH_SERVICE_CATALOG.read_text(encoding="utf-8"))
+    completeness = json.loads(COMPLETENESS.read_text(encoding="utf-8"))
+    complete_statuses = set(completeness.get("production_complete_statuses") or [])
+    service_name_by_id = {
+        packaged_id: service_name
+        for service_name, packaged_id in completeness["packaged_service_ids"].items()
+    }
     services_manifest = manifest["services"]
     sources = registry["sources"]
 
@@ -486,12 +542,17 @@ def main() -> None:
                 if service.get("id") != service_id:
                     raise SystemExit(f"{override_path}: service id mismatch")
             else:
-                service = localized_for_language(raw, lang)
+                service = localized_for_language(source_service_for_language(raw, lang), lang)
                 if "notice" in service:
                     service["notice"] = {
                         key: NATIVE_SOURCE_NOTICES[lang] if key == lang else ""
                         for key in LANGS
                     }
+            service_name = service_name_by_id.get(service_id)
+            if service_name is not None:
+                status = completeness["languages"][lang][service_name]
+                if status not in complete_statuses:
+                    service = block_unverified_service(service, lang)
             # Structural metadata belongs to the reviewed source library, not to
             # language overrides. Overrides may replace native text, but they must
             # not move a service into a different navigation/runtime category.

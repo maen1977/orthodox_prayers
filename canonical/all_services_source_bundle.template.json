@@ -1,8 +1,26 @@
 {
   "schema_version": 1,
-  "status": "ONE_CLEAN_ARABIC_SOURCE_LANE_REQUIRED",
+  "status": "FOUR_CLEAN_SOURCE_LANES_REQUIRED",
   "instructions_ar": "استبدل EXT بالامتداد الحقيقي، ضع كل ملف في المسار المحدد، وثبّت الإذن والبصمة. لا تضع هذا المجلد الخاص داخل GitHub أو ZIP التسليم العام.",
   "entries": {
+    "basil_liturgy:ar": {
+      "file": "basil_liturgy/ar.EXT",
+      "normalized_service_file": "basil_liturgy/ar.service.json",
+      "source_id": "st_george_flint_basil_ar",
+      "source_url": "https://saintgeorgeflint.org/",
+      "permission_confirmed": false,
+      "machine_translation_used": false,
+      "ai_rewriting_or_correction_used": false
+    },
+    "basil_liturgy:el": {
+      "file": "basil_liturgy/el.EXT",
+      "normalized_service_file": "basil_liturgy/el.service.json",
+      "source_id": "goarch_digital_chant_stand_greek",
+      "source_url": "https://dcs.goarch.org/goa/dcs/h/b/skeleton/liturgy/basil/gr-en/index.html",
+      "permission_confirmed": false,
+      "machine_translation_used": false,
+      "ai_rewriting_or_correction_used": false
+    },
     "orthros:ar": {
       "file": "orthros/ar.EXT",
       "normalized_service_file": "orthros/ar.service.json",
@@ -11,7 +29,16 @@
       "permission_confirmed": false,
       "machine_translation_used": false,
       "ai_rewriting_or_correction_used": false
+    },
+    "presanctified_liturgy:ar": {
+      "file": "presanctified_liturgy/ar.EXT",
+      "normalized_service_file": "presanctified_liturgy/ar.service.json",
+      "source_id": "orthodox_jordan",
+      "source_url": "https://orthodoxjordan.org/wp-content/uploads/2023/04/%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%8A%D8%AC%D9%8A%D8%B3%D9%85%D9%8A%D9%86%D9%8A-%D8%A7%D9%84%D8%B3%D8%A7%D8%A8%D9%82-%D8%AA%D9%82%D8%AF%D9%8A%D8%B3%D9%87-1.docx",
+      "permission_confirmed": false,
+      "machine_translation_used": false,
+      "ai_rewriting_or_correction_used": false
     }
   },
-  "required_entry_count": 1
+  "required_entry_count": 4
 }

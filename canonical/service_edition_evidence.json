@@ -596,7 +596,7 @@
       "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
     },
     "presanctified_liturgy:ar": {
-      "status": "complete_exact_native_edition",
+      "status": "source_text_partial",
       "packaged_service_id": "presanctified_liturgy",
       "source_id": "orthodox_jordan_arabic_services",
       "source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
@@ -615,7 +615,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "The available Arabic material is explanatory and not the complete liturgical service; it remains blocked pending a full reviewed source."
     },
     "vespers:el": {
       "status": "complete_exact_native_edition",
@@ -794,7 +794,7 @@
       "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
     },
     "basil_liturgy:el": {
-      "status": "complete_exact_native_edition",
+      "status": "source_text_partial",
       "packaged_service_id": "divine_liturgy_basil",
       "source_id": "ecumenical_patriarchate_ieratikon_1875",
       "source_url": "https://archive.org/details/ieratikon-1875",
@@ -813,7 +813,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Rejected historical OCR candidate retained as evidence only; corrupted word boundaries require clean re-import and review before display."
     },
     "proskomide:el": {
       "status": "complete_exact_native_edition",
@@ -913,7 +913,7 @@
       "redistribution_review_required": false
     },
     "basil_liturgy:ar": {
-      "status": "complete_native_source_compilation",
+      "status": "source_text_partial",
       "packaged_service_id": "divine_liturgy_basil",
       "source_id": "st_george_flint_basil_ar",
       "source_url": "https://saintgeorgeflint.org/",
@@ -933,7 +933,7 @@
         "TODO",
         "يضاف لاحق"
       ],
-      "review_basis": "Complete same-language native source compilation; source and content hashes recorded. Technical coverage verified separately from ecclesiastical approval.",
+      "review_basis": "Rejected publication candidate retained as evidence only: the Arabic text requires clean re-import and ecclesiastical review before display.",
       "ecclesiastical_approval_certified": false,
       "redistribution_review_required": true
     },

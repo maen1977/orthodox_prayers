@@ -384,7 +384,11 @@ Phone: 00962788272988</string>
     <string name="ui_fast_family_apostles">Apostles’ Fast</string>
     <string name="ui_fast_notice_starts_in_days_format">%1$d days until %2$s</string>
     <string name="ui_fast_notice_starts_tomorrow_format">%1$s begins tomorrow</string>
-    <string name="ui_fast_notice_current_format">Day %1$d of %2$s — %3$d days remaining</string>
+    <string name="ui_fast_notice_first_day_format">First day of %1$s</string>
+    <string name="ui_fast_notice_current_format">Day %1$d of %2$s</string>
+    <string name="ui_fast_notice_ends_in_one_day_format">One day until the end of %1$s</string>
+    <string name="ui_fast_notice_ends_in_two_days_format">Two days until the end of %1$s</string>
+    <string name="ui_fast_notice_ends_in_days_format">%1$d days until the end of %2$s</string>
     <string name="ui_fast_notice_last_day_format">Last day of %1$s</string>
     <string name="ui_fast_notice_tomorrow_weekly_format">Tomorrow, %1$s — %2$s</string>
     <string name="ui_fast_notice_next_weekly_format">Next %1$s — %2$s</string>
@@ -393,10 +397,7 @@ Phone: 00962788272988</string>
     <string name="ui_weekday_wednesday">Wednesday</string>
     <string name="ui_weekday_friday">Friday</string>
     <string name="ui_language_and_text_settings_title">Language &amp; text size</string>
-    <string name="ui_today_commemoration_home_format">Today’s commemoration: %1$s</string>
     <string name="ui_official_directory_sources_r62" formatted="false">Official church directories</string>
-    <string name="ui_official_daily_prayer_sources_r62">Additional daily prayers — official source</string>
-    <string name="ui_official_source_link_only_r62">Opens the text at the official church source; the text is not repackaged in the app.</string>
     <string name="ui_church_service_catalog_only_r62">Catalog and fixed readings only — the complete rite text is not embedded yet.</string>
     <string name="ui_appointed_reading_r63" formatted="false">Appointed reading</string>
     <string name="ui_old_testament_reading_r63" formatted="false">Appointed Old Testament reading</string>

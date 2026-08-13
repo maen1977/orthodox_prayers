@@ -1,14 +1,14 @@
 # تدقيق R62 الكامل لتطبيق Orthodox Prayers
 
-تاريخ التدقيق: **2026-08-10**  
-النسخة الأساسية: **5.6.4 R61**
+تاريخ التدقيق: **2026-08-13**  
+النسخة الأساسية: **5.6.4 — مرور R65 التدقيقي**
 
 > هذا التقرير يفرّق بين سلامة البرنامج تقنيًا وبين اكتمال المحتوى الكنسي. نجاح Release Gate لا يعني تلقائيًا وجود نص كامل أو قراءة موثقة لكل يوم.
 
 ## النتائج
 
 ### ✅ PASS — Home date + old calendar
-9131 civil days are precomputed for 2026-01-01..2050-12-31 with julian_date.
+9131 civil days are precomputed for 2026-01-01..2050-12-31 with julian_date; the home card intentionally omits the daily commemoration line.
 
 ### ✅ FIXED R62 — Prayer of the Day by local time
 Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_prayer 17:30-21:29, small_compline otherwise, using Asia/Amman time.
@@ -28,24 +28,30 @@ Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.
 ### ✅ PASS — 2026-08-10 reading spot check
 Internal refs are 2 Corinthians 2:4-15 and Matthew 23:13-22; this date was cross-checked against the official OCA daily lectionary as a lower-priority regular-cycle authority.
 
-### ⚠️ PARTIAL + روابط رسمية — Daily prayer library
-Arabic embedded core: morning 5 segments; evening 4; small compline 15; before/after food present; pre/post Communion are exact recovered native editions. 4 additional official Jordan daily-prayer links are exposed without repackaging their text.
-**الإجراء:** Import additional native texts only when redistribution permission is recorded; until then keep official-link-only behavior.
+### ✅ داخل التطبيق / بلا بطاقات صلاة خارجية — Daily prayer library
+Arabic embedded core: morning 5 segments; evening 4; small compline 15; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. 4 official Jordan references remain catalog evidence and are not rendered as external prayer cards.
+**الإجراء:** Import any additional native text only after exact-text and redistribution evidence are recorded.
 
 ### ❌ INCOMPLETE — Fail closed — Arabic Orthros / Matins
 Raw Arabic source is BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED; the reader uses a safe core and does not display broken OCR.
 **الإجراء:** Requires a clean authorized Arabic native edition; do not AI-correct OCR.
 
-### ⚠️ PARTIAL — Arabic Vespers
-Arabic library has 45 segments / 9787 chars from the historical Arabic source, but no recovered exact-native-lane audit marks it complete.
-**الإجراء:** Replace/verify against a clean authorized Jerusalem/Jordan Arabic edition.
+### ✅ PASS — Arabic Vespers
+Arabic Vespers is packaged as a complete exact native edition with 45 segments / 9787 chars.
 
-### ⚠️ PARTIAL — Arabic Small Compline
-Arabic library has 15 segments / 4511 chars; English and Greek have substantially larger exact native imports.
-**الإجراء:** Replace/verify against a clean authorized Arabic native edition.
+### ✅ PASS — Arabic Small Compline
+Arabic Small Compline is packaged as a complete exact native edition with 15 segments / 4511 chars.
 
 ### ✅ PASS (طبقة قارئ) — Divine Liturgy
 Arabic Divine Liturgy is COMPLETE_NATIVE_SOURCE_COMPILATION with 198 source segments. Optional quiet believer prayers remain a reader overlay, not part of the canonical-text hash.
+
+### ❌ INCOMPLETE — Fail closed — Saint Basil Liturgy
+English is complete. The Arabic and Greek source lanes require clean re-import and review; their runtime packs contain only a non-liturgical blocked notice.
+**الإجراء:** Import complete reviewed Arabic and Greek native editions before making this rite displayable.
+
+### ❌ INCOMPLETE — Fail closed — Presanctified Liturgy
+English and Greek are complete. The available Arabic material is explanatory rather than the full service; its runtime pack contains only a non-liturgical blocked notice.
+**الإجراء:** Import a complete reviewed Arabic native edition before making this rite displayable.
 
 ### ⚠️ البطاقات موجودة / النصوص الكاملة ناقصة — Church-service section
 13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest now has 10/10 registered Jordan sources marked owner-confirmed for R64; rights-pending=0. Source checkout can still contain catalog snapshots until the build materializes the authorized native corpus.

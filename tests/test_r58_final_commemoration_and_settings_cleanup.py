@@ -40,13 +40,14 @@ def test_august_8_2026_has_old_calendar_commemoration_in_all_lanes():
     assert "26" in names["el"] and "Ἰουλίου" in names["el"]
 
 
-def test_home_renders_commemoration_between_old_calendar_and_fast():
+def test_home_keeps_commemoration_out_of_the_compact_date_card():
     home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
     old_pos = home.index("ui_old_church_calendar_home_format")
-    comm_pos = home.index("ui_today_commemoration_home_format")
     fast_pos = home.index("fastingDisplayTitle(today, data.dataDate())")
-    assert old_pos < comm_pos < fast_pos
-    assert "displayableCommemoration(commemorationDay)" in home
+    assert old_pos < fast_pos
+    date_card = home[home.index("private void addDateCard"):home.index("private void addRollingWeekStatus")]
+    assert "ui_today_commemoration_home_format" not in date_card
+    assert "displayableCommemoration" not in date_card
 
 
 def test_daily_package_missing_commemoration_uses_offline_calendar_fallback():
@@ -80,5 +81,5 @@ def test_new_ui_strings_exist_independently_in_all_languages():
     for language, path in files.items():
         text = path.read_text(encoding="utf-8")
         assert 'name="ui_language_and_text_settings_title"' in text, language
-        assert 'name="ui_today_commemoration_home_format"' in text, language
+        assert 'name="ui_old_church_calendar_home_format"' in text, language
         assert "&apos;" not in text, f"{language}: AAPT2-unsafe apostrophe entity"

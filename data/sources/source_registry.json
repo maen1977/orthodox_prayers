@@ -96,11 +96,15 @@
       "authentication_bypass": false,
       "captcha_bypass": false,
       "rate_limit_requests_per_host_per_second": 2,
-      "default_workers": 10,
+      "default_workers": 16,
       "default_timeout_seconds": 20,
       "default_attempts": 2,
-      "default_max_pages": 5000,
-      "cache_raw_public_documents": true
+      "default_max_pages": 1200,
+      "cache_raw_public_documents": true,
+      "default_max_depth": 2,
+      "sitemap_fetch_strategy": "index_all_fetch_liturgical_priority_only",
+      "skip_low_value_archives_and_assets": true,
+      "incremental_cache_enabled": true
     },
     "roots": [
       {
