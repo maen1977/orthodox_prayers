@@ -875,7 +875,7 @@
       "status": "complete_native_source_compilation",
       "packaged_service_id": "proskomide",
       "source_id": "orthodox_jordan",
-      "source_url": "https://orthodoxjordan.org/",
+      "source_url": "https://orthodoxjordan.org/تحميل-الصلوات/",
       "content_sha256": "a71bad698cc0950c422924c794f75253e3d8e8a6bc44fe92e14fe76c8556abfd",
       "minimum_segments": 77,
       "minimum_characters": 7300,
@@ -892,7 +892,7 @@
         "TODO",
         "يضاف لاحق"
       ],
-      "review_basis": "Complete same-language native source compilation after removal of an unrelated corrupt OCR tail following the valid dismissal; source and corrected content hashes recorded. Technical coverage verified separately from ecclesiastical approval.",
+      "review_basis": "Complete same-language native source compilation; source and content hashes recorded. Technical coverage verified separately from ecclesiastical approval.",
       "ecclesiastical_approval_certified": false,
       "redistribution_review_required": false
     },
@@ -900,7 +900,7 @@
       "status": "complete_native_source_compilation",
       "packaged_service_id": "divine_liturgy",
       "source_id": "antioch_patriarchate_ar",
-      "source_url": "https://www.antiochpatriarchate.org/",
+      "source_url": "https://www.antiochpatriarchate.org/en/page/publications-conferences/14/",
       "content_sha256": "94fa968dae80a5483bcd887018f70269b6b63aeaba3be1868b8cc8559a868691",
       "minimum_segments": 198,
       "minimum_characters": 14000,
@@ -920,7 +920,7 @@
         "TODO",
         "يضاف لاحق"
       ],
-      "review_basis": "Reviewed native Arabic source compilation. A duplicated 251-segment OCR-damaged appendix was quarantined. The opening formula, the three antiphon prayers, the Cherubic hymn continuation, and the order and preface of the Eucharistic anaphora were repaired from the owner-supplied Arabic source material. No machine translation was used. Word-for-word ecclesiastical certification remains explicitly unclaimed.",
+      "review_basis": "Complete same-language native source compilation; source and content hashes recorded. Technical coverage verified separately from ecclesiastical approval.",
       "ecclesiastical_approval_certified": false,
       "redistribution_review_required": false
     },
