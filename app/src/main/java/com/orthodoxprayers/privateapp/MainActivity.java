@@ -451,7 +451,7 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "settings": return new SettingsScreen(this);
             case "settings_section": return new SettingsScreen(this, entry.argument);
             case "sources": return new SourcesScreen(this);
-            case "churches": return new ChurchesScreen(this);
+            case "churches": return new ChurchesScreen(this, entry.argument);
             case "reader": return new ReaderScreen(this, entry.argument);
             case "reading_detail":
                 try { return new ReadingDetailScreen(this, entry.payload == null ? null : new JSONObject(entry.payload)); }
