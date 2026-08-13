@@ -42,11 +42,18 @@ def source_allowed(language: str, source_id: str, contract: dict[str, Any] | Non
 def source_url_allowed(source_id: str, url: str, contract: dict[str, Any] | None = None) -> bool:
     contract = contract or load_contract()
     source = contract["sources"].get(source_id) or {}
-    expected = urlparse(source.get("base_url", ""))
     actual = urlparse(url or "")
-    if not expected.hostname or not actual.hostname:
+    if not actual.hostname:
         return False
-    return actual.hostname == expected.hostname or actual.hostname.endswith("." + expected.hostname)
+    registered_urls = [source.get("base_url", ""), *(source.get("alternate_base_urls") or [])]
+    for registered_url in registered_urls:
+        expected = urlparse(str(registered_url or ""))
+        if expected.hostname and (
+            actual.hostname == expected.hostname
+            or actual.hostname.endswith("." + expected.hostname)
+        ):
+            return True
+    return False
 
 
 def script_errors(language: str, text: str) -> list[str]:

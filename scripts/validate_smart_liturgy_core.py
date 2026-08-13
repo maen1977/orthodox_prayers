@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""R56 strict appointed-Liturgy audit.
+"""Strict appointed-Liturgy audit for the completed R66 native editions.
 
 This validator deliberately separates two questions:
 1. Does the calendar select the right *rite/form* fail-closed?
 2. Is that rite's native text genuinely publishable in every app language?
 
-It never promotes a service because it is merely large.  Known OCR corruption,
-an explanatory excerpt, cross-language fallback, or a missing native lane keeps
-that rite blocked.
+It never treats size alone as proof.  A publishable rite must have a complete
+same-language service, authorized source metadata, required textual anchors,
+no cross-language fallback, and no machine translation.  A genuinely missing
+or unappointed rite remains fail-closed.
 """
 from __future__ import annotations
 
@@ -84,18 +85,34 @@ def audit_native_lanes(errors: list[str]) -> None:
     require(editions.get("adjacent_offices_separate") is True, "adjacent offices must be separate", errors)
 
     libraries = {lang: service_index(lang) for lang in LANGS}
-    chrys = (editions.get("editions") or {}).get("chrysostom") or {}
-    require(chrys.get("displayable") is True, "Chrysostom must be the currently publishable three-language rite", errors)
-
-    opening_markers = {
-        "ar": "مباركة هي مملكة",
-        "en": "Blessed is the Kingdom",
-        "el": "Εὐλογημένη ἡ βασιλεία",
-    }
-    dismissal_markers = {
-        "ar": ("المسيح إلهنا الحقيقي", "بركة الرب"),
-        "en": ("May Christ our true God", "May the blessing of the Lord"),
-        "el": ("Χριστὸς ὁ ἀληθινὸς Θεὸς", "Εὐλογία Κυρίου"),
+    rites = {
+        "chrysostom": {
+            "service_id": "divine_liturgy",
+            "minimums": {lang: (150, 10_000) for lang in LANGS},
+            "anchors": {
+                "ar": ("مباركة هي مملكة", "المسيح إلهنا الحقيقي"),
+                "en": ("Blessed is the Kingdom", "May Christ our true God"),
+                "el": ("Εὐλογημένη ἡ βασιλεία", "Χριστὸς ὁ ἀληθινὸς Θεὸς"),
+            },
+        },
+        "basil": {
+            "service_id": "divine_liturgy_basil",
+            "minimums": {"ar": (150, 20_000), "en": (90, 18_000), "el": (150, 28_000)},
+            "anchors": {
+                "ar": ("مباركة هي مملكة", "خذوا كلوا", "المسيح إلهنا الحقيقي"),
+                "en": ("Blessed is the kingdom", "Take, eat", "Christ our true God"),
+                "el": ("Εὐλογημένη ἡ βασιλεία", "Λάβετε, φάγετε", "Εὐλογία Κυρίου"),
+            },
+        },
+        "presanctified": {
+            "service_id": "presanctified_liturgy",
+            "minimums": {"ar": (1_000, 100_000), "en": (90, 18_000), "el": (90, 18_000)},
+            "anchors": {
+                "ar": ("لتستقم صلاتي", "ذوقوا", "وانظروا"),
+                "en": ("Let my prayer", "Now the powers of heaven", "Taste and see"),
+                "el": ("Κατευθυνθήτω η προσευχή μου", "Νυν αι Δυνάμεις", "Γεύσασθε και ίδετε"),
+            },
+        },
     }
     foreign_patterns = {
         "ar": re.compile(r"[A-Za-z]{8,}"),
@@ -103,32 +120,36 @@ def audit_native_lanes(errors: list[str]) -> None:
         "el": re.compile(r"[\u0600-\u06FF]{4,}"),
     }
 
-    for lang in LANGS:
-        service = libraries[lang].get("divine_liturgy") or {}
-        require(service.get("source_language") == lang, f"Chrysostom {lang}: source_language mismatch", errors)
-        review = service.get("text_integrity_review") or {}
-        require(review.get("machine_translation_used") is not True, f"Chrysostom {lang}: machine translation flag", errors)
-        count, chars = text_stats(service, lang)
-        require(count >= 150 and chars >= 10_000, f"Chrysostom {lang}: unexpectedly short texts={count} chars={chars}", errors)
-        text = lane_text(service, lang)
-        require(opening_markers[lang] in text, f"Chrysostom {lang}: opening blessing missing", errors)
-        require(any(marker in text for marker in dismissal_markers[lang]), f"Chrysostom {lang}: dismissal missing", errors)
-        # Empty other-language fields are the lane contract. A few source names in metadata are irrelevant;
-        # only prayer-text segments are checked here for obvious leakage.
-        suspicious = foreign_patterns[lang].findall(text)
-        if lang != "ar":
-            require(not suspicious, f"Chrysostom {lang}: Arabic-script leakage in native prayer text", errors)
-
-    basil = (editions.get("editions") or {}).get("basil") or {}
-    require(basil.get("displayable") is False, "Basil must remain fail-closed", errors)
-    require("OCR_CORRUPTION" in str(basil.get("ar") or ""), "Basil Arabic OCR problem must be explicit", errors)
-    require("REIMPORT_REQUIRED" in str(basil.get("el") or ""), "Basil Greek re-import requirement must be explicit", errors)
-    require("EXACT" in str(basil.get("en") or ""), "Basil English exact-native status missing", errors)
-
-    pres = (editions.get("editions") or {}).get("presanctified") or {}
-    require(pres.get("displayable") is False, "Presanctified must remain fail-closed", errors)
-    require("EXPLANATORY_EXCERPT_NOT_FULL_SERVICE" in str(pres.get("ar") or ""), "Presanctified Arabic incompleteness must be explicit", errors)
-    require("EXACT" in str(pres.get("en") or "") and "EXACT" in str(pres.get("el") or ""), "Presanctified EN/EL exact-native status missing", errors)
+    for rite, contract in rites.items():
+        edition = (editions.get("editions") or {}).get(rite) or {}
+        require(edition.get("displayable") is True, f"{rite}: complete three-language rite must be displayable", errors)
+        if rite in {"basil", "presanctified"}:
+            require(
+                edition.get("ecclesiastical_human_certification") == "NOT_CLAIMED",
+                f"{rite}: ecclesiastical human certification must not be fabricated",
+                errors,
+            )
+        for lang in LANGS:
+            service = libraries[lang].get(str(contract["service_id"])) or {}
+            label = f"{rite} {lang}"
+            require(service.get("source_language") == lang, f"{label}: source_language mismatch", errors)
+            require(service.get("displayable") is not False, f"{label}: native service is blocked", errors)
+            source = service.get("native_source") or {}
+            require(source.get("permission_confirmed") is True, f"{label}: source permission missing", errors)
+            require(source.get("machine_translation_used") is False, f"{label}: machine translation flag", errors)
+            count, chars = text_stats(service, lang)
+            minimum_count, minimum_chars = contract["minimums"][lang]
+            require(
+                count >= minimum_count and chars >= minimum_chars,
+                f"{label}: unexpectedly short texts={count} chars={chars}",
+                errors,
+            )
+            text = lane_text(service, lang)
+            for marker in contract["anchors"][lang]:
+                require(marker in text, f"{label}: required anchor missing: {marker}", errors)
+            suspicious = foreign_patterns[lang].findall(text)
+            if lang != "ar":
+                require(not suspicious, f"{label}: Arabic-script leakage in native prayer text", errors)
 
 
 def audit_source_contract(errors: list[str]) -> None:
@@ -169,12 +190,12 @@ def audit_calendar_selection(errors: list[str]) -> None:
     pascha = u.orthodox_pascha_gregorian(2026)
     cases = [
         (date(2026, 7, 26), "chrysostom", "morning_divine_liturgy", True),
-        (pascha - timedelta(days=42), "basil", "morning_divine_liturgy", False),
-        (pascha - timedelta(days=3), "basil", "vespers_with_divine_liturgy", False),
-        (pascha - timedelta(days=1), "basil", "vespers_with_divine_liturgy", False),
-        (date(2026, 2, 25), "presanctified", "lenten_vespers_with_presanctified", False),
-        (pascha - timedelta(days=6), "presanctified", "lenten_vespers_with_presanctified", False),
-        (pascha - timedelta(days=4), "presanctified", "lenten_vespers_with_presanctified", False),
+        (pascha - timedelta(days=42), "basil", "morning_divine_liturgy", True),
+        (pascha - timedelta(days=3), "basil", "vespers_with_divine_liturgy", True),
+        (pascha - timedelta(days=1), "basil", "vespers_with_divine_liturgy", True),
+        (date(2026, 2, 25), "presanctified", "lenten_vespers_with_presanctified", True),
+        (pascha - timedelta(days=6), "presanctified", "lenten_vespers_with_presanctified", True),
+        (pascha - timedelta(days=4), "presanctified", "lenten_vespers_with_presanctified", True),
         (pascha - timedelta(days=2), "no_divine_liturgy", "no_divine_liturgy", False),
         (pascha, "chrysostom", "morning_divine_liturgy", True),
     ]
@@ -211,7 +232,7 @@ def main() -> None:
         for error in errors:
             print("SMART_LITURGY_ERROR", error)
         raise SystemExit(f"SMART_LITURGY_INVALID errors={len(errors)}")
-    print("SMART_LITURGY_OK version=5.6.4 strict_core=true chrysostom=ar,en,el basil=blocked presanctified=blocked wrong_rite_fallback=false machine_translation=false")
+    print("SMART_LITURGY_OK version=5.6.4 strict_core=true chrysostom=ar,en,el basil=ar,en,el presanctified=ar,en,el wrong_rite_fallback=false machine_translation=false ecclesiastical_certification=false")
 
 
 if __name__ == "__main__":

@@ -85,9 +85,9 @@ def test_audit_report_truthfully_records_known_content_gaps():
     assert audit['metrics']['official_daily_prayer_references'] >= 4
     assert audit['metrics']['arabic_church_build_rights_pending'] == 0
     assert audit['metrics']['arabic_church_build_rights_confirmed'] >= 10
-    assert status['orthros_ar'] == 'INCOMPLETE_FAIL_CLOSED'
-    assert status['basil_liturgy'] == 'INCOMPLETE_FAIL_CLOSED'
-    assert status['presanctified_liturgy'] == 'INCOMPLETE_FAIL_CLOSED'
+    assert status['orthros_ar'] == 'PASS_R66_AUTHORIZED_NATIVE'
+    assert status['basil_liturgy'] == 'PASS_R66_AUTHORIZED_NATIVE'
+    assert status['presanctified_liturgy'] == 'PASS_R66_AUTHORIZED_NATIVE'
     assert status['vespers_ar'] == 'PASS'
     assert status['small_compline_ar'] == 'PASS'
 

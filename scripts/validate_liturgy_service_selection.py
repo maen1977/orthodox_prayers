@@ -58,8 +58,16 @@ def main() -> None:
         require(selected.get("full_service_required") is True, f"{civil}: full-service requirement missing")
         service = update.build_liturgy_service("divine_liturgy", civil, info, [], "خدمة اليوم")
         require(service.get("wrong_liturgy_fallback_allowed") is False, f"{civil}: fallback flag")
-        if expected == "chrysostom":
-            require(service.get("extends_service_id") == "divine_liturgy", f"{civil}: Chrysostom template missing")
+        if expected in {"chrysostom", "basil", "presanctified"}:
+            expected_id = {
+                "chrysostom": "divine_liturgy",
+                "basil": "divine_liturgy_basil",
+                "presanctified": "presanctified_liturgy",
+            }[expected]
+            require(selected.get("displayable") is True, f"{civil}: complete appointed rite is not displayable")
+            require(service.get("extends_service_id") == expected_id, f"{civil}: appointed template missing")
+            require(service.get("template_id") == f"library:{expected_id}", f"{civil}: appointed template ID mismatch")
+            require(service.get("full_service_complete") is True, f"{civil}: appointed service not complete")
         else:
             require("extends_service_id" not in service, f"{civil}: wrong template attached")
             require("template_id" not in service, f"{civil}: wrong template ID attached")
@@ -74,8 +82,8 @@ def main() -> None:
     require(collision.get("service_type") == "typikon_override_required", "Annunciation/Great-Friday collision must require an override")
     collision_service = update.build_liturgy_service("divine_liturgy", friday_collision, update.day_info(friday_collision), [], "خدمة اليوم")
     require(collision_service.get("publication_status") == "BLOCKED_REQUIRES_DATED_OFFICIAL_TYPIKON_OVERRIDE", "collision must fail closed")
-    require(editions["editions"]["basil"].get("displayable") is False, "Basil must remain blocked until complete native import")
-    require(editions["editions"]["presanctified"].get("displayable") is False, "Presanctified must remain blocked until complete native import")
+    require(editions["editions"]["basil"].get("displayable") is True, "Basil complete native import must be displayable")
+    require(editions["editions"]["presanctified"].get("displayable") is True, "Presanctified complete native import must be displayable")
     require(editions["editions"]["james"].get("displayable") is False, "Saint James must require dated appointment and complete native import")
     print("LITURGY_SERVICE_SELECTION_OK cases=11 forms=true reasons=true full_service=true fail_closed=true wrong_rite_fallback=false")
 

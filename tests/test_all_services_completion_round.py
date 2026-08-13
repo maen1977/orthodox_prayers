@@ -44,10 +44,11 @@ class AllServicesCompletionRoundTests(unittest.TestCase):
         self.assertEqual(45, len(self.contract["current_complete_lanes"]))
         self.assertEqual(38, len(self.contract["current_exact_lanes"]))
         self.assertEqual([], self.contract["required_new_source_lanes"])
-        # The blank acquisition template remains as a fail-closed reusable
-        # template and is not evidence of current missing lanes.
-        self.assertEqual(4, len(self.template["entries"]))
-        self.assertEqual(4, self.template["required_entry_count"])
+        # The acquisition template follows the current incomplete-lane set.
+        # R66 has no missing lanes, so it must not advertise obsolete requests.
+        self.assertEqual({}, self.template["entries"])
+        self.assertEqual(0, self.template["required_entry_count"])
+        self.assertEqual("NO_ADDITIONAL_SOURCE_LANES_REQUIRED_R66", self.template["status"])
 
     def test_inventory_without_private_sources_reports_existing_completion(self):
         with tempfile.TemporaryDirectory() as directory:

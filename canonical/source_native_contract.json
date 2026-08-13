@@ -28,7 +28,8 @@
         "antioch_archdiocese_tripoli_ar",
         "antioch_patriarchate_ar",
         "ebible_arabic_van_dyck",
-        "st_george_flint_basil_ar"
+        "st_george_flint_basil_ar",
+        "jerusalem_ramallah_presanctified_ar"
       ],
       "required_script": "Arabic",
       "preserve_marks": true,
@@ -197,6 +198,9 @@
       "language": "el",
       "official": true,
       "base_url": "https://digitalchantstand.goarch.org/",
+      "alternate_base_urls": [
+        "https://dcs.goarch.org/"
+      ],
       "capabilities": [
         "services",
         "liturgy",

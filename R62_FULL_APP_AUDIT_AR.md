@@ -1,7 +1,7 @@
 # تدقيق R62 الكامل لتطبيق Orthodox Prayers
 
 تاريخ التدقيق: **2026-08-13**  
-النسخة الأساسية: **5.6.4 — مرور R65 التدقيقي**
+النسخة الأساسية: **5.6.4 — إكمال النصوص الطقسية المصرّح بها R66**
 
 > هذا التقرير يفرّق بين سلامة البرنامج تقنيًا وبين اكتمال المحتوى الكنسي. نجاح Release Gate لا يعني تلقائيًا وجود نص كامل أو قراءة موثقة لكل يوم.
 
@@ -32,9 +32,8 @@ Internal refs are 2 Corinthians 2:4-15 and Matthew 23:13-22; this date was cross
 Arabic embedded core: morning 5 segments; evening 4; small compline 15; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. 4 official Jordan references remain catalog evidence and are not rendered as external prayer cards.
 **الإجراء:** Import any additional native text only after exact-text and redistribution evidence are recorded.
 
-### ❌ INCOMPLETE — Fail closed — Arabic Orthros / Matins
-Raw Arabic source is BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED; the reader uses a safe core and does not display broken OCR.
-**الإجراء:** Requires a clean authorized Arabic native edition; do not AI-correct OCR.
+### ✅ PASS R66 — نص أصلي مصرّح به — Arabic Orthros / Matins
+Arabic Orthros is DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE with 159 source segments / 16610 chars; its authorized exact native edition is displayed and searchable without machine translation.
 
 ### ✅ PASS — Arabic Vespers
 Arabic Vespers is packaged as a complete exact native edition with 45 segments / 9787 chars.
@@ -45,13 +44,11 @@ Arabic Small Compline is packaged as a complete exact native edition with 15 seg
 ### ✅ PASS (طبقة قارئ) — Divine Liturgy
 Arabic Divine Liturgy is COMPLETE_NATIVE_SOURCE_COMPILATION with 198 source segments. Optional quiet believer prayers remain a reader overlay, not part of the canonical-text hash.
 
-### ❌ INCOMPLETE — Fail closed — Saint Basil Liturgy
-English is complete. The Arabic and Greek source lanes require clean re-import and review; their runtime packs contain only a non-liturgical blocked notice.
-**الإجراء:** Import complete reviewed Arabic and Greek native editions before making this rite displayable.
+### ✅ PASS R66 — نص أصلي مصرّح به — Saint Basil Liturgy
+Complete authorized native editions are displayable in Arabic (206 segments), English (455), and Greek (228); the smart selector attaches the Basil template on appointed days without a wrong-rite fallback.
 
-### ❌ INCOMPLETE — Fail closed — Presanctified Liturgy
-English and Greek are complete. The available Arabic material is explanatory rather than the full service; its runtime pack contains only a non-liturgical blocked notice.
-**الإجراء:** Import a complete reviewed Arabic native edition before making this rite displayable.
+### ✅ PASS R66 — نص أصلي مصرّح به — Presanctified Liturgy
+Complete authorized native editions are displayable in Arabic (3302 segments), English (590), and Greek (915); the smart selector attaches the Presanctified template on appointed days without a wrong-rite fallback.
 
 ### ⚠️ البطاقات موجودة / النصوص الكاملة ناقصة — Church-service section
 13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest now has 10/10 registered Jordan sources marked owner-confirmed for R64; rights-pending=0. Source checkout can still contain catalog snapshots until the build materializes the authorized native corpus.

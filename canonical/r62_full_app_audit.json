@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audit": "R62_FULL_APP_AUDIT",
   "audited_on": "2026-08-13",
-  "base": "OrthodoxPrayers 5.6.4 R65 audit pass",
+  "base": "OrthodoxPrayers 5.6.4 R66 authorized Liturgy completion",
   "policy": "No AI-generated/translated scripture or liturgical text; official-site availability does not imply redistribution permission.",
   "source_urls": {
     "orthodox_jordan_churches": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
@@ -92,9 +92,9 @@
     {
       "id": "orthros_ar",
       "title": "Arabic Orthros / Matins",
-      "status": "INCOMPLETE_FAIL_CLOSED",
-      "evidence": "Raw Arabic source is BLOCKED_ARABIC_OCR_REIMPORT_REQUIRED; the reader uses a safe core and does not display broken OCR.",
-      "action": "Requires a clean authorized Arabic native edition; do not AI-correct OCR."
+      "status": "PASS_R66_AUTHORIZED_NATIVE",
+      "evidence": "Arabic Orthros is DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE with 159 source segments / 16610 chars; its authorized exact native edition is displayed and searchable without machine translation.",
+      "action": ""
     },
     {
       "id": "vespers_ar",
@@ -120,16 +120,16 @@
     {
       "id": "basil_liturgy",
       "title": "Saint Basil Liturgy",
-      "status": "INCOMPLETE_FAIL_CLOSED",
-      "evidence": "English is complete. The Arabic and Greek source lanes require clean re-import and review; their runtime packs contain only a non-liturgical blocked notice.",
-      "action": "Import complete reviewed Arabic and Greek native editions before making this rite displayable."
+      "status": "PASS_R66_AUTHORIZED_NATIVE",
+      "evidence": "Complete authorized native editions are displayable in Arabic (206 segments), English (455), and Greek (228); the smart selector attaches the Basil template on appointed days without a wrong-rite fallback.",
+      "action": ""
     },
     {
       "id": "presanctified_liturgy",
       "title": "Presanctified Liturgy",
-      "status": "INCOMPLETE_FAIL_CLOSED",
-      "evidence": "English and Greek are complete. The available Arabic material is explanatory rather than the full service; its runtime pack contains only a non-liturgical blocked notice.",
-      "action": "Import a complete reviewed Arabic native edition before making this rite displayable."
+      "status": "PASS_R66_AUTHORIZED_NATIVE",
+      "evidence": "Complete authorized native editions are displayable in Arabic (3302 segments), English (590), and Greek (915); the smart selector attaches the Presanctified template on appointed days without a wrong-rite fallback.",
+      "action": ""
     },
     {
       "id": "church_services",
