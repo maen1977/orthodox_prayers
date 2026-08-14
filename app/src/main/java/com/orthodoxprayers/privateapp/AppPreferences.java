@@ -54,6 +54,19 @@ public final class AppPreferences {
     public long lastRefreshAttempt() { return values.getLong(laneKey("last_refresh_attempt"), values.getLong("last_refresh_attempt", 0L)); }
     public boolean lastRefreshSucceeded() { return values.getBoolean(laneKey("last_refresh_succeeded"), values.getBoolean("last_refresh_succeeded", false)); }
     public String lastRefreshMessage() { return values.getString(laneKey("last_refresh_message"), values.getString("last_refresh_message", "")); }
+    public long churchDirectoryLastAttempt() { return values.getLong("church_directory_last_attempt", 0L); }
+    public long churchDirectoryLastSuccess() { return values.getLong("church_directory_last_success", 0L); }
+    public boolean churchDirectoryLastSyncSucceeded() { return values.getBoolean("church_directory_last_sync_succeeded", false); }
+    public String churchDirectoryLastMessage() { return values.getString("church_directory_last_message", ""); }
+
+    public void recordChurchDirectorySync(boolean succeeded, String message, long timestamp) {
+        android.content.SharedPreferences.Editor editor = values.edit()
+                .putLong("church_directory_last_attempt", timestamp)
+                .putBoolean("church_directory_last_sync_succeeded", succeeded)
+                .putString("church_directory_last_message", message == null ? "" : message);
+        if (succeeded) editor.putLong("church_directory_last_success", timestamp);
+        editor.apply();
+    }
     public String acceptedManifestDate() { return values.getString(laneKey("accepted_manifest_date"), ""); }
     public long acceptedManifestRevision() { return values.getLong(laneKey("accepted_manifest_revision"), 0L); }
 

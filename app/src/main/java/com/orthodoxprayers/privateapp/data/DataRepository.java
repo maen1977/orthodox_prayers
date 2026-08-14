@@ -54,6 +54,7 @@ public final class DataRepository {
     private final DataSignatureVerifier signatureVerifier;
     private final LocalDailyContentEngine localDailyContentEngine;
     private final LocalDailyCacheStore localDailyCacheStore;
+    private final ChurchDirectoryStore churchDirectoryStore;
     private final BibleCorpusRepository bibleCorpusRepository;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -69,6 +70,7 @@ public final class DataRepository {
     private JSONObject activeLanguageSearchIndex;
     private JSONObject sourceRegistry;
     private JSONObject fallbackChurchDirectory;
+    private volatile JSONObject activeChurchDirectory;
     private JSONObject fallbackSourceHealth;
     private JSONObject fallbackServiceCoverage;
     private JSONObject religiousCompleteness;
@@ -106,11 +108,13 @@ public final class DataRepository {
         this.signatureVerifier = signatureVerifier;
         this.localDailyContentEngine = new LocalDailyContentEngine(this.context);
         this.localDailyCacheStore = new LocalDailyCacheStore(this.context);
+        this.churchDirectoryStore = new ChurchDirectoryStore(this.context);
         this.bibleCorpusRepository = new BibleCorpusRepository(this.context);
         this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
         sourceRegistry = loadJsonAsset("data/source_registry.json");
         fallbackChurchDirectory = loadJsonAsset("data/churches.json");
+        activeChurchDirectory = churchDirectoryStore.read();
         fallbackSourceHealth = loadJsonAsset("data/source_health.json");
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
@@ -349,9 +353,31 @@ public final class DataRepository {
         return best;
     }
 
-    public JSONObject churchDirectory() {
+    public synchronized JSONObject churchDirectory() {
+        if (activeChurchDirectory != null) return activeChurchDirectory;
         JSONObject live = today().optJSONObject("church_directory");
         return live != null ? live : (fallbackChurchDirectory == null ? new JSONObject() : fallbackChurchDirectory);
+    }
+
+    /** Returns an independent payload for background validation and merging. */
+    public synchronized JSONObject churchDirectorySnapshot() {
+        try {
+            return new JSONObject(churchDirectory().toString());
+        } catch (Exception ignored) {
+            return new JSONObject();
+        }
+    }
+
+    /** Installs only a validated snapshot; the old good snapshot remains on failure. */
+    public synchronized boolean installChurchDirectorySnapshot(JSONObject payload) {
+        if (!churchDirectoryStore.write(payload)) return false;
+        try {
+            activeChurchDirectory = new JSONObject(payload.toString());
+            return true;
+        } catch (Exception error) {
+            activeChurchDirectory = payload;
+            return true;
+        }
     }
 
     public JSONArray registeredChurches() {

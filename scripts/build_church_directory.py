@@ -19,6 +19,7 @@ SEED = ROOT / "canonical" / "jordan_church_directory_seed.json"
 OUTPUT = ROOT / "data" / "directory" / "churches.json"
 ASSET = ROOT / "app" / "src" / "main" / "assets" / "data" / "churches.json"
 DIRECTORY_URL = "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/"
+GROUPING = ROOT / "canonical" / "church_directory_grouping.json"
 
 
 def slug(value: str) -> str:
@@ -54,6 +55,91 @@ def canonical_url_key(url: str) -> tuple[str, str]:
         parsed.netloc.casefold(),
         urllib.parse.unquote(parsed.path).rstrip("/").casefold(),
     )
+
+
+def normalize_city(value: str) -> str:
+    value = compact_text(value or "")
+    return value.replace("أ", "ا").replace("إ", "ا").replace("آ", "ا").replace("ى", "ي")
+
+
+def load_grouping() -> dict[str, Any]:
+    try:
+        payload = json.loads(GROUPING.read_text(encoding="utf-8"))
+        return payload if isinstance(payload, dict) else {}
+    except (OSError, ValueError, TypeError):
+        return {}
+
+
+def directory_source_ids(church: dict[str, Any], original_group: str) -> list[str]:
+    """Map each reviewed record to the official directory pages that cover it."""
+    source_id = str(church.get("source_id") or "").strip()
+    record_id = str(church.get("id") or "").strip().lower()
+    if source_id in {"orthodox_jordan", "orthodox_jordan_official_directory"}:
+        return ["orthodox_jordan_churches"]
+    if record_id.startswith("jordan_") or original_group == "jordan":
+        return ["jerusalem_jordan_churches"]
+    if record_id.startswith("jerusalem_") or original_group == "jerusalem":
+        city = church.get("city") if isinstance(church.get("city"), dict) else {}
+        city_ar = str(city.get("ar") or "").strip()
+        if city_ar in {"القدس", "جبل الزيتون"}:
+            return ["jerusalem_city_churches"]
+        return ["holy_land_outside_jerusalem"]
+    if record_id.startswith("palestine_") or original_group == "palestine":
+        return ["jerusalem_west_bank_churches"]
+    return []
+
+
+def apply_display_grouping(churches: list[dict[str, Any]], grouping: dict[str, Any]) -> list[dict[str, Any]]:
+    """Apply reviewed display geography without deleting, translating, or deduplicating records."""
+    palestine = grouping.get("palestine_group") or {}
+    palestine_title = palestine.get("title") or {
+        "ar": "دولة فلسطين", "en": "State of Palestine", "el": "Κράτος τῆς Παλαιστίνης"
+    }
+    jordan_groups = grouping.get("jordan_groups") or []
+    city_map: dict[str, dict[str, Any]] = {}
+    for item in jordan_groups:
+        if not isinstance(item, dict):
+            continue
+        for city in item.get("cities") or []:
+            city_map[normalize_city(str(city))] = item
+    other = next(
+        (item for item in jordan_groups if isinstance(item, dict) and item.get("id") == "jordan_other"),
+        {"id": "jordan_other", "order": 99, "title": {"ar": "مناطق أردنية أخرى", "en": "Other Jordanian areas", "el": "Ἄλλες περιοχὲς Ἰορδανίας"}},
+    )
+    for church in churches:
+        if not isinstance(church, dict):
+            continue
+        record_id = str(church.get("id") or "").strip().lower()
+        original_group = str(church.get("original_country_group") or church.get("country_group") or "").strip().lower()
+        if record_id.startswith("jerusalem_"):
+            original_group = "jerusalem"
+        elif record_id.startswith("palestine_") and original_group != "jerusalem":
+            original_group = "palestine"
+        if original_group:
+            church["original_country_group"] = original_group
+        source_ids = directory_source_ids(church, original_group)
+        if source_ids:
+            church["directory_source_ids"] = source_ids
+        country = church.get("country") if isinstance(church.get("country"), dict) else {}
+        country_ar = str(country.get("ar") or "")
+        is_palestine = original_group in {"palestine", "jerusalem"} or "فلسطين" in country_ar or "القدس" in country_ar
+        if is_palestine:
+            # Preserve the source-level country grouping for compatibility and audit
+            # contracts; the UI uses region_id to present one unified Palestine card.
+            church["country_group"] = original_group if original_group in {"palestine", "jerusalem"} else "palestine"
+            church["region_id"] = "palestine"
+            church["region"] = dict(palestine_title)
+            church["region_order"] = int(palestine.get("order", 20))
+            church["country"] = dict(palestine_title)
+            continue
+        city = church.get("city") if isinstance(church.get("city"), dict) else {}
+        city_ar = str(city.get("ar") or "")
+        selected = city_map.get(normalize_city(city_ar), other)
+        church["country_group"] = "jordan"
+        church["region_id"] = str(selected.get("id") or "jordan_other")
+        church["region"] = dict(selected.get("title") or other.get("title") or {})
+        church["region_order"] = int(selected.get("order", 99))
+    return churches
 
 
 def merge_verified_seed_localizations(
@@ -189,8 +275,11 @@ def main() -> None:
     except Exception as exc:
         reason = f"{type(exc).__name__}: {exc}; {snapshot_label} retained"[:400]
 
+    grouping = load_grouping()
+    churches = apply_display_grouping(churches, grouping)
+
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "date_iso": output_date,
         "authority": "orthodox_jordan" if live_accepted else str(fallback_metadata.get("authority") or "orthodox_jordan"),
         "directory_url": DIRECTORY_URL,
@@ -198,6 +287,13 @@ def main() -> None:
         "reason": reason,
         "count": len(churches),
         "rights_mode": str(fallback_metadata.get("rights_mode") or "official names and links only; schedules remain live-page data"),
+        "directory_grouping": {
+            "name_ar": "دولة فلسطين",
+            "grouping_asset": "canonical/church_directory_grouping.json",
+            "jordan_groups": grouping.get("jordan_groups") or [],
+            "palestine_group": grouping.get("palestine_group") or {},
+            "policy": "Display grouping only; all reviewed church records and official source links are retained.",
+        },
         "churches": churches,
         "live_resources": [
             {

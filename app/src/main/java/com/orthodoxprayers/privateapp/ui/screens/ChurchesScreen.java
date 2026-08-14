@@ -26,6 +26,7 @@ public final class ChurchesScreen extends BaseScreen {
     private static final String ROUTE_LIVE = "live";
     private static final String ROUTE_SOURCES = "sources";
     private static final String ROUTE_DIRECTORY = "directory";
+    private static final String ROUTE_SOURCE = "source";
     private static final String ROUTE_GROUP = "group";
     private static final String ROUTE_CITY = "city";
 
@@ -46,6 +47,7 @@ public final class ChurchesScreen extends BaseScreen {
         if (ROUTE_LIVE.equals(route)) return createLiveResourcesView();
         if (ROUTE_SOURCES.equals(route)) return createDirectorySourcesView();
         if (ROUTE_DIRECTORY.equals(route)) return createDirectoryGroupsView();
+        if (parts.length >= 2 && ROUTE_SOURCE.equals(parts[0])) return createSourceChurchesView(parts[1]);
         if (parts.length >= 2 && ROUTE_GROUP.equals(parts[0])) return createGroupCitiesView(parts[1]);
         if (parts.length >= 3 && ROUTE_CITY.equals(parts[0])) return createCityChurchesView(parts[1], parts[2]);
         return createHomeView();
@@ -92,6 +94,9 @@ public final class ChurchesScreen extends BaseScreen {
 
     private View createDirectorySourcesView() {
         UiKit.Page page = page(local(R.string.ui_official_directory_sources_r62), true);
+        add(page.root, ui.infoBadge(local(R.string.ui_church_directory_official_source_note_r66)), 10, 9);
+        add(page.root, ui.infoBadge(local(R.string.ui_church_directory_sync_enabled_r66)), 10, 9);
+        add(page.root, ui.infoBadge(directorySyncStatus()), 10, 9);
         JSONArray resources = data.officialChurchDirectoryResources();
         if (resources.length() == 0) {
             addEmpty(page.root);
@@ -100,8 +105,38 @@ public final class ChurchesScreen extends BaseScreen {
         for (int i = 0; i < resources.length(); i++) {
             JSONObject resource = resources.optJSONObject(i);
             if (resource == null) continue;
-            addExternalResourceCard(page.root, resource, R.drawable.ic_nav_prayers);
+            String sourceId = resource.optString("id", "").trim();
+            String title = data.metadataLocalized(resource.optJSONObject("title"),
+                    local(R.string.ui_official_church_link_2d1a8bdb));
+            String subtitle = localFormat(R.string.ui_church_directory_source_count_format_r66,
+                    countChurchesFromSource(sourceId));
+            addActionCard(page.root,
+                    ui.actionCard(R.drawable.ic_nav_prayers, title, subtitle),
+                    () -> host.navigate("churches", ROUTE_SOURCE + "|" + sourceId));
         }
+        return page.scroll;
+    }
+
+    private View createSourceChurchesView(String sourceId) {
+        JSONObject resource = findSource(sourceId);
+        String title = resource == null
+                ? local(R.string.ui_official_directory_sources_r62)
+                : data.metadataLocalized(resource.optJSONObject("title"),
+                        local(R.string.ui_official_directory_sources_r62));
+        UiKit.Page page = page(title, true);
+        add(page.root, ui.infoBadge(local(R.string.ui_church_directory_internal_subtitle_r66)), 10, 9);
+        JSONArray churches = data.registeredChurches();
+        int shown = 0;
+        for (int i = 0; i < churches.length(); i++) {
+            JSONObject church = churches.optJSONObject(i);
+            if (church == null || !belongsToSource(church, sourceId)) continue;
+            String name = data.metadataLocalized(church.optJSONObject("name"),
+                    local(R.string.ui_official_parish_name_unavailable_in_english_eea6633c));
+            String city = data.metadataLocalized(church.optJSONObject("city"), "");
+            add(page.root, churchCard(church, name, city), 1, 7);
+            shown++;
+        }
+        if (shown == 0) addEmpty(page.root);
         return page.scroll;
     }
 
@@ -113,11 +148,13 @@ public final class ChurchesScreen extends BaseScreen {
             return page.scroll;
         }
         add(page.root, ui.sectionTitle(local(R.string.ui_church_cards_choose_region_7f9e3a41)), 0, 0);
+        add(page.root, ui.infoBadge(directorySyncStatus()), 10, 9);
         for (Map.Entry<String, JSONObject> entry : groups.entrySet()) {
             String groupId = entry.getKey();
             JSONObject group = entry.getValue();
-            String title = data.metadataLocalized(group.optJSONObject("country"),
-                    local(R.string.ui_church_region_unavailable_0a42b8c1));
+            String title = data.metadataLocalized(group.optJSONObject("region"),
+                    data.metadataLocalized(group.optJSONObject("country"),
+                            local(R.string.ui_church_region_unavailable_0a42b8c1)));
             String subtitle = localFormat(R.string.ui_churches_count_short_format_5f73c9b2,
                     countChurchesInGroup(groupId));
             addActionCard(page.root,
@@ -131,8 +168,9 @@ public final class ChurchesScreen extends BaseScreen {
         JSONObject group = findGroup(groupId);
         String groupTitle = group == null
                 ? local(R.string.ui_church_directory_36e0707d)
-                : data.metadataLocalized(group.optJSONObject("country"),
-                        local(R.string.ui_church_directory_36e0707d));
+                : data.metadataLocalized(group.optJSONObject("region"),
+                        data.metadataLocalized(group.optJSONObject("country"),
+                                local(R.string.ui_church_directory_36e0707d)));
         UiKit.Page page = page(groupTitle, true);
         Map<String, JSONObject> cities = collectCities(groupId);
         if (cities.isEmpty()) {
@@ -188,10 +226,46 @@ public final class ChurchesScreen extends BaseScreen {
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
             if (church == null) continue;
-            String groupId = church.optString("country_group", "other").trim();
+            String groupId = church.optString("region_id", church.optString("country_group", "other")).trim();
             if (!groups.containsKey(groupId)) groups.put(groupId, church);
         }
         return groups;
+    }
+
+    private JSONObject findSource(String sourceId) {
+        JSONArray resources = data.officialChurchDirectoryResources();
+        for (int i = 0; i < resources.length(); i++) {
+            JSONObject resource = resources.optJSONObject(i);
+            if (resource != null && sourceId.equals(resource.optString("id", ""))) return resource;
+        }
+        return null;
+    }
+
+    private int countChurchesFromSource(String sourceId) {
+        int count = 0;
+        JSONArray churches = data.registeredChurches();
+        for (int i = 0; i < churches.length(); i++) {
+            JSONObject church = churches.optJSONObject(i);
+            if (church != null && belongsToSource(church, sourceId)) count++;
+        }
+        return count;
+    }
+
+    private boolean belongsToSource(JSONObject church, String sourceId) {
+        if (church == null || sourceId == null || sourceId.trim().isEmpty()) return false;
+        if (sourceId.equals(church.optString("source_id", "").trim())) return true;
+        org.json.JSONArray sourceIds = church.optJSONArray("directory_source_ids");
+        if (sourceIds == null) return false;
+        for (int i = 0; i < sourceIds.length(); i++) {
+            if (sourceId.equals(sourceIds.optString(i, "").trim())) return true;
+        }
+        return false;
+    }
+
+    private String directorySyncStatus() {
+        return preferences.churchDirectoryLastSyncSucceeded()
+                ? local(R.string.ui_church_directory_sync_verified_r66)
+                : local(R.string.ui_church_directory_sync_waiting_r66);
     }
 
     private Map<String, JSONObject> collectCities(String groupId) {
@@ -199,7 +273,7 @@ public final class ChurchesScreen extends BaseScreen {
         JSONArray churches = data.registeredChurches();
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
-            if (church == null || !groupId.equals(church.optString("country_group", "other"))) continue;
+            if (church == null || !groupId.equals(church.optString("region_id", church.optString("country_group", "other")))) continue;
             JSONObject city = church.optJSONObject("city");
             String key = city == null ? "" : city.optString("en", city.optString("ar", "")).trim();
             if (!key.isEmpty() && !cities.containsKey(key)) cities.put(key, city);
@@ -220,7 +294,7 @@ public final class ChurchesScreen extends BaseScreen {
         JSONArray churches = data.registeredChurches();
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
-            if (church != null && groupId.equals(church.optString("country_group", "other"))) count++;
+            if (church != null && groupId.equals(church.optString("region_id", church.optString("country_group", "other")))) count++;
         }
         return count;
     }
@@ -230,7 +304,7 @@ public final class ChurchesScreen extends BaseScreen {
         JSONArray churches = data.registeredChurches();
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
-            if (church == null || !groupId.equals(church.optString("country_group", "other"))) continue;
+            if (church == null || !groupId.equals(church.optString("region_id", church.optString("country_group", "other")))) continue;
             JSONObject city = church.optJSONObject("city");
             String key = city == null ? "" : city.optString("en", city.optString("ar", "")).trim();
             if (cityKey.equals(key)) count++;
@@ -245,7 +319,7 @@ public final class ChurchesScreen extends BaseScreen {
         int shown = 0;
         for (int i = 0; i < churches.length(); i++) {
             JSONObject church = churches.optJSONObject(i);
-            if (church == null || !groupId.equals(church.optString("country_group", "other"))) continue;
+            if (church == null || !groupId.equals(church.optString("region_id", church.optString("country_group", "other")))) continue;
             JSONObject city = church.optJSONObject("city");
             String key = city == null ? "" : city.optString("en", city.optString("ar", "")).trim();
             if (!cityKey.equals(key)) continue;

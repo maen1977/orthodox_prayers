@@ -422,4 +422,10 @@
     <string name="ui_churches_count_short_format_5f73c9b2" formatted="false">الكنائس المسجلة: %1$d</string>
     <string name="ui_church_cards_choose_city_3c1d8e74" formatted="false">اختر المدينة</string>
     <string name="ui_open_official_link_subtitle_8d2f6c10" formatted="false">اضغط لفتح الرابط الرسمي</string>
+    <string name="ui_church_directory_internal_subtitle_r66" formatted="false">يعرض الكنائس داخل التطبيق مع حفظ آخر نسخة للعمل دون اتصال</string>
+    <string name="ui_church_directory_source_count_format_r66" formatted="false">الكنائس من هذا الدليل: %1$d</string>
+    <string name="ui_church_directory_sync_enabled_r66" formatted="false">تحديث أسبوعي من الهاتف عند توفر الإنترنت — آخر نسخة سليمة محفوظة</string>
+    <string name="ui_church_directory_sync_verified_r66" formatted="false">تم التحقق من الأدلة الرسمية وحُفظت آخر نسخة سليمة</string>
+    <string name="ui_church_directory_sync_waiting_r66" formatted="false">لم تتم مزامنة الأدلة بعد؛ تُستخدم النسخة المضمّنة</string>
+    <string name="ui_church_directory_official_source_note_r66" formatted="false">المحتوى داخل التطبيق، والرابط الرسمي متاح للتوثيق عند الحاجة</string>
 </resources>
