@@ -3,6 +3,8 @@ package com.orthodoxprayers.privateapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.orthodoxprayers.privateapp.ui.ReaderBrightnessPolicy;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -218,8 +220,23 @@ public final class AppPreferences {
     public void setAutoScrollSpeed(int value) { values.edit().putInt("auto_scroll_speed", Math.max(0, Math.min(4, value))).apply(); }
 
 
-    public int readerBrightnessPercent() { return Math.max(10, Math.min(100, values.getInt("reader_brightness_percent", 100))); }
-    public void setReaderBrightnessPercent(int value) { values.edit().putInt("reader_brightness_percent", Math.max(10, Math.min(100, value))).apply(); }
+    /**
+     * Returns USE_SYSTEM when the user has not explicitly selected a reader
+     * brightness. This keeps the device's own brightness unchanged by default.
+     */
+    public int readerBrightnessPercent() {
+        return ReaderBrightnessPolicy.normalize(values.getInt(
+                "reader_brightness_percent",
+                ReaderBrightnessPolicy.USE_SYSTEM
+        ));
+    }
+
+    public void setReaderBrightnessPercent(int value) {
+        values.edit().putInt(
+                "reader_brightness_percent",
+                ReaderBrightnessPolicy.normalize(value)
+        ).apply();
+    }
 
     public String readerTheme() { return values.getString("reader_theme", "system"); }
     public void setReaderTheme(String value) {

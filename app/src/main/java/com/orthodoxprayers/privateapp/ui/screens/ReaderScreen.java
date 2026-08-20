@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 import com.orthodoxprayers.privateapp.ui.ReaderAdapter;
+import com.orthodoxprayers.privateapp.ui.ReaderBrightnessPolicy;
 import com.orthodoxprayers.privateapp.ui.ReadingProgressPolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.ThemePalette;
@@ -387,7 +388,7 @@ public final class ReaderScreen extends BaseScreen {
         LinearLayout readerTools = ui.row();
         readerTools.setPadding(ui.dp(10), 0, ui.dp(10), ui.dp(3));
         Button brightness = ui.smallIconButton(com.orthodoxprayers.privateapp.R.drawable.ic_action_brightness,
-                preferences.readerBrightnessPercent() + "%", false);
+                readerBrightnessLabel(), false);
         brightness.setOnClickListener(v -> cycleBrightness());
         readerTools.addView(brightness, ui.weight(44));
 
@@ -414,11 +415,18 @@ public final class ReaderScreen extends BaseScreen {
     }
 
     private void cycleBrightness() {
-        int current = preferences.readerBrightnessPercent();
-        int next = current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100;
-        preferences.setReaderBrightnessPercent(next);
+        preferences.setReaderBrightnessPercent(
+                ReaderBrightnessPolicy.next(preferences.readerBrightnessPercent())
+        );
         applyReaderWindowPreferences();
         reloadReader();
+    }
+
+    private String readerBrightnessLabel() {
+        int brightness = preferences.readerBrightnessPercent();
+        return ReaderBrightnessPolicy.usesSystemBrightness(brightness)
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_system_brightness_6e11d2d1)
+                : brightness + "%";
     }
 
     private String readerThemeLabel() {
@@ -508,9 +516,12 @@ public final class ReaderScreen extends BaseScreen {
     }
 
     private void applyReaderWindowPreferences() {
-        WindowManager.LayoutParams attributes = host.activity().getWindow().getAttributes();
-        attributes.screenBrightness = preferences.readerBrightnessPercent() / 100f;
-        host.activity().getWindow().setAttributes(attributes);
+        WindowManager.LayoutParams window = host.activity().getWindow().getAttributes();
+        int brightness = preferences.readerBrightnessPercent();
+        window.screenBrightness = ReaderBrightnessPolicy.usesSystemBrightness(brightness)
+                ? WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+                : brightness / 100f;
+        host.activity().getWindow().setAttributes(window);
     }
 
     private String autoScrollLabel() {

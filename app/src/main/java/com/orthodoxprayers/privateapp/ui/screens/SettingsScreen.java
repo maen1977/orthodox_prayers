@@ -16,6 +16,7 @@ import com.orthodoxprayers.privateapp.OrthodoxPrayersApp;
 import com.orthodoxprayers.privateapp.appupdate.AppUpdateManager;
 import com.orthodoxprayers.privateapp.reminder.ReminderScheduler;
 import com.orthodoxprayers.privateapp.ui.LocalePolicy;
+import com.orthodoxprayers.privateapp.ui.ReaderBrightnessPolicy;
 import com.orthodoxprayers.privateapp.ui.ScreenHost;
 import com.orthodoxprayers.privateapp.ui.UiKit;
 
@@ -184,10 +185,11 @@ public final class SettingsScreen extends BaseScreen {
         });
         readerAppearance.addView(readerTheme, new LinearLayout.LayoutParams(0, -2, 2f));
         Button brightness = ui.smallIconButton(com.orthodoxprayers.privateapp.R.drawable.ic_action_brightness,
-                preferences.readerBrightnessPercent() + "%", false);
+                readerBrightnessLabel(), false);
         brightness.setOnClickListener(v -> {
-            int current = preferences.readerBrightnessPercent();
-            preferences.setReaderBrightnessPercent(current > 80 ? 80 : current > 60 ? 60 : current > 40 ? 40 : current > 20 ? 20 : 100);
+            preferences.setReaderBrightnessPercent(
+                    ReaderBrightnessPolicy.next(preferences.readerBrightnessPercent())
+            );
             reloadCurrentSettingsScreen();
         });
         readerAppearance.addView(brightness, ui.weight(48));
@@ -442,6 +444,13 @@ public final class SettingsScreen extends BaseScreen {
         return speed == 0
                 ? local(com.orthodoxprayers.privateapp.R.string.ui_auto_scroll_off_763228b7)
                 : local(com.orthodoxprayers.privateapp.R.string.ui_auto_scroll_speed_9b395f14) + speed;
+    }
+
+    private String readerBrightnessLabel() {
+        int brightness = preferences.readerBrightnessPercent();
+        return ReaderBrightnessPolicy.usesSystemBrightness(brightness)
+                ? local(com.orthodoxprayers.privateapp.R.string.ui_system_brightness_6e11d2d1)
+                : brightness + "%";
     }
 
     private String readerThemeLabel() {
