@@ -134,10 +134,18 @@ jobs:
       - name: Check content, languages, security, and calendar
         run: python scripts/run_local_daily_release_gate.py
 
-      - name: Absolute named commemoration coverage through 2050
+      - name: Check absolute named commemoration coverage through 2050
         id: r64-strict-named-coverage
-        continue-on-error: true
-        run: python scripts/audit_absolute_coverage_r64.py --require-complete --require-named-commemorations
+        shell: bash
+        run: |
+          set -uo pipefail
+          if python scripts/audit_absolute_coverage_r64.py --require-complete --require-named-commemorations; then
+            echo "complete=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "complete=false" >> "$GITHUB_OUTPUT"
+            echo "R64 named commemoration coverage is incomplete on this branch; the audit artifact contains the exact gaps." >&2
+            echo "::warning::R64 named commemoration coverage is incomplete; release publishing remains blocked until it is complete."
+          fi
 
       - name: Upload R64 coverage evidence even when strict coverage fails
         if: always()
@@ -153,7 +161,7 @@ jobs:
           retention-days: 30
 
       - name: Block build unless absolute named 2050 coverage is proven
-        if: (startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)) && steps.r64-strict-named-coverage.outcome != 'success'
+        if: (startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)) && steps.r64-strict-named-coverage.outputs.complete != 'true'
         shell: bash
         run: |
           echo "R64 absolute 2050 coverage is incomplete. Download the R64-2050-Coverage-Audit artifact for exact gaps." >&2
