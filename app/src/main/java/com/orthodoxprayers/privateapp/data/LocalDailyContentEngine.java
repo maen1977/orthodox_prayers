@@ -38,6 +38,7 @@ import java.util.regex.Pattern;
  */
 public final class LocalDailyContentEngine {
     public static final int WINDOW_DAYS = 9;
+    public static final int LOCAL_ENGINE_SCHEMA_VERSION = 2;
     public static final int FIRST_CALENDAR_YEAR = 2026;
     public static final int LAST_CALENDAR_YEAR = 2050;
 
@@ -87,6 +88,7 @@ public final class LocalDailyContentEngine {
         for (int i = 1; i < built.size(); i++) future.put(built.get(i));
         root.put("weekly_days", future);
         root.put("upcoming", new JSONArray(future.toString()));
+        root.put("local_daily_engine_schema", LOCAL_ENGINE_SCHEMA_VERSION);
         root.put("local_daily_window", new JSONObject()
                 .put("schema_version", 1)
                 .put("policy", "EMBEDDED_CALENDAR_STARTING_TODAY")
@@ -204,6 +206,7 @@ public final class LocalDailyContentEngine {
                 .put("human_review_required", false));
         result.put("content_metadata", new JSONObject()
                 .put("generated_by", "LocalDailyContentEngine")
+                .put("engine_schema_version", LOCAL_ENGINE_SCHEMA_VERSION)
                 .put("calendar_range", FIRST_CALENDAR_YEAR + "-" + LAST_CALENDAR_YEAR)
                 .put("scripture_policy", "FULL_BUNDLED_PUBLIC_DOMAIN_BIBLE_FIRST_THEN_AUDITED_SLICE_FAIL_CLOSED")
                 .put("network_required", false));
@@ -772,15 +775,38 @@ public final class LocalDailyContentEngine {
         JSONObject payload = new JSONObject(readAssetText(CALENDAR_ASSET_PREFIX + year + ".json"));
         JSONArray days = payload.optJSONArray("days");
         if (days == null || days.length() == 0) return null;
+        JSONObject fastingProfiles = payload.optJSONObject("fasting_profiles");
         LinkedHashMap<String, JSONObject> result = new LinkedHashMap<>();
         for (int i = 0; i < days.length(); i++) {
             JSONObject day = days.optJSONObject(i);
             if (day == null) continue;
+            day = resolveFastingProfile(day, fastingProfiles);
             String date = day.optString("date_iso", day.optString("date", "")).trim();
             if (!date.isEmpty()) result.put(date, day);
         }
         calendarCache.put(year, result);
         return result;
+    }
+
+    private static JSONObject resolveFastingProfile(JSONObject item, JSONObject profiles) throws Exception {
+        if (item == null || profiles == null) return item;
+        JSONObject fasting = item.optJSONObject("fasting");
+        if (fasting == null) return item;
+        String profileId = fasting.optString("profile_id", "").trim();
+        if (profileId.isEmpty()) return item;
+        JSONObject profile = profiles.optJSONObject(profileId);
+        if (profile == null) return item;
+        JSONObject resolved = new JSONObject(profile.toString());
+        java.util.Iterator<String> keys = fasting.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            if (!"profile_id".equals(key)) resolved.put(key, fasting.get(key));
+        }
+        JSONObject copy = new JSONObject(item.toString());
+        copy.put("fast", resolved.optJSONObject("title"));
+        copy.put("status", resolved.optJSONObject("title"));
+        copy.put("fasting", resolved);
+        return copy;
     }
 
     private String readAssetText(String path) throws Exception {

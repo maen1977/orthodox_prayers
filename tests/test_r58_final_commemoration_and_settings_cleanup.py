@@ -43,7 +43,7 @@ def test_august_8_2026_has_old_calendar_commemoration_in_all_lanes():
 def test_home_keeps_commemoration_out_of_the_compact_date_card():
     home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
     old_pos = home.index("ui_old_church_calendar_home_format")
-    fast_pos = home.index("fastingDisplayTitle(today, data.dataDate())")
+    fast_pos = home.index("fastingDisplayTitle(today, fastingDate)")
     assert old_pos < fast_pos
     date_card = home[home.index("private void addDateCard"):home.index("private void addRollingWeekStatus")]
     assert "ui_today_commemoration_home_format" not in date_card

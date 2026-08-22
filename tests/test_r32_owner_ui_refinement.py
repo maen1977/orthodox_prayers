@@ -22,7 +22,7 @@ def test_home_uses_specific_weekday_fast_and_plain_no_fast_labels() -> None:
     assert "ui_wednesday_fast" in base
     assert "ui_friday_fast" in base
     assert "ui_no_fast_plain" in base
-    assert "fastingDisplayTitle(today, data.dataDate())" in home
+    assert "fastingDisplayTitle(today, fastingDate)" in home
 
 
 def test_fast_free_days_do_not_render_food_permissions_or_explanations() -> None:

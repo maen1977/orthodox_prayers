@@ -85,13 +85,13 @@ public final class PrayerReminderWorker extends Worker {
         } else if (ReminderScheduler.FEAST.equals(kind)) {
             title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_commemoration_af76eeaa);
             body = CommemorationDisplayPolicy.displayText(
-                    app.repository().today(),
+                    app.repository().currentDayForDisplay(),
                     app.repository()::localizedValue
             );
             if (body.isEmpty()) return;
         } else if (ReminderScheduler.FAST.equals(kind)) {
             title = local(context, preferences, com.orthodoxprayers.privateapp.R.string.ui_today_s_fasting_aa40c904);
-            LocalizedValue fast = app.repository().localizedValue(app.repository().today().optJSONObject("fast"), "");
+            LocalizedValue fast = app.repository().localizedValue(app.repository().currentDayForDisplay().optJSONObject("fast"), "");
             if (fast.translationUnavailable || fast.text.trim().isEmpty()) return;
             body = fast.text;
         } else if (ReminderScheduler.PERSONAL.equals(kind)) {

@@ -34,7 +34,7 @@ public final class UpcomingScreen extends BaseScreen {
                 add(page.root, dayCard(item), 2, 7);
             }
         }
-        JSONObject todayFasting = data.today().optJSONObject("fasting");
+        JSONObject todayFasting = data.currentDayForDisplay().optJSONObject("fasting");
         if (isFastingDay(todayFasting)) {
             JSONObject guidance = todayFasting.optJSONObject("guidance");
             if (guidance != null) {

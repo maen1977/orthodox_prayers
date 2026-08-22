@@ -167,6 +167,8 @@ public final class DataRepository {
                 if (!"profile_id".equals(key)) resolved.put(key, fasting.get(key));
             }
             JSONObject copy = new JSONObject(item.toString());
+            copy.put("fast", resolved.optJSONObject("title"));
+            copy.put("status", resolved.optJSONObject("title"));
             copy.put("fasting", resolved);
             return copy;
         } catch (Exception ignored) {
@@ -508,6 +510,22 @@ public final class DataRepository {
     }
 
     public boolean isTodayCurrent() { return currentAmmanDate().equals(dataDate()); }
+
+    /**
+     * Returns a current-date display payload even while a dated daily snapshot is
+     * being rebuilt. The annual embedded calendar is authoritative for feast and
+     * fasting rules, so a stale today.json must never make the home card or a
+     * reminder say that a fast-free day is in effect.
+     */
+    public synchronized JSONObject currentDayForDisplay() {
+        if (isTodayCurrent()) return today();
+        JSONObject annual = calendarDay(currentAmmanDate());
+        return annual == null ? today() : annual;
+    }
+
+    public synchronized boolean hasCurrentCalendarDay() {
+        return calendarDay(currentAmmanDate()) != null;
+    }
 
     public boolean hasDisplayableData() {
         JSONObject value = today();
@@ -937,6 +955,11 @@ public final class DataRepository {
             byte[] cachedBytes = localDailyCacheStore.read();
             if (cachedBytes == null || cachedBytes.length == 0) return;
             JSONObject cached = new JSONObject(new String(cachedBytes, StandardCharsets.UTF_8));
+            if (cached.optInt("local_daily_engine_schema", 0)
+                    != LocalDailyContentEngine.LOCAL_ENGINE_SCHEMA_VERSION) {
+                localDailyCacheStore.clear();
+                return;
+            }
             String error = validate(cached, currentAmmanDate(), true);
             if (error != null) {
                 localDailyCacheStore.clear();

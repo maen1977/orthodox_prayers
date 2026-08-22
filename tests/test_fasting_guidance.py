@@ -86,6 +86,31 @@ class FastingGuidanceTests(unittest.TestCase):
         data["fasting"]["abstinence"]["start_time"] = "midnight"
         self.assertTrue(any("HH:MM required" in error for error in self.validator.validate(data)))
 
+    def test_current_august_2026_asset_resolves_dormition_fast(self):
+        asset = json.loads((ROOT / "app/src/main/assets/data/calendar/calendar_2026.json").read_text(encoding="utf-8"))
+        profiles = asset["fasting_profiles"]
+        day = next(item for item in asset["days"] if item["date_iso"] == "2026-08-22")
+        fasting = dict(profiles[day["fasting"]["profile_id"]])
+        fasting.update({key: value for key, value in day["fasting"].items() if key != "profile_id"})
+        self.assertTrue(fasting["is_fast"])
+        self.assertEqual("wine_oil", fasting["code"])
+        self.assertIn("صوم السيدة والدة الإله", fasting["title"]["ar"])
+        self.assertTrue(fasting["items"][4]["allowed"])
+        self.assertTrue(fasting["items"][5]["allowed"])
+
+    def test_stale_snapshot_surfaces_use_current_annual_calendar(self):
+        repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
+        home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
+        upcoming = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/UpcomingScreen.java").read_text(encoding="utf-8")
+        worker = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/work/PrayerReminderWorker.java").read_text(encoding="utf-8")
+        widget = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/widget/DailyAgendaWidget.java").read_text(encoding="utf-8")
+        self.assertIn("currentDayForDisplay", repository)
+        self.assertIn("JSONObject today = data.currentDayForDisplay();", home)
+        self.assertIn("data.currentDayForDisplay().optJSONObject(\"fasting\")", upcoming)
+        self.assertIn("app.repository().currentDayForDisplay()", worker)
+        self.assertIn("app.repository().currentDayForDisplay()", widget)
+        self.assertIn("data.currentAmmanDate()", home)
+
     def test_android_surfaces_render_fasting_guidance(self):
         base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
         home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
@@ -94,7 +119,9 @@ class FastingGuidanceTests(unittest.TestCase):
         self.assertIn("addFastingGuide", base)
         self.assertTrue(source_omits_text(home, "تفاصيل صوم اليوم", "ar"))
         self.assertTrue(source_omits_text(home, "جدول الصيام للأيام التسعة", "ar"))
-        self.assertIn("fastingDisplayTitle(today, data.dataDate())", home)
+        self.assertIn("String fastingDate = data.isTodayCurrent() ? data.dataDate() : data.currentAmmanDate();", home)
+        self.assertIn("fastingDisplayTitle(today, fastingDate)", home)
+        self.assertIn("data.currentDayForDisplay()", home)
         self.assertIn("if (isFastingDay(fasting))", upcoming)
         self.assertIn("addCompactFastingItems(card, fasting);", upcoming)
         self.assertIn("if (isFastingDay(fasting)) addFastingGuide(card, fasting, true);", day)
