@@ -139,14 +139,39 @@ public final class DataRepository {
         JSONObject yearPayload = loadJsonAsset(asset);
         JSONArray days = yearPayload.optJSONArray("days");
         if (days == null || days.length() == 0) return;
+        JSONObject fastingProfiles = yearPayload.optJSONObject("fasting_profiles");
         calendarByDate.clear();
         for (int i = 0; i < days.length(); i++) {
             JSONObject item = days.optJSONObject(i);
             if (item == null) continue;
+            item = resolveFastingProfile(item, fastingProfiles);
             String iso = item.optString("date_iso", item.optString("date", "")).trim();
             if (!iso.isEmpty()) calendarByDate.put(iso, item);
         }
         loadedCalendarYear = year;
+    }
+
+    private static JSONObject resolveFastingProfile(JSONObject item, JSONObject profiles) {
+        if (item == null || profiles == null) return item;
+        JSONObject fasting = item.optJSONObject("fasting");
+        if (fasting == null) return item;
+        String profileId = fasting.optString("profile_id", "").trim();
+        if (profileId.isEmpty()) return item;
+        JSONObject profile = profiles.optJSONObject(profileId);
+        if (profile == null) return item;
+        try {
+            JSONObject resolved = new JSONObject(profile.toString());
+            java.util.Iterator<String> keys = fasting.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                if (!"profile_id".equals(key)) resolved.put(key, fasting.get(key));
+            }
+            JSONObject copy = new JSONObject(item.toString());
+            copy.put("fasting", resolved);
+            return copy;
+        } catch (Exception ignored) {
+            return item;
+        }
     }
 
     /** Compact offline old-calendar index, loaded one year at a time through 2050. */

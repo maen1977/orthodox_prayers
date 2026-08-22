@@ -2,6 +2,7 @@ package com.orthodoxprayers.privateapp.data;
 
 import com.orthodoxprayers.privateapp.model.LocalizedValue;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Locale;
@@ -39,6 +40,9 @@ public final class CommemorationDisplayPolicy {
         );
         if (!standard.isEmpty()) return standard;
 
+        String occasions = displayOccasions(day.optJSONArray("occasions"), localizer);
+        if (!occasions.isEmpty()) return occasions;
+
         String occasionStatus = day.optString("occasion_status", "");
         if (isUnavailableStatus(occasionStatus)) return "";
 
@@ -47,6 +51,20 @@ public final class CommemorationDisplayPolicy {
 
         String note = clean(localizedText(localizer, day.optJSONObject("note")));
         return isDisplayableText(note) ? note : "";
+    }
+
+    private static String displayOccasions(JSONArray values, Localizer localizer) {
+        if (values == null || localizer == null) return "";
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < values.length(); i++) {
+            JSONObject occasion = values.optJSONObject(i);
+            if (occasion == null) continue;
+            String title = clean(localizedText(localizer, occasion.optJSONObject("title")));
+            if (!isDisplayableText(title)) continue;
+            if (result.length() > 0) result.append("\n");
+            result.append(title);
+        }
+        return result.toString();
     }
 
     public static boolean isDisplayableText(String value) {

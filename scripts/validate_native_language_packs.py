@@ -12,6 +12,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "canonical/native_language_sources.json"
 MANIFEST_PATH = ROOT / "canonical/native_service_manifest.json"
+COMPLETENESS_MANIFEST_PATH = ROOT / "canonical/religious_completeness_manifest.json"
 PACK_DIR = ROOT / "data/services/native"
 LANGS = ("ar", "el", "en")
 AR = re.compile(r"[\u0600-\u06ff]")
@@ -49,6 +50,25 @@ def digest_text(service: dict[str, Any], lang: str) -> str:
     return hashlib.sha256("\n".join(pieces).encode("utf-8")).hexdigest()
 
 
+def explicit_packaging_aliases(
+    packaged_service_ids: dict[str, Any], manifest_services: dict[str, Any]
+) -> dict[str, str]:
+    """Return only aliases whose source and packaged IDs are manifest services.
+
+    The completeness manifest also contains conceptual IDs that are intentionally
+    absent from the native pack manifest. They must not silently change the pack
+    ID comparison. Unknown future aliases therefore fail closed instead of being
+    subtracted from the expected service set.
+    """
+    return {
+        str(source_id): str(packaged_id)
+        for source_id, packaged_id in packaged_service_ids.items()
+        if source_id != packaged_id
+        and source_id in manifest_services
+        and packaged_id in manifest_services
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--require-complete", action="store_true")
@@ -57,9 +77,13 @@ def main() -> None:
 
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    completeness = json.loads(COMPLETENESS_MANIFEST_PATH.read_text(encoding="utf-8"))
     allowed = {lang: set(registry["languages"][lang]["allowed_sources"]) for lang in LANGS}
     source_registry = registry["sources"]
-    expected_services = set(manifest["services"])
+    manifest_services = manifest.get("services") if isinstance(manifest.get("services"), dict) else {}
+    packaged_aliases = completeness.get("packaged_service_ids") if isinstance(completeness.get("packaged_service_ids"), dict) else {}
+    alias_ids = set(explicit_packaging_aliases(packaged_aliases, manifest_services))
+    expected_services = set(manifest_services) - alias_ids
     errors: list[str] = []
     report: dict[str, Any] = {"content_mode": manifest["content_mode"], "languages": {}}
 

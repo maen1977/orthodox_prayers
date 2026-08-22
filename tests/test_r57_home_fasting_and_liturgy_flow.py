@@ -9,7 +9,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def calendar_days(year: int) -> dict[str, dict]:
     payload = json.loads((ROOT / f"app/src/main/assets/data/calendar/calendar_{year}.json").read_text(encoding="utf-8"))
-    return {item["date_iso"]: item for item in payload["days"]}
+    profiles = payload.get("fasting_profiles") or {}
+    days = {}
+    for item in payload["days"]:
+        copy = dict(item)
+        fasting = dict(item.get("fasting") or {})
+        profile_id = fasting.get("profile_id")
+        if profile_id in profiles:
+            resolved = dict(profiles[profile_id])
+            resolved.update({key: value for key, value in fasting.items() if key != "profile_id"})
+            copy["fasting"] = resolved
+        days[item["date_iso"]] = copy
+    return days
 
 
 def fast_title(day: dict) -> str:

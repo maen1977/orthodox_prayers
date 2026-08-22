@@ -193,6 +193,12 @@ def localized_civil_old_date(day: date, include_year: bool = True) -> dict:
 
 
 UNREVIEWED_DAILY_FEAST_AR = "تذكار اليوم بحسب التقويم الكنسي القديم"
+
+
+def is_generic_daily_commemoration(value: object) -> bool:
+    return str(value or "").strip().startswith("تذكار قديسي يوم ")
+
+
 UNAVAILABLE_DAILY_FEAST = {
     "ar": "تعذّر التحقق من تذكار هذا اليوم من المصدر الرسمي المحلي؛ تظهر آخر معلومة موثقة إن توفرت",
     "en": "This day’s commemoration could not be verified from the official local source; the last verified record is shown when available",
@@ -303,9 +309,9 @@ def _complete_fasting_guidance(profile: dict) -> None:
             "Δὲν ἐπιτρέπονται: " + (_join_foods(forbidden_el, "el") if forbidden_el else "καμία ἀπὸ τὶς καταγεγραμμένες κατηγορίες"),
         )
         duration = loc(
-            "هذا حكم صوم غذائي لليوم الكنسي المعروض. لم يثبت المصدر ساعات بداية ونهاية منفصلة، لذلك لا يخمّن التطبيق وقتًا.",
-            "This is the food-fasting rule for the displayed church day. The source does not provide separate start and end hours, so the app does not guess a time.",
-            "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα.",
+            "هذا حكم الصوم الغذائي لليوم الكنسي المعروض. الصيام الانقطاعي، إن أقرته الكنيسة أو حدده الأب الروحي، يعني الامتناع عن الطعام والشراب حتى الوقت المحدد ثم تناول الأصناف المسموحة. لم يثبت المصدر لهذا اليوم ساعات بداية ونهاية منفصلة، لذلك لا يخمّن التطبيق وقتًا.",
+            "This is the food-fasting rule for the displayed church day. If the Church or a spiritual father appoints total abstinence, it means refraining from food and drink until the appointed time and then eating the foods permitted for that day. The source does not provide separate start and end hours for this day, so the app does not guess a time.",
+            "Αὐτὸς εἶναι ὁ διατροφικὸς κανόνας τῆς προβαλλόμενης ἐκκλησιαστικῆς ἡμέρας. Ἐὰν ἡ Ἐκκλησία ἢ ὁ πνευματικὸς ὁρίσει πλήρη ἀποχή, αὐτὴ σημαίνει ἀποχή ἀπὸ τροφὴ καὶ ποτὸ μέχρι τὴν καθορισμένη ὥρα καὶ ἔπειτα λήψη τῶν τροφῶν ποὺ ἐπιτρέπονται αὐτὴν τὴν ἡμέρα. Ἡ πηγὴ δὲν δίνει χωριστὲς ὧρες ἔναρξης καὶ λήξης γι’ αὐτὴν τὴν ἡμέρα, γι’ αὐτὸ ἡ ἐφαρμογὴ δὲν μαντεύει ὥρα.",
         )
     else:
         allowed_summary = loc(
@@ -1138,7 +1144,7 @@ def day_info(day: date) -> dict:
         names = local_record["commemorations"]
         feast = {lang: str(names.get(lang) or names.get("ar") or "").strip() for lang in ("ar", "en", "el")}
         feast_status = str(local_record.get("verification_status"))
-    elif isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip():
+    elif isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip() and not is_generic_daily_commemoration(annual_feast.get("ar")):
         feast = {lang: str(annual_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}
         if feast["ar"] == UNREVIEWED_DAILY_FEAST_AR:
             feast = copy.deepcopy(UNAVAILABLE_DAILY_FEAST)

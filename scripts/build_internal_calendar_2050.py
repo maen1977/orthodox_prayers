@@ -11,6 +11,7 @@ the commemoration by its Old Calendar date and signed/native sources may enrich 
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 import sys
@@ -293,9 +294,10 @@ def primary_and_occasions(day: date, info: dict) -> tuple[dict[str, str], list[d
     movable = movable_occasion(day)
     relative = relative_fixed_occasion(day)
     fixed = None
-    # day_info already localizes a pinned major fixed feast. Do not treat its
-    # unavailable placeholder as an occasion.
-    if info.get("feast_status") == "PINNED_FIXED_FEAST":
+    # Preserve every verified named feast selected by day_info, including an
+    # exact annual record such as the 2026 Transfiguration entry. Do not treat
+    # unavailable or generic daily placeholders as named occasions.
+    if info.get("feast_status") in {"PINNED_FIXED_FEAST", "PINNED_REVIEWED_ANNUAL_ENTRY"}:
         fixed = loc(info["feast_ar"], info["feast_en"], info["feast_el"])
     for kind, value, priority in (
         ("movable", movable, 100),
@@ -353,6 +355,10 @@ def build() -> dict:
                 "detail": copy.deepcopy(info["fasting"].get("detail") or {}),
                 "is_fast": bool(info["fasting"].get("is_fast")),
                 "display_icons": copy.deepcopy(info["fasting"].get("display_icons") or []),
+                "items": copy.deepcopy(info["fasting"].get("items") or []),
+                "guidance": copy.deepcopy(info["fasting"].get("guidance") or {}),
+                "abstinence": copy.deepcopy(info["fasting"].get("abstinence") or {}),
+                "verification": copy.deepcopy(info["fasting"].get("verification") or {}),
             },
             "reading_references": readings,
             "appointed_readings": appointed_readings,
@@ -402,12 +408,36 @@ def build() -> dict:
     }
 
 
-def _asset_day(item: dict) -> dict:
-    # Keep the Android fallback compact. Detailed proof and long fasting notes
-    # remain in the canonical file; the app loads only one calendar year at a time.
+def _compact_fasting(item: dict) -> dict:
+    fasting = item.get("fasting") if isinstance(item.get("fasting"), dict) else {}
+    return {
+        "code": fasting.get("code"),
+        "title": fasting.get("title") or {},
+        "detail": fasting.get("detail") or {},
+        "is_fast": bool(fasting.get("is_fast")),
+        "display_icons": fasting.get("display_icons") or [],
+        "items": fasting.get("items") or [],
+        "abstinence": (
+            fasting.get("abstinence")
+            if isinstance(fasting.get("abstinence"), dict)
+            and bool(fasting.get("abstinence").get("applies"))
+            else {}
+        ),
+    }
+
+
+def _fasting_profile_id(fasting: dict) -> str:
+    serialized = json.dumps(fasting, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return "fasting_" + hashlib.sha256(serialized.encode("utf-8")).hexdigest()[:16]
+
+
+def _asset_day(item: dict, fasting_profile_id: str) -> dict:
+    # Keep provenance compact. User-facing fasting guidance is de-duplicated in
+    # fasting_profiles and resolved by DataRepository before a screen consumes it.
     fasting = item.get("fasting") if isinstance(item.get("fasting"), dict) else {}
     selection = item.get("liturgy_service_selection") if isinstance(item.get("liturgy_service_selection"), dict) else {}
     appointed = item.get("appointed_readings") if isinstance(item.get("appointed_readings"), list) else []
+    occasions = item.get("occasions") if isinstance(item.get("occasions"), list) else []
     kind_counts = {}
     for reading in appointed:
         if isinstance(reading, dict):
@@ -428,15 +458,11 @@ def _asset_day(item: dict) -> dict:
         # The compact Android year asset reuses feast + occasion_status as the
         # commemoration fallback to avoid duplicating the same three-language text.
         "feast": item["feast"],
+        "occasions": occasions if len(occasions) > 1 else [],
         "occasion_status": item["occasion_status"],
         "status": fasting.get("title") or {},
         "fast": fasting.get("title") or {},
-        "fasting": {
-            "code": fasting.get("code"),
-            "title": fasting.get("title") or {},
-            "is_fast": bool(fasting.get("is_fast")),
-            "display_icons": fasting.get("display_icons") or [],
-        },
+        "fasting": {"profile_id": fasting_profile_id},
         "reading_references": item.get("reading_references") or {},
         "appointed_readings": appointed_asset,
         "reference_status": item.get("reference_status"),
@@ -458,7 +484,7 @@ def write(payload: dict) -> None:
     by_year: dict[int, list[dict]] = {}
     for item in payload["days"]:
         year = int(str(item["date_iso"])[:4])
-        by_year.setdefault(year, []).append(_asset_day(item))
+        by_year.setdefault(year, []).append(item)
     index = {
         "schema_version": 1,
         "calendar": payload["calendar"],
@@ -469,16 +495,24 @@ def write(payload: dict) -> None:
     }
     for year, days in sorted(by_year.items()):
         name = f"calendar_{year}.json"
+        profiles: dict[str, dict] = {}
+        asset_days = []
+        for item in days:
+            fasting = _compact_fasting(item)
+            profile_id = _fasting_profile_id(fasting)
+            profiles[profile_id] = fasting
+            asset_days.append(_asset_day(item, profile_id))
         year_payload = {
             "schema_version": 1,
             "calendar": payload["calendar"],
             "year": year,
-            "civil_range": {"start": days[0]["date_iso"], "end": days[-1]["date_iso"], "day_count": len(days)},
-            "days": days,
+            "civil_range": {"start": asset_days[0]["date_iso"], "end": asset_days[-1]["date_iso"], "day_count": len(asset_days)},
+            "fasting_profiles": {key: profiles[key] for key in sorted(profiles)},
+            "days": asset_days,
         }
         target = OUT_ASSET_DIR / name
         target.write_text(json.dumps(year_payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-        index["years"][str(year)] = {"asset": f"data/calendar/{name}", "day_count": len(days), "bytes": target.stat().st_size}
+        index["years"][str(year)] = {"asset": f"data/calendar/{name}", "day_count": len(asset_days), "bytes": target.stat().st_size}
     OUT_ASSET_INDEX.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 

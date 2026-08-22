@@ -490,7 +490,7 @@
       "packaged_service_id": "midnight_office",
       "source_id": "arabic_great_horologion_1870",
       "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
-      "content_sha256": "d09037745df229ab8908bcbab0fabd37e4fa28d830a9064d2a9b2e2ba853567f",
+      "content_sha256": "dde424fdc619e50162e1d3820dcb35e810163d065e8fae5af182af30f476cd8c",
       "minimum_segments": 54,
       "minimum_characters": 15042,
       "required_section_markers": [],
@@ -505,7 +505,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "orthros:ar": {
       "status": "complete_exact_native_edition",
@@ -537,13 +537,12 @@
       "packaged_service_id": "typika",
       "source_id": "arabic_great_horologion_1870",
       "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
-      "content_sha256": "0f57db4e9a20fe363f939e12df5b92d295584535eda20ae5fa4bdb66b41a799b",
+      "content_sha256": "610e89f6bacfd51e650a48b966262afeb5ff4a61d1c4eb669f76c836876be8af",
       "minimum_segments": 44,
       "minimum_characters": 10262,
       "required_section_markers": [],
       "required_text_markers": [
-        "ايها الاله رب القوات .انظر امامك صفحة هـ ) ١٧",
-        "20"
+        "ايها الاله رب القوات .انظر امامك صفحة هـ ) ١٧"
       ],
       "forbidden_text_patterns": [
         "placeholder",
@@ -552,15 +551,15 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "vespers:ar": {
       "status": "complete_exact_native_edition",
       "packaged_service_id": "vespers",
       "source_id": "arabic_great_horologion_1870",
       "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
-      "content_sha256": "c4871ebcd287fe74c03615cfe99a10722fe14df682f2588f51821e7b2fcd0e7e",
-      "minimum_segments": 45,
+      "content_sha256": "dd904621120d79b3cd31c5e786f4685082dbda6039af6d94bb06f181f076dac7",
+      "minimum_segments": 44,
       "minimum_characters": 8874,
       "required_section_markers": [],
       "required_text_markers": [
@@ -574,14 +573,14 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "small_compline:ar": {
       "status": "complete_exact_native_edition",
       "packaged_service_id": "small_compline",
       "source_id": "arabic_great_horologion_1870",
       "source_url": "https://books.google.com/books?id=public-domain-horologion-1870",
-      "content_sha256": "b59ef84c48411c83be13d9683f15234e8a807725a3136709cdbda29281932605",
+      "content_sha256": "d37699ea2cc1278506142c5568b37108da428d1fbbf51f3a7b836b8b2006c718",
       "minimum_segments": 14,
       "minimum_characters": 4072,
       "required_section_markers": [],
@@ -596,7 +595,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "presanctified_liturgy:ar": {
       "status": "complete_exact_native_edition",
@@ -652,7 +651,7 @@
       "packaged_service_id": "orthros",
       "source_id": "goarch_glt_greek",
       "source_url": "https://digitalchantstand.goarch.org/",
-      "content_sha256": "7d2cd152925a4ebe4030371ca45ec317d08881e0a9d0a6e3022c6eac3255c743",
+      "content_sha256": "dfc622f0e5260dd5e293baaf970b487a5ba1e6c226af0d54fdfc95c17ed072ac",
       "minimum_segments": 743,
       "minimum_characters": 55199,
       "required_section_markers": [],
@@ -667,7 +666,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "midnight_office:el": {
       "status": "complete_exact_native_edition",
@@ -696,7 +695,7 @@
       "packaged_service_id": "first_hour",
       "source_id": "goarch_glt_greek",
       "source_url": "https://digitalchantstand.goarch.org/",
-      "content_sha256": "4030c1112ea8feaacdf5c8ea8a671cbc85112b6180f928aebb71b3f3fff4fe1b",
+      "content_sha256": "6fcd922c032d937c7baf3420bbc8704bc227251cd1da5904bf1910a8312f5089",
       "minimum_segments": 91,
       "minimum_characters": 6686,
       "required_section_markers": [],
@@ -711,14 +710,14 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "third_hour:el": {
       "status": "complete_exact_native_edition",
       "packaged_service_id": "third_hour",
       "source_id": "goarch_glt_greek",
       "source_url": "https://digitalchantstand.goarch.org/",
-      "content_sha256": "b980d1b57380375f0a89a0934ccf04f2aec9aefe73ac3f23a47bfa7477f0d9d5",
+      "content_sha256": "46fddf7e7092fcc5c8b2ca5e23e047ae5c157af0df8f4b01cf7ceaa7f5166e25",
       "minimum_segments": 106,
       "minimum_characters": 7596,
       "required_section_markers": [],
@@ -733,14 +732,14 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "sixth_hour:el": {
       "status": "complete_exact_native_edition",
       "packaged_service_id": "sixth_hour",
       "source_id": "goarch_glt_greek",
       "source_url": "https://digitalchantstand.goarch.org/",
-      "content_sha256": "7fc4a06258d5aec1185a2845634e7009fbe68872d6ff696ef8656f258007cdc4",
+      "content_sha256": "6fcb9a04257b69731e49e6653059fc8191b4c98805d132817051036802826db9",
       "minimum_segments": 97,
       "minimum_characters": 7607,
       "required_section_markers": [],
@@ -755,14 +754,14 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "ninth_hour:el": {
       "status": "complete_exact_native_edition",
       "packaged_service_id": "ninth_hour",
       "source_id": "goarch_glt_greek",
       "source_url": "https://digitalchantstand.goarch.org/",
-      "content_sha256": "46bc94dfb386d01cc7882de490fbb06845a8b5f404a8d720c61f078ab84ff28f",
+      "content_sha256": "549dee05a9ecfba747a651f75f6f24acba5321f195e8c88ba0b8455101a7abb4",
       "minimum_segments": 91,
       "minimum_characters": 7698,
       "required_section_markers": [],
@@ -777,14 +776,14 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "typika:el": {
       "status": "complete_exact_native_edition",
       "packaged_service_id": "typika",
       "source_id": "goarch_glt_greek",
       "source_url": "https://digitalchantstand.goarch.org/",
-      "content_sha256": "0383b8646eb4b33471349fbc7a053c8d8cf174eaed4a05844ea6fe16deedf2a9",
+      "content_sha256": "5e5c814ed483af321d7f2f57a39d57274df7522476a2165b1b6f6f2b9e02b7aa",
       "minimum_segments": 1252,
       "minimum_characters": 138782,
       "required_section_markers": [],
@@ -799,7 +798,7 @@
         "يضاف لاحق",
         "نص مؤقت"
       ],
-      "review_basis": "Final built native pack verified against an owner-supplied or public-domain source; no translation, paraphrase, OCR correction, or AI completion."
+      "review_basis": "Registered native-language edition preserved; only documented OCR/page-artifact normalization was applied, with no translation, paraphrase, or added liturgical material."
     },
     "basil_liturgy:el": {
       "status": "complete_exact_native_edition",
@@ -813,7 +812,7 @@
         "Λάβετε, φάγετε"
       ],
       "packaged_service_id": "divine_liturgy_basil",
-      "content_sha256": "731d803e32330d6471f5db67fd8d5af9cf4ae1b45c00ddc34a18ae104d1cafb2",
+      "content_sha256": "78a82fbd1925fa09cec7246efe88e9bf638615d1f41a4ef4159dbaff2fbd70b7",
       "required_section_markers": [],
       "forbidden_text_patterns": [
         "placeholder",

@@ -100,30 +100,36 @@ public abstract class BaseScreen implements AppScreen {
     protected void addFastingGuide(LinearLayout card, JSONObject fasting, boolean includeNotes) {
         if (!isFastingDay(fasting)) return;
         JSONObject guidance = fasting.optJSONObject("guidance");
-        if (guidance == null) return;
+        if (guidance == null) {
+            addGuideLine(card, "•", localized(fasting.optJSONObject("detail"), ""), false);
+            addAbstinenceGuide(card, fasting);
+            return;
+        }
 
         addGuideLine(card, "✓", localized(guidance.optJSONObject("allowed_summary"), ""), true);
         addGuideLine(card, "✕", localized(guidance.optJSONObject("forbidden_summary"), ""), true);
         addGuideLine(card, "•", localized(guidance.optJSONObject("duration"), ""), false);
-
-        JSONObject abstinence = fasting.optJSONObject("abstinence");
-        if (abstinence != null && (abstinence.optBoolean("applies", false) || includeNotes)) {
-            String abstinenceText = localized(abstinence.optJSONObject("end_condition"), "");
-            String start = abstinence.optString("start_time", "").trim();
-            String end = abstinence.optString("end_time", "").trim();
-            if (!start.isEmpty() || !end.isEmpty()) {
-                String interval = localFormat(com.orthodoxprayers.privateapp.R.string.ui_fasting_interval_format, start, end);
-                abstinenceText = interval + (abstinenceText.isEmpty() ? "" : "\n" + abstinenceText);
-            }
-            String label = local(com.orthodoxprayers.privateapp.R.string.ui_total_abstinence_4bf885f8);
-            if (!abstinenceText.isEmpty()) addGuideLine(card, "⏳", label + ": " + abstinenceText, false);
-        }
+        addAbstinenceGuide(card, fasting);
 
         if (includeNotes) {
             addGuideLine(card, "ℹ", localized(guidance.optJSONObject("beginner_explanation"), ""), false);
             addGuideLine(card, "•", localized(guidance.optJSONObject("spiritual_note"), ""), false);
             addGuideLine(card, "•", localized(guidance.optJSONObject("health_note"), ""), false);
         }
+    }
+
+    private void addAbstinenceGuide(LinearLayout card, JSONObject fasting) {
+        JSONObject abstinence = fasting.optJSONObject("abstinence");
+        if (abstinence == null || !abstinence.optBoolean("applies", false)) return;
+        String abstinenceText = localized(abstinence.optJSONObject("end_condition"), "");
+        String start = abstinence.optString("start_time", "").trim();
+        String end = abstinence.optString("end_time", "").trim();
+        if (!start.isEmpty() || !end.isEmpty()) {
+            String interval = localFormat(com.orthodoxprayers.privateapp.R.string.ui_fasting_interval_format, start, end);
+            abstinenceText = interval + (abstinenceText.isEmpty() ? "" : "\n" + abstinenceText);
+        }
+        String label = local(com.orthodoxprayers.privateapp.R.string.ui_total_abstinence_4bf885f8);
+        if (!abstinenceText.isEmpty()) addGuideLine(card, "⏳", label + ": " + abstinenceText, false);
     }
 
     private void addGuideLine(LinearLayout card, String icon, String value, boolean bold) {

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import importlib.util
+import json
 import unittest
 from datetime import date
 from pathlib import Path
@@ -95,7 +96,22 @@ class FastingGuidanceTests(unittest.TestCase):
         self.assertTrue(source_omits_text(home, "جدول الصيام للأيام التسعة", "ar"))
         self.assertIn("fastingDisplayTitle(today, data.dataDate())", home)
         self.assertIn("if (isFastingDay(fasting))", upcoming)
+        self.assertIn("addCompactFastingItems(card, fasting);", upcoming)
         self.assertIn("if (isFastingDay(fasting)) addFastingGuide(card, fasting, true);", day)
+        self.assertIn('JSONObject guidance = fasting.optJSONObject("guidance");', base)
+        self.assertIn('localized(fasting.optJSONObject("detail"), "")', base)
+
+    def test_compact_annual_assets_keep_food_items_and_localized_detail(self):
+        for year in (2026, 2027, 2050):
+            asset = json.loads((ROOT / f"app/src/main/assets/data/calendar/calendar_{year}.json").read_text(encoding="utf-8"))
+            profiles = asset["fasting_profiles"]
+            fasting_ref = next(day["fasting"] for day in asset["days"] if day["fasting"].get("profile_id"))
+            fasting = profiles[fasting_ref["profile_id"]]
+            self.assertNotIn("guidance", fasting)
+            self.assertEqual(6, len(fasting["items"]))
+            for language in ("ar", "en", "el"):
+                self.assertTrue(fasting["detail"][language].strip())
+                self.assertTrue(fasting["title"][language].strip())
 
     def test_r15_patch_verifier_is_present(self):
         verifier = (ROOT / "scripts/verify_r15_patch.py").read_text(encoding="utf-8")
