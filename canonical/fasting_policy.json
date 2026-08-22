@@ -62,6 +62,12 @@
         "oil"
       ]
     },
+    "wine_only": {
+      "title_ar": "صوم — النبيذ مسموح وحده",
+      "allowed": [
+        "wine"
+      ]
+    },
     "strict": {
       "title_ar": "صوم صارم",
       "allowed": []
@@ -76,6 +82,47 @@
     "03-25",
     "08-06",
     "11-21"
+  ],
+  "major_feast_fish_old_calendar": [
+    "08-15"
+  ],
+  "dormition_fast_old_calendar": {
+    "start": "08-01",
+    "end": "08-14",
+    "feast_day": "08-15",
+    "feast_code": "fish_allowed"
+  },
+  "annunciation_paschal_collisions": {
+    "first_four_days_of_holy_week": {
+      "code": "wine_oil",
+      "allowed": ["wine", "oil"],
+      "source_id": "oca_typikon_fasting",
+      "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church"
+    },
+    "great_friday_or_holy_saturday": {
+      "code": "wine_only",
+      "allowed": ["wine"],
+      "source_id": "serbian_orthodox_eastern_diocese_discipline_of_fasting",
+      "source_url": "https://www.easterndiocese.org/news_170226_1"
+    }
+  },
+  "documented_optional_abstinence": [
+    {
+      "rule": "great_friday_optional_total_abstinence",
+      "scope": "Great Friday for those who have the strength, until sunset or after the Vespers veneration according to pastoral order",
+      "source_id": "oca_typikon_fasting",
+      "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
+      "mandatory": false,
+      "universal_clock_time": false
+    },
+    {
+      "rule": "first_week_lent_optional_total_abstinence",
+      "scope": "The severe days of the first week of Great Lent for those who have the strength; the appointed service or Vespers governs when the fast is broken",
+      "source_id": "oca_typikon_fasting",
+      "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
+      "mandatory": false,
+      "universal_clock_time": false
+    }
   ],
   "override_directory": "scripts/overrides",
   "display_contract": {

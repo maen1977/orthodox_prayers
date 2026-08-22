@@ -53,6 +53,36 @@ def resolve_fasting(item: dict, profiles: dict, year: int) -> dict:
     return result
 
 
+def assert_abstinence_contract(profile: dict, key: str, expected_rule: str | None) -> bool:
+    abstinence = profile.get("abstinence")
+    if not isinstance(abstinence, dict) or not abstinence.get("applies", False):
+        return False
+    rule = (profile.get("verification") or {}).get("rule")
+    allowed_rules = {
+        "great_friday_optional_total_abstinence",
+        "first_week_lent_optional_total_abstinence",
+    }
+    if rule not in allowed_rules or rule != expected_rule:
+        fail(f"unexpected_abstinence_rule:{key}:{rule}:{expected_rule}")
+    if abstinence.get("optional") is not True:
+        fail(f"abstinence_not_optional:{key}")
+    if abstinence.get("kind") != "until_service_end":
+        fail(f"abstinence_kind:{key}:{abstinence.get('kind')}")
+    if abstinence.get("start_time") or abstinence.get("end_time"):
+        fail(f"unverified_clock_time:{key}")
+    verification = abstinence.get("verification") or {}
+    if verification.get("status") != "DOCUMENTED_OPTIONAL":
+        fail(f"abstinence_status:{key}:{verification.get('status')}")
+    if not str(verification.get("source") or "").startswith("https://"):
+        fail(f"abstinence_source_missing:{key}")
+    for language in LANGUAGES:
+        if not str((abstinence.get("end_condition") or {}).get(language) or "").strip():
+            fail(f"abstinence_end_condition_missing:{key}:{language}")
+        if not str((abstinence.get("detail") or {}).get(language) or "").strip():
+            fail(f"abstinence_detail_missing:{key}:{language}")
+    return True
+
+
 def assert_food_contract(profile: dict, key: str) -> None:
     code = profile.get("code")
     if code not in update.FASTING_LEVELS:
@@ -108,9 +138,21 @@ def assert_weekly_and_season_invariants(day: date, profile: dict, key: str) -> N
     holy_saturday = pascha - timedelta(days=1)
     palm_sunday = pascha - timedelta(days=7)
     if lent_start <= day <= holy_saturday:
-        if old_month == 3 and old_day == 25 or day == palm_sunday:
+        if old_month == 3 and old_day == 25:
+            if day in {pascha - timedelta(days=2), holy_saturday}:
+                if code != "wine_only":
+                    fail(f"annunciation_great_friday_or_saturday:{key}:{code}")
+            elif pascha - timedelta(days=6) <= day <= pascha - timedelta(days=3):
+                if code != "wine_oil":
+                    fail(f"annunciation_first_four_holy_week_days:{key}:{code}")
+            elif code != "fish_allowed":
+                fail(f"great_lent_annunciation:{key}:{code}")
+        elif day == palm_sunday:
             if code != "fish_allowed":
-                fail(f"great_lent_fish_exception:{key}:{code}")
+                fail(f"great_lent_palm_sunday:{key}:{code}")
+        elif day == pascha - timedelta(days=2):
+            if code != "strict":
+                fail(f"great_friday:{key}:{code}")
         elif day.weekday() in (5, 6) and day != holy_saturday:
             if code != "wine_oil":
                 fail(f"great_lent_weekend:{key}:{code}")
@@ -169,6 +211,7 @@ def main() -> None:
         fail("calendar_conversion_anchor")
     all_days = 0
     checked_fixed = 0
+    abstinence_days = 0
     for year in range(2026, 2051):
         payload = load_year(year)
         profiles = payload["fasting_profiles"]
@@ -185,6 +228,18 @@ def main() -> None:
             actual = resolve_fasting(item, profiles, year)
             key = f"{year}-{iso}"
             assert_food_contract(actual, key)
+            pascha_for_abstinence = update.orthodox_pascha_gregorian(day.year)
+            old_month, old_day = update._old_calendar_key(day)
+            offset = (day - pascha_for_abstinence).days
+            if offset in {-48, -47, -45}:
+                expected_abstinence_rule = "first_week_lent_optional_total_abstinence"
+            elif offset == -2 and (old_month, old_day) != (3, 25):
+                expected_abstinence_rule = "great_friday_optional_total_abstinence"
+            else:
+                expected_abstinence_rule = None
+            abstinence_found = assert_abstinence_contract(actual, key, expected_abstinence_rule)
+            if abstinence_found != (expected_abstinence_rule is not None):
+                fail(f"abstinence_day_mismatch:{key}:{abstinence_found}:{expected_abstinence_rule}")
             for field in ("code", "is_fast", "allowed"):
                 if field == "allowed":
                     actual_value = actual_allowed_for_asset(actual)
@@ -199,6 +254,8 @@ def main() -> None:
             if actual_rule != expected_rule:
                 fail(f"generator_rule_drift:{key}:{actual_rule}:{expected_rule}")
             assert_weekly_and_season_invariants(day, actual, key)
+            if abstinence_found:
+                abstinence_days += 1
             all_days += 1
 
         # Every fixed date in the old calendar is checked in every year.
@@ -219,7 +276,7 @@ def main() -> None:
 
     print(
         "FASTING_CALENDAR_2050_OK "
-        f"days={all_days} years=25 fixed_feast_dates={checked_fixed} "
+        f"days={all_days} years=25 fixed_feast_dates={checked_fixed} abstinence_days={abstinence_days} "
         "calendar=jerusalem_jordan_julian_old_calendar "
         "dormition_feast=fish_allowed weekday_overrides=checked seasons=checked"
     )

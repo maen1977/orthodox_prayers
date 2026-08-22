@@ -130,6 +130,26 @@ def test_future_days_have_offline_commemoration_without_inventing_named_saints()
     assert CANONICAL["policy"]["cross_language_fallback"] is False
 
 
+def test_dormition_fast_has_fourteen_days_and_separate_feast_day():
+    policy = json.loads((ROOT / "canonical/fasting_policy.json").read_text(encoding="utf-8"))
+    assert policy["dormition_fast_old_calendar"] == {
+        "start": "08-01",
+        "end": "08-14",
+        "feast_day": "08-15",
+        "feast_code": "fish_allowed",
+    }
+    asset = json.loads((ROOT / "app/src/main/assets/data/calendar/calendar_2026.json").read_text(encoding="utf-8"))
+    by_date = {day["date_iso"]: day for day in asset["days"]}
+    profiles = asset["fasting_profiles"]
+    for civil_iso in ("2026-08-27", "2026-08-28"):
+        fasting = profiles[by_date[civil_iso]["fasting"]["profile_id"]]
+        if civil_iso == "2026-08-27":
+            assert fasting["code"] in {"strict", "wine_oil"}
+        else:
+            assert fasting["code"] == "fish_allowed"
+            assert fasting["verification"]["rule"] == "dormition_feast_fish"
+
+
 def test_every_day_has_semantically_valid_fasting_rule_through_2050():
     result = subprocess.run(
         [sys.executable, "scripts/validate_fasting_calendar_2050.py"],

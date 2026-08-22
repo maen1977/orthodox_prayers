@@ -19,6 +19,7 @@ EXPECTED_ALLOWED = {
     "dairy_allowed": {"dairy", "eggs", "fish", "wine", "oil"},
     "fish_allowed": {"fish", "wine", "oil"},
     "wine_oil": {"wine", "oil"},
+    "wine_only": {"wine"},
     "strict": set(),
 }
 CLOCK = re.compile(r"^(?:[01]\d|2[0-3]):[0-5]\d$")
@@ -85,8 +86,12 @@ def validate_profile(profile: Any, pointer: str, errors: list[str]) -> None:
     if applies is True:
         if kind not in {"documented_interval", "until_communion", "until_service_end"}:
             errors.append(f"{pointer}.abstinence.kind: documented kind required when applies=true")
-        if status != "DOCUMENTED_OVERRIDE":
-            errors.append(f"{pointer}.abstinence.verification.status: DOCUMENTED_OVERRIDE required")
+        optional = profile.get("abstinence", {}).get("optional") is True
+        expected_status = "DOCUMENTED_OPTIONAL" if optional else "DOCUMENTED_OVERRIDE"
+        if status != expected_status:
+            errors.append(f"{pointer}.abstinence.verification.status: {expected_status} required")
+        if optional and (start is not None or end is not None):
+            errors.append(f"{pointer}.abstinence: optional documented practice must not assert clock times")
         if kind == "documented_interval":
             if not isinstance(start, str) or not CLOCK.fullmatch(start):
                 errors.append(f"{pointer}.abstinence.start_time: HH:MM required")

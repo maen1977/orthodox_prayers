@@ -113,6 +113,7 @@ FASTING_LEVEL_LOCALIZATION = {
     "dairy_allowed": ("Dairy, eggs, and fish permitted", "Ἐπιτρέπονται γαλακτοκομικά, αὐγὰ καὶ ψάρι"),
     "fish_allowed": ("Fish, oil, and wine permitted", "Ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος"),
     "wine_oil": ("Oil and wine permitted", "Ἐπιτρέπονται ἔλαιο καὶ οἶνος"),
+    "wine_only": ("Wine permitted only", "Ἐπιτρέπεται μόνον οἶνος"),
     "strict": ("Strict fast", "Αὐστηρὰ νηστεία"),
 }
 
@@ -125,6 +126,8 @@ FASTING_RULE_LOCALIZATION = {
     "major_feast_fast_free": ("Great feast", "Μεγάλη ἑορτή", "A great feast ends the associated fasting period.", "Ἡ μεγάλη ἑορτὴ καταλύει τὴν ἀντίστοιχη περίοδο νηστείας."),
     "cheesefare_week": ("Cheesefare Week", "Ἑβδομάδα Τυρινῆς", "Meat is omitted; dairy, eggs, fish, oil, and wine are permitted.", "Γίνεται ἀποχὴ ἀπὸ κρέας· ἐπιτρέπονται γαλακτοκομικά, αὐγά, ψάρι, ἔλαιο καὶ οἶνος."),
     "great_lent_fish_exception": ("Great Lent", "Μεγάλη Τεσσαρακοστή", "The Annunciation or Palm Sunday permits fish, oil, and wine during Great Lent.", "Ὁ Εὐαγγελισμὸς ἢ ἡ Κυριακὴ τῶν Βαΐων ἐπιτρέπει ψάρι, ἔλαιο καὶ οἶνο μέσα στὴ Μεγάλη Τεσσαρακοστή."),
+    "annunciation_paschal_collision_wine_oil": ("Annunciation in the first four days of Holy Week", "Εὐαγγελισμὸς στὶς τέσσερις πρῶτες ἡμέρες τῆς Μεγάλης Ἑβδομάδας", "When the Annunciation falls in the first four days of Holy Week, oil and wine are permitted but fish is not.", "Ὅταν ὁ Εὐαγγελισμὸς πέφτει στὶς τέσσερις πρῶτες ἡμέρες τῆς Μεγάλης Ἑβδομάδας, ἐπιτρέπονται ἔλαιο καὶ οἶνος ἀλλὰ ὄχι ψάρι."),
+    "annunciation_paschal_collision_wine_only": ("Annunciation on Great Friday or Holy Saturday", "Εὐαγγελισμὸς τὴ Μεγάλη Παρασκευὴ ἢ τὸ Μέγα Σάββατο", "When the Annunciation falls on Great Friday or Holy Saturday, wine is permitted but fish and oil are not.", "Ὅταν ὁ Εὐαγγελισμὸς πέφτει τὴ Μεγάλη Παρασκευὴ ἢ τὸ Μέγα Σάββατο, ἐπιτρέπεται οἶνος ἀλλὰ ὄχι ψάρι καὶ ἔλαιο."),
     "great_lent_weekend_wine_oil": ("Great Lent", "Μεγάλη Τεσσαρακοστή", "Oil and wine are permitted on Saturdays and Sundays of Great Lent, except Holy Saturday.", "Τὰ Σάββατα καὶ τὶς Κυριακὲς τῆς Μεγάλης Τεσσαρακοστῆς ἐπιτρέπονται ἔλαιο καὶ οἶνος, ἐκτὸς ἀπὸ τὸ Μέγα Σάββατο."),
     "great_lent_strict": ("Great Lent or Holy Week", "Μεγάλη Τεσσαρακοστὴ ἢ Μεγάλη Ἑβδομάδα", "The day falls within Great Lent or Holy Week.", "Ἡ ἡμέρα βρίσκεται μέσα στὴ Μεγάλη Τεσσαρακοστὴ ἢ τὴ Μεγάλη Ἑβδομάδα."),
     "single_day_strict_fast": ("One-day fast", "Μονοήμερη νηστεία", "This is a strict one-day fast.", "Πρόκειται γιὰ αὐστηρὴ μονοήμερη νηστεία."),
@@ -925,6 +928,7 @@ FASTING_LEVELS = {
     "dairy_allowed": {"allowed": {"dairy", "eggs", "fish", "wine", "oil"}, "level_ar": "الألبان والبيض والسمك مسموحة"},
     "fish_allowed": {"allowed": {"fish", "wine", "oil"}, "level_ar": "السمك والزيت والنبيذ مسموحة"},
     "wine_oil": {"allowed": {"wine", "oil"}, "level_ar": "الزيت والنبيذ مسموحان"},
+    "wine_only": {"allowed": {"wine"}, "level_ar": "النبيذ مسموح وحده"},
     "strict": {"allowed": set(), "level_ar": "صوم صارم"},
 }
 
@@ -979,6 +983,65 @@ def _fasting_profile(level: str, season_ar: str, reason_ar: str, source_rule: st
     return profile
 
 
+def _document_optional_first_week_lent_abstinence(profile: dict) -> dict:
+    """Attach the sourced optional total-abstinence practice for early Lent."""
+    profile["abstinence"] = {
+        "applies": True,
+        "optional": True,
+        "kind": "until_service_end",
+        "start_time": None,
+        "end_time": None,
+        "end_condition": loc(
+            "صيام انقطاعي اختياري لمن يستطيع في الأيام الشديدة من الأسبوع الأول للصوم الكبير؛ يكون كسر الانقطاع بعد صلاة الغروب أو خدمة السابق تقديسه بحسب ترتيب اليوم. من لا يستطيع ذلك لا يُلزم به.",
+            "Optional total abstinence for those who have the strength during the severe days of the first week of Great Lent; the fast is broken after Vespers or the Presanctified Liturgy according to the day's order. Those unable to do this are not bound to it.",
+            "Προαιρετικὴ πλήρης ἀποχὴ γιὰ ὅσους ἔχουν δύναμη κατὰ τὶς αὐστηρὲς ἡμέρες τῆς πρώτης ἑβδομάδας τῆς Μεγάλης Τεσσαρακοστῆς· ἡ ἀποχὴ λύεται μετὰ τὸν Ἑσπερινὸ ἢ τὴ Λειτουργία τῶν Προηγιασμένων, κατὰ τὴν τάξη τῆς ἡμέρας. Ὅσοι δὲν μποροῦν δὲν δεσμεύονται.",
+        ),
+        "detail": loc(
+            "تذكر القاعدة الكنسية ممارسة انقطاعية اختيارية في الأيام الأشد من الأسبوع الأول للصوم الكبير لمن يستطيع، مع مراعاة القدرة والإرشاد الروحي، ولا تحدد ساعة عامة للتطبيق.",
+            "The church rule documents optional total abstinence on the severe days of Great Lent's first week for those who have the strength, with pastoral guidance; it does not establish a universal clock time.",
+            "Ὁ ἐκκλησιαστικὸς κανόνας τεκμηριώνει προαιρετικὴ πλήρη ἀποχὴ στὶς αὐστηρὲς ἡμέρες τῆς πρώτης ἑβδομάδας τῆς Μεγάλης Τεσσαρακοστῆς γιὰ ὅσους ἔχουν δύναμη, μὲ ποιμαντικὴ καθοδήγηση· δὲν καθορίζει γενικὴ ὥρα.",
+        ),
+        "verification": {
+            "status": "DOCUMENTED_OPTIONAL",
+            "source": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
+            "rule": "first_week_lent_optional_total_abstinence",
+        },
+    }
+    return profile
+
+
+def _document_optional_great_friday_abstinence(profile: dict) -> dict:
+    """Attach the sourced optional total-abstinence practice for Great Friday.
+
+    OCA describes total abstinence until sunset or after the Vespers veneration
+    for those who have the strength, while explicitly allowing pastoral relief
+    for those unable to keep it. No universal clock time is inferred here.
+    """
+    profile["abstinence"] = {
+        "applies": True,
+        "optional": True,
+        "kind": "until_service_end",
+        "start_time": None,
+        "end_time": None,
+        "end_condition": loc(
+            "صيام انقطاعي اختياري لمن يستطيع: يمتنع عن الطعام والشراب حتى الغروب أو حتى إكرام الكفن في خدمة الغروب بحسب الترتيب الرعوي. من لا يستطيع ذلك لا يُلزم به، ويطلب إرشاد أبيه الروحي.",
+            "Optional total abstinence for those who have the strength: abstain from food and drink until sunset or until the veneration at Vespers, according to the pastoral order. Those unable to do this are not bound to it and should seek their spiritual father's guidance.",
+            "Προαιρετικὴ πλήρης ἀποχὴ γιὰ ὅσους ἔχουν δύναμη: ἀποχὴ ἀπὸ τροφὴ καὶ ποτὸ μέχρι τὴ δύση τοῦ ἡλίου ἢ μέχρι τὴν προσκύνηση στὸν Ἑσπερινό, κατὰ τὴν ποιμαντικὴ τάξη. Ὅσοι δὲν μποροῦν δὲν δεσμεύονται καὶ ζητοῦν καθοδήγηση ἀπὸ τὸν πνευματικό τους.",
+        ),
+        "detail": loc(
+            "تذكر قاعدة الصوم الانقطاعي الاختياري في الجمعة العظيمة لمن يستطيع، ولا تضع هذه القاعدة كإلزام عام أو كساعة موحدة.",
+            "The source documents optional total abstinence on Great Friday for those who have the strength; this is not a universal obligation or a guessed clock interval.",
+            "Ἡ πηγὴ τεκμηριώνει προαιρετικὴ πλήρη ἀποχὴ τὴ Μεγάλη Παρασκευὴ γιὰ ὅσους ἔχουν δύναμη· δὲν πρόκειται γιὰ γενικὴ ὑποχρέωση οὔτε γιὰ ὑποθετικὴ ὥρα.",
+        ),
+        "verification": {
+            "status": "DOCUMENTED_OPTIONAL",
+            "source": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
+            "rule": "great_friday_optional_total_abstinence",
+        },
+    }
+    return profile
+
+
 def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: date, apostles_end: date) -> dict:
     """Return a conservative old-calendar fasting profile.
 
@@ -1024,8 +1087,42 @@ def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: d
     holy_saturday = pascha - timedelta(days=1)
     palm_sunday = pascha - timedelta(days=7)
     if lent_start <= day <= holy_saturday:
-        if old_key == (3, 25) or day == palm_sunday:
-            return _fasting_profile("fish_allowed", "الصوم الكبير", "فسحة عيد البشارة أو أحد الشعانين داخل الصوم الكبير.", "great_lent_fish_exception")
+        if old_key == (3, 25):
+            if day in {pascha - timedelta(days=2), holy_saturday}:
+                return _fasting_profile(
+                    "wine_only",
+                    "عيد البشارة والجمعة العظيمة أو السبت العظيم",
+                    "إذا وقع عيد البشارة في الجمعة العظيمة أو السبت العظيم، يُسمح بالنبيذ وحده، ولا يُسمح بالسمك أو الزيت بحسب الحكم الموثق.",
+                    "annunciation_paschal_collision_wine_only",
+                )
+            if pascha - timedelta(days=6) <= day <= pascha - timedelta(days=3):
+                return _fasting_profile(
+                    "wine_oil",
+                    "عيد البشارة وأسبوع الآلام",
+                    "إذا وقع عيد البشارة في الأيام الأربعة الأولى من أسبوع الآلام، يُسمح بالزيت والنبيذ دون السمك بحسب الحكم الموثق.",
+                    "annunciation_paschal_collision_wine_oil",
+                )
+            return _fasting_profile("fish_allowed", "الصوم الكبير", "فسحة عيد البشارة داخل الصوم الكبير.", "great_lent_fish_exception")
+        if day == palm_sunday:
+            return _fasting_profile("fish_allowed", "الصوم الكبير", "فسحة أحد الشعانين داخل الصوم الكبير.", "great_lent_fish_exception")
+        if day in {lent_start, lent_start + timedelta(days=1), lent_start + timedelta(days=3)}:
+            return _document_optional_first_week_lent_abstinence(
+                _fasting_profile(
+                    "strict",
+                    "الأسبوع الأول من الصوم الكبير",
+                    "اليوم من الأيام الأشد في الأسبوع الأول للصوم الكبير، ويذكر المصدر صومًا انقطاعيًا اختياريًا لمن يستطيع دون ساعة عامة موحدة.",
+                    "first_week_lent_optional_total_abstinence",
+                )
+            )
+        if day == pascha - timedelta(days=2):
+            return _document_optional_great_friday_abstinence(
+                _fasting_profile(
+                    "strict",
+                    "الجمعة العظيمة وأسبوع الآلام",
+                    "الجمعة العظيمة يوم صوم صارم، وتذكر المصادر صومًا انقطاعيًا اختياريًا لمن يستطيع حتى الغروب أو إكرام الكفن.",
+                    "great_friday_optional_total_abstinence",
+                )
+            )
         if weekday in (5, 6) and day != holy_saturday:
             return _fasting_profile("wine_oil", "الصوم الكبير", "في سبوت وآحاد الصوم الكبير يُسمح بالزيت والنبيذ، ما عدا السبت العظيم.", "great_lent_weekend_wine_oil")
         return _fasting_profile("strict", "الصوم الكبير أو أسبوع الآلام", "اليوم داخل الصوم الكبير أو أسبوع الآلام.", "great_lent_strict")

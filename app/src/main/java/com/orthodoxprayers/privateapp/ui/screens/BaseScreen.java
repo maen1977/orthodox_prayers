@@ -128,7 +128,10 @@ public abstract class BaseScreen implements AppScreen {
             String interval = localFormat(com.orthodoxprayers.privateapp.R.string.ui_fasting_interval_format, start, end);
             abstinenceText = interval + (abstinenceText.isEmpty() ? "" : "\n" + abstinenceText);
         }
-        String label = local(com.orthodoxprayers.privateapp.R.string.ui_total_abstinence_4bf885f8);
+        boolean optional = abstinence.optBoolean("optional", false);
+        String label = local(optional
+                ? com.orthodoxprayers.privateapp.R.string.ui_optional_abstinence_7c3e2a11
+                : com.orthodoxprayers.privateapp.R.string.ui_total_abstinence_4bf885f8);
         if (!abstinenceText.isEmpty()) addGuideLine(card, "⏳", label + ": " + abstinenceText, false);
     }
 
