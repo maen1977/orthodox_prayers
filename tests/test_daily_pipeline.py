@@ -540,6 +540,16 @@ class DailyPipelineTests(unittest.TestCase):
         dormition_feast = self.update.day_info(transfiguration)["fasting"]
         self.assertEqual(dormition_feast["code"], "fish_allowed")
 
+        dormition = self.update.julian_to_gregorian_date(2026, 8, 15)
+        dormition_friday = self.update.day_info(dormition)["fasting"]
+        self.assertEqual(dormition, date(2026, 8, 28))
+        self.assertEqual(dormition_friday["code"], "fish_allowed")
+        self.assertTrue(dormition_friday["allowed"]["fish"])
+        self.assertTrue(dormition_friday["allowed"]["oil"])
+        self.assertFalse(dormition_friday["allowed"]["meat"])
+        self.assertFalse(dormition_friday["allowed"]["dairy"])
+        self.assertEqual(dormition_friday["verification"]["rule"], "dormition_feast_fish")
+
         entry = self.update.julian_to_gregorian_date(2026, 11, 21)
         nativity_feast = self.update.day_info(entry)["fasting"]
         self.assertEqual(nativity_feast["code"], "fish_allowed")

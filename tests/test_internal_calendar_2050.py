@@ -1,4 +1,6 @@
 import json
+import subprocess
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -126,6 +128,18 @@ def test_future_days_have_offline_commemoration_without_inventing_named_saints()
     assert CANONICAL["policy"]["named_saints_require_verified_native_source"] is True
     assert CANONICAL["policy"]["machine_translation"] is False
     assert CANONICAL["policy"]["cross_language_fallback"] is False
+
+
+def test_every_day_has_semantically_valid_fasting_rule_through_2050():
+    result = subprocess.run(
+        [sys.executable, "scripts/validate_fasting_calendar_2050.py"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert "FASTING_CALENDAR_2050_OK days=9131 years=25" in result.stdout
+    assert "dormition_feast=fish_allowed" in result.stdout
 
 
 def test_android_uses_year_index_and_exact_nine_day_contract():

@@ -417,6 +417,11 @@ def _compact_fasting(item: dict) -> dict:
         "is_fast": bool(fasting.get("is_fast")),
         "display_icons": fasting.get("display_icons") or [],
         "items": fasting.get("items") or [],
+        "verification": {
+            "status": str((fasting.get("verification") or {}).get("status") or "TYPICON_BASELINE"),
+            "policy": str((fasting.get("verification") or {}).get("policy") or "canonical/fasting_policy.json"),
+            "rule": str((fasting.get("verification") or {}).get("rule") or ""),
+        },
         "abstinence": (
             fasting.get("abstinence")
             if isinstance(fasting.get("abstinence"), dict)

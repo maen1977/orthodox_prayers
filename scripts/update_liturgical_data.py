@@ -132,6 +132,7 @@ FASTING_RULE_LOCALIZATION = {
     "apostles_fast_tue_thu": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "Oil and wine are permitted on Tuesday and Thursday according to the general rule.", "Τὴν Τρίτη καὶ τὴν Πέμπτη ἐπιτρέπονται ἔλαιο καὶ οἶνος κατὰ τὸν γενικὸ κανόνα."),
     "apostles_fast_mon_wed_fri": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "The general rule is a strict fast on Monday, Wednesday, and Friday.", "Ὁ γενικὸς κανόνας προβλέπει αὐστηρὰ νηστεία Δευτέρα, Τετάρτη καὶ Παρασκευή."),
     "dormition_transfiguration_fish": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The Transfiguration permits fish, oil, and wine during the Dormition Fast.", "Ἡ Μεταμόρφωση ἐπιτρέπει ψάρι, ἔλαιο καὶ οἶνο μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
+    "dormition_feast_fish": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The Feast of the Dormition permits fish, oil, olives, and wine while meat, dairy, and eggs remain excluded.", "Ἡ ἑορτὴ τῆς Κοιμήσεως ἐπιτρέπει ψάρι, ἔλαιο, ἐλιές καὶ οἶνο, ἐνῶ κρέας, γαλακτοκομικὰ καὶ αὐγὰ παραμένουν ἀπαγορευμένα."),
     "dormition_weekend_wine_oil": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "Oil and wine are permitted on Saturdays and Sundays.", "Τὰ Σάββατα καὶ τὶς Κυριακὲς ἐπιτρέπονται ἔλαιο καὶ οἶνος."),
     "dormition_strict": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The day falls within the Dormition Fast.", "Ἡ ἡμέρα βρίσκεται μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
     "nativity_entry_theotokos_fish": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The Entry of the Theotokos permits fish, oil, and wine.", "Στὰ Εἰσόδια τῆς Θεοτόκου ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος."),
@@ -1002,8 +1003,15 @@ def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: d
         return _fasting_profile("fast_free", "أسبوع ما بعد العنصرة", "الأسبوع التالي لعيد العنصرة خالٍ من الصوم.", "pentecost_fast_free_week")
     if (jm == 12 and jd >= 25) or (jm == 1 and jd <= 4):
         return _fasting_profile("fast_free", "أيام الميلاد", "من عيد الميلاد حتى اليوم السابق لبرامون الظهور الإلهي لا صوم عام.", "nativity_to_theophany_fast_free")
-    if old_key in {(1, 6), (6, 29), (8, 15), (12, 25)}:
+    if old_key in {(1, 6), (6, 29), (12, 25)}:
         return _fasting_profile("fast_free", "عيد سيدي أو عيد كبير", "اليوم عيد كبير وتنتهي فيه فترة الصوم المرتبطة به.", "major_feast_fast_free")
+    if old_key == (8, 15):
+        return _fasting_profile(
+            "fish_allowed",
+            "صوم السيدة والدة الإله",
+            "عيد رقاد السيدة داخل تقليد الصوم: تُعطى فسحة السمك والزيت والزيتون والنبيذ، مع بقاء الامتناع عن اللحوم والألبان والبيض.",
+            "dormition_feast_fish",
+        )
 
     # Cheesefare week: no meat, but dairy/eggs/fish/wine/oil are allowed.
     cheesefare_start = pascha - timedelta(days=55)
