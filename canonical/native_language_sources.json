@@ -31,6 +31,7 @@
       "allowed_sources": [
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
+        "jerusalem_patriarchate_english_timetable_2019",
         "holy_trinity_calendar_en_comparative",
         "goarch_digital_chant_stand_english",
         "goarch_synekdemos",
@@ -172,6 +173,18 @@
       ],
       "permission_confirmed": true,
       "name": "Greek Orthodox Patriarchate of Jerusalem — English"
+    },
+    "jerusalem_patriarchate_english_timetable_2019": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://en.jerusalem-patriarchate.info/timetable-of-church-services-2/",
+      "capabilities": ["calendar", "daily_calendar", "fixed_daily_commemorations", "feasts"],
+      "jurisdiction": "jerusalem_patriarchate",
+      "source_year": 2019,
+      "calendar_style": "julian_old_calendar",
+      "status": "VERIFIED_NATIVE_LOCAL_ENGLISH_SOURCE",
+      "permission_confirmed": true,
+      "name": "Jerusalem Patriarchate — official English timetable 2019"
     },
     "goarch_digital_chant_stand_english": {
       "language": "en",

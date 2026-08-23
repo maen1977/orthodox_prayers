@@ -136,20 +136,19 @@ def test_future_days_have_offline_commemoration_without_inventing_named_saints()
     assert CANONICAL["policy"]["cross_language_fallback"] is False
 
 
-def test_comparative_english_lane_is_sidecar_backed_and_never_local():
+def test_local_english_timetable_is_embedded_and_leap_slot_remains_comparative():
     day = BY_DATE["2026-03-02"]
     assert day["feast"]["ar"] == "القديس ثيودوروس العظيم في الشهداء التيروني وتذكار القديسين ماركيانوس وبلخيريا"
     assert day["feast"]["el"] == "Μνήμη τῶν Ἁγίων τῆς 17ης Φεβρουαρίου κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
-    assert day["feast"]["en"] == "Commemoration of the saints of February 17 on the Old Church Calendar"
-    assert day["commemoration"]["source_kind"] == "mixed_native_and_comparative_lanes"
+    assert day["feast"]["en"] == "Of the Souls, Theodore the Tyro, Marcian & Pulcheria"
+    assert day["commemoration"]["source_kind"] == "verified_local_native_lane"
     evidence = json.loads((ROOT / "canonical/jerusalem_jordan_fixed_commemorations_native.json").read_text(encoding="utf-8"))
     evidence_day = next(item for item in evidence["records"] if item["old_calendar_month_day"] == "02-17")
     provenance = evidence_day["lanes"]["en"]
-    assert provenance["comparative"] is True
-    assert provenance["jurisdiction"] == "comparative_not_jerusalem_jordan"
-    assert provenance["evidence_status"] == "COMPARATIVE_NATIVE_ENGLISH_SOURCE"
-    sidecar = json.loads((ROOT / "app/src/main/assets/data/calendar/comparative_english.json").read_text(encoding="utf-8"))
-    assert "Great-martyr Theodore" in sidecar["entries"]["02-17"]["text"]
+    assert provenance["source_id"] == "jerusalem_patriarchate_english_timetable_2019"
+    assert provenance["comparative"] is False
+    assert provenance["jurisdiction"] == "jerusalem_patriarchate"
+    assert provenance["evidence_status"] == "VERIFIED_NATIVE_LOCAL_ENGLISH_SOURCE"
 
 
 def test_dormition_fast_has_fourteen_days_and_separate_feast_day():
@@ -202,29 +201,31 @@ def test_android_uses_year_index_and_exact_nine_day_contract():
     assert 'next.setEnabled(month.isBefore(MAX_MONTH))' in screen
 
 
-def test_verified_local_greek_and_comparative_english_lanes_are_language_isolated():
+def test_verified_local_greek_and_local_english_lanes_are_language_isolated():
     day = BY_DATE["2026-08-08"]
     assert day["feast"]["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
     assert day["feast"]["ar"] == "القديسان الشهيدان إرمولاوس الأسقف وبراسكيفي البارّة الروميّة"
-    assert day["feast"]["en"] == "Commemoration of the saints of July 26 on the Old Church Calendar"
+    assert day["feast"]["en"] == "Holy Martyr Paraskeve , Hieromartyr Hermolaus"
     evidence = json.loads((ROOT / "canonical/jerusalem_jordan_fixed_commemorations_native.json").read_text(encoding="utf-8"))
     evidence_day = next(item for item in evidence["records"] if item["old_calendar_month_day"] == "07-26")
     assert evidence_day["lanes"]["el"]["comparative"] is False
     assert evidence_day["lanes"]["el"]["jurisdiction"] == "jerusalem_patriarchate"
-    assert evidence_day["lanes"]["en"]["comparative"] is True
-    assert evidence_day["lanes"]["en"]["jurisdiction"] == "comparative_not_jerusalem_jordan"
+    assert evidence_day["lanes"]["en"]["comparative"] is False
+    assert evidence_day["lanes"]["en"]["jurisdiction"] == "jerusalem_patriarchate"
 
 
 def test_comparative_english_sidecar_preserves_full_text_without_asset_bloat():
     asset = json.loads((ROOT / "app/src/main/assets/data/calendar/comparative_english.json").read_text(encoding="utf-8"))
-    day_asset = json.loads((ROOT / "app/src/main/assets/data/calendar/calendar_2026.json").read_text(encoding="utf-8"))
-    day = next(item for item in day_asset["days"] if item["date_iso"] == "2026-03-02")
+    day_asset = json.loads((ROOT / "app/src/main/assets/data/calendar/calendar_2028.json").read_text(encoding="utf-8"))
+    day = next(item for item in day_asset["days"] if item["date_iso"] == "2028-03-13")
     reference = day["comparative_en_ref"]
     entry = asset["entries"][reference]
+    assert reference == "02-29"
     assert entry["comparative"] is True
     assert entry["jurisdiction"] == "comparative_not_jerusalem_jordan"
-    assert "Great-martyr Theodore" in entry["text"]
-    assert day["feast"]["en"] == "Commemoration of the saints of February 17 on the Old Church Calendar"
+    assert "Venerable John Cassian" in entry["text"]
+    assert day["feast"]["en"] == "Commemoration of the saints of February 29 on the Old Church Calendar"
+    assert set(asset["entries"]) == {"02-29"}
     repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
     assert "comparative_english.json" in repository
     assert "resolveComparativeEnglishCommemoration" in repository

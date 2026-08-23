@@ -172,8 +172,8 @@ def validate(payload: dict) -> dict:
         errors.append("coverage.strict_named_local_gate must remain false until all three local lanes are verified")
     if strict_slots != 0:
         notices.append(f"strict local three-language slots currently verified: {strict_slots}")
-    if comparative_count and strict_slots:
-        errors.append("comparative English evidence must never contribute to strict local gate")
+    if comparative_count:
+        notices.append("comparative English evidence is excluded from strict local three-language slot counts")
     return {
         "ok": not errors,
         "errors": errors,

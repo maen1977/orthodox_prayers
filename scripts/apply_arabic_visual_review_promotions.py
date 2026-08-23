@@ -42,17 +42,23 @@ def apply(evidence: dict, packet: dict) -> tuple[dict, dict]:
         lane["fixed_slot_eligible"] = True
         lane["eligibility_reason"] = "VISUALLY_REVIEWED_SOURCE_PAGE_CROP"
         changed += 1
+    pending_slots = sorted(
+        slot for slot, row in by_slot.items()
+        if row.get("lanes", {}).get("ar", {}).get("evidence_status")
+        != "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE"
+        or row.get("lanes", {}).get("ar", {}).get("fixed_slot_eligible") is not True
+    )
     evidence["coverage"]["strict_named_local_gate"] = False
-    evidence["coverage"]["arabic_visual_review_promoted_slots"] = changed
-    evidence["coverage"]["arabic_visual_review_pending_slots"] = len(records) - changed
+    evidence["coverage"]["arabic_visual_review_promoted_slots"] = len(records) - len(pending_slots)
+    evidence["coverage"]["arabic_visual_review_pending_slots"] = len(pending_slots)
     evidence["coverage"]["strict_gate_note"] = (
         "Arabic promotions are local and visually reviewed; the strict three-language gate remains false "
         "because the English lane is comparative rather than Jerusalem/Jordan local."
     )
     summary = {
-        "promoted_arabic_slots": changed,
-        "pending_arabic_slots": len(records) - changed,
-        "excluded_pending_slots": packet.get("excluded_pending_slots", []),
+        "promoted_arabic_slots": len(records) - len(pending_slots),
+        "pending_arabic_slots": len(pending_slots),
+        "pending_slots": pending_slots,
         "strict_named_local_gate": evidence["coverage"]["strict_named_local_gate"],
     }
     return evidence, summary

@@ -20,17 +20,17 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
         self.assertTrue(report["ok"], report["errors"])
         self.assertEqual(366, report["coverage"]["records"])
         self.assertEqual(366, report["coverage"]["expected_slots"])
-        self.assertEqual(0, report["coverage"]["strict_local_three_language_slots"])
-        self.assertEqual(366, report["coverage"]["comparative_lane_entries"])
+        self.assertEqual(310, report["coverage"]["strict_local_three_language_slots"])
+        self.assertEqual(1, report["coverage"]["comparative_lane_entries"])
 
     def test_arabic_visual_review_promotions_are_source_backed_and_not_strict_gate(self):
         packet = json.loads((ROOT / "canonical/arabic_visual_review_promotions.json").read_text(encoding="utf-8"))
-        self.assertEqual(361, packet["reviewed_count"])
-        self.assertEqual(361, len(packet["records"]))
+        self.assertEqual(366, packet["reviewed_count"])
+        self.assertEqual(366, len(packet["records"]))
         self.assertFalse(packet["machine_translation_used"])
         self.assertFalse(packet["cross_language_fallback"])
-        self.assertEqual(361, self.payload["coverage"]["arabic_visual_review_promoted_slots"])
-        self.assertEqual(5, self.payload["coverage"]["arabic_visual_review_pending_slots"])
+        self.assertEqual(366, self.payload["coverage"]["arabic_visual_review_promoted_slots"])
+        self.assertEqual(0, self.payload["coverage"]["arabic_visual_review_pending_slots"])
         self.assertFalse(self.payload["coverage"]["strict_named_local_gate"])
         for slot, text in packet["records"].items():
             record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == slot)
@@ -41,8 +41,23 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
             self.assertFalse(arabic["comparative"], slot)
             self.assertEqual("jerusalem_patriarchate", arabic["jurisdiction"], slot)
 
+    def test_jerusalem_english_timetable_covers_365_local_slots_only(self):
+        local = [
+            row["lanes"]["en"]
+            for row in self.payload["records"]
+            if row["lanes"]["en"]["source_id"] == "jerusalem_patriarchate_english_timetable_2019"
+        ]
+        self.assertEqual(365, len(local))
+        self.assertTrue(all(entry["comparative"] is False for entry in local))
+        self.assertTrue(all(entry["fixed_slot_eligible"] is True for entry in local))
+        self.assertEqual(1, self.payload["coverage"]["en_comparative_records"])
+        leap = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == "02-29")
+        self.assertEqual("holy_trinity_calendar_en_comparative", leap["lanes"]["en"]["source_id"])
+        self.assertTrue(leap["lanes"]["en"]["comparative"])
+        self.assertFalse(self.payload["coverage"]["strict_named_local_gate"])
+
     def test_pending_arabic_slots_remain_visual_review_only(self):
-        expected_pending = ["02-16", "04-23", "06-18", "07-31", "11-13"]
+        expected_pending = []
         pending = []
         for record in self.payload["records"]:
             arabic = record["lanes"]["ar"]
@@ -88,7 +103,7 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
 
     def test_comparative_source_cannot_be_promoted_to_local(self):
         payload = copy.deepcopy(self.payload)
-        record = next(row for row in payload["records"] if row["old_calendar_month_day"] == "01-01")
+        record = next(row for row in payload["records"] if row["old_calendar_month_day"] == "02-29")
         english = record["lanes"]["en"]
         english["comparative"] = False
         english["jurisdiction"] = "jerusalem_patriarchate"

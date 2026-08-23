@@ -39,10 +39,12 @@ def test_august_8_2026_uses_native_greek_lane_without_cross_language_copy():
     assert day["julian_date"] == "2026-07-26"
     names = day["commemoration"]["name"]
     assert names["ar"] == "القديسان الشهيدان إرمولاوس الأسقف وبراسكيفي البارّة الروميّة"
-    assert names["en"] == "Commemoration of the saints of July 26 on the Old Church Calendar"
+    assert names["en"] == "Holy Martyr Paraskeve , Hieromartyr Hermolaus"
     assert "26 تموز" not in names["en"]
-    sidecar = json.loads((ROOT / "app/src/main/assets/data/calendar/comparative_english.json").read_text(encoding="utf-8"))
-    assert "Hieromartyrs Hermolaus" in sidecar["entries"]["07-26"]["text"]
+    evidence = json.loads((ROOT / "canonical/jerusalem_jordan_fixed_commemorations_native.json").read_text(encoding="utf-8"))
+    evidence_day = next(item for item in evidence["records"] if item["old_calendar_month_day"] == "07-26")
+    assert evidence_day["lanes"]["en"]["source_id"] == "jerusalem_patriarchate_english_timetable_2019"
+    assert evidence_day["lanes"]["en"]["comparative"] is False
     assert names["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
 
 

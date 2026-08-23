@@ -33,6 +33,7 @@ NAME_AR = {
     "jerusalem_hagiotaphite_calendar_ar_2024": "بطريركية القدس — التقويم العربي الهاغيوتافي 2024",
     "jerusalem_hagiotaphite_calendar_ar_2026": "بطريركية القدس — التقويم العربي الهاغيوتافي 2026",
     "jerusalem_patriarchate_en": "بطريركية الروم الأرثوذكس المقدسية — الإنجليزية",
+    "jerusalem_patriarchate_english_timetable_2019": "بطريركية القدس — الجدول الإنجليزي الرسمي للتذكارات اليومية 2019",
     "jerusalem_patriarchate_el": "بطريركية الروم الأرثوذكس المقدسية — اليونانية",
     "jerusalem_hagiotaphite_calendar_el_2024": "بطريركية القدس — التقويم اليوناني الهاغيوتافي 2024",
     "jerusalem_hagiotaphite_calendar_el_2025": "بطريركية القدس — التقويم اليوناني الهاغيوتافي 2025",
@@ -56,6 +57,7 @@ NAME_AR = {
 NAME_EN = {
     "jerusalem_hagiotaphite_calendar_ar_2024": "Jerusalem Patriarchate — Hagiotaphite Arabic Calendar 2024",
     "jerusalem_hagiotaphite_calendar_ar_2026": "Jerusalem Patriarchate — Hagiotaphite Arabic Calendar 2026",
+    "jerusalem_patriarchate_english_timetable_2019": "Jerusalem Patriarchate — official English daily timetable 2019",
     "holy_trinity_calendar_en_comparative": "Holy Trinity Russian Orthodox Church — comparative English calendar",
     "jerusalem_hagiotaphite_calendar_el_2024": "Jerusalem Patriarchate — Hagiotaphite Greek Calendar 2024",
     "jerusalem_hagiotaphite_calendar_el_2025": "Jerusalem Patriarchate — Hagiotaphite Greek Calendar 2025",
@@ -64,6 +66,7 @@ NAME_EN = {
 NAME_EL = {
     "jerusalem_hagiotaphite_calendar_ar_2024": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἀραβικὸν Ἡμερολόγιον 2024",
     "jerusalem_hagiotaphite_calendar_ar_2026": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἀραβικὸν Ἡμερολόγιον 2026",
+    "jerusalem_patriarchate_english_timetable_2019": "Πατριαρχεῖον Ἱεροσολύμων — ἐπίσημον Ἀγγλικὸν Ἡμερολόγιον 2019",
     "holy_trinity_calendar_en_comparative": "Ἱερὰ Μονὴ Ἁγίας Τριάδος — συγκριτικὸ Ἀγγλικὸ Ἡμερολόγιον",
     "jerusalem_hagiotaphite_calendar_el_2024": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἑλληνικὸν Ἡμερολόγιον 2024",
     "jerusalem_hagiotaphite_calendar_el_2025": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἑλληνικὸν Ἡμερολόγιον 2025",
@@ -73,6 +76,7 @@ NAME_EL = {
 USAGE_AR = {
     "orthodox_jordan": "المرجع المحلي الأعلى للأردن: التقويم القديم، الصوم، الكنائس، الصلوات والمراجع اليومية.",
     "jerusalem_patriarchate_en": "سلطة الاختصاص الكنسي والأعياد الكبرى والتقويم المقدسي.",
+    "jerusalem_patriarchate_english_timetable_2019": "صفحة رسمية إنجليزية لبطريركية القدس؛ توفر 365 خانة للتقويم القديم لعام 2019، ولا تشمل 29 شباط.",
     "jerusalem_hagiotaphite_calendar_ar_2024": "تقويم عربي مقدسي سنوي كبيس؛ النصوص قيد المراجعة البصرية قبل الترقية.",
     "jerusalem_hagiotaphite_calendar_ar_2026": "تقويم عربي مقدسي سنوي؛ النصوص قيد المراجعة البصرية قبل الترقية.",
     "holy_trinity_calendar_en_comparative": "تقويم إنجليزي أصلي للمقارنة فقط؛ ليس مرجع القدس/الأردن ولا يفتح بوابة R64.",
