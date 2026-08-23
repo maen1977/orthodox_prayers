@@ -280,6 +280,7 @@ def harvest(args) -> dict:
     suffixes = cfg["allowed_domain_suffixes"]
     keyword_map = cfg["relevance_keywords"]
     roots = cfg["roots"]
+    direct_documents = cfg.get("direct_documents") or []
     fetcher = Fetcher(args.cache_dir, args.timeout, args.attempts, args.rate, args.refresh)
 
     discovered: set[str] = set()
@@ -293,6 +294,19 @@ def harvest(args) -> dict:
             if "sitemap" in urllib.parse.urlsplit(u).path: sitemap_queue.append((u, root["id"]))
             else: page_queue.append((u, root["id"], 0))
         root_ids.setdefault(root["id"], set()).add(normalized_url(root["url"]))
+
+    # Some official annual calendars are linked from historical pages but are
+    # not present in a sitemap. Seed them explicitly and preserve their
+    # authority/language metadata in the harvest record. They are evidence
+    # documents only until native-language and parser verification is complete.
+    direct_by_url = {}
+    for direct in direct_documents:
+        u = normalized_url(str(direct.get("url") or ""))
+        host = urllib.parse.urlsplit(u).hostname if u else ""
+        if not u or not host_allowed(host or "", suffixes):
+            raise RuntimeError(f"direct document outside official network: {direct.get('url')}")
+        direct_by_url[u] = dict(direct)
+        page_queue.append((u, f"direct:{direct.get('id') or 'document'}", 0))
 
     sitemap_seen = set(); sitemap_failures = []; sitemap_stats = Counter()
     # Sitemap discovery is sequential and small; nested sitemap indexes are followed.
@@ -356,11 +370,20 @@ def harvest(args) -> dict:
                     else:
                         title = Path(urllib.parse.urlsplit(final).path).name
                     categories = classify(text, final, keyword_map)
+                    direct_meta = direct_by_url.get(u) or direct_by_url.get(final)
+                    if direct_meta:
+                        categories = sorted(set(categories).union({"calendar"}))
                     record = {
                         "url": final, "requested_url": u, "root_ids": sorted(info["roots"]), "depth": info["depth"],
                         "title": title, "content_type": ctype, "sha256": meta.get("sha256"), "bytes": meta.get("bytes"),
                         "cache_hit": bool(cache_hit), "categories": categories, "excerpt": excerpt(text),
                     }
+                    if direct_meta:
+                        record["source_document_id"] = direct_meta.get("id")
+                        record["source_language"] = direct_meta.get("language")
+                        record["source_authority"] = direct_meta.get("authority")
+                        record["coverage_note"] = direct_meta.get("coverage")
+                        record["promotion_note"] = direct_meta.get("promotion")
                     records.append(record)
                     # Recursive same-network discovery from public HTML.
                     if info["depth"] < args.max_depth:

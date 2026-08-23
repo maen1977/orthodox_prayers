@@ -12,24 +12,38 @@
   },
   "coverage": {
     "calendar_days": 9131,
-    "reading_resolved_days": 0,
+    "reading_resolved_days": 182,
     "fasting_complete_days": 9131,
     "service_selected_days": 9131,
     "commemoration_display_complete_days": 9131,
-    "named_commemoration_days": 2144,
-    "generic_commemoration_days": 6987,
+    "named_commemoration_days": 2151,
+    "generic_commemoration_days": 6980,
     "perpetual_baseline_dates": 0,
     "official_harvest_documents": 0,
+    "official_direct_documents_configured": 1,
+    "official_direct_document_ids": [
+      "jerusalem_patriarchate_calendar_2026_ar"
+    ],
     "old_calendar_slots_with_arabic_candidate": 0
+  },
+  "commemoration_policy": {
+    "required_native_languages": [
+      "ar",
+      "en",
+      "el"
+    ],
+    "generic_old_calendar_date_label_is_not_named": true,
+    "status": "INCOMPLETE",
+    "note": "An official Arabic annual calendar is evidence-only until native English and Greek sources and parser verification are available; it is not promoted automatically."
   },
   "missing_dates": [],
   "extra_dates": [],
   "problem_counts": {
-    "reading_unresolved": 9131,
+    "reading_unresolved": 8949,
     "fasting_incomplete": 0,
     "service_incomplete": 0,
     "commemoration_incomplete": 0,
-    "generic_commemoration": 6987
+    "generic_commemoration": 6980
   },
   "problem_samples": {
     "reading_unresolved": [

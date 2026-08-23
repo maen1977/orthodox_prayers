@@ -134,7 +134,7 @@ jobs:
       - name: Check content, languages, security, and calendar
         run: python scripts/run_local_daily_release_gate.py
 
-      - name: Check absolute named commemoration coverage through 2050
+      - name: Report absolute named commemoration coverage through 2050
         id: r64-strict-named-coverage
         shell: bash
         run: |
@@ -144,7 +144,13 @@ jobs:
           else
             echo "complete=false" >> "$GITHUB_OUTPUT"
             echo "R64 named commemoration coverage is incomplete on this branch; the audit artifact contains the exact gaps." >&2
-            echo "::warning::R64 named commemoration coverage is incomplete; release publishing remains blocked until it is complete."
+            echo "::notice title=R64 content advisory::Named commemoration coverage is incomplete; release publishing remains blocked until native source coverage is complete."
+            {
+              echo "## R64 named commemoration coverage"
+              echo "The build artifact is available. This is a content-completeness advisory, not a build failure."
+              jq -r '"- Generic date-based records: " + ((.coverage.generic_commemoration_days // 0)|tostring), "- Named records: " + ((.coverage.named_commemoration_days // 0)|tostring), "- Official direct source documents configured: " + ((.coverage.official_direct_documents_configured // 0)|tostring)' canonical/r64_absolute_coverage_audit.json
+              echo "Release/tag publishing remains fail-closed until native Arabic, English, and Greek evidence covers the horizon."
+            } >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload R64 coverage evidence even when strict coverage fails
