@@ -25,12 +25,12 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
 
     def test_arabic_visual_review_promotions_are_source_backed_and_not_strict_gate(self):
         packet = json.loads((ROOT / "canonical/arabic_visual_review_promotions.json").read_text(encoding="utf-8"))
-        self.assertEqual(148, packet["reviewed_count"])
-        self.assertEqual(148, len(packet["records"]))
+        self.assertEqual(361, packet["reviewed_count"])
+        self.assertEqual(361, len(packet["records"]))
         self.assertFalse(packet["machine_translation_used"])
         self.assertFalse(packet["cross_language_fallback"])
-        self.assertEqual(148, self.payload["coverage"]["arabic_visual_review_promoted_slots"])
-        self.assertEqual(218, self.payload["coverage"]["arabic_visual_review_pending_slots"])
+        self.assertEqual(361, self.payload["coverage"]["arabic_visual_review_promoted_slots"])
+        self.assertEqual(5, self.payload["coverage"]["arabic_visual_review_pending_slots"])
         self.assertFalse(self.payload["coverage"]["strict_named_local_gate"])
         for slot, text in packet["records"].items():
             record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == slot)
@@ -40,6 +40,32 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
             self.assertTrue(arabic["fixed_slot_eligible"], slot)
             self.assertFalse(arabic["comparative"], slot)
             self.assertEqual("jerusalem_patriarchate", arabic["jurisdiction"], slot)
+
+    def test_pending_arabic_slots_remain_visual_review_only(self):
+        expected_pending = ["02-16", "04-23", "06-18", "07-31", "11-13"]
+        pending = []
+        for record in self.payload["records"]:
+            arabic = record["lanes"]["ar"]
+            if arabic["evidence_status"] == "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW":
+                pending.append(record["old_calendar_month_day"])
+                self.assertFalse(arabic["fixed_slot_eligible"], record["old_calendar_month_day"])
+                self.assertFalse(arabic["comparative"], record["old_calendar_month_day"])
+        self.assertEqual(expected_pending, sorted(pending))
+        self.assertFalse(self.payload["coverage"]["strict_named_local_gate"])
+
+    def test_greek_glyph_review_is_local_and_language_independent(self):
+        expected = {
+            "03-26": "Σύναξις Ἀρχαγγέλου Γαβριήλ",
+            "05-25": "Τῶν Ψυχῶν, Γ’ Εὕρεσις τιμίας Κεφαλῆς Ἰωάννου Προδρόμου",
+        }
+        for slot, text in expected.items():
+            record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == slot)
+            greek = record["lanes"]["el"]
+            self.assertEqual(text, greek["text"], slot)
+            self.assertEqual("VERIFIED_NATIVE_LOCAL_GREEK_SOURCE", greek["evidence_status"], slot)
+            self.assertTrue(greek["fixed_slot_eligible"], slot)
+            self.assertFalse(greek["comparative"], slot)
+            self.assertEqual("jerusalem_patriarchate", greek["jurisdiction"], slot)
 
     def test_leap_slot_keeps_arabic_and_comparative_english_separate(self):
         record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == "02-29")
