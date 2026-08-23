@@ -22,6 +22,9 @@ def test_every_day_through_2050_has_localized_commemoration():
         assert day.get("commemoration_status") in {
             "PINNED_INTERNAL_RULE",
             "PINNED_INTERNAL_OLD_CALENDAR_DATE",
+            "PINNED_COMPARATIVE_ENGLISH_LANE",
+            "PINNED_NATIVE_AND_COMPARATIVE_LANES",
+            "PINNED_NATIVE_LANE",
         }
         assert commemoration.get("status") == day.get("commemoration_status")
         names = commemoration.get("name") or {}
@@ -36,7 +39,10 @@ def test_august_8_2026_uses_native_greek_lane_without_cross_language_copy():
     assert day["julian_date"] == "2026-07-26"
     names = day["commemoration"]["name"]
     assert "26 تموز" in names["ar"]
-    assert "July 26" in names["en"]
+    assert names["en"] == "Commemoration of the saints of July 26 on the Old Church Calendar"
+    assert "26 تموز" not in names["en"]
+    sidecar = json.loads((ROOT / "app/src/main/assets/data/calendar/comparative_english.json").read_text(encoding="utf-8"))
+    assert "Hieromartyrs Hermolaus" in sidecar["entries"]["07-26"]["text"]
     assert names["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
 
 

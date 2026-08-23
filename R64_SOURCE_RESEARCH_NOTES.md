@@ -167,3 +167,16 @@ The WordPress REST API exposes an official page at `https://orthodoxjordan.org/c
 
 
 The official Orthodox Jordan Calendar page (WordPress page ID 71427) is published but has empty page content. Its All-in-One Event Calendar Agenda/month routes render the calendar shell with `ai1ec-no-results`, and both the Arabic and English ICS export URLs returned a VCALENDAR with zero VEVENT entries. Thus this official page is not currently a usable annual named-commemoration feed in either language.
+
+
+## Arabic visual review finding — PDF 2024 page 66
+
+Visual review of the official Arabic calendar page 66 shows the old-calendar leap-day row clearly. The row for old day 29 (new/civil column 13) reads `أبينا البار كاسيانوس المعترف`. The first row of the page is old day 17 and the table proceeds through old day 29. The OCR-row experiment retained the source image but incorrectly merged adjacent row text for some records; it is not promoted. This confirms that image OCR requires row-boundary correction before any Arabic bulk promotion.
+
+
+Visual review of the corrected crop for Arabic PDF 2024 page 66, row for old-calendar 02-29, shows a clean source image with the exact text `أبينا البار كاسيانوس المعترف`. The crop no longer contains the weekday or neighboring rows. This validates the XML-date + image-crop method for individual review, but the bulk OCR output still contains occasional recognition artifacts; no Arabic bulk promotion is made from it yet.
+
+
+## Broader English-source search after license confirmation (2026-08-23)
+
+The broader web search and source extraction found complete English daily calendars at Holy Trinity/Jordanville and the GOARCH digital planner, but their jurisdiction is not the Jerusalem Patriarchate or Orthodox Jordan. Holy Trinity exposes the same native-English daily calendar endpoint used for the 2028 comparative corpus; Jordanville links to it and adds Prologue material; GOARCH exposes a digital planner. These can support a licensed comparative English lane, but they cannot be relabeled as local Jerusalem/Jordan evidence without explicit jurisdictional authorization. The official Jerusalem English site and Orthodox Jordan English page still do not expose a complete annual native-English commemoration corpus.

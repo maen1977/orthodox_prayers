@@ -20,9 +20,12 @@
     "generic_commemoration_days": 6980,
     "perpetual_baseline_dates": 0,
     "official_harvest_documents": 0,
-    "official_direct_documents_configured": 1,
+    "official_direct_documents_configured": 4,
     "official_direct_document_ids": [
-      "jerusalem_patriarchate_calendar_2026_ar"
+      "jerusalem_patriarchate_calendar_2026_ar",
+      "jerusalem_patriarchate_calendar_2024_ar",
+      "jerusalem_patriarchate_calendar_2024_el",
+      "jerusalem_patriarchate_calendar_2025_el"
     ],
     "old_calendar_slots_with_arabic_candidate": 0
   },
@@ -34,7 +37,7 @@
     ],
     "generic_old_calendar_date_label_is_not_named": true,
     "status": "INCOMPLETE",
-    "note": "An official Arabic annual calendar is evidence-only until native English and Greek sources and parser verification are available; it is not promoted automatically."
+    "note": "Comparative native-English evidence may be displayed in the English lane but never satisfies the Jerusalem/Jordan local-language named gate; local Arabic, English, and Greek evidence are still required."
   },
   "missing_dates": [],
   "extra_dates": [],

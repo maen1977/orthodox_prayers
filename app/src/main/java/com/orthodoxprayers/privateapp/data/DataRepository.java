@@ -75,6 +75,7 @@ public final class DataRepository {
     private JSONObject fallbackServiceCoverage;
     private JSONObject religiousCompleteness;
     private JSONObject calendarIndex;
+    private JSONObject comparativeEnglishCalendar;
     private JSONObject officialPrayerResources;
     private int loadedCalendarYear = -1;
     private JSONObject rollingWeekPackage = new JSONObject();
@@ -137,6 +138,9 @@ public final class DataRepository {
         String asset = metadata.optString("asset", "").trim();
         if (asset.isEmpty()) return;
         JSONObject yearPayload = loadJsonAsset(asset);
+        if (comparativeEnglishCalendar == null) {
+            comparativeEnglishCalendar = loadJsonAsset("data/calendar/comparative_english.json");
+        }
         JSONArray days = yearPayload.optJSONArray("days");
         if (days == null || days.length() == 0) return;
         JSONObject fastingProfiles = yearPayload.optJSONObject("fasting_profiles");
@@ -145,10 +149,32 @@ public final class DataRepository {
             JSONObject item = days.optJSONObject(i);
             if (item == null) continue;
             item = resolveFastingProfile(item, fastingProfiles);
+            item = resolveComparativeEnglishCommemoration(item, comparativeEnglishCalendar);
             String iso = item.optString("date_iso", item.optString("date", "")).trim();
             if (!iso.isEmpty()) calendarByDate.put(iso, item);
         }
         loadedCalendarYear = year;
+    }
+
+    private static JSONObject resolveComparativeEnglishCommemoration(JSONObject item, JSONObject sidecar) {
+        if (item == null || sidecar == null) return item;
+        String reference = item.optString("comparative_en_ref", "").trim();
+        if (reference.isEmpty()) return item;
+        JSONObject entries = sidecar.optJSONObject("entries");
+        JSONObject entry = entries == null ? null : entries.optJSONObject(reference);
+        if (entry == null || !entry.optBoolean("comparative", false)) return item;
+        String text = entry.optString("text", "").trim();
+        if (text.isEmpty()) return item;
+        try {
+            JSONObject copy = new JSONObject(item.toString());
+            JSONObject feast = copy.optJSONObject("feast");
+            if (feast == null) return item;
+            feast.put("en", text);
+            copy.put("feast", feast);
+            return copy;
+        } catch (Exception ignored) {
+            return item;
+        }
     }
 
     private static JSONObject resolveFastingProfile(JSONObject item, JSONObject profiles) {

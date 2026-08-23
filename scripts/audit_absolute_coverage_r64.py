@@ -45,7 +45,8 @@ def main():
   if not str(s.get('service_type') or '').strip() or not str(s.get('rule_id') or '').strip() or not filled_langs(s.get('label')): problems['service_incomplete'].append(iso)
   c=d.get('commemoration') or {}
   if not filled_langs(c.get('name')): problems['commemoration_incomplete'].append(iso)
-  if c.get('source_kind')=='old_calendar_date_baseline': problems['generic_commemoration'].append(iso)
+  if c.get('source_kind') in {'old_calendar_date_baseline','comparative_english_lane','mixed_native_and_comparative_lanes'}:
+   problems['generic_commemoration'].append(iso)
  baseline={}
  if BASE.is_file(): baseline=load(BASE)
  harvest={}
@@ -76,7 +77,8 @@ def main():
    'required_native_languages':list(LANGS),
    'generic_old_calendar_date_label_is_not_named':True,
    'status':'INCOMPLETE' if problems['generic_commemoration'] else 'COMPLETE',
-   'note':'An official Arabic annual calendar is evidence-only until native English and Greek sources and parser verification are available; it is not promoted automatically.',
+     'note':'Comparative native-English evidence may be displayed in the English lane but never satisfies the Jerusalem/Jordan local-language named gate; local Arabic, English, and Greek evidence are still required.'
+,
   },
   'missing_dates':missing_dates,'extra_dates':extra_dates,
   'problem_counts':{k:len(v) for k,v in problems.items()},
