@@ -147,3 +147,23 @@ The official Orthodox Jordan `/en/` landing page was opened. Although some navig
 
 
 The HTML review of `https://orthodoxjordan.org/en/` confirms that the English route is not an independent English commemorations source: its daily `Date`, `Memorial`, and verse content are Arabic, and key navigation links resolve to Arabic URLs. It can remain a local Arabic source, but it cannot legally or linguistically fill the English lane.
+
+
+## Verified Greek leap-day evidence (2026-08-23)
+
+The official Jerusalem Patriarchate media library on the English site exposes the Greek 2024 leap calendar PDF at `https://en.jerusalem-patriarchate.info/wp-content/uploads/2024/02/2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf`. The PDF was downloaded and page 60 was visually reviewed. The daily February table clearly shows old-calendar day 29 with the original Greek text `Κασσιανοῦ ὁσίου`. This single leap-slot record is now included as `jerusalem_hagiotaphite_calendar_el_2024`, page 60, with `fixed_slot_eligible=true`; the PDF SHA-256 is `648ba69f46120faae3e6fd3b669ea5d09c99d140ac1f3d457a5ceb322fcb6270`.
+
+This closes the Greek evidence gap for 02-29 only. It does not provide a local English calendar and does not change the strict three-language R64 gate.
+
+
+## Full English-site media scan (2026-08-23)
+
+The official Jerusalem Patriarchate English WordPress media library was scanned through 101 of 103 date-filtered pages covering 2024–2026. The PDF results found were: the Greek 2024 Hagiotaphite calendar (`https://en.jerusalem-patriarchate.info/wp-content/uploads/2024/02/2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf`), a Russian 2024 calendar (`https://en.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Russian_CALENDAR-OF-PATRIARCHATE_2024_R.pdf`), a national celebration PDF, Greek/Arabic patriarchal letters, and 2026 Easter/Three Hierarchs documents. No annual native-English saints calendar PDF appeared. The Greek PDF was used only as Greek evidence; the Russian document was not used for any of the app's required Arabic/English/Greek lanes.
+
+
+## Orthodox Jordan Calendar page discovery (2026-08-23)
+
+The WordPress REST API exposes an official page at `https://orthodoxjordan.org/calendar/` titled `Calendar - Orthodox Jordan`. The page renders an `Agenda` interface with a date chooser and subscription control, but the first browser load did not expose a static annual named-commemoration table; its content is dynamic. The page must be inspected through its HTML/scripts or calendar API before any records can be treated as native evidence. No English lane has been promoted from it.
+
+
+The official Orthodox Jordan Calendar page (WordPress page ID 71427) is published but has empty page content. Its All-in-One Event Calendar Agenda/month routes render the calendar shell with `ai1ec-no-results`, and both the Arabic and English ICS export URLs returned a VCALENDAR with zero VEVENT entries. Thus this official page is not currently a usable annual named-commemoration feed in either language.

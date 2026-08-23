@@ -27,7 +27,10 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
         record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == "02-29")
         self.assertIn("ar", record["lanes"])
         self.assertIn("en", record["lanes"])
-        self.assertNotIn("el", record["lanes"])
+        self.assertIn("el", record["lanes"])
+        self.assertEqual(record["lanes"]["el"]["text"], "Κασσιανοῦ ὁσίου")
+        self.assertEqual(record["lanes"]["el"]["source_page"], 60)
+        self.assertFalse(record["lanes"]["el"]["comparative"])
         self.assertNotEqual(record["lanes"]["ar"]["text"], record["lanes"]["en"]["text"])
         self.assertTrue(record["lanes"]["en"]["comparative"])
 

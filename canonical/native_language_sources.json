@@ -232,6 +232,18 @@
       "permission_confirmed": true,
       "name": "Ἐκκλησία τῆς Ἑλλάδος"
     },
+    "jerusalem_hagiotaphite_calendar_el_2024": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://en.jerusalem-patriarchate.info/wp-content/uploads/2024/02/2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf",
+      "capabilities": ["calendar", "fixed_daily_commemorations"],
+      "jurisdiction": "jerusalem_patriarchate",
+      "source_year": 2024,
+      "calendar_style": "julian_old_calendar",
+      "status": "VERIFIED_NATIVE_LOCAL_GREEK_SOURCE_VISUAL_PAGE_REVIEW",
+      "permission_confirmed": true,
+      "name": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἡμερολόγιον 2024"
+    },
     "jerusalem_hagiotaphite_calendar_el_2025": {
       "language": "el",
       "official": true,

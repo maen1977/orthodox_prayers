@@ -3946,7 +3946,12 @@
           "eligibility_reason": "COMPARATIVE_ONLY"
         },
         "el": {
-          "status": "MISSING_NATIVE_EVIDENCE"
+          "status": "VERIFIED_NATIVE_LOCAL_GREEK_SOURCE",
+          "source_id": "jerusalem_hagiotaphite_calendar_el_2024",
+          "source_year": 2024,
+          "comparative": false,
+          "fixed_slot_eligible": true,
+          "eligibility_reason": ""
         }
       },
       "promotion_gate": "CLOSED_UNTIL_VERIFIED_LOCAL_AR_EN_EL"
@@ -24143,11 +24148,12 @@
         ]
       },
       "el": {
-        "slots_with_evidence": 365,
-        "verified_local_slots": 308,
+        "slots_with_evidence": 366,
+        "verified_local_slots": 309,
         "visual_review_or_pending_slots": 2,
         "comparative_slots": 0,
         "source_ids": [
+          "jerusalem_hagiotaphite_calendar_el_2024",
           "jerusalem_hagiotaphite_calendar_el_2025"
         ]
       }
