@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'canonical/local_commemorations.json'
 UA='ChurchPrayersLocalCalendar/5.6.4 (+https://github.com/maen1977/orthodox_prayers)'
+LANGS=('ar','en','el')
 JORDAN='https://orthodoxjordan.org/%D8%B5%D9%84%D8%A7%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85/'
 JERUSALEM_SEARCH='https://en.jerusalem-patriarchate.info/wp-json/wp/v2/search'
 
@@ -92,7 +93,8 @@ def main():
             ar='؛ '.join(jordan['names'])
             records[key]={
               'civil_date':key,'church_date':old_style(day).isoformat(),'calendar_style':'julian_old_calendar',
-              'jurisdiction':'jerusalem_jordan','commemorations':{'ar':ar,'en':ar,'el':ar},
+              'jurisdiction':'jerusalem_jordan','commemorations':{'ar':ar},
+              'native_language_status':{'ar':'VERIFIED_NATIVE_SOURCE','en':'MISSING_NATIVE_SOURCE','el':'MISSING_NATIVE_SOURCE'},
               'verification_status':'LOCAL_OFFICIAL_SOURCE_VERIFIED','retrieved_at_utc':checked,
               'sources':[{'authority':'Orthodox Jordan','url':jordan['url'],'sha256':jordan['sha256'],'role':'local_primary'},
                          {'authority':'Jerusalem Patriarchate','url':jerusalem.get('url',''),'sha256':jerusalem.get('sha256',''),'role':'jurisdiction_confirmation','matched':bool(jerusalem.get('matched'))}]
@@ -100,7 +102,8 @@ def main():
         elif isinstance(prior,dict) and prior.get('verification_status') in {'LOCAL_OFFICIAL_SOURCE_VERIFIED','LAST_VERIFIED_LOCAL_RECORD'}:
             prior=dict(prior); prior['verification_status']='LAST_VERIFIED_LOCAL_RECORD'; records[key]=prior
         print(f"LOCAL_COMMEMORATION date={key} jordan={'verified' if key in records and records[key]['verification_status']=='LOCAL_OFFICIAL_SOURCE_VERIFIED' else 'unavailable'} jerusalem={'matched' if jerusalem.get('matched') else 'unavailable'}")
-    payload={'schema_version':1,'generated_at_utc':checked,'jurisdiction':'Greek Orthodox Patriarchate of Jerusalem — Jordan priority',
+    payload={'schema_version':2,'generated_at_utc':checked,'jurisdiction':'Greek Orthodox Patriarchate of Jerusalem — Jordan priority',
+             'language_policy':{'required_native_languages':list(LANGS),'translation_between_languages':False,'ai_generation':False},
              'rights_policy':'short factual metadata and official links only; no long Synaxarion prose or images copied',
              'records':records}
     OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

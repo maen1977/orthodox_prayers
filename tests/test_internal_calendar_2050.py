@@ -178,3 +178,17 @@ def test_android_uses_year_index_and_exact_nine_day_contract():
     assert 'MAX_MONTH = YearMonth.of(2050, 12)' in screen
     assert 'previous.setEnabled(month.isAfter(MIN_MONTH))' in screen
     assert 'next.setEnabled(month.isBefore(MAX_MONTH))' in screen
+
+
+def test_verified_local_greek_lane_enriches_only_greek_on_ordinary_day():
+    day = BY_DATE["2026-08-08"]
+    assert day["feast"]["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
+    assert "26 تموز" in day["feast"]["ar"]
+    assert "July 26" in day["feast"]["en"]
+
+
+def test_major_fixed_feast_remains_primary_over_daily_greek_lane():
+    day = BY_DATE["2026-08-19"]
+    assert day["feast"]["ar"] == "عيد تجلي ربنا وإلهنا ومخلصنا يسوع المسيح"
+    assert day["feast"]["en"] == "The Holy Transfiguration of our Lord, God and Savior Jesus Christ"
+    assert day["feast"]["el"] == "Ἡ Ἁγία Μεταμόρφωσις τοῦ Κυρίου καὶ Θεοῦ καὶ Σωτῆρος ἡμῶν Ἰησοῦ Χριστοῦ"

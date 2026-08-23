@@ -78,3 +78,58 @@ https://ar.jerusalem-patriarchate.info/wp-content/uploads/2026/02/arabic_2026.pd
 ## اختبار دمج الوثيقة المباشرة
 
 شغّل اختبار حصاد مصغر محليًا بإعداد 40 صفحة، وظهر سجل الوثيقة الرسمية `jerusalem_patriarchate_calendar_2026_ar` مع `content_type=application/pdf` و`categories=[calendar, library]`، واللغة `ar`، والسلطة `Jerusalem Patriarchate official annual calendar`. هذا يثبت أن الوثيقة لا تعتمد على ظهورها في sitemap، مع بقاء ترقية التذكارات المسماة ممنوعة حتى اكتمال الأدلة الأصلية باللغات الثلاث.
+
+## مصادر عربية جديدة جرى فحصها
+
+1. [فهرس القديسين العربي — بطريركية أنطاكية](https://www.antiochpatriarchate.org/ar/category/115/): موقع بطريركي رسمي يعرض صفحات قديسين عربية مع تاريخ بصيغة شهر-يوم، مثل 12-29 و12-27 و12-20. الصفحة الحالية تعرض Pagination وعددًا محدودًا من النتائج وليست بعدُ corpus سنويًا مستخرجًا؛ كما أن مرجعيتها أنطاكية وليست القدس/الأردن، لذلك تُستخدم للمقارنة أو لسد أسماء مشتركة بعد مطابقة مستقلة، لا لتغيير قانون القدس تلقائيًا.
+
+2. [تقويم كنيسة القديس أنطونيوس الكبير — زحلة](https://stantoniosthegreat.com/calendar): صفحة عربية لرعية أرثوذكسية تعرض «السنكسار اليومي» وأسماء قديسين يومية في الواجهة، لكنها صفحة ديناميكية حالية، والنتيجة الظاهرة تتضمن أسماء وأرشيفًا قديمًا مع تاريخ 2020. هي مصدر عربي رعوي مقارن، ولا تثبت وحدها corpus القدس/الأردن 2026–2050.
+
+## مصادر إنجليزية جرى فحصها
+
+1. [GOARCH Chapel Calendar](https://www.goarch.org/chapel/calendar): صفحة تقويم يومي أرثوذكسي، لكن جلسة التصفح واجهت CAPTCHA؛ لم تُبنَ نتيجة تفصيلية منها في هذه الجولة. صفحة [The Planner](https://www.goarch.org/chapel/planner) تصف وجود قراءات وأيام صوم وقديسين، لكن لا يكفي ذلك وحده لإثبات corpus القدس/الأردن القديم.
+
+2. [Holy Trinity Monastery Jordanville — Daily Orthodox Calendar](https://jordanville.org/daily-orthodox-calendar/): صفحة إنجليزية يومية تُظهر التاريخين، مثل Sunday August 23, 2026 / August 10, 2026، وتعرض أسماء قديسين يومية وروابط سير القديسين وقراءات. هي مصدر إنجليزي أصلي من دير أرثوذكسي ومفيد جدًا للمقارنة واستخراج أسماء ثابتة، لكنها ليست بطريركية القدس/الأردن، وبعض العناصر مصنفة Greek أو روسية، لذلك لا تُرقّى تلقائيًا إلى المرجع المحلي النهائي.
+
+## مصادر يونانية جرى فحصها
+
+1. [Ορθόδοξος Συναξαριστής — saint.gr](https://www.saint.gr/calendar.aspx): يعرض تقويمًا يونانيًا يوميًا مع أسماء قديسين وصفحات أشهر متعددة. الصفحة نفسها تصرّح بأن الموقع خاص/شخصي ومعلوماته لأغراض إعلامية وأن على الزائر التحقق من المعلومات؛ لذلك هو corpus يوناني أصلي مفيد للمقارنة، لكنه ليس مصدرًا بطريركيًا نهائيًا.
+
+2. [البوابة اليونانية الرسمية لبطريركية القدس](https://jerusalem-patriarchate.info/): الصفحة تعرض رابطًا مباشرًا بعنوان «Ἁγιοταφιτικόν Ἡμερολόγιον» إلى ملف `GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf`. هذا يثبت وجود تقويم سنوي يوناني أصلي من بطريركية القدس، وهو أقوى من saint.gr. يلزم تنزيله وفحصه ومقارنته مع PDF العربي قبل ترقية أي اسم، كما يلزم العثور على English native corpus أو اعتماد صريح لنطاقه.
+
+## مصدر القدس اليوناني ووصف التقويم الرسمي
+
+[صفحة الصحافة الكنسية لبطريركية القدس](https://en.jerusalem-patriarchate.info/administrative-structure/ecclesiastical-press/) تصف «Hagiotaphite Calendar» بأنه يُنشر مرة كل سنة ويشمل الـKyriakodromion وكل أعياد السنة والملخص التاريخي والتواريخ المهمة وبنية كنيسة القدس. الصفحة تذكر أن جمع المادة اليونانية يتم بواسطة Archimandrite Christodoulos، وأن للترجمة العربية منسقة مستقلة، لكنها لا تثبت وجود نسخة إنجليزية أصلية كاملة للتذكارات اليومية. هذا يؤكد أن أفضل corpus يوناني محلي هو التقويم الهاغيوتافيتي الرسمي، وأن العربية تحتاج مطابقة النسخة العربية الأصلية لا ترجمة آلية.
+
+[التقويم الكامل لـHoly Trinity Russian Orthodox Church](https://www.holytrinityorthodox.com/htc/orthodox-calendar/) يعرض يوميًا التاريخ الغربي/اليولياني، التذكارات الإنجليزية، رموز الصوم، وروابط السير والقراءات. الصفحة تصرّح بأنها تابعة لكنيسة روسية أرثوذكسية في بالتيمور، لذا هي مصدر إنجليزي أصلي واسع ومفيد للمقارنة واستخراج الثابت، لكنها ليست مرجعًا محليًا لبطريركية القدس أو الأردن.
+
+## قابلية الاستخراج اليونانية والإنجليزية
+
+تم تنزيل وفحص [تقويم القدس اليوناني الرسمي لعام 2025](https://jerusalem-patriarchate.info/wp-content/uploads/2025/03/GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf). الملف بعنوان `AGIOTAFITIKO HMEROLOGIO` وعدد صفحاته 166، ويحتوي قسم `ΚΥΡΙΑΚΟΔΡΟΜΙΟΝ` وجداول شهرية يونانية يومية؛ العينة تتضمن أعمدة اليوم القديم والجديد وأسماء تذكارات يونانية أصلية. هذا مصدر محلي قوي، لكنه لعام 2025، ويجب توفير/العثور على ملف 2026 وما بعده أو اعتماد طبقة ثابتة موثقة بحذر.
+
+تم تحليل loader لتقويم [Holy Trinity](https://www.holytrinityorthodox.com/htc/orthodox-calendar/). الصفحة تقبل معاملات `year`, `today`, و`month`، وتعرض تاريخًا غربيًا/يوليانيًا وأسماء قديسين يومية إنجليزية. هذا يجعل بناء حصاد إنجليزي يومي قابلًا لإعادة الإنتاج ممكنًا، لكنه يظل مصدر كنيسة روسية أرثوذكسية في الولايات المتحدة لا مصدر القدس/الأردن؛ لذلك يلزم وسمه `comparative_english_source` وعدم استعماله وحده لإثبات الاختصاص المحلي.
+
+## فحص مكتبة الوسائط اليونانية الرسمية
+
+فحص REST العام للبوابة اليونانية `jerusalem-patriarchate.info` أعاد ملفات التقويم التالية عند البحث عن calendar:
+
+- `2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf` بنسختين/مسارين في 2024.
+- `Russian_CALENDAR-OF-PATRIARCHATE_2024_R.pdf`.
+
+لم يُظهر البحث عن `2026` ملف PDF يونانيًا، بل أظهر صورًا لأخبار وأحداث عام 2026. البوابة الرئيسية تعرض رابط `GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf`، وقد تم تنزيله وفحصه وهو تقويم يوناني رسمي كامل يحتوي جداول شهرية. النتيجة الحالية: يوجد مصدر يوناني محلي قوي، لكن لا توجد بعد سلسلة عامة واضحة للسنوات 2026–2050.
+
+
+## Greek 2024 leap-PDF visual spot checks (2026-08-23)
+
+The official Jerusalem Greek 2024 PDF at `https://jerusalem-patriarchate.info/wp-content/uploads/2024/02/2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf` is 163 pages. Its embedded text layer uses a custom/broken glyph map for many pages, so plain `pdftotext` is not a trustworthy source of names. Greek OCR language data was installed and daily pages were rendered for research only.
+
+Visual review of rendered page 62 confirms the monthly table is legible and contains native Greek rows for 26 March (old-calendar date 13 March) and 25 March (old-calendar date 12 March). Visual review of rendered page 67 is a different May 2024 reference page, not the daily May table; it confirms the document's Greek local calendar context but does not promote any OCR string. The Greek 2024 leap corpus therefore remains `REQUIRES_VISUAL_REVIEW`; no OCR-derived Greek 29 February name is promoted or merged into the app.
+
+The 2025 Greek parser corpus remains a separate local source with 365/365 old-calendar slots. Two extracted names contain Latin look-alike characters (`03-26` and `05-25`) and require visual review before any strict all-slot promotion. Typicon symbols were removed as non-name table markers only; no name text was translated or rewritten.
+
+
+## Native evidence promotion boundary after contextual-row audit (2026-08-23)
+
+The canonical evidence layer now distinguishes a daily row from a reusable fixed `MM-DD` commemoration. In the Jerusalem Greek 2025 calendar, 365 rows were parsed; 308 are eligible for fixed-slot enrichment, 56 contain year-specific Sunday/Pascha/Pentecost/other movable context and are not copied across years, and 2 remain visual-review records because of Latin look-alike glyphs. The Arabic 2024/2026 rows remain pending RTL visual review. The complete English Holy Trinity corpus remains comparative-only and contributes zero local Jerusalem/Jordan slots.
+
+The builder therefore enriches only the Greek lane on ordinary days whose local source row is explicitly verified and fixed-slot eligible. Major fixed and movable occasions remain primary and unchanged. Arabic and English continue to use their own existing same-language baseline labels; no cross-language fallback occurs. The strict three-language named gate remains closed (`0` verified local Arabic+English+Greek slots).

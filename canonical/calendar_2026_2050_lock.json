@@ -7,143 +7,143 @@
     "day_count": 9131
   },
   "file_count": 28,
-  "aggregate_sha256": "80298e7bf61ccf764f04bba6a651d0c785edce49f0e0f26bdc33250ebf22e72e",
+  "aggregate_sha256": "5f99c80be96ed3510c8dcef2a100768d9475b49a72285571b221a2f7b39d5e4e",
   "approved_change": "R63_PERPETUAL_GREEK_JULIAN_REFERENCE_BASELINE_WITH_JERUSALEM_JORDAN_OVERRIDES",
   "files": [
     {
       "path": "canonical/internal_calendar_2026_2050.json",
-      "bytes": 101511962,
-      "sha256": "1621feee9d11c1d291957541e1b179622927608100182ab00ab2e8da44c37391"
+      "bytes": 100765268,
+      "sha256": "d0b025019702763eee558fe844e655d49a455dc9bcca395a753cffc0350c7449"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2026.json",
-      "bytes": 700484,
-      "sha256": "6e9be11ecd715f47d8f339be38779a37b41a8c7c719df9bce7e642ab329ec869"
+      "bytes": 685570,
+      "sha256": "df7b332036f58595c6e4e74345ff1f268c55bb84266c6759a3e5bf15e411f030"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2027.json",
-      "bytes": 634539,
-      "sha256": "168604797de5368b8f702ce94a3bdf459ce2fd87593b1946c4b251cdcece5029"
+      "bytes": 620219,
+      "sha256": "938465e9f0104466506fb688a37a3cfc3520d700aeb85f117849a3b6f45a47df"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2028.json",
-      "bytes": 639204,
-      "sha256": "16890bf3001f9ae7d72078f0cc076966e9763cfc7449b39a6e7c03936e936542"
+      "bytes": 625022,
+      "sha256": "d2f8338ae231d1084a4aeac3c6a2848e0fad8e1cf4b4902adcec2934ea516188"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2029.json",
-      "bytes": 643363,
-      "sha256": "5722da576b17fd84c23cbe66c5e6f397d01eea2f82511660bb1878f86344fe1e"
+      "bytes": 628597,
+      "sha256": "585796f6308b4aac03a51c467429ca521c9c2e1738cc38829faa2923718a1660"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2030.json",
-      "bytes": 637699,
-      "sha256": "21e6bd355ce1d0ae914886f6377234945aa6ab1827ddf2e6b99c329a5e851e4b"
+      "bytes": 622848,
+      "sha256": "3cb873facbcee28c32cf56289aebb8664b08e3ebd059cee72aa14e5e836aa147"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2031.json",
-      "bytes": 640911,
-      "sha256": "4ac428435ac9a694662681be848d7e5a46fbbea2605b09ef4f7419d9ec917b1b"
+      "bytes": 623477,
+      "sha256": "e27db195ca5f949fe9fbde6d1edff8ab4e395cefbb88df4cf47169a48ceb7d99"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2032.json",
-      "bytes": 636316,
-      "sha256": "21feccbba3df2e5ac9460923b97c73a09a2358880f5539861abb38c74fce2ed6"
+      "bytes": 621533,
+      "sha256": "82092f9211650048043b15c362995cad8d084e9f63d8f7d73a3a4576ec303f05"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2033.json",
-      "bytes": 638526,
-      "sha256": "b56bf8940866fa21fe16658c799df3d0a99c9eb0638aa8deb45ed835f59fd01a"
+      "bytes": 624354,
+      "sha256": "278f159e08674b4e62d27c341e409d7ffa1499a28aa458a2ecd4456ee76241b7"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2034.json",
-      "bytes": 634477,
-      "sha256": "fdc20131b9a55e158a933946bb43ed405e585bf35311c9c539166c23a06b0f86"
+      "bytes": 620069,
+      "sha256": "7af15cfec564f1737fb178b5fecdc3edd2fbfd6f5d47fa1931910ae83ced378b"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2035.json",
-      "bytes": 637456,
-      "sha256": "1ded7217a4d18eb9423f219c03f5a02483acc9dc6c34ee38033b0597a98d1f59"
+      "bytes": 622715,
+      "sha256": "4125e92d3e6281b9afa6074fe180ed240e430bc77887ea59967e5240e1c97b9a"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2036.json",
-      "bytes": 638990,
-      "sha256": "9abbcaea2fdcb65f9beac4cbefa3e5f290f382fc3cfc7f1e1396e39a15df0b6f"
+      "bytes": 621984,
+      "sha256": "2318c974cab7990faa8e653efad7cb1ee22cb77b35cf70062d2c5e2f234c2aec"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2037.json",
-      "bytes": 640362,
-      "sha256": "e0c8a4df450c0c9ad75c93c933b9be410dd72291c2f294a3756aa368821a08f4"
+      "bytes": 625221,
+      "sha256": "0f609b5b6796d1b05622f9835b1772b937697a84c84b1d1351857d097fe21211"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2038.json",
-      "bytes": 636155,
-      "sha256": "7d7d470ec04850a6f19c3fe3a262054d79b427c75fd521b693a9d61465306a1d"
+      "bytes": 621768,
+      "sha256": "99e9695b3270a6266691ebe629104115d4630de3346b3ba24012889e0028f08f"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2039.json",
-      "bytes": 640164,
-      "sha256": "aee3cf3b59a3caa5c29192e7fee99d471fb9518916d76bf12422b539142d8667"
+      "bytes": 626146,
+      "sha256": "63c348a129e4fe37d5f2555783dd62147bc9664ed18bb871c23000b16ad0f1e7"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2040.json",
-      "bytes": 634468,
-      "sha256": "2bd724dbd687c4d0eaa979ee574e0b4a983153f20edf7d079a933d09ebc4a7fb"
+      "bytes": 620041,
+      "sha256": "0dca6d890a43e1df300a069e61025979b9d962d3378026fbda13674ae20a9e9b"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2041.json",
-      "bytes": 637261,
-      "sha256": "5ffb077cc4f451cc8e453846a9ff82643a4a1c9a6f2550131370fed169fcd8c3"
+      "bytes": 622244,
+      "sha256": "4f1674926dcd70c2d8aa4060cc164110c0f7b3c4cb1781dc21607b9d7c131391"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2042.json",
-      "bytes": 640911,
-      "sha256": "11e339442d8e62f70770ba7e7b4260cfb807228afae99ba087abfc7395f009d4"
+      "bytes": 623477,
+      "sha256": "a5e1d555efb4faa3cf6eb2d04cceb89651322642c96cfda049570f659735face"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2043.json",
-      "bytes": 634418,
-      "sha256": "532aa0e6c61dd3cc6cec906111fc92612175ff99a7606235ba37cd42ea7fbd8c"
+      "bytes": 619263,
+      "sha256": "eb1d05d45f8cca6b8e75b31528b64b133c65994a76dfa83205372b6453d80c0d"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2044.json",
-      "bytes": 640131,
-      "sha256": "d1f3cac1f48f222c4e3f7df122be60fe51e91a916458d0eca3f0144f64397af4"
+      "bytes": 625847,
+      "sha256": "a54aa05d91fdd95913b8ba2e123c29aca1d4b323adfcecff535d8ba4d7db5d1a"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2045.json",
-      "bytes": 634477,
-      "sha256": "7cd78c45eda5f60493781d8dd35ff8bb44efd4bb59fe6e180db574941f32f776"
+      "bytes": 620069,
+      "sha256": "4e16bedc40cee2c41c30b04df64cef52bb7fb26fcbb5d83cec3a35ed448fb7f0"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2046.json",
-      "bytes": 637456,
-      "sha256": "46b1ba45c4733914b6fe5bf9397256cab6fc01d259ac8a6691c86e6345a07364"
+      "bytes": 622715,
+      "sha256": "ffa31215cc79ef13356dc95aee2cbe0eb50f1fe30f5e531f4cd7d7026c8f3b9d"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2047.json",
-      "bytes": 637261,
-      "sha256": "6d2f5c859973e17889b90dc684487d9ccc8267a8880514e5707afe122129b554"
+      "bytes": 622244,
+      "sha256": "88807aa125ca7d192718fb849677fccfb47d13a15ce4da7d0ad8dd2dcdfb7ca7"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2048.json",
-      "bytes": 641898,
-      "sha256": "1da125662c8b9ae492dc0c6c76c2e4b4124fa89a992cfd176fdf6ca8453c76d7"
+      "bytes": 626457,
+      "sha256": "43178dc8964d3d0a4a2eae7ed58806fa036c065126eaf172e5bd7d6e5142a19a"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2049.json",
-      "bytes": 636155,
-      "sha256": "6eb367327f7a4bb28c5774181452a0b4510bd054e2ce89487aaaa79f805f25d0"
+      "bytes": 621768,
+      "sha256": "a5dbb85ad299829aab11faca7c120036f15ccd8c4c7de3faa642f05e99470b78"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_2050.json",
-      "bytes": 640164,
-      "sha256": "0fb43c5313068179a8d6eb365642833000f3479e62775f3c76d7ab7d997ba702"
+      "bytes": 626146,
+      "sha256": "d62452f8919f74ccb2ac5ad110b5b092b859adc9a4ed1159037bb26ffb173e71"
     },
     {
       "path": "app/src/main/assets/data/calendar/calendar_index.json",
       "bytes": 2323,
-      "sha256": "0b4e6a8ab4f3ad5ef03a6ed36c128d99e087853012f2614764d485883d6044ce"
+      "sha256": "13db8249d1c5b3d00401f74f76971811dc8c86d52d1cc0906a57f48f15a1f039"
     },
     {
       "path": "app/src/main/assets/data/calendar_2026_h2.json",

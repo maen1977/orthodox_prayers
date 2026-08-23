@@ -12,6 +12,8 @@
       "allowed_sources": [
         "orthodox_jordan",
         "jerusalem_patriarchate_ar",
+        "jerusalem_hagiotaphite_calendar_ar_2024",
+        "jerusalem_hagiotaphite_calendar_ar_2026",
         "antioch_patriarchate_ar",
         "ebible_arabic_van_dyck",
         "orthodox_jordan_arabic_services",
@@ -29,6 +31,7 @@
       "allowed_sources": [
         "goarch_online_chapel",
         "jerusalem_patriarchate_en",
+        "holy_trinity_calendar_en_comparative",
         "goarch_digital_chant_stand_english",
         "goarch_synekdemos",
         "oca_official_english",
@@ -81,6 +84,30 @@
       "permission_confirmed": true,
       "name": "مطرانية الروم الأرثوذكس في الأردن"
     },
+    "jerusalem_hagiotaphite_calendar_ar_2024": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
+      "capabilities": ["calendar", "fixed_daily_commemorations"],
+      "jurisdiction": "jerusalem_patriarchate",
+      "source_year": 2024,
+      "calendar_style": "julian_old_calendar",
+      "status": "PENDING_VISUAL_REVIEW",
+      "permission_confirmed": true,
+      "name": "بطريركية القدس — التقويم العربي الهاغيوتافي 2024"
+    },
+    "jerusalem_hagiotaphite_calendar_ar_2026": {
+      "language": "ar",
+      "official": true,
+      "base_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2026/02/arabic_2026.pdf",
+      "capabilities": ["calendar", "fixed_daily_commemorations"],
+      "jurisdiction": "jerusalem_patriarchate",
+      "source_year": 2026,
+      "calendar_style": "julian_old_calendar",
+      "status": "PENDING_VISUAL_REVIEW",
+      "permission_confirmed": true,
+      "name": "بطريركية القدس — التقويم العربي الهاغيوتافي 2026"
+    },
     "jerusalem_patriarchate_ar": {
       "language": "ar",
       "official": true,
@@ -121,6 +148,17 @@
       ],
       "permission_confirmed": true,
       "name": "Greek Orthodox Archdiocese of America — Online Chapel"
+    },
+    "holy_trinity_calendar_en_comparative": {
+      "language": "en",
+      "official": true,
+      "base_url": "https://www.holytrinityorthodox.com/htc/ocalendar/",
+      "capabilities": ["comparative_daily_calendar", "fixed_daily_commemorations"],
+      "jurisdiction": "comparative_not_jerusalem_jordan",
+      "role": "comparative_only_never_satisfies_jerusalem_jordan_named_gate",
+      "status": "COMPARATIVE_NATIVE_ENGLISH_SOURCE",
+      "permission_confirmed": true,
+      "name": "Holy Trinity Russian Orthodox Church — comparative English calendar"
     },
     "jerusalem_patriarchate_en": {
       "language": "en",
@@ -193,6 +231,18 @@
       ],
       "permission_confirmed": true,
       "name": "Ἐκκλησία τῆς Ἑλλάδος"
+    },
+    "jerusalem_hagiotaphite_calendar_el_2025": {
+      "language": "el",
+      "official": true,
+      "base_url": "https://jerusalem-patriarchate.info/wp-content/uploads/2025/03/GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf",
+      "capabilities": ["calendar", "fixed_daily_commemorations"],
+      "jurisdiction": "jerusalem_patriarchate",
+      "source_year": 2025,
+      "calendar_style": "julian_old_calendar",
+      "status": "PER_RECORD_INTEGRITY_REVIEW",
+      "permission_confirmed": true,
+      "name": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικόν Ἡμερολόγιον 2025"
     },
     "jerusalem_patriarchate_el": {
       "language": "el",

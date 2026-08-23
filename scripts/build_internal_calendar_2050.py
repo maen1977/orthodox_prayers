@@ -44,6 +44,7 @@ OUT_ASSET_INDEX = OUT_ASSET_DIR / "calendar_index.json"
 H2_PATH = ROOT / "canonical" / "jordan_2026_h2_lectionary.json"
 FIXED_LECTIONARY_PATH = ROOT / "canonical" / "jerusalem_fixed_feast_lectionary.json"
 PERPETUAL_LECTIONARY_PATH = ROOT / "canonical" / "perpetual_lectionary_2026_2050.json"
+NATIVE_COMM_MEMORATIONS_PATH = ROOT / "canonical" / "jerusalem_jordan_fixed_commemorations_native.json"
 
 
 AR_MONTHS = {
@@ -225,6 +226,48 @@ def load_perpetual_lectionary() -> dict[str, dict]:
     return payload.get("dates", {}) if isinstance(payload.get("dates"), dict) else {}
 
 
+def load_native_commemorations() -> dict[str, dict]:
+    if not NATIVE_COMM_MEMORATIONS_PATH.is_file():
+        return {}
+    payload = json.loads(NATIVE_COMM_MEMORATIONS_PATH.read_text(encoding="utf-8"))
+    records = payload.get("records", []) if isinstance(payload, dict) else []
+    return {
+        str(record.get("old_calendar_month_day")): record
+        for record in records
+        if isinstance(record, dict) and record.get("old_calendar_month_day")
+    }
+
+
+def verified_native_lanes(day: date, records: dict[str, dict]) -> dict[str, dict]:
+    _jy, jm, jd = gregorian_to_julian_date(day)
+    record = records.get(f"{jm:02d}-{jd:02d}")
+    if not isinstance(record, dict) or not isinstance(record.get("lanes"), dict):
+        return {}
+    accepted_status = {
+        "ar": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
+        "en": "VERIFIED_NATIVE_LOCAL_ENGLISH_SOURCE",
+        "el": "VERIFIED_NATIVE_LOCAL_GREEK_SOURCE",
+    }
+    accepted = {}
+    for language, expected_status in accepted_status.items():
+        entry = record["lanes"].get(language)
+        if not isinstance(entry, dict):
+            continue
+        if entry.get("evidence_status") != expected_status:
+            continue
+        if entry.get("jurisdiction") not in {"jerusalem_patriarchate", "jerusalem_jordan"}:
+            continue
+        if entry.get("comparative") is not False:
+            continue
+        if entry.get("fixed_slot_eligible") is not True:
+            continue
+        text = str(entry.get("text") or "").strip()
+        if not text:
+            continue
+        accepted[language] = copy.deepcopy(entry)
+    return accepted
+
+
 def appointed_from_refs(refs: dict) -> list[dict]:
     output = []
     for kind in ("epistle", "gospel", "matins_gospel"):
@@ -320,13 +363,33 @@ def build() -> dict:
     exact = load_exact_2026()
     fixed_lectionary = load_fixed_lectionary()
     perpetual_lectionary = load_perpetual_lectionary()
+    native_commemorations = load_native_commemorations()
     days = []
     cursor = START
     exact_reading_days = 0
     occasion_days = 0
+    native_lane_days = 0
     while cursor <= END:
         info = day_info(cursor)
         primary, occasions = primary_and_occasions(cursor, info)
+        native_lanes = verified_native_lanes(cursor, native_commemorations)
+        native_lane_refs = {
+            language: {
+                "text": entry["text"],
+                "source_id": entry.get("source_id", ""),
+                "evidence_status": entry.get("evidence_status", ""),
+            }
+            for language, entry in native_lanes.items()
+        }
+        # A verified local lane may enrich an ordinary date without replacing a
+        # movable or major fixed occasion. Missing language lanes remain the
+        # existing same-language baseline; no cross-language fallback is used.
+        if native_lanes and not occasions:
+            primary = copy.deepcopy(primary)
+            for language, entry in native_lanes.items():
+                primary[language] = entry["text"]
+        if native_lanes:
+            native_lane_days += 1
         readings, appointed_readings, reference_status, reading_day_resolution = compact_readings(cursor, exact, fixed_lectionary, perpetual_lectionary)
         if readings:
             exact_reading_days += 1
@@ -390,13 +453,16 @@ def build() -> dict:
             "perpetual_reference_baseline": bool(perpetual_lectionary),
             "perpetual_baseline_is_not_jurisdiction_override": True,
             "machine_translation": False,
-            "cross_language_fallback": False,
-            "future_synodal_changes_applied_by_signed_update": True,
+        "cross_language_fallback": False,
+        "native_fixed_commemoration_source": "canonical/jerusalem_jordan_fixed_commemorations_native.json",
+        "strict_named_local_three_language_gate": False,
+        "future_synodal_changes_applied_by_signed_update": True,
         },
         "coverage": {
             "structural_days": len(days),
             "days_with_named_internal_occasion": occasion_days,
             "days_with_offline_commemoration": len(days),
+            "days_with_verified_native_language_lane": native_lane_days,
             "days_with_pinned_reading_references": exact_reading_days,
             "days_with_appointed_readings": sum(1 for item in days if item.get("appointed_readings")),
             "days_with_epistle_and_gospel": sum(1 for item in days if {"epistle", "gospel"}.issubset((item.get("reading_references") or {}).keys())),

@@ -157,6 +157,30 @@
       "authority": "Jerusalem Patriarchate official annual calendar",
       "coverage": "2026 annual calendar; Arabic source only",
       "promotion": "evidence_only_until_native_en_el_sources_and_parser_verification"
+    },
+    {
+      "id": "jerusalem_patriarchate_calendar_2024_ar",
+      "url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
+      "language": "ar",
+      "authority": "Jerusalem Patriarchate official annual calendar",
+      "coverage": "2024 leap annual calendar; Arabic source only; 366 slots parsed, visual review pending",
+      "promotion": "evidence_only_until_arabic_visual_review_and_native_en_el_sources"
+    },
+    {
+      "id": "jerusalem_patriarchate_calendar_2024_el",
+      "url": "https://jerusalem-patriarchate.info/wp-content/uploads/2024/02/2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf",
+      "language": "el",
+      "authority": "Jerusalem Patriarchate official annual calendar",
+      "coverage": "2024 leap annual calendar; Greek source only; embedded text glyph map requires visual review",
+      "promotion": "evidence_only_until_greek_visual_review_and_native_ar_en_sources"
+    },
+    {
+      "id": "jerusalem_patriarchate_calendar_2025_el",
+      "url": "https://jerusalem-patriarchate.info/wp-content/uploads/2025/03/GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf",
+      "language": "el",
+      "authority": "Jerusalem Patriarchate official annual calendar",
+      "coverage": "2025 annual calendar; Greek source only; 365 slots parsed with two visual-review records",
+      "promotion": "evidence_only_until_native_ar_en_sources_and_per_record_review"
     }
   ],
   "allowed_domain_suffixes": [

@@ -1224,8 +1224,12 @@ def local_official_commemoration(day: date) -> dict | None:
     if record.get("verification_status") not in {"LOCAL_OFFICIAL_SOURCE_VERIFIED", "LAST_VERIFIED_LOCAL_RECORD"}:
         return None
     names = record.get("commemorations") or {}
-    if not isinstance(names, dict) or not str(names.get("ar") or "").strip():
+    if not isinstance(names, dict):
         return None
+    if not any(str(names.get(lang) or "").strip() for lang in ("ar", "en", "el")):
+        return None
+    # A local record may verify only one native-language lane. Never allow a
+    # missing lane to inherit text from Arabic or another language.
     return record
 
 
@@ -1246,8 +1250,22 @@ def day_info(day: date) -> dict:
     fixed = fixed_old_feast(jm, jd)
     local_record = local_official_commemoration(day)
     if local_record:
-        names = local_record["commemorations"]
-        feast = {lang: str(names.get(lang) or names.get("ar") or "").strip() for lang in ("ar", "en", "el")}
+        local_names = local_record.get("commemorations") or {}
+        # Start from the normal reviewed/internal lane, then overlay only the
+        # native-language strings actually supplied by the local record. This
+        # intentionally prevents the historical Arabic-to-English/Greek copy.
+        if isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip() and not is_generic_daily_commemoration(annual_feast.get("ar")):
+            feast = {lang: str(annual_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}
+        elif isinstance(internal_feast, dict) and str(internal_feast.get("ar") or "").strip():
+            feast = {lang: str(internal_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}
+        elif fixed:
+            feast = localized_feast(fixed)
+        else:
+            feast = copy.deepcopy(UNAVAILABLE_DAILY_FEAST)
+        for lang in ("ar", "en", "el"):
+            value = str(local_names.get(lang) or "").strip()
+            if value:
+                feast[lang] = value
         feast_status = str(local_record.get("verification_status"))
     elif isinstance(annual_feast, dict) and str(annual_feast.get("ar") or "").strip() and not is_generic_daily_commemoration(annual_feast.get("ar")):
         feast = {lang: str(annual_feast.get(lang) or "").strip() for lang in ("ar", "en", "el")}

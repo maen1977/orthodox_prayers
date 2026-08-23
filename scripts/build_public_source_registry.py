@@ -30,8 +30,12 @@ ALIASES = {
 NAME_AR = {
     "orthodox_jordan": "مطرانية الروم الأرثوذكس في الأردن",
     "jerusalem_patriarchate_ar": "بطريركية الروم الأرثوذكس المقدسية — العربية",
+    "jerusalem_hagiotaphite_calendar_ar_2024": "بطريركية القدس — التقويم العربي الهاغيوتافي 2024",
+    "jerusalem_hagiotaphite_calendar_ar_2026": "بطريركية القدس — التقويم العربي الهاغيوتافي 2026",
     "jerusalem_patriarchate_en": "بطريركية الروم الأرثوذكس المقدسية — الإنجليزية",
     "jerusalem_patriarchate_el": "بطريركية الروم الأرثوذكس المقدسية — اليونانية",
+    "jerusalem_hagiotaphite_calendar_el_2025": "بطريركية القدس — التقويم اليوناني الهاغيوتافي 2025",
+    "holy_trinity_calendar_en_comparative": "كنيسة الثالوث القدوس الروسية الأرثوذكسية — تقويم إنجليزي للمقارنة فقط",
     "antioch_patriarchate_ar": "بطريركية أنطاكية وسائر المشرق — العربية",
     "goarch_online_chapel": "المصلّى الإلكتروني لأبرشية الروم الأرثوذكس في أميركا",
     "goarch_digital_chant_stand_english": "منصة الترتيل الرقمية — الإنجليزية",
@@ -48,9 +52,28 @@ NAME_AR = {
     "antioch_archdiocese_tripoli_ar": "أبرشية طرابلس والكورة وتوابعهما للروم الأرثوذكس",
 }
 
+NAME_EN = {
+    "jerusalem_hagiotaphite_calendar_ar_2024": "Jerusalem Patriarchate — Hagiotaphite Arabic Calendar 2024",
+    "jerusalem_hagiotaphite_calendar_ar_2026": "Jerusalem Patriarchate — Hagiotaphite Arabic Calendar 2026",
+    "holy_trinity_calendar_en_comparative": "Holy Trinity Russian Orthodox Church — comparative English calendar",
+    "jerusalem_hagiotaphite_calendar_el_2025": "Jerusalem Patriarchate — Hagiotaphite Greek Calendar 2025",
+}
+
+NAME_EL = {
+    "jerusalem_hagiotaphite_calendar_ar_2024": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἀραβικὸν Ἡμερολόγιον 2024",
+    "jerusalem_hagiotaphite_calendar_ar_2026": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἀραβικὸν Ἡμερολόγιον 2026",
+    "holy_trinity_calendar_en_comparative": "Ἱερὰ Μονὴ Ἁγίας Τριάδος — συγκριτικὸ Ἀγγλικὸ Ἡμερολόγιον",
+    "jerusalem_hagiotaphite_calendar_el_2025": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἑλληνικὸν Ἡμερολόγιον 2025",
+}
+
+
 USAGE_AR = {
     "orthodox_jordan": "المرجع المحلي الأعلى للأردن: التقويم القديم، الصوم، الكنائس، الصلوات والمراجع اليومية.",
     "jerusalem_patriarchate_en": "سلطة الاختصاص الكنسي والأعياد الكبرى والتقويم المقدسي.",
+    "jerusalem_hagiotaphite_calendar_ar_2024": "تقويم عربي مقدسي سنوي كبيس؛ النصوص قيد المراجعة البصرية قبل الترقية.",
+    "jerusalem_hagiotaphite_calendar_ar_2026": "تقويم عربي مقدسي سنوي؛ النصوص قيد المراجعة البصرية قبل الترقية.",
+    "holy_trinity_calendar_en_comparative": "تقويم إنجليزي أصلي للمقارنة فقط؛ ليس مرجع القدس/الأردن ولا يفتح بوابة R64.",
+    "jerusalem_hagiotaphite_calendar_el_2025": "تقويم يوناني مقدسي أصلي لعام 2025؛ بعض السجلات تحتاج مراجعة glyph قبل الترقية الكاملة.",
     "antioch_patriarchate_ar": "مرجع عربي أرثوذكسي للمقارنة والخدمات والمقالات الليتورجية.",
     "goarch_digital_chant_stand_english": "روابط وبنية الغروب والسحر والقداس والقطع المتغيرة دون نسخ غير مرخص.",
     "goarch_digital_chant_stand_greek": "بنية الخدمات والقطع المتغيرة باللغة اليونانية.",
@@ -100,6 +123,10 @@ def collect_active_ids(groups: dict[str, list[dict[str, Any]]]) -> set[str]:
         record = load(path)
         sid = str(record.get("source_id") or "").strip()
         if sid:
+            ids.add(sid)
+    native = load(NATIVE)
+    for sid, record in native.get("sources", {}).items():
+        if "fixed_daily_commemorations" in (record.get("capabilities") or []):
             ids.add(sid)
     ids.add("antioch_archdiocese_tripoli_ar")
     return ids
@@ -164,7 +191,7 @@ def source_record(
     authority_tier = min((int(item.get("authority_tier", 99)) for item in connectors), default=(5 if bool(record.get("official")) else 99))
     return {
         "id": source_id,
-        "name": {"ar": ar, "en": name, "el": name},
+        "name": {"ar": ar, "en": NAME_EN.get(source_id, name), "el": NAME_EL.get(source_id, name)},
         "url": str(record.get("base_url") or (connectors[0].get("url_template") if connectors else "")),
         "official": bool(record.get("official", bool(connectors))),
         "languages": [x for x in languages if x],

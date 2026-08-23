@@ -31,13 +31,13 @@ def test_every_day_through_2050_has_localized_commemoration():
             assert not any(token.casefold() in value.casefold() for token in forbidden)
 
 
-def test_august_8_2026_has_old_calendar_commemoration_in_all_lanes():
+def test_august_8_2026_uses_native_greek_lane_without_cross_language_copy():
     day = next(item for item in CANONICAL["days"] if item["date_iso"] == "2026-08-08")
     assert day["julian_date"] == "2026-07-26"
     names = day["commemoration"]["name"]
     assert "26 تموز" in names["ar"]
     assert "July 26" in names["en"]
-    assert "26" in names["el"] and "Ἰουλίου" in names["el"]
+    assert names["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
 
 
 def test_home_keeps_commemoration_out_of_the_compact_date_card():

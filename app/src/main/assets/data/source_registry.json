@@ -233,6 +233,40 @@
         ]
       }
     ],
+    "direct_documents": [
+      {
+        "id": "jerusalem_patriarchate_calendar_2026_ar",
+        "url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2026/02/arabic_2026.pdf",
+        "language": "ar",
+        "authority": "Jerusalem Patriarchate official annual calendar",
+        "coverage": "2026 annual calendar; Arabic source only",
+        "promotion": "evidence_only_until_native_en_el_sources_and_parser_verification"
+      },
+      {
+        "id": "jerusalem_patriarchate_calendar_2024_ar",
+        "url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
+        "language": "ar",
+        "authority": "Jerusalem Patriarchate official annual calendar",
+        "coverage": "2024 leap annual calendar; Arabic source only; 366 slots parsed, visual review pending",
+        "promotion": "evidence_only_until_arabic_visual_review_and_native_en_el_sources"
+      },
+      {
+        "id": "jerusalem_patriarchate_calendar_2024_el",
+        "url": "https://jerusalem-patriarchate.info/wp-content/uploads/2024/02/2024_GREEK_CALENDAR_OF_PATRIARCHATE-2024__R.pdf",
+        "language": "el",
+        "authority": "Jerusalem Patriarchate official annual calendar",
+        "coverage": "2024 leap annual calendar; Greek source only; embedded text glyph map requires visual review",
+        "promotion": "evidence_only_until_greek_visual_review_and_native_ar_en_sources"
+      },
+      {
+        "id": "jerusalem_patriarchate_calendar_2025_el",
+        "url": "https://jerusalem-patriarchate.info/wp-content/uploads/2025/03/GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf",
+        "language": "el",
+        "authority": "Jerusalem Patriarchate official annual calendar",
+        "coverage": "2025 annual calendar; Greek source only; 365 slots parsed with two visual-review records",
+        "promotion": "evidence_only_until_native_ar_en_sources_and_per_record_review"
+      }
+    ],
     "allowed_domain_suffixes": [
       "orthodoxjordan.org",
       "orthodoxjo.tv",
@@ -1139,6 +1173,37 @@
       "health": []
     },
     {
+      "id": "holy_trinity_calendar_en_comparative",
+      "name": {
+        "ar": "كنيسة الثالوث القدوس الروسية الأرثوذكسية — تقويم إنجليزي للمقارنة فقط",
+        "en": "Holy Trinity Russian Orthodox Church — comparative English calendar",
+        "el": "Ἱερὰ Μονὴ Ἁγίας Τριάδος — συγκριτικὸ Ἀγγλικὸ Ἡμερολόγιον"
+      },
+      "url": "https://www.holytrinityorthodox.com/htc/ocalendar/",
+      "official": true,
+      "languages": [
+        "en"
+      ],
+      "categories": [
+        "comparative_daily_calendar",
+        "fixed_daily_commemorations"
+      ],
+      "used_for": {
+        "ar": "تقويم إنجليزي أصلي للمقارنة فقط؛ ليس مرجع القدس/الأردن ولا يفتح بوابة R64.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
       "id": "imks_greek_services",
       "name": {
         "ar": "Ιερά Μητρόπολις Κισάμου και Σελίνου",
@@ -1155,6 +1220,99 @@
       ],
       "used_for": {
         "ar": "يُستخدم في: presanctified_liturgy.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "jerusalem_hagiotaphite_calendar_ar_2024",
+      "name": {
+        "ar": "بطريركية القدس — التقويم العربي الهاغيوتافي 2024",
+        "en": "Jerusalem Patriarchate — Hagiotaphite Arabic Calendar 2024",
+        "el": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἀραβικὸν Ἡμερολόγιον 2024"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "calendar",
+        "fixed_daily_commemorations"
+      ],
+      "used_for": {
+        "ar": "تقويم عربي مقدسي سنوي كبيس؛ النصوص قيد المراجعة البصرية قبل الترقية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "jerusalem_hagiotaphite_calendar_ar_2026",
+      "name": {
+        "ar": "بطريركية القدس — التقويم العربي الهاغيوتافي 2026",
+        "en": "Jerusalem Patriarchate — Hagiotaphite Arabic Calendar 2026",
+        "el": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἀραβικὸν Ἡμερολόγιον 2026"
+      },
+      "url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2026/02/arabic_2026.pdf",
+      "official": true,
+      "languages": [
+        "ar"
+      ],
+      "categories": [
+        "calendar",
+        "fixed_daily_commemorations"
+      ],
+      "used_for": {
+        "ar": "تقويم عربي مقدسي سنوي؛ النصوص قيد المراجعة البصرية قبل الترقية.",
+        "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
+        "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
+      },
+      "rights": "Permission confirmed by project owner",
+      "permission_confirmed": true,
+      "last_verified": "",
+      "authority_tier": 5,
+      "connector_count": 0,
+      "connector_ids": [],
+      "publication_roles": [],
+      "health_statuses": [],
+      "health": []
+    },
+    {
+      "id": "jerusalem_hagiotaphite_calendar_el_2025",
+      "name": {
+        "ar": "بطريركية القدس — التقويم اليوناني الهاغيوتافي 2025",
+        "en": "Jerusalem Patriarchate — Hagiotaphite Greek Calendar 2025",
+        "el": "Πατριαρχεῖον Ἱεροσολύμων — Ἁγιοταφιτικὸν Ἑλληνικὸν Ἡμερολόγιον 2025"
+      },
+      "url": "https://jerusalem-patriarchate.info/wp-content/uploads/2025/03/GREEK_CALENDAR_OF_PATRIARCHATE_2025_R.pdf",
+      "official": true,
+      "languages": [
+        "el"
+      ],
+      "categories": [
+        "calendar",
+        "fixed_daily_commemorations"
+      ],
+      "used_for": {
+        "ar": "تقويم يوناني مقدسي أصلي لعام 2025؛ بعض السجلات تحتاج مراجعة glyph قبل الترقية الكاملة.",
         "en": "Used for registered Orthodox content, calendar, prayer, service, directory, or Scripture data.",
         "el": "Χρησιμοποιεῖται γιὰ καταχωρισμένο ὀρθόδοξο περιεχόμενο, ἡμερολόγιο ἢ ἀκολουθίες."
       },
