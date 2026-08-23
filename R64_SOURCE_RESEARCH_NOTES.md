@@ -196,3 +196,17 @@ The Greek 2025 calendar was then reviewed directly at printed pages 62 and 66. T
 The English lane was then improved without translation. The official Jerusalem Patriarchate English **Timetable of Church Services** page was downloaded and parsed from its monthly HTML tables. The Old-column mapping produced 365/365 non-leap 2019 slots, with source wording preserved apart from whitespace normalization. These 365 entries are now `VERIFIED_NATIVE_LOCAL_ENGLISH_SOURCE` under `jerusalem_patriarchate_english_timetable_2019`. The page has no 02-29 row; that one slot remains the licensed Holy Trinity native-English comparative record. The generated sidecar therefore contains only `02-29`, and local English is used for the other 365 fixed slots.
 
 The final evidence state is **Arabic 366/366 local**, **Greek 311/366 local fixed-slot records**, and **English 365/366 local plus 02-29 comparative**. The resulting per-slot strict local three-language count is 310, while the global `strict_named_local_gate=false` remains intentional because one English slot is not local. Comparative English never counts as local. This does not authorize production signing or ecclesiastical approval; it documents a source-backed improvement and the remaining leap-day jurisdictional gap.
+
+## Dormition Fast duration and feast-day correction (2026-08-23)
+
+A focused review corrected the user-facing period calculation, not merely the generated food code. The policy now records the Dormition Fast as **old-calendar August 1–14 inclusive: exactly 14 days**; August 15 is the feast and is explicitly outside that fourteen-day fast. The published Orthodox sources agree on the 1–14 duration [1] [2].
+
+For the 2026 old-calendar feast, August 15 converts to **Friday, 2026-08-28**. The generated runtime profile is `fish_allowed` with fish, oil, and wine permitted, while meat, dairy, and eggs remain excluded; this follows the documented Wednesday/Friday dispensation described by Saint Sophia Greek Orthodox Cathedral’s Dormition Fast article [3]. The app no longer counts the feast as a fifteenth fasting day: the home notice and fasting summary resolve the season as 2026-08-14 through 2026-08-27, `totalDays=14`, and mark August 28 as the separate feast day.
+
+The validator now checks every year from 2026 through 2050. On August 15 it expects `dormition_feast_fish` only when the civil weekday is Wednesday or Friday; on other weekdays or weekend days it expects the feast to be outside the fast with `fast_free`. The 2026 Friday case is therefore fish-relaxed, not strict and not fast-free. The source policy remains a conservative baseline; personal health, pastoral dispensation, and spiritual guidance are not replaced by the application.
+
+### References
+
+[1]: https://www.goarch.org/dormition "Greek Orthodox Archdiocese of America — Dormition of the Theotokos"
+[2]: https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church "Orthodox Church in America — Fasting & Fast-Free Seasons"
+[3]: https://www.saintsophiadc.org/the-dormition-fast/ "Saint Sophia Greek Orthodox Cathedral — The Dormition Fast"

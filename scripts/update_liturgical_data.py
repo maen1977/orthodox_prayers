@@ -135,7 +135,8 @@ FASTING_RULE_LOCALIZATION = {
     "apostles_fast_tue_thu": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "Oil and wine are permitted on Tuesday and Thursday according to the general rule.", "Τὴν Τρίτη καὶ τὴν Πέμπτη ἐπιτρέπονται ἔλαιο καὶ οἶνος κατὰ τὸν γενικὸ κανόνα."),
     "apostles_fast_mon_wed_fri": ("Apostles’ Fast", "Νηστεία τῶν Ἁγίων Ἀποστόλων", "The general rule is a strict fast on Monday, Wednesday, and Friday.", "Ὁ γενικὸς κανόνας προβλέπει αὐστηρὰ νηστεία Δευτέρα, Τετάρτη καὶ Παρασκευή."),
     "dormition_transfiguration_fish": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The Transfiguration permits fish, oil, and wine during the Dormition Fast.", "Ἡ Μεταμόρφωση ἐπιτρέπει ψάρι, ἔλαιο καὶ οἶνο μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
-    "dormition_feast_fish": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The Feast of the Dormition permits fish, oil, olives, and wine while meat, dairy, and eggs remain excluded.", "Ἡ ἑορτὴ τῆς Κοιμήσεως ἐπιτρέπει ψάρι, ἔλαιο, ἐλιές καὶ οἶνο, ἐνῶ κρέας, γαλακτοκομικὰ καὶ αὐγὰ παραμένουν ἀπαγορευμένα."),
+    "dormition_feast_fish": ("Dormition Feast after the fourteen-day fast", "Ἑορτὴ τῆς Κοιμήσεως μετὰ δεκατετραήμερη νηστεία", "The Dormition Fast is August 1–14. The feast on August 15 is outside those fourteen fasting days; when it falls on Wednesday or Friday, only fish is permitted, while meat, dairy, and eggs remain excluded.", "Ἡ Νηστεία τῆς Κοιμήσεως διαρκεί 1–14 Αὐγούστου. Ἡ ἑορτὴ τῆς Κοιμήσεως στὶς 15 Αὐγούστου βρίσκεται ἔξω ἀπὸ αὐτὲς τὶς δεκατέσσερις ἡμέρες· ἂν συμπέσει Τετάρτη ἢ Παρασκευή, ἐπιτρέπεται μόνον ψάρι, ἐνῶ κρέας, γαλακτοκομικὰ καὶ αὐγὰ παραμένουν ἀπαγορευμένα."),
+    "dormition_feast_fast_free": ("Dormition Feast after the fourteen-day fast", "Ἑορτὴ τῆς Κοιμήσεως μετὰ δεκατετραήμερη νηστεία", "The Dormition Fast is August 1–14. The feast on August 15 is outside the fourteen-day fast and this day has no general fast because it does not fall on Wednesday or Friday.", "Ἡ Νηστεία τῆς Κοιμήσεως διαρκεί 1–14 Αὐγούστου. Ἡ ἑορτὴ στὶς 15 Αὐγούστου βρίσκεται ἔξω ἀπὸ τὶς δεκατέσσερις ἡμέρες καὶ αὐτὴ ἡ ἡμέρα δὲν ἔχει γενικὴ νηστεία, ἐπειδὴ δὲν συμπίπτει μὲ Τετάρτη ἢ Παρασκευή."),
     "dormition_weekend_wine_oil": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "Oil and wine are permitted on Saturdays and Sundays.", "Τὰ Σάββατα καὶ τὶς Κυριακὲς ἐπιτρέπονται ἔλαιο καὶ οἶνος."),
     "dormition_strict": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The day falls within the Dormition Fast.", "Ἡ ἡμέρα βρίσκεται μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
     "nativity_entry_theotokos_fish": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The Entry of the Theotokos permits fish, oil, and wine.", "Στὰ Εἰσόδια τῆς Θεοτόκου ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος."),
@@ -947,7 +948,10 @@ def _fasting_profile(level: str, season_ar: str, reason_ar: str, source_rule: st
     allowed_names = [FASTING_FOODS[key]["ar"] for key in FASTING_FOODS if key in allowed]
     forbidden_names = [FASTING_FOODS[key]["ar"] for key in FASTING_FOODS if key not in allowed]
     level_ar = FASTING_LEVELS[level]["level_ar"]
-    title_ar = level_ar if level == "fast_free" else f"{season_ar} — {level_ar}"
+    if level == "fast_free" and source_rule == "dormition_feast_fast_free":
+        title_ar = f"{season_ar} — {level_ar}"
+    else:
+        title_ar = level_ar if level == "fast_free" else f"{season_ar} — {level_ar}"
     if allowed_names:
         detail = f"{reason_ar} المسموح بحسب القاعدة العامة: { '، '.join(allowed_names) }."
     else:
@@ -1069,11 +1073,18 @@ def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: d
     if old_key in {(1, 6), (6, 29), (12, 25)}:
         return _fasting_profile("fast_free", "عيد سيدي أو عيد كبير", "اليوم عيد كبير وتنتهي فيه فترة الصوم المرتبطة به.", "major_feast_fast_free")
     if old_key == (8, 15):
+        if weekday in (2, 4):
+            return _fasting_profile(
+                "fish_allowed",
+                "عيد رقاد والدة الإله بعد صوم أربعة عشر يومًا",
+                "صوم رقاد والدة الإله مدته أربعة عشر يومًا من 1 إلى 14 آب بحسب التقويم القديم. يوم 15 آب هو عيد الرقاد، وهو خارج الأيام الأربعة عشر؛ وإذا وافق الأربعاء أو الجمعة يكون صومًا مخففًا وتُسمح فيه السمك والزيت والنبيذ، مع بقاء الامتناع عن اللحوم والألبان والبيض.",
+                "dormition_feast_fish",
+            )
         return _fasting_profile(
-            "fish_allowed",
-            "صوم السيدة والدة الإله",
-            "عيد رقاد السيدة داخل تقليد الصوم: تُعطى فسحة السمك والزيت والزيتون والنبيذ، مع بقاء الامتناع عن اللحوم والألبان والبيض.",
-            "dormition_feast_fish",
+            "fast_free",
+            "عيد رقاد والدة الإله بعد صوم أربعة عشر يومًا",
+            "صوم رقاد والدة الإله مدته أربعة عشر يومًا من 1 إلى 14 آب بحسب التقويم القديم. يوم 15 آب هو عيد الرقاد، وهو خارج مدة الصوم وليس يومًا خامس عشر من الصوم، ولا صوم عام عليه لأنه لا يوافق الأربعاء أو الجمعة.",
+            "dormition_feast_fast_free",
         )
 
     # Cheesefare week: no meat, but dairy/eggs/fish/wine/oil are allowed.

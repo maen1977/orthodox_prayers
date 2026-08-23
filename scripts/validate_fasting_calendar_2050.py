@@ -170,11 +170,18 @@ def assert_weekly_and_season_invariants(day: date, profile: dict, key: str) -> N
         elif code != "strict":
             fail(f"apostles_mon_wed_fri:{key}:{code}")
 
-    # Dormition Fast and the feast itself. The feast is fish_allowed even on Friday.
+    # Dormition Fast is exactly August 1–14. The August 15 feast is outside
+    # those fourteen days: it is fish-relaxed on Wednesday/Friday and fast-free
+    # on other weekdays/weekend days.
     if old_month == 8 and 1 <= old_day <= 15:
-        if old_day in (6, 15):
+        if old_day == 6:
             if code != "fish_allowed":
-                fail(f"dormition_feast_or_transfiguration:{key}:{code}")
+                fail(f"dormition_transfiguration:{key}:{code}")
+        elif old_day == 15:
+            expected = "fish_allowed" if day.weekday() in (2, 4) else "fast_free"
+            expected_rule = "dormition_feast_fish" if expected == "fish_allowed" else "dormition_feast_fast_free"
+            if code != expected or rule != expected_rule:
+                fail(f"dormition_feast_rule:{key}:{code}:{rule}:expected={expected}:{expected_rule}")
         elif old_day <= 14 and day.weekday() in (5, 6):
             if code != "wine_oil":
                 fail(f"dormition_weekend:{key}:{code}")
@@ -268,8 +275,11 @@ def main() -> None:
                 fail(f"fixed_day_missing:{civil}")
             actual = resolve_fasting(item, profiles, year)
             if (month, day_number) == (8, 15):
-                if actual["code"] != "fish_allowed" or (actual.get("verification") or {}).get("rule") != "dormition_feast_fish":
-                    fail(f"dormition_feast_not_relaxed:{civil}:{actual['code']}:{(actual.get('verification') or {}).get('rule')}")
+                expected_code = "fish_allowed" if civil.weekday() in (2, 4) else "fast_free"
+                expected_rule = "dormition_feast_fish" if expected_code == "fish_allowed" else "dormition_feast_fast_free"
+                actual_rule = (actual.get("verification") or {}).get("rule")
+                if actual["code"] != expected_code or actual_rule != expected_rule:
+                    fail(f"dormition_feast_rule:{civil}:{actual['code']}:{actual_rule}:expected={expected_code}:{expected_rule}")
             if (month, day_number) in {(8, 6), (11, 21)} and actual["code"] != "fish_allowed":
                 fail(f"fixed_fish_feast_not_relaxed:{civil}:{actual['code']}")
             checked_fixed += 1
@@ -278,7 +288,7 @@ def main() -> None:
         "FASTING_CALENDAR_2050_OK "
         f"days={all_days} years=25 fixed_feast_dates={checked_fixed} abstinence_days={abstinence_days} "
         "calendar=jerusalem_jordan_julian_old_calendar "
-        "dormition_feast=fish_allowed weekday_overrides=checked seasons=checked"
+        "dormition_fast=14_days feast=fish_on_wed_fri_else_fast_free weekday_overrides=checked seasons=checked"
     )
 
 

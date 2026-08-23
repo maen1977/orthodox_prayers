@@ -14,7 +14,7 @@
 Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_prayer 17:30-21:29, small_compline otherwise, using Asia/Amman time.
 
 ### ✅ PASS (بنطاق موثق) — Fasting state and food-rule type
-4842/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 554, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.
+4824/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 536, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.
 **الإجراء:** Keep fail-closed behavior for abstinence start/end unless an official dated source states it.
 
 ### ❌ INCOMPLETE — Daily commemorations through 2050

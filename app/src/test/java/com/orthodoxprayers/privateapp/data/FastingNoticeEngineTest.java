@@ -1,6 +1,8 @@
 package com.orthodoxprayers.privateapp.data;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 
@@ -11,18 +13,21 @@ import org.junit.Test;
 public final class FastingNoticeEngineTest {
     private static final LocalDate START = LocalDate.of(2026, 8, 14);
     private static final LocalDate END = LocalDate.of(2026, 8, 27);
+    private static final LocalDate FEAST = LocalDate.of(2026, 8, 28);
 
     private static JSONObject calendarDay(String isoDate) {
         LocalDate date = LocalDate.parse(isoDate);
         boolean dormition = !date.isBefore(START) && !date.isAfter(END);
+        boolean feast = date.equals(FEAST);
         try {
             JSONObject title = new JSONObject()
-                    .put("ar", dormition ? "صوم رقاد السيدة والدة الإله" : "لا يوجد صوم")
-                    .put("en", dormition ? "Dormition Fast" : "No fast")
-                    .put("el", dormition ? "Νηστεία τῆς Κοιμήσεως" : "Χωρὶς νηστεία");
+                    .put("ar", dormition ? "صوم رقاد السيدة والدة الإله" : feast ? "عيد رقاد والدة الإله بعد صوم أربعة عشر يومًا" : "لا يوجد صوم")
+                    .put("en", dormition ? "Dormition Fast" : feast ? "Dormition Feast after the fourteen-day fast" : "No fast")
+                    .put("el", dormition ? "Νηστεία τῆς Κοιμήσεως" : feast ? "Ἑορτὴ τῆς Κοιμήσεως μετὰ δεκατετραήμερη νηστεία" : "Χωρὶς νηστεία");
             return new JSONObject().put("fasting", new JSONObject()
-                    .put("is_fast", dormition)
-                    .put("title", title));
+                    .put("is_fast", dormition || feast)
+                    .put("title", title)
+                    .put("verification", new JSONObject().put("rule", feast ? "dormition_feast_fish" : dormition ? "dormition_strict" : "ordinary_fast_free")));
         } catch (JSONException error) {
             throw new AssertionError("Test fixture must create valid fasting JSON", error);
         }
@@ -53,6 +58,33 @@ public final class FastingNoticeEngineTest {
 
         FastingNoticeEngine.Notice last = FastingNoticeEngine.evaluate(END, provider);
         assertEquals(0, last.daysRemaining);
+        assertEquals(14, last.dayNumber);
+    }
+
+    @Test
+    public void dormitionFeastOnFridayIsOutsideTheFourteenDayPeriod() {
+        FastingNoticeEngine.DayProvider provider = FastingNoticeEngineTest::calendarDay;
+
+        FastingNoticeEngine.Notice feast = FastingNoticeEngine.evaluate(FEAST, provider);
+
+        assertEquals(FastingNoticeEngine.Kind.CURRENT_MAJOR_FAST, feast.kind);
+        assertEquals(FastingNoticeEngine.Family.DORMITION, feast.family);
+        assertTrue(feast.feastDay);
+        assertEquals(START, feast.startDate);
+        assertEquals(END, feast.endDate);
+        assertEquals(14, feast.totalDays);
+        assertEquals(14, feast.dayNumber);
+        assertEquals(0, feast.daysRemaining);
+    }
+
+    @Test
+    public void ordinaryDormitionDayIsNotMarkedAsTheFeast() {
+        FastingNoticeEngine.DayProvider provider = FastingNoticeEngineTest::calendarDay;
+
+        FastingNoticeEngine.Notice last = FastingNoticeEngine.evaluate(END, provider);
+
+        assertFalse(last.feastDay);
+        assertEquals(14, last.totalDays);
         assertEquals(14, last.dayNumber);
     }
 }

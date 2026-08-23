@@ -52,6 +52,8 @@ public final class FastingNoticeEngine {
         public final int dayNumber;
         public final int daysRemaining;
         public final int totalDays;
+        /** True when the selected day is the feast after a major fast, not a fast-season day. */
+        public final boolean feastDay;
         public final DayOfWeek weekday;
 
         private Notice(
@@ -64,6 +66,7 @@ public final class FastingNoticeEngine {
                 int dayNumber,
                 int daysRemaining,
                 int totalDays,
+                boolean feastDay,
                 DayOfWeek weekday
         ) {
             this.kind = kind;
@@ -75,6 +78,7 @@ public final class FastingNoticeEngine {
             this.dayNumber = dayNumber;
             this.daysRemaining = daysRemaining;
             this.totalDays = totalDays;
+            this.feastDay = feastDay;
             this.weekday = weekday;
         }
 
@@ -89,6 +93,7 @@ public final class FastingNoticeEngine {
                     0,
                     0,
                     0,
+                    false,
                     today == null ? null : today.getDayOfWeek()
             );
         }
@@ -97,13 +102,16 @@ public final class FastingNoticeEngine {
     public static Notice evaluate(LocalDate today, DayProvider provider) {
         if (today == null || provider == null) return Notice.none(today);
 
-        Family currentFamily = majorFamily(provider.day(today.toString()));
+        JSONObject currentDay = provider.day(today.toString());
+        Family currentFamily = majorFamily(currentDay);
         if (currentFamily != Family.NONE) {
-            LocalDate start = findBoundary(today, provider, currentFamily, -1);
-            LocalDate end = findBoundary(today, provider, currentFamily, 1);
+            boolean feastDay = !isMajorSeasonDay(currentDay, currentFamily);
+            LocalDate seasonAnchor = feastDay ? today.minusDays(1) : today;
+            LocalDate start = findBoundary(seasonAnchor, provider, currentFamily, -1);
+            LocalDate end = feastDay ? seasonAnchor : findBoundary(today, provider, currentFamily, 1);
             int total = inclusiveDays(start, end);
-            int dayNumber = (int) ChronoUnit.DAYS.between(start, today) + 1;
-            int remaining = (int) ChronoUnit.DAYS.between(today, end);
+            int dayNumber = feastDay ? total : (int) ChronoUnit.DAYS.between(start, today) + 1;
+            int remaining = feastDay ? 0 : (int) ChronoUnit.DAYS.between(today, end);
             return new Notice(
                     Kind.CURRENT_MAJOR_FAST,
                     currentFamily,
@@ -114,6 +122,7 @@ public final class FastingNoticeEngine {
                     Math.max(1, dayNumber),
                     Math.max(0, remaining),
                     Math.max(1, total),
+                    feastDay,
                     today.getDayOfWeek()
             );
         }
@@ -135,6 +144,7 @@ public final class FastingNoticeEngine {
                     0,
                     (int) ChronoUnit.DAYS.between(candidate, end),
                     inclusiveDays(candidate, end),
+                    false,
                     candidate.getDayOfWeek()
             );
         }
@@ -153,11 +163,22 @@ public final class FastingNoticeEngine {
                     0,
                     0,
                     1,
+                    false,
                     candidate.getDayOfWeek()
             );
         }
 
         return Notice.none(today);
+    }
+
+    private static boolean isMajorSeasonDay(JSONObject day, Family family) {
+        if (day == null || family == Family.NONE) return false;
+        JSONObject fasting = day.optJSONObject("fasting");
+        if (fasting == null || !fasting.optBoolean("is_fast", false)) return false;
+        JSONObject verification = fasting.optJSONObject("verification");
+        String rule = verification == null ? "" : verification.optString("rule", "").trim();
+        if (family == Family.DORMITION && rule.startsWith("dormition_feast_")) return false;
+        return majorFamily(day) == family;
     }
 
     private static LocalDate findBoundary(
@@ -169,7 +190,7 @@ public final class FastingNoticeEngine {
         LocalDate boundary = anchor;
         for (int i = 0; i < MAJOR_FAST_BOUNDARY_SCAN_DAYS; i++) {
             LocalDate next = boundary.plusDays(direction);
-            if (majorFamily(provider.day(next.toString())) != family) break;
+            if (!isMajorSeasonDay(provider.day(next.toString()), family)) break;
             boundary = next;
         }
         return boundary;
@@ -201,10 +222,14 @@ public final class FastingNoticeEngine {
         String text = fastingSearchText(day);
         if (containsAny(text,
                 "dormition fast",
+                "dormition feast",
                 "صوم السيدة والدة الإله",
                 "صوم رقاد",
+                "عيد رقاد",
                 "νηστεία τῆς κοιμήσεως",
-                "νηστεια της κοιμησεως")) {
+                "νηστεια της κοιμησεως",
+                "ἑορτὴ τῆς κοιμήσεως",
+                "εορτη της κοιμησεως")) {
             return Family.DORMITION;
         }
         if (containsAny(text,

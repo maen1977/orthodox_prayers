@@ -23,6 +23,11 @@
       "id": "goarch_when_you_fast",
       "url": "https://www.goarch.org/-/when-you-fast",
       "use": "المعنى الروحي للصوم والتنبيه إلى التدرج والحالة الصحية"
+    },
+    {
+      "id": "saint_sophia_dormition_fast",
+      "url": "https://www.saintsophiadc.org/the-dormition-fast/",
+      "use": "المدة الدقيقة لصوم الرقاد من 1 إلى 14 آب، وحكم عيد 15 آب: فسحة عامة إن لم يقع الأربعاء أو الجمعة، والسمك فقط إذا وقع في أحدهما"
     }
   ],
   "levels": {
@@ -89,8 +94,13 @@
   "dormition_fast_old_calendar": {
     "start": "08-01",
     "end": "08-14",
+    "duration_days": 14,
     "feast_day": "08-15",
-    "feast_code": "fish_allowed"
+    "feast_day_is_outside_fast": true,
+    "feast_day_rule": "fast_free_unless_wednesday_or_friday_fish",
+    "feast_code": "fish_allowed_on_wednesday_or_friday",
+    "source_id": "saint_sophia_dormition_fast",
+    "source_url": "https://www.saintsophiadc.org/the-dormition-fast/"
   },
   "annunciation_paschal_collisions": {
     "first_four_days_of_holy_week": {

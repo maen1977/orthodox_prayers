@@ -24,7 +24,7 @@
     "generic_commemoration_days": 0,
     "meaningful_occasion_days": 2151,
     "source_backed_named_commemoration_days": 9131,
-    "fast_days": 4842,
+    "fast_days": 4824,
     "church_groups": {
       "jordan": 42,
       "palestine": 9,
@@ -59,7 +59,7 @@
       "id": "fasting",
       "title": "Fasting state and food-rule type",
       "status": "PASS_WITH_SCOPE",
-      "evidence": "4842/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 554, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.",
+      "evidence": "4824/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 536, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.",
       "action": "Keep fail-closed behavior for abstinence start/end unless an official dated source states it."
     },
     {

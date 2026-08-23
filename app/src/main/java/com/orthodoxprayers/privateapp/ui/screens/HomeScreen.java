@@ -206,6 +206,9 @@ public final class HomeScreen extends BaseScreen {
         if (notice == null) return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);
         if (notice.kind == FastingNoticeEngine.Kind.CURRENT_MAJOR_FAST) {
             String family = fastFamilyTitle(notice.family);
+            if (notice.feastDay && notice.family == FastingNoticeEngine.Family.DORMITION) {
+                return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_dormition_feast_relaxed);
+            }
             if (notice.dayNumber == 1) {
                 return localFormat(
                         com.orthodoxprayers.privateapp.R.string.ui_fast_notice_first_day_format,

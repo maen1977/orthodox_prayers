@@ -156,8 +156,13 @@ def test_dormition_fast_has_fourteen_days_and_separate_feast_day():
     assert policy["dormition_fast_old_calendar"] == {
         "start": "08-01",
         "end": "08-14",
+        "duration_days": 14,
         "feast_day": "08-15",
-        "feast_code": "fish_allowed",
+        "feast_day_is_outside_fast": True,
+        "feast_day_rule": "fast_free_unless_wednesday_or_friday_fish",
+        "feast_code": "fish_allowed_on_wednesday_or_friday",
+        "source_id": "saint_sophia_dormition_fast",
+        "source_url": "https://www.saintsophiadc.org/the-dormition-fast/",
     }
     asset = json.loads((ROOT / "app/src/main/assets/data/calendar/calendar_2026.json").read_text(encoding="utf-8"))
     by_date = {day["date_iso"]: day for day in asset["days"]}
@@ -169,6 +174,19 @@ def test_dormition_fast_has_fourteen_days_and_separate_feast_day():
         else:
             assert fasting["code"] == "fish_allowed"
             assert fasting["verification"]["rule"] == "dormition_feast_fish"
+            assert "أربعة عشر" in fasting["detail"]["ar"]
+            allowed = {item["key"]: item["allowed"] for item in fasting["items"]}
+            assert allowed["fish"] is True
+            assert allowed["oil"] is True
+            assert allowed["wine"] is True
+            assert allowed["meat"] is False
+            assert allowed["dairy"] is False
+    saturday_feast = json.loads((ROOT / "app/src/main/assets/data/calendar/calendar_2027.json").read_text(encoding="utf-8"))
+    saturday_day = next(day for day in saturday_feast["days"] if day["julian_date"] == "2027-08-15")
+    saturday_profile = saturday_feast["fasting_profiles"][saturday_day["fasting"]["profile_id"]]
+    assert saturday_day["date_iso"] == "2027-08-28"
+    assert saturday_profile["code"] == "fast_free"
+    assert saturday_profile["verification"]["rule"] == "dormition_feast_fast_free"
 
 
 def test_every_day_has_semantically_valid_fasting_rule_through_2050():
@@ -180,7 +198,8 @@ def test_every_day_has_semantically_valid_fasting_rule_through_2050():
         text=True,
     )
     assert "FASTING_CALENDAR_2050_OK days=9131 years=25" in result.stdout
-    assert "dormition_feast=fish_allowed" in result.stdout
+    assert "dormition_fast=14_days" in result.stdout
+    assert "feast=fish_on_wed_fri_else_fast_free" in result.stdout
 
 
 def test_android_uses_year_index_and_exact_nine_day_contract():
