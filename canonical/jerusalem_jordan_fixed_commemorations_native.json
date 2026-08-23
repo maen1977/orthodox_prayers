@@ -74,7 +74,10 @@
     "el_2025_contextual_records": 56,
     "en_comparative_records": 366,
     "local_three_language_verified_slots": 0,
-    "strict_named_local_gate": false
+    "strict_named_local_gate": false,
+    "arabic_visual_review_promoted_slots": 148,
+    "arabic_visual_review_pending_slots": 218,
+    "strict_gate_note": "Arabic promotions are local and visually reviewed; the strict three-language gate remains false because the English lane is comparative rather than Jerusalem/Jordan local."
   },
   "records": [
     {
@@ -136,15 +139,15 @@
       "old_calendar_month_day": "01-02",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي تقدمة عيد الظهور ااَللهي القديس سيلفسروس أسقف رومية، القديس سريافيم ساروفسكي",
+          "text": "تقدمة عيد الظهور الإلهي — القديس سيلفستر أسقف رومية، القديس سيرافيم روفسكي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -352,15 +355,15 @@
       "old_calendar_month_day": "01-06",
       "lanes": {
         "ar": {
-          "text": "اجلمعة عيد الظهور اإللهي (الغطاس)",
+          "text": "عيد الظهور الإلهي (الغطاس)",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -406,15 +409,15 @@
       "old_calendar_month_day": "01-07",
       "lanes": {
         "ar": {
-          "text": "السبت عيد جامع للنبي الكريم السابق المجيد يوحنّا المعمدان سبت ما بعد عيد الظهور",
+          "text": "عيد جامع للنبي الكريم السابق المجيد يوحنا المعمدان — سبت ما بعد عيد الظهور",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -460,15 +463,15 @@
       "old_calendar_month_day": "01-08",
       "lanes": {
         "ar": {
-          "text": "األحد القدّيسَان جيورجيوس ويوحنّا الخوزيفي والقدّيسة البارّة دومنيكا أحد ما بعد عيد الظهور",
+          "text": "القديسان جيورجيوس ويوحنا الخوزيفي والقديسة البارة دومنيكا — أحد ما بعد عيد الظهور",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -568,15 +571,15 @@
       "old_calendar_month_day": "01-10",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيسَان غريغوريوس أسقف نيصص وذوميتيانوس أسقف ميليتيي",
+          "text": "القديسان غريغوريوس أسقف نيصص ودومتيانوس أسقف ميليتيني",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -622,15 +625,15 @@
       "old_calendar_month_day": "01-11",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس البارّ ثيوذوسيوس رئيس األديار",
+          "text": "القديس البارّ ثيودوسيوس رئيس الأديرة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -785,15 +788,15 @@
       "old_calendar_month_day": "01-14",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسون األبرار املقتولنِّي يف طور سيناء ورايثو والقديسة نينة",
+          "text": "القديسون الأبرار المقتولين في طور سيناء ورايثو والقديسة نينة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 62
         },
         "el": {
@@ -839,15 +842,15 @@
       "old_calendar_month_day": "01-15",
       "lanes": {
         "ar": {
-          "text": "األحد القدّيسَان البارّ بولس الصعيدي الناسك األوّل والبّار يوحنّا الكوخي",
+          "text": "القديسان البارّ بولس الصعيدي الناسك الأول والبارّ يوحنا الكوخي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -893,15 +896,15 @@
       "old_calendar_month_day": "01-16",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي السجود لسلسلة القدّيس بطرس الرسول المكرّمة",
+          "text": "السجود لسلسلة القديس بطرس الرسول المكرّمة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -947,15 +950,15 @@
       "old_calendar_month_day": "01-17",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيس البارّ انطونيوس الكبير أبو الرهبان",
+          "text": "القديس البارّ أنطونيوس الكبير أبو الرهبان",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1001,15 +1004,15 @@
       "old_calendar_month_day": "01-18",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيسَان أثناسيوس وكيرللس بطاركة ااَلسكندرية",
+          "text": "القديسان أثناسيوس وكيرلس بطاركة الإسكندرية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1219,15 +1222,15 @@
       "old_calendar_month_day": "01-22",
       "lanes": {
         "ar": {
-          "text": "األحد القدّيسَان تيموثاوس الرسول وأنستاسيوس الشهيد الفارسي",
+          "text": "القديسان تيموثاوس الرسول وأنستاسيوس الشهيد الفارسي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1381,15 +1384,15 @@
       "old_calendar_month_day": "01-25",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء أبينا الجليل في القدّيسين غريغوريوس الالهوتي",
+          "text": "أبينا الجليل في القديسين غريغوريوس اللاهوتي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1435,15 +1438,15 @@
       "old_calendar_month_day": "01-26",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيس كسينوفون ورفقته ماريا وأواًلدمها يوحنّا وأركاذيوس األبرار",
+          "text": "القديس كسينوفون ورفقته ماريا وأولادهما يوحنا وأركاذيوس الأبرار",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1544,15 +1547,15 @@
       "old_calendar_month_day": "01-28",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان أفرام البارّ السوري وبالذيوس أسقف إيلينوبوليس",
+          "text": "القديسان أفرام البارّ السوري وبلاذيوس أسقف إيلينوبوليس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1652,15 +1655,15 @@
       "old_calendar_month_day": "01-30",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي عيد جامع آلبائنا القدّيسين باسيليوس الكبير و غريغوريوس الالّ هوتي ويوحنّا الذهبي الفم (األقمار الثالثة)",
+          "text": "عيد جامع لآبائنا القديسين باسيليوس الكبير وغريغوريوس اللاهوتي ويوحنا الذهبي الفم (الأقمار الثلاثة)",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 63
         },
         "el": {
@@ -1760,15 +1763,15 @@
       "old_calendar_month_day": "02-01",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء تقدمة عيد دخول السيّد الى الهيكل القدّيس الشهيد تريفن",
+          "text": "تقدمة عيد دخول السيد إلى الهيكل — القديس الشهيد تريفن",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 65
         },
         "el": {
@@ -1814,15 +1817,15 @@
       "old_calendar_month_day": "02-02",
       "lanes": {
         "ar": {
-          "text": "اخلميس عيد دخول ربّنا وإلهنا ومخلّصنا يسوع المسيح إلى الهيكل",
+          "text": "عيد دخول ربنا وإلهنا ومخلصنا يسوع المسيح إلى الهيكل",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 65
         },
         "el": {
@@ -1868,15 +1871,15 @@
       "old_calendar_month_day": "02-03",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيسَان سمعان الصدّيق القابل اإلله وحنّة النبيّة",
+          "text": "القديسان سمعان الصديق القابل الإله وحنّة النبيّة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 65
         },
         "el": {
@@ -1977,15 +1980,15 @@
       "old_calendar_month_day": "02-05",
       "lanes": {
         "ar": {
-          "text": "األحد بوليفاكتوس بطريرك القسطنطينية وأغاثي الشهيدة",
+          "text": "بوليفكتوس بطريرك القسطنطينية وأغاثي الشهيدة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 65
         },
         "el": {
@@ -2193,15 +2196,15 @@
       "old_calendar_month_day": "02-09",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسون نيقيفوروس وماركلُّس وبنكراتيوس الشهداء",
+          "text": "القديسون نيقيفوروس وماركلس وبنكراتيوس الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 65
         },
         "el": {
@@ -2627,15 +2630,15 @@
       "old_calendar_month_day": "02-17",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيس ثيودوروس العظيم في الشهداء التيروني وتذكار القدّيسَنِّي ماركيانوس وبُلخرييّا",
+          "text": "القديس ثيودوروس العظيم في الشهداء التيروني وتذكار القديسين ماركيانوس وبلخيريا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 66
         },
         "el": {
@@ -2736,15 +2739,15 @@
       "old_calendar_month_day": "02-19",
       "lanes": {
         "ar": {
-          "text": "األحد اإلبن الشاطر القدّيسَان أرخيبوس الرسول وفيلوثاي البارّة األثينية",
+          "text": "الابن الشاطر — القديسان أرخيبوس الرسول وفيلوثاي البارّة الأثينية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 66
         },
         "el": {
@@ -3006,15 +3009,15 @@
       "old_calendar_month_day": "02-24",
       "lanes": {
         "ar": {
-          "text": "اجلمعة الوجود األول والثاني لهامة النبيّ المجيد يوحنّا المعمدان",
+          "text": "الوجود الأول والثاني لهامة النبي المجيد يوحنا المعمدان",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 66
         },
         "el": {
@@ -3061,15 +3064,15 @@
       "old_calendar_month_day": "02-25",
       "lanes": {
         "ar": {
-          "text": "السبت اسبت األموات القدّيسان تاراسيوس املعرف رئيس أساقفة القسطنطينية والكسندروس",
+          "text": "سبت الأموات — القديس تاراسيوس المعترف رئيس أساقفة القسطنطينية والإسكندرية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 66
         },
         "el": {
@@ -3480,15 +3483,15 @@
       "old_calendar_month_day": "03-04",
       "lanes": {
         "ar": {
-          "text": "األحد أحد مرفع الجبن - القدّيس البارّ جراسيموس األردنّي",
+          "text": "أحد مرفع الجبن — القديس البارّ جراسيموس الأردني",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -3534,15 +3537,15 @@
       "old_calendar_month_day": "03-05",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي بدء الصوم األربعيني (كاثارا ديفتيرا، ااَلثنين وهو بدء الصيام القدّيسَان قونونس الشهيد، ومرقس الناسك روحيًّا وجسديًّا)",
+          "text": "بدء الصوم الأربعيني (كاثارا ديفتيرا، الاثنين وهو بدء الصيام: روحيًا وجسديًا) — القديسان قونونس الشهيد، ومرقس الناسك",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -3588,15 +3591,15 @@
       "old_calendar_month_day": "03-06",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيسون شهداء عمورية اإلثنان واألربعون",
+          "text": "القديسون شهداء عمورية الإثنان والأربعون",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -3642,15 +3645,15 @@
       "old_calendar_month_day": "03-07",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء اآلباء األجالء يف القدّيسنِّي أفرام وباسيليوس وإيثرييوس وإيلبيذيوس",
+          "text": "الآباء الأجلاء في القديسين أفرام وباسيليوس وإيثيريوس وإيلبيدوس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -3750,15 +3753,15 @@
       "old_calendar_month_day": "03-09",
       "lanes": {
         "ar": {
-          "text": "اجلمعة شهداء سبسطية األربعون - المدائح األولى",
+          "text": "شهداء سبسطية الأربعون — المدائح الأولى",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -3859,15 +3862,15 @@
       "old_calendar_month_day": "03-11",
       "lanes": {
         "ar": {
-          "text": "األحد أحد األرثوذكسيّة األحد األول من الصوم الكبير القدّيس صفرونيوس بطريرك أورشليم",
+          "text": "أحد الأرثوذكسية — الأحد الأول من الصوم الكبير — القديس صفرونيوس بطريرك أورشليم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -3967,15 +3970,15 @@
       "old_calendar_month_day": "03-13",
       "lanes": {
         "ar": {
-          "text": "الثالثاء نقل رفات القدّيس نيكيفوروس بطريرك القسطنطينية",
+          "text": "نقل رفات القديس نيقيفوروس بطريرك القسطنطينية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 68
         },
         "el": {
@@ -4238,15 +4241,15 @@
       "old_calendar_month_day": "03-18",
       "lanes": {
         "ar": {
-          "text": "األحد األحد الثاني من الصوم - غريغوريوس بااَلماس كريلُّس األورشليمي",
+          "text": "الأحد الثاني من الصوم — غريغوريوس بالاماس كيرلس الأورشليمي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 69
         },
         "el": {
@@ -4293,15 +4296,15 @@
       "old_calendar_month_day": "03-19",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي الشهداء خريسنثوس وداريا األثينائيّة والذين معهما",
+          "text": "الشهداء خريستوفوس وداريا الأثينائية والذين معهما",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 69
         },
         "el": {
@@ -4347,15 +4350,15 @@
       "old_calendar_month_day": "03-20",
       "lanes": {
         "ar": {
-          "text": "الثالثاء األبرار المستشهدون في دير القدّيس سابا",
+          "text": "الأبرار المستشهدون في دير القديس سابا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 69
         },
         "el": {
@@ -4563,15 +4566,15 @@
       "old_calendar_month_day": "03-24",
       "lanes": {
         "ar": {
-          "text": "السبت تقدمة عيد البشارة - القدّيس أرتامونُس أسقف سلوقية",
+          "text": "تقدمة عيد البشارة — القديس أرتاموس أسقف سلوقية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 69
         },
         "el": {
@@ -4618,15 +4621,15 @@
       "old_calendar_month_day": "03-25",
       "lanes": {
         "ar": {
-          "text": "األحد األحد الثّالث من الصوم - السجود للصليب الكريم",
+          "text": "الأحد الثالث من الصوم — السجود للصليب الكريم — عيد بشارة سيدتنا والدة الإله الفائقة القداسة والدائمة البتولية مريم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 69
         },
         "el": {
@@ -4998,15 +5001,15 @@
       "old_calendar_month_day": "04-01",
       "lanes": {
         "ar": {
-          "text": "األحد األحد الرابع من الصوم - القدّيس يوحنّا السلّمي أمّنا البارّة في القدّيسات مريم المصرية",
+          "text": "الأحد الرابع من الصوم — القديس يوحنا السلمي — أمنا البارة في القديسات مريم المصرية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 71
         },
         "el": {
@@ -5268,15 +5271,15 @@
       "old_calendar_month_day": "04-06",
       "lanes": {
         "ar": {
-          "text": "اجلمعة المدائح الرابعة- القدّيس إفتيخيوس بطريرك القسطنطينية والشهداء الفُرس املائة والعشرون",
+          "text": "المدائح الرابعة — القديس إفتيخيوس بطريرك القسطنطينية، والشهداء الفرس المائة والعشرون",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 71
         },
         "el": {
@@ -5322,15 +5325,15 @@
       "old_calendar_month_day": "04-07",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسون كاليوبيوس الشهيد وجيورجيوس امليتيلييّ وسابا البارّ اخلوزيفي الذي يف كاليمنوس",
+          "text": "القديسون كاليوبيوس الشهيد وجيورجيوس الميتيليني وسابا البار الخوزيفي الذي في كاليمونوس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 71
         },
         "el": {
@@ -5376,15 +5379,15 @@
       "old_calendar_month_day": "04-08",
       "lanes": {
         "ar": {
-          "text": "األحد األحد الخامس من الصوم - أمّنا البارّة مريم المصرية القدّيسون أغافوس وروفوس وأسينكريتوس وغريهم من الرسل السبعنِّي",
+          "text": "الأحد الخامس من الصوم — أمنا البارة مريم المصرية — القديسون أغافوس وروفس وأسيكريتوس وغيرهم من الرسل السبعين",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 71
         },
         "el": {
@@ -5538,15 +5541,15 @@
       "old_calendar_month_day": "04-11",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس أنتيباس األسقف الشهيد",
+          "text": "القديس أنتيباس الأسقف الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 71
         },
         "el": {
@@ -5700,15 +5703,15 @@
       "old_calendar_month_day": "04-14",
       "lanes": {
         "ar": {
-          "text": "السبت سبت لعازر القدّيسون أريسرخس وبوديس وتروفيمُس",
+          "text": "سبت لعازر — القديسون أريسترخس وبوديس وتروفيمس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 72
         },
         "el": {
@@ -5755,15 +5758,15 @@
       "old_calendar_month_day": "04-15",
       "lanes": {
         "ar": {
-          "text": "األحد األحد السّادس من الصوم - أحد الشعانين - دخول السيد المسيح إلى أورشليم القديس أكرسكس الشهيد",
+          "text": "الأحد السادس من الصوم — أحد الشعانين — دخول السيد المسيح إلى أورشليم — القديس أكرسكس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 72
         },
         "el": {
@@ -5809,15 +5812,15 @@
       "old_calendar_month_day": "04-16",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي يوم اإلثنين العظيم المقدّس تذكار يوسف المغبوط الكليّ الحسن تذكار ااًلخوات العذارى الشهيدات أغاثي وإريي وكيونية",
+          "text": "يوم الإثنين العظيم المقدس — تذكار يوسف المغبوط الكلي الحسن — تذكار الأخوات العذارى الشهيدات أغاثي وإيريني وكيرينة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 72
         },
         "el": {
@@ -5917,15 +5920,15 @@
       "old_calendar_month_day": "04-18",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء يوم األربعاء العظيم المقدّس - تذكار المرأة الزانية التي دهنت الرّبّ بالطيب البارّ يوحنا تلميذ غريغوريوس اإليسفري",
+          "text": "يوم الأربعاء العظيم المقدس — تذكار المرأة الزانية التي دهنت الرب بالطيب — البار يوحنا تلميذ غريغوريوس الإيسفري",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 72
         },
         "el": {
@@ -6514,15 +6517,15 @@
       "old_calendar_month_day": "04-29",
       "lanes": {
         "ar": {
-          "text": "األحد األحد الجديد - أحد توما الرسول القدّيسان ياسون وسوسيباترُس الرسواًلن",
+          "text": "الأحد الجديد — أحد توما الرسول — القديسان ياسون وسوسيباترس الرسولان",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 73
         },
         "el": {
@@ -6676,15 +6679,15 @@
       "old_calendar_month_day": "05-02",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء تذكار نقل رفات القدّيس أثناسيوس الكبري",
+          "text": "تذكار نقل رفات القديس أثناسيوس الكبير",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -6730,15 +6733,15 @@
       "old_calendar_month_day": "05-03",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسَان متوثاوس ومافرة الشهيدَان",
+          "text": "القديسان تيموثاوس ومافرا الشهيدان",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -6838,15 +6841,15 @@
       "old_calendar_month_day": "05-05",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسة إيريني العظيمة في الشهيدات ، الشهيد أفرام نِيَا ماكري",
+          "text": "القديسة إيريني العظيمة في الشهيدات، الشهيد أفرام نيا ماكري",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -6893,15 +6896,15 @@
       "old_calendar_month_day": "05-06",
       "lanes": {
         "ar": {
-          "text": "األحد أحد حامالت الطيب والقديسين يوسف الرامي ونيقوذيموس القدّيسَان أيوّب الصدّيق وسريافيم ليفاذيياس",
+          "text": "أحد حاملات الطيب والقديسين يوسف الرامي ونيقوديموس — القديسان أيوب الصديق وسيرافيم ليفادياس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -6947,15 +6950,15 @@
       "old_calendar_month_day": "05-07",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي تذكار ظهور عالمة الصليب في سماء أورشليم",
+          "text": "تذكار ظهور علامة الصليب في سماء أورشليم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -7001,15 +7004,15 @@
       "old_calendar_month_day": "05-08",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيسَان يوحنّا الرسول اإلنجيلي وأرسانيوس الكبير البارّ",
+          "text": "القديسان يوحنا الرسول الإنجيلي وأرسينيوس الكبير البار",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -7055,15 +7058,15 @@
       "old_calendar_month_day": "05-09",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيسَان النيّ أشعياء وخريستوفورس الشهيد",
+          "text": "القديسان النبي أشعياء وخريستوفورس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -7109,15 +7112,15 @@
       "old_calendar_month_day": "05-10",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيس الرسول سمعان الغيور واًلفرنديوس البارّ",
+          "text": "القديس الرسول سمعان الغيور ولافرنديوس البار",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -7218,15 +7221,15 @@
       "old_calendar_month_day": "05-12",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان أبيفانيوس أسقف قرص وجرمانوس بطريرك القسطنطينية",
+          "text": "القديسان أبيفانيوس أسقف قبرص وجرمانوس بطريرك القسطنطينية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 74
         },
         "el": {
@@ -7436,15 +7439,15 @@
       "old_calendar_month_day": "05-16",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء نصف الخمسين - القدّيس ثيوذوروس املتقدِّس تلميذ باخوميوس الكبري، والقدّيسون الشهداء يف دير مار سابا",
+          "text": "نصف الخمسين — القديس ثيودوروس المقدّس تلميذ باخوميوس الكبير، والقديسون الشهداء في دير مار سابا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -7490,15 +7493,15 @@
       "old_calendar_month_day": "05-17",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسَان الرسواًلَ ن أندرونيكوس ويونيّا",
+          "text": "القديسان الرسولان أندرونيكوس ويونيا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -7815,15 +7818,15 @@
       "old_calendar_month_day": "05-23",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيسَان ميخائيل املعرف أسقف سيناذه ومرمي احلاملة الطيب زوجة كالوبا",
+          "text": "القديسان ميخائيل المعترف أسقف سينادا ومريم الحاملة الطيب زوجة كلوبا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -7869,15 +7872,15 @@
       "old_calendar_month_day": "05-24",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيس البارّ مُسعان العمودي الذي من اجلبل العجيب",
+          "text": "القديس سمعان البارّ العمودي الذي من الجبل العجيب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -7978,15 +7981,15 @@
       "old_calendar_month_day": "05-26",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان الرسواًلَ ن كاربوس وألفيوس من الرسل السبعنِّي",
+          "text": "القديسان الرسولان كاروبوس وألفيوس من الرسل السبعين",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -8033,15 +8036,15 @@
       "old_calendar_month_day": "05-27",
       "lanes": {
         "ar": {
-          "text": "األحد أحد األعمى - القدّيسَان هيالذيوس الشهيد يف الكهنة والقديس يوحنّا الرُّوسي الصانع العجائب",
+          "text": "أحد الأعمى — القديسان هيلاس الشهيد في الكهنة والقديس يوحنا الروسي الصانع العجائب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -8249,15 +8252,15 @@
       "old_calendar_month_day": "05-31",
       "lanes": {
         "ar": {
-          "text": "اخلميس عيد صعود ربّنا وإلهنا ومخلّصنا يسوع المسيح بالجسد القديس ارميوس الشهيد",
+          "text": "عيد صعود ربنا وإلهنا ومخلصنا يسوع المسيح بالجسد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 75
         },
         "el": {
@@ -8357,15 +8360,15 @@
       "old_calendar_month_day": "06-02",
       "lanes": {
         "ar": {
-          "text": "السبت أبينا اجلليل يف القدّيسِنِّي نيكيفوروس املعرف بطريرك القسطنطينية",
+          "text": "أبينا الجليل في القديسين نيقيفوروس المعترف بطريرك القسطنطينية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 77
         },
         "el": {
@@ -8412,15 +8415,15 @@
       "old_calendar_month_day": "06-03",
       "lanes": {
         "ar": {
-          "text": "األحد أحد اآلباء القديسين ٨١٣ المتوشّحين باهلل المجتمعين في نيقية القدّيسَان الشهيدَان لوكيليانوس وبافال",
+          "text": "أحد الآباء القديسين 318 المتوشحين بالله المجتمعين في نيقية — القديسان الشهيدان لوكيليانوس وبافلا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 77
         },
         "el": {
@@ -8736,15 +8739,15 @@
       "old_calendar_month_day": "06-09",
       "lanes": {
         "ar": {
-          "text": "السبت سبت األموات - القدّيس كيرللس بطريرك اإلسكندرية",
+          "text": "سبت الأموات — القديس كيرلس البابا بطريرك الإسكندرية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 77
         },
         "el": {
@@ -9170,15 +9173,15 @@
       "old_calendar_month_day": "06-17",
       "lanes": {
         "ar": {
-          "text": "األحد أحد متى األوَّل - أحد جميع القديسين القدّيسون إيسافروس وإينوكينديوس ومانوئيل وصابائيل وإمُساعيل",
+          "text": "أحد متى الأول — أحد جميع القديسين — القديسون إيسافروس وإينوكينديوس ومانوئيل وصابائيل وإسماعيل الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9386,15 +9389,15 @@
       "old_calendar_month_day": "06-21",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسَان يوليانوس الطرسوسي الشهيد وتريينديوس ااًلسقف",
+          "text": "القديسان يوليانوس الطرسوسي الشهيد وتيرينديوس الأسقف",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9440,15 +9443,15 @@
       "old_calendar_month_day": "06-22",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيس أفسافيوس السميساطي وتذكار القدّيسنِّي اخلمسة األبرار من دير اخلوجيف",
+          "text": "القديس أفاسيوس السميساطي وتذكار القديسين الخمسة الأبرار من دير الخوزيف",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9549,15 +9552,15 @@
       "old_calendar_month_day": "06-24",
       "lanes": {
         "ar": {
-          "text": "األحد أحد متّى الثّاني - أحد قدِّيسي فلسطين عيد مولد النبي الكريم السابق المجيد يوحنّا المعمدان",
+          "text": "أحد متى الثاني — أحد قديسي فلسطين — عيد مولد النبي الكريم السابق المجيد يوحنا المعمدان",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9603,15 +9606,15 @@
       "old_calendar_month_day": "06-25",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي القدّيسة الشهيدة فيفرونيّا النصيبية",
+          "text": "القديسة الشهيدة فيفورونيا النصيبية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9711,15 +9714,15 @@
       "old_calendar_month_day": "06-27",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس مششون املضيف والقدّيسة يونا احلاملة الطيب",
+          "text": "القديس شمشون المضيف والقديسة يونا الحاملة الطيب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9873,15 +9876,15 @@
       "old_calendar_month_day": "06-30",
       "lanes": {
         "ar": {
-          "text": "السبت عيد جامع للقدّيسِين الرسل المجيدين ااَلثني عشر",
+          "text": "عيد جامع للقديسين الرسل المجيدين الاثني عشر",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 78
         },
         "el": {
@@ -9928,15 +9931,15 @@
       "old_calendar_month_day": "07-01",
       "lanes": {
         "ar": {
-          "text": "األحد أحد متّى الثّالث القدّيسان الصانعا العجائب العادما الفضّة قوزما وداميانوس",
+          "text": "أحد متى الثالث — القديسان الصانعان العجائب العادما الفضة قوزما وداميانوس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 80
         },
         "el": {
@@ -9982,15 +9985,15 @@
       "old_calendar_month_day": "07-02",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي تذكار وضع ثوب والدة اإلله في كنيسة بالشيرن القدّيس يوفيناليوس بطريرك أورشليم",
+          "text": "تذكار وضع ثوب والدة الإله في كنيسة بلاشيرن — القديس يوفيناليوس بطريرك أورشليم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 80
         },
         "el": {
@@ -10090,15 +10093,15 @@
       "old_calendar_month_day": "07-04",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس أندراوس األورشليمي رئيس أساقفة كريت",
+          "text": "القديس أندراوس الأورشليمي رئيس أساقفة كريت",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 80
         },
         "el": {
@@ -10361,15 +10364,15 @@
       "old_calendar_month_day": "07-09",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي القدّيسون األبرار بانكراتيوس الشهيد يف رؤساء الكهنة وديونيسيوس وميروفانيس",
+          "text": "القديسون الأبرار بانكراتيوس الشهيد في رؤساء الكهنة وديونيسيوس وميتروفانيس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 80
         },
         "el": {
@@ -10415,15 +10418,15 @@
       "old_calendar_month_day": "07-10",
       "lanes": {
         "ar": {
-          "text": "الثالثاء شهداء نيقوبوليس األرمنية اخلمسة واألربعون",
+          "text": "شهداء نيقوبوليس الأرمنية الخمسة والأربعون",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 80
         },
         "el": {
@@ -10523,15 +10526,15 @@
       "old_calendar_month_day": "07-12",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسون الشهداء فريونيكي وإيالرّيون وبروكلس وبايسيوس األثوسيّ",
+          "text": "القديسون الشهداء فيرونيكي وإيلاريون وبروكلس ورايسيوس الأثوسي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 80
         },
         "el": {
@@ -10956,15 +10959,15 @@
       "old_calendar_month_day": "07-20",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيس المجيد النبي إيليّا التسبيتيّ الغيور",
+          "text": "القديس المجيد النبي إيليا التسبيتي الغيور",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11010,15 +11013,15 @@
       "old_calendar_month_day": "07-21",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان يوحنا ومُسعان البارَّين",
+          "text": "القديسان يوحنا وسمعان البارّين",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11065,15 +11068,15 @@
       "old_calendar_month_day": "07-22",
       "lanes": {
         "ar": {
-          "text": "األحد أحد متّى السادس القدّيسة مريم المجدلية المعادلة الرسل والقـديـسـة مركيالَّ الشهيدة بنِّي العذارى",
+          "text": "أحد متى السادس — القديسة مريم المجدلية المعادلة الرسل والقديسة مركيلا الشهيدة بين العذارى",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11119,15 +11122,15 @@
       "old_calendar_month_day": "07-23",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي القدّيسِ ون حزقيال الني وفوقا األسقف الشهيد وبيالجيا تينوسية",
+          "text": "القديسون حزقيال النبي وفوخا الأسقف الشهيد وبلاجيا تينوسية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11227,15 +11230,15 @@
       "old_calendar_month_day": "07-25",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء عيد رقاد القدّيسة حنّة أمّ والدة اإلله الفائقة القداسة",
+          "text": "عيد رقاد القديسة حنّة أم والدة الإله الفائقة القداسة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11281,15 +11284,15 @@
       "old_calendar_month_day": "07-26",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسَان الشهيدَان إرمواَلوس األسقف وبراسكيفي البارة الرُّوميَّة",
+          "text": "القديسان الشهيدان إرمولاوس الأسقف وبراسكيفي البارّة الروميّة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11335,15 +11338,15 @@
       "old_calendar_month_day": "07-27",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيس بنداَليمون الطبيب الشافي العظيم في الشهداء",
+          "text": "القديس بندلايمون الطبيب الشافي العظيم في الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11389,15 +11392,15 @@
       "old_calendar_month_day": "07-28",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسون بروخورس ونيكانور وتيمون الشهداء الذين من الرسل السبعنِّي ويوحنا الخوزيفي الجديد",
+          "text": "القديسون بروخورس ونيكانور وتيمون الشهداء الذين من الرسل السبعين ويوحنا الخوزيفي الجديد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 81
         },
         "el": {
@@ -11714,15 +11717,15 @@
       "old_calendar_month_day": "08-03",
       "lanes": {
         "ar": {
-          "text": "اجلمعة دملاتيوس وإسحق وفوفستوس األبرار وصالومي حاملة الطيب",
+          "text": "دلماتيوس وإسحق وفوستوس الأبرار وصالومي حاملة الطيب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12039,15 +12042,15 @@
       "old_calendar_month_day": "08-09",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيس الرسول متِّياس أحد ااَلثني عشر رسواَلً",
+          "text": "القديس الرسول متياس أحد الاثني عشر رسولًا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12147,15 +12150,15 @@
       "old_calendar_month_day": "08-11",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان أفبلوس الشماس العظيم يف الشهداء ونيفون بطريرك القسطنطينية",
+          "text": "القديسان أفبلوس الشماس العظيم في الشهداء ونيفون بطريرك القسطنطينية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12202,15 +12205,15 @@
       "old_calendar_month_day": "08-12",
       "lanes": {
         "ar": {
-          "text": "األحد القدّيسَان الشهيدَان فوتيوس وأنيكيتوس (إنزال أيقونة والدة اإلله إلى الجسثمانية)",
+          "text": "القديسان الشهيدان فوتيوس وأنكيتوس (إنزال أيقونة والدة الإله إلى الجسثمانية)",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12256,15 +12259,15 @@
       "old_calendar_month_day": "08-13",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي األبرار ماكسيموس املعرف ودوسيثاوس ودوروثاوس الغزاوي",
+          "text": "الأبرار مكسيموس المعترف ودوسيثاوس ودوروثاوس الغزاوي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12310,15 +12313,15 @@
       "old_calendar_month_day": "08-14",
       "lanes": {
         "ar": {
-          "text": "الثالثاء تقدمة عيد رقاد والدة اإلله (تقاريظ رقاد والدة اإلله) القدّيس ميخا الني",
+          "text": "تقدمة عيد رقاد والدة الإله (تقاريظ رقاد والدة الإله) — القديس ميخا النبي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12364,15 +12367,15 @@
       "old_calendar_month_day": "08-15",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء رقاد سيّدتنا والدة اإلله الفائقة القداسة الدائمة البتولية مريم",
+          "text": "رقاد سيدتنا والدة الإله الفائقة القداسة الدائمة البتولية مريم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 83
         },
         "el": {
@@ -12581,15 +12584,15 @@
       "old_calendar_month_day": "08-19",
       "lanes": {
         "ar": {
-          "text": "األحد العظيم يف الشهداء أندراوس قائد اجليش واملستشهدين معه",
+          "text": "العظيم في الشهداء أندراوس قائد الجيش والمستشهدين معه",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 84
         },
         "el": {
@@ -12797,15 +12800,15 @@
       "old_calendar_month_day": "08-23",
       "lanes": {
         "ar": {
-          "text": "اخلميس وداع عيد رقاد والدة اإلله - (إصعاد أيقونة والدة اإلله) القدّيس إيريناوس أسقف ليون ولبُّوس الشهيد",
+          "text": "وداع عيد رقاد والدة الإله — (إصعاد أيقونة والدة الإله) — القديس إيريناؤس أسقف ليون ولُبّوس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 84
         },
         "el": {
@@ -12852,15 +12855,15 @@
       "old_calendar_month_day": "08-24",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيسون ذيونيسيوس أسقف إيغينا وقزما اإليتويلّ البارّ وأفتيخيوس الشهيد تلميذ يوحنا الالهويت",
+          "text": "القديس ديونيسيوس أسقف إيجينا وقزما الإيتولي البارّ وأفثينغوس الشهيد تلميذ يوحنا اللاهوتي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 84
         },
         "el": {
@@ -13069,15 +13072,15 @@
       "old_calendar_month_day": "08-28",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيس البارّ موسى اإلثيويب",
+          "text": "القديس موسى البارّ الإيثيوبي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 84
         },
         "el": {
@@ -13123,15 +13126,15 @@
       "old_calendar_month_day": "08-29",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء عيد قطع رأس النبيّ الكريم السابق المجيد يوحنّا المعمدان (يوم صوم)",
+          "text": "عيد قطع رأس النبي الكريم السابق المجيد يوحنا المعمدان (يوم صوم)",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 84
         },
         "el": {
@@ -13231,15 +13234,15 @@
       "old_calendar_month_day": "08-31",
       "lanes": {
         "ar": {
-          "text": "اجلمعة وضع زنّار والدة اإلله الكلّية القداسة الدائمة البتولية مريم",
+          "text": "وضع زنّار والدة الإله الكليّة القداسة الدائمة البتولية مريم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 84
         },
         "el": {
@@ -13285,15 +13288,15 @@
       "old_calendar_month_day": "09-01",
       "lanes": {
         "ar": {
-          "text": "السبت بَدء السّنة الكنسيّة (ااَلنديكتي) - القدّيس مُسعان العمودي",
+          "text": "بدء السنة الكنسية (الإنديكتي) — القديس سمعان العمودي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -13340,15 +13343,15 @@
       "old_calendar_month_day": "09-02",
       "lanes": {
         "ar": {
-          "text": "األحد القدّيسَان يوحنّا الصوَّام بطريرك القسطنطينية ومُمندوس الشهيد",
+          "text": "القديسان يوحنا الصوّام بطريرك القسطنطينية ومندوس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -13448,15 +13451,15 @@
       "old_calendar_month_day": "09-04",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيسَان موسى الني معاين اهلل وبابيال الشهيد يف رؤساء الكهنة أسقف أنطاكية",
+          "text": "القديسان موسى النبي معين الله وبايلا الشهيد في رؤساء الكهنة أسقف أنطاكية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -13556,15 +13559,15 @@
       "old_calendar_month_day": "09-06",
       "lanes": {
         "ar": {
-          "text": "اخلميس أعجوبة رئيس المالئكة ميخائيل في كولوسي",
+          "text": "أعجوبة رئيس الملائكة ميخائيل في كولوسي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -13610,15 +13613,15 @@
       "old_calendar_month_day": "09-07",
       "lanes": {
         "ar": {
-          "text": "اجلمعة تقدمة عيد ميالد والدة اإلله",
+          "text": "تقدمة عيد ميلاد والدة الإله — القديسان صوزون الشهيد ودانيال الكاتوناكوي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -13664,15 +13667,15 @@
       "old_calendar_month_day": "09-08",
       "lanes": {
         "ar": {
-          "text": "القدّيسَان صوزن الشهيد ودانيال الكاتوناكيويتّ السبت مولد سيّدتنا والدة اإلله الفائقة القداسة والدائمة البتوليّة مريم السبت قبل عيد رفع الصليب",
+          "text": "مولد سيدتنا والدة الإله الفائقة القداسة والدائمة البتولية مريم — السبت قبل عيد رفع الصليب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -13719,15 +13722,15 @@
       "old_calendar_month_day": "09-09",
       "lanes": {
         "ar": {
-          "text": "األحد األحد قبل عيد رفع الصليب الكريم المحيي ووداع عيد ميالد والدة اإلله – القدّيسَان الصّدّيقَان جدَي المسيح",
+          "text": "الأحد قبل عيد رفع الصليب الكريم المحيي ووداع عيد ميلاد والدة الإله — القديسان الصديقان جدي المسيح الإله يواكيم وحنّة، سبيريدونوس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 86
         },
         "el": {
@@ -14098,15 +14101,15 @@
       "old_calendar_month_day": "09-16",
       "lanes": {
         "ar": {
-          "text": "الشهداء ومُسعان رئيس أساقفة تسالونيكي وفيلوثيوس البارّ األحد األحد بعد عيد رفع الصليب الكريم المحيي القدّيسة أوفيميَّة العظيمة في الشهيدات الكلّيّة المديح",
+          "text": "الأحد بعد عيد رفع الصليب الكريم المحيي — القديسة أوفيمية العظيمة في الشهيدات الكليّة المديح",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 87
         },
         "el": {
@@ -14477,15 +14480,15 @@
       "old_calendar_month_day": "09-23",
       "lanes": {
         "ar": {
-          "text": "األحد الحبَل بالنبي الكريم والسابق المجيد يوحنّا المعمدان",
+          "text": "الحبل بالنبي الكريم والسابق المجيد يوحنا المعمدان",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 87
         },
         "el": {
@@ -14531,15 +14534,15 @@
       "old_calendar_month_day": "09-24",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي القدّيسة تقال أولى الشهيدات والمعادلة الرسل",
+          "text": "القديسة تقلا أولى الشهيدات والمعادلة الرسل",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 87
         },
         "el": {
@@ -14585,15 +14588,15 @@
       "old_calendar_month_day": "09-25",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيسة إفروسيي البارّة وبافنوتيوس",
+          "text": "القديسة إفروسيني البارّة وبافنوتيوس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 87
         },
         "el": {
@@ -14639,15 +14642,15 @@
       "old_calendar_month_day": "09-26",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء انتقال القديس الرسول اإلنجيلي يوحنّا الالهوتي",
+          "text": "انتقال القديس الرسول الإنجيلي يوحنا اللاهوتي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 87
         },
         "el": {
@@ -14693,15 +14696,15 @@
       "old_calendar_month_day": "09-27",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيس كاليستراتوس الشهيد والقديسنِّي ال ٩٤ شهيدًا معه",
+          "text": "القديس كاليستراتوس الشهيد والقديسين الـ49 شهيدًا معه",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 87
         },
         "el": {
@@ -14910,15 +14913,15 @@
       "old_calendar_month_day": "10-01",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي عيد والدة اإلله الحامية المقدّسة والقدّيسَان حنانيا الرسول",
+          "text": "عيد والدة الإله الحامية المقدّسة والقديسان حنانيا الرسول ورومانوس المرنّم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 89
         },
         "el": {
@@ -15018,15 +15021,15 @@
       "old_calendar_month_day": "10-03",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس الشهيد يف الكهنة ديونيسيوس األريوباجي أسقف أثينا والبارّ يوحنّا اخلوزيفي",
+          "text": "القديس الشهيد في الكهنة ديونيسيوس الأريوباغي أسقف أثينا، والبار يوحنا الخوزيفي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 89
         },
         "el": {
@@ -15343,15 +15346,15 @@
       "old_calendar_month_day": "10-09",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيس الرسول يعقوب بن حلفى - القديسَيان البارَّان أندرونيكوس وزوجته أثناسَّيا",
+          "text": "القديس الرسول يعقوب بن حلفى — القديسان الباران أندرونيكوس وزوجته أثناسيا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 89
         },
         "el": {
@@ -15559,15 +15562,15 @@
       "old_calendar_month_day": "10-13",
       "lanes": {
         "ar": {
-          "text": "السبت إعادة رفات سابا المتقدّس من البندقية لديره العامر القدّسَان كاربُس األسقف وبابيلوس الشماس",
+          "text": "إعادة رفات سابا المتقدّس من البندقية لديره العامر — القديسان كارِبس الأسقف وبابيليوس الشماس",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 89
         },
         "el": {
@@ -15829,15 +15832,15 @@
       "old_calendar_month_day": "10-18",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيس الرسول لوقا اإلنجيلي",
+          "text": "القديس الرسول لوقا الإنجيلي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 90
         },
         "el": {
@@ -16099,15 +16102,15 @@
       "old_calendar_month_day": "10-23",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيس يعقوب الرسول أخو الرب أول أساقفة أورشليم",
+          "text": "القديس يعقوب الرسول أخو الرب أول أساقفة أورشليم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 90
         },
         "el": {
@@ -16261,15 +16264,15 @@
       "old_calendar_month_day": "10-26",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيس العظيم في الشهداء ديميتريوس الفائض الطيب",
+          "text": "القديس العظيم في الشهداء ديميتريوس الفائض الطيب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 90
         },
         "el": {
@@ -16531,15 +16534,15 @@
       "old_calendar_month_day": "10-31",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيسان أريسطوبولس وناركيسوس الرسواًلَ ن وأبيماخوس الشهيد",
+          "text": "القديسان أريسطوبولس وناركيسوس الرسولان وأبيماخوس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 90
         },
         "el": {
@@ -16639,15 +16642,15 @@
       "old_calendar_month_day": "11-02",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيسون أكيندينوس وبيغاسيوس وإلبيذيفوروس وأفثونيوس الشهداء",
+          "text": "القديسون أكيندينوس وبيغاسيوس وإلبيذيفوروس وأفثونيوس الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 92
         },
         "el": {
@@ -16693,15 +16696,15 @@
       "old_calendar_month_day": "11-03",
       "lanes": {
         "ar": {
-          "text": "السبت تذكار نقل رفات القدّيس العظيم في الشهداء جيورجيوس الالبس الظفر - اكبسيماس ويوسف وأيثااًلس الشهداء",
+          "text": "تذكار نقل رفات القديس العظيم في الشهداء جيورجيوس اللابس الظفر — أكبسيماس ويوسف وأيثالاس الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 92
         },
         "el": {
@@ -17018,15 +17021,15 @@
       "old_calendar_month_day": "11-09",
       "lanes": {
         "ar": {
-          "text": "اجلمعة أبينا البارّ نكتاريوس أسقف المدن الخمس (ذكرى تنصيب غبطة البطريرك ك. ك. ثيوفيلوس الثالث)",
+          "text": "أبينا البار نكتاريوس أسقف المدن الخمس (ذكرى تنصيب غبطة البطريرك ك. ك. ثيوفيلوس الثالث)",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 92
         },
         "el": {
@@ -17181,15 +17184,15 @@
       "old_calendar_month_day": "11-12",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي أبينا الجليل في القدّيسِين يوحنّا الرحيم رئيس أساقفة اإلسكندرية وأبينا البارّ نيلُس السينائي",
+          "text": "أبينا الجليل في القديسين يوحنا الرحيم رئيس أساقفة الإسكندرية وأبينا البار نيلس السينائي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 92
         },
         "el": {
@@ -17343,15 +17346,15 @@
       "old_calendar_month_day": "11-15",
       "lanes": {
         "ar": {
-          "text": "اخلميس بدء صوم الميالد - القدّيسون غورياس وصاموناس وأفيفس الشهداء",
+          "text": "بدء صوم الميلاد — القديسون غورياس وصاموناس وأفيفس الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17397,15 +17400,15 @@
       "old_calendar_month_day": "11-16",
       "lanes": {
         "ar": {
-          "text": "اجلمعة متى الرسول اإلنجيلي وفيلومينوس الشهيد في بئر يعقوب",
+          "text": "متى الرسول الإنجيلي وفيلومينوس الشهيد في بئر يعقوب",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17668,15 +17671,15 @@
       "old_calendar_month_day": "11-21",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء دخول سيدتنا الكليّة القداسة والدة اإلله الدائمة البتولية مريم إلى الهيكل",
+          "text": "دخول سيدتنا الكليّة القداسة والدة الإله الدائمة البتولية مريم إلى الهيكل",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17722,15 +17725,15 @@
       "old_calendar_month_day": "11-22",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسِون فيليمون وأرخيبُس وأونيسيموس الرسل",
+          "text": "القديسون فيليمون وأرخيبس وأونيسيموس الرسل",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17830,15 +17833,15 @@
       "old_calendar_month_day": "11-24",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان الشهيدَان كليمنضس بابا رومية وبطرس بطريرك اإلسكندرية",
+          "text": "القديسان الشهيدان كليمنضس بابا رومية وبطرس بطريرك الإسكندرية",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17885,15 +17888,15 @@
       "old_calendar_month_day": "11-25",
       "lanes": {
         "ar": {
-          "text": "األحد وداع عيد دخول السيدة القدّيسَان مركوريوس الشهيد وكاترينا الكليّة الحكمة",
+          "text": "وداع عيد دخول السيدة — القديسان مركوريوس الشهيد وكاترينا الكليّة الحكمة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17939,15 +17942,15 @@
       "old_calendar_month_day": "11-26",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي األبرار أليبيوس العمودي ونيكون وستيليانوس الذي من بافالغونيا",
+          "text": "الأبرار أليبيوس العمودي ونيكون وستيليانوس الذي من بافلاغونيا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -17993,15 +17996,15 @@
       "old_calendar_month_day": "11-27",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيس العظيم يف الشهداء يعقوب الفارسي",
+          "text": "القديس العظيم في الشهداء يعقوب الفارسي",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -18155,15 +18158,15 @@
       "old_calendar_month_day": "11-30",
       "lanes": {
         "ar": {
-          "text": "اجلمعة ا الرسول المجيد الكلي المديح اندراوس المدعو أوّاَلً",
+          "text": "الرسول المجيد الكلي المديح أندراوس المدعو أولًا",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 93
         },
         "el": {
@@ -18209,15 +18212,15 @@
       "old_calendar_month_day": "12-01",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيسَان ناحوم الني وفيالريتوس الرحيم",
+          "text": "القديسان ناحوم النبي وفيلاريتوس الرحيم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -18643,15 +18646,15 @@
       "old_calendar_month_day": "12-09",
       "lanes": {
         "ar": {
-          "text": "األحد حبل القدّيسة حنّة جدّة المسيح اإلله بمريم والدة اإلله",
+          "text": "حبل القديسة حنّة جدّة المسيح الإله بمريم والدة الإله",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -18805,15 +18808,15 @@
       "old_calendar_month_day": "12-12",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس اسبيريدون العجائبي أسقف تريميثوس ألكسندروس أسقف أورشليم",
+          "text": "القديس اسبيريدون العجائبي أسقف تريميثوس وألكسندروس أسقف أورشليم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -18859,15 +18862,15 @@
       "old_calendar_month_day": "12-13",
       "lanes": {
         "ar": {
-          "text": "اخلميس القدّيسون إفسراتيوس وأفكسنديوس وأُرستوس الشهداء ولوقيا البتول",
+          "text": "القديسون إفستراتيوس وأفكسنديوس وأرستوس الشهداء ولوقيا البتول",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -18913,15 +18916,15 @@
       "old_calendar_month_day": "12-14",
       "lanes": {
         "ar": {
-          "text": "اجلمعة القدّيسون ثريسوس وأبولونيوس وليفكيوس وكلينيكوس الشهداء",
+          "text": "القديسون ثيرسوس وأبولونيوس وليفكيوس وكلينيكوس الشهداء",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -18967,15 +18970,15 @@
       "old_calendar_month_day": "12-15",
       "lanes": {
         "ar": {
-          "text": "السبت القدّيس الشهيد إلفثاريوس األسقف وأمّه القدّيسة أنثيّا الشهيدة",
+          "text": "القديس الشهيد إلفثاريوس الأسقف وأمّه القديسة أنثيا الشهيدة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -19022,15 +19025,15 @@
       "old_calendar_month_day": "12-16",
       "lanes": {
         "ar": {
-          "text": "األحد أحد لوقا الحادي عشر - أحد األجداد القدّيسِين القدّيسَان حجّاي الني وموذيستوس الشهيد يف الكهنة",
+          "text": "أحد لوقا الحادي عشر — أحد الأجداد القديسين",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 95
         },
         "el": {
@@ -19130,15 +19133,15 @@
       "old_calendar_month_day": "12-18",
       "lanes": {
         "ar": {
-          "text": "الثالثاء القدّيس موذستوس بطريرك أورشليم والقدّيس سباسطيانوس الشهيد",
+          "text": "القديس مودستوس بطريرك أورشليم والقديس سباستيانوس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {
@@ -19184,15 +19187,15 @@
       "old_calendar_month_day": "12-19",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء القدّيس بونيفاتيوس الشهيد وأغالئيّة الروميَّة البارَّة",
+          "text": "القديس بونيفاتيوس الشهيد وأغلائية الروميّة البارّة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {
@@ -19509,15 +19512,15 @@
       "old_calendar_month_day": "12-25",
       "lanes": {
         "ar": {
-          "text": "الثالثاء عيد ميالد ربّنا وإلهنا ومخلّصنا يسوع المسيح بالجسد",
+          "text": "عيد ميلاد ربنا وإلهنا ومخلصنا يسوع المسيح بالجسد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {
@@ -19563,15 +19566,15 @@
       "old_calendar_month_day": "12-26",
       "lanes": {
         "ar": {
-          "text": "ااًلربعاء أحد بعد عيد الميالد، عيد جامع لوالدة اإلله الفائقة القداسة وتذكار القديس الشهيد يف الكهنة افثيميوس أُسقف (سرتْ)",
+          "text": "أحد بعد عيد الميلاد، عيد جامع لوالدة الإله الفائقة القداسة وتذكار القديس الشهيد في الكهنة إفثيميوس أسقف (سرت)",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {
@@ -19671,15 +19674,15 @@
       "old_calendar_month_day": "12-28",
       "lanes": {
         "ar": {
-          "text": "اجلمعة شهداء نيقوميذية الذين أُحرقوا أحياء، والقدّيس غليكرييوس الشهيد",
+          "text": "شهداء نيقوميدية الذين أحرقوا أحياء، والقديس غليكيريوس الشهيد",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {
@@ -19725,15 +19728,15 @@
       "old_calendar_month_day": "12-29",
       "lanes": {
         "ar": {
-          "text": "السبت األطفال الشهداء ال ٠٠٠٤١ الّذين قتلوا في بيت لحم",
+          "text": "الأطفال الشهداء الـ14000 الذين قتلوا في بيت لحم",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {
@@ -19834,15 +19837,15 @@
       "old_calendar_month_day": "12-31",
       "lanes": {
         "ar": {
-          "text": "اإلثننِّي وداع عيد ميالد - القدّيسة مِيالني البارّة الروميّة",
+          "text": "وداع عيد ميلاد — القديسة ميلاني البارّة الروميّة",
           "source_id": "jerusalem_hagiotaphite_calendar_ar_2024",
           "source_url": "https://ar.jerusalem-patriarchate.info/wp-content/uploads/2024/02/Arabic_CALENDAR-OF-PATRIARCHATE_2024_R.pdf",
           "source_year": 2024,
           "jurisdiction": "jerusalem_patriarchate",
-          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "evidence_status": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
           "comparative": false,
-          "fixed_slot_eligible": false,
-          "eligibility_reason": "RTL_SOURCE_REQUIRES_VISUAL_REVIEW",
+          "fixed_slot_eligible": true,
+          "eligibility_reason": "VISUALLY_REVIEWED_SOURCE_PAGE_CROP",
           "source_page": 96
         },
         "el": {

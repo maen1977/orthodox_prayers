@@ -38,7 +38,7 @@ def test_august_8_2026_uses_native_greek_lane_without_cross_language_copy():
     day = next(item for item in CANONICAL["days"] if item["date_iso"] == "2026-08-08")
     assert day["julian_date"] == "2026-07-26"
     names = day["commemoration"]["name"]
-    assert "26 تموز" in names["ar"]
+    assert names["ar"] == "القديسان الشهيدان إرمولاوس الأسقف وبراسكيفي البارّة الروميّة"
     assert names["en"] == "Commemoration of the saints of July 26 on the Old Church Calendar"
     assert "26 تموز" not in names["en"]
     sidecar = json.loads((ROOT / "app/src/main/assets/data/calendar/comparative_english.json").read_text(encoding="utf-8"))

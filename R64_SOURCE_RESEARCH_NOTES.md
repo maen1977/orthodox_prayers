@@ -180,3 +180,9 @@ Visual review of the corrected crop for Arabic PDF 2024 page 66, row for old-cal
 ## Broader English-source search after license confirmation (2026-08-23)
 
 The broader web search and source extraction found complete English daily calendars at Holy Trinity/Jordanville and the GOARCH digital planner, but their jurisdiction is not the Jerusalem Patriarchate or Orthodox Jordan. Holy Trinity exposes the same native-English daily calendar endpoint used for the 2028 comparative corpus; Jordanville links to it and adds Prologue material; GOARCH exposes a digital planner. These can support a licensed comparative English lane, but they cannot be relabeled as local Jerusalem/Jordan evidence without explicit jurisdictional authorization. The official Jerusalem English site and Orthodox Jordan English page still do not expose a complete annual native-English commemoration corpus.
+
+## Arabic source-page visual review and conservative promotion (2026-08-23)
+
+The 2024 official Jerusalem Arabic calendar PDF was reviewed using source-page row crops. The review manifest covered the OCR-suspect rows plus the four rows whose OCR output was empty. Only rows whose Arabic text was readable in the source crop were promoted into `canonical/jerusalem_jordan_fixed_commemorations_native.json` with `evidence_status=VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE`, `fixed_slot_eligible=true`, and `eligibility_reason=VISUALLY_REVIEWED_SOURCE_PAGE_CROP`. The promotion packet is `canonical/arabic_visual_review_promotions.json` and contains 148 slots.
+
+Rows with clipped, ambiguous, or unresolved glyphs remain pending visual review. The official Arabic source therefore has 220 pending slots after this pass. No text was machine-translated, normalized from another language, or inferred from a saint-name list. The English lane remains a licensed comparative source and the strict Jerusalem/Jordan three-language gate remains false.

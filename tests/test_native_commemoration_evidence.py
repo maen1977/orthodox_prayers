@@ -23,6 +23,24 @@ class NativeCommemorationEvidenceTests(unittest.TestCase):
         self.assertEqual(0, report["coverage"]["strict_local_three_language_slots"])
         self.assertEqual(366, report["coverage"]["comparative_lane_entries"])
 
+    def test_arabic_visual_review_promotions_are_source_backed_and_not_strict_gate(self):
+        packet = json.loads((ROOT / "canonical/arabic_visual_review_promotions.json").read_text(encoding="utf-8"))
+        self.assertEqual(148, packet["reviewed_count"])
+        self.assertEqual(148, len(packet["records"]))
+        self.assertFalse(packet["machine_translation_used"])
+        self.assertFalse(packet["cross_language_fallback"])
+        self.assertEqual(148, self.payload["coverage"]["arabic_visual_review_promoted_slots"])
+        self.assertEqual(218, self.payload["coverage"]["arabic_visual_review_pending_slots"])
+        self.assertFalse(self.payload["coverage"]["strict_named_local_gate"])
+        for slot, text in packet["records"].items():
+            record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == slot)
+            arabic = record["lanes"]["ar"]
+            self.assertEqual(text, arabic["text"], slot)
+            self.assertEqual("VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE", arabic["evidence_status"], slot)
+            self.assertTrue(arabic["fixed_slot_eligible"], slot)
+            self.assertFalse(arabic["comparative"], slot)
+            self.assertEqual("jerusalem_patriarchate", arabic["jurisdiction"], slot)
+
     def test_leap_slot_keeps_arabic_and_comparative_english_separate(self):
         record = next(row for row in self.payload["records"] if row["old_calendar_month_day"] == "02-29")
         self.assertIn("ar", record["lanes"])

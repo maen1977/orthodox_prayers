@@ -138,10 +138,10 @@ def test_future_days_have_offline_commemoration_without_inventing_named_saints()
 
 def test_comparative_english_lane_is_sidecar_backed_and_never_local():
     day = BY_DATE["2026-03-02"]
-    assert day["feast"]["ar"] == "تذكار قديسي يوم 17 شباط حسب التقويم الكنسي القديم"
+    assert day["feast"]["ar"] == "القديس ثيودوروس العظيم في الشهداء التيروني وتذكار القديسين ماركيانوس وبلخيريا"
     assert day["feast"]["el"] == "Μνήμη τῶν Ἁγίων τῆς 17ης Φεβρουαρίου κατὰ τὸ παλαιὸ ἐκκλησιαστικὸ ἡμερολόγιο"
     assert day["feast"]["en"] == "Commemoration of the saints of February 17 on the Old Church Calendar"
-    assert day["commemoration"]["source_kind"] == "comparative_english_lane"
+    assert day["commemoration"]["source_kind"] == "mixed_native_and_comparative_lanes"
     evidence = json.loads((ROOT / "canonical/jerusalem_jordan_fixed_commemorations_native.json").read_text(encoding="utf-8"))
     evidence_day = next(item for item in evidence["records"] if item["old_calendar_month_day"] == "02-17")
     provenance = evidence_day["lanes"]["en"]
@@ -205,7 +205,7 @@ def test_android_uses_year_index_and_exact_nine_day_contract():
 def test_verified_local_greek_and_comparative_english_lanes_are_language_isolated():
     day = BY_DATE["2026-08-08"]
     assert day["feast"]["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
-    assert "26 تموز" in day["feast"]["ar"]
+    assert day["feast"]["ar"] == "القديسان الشهيدان إرمولاوس الأسقف وبراسكيفي البارّة الروميّة"
     assert day["feast"]["en"] == "Commemoration of the saints of July 26 on the Old Church Calendar"
     evidence = json.loads((ROOT / "canonical/jerusalem_jordan_fixed_commemorations_native.json").read_text(encoding="utf-8"))
     evidence_day = next(item for item in evidence["records"] if item["old_calendar_month_day"] == "07-26")
