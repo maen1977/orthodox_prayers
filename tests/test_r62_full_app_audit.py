@@ -73,12 +73,14 @@ def test_audit_report_truthfully_records_known_content_gaps():
     assert audit['metrics']['calendar_days'] == 9131
     assert audit['metrics']['reading_counts']['epistle'] < 9131
     assert audit['metrics']['reading_counts']['gospel'] < 9131
-    assert audit['metrics']['generic_commemoration_days'] > 0
+    assert audit['metrics']['generic_commemoration_days'] == 0
+    assert audit['metrics']['source_backed_named_commemoration_days'] == 9131
     assert audit['metrics']['church_service_pending_full_text']['ar'] == 13
     assert audit['release_claim'].startswith('AUDITED_WITH_KNOWN_CONTENT_GAPS')
     status = {x['id']: x['status'] for x in audit['checks']}
     assert status['daily_readings'] == 'INCOMPLETE'
     assert status['commemorations'] == 'INCOMPLETE'
+    assert 'local three-language gate' in next(item for item in audit['checks'] if item['id'] == 'commemorations')['evidence']
     assert status['church_services'] == 'CATALOG_COMPLETE_TEXT_INCOMPLETE'
     assert status['daily_prayers'] == 'OFFLINE_CORE_NO_EXTERNAL_CARDS'
     assert status['church_directory'] == 'PARTIAL_WITH_FULL_DIRECTORY_LINKS'

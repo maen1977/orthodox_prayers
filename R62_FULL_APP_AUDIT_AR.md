@@ -14,12 +14,12 @@
 Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_prayer 17:30-21:29, small_compline otherwise, using Asia/Amman time.
 
 ### ✅ PASS (بنطاق موثق) — Fasting state and food-rule type
-4817/9131 days are marked fasting; codes include {'wine_oil': 861, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 535}. Exact abstinence clock times are intentionally not invented.
+4842/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 554, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.
 **الإجراء:** Keep fail-closed behavior for abstinence start/end unless an official dated source states it.
 
 ### ❌ INCOMPLETE — Daily commemorations through 2050
-2144 days contain explicit occasion entries; 6987 days still use generic date-based commemoration wording.
-**الإجراء:** Import a verified annual Jerusalem/Jordan native commemoration corpus; do not AI-generate saint names.
+9131/9131 days have source-backed or explicit named commemoration records; 2151 days contain explicit occasion entries; 0 days use generic date-based commemoration wording. The remaining incompleteness is the local three-language gate, not an invented saint-name fallback.
+**الإجراء:** Keep the English leap-day record and any non-local Greek slots explicitly marked; do not AI-generate or cross-language-translate saint names.
 
 ### ❌ INCOMPLETE — Daily Epistle/Gospel coverage through 2050
 Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.
@@ -29,17 +29,17 @@ Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.
 Internal refs are 2 Corinthians 2:4-15 and Matthew 23:13-22; this date was cross-checked against the official OCA daily lectionary as a lower-priority regular-cycle authority.
 
 ### ✅ داخل التطبيق / بلا بطاقات صلاة خارجية — Daily prayer library
-Arabic embedded core: morning 5 segments; evening 4; small compline 15; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. 4 official Jordan references remain catalog evidence and are not rendered as external prayer cards.
+Arabic embedded core: morning 5 segments; evening 4; small compline 14; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. 4 official Jordan references remain catalog evidence and are not rendered as external prayer cards.
 **الإجراء:** Import any additional native text only after exact-text and redistribution evidence are recorded.
 
 ### ✅ PASS R66 — نص أصلي مصرّح به — Arabic Orthros / Matins
 Arabic Orthros is DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE with 159 source segments / 16610 chars; its authorized exact native edition is displayed and searchable without machine translation.
 
 ### ✅ PASS — Arabic Vespers
-Arabic Vespers is packaged as a complete exact native edition with 45 segments / 9787 chars.
+Arabic Vespers is packaged as a complete exact native edition with 44 segments / 9768 chars.
 
 ### ✅ PASS — Arabic Small Compline
-Arabic Small Compline is packaged as a complete exact native edition with 15 segments / 4511 chars.
+Arabic Small Compline is packaged as a complete exact native edition with 14 segments / 4500 chars.
 
 ### ✅ PASS (طبقة قارئ) — Divine Liturgy
 Arabic Divine Liturgy is COMPLETE_NATIVE_SOURCE_COMPILATION with 198 source segments. Optional quiet believer prayers remain a reader overlay, not part of the canonical-text hash.
