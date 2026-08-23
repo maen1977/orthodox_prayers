@@ -133,3 +133,17 @@ The 2025 Greek parser corpus remains a separate local source with 365/365 old-ca
 The canonical evidence layer now distinguishes a daily row from a reusable fixed `MM-DD` commemoration. In the Jerusalem Greek 2025 calendar, 365 rows were parsed; 308 are eligible for fixed-slot enrichment, 56 contain year-specific Sunday/Pascha/Pentecost/other movable context and are not copied across years, and 2 remain visual-review records because of Latin look-alike glyphs. The Arabic 2024/2026 rows remain pending RTL visual review. The complete English Holy Trinity corpus remains comparative-only and contributes zero local Jerusalem/Jordan slots.
 
 The builder therefore enriches only the Greek lane on ordinary days whose local source row is explicitly verified and fixed-slot eligible. Major fixed and movable occasions remain primary and unchanged. Arabic and English continue to use their own existing same-language baseline labels; no cross-language fallback occurs. The strict three-language named gate remains closed (`0` verified local Arabic+English+Greek slots).
+
+
+## Follow-up search for local English annual calendar (2026-08-23)
+
+The official Jerusalem Patriarchate English home page was opened and reviewed. It exposes the English site, news, patriarchate structure, holy shrines, and communication sections, but the page does not expose a clearly published annual English calendar PDF or a daily English commemoration table. The English timetable page found in search is a historical service timetable rather than a full annual daily named-commemoration corpus. Therefore the English lane remains unresolved locally; no Arabic/Greek text is copied into it, and the Holy Trinity English endpoint remains comparative only.
+
+
+The English site's internal search for `calendar` was also checked across the first two result pages. Results are historical news, feast reports, Holy Week messages, and service/event articles; the page explicitly does not expose a specific annual/daily saints calendar or a verifiable English daily schedule. These pages can support individual major-event cross-checks, but cannot safely supply a 366-slot named English corpus.
+
+
+The official Orthodox Jordan `/en/` landing page was opened. Although some navigation labels are English, the daily content block's `Memorial` text is Arabic and the page does not expose an English annual calendar or a 366-slot native-English commemorations feed. This is evidence that the English route cannot be harvested as an independent English lane without cross-language copying, so it remains unresolved for the strict local gate.
+
+
+The HTML review of `https://orthodoxjordan.org/en/` confirms that the English route is not an independent English commemorations source: its daily `Date`, `Memorial`, and verse content are Arabic, and key navigation links resolve to Arabic URLs. It can remain a local Arabic source, but it cannot legally or linguistically fill the English lane.
