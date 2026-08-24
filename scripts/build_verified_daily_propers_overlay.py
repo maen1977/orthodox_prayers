@@ -1,9 +1,10 @@
 """Build the verified partial daily-propers overlay used by Android.
 
-Only entries whose three native-language slots have explicit source metadata,
+Only entries whose present native-language slots have explicit source metadata,
 matching per-text SHA-256 values, project-owner republication permission, and
-language-script isolation are emitted. Missing or partial dates are omitted;
-there is no fallback, translation, or date inference in this builder.
+language-script isolation are emitted. Partial entries are allowed only when
+all three language lanes expose the same non-empty verified slot set. Missing
+slots remain absent; there is no fallback, translation, or date inference.
 """
 from __future__ import annotations
 
@@ -68,10 +69,14 @@ def verified_lane(entry: dict, inserts: dict, lang: str) -> dict | None:
     result: dict[str, dict] = {}
     for source_slot, overlay_slot in SLOT_MAP.items():
         value = text(inserts.get(source_slot), lang).strip()
+        if not value:
+            # A missing source-backed slot stays absent. It is not a blank
+            # replacement and it is never filled from another language.
+            continue
         source_meta = source(inserts.get("sources"), lang)
         check = verification(entry, source_slot, lang)
-        actual_hash = hashlib.sha256(value.encode("utf-8")).hexdigest() if value else ""
-        if not value or not inventory.script_isolated(value, lang):
+        actual_hash = hashlib.sha256(value.encode("utf-8")).hexdigest()
+        if not inventory.script_isolated(value, lang):
             return None
         if not source_meta.get("source_id") or not source_meta.get("url"):
             return None
@@ -100,7 +105,7 @@ def verified_lane(entry: dict, inserts: dict, lang: str) -> dict | None:
             "automatic_diacritization_used": False,
             "script_isolated": True,
         }
-    return result
+    return result or None
 
 
 def build(start_year: int = 2026, end_year: int = 2050) -> dict:
@@ -119,7 +124,12 @@ def build(start_year: int = 2026, end_year: int = 2050) -> dict:
             if entry is not None and source_kind in {"fixed", "paschal"}:
                 inserts = update.feast_inserts(info, current)
                 lanes = {lang: verified_lane(entry, inserts, lang) for lang in LANGS}
-                if all(lanes.values()):
+                slot_sets = {
+                    frozenset((lane or {}).keys())
+                    for lane in lanes.values()
+                }
+                if all(lanes.values()) and len(slot_sets) == 1 and next(iter(slot_sets)):
+                    verified_slots = sorted(next(iter(slot_sets)))
                     entries[current.isoformat()] = {
                         "civil_date": current.isoformat(),
                         "julian_date": f"{info['julian_year']:04d}-{info['julian_month']:02d}-{info['julian_day']:02d}",
@@ -129,6 +139,8 @@ def build(start_year: int = 2026, end_year: int = 2050) -> dict:
                         "service_rule_id": selection.get("rule_id"),
                         "proper_id": inserts.get("proper_id"),
                         "proper_provenance": source_kind,
+                        "verified_slots": verified_slots,
+                        "complete_three_slot_entry": set(verified_slots) == set(SLOT_MAP.values()),
                         "languages": lanes,
                         "fail_closed": True,
                     }
@@ -147,7 +159,9 @@ def build(start_year: int = 2026, end_year: int = 2050) -> dict:
             "network_fetch_used": False,
             "verified_requires_matching_text_sha256_rights_and_script_isolation": True,
             "url_alone_is_not_permission": True,
-            "partial_dates_omitted": True,
+            "partial_dates_omitted": False,
+            "partial_entry_slots_allowed": True,
+            "all_language_lanes_must_share_same_verified_slots": True,
             "fail_closed": True,
         },
         "entry_count": len(entries),

@@ -192,9 +192,15 @@ def verify_daily_propers_overlay() -> int:
         fail("daily_propers_overlay_status")
     if payload.get("completion_claim") != "unproven_complete":
         fail("daily_propers_overlay_completion_claim")
-    if payload.get("policy", {}).get("cross_language_fallback_allowed") is not False:
+    policy = payload.get("policy") or {}
+    if policy.get("cross_language_fallback_allowed") is not False:
         fail("daily_propers_overlay_fallback_policy")
+    if policy.get("partial_entry_slots_allowed") is not True:
+        fail("daily_propers_overlay_partial_policy")
+    if policy.get("all_language_lanes_must_share_same_verified_slots") is not True:
+        fail("daily_propers_overlay_slot_set_policy")
     entries = payload.get("entries") or {}
+    required_proper_slots = {"daily_troparion", "daily_kontakion", "communion_hymn"}
     if payload.get("entry_count") != len(entries):
         fail("daily_propers_overlay_entry_count")
     for civil_date, entry in entries.items():
@@ -207,9 +213,14 @@ def verify_daily_propers_overlay() -> int:
         languages = entry.get("languages") or {}
         if set(languages) != set(LANGUAGES):
             fail(f"daily_propers_overlay_languages:{civil_date}")
+        declared_slots = set(entry.get("verified_slots") or [])
+        if not declared_slots or not declared_slots.issubset(required_proper_slots):
+            fail(f"daily_propers_overlay_declared_slots:{civil_date}")
+        if bool(entry.get("complete_three_slot_entry")) != (declared_slots == required_proper_slots):
+            fail(f"daily_propers_overlay_completeness_flag:{civil_date}")
         for language in LANGUAGES:
             lane = languages.get(language) or {}
-            if set(lane) != {"daily_troparion", "daily_kontakion", "communion_hymn"}:
+            if set(lane) != declared_slots:
                 fail(f"daily_propers_overlay_slots:{civil_date}:{language}")
             for slot, item in lane.items():
                 text = str(item.get("text") or "").strip()
