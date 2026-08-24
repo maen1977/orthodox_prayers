@@ -28,8 +28,110 @@
     "all_language_lanes_must_share_same_verified_slots": true,
     "fail_closed": true
   },
-  "entry_count": 247,
+  "entry_count": 272,
   "entries": {
+    "2026-02-02": {
+      "civil_date": "2026-02-02",
+      "julian_date": "2026-01-20",
+      "pascha_offset": -69,
+      "weekday": 0,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2026-02-15": {
       "civil_date": "2026-02-15",
       "julian_date": "2026-02-02",
@@ -1398,6 +1500,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2027-02-02": {
+      "civil_date": "2027-02-02",
+      "julian_date": "2027-01-20",
+      "pascha_offset": -89,
+      "weekday": 1,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -2790,6 +2994,108 @@
       },
       "fail_closed": true
     },
+    "2028-02-02": {
+      "civil_date": "2028-02-02",
+      "julian_date": "2028-01-20",
+      "pascha_offset": -74,
+      "weekday": 2,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2028-02-15": {
       "civil_date": "2028-02-15",
       "julian_date": "2028-02-02",
@@ -4170,6 +4476,108 @@
       },
       "fail_closed": true
     },
+    "2029-02-02": {
+      "civil_date": "2029-02-02",
+      "julian_date": "2029-01-20",
+      "pascha_offset": -65,
+      "weekday": 4,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2029-02-15": {
       "civil_date": "2029-02-15",
       "julian_date": "2029-02-02",
@@ -5396,6 +5804,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2030-02-02": {
+      "civil_date": "2030-02-02",
+      "julian_date": "2030-01-20",
+      "pascha_offset": -85,
+      "weekday": 5,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -6788,6 +7298,108 @@
       },
       "fail_closed": true
     },
+    "2031-02-02": {
+      "civil_date": "2031-02-02",
+      "julian_date": "2031-01-20",
+      "pascha_offset": -70,
+      "weekday": 6,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2031-02-15": {
       "civil_date": "2031-02-15",
       "julian_date": "2031-02-02",
@@ -8156,6 +8768,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2032-02-02": {
+      "civil_date": "2032-02-02",
+      "julian_date": "2032-01-20",
+      "pascha_offset": -90,
+      "weekday": 0,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -9548,6 +10262,108 @@
       },
       "fail_closed": true
     },
+    "2033-02-02": {
+      "civil_date": "2033-02-02",
+      "julian_date": "2033-01-20",
+      "pascha_offset": -81,
+      "weekday": 2,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2033-02-15": {
       "civil_date": "2033-02-15",
       "julian_date": "2033-02-02",
@@ -10928,6 +11744,108 @@
       },
       "fail_closed": true
     },
+    "2034-02-02": {
+      "civil_date": "2034-02-02",
+      "julian_date": "2034-01-20",
+      "pascha_offset": -66,
+      "weekday": 3,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2034-02-15": {
       "civil_date": "2034-02-15",
       "julian_date": "2034-02-02",
@@ -12154,6 +13072,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2035-02-02": {
+      "civil_date": "2035-02-02",
+      "julian_date": "2035-01-20",
+      "pascha_offset": -86,
+      "weekday": 4,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -13546,6 +14566,108 @@
       },
       "fail_closed": true
     },
+    "2036-02-02": {
+      "civil_date": "2036-02-02",
+      "julian_date": "2036-01-20",
+      "pascha_offset": -78,
+      "weekday": 5,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2036-02-15": {
       "civil_date": "2036-02-15",
       "julian_date": "2036-02-02",
@@ -14914,6 +16036,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2037-02-02": {
+      "civil_date": "2037-02-02",
+      "julian_date": "2037-01-20",
+      "pascha_offset": -62,
+      "weekday": 0,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -16306,6 +17530,108 @@
       },
       "fail_closed": true
     },
+    "2038-02-02": {
+      "civil_date": "2038-02-02",
+      "julian_date": "2038-01-20",
+      "pascha_offset": -82,
+      "weekday": 1,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2038-02-15": {
       "civil_date": "2038-02-15",
       "julian_date": "2038-02-02",
@@ -17674,6 +19000,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2039-02-02": {
+      "civil_date": "2039-02-02",
+      "julian_date": "2039-01-20",
+      "pascha_offset": -74,
+      "weekday": 2,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -19066,6 +20494,108 @@
       },
       "fail_closed": true
     },
+    "2040-02-02": {
+      "civil_date": "2040-02-02",
+      "julian_date": "2040-01-20",
+      "pascha_offset": -94,
+      "weekday": 3,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2040-02-15": {
       "civil_date": "2040-02-15",
       "julian_date": "2040-02-02",
@@ -20434,6 +21964,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2041-02-02": {
+      "civil_date": "2041-02-02",
+      "julian_date": "2041-01-20",
+      "pascha_offset": -78,
+      "weekday": 5,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -21826,6 +23458,108 @@
       },
       "fail_closed": true
     },
+    "2042-02-02": {
+      "civil_date": "2042-02-02",
+      "julian_date": "2042-01-20",
+      "pascha_offset": -70,
+      "weekday": 6,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2042-02-15": {
       "civil_date": "2042-02-15",
       "julian_date": "2042-02-02",
@@ -23194,6 +24928,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2043-02-02": {
+      "civil_date": "2043-02-02",
+      "julian_date": "2043-01-20",
+      "pascha_offset": -90,
+      "weekday": 0,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -24586,6 +26422,108 @@
       },
       "fail_closed": true
     },
+    "2044-02-02": {
+      "civil_date": "2044-02-02",
+      "julian_date": "2044-01-20",
+      "pascha_offset": -82,
+      "weekday": 1,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2044-02-15": {
       "civil_date": "2044-02-15",
       "julian_date": "2044-02-02",
@@ -25966,6 +27904,108 @@
       },
       "fail_closed": true
     },
+    "2045-02-02": {
+      "civil_date": "2045-02-02",
+      "julian_date": "2045-01-20",
+      "pascha_offset": -66,
+      "weekday": 3,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2045-02-15": {
       "civil_date": "2045-02-15",
       "julian_date": "2045-02-02",
@@ -27192,6 +29232,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2046-02-02": {
+      "civil_date": "2046-02-02",
+      "julian_date": "2046-01-20",
+      "pascha_offset": -86,
+      "weekday": 4,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -28584,6 +30726,108 @@
       },
       "fail_closed": true
     },
+    "2047-02-02": {
+      "civil_date": "2047-02-02",
+      "julian_date": "2047-01-20",
+      "pascha_offset": -78,
+      "weekday": 5,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2047-02-15": {
       "civil_date": "2047-02-15",
       "julian_date": "2047-02-02",
@@ -29952,6 +32196,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2048-02-02": {
+      "civil_date": "2048-02-02",
+      "julian_date": "2048-01-20",
+      "pascha_offset": -63,
+      "weekday": 6,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
@@ -31344,6 +33690,108 @@
       },
       "fail_closed": true
     },
+    "2049-02-02": {
+      "civil_date": "2049-02-02",
+      "julian_date": "2049-01-20",
+      "pascha_offset": -82,
+      "weekday": 1,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
     "2049-02-15": {
       "civil_date": "2049-02-15",
       "julian_date": "2049-02-02",
@@ -32712,6 +35160,108 @@
             "text_sha256": "58371b736afaddc750adb5a951a116f4026f81fee42d51f97573ae92b7e0a384",
             "source_id": "goarch_digital_chant_stand_greek",
             "source_url": "https://digitalchantstand.goarch.org/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        }
+      },
+      "fail_closed": true
+    },
+    "2050-02-02": {
+      "civil_date": "2050-02-02",
+      "julian_date": "2050-01-20",
+      "pascha_offset": -74,
+      "weekday": 2,
+      "service_type": "chrysostom",
+      "service_rule_id": "ordinary_chrysostom_baseline",
+      "proper_id": "euthymius_the_great",
+      "proper_provenance": "fixed",
+      "verified_slots": [
+        "daily_kontakion",
+        "daily_troparion"
+      ],
+      "complete_three_slot_entry": false,
+      "languages": {
+        "ar": {
+          "daily_troparion": {
+            "text": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+            "text_sha256": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+            "text_sha256": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251",
+            "source_id": "antioch_patriarchate_ar",
+            "source_url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "en": {
+          "daily_troparion": {
+            "text": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+            "text_sha256": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+            "text_sha256": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311",
+            "source_id": "goarch_online_chapel",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          }
+        },
+        "el": {
+          "daily_troparion": {
+            "text": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+            "text_sha256": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+            "permission_confirmed": true,
+            "redistribution_review_required": false,
+            "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
+            "machine_translation_used": false,
+            "ai_translation_used": false,
+            "automatic_diacritization_used": false,
+            "script_isolated": true
+          },
+          "daily_kontakion": {
+            "text": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+            "text_sha256": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18",
+            "source_id": "goarch_online_chapel_greek",
+            "source_url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
             "permission_confirmed": true,
             "redistribution_review_required": false,
             "authorization_reference": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_ORTHODOX_DAILY_PROPERS_SOURCES_2026_08_24",
