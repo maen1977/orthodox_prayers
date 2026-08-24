@@ -44,8 +44,14 @@ def test_inventory_covers_every_civil_date_and_lane_without_fallback():
             for slot in SLOTS:
                 record = day["lanes"][lang][slot]
                 assert record["status"] in {"verified", "incomplete"}
-                assert record["verified"] is False
-                assert record["reasons"] or record["verified"]
+                assert record["verified"] is True or record["reasons"]
+                if record["verified"]:
+                    assert record["text_present"] is True
+                    assert record["source_registered"] is True
+                    assert record["registered_text_sha256"]
+                    assert record["hash_matches_bundled_text"] is True
+                    assert record["rights_attested"] is True
+                    assert record["script_isolated"] is True
 
 
 def test_inventory_summary_is_consistent_and_never_claims_verified_daily_coverage():
@@ -67,7 +73,9 @@ def test_inventory_summary_is_consistent_and_never_claims_verified_daily_coverag
                 assert summary[scope]["rights_attested_days"] == sum(r["rights_attested"] for r in records)
                 assert summary[scope]["script_isolated_days"] == sum(r["script_isolated"] for r in records)
                 assert summary[scope]["verified_days"] == sum(r["verified"] for r in records)
-                assert summary[scope]["verified_days"] == 0
+                assert summary[scope]["verified_days"] <= summary[scope]["text_present_days"]
+                assert summary[scope]["verified_days"] <= summary[scope]["registered_hash_days"]
+                assert summary[scope]["verified_days"] < len(records)
 
 
 def test_inventory_texts_are_not_cross_language_when_present():
