@@ -40,5 +40,5 @@ def test_calendar_keeps_blocked_liturgy_visible_but_not_openable():
 
 def test_release_version_is_561():
     build = text('app/build.gradle.kts')
-    assert 'versionCode = 50604' in build
-    assert 'versionName = "5.6.4"' in build
+    assert 'versionCode = 50605' in build
+    assert 'versionName = "5.6.5"' in build

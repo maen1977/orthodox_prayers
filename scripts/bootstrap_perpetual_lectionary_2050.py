@@ -36,7 +36,7 @@ SOURCE_REPOSITORY = "https://github.com/brianglass/orthocal-python"
 API_TEMPLATE = "https://orthocal.info/api/greek/julian/{year}/{month}/"
 DEFAULT_CACHE = ROOT / "app" / "build" / "lectionary-download-cache" / "orthocal-greek-julian"
 DEFAULT_OUTPUT = ROOT / "canonical" / "perpetual_lectionary_2026_2050.json"
-USER_AGENT = "OrthodoxPrayers/5.6.4 R64 lectionary-bootstrap (+absolute coverage audit)"
+USER_AGENT = "OrthodoxPrayers/5.6.5 R64 lectionary-bootstrap (+absolute coverage audit)"
 
 BOOK_LOCALIZATION = {
     "Genesis": ("التكوين", "Γένεσις"), "Exodus": ("الخروج", "Ἔξοδος"),
