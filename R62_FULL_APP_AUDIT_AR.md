@@ -50,9 +50,9 @@ Complete authorized native editions are displayable in Arabic (206 segments), En
 ### ✅ PASS R66 — نص أصلي مصرّح به — Presanctified Liturgy
 Complete authorized native editions are displayable in Arabic (3302 segments), English (590), and Greek (915); the smart selector attaches the Presanctified template on appointed days without a wrong-rite fallback.
 
-### ⚠️ البطاقات موجودة / النصوص الكاملة ناقصة — Church-service section
-13 fallback service cards exist in each language; pending full authorized rite text in source packs: ar=13, en=13, el=13. Arabic build manifest now has 10/10 registered Jordan sources marked owner-confirmed for R64; rights-pending=0. Source checkout can still contain catalog snapshots until the build materializes the authorized native corpus.
-**الإجراء:** Do not label catalog/reference cards as complete services until native full texts are imported and gated. Public-domain/CC-BY lanes may still generate full text at build time where their registered rights permit it.
+### ⚠️ التغطية مختلفة حسب اللغة — Church-service section
+هذا الكتالوج منفصل عن نطاق الخدمات الأساسية الخمس عشرة. بعد التوليد الحالي: العربية `10/10` نصوص كاملة offline، والإنجليزية `11/11` نصوص كاملة offline بعد تصحيح حدود Hapgood، واليونانية `0/11` نصوص كاملة و`11` بطاقات روابط مصدر فقط لأن مصدر Ioannina المسجل أعاد HTTP 500. الرابط فقط لا يُسمّى خدمة كاملة، ولا يوجد cross-language fallback.
+**الإجراء:** لا تُسمَّ بطاقات الكتالوج/المرجع خدمات كاملة إلا بعد استيراد نص أصلي كامل واجتياز البوابة. بقيت الفجوة اليونانية صريحة، كما أن اكتمال 15/15 لا يشمل هذا الكتالوج ولا يشهد بمراجعة كنسية بشرية.
 
 ### ⚠️ PARTIAL + روابط الدليل الرسمي الكامل — Church directory
 Packaged directory has 57 entries grouped as {'jordan': 42, 'palestine': 9, 'jerusalem': 6}: the Jordan list and West Bank list are expanded from the official directories, while Jerusalem/Holy Land currently contains selected major entries plus direct links to the complete official Patriarchate directories. No clergy phone numbers are republished.

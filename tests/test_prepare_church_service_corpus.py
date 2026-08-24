@@ -24,6 +24,20 @@ def test_parser_keeps_service_and_removes_navigation():
     assert all('MENU' not in x and 'FOOT' not in x for x in blocks)
 
 
+def test_open_source_end_marker_is_excluded_from_service_slice():
+    raw = b"TABLE OF CONTENTS\n\nSERVICE A\n\nPriest: first prayer.\n\n<td\n\nSERVICE B\n\nPriest: next service.\n"
+    spec = {
+        'id': 'service_a',
+        'source_transport': 'public_domain_plain_text',
+        'start_marker': ['SERVICE A'],
+        'end_marker': ['SERVICE B'],
+        'marker_occurrence': 'first',
+    }
+    blocks = mod.normalize_open_source_blocks(raw, 'en', spec)
+    assert blocks == ['SERVICE A', 'Priest: first prayer.']
+    assert 'SERVICE B' not in blocks
+
+
 def test_segment_has_only_native_language():
     seg = mod.block_to_segment('Priest: Blessed is our God.', 'en')
     assert seg['text']['en']

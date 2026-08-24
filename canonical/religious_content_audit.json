@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-08-24",
+  "git_head_at_generation": "5f167c1c3effd9a2414f90e386f8e4601e84ad62",
+  "policy": {
+    "same_language_native_sources_only": true,
+    "machine_translation_used": false,
+    "cross_language_fallback_used": false,
+    "ai_rewriting_or_correction_used": false,
+    "ecclesiastical_approval_certified": false,
+    "scope_is_not_all_orthodox_websites_worldwide": true
+  },
+  "scope": {
+    "core_15_services": [
+      "vespers",
+      "small_compline",
+      "midnight_office",
+      "orthros",
+      "first_hour",
+      "third_hour",
+      "sixth_hour",
+      "ninth_hour",
+      "typika",
+      "proskomide",
+      "chrysostom_liturgy",
+      "basil_liturgy",
+      "presanctified_liturgy",
+      "pre_communion",
+      "post_communion"
+    ],
+    "church_service_catalog": "Separate catalog of sacramental, memorial, blessing, and ordination services listed in canonical/church_service_full_sources.json.",
+    "daily_variable_propers": "Tracked separately in app/src/main/assets/data/service_coverage.json.",
+    "source_comparison": "Section and role checklist checked against the official GOARCH English Divine Liturgy page; each Arabic, English, and Greek lane retains its own registered native source and hash. A complete segment-by-segment snapshot comparison was not completed."
+  },
+  "core_15_manifest_status": {
+    "ar": {
+      "declared_complete": 15,
+      "required": 15
+    },
+    "en": {
+      "declared_complete": 15,
+      "required": 15
+    },
+    "el": {
+      "declared_complete": 15,
+      "required": 15
+    }
+  },
+  "core_metrics": {
+    "ar": {
+      "divine_liturgy_segments": 198,
+      "silent_segments": 17,
+      "silent_priest_segments": 12,
+      "delivery_actor_counts": {
+        "priest": 12,
+        "faithful": 5
+      },
+      "speaker_counts": {
+        "القارئ": 3,
+        "الكاهن": 34,
+        "الشعب": 74,
+        "الشماس": 34,
+        "الكاهن سراً": 12,
+        "المرتل": 8,
+        "الكاهن سرًا": 3,
+        "الشعب بصوت هادئ": 5
+      },
+      "source": {
+        "source_id": "antioch_patriarchate_ar",
+        "name": "بطريركية أنطاكية وسائر المشرق — العربية",
+        "official": true,
+        "native_language": "ar",
+        "url": "https://www.antiochpatriarchate.org/",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "content_sha256": "94fa968dae80a5483bcd887018f70269b6b63aeaba3be1868b8cc8559a868691",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "divine_liturgy_basil_segments": 206,
+      "presanctified_liturgy_segments": 3302,
+      "vespers_segments": 44,
+      "orthros_segments": 159,
+      "midnight_office_segments": 55,
+      "proskomide_segments": 77
+    },
+    "en": {
+      "divine_liturgy_segments": 328,
+      "silent_segments": 5,
+      "silent_priest_segments": 4,
+      "delivery_actor_counts": {
+        "priest": 4,
+        "faithful": 1
+      },
+      "speaker_counts": {
+        "Reader": 2,
+        "Priest": 6,
+        "People": 117,
+        "Deacon": 73,
+        "Rubric": 68,
+        "Bishop or Priest": 35,
+        "Clergy and People": 1
+      },
+      "source": {
+        "source_id": "metropolis_toronto_liturgy_en",
+        "name": "Greek Orthodox Metropolis of Toronto (Canada) — English Liturgy",
+        "official": true,
+        "native_language": "en",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "content_sha256": "8357e5dd56eb76af17b0204394904c161efee055ee0dd3678d2aec878dfa9568",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "divine_liturgy_basil_segments": 455,
+      "presanctified_liturgy_segments": 590,
+      "vespers_segments": 193,
+      "orthros_segments": 571,
+      "midnight_office_segments": 82,
+      "proskomide_segments": 20
+    },
+    "el": {
+      "divine_liturgy_segments": 324,
+      "silent_segments": 5,
+      "silent_priest_segments": 4,
+      "delivery_actor_counts": {
+        "priest": 4,
+        "faithful": 1
+      },
+      "speaker_counts": {
+        "Ἀναγνώστης": 2,
+        "Ἱερεὺς": 4,
+        "Λαός": 117,
+        "Διάκονος": 73,
+        "Τυπικόν": 64,
+        "Ὁ Ἀρχιερεύς ἢ ὁ Ἱερεὺς": 32,
+        "Ὁ Ἀρχιερεύς ἢ ὁ Ἱερεύς": 3,
+        "Κλῆρος καί Λαός": 1,
+        "Ὁ Ἱερεὺς": 2
+      },
+      "source": {
+        "source_id": "metropolis_toronto_liturgy_el",
+        "name": "Greek Orthodox Metropolis of Toronto (Canada) — Greek Liturgy",
+        "official": true,
+        "native_language": "el",
+        "url": "https://goarchdiocese.ca/wp-content/uploads/2017/08/Divine-Liturgy.pdf",
+        "permission_confirmed": true,
+        "redistribution_review_required": false,
+        "machine_translation_used": false,
+        "content_sha256": "51cad4bbbbef11e71fc0b585280e77f5bb09cf9bbf1abfcd28fb91e3a86cb6cf",
+        "import_status": "AUTHORIZED_NATIVE_SOURCE_IMPORT"
+      },
+      "divine_liturgy_basil_segments": 228,
+      "presanctified_liturgy_segments": 915,
+      "vespers_segments": 237,
+      "orthros_segments": 744,
+      "midnight_office_segments": 92,
+      "proskomide_segments": 5
+    }
+  },
+  "daily_variable_coverage": {
+    "service_id": "divine_liturgy",
+    "required_variable_count": 6,
+    "verified_variable_count": 3,
+    "coverage_percent": 50,
+    "missing_variables": [
+      "[طروبارية اليوم]",
+      "[القنداق]",
+      "[آية المناولة]"
+    ],
+    "complete": false
+  },
+  "church_service_metrics": {
+    "ar": {
+      "full_native_offline": 10,
+      "fallback_link_only": 0,
+      "full_ids": [
+        "church_baptism",
+        "church_confession",
+        "church_betrothal",
+        "church_marriage",
+        "church_crowns_removal",
+        "church_unction",
+        "church_funeral",
+        "church_memorial",
+        "church_trisagion",
+        "church_great_water"
+      ],
+      "fallbacks": [],
+      "full_lengths": {
+        "church_baptism": {
+          "characters": 42043,
+          "blocks": 247
+        },
+        "church_confession": {
+          "characters": 10514,
+          "blocks": 48
+        },
+        "church_betrothal": {
+          "characters": 4760,
+          "blocks": 46
+        },
+        "church_marriage": {
+          "characters": 14623,
+          "blocks": 131
+        },
+        "church_crowns_removal": {
+          "characters": 2006,
+          "blocks": 7
+        },
+        "church_unction": {
+          "characters": 40887,
+          "blocks": 260
+        },
+        "church_funeral": {
+          "characters": 15959,
+          "blocks": 149
+        },
+        "church_memorial": {
+          "characters": 12044,
+          "blocks": 84
+        },
+        "church_trisagion": {
+          "characters": 5353,
+          "blocks": 40
+        },
+        "church_great_water": {
+          "characters": 14601,
+          "blocks": 101
+        }
+      }
+    },
+    "en": {
+      "full_native_offline": 11,
+      "fallback_link_only": 0,
+      "full_ids": [
+        "church_baptism",
+        "church_confession",
+        "church_betrothal",
+        "church_marriage",
+        "church_crowns_removal",
+        "church_unction",
+        "church_funeral",
+        "church_memorial",
+        "church_home_blessing",
+        "church_priesthood",
+        "church_great_water"
+      ],
+      "fallbacks": [],
+      "full_lengths": {
+        "church_baptism": {
+          "characters": 36491,
+          "blocks": 671
+        },
+        "church_confession": {
+          "characters": 11446,
+          "blocks": 194
+        },
+        "church_betrothal": {
+          "characters": 5478,
+          "blocks": 103
+        },
+        "church_marriage": {
+          "characters": 20775,
+          "blocks": 384
+        },
+        "church_crowns_removal": {
+          "characters": 1498,
+          "blocks": 30
+        },
+        "church_unction": {
+          "characters": 90485,
+          "blocks": 1600
+        },
+        "church_funeral": {
+          "characters": 60197,
+          "blocks": 1143
+        },
+        "church_memorial": {
+          "characters": 12364,
+          "blocks": 228
+        },
+        "church_home_blessing": {
+          "characters": 597,
+          "blocks": 10
+        },
+        "church_priesthood": {
+          "characters": 4034,
+          "blocks": 114
+        },
+        "church_great_water": {
+          "characters": 21264,
+          "blocks": 454
+        }
+      }
+    },
+    "el": {
+      "full_native_offline": 0,
+      "fallback_link_only": 11,
+      "full_ids": [],
+      "fallbacks": [
+        {
+          "id": "church_baptism",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_confession",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_betrothal",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_marriage",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_crowns_removal",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_unction",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_funeral",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_memorial",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_trisagion",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_priesthood",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        },
+        {
+          "id": "church_great_water",
+          "reason": "HTTP Error 500: 500",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
+        }
+      ],
+      "full_lengths": {}
+    }
+  },
+  "source_checklist": {
+    "goarch_divine_liturgy_url": "https://www.goarch.org/-/the-divine-liturgy-of-saint-john-chrysostom",
+    "goarch_liturgical_index_url": "https://www.goarch.org/chapel/texts",
+    "arabic_registered_source_family": "Antioch/Jordan native Arabic sources recorded in each service native_source field.",
+    "greek_registered_source_family": "Registered native Greek source in canonical/church_service_full_sources.json; church-service PDF endpoint returned HTTP 500 during this audit.",
+    "english_church_service_source": "Hapgood 1922 public-domain Service Book cache, with source boundaries reviewed against printed headings."
+  },
+  "unresolved_checks": [
+    {
+      "check": "full_text_to_text_source_comparison_artifact",
+      "status": "not_completed",
+      "evidence": "scripts/validate_source_comparison.py could not run because data/sources/comparison/current.json is absent."
+    },
+    {
+      "check": "greek_church_service_offline_full_text",
+      "status": "not_completed",
+      "evidence": "Registered UOI CC-BY PDF returned HTTP 500; no unverified replacement or translation was used."
+    },
+    {
+      "check": "daily_divine_liturgy_variable_propers",
+      "status": "partial",
+      "evidence": "Only 3 of 6 required variables are verified in service_coverage.json."
+    },
+    {
+      "check": "human_ecclesiastical_review",
+      "status": "not_certified",
+      "evidence": "The project manifest explicitly keeps ecclesiastical_approval_certified=false."
+    }
+  ]
+}

@@ -266,6 +266,7 @@ def normalize_open_source_blocks(raw: bytes, language: str, spec: dict) -> list[
     blocks = blocks[start:]
     end = find_marker_occurrence(blocks[1:], spec.get("end_marker"), "first")
     if end is not None:
+        # The search runs on blocks[1:], so +1 keeps the block before the next heading.
         blocks = blocks[:end + 1]
     blocks = apply_script_filter(blocks, spec.get("filter_script"))
     # Remove repeated page headers/page numbers without rewriting the source.
@@ -275,6 +276,9 @@ def normalize_open_source_blocks(raw: bytes, language: str, spec: dict) -> list[
         if re.fullmatch(r"[ivxlcdm\d\-–—. ]{1,12}", block.casefold()):
             continue
         fp=re.sub(r"\s+", " ", block).strip()
+        # Internet Archive OCR occasionally leaves a standalone HTML table token.
+        if re.fullmatch(r"</?(?:td|tr|table|tbody|thead)(?:\s[^>]*)?>?", fp, flags=re.IGNORECASE):
+            continue
         if len(fp) > 80 and fp in seen:
             continue
         result.append(block)

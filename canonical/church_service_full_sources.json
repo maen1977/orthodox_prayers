@@ -156,12 +156,10 @@
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
           "marker_occurrence": "last",
           "start_marker": [
-            "PRAYERS AT THE RECEPTION OF CATECHUMENS",
-            "THE OFFICE OF HOLY BAPTISM"
+            "THE PRAYERS AT THE RECEPTION OF CATECHUMENS"
           ],
           "end_marker": [
-            "MATRIMONY",
-            "THE OFFICE OF BETROTHAL"
+            "THE RITE OF CONFESSION"
           ],
           "max_chars": 80000
         },
@@ -176,14 +174,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF CONFESSION",
-            "CONFESSION"
+            "THE RITE OF CONFESSION"
           ],
           "end_marker": [
-            "HOLY UNCTION",
-            "THE OFFICE OF HOLY UNCTION"
+            "THE BETROTHAL SERVICE"
           ],
           "max_chars": 80000
         },
@@ -198,14 +194,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF BETROTHAL",
-            "BETROTHAL"
+            "THE BETROTHAL SERVICE"
           ],
           "end_marker": [
-            "CROWNING",
-            "THE OFFICE OF CROWNING"
+            "THE ORDER OF MARRIAGE, OR OF CROWNING"
           ],
           "max_chars": 80000
         },
@@ -220,14 +214,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF CROWNING",
-            "CROWNING"
+            "THE ORDER OF MARRIAGE, OR OF CROWNING"
           ],
           "end_marker": [
-            "REMOVAL OF CROWNS",
-            "SECOND MARRIAGE"
+            "PRAYER AT THE REMOVAL OF THE CROWNS ON THE"
           ],
           "max_chars": 80000
         },
@@ -242,12 +234,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "REMOVAL OF CROWNS"
+            "PRAYER AT THE REMOVAL OF THE CROWNS ON THE"
           ],
           "end_marker": [
-            "SECOND MARRIAGE"
+            "THE ORDER OF SECOND MARRIAGE"
           ],
           "max_chars": 80000
         },
@@ -262,15 +254,14 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF HOLY UNCTION",
-            "HOLY UNCTION"
+            "THE OFFICE OF HOLY UNCTION, SUNG BY SEVEN"
           ],
           "end_marker": [
-            "BURIAL OF THE DEAD"
+            "THE ORDER FOR THE BURIAL OF THE DEAD (LAYMEN)"
           ],
-          "max_chars": 80000
+          "max_chars": 100000
         },
         {
           "id": "church_funeral",
@@ -283,14 +274,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "BURIAL OF THE DEAD (LAYMEN)",
-            "BURIAL OF THE DEAD"
+            "THE ORDER FOR THE BURIAL OF THE DEAD (LAYMEN)"
           ],
           "end_marker": [
-            "BURIAL OF THE DEAD (PRIESTS)",
-            "BURIAL OF PRIESTS"
+            "THE ORDER FOR THE BURIAL OF THE DEAD (PRIESTS)"
           ],
           "max_chars": 80000
         },
@@ -305,14 +294,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "PANIKHIDA",
-            "PANIKHÍDA",
-            "GENERAL REQUIEM"
+            "THE GENERAL PANIKHIDA OR REQUIEM SERVICE"
           ],
           "end_marker": [
-            "PARTING OF THE SOUL"
+            "PRAYERS IN PREPARATION FOR THE HOLY COMMUNION"
           ],
           "max_chars": 80000
         },
@@ -329,13 +316,13 @@
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
           "marker_occurrence": "last",
           "start_marker": [
-            "ENTERING A NEW HOUSE",
             "NEW HOUSE"
           ],
           "end_marker": [
-            "BLESSING OF ANY OBJECT"
+            "FOR THE BLESSING OF ANY OBJECT"
           ],
-          "max_chars": 80000
+          "max_chars": 80000,
+          "min_chars": 500
         },
         {
           "id": "church_priesthood",
@@ -348,15 +335,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "ORDINATION OF A PRIEST",
-            "ORDINATION: PRIEST",
-            "PRIEST. ORDINATION"
+            "THE FORM AND MANNER OF ORDAINING A PRIEST"
           ],
           "end_marker": [
-            "ORDINATION OF A DEACON",
-            "DEACON. ORDINATION"
+            "THE FORM AND MANNER OF MAKING AN"
           ],
           "max_chars": 80000
         },
@@ -371,13 +355,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "GRAND BLESSING OF THE WATERS",
-            "GREAT BLESSING OF THE WATERS"
+            "THE OFFICE AT THE GREAT BLESSING OF WATERS AT"
           ],
           "end_marker": [
-            "LESSER BLESSING OF THE WATERS"
+            "THE MEETING OF THE LORD"
           ],
           "max_chars": 80000
         }

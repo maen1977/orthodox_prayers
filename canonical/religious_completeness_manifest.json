@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "definition": "Technical native-language coverage is complete when the full service text is packaged in that same language from recorded native sources, required fixed and date-dependent sections are structurally accounted for, and no machine translation is used. This score does not itself constitute ecclesiastical approval.",
+  "definition": "Technical native-language coverage is complete when the full service text is packaged in that same language from recorded native sources, required fixed and date-dependent sections are structurally accounted for, and no machine translation is used. The 15-service score below is limited to the declared core daily/communion/liturgy scope; the separate church-service catalog is reported in church_service_coverage. This score does not itself constitute ecclesiastical approval.",
   "required_services": [
     "vespers",
     "small_compline",
@@ -91,10 +91,38 @@
   "production_complete_status": "complete_exact_native_edition",
   "machine_translation_allowed": false,
   "status_notes": {
-    "ar": "التغطية التقنية الحالية: 15 من 15 خدمة بالعربية. 12 خدمات من طبعات أصلية مفردة و3 خدمات تراكيب موثقة من مصادر عربية أصلية مسجلة. لا تتضمن النتيجة ادعاء مراجعة أو بركة كنسية.",
-    "en": "Technical coverage: 15 of 15 services in English; 13 are complete single native editions and 2 are complete compilations from registered native English sources. This does not claim ecclesiastical review or blessing.",
-    "el": "Τεχνικὴ κάλυψη: 15/15 ἀκολουθίες στὰ ἑλληνικά· 13 προέρχονται ἀπὸ μία πλήρη γηγενὴ ἔκδοση καὶ 2 εἶναι πλήρεις συνθέσεις ἀπὸ καταγεγραμμένες ἑλληνικὲς πηγές. Δὲν δηλώνεται ἐκκλησιαστικὴ ἔγκριση.",
+    "ar": "ضمن نطاق الخدمات الأساسية المعلن فقط: 15 من 15 خدمة بالعربية. 12 خدمة من طبعات أصلية مفردة و3 خدمات تراكيب موثقة من مصادر عربية أصلية مسجلة. الخدمات الكنسية المنفصلة مبينة في church_service_coverage، ولا تتضمن النتيجة ادعاء مراجعة أو بركة كنسية.",
+    "en": "Within the declared core scope only: 15 of 15 services in English; 13 are complete single native editions and 2 are complete compilations from registered native English sources. The separate church-service catalog is reported in church_service_coverage. This does not claim ecclesiastical review or blessing.",
+    "el": "Τεχνικὴ κάλυψη μόνο ἐντὸς τοῦ δηλωμένου βασικοῦ πεδίου: 15/15 ἀκολουθίες στὰ ἑλληνικά· 13 προέρχονται ἀπὸ μία πλήρη γηγενὴ ἔκδοση καὶ 2 εἶναι πλήρεις συνθέσεις ἀπὸ καταγεγραμμένες ἑλληνικὲς πηγές. Ὁ χωριστὸς κατάλογος ἐκκλησιαστικῶν ἀκολουθιῶν δηλώνεται στὸ church_service_coverage. Δὲν δηλώνεται ἐκκλησιαστικὴ ἔγκριση.",
     "complete_native_source_compilation": "Complete same-language service assembled from recorded native source material with source hashes and technical checks; remains distinct from a single exact edition and does not certify ecclesiastical approval."
+  },
+  "church_service_coverage": {
+    "scope": "Separate sacramental, memorial, blessing, and ordination catalog; not included in the 15-service core score.",
+    "generated_from": "canonical/church_service_full_sources.json",
+    "generated_reality_after_r64_boundary_review": {
+      "ar": {
+        "full_native_offline": 10,
+        "fallback_link_only": 0,
+        "services_in_lane": 10,
+        "ids_full_native_offline": ["church_baptism", "church_confession", "church_betrothal", "church_marriage", "church_crowns_removal", "church_unction", "church_funeral", "church_memorial", "church_trisagion", "church_great_water"]
+      },
+      "en": {
+        "full_native_offline": 11,
+        "fallback_link_only": 0,
+        "services_in_lane": 11,
+        "ids_full_native_offline": ["church_baptism", "church_marriage", "church_unction", "church_funeral", "church_confession", "church_betrothal", "church_crowns_removal", "church_memorial", "church_home_blessing", "church_priesthood", "church_great_water"]
+      },
+      "el": {
+        "full_native_offline": 0,
+        "fallback_link_only": 11,
+        "services_in_lane": 11,
+        "ids_full_native_offline": [],
+        "reason": "Registered native Greek CC-BY source returned HTTP 500 during the audit; no replacement or translation was used."
+      }
+    },
+    "fallback_is_not_full_rite": true,
+    "machine_translation_allowed": false,
+    "ecclesiastical_approval_certified": false
   },
   "liturgy_service_selection": {
     "status": "active_fail_closed",
