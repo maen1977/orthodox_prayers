@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_on": "2026-08-24",
-  "git_head_at_generation": "72a26c02b68f84e4ba4018c2485acd2880961155",
+  "git_head_at_generation": "02560a26720da1c83ae547dd9632cd1ebe55e276",
   "policy": {
     "same_language_native_sources_only": true,
     "machine_translation_used": false,
@@ -296,8 +296,8 @@
       }
     },
     "el": {
-      "full_native_offline": 10,
-      "fallback_link_only": 1,
+      "full_native_offline": 11,
+      "fallback_link_only": 0,
       "full_ids": [
         "church_baptism",
         "church_confession",
@@ -306,17 +306,12 @@
         "church_crowns_removal",
         "church_unction",
         "church_funeral",
+        "church_memorial",
         "church_trisagion",
         "church_priesthood",
         "church_great_water"
       ],
-      "fallbacks": [
-        {
-          "id": "church_memorial",
-          "reason": "pdf_text_too_short:701",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        }
-      ],
+      "fallbacks": [],
       "full_lengths": {
         "church_baptism": {
           "characters": 36644,
@@ -346,6 +341,10 @@
           "characters": 15889,
           "blocks": 140
         },
+        "church_memorial": {
+          "characters": 3815,
+          "blocks": 37
+        },
         "church_trisagion": {
           "characters": 3534,
           "blocks": 26
@@ -365,13 +364,14 @@
     "goarch_divine_liturgy_url": "https://www.goarch.org/-/the-divine-liturgy-of-saint-john-chrysostom",
     "goarch_liturgical_index_url": "https://www.goarch.org/chapel/texts",
     "arabic_registered_source_family": "Antioch/Jordan native Arabic sources recorded in each service native_source field.",
-    "greek_registered_source_family": "Six Greek church-service pages are registered from GOARCH GLT with a user-provided redistribution-permission record; four additional Greek services are transcribed at build time from bounded pages of the University of Ioannina CC-BY scanned Eucharologion, while the independent memorial service remains a link-only fallback.",
+    "greek_registered_source_family": "Six Greek church-service pages are registered from GOARCH GLT with a user-provided redistribution-permission record; four additional Greek services are transcribed at build time from bounded pages of the University of Ioannina CC-BY scanned Eucharologion, and the independent memorial service is bundled from a bounded Greek-only excerpt of the GOARCH Digital Chant Stand with a user-provided redistribution-permission record.",
     "greek_glt_service_urls": [
       "https://glt.goarch.org/texts/Euch/Baptism.html",
       "https://glt.goarch.org/texts/Euch/Wedding.html",
       "https://glt.goarch.org/texts/Euch/Uncion.html",
       "https://glt.goarch.org/texts/Euch/Funeral.html",
-      "https://glt.goarch.org/texts/Euch/Trisagion.html"
+      "https://glt.goarch.org/texts/Euch/Trisagion.html",
+      "https://dcs.goarch.org/goa/dcs/p/s/2026/07/19/li/gr-en/index.html"
     ],
     "english_church_service_source": "Hapgood 1922 public-domain Service Book cache, with source boundaries reviewed against printed headings."
   },
@@ -383,8 +383,8 @@
     },
     {
       "check": "greek_church_service_offline_full_text",
-      "status": "partial",
-      "evidence": "Ten of eleven Greek church services now bundle native text offline: six bounded GLT pages plus four bounded native Greek excerpts from the registered UOI CC-BY scan. The independent memorial service remains link-only because the UOI PDF is scanned and no separately verified memorial boundary was established."
+      "status": "complete_within_declared_catalog",
+      "evidence": "All eleven Greek church services now bundle native Greek text offline: six bounded GLT pages, four bounded native Greek excerpts from the registered UOI CC-BY scan, and one independently bounded Greek-only memorial excerpt from the registered GOARCH Digital Chant Stand page."
     },
     {
       "check": "daily_divine_liturgy_variable_propers",
