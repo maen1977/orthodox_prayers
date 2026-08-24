@@ -113,11 +113,11 @@
         "ids_full_native_offline": ["church_baptism", "church_marriage", "church_unction", "church_funeral", "church_confession", "church_betrothal", "church_crowns_removal", "church_memorial", "church_home_blessing", "church_priesthood", "church_great_water"]
       },
       "el": {
-        "full_native_offline": 0,
-        "fallback_link_only": 11,
+        "full_native_offline": 11,
+        "fallback_link_only": 0,
         "services_in_lane": 11,
-        "ids_full_native_offline": [],
-        "reason": "Registered native Greek CC-BY source returned HTTP 500 during the audit; no replacement or translation was used."
+        "ids_full_native_offline": ["church_baptism", "church_confession", "church_betrothal", "church_marriage", "church_crowns_removal", "church_unction", "church_funeral", "church_memorial", "church_trisagion", "church_priesthood", "church_great_water"],
+        "reason": "All eleven Greek catalog services now bundle native Greek text offline from registered sources: six bounded GOARCH GLT pages, four bounded native Greek excerpts from the University of Ioannina CC-BY scan, and one independently bounded Greek memorial excerpt from the GOARCH Digital Chant Stand. This does not certify ecclesiastical approval or complete every dated daily proper."
       }
     },
     "fallback_is_not_full_rite": true,

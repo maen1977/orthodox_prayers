@@ -434,7 +434,7 @@ def _fetch_local_native_text(spec: dict) -> bytes:
 
 def fetch_spec(spec: dict, cache: Path) -> bytes:
     transport = spec.get("source_transport", "html")
-    if transport == "local_native_ocr_text":
+    if transport in {"local_native_ocr_text", "local_native_text"}:
         return _fetch_local_native_text(spec)
     if transport == "public_domain_plain_text":
         return _fetch_open_source(spec["url"], cache, ".txt")
@@ -504,7 +504,7 @@ def find_marker(blocks: list[str], markers) -> int | None:
 
 
 def normalize_blocks(raw: bytes, language: str, spec: dict) -> list[str]:
-    if spec.get("source_transport") in {"public_domain_plain_text", "cc_by_pdf_text", "cc_by_pdf_ocr_text", "local_native_ocr_text"}:
+    if spec.get("source_transport") in {"public_domain_plain_text", "cc_by_pdf_text", "cc_by_pdf_ocr_text", "local_native_ocr_text", "local_native_text"}:
         return normalize_open_source_blocks(raw, language, spec)
     blocks = parse_blocks(raw)
     nav_exact = {
@@ -644,7 +644,7 @@ def redistribution_allowed(spec: dict) -> bool:
 def _source_key(lang: str, spec: dict) -> tuple[str, str, str]:
     transport = spec.get("source_transport", "html")
     identity = spec.get("local_path") or spec.get("url", "")
-    if transport in {"cc_by_pdf_ocr_text", "local_native_ocr_text"}:
+    if transport in {"cc_by_pdf_ocr_text", "local_native_ocr_text", "local_native_text"}:
         identity = identity + "|" + json.dumps(spec.get("ocr_page_ranges", []), sort_keys=True, ensure_ascii=False)
     return (lang, transport, identity)
 

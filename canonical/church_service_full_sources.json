@@ -542,22 +542,26 @@
         {
           "id": "church_memorial",
           "title": "Μνημόσυνο",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
-          "filter_script": "greek",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_DCS_GREEK_MEMORIAL_2026_08_24",
+          "license_url": "",
+          "url": "https://dcs.goarch.org/goa/dcs/p/s/2026/07/19/li/gr-en/index.html",
+          "source_id": "goarch_dcs_greek_memorial_2026_07_19",
+          "source_name": "Greek Orthodox Archdiocese of America — Digital Chant Stand Greek/English Divine Liturgy, July 19 2026",
+          "local_path": "canonical/sources/greek_dcs_memorial/church_memorial.txt",
+          "extraction_method": "EXACT_GREEK_ONLY_FROM_REGISTERED_DCS_PAGE_NO_TRANSLATION",
           "start_marker": [
-            "ΜΝΗΜΟΣΥΝΟΝ"
+            "Εὐλογητὸς εἶ, Κύριε, δίδαξόν με τὰ δικαιώματά σου."
           ],
           "end_marker": [
-            "ΤΡΙΣΑΓΙΟΝ"
+            "Εὐλογία Κυρίου καὶ ἔλεος ἔλθοι"
           ],
+          "marker_occurrence": "first",
+          "filter_script": "greek",
           "max_chars": 80000
         },
         {
