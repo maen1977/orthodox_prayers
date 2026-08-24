@@ -40,9 +40,9 @@ for lang in ('en','el'):
     lane=manifest.get('languages',{}).get(lang,{})
     for svc in lane.get('services',[]):
         transport=svc.get('source_transport')
-        if transport not in {'public_domain_plain_text','cc_by_pdf_text','official_link_only','official_html_user_permission'}:
+        if transport not in {'public_domain_plain_text','cc_by_pdf_text','cc_by_pdf_ocr_text','local_native_ocr_text','official_link_only','official_html_user_permission'}:
             errors.append(f'open_transport:{lang}:{svc.get("id")}:{transport}')
-        if transport in {'public_domain_plain_text','cc_by_pdf_text','official_html_user_permission'}:
+        if transport in {'public_domain_plain_text','cc_by_pdf_text','cc_by_pdf_ocr_text','local_native_ocr_text','official_html_user_permission'}:
             if svc.get('permission_confirmed') is not True:
                 errors.append(f'rights_not_confirmed:{lang}:{svc.get("id")}')
             if svc.get('redistribution_review_required') is not False:
@@ -58,7 +58,7 @@ for lang in ('en','el'):
                 errors.append(f'html_permission_source_name:{lang}:{svc.get("id")}')
 
 importer=(ROOT/'scripts/prepare_church_service_corpus.py').read_text(encoding='utf-8')
-for token in ['public_domain_plain_text','cc_by_pdf_text','CHURCH_SERVICE_RIGHTS_LINK_ONLY','rights_basis','permission_confirmed','service_too_large','fallbacks','OFFICIAL_SOURCE_LINK_ONLY_BUILD_FALLBACK']:
+for token in ['public_domain_plain_text','cc_by_pdf_text','cc_by_pdf_ocr_text','local_native_ocr_text','CHURCH_SERVICE_RIGHTS_LINK_ONLY','rights_basis','permission_confirmed','service_too_large','fallbacks','OFFICIAL_SOURCE_LINK_ONLY_BUILD_FALLBACK']:
     if token not in importer: errors.append('importer:'+token)
 for forbidden in ['r.jina.ai','cross_language_fallback = True','permission_confirmed": True']:
     if forbidden in importer: errors.append('forbidden_importer:'+forbidden)

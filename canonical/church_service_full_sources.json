@@ -395,24 +395,32 @@
         {
           "id": "church_confession",
           "title": "Ἀκολουθία Ἐξομολογήσεως",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΕΞΟΜΟΛΟΓΗΣΕΩΣ",
-            "ΕΞΟΜΟΛΟΓΗΣΙΣ"
+            "ΑΚΟΛΟΥΘΙΑ ΤΩΝ ΕΞΟΜΟΛΟΓΟΥΜΕΝΩΝ"
           ],
-          "end_marker": [
-            "ΕΥΧΕΛΑΙΟΥ"
-          ],
-          "max_chars": 80000
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_confession.txt",
+          "ocr_page_ranges": [
+            [
+              271,
+              287
+            ]
+          ]
         },
         {
           "id": "church_betrothal",
@@ -461,23 +469,33 @@
         {
           "id": "church_crowns_removal",
           "title": "Λύσις τῶν Στεφάνων",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΛΥΣΙΣ ΤΩΝ ΣΤΕΦΑΝΩΝ"
+            "ΕΥΧΗ ΕΠΙ ΑΥΣΙΝ ΣΤΕΦΑΝΩΝ"
           ],
-          "end_marker": [
-            "ΔΕΥΤΕΡΟΓΑΜΙΑ"
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_crowns_removal.txt",
+          "ocr_page_ranges": [
+            [
+              302,
+              302
+            ]
           ],
-          "max_chars": 80000
+          "min_chars": 500
         },
         {
           "id": "church_unction",
@@ -568,48 +586,62 @@
         {
           "id": "church_priesthood",
           "title": "Ἀκολουθία Χειροτονίας Πρεσβυτέρου",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΧΕΙΡΟΤΟΝΙΑ ΠΡΕΣΒΥΤΕΡΟΥ",
-            "ΧΕΙΡΟΤΟΝΙΑ ΕΙΣ ΠΡΕΣΒΥΤΕΡΟΝ"
+            "ΧΕΙΡΟΤΟΝΙΑ"
           ],
-          "end_marker": [
-            "ΧΕΙΡΟΤΟΝΙΑ ΔΙΑΚΟΝΟΥ",
-            "ΧΕΙΡΟΤΟΝΙΑ ΕΙΣ ΔΙΑΚΟΝΟΝ"
-          ],
-          "max_chars": 80000
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_priesthood.txt",
+          "ocr_page_ranges": [
+            [
+              213,
+              237
+            ]
+          ]
         },
         {
           "id": "church_great_water",
           "title": "Ἀκολουθία τοῦ Μεγάλου Ἁγιασμοῦ",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΜΕΓΑΛΟΥ ΑΓΙΑΣΜΟΥ",
-            "ΜΕΓΑΣ ΑΓΙΑΣΜΟΣ"
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΜΕΡΑΛΟΥ ΑΕΊΑΞΜ"
           ],
-          "end_marker": [
-            "ΜΙΚΡΟΥ ΑΓΙΑΣΜΟΥ",
-            "ΜΙΚΡΟΣ ΑΓΙΑΣΜΟΣ"
-          ],
-          "max_chars": 80000
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_great_water.txt",
+          "ocr_page_ranges": [
+            [
+              399,
+              409
+            ]
+          ]
         }
       ]
     }

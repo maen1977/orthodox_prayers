@@ -276,6 +276,67 @@ def _pdf_to_text(raw: bytes) -> bytes:
     return data
 
 
+def _pdf_to_ocr_text(raw: bytes, spec: dict) -> bytes:
+    """OCR only registered page ranges of a scanned native-language PDF.
+
+    This is a build-time transcription path, not translation or rewriting. Page
+    ranges and language are explicit in the manifest so a scanned source cannot
+    silently expand into neighboring rites.
+    """
+    pdftoppm = shutil.which("pdftoppm")
+    tesseract = shutil.which("tesseract")
+    if not pdftoppm or not tesseract:
+        raise RuntimeError("pdf_ocr_tools_unavailable")
+    page_ranges = spec.get("ocr_page_ranges") or []
+    if not page_ranges:
+        raise RuntimeError("pdf_ocr_page_ranges_missing")
+    ocr_language = str(spec.get("ocr_language", "ell"))
+    dpi = str(int(spec.get("ocr_dpi", 300)))
+    psm = str(int(spec.get("ocr_psm", 6)))
+    with tempfile.TemporaryDirectory(prefix="orthodox-prayers-euchologion-ocr-") as tmp:
+        root = Path(tmp)
+        pdf = root / "source.pdf"
+        images = root / "images"
+        texts = root / "texts"
+        images.mkdir()
+        texts.mkdir()
+        pdf.write_bytes(raw)
+        rendered: list[Path] = []
+        for page_range in page_ranges:
+            if not isinstance(page_range, list) or len(page_range) != 2:
+                raise RuntimeError("pdf_ocr_invalid_page_range")
+            start, end = (int(page_range[0]), int(page_range[1]))
+            if start < 1 or end < start:
+                raise RuntimeError("pdf_ocr_invalid_page_range")
+            prefix = images / f"range_{start}_{end}"
+            completed = subprocess.run(
+                [pdftoppm, "-f", str(start), "-l", str(end), "-r", dpi,
+                 "-jpeg", "-jpegopt", "quality=90", str(pdf), str(prefix)],
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=300, check=False,
+            )
+            if completed.returncode != 0:
+                detail = completed.stderr.decode("utf-8", errors="replace").strip()[-500:]
+                raise RuntimeError(f"pdf_ocr_render_failed:{detail}")
+            rendered.extend(sorted(images.glob(f"range_{start}_{end}-*.jpg")))
+        output: list[str] = []
+        for image in rendered:
+            page_name = image.stem.rsplit("-", 1)[-1]
+            target = texts / f"page-{page_name}"
+            completed = subprocess.run(
+                [tesseract, str(image), str(target), "-l", ocr_language, "--psm", psm],
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120, check=False,
+            )
+            if completed.returncode != 0 or not target.with_suffix(".txt").exists():
+                detail = completed.stderr.decode("utf-8", errors="replace").strip()[-500:]
+                raise RuntimeError(f"pdf_ocr_text_failed:{page_name}:{detail}")
+            output.append(f"===== PHYSICAL_PAGE {page_name} =====\n")
+            output.append(target.with_suffix(".txt").read_text(encoding="utf-8", errors="replace"))
+        data = "\n".join(output).encode("utf-8")
+    if len(data) < 1200:
+        raise RuntimeError(f"pdf_ocr_text_too_short:{len(data)}")
+    return data
+
+
 def _fold_marker(value: str) -> str:
     import unicodedata
     value = unicodedata.normalize("NFD", value.casefold())
@@ -335,6 +396,18 @@ def normalize_open_source_blocks(raw: bytes, language: str, spec: dict) -> list[
     return result
 
 
+def _fetch_cc_pdf_ocr_text(spec: dict, cache: Path) -> bytes:
+    cache.mkdir(parents=True, exist_ok=True)
+    key = hashlib.sha256((spec["url"] + json.dumps(spec.get("ocr_page_ranges", []), sort_keys=True)).encode("utf-8")).hexdigest()
+    txt = cache / (key + ".pdf-ocr.txt")
+    if txt.exists() and txt.stat().st_size > 1200:
+        return txt.read_bytes()
+    pdf = _fetch_open_source(spec["url"], cache, ".pdf")
+    data = _pdf_to_ocr_text(pdf, spec)
+    txt.write_bytes(data)
+    return data
+
+
 def _fetch_cc_pdf_text(url: str, cache: Path) -> bytes:
     cache.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256(url.encode("utf-8")).hexdigest()
@@ -347,10 +420,26 @@ def _fetch_cc_pdf_text(url: str, cache: Path) -> bytes:
     return data
 
 
+def _fetch_local_native_text(spec: dict) -> bytes:
+    path = Path(spec.get("local_path", ""))
+    if not path.is_absolute():
+        path = Path(__file__).resolve().parents[1] / path
+    if not path.exists():
+        raise RuntimeError(f"local_source_missing:{path}")
+    data = path.read_bytes()
+    if len(data) < 500:
+        raise RuntimeError("local_source_too_small")
+    return data
+
+
 def fetch_spec(spec: dict, cache: Path) -> bytes:
     transport = spec.get("source_transport", "html")
+    if transport == "local_native_ocr_text":
+        return _fetch_local_native_text(spec)
     if transport == "public_domain_plain_text":
         return _fetch_open_source(spec["url"], cache, ".txt")
+    if transport == "cc_by_pdf_ocr_text":
+        return _fetch_cc_pdf_ocr_text(spec, cache)
     if transport == "cc_by_pdf_text":
         return _fetch_cc_pdf_text(spec["url"], cache)
     if transport == "official_link_only":
@@ -415,7 +504,7 @@ def find_marker(blocks: list[str], markers) -> int | None:
 
 
 def normalize_blocks(raw: bytes, language: str, spec: dict) -> list[str]:
-    if spec.get("source_transport") in {"public_domain_plain_text", "cc_by_pdf_text"}:
+    if spec.get("source_transport") in {"public_domain_plain_text", "cc_by_pdf_text", "cc_by_pdf_ocr_text", "local_native_ocr_text"}:
         return normalize_open_source_blocks(raw, language, spec)
     blocks = parse_blocks(raw)
     nav_exact = {
@@ -553,7 +642,11 @@ def redistribution_allowed(spec: dict) -> bool:
 
 
 def _source_key(lang: str, spec: dict) -> tuple[str, str, str]:
-    return (lang, spec.get("source_transport", "html"), spec.get("url", ""))
+    transport = spec.get("source_transport", "html")
+    identity = spec.get("local_path") or spec.get("url", "")
+    if transport in {"cc_by_pdf_ocr_text", "local_native_ocr_text"}:
+        identity = identity + "|" + json.dumps(spec.get("ocr_page_ranges", []), sort_keys=True, ensure_ascii=False)
+    return (lang, transport, identity)
 
 
 def prefetch_registered_sources(manifest: dict, cache: Path) -> dict[tuple[str, str, str], bytes | Exception]:
