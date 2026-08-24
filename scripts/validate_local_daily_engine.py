@@ -289,7 +289,7 @@ def verify_android_wiring() -> None:
         fail("coordinator_still_requires_network")
     if "Result.retry" in worker:
         fail("worker_retries_deterministic_local_failure")
-    if 'versionName = "5.6.6"' not in build or "versionCode = 50606" not in build:
+    if 'versionName = "5.6.7"' not in build or "versionCode = 50607" not in build:
         fail("version_not_5_6_3")
 
 
@@ -335,7 +335,7 @@ def main() -> None:
         f"date={anchor} window=9 calendar=2026-2050 languages=ar,en,el "
         f"native_window_references={complete} calendar_references={reference_count} "
         f"verified_daily_propers_entries={proper_entries} "
-        "network_required=false version=5.6.6"
+        "network_required=false version=5.6.7"
     )
 
 

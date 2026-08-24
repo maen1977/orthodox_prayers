@@ -4,9 +4,9 @@
 
 **applicationId الحالي:** `com.orthodoxprayers.privateapp`
 
-**versionCode الحالي في Gradle:** `50606`
+**versionCode الحالي في Gradle:** `50607`
 
-**versionName الحالي:** `5.6.6`
+**versionName الحالي:** `5.6.7`
 
 ## الخلاصة العملية
 

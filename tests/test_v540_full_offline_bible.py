@@ -10,8 +10,8 @@ def text(path):
 def test_v540_version_and_full_bible_build_assets():
     gradle = text("app/build.gradle.kts")
     prepare = text("scripts/prepare_bible_corpus.py")
-    assert 'versionCode = 50606' in gradle
-    assert 'versionName = "5.6.6"' in gradle
+    assert 'versionCode = 50607' in gradle
+    assert 'versionName = "5.6.7"' in gradle
     for name in ["arb-arb-vd.tsv", "eng-eng-webbe.tsv", "grc-grcbrent.tsv", "grc-grcbyz.tsv"]:
         assert name in prepare
     assert 'tasks.named("preBuild").configure { dependsOn(prepareBibleCorpus, prepareChurchServiceCorpus) }' in gradle
