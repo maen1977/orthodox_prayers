@@ -28,7 +28,7 @@ for svc in ar_lane.get('services',[]):
         errors.append(f'ar_max_chars:{svc.get("id")}')
 
 gradle=(ROOT/'app/build.gradle.kts').read_text(encoding='utf-8')
-for token in ['versionCode = 50605','versionName = "5.6.5"','prepareChurchServiceCorpus','generated/churchServiceAssets']:
+for token in ['versionCode = 50606','versionName = "5.6.6"','prepareChurchServiceCorpus','generated/churchServiceAssets']:
     if token not in gradle: errors.append('gradle:'+token)
 repo=(ROOT/'app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java').read_text(encoding='utf-8')
 for token in ['data/church/full_services_','machine_translation_used','composeBuiltInChurchService']:
@@ -40,17 +40,22 @@ for lang in ('en','el'):
     lane=manifest.get('languages',{}).get(lang,{})
     for svc in lane.get('services',[]):
         transport=svc.get('source_transport')
-        if transport not in {'public_domain_plain_text','cc_by_pdf_text','official_link_only'}:
+        if transport not in {'public_domain_plain_text','cc_by_pdf_text','official_link_only','official_html_user_permission'}:
             errors.append(f'open_transport:{lang}:{svc.get("id")}:{transport}')
-        if transport in {'public_domain_plain_text','cc_by_pdf_text'}:
+        if transport in {'public_domain_plain_text','cc_by_pdf_text','official_html_user_permission'}:
             if svc.get('permission_confirmed') is not True:
                 errors.append(f'rights_not_confirmed:{lang}:{svc.get("id")}')
             if svc.get('redistribution_review_required') is not False:
                 errors.append(f'rights_review_flag:{lang}:{svc.get("id")}')
             if not svc.get('rights_basis'):
                 errors.append(f'rights_basis:{lang}:{svc.get("id")}')
-        if 'www.goarch.org' in str(svc.get('url','')) and transport != 'official_link_only':
+        if 'goarch.org' in str(svc.get('url','')) and transport not in {'official_link_only','official_html_user_permission'}:
             errors.append(f'protected_goarch_bundling:{lang}:{svc.get("id")}')
+        if transport == 'official_html_user_permission':
+            if svc.get('source_id') != 'goarch_glt_greek_euchologion_pages':
+                errors.append(f'html_permission_source_id:{lang}:{svc.get("id")}')
+            if not svc.get('source_name'):
+                errors.append(f'html_permission_source_name:{lang}:{svc.get("id")}')
 
 importer=(ROOT/'scripts/prepare_church_service_corpus.py').read_text(encoding='utf-8')
 for token in ['public_domain_plain_text','cc_by_pdf_text','CHURCH_SERVICE_RIGHTS_LINK_ONLY','rights_basis','permission_confirmed','service_too_large','fallbacks','OFFICIAL_SOURCE_LINK_ONLY_BUILD_FALLBACK']:
@@ -76,4 +81,4 @@ if out.exists():
 if errors:
     print('FULL_CHURCH_SERVICES_FAIL', *errors, sep='\n')
     sys.exit(1)
-print('FULL_CHURCH_SERVICES_OK version=5.6.5 policy=rights_aware_no_translation generated=' + (','.join(materialized) if materialized else 'not_materialized_in_source_checkout'))
+print('FULL_CHURCH_SERVICES_OK version=5.6.6 policy=rights_aware_no_translation generated=' + (','.join(materialized) if materialized else 'not_materialized_in_source_checkout'))

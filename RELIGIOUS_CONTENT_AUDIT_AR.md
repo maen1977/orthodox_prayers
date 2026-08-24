@@ -2,7 +2,7 @@
 
 **تاريخ التقرير:** 2026-08-24
 
-**حالة المستودع عند التوليد:** `5f167c1c3effd9a2414f90e386f8e4601e84ad62`
+**حالة المستودع عند التوليد:** `f2ff440cc89df7d9cd1d0c125f2d28632908ddb2`
 
 **الكاتب:** **Manus AI**
 
@@ -17,7 +17,7 @@
 | النطاق | العربية | English | Ελληνικά | المعنى |
 | --- | --- | --- | --- | --- |
 | الخدمات الأساسية المعلنة | 15/15 | 15/15 | 15/15 | نطاق ضيق: مكاتب يومية/قداسات/مناولة |
-| الخدمات الكنسية المنفصلة | 10/10 كامل | 11/11 كامل | 0/11 كامل | الرابط فقط لا يُسمّى نصًا كاملاً |
+| الخدمات الكنسية المنفصلة | 10/10 كامل | 11/11 كامل | 6/11 كامل | الرابط فقط لا يُسمّى نصًا كاملاً |
 | متغيرات القداس اليومية | 3/6 | 3/6 | 3/6 | الأسماء المسجلة في service_coverage |
 
 نجحت فحوص فصل اللغات وسلامة lane metadata: كل lane يحتوي نصًا بلغته المسجلة، ولم يُستخدم cross-language fallback أو machine translation. كما احتفظ كل lane بمعرّف مصدره الأصلي وhash المسجل. نجاح validator الخاص بـ15 خدمة يعني النطاق المحدد في manifest فقط، ولا يعني أن كل الخدمات السرائرية أو كل القراءات اليومية موجودة.
@@ -44,9 +44,9 @@
 | --- | --- | --- | --- |
 | العربية | 10 | 0 | مصادر عربية مسجلة؛ لا fallback في الحزمة |
 | English | 11 | 0 | Hapgood public-domain؛ حدود 8 خدمات صُححت |
-| Ελληνικά | 0 | 11 | مصدر UOI المسجل أعاد HTTP 500؛ بقيت الروابط فقط |
+| Ελληνικά | 6 | 5 | ست صفحات GLT native مع سجل تصريح المستخدم؛ خمس خدمات بقيت روابط |
 
-في العربية أصبحت الخدمات الكاملة offline هي: **church_baptism، church_confession، church_betrothal، church_marriage، church_crowns_removal، church_unction، church_funeral، church_memorial، church_trisagion، church_great_water**. وفي الإنجليزية أصبحت: **church_baptism، church_confession، church_betrothal، church_marriage، church_crowns_removal، church_unction، church_funeral، church_memorial، church_home_blessing، church_priesthood، church_great_water**. أما اليونانية فليس فيها نص كامل offline من هذه الحزمة؛ بقيت الخدمات التالية روابط مصدر فقط لأن مصدر Ioannina/University of Ioannina المسجل أعاد HTTP 500: **church_baptism, church_confession, church_betrothal, church_marriage, church_crowns_removal, church_unction, church_funeral, church_memorial, church_trisagion, church_priesthood, church_great_water**. هذا قرار fail-closed مقصود: لم أستعمل نسخة Scribd أو نسخة تجارية غير متحقق من حقوقها، ولم أضع ترجمة بدل النص اليوناني.
+في العربية أصبحت الخدمات الكاملة offline هي: **church_baptism، church_confession، church_betrothal، church_marriage، church_crowns_removal، church_unction، church_funeral، church_memorial، church_trisagion، church_great_water**. وفي الإنجليزية أصبحت: **church_baptism، church_confession، church_betrothal، church_marriage، church_crowns_removal، church_unction، church_funeral، church_memorial، church_home_blessing، church_priesthood، church_great_water**. أما اليونانية فأصبحت فيها **6** خدمات كاملة offline من صفحات GLT اليونانية المسجلة، وهي: **church_baptism، church_betrothal، church_marriage، church_unction، church_funeral، church_trisagion**. وبقيت الخدمات التالية روابط مصدر فقط بسبب تعذر مصدر Ioannina المسجل وعدم العثور على مصدر يوناني أصلي مكافئ مثبت الحقوق: **church_confession, church_crowns_removal, church_memorial, church_priesthood, church_great_water**. هذا قرار fail-closed مقصود؛ لم أستعمل نسخة Scribd أو نسخة تجارية غير متحقق من حقوقها، ولم أضع ترجمة بدل النص اليوناني.
 
 الإصلاح الإنجليزي الذي أُدخل لا يغير النصوص الدينية ولا يعيد كتابتها؛ إنه يصحح حدود القص في كتاب Hapgood ذي المصدر العام، اعتمادًا على العناوين المطبوعة الفعلية. شمل ذلك الاعتراف والخطبة والزواج وإزالة الأكاليل والتذكار وبركة البيت والرسامة والماء العظيم. وتبقى بركة البيت خدمة قصيرة في المصدر نفسه، لذلك سُمح لها بحد طول صريح لا بملء النص اصطناعيًا.
 
@@ -54,18 +54,18 @@
 
 المصادر العربية واليونانية والإنجليزية محفوظة كـ provenance مستقل لكل lane، مع منع الترجمة الآلية ومنع خلط اللغات. هذا يثبت استقلال المسارات ومصدرها المسجل، ولا يحوّل الفحص البنيوي إلى مراجعة نصية كاملة أو اعتماد كنسي. فهرس GOARCH الرسمي يميز بين الليتورجيا والماتين والصلوات والخدمات السرائرية والجنازات، بينما يذكر فهرس [St Andrew's Greek Orthodox Theological College][7] أن نصوصًا مثل القداس والزواج والمعمودية والجنازات مرتبطة بكتب وطبعات محددة؛ وهذا سبب إضافي لعدم ادعاء وجود «كل شيء» من دون تحديد الطبعة والاختصاص.
 
-المصدر الإنجليزي للخدمات الكنسية هو [Service Book of the Holy Orthodox-Catholic Apostolic Church (Hapgood) في Internet Archive][8]، وقد استُخدمت عناوينه المطبوعة لمراجعة حدود الاستخراج، لا لإثبات أن هذه الطبعة هي الصيغة الرعائية الوحيدة في القدس أو أنطاكية. المصدر اليوناني المسجل هو [ملف Eucharologion في University of Ioannina][9]؛ تعذر جلبه أثناء التدقيق، ولذلك لم يُنشر نص بديل غير موثق.
+المصدر الإنجليزي للخدمات الكنسية هو [Service Book of the Holy Orthodox-Catholic Apostolic Church (Hapgood) في Internet Archive][8]، وقد استُخدمت عناوينه المطبوعة لمراجعة حدود الاستخراج، لا لإثبات أن هذه الطبعة هي الصيغة الرعائية الوحيدة في القدس أو أنطاكية. المصادر اليونانية الجديدة للخدمات الست هي صفحات GLT اليونانية التابعة لنطاق GOARCH، وقد سُجلت في manifest مع تصريح المستخدم بإعادة التوزيع: [المعمودية][10] [الزواج والخطبة][11] [مسحة المرضى][12] [الجنازة][13] [التذكار][14]. أما ملف Eucharologion في University of Ioannina فهو مصدر CC-BY المسجل للخدمات المتبقية، وقد تعذر جلبه أثناء التدقيق؛ لذلك لم يُنشر نص بديل غير موثق.
 
 ## ما لم أعتبره مكتملًا
 
 | الفحص | الحالة | السبب |
 | --- | --- | --- |
 | مقارنة نص-لنص كاملة لكل segment مع snapshot source موحد | غير مكتملة | `validate_source_comparison.py` لم يعمل لأن `data/sources/comparison/current.json` غير موجود؛ لا أدعي اكتمال هذه المقارنة. |
-| الخدمات الكنسية اليونانية offline | غير مكتملة | المصدر اليوناني المسجل أعاد HTTP 500. |
+| الخدمات الكنسية اليونانية offline | جزئية 6/11 | ست خدمات أُدرجت من صفحات GLT اليونانية؛ خمس خدمات بقيت روابط بسبب مصدر UOI المتعذر وعدم وجود بديل native موثق. |
 | متغيرات قداس اليوم | جزئية 3/6 | الطروبارية والقنداق وآية المناولة غير مثبتة في الملف الحالي. |
 | اعتماد كنسي بشري | غير معتمد | manifest يثبت `ecclesiastical_approval_certified=false`. |
 
-لم أعدّل الواجهات أو منطق الاختيار أو التقويم. التغيير الدائم في هذه الجولة محصور في حدود استيراد English Hapgood وتصحيح claims نطاق الاكتمال، مع بقاء البيانات العربية واليونانية الأصلية دون استبدال.
+لم أعدّل الواجهات أو منطق الاختيار أو التقويم. التغيير الدائم في هذه الجولة محصور في دعم parser لصفحات GLT القديمة، وإضافة ست خدمات يونانية native مع provenance على مستوى الخدمة، وتصحيح claims نطاق الاكتمال، مع بقاء مسارات العربية والإنجليزية دون استبدال.
 
 ## المراجع
 
@@ -78,3 +78,8 @@
 [7]: https://www.sagotc.edu.au/liturgical-texts "St Andrew's Greek Orthodox Theological College — Liturgical Texts"
 [8]: https://archive.org/details/servicebookofhol0000orth_i9n7 "Hapgood Service Book — Internet Archive"
 [9]: https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf "University of Ioannina — registered Greek Eucharologion source"
+[10]: https://glt.goarch.org/texts/Euch/Baptism.html "GOARCH GLT — Greek Baptism and Chrismation"
+[11]: https://glt.goarch.org/texts/Euch/Wedding.html "GOARCH GLT — Greek Betrothal and Marriage"
+[12]: https://glt.goarch.org/texts/Euch/Uncion.html "GOARCH GLT — Greek Holy Unction"
+[13]: https://glt.goarch.org/texts/Euch/Funeral.html "GOARCH GLT — Greek Funeral Service"
+[14]: https://glt.goarch.org/texts/Euch/Trisagion.html "GOARCH GLT — Greek Trisagion for the Departed"

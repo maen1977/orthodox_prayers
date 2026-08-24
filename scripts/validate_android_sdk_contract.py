@@ -11,8 +11,8 @@ expected = {
     "compileSdk": "36",
     "minSdk": "26",
     "targetSdk": "36",
-    "versionCode": "50605",
-    "versionName": '"5.6.5"',
+    "versionCode": "50606",
+    "versionName": '"5.6.6"',
 }
 for key, value in expected.items():
     pattern = rf"\b{re.escape(key)}\s*=\s*{re.escape(value)}"
@@ -24,4 +24,4 @@ if workflow.count("\n  build:\n") != 1:
 if "Church-Prayers.apk" not in workflow or "Church-Prayers.aab" not in workflow:
     raise SystemExit("GitHub must produce exactly the APK and AAB names")
 
-print("ANDROID_CONTRACT_OK min=26 target=36 compile=36 version=5.6.5 jobs=1")
+print("ANDROID_CONTRACT_OK min=26 target=36 compile=36 version=5.6.6 jobs=1")

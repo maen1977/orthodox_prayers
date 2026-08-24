@@ -15,8 +15,8 @@ def load_module():
 
 def test_version_is_552():
     text=(ROOT/'app/build.gradle.kts').read_text(encoding='utf-8')
-    assert 'versionCode = 50605' in text
-    assert 'versionName = "5.6.5"' in text
+    assert 'versionCode = 50606' in text
+    assert 'versionName = "5.6.6"' in text
 
 
 def test_manifest_uses_open_redistributable_sources_for_en_el():
@@ -30,12 +30,18 @@ def test_manifest_uses_open_redistributable_sources_for_en_el():
         assert 'archive.org' in svc['url']
         assert svc['allow_link_fallback'] is True
     for svc in data['languages']['el']['services']:
-        assert svc['source_transport']=='cc_by_pdf_text'
         assert svc['permission_confirmed'] is True
-        assert svc['rights_basis'].startswith('CC_BY_4_0')
-        assert 'olympias.lib.uoi.gr' in svc['url']
-        assert svc['license_url']=='https://creativecommons.org/licenses/by/4.0/'
         assert svc['allow_link_fallback'] is True
+        if svc['source_transport'] == 'official_html_user_permission':
+            assert svc['source_id'] == 'goarch_glt_greek_euchologion_pages'
+            assert svc['source_name']
+            assert svc['rights_basis'].startswith('USER_CONFIRMED_REPUBLICATION_PERMISSION_')
+            assert 'glt.goarch.org' in svc['url']
+        else:
+            assert svc['source_transport']=='cc_by_pdf_text'
+            assert svc['rights_basis'].startswith('CC_BY_4_0')
+            assert 'olympias.lib.uoi.gr' in svc['url']
+            assert svc['license_url']=='https://creativecommons.org/licenses/by/4.0/'
 
 
 def test_no_protected_goarch_page_is_required_for_bundle():

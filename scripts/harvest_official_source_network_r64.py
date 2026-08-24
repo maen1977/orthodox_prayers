@@ -35,7 +35,7 @@ ROOT = Path(__file__).resolve().parents[1]
 NETWORK = ROOT / "canonical" / "r64_official_source_network.json"
 DEFAULT_CACHE = ROOT / "app" / "build" / "official-source-harvest-r64"
 DEFAULT_OUTPUT = ROOT / "canonical" / "r64_official_source_harvest.json"
-UA = "OrthodoxPrayers/5.6.5 R64 official-source-audit (authorized public-source harvester)"
+UA = "OrthodoxPrayers/5.6.6 R64 official-source-audit (authorized public-source harvester)"
 SOCIAL_HOSTS = {
     "youtube.com", "www.youtube.com", "youtu.be", "facebook.com", "www.facebook.com",
     "instagram.com", "www.instagram.com", "x.com", "twitter.com", "t.me", "telegram.me",

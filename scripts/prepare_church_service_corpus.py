@@ -23,7 +23,7 @@ import urllib.parse
 import urllib.request
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
-BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.6.5"
+BUILDER_ID = "OrthodoxPrayers-ChurchServiceBuilder/5.6.6"
 MAX_BYTES = 6_000_000
 MAX_OPEN_SOURCE_BYTES = 80_000_000
 MIN_CHARS_REQUIRED = 1200
@@ -122,6 +122,54 @@ class DivFallbackParser(HTMLParser):
     def handle_data(self, data):
         if not self.ignore_depth and self.div_depth:
             self.current.append(data)
+
+
+class LegacyBrFlowParser(HTMLParser):
+    """Parse legacy GLT pages whose service text is body-flow plus <br/> lines."""
+    IGNORE_TAGS = {"script", "style", "noscript", "svg", "form", "nav", "footer", "header"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.ignore_depth = 0
+        self.capture = False
+        self.current: list[str] = []
+        self.blocks: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        if tag in self.IGNORE_TAGS:
+            self.ignore_depth += 1
+            return
+        if self.ignore_depth:
+            return
+        if tag == "body":
+            self.capture = True
+        elif tag == "br" and self.capture:
+            self.flush()
+
+    def handle_endtag(self, tag):
+        tag = tag.lower()
+        if tag in self.IGNORE_TAGS:
+            if self.ignore_depth:
+                self.ignore_depth -= 1
+            return
+        if self.ignore_depth:
+            return
+        if tag == "p" and self.capture:
+            self.flush()
+        elif tag == "body":
+            self.flush()
+            self.capture = False
+
+    def handle_data(self, data):
+        if self.capture and not self.ignore_depth:
+            self.current.append(data)
+
+    def flush(self):
+        text = clean_text("".join(self.current))
+        self.current = []
+        if text:
+            self.blocks.append(text)
 
 
 def clean_text(value: str) -> str:
@@ -319,7 +367,20 @@ def parse_blocks(raw: bytes) -> list[str]:
     fallback = DivFallbackParser()
     fallback.feed(text)
     fallback_blocks = [clean_text(x) for x in fallback.blocks if clean_text(x)]
-    return fallback_blocks if sum(map(len, fallback_blocks)) > sum(map(len, blocks)) else blocks
+    if sum(map(len, fallback_blocks)) >= 900:
+        return fallback_blocks
+
+    # A few older official liturgical pages use one body-flow stream with <br/>.
+    # Use this parser only when the semantic parsers did not obtain a substantial
+    # text body, so modern pages keep their existing extraction behavior.
+    legacy_blocks: list[str] = []
+    if re.search(r"<br\s*/?>", text, flags=re.IGNORECASE):
+        legacy = LegacyBrFlowParser()
+        legacy.feed(text)
+        legacy.close()
+        legacy_blocks = [clean_text(x) for x in legacy.blocks if clean_text(x)]
+    candidates = (blocks, fallback_blocks, legacy_blocks)
+    return max(candidates, key=lambda value: sum(map(len, value)))
 
 
 def apply_script_filter(blocks: list[str], mode: str | None) -> list[str]:
@@ -454,6 +515,8 @@ def build_service(spec: dict, lang: str, source_id: str, source_name: str, raw: 
     if not segments:
         raise RuntimeError(f"service_empty:{lang}:{spec['id']}")
     digest = hashlib.sha256(raw).hexdigest()
+    service_source_id = spec.get("source_id", source_id)
+    service_source_name = spec.get("source_name", source_name)
     return {
         "id": spec["id"],
         "category": "church_service",
@@ -465,8 +528,8 @@ def build_service(spec: dict, lang: str, source_id: str, source_name: str, raw: 
         "publication_status": "FULL_NATIVE_RITE_TEXT_BUNDLED_OFFLINE",
         "full_service": True,
         "native_source": {
-            "source_id": source_id,
-            "name": source_name,
+            "source_id": service_source_id,
+            "name": service_source_name,
             "official": True,
             "native_language": lang,
             "url": spec["url"],

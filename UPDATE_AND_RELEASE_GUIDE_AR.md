@@ -1,12 +1,9 @@
 # دليل التحديث والنشر الآمن لتطبيق الصلوات
 
 **تاريخ التحقق:** 2026-08-24
-
 **applicationId الحالي:** `com.orthodoxprayers.privateapp`
-
-**versionCode الحالي في Gradle:** `50605`
-
-**versionName الحالي:** `5.6.5`
+**versionCode الحالي في Gradle:** `50606`
+**versionName الحالي:** `5.6.6`
 
 ## الخلاصة العملية
 

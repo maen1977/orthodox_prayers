@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_on": "2026-08-24",
-  "git_head_at_generation": "5f167c1c3effd9a2414f90e386f8e4601e84ad62",
+  "git_head_at_generation": "f2ff440cc89df7d9cd1d0c125f2d28632908ddb2",
   "policy": {
     "same_language_native_sources_only": true,
     "machine_translation_used": false,
@@ -296,27 +296,19 @@
       }
     },
     "el": {
-      "full_native_offline": 0,
-      "fallback_link_only": 11,
-      "full_ids": [],
+      "full_native_offline": 6,
+      "fallback_link_only": 5,
+      "full_ids": [
+        "church_baptism",
+        "church_betrothal",
+        "church_marriage",
+        "church_unction",
+        "church_funeral",
+        "church_trisagion"
+      ],
       "fallbacks": [
         {
-          "id": "church_baptism",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
           "id": "church_confession",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_betrothal",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_marriage",
           "reason": "HTTP Error 500: 500",
           "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
         },
@@ -326,22 +318,7 @@
           "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
         },
         {
-          "id": "church_unction",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_funeral",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
           "id": "church_memorial",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_trisagion",
           "reason": "HTTP Error 500: 500",
           "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
         },
@@ -356,14 +333,46 @@
           "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
         }
       ],
-      "full_lengths": {}
+      "full_lengths": {
+        "church_baptism": {
+          "characters": 36644,
+          "blocks": 238
+        },
+        "church_betrothal": {
+          "characters": 5252,
+          "blocks": 35
+        },
+        "church_marriage": {
+          "characters": 17767,
+          "blocks": 108
+        },
+        "church_unction": {
+          "characters": 59558,
+          "blocks": 432
+        },
+        "church_funeral": {
+          "characters": 15889,
+          "blocks": 140
+        },
+        "church_trisagion": {
+          "characters": 3534,
+          "blocks": 26
+        }
+      }
     }
   },
   "source_checklist": {
     "goarch_divine_liturgy_url": "https://www.goarch.org/-/the-divine-liturgy-of-saint-john-chrysostom",
     "goarch_liturgical_index_url": "https://www.goarch.org/chapel/texts",
     "arabic_registered_source_family": "Antioch/Jordan native Arabic sources recorded in each service native_source field.",
-    "greek_registered_source_family": "Registered native Greek source in canonical/church_service_full_sources.json; church-service PDF endpoint returned HTTP 500 during this audit.",
+    "greek_registered_source_family": "Six Greek church-service pages are registered from GOARCH GLT with a user-provided redistribution-permission record; the University of Ioannina CC-BY PDF remains the registered fallback source for five unresolved services and returned HTTP 500 during this audit.",
+    "greek_glt_service_urls": [
+      "https://glt.goarch.org/texts/Euch/Baptism.html",
+      "https://glt.goarch.org/texts/Euch/Wedding.html",
+      "https://glt.goarch.org/texts/Euch/Uncion.html",
+      "https://glt.goarch.org/texts/Euch/Funeral.html",
+      "https://glt.goarch.org/texts/Euch/Trisagion.html"
+    ],
     "english_church_service_source": "Hapgood 1922 public-domain Service Book cache, with source boundaries reviewed against printed headings."
   },
   "unresolved_checks": [
@@ -374,8 +383,8 @@
     },
     {
       "check": "greek_church_service_offline_full_text",
-      "status": "not_completed",
-      "evidence": "Registered UOI CC-BY PDF returned HTTP 500; no unverified replacement or translation was used."
+      "status": "partial",
+      "evidence": "Six of eleven Greek church services now bundle native GLT pages offline; confession, crowns removal, memorial, priesthood, and great water remain link-only because the registered UOI CC-BY PDF returned HTTP 500 and no equivalent verified native source was found."
     },
     {
       "check": "daily_divine_liturgy_variable_propers",

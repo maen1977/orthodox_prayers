@@ -24,6 +24,21 @@ def test_parser_keeps_service_and_removes_navigation():
     assert all('MENU' not in x and 'FOOT' not in x for x in blocks)
 
 
+def test_legacy_body_flow_parser_reads_br_separated_liturgical_page():
+    raw = '''<html><head><script>ignore()</script></head><body>
+    <p><img src="seal.png" /></p>
+    <br/><font color="#ff0000">ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ</font>
+    <br/>Ὁ Ἱερεὺς λέγει·
+    <br/><b>Εὐλογητὸς ὁ Θεὸς ἡμῶν.</b>
+    <script>do_not_capture()</script>
+    </body></html>'''.encode('utf-8')
+    blocks = mod.parse_blocks(raw)
+    assert blocks[0] == 'ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ'
+    assert blocks[1].startswith('Ὁ Ἱερεὺς')
+    assert blocks[2].startswith('Εὐλογητὸς')
+    assert all('do_not_capture' not in block for block in blocks)
+
+
 def test_open_source_end_marker_is_excluded_from_service_slice():
     raw = b"TABLE OF CONTENTS\n\nSERVICE A\n\nPriest: first prayer.\n\n<td\n\nSERVICE B\n\nPriest: next service.\n"
     spec = {
@@ -43,6 +58,23 @@ def test_segment_has_only_native_language():
     assert seg['text']['en']
     assert seg['text']['ar'] == ''
     assert seg['text']['el'] == ''
+
+
+def test_service_level_provenance_overrides_lane_default():
+    spec = {
+        'id': 'greek_test_service',
+        'title': 'Δοκιμή',
+        'url': 'https://glt.goarch.org/texts/Euch/Test.html',
+        'min_chars': 1,
+        'source_id': 'goarch_glt_greek_euchologion_pages',
+        'source_name': 'GOARCH GLT',
+        'permission_confirmed': True,
+        'redistribution_review_required': False,
+    }
+    service = mod.build_service(spec, 'el', 'lane-source', 'Lane source', '<html><body><br/>Δοκιμή λειτουργικοῦ κειμένου.</body></html>'.encode('utf-8'))
+    assert service['native_source']['source_id'] == 'goarch_glt_greek_euchologion_pages'
+    assert service['native_source']['name'] == 'GOARCH GLT'
+    assert service['native_source']['permission_confirmed'] is True
 
 
 def test_prefetch_deduplicates_shared_source_and_preserves_lane(monkeypatch, tmp_path):

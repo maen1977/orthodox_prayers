@@ -374,25 +374,23 @@
         {
           "id": "church_baptism",
           "title": "Ἀκολουθία τοῦ Ἁγίου Βαπτίσματος καὶ Χρίσματος",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Baptism.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ",
-            "ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
+            "Η ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
           ],
-          "end_marker": [
-            "ΜΝΗΣΤΡΟΙΣ",
-            "ΑΡΡΑΒΩΝΟΣ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 60000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_confession",
@@ -419,50 +417,46 @@
         {
           "id": "church_betrothal",
           "title": "Ἀκολουθία Ἀρραβῶνος",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Wedding.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ",
-            "ΜΝΗΣΤΡΟΙΣ",
-            "ΑΡΡΑΒΩΝΟΣ"
+            "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ ΗΤΟΙ ΑΡΡΑΒΩΝΟΣ"
           ],
           "end_marker": [
-            "ΣΤΕΦΑΝΩΜΑΤΟΣ",
-            "ΓΑΜΟΥ"
+            "ΑΚΟΛΟΥΘΙΑ ΣΤΕΦΑΝΩΜΑΤΟΣ"
           ],
-          "max_chars": 80000
+          "max_chars": 12000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_marriage",
           "title": "Ἀκολουθία Γάμου (Στέψεως)",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Wedding.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΣΤΕΦΑΝΩΜΑΤΟΣ",
-            "ΣΤΕΦΑΝΩΜΑΤΟΣ",
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΓΑΜΟΥ"
+            "ΑΚΟΛΟΥΘΙΑ ΣΤΕΦΑΝΩΜΑΤΟΣ"
           ],
-          "end_marker": [
-            "ΛΥΣΙΣ ΤΩΝ ΣΤΕΦΑΝΩΝ",
-            "ΔΕΥΤΕΡΟΓΑΜΙΑ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 30000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_crowns_removal",
@@ -488,47 +482,44 @@
         {
           "id": "church_unction",
           "title": "Ἀκολουθία τοῦ Ἁγίου Εὐχελαίου",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Uncion.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΕΥΧΕΛΑΙΟΥ",
-            "ΕΥΧΕΛΑΙΟΥ"
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΕΥΧΕΛΑΙΟΥ"
           ],
-          "end_marker": [
-            "ΝΕΚΡΩΣΙΜΟΣ",
-            "ΚΕΚΟΙΜΗΜΕΝΩΝ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 70000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_funeral",
           "title": "Ἐξόδιος Ἀκολουθία",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Funeral.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΝΕΚΡΩΣΙΜΟΣ ΑΚΟΛΟΥΘΙΑ",
-            "ΕΞΟΔΙΟΣ ΑΚΟΛΟΥΘΙΑ"
+            "ΚΥΔΕΙΑ"
           ],
-          "end_marker": [
-            "ΜΝΗΜΟΣΥΝΟΝ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 22000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_memorial",
@@ -554,24 +545,25 @@
         {
           "id": "church_trisagion",
           "title": "Τρισάγιον ὑπὲρ Κεκοιμημένων",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Trisagion.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΤΡΙΣΑΓΙΟΝ",
-            "ΚΕΚΟΙΜΗΜΕΝΩΝ"
+            "ΤΡΙΣΑΓΙΟΝ"
           ],
           "end_marker": [
-            "ΧΕΙΡΟΤΟΝΙΑ"
+            "ΕΝ ΔΙΑΚΑΙΝΗΣΙΜΩ ΕΒΔΟΜΑΔΙ"
           ],
-          "max_chars": 80000
+          "max_chars": 10000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_priesthood",

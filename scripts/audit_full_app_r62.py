@@ -67,7 +67,7 @@ def main():
     add('language_isolation','Arabic / English / Greek isolation','PASS_GATE_REQUIRED','All newly added directory metadata contains independent ar/en/el values; existing localization gate remains authoritative.')
 
     report={
-      'schema_version':1,'audit':'R62_FULL_APP_AUDIT','audited_on':'2026-08-13','base':'OrthodoxPrayers 5.6.5 R66 authorized Liturgy completion',
+      'schema_version':1,'audit':'R62_FULL_APP_AUDIT','audited_on':'2026-08-13','base':'OrthodoxPrayers 5.6.6 R66 authorized Liturgy completion',
       'policy':'No AI-generated/translated scripture or liturgical text; official-site availability does not imply redistribution permission.',
       'source_urls':{
         'orthodox_jordan_churches':'https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/',
@@ -84,7 +84,7 @@ def main():
       'release_claim':'AUDITED_WITH_KNOWN_CONTENT_GAPS; NOT A 100_PERCENT_CONTENT_COMPLETENESS CLAIM'
     }
     (ROOT/'canonical/r62_full_app_audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    lines=['# تدقيق R62 الكامل لتطبيق Orthodox Prayers','',f'تاريخ التدقيق: **2026-08-13**  ','النسخة الأساسية: **5.6.5 — إكمال النصوص الطقسية المصرّح بها R66**','',
+    lines=['# تدقيق R62 الكامل لتطبيق Orthodox Prayers','',f'تاريخ التدقيق: **2026-08-13**  ','النسخة الأساسية: **5.6.6 — إكمال النصوص الطقسية المصرّح بها R66**','',
            '> هذا التقرير يفرّق بين سلامة البرنامج تقنيًا وبين اكتمال المحتوى الكنسي. نجاح Release Gate لا يعني تلقائيًا وجود نص كامل أو قراءة موثقة لكل يوم.','',
            '## النتائج']
     labels={'PASS':'✅ PASS','PASS_R66_AUTHORIZED_NATIVE':'✅ PASS R66 — نص أصلي مصرّح به','FIXED_R62':'✅ FIXED R62','PASS_WITH_SCOPE':'✅ PASS (بنطاق موثق)','PASS_WITH_READER_OVERLAY':'✅ PASS (طبقة قارئ)','PASS_GATE_REQUIRED':'✅ PASS / Gate','INCOMPLETE':'❌ INCOMPLETE','PARTIAL':'⚠️ PARTIAL','OFFLINE_CORE_NO_EXTERNAL_CARDS':'✅ داخل التطبيق / بلا بطاقات صلاة خارجية','PARTIAL_WITH_FULL_DIRECTORY_LINKS':'⚠️ PARTIAL + روابط الدليل الرسمي الكامل','INCOMPLETE_FAIL_CLOSED':'❌ INCOMPLETE — Fail closed','CATALOG_COMPLETE_TEXT_INCOMPLETE':'⚠️ البطاقات موجودة / النصوص الكاملة ناقصة'}
