@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_on": "2026-08-24",
-  "git_head_at_generation": "009439c7251d98f4933030504685e1fc6f839256",
+  "git_head_at_generation": "72a26c02b68f84e4ba4018c2485acd2880961155",
   "policy": {
     "same_language_native_sources_only": true,
     "machine_translation_used": false,
@@ -296,40 +296,24 @@
       }
     },
     "el": {
-      "full_native_offline": 6,
-      "fallback_link_only": 5,
+      "full_native_offline": 10,
+      "fallback_link_only": 1,
       "full_ids": [
         "church_baptism",
+        "church_confession",
         "church_betrothal",
         "church_marriage",
+        "church_crowns_removal",
         "church_unction",
         "church_funeral",
-        "church_trisagion"
+        "church_trisagion",
+        "church_priesthood",
+        "church_great_water"
       ],
       "fallbacks": [
         {
-          "id": "church_confession",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_crowns_removal",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
           "id": "church_memorial",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_priesthood",
-          "reason": "HTTP Error 500: 500",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
-        },
-        {
-          "id": "church_great_water",
-          "reason": "HTTP Error 500: 500",
+          "reason": "pdf_text_too_short:701",
           "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf"
         }
       ],
@@ -338,6 +322,10 @@
           "characters": 36644,
           "blocks": 238
         },
+        "church_confession": {
+          "characters": 27025,
+          "blocks": 618
+        },
         "church_betrothal": {
           "characters": 5252,
           "blocks": 35
@@ -345,6 +333,10 @@
         "church_marriage": {
           "characters": 17767,
           "blocks": 108
+        },
+        "church_crowns_removal": {
+          "characters": 922,
+          "blocks": 21
         },
         "church_unction": {
           "characters": 59558,
@@ -357,6 +349,14 @@
         "church_trisagion": {
           "characters": 3534,
           "blocks": 26
+        },
+        "church_priesthood": {
+          "characters": 42619,
+          "blocks": 892
+        },
+        "church_great_water": {
+          "characters": 19267,
+          "blocks": 410
         }
       }
     }
@@ -365,7 +365,7 @@
     "goarch_divine_liturgy_url": "https://www.goarch.org/-/the-divine-liturgy-of-saint-john-chrysostom",
     "goarch_liturgical_index_url": "https://www.goarch.org/chapel/texts",
     "arabic_registered_source_family": "Antioch/Jordan native Arabic sources recorded in each service native_source field.",
-    "greek_registered_source_family": "Six Greek church-service pages are registered from GOARCH GLT with a user-provided redistribution-permission record; the University of Ioannina CC-BY PDF remains the registered fallback source for five unresolved services and returned HTTP 500 during this audit.",
+    "greek_registered_source_family": "Six Greek church-service pages are registered from GOARCH GLT with a user-provided redistribution-permission record; four additional Greek services are transcribed at build time from bounded pages of the University of Ioannina CC-BY scanned Eucharologion, while the independent memorial service remains a link-only fallback.",
     "greek_glt_service_urls": [
       "https://glt.goarch.org/texts/Euch/Baptism.html",
       "https://glt.goarch.org/texts/Euch/Wedding.html",
@@ -384,7 +384,7 @@
     {
       "check": "greek_church_service_offline_full_text",
       "status": "partial",
-      "evidence": "Six of eleven Greek church services now bundle native GLT pages offline; confession, crowns removal, memorial, priesthood, and great water remain link-only because the registered UOI CC-BY PDF returned HTTP 500 and no equivalent verified native source was found."
+      "evidence": "Ten of eleven Greek church services now bundle native text offline: six bounded GLT pages plus four bounded native Greek excerpts from the registered UOI CC-BY scan. The independent memorial service remains link-only because the UOI PDF is scanned and no separately verified memorial boundary was established."
     },
     {
       "check": "daily_divine_liturgy_variable_propers",
