@@ -87,4 +87,31 @@ public final class FastingNoticeEngineTest {
         assertEquals(14, last.totalDays);
         assertEquals(14, last.dayNumber);
     }
+
+    @Test
+    public void postDormitionFishAllowanceDoesNotExtendDormitionCountdown() {
+        FastingNoticeEngine.DayProvider provider = isoDate -> {
+            LocalDate date = LocalDate.parse(isoDate);
+            if (date.equals(LocalDate.of(2026, 9, 2)) || date.equals(LocalDate.of(2026, 9, 4))) {
+                try {
+                    return new JSONObject().put("fasting", new JSONObject()
+                            .put("is_fast", true)
+                            .put("title", new JSONObject()
+                                    .put("ar", "الأسبوع الأول بعد عيد رقاد السيدة والدة الإله")
+                                    .put("en", "Post-Dormition week — Fish, oil, and wine permitted"))
+                            .put("verification", new JSONObject().put("rule", "post_dormition_week_fish")));
+                } catch (JSONException error) {
+                    throw new AssertionError(error);
+                }
+            }
+            return calendarDay(isoDate);
+        };
+
+        FastingNoticeEngine.Notice notice = FastingNoticeEngine.evaluate(
+                LocalDate.of(2026, 9, 2), provider);
+
+        assertEquals(FastingNoticeEngine.Kind.NONE, notice.kind);
+        assertEquals(0, notice.daysRemaining);
+        assertFalse(notice.feastDay);
+    }
 }
