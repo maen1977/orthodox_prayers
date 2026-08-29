@@ -177,10 +177,6 @@ public final class FastingNoticeEngine {
         if (fasting == null || !fasting.optBoolean("is_fast", false)) return false;
         JSONObject verification = fasting.optJSONObject("verification");
         String rule = verification == null ? "" : verification.optString("rule", "").trim();
-        // The first-week post-Dormition fish allowance mentions the feast in
-        // its title, but it is outside the fourteen-day Dormition Fast. Do not
-        // let the title-based family detector extend the major-fast countdown.
-        if ("post_dormition_week_fish".equals(rule)) return false;
         if (family == Family.DORMITION && rule.startsWith("dormition_feast_")) return false;
         return majorFamily(day) == family;
     }
@@ -223,6 +219,11 @@ public final class FastingNoticeEngine {
         if (day == null) return Family.NONE;
         JSONObject fasting = day.optJSONObject("fasting");
         if (fasting == null || !fasting.optBoolean("is_fast", false)) return Family.NONE;
+        JSONObject verification = fasting.optJSONObject("verification");
+        String rule = verification == null ? "" : verification.optString("rule", "").trim();
+        // This local fish allowance is after the fourteen-day Dormition Fast.
+        // Its title mentions the feast, so exclude it before family detection.
+        if ("post_dormition_week_fish".equals(rule)) return Family.NONE;
         String text = fastingSearchText(day);
         if (containsAny(text,
                 "dormition fast",
