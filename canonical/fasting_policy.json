@@ -28,6 +28,11 @@
       "id": "saint_sophia_dormition_fast",
       "url": "https://www.saintsophiadc.org/the-dormition-fast/",
       "use": "المدة الدقيقة لصوم الرقاد من 1 إلى 14 آب، وحكم عيد 15 آب: فسحة عامة إن لم يقع الأربعاء أو الجمعة، والسمك فقط إذا وقع في أحدهما"
+    },
+    {
+      "id": "jerusalem_jordan_post_dormition_week_local_rule",
+      "url": "https://orthodoxjordan.org/",
+      "use": "قاعدة التقويم المحلي التي تسمح بالسمك والزيت والنبيذ يومي الأربعاء والجمعة في الأسبوع الأول بعد عيد الرقاد؛ تُطبّق على 16–22 آب بالتقويم القديم."
     }
   ],
   "levels": {
@@ -105,13 +110,18 @@
   "annunciation_paschal_collisions": {
     "first_four_days_of_holy_week": {
       "code": "wine_oil",
-      "allowed": ["wine", "oil"],
+      "allowed": [
+        "wine",
+        "oil"
+      ],
       "source_id": "oca_typikon_fasting",
       "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church"
     },
     "great_friday_or_holy_saturday": {
       "code": "wine_only",
-      "allowed": ["wine"],
+      "allowed": [
+        "wine"
+      ],
       "source_id": "serbian_orthodox_eastern_diocese_discipline_of_fasting",
       "source_url": "https://www.easterndiocese.org/news_170226_1"
     }
@@ -171,5 +181,23 @@
     ],
     "clock_times_required_only_for": "documented_interval",
     "note_ar": "الصوم الانقطاعي يعني امتناعًا كليًا عن الطعام والشراب لفترة محددة. لا تُنشر ساعة بداية أو نهاية إلا إذا وردت حرفيًا في مصدر موثق لليوم نفسه."
+  },
+  "post_dormition_week_old_calendar": {
+    "start": "08-16",
+    "end": "08-22",
+    "days": [
+      "08-20",
+      "08-22"
+    ],
+    "code": "fish_allowed",
+    "allowed": [
+      "fish",
+      "wine",
+      "oil"
+    ],
+    "rule": "post_dormition_week_fish",
+    "jurisdiction": "Jerusalem/Jordan local calendar",
+    "source_id": "jerusalem_jordan_post_dormition_week_local_rule",
+    "source_url": "https://orthodoxjordan.org/"
   }
 }

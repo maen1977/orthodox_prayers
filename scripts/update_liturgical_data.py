@@ -139,6 +139,7 @@ FASTING_RULE_LOCALIZATION = {
     "dormition_feast_fast_free": ("Dormition Feast after the fourteen-day fast", "Ἑορτὴ τῆς Κοιμήσεως μετὰ δεκατετραήμερη νηστεία", "The Dormition Fast is August 1–14. The feast on August 15 is outside the fourteen-day fast and this day has no general fast because it does not fall on Wednesday or Friday.", "Ἡ Νηστεία τῆς Κοιμήσεως διαρκεί 1–14 Αὐγούστου. Ἡ ἑορτὴ στὶς 15 Αὐγούστου βρίσκεται ἔξω ἀπὸ τὶς δεκατέσσερις ἡμέρες καὶ αὐτὴ ἡ ἡμέρα δὲν ἔχει γενικὴ νηστεία, ἐπειδὴ δὲν συμπίπτει μὲ Τετάρτη ἢ Παρασκευή."),
     "dormition_weekend_wine_oil": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "Oil and wine are permitted on Saturdays and Sundays.", "Τὰ Σάββατα καὶ τὶς Κυριακὲς ἐπιτρέπονται ἔλαιο καὶ οἶνος."),
     "dormition_strict": ("Dormition Fast", "Νηστεία τῆς Κοιμήσεως", "The day falls within the Dormition Fast.", "Ἡ ἡμέρα βρίσκεται μέσα στὴ Νηστεία τῆς Κοιμήσεως."),
+    "post_dormition_week_fish": ("Post-Dormition week", "Ἑβδομάδα μετὰ τὴν Κοίμηση", "In the first week after the Dormition feast, fish, oil, and wine are permitted on Wednesday and Friday according to the Jerusalem/Jordan local calendar rule.", "Τὴν πρώτη ἑβδομάδα μετὰ τὴν ἑορτὴ τῆς Κοιμήσεως, τὴν Τετάρτη καὶ τὴν Παρασκευὴ ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος κατὰ τὸ τοπικὸ ἡμερολόγιο Ἱεροσολύμων/Ἰορδανίας."),
     "nativity_entry_theotokos_fish": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The Entry of the Theotokos permits fish, oil, and wine.", "Στὰ Εἰσόδια τῆς Θεοτόκου ἐπιτρέπονται ψάρι, ἔλαιο καὶ οἶνος."),
     "nativity_weekend": ("Nativity Fast", "Νηστεία Χριστουγέννων", "The weekend rule of the Nativity Fast applies; fish is omitted during the final days before the Nativity.", "Ἰσχύει ὁ κανόνας τοῦ Σαββατοκύριακου τῆς Νηστείας Χριστουγέννων· στὶς τελευταῖες ἡμέρες δὲν ἐπιτρέπεται ψάρι."),
     "nativity_tue_thu": ("Nativity Fast", "Νηστεία Χριστουγέννων", "Oil and wine are permitted on Tuesday and Thursday according to the general rule.", "Τὴν Τρίτη καὶ τὴν Πέμπτη ἐπιτρέπονται ἔλαιο καὶ οἶνος κατὰ τὸν γενικὸ κανόνα."),
@@ -1176,6 +1177,16 @@ def fasting_profile(day: date, jm: int, jd: int, pascha: date, apostles_start: d
     if old_key in {(2, 2), (3, 25), (8, 6), (9, 8), (11, 21)} and weekday in (2, 4):
         return _fasting_profile("fish_allowed", "عيد كبير", "وقع عيد كبير في يوم صوم أسبوعي، فتُعطى فسحة السمك والزيت والنبيذ بحسب القاعدة العامة.", "major_feast_weekly_fast_relaxation")
 
+    # Jerusalem/Jordan local calendar: the first week after the Dormition feast
+    # (old-calendar Aug 16-22) relaxes its Wednesday and Friday to fish, oil,
+    # and wine. This must precede the ordinary weekly rule.
+    if jm == 8 and jd in (20, 22):
+        return _fasting_profile(
+            "fish_allowed",
+            "الأسبوع الأول بعد عيد رقاد السيدة والدة الإله",
+            "بعد انتهاء صوم الرقاد، تسمح قاعدة التقويم المحلي في أسبوع العيد الأول يومي الأربعاء والجمعة بالسمك والزيت والنبيذ.",
+            "post_dormition_week_fish",
+        )
     # Ordinary Wednesday and Friday fast.
     if weekday in (2, 4):
         return _fasting_profile("strict", "صوم الأربعاء أو الجمعة", "صوم أسبوعي بحسب التقليد الأرثوذكسي، ما لم توجد فسحة موثقة أو تدبير محلي.", "weekly_wednesday_friday")
