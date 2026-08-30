@@ -134,6 +134,9 @@ jobs:
       - name: Check content, languages, security, and calendar
         run: python scripts/run_local_daily_release_gate.py
 
+      - name: Audit daily liturgy selections through 2050
+        run: python scripts/audit_daily_liturgy_2050.py
+
       - name: Report absolute named commemoration coverage through 2050
         id: r64-strict-named-coverage
         shell: bash

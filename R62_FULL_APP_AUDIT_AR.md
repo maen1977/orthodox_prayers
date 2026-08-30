@@ -1,7 +1,7 @@
 # تدقيق R62 الكامل لتطبيق Orthodox Prayers
 
 تاريخ التدقيق: **2026-08-13**  
-النسخة الأساسية: **5.6.4 — إكمال النصوص الطقسية المصرّح بها R66**
+النسخة الأساسية: **5.6.6 — إكمال النصوص الطقسية المصرّح بها R66**
 
 > هذا التقرير يفرّق بين سلامة البرنامج تقنيًا وبين اكتمال المحتوى الكنسي. نجاح Release Gate لا يعني تلقائيًا وجود نص كامل أو قراءة موثقة لكل يوم.
 
@@ -14,7 +14,7 @@
 Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_prayer 17:30-21:29, small_compline otherwise, using Asia/Amman time.
 
 ### ✅ PASS (بنطاق موثق) — Fasting state and food-rule type
-4824/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 536, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.
+4859/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3231, 'dairy_allowed': 175, 'fish_allowed': 586, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.
 **الإجراء:** Keep fail-closed behavior for abstinence start/end unless an official dated source states it.
 
 ### ❌ INCOMPLETE — Daily commemorations through 2050
