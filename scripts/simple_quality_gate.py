@@ -15,6 +15,7 @@ CHECKS = [
     [sys.executable, "scripts/validate_android_sdk_contract.py"],
     [sys.executable, "scripts/validate_calendar_immutability.py"],
     [sys.executable, "scripts/validate_internal_calendar_2050.py"],
+    [sys.executable, "scripts/audit_daily_liturgy_2050.py"],
     [sys.executable, "scripts/validate_local_daily_engine.py", "--date", "2026-08-06"],
     [sys.executable, "scripts/validate_strict_religious_content.py", "data/calendar/today.json", "--require-complete"],
     [sys.executable, "scripts/validate_divine_liturgy_text_integrity.py"],

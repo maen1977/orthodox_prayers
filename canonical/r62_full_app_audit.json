@@ -17,8 +17,8 @@
   "metrics": {
     "calendar_days": 9131,
     "reading_counts": {
-      "epistle": 182,
-      "gospel": 182,
+      "epistle": 8277,
+      "gospel": 8348,
       "matins_gospel": 22
     },
     "generic_commemoration_days": 0,
@@ -73,7 +73,7 @@
       "id": "daily_readings",
       "title": "Daily Epistle/Gospel coverage through 2050",
       "status": "INCOMPLETE",
-      "evidence": "Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.",
+      "evidence": "Pinned references: epistle 8277/9131, gospel 8348/9131, matins gospel 22/9131.",
       "action": "Build/verify a full Jerusalem-compatible regular lectionary and fixed-feast override corpus before claiming 2050 completeness."
     },
     {

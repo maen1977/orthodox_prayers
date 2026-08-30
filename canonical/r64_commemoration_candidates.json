@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "promotion_policy": "candidate_only; tri-language native evidence + same old-calendar MM-DD required before promotion",
+  "machine_translation_allowed": false,
+  "slots": {},
+  "coverage": {
+    "old_calendar_slots_with_arabic_candidate": 0,
+    "conflicting_slots": 0
+  }
+}

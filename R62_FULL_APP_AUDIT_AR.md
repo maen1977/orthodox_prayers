@@ -22,7 +22,7 @@ Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_p
 **الإجراء:** Keep the English leap-day record and any non-local Greek slots explicitly marked; do not AI-generate or cross-language-translate saint names.
 
 ### ❌ INCOMPLETE — Daily Epistle/Gospel coverage through 2050
-Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.
+Pinned references: epistle 8277/9131, gospel 8348/9131, matins gospel 22/9131.
 **الإجراء:** Build/verify a full Jerusalem-compatible regular lectionary and fixed-feast override corpus before claiming 2050 completeness.
 
 ### ✅ PASS — 2026-08-10 reading spot check
