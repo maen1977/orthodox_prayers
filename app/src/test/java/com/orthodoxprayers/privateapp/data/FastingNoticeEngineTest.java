@@ -155,7 +155,9 @@ public final class FastingNoticeEngineTest {
         FastingNoticeEngine.Notice notice = FastingNoticeEngine.evaluate(
                 LocalDate.of(2026, 9, 2), provider);
 
-        assertEquals(FastingNoticeEngine.Kind.NONE, notice.kind);
+        assertEquals(FastingNoticeEngine.Kind.UPCOMING_WEEKLY_FAST, notice.kind);
+        assertEquals(LocalDate.of(2026, 9, 4), notice.targetDate);
+        assertEquals(2, notice.daysUntilStart);
         assertEquals(0, notice.daysRemaining);
         assertFalse(notice.feastDay);
     }
