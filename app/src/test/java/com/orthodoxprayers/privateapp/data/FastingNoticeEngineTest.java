@@ -78,6 +78,51 @@ public final class FastingNoticeEngineTest {
     }
 
     @Test
+    public void tomorrowWednesdayFastIsAnnouncedFromTuesday() {
+        FastingNoticeEngine.DayProvider provider = isoDate -> {
+            LocalDate date = LocalDate.parse(isoDate);
+            if (date.equals(LocalDate.of(2026, 9, 2))) return weeklyFastDay("صوم الأربعاء");
+            return calendarDay(isoDate);
+        };
+
+        FastingNoticeEngine.Notice notice = FastingNoticeEngine.evaluate(
+                LocalDate.of(2026, 9, 1), provider);
+
+        assertEquals(FastingNoticeEngine.Kind.UPCOMING_WEEKLY_FAST, notice.kind);
+        assertEquals(LocalDate.of(2026, 9, 2), notice.targetDate);
+        assertEquals(1, notice.daysUntilStart);
+    }
+
+    @Test
+    public void tomorrowFridayFastIsAnnouncedFromThursday() {
+        FastingNoticeEngine.DayProvider provider = isoDate -> {
+            LocalDate date = LocalDate.parse(isoDate);
+            if (date.equals(LocalDate.of(2026, 9, 4))) return weeklyFastDay("صوم الجمعة");
+            return calendarDay(isoDate);
+        };
+
+        FastingNoticeEngine.Notice notice = FastingNoticeEngine.evaluate(
+                LocalDate.of(2026, 9, 3), provider);
+
+        assertEquals(FastingNoticeEngine.Kind.UPCOMING_WEEKLY_FAST, notice.kind);
+        assertEquals(LocalDate.of(2026, 9, 4), notice.targetDate);
+        assertEquals(1, notice.daysUntilStart);
+    }
+
+    private static JSONObject weeklyFastDay(String titleAr) {
+        try {
+            return new JSONObject().put("fasting", new JSONObject()
+                    .put("is_fast", true)
+                    .put("title", new JSONObject().put("ar", titleAr)
+                            .put("en", "Weekly fast")
+                            .put("el", "Ἑβδομαδιαία νηστεία"))
+                    .put("verification", new JSONObject().put("rule", "ordinary_weekly_fast")));
+        } catch (JSONException error) {
+            throw new AssertionError(error);
+        }
+    }
+
+    @Test
     public void ordinaryDormitionDayIsNotMarkedAsTheFeast() {
         FastingNoticeEngine.DayProvider provider = FastingNoticeEngineTest::calendarDay;
 

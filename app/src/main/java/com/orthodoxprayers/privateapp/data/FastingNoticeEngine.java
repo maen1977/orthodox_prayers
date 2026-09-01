@@ -207,12 +207,13 @@ public final class FastingNoticeEngine {
         }
         JSONObject fasting = day.optJSONObject("fasting");
         if (fasting == null || !fasting.optBoolean("is_fast", false)) return false;
-        String text = fastingSearchText(day);
-        return text.contains("wednesday or friday fast")
-                || text.contains("صوم الأربعاء أو الجمعة")
-                || text.contains("صوم الاربعاء او الجمعة")
-                || text.contains("νηστεία τετάρτης")
-                || text.contains("νηστεια τεταρτης");
+        // The calendar's fasting profile is authoritative here. A weekly fast
+        // may be a local allowance (for example, fish permitted after the
+        // Dormition Fast) and therefore need not contain a generic Wednesday /
+        // Friday phrase in its title. Major seasons are checked first by
+        // evaluate(), so this fallback is reserved for the applicable weekly
+        // day and its explicit fasting profile.
+        return true;
     }
 
     private static Family majorFamily(JSONObject day) {
