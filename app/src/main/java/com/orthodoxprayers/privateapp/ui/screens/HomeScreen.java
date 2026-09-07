@@ -262,20 +262,15 @@ public final class HomeScreen extends BaseScreen {
         }
         if (notice.kind == FastingNoticeEngine.Kind.UPCOMING_WEEKLY_FAST) {
             String weekday = weekdayTitle(notice.weekday);
-            String fastTitle = notice.weekday == DayOfWeek.WEDNESDAY
-                    ? local(com.orthodoxprayers.privateapp.R.string.ui_wednesday_fast)
-                    : local(com.orthodoxprayers.privateapp.R.string.ui_friday_fast);
             if (notice.daysUntilStart == 1) {
                 return localFormat(
                         com.orthodoxprayers.privateapp.R.string.ui_fast_notice_tomorrow_weekly_format,
-                        weekday,
-                        fastTitle
+                        weekday
                 );
             }
             return localFormat(
                     com.orthodoxprayers.privateapp.R.string.ui_fast_notice_next_weekly_format,
-                    weekday,
-                    fastTitle
+                    weekday
             );
         }
         return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);

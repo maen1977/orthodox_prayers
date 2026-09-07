@@ -391,8 +391,8 @@
     <string name="ui_fast_notice_ends_in_two_days_format">Δύο ἡμέρες ἀπομένουν μέχρι τὸ τέλος τῆς %1$s</string>
     <string name="ui_fast_notice_ends_in_days_format">%1$d ἡμέρες ἀπομένουν μέχρι τὸ τέλος τῆς %2$s</string>
     <string name="ui_fast_notice_last_day_format">Τελευταία ἡμέρα τῆς %1$s</string>
-    <string name="ui_fast_notice_tomorrow_weekly_format">Αὔριο %1$s — %2$s</string>
-    <string name="ui_fast_notice_next_weekly_format">Ἡ ἐρχόμενη %1$s — %2$s</string>
+    <string name="ui_fast_notice_tomorrow_weekly_format">Αὔριο %1$s — Νηστεία</string>
+    <string name="ui_fast_notice_next_weekly_format">Ἡ ἐρχόμενη %1$s — Νηστεία</string>
     <string name="ui_fast_notice_none">Δὲν ὑπάρχει κοντινὴ νηστεία αὐτὴν τὴν περίοδο</string>
     <string name="ui_fast_notice_details_hint">Πατήστε γιὰ λεπτομέρειες νηστείας καὶ ἡμερολογίου</string>
     <string name="ui_fast_notice_dormition_feast_relaxed" formatted="false">Ἑορτὴ τῆς Κοιμήσεως μετὰ τὴ δεκατετραήμερη νηστεία — ἐλαφρὰ νηστεία, ἐπιτρέπεται ψάρι</string>
@@ -431,4 +431,6 @@
     <string name="ui_church_directory_sync_waiting_r66" formatted="false">Οἱ κατάλογοι δὲν ἔχουν συγχρονισθεῖ ἀκόμη· χρησιμοποιεῖται τὸ ἐνσωματωμένο ἀντίγραφο</string>
     <string name="ui_church_directory_official_source_note_r66" formatted="false">Τὸ περιεχόμενο ἐμφανίζεται μέσα στὴν ἐφαρμογή· ὁ ἐπίσημος σύνδεσμος παραμένει διαθέσιμος γιὰ ἐπαλήθευση</string>
     <string name="ui_system_brightness_6e11d2d1" formatted="false">Φωτεινότητα συστήματος</string>
+    <string name="ui_fast_summary_explanation">Ἐξήγησις γιὰ τὸν ἀρχάριο</string>
+    <string name="ui_fast_summary_abstinence">Πλήρης ἀποχή</string>
 </resources>

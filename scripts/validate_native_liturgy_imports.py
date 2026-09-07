@@ -65,8 +65,11 @@ def main() -> None:
     }
     for service_name, manifest_name in (("basil", "basil_liturgy"), ("presanctified", "presanctified_liturgy")):
         edition = editions["editions"][service_name]
-        require(edition.get("displayable") is True, f"{service_name}: complete rite is not displayable")
         require(edition.get("ecclesiastical_human_certification") == "NOT_CLAIMED", f"{service_name}: invalid ecclesiastical claim")
+        if edition.get("displayable") is not True:
+            status = str(edition.get("phase8_review_status") or "")
+            require(status.startswith("BLOCKED_"), f"{service_name}: non-displayable rite lacks explicit BLOCKED status")
+            continue
         for language in LANGS:
             lane = contract["services"][service_name]["lanes"][language]
             require(urlparse(str(lane.get("official_url") or "")).hostname in allowed_hosts, f"{service_name}.{language}: unapproved source domain")
@@ -80,7 +83,7 @@ def main() -> None:
 
     leaked = list((ROOT / "data/services/candidates").rglob("*.json"))
     require(not leaked, "unreviewed candidate JSON must not ship")
-    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 languages=3 displayable=true owner_authorized=true machine_translation=false ecclesiastical_certification=false")
+    print("NATIVE_LITURGY_IMPORT_GATE_OK services=2 fail_closed=true owner_authorized=true machine_translation=false ecclesiastical_certification=false")
 
 
 if __name__ == "__main__":

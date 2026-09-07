@@ -137,6 +137,9 @@ jobs:
       - name: Audit daily liturgy selections through 2050
         run: python scripts/audit_daily_liturgy_2050.py
 
+      - name: Audit strict beginning-to-dismissal liturgy structure
+        run: python scripts/validate_liturgy_structure_strict.py
+
       - name: Report absolute named commemoration coverage through 2050
         id: r64-strict-named-coverage
         shell: bash

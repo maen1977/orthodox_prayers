@@ -146,6 +146,12 @@ public final class CalendarDayScreen extends BaseScreen {
         addField(card,
                 local(com.orthodoxprayers.privateapp.R.string.ui_service_form_label),
                 localized(selection.optJSONObject("service_form_label"), ""));
+        if (!selection.optBoolean("displayable", false)
+                && !"no_divine_liturgy".equals(selection.optString("service_type", ""))) {
+            addField(card,
+                    local(com.orthodoxprayers.privateapp.R.string.ui_unavailable_24f3ca2e),
+                    local(com.orthodoxprayers.privateapp.R.string.ui_complete_service_not_available_without_fallback));
+        }
     }
 
     private JSONObject findDay() {

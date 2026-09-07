@@ -523,6 +523,7 @@ def _compact_fasting(item: dict) -> dict:
         "is_fast": bool(fasting.get("is_fast")),
         "display_icons": fasting.get("display_icons") or [],
         "items": fasting.get("items") or [],
+        "guidance": fasting.get("guidance") or {},
         "verification": {
             "status": str((fasting.get("verification") or {}).get("status") or "TYPICON_BASELINE"),
             "policy": str((fasting.get("verification") or {}).get("policy") or "canonical/fasting_policy.json"),
@@ -587,7 +588,11 @@ def _asset_day(item: dict, fasting_profile_id: str, comparative_en_ref: str = ""
             "service_form": selection.get("service_form"),
             "rule_id": selection.get("rule_id"),
             "label": selection.get("label") or {},
+            "service_id": selection.get("service_id"),
+            "service_content_status": selection.get("selection_status") or "",
+            "availability_note": selection.get("availability_note") or {},
             "displayable": bool(selection.get("displayable")),
+            "full_service_required": bool(selection.get("full_service_required", True)),
             "wrong_liturgy_fallback_allowed": False,
         },
     }
