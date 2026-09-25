@@ -22,3 +22,9 @@ def test_current_day_merges_appointed_liturgy_when_daily_package_omits_it():
     assert 'current.optJSONObject("liturgy_service_selection")' in repository
     assert 'annual.optJSONObject("liturgy_service_selection")' in repository
     assert 'merged.put("liturgy_service_selection"' in repository
+
+
+def test_liturgy_tab_never_bypasses_hub_with_stale_daily_service():
+    main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
+    assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
+    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main

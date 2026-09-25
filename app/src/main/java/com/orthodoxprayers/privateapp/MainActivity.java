@@ -432,9 +432,10 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "home": return new HomeScreen(this);
             case "prayers": return new PrayerHubScreen(this);
             case "prayer_category": return new ServiceListScreen(this, entry.argument, prayerCategoryTitle(entry.argument));
-            case "liturgy": return canOpenTodayLiturgyDirectly()
-                    ? new ReaderScreen(this, "divine_liturgy")
-                    : new LiturgyHubScreen(this);
+            // Always enter through the day-aware hub. Opening the legacy daily
+            // service directly can show the stale 4-segment today.json overlay
+            // instead of the verified full native Liturgy from the library.
+            case "liturgy": return new LiturgyHubScreen(this);
             case "readings": return new ReadingsScreen(this);
             case "bible": return new BibleScreen(this);
             case "bible_testament": return new BibleTestamentScreen(this, entry.argument);
