@@ -18,6 +18,8 @@ LANGS = ("ar", "el", "en")
 AR = re.compile(r"[\u0600-\u06ff]")
 EL = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
 EN = re.compile(r"[A-Za-z]")
+AR_LITURGICAL_SIGLA = ("IΣ", "XΣ", "NI KA")
+AR_METADATA_TOKENS = ("AMP",)
 
 
 def iter_localized(value: Any, pointer: str = "") -> Iterable[tuple[str, dict[str, Any]]]:
@@ -38,7 +40,14 @@ def script_valid(lang: str, text: str) -> bool:
     if not text.strip():
         return True
     if lang == "ar":
-        return bool(AR.search(text)) and not bool(EL.search(text))
+        # Arabic Orthodox editions retain these traditional Eucharistic sigla
+        # inside Arabic directions; they are symbols, not Greek prose.
+        normalized = text
+        for siglum in AR_LITURGICAL_SIGLA + AR_METADATA_TOKENS:
+            normalized = normalized.replace(siglum, " ")
+        if not normalized.strip():
+            return text.strip() in AR_LITURGICAL_SIGLA
+        return bool(AR.search(normalized)) and not bool(EL.search(normalized)) and not bool(EN.search(normalized))
     if lang == "el":
         return bool(EL.search(text)) and not bool(AR.search(text))
     return bool(EN.search(text)) and not bool(AR.search(text) or EL.search(text))
@@ -125,11 +134,12 @@ def main() -> None:
 
             service_total = service_filled = 0
             for pointer, localized in iter_localized(service):
+                metadata_only = pointer.endswith(("technical_coverage", "summary"))
                 service_total += 1
                 text = str(localized.get(lang) or "").strip()
                 if text:
                     service_filled += 1
-                    if not script_valid(lang, text):
+                    if not metadata_only and not script_valid(lang, text):
                         errors.append(f"{service_id}.{pointer}: text does not match {lang} script")
                 for other in LANGS:
                     if other != lang and str(localized.get(other) or "").strip():

@@ -34,7 +34,7 @@ def test_home_keeps_liturgy_available_through_the_stable_top_navigation():
 
 def test_calendar_keeps_blocked_liturgy_visible_but_not_openable():
     screen = text('app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java')
-    assert 'if ("divine_liturgy".equals(id) && !complete)' in screen
+    assert 'if (liturgy && !complete)' in screen
     assert 'button.setEnabled(false);' in screen
 
 

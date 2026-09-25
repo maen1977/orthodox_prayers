@@ -59,19 +59,12 @@ def test_arabic_liturgy_marks_existing_faithful_private_prayers_with_event_conte
     pack = load_json("app/src/main/assets/data/native/library_ar.json")
     liturgy = service(pack, "divine_liturgy")
     faithful = [segment for segment in liturgy["segments"] if segment.get("delivery_actor") == "faithful"]
-    assert len(faithful) >= 5
-    contexts = {(segment.get("event_context") or {}).get("ar", "") for segment in faithful}
-    assert "أثناء الدخول الصغير — صلاة المؤمن بهدوء" in contexts
-    assert "بعد تلاوة الإنجيل — صلاة المؤمن بهدوء" in contexts
-    assert "أثناء الدورة الكبرى وحمل القرابين — صلاة المؤمن بهدوء" in contexts
-    assert "أثناء تذكارات الأنافورا — صلاة المؤمن بهدوء" in contexts
-    assert "قبل المناولة المقدسة — تُقال سرًا" in contexts
-    great_entrance = next(
-        segment for segment in faithful
-        if (segment.get("text") or {}).get("ar", "").startswith("لنطرح الآن كل اهتمام دنيوي")
-    )
-    assert great_entrance["delivery"] == "silent"
-    assert great_entrance["event_context"]["editorial_metadata_only"] is True
+    assert not any(segment.get("devotional_status") for segment in liturgy["segments"])
+    payload = load_json("app/src/main/assets/data/native/arabic_liturgy_private_devotions.json")
+    prayers = [prayer for placement in payload["placements"] for prayer in placement["prayers"]]
+    assert len(prayers) == 4
+    assert all(prayer["delivery_actor"] == "faithful" for prayer in prayers)
+    assert all(prayer["delivery"] == "silent" for prayer in prayers)
 
 
 def test_english_and_greek_communion_private_prayers_have_native_lane_context_only():

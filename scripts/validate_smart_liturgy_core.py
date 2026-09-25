@@ -16,6 +16,7 @@ import importlib.util
 import json
 import os
 import re
+import unicodedata
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -75,6 +76,14 @@ def text_stats(service: dict, language: str) -> tuple[int, int]:
 def require(ok: bool, message: str, errors: list[str]) -> None:
     if not ok:
         errors.append(message)
+
+
+def comparable_text(value: str) -> str:
+    """Compare Arabic anchors without rejecting legitimate vowel marks."""
+    return "".join(
+        char for char in unicodedata.normalize("NFD", value)
+        if unicodedata.category(char) != "Mn"
+    )
 
 
 def audit_native_lanes(errors: list[str]) -> None:
@@ -152,7 +161,9 @@ def audit_native_lanes(errors: list[str]) -> None:
             )
             text = lane_text(service, lang)
             for marker in contract["anchors"][lang]:
-                require(marker in text, f"{label}: required anchor missing: {marker}", errors)
+                haystack = comparable_text(text) if lang == "ar" else text
+                needle = comparable_text(marker) if lang == "ar" else marker
+                require(needle in haystack, f"{label}: required anchor missing: {marker}", errors)
             suspicious = foreign_patterns[lang].findall(text)
             if lang != "ar":
                 require(not suspicious, f"{label}: Arabic-script leakage in native prayer text", errors)

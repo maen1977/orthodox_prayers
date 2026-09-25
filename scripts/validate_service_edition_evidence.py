@@ -16,6 +16,7 @@ LANGS = ("ar", "en", "el")
 DEFAULT_COMPLETE = {"complete_exact_native_edition"}
 AR = re.compile(r"[\u0600-\u06ff]")
 EL = re.compile(r"[\u0370-\u03ff\u1f00-\u1fff]")
+AR_LITURGICAL_SIGLA = ("IΣ", "XΣ", "NI KA")
 
 
 def iter_localized(value: Any) -> Iterable[dict[str, Any]]:
@@ -129,7 +130,11 @@ def collect_errors() -> list[str]:
                 errors.append(f"{key}: non-English script leakage")
             if lang == "el" and AR.search(text):
                 errors.append(f"{key}: Arabic script leakage")
-            if lang == "ar" and EL.search(text):
+            arabic_text_for_script_check = text
+            if lang == "ar":
+                for siglum in AR_LITURGICAL_SIGLA:
+                    arabic_text_for_script_check = arabic_text_for_script_check.replace(siglum, " ")
+            if lang == "ar" and EL.search(arabic_text_for_script_check):
                 errors.append(f"{key}: Greek script leakage")
             doc = service.get("source_document") if isinstance(service.get("source_document"), dict) else {}
             expected_doc_hash = proof.get("source_snapshot_sha256")

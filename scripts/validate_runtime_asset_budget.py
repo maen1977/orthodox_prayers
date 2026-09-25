@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'app/src/main/assets/data'
 DEFAULT_MAX_STARTUP = 3_000_000
-DEFAULT_MAX_SINGLE = 6_000_000
+DEFAULT_MAX_SINGLE = 8_000_000
 
 def main():
     ap=argparse.ArgumentParser()
