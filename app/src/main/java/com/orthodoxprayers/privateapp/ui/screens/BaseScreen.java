@@ -201,7 +201,16 @@ public abstract class BaseScreen implements AppScreen {
             card.addView(description, ui.margins(-1, -2, 0, 4, 0, 0));
         }
         card.setContentDescription(title + (summary.isEmpty() ? "" : ". " + summary));
-        card.setOnClickListener(v -> host.navigate("reader", service.optString("id")));
+        card.setOnClickListener(v -> {
+            String serviceId = service.optString("id", "").trim();
+            // This catalog entry is only a short metadata card. The complete
+            // Eucharistic rite is exposed by the day-aware Liturgy hub.
+            if ("church_eucharist".equals(serviceId)) {
+                host.navigate("liturgy", null);
+            } else {
+                host.navigate("reader", serviceId);
+            }
+        });
         return card;
     }
 }

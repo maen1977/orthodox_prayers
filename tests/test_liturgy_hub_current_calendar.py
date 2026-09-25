@@ -28,3 +28,9 @@ def test_liturgy_tab_never_bypasses_hub_with_stale_daily_service():
     main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
     assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
     assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main
+
+
+def test_church_eucharist_catalog_card_routes_to_complete_liturgy_hub():
+    base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
+    assert '"church_eucharist".equals(serviceId)' in base
+    assert 'host.navigate("liturgy", null)' in base
