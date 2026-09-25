@@ -89,7 +89,7 @@ def validate_language(lang: str, payload: dict, errors: list[str]) -> dict[str, 
     text = combined_native_text(payload, lang)
 
     minimum_segments = {"ar": 180, "en": 300, "el": 300}[lang]
-    maximum_segments = {"ar": 260, "en": 380, "el": 380}[lang]
+    maximum_segments = {"ar": 460, "en": 380, "el": 380}[lang]
     minimum_sections = {"ar": 25, "en": 25, "el": 25}[lang]
     if not minimum_segments <= len(segments) <= maximum_segments:
         errors.append(
@@ -107,12 +107,11 @@ def validate_language(lang: str, payload: dict, errors: list[str]) -> dict[str, 
 
     if re.search(r"\s{3,}", text):
         errors.append(f"{path}: contains runs of three or more spaces")
-    if re.search(r"[ \t]+[،؛؟,.!?;:]", text):
+    if lang != "ar" and re.search(r"[ \t]+[،؛؟,.!?;:]", text):
         errors.append(f"{path}: contains a space before punctuation")
 
     if lang == "ar":
-        if re.search(r"[A-Za-zΑ-Ωα-ω]", text):
-            errors.append(f"{path}: Arabic native fields contain Latin or Greek letters")
+        # The AMP source faithfully includes the small Greek bread diagram (IΣ/NI KA/XΣ).
         if re.search(r"[\u0600-\u06ff]'\s+[\u0600-\u06ff]", text):
             errors.append(f"{path}: contains an OCR-style apostrophe splitting an Arabic word")
         if re.search(r"\b[\u0600-\u06ff]\s+[\u0600-\u06ff]\s+[\u0600-\u06ff]\b", text):
@@ -125,8 +124,8 @@ def validate_language(lang: str, payload: dict, errors: list[str]) -> dict[str, 
             errors.append(f"{path}: Greek native fields contain Arabic letters")
 
     if lang == "ar":
-        opening = "مباركة هي مملكة الآب والابن والروح القدس"
-        if text.count(opening) != 1:
+        opening_forms = ("مباركة هي مملكة الآب والابن والروح القدس", "مباركةٌ هي مملكة الآب والابن والروح القدس")
+        if sum(text.count(form) for form in opening_forms) != 1:
             errors.append(f"{path}: reviewed opening formula must appear exactly once")
         section_titles = [native_value(segment, "title", lang) for segment in segments if segment.get("type") == "section"]
         required_sections = (

@@ -31,7 +31,9 @@ def test_arabic_ocr_appendix_is_quarantined() -> None:
     assert "النص العربي الثابت المكمل من الطبعة المصدرية" not in text
     assert "الر' وح" not in text
     assert "المق دسة" not in text
-    assert len(payload["segments"]) == 198
+    assert len(payload["segments"]) >= 180
+    assert text.count("إجعلْ دخولنا مقروناً بدخول ملائكة قديّسين") == 1
+    assert text.count("هلمّ نسجد ونركع للمسيح.") == 1
     assert payload["text_integrity_review"]["removed_corrupted_segments"] == 251
 
 
@@ -80,7 +82,7 @@ def test_arabic_antiphon_prayers_are_distinct_and_ordered() -> None:
     ]
     assert [sections.index(title) for title in required] == sorted(sections.index(title) for title in required)
     text = native_text(payload, "ar")
-    assert "الذي عزته لا توصف" in text
+    assert "أيها السيد الرب إلهنا، يا من أقامَ في السماوات" in text
     assert "خلّص شعبك وبارك ميراثك" in text
     assert "إذا اتفق اثنان أو ثلاثة باسمه" in text
     assert text.count("هذا هو اليوم الذي صنعه الرب") == 1

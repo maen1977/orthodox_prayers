@@ -148,7 +148,7 @@ def main() -> None:
             if display.count(ordinary) != 1:
                 errors.append(f"ar.native: third-antiphon ordinary must appear once; found {display.count(ordinary)}")
             required = (
-                "مباركة هي مملكة الآب والابن والروح القدس",
+                "مباركةٌ هي مملكة الآب والابن والروح القدس",
                 "صلاة الأنتيفونا الأولى",
                 "صلاة الأنتيفونا الثانية",
                 "صلاة الأنتيفونا الثالثة",
