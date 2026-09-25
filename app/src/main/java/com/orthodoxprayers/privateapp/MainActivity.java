@@ -465,12 +465,17 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     private boolean canOpenTodayLiturgyDirectly() {
         if (!repository.isTodayCurrent()) return false;
-        JSONObject selection = repository.today().optJSONObject("liturgy_service_selection");
+        JSONObject selection = repository.currentDayForDisplay().optJSONObject("liturgy_service_selection");
         if (selection == null || !selection.optBoolean("displayable", false)) return false;
         String type = selection.optString("service_type", "").trim();
         if ("no_divine_liturgy".equals(type) || "typikon_override_required".equals(type)) return false;
-        String serviceId = selection.optString("service_id", "divine_liturgy").trim();
-        return serviceId.isEmpty() || "divine_liturgy".equals(serviceId);
+        String serviceId = selection.optString("service_id", "").trim();
+        if (serviceId.isEmpty()) {
+            if ("basil".equals(type)) serviceId = "divine_liturgy_basil";
+            else if ("presanctified".equals(type)) serviceId = "presanctified_liturgy";
+            else serviceId = "divine_liturgy";
+        }
+        return !serviceId.isEmpty();
     }
 
     private void rebuildBottomNav(ScreenEntry entry) {

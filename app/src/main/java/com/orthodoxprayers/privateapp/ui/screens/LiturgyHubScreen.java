@@ -24,33 +24,15 @@ public final class LiturgyHubScreen extends BaseScreen {
     }
 
     private void addTodayLiturgy(LinearLayout root) {
-        JSONObject day = data.today();
+        // today.json may be an older signed snapshot while the annual calendar
+        // already contains the current date and its appointed Liturgy.
+        JSONObject day = data.currentDayForDisplay();
         JSONObject selection = day == null ? null : day.optJSONObject("liturgy_service_selection");
         LinearLayout card = ui.card();
 
         String date = day == null ? "" : day.optString("date_iso", day.optString("date", "")).trim();
         if (!date.isEmpty()) {
             card.addView(centered(date, 15, ui.colors().secondaryText(), false));
-        }
-
-        if (!data.isTodayCurrent()) {
-            String status = data.isRefreshing()
-                    ? local(com.orthodoxprayers.privateapp.R.string.ui_loading_today_s_data_8457881d)
-                    : local(com.orthodoxprayers.privateapp.R.string.ui_local_daily_update_unavailable);
-            card.addView(ui.infoBadge(status), ui.margins(-1, -2, 0, 8, 0, 5));
-            card.addView(centered(
-                    local(com.orthodoxprayers.privateapp.R.string.ui_the_screen_will_update_automatically_after_downl_a93a7fcf),
-                    14, ui.colors().secondaryText(), false
-            ), ui.margins(-1, -2, 0, 6, 0, 4));
-            if (!data.isRefreshing()) {
-                Button retry = ui.button(local(
-                        com.orthodoxprayers.privateapp.R.string.ui_retry_update_da94fa97
-                ), true);
-                retry.setOnClickListener(v -> host.refreshData());
-                card.addView(retry, ui.margins(-1, -2, 0, 8, 0, 0));
-            }
-            add(root, card, 14, 16);
-            return;
         }
 
         if (selection == null) {
@@ -86,12 +68,24 @@ public final class LiturgyHubScreen extends BaseScreen {
         boolean displayable = selection.optBoolean("displayable", false)
                 && !"no_divine_liturgy".equals(type)
                 && !"typikon_override_required".equals(type);
+        if (!data.isTodayCurrent()) {
+            card.addView(ui.infoBadge(local(
+                    com.orthodoxprayers.privateapp.R.string.ui_local_daily_update_unavailable
+            )), ui.margins(-1, -2, 0, 8, 0, 5));
+        }
         if (displayable) {
             Button open = ui.button(localFormat(
                     com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format,
                     title
             ), true);
-            open.setOnClickListener(v -> host.navigate("reader", "divine_liturgy"));
+            String appointedId = appointedServiceId(selection);
+            open.setOnClickListener(v -> {
+                if ("divine_liturgy".equals(appointedId)) {
+                    host.navigate("reader", "divine_liturgy");
+                } else {
+                    host.navigate("reader", appointedId);
+                }
+            });
             card.addView(open, ui.margins(-1, -2, 0, 10, 0, 0));
         } else {
             card.addView(ui.badge(local(
@@ -99,6 +93,15 @@ public final class LiturgyHubScreen extends BaseScreen {
             ), false), ui.margins(-1, -2, 0, 10, 0, 0));
         }
         add(root, card, 14, 16);
+    }
+
+    private String appointedServiceId(JSONObject selection) {
+        String explicit = selection == null ? "" : selection.optString("service_id", "").trim();
+        if (!explicit.isEmpty()) return explicit;
+        String type = selection == null ? "" : selection.optString("service_type", "").trim();
+        if ("basil".equals(type)) return "divine_liturgy_basil";
+        if ("presanctified".equals(type)) return "presanctified_liturgy";
+        return "divine_liturgy";
     }
 
     private void addField(LinearLayout card, String label, String value) {
