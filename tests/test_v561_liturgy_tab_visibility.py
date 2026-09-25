@@ -10,8 +10,8 @@ def text(path):
 def test_liturgy_is_stable_top_level_destination():
     main = text('app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java')
     assert 'addNav(R.drawable.ic_nav_liturgy' in main
-    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' in main
-    assert 'new ReaderScreen(this, "divine_liturgy")' in main
+    assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
+    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main
     assert 'new LiturgyHubScreen(this)' in main
 
 

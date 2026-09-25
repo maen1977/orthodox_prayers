@@ -62,10 +62,10 @@ def test_home_notice_is_calendar_driven_and_continue_reading_is_gone():
     assert 'fasting.optBoolean("is_fast", false)' in engine
 
 
-def test_liturgy_tab_opens_reader_directly_and_keeps_blocked_day_fallback():
+def test_liturgy_tab_enters_day_aware_hub_and_keeps_blocked_day_fallback():
     main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
-    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' in main
-    assert 'new ReaderScreen(this, "divine_liturgy")' in main
+    assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
+    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main
     assert 'new LiturgyHubScreen(this)' in main
     assert '"no_divine_liturgy".equals(type)' in main
     assert '"typikon_override_required".equals(type)' in main
