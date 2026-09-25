@@ -15,3 +15,10 @@ def test_main_liturgy_route_uses_current_calendar_and_all_rite_ids():
     assert "repository.currentDayForDisplay()" in main
     assert '"divine_liturgy_basil"' in main
     assert '"presanctified_liturgy"' in main
+
+
+def test_current_day_merges_appointed_liturgy_when_daily_package_omits_it():
+    repository = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
+    assert 'current.optJSONObject("liturgy_service_selection")' in repository
+    assert 'annual.optJSONObject("liturgy_service_selection")' in repository
+    assert 'merged.put("liturgy_service_selection"' in repository

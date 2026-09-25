@@ -544,9 +544,29 @@ public final class DataRepository {
      * reminder say that a fast-free day is in effect.
      */
     public synchronized JSONObject currentDayForDisplay() {
-        if (isTodayCurrent()) return today();
+        JSONObject current = today();
         JSONObject annual = calendarDay(currentAmmanDate());
-        return annual == null ? today() : annual;
+        if (!isTodayCurrent()) return annual == null ? current : annual;
+        if (annual == null || current == null) return current;
+        // A refreshed daily package can have the current date and fasting data
+        // while still omitting the appointed-Liturgy selection. Do not render
+        // an empty Liturgy screen in that case; fill only missing calendar-owned
+        // fields from the verified annual calendar.
+        if (current.optJSONObject("liturgy_service_selection") != null) return current;
+        try {
+            JSONObject merged = new JSONObject(current.toString());
+            JSONObject selection = annual.optJSONObject("liturgy_service_selection");
+            if (selection != null) merged.put("liturgy_service_selection", new JSONObject(selection.toString()));
+            if (merged.optJSONObject("feast") == null && annual.optJSONObject("feast") != null) {
+                merged.put("feast", new JSONObject(annual.optJSONObject("feast").toString()));
+            }
+            if (merged.optJSONObject("fasting") == null && annual.optJSONObject("fasting") != null) {
+                merged.put("fasting", new JSONObject(annual.optJSONObject("fasting").toString()));
+            }
+            return merged;
+        } catch (Exception ignored) {
+            return current;
+        }
     }
 
     public synchronized boolean hasCurrentCalendarDay() {
