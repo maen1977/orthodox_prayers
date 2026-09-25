@@ -2081,16 +2081,13 @@ public final class DataRepository {
 
     private static boolean isFollowAlongLiturgy(JSONObject service) {
         if (service == null) return false;
-        String id = service.optString("id", "");
-        String composedFrom = service.optString("composed_from", "");
-        return "divine_liturgy".equals(id)
-                || "divine_liturgy".equals(composedFrom)
-                || "divine_liturgy_basil".equals(id)
-                || "divine_liturgy_basil".equals(composedFrom)
-                || "presanctified_liturgy".equals(id)
-                || "presanctified_liturgy".equals(composedFrom)
-                || service.optString("publication_status", "")
-                .startsWith("DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END");
+        // The appointed service reader contains the appointed Liturgy only.
+        // Preparation, Orthros, Proskomide, and thanksgiving are adjacent offices,
+        // not missing portions of the Liturgy. They are included only when an
+        // explicit follow-along reader mode is requested.
+        return service.optBoolean("follow_along", false)
+                || service.optBoolean("follow_along_requested", false)
+                || "follow_along".equals(service.optString("reader_mode", ""));
     }
 
     /**

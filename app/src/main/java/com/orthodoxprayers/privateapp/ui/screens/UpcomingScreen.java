@@ -110,16 +110,20 @@ public final class UpcomingScreen extends BaseScreen {
                     false
             ));
         }
-        JSONObject service = findService(item.optJSONArray("services"), "divine_liturgy");
+        String appointedId = appointedServiceId(selection);
+        JSONObject service = findService(item.optJSONArray("services"), appointedId);
         boolean complete = service != null && service.optBoolean("full_service_complete", false);
-        if (complete && !itemDate.isEmpty()) {
+        boolean appointed = selection.optBoolean("displayable", false)
+                && !"no_divine_liturgy".equals(selection.optString("service_type", ""))
+                && !"typikon_override_required".equals(selection.optString("service_type", ""));
+        if (appointed && complete && !itemDate.isEmpty()) {
             android.widget.Button open = ui.smallButton(
                     local(com.orthodoxprayers.privateapp.R.string.ui_open_complete_service_beginning_to_end),
                     true
             );
             open.setOnClickListener(v -> host.navigate(
                     "reader",
-                    com.orthodoxprayers.privateapp.data.DataRepository.datedServiceId(itemDate, "divine_liturgy")
+                    com.orthodoxprayers.privateapp.data.DataRepository.datedServiceId(itemDate, appointedId)
             ));
             card.addView(open, ui.margins(-1, -2, 0, 7, 0, 0));
         } else {
@@ -129,6 +133,15 @@ public final class UpcomingScreen extends BaseScreen {
             }
             card.addView(ui.badge(note, false), ui.margins(-1, -2, 0, 7, 0, 0));
         }
+    }
+
+    private String appointedServiceId(JSONObject selection) {
+        String explicit = selection == null ? "" : selection.optString("service_id", "").trim();
+        if (!explicit.isEmpty()) return explicit;
+        String type = selection == null ? "" : selection.optString("service_type", "").trim();
+        if ("basil".equals(type)) return "divine_liturgy_basil";
+        if ("presanctified".equals(type)) return "presanctified_liturgy";
+        return "divine_liturgy";
     }
 
     private JSONObject findService(JSONArray services, String id) {
