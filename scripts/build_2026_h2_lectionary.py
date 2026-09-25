@@ -397,13 +397,21 @@ def write_outputs(payload: dict) -> None:
     # file. Android receives only the compact fields needed by the calendar UI.
     for item in asset["days"]:
         fasting = item.get("fasting") if isinstance(item.get("fasting"), dict) else {}
-        item["fasting"] = {
+        compact_fasting = {
             "code": fasting.get("code"),
             "title": copy.deepcopy(fasting.get("title") or item.get("status") or {}),
             "detail": copy.deepcopy(fasting.get("detail") or {}),
             "is_fast": bool(fasting.get("is_fast")),
             "display_icons": copy.deepcopy(fasting.get("display_icons") or []),
+            "items": copy.deepcopy(fasting.get("items") or []),
+            "abstinence": copy.deepcopy(fasting.get("abstinence") or {
+                "applies": False,
+                "kind": "not_indicated",
+                "start_time": None,
+                "end_time": None,
+            }),
         }
+        item["fasting"] = compact_fasting
         item["sources"] = {"status": "PINNED_CANONICAL_EVIDENCE", "registry": "canonical/jordan_2026_h2_lectionary.json"}
     OUT_ASSET.parent.mkdir(parents=True, exist_ok=True)
     OUT_ASSET.write_text(json.dumps(asset, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")

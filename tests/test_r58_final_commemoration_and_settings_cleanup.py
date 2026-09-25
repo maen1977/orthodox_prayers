@@ -22,6 +22,9 @@ def test_every_day_through_2050_has_localized_commemoration():
         assert day.get("commemoration_status") in {
             "PINNED_INTERNAL_RULE",
             "PINNED_INTERNAL_OLD_CALENDAR_DATE",
+            "PINNED_COMPARATIVE_ENGLISH_LANE",
+            "PINNED_NATIVE_AND_COMPARATIVE_LANES",
+            "PINNED_NATIVE_LANE",
         }
         assert commemoration.get("status") == day.get("commemoration_status")
         names = commemoration.get("name") or {}
@@ -31,19 +34,24 @@ def test_every_day_through_2050_has_localized_commemoration():
             assert not any(token.casefold() in value.casefold() for token in forbidden)
 
 
-def test_august_8_2026_has_old_calendar_commemoration_in_all_lanes():
+def test_august_8_2026_uses_native_greek_lane_without_cross_language_copy():
     day = next(item for item in CANONICAL["days"] if item["date_iso"] == "2026-08-08")
     assert day["julian_date"] == "2026-07-26"
     names = day["commemoration"]["name"]
-    assert "26 تموز" in names["ar"]
-    assert "July 26" in names["en"]
-    assert "26" in names["el"] and "Ἰουλίου" in names["el"]
+    assert names["ar"] == "القديسان الشهيدان إرمولاوس الأسقف وبراسكيفي البارّة الروميّة"
+    assert names["en"] == "Holy Martyr Paraskeve , Hieromartyr Hermolaus"
+    assert "26 تموز" not in names["en"]
+    evidence = json.loads((ROOT / "canonical/jerusalem_jordan_fixed_commemorations_native.json").read_text(encoding="utf-8"))
+    evidence_day = next(item for item in evidence["records"] if item["old_calendar_month_day"] == "07-26")
+    assert evidence_day["lanes"]["en"]["source_id"] == "jerusalem_patriarchate_english_timetable_2019"
+    assert evidence_day["lanes"]["en"]["comparative"] is False
+    assert names["el"] == "Παρασκευῆς ὁσιομάρτυρος, Ἑρμολάου ἱερομάρ."
 
 
 def test_home_keeps_commemoration_out_of_the_compact_date_card():
     home = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java").read_text(encoding="utf-8")
     old_pos = home.index("ui_old_church_calendar_home_format")
-    fast_pos = home.index("fastingDisplayTitle(today, data.dataDate())")
+    fast_pos = home.index("fastingDisplayTitle(today, fastingDate)")
     assert old_pos < fast_pos
     date_card = home[home.index("private void addDateCard"):home.index("private void addRollingWeekStatus")]
     assert "ui_today_commemoration_home_format" not in date_card

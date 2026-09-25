@@ -11,6 +11,7 @@ the commemoration by its Old Calendar date and signed/native sources may enrich 
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 import sys
@@ -40,9 +41,11 @@ END = date(2050, 12, 31)
 OUT_CANONICAL = ROOT / "canonical" / "internal_calendar_2026_2050.json"
 OUT_ASSET_DIR = ROOT / "app" / "src" / "main" / "assets" / "data" / "calendar"
 OUT_ASSET_INDEX = OUT_ASSET_DIR / "calendar_index.json"
+OUT_COMPARATIVE_ENGLISH = OUT_ASSET_DIR / "comparative_english.json"
 H2_PATH = ROOT / "canonical" / "jordan_2026_h2_lectionary.json"
 FIXED_LECTIONARY_PATH = ROOT / "canonical" / "jerusalem_fixed_feast_lectionary.json"
 PERPETUAL_LECTIONARY_PATH = ROOT / "canonical" / "perpetual_lectionary_2026_2050.json"
+NATIVE_COMM_MEMORATIONS_PATH = ROOT / "canonical" / "jerusalem_jordan_fixed_commemorations_native.json"
 
 
 AR_MONTHS = {
@@ -224,6 +227,69 @@ def load_perpetual_lectionary() -> dict[str, dict]:
     return payload.get("dates", {}) if isinstance(payload.get("dates"), dict) else {}
 
 
+def load_native_commemorations() -> dict[str, dict]:
+    if not NATIVE_COMM_MEMORATIONS_PATH.is_file():
+        return {}
+    payload = json.loads(NATIVE_COMM_MEMORATIONS_PATH.read_text(encoding="utf-8"))
+    records = payload.get("records", []) if isinstance(payload, dict) else []
+    return {
+        str(record.get("old_calendar_month_day")): record
+        for record in records
+        if isinstance(record, dict) and record.get("old_calendar_month_day")
+    }
+
+
+def comparative_english_lane(day: date, records: dict[str, dict]) -> dict[str, dict]:
+    _jy, jm, jd = gregorian_to_julian_date(day)
+    record = records.get(f"{jm:02d}-{jd:02d}")
+    if not isinstance(record, dict) or not isinstance(record.get("lanes"), dict):
+        return {}
+    entry = record["lanes"].get("en")
+    if not isinstance(entry, dict):
+        return {}
+    if entry.get("comparative") is not True:
+        return {}
+    if entry.get("jurisdiction") != "comparative_not_jerusalem_jordan":
+        return {}
+    if not str(entry.get("evidence_status") or "").startswith("COMPARATIVE_"):
+        return {}
+    if entry.get("fixed_slot_eligible") is not False:
+        return {}
+    if not str(entry.get("text") or "").strip():
+        return {}
+    return {"en": copy.deepcopy(entry)}
+
+
+def verified_native_lanes(day: date, records: dict[str, dict]) -> dict[str, dict]:
+    _jy, jm, jd = gregorian_to_julian_date(day)
+    record = records.get(f"{jm:02d}-{jd:02d}")
+    if not isinstance(record, dict) or not isinstance(record.get("lanes"), dict):
+        return {}
+    accepted_status = {
+        "ar": "VERIFIED_NATIVE_LOCAL_ARABIC_SOURCE",
+        "en": "VERIFIED_NATIVE_LOCAL_ENGLISH_SOURCE",
+        "el": "VERIFIED_NATIVE_LOCAL_GREEK_SOURCE",
+    }
+    accepted = {}
+    for language, expected_status in accepted_status.items():
+        entry = record["lanes"].get(language)
+        if not isinstance(entry, dict):
+            continue
+        if entry.get("evidence_status") != expected_status:
+            continue
+        if entry.get("jurisdiction") not in {"jerusalem_patriarchate", "jerusalem_jordan"}:
+            continue
+        if entry.get("comparative") is not False:
+            continue
+        if entry.get("fixed_slot_eligible") is not True:
+            continue
+        text = str(entry.get("text") or "").strip()
+        if not text:
+            continue
+        accepted[language] = copy.deepcopy(entry)
+    return accepted
+
+
 def appointed_from_refs(refs: dict) -> list[dict]:
     output = []
     for kind in ("epistle", "gospel", "matins_gospel"):
@@ -293,9 +359,10 @@ def primary_and_occasions(day: date, info: dict) -> tuple[dict[str, str], list[d
     movable = movable_occasion(day)
     relative = relative_fixed_occasion(day)
     fixed = None
-    # day_info already localizes a pinned major fixed feast. Do not treat its
-    # unavailable placeholder as an occasion.
-    if info.get("feast_status") == "PINNED_FIXED_FEAST":
+    # Preserve every verified named feast selected by day_info, including an
+    # exact annual record such as the 2026 Transfiguration entry. Do not treat
+    # unavailable or generic daily placeholders as named occasions.
+    if info.get("feast_status") in {"PINNED_FIXED_FEAST", "PINNED_REVIEWED_ANNUAL_ENTRY"}:
         fixed = loc(info["feast_ar"], info["feast_en"], info["feast_el"])
     for kind, value, priority in (
         ("movable", movable, 100),
@@ -318,13 +385,34 @@ def build() -> dict:
     exact = load_exact_2026()
     fixed_lectionary = load_fixed_lectionary()
     perpetual_lectionary = load_perpetual_lectionary()
+    native_commemorations = load_native_commemorations()
     days = []
     cursor = START
     exact_reading_days = 0
     occasion_days = 0
+    native_lane_days = 0
+    comparative_english_days = 0
     while cursor <= END:
         info = day_info(cursor)
         primary, occasions = primary_and_occasions(cursor, info)
+        native_lanes = verified_native_lanes(cursor, native_commemorations)
+        comparative_lanes = comparative_english_lane(cursor, native_commemorations)
+        # A verified local lane or explicitly comparative English lane may enrich
+        # an ordinary date without replacing a movable or major fixed occasion.
+        # Missing language lanes remain the existing same-language baseline; no
+        # cross-language fallback is used, and comparative English is never local.
+        # Keep the full comparative English text in the canonical evidence and
+        # the sidecar asset. The horizon canonical remains compact: the Android
+        # loader rehydrates the English lane from the sidecar, while local native
+        # lanes may be embedded directly only when verified and compact.
+        if native_lanes and not occasions:
+            primary = copy.deepcopy(primary)
+            for language, entry in native_lanes.items():
+                primary[language] = entry["text"]
+        if native_lanes:
+            native_lane_days += 1
+        if comparative_lanes:
+            comparative_english_days += 1
         readings, appointed_readings, reference_status, reading_day_resolution = compact_readings(cursor, exact, fixed_lectionary, perpetual_lectionary)
         if readings:
             exact_reading_days += 1
@@ -332,7 +420,16 @@ def build() -> dict:
             occasion_days += 1
         jy, jm, jd = gregorian_to_julian_date(cursor)
         selection = liturgy_service_selection(cursor, info)
-        commemoration_status = "PINNED_INTERNAL_RULE" if occasions else "PINNED_INTERNAL_OLD_CALENDAR_DATE"
+        if occasions:
+            commemoration_status = "PINNED_INTERNAL_RULE"
+        elif native_lanes and comparative_lanes:
+            commemoration_status = "PINNED_NATIVE_AND_COMPARATIVE_LANES"
+        elif native_lanes:
+            commemoration_status = "PINNED_NATIVE_LANE"
+        elif comparative_lanes:
+            commemoration_status = "PINNED_COMPARATIVE_ENGLISH_LANE"
+        else:
+            commemoration_status = "PINNED_INTERNAL_OLD_CALENDAR_DATE"
         days.append({
             "date": cursor.isoformat(),
             "date_iso": cursor.isoformat(),
@@ -341,7 +438,13 @@ def build() -> dict:
             "commemoration": {
                 "name": copy.deepcopy(primary),
                 "status": commemoration_status,
-                "source_kind": "internal_named_occasion" if occasions else "old_calendar_date_baseline",
+                "source_kind": (
+                    "internal_named_occasion" if occasions else
+                    "mixed_native_and_comparative_lanes" if native_lanes and comparative_lanes else
+                    "verified_local_native_lane" if native_lanes else
+                    "comparative_english_lane" if comparative_lanes else
+                    "old_calendar_date_baseline"
+                ),
             },
             "commemoration_status": commemoration_status,
             "feast": primary,
@@ -353,6 +456,10 @@ def build() -> dict:
                 "detail": copy.deepcopy(info["fasting"].get("detail") or {}),
                 "is_fast": bool(info["fasting"].get("is_fast")),
                 "display_icons": copy.deepcopy(info["fasting"].get("display_icons") or []),
+                "items": copy.deepcopy(info["fasting"].get("items") or []),
+                "guidance": copy.deepcopy(info["fasting"].get("guidance") or {}),
+                "abstinence": copy.deepcopy(info["fasting"].get("abstinence") or {}),
+                "verification": copy.deepcopy(info["fasting"].get("verification") or {}),
             },
             "reading_references": readings,
             "appointed_readings": appointed_readings,
@@ -384,13 +491,18 @@ def build() -> dict:
             "perpetual_reference_baseline": bool(perpetual_lectionary),
             "perpetual_baseline_is_not_jurisdiction_override": True,
             "machine_translation": False,
-            "cross_language_fallback": False,
-            "future_synodal_changes_applied_by_signed_update": True,
+        "cross_language_fallback": False,
+        "native_fixed_commemoration_source": "canonical/jerusalem_jordan_fixed_commemorations_native.json",
+        "strict_named_local_three_language_gate": False,
+        "future_synodal_changes_applied_by_signed_update": True,
         },
         "coverage": {
             "structural_days": len(days),
             "days_with_named_internal_occasion": occasion_days,
             "days_with_offline_commemoration": len(days),
+        "days_with_verified_native_lanes": native_lane_days,
+        "days_with_comparative_english_lane": comparative_english_days,
+            "days_with_verified_native_language_lane": native_lane_days,
             "days_with_pinned_reading_references": exact_reading_days,
             "days_with_appointed_readings": sum(1 for item in days if item.get("appointed_readings")),
             "days_with_epistle_and_gospel": sum(1 for item in days if {"epistle", "gospel"}.issubset((item.get("reading_references") or {}).keys())),
@@ -402,12 +514,42 @@ def build() -> dict:
     }
 
 
-def _asset_day(item: dict) -> dict:
-    # Keep the Android fallback compact. Detailed proof and long fasting notes
-    # remain in the canonical file; the app loads only one calendar year at a time.
+def _compact_fasting(item: dict) -> dict:
+    fasting = item.get("fasting") if isinstance(item.get("fasting"), dict) else {}
+    return {
+        "code": fasting.get("code"),
+        "title": fasting.get("title") or {},
+        "detail": fasting.get("detail") or {},
+        "is_fast": bool(fasting.get("is_fast")),
+        "display_icons": fasting.get("display_icons") or [],
+        "items": fasting.get("items") or [],
+        "guidance": fasting.get("guidance") or {},
+        "verification": {
+            "status": str((fasting.get("verification") or {}).get("status") or "TYPICON_BASELINE"),
+            "policy": str((fasting.get("verification") or {}).get("policy") or "canonical/fasting_policy.json"),
+            "rule": str((fasting.get("verification") or {}).get("rule") or ""),
+        },
+        "abstinence": (
+            fasting.get("abstinence")
+            if isinstance(fasting.get("abstinence"), dict)
+            and bool(fasting.get("abstinence").get("applies"))
+            else {}
+        ),
+    }
+
+
+def _fasting_profile_id(fasting: dict) -> str:
+    serialized = json.dumps(fasting, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return "fasting_" + hashlib.sha256(serialized.encode("utf-8")).hexdigest()[:16]
+
+
+def _asset_day(item: dict, fasting_profile_id: str, comparative_en_ref: str = "") -> dict:
+    # Keep provenance compact. User-facing fasting guidance is de-duplicated in
+    # fasting_profiles and resolved by DataRepository before a screen consumes it.
     fasting = item.get("fasting") if isinstance(item.get("fasting"), dict) else {}
     selection = item.get("liturgy_service_selection") if isinstance(item.get("liturgy_service_selection"), dict) else {}
     appointed = item.get("appointed_readings") if isinstance(item.get("appointed_readings"), list) else []
+    occasions = item.get("occasions") if isinstance(item.get("occasions"), list) else []
     kind_counts = {}
     for reading in appointed:
         if isinstance(reading, dict):
@@ -420,23 +562,23 @@ def _asset_day(item: dict) -> dict:
         any(kind not in {"epistle", "gospel", "matins_gospel"} for kind in kind_counts)
         or any(count > 1 for count in kind_counts.values())
     ) else []
-    return {
+    asset_feast = copy.deepcopy(item["feast"])
+    if comparative_en_ref:
+        month, day_number = (int(part) for part in comparative_en_ref.split("-"))
+        asset_feast["en"] = f"Commemoration of the saints of {EN_MONTHS[month]} {day_number} on the Old Church Calendar"
+    asset = {
         "date": item["date"],
         "date_iso": item["date_iso"],
         "civil_weekday": item["civil_weekday"],
         "julian_date": item["julian_date"],
         # The compact Android year asset reuses feast + occasion_status as the
         # commemoration fallback to avoid duplicating the same three-language text.
-        "feast": item["feast"],
+        "feast": asset_feast,
+        "occasions": occasions if len(occasions) > 1 else [],
         "occasion_status": item["occasion_status"],
         "status": fasting.get("title") or {},
         "fast": fasting.get("title") or {},
-        "fasting": {
-            "code": fasting.get("code"),
-            "title": fasting.get("title") or {},
-            "is_fast": bool(fasting.get("is_fast")),
-            "display_icons": fasting.get("display_icons") or [],
-        },
+        "fasting": {"profile_id": fasting_profile_id},
         "reading_references": item.get("reading_references") or {},
         "appointed_readings": appointed_asset,
         "reference_status": item.get("reference_status"),
@@ -446,19 +588,48 @@ def _asset_day(item: dict) -> dict:
             "service_form": selection.get("service_form"),
             "rule_id": selection.get("rule_id"),
             "label": selection.get("label") or {},
+            "service_id": selection.get("service_id"),
+            "service_content_status": selection.get("selection_status") or "",
+            "availability_note": selection.get("availability_note") or {},
             "displayable": bool(selection.get("displayable")),
+            "full_service_required": bool(selection.get("full_service_required", True)),
             "wrong_liturgy_fallback_allowed": False,
         },
     }
+    if comparative_en_ref:
+        asset["comparative_en_ref"] = comparative_en_ref
+    return asset
 
 
-def write(payload: dict) -> None:
-    OUT_CANONICAL.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def write(payload: dict, native_commemorations: dict[str, dict]) -> None:
+    OUT_CANONICAL.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     OUT_ASSET_DIR.mkdir(parents=True, exist_ok=True)
+    comparative_entries: dict[str, dict] = {}
+    for slot, record in sorted(native_commemorations.items()):
+        lanes = record.get("lanes") if isinstance(record, dict) else None
+        english = lanes.get("en") if isinstance(lanes, dict) else None
+        if not isinstance(english, dict) or english.get("comparative") is not True:
+            continue
+        text = str(english.get("text") or "").strip()
+        if not text:
+            continue
+        comparative_entries[slot] = {
+            "text": text,
+            "source_id": english.get("source_id", ""),
+            "evidence_status": english.get("evidence_status", ""),
+            "comparative": True,
+            "jurisdiction": english.get("jurisdiction", ""),
+        }
+    OUT_COMPARATIVE_ENGLISH.write_text(json.dumps({
+        "schema_version": 1,
+        "calendar": payload["calendar"],
+        "source_kind": "comparative_native_english_source",
+        "entries": {key: comparative_entries[key] for key in sorted(comparative_entries)},
+    }, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     by_year: dict[int, list[dict]] = {}
     for item in payload["days"]:
         year = int(str(item["date_iso"])[:4])
-        by_year.setdefault(year, []).append(_asset_day(item))
+        by_year.setdefault(year, []).append(item)
     index = {
         "schema_version": 1,
         "calendar": payload["calendar"],
@@ -466,25 +637,39 @@ def write(payload: dict) -> None:
         "visible_window_days": payload["visible_window_days"],
         "update_schedule": payload["update_schedule"],
         "years": {},
+        "sidecars": {"comparative_english": "data/calendar/comparative_english.json"},
     }
     for year, days in sorted(by_year.items()):
         name = f"calendar_{year}.json"
+        profiles: dict[str, dict] = {}
+        asset_days = []
+        for item in days:
+            fasting = _compact_fasting(item)
+            profile_id = _fasting_profile_id(fasting)
+            profiles[profile_id] = fasting
+            commemoration = item.get("commemoration") if isinstance(item.get("commemoration"), dict) else {}
+            comparative_en_ref = ""
+            if commemoration.get("source_kind") in {"comparative_english_lane", "mixed_native_and_comparative_lanes"}:
+                comparative_en_ref = str(item.get("julian_date") or "")[5:]
+            asset_days.append(_asset_day(item, profile_id, comparative_en_ref))
         year_payload = {
             "schema_version": 1,
             "calendar": payload["calendar"],
             "year": year,
-            "civil_range": {"start": days[0]["date_iso"], "end": days[-1]["date_iso"], "day_count": len(days)},
-            "days": days,
+            "civil_range": {"start": asset_days[0]["date_iso"], "end": asset_days[-1]["date_iso"], "day_count": len(asset_days)},
+            "fasting_profiles": {key: profiles[key] for key in sorted(profiles)},
+            "days": asset_days,
         }
         target = OUT_ASSET_DIR / name
         target.write_text(json.dumps(year_payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-        index["years"][str(year)] = {"asset": f"data/calendar/{name}", "day_count": len(days), "bytes": target.stat().st_size}
+        index["years"][str(year)] = {"asset": f"data/calendar/{name}", "day_count": len(asset_days), "bytes": target.stat().st_size}
     OUT_ASSET_INDEX.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
 def main() -> None:
     payload = build()
-    write(payload)
+    native_commemorations = load_native_commemorations()
+    write(payload, native_commemorations)
     asset_bytes = sum(int(item["bytes"]) for item in json.loads(OUT_ASSET_INDEX.read_text(encoding="utf-8"))["years"].values())
     print(
         "INTERNAL_CALENDAR_2050_OK "

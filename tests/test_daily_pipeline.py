@@ -275,7 +275,7 @@ class DailyPipelineTests(unittest.TestCase):
             next(item for item in data["upcoming"] if item["date"] == "2026-07-12")["fasting"],
         )
         for item in data["upcoming"]:
-            self.assertIn(item["fasting"]["code"], {"fast_free", "dairy_allowed", "fish_allowed", "wine_oil", "strict"})
+            self.assertIn(item["fasting"]["code"], {"fast_free", "dairy_allowed", "fish_allowed", "wine_oil", "wine_only", "strict"})
             self.assertIn("epistle", item["reading_references"])
             self.assertIn("gospel", item["reading_references"])
         self.assertEqual(self.schedule.validate(data), [])
@@ -530,6 +530,30 @@ class DailyPipelineTests(unittest.TestCase):
         lent_weekday = self.update.day_info(pascha - self.update.timedelta(days=40))["fasting"]
         self.assertEqual(lent_weekday["code"], "strict")
 
+        first_lent_day = self.update.day_info(pascha - self.update.timedelta(days=48))["fasting"]
+        self.assertEqual(first_lent_day["code"], "strict")
+        self.assertTrue(first_lent_day["abstinence"]["applies"])
+        self.assertTrue(first_lent_day["abstinence"]["optional"])
+        self.assertEqual(first_lent_day["abstinence"]["kind"], "until_service_end")
+        self.assertIsNone(first_lent_day["abstinence"]["start_time"])
+        self.assertIsNone(first_lent_day["abstinence"]["end_time"])
+
+        great_friday = self.update.day_info(pascha - self.update.timedelta(days=2))["fasting"]
+        self.assertEqual(great_friday["code"], "strict")
+        self.assertTrue(great_friday["abstinence"]["applies"])
+        self.assertTrue(great_friday["abstinence"]["optional"])
+        self.assertEqual(great_friday["verification"]["rule"], "great_friday_optional_total_abstinence")
+
+        # In 2034 the old-calendar Annunciation coincides with Great Friday.
+        pascha_2034 = self.update.orthodox_pascha_gregorian(2034)
+        annunciation_great_friday = self.update.day_info(pascha_2034 - self.update.timedelta(days=2))["fasting"]
+        self.assertEqual(pascha_2034, date(2034, 4, 9))
+        self.assertEqual(annunciation_great_friday["code"], "wine_only")
+        self.assertTrue(annunciation_great_friday["allowed"]["wine"])
+        self.assertFalse(annunciation_great_friday["allowed"]["fish"])
+        self.assertFalse(annunciation_great_friday["allowed"]["oil"])
+        self.assertEqual(annunciation_great_friday["verification"]["rule"], "annunciation_paschal_collision_wine_only")
+
         apostles_start = pascha + self.update.timedelta(days=57)
         apostles_tuesday = self.update.day_info(apostles_start + self.update.timedelta(days=1))["fasting"]
         self.assertEqual(apostles_tuesday["code"], "wine_oil")
@@ -539,6 +563,16 @@ class DailyPipelineTests(unittest.TestCase):
         transfiguration = self.update.julian_to_gregorian_date(2026, 8, 6)
         dormition_feast = self.update.day_info(transfiguration)["fasting"]
         self.assertEqual(dormition_feast["code"], "fish_allowed")
+
+        dormition = self.update.julian_to_gregorian_date(2026, 8, 15)
+        dormition_friday = self.update.day_info(dormition)["fasting"]
+        self.assertEqual(dormition, date(2026, 8, 28))
+        self.assertEqual(dormition_friday["code"], "fish_allowed")
+        self.assertTrue(dormition_friday["allowed"]["fish"])
+        self.assertTrue(dormition_friday["allowed"]["oil"])
+        self.assertFalse(dormition_friday["allowed"]["meat"])
+        self.assertFalse(dormition_friday["allowed"]["dairy"])
+        self.assertEqual(dormition_friday["verification"]["rule"], "dormition_feast_fish")
 
         entry = self.update.julian_to_gregorian_date(2026, 11, 21)
         nativity_feast = self.update.day_info(entry)["fasting"]

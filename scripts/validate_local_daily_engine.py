@@ -124,6 +124,7 @@ def verify_reference_window(
         start: date,
 ) -> int:
     complete = 0
+    anchor_pending = False
     for offset in range(9):
         current = start + timedelta(days=offset)
         day = years.get(current.year, {}).get(current.isoformat())
@@ -131,7 +132,12 @@ def verify_reference_window(
             fail(f"window_day_missing:{current}")
         refs = day.get("reading_references") or {}
         if offset == 0 and not {"epistle", "gospel"}.issubset(refs):
-            fail(f"anchor_readings_missing:{current}")
+            # Holy Week dates may remain explicitly unresolved until the appointed
+            # two-daily source verification is completed. This is an honest pending
+            # state, not a permission to invent readings or to accept an unexplained gap.
+            if day.get("reference_status") != "REFERENCE_PENDING_TWICE_DAILY_VERIFICATION":
+                fail(f"anchor_readings_missing:{current}")
+            anchor_pending = True
         for item in refs.values():
             canonical = item.get("canonical_reference", "")
             if canonical and all(
@@ -139,7 +145,7 @@ def verify_reference_window(
                 for language in LANGUAGES
             ):
                 complete += 1
-    if complete < 2:
+    if complete < 2 and not anchor_pending:
         fail(f"anchor_native_scripture_coverage_too_low:{complete}")
     return complete
 
@@ -173,6 +179,69 @@ def verify_all_calendar_references(
     return len(calendar_references)
 
 
+def verify_daily_propers_overlay() -> int:
+    canonical = ROOT / "canonical/daily_liturgy_propers_overlay.json"
+    asset = ROOT / "app/src/main/assets/data/daily_liturgy_propers_overlay.json"
+    for path in (canonical, asset):
+        if not path.is_file():
+            fail(f"daily_propers_overlay_missing:{path.relative_to(ROOT)}")
+    if sha256(canonical) != sha256(asset):
+        fail("daily_propers_overlay_drift")
+    payload = load_json(asset)
+    if payload.get("status") != "VERIFIED_PARTIAL_DAILY_LITURGY_PROPERS_OVERLAY":
+        fail("daily_propers_overlay_status")
+    if payload.get("completion_claim") != "unproven_complete":
+        fail("daily_propers_overlay_completion_claim")
+    policy = payload.get("policy") or {}
+    if policy.get("cross_language_fallback_allowed") is not False:
+        fail("daily_propers_overlay_fallback_policy")
+    if policy.get("partial_entry_slots_allowed") is not True:
+        fail("daily_propers_overlay_partial_policy")
+    if policy.get("all_language_lanes_must_share_same_verified_slots") is not True:
+        fail("daily_propers_overlay_slot_set_policy")
+    entries = payload.get("entries") or {}
+    required_proper_slots = {"daily_troparion", "daily_kontakion", "communion_hymn"}
+    if payload.get("entry_count") != len(entries):
+        fail("daily_propers_overlay_entry_count")
+    for civil_date, entry in entries.items():
+        try:
+            parsed = date.fromisoformat(civil_date)
+        except ValueError:
+            fail(f"daily_propers_overlay_date:{civil_date}")
+        if not (date(2026, 1, 1) <= parsed <= date(2050, 12, 31)):
+            fail(f"daily_propers_overlay_date_outside_range:{civil_date}")
+        languages = entry.get("languages") or {}
+        if set(languages) != set(LANGUAGES):
+            fail(f"daily_propers_overlay_languages:{civil_date}")
+        declared_slots = set(entry.get("verified_slots") or [])
+        if not declared_slots or not declared_slots.issubset(required_proper_slots):
+            fail(f"daily_propers_overlay_declared_slots:{civil_date}")
+        if bool(entry.get("complete_three_slot_entry")) != (declared_slots == required_proper_slots):
+            fail(f"daily_propers_overlay_completeness_flag:{civil_date}")
+        for language in LANGUAGES:
+            lane = languages.get(language) or {}
+            if set(lane) != declared_slots:
+                fail(f"daily_propers_overlay_slots:{civil_date}:{language}")
+            for slot, item in lane.items():
+                text = str(item.get("text") or "").strip()
+                declared = str(item.get("text_sha256") or "").strip()
+                if not text or not declared or sha256_text(text) != declared:
+                    fail(f"daily_propers_overlay_hash:{civil_date}:{language}:{slot}")
+                if not item.get("source_id") or not item.get("source_url"):
+                    fail(f"daily_propers_overlay_source:{civil_date}:{language}:{slot}")
+                if item.get("permission_confirmed") is not True or item.get("redistribution_review_required") is not False:
+                    fail(f"daily_propers_overlay_rights:{civil_date}:{language}:{slot}")
+                if item.get("machine_translation_used") is not False or item.get("ai_translation_used") is not False:
+                    fail(f"daily_propers_overlay_translation:{civil_date}:{language}:{slot}")
+                if item.get("automatic_diacritization_used") is not False or item.get("script_isolated") is not True:
+                    fail(f"daily_propers_overlay_integrity:{civil_date}:{language}:{slot}")
+    return len(entries)
+
+
+def sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
 def verify_native_services() -> None:
     for language in LANGUAGES:
         payload = load_json(ROOT / f"app/src/main/assets/data/native/library_{language}.json")
@@ -191,10 +260,18 @@ def verify_android_wiring() -> None:
 
     required_engine = (
         "WINDOW_DAYS = 9",
+        "LOCAL_ENGINE_SCHEMA_VERSION = 3",
         "FIRST_CALENDAR_YEAR = 2026",
         "LAST_CALENDAR_YEAR = 2050",
         "buildCurrentWindow",
         "EXACT_BUNDLED_NATIVE_SCRIPTURE",
+        "DAILY_PROPERS_ASSET",
+        "verifiedProperData",
+        "dailyPropersOverlay",
+        "daily_propers_provenance",
+        "daily_troparion",
+        "daily_kontakion",
+        "communion_hymn",
         "network_required",
     )
     for token in required_engine:
@@ -212,7 +289,7 @@ def verify_android_wiring() -> None:
         fail("coordinator_still_requires_network")
     if "Result.retry" in worker:
         fail("worker_retries_deterministic_local_failure")
-    if 'versionName = "5.6.4"' not in build or "versionCode = 50604" not in build:
+    if 'versionName = "5.6.7"' not in build or "versionCode = 50607" not in build:
         fail("version_not_5_6_3")
 
 
@@ -250,13 +327,15 @@ def main() -> None:
     complete = verify_reference_window(years, ids, omissions, anchor)
     reference_count = verify_all_calendar_references(years, ids, supported, omissions)
     verify_native_services()
+    proper_entries = verify_daily_propers_overlay()
     verify_android_wiring()
     verify_resources()
     print(
         "LOCAL_DAILY_ENGINE_OK "
         f"date={anchor} window=9 calendar=2026-2050 languages=ar,en,el "
         f"native_window_references={complete} calendar_references={reference_count} "
-        "network_required=false version=5.6.4"
+        f"verified_daily_propers_entries={proper_entries} "
+        "network_required=false version=5.6.7"
     )
 
 

@@ -16,6 +16,10 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public final class HomeScreen extends BaseScreen {
     // R14_HOME_COMPACT: duplicate home cards hidden; internal routes remain available.
@@ -72,7 +76,7 @@ public final class HomeScreen extends BaseScreen {
     }
 
     private void addDateCard(LinearLayout root) {
-        JSONObject today = data.today();
+        JSONObject today = data.currentDayForDisplay();
         LinearLayout card = ui.card();
         String dateValue = civilDateLabel(today);
         TextView date = centered(dateValue, 22, ui.colors().primaryText(), true);
@@ -88,11 +92,12 @@ public final class HomeScreen extends BaseScreen {
             card.addView(calendar, ui.margins(-1, -2, 0, 5, 0, 0));
         }
 
-        String fastingValue = fastingDisplayTitle(today, data.dataDate());
+        String fastingDate = data.isTodayCurrent() ? data.dataDate() : data.currentAmmanDate();
+        String fastingValue = fastingDisplayTitle(today, fastingDate);
         TextView fast = centered(fastingValue, 18, ui.colors().accentText(), true);
         card.addView(fast, ui.margins(-1, -2, 0, 8, 0, 0));
 
-        if (!data.isTodayCurrent()) {
+        if (!data.isTodayCurrent() && !data.hasCurrentCalendarDay()) {
             String staleText = localFormat(
                     com.orthodoxprayers.privateapp.R.string.ui_stale_trusted_copy_date_format,
                     data.dataDate()
@@ -201,6 +206,9 @@ public final class HomeScreen extends BaseScreen {
         if (notice == null) return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);
         if (notice.kind == FastingNoticeEngine.Kind.CURRENT_MAJOR_FAST) {
             String family = fastFamilyTitle(notice.family);
+            if (notice.feastDay && notice.family == FastingNoticeEngine.Family.DORMITION) {
+                return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_dormition_feast_relaxed);
+            }
             if (notice.dayNumber == 1) {
                 return localFormat(
                         com.orthodoxprayers.privateapp.R.string.ui_fast_notice_first_day_format,
@@ -254,20 +262,15 @@ public final class HomeScreen extends BaseScreen {
         }
         if (notice.kind == FastingNoticeEngine.Kind.UPCOMING_WEEKLY_FAST) {
             String weekday = weekdayTitle(notice.weekday);
-            String fastTitle = notice.weekday == DayOfWeek.WEDNESDAY
-                    ? local(com.orthodoxprayers.privateapp.R.string.ui_wednesday_fast)
-                    : local(com.orthodoxprayers.privateapp.R.string.ui_friday_fast);
             if (notice.daysUntilStart == 1) {
                 return localFormat(
                         com.orthodoxprayers.privateapp.R.string.ui_fast_notice_tomorrow_weekly_format,
-                        weekday,
-                        fastTitle
+                        weekday
                 );
             }
             return localFormat(
                     com.orthodoxprayers.privateapp.R.string.ui_fast_notice_next_weekly_format,
-                    weekday,
-                    fastTitle
+                    weekday
             );
         }
         return local(com.orthodoxprayers.privateapp.R.string.ui_fast_notice_none);
@@ -297,16 +300,32 @@ public final class HomeScreen extends BaseScreen {
     }
 
     private LocalDate currentDataDate() {
-        String value = data.today().optString("date_iso", data.dataDate()).trim();
+        String value = data.isTodayCurrent()
+                ? data.dataDate()
+                : data.currentAmmanDate();
         try { return LocalDate.parse(value); }
         catch (Exception ignored) { return ZonedDateTime.now(AMMAN_ZONE).toLocalDate(); }
     }
 
     private String civilDateLabel(JSONObject today) {
-        String value = localized(today.optJSONObject("date_label"), data.dataDate()).trim();
+        String value = localized(today.optJSONObject("date_label"), "").trim();
         int legacySeparator = value.indexOf(" / ");
         if (legacySeparator > 0) value = value.substring(0, legacySeparator).trim();
-        return value.isEmpty() ? data.dataDate() : value;
+        if (!value.isEmpty()) return value;
+        if (!data.isTodayCurrent() && data.hasCurrentCalendarDay()) {
+            try {
+                LocalDate current = LocalDate.parse(data.currentAmmanDate());
+                Locale locale = "ar".equals(preferences.effectiveLanguage())
+                        ? new Locale("ar")
+                        : "el".equals(preferences.effectiveLanguage()) ? new Locale("el") : Locale.ENGLISH;
+                String weekday = current.getDayOfWeek().getDisplayName(TextStyle.FULL, locale);
+                String dateText = current.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(locale));
+                return weekday + ("ar".equals(preferences.effectiveLanguage()) ? "، " : ", ") + dateText;
+            } catch (Exception ignored) {
+                // Fall through to the stable snapshot date if the device date is invalid.
+            }
+        }
+        return data.dataDate();
     }
 
     private String oldCalendarDateLabel(JSONObject today) {
@@ -323,6 +342,17 @@ public final class HomeScreen extends BaseScreen {
             }
         }
         String iso = raw == null ? "" : String.valueOf(raw).trim();
+        if (iso.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            try {
+                LocalDate oldDate = LocalDate.parse(iso);
+                Locale locale = "ar".equals(preferences.effectiveLanguage())
+                        ? new Locale("ar")
+                        : "el".equals(preferences.effectiveLanguage()) ? new Locale("el") : Locale.ENGLISH;
+                return oldDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(locale));
+            } catch (Exception ignored) {
+                // Keep the raw ISO date as a stable last-resort label.
+            }
+        }
         return iso;
     }
 

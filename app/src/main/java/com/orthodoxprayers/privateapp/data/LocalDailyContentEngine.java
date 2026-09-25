@@ -38,12 +38,14 @@ import java.util.regex.Pattern;
  */
 public final class LocalDailyContentEngine {
     public static final int WINDOW_DAYS = 9;
+    public static final int LOCAL_ENGINE_SCHEMA_VERSION = 3;
     public static final int FIRST_CALENDAR_YEAR = 2026;
     public static final int LAST_CALENDAR_YEAR = 2050;
 
     private static final String CALENDAR_ASSET_PREFIX = "data/calendar/calendar_";
     private static final String SCRIPTURE_ASSET_PREFIX = "data/scripture/verses_";
     private static final String SCRIPTURE_MANIFEST_PREFIX = "data/scripture/manifest_";
+    private static final String DAILY_PROPERS_ASSET = "data/daily_liturgy_propers_overlay.json";
     private static final Pattern CANONICAL_RANGE = Pattern.compile(
             "^([1-3]?[A-Z]+)\\.(\\d+)\\.(\\d+)-(?:([1-3]?[A-Z]+)\\.)?(?:(\\d+)\\.)?(\\d+)$"
     );
@@ -52,6 +54,7 @@ public final class LocalDailyContentEngine {
     private final BibleCorpusRepository fullBible;
     private final Map<Integer, Map<String, JSONObject>> calendarCache = new HashMap<>();
     private final Map<String, ScriptureCorpus> scriptureCache = new HashMap<>();
+    private JSONObject dailyPropersOverlay;
 
     public LocalDailyContentEngine(Context context) {
         this.context = context.getApplicationContext();
@@ -87,6 +90,7 @@ public final class LocalDailyContentEngine {
         for (int i = 1; i < built.size(); i++) future.put(built.get(i));
         root.put("weekly_days", future);
         root.put("upcoming", new JSONArray(future.toString()));
+        root.put("local_daily_engine_schema", LOCAL_ENGINE_SCHEMA_VERSION);
         root.put("local_daily_window", new JSONObject()
                 .put("schema_version", 1)
                 .put("policy", "EMBEDDED_CALENDAR_STARTING_TODAY")
@@ -204,6 +208,7 @@ public final class LocalDailyContentEngine {
                 .put("human_review_required", false));
         result.put("content_metadata", new JSONObject()
                 .put("generated_by", "LocalDailyContentEngine")
+                .put("engine_schema_version", LOCAL_ENGINE_SCHEMA_VERSION)
                 .put("calendar_range", FIRST_CALENDAR_YEAR + "-" + LAST_CALENDAR_YEAR)
                 .put("scripture_policy", "FULL_BUNDLED_PUBLIC_DOMAIN_BIBLE_FIRST_THEN_AUDITED_SLICE_FAIL_CLOSED")
                 .put("network_required", false));
@@ -416,7 +421,14 @@ public final class LocalDailyContentEngine {
                     .put("fail_closed", true)
                     .put("network_required", false));
             JSONObject readingSlots = readingSlotReplacements(readings);
+            JSONObject properData = verifiedProperData(date);
+            JSONObject properSlots = properData.optJSONObject("replacements");
+            mergeSlotReplacements(readingSlots, properSlots);
+            JSONObject properProvenance = properData.optJSONObject("provenance");
             if (readingSlots.length() > 0) service.put("slot_replacements", readingSlots);
+            if (properProvenance != null && properProvenance.length() > 0) {
+                service.put("daily_propers_provenance", properProvenance);
+            }
             service.put("liturgy_day_plan", liturgyDayPlan(date, selection, refs));
         }
         return service;
@@ -455,6 +467,82 @@ public final class LocalDailyContentEngine {
             if (replacement.length() > 0) slots.put(kind, replacement);
         }
         return slots;
+    }
+
+    private JSONObject verifiedProperData(LocalDate date) throws Exception {
+        JSONObject result = new JSONObject()
+                .put("replacements", new JSONObject())
+                .put("provenance", new JSONObject());
+        JSONObject overlay = dailyPropersOverlay();
+        JSONObject entries = overlay.optJSONObject("entries");
+        JSONObject entry = entries == null ? null : entries.optJSONObject(date.toString());
+        if (entry == null) return result;
+        JSONObject languages = entry.optJSONObject("languages");
+        if (languages == null) return result;
+        JSONObject replacements = result.optJSONObject("replacements");
+        JSONObject provenance = result.optJSONObject("provenance");
+        for (String language : new String[]{"ar", "en", "el"}) {
+            JSONObject lane = languages.optJSONObject(language);
+            if (lane == null) continue;
+            for (String slot : new String[]{"daily_troparion", "daily_kontakion", "communion_hymn"}) {
+                JSONObject item = lane.optJSONObject(slot);
+                if (item == null) continue;
+                String text = item.optString("text", "").trim();
+                String declaredHash = item.optString("text_sha256", "").trim();
+                if (text.isEmpty() || declaredHash.isEmpty()) continue;
+                if (!declaredHash.equals(sha256(text.getBytes(StandardCharsets.UTF_8)))) continue;
+                if (!item.optBoolean("permission_confirmed", false)
+                        || item.optBoolean("redistribution_review_required", true)
+                        || item.optBoolean("machine_translation_used", true)
+                        || item.optBoolean("ai_translation_used", true)
+                        || item.optBoolean("automatic_diacritization_used", true)
+                        || !item.optBoolean("script_isolated", false)) continue;
+                String sourceId = item.optString("source_id", "").trim();
+                String sourceUrl = item.optString("source_url", "").trim();
+                String authorization = item.optString("authorization_reference", "").trim();
+                if (sourceId.isEmpty() || sourceUrl.isEmpty() || authorization.isEmpty()) continue;
+                JSONObject localized = replacements.optJSONObject(slot);
+                if (localized == null) localized = new JSONObject();
+                localized.put(language, text);
+                replacements.put(slot, localized);
+                JSONObject laneProvenance = provenance.optJSONObject(slot);
+                if (laneProvenance == null) laneProvenance = new JSONObject();
+                laneProvenance.put(language, new JSONObject()
+                        .put("text_sha256", declaredHash)
+                        .put("source_id", sourceId)
+                        .put("source_url", sourceUrl)
+                        .put("authorization_reference", authorization)
+                        .put("permission_confirmed", true)
+                        .put("machine_translation_used", false)
+                        .put("script_isolated", true));
+                provenance.put(slot, laneProvenance);
+            }
+        }
+        return result;
+    }
+
+    private JSONObject dailyPropersOverlay() throws Exception {
+        if (dailyPropersOverlay != null) return dailyPropersOverlay;
+        try {
+            dailyPropersOverlay = new JSONObject(readAssetText(DAILY_PROPERS_ASSET));
+        } catch (java.io.IOException missingAsset) {
+            // Preserve older builds and fail closed when the optional overlay is absent.
+            dailyPropersOverlay = new JSONObject();
+        }
+        if (!"VERIFIED_PARTIAL_DAILY_LITURGY_PROPERS_OVERLAY".equals(
+                dailyPropersOverlay.optString("status", ""))) {
+            return new JSONObject();
+        }
+        return dailyPropersOverlay;
+    }
+
+    private static void mergeSlotReplacements(JSONObject target, JSONObject additions) throws Exception {
+        if (target == null || additions == null) return;
+        for (String slot : new String[]{"daily_troparion", "daily_kontakion", "communion_hymn"}) {
+            JSONObject localized = additions.optJSONObject(slot);
+            if (localized == null || localized.length() == 0) continue;
+            target.put(slot, copyObject(localized));
+        }
     }
 
     private JSONObject liturgyDayPlan(LocalDate date, JSONObject selection, JSONObject refs) throws Exception {
@@ -772,15 +860,38 @@ public final class LocalDailyContentEngine {
         JSONObject payload = new JSONObject(readAssetText(CALENDAR_ASSET_PREFIX + year + ".json"));
         JSONArray days = payload.optJSONArray("days");
         if (days == null || days.length() == 0) return null;
+        JSONObject fastingProfiles = payload.optJSONObject("fasting_profiles");
         LinkedHashMap<String, JSONObject> result = new LinkedHashMap<>();
         for (int i = 0; i < days.length(); i++) {
             JSONObject day = days.optJSONObject(i);
             if (day == null) continue;
+            day = resolveFastingProfile(day, fastingProfiles);
             String date = day.optString("date_iso", day.optString("date", "")).trim();
             if (!date.isEmpty()) result.put(date, day);
         }
         calendarCache.put(year, result);
         return result;
+    }
+
+    private static JSONObject resolveFastingProfile(JSONObject item, JSONObject profiles) throws Exception {
+        if (item == null || profiles == null) return item;
+        JSONObject fasting = item.optJSONObject("fasting");
+        if (fasting == null) return item;
+        String profileId = fasting.optString("profile_id", "").trim();
+        if (profileId.isEmpty()) return item;
+        JSONObject profile = profiles.optJSONObject(profileId);
+        if (profile == null) return item;
+        JSONObject resolved = new JSONObject(profile.toString());
+        java.util.Iterator<String> keys = fasting.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            if (!"profile_id".equals(key)) resolved.put(key, fasting.get(key));
+        }
+        JSONObject copy = new JSONObject(item.toString());
+        copy.put("fast", resolved.optJSONObject("title"));
+        copy.put("status", resolved.optJSONObject("title"));
+        copy.put("fasting", resolved);
+        return copy;
     }
 
     private String readAssetText(String path) throws Exception {

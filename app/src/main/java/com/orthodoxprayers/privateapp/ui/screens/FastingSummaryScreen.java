@@ -83,6 +83,33 @@ public final class FastingSummaryScreen extends BaseScreen {
                     local(com.orthodoxprayers.privateapp.R.string.ui_fast_summary_forbidden),
                     localized(guidance.optJSONObject("forbidden_summary"), "")
             );
+            addField(card,
+                    local(com.orthodoxprayers.privateapp.R.string.ui_fast_summary_explanation),
+                    localized(guidance.optJSONObject("beginner_explanation"), "")
+            );
+        }
+
+        JSONObject detail = fasting.optJSONObject("detail");
+        if (detail != null) {
+            addField(card,
+                    local(com.orthodoxprayers.privateapp.R.string.ui_fast_summary_explanation),
+                    localized(detail, "")
+            );
+        }
+
+        JSONObject abstinence = fasting.optJSONObject("abstinence");
+        if (abstinence != null) {
+            String abstinenceText = localized(abstinence.optJSONObject("detail"), "");
+            if (abstinenceText.isEmpty()) {
+                abstinenceText = localized(abstinence.optJSONObject("end_condition"), "");
+            }
+            if (abstinenceText.isEmpty() && abstinence.optBoolean("applies", false)) {
+                abstinenceText = local(com.orthodoxprayers.privateapp.R.string.ui_fast_summary_abstinence);
+            }
+            addField(card,
+                    local(com.orthodoxprayers.privateapp.R.string.ui_fast_summary_abstinence),
+                    abstinenceText
+            );
         }
 
         if (card.getChildCount() == 0) {

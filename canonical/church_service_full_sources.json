@@ -156,12 +156,10 @@
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
           "marker_occurrence": "last",
           "start_marker": [
-            "PRAYERS AT THE RECEPTION OF CATECHUMENS",
-            "THE OFFICE OF HOLY BAPTISM"
+            "THE PRAYERS AT THE RECEPTION OF CATECHUMENS"
           ],
           "end_marker": [
-            "MATRIMONY",
-            "THE OFFICE OF BETROTHAL"
+            "THE RITE OF CONFESSION"
           ],
           "max_chars": 80000
         },
@@ -176,14 +174,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF CONFESSION",
-            "CONFESSION"
+            "THE RITE OF CONFESSION"
           ],
           "end_marker": [
-            "HOLY UNCTION",
-            "THE OFFICE OF HOLY UNCTION"
+            "THE BETROTHAL SERVICE"
           ],
           "max_chars": 80000
         },
@@ -198,14 +194,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF BETROTHAL",
-            "BETROTHAL"
+            "THE BETROTHAL SERVICE"
           ],
           "end_marker": [
-            "CROWNING",
-            "THE OFFICE OF CROWNING"
+            "THE ORDER OF MARRIAGE, OR OF CROWNING"
           ],
           "max_chars": 80000
         },
@@ -220,14 +214,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF CROWNING",
-            "CROWNING"
+            "THE ORDER OF MARRIAGE, OR OF CROWNING"
           ],
           "end_marker": [
-            "REMOVAL OF CROWNS",
-            "SECOND MARRIAGE"
+            "PRAYER AT THE REMOVAL OF THE CROWNS ON THE"
           ],
           "max_chars": 80000
         },
@@ -242,12 +234,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "REMOVAL OF CROWNS"
+            "PRAYER AT THE REMOVAL OF THE CROWNS ON THE"
           ],
           "end_marker": [
-            "SECOND MARRIAGE"
+            "THE ORDER OF SECOND MARRIAGE"
           ],
           "max_chars": 80000
         },
@@ -262,15 +254,14 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "THE OFFICE OF HOLY UNCTION",
-            "HOLY UNCTION"
+            "THE OFFICE OF HOLY UNCTION, SUNG BY SEVEN"
           ],
           "end_marker": [
-            "BURIAL OF THE DEAD"
+            "THE ORDER FOR THE BURIAL OF THE DEAD (LAYMEN)"
           ],
-          "max_chars": 80000
+          "max_chars": 100000
         },
         {
           "id": "church_funeral",
@@ -283,14 +274,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "BURIAL OF THE DEAD (LAYMEN)",
-            "BURIAL OF THE DEAD"
+            "THE ORDER FOR THE BURIAL OF THE DEAD (LAYMEN)"
           ],
           "end_marker": [
-            "BURIAL OF THE DEAD (PRIESTS)",
-            "BURIAL OF PRIESTS"
+            "THE ORDER FOR THE BURIAL OF THE DEAD (PRIESTS)"
           ],
           "max_chars": 80000
         },
@@ -305,14 +294,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "PANIKHIDA",
-            "PANIKHÍDA",
-            "GENERAL REQUIEM"
+            "THE GENERAL PANIKHIDA OR REQUIEM SERVICE"
           ],
           "end_marker": [
-            "PARTING OF THE SOUL"
+            "PRAYERS IN PREPARATION FOR THE HOLY COMMUNION"
           ],
           "max_chars": 80000
         },
@@ -329,13 +316,13 @@
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
           "marker_occurrence": "last",
           "start_marker": [
-            "ENTERING A NEW HOUSE",
             "NEW HOUSE"
           ],
           "end_marker": [
-            "BLESSING OF ANY OBJECT"
+            "FOR THE BLESSING OF ANY OBJECT"
           ],
-          "max_chars": 80000
+          "max_chars": 80000,
+          "min_chars": 500
         },
         {
           "id": "church_priesthood",
@@ -348,15 +335,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "ORDINATION OF A PRIEST",
-            "ORDINATION: PRIEST",
-            "PRIEST. ORDINATION"
+            "THE FORM AND MANNER OF ORDAINING A PRIEST"
           ],
           "end_marker": [
-            "ORDINATION OF A DEACON",
-            "DEACON. ORDINATION"
+            "THE FORM AND MANNER OF MAKING AN"
           ],
           "max_chars": 80000
         },
@@ -371,13 +355,12 @@
           "rights_basis": "PUBLIC_DOMAIN_1922_HAPGOOD",
           "license_url": "https://archive.org/details/servicebookofhol0000orth_i9n7",
           "url": "https://archive.org/download/servicebookofhol0000orth_i9n7/servicebookofhol0000orth_i9n7_djvu.txt",
-          "marker_occurrence": "last",
+          "marker_occurrence": "first",
           "start_marker": [
-            "GRAND BLESSING OF THE WATERS",
-            "GREAT BLESSING OF THE WATERS"
+            "THE OFFICE AT THE GREAT BLESSING OF WATERS AT"
           ],
           "end_marker": [
-            "LESSER BLESSING OF THE WATERS"
+            "THE MEETING OF THE LORD"
           ],
           "max_chars": 80000
         }
@@ -391,250 +374,278 @@
         {
           "id": "church_baptism",
           "title": "Ἀκολουθία τοῦ Ἁγίου Βαπτίσματος καὶ Χρίσματος",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Baptism.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ",
-            "ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
+            "Η ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΒΑΠΤΙΣΜΑΤΟΣ"
           ],
-          "end_marker": [
-            "ΜΝΗΣΤΡΟΙΣ",
-            "ΑΡΡΑΒΩΝΟΣ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 60000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_confession",
           "title": "Ἀκολουθία Ἐξομολογήσεως",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΕΞΟΜΟΛΟΓΗΣΕΩΣ",
-            "ΕΞΟΜΟΛΟΓΗΣΙΣ"
+            "ΑΚΟΛΟΥΘΙΑ ΤΩΝ ΕΞΟΜΟΛΟΓΟΥΜΕΝΩΝ"
           ],
-          "end_marker": [
-            "ΕΥΧΕΛΑΙΟΥ"
-          ],
-          "max_chars": 80000
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_confession.txt",
+          "ocr_page_ranges": [
+            [
+              271,
+              287
+            ]
+          ]
         },
         {
           "id": "church_betrothal",
           "title": "Ἀκολουθία Ἀρραβῶνος",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Wedding.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ",
-            "ΜΝΗΣΤΡΟΙΣ",
-            "ΑΡΡΑΒΩΝΟΣ"
+            "ΑΚΟΛΟΥΘΙΑ ΕΠΙ ΜΝΗΣΤΡΟΙΣ ΗΤΟΙ ΑΡΡΑΒΩΝΟΣ"
           ],
           "end_marker": [
-            "ΣΤΕΦΑΝΩΜΑΤΟΣ",
-            "ΓΑΜΟΥ"
+            "ΑΚΟΛΟΥΘΙΑ ΣΤΕΦΑΝΩΜΑΤΟΣ"
           ],
-          "max_chars": 80000
+          "max_chars": 12000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_marriage",
           "title": "Ἀκολουθία Γάμου (Στέψεως)",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Wedding.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΣΤΕΦΑΝΩΜΑΤΟΣ",
-            "ΣΤΕΦΑΝΩΜΑΤΟΣ",
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΓΑΜΟΥ"
+            "ΑΚΟΛΟΥΘΙΑ ΣΤΕΦΑΝΩΜΑΤΟΣ"
           ],
-          "end_marker": [
-            "ΛΥΣΙΣ ΤΩΝ ΣΤΕΦΑΝΩΝ",
-            "ΔΕΥΤΕΡΟΓΑΜΙΑ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 30000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_crowns_removal",
           "title": "Λύσις τῶν Στεφάνων",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΛΥΣΙΣ ΤΩΝ ΣΤΕΦΑΝΩΝ"
+            "ΕΥΧΗ ΕΠΙ ΑΥΣΙΝ ΣΤΕΦΑΝΩΝ"
           ],
-          "end_marker": [
-            "ΔΕΥΤΕΡΟΓΑΜΙΑ"
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_crowns_removal.txt",
+          "ocr_page_ranges": [
+            [
+              302,
+              302
+            ]
           ],
-          "max_chars": 80000
+          "min_chars": 500
         },
         {
           "id": "church_unction",
           "title": "Ἀκολουθία τοῦ Ἁγίου Εὐχελαίου",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Uncion.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΑΓΙΟΥ ΕΥΧΕΛΑΙΟΥ",
-            "ΕΥΧΕΛΑΙΟΥ"
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΕΥΧΕΛΑΙΟΥ"
           ],
-          "end_marker": [
-            "ΝΕΚΡΩΣΙΜΟΣ",
-            "ΚΕΚΟΙΜΗΜΕΝΩΝ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 70000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_funeral",
           "title": "Ἐξόδιος Ἀκολουθία",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Funeral.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΝΕΚΡΩΣΙΜΟΣ ΑΚΟΛΟΥΘΙΑ",
-            "ΕΞΟΔΙΟΣ ΑΚΟΛΟΥΘΙΑ"
+            "ΚΥΔΕΙΑ"
           ],
-          "end_marker": [
-            "ΜΝΗΜΟΣΥΝΟΝ"
-          ],
-          "max_chars": 80000
+          "end_marker": [],
+          "max_chars": 22000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_memorial",
           "title": "Μνημόσυνο",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
-          "filter_script": "greek",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_DCS_GREEK_MEMORIAL_2026_08_24",
+          "license_url": "",
+          "url": "https://dcs.goarch.org/goa/dcs/p/s/2026/07/19/li/gr-en/index.html",
+          "source_id": "goarch_dcs_greek_memorial_2026_07_19",
+          "source_name": "Greek Orthodox Archdiocese of America — Digital Chant Stand Greek/English Divine Liturgy, July 19 2026",
+          "local_path": "canonical/sources/greek_dcs_memorial/church_memorial.txt",
+          "extraction_method": "EXACT_GREEK_ONLY_FROM_REGISTERED_DCS_PAGE_NO_TRANSLATION",
           "start_marker": [
-            "ΜΝΗΜΟΣΥΝΟΝ"
+            "Εὐλογητὸς εἶ, Κύριε, δίδαξόν με τὰ δικαιώματά σου."
           ],
           "end_marker": [
-            "ΤΡΙΣΑΓΙΟΝ"
+            "Εὐλογία Κυρίου καὶ ἔλεος ἔλθοι"
           ],
+          "marker_occurrence": "first",
+          "filter_script": "greek",
           "max_chars": 80000
         },
         {
           "id": "church_trisagion",
           "title": "Τρισάγιον ὑπὲρ Κεκοιμημένων",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "official_html_user_permission",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
-          "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
-          "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "rights_basis": "USER_CONFIRMED_REPUBLICATION_PERMISSION_FOR_GOARCH_GLT_TEXTS_2026_08_24",
+          "license_url": "",
+          "url": "https://glt.goarch.org/texts/Euch/Trisagion.html",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΤΡΙΣΑΓΙΟΝ",
-            "ΚΕΚΟΙΜΗΜΕΝΩΝ"
+            "ΤΡΙΣΑΓΙΟΝ"
           ],
           "end_marker": [
-            "ΧΕΙΡΟΤΟΝΙΑ"
+            "ΕΝ ΔΙΑΚΑΙΝΗΣΙΜΩ ΕΒΔΟΜΑΔΙ"
           ],
-          "max_chars": 80000
+          "max_chars": 10000,
+          "source_id": "goarch_glt_greek_euchologion_pages",
+          "source_name": "Greek Orthodox Archdiocese of America — Greek Language Texts (GLT)"
         },
         {
           "id": "church_priesthood",
           "title": "Ἀκολουθία Χειροτονίας Πρεσβυτέρου",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΧΕΙΡΟΤΟΝΙΑ ΠΡΕΣΒΥΤΕΡΟΥ",
-            "ΧΕΙΡΟΤΟΝΙΑ ΕΙΣ ΠΡΕΣΒΥΤΕΡΟΝ"
+            "ΧΕΙΡΟΤΟΝΙΑ"
           ],
-          "end_marker": [
-            "ΧΕΙΡΟΤΟΝΙΑ ΔΙΑΚΟΝΟΥ",
-            "ΧΕΙΡΟΤΟΝΙΑ ΕΙΣ ΔΙΑΚΟΝΟΝ"
-          ],
-          "max_chars": 80000
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_priesthood.txt",
+          "ocr_page_ranges": [
+            [
+              213,
+              237
+            ]
+          ]
         },
         {
           "id": "church_great_water",
           "title": "Ἀκολουθία τοῦ Μεγάλου Ἁγιασμοῦ",
-          "source_transport": "cc_by_pdf_text",
+          "source_transport": "local_native_ocr_text",
           "required": true,
           "allow_link_fallback": true,
           "permission_confirmed": true,
           "redistribution_review_required": false,
           "rights_basis": "CC_BY_4_0_UNIVERSITY_OF_IOANNINA_EUCHOLOGION_1860",
           "license_url": "https://creativecommons.org/licenses/by/4.0/",
-          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf",
-          "marker_occurrence": "last",
+          "url": "https://olympias.lib.uoi.gr/jspui/bitstream/123456789/28576/1/BK.%CE%9666.pdf?sequence=1&isAllowed=y",
+          "marker_occurrence": "first",
           "filter_script": "greek",
           "start_marker": [
-            "ΜΕΓΑΛΟΥ ΑΓΙΑΣΜΟΥ",
-            "ΜΕΓΑΣ ΑΓΙΑΣΜΟΣ"
+            "ΑΚΟΛΟΥΘΙΑ ΤΟΥ ΜΕΡΑΛΟΥ ΑΕΊΑΞΜ"
           ],
-          "end_marker": [
-            "ΜΙΚΡΟΥ ΑΓΙΑΣΜΟΥ",
-            "ΜΙΚΡΟΣ ΑΓΙΑΣΜΟΣ"
-          ],
-          "max_chars": 80000
+          "max_chars": 90000,
+          "source_id": "uoi_euchologion_1860_scanned_ocr",
+          "source_name": "Ευχολόγιον το Μέγα, Venice 1860 — University of Ioannina scanned source, OCR transcription",
+          "source_page": "https://olympias.lib.uoi.gr/jspui/handle/123456789/28576",
+          "extraction_method": "OCR_FROM_REGISTERED_NATIVE_GREEK_SCAN_NO_TRANSLATION",
+          "ecclesiastical_approval_certified": false,
+          "local_path": "canonical/sources/greek_uoi_ocr/church_great_water.txt",
+          "ocr_page_ranges": [
+            [
+              399,
+              409
+            ]
+          ]
         }
       ]
     }

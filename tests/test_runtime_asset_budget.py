@@ -1,5 +1,9 @@
-import subprocess,sys
+import subprocess
+import sys
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
 def test_runtime_asset_budget():
-    subprocess.run([sys.executable,'scripts/validate_runtime_asset_budget.py'],cwd=ROOT,check=True)
+    subprocess.run([sys.executable, "scripts/validate_runtime_asset_budget.py"], cwd=ROOT, check=True)

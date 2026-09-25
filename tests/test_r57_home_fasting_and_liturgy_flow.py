@@ -9,7 +9,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def calendar_days(year: int) -> dict[str, dict]:
     payload = json.loads((ROOT / f"app/src/main/assets/data/calendar/calendar_{year}.json").read_text(encoding="utf-8"))
-    return {item["date_iso"]: item for item in payload["days"]}
+    profiles = payload.get("fasting_profiles") or {}
+    days = {}
+    for item in payload["days"]:
+        copy = dict(item)
+        fasting = dict(item.get("fasting") or {})
+        profile_id = fasting.get("profile_id")
+        if profile_id in profiles:
+            resolved = dict(profiles[profile_id])
+            resolved.update({key: value for key, value in fasting.items() if key != "profile_id"})
+            copy["fasting"] = resolved
+        days[item["date_iso"]] = copy
+    return days
 
 
 def fast_title(day: dict) -> str:
@@ -51,10 +62,10 @@ def test_home_notice_is_calendar_driven_and_continue_reading_is_gone():
     assert 'fasting.optBoolean("is_fast", false)' in engine
 
 
-def test_liturgy_tab_opens_reader_directly_and_keeps_blocked_day_fallback():
+def test_liturgy_tab_enters_day_aware_hub_and_keeps_blocked_day_fallback():
     main = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java").read_text(encoding="utf-8")
-    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' in main
-    assert 'new ReaderScreen(this, "divine_liturgy")' in main
+    assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
+    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main
     assert 'new LiturgyHubScreen(this)' in main
     assert '"no_divine_liturgy".equals(type)' in main
     assert '"typikon_override_required".equals(type)' in main

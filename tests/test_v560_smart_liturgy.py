@@ -22,8 +22,8 @@ def updater():
 
 def test_version_is_560():
     build = (ROOT / "app/build.gradle.kts").read_text(encoding="utf-8")
-    assert 'versionCode = 50604' in build
-    assert 'versionName = "5.6.4"' in build
+    assert 'versionCode = 50607' in build
+    assert 'versionName = "5.6.7"' in build
 
 
 def test_strict_core_contract_excludes_adjacent_offices():
@@ -38,14 +38,12 @@ def test_strict_core_contract_excludes_adjacent_offices():
     assert "thanksgiving_after_communion" in excluded
 
 
-def test_all_appointed_rites_are_publishable_across_three_native_lanes():
+def test_only_verified_rites_are_publishable_and_other_rites_fail_closed():
     editions = json.loads((ROOT / "canonical/liturgy_service_editions.json").read_text(encoding="utf-8"))["editions"]
     assert editions["chrysostom"]["displayable"] is True
-    assert editions["basil"]["displayable"] is True
-    assert "COMPLETE_AUTHORIZED" in editions["basil"]["ar"]
-    assert "COMPLETE_AUTHORIZED" in editions["basil"]["el"]
-    assert editions["presanctified"]["displayable"] is True
-    assert "COMPLETE_AUTHORIZED" in editions["presanctified"]["ar"]
+    for rite in ("basil", "presanctified"):
+        assert editions[rite]["displayable"] is False
+        assert editions[rite]["phase8_review_status"].startswith("BLOCKED_")
 
 
 def test_calendar_selects_each_available_rite_without_substitution():
@@ -66,9 +64,10 @@ def test_calendar_selects_each_available_rite_without_substitution():
             assert "extends_service_id" not in svc
             assert svc["full_service_complete"] is False
         else:
-            expected_id = "divine_liturgy_basil" if kind == "basil" else "presanctified_liturgy"
-            assert svc["extends_service_id"] == expected_id
-            assert svc["full_service_complete"] is True
+            assert sel["displayable"] is False
+            assert "extends_service_id" not in svc
+            assert svc["full_service_complete"] is False
+            assert svc["publication_status"].startswith("BLOCKED_")
 
 
 def test_chrysostom_day_uses_only_liturgy_slots_not_matins():

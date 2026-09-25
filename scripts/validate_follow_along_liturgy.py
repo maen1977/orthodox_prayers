@@ -140,8 +140,10 @@ def main() -> None:
         errors.append("same-day non-regression protection is not wired")
     if "FastingNoticeEngine.evaluate" not in home or "addContinueReading" in home:
         errors.append("Home must show the calendar-driven fasting notice without Continue reading")
-    if 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main_activity or 'new ReaderScreen(this, "divine_liturgy")' not in main_activity:
-        errors.append("the Liturgy tab does not open the appointed reader directly when available")
+    if 'case "liturgy": return new LiturgyHubScreen(this);' not in main_activity:
+        errors.append("the Liturgy tab must enter the day-aware appointed-service hub")
+    if 'case "liturgy": return canOpenTodayLiturgyDirectly()' in main_activity:
+        errors.append("the Liturgy tab must not bypass the hub with the stale daily service")
     if "CONTINUOUS_WORSHIP_PATH_SEPARATE_PHASES" not in repository:
         errors.append("the believer-facing continuous Liturgy path is not wired")
     if 'appendNativePrayerService(continuous, "pre_communion_prayers", language)' not in repository or 'appendNativePrayerService(continuous, "proskomide", language)' not in repository:

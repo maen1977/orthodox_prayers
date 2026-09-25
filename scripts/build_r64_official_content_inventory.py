@@ -20,7 +20,11 @@ def main():
     for doc in h.get('documents') or []:
         for cat in doc.get('categories') or []:
             if cat in CORE:
-                groups[cat].append({k:doc.get(k) for k in ('url','title','content_type','sha256','root_ids')})
+                groups[cat].append({k:doc.get(k) for k in (
+                    'url','title','content_type','sha256','root_ids',
+                    'source_document_id','source_language','source_authority',
+                    'coverage_note','promotion_note'
+                )})
     out={
       'schema_version':1,
       'jurisdiction':h.get('jurisdiction'),

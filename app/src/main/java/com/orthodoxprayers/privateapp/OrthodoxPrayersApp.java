@@ -37,6 +37,7 @@ public final class OrthodoxPrayersApp extends Application {
         // Android never leaves the user staring at the launch window.
         startupMaintenance.execute(() -> {
             updateCoordinator.scheduleDailyRefresh();
+            updateCoordinator.scheduleChurchDirectoryWeeklySync();
             appUpdateManager.schedulePeriodicChecks();
             new ReminderScheduler(this, preferences).scheduleAll();
             DailyAgendaWidget.updateAll(this);

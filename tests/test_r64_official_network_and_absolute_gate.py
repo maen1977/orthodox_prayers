@@ -17,6 +17,10 @@ def test_r64_network_is_strictly_jerusalem_jordan_and_expanded():
     assert 800 <= cfg['crawl_policy']['default_max_pages'] <= 2000
     assert cfg['crawl_policy']['default_max_depth'] <= 2
     assert 'commemorations' in cfg['relevance_keywords']
+    direct = {x['id']: x for x in cfg.get('direct_documents', [])}
+    assert direct['jerusalem_patriarchate_calendar_2026_ar']['language'] == 'ar'
+    assert direct['jerusalem_patriarchate_calendar_2026_ar']['url'].endswith('/arabic_2026.pdf')
+    assert 'evidence_only' in direct['jerusalem_patriarchate_calendar_2026_ar']['promotion']
 
 
 def test_subdomains_are_allowed_but_lookalikes_are_not():
@@ -43,6 +47,8 @@ def test_r64_absolute_gate_is_in_release_gate_and_workflow_strict_after_bootstra
     assert 'Harvest focused official Jerusalem/Jordan liturgical source network' in workflow
     assert 'audit_absolute_coverage_r64.py --require-complete' in workflow
     assert 'audit_absolute_coverage_r64.py --require-complete --require-named-commemorations' in workflow
+    assert '::notice title=R64 content advisory::' in workflow
+    assert '::warning::R64 named commemoration coverage is incomplete' not in workflow
     assert workflow.index('Harvest focused official Jerusalem/Jordan liturgical source network') < workflow.index('Check content, languages, security, and calendar')
 
 

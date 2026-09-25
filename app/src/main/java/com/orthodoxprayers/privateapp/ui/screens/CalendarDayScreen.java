@@ -103,7 +103,7 @@ public final class CalendarDayScreen extends BaseScreen {
         JSONArray services = day.optJSONArray("services");
         if (services == null || services.length() == 0) return;
         card.addView(ui.infoBadge(local(com.orthodoxprayers.privateapp.R.string.ui_this_day_is_complete_inside_the_signed_package_2072d1f2)), ui.margins(-1, -2, 0, 8, 0, 8));
-        addServiceButton(card, services, "divine_liturgy", local(com.orthodoxprayers.privateapp.R.string.ui_open_complete_service_beginning_to_end), true);
+        addServiceButton(card, services, appointedServiceId(day), local(com.orthodoxprayers.privateapp.R.string.ui_open_complete_service_beginning_to_end), true);
         addServiceButton(card, services, "orthros", local(com.orthodoxprayers.privateapp.R.string.ui_orthros_2aa869d2), false);
         addServiceButton(card, services, "vespers", local(com.orthodoxprayers.privateapp.R.string.ui_vespers_1daa5b5d), false);
         addServiceButton(card, services, "morning_prayer", local(com.orthodoxprayers.privateapp.R.string.ui_morning_prayers_cbf9758b), false);
@@ -118,16 +118,19 @@ public final class CalendarDayScreen extends BaseScreen {
             if (service != null && id.equals(service.optString("id", ""))) { selected = service; break; }
         }
         if (selected == null) return;
-        boolean complete = !"divine_liturgy".equals(id) || selected.optBoolean("full_service_complete", false);
+        boolean liturgy = "divine_liturgy".equals(id)
+                || "divine_liturgy_basil".equals(id)
+                || "presanctified_liturgy".equals(id);
+        boolean complete = !liturgy || selected.optBoolean("full_service_complete", false);
         String dynamicLabel = label;
-        if ("divine_liturgy".equals(id)) {
+        if (liturgy) {
             String title = localized(selected.optJSONObject("title"), "");
             if (!title.isEmpty()) dynamicLabel = complete
                     ? localFormat(com.orthodoxprayers.privateapp.R.string.ui_open_full_appointed_liturgy_format, title)
                     : title;
         }
         Button button = ui.button(dynamicLabel, primary && complete);
-        if ("divine_liturgy".equals(id) && !complete) {
+        if (liturgy && !complete) {
             // Keep the appointed Liturgy visible in the calendar, but do not
             // open a partial/blocked text as though it were the complete rite.
             button.setEnabled(false);
@@ -138,6 +141,16 @@ public final class CalendarDayScreen extends BaseScreen {
         card.addView(button, ui.margins(-1, -2, 0, 5, 0, 0));
     }
 
+    private String appointedServiceId(JSONObject day) {
+        JSONObject selection = day == null ? null : day.optJSONObject("liturgy_service_selection");
+        String explicit = selection == null ? "" : selection.optString("service_id", "").trim();
+        if (!explicit.isEmpty()) return explicit;
+        String type = selection == null ? "" : selection.optString("service_type", "").trim();
+        if ("basil".equals(type)) return "divine_liturgy_basil";
+        if ("presanctified".equals(type)) return "presanctified_liturgy";
+        return "divine_liturgy";
+    }
+
     private void addLiturgySelection(LinearLayout card, JSONObject selection) {
         if (selection == null) return;
         addField(card,
@@ -146,6 +159,12 @@ public final class CalendarDayScreen extends BaseScreen {
         addField(card,
                 local(com.orthodoxprayers.privateapp.R.string.ui_service_form_label),
                 localized(selection.optJSONObject("service_form_label"), ""));
+        if (!selection.optBoolean("displayable", false)
+                && !"no_divine_liturgy".equals(selection.optString("service_type", ""))) {
+            addField(card,
+                    local(com.orthodoxprayers.privateapp.R.string.ui_unavailable_24f3ca2e),
+                    local(com.orthodoxprayers.privateapp.R.string.ui_complete_service_not_available_without_fallback));
+        }
     }
 
     private JSONObject findDay() {

@@ -282,6 +282,7 @@ Phone: 00962788272988</string>
     <string name="ui_today_s_readings_db2884fb" formatted="false">Today’s readings</string>
     <string name="ui_today_s_update_is_still_being_published_the_last_d93b9203" formatted="false">Today’s update is still being published; the last valid copy is shown and the app will retry automatically</string>
     <string name="ui_total_abstinence_4bf885f8" formatted="false">Total abstinence</string>
+    <string name="ui_optional_abstinence_7c3e2a11" formatted="false">Optional total abstinence according to strength and spiritual guidance</string>
     <string name="ui_trusted_copy_source_4596d692" formatted="false">Trusted copy source: </string>
     <string name="ui_trusted_details_this_month_a042797d" formatted="false">Trusted details this month</string>
     <string name="ui_type_a_word_or_reference_to_search_approved_nati_703cdad7" formatted="false">Type a word or reference to search approved native-source text.</string>
@@ -390,10 +391,11 @@ Phone: 00962788272988</string>
     <string name="ui_fast_notice_ends_in_two_days_format">Two days until the end of %1$s</string>
     <string name="ui_fast_notice_ends_in_days_format">%1$d days until the end of %2$s</string>
     <string name="ui_fast_notice_last_day_format">Last day of %1$s</string>
-    <string name="ui_fast_notice_tomorrow_weekly_format">Tomorrow, %1$s — %2$s</string>
-    <string name="ui_fast_notice_next_weekly_format">Next %1$s — %2$s</string>
+    <string name="ui_fast_notice_tomorrow_weekly_format">Tomorrow, %1$s — Fast</string>
+    <string name="ui_fast_notice_next_weekly_format">Next %1$s — Fast</string>
     <string name="ui_fast_notice_none">No fast is near in this period</string>
     <string name="ui_fast_notice_details_hint">Tap for fasting and calendar details</string>
+    <string name="ui_fast_notice_dormition_feast_relaxed" formatted="false">Dormition Feast after the 14-day fast — relaxed fast, fish permitted</string>
     <string name="ui_weekday_wednesday">Wednesday</string>
     <string name="ui_weekday_friday">Friday</string>
     <string name="ui_language_and_text_settings_title">Language &amp; text size</string>
@@ -422,4 +424,13 @@ Phone: 00962788272988</string>
     <string name="ui_churches_count_short_format_5f73c9b2" formatted="false">Registered churches: %1$d</string>
     <string name="ui_church_cards_choose_city_3c1d8e74" formatted="false">Choose a city</string>
     <string name="ui_open_official_link_subtitle_8d2f6c10" formatted="false">Tap to open the official link</string>
+    <string name="ui_church_directory_internal_subtitle_r66" formatted="false">Browse churches inside the app with the last good offline snapshot</string>
+    <string name="ui_church_directory_source_count_format_r66" formatted="false">Churches from this directory: %1$d</string>
+    <string name="ui_church_directory_sync_enabled_r66" formatted="false">Weekly phone update when online — the last good snapshot is preserved</string>
+    <string name="ui_church_directory_sync_verified_r66" formatted="false">Official directories checked and the last good snapshot was preserved</string>
+    <string name="ui_church_directory_sync_waiting_r66" formatted="false">Directories have not been synchronized yet; the bundled snapshot is in use</string>
+    <string name="ui_church_directory_official_source_note_r66" formatted="false">Content is shown in-app; the official link remains available for verification</string>
+    <string name="ui_system_brightness_6e11d2d1" formatted="false">System brightness</string>
+    <string name="ui_fast_summary_explanation">Beginner explanation</string>
+    <string name="ui_fast_summary_abstinence">Total abstinence</string>
 </resources>

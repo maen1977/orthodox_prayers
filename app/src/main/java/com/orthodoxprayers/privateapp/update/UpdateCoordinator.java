@@ -50,11 +50,17 @@ public final class UpdateCoordinator {
         this.repository = repository;
     }
 
+    /** Schedules optional network-backed directory verification separately from local daily refresh. */
+    public void scheduleChurchDirectoryWeeklySync() {
+        ChurchDirectorySchedule.schedule(context);
+    }
+
     /**
      * Schedules one local refresh shortly after the Amman civil date changes.
      * The worker has deliberately no network constraint: it reads only immutable
      * calendar, Scripture and prayer assets already installed with the app.
      */
+
     public void scheduleDailyRefresh() {
         WorkManager workManager = WorkManager.getInstance(context);
         cancelLegacyRemoteSchedules(workManager);
@@ -89,7 +95,10 @@ public final class UpdateCoordinator {
     public void scheduleNextAmmanRefresh() { scheduleDailyRefresh(); }
 
     /** Legacy method now maps to the one local daily WorkManager schedule. */
-    public void schedulePeriodicRefresh() { scheduleDailyRefresh(); }
+    public void schedulePeriodicRefresh() {
+        scheduleDailyRefresh();
+        scheduleChurchDirectoryWeeklySync();
+    }
 
     /** Compatibility entry point for alarms queued by older installed releases. */
     public void enqueueMidnightRefresh() {

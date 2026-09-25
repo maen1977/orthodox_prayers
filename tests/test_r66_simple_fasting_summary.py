@@ -28,6 +28,19 @@ def test_simple_summary_shows_only_fast_type_period_days_and_food_rules() -> Non
     assert 'new CalendarDayScreen' not in screen
 
 
+def test_dormition_feast_is_marked_outside_the_fourteen_day_season() -> None:
+    engine = read("app/src/main/java/com/orthodoxprayers/privateapp/data/FastingNoticeEngine.java")
+    home = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/HomeScreen.java")
+    arabic = read("app/src/main/res/values/ui_strings.xml")
+
+    assert 'public final boolean feastDay' in engine
+    assert 'boolean feastDay = !isMajorSeasonDay(currentDay, currentFamily);' in engine
+    assert 'LocalDate seasonAnchor = feastDay ? today.minusDays(1) : today;' in engine
+    assert 'notice.feastDay && notice.family == FastingNoticeEngine.Family.DORMITION' in home
+    assert 'ui_fast_notice_dormition_feast_relaxed' in home
+    assert 'بعد صوم 14 يومًا' in arabic
+
+
 def test_calendar_day_route_remains_available_for_full_calendar_details() -> None:
     activity = read("app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java")
     calendar = read("app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/CalendarDayScreen.java")

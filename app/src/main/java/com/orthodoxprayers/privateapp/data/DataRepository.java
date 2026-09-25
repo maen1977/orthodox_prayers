@@ -54,6 +54,7 @@ public final class DataRepository {
     private final DataSignatureVerifier signatureVerifier;
     private final LocalDailyContentEngine localDailyContentEngine;
     private final LocalDailyCacheStore localDailyCacheStore;
+    private final ChurchDirectoryStore churchDirectoryStore;
     private final BibleCorpusRepository bibleCorpusRepository;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -69,10 +70,12 @@ public final class DataRepository {
     private JSONObject activeLanguageSearchIndex;
     private JSONObject sourceRegistry;
     private JSONObject fallbackChurchDirectory;
+    private volatile JSONObject activeChurchDirectory;
     private JSONObject fallbackSourceHealth;
     private JSONObject fallbackServiceCoverage;
     private JSONObject religiousCompleteness;
     private JSONObject calendarIndex;
+    private JSONObject comparativeEnglishCalendar;
     private JSONObject officialPrayerResources;
     private int loadedCalendarYear = -1;
     private JSONObject rollingWeekPackage = new JSONObject();
@@ -106,11 +109,13 @@ public final class DataRepository {
         this.signatureVerifier = signatureVerifier;
         this.localDailyContentEngine = new LocalDailyContentEngine(this.context);
         this.localDailyCacheStore = new LocalDailyCacheStore(this.context);
+        this.churchDirectoryStore = new ChurchDirectoryStore(this.context);
         this.bibleCorpusRepository = new BibleCorpusRepository(this.context);
         this.languageScopedStore = languageScopedStore;
         preferences.clearLegacyRemoteCache();
         sourceRegistry = loadJsonAsset("data/source_registry.json");
         fallbackChurchDirectory = loadJsonAsset("data/churches.json");
+        activeChurchDirectory = churchDirectoryStore.read();
         fallbackSourceHealth = loadJsonAsset("data/source_health.json");
         fallbackServiceCoverage = loadJsonAsset("data/service_coverage.json");
         religiousCompleteness = loadJsonAsset("data/religious_completeness.json");
@@ -133,16 +138,68 @@ public final class DataRepository {
         String asset = metadata.optString("asset", "").trim();
         if (asset.isEmpty()) return;
         JSONObject yearPayload = loadJsonAsset(asset);
+        if (comparativeEnglishCalendar == null) {
+            comparativeEnglishCalendar = loadJsonAsset("data/calendar/comparative_english.json");
+        }
         JSONArray days = yearPayload.optJSONArray("days");
         if (days == null || days.length() == 0) return;
+        JSONObject fastingProfiles = yearPayload.optJSONObject("fasting_profiles");
         calendarByDate.clear();
         for (int i = 0; i < days.length(); i++) {
             JSONObject item = days.optJSONObject(i);
             if (item == null) continue;
+            item = resolveFastingProfile(item, fastingProfiles);
+            item = resolveComparativeEnglishCommemoration(item, comparativeEnglishCalendar);
             String iso = item.optString("date_iso", item.optString("date", "")).trim();
             if (!iso.isEmpty()) calendarByDate.put(iso, item);
         }
         loadedCalendarYear = year;
+    }
+
+    private static JSONObject resolveComparativeEnglishCommemoration(JSONObject item, JSONObject sidecar) {
+        if (item == null || sidecar == null) return item;
+        String reference = item.optString("comparative_en_ref", "").trim();
+        if (reference.isEmpty()) return item;
+        JSONObject entries = sidecar.optJSONObject("entries");
+        JSONObject entry = entries == null ? null : entries.optJSONObject(reference);
+        if (entry == null || !entry.optBoolean("comparative", false)) return item;
+        String text = entry.optString("text", "").trim();
+        if (text.isEmpty()) return item;
+        try {
+            JSONObject copy = new JSONObject(item.toString());
+            JSONObject feast = copy.optJSONObject("feast");
+            if (feast == null) return item;
+            feast.put("en", text);
+            copy.put("feast", feast);
+            return copy;
+        } catch (Exception ignored) {
+            return item;
+        }
+    }
+
+    private static JSONObject resolveFastingProfile(JSONObject item, JSONObject profiles) {
+        if (item == null || profiles == null) return item;
+        JSONObject fasting = item.optJSONObject("fasting");
+        if (fasting == null) return item;
+        String profileId = fasting.optString("profile_id", "").trim();
+        if (profileId.isEmpty()) return item;
+        JSONObject profile = profiles.optJSONObject(profileId);
+        if (profile == null) return item;
+        try {
+            JSONObject resolved = new JSONObject(profile.toString());
+            java.util.Iterator<String> keys = fasting.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                if (!"profile_id".equals(key)) resolved.put(key, fasting.get(key));
+            }
+            JSONObject copy = new JSONObject(item.toString());
+            copy.put("fast", resolved.optJSONObject("title"));
+            copy.put("status", resolved.optJSONObject("title"));
+            copy.put("fasting", resolved);
+            return copy;
+        } catch (Exception ignored) {
+            return item;
+        }
     }
 
     /** Compact offline old-calendar index, loaded one year at a time through 2050. */
@@ -349,9 +406,31 @@ public final class DataRepository {
         return best;
     }
 
-    public JSONObject churchDirectory() {
+    public synchronized JSONObject churchDirectory() {
+        if (activeChurchDirectory != null) return activeChurchDirectory;
         JSONObject live = today().optJSONObject("church_directory");
         return live != null ? live : (fallbackChurchDirectory == null ? new JSONObject() : fallbackChurchDirectory);
+    }
+
+    /** Returns an independent payload for background validation and merging. */
+    public synchronized JSONObject churchDirectorySnapshot() {
+        try {
+            return new JSONObject(churchDirectory().toString());
+        } catch (Exception ignored) {
+            return new JSONObject();
+        }
+    }
+
+    /** Installs only a validated snapshot; the old good snapshot remains on failure. */
+    public synchronized boolean installChurchDirectorySnapshot(JSONObject payload) {
+        if (!churchDirectoryStore.write(payload)) return false;
+        try {
+            activeChurchDirectory = new JSONObject(payload.toString());
+            return true;
+        } catch (Exception error) {
+            activeChurchDirectory = payload;
+            return true;
+        }
     }
 
     public JSONArray registeredChurches() {
@@ -457,6 +536,42 @@ public final class DataRepository {
     }
 
     public boolean isTodayCurrent() { return currentAmmanDate().equals(dataDate()); }
+
+    /**
+     * Returns a current-date display payload even while a dated daily snapshot is
+     * being rebuilt. The annual embedded calendar is authoritative for feast and
+     * fasting rules, so a stale today.json must never make the home card or a
+     * reminder say that a fast-free day is in effect.
+     */
+    public synchronized JSONObject currentDayForDisplay() {
+        JSONObject current = today();
+        JSONObject annual = calendarDay(currentAmmanDate());
+        if (!isTodayCurrent()) return annual == null ? current : annual;
+        if (annual == null || current == null) return current;
+        // A refreshed daily package can have the current date and fasting data
+        // while still omitting the appointed-Liturgy selection. Do not render
+        // an empty Liturgy screen in that case; fill only missing calendar-owned
+        // fields from the verified annual calendar.
+        if (current.optJSONObject("liturgy_service_selection") != null) return current;
+        try {
+            JSONObject merged = new JSONObject(current.toString());
+            JSONObject selection = annual.optJSONObject("liturgy_service_selection");
+            if (selection != null) merged.put("liturgy_service_selection", new JSONObject(selection.toString()));
+            if (merged.optJSONObject("feast") == null && annual.optJSONObject("feast") != null) {
+                merged.put("feast", new JSONObject(annual.optJSONObject("feast").toString()));
+            }
+            if (merged.optJSONObject("fasting") == null && annual.optJSONObject("fasting") != null) {
+                merged.put("fasting", new JSONObject(annual.optJSONObject("fasting").toString()));
+            }
+            return merged;
+        } catch (Exception ignored) {
+            return current;
+        }
+    }
+
+    public synchronized boolean hasCurrentCalendarDay() {
+        return calendarDay(currentAmmanDate()) != null;
+    }
 
     public boolean hasDisplayableData() {
         JSONObject value = today();
@@ -886,6 +1001,11 @@ public final class DataRepository {
             byte[] cachedBytes = localDailyCacheStore.read();
             if (cachedBytes == null || cachedBytes.length == 0) return;
             JSONObject cached = new JSONObject(new String(cachedBytes, StandardCharsets.UTF_8));
+            if (cached.optInt("local_daily_engine_schema", 0)
+                    != LocalDailyContentEngine.LOCAL_ENGINE_SCHEMA_VERSION) {
+                localDailyCacheStore.clear();
+                return;
+            }
             String error = validate(cached, currentAmmanDate(), true);
             if (error != null) {
                 localDailyCacheStore.clear();
@@ -1981,16 +2101,13 @@ public final class DataRepository {
 
     private static boolean isFollowAlongLiturgy(JSONObject service) {
         if (service == null) return false;
-        String id = service.optString("id", "");
-        String composedFrom = service.optString("composed_from", "");
-        return "divine_liturgy".equals(id)
-                || "divine_liturgy".equals(composedFrom)
-                || "divine_liturgy_basil".equals(id)
-                || "divine_liturgy_basil".equals(composedFrom)
-                || "presanctified_liturgy".equals(id)
-                || "presanctified_liturgy".equals(composedFrom)
-                || service.optString("publication_status", "")
-                .startsWith("DISPLAYABLE_COMPLETE_NATIVE_SERVICE_FROM_BEGINNING_TO_END");
+        // The appointed service reader contains the appointed Liturgy only.
+        // Preparation, Orthros, Proskomide, and thanksgiving are adjacent offices,
+        // not missing portions of the Liturgy. They are included only when an
+        // explicit follow-along reader mode is requested.
+        return service.optBoolean("follow_along", false)
+                || service.optBoolean("follow_along_requested", false)
+                || "follow_along".equals(service.optString("reader_mode", ""));
     }
 
     /**

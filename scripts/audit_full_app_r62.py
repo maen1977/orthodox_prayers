@@ -33,6 +33,7 @@ def main():
     reading_counts={k:sum(1 for d in days if (d.get('reading_references') or {}).get(k)) for k in ('epistle','gospel','matins_gospel')}
     generic_comm=sum(1 for d in days if 'تذكار قديسي يوم' in ((d.get('feast') or {}).get('ar','')))
     meaningful_occ=sum(1 for d in days if d.get('occasions'))
+    source_backed_named_comm=sum(1 for d in days if (d.get('commemoration') or {}).get('source_kind') not in {'', 'old_calendar_date_baseline', None})
     fast_days=sum(1 for d in days if (d.get('fasting') or {}).get('is_fast'))
     fast_codes=Counter((d.get('fasting') or {}).get('code','') for d in days if (d.get('fasting') or {}).get('is_fast'))
     cs_pending={lang:sum(1 for s in svc_map(lang).values() if s.get('category')=='church_service' and 'PENDING' in s.get('publication_status','')) for lang in ('ar','en','el')}
@@ -50,7 +51,7 @@ def main():
     add('home_date','Home date + old calendar','PASS',f'{len(days)} civil days are precomputed for 2026-01-01..2050-12-31 with julian_date; the home card intentionally omits the daily commemoration line.')
     add('prayer_of_day','Prayer of the Day by local time','FIXED_R62','Home now selects morning_prayer 04:00-11:59, thanksgiving 12:00-17:29, evening_prayer 17:30-21:29, small_compline otherwise, using Asia/Amman time.')
     add('fasting','Fasting state and food-rule type','PASS_WITH_SCOPE',f'{fast_days}/{len(days)} days are marked fasting; codes include {dict(fast_codes)}. Exact abstinence clock times are intentionally not invented.', 'Keep fail-closed behavior for abstinence start/end unless an official dated source states it.')
-    add('commemorations','Daily commemorations through 2050','INCOMPLETE',f'{meaningful_occ} days contain explicit occasion entries; {generic_comm} days still use generic date-based commemoration wording.', 'Import a verified annual Jerusalem/Jordan native commemoration corpus; do not AI-generate saint names.')
+    add('commemorations','Daily commemorations through 2050','INCOMPLETE',f'{source_backed_named_comm}/{len(days)} days have source-backed or explicit named commemoration records; {meaningful_occ} days contain explicit occasion entries; {generic_comm} days use generic date-based commemoration wording. The remaining incompleteness is the local three-language gate, not an invented saint-name fallback.', 'Keep the English leap-day record and any non-local Greek slots explicitly marked; do not AI-generate or cross-language-translate saint names.')
     add('daily_readings','Daily Epistle/Gospel coverage through 2050','INCOMPLETE',f"Pinned references: epistle {reading_counts['epistle']}/{len(days)}, gospel {reading_counts['gospel']}/{len(days)}, matins gospel {reading_counts['matins_gospel']}/{len(days)}.", 'Build/verify a full Jerusalem-compatible regular lectionary and fixed-feast override corpus before claiming 2050 completeness.')
     add('current_reading_sample','2026-08-10 reading spot check','PASS', 'Internal refs are 2 Corinthians 2:4-15 and Matthew 23:13-22; this date was cross-checked against the official OCA daily lectionary as a lower-priority regular-cycle authority.')
     add('daily_prayers','Daily prayer library','OFFLINE_CORE_NO_EXTERNAL_CARDS',f"Arabic embedded core: morning {len(ar['morning_prayer'].get('segments',[]))} segments; evening {len(ar['evening_prayer'].get('segments',[]))}; small compline {len(ar['small_compline'].get('segments',[]))}; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. {official_prayer_references} official Jordan references remain catalog evidence and are not rendered as external prayer cards.", 'Import any additional native text only after exact-text and redistribution evidence are recorded.')
@@ -66,7 +67,7 @@ def main():
     add('language_isolation','Arabic / English / Greek isolation','PASS_GATE_REQUIRED','All newly added directory metadata contains independent ar/en/el values; existing localization gate remains authoritative.')
 
     report={
-      'schema_version':1,'audit':'R62_FULL_APP_AUDIT','audited_on':'2026-08-13','base':'OrthodoxPrayers 5.6.4 R66 authorized Liturgy completion',
+      'schema_version':1,'audit':'R62_FULL_APP_AUDIT','audited_on':'2026-08-13','base':'OrthodoxPrayers 5.6.6 R66 authorized Liturgy completion',
       'policy':'No AI-generated/translated scripture or liturgical text; official-site availability does not imply redistribution permission.',
       'source_urls':{
         'orthodox_jordan_churches':'https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/',
@@ -78,12 +79,12 @@ def main():
         'jerusalem_live':'https://ar.jerusalem-patriarchate.info/%D8%A7%D9%84%D8%A8%D8%AB-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B4%D8%B1-%D8%B1%D8%A7%D8%AF%D9%8A%D9%88-%D8%A8%D8%B7%D8%B1%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D8%A7%D9%84%D8%B1%D9%88%D9%85-%D8%A7/',
         'oca_2026_08_10':'https://www.oca.org/readings/daily/2026/08/10'
       },
-      'metrics':{'calendar_days':len(days),'reading_counts':reading_counts,'generic_commemoration_days':generic_comm,'meaningful_occasion_days':meaningful_occ,'fast_days':fast_days,'church_groups':dict(church_groups),'church_total':churches.get('count'),'church_service_pending_full_text':cs_pending,'official_daily_prayer_references':official_prayer_references,'arabic_church_build_rights_pending':ar_rights_pending,'arabic_church_build_rights_confirmed':ar_rights_confirmed},
+      'metrics':{'calendar_days':len(days),'reading_counts':reading_counts,'generic_commemoration_days':generic_comm,'meaningful_occasion_days':meaningful_occ,'source_backed_named_commemoration_days':source_backed_named_comm,'fast_days':fast_days,'church_groups':dict(church_groups),'church_total':churches.get('count'),'church_service_pending_full_text':cs_pending,'official_daily_prayer_references':official_prayer_references,'arabic_church_build_rights_pending':ar_rights_pending,'arabic_church_build_rights_confirmed':ar_rights_confirmed},
       'checks':checks,
       'release_claim':'AUDITED_WITH_KNOWN_CONTENT_GAPS; NOT A 100_PERCENT_CONTENT_COMPLETENESS CLAIM'
     }
     (ROOT/'canonical/r62_full_app_audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    lines=['# تدقيق R62 الكامل لتطبيق Orthodox Prayers','',f'تاريخ التدقيق: **2026-08-13**  ','النسخة الأساسية: **5.6.4 — إكمال النصوص الطقسية المصرّح بها R66**','',
+    lines=['# تدقيق R62 الكامل لتطبيق Orthodox Prayers','',f'تاريخ التدقيق: **2026-08-13**  ','النسخة الأساسية: **5.6.6 — إكمال النصوص الطقسية المصرّح بها R66**','',
            '> هذا التقرير يفرّق بين سلامة البرنامج تقنيًا وبين اكتمال المحتوى الكنسي. نجاح Release Gate لا يعني تلقائيًا وجود نص كامل أو قراءة موثقة لكل يوم.','',
            '## النتائج']
     labels={'PASS':'✅ PASS','PASS_R66_AUTHORIZED_NATIVE':'✅ PASS R66 — نص أصلي مصرّح به','FIXED_R62':'✅ FIXED R62','PASS_WITH_SCOPE':'✅ PASS (بنطاق موثق)','PASS_WITH_READER_OVERLAY':'✅ PASS (طبقة قارئ)','PASS_GATE_REQUIRED':'✅ PASS / Gate','INCOMPLETE':'❌ INCOMPLETE','PARTIAL':'⚠️ PARTIAL','OFFLINE_CORE_NO_EXTERNAL_CARDS':'✅ داخل التطبيق / بلا بطاقات صلاة خارجية','PARTIAL_WITH_FULL_DIRECTORY_LINKS':'⚠️ PARTIAL + روابط الدليل الرسمي الكامل','INCOMPLETE_FAIL_CLOSED':'❌ INCOMPLETE — Fail closed','CATALOG_COMPLETE_TEXT_INCOMPLETE':'⚠️ البطاقات موجودة / النصوص الكاملة ناقصة'}

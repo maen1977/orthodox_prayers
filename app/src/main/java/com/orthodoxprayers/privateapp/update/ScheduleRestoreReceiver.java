@@ -14,6 +14,7 @@ public final class ScheduleRestoreReceiver extends BroadcastReceiver {
         if (!(applicationContext instanceof OrthodoxPrayersApp)) return;
         OrthodoxPrayersApp app = (OrthodoxPrayersApp) applicationContext;
         app.updateCoordinator().scheduleDailyRefresh();
+        app.updateCoordinator().scheduleChurchDirectoryWeeklySync();
         app.appUpdateManager().schedulePeriodicChecks();
     }
 }

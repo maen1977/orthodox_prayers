@@ -22,7 +22,8 @@ concurrency:
 jobs:
   build:
     name: Build Church Prayers Fast
-    runs-on: ubuntu-latest
+    # Pin the runner image to avoid GitHub's ubuntu-latest migration notice.
+    runs-on: ubuntu-24.04
     timeout-minutes: 55
 
     steps:
@@ -134,10 +135,30 @@ jobs:
       - name: Check content, languages, security, and calendar
         run: python scripts/run_local_daily_release_gate.py
 
-      - name: Absolute named commemoration coverage through 2050
+      - name: Audit daily liturgy selections through 2050
+        run: python scripts/audit_daily_liturgy_2050.py
+
+      - name: Audit strict beginning-to-dismissal liturgy structure
+        run: python scripts/validate_liturgy_structure_strict.py
+
+      - name: Report absolute named commemoration coverage through 2050
         id: r64-strict-named-coverage
-        continue-on-error: true
-        run: python scripts/audit_absolute_coverage_r64.py --require-complete --require-named-commemorations
+        shell: bash
+        run: |
+          set -uo pipefail
+          if python scripts/audit_absolute_coverage_r64.py --require-complete --require-named-commemorations; then
+            echo "complete=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "complete=false" >> "$GITHUB_OUTPUT"
+            echo "R64 named commemoration coverage is incomplete on this branch; the audit artifact contains the exact gaps." >&2
+            echo "::notice title=R64 content advisory::Named commemoration coverage is incomplete; release publishing remains blocked until native source coverage is complete."
+            {
+              echo "## R64 named commemoration coverage"
+              echo "The build artifact is available. This is a content-completeness advisory, not a build failure."
+              jq -r '"- Generic date-based records: " + ((.coverage.generic_commemoration_days // 0)|tostring), "- Named records: " + ((.coverage.named_commemoration_days // 0)|tostring), "- Official direct source documents configured: " + ((.coverage.official_direct_documents_configured // 0)|tostring)' canonical/r64_absolute_coverage_audit.json
+              echo "Release/tag publishing remains fail-closed until native Arabic, English, and Greek evidence covers the horizon."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Upload R64 coverage evidence even when strict coverage fails
         if: always()
@@ -153,7 +174,7 @@ jobs:
           retention-days: 30
 
       - name: Block build unless absolute named 2050 coverage is proven
-        if: (startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)) && steps.r64-strict-named-coverage.outcome != 'success'
+        if: (startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish_release)) && steps.r64-strict-named-coverage.outputs.complete != 'true'
         shell: bash
         run: |
           echo "R64 absolute 2050 coverage is incomplete. Download the R64-2050-Coverage-Audit artifact for exact gaps." >&2
@@ -174,11 +195,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if ! command -v pdftotext >/dev/null 2>&1; then
+          if ! command -v pdftotext >/dev/null 2>&1 || ! command -v tesseract >/dev/null 2>&1 || ! tesseract --list-langs 2>/dev/null | grep -qx 'ell'; then
             sudo apt-get update
-            sudo apt-get install -y poppler-utils
+            sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-ell
           fi
           pdftotext -v 2>&1 | head -n 1 || true
+          tesseract --list-langs 2>&1 | grep -E '^(ell|List)' || true
 
       - name: Prepare Java
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0

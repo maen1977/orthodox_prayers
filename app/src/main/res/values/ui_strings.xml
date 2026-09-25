@@ -282,6 +282,7 @@
     <string name="ui_today_s_readings_db2884fb" formatted="false">قراءات اليوم</string>
     <string name="ui_today_s_update_is_still_being_published_the_last_d93b9203" formatted="false">تحديث اليوم قيد النشر على الخادم؛ تظهر آخر نسخة سليمة وستتم إعادة المحاولة تلقائيًا</string>
     <string name="ui_total_abstinence_4bf885f8" formatted="false">الصوم الانقطاعي</string>
+    <string name="ui_optional_abstinence_7c3e2a11" formatted="false">صوم انقطاعي اختياري بحسب القدرة والإرشاد الروحي</string>
     <string name="ui_trusted_copy_source_4596d692" formatted="false">مصدر النسخة: </string>
     <string name="ui_trusted_details_this_month_a042797d" formatted="false">تفاصيل موثوقة لهذا الشهر</string>
     <string name="ui_type_a_word_or_reference_to_search_approved_nati_703cdad7" formatted="false">اكتب كلمة أو مرجعًا للبحث في النصوص الأصلية المعتمدة.</string>
@@ -390,10 +391,11 @@
     <string name="ui_fast_notice_ends_in_two_days_format">باقي يومان على انتهاء %1$s</string>
     <string name="ui_fast_notice_ends_in_days_format">باقي %1$d أيام على انتهاء %2$s</string>
     <string name="ui_fast_notice_last_day_format">اليوم الأخير من %1$s</string>
-    <string name="ui_fast_notice_tomorrow_weekly_format">غدًا %1$s — %2$s</string>
-    <string name="ui_fast_notice_next_weekly_format">%1$s القادم — %2$s</string>
+    <string name="ui_fast_notice_tomorrow_weekly_format">غدًا %1$s — صوم</string>
+    <string name="ui_fast_notice_next_weekly_format">%1$s القادم — صوم</string>
     <string name="ui_fast_notice_none">لا صوم قريب في هذه الفترة</string>
     <string name="ui_fast_notice_details_hint">اضغط لعرض تفاصيل الصوم والتقويم</string>
+    <string name="ui_fast_notice_dormition_feast_relaxed" formatted="false">عيد رقاد والدة الإله بعد صوم 14 يومًا — صوم مخفف، السمك مسموح</string>
     <string name="ui_weekday_wednesday">الأربعاء</string>
     <string name="ui_weekday_friday">الجمعة</string>
     <string name="ui_language_and_text_settings_title">اللغة وحجم النص</string>
@@ -422,4 +424,13 @@
     <string name="ui_churches_count_short_format_5f73c9b2" formatted="false">الكنائس المسجلة: %1$d</string>
     <string name="ui_church_cards_choose_city_3c1d8e74" formatted="false">اختر المدينة</string>
     <string name="ui_open_official_link_subtitle_8d2f6c10" formatted="false">اضغط لفتح الرابط الرسمي</string>
+    <string name="ui_church_directory_internal_subtitle_r66" formatted="false">يعرض الكنائس داخل التطبيق مع حفظ آخر نسخة للعمل دون اتصال</string>
+    <string name="ui_church_directory_source_count_format_r66" formatted="false">الكنائس من هذا الدليل: %1$d</string>
+    <string name="ui_church_directory_sync_enabled_r66" formatted="false">تحديث أسبوعي من الهاتف عند توفر الإنترنت — آخر نسخة سليمة محفوظة</string>
+    <string name="ui_church_directory_sync_verified_r66" formatted="false">تم التحقق من الأدلة الرسمية وحُفظت آخر نسخة سليمة</string>
+    <string name="ui_church_directory_sync_waiting_r66" formatted="false">لم تتم مزامنة الأدلة بعد؛ تُستخدم النسخة المضمّنة</string>
+    <string name="ui_church_directory_official_source_note_r66" formatted="false">المحتوى داخل التطبيق، والرابط الرسمي متاح للتوثيق عند الحاجة</string>
+    <string name="ui_system_brightness_6e11d2d1" formatted="false">سطوع النظام</string>
+    <string name="ui_fast_summary_explanation">شرح الحكم للمبتدئ</string>
+    <string name="ui_fast_summary_abstinence">الصوم الانقطاعي</string>
 </resources>

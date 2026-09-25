@@ -18,6 +18,7 @@ CAL=ROOT/'canonical/internal_calendar_2026_2050.json'
 BASE=ROOT/'canonical/perpetual_lectionary_2026_2050.json'
 HARVEST=ROOT/'canonical/r64_official_source_harvest.json'
 CANDIDATES=ROOT/'canonical/r64_commemoration_candidates.json'
+NETWORK=ROOT/'canonical/r64_official_source_network.json'
 OUT=ROOT/'canonical/r64_absolute_coverage_audit.json'
 START=date(2026,1,1); END=date(2050,12,31); EXPECTED=9131
 LANGS=('ar','en','el')
@@ -44,13 +45,17 @@ def main():
   if not str(s.get('service_type') or '').strip() or not str(s.get('rule_id') or '').strip() or not filled_langs(s.get('label')): problems['service_incomplete'].append(iso)
   c=d.get('commemoration') or {}
   if not filled_langs(c.get('name')): problems['commemoration_incomplete'].append(iso)
-  if c.get('source_kind')=='old_calendar_date_baseline': problems['generic_commemoration'].append(iso)
+  if c.get('source_kind') in {'old_calendar_date_baseline','comparative_english_lane','mixed_native_and_comparative_lanes'}:
+   problems['generic_commemoration'].append(iso)
  baseline={}
  if BASE.is_file(): baseline=load(BASE)
  harvest={}
  if HARVEST.is_file(): harvest=load(HARVEST)
  candidates={}
  if CANDIDATES.is_file(): candidates=load(CANDIDATES)
+ network={}
+ if NETWORK.is_file(): network=load(NETWORK)
+ direct_documents=network.get('direct_documents') or []
  report={
   'schema_version':1,'civil_range':{'start':START.isoformat(),'end':END.isoformat(),'expected_days':EXPECTED,'actual_days':len(by)},
   'strict_flags':{'require_complete':a.require_complete,'require_named_commemorations':a.require_named_commemorations},
@@ -64,7 +69,16 @@ def main():
    'generic_commemoration_days':len(problems['generic_commemoration']),
    'perpetual_baseline_dates':len((baseline.get('dates') or {})) if baseline else 0,
    'official_harvest_documents':int((harvest.get('coverage') or {}).get('documents') or 0) if harvest else 0,
+   'official_direct_documents_configured':len(direct_documents),
+   'official_direct_document_ids':[str(x.get('id') or '') for x in direct_documents if str(x.get('id') or '').strip()],
    'old_calendar_slots_with_arabic_candidate':int((candidates.get('coverage') or {}).get('old_calendar_slots_with_arabic_candidate') or 0) if candidates else 0,
+  },
+  'commemoration_policy':{
+   'required_native_languages':list(LANGS),
+   'generic_old_calendar_date_label_is_not_named':True,
+   'status':'INCOMPLETE' if problems['generic_commemoration'] else 'COMPLETE',
+     'note':'Comparative native-English evidence may be displayed in the English lane but never satisfies the Jerusalem/Jordan local-language named gate; local Arabic, English, and Greek evidence are still required.'
+,
   },
   'missing_dates':missing_dates,'extra_dates':extra_dates,
   'problem_counts':{k:len(v) for k,v in problems.items()},

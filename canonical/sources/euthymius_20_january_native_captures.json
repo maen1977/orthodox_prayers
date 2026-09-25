@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "title": "Native source text captures — Venerable Euthymius the Great — January 20",
+  "capture_date": "2026-08-24",
+  "policy": "verbatim_native_text_only; no_translation; no_ai_rewriting; no_automatic_diacritization",
+  "slots_captured": [
+    "troparion",
+    "kontakion"
+  ],
+  "communion_captured": false,
+  "languages": {
+    "ar": {
+      "source_id": "antioch_patriarchate_ar",
+      "url": "https://www.antiochpatriarchate.org/ar/page/1596/",
+      "capture_method": "opened_official_webpage_verbatim_native_arabic_web_extraction",
+      "local_fetch_note": "The page text was saved as a bounded source-text artifact from the opened official page; no OCR or translation was used.",
+      "boundary": "Page title القدّيس إفتيميوس الكبير; sections طروبارية باللحن الرابع and قنداق باللحن الثامن only.",
+      "troparion": "إفرحي أيتها البرية التي لم تلد، اطربي يا من لم تُمارس طلقاً، لأن رجل رغائب الروح قد كثّر أولادكِ، اذ قد غرسهم بحسن العبادة وعالهم بالإمساك لكمال الفضائل، فتبوسلاته أيها المسيح الإله خلص نفوسنا.",
+      "kontakion": "إن الخليقة قد وجدت فرحاً في مولدك الموقر، وفي تذكارك الإلهي أيها البار، اتخذت ابتهاجاً بعجائبك الكثيرة، فامنح منها نفوسنا بغزارة وطهّرنا من دنس الخطايا، حتى نرتل هللويا.",
+      "text_sha256": {
+        "troparion": "853d02dcb75fc362cc869fe749c7b0ecac3b3302898a29ec0a5b990754282c49",
+        "kontakion": "77db297f4d59f6144cb38c9603840f33344c8fbef485975402a503395852d251"
+      }
+    },
+    "en": {
+      "source_id": "goarch_online_chapel",
+      "url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=en",
+      "capture_method": "opened_official_webpage_verbatim_native_english_web_extraction",
+      "local_fetch_note": "The opened page yielded the bounded text through web extraction; direct curl capture returned HTTP 403, so this artifact records the exact bounded source text and does not claim a raw HTML capture.",
+      "boundary": "Page title Euthymios the Great; January 20; sections Apolytikion of Euthymius the Great and Kontakion of Euthymius the Great only.",
+      "troparion": "Be glad, O barren one, that hast not given birth; be of good cheer, thou that hast not travailed; for a man of desires hath multiplied thy children of the Spirit, having planted them in piety and reared them in continence to the perfection of the virtues. By his prayers, O Christ our God, make our life peaceful.",
+      "kontakion": "Creation found delight and joy in thine august nativity and the good cheer of thy numberless miracles on thy divine memorial. Now bestow thereof richly on our souls and wash clean the stains of our every sin, Euthymius most righteous, that we may chant: Alleluia!",
+      "text_sha256": {
+        "troparion": "467dd06ffde69d4a6cb6dba819810cac15ebcffcb1c1e61afa70ace37681125f",
+        "kontakion": "8d5e6e55bdb32cd7cfb5623e1008901fbdb17191e550bfefd5e8617ad4428311"
+      }
+    },
+    "el": {
+      "source_id": "goarch_online_chapel_greek",
+      "url": "https://www.goarch.org/chapel/saints?contentid=395&PCode=14LM&D=M&DT=01/20/2025&language=el",
+      "capture_method": "opened_official_webpage_verbatim_native_greek_web_extraction",
+      "local_fetch_note": "The opened page yielded the bounded Greek text through web extraction; direct curl capture returned HTTP 403, so this artifact records the exact bounded source text and does not claim a raw HTML capture.",
+      "boundary": "Page title Ὅσιος Εὐθύμιος ὁ Μέγας; Ιανουαρίου 20; sections Ἀπολυτίκιον Ὅσιος Εὐθύμιος ὁ Μέγας and Κοντάκιον Ὅσιος Εὐθύμιος ὁ Μέγας only.",
+      "troparion": "Εὐφραίνου ἔρημος ἡ οὐ τίκτουσα, εὐθύμησον ἡ οὐκ ὠδίνουσα, ὅτι ἐπλήθυνέ σοὶ τέκνα, ἀνὴρ ἐπιθυμιῶν τῶν τοῦ Πνεύματος, εὐσεβεία φυτεύσας, ἐγκρατεία ἐκθρέψας, εἰς ἀρετῶν τελειότητα. Ταὶς αὐτοῦ ἱκεσίαις, Χριστὲ ὁ Θεός, εἰρήνευσον τὴν ζωὴν ἡμῶν.",
+      "kontakion": "Ἐν τῇ σεπτὴ γεννήσει σου, χαρὰν ἡ κτίσις εὔρατο, καὶ ἐν τῇ θεία μνήμη σου Ὅσιε, τὴν εὐθυμίαν ἔλαβε τῶν πολλῶν σου θαυμάτων, ἐξ ὧν παράσχου πλουσίως ταίς ψυχαὶς ἡμῶν, καὶ ἀποκάθαρον ἁμαρτημάτων κηλίδας, ὅπως ψάλλωμεν, Ἀλληλούϊα.",
+      "text_sha256": {
+        "troparion": "0b3bd3c6876a6f410093b207a6f9b7caea12a1d5cdda16f1cc83cab15f649e6c",
+        "kontakion": "55edc3585d0a3dfad80e277dc1a968e9351ae63dfe5ad086436bcf566e549f18"
+      }
+    }
+  }
+}

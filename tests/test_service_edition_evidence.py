@@ -7,6 +7,9 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('edition_evidence',ROOT/'scripts/validate_service_edition_evidence.py')
 assert spec and spec.loader
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+pack_spec=importlib.util.spec_from_file_location('native_packs',ROOT/'scripts/validate_native_language_packs.py')
+assert pack_spec and pack_spec.loader
+pack_mod=importlib.util.module_from_spec(pack_spec); pack_spec.loader.exec_module(pack_mod)
 
 def test_source_backed_evidence_gate_passes():
     assert mod.collect_errors()==[]
@@ -25,3 +28,13 @@ def test_chrysostom_distinguishes_native_compilation_from_exact_editions():
     assert manifest['languages']['ar']['chrysostom_liturgy']=='complete_native_source_compilation'
     assert manifest['languages']['en']['chrysostom_liturgy']=='complete_exact_native_edition'
     assert manifest['languages']['el']['chrysostom_liturgy']=='complete_exact_native_edition'
+
+def test_packaging_aliases_are_explicit_and_fail_closed_for_unknown_ids():
+    native = json.loads((ROOT/'canonical/native_service_manifest.json').read_text(encoding='utf-8'))
+    completeness = json.loads((ROOT/'canonical/religious_completeness_manifest.json').read_text(encoding='utf-8'))
+    aliases = pack_mod.explicit_packaging_aliases(completeness['packaged_service_ids'], native['services'])
+    assert aliases == {'chrysostom_liturgy': 'divine_liturgy'}
+    assert pack_mod.explicit_packaging_aliases({'future_alias': 'divine_liturgy'}, native['services']) == {}
+    augmented = dict(native['services'])
+    augmented['future_alias'] = {}
+    assert pack_mod.explicit_packaging_aliases({'future_alias': 'divine_liturgy'}, augmented) == {'future_alias': 'divine_liturgy'}

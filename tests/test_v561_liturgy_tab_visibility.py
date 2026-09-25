@@ -10,8 +10,8 @@ def text(path):
 def test_liturgy_is_stable_top_level_destination():
     main = text('app/src/main/java/com/orthodoxprayers/privateapp/MainActivity.java')
     assert 'addNav(R.drawable.ic_nav_liturgy' in main
-    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' in main
-    assert 'new ReaderScreen(this, "divine_liturgy")' in main
+    assert 'case "liturgy": return new LiturgyHubScreen(this);' in main
+    assert 'case "liturgy": return canOpenTodayLiturgyDirectly()' not in main
     assert 'new LiturgyHubScreen(this)' in main
 
 
@@ -40,5 +40,5 @@ def test_calendar_keeps_blocked_liturgy_visible_but_not_openable():
 
 def test_release_version_is_561():
     build = text('app/build.gradle.kts')
-    assert 'versionCode = 50604' in build
-    assert 'versionName = "5.6.4"' in build
+    assert 'versionCode = 50607' in build
+    assert 'versionName = "5.6.7"' in build

@@ -3,6 +3,8 @@ package com.orthodoxprayers.privateapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.orthodoxprayers.privateapp.ui.ReaderBrightnessPolicy;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -54,6 +56,19 @@ public final class AppPreferences {
     public long lastRefreshAttempt() { return values.getLong(laneKey("last_refresh_attempt"), values.getLong("last_refresh_attempt", 0L)); }
     public boolean lastRefreshSucceeded() { return values.getBoolean(laneKey("last_refresh_succeeded"), values.getBoolean("last_refresh_succeeded", false)); }
     public String lastRefreshMessage() { return values.getString(laneKey("last_refresh_message"), values.getString("last_refresh_message", "")); }
+    public long churchDirectoryLastAttempt() { return values.getLong("church_directory_last_attempt", 0L); }
+    public long churchDirectoryLastSuccess() { return values.getLong("church_directory_last_success", 0L); }
+    public boolean churchDirectoryLastSyncSucceeded() { return values.getBoolean("church_directory_last_sync_succeeded", false); }
+    public String churchDirectoryLastMessage() { return values.getString("church_directory_last_message", ""); }
+
+    public void recordChurchDirectorySync(boolean succeeded, String message, long timestamp) {
+        android.content.SharedPreferences.Editor editor = values.edit()
+                .putLong("church_directory_last_attempt", timestamp)
+                .putBoolean("church_directory_last_sync_succeeded", succeeded)
+                .putString("church_directory_last_message", message == null ? "" : message);
+        if (succeeded) editor.putLong("church_directory_last_success", timestamp);
+        editor.apply();
+    }
     public String acceptedManifestDate() { return values.getString(laneKey("accepted_manifest_date"), ""); }
     public long acceptedManifestRevision() { return values.getLong(laneKey("accepted_manifest_revision"), 0L); }
 
@@ -205,8 +220,23 @@ public final class AppPreferences {
     public void setAutoScrollSpeed(int value) { values.edit().putInt("auto_scroll_speed", Math.max(0, Math.min(4, value))).apply(); }
 
 
-    public int readerBrightnessPercent() { return Math.max(10, Math.min(100, values.getInt("reader_brightness_percent", 100))); }
-    public void setReaderBrightnessPercent(int value) { values.edit().putInt("reader_brightness_percent", Math.max(10, Math.min(100, value))).apply(); }
+    /**
+     * Returns USE_SYSTEM when the user has not explicitly selected a reader
+     * brightness. This keeps the device's own brightness unchanged by default.
+     */
+    public int readerBrightnessPercent() {
+        return ReaderBrightnessPolicy.normalize(values.getInt(
+                "reader_brightness_percent",
+                ReaderBrightnessPolicy.USE_SYSTEM
+        ));
+    }
+
+    public void setReaderBrightnessPercent(int value) {
+        values.edit().putInt(
+                "reader_brightness_percent",
+                ReaderBrightnessPolicy.normalize(value)
+        ).apply();
+    }
 
     public String readerTheme() { return values.getString("reader_theme", "system"); }
     public void setReaderTheme(String value) {

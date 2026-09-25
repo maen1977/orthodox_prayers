@@ -15,6 +15,14 @@ class LocalCommemorationTests(unittest.TestCase):
    p=Path(td)/"local.json"; p.write_text(json.dumps({"records":{"2026-08-01":{"verification_status":"LOCAL_OFFICIAL_SOURCE_VERIFIED","commemorations":{"ar":"تذكار محلي موثق","en":"Verified local commemoration","el":"Τοπικὴ μνήμη"}}}},ensure_ascii=False),encoding="utf-8")
    m.LOCAL_COMMEMORATIONS_PATH=p
    try:
-    info=m.day_info(date(2026,8,1)); self.assertEqual("تذكار محلي موثق",info["feast_ar"]); self.assertEqual("LOCAL_OFFICIAL_SOURCE_VERIFIED",info["feast_status"])
+    info=m.day_info(date(2026,8,1)); self.assertEqual("تذكار محلي موثق",info["feast_ar"]); self.assertEqual("Verified local commemoration",info["feast_en"]); self.assertEqual("Τοπικὴ μνήμη",info["feast_el"]); self.assertEqual("LOCAL_OFFICIAL_SOURCE_VERIFIED",info["feast_status"])
+   finally: m.LOCAL_COMMEMORATIONS_PATH=old
+ def test_arabic_only_record_does_not_copy_across_language_lanes(self):
+  m=load(); old=m.LOCAL_COMMEMORATIONS_PATH
+  with tempfile.TemporaryDirectory() as td:
+   p=Path(td)/"local.json"; p.write_text(json.dumps({"records":{"2026-08-01":{"verification_status":"LOCAL_OFFICIAL_SOURCE_VERIFIED","commemorations":{"ar":"تذكار عربي موثق"}}}},ensure_ascii=False),encoding="utf-8")
+   m.LOCAL_COMMEMORATIONS_PATH=p
+   try:
+    info=m.day_info(date(2026,8,1)); self.assertEqual("تذكار عربي موثق",info["feast_ar"]); self.assertNotEqual("تذكار عربي موثق",info["feast_en"]); self.assertNotEqual("تذكار عربي موثق",info["feast_el"])
    finally: m.LOCAL_COMMEMORATIONS_PATH=old
 if __name__=="__main__": unittest.main()

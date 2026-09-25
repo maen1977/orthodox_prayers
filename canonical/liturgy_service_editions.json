@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "status": "R66_BASIL_AND_PRESANCTIFIED_NATIVE_SOURCES_COMPLETE_JAMES_REMAINS_SEPARATE",
+  "status": "R67_FAIL_CLOSED_STRICT_LITURGY_PUBLICATION",
   "languages": [
     "ar",
     "en",
@@ -25,7 +25,7 @@
       "ar": "DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_SOURCE_COMPILATION_TECHNICALLY_VALIDATED",
       "en": "IMPORTED_NATIVE_AUTHORIZED_EXACT",
       "el": "DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_EXACT_DCS",
-      "displayable": true,
+      "displayable": false,
       "source_ids": [
         "st_george_flint_basil_ar",
         "goarch_digital_chant_stand_english",
@@ -33,18 +33,14 @@
       ],
       "import_contract": "canonical/liturgy_native_import_contracts.json",
       "availability_note": {
-        "ar": "قداس القديس باسيليوس متاح بالعربية والإنجليزية واليونانية من مصادر أصلية مسجلة. العربية تركيب من ترتيب القداس العربي المشترك وصلوات باسيليوس العربية الخاصة، دون ترجمة آلية.",
-        "en": "The complete appointed Liturgy of Saint Basil is available in Arabic, English, and Greek from registered native sources; no machine translation is used.",
-        "el": "Ἡ πλήρης Λειτουργία τοῦ Ἁγίου Βασιλείου εἶναι διαθέσιμη στὰ ἀραβικά, ἀγγλικὰ καὶ ἑλληνικὰ ἀπὸ καταχωρισμένες πρωτογενεῖς πηγές, χωρὶς μηχανικὴ μετάφραση."
+        "ar": "الخدمة محددة في الروزنامة، لكن نصها العربي الكامل غير منشور حتى يكتمل الاستيراد والتدقيق الصارم من أول الصلاة إلى الصرف.",
+        "en": "The rite remains appointed in the calendar, but its complete Arabic native text is withheld until import and strict beginning-to-dismissal review are complete.",
+        "el": "Ἡ ἀκολουθία παραμένει διορισμένη στὸ ἡμερολόγιο, ἀλλὰ τὸ πλήρες ἀραβικὸ πρωτότυπο κείμενο παραμένει κρυφό μέχρι τὴν πλήρη εἰσαγωγὴ καὶ τὸν αὐστηρὸ ἔλεγχο ἀπὸ τὴν ἔναρξη ἕως τὴν ἀπόλυση."
       },
-      "phase8_review_status": "ALL_NATIVE_LANES_TECHNICALLY_COMPLETE_OWNER_AUTHORIZED",
-      "displayable_languages": [
-        "ar",
-        "en",
-        "el"
-      ],
+      "phase8_review_status": "BLOCKED_UNTIL_NATIVE_ARABIC_REIMPORT_AND_STRICT_STRUCTURE_REVIEW",
+      "displayable_languages": [],
       "r56_audit": "BLOCKED_ARABIC_AND_GREEK_NOT_WORD_BY_WORD_VERIFIED",
-      "r66_audit": "COMPLETE_NATIVE_SOURCES_NO_MACHINE_TRANSLATION_ECCLESIASTICAL_CERTIFICATION_NOT_CLAIMED",
+      "r66_audit": "BLOCKED_UNTIL_NATIVE_ARABIC_REIMPORT_AND_STRICT_STRUCTURE_REVIEW",
       "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
       "ecclesiastical_human_certification": "NOT_CLAIMED"
     },
@@ -53,7 +49,7 @@
       "ar": "DISPLAYABLE_COMPLETE_AUTHORIZED_NATIVE_EXACT_RAMALLAH_EDITION",
       "en": "IMPORTED_NATIVE_AUTHORIZED_EXACT",
       "el": "IMPORTED_NATIVE_AUTHORIZED_EXACT",
-      "displayable": true,
+      "displayable": false,
       "source_ids": [
         "jerusalem_ramallah_presanctified_ar",
         "antiochian_au_presanctified_ar",
@@ -62,18 +58,14 @@
       ],
       "import_contract": "canonical/liturgy_native_import_contracts.json",
       "availability_note": {
-        "ar": "خدمة القداس السابق تقديسها متاحة كاملة بالعربية والإنجليزية واليونانية من مصادر أصلية مسجلة، مع كتاب رام الله العربي الكامل والتحقق المقارن من الطبعة الأنطاكية.",
-        "en": "The complete Liturgy of the Presanctified Gifts is available in Arabic, English, and Greek from registered native sources.",
-        "el": "Ἡ πλήρης Λειτουργία τῶν Προηγιασμένων εἶναι διαθέσιμη στὰ ἀραβικά, ἀγγλικὰ καὶ ἑλληνικὰ ἀπὸ καταχωρισμένες πρωτογενεῖς πηγές."
+        "ar": "الخدمة محددة في الروزنامة، لكن نصها العربي الكامل غير منشور حتى يكتمل الاستيراد والتدقيق الصارم من أول الصلاة إلى الصرف.",
+        "en": "The rite remains appointed in the calendar, but its complete Arabic native text is withheld until import and strict beginning-to-dismissal review are complete.",
+        "el": "Ἡ ἀκολουθία παραμένει διορισμένη στὸ ἡμερολόγιο, ἀλλὰ τὸ πλήρες ἀραβικὸ πρωτότυπο κείμενο παραμένει κρυφό μέχρι τὴν πλήρη εἰσαγωγὴ καὶ τὸν αὐστηρὸ ἔλεγχο ἀπὸ τὴν ἔναρξη ἕως τὴν ἀπόλυση."
       },
-      "phase8_review_status": "ALL_NATIVE_LANES_TECHNICALLY_COMPLETE_OWNER_AUTHORIZED",
-      "displayable_languages": [
-        "ar",
-        "en",
-        "el"
-      ],
+      "phase8_review_status": "BLOCKED_UNTIL_COMPLETE_ARABIC_SERVICE_AND_STRICT_STRUCTURE_REVIEW",
+      "displayable_languages": [],
       "r56_audit": "BLOCKED_ARABIC_IS_EXPLANATORY_NOT_COMPLETE_LITURGY",
-      "r66_audit": "COMPLETE_NATIVE_SOURCES_NO_MACHINE_TRANSLATION_ECCLESIASTICAL_CERTIFICATION_NOT_CLAIMED",
+      "r66_audit": "BLOCKED_UNTIL_COMPLETE_ARABIC_SERVICE_AND_STRICT_STRUCTURE_REVIEW",
       "authorization_reference": "OWNER-AUTH-2026-08-13-AMMAN-JERUSALEM-ANTIOCH",
       "ecclesiastical_human_certification": "NOT_CLAIMED"
     },
@@ -90,6 +82,7 @@
       "en": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
       "el": "MISSING_COMPLETE_NATIVE_SOURCE_FILE",
       "displayable": false,
+      "phase8_review_status": "BLOCKED_UNTIL_DATED_OFFICIAL_APPOINTMENT_AND_COMPLETE_NATIVE_IMPORT",
       "source_ids": [],
       "import_contract": "canonical/liturgy_native_import_contracts.json",
       "availability_note": {
@@ -152,11 +145,11 @@
     "generator": "scripts/update_liturgical_data.py:liturgy_service_selection",
     "wrong_rite_substitution_prevented": true,
     "complete_native_text_imported_for": [
-      "chrysostom",
-      "basil",
-      "presanctified"
+      "chrysostom"
     ],
     "blocked_until_complete_native_import": [
+      "basil",
+      "presanctified",
       "james"
     ]
   },
@@ -169,11 +162,11 @@
     "runtime_candidates_allowed": false,
     "all_three_languages_and_ecclesiastical_approval_required": false,
     "complete_native_text_imported_for": [
-      "chrysostom",
-      "basil",
-      "presanctified"
+      "chrysostom"
     ],
     "blocked_until_reviewed_import": [
+      "basil",
+      "presanctified",
       "james"
     ],
     "technical_source_validation_required": true,
@@ -200,7 +193,6 @@
       "el"
     ],
     "presanctified_exact_languages": [
-      "ar",
       "en",
       "el"
     ],

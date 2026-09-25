@@ -33,12 +33,13 @@ public final class DailyAgendaWidget extends AppWidgetProvider {
         Context application = context.getApplicationContext();
         if (application instanceof OrthodoxPrayersApp) {
             OrthodoxPrayersApp app = (OrthodoxPrayersApp) application;
-            String date = app.repository().dataDate();
+            org.json.JSONObject current = app.repository().currentDayForDisplay();
+            String date = current.optString("date_iso", app.repository().currentAmmanDate());
             String feast = CommemorationDisplayPolicy.displayText(
-                    app.repository().today(),
+                    current,
                     app.repository()::localizedValue
             );
-            String fast = app.repository().localized(app.repository().today().optJSONObject("fast"), "—");
+            String fast = app.repository().localized(current.optJSONObject("fast"), "—");
             views.setTextViewText(R.id.widget_title, app.repository().local(com.orthodoxprayers.privateapp.R.string.ui_church_prayers_d7f2a5cb));
             views.setTextViewText(R.id.widget_date, date.isEmpty() ? "—" : date);
             views.setTextViewText(R.id.widget_feast, feast);

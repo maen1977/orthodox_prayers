@@ -122,13 +122,19 @@ def audit_native_lanes(errors: list[str]) -> None:
 
     for rite, contract in rites.items():
         edition = (editions.get("editions") or {}).get(rite) or {}
-        require(edition.get("displayable") is True, f"{rite}: complete three-language rite must be displayable", errors)
         if rite in {"basil", "presanctified"}:
             require(
                 edition.get("ecclesiastical_human_certification") == "NOT_CLAIMED",
                 f"{rite}: ecclesiastical human certification must not be fabricated",
                 errors,
             )
+        if edition.get("displayable") is not True:
+            require(
+                str(edition.get("phase8_review_status") or "").startswith("BLOCKED_"),
+                f"{rite}: blocked rite lacks explicit BLOCKED status",
+                errors,
+            )
+            continue
         for lang in LANGS:
             service = libraries[lang].get(str(contract["service_id"])) or {}
             label = f"{rite} {lang}"
@@ -190,12 +196,12 @@ def audit_calendar_selection(errors: list[str]) -> None:
     pascha = u.orthodox_pascha_gregorian(2026)
     cases = [
         (date(2026, 7, 26), "chrysostom", "morning_divine_liturgy", True),
-        (pascha - timedelta(days=42), "basil", "morning_divine_liturgy", True),
-        (pascha - timedelta(days=3), "basil", "vespers_with_divine_liturgy", True),
-        (pascha - timedelta(days=1), "basil", "vespers_with_divine_liturgy", True),
-        (date(2026, 2, 25), "presanctified", "lenten_vespers_with_presanctified", True),
-        (pascha - timedelta(days=6), "presanctified", "lenten_vespers_with_presanctified", True),
-        (pascha - timedelta(days=4), "presanctified", "lenten_vespers_with_presanctified", True),
+        (pascha - timedelta(days=42), "basil", "morning_divine_liturgy", False),
+        (pascha - timedelta(days=3), "basil", "vespers_with_divine_liturgy", False),
+        (pascha - timedelta(days=1), "basil", "vespers_with_divine_liturgy", False),
+        (date(2026, 2, 25), "presanctified", "lenten_vespers_with_presanctified", False),
+        (pascha - timedelta(days=6), "presanctified", "lenten_vespers_with_presanctified", False),
+        (pascha - timedelta(days=4), "presanctified", "lenten_vespers_with_presanctified", False),
         (pascha - timedelta(days=2), "no_divine_liturgy", "no_divine_liturgy", False),
         (pascha, "chrysostom", "morning_divine_liturgy", True),
     ]
@@ -232,7 +238,7 @@ def main() -> None:
         for error in errors:
             print("SMART_LITURGY_ERROR", error)
         raise SystemExit(f"SMART_LITURGY_INVALID errors={len(errors)}")
-    print("SMART_LITURGY_OK version=5.6.4 strict_core=true chrysostom=ar,en,el basil=ar,en,el presanctified=ar,en,el wrong_rite_fallback=false machine_translation=false ecclesiastical_certification=false")
+    print("SMART_LITURGY_OK version=5.6.7 strict_core=true chrysostom=ar,en,el basil=calendar-appointed-but-blocked presanctified=calendar-appointed-but-blocked wrong_rite_fallback=false machine_translation=false ecclesiastical_certification=false")
 
 
 if __name__ == "__main__":

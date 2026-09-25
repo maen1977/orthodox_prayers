@@ -23,6 +23,16 @@
       "id": "goarch_when_you_fast",
       "url": "https://www.goarch.org/-/when-you-fast",
       "use": "المعنى الروحي للصوم والتنبيه إلى التدرج والحالة الصحية"
+    },
+    {
+      "id": "saint_sophia_dormition_fast",
+      "url": "https://www.saintsophiadc.org/the-dormition-fast/",
+      "use": "المدة الدقيقة لصوم الرقاد من 1 إلى 14 آب، وحكم عيد 15 آب: فسحة عامة إن لم يقع الأربعاء أو الجمعة، والسمك فقط إذا وقع في أحدهما"
+    },
+    {
+      "id": "jerusalem_jordan_post_dormition_week_local_rule",
+      "url": "https://orthodoxjordan.org/",
+      "use": "قاعدة التقويم المحلي التي تسمح بالسمك والزيت والنبيذ يومي الأربعاء والجمعة في الأسبوع الأول بعد عيد الرقاد؛ تُطبّق على 16–22 آب بالتقويم القديم."
     }
   ],
   "levels": {
@@ -62,6 +72,12 @@
         "oil"
       ]
     },
+    "wine_only": {
+      "title_ar": "صوم — النبيذ مسموح وحده",
+      "allowed": [
+        "wine"
+      ]
+    },
     "strict": {
       "title_ar": "صوم صارم",
       "allowed": []
@@ -76,6 +92,57 @@
     "03-25",
     "08-06",
     "11-21"
+  ],
+  "major_feast_fish_old_calendar": [
+    "08-15"
+  ],
+  "dormition_fast_old_calendar": {
+    "start": "08-01",
+    "end": "08-14",
+    "duration_days": 14,
+    "feast_day": "08-15",
+    "feast_day_is_outside_fast": true,
+    "feast_day_rule": "fast_free_unless_wednesday_or_friday_fish",
+    "feast_code": "fish_allowed_on_wednesday_or_friday",
+    "source_id": "saint_sophia_dormition_fast",
+    "source_url": "https://www.saintsophiadc.org/the-dormition-fast/"
+  },
+  "annunciation_paschal_collisions": {
+    "first_four_days_of_holy_week": {
+      "code": "wine_oil",
+      "allowed": [
+        "wine",
+        "oil"
+      ],
+      "source_id": "oca_typikon_fasting",
+      "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church"
+    },
+    "great_friday_or_holy_saturday": {
+      "code": "wine_only",
+      "allowed": [
+        "wine"
+      ],
+      "source_id": "serbian_orthodox_eastern_diocese_discipline_of_fasting",
+      "source_url": "https://www.easterndiocese.org/news_170226_1"
+    }
+  },
+  "documented_optional_abstinence": [
+    {
+      "rule": "great_friday_optional_total_abstinence",
+      "scope": "Great Friday for those who have the strength, until sunset or after the Vespers veneration according to pastoral order",
+      "source_id": "oca_typikon_fasting",
+      "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
+      "mandatory": false,
+      "universal_clock_time": false
+    },
+    {
+      "rule": "first_week_lent_optional_total_abstinence",
+      "scope": "The severe days of the first week of Great Lent for those who have the strength; the appointed service or Vespers governs when the fast is broken",
+      "source_id": "oca_typikon_fasting",
+      "source_url": "https://www.oca.org/liturgics/outlines/fasting-fast-free-seasons-of-the-church",
+      "mandatory": false,
+      "universal_clock_time": false
+    }
   ],
   "override_directory": "scripts/overrides",
   "display_contract": {
@@ -114,5 +181,23 @@
     ],
     "clock_times_required_only_for": "documented_interval",
     "note_ar": "الصوم الانقطاعي يعني امتناعًا كليًا عن الطعام والشراب لفترة محددة. لا تُنشر ساعة بداية أو نهاية إلا إذا وردت حرفيًا في مصدر موثق لليوم نفسه."
+  },
+  "post_dormition_week_old_calendar": {
+    "start": "08-16",
+    "end": "08-22",
+    "days": [
+      "08-20",
+      "08-22"
+    ],
+    "code": "fish_allowed",
+    "allowed": [
+      "fish",
+      "wine",
+      "oil"
+    ],
+    "rule": "post_dormition_week_fish",
+    "jurisdiction": "Jerusalem/Jordan local calendar",
+    "source_id": "jerusalem_jordan_post_dormition_week_local_rule",
+    "source_url": "https://orthodoxjordan.org/"
   }
 }

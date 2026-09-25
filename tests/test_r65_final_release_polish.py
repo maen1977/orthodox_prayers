@@ -24,7 +24,7 @@ def test_compact_home_card_omits_commemoration_but_keeps_date_calendar_and_fast(
     date_card = home[home.index("private void addDateCard"):home.index("private void addRollingWeekStatus")]
     assert "civilDateLabel(today)" in date_card
     assert "ui_old_church_calendar_home_format" in date_card
-    assert "fastingDisplayTitle(today, data.dataDate())" in date_card
+    assert "fastingDisplayTitle(today, fastingDate)" in date_card
     assert "displayableCommemoration" not in date_card
     assert "ui_today_commemoration_home_format" not in date_card
 

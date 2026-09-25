@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audit": "R62_FULL_APP_AUDIT",
   "audited_on": "2026-08-13",
-  "base": "OrthodoxPrayers 5.6.4 R66 authorized Liturgy completion",
+  "base": "OrthodoxPrayers 5.6.6 R66 authorized Liturgy completion",
   "policy": "No AI-generated/translated scripture or liturgical text; official-site availability does not imply redistribution permission.",
   "source_urls": {
     "orthodox_jordan_churches": "https://orthodoxjordan.org/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D8%A6%D8%B3/",
@@ -17,13 +17,14 @@
   "metrics": {
     "calendar_days": 9131,
     "reading_counts": {
-      "epistle": 182,
-      "gospel": 182,
+      "epistle": 8277,
+      "gospel": 8348,
       "matins_gospel": 22
     },
-    "generic_commemoration_days": 6987,
-    "meaningful_occasion_days": 2144,
-    "fast_days": 4817,
+    "generic_commemoration_days": 0,
+    "meaningful_occasion_days": 2151,
+    "source_backed_named_commemoration_days": 9131,
+    "fast_days": 4859,
     "church_groups": {
       "jordan": 42,
       "palestine": 9,
@@ -58,21 +59,21 @@
       "id": "fasting",
       "title": "Fasting state and food-rule type",
       "status": "PASS_WITH_SCOPE",
-      "evidence": "4817/9131 days are marked fasting; codes include {'wine_oil': 861, 'strict': 3246, 'dairy_allowed': 175, 'fish_allowed': 535}. Exact abstinence clock times are intentionally not invented.",
+      "evidence": "4859/9131 days are marked fasting; codes include {'wine_oil': 864, 'strict': 3231, 'dairy_allowed': 175, 'fish_allowed': 586, 'wine_only': 3}. Exact abstinence clock times are intentionally not invented.",
       "action": "Keep fail-closed behavior for abstinence start/end unless an official dated source states it."
     },
     {
       "id": "commemorations",
       "title": "Daily commemorations through 2050",
       "status": "INCOMPLETE",
-      "evidence": "2144 days contain explicit occasion entries; 6987 days still use generic date-based commemoration wording.",
-      "action": "Import a verified annual Jerusalem/Jordan native commemoration corpus; do not AI-generate saint names."
+      "evidence": "9131/9131 days have source-backed or explicit named commemoration records; 2151 days contain explicit occasion entries; 0 days use generic date-based commemoration wording. The remaining incompleteness is the local three-language gate, not an invented saint-name fallback.",
+      "action": "Keep the English leap-day record and any non-local Greek slots explicitly marked; do not AI-generate or cross-language-translate saint names."
     },
     {
       "id": "daily_readings",
       "title": "Daily Epistle/Gospel coverage through 2050",
       "status": "INCOMPLETE",
-      "evidence": "Pinned references: epistle 182/9131, gospel 182/9131, matins gospel 22/9131.",
+      "evidence": "Pinned references: epistle 8277/9131, gospel 8348/9131, matins gospel 22/9131.",
       "action": "Build/verify a full Jerusalem-compatible regular lectionary and fixed-feast override corpus before claiming 2050 completeness."
     },
     {
@@ -86,7 +87,7 @@
       "id": "daily_prayers",
       "title": "Daily prayer library",
       "status": "OFFLINE_CORE_NO_EXTERNAL_CARDS",
-      "evidence": "Arabic embedded core: morning 5 segments; evening 4; small compline 15; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. 4 official Jordan references remain catalog evidence and are not rendered as external prayer cards.",
+      "evidence": "Arabic embedded core: morning 5 segments; evening 4; small compline 14; the complete pinned Arabic before/after-meal sequence and pre/post-Communion texts open inside the reader. 4 official Jordan references remain catalog evidence and are not rendered as external prayer cards.",
       "action": "Import any additional native text only after exact-text and redistribution evidence are recorded."
     },
     {
@@ -100,14 +101,14 @@
       "id": "vespers_ar",
       "title": "Arabic Vespers",
       "status": "PASS",
-      "evidence": "Arabic Vespers is packaged as a complete exact native edition with 45 segments / 9787 chars.",
+      "evidence": "Arabic Vespers is packaged as a complete exact native edition with 44 segments / 9768 chars.",
       "action": ""
     },
     {
       "id": "small_compline_ar",
       "title": "Arabic Small Compline",
       "status": "PASS",
-      "evidence": "Arabic Small Compline is packaged as a complete exact native edition with 15 segments / 4511 chars.",
+      "evidence": "Arabic Small Compline is packaged as a complete exact native edition with 14 segments / 4500 chars.",
       "action": ""
     },
     {

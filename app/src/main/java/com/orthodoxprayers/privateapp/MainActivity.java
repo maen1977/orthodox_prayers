@@ -432,9 +432,10 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
             case "home": return new HomeScreen(this);
             case "prayers": return new PrayerHubScreen(this);
             case "prayer_category": return new ServiceListScreen(this, entry.argument, prayerCategoryTitle(entry.argument));
-            case "liturgy": return canOpenTodayLiturgyDirectly()
-                    ? new ReaderScreen(this, "divine_liturgy")
-                    : new LiturgyHubScreen(this);
+            // Always enter through the day-aware hub. Opening the legacy daily
+            // service directly can show the stale 4-segment today.json overlay
+            // instead of the verified full native Liturgy from the library.
+            case "liturgy": return new LiturgyHubScreen(this);
             case "readings": return new ReadingsScreen(this);
             case "bible": return new BibleScreen(this);
             case "bible_testament": return new BibleTestamentScreen(this, entry.argument);
@@ -465,12 +466,17 @@ public final class MainActivity extends ComponentActivity implements ScreenHost 
 
     private boolean canOpenTodayLiturgyDirectly() {
         if (!repository.isTodayCurrent()) return false;
-        JSONObject selection = repository.today().optJSONObject("liturgy_service_selection");
+        JSONObject selection = repository.currentDayForDisplay().optJSONObject("liturgy_service_selection");
         if (selection == null || !selection.optBoolean("displayable", false)) return false;
         String type = selection.optString("service_type", "").trim();
         if ("no_divine_liturgy".equals(type) || "typikon_override_required".equals(type)) return false;
-        String serviceId = selection.optString("service_id", "divine_liturgy").trim();
-        return serviceId.isEmpty() || "divine_liturgy".equals(serviceId);
+        String serviceId = selection.optString("service_id", "").trim();
+        if (serviceId.isEmpty()) {
+            if ("basil".equals(type)) serviceId = "divine_liturgy_basil";
+            else if ("presanctified".equals(type)) serviceId = "presanctified_liturgy";
+            else serviceId = "divine_liturgy";
+        }
+        return !serviceId.isEmpty();
     }
 
     private void rebuildBottomNav(ScreenEntry entry) {

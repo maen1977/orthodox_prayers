@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "policy": "Administrative display grouping only; no church record is deleted or translated by automation.",
+  "palestine_group": {
+    "id": "palestine",
+    "title": {
+      "ar": "دولة فلسطين",
+      "en": "State of Palestine",
+      "el": "Κράτος τῆς Παλαιστίνης"
+    },
+    "order": 20
+  },
+  "jordan_groups": [
+    {
+      "id": "jordan_amman",
+      "title": {"ar": "عمّان", "en": "Amman", "el": "Ἀμμάν"},
+      "order": 1,
+      "cities": ["عمّان", "عمان"]
+    },
+    {
+      "id": "jordan_balqa",
+      "title": {"ar": "البلقاء", "en": "Al-Balqa", "el": "Ἀλ-Μπαλκά"},
+      "order": 2,
+      "cities": ["الفحيص", "السلط", "الرميمين", "صافوط"]
+    },
+    {
+      "id": "jordan_zarqa",
+      "title": {"ar": "الزرقاء", "en": "Zarqa", "el": "Ζάρκα"},
+      "order": 3,
+      "cities": ["الزرقاء"]
+    },
+    {
+      "id": "jordan_north",
+      "title": {"ar": "شمال الأردن", "en": "Northern Jordan", "el": "Βόρεια Ἰορδανία"},
+      "order": 4,
+      "cities": ["إربد", "اربد", "الحصن", "الصريح", "شطنا", "عجلون", "عنجرة", "الوهادنة", "المفرق", "جرش", "سوف", "الطيبة - الأردن", "كفرعان"]
+    },
+    {
+      "id": "jordan_madaba",
+      "title": {"ar": "مادبا", "en": "Madaba", "el": "Μάνταμπα"},
+      "order": 5,
+      "cities": ["مأدبا", "مادبا", "ماعين"]
+    },
+    {
+      "id": "jordan_karak",
+      "title": {"ar": "الكرك", "en": "Karak", "el": "Καράκ"},
+      "order": 6,
+      "cities": ["الكرك", "أدر", "حمود", "الربة"]
+    },
+    {
+      "id": "jordan_aqaba",
+      "title": {"ar": "العقبة", "en": "Aqaba", "el": "Ἄκαμπα"},
+      "order": 7,
+      "cities": ["العقبة"]
+    },
+    {
+      "id": "jordan_other",
+      "title": {"ar": "مناطق أردنية أخرى", "en": "Other Jordanian areas", "el": "Ἄλλες περιοχὲς Ἰορδανίας"},
+      "order": 8,
+      "cities": []
+    }
+  ]
+}
