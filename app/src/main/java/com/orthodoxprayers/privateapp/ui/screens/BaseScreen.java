@@ -209,11 +209,6 @@ public abstract class BaseScreen implements AppScreen {
                 // The catalog card must open the bundled complete rite, not
                 // today's possibly unavailable/blocked dynamic selection.
                 host.navigate("reader", "library::divine_liturgy");
-            } else if ("church_service".equals(service.optString("category", ""))) {
-                // Church service cards are a fixed native catalog. Force the
-                // reader to use the library entry instead of a date package
-                // that may contain a conflicting service id.
-                host.navigate("reader", "library::" + serviceId);
             } else {
                 host.navigate("reader", serviceId);
             }
