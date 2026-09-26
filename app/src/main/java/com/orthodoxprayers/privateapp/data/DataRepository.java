@@ -695,11 +695,14 @@ public final class DataRepository {
             serviceId = requestedId.substring(separator + 2);
         }
 
-        JSONObject dynamic = !libraryOnly && isTodayCurrent()
+        // The full native liturgy must never be shadowed by a daily overlay.
+        // Always resolve it from the canonical library source.
+        boolean forceCanonicalLibrary = "divine_liturgy".equals(serviceId);
+        JSONObject dynamic = !libraryOnly && !forceCanonicalLibrary && isTodayCurrent()
                 ? findServiceInArray(today().optJSONArray("services"), serviceId)
                 : null;
         JSONObject selected = dynamic;
-        if (!libraryOnly && !date.isEmpty()) {
+        if (!libraryOnly && !date.isEmpty() && !forceCanonicalLibrary) {
             JSONObject day = rollingWeekByDate.get(date);
             selected = day == null ? null : findServiceInArray(day.optJSONArray("services"), serviceId);
         }
