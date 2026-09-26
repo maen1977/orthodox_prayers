@@ -206,7 +206,9 @@ public abstract class BaseScreen implements AppScreen {
             // This catalog entry is only a short metadata card. The complete
             // Eucharistic rite is exposed by the day-aware Liturgy hub.
             if ("church_eucharist".equals(serviceId)) {
-                host.navigate("liturgy", null);
+                // The catalog card must open the bundled complete rite, not
+                // today's possibly unavailable/blocked dynamic selection.
+                host.navigate("reader", "library::divine_liturgy");
             } else {
                 host.navigate("reader", serviceId);
             }

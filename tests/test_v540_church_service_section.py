@@ -130,6 +130,12 @@ def test_eucharist_card_routes_to_existing_liturgy_and_communion_prayers():
         assert [item["service_id"] for item in related] == expected
 
 
+def test_eucharist_card_opens_bundled_liturgy_not_dynamic_today_selection():
+    source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
+    assert 'if ("church_eucharist".equals(serviceId))' in source
+    assert 'host.navigate("reader", "library::divine_liturgy")' in source
+
+
 def test_church_scripture_is_resolved_only_from_bundled_bible_repository():
     source = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/data/DataRepository.java").read_text(encoding="utf-8")
     block = source[source.index("private void resolveChurchServiceScripture"):source.index("private static void appendDailyLiturgyOverlay")]
