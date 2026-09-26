@@ -81,7 +81,9 @@ public final class LiturgyHubScreen extends BaseScreen {
             String appointedId = appointedServiceId(selection);
             open.setOnClickListener(v -> {
                 if ("divine_liturgy".equals(appointedId)) {
-                    host.navigate("reader", "divine_liturgy");
+                    // The tab button opens the complete bundled rite. The
+                    // date-aware service remains separate for daily selection.
+                    host.navigate("reader", "library::divine_liturgy");
                 } else {
                     host.navigate("reader", appointedId);
                 }

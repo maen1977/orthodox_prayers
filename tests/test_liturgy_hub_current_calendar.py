@@ -34,3 +34,8 @@ def test_church_eucharist_catalog_card_routes_to_complete_liturgy_hub():
     base = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/BaseScreen.java").read_text(encoding="utf-8")
     assert '"church_eucharist".equals(serviceId)' in base
     assert 'host.navigate("reader", "library::divine_liturgy")' in base
+
+
+def test_liturgy_hub_button_opens_bundled_complete_rite():
+    hub = (ROOT / "app/src/main/java/com/orthodoxprayers/privateapp/ui/screens/LiturgyHubScreen.java").read_text(encoding="utf-8")
+    assert 'host.navigate("reader", "library::divine_liturgy")' in hub
